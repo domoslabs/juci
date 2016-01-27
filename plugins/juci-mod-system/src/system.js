@@ -45,6 +45,15 @@ UCI.system.$registerSectionType("upgrade", {
 	"fw_upload_path":	{ dvalue: "", type: String, required: false}
 }); 
 
+UCI.$registerConfig("rpcd");
+
+UCI.rpcd.$registerSectionType("login", {
+	"username":	{ dvalue: "", type: String, required: true},
+	"password":	{ dvalue: "", type: String, required: true},
+	"write":	{ dvalue: [], type: Array},
+	"read":		{ dvalue: [], type: Array}
+});
+
 JUCI.app.factory("$systemService", function($rpc){
 	return {
 		list: function(){

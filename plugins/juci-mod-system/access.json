@@ -10,6 +10,9 @@
 					"reboot", 
 					"info"
 				], 
+				"session": [
+					"list"
+				],
 				"/juci/system.upgrade": [
 					"check", 
 					"test", 
@@ -68,7 +71,7 @@
 				]
 			},
 			"uci": [
-				"system"
+				"system",
 			]
 		}
 	},
