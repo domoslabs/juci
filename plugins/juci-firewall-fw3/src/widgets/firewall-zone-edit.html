@@ -28,7 +28,7 @@
 			<switch class="green" ng-model="zone.mtu_fix.value" />
 		</juci-config-line>
 		<juci-config-line title="{{'Allow forward to destination zones:'|translate}}">
-			<div ng-repeat="zone in zones.dest">
+			<div ng-repeat="zone in zones.dest track by $index">
 				<div class="checkbox checkbox-info">
 					<input type="checkbox" ng-model="zone.selected" ng-click="changeForwards()"/>
 					<label><strong>{{zone.name|uppercase}}</strong></label>
@@ -36,7 +36,7 @@
 			</div>
 		</juci-config-line>
 		<juci-config-line title="{{'Allow forward from source zones:'|translate}}">
-			<div ng-repeat="zone in zones.source">
+			<div ng-repeat="zone in zones.source track by $index">
 				<div class="checkbox checkbox-info">
 					<input type="checkbox" ng-model="zone.selected" ng-click="changeForwards()"/>
 					<label><strong>{{zone.name|uppercase}}</strong></label>
