@@ -213,19 +213,36 @@ UCI.network.$registerSectionType("interface", {
 
 UCI.network.$registerSectionType("route", {
 	"interface": 			{ dvalue: "", type: String }, 
-	"target": 				{ dvalue: "", type: String, validator: UCI.validators.IPAddressValidator }, 
-	"netmask": 				{ dvalue: "", type: String, validator: UCI.validators.IPAddressValidator }, 
-	"gateway": 				{ dvalue: "", type: String, validator: UCI.validators.IPAddressValidator },
+	"target": 				{ dvalue: "", type: String, validator: UCI.validators.IP4AddressValidator }, 
+	"netmask": 				{ dvalue: "", type: String, validator: UCI.validators.IP4AddressValidator }, 
+	"gateway": 				{ dvalue: "", type: String, validator: UCI.validators.IP4AddressValidator },
 	"metric": 				{ dvalue: 0, type: Number },
-	"mtu": 					{ dvalue: 1500, type: Number }
-}); 
+	"mtu": 					{ dvalue: "", type: Number }
+}, function(section){
+	if(!section) return;
+	var errors = [];
+	if(section.interface.value == "") errors.push(gettext("IPv4 Routes needs an interface"));
+	if(section.target.value == "") errors.push(gettext("IPv4 Routes needs a Target"));
+	if(section.netmask.value == "") errors.push(gettext("IPv4 Routes needs a Netmask"));
+	if(section.gateway.value == "") errors.push(gettext("IPv4 Routes needs a Gateway"));
+	if(errors.length > 0) return errors;
+	return null;
+});
 
 UCI.network.$registerSectionType("route6", {
 	"interface": 			{ dvalue: "", type: String }, 
-	"target": 				{ dvalue: "", type: String }, 
-	"gateway": 				{ dvalue: "", type: String },
+	"target": 				{ dvalue: "", type: String, validator: UCI.validators.IP6AddressValidator }, 
+	"gateway": 				{ dvalue: "", type: String, validator: UCI.validators.IP6AddressValidator },
 	"metric": 				{ dvalue: 0, type: Number },
-	"mtu": 					{ dvalue: 1500, type: Number }
+	"mtu": 					{ dvalue: "", type: Number }
+}, function(section){
+	if(!section) return;
+	var errors = [];
+	if(section.interface.value == "") errors.push(gettext("IPv6 Routes needs an interface"));
+	if(section.target.value == "") errors.push(gettext("IPv6 Routes needs a Target"));
+	if(section.gateway.value == "") errors.push(gettext("IPv6 Routes needs a Gateway"));
+	if(errors.length > 0) return errors;
+	return null;
 }); 
 
 UCI.network.$registerSectionType("switch", {
