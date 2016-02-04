@@ -356,22 +356,17 @@ posting your questions on the issues board on juci github page
 License Notice
 --------------
 
-	All individual parts in JUCI are Copyright of their respective authors. 
+Contributors: 
+	- Noel Wuyts <skype: noel.wuyts>: angular, widgets, development
+	- Feten Besbes <skype: feten_besbes>: css
 
-	Current list of contributors: 
+Project lead: Martin K. Schröder <mkschreder.uk@gmail.com>
 
-		Reidar Cederqvist <reidar.cederqvist@gmail.com>
-		Stefan Nygren <stefan.nygren@hiq.se>
-		Martin K. Schröder <mkschreder.uk@gmail.com>
-		Charlie Robbins <http://nodejitsu.com>
-		Craig Mason-Jones
-		Kord Campbell <kord@loggly.com>
-		Mihai Bazon
-		Philippe Rathé <prathe@gmail.com>
+Copyright (C) 2012-2013 Inteno Broadband Technology AB. All rights reserved.
 
-	This program is free software; you can redistribute it and/or
-	modify it under the terms of the GNU General Public License
-	version 3 as published by the Free Software Foundation.
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+version 2 as published by the Free Software Foundation.
 
 	This program is distributed in the hope that it will be useful, but
 	WITHOUT ANY WARRANTY; without even the implied warranty of
