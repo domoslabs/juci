@@ -24,7 +24,7 @@ JUCI.app
 		templateUrl: "/widgets/firewall-zone-edit.html"
 	}; 
 })
-.controller("firewallZoneEdit", function($scope, $firewall, gettext, $network, networkConnectionPicker, $uci){
+.controller("firewallZoneEdit", function($scope, $firewall, gettext, $network, networkConnectionPicker, $uci, $tr, gettext){
 	$scope.policys = [
 		{ label: gettext("ACCEPT"), value: "ACCEPT" }, 
 		{ label: gettext("REJECT"), value: "REJECT" }, 
@@ -32,9 +32,19 @@ JUCI.app
 		{ label: gettext("FORWARD"), value: "FORWARD" }
 	]; 
 	
+	function zoneValidator(){
+		this.validate = function(opt){
+			if(!$uci.firewall || !$scope || !$scope.zone) return null
+			var zones = $uci.firewall["@zone"].filter(function(z){ return z[".name"] != $scope.zone[".name"]; });
+			if(zones.find(function(z){ return z.name.value == opt.value; }) != undefined) return $tr(gettext("Firewall Zones can't have the same name"));
+			return null;
+		};
+	};
+
 	$scope.$watch("zone", function(zone){
 		$scope.zones = {source:[], dest:[]}
 		if(!zone) return; 
+		zone.name.validator = new zoneValidator();
 		$network.getNetworks().done(function(nets){
 			if(!zone || !zone.network) return; 
 			$scope.networks = zone.network.value.map(function(name){
