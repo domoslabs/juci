@@ -1,5 +1,5 @@
 # This code is provided to you as is under the terms of GPLv2 or later. 
-# Adopted to juci by me. Copyright (c) 2016 Martin K. Schröder <mkschreder.uk@gmail.com>
+# Adopted to juci by Martin K. Schröder <mkschreder.uk@gmail.com>
 # All demo code is Copyright 2009 Brandon Jones
 # All game data is provided by ID Software Original quake team. 
 

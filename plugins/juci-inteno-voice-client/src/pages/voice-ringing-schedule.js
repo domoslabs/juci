@@ -2,9 +2,8 @@
 /*
  * juci - javascript universal client interface
  *
- * Project Author: Martin K. Schröder <mkschreder.uk@gmail.com>
  * 
- * Copyright (C) 2012-2013 Inteno Broadband Technology AB. All rights reserved.
+ * Copyright (C) 2015 Inteno Broadband Technology AB. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
