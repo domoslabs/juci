@@ -14,3 +14,12 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 02110-1301 USA
 
+Authors:
+	- Martin K. Schröder <martin.schroder@inteno.se>, <mkschreder.uk@gmail.com>
+	- Reidar Cederqvist <reidar.cederqvist@inteno.se>, <reidar.cederqvist@gmail.com>
+	- Stefan Nygren <stefan.nygren@inteno.se>, <stefan.nygren@hiq.se>
+
+Contributors:
+	- Noel Wuyts <noel.wuyts@gmail.com>
+	- Feten Besbes <feten.besbes@pivasoftware.com>
+
