@@ -316,7 +316,7 @@ msgid ""
 msgstr ""
 
 msgid "Packet Forwarding"
-msgstr "Packet Forwarding"
+msgstr ""
 
 msgid "internet.firewall.forwarding.info"
 msgstr "Configure port forwarding here."
@@ -494,7 +494,7 @@ msgid "internet-firewall-urlblock-title"
 msgstr "URL Blocking Filter"
 
 msgid "menu-internet-firewall-forwarding-title"
-msgstr "Packet Forwarding"
+msgstr "Zone Forwarding"
 
 msgid "menu-internet-firewall-wordfilter-title"
 msgstr "Word Filter"
