@@ -39,10 +39,10 @@ JUCI.app
 		$scope.baseDevices = baseDevices; 
 		$scope.$apply(); 
 		
-		$scope.$watch("device", function(value){
-			if(!value) return; 
-			$scope.conf = value.base || value; 
-		}); 
+	}); 
+	$scope.$watch("device", function(value){
+		if(!value) return; 
+		$scope.conf = value.base || value; 
 	}); 
 	
 }); 
