@@ -105,6 +105,10 @@ JUCI.app
 		pauseSync = true;
 		$juciDialog.show("simple-lan-settings-edit", {
 			title: $tr(gettext("Edit LAN Settings")),
+			buttons: [
+				{ label: $tr(gettext("Save")), value: "save", primary: true },
+				{ label: $tr(gettext("Cancel")), value: "cancel" }
+			],
 			on_button: function(btn, inst){
 				pauseSync = false;
 				if(btn.value == "cancel") {
@@ -112,8 +116,7 @@ JUCI.app
 					$scope.model.dhcp.$reset();
 					inst.dismiss("cancel"); 
 				}
-				if(btn.value == "apply") { 
-					$uci.$save();
+				if(btn.value == "save") { 
 					inst.close();
 				}
 			},
