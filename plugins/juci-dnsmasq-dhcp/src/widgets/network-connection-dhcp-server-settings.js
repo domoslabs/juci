@@ -42,7 +42,9 @@ JUCI.app
 		}); 
 	}); 
 	$scope.$watch("data.dhcpEnabled", function(value){
-		if(!$scope.dhcp) {
+		if($scope.dhcp == undefined) return;
+		if($scope.connection && $scope.connection.proto && $scope.connection.proto.value == "static") {
+			console.log("Added new DHCP section");
 			if($scope.connection){
 				$uci.dhcp.$create({
 					".type": "dhcp", 
