@@ -47,15 +47,6 @@ JUCI.app
 		$scope.zones = {source:[], dest:[]}
 		if(!zone) return; 
 		zone.name.validator = new zoneValidator();
-		$network.getNetworks().done(function(nets){
-			if(!zone || !zone.network) return; 
-			$scope.networks = zone.network.value.map(function(name){
-				var net = nets.find(function(x){ return x[".name"] == name; }); 
-				if(!net) return null; 
-				return net; 
-			}).filter(function(x){ return x != null; }); 
-			$scope.$apply(); 
-		}); 
 		$firewall.getZones().done(function(zones){
 			var others = zones.filter(function(z){ return z.name.value != zone.name.value }).map(function(z){ return { name:z.name.value }; });
 			$uci.$sync("firewall").done(function(){
@@ -90,15 +81,17 @@ JUCI.app
 	}); 
 	
 	$scope.getItemTitle = function(net){
-		return net[".name"]; 
+		return net;
 	}
 	
 	
 	$scope.onAddNetwork = function(){
 		if(!$scope.zone) return; 
-		networkConnectionPicker.show({ exclude: $scope.networks }).done(function(network){
-			$scope.zone.network.value += " " + network[".name"];
-			$scope.networks.push(network); 
+		networkConnectionPicker.show({ exclude: $scope.zone.network.value }).done(function(network){
+			var tmp = [];
+			$scope.zone.network.value.map(function(net){ tmp.push(net);});
+			tmp.push(network[".name"]);
+			$scope.zone.network.value = tmp;
 			$scope.$apply(); 
 		}); 
 	}
@@ -107,10 +100,9 @@ JUCI.app
 		if(!$scope.zone) return; 
 		if(!conn) alert(gettext("Please select a connection in the list!")); 
 		if(confirm(gettext("Are you sure you want to remove this network from this zone?"))){
-			$scope.zone.network.value = $scope.zone.network.value.split(" ").filter(function(name){
-				return name != conn.id; 
-			}).join(" "); 
-			$scope.networks = $scope.networks.filter(function(x){ return x[".name"] != conn[".name"]; }); 
+			$scope.zone.network.value = $scope.zone.network.value.filter(function(name){
+				return name != conn; 
+			}); 
 		}
 	}
 	
