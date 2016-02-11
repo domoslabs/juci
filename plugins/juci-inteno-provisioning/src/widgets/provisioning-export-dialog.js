@@ -1,6 +1,8 @@
 /*
  * Copyright (C) 2015 Inteno Broadband Technology AB. All rights reserved.
  *
+ * Author: Reidar Cederqvist <reidar.cederqvist@gmail.com>
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * version 2 as published by the Free Software Foundation.
@@ -15,7 +17,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA
  */
-
 
 JUCI.app
 .directive("provisioningExportDialog", function(){

@@ -1,6 +1,8 @@
 /*
  * Copyright (C) 2015 Inteno Broadband Technology AB. All rights reserved.
  *
+ * Author: Martin K. Schröder <mkschreder.uk@gmail.com>
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * version 2 as published by the Free Software Foundation.
@@ -100,7 +102,7 @@ JUCI.app
 					.filter(function(x){ return x != ""; })
 					.map(function(dev_name){
 						var dev = adapters.find(function(d){ return d.device == dev_name; }); 
-					});
+					);
 					updateDevices($scope.connection);
 				}); 
 			}); 
