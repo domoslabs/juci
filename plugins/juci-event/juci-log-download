@@ -7,7 +7,8 @@ require("ubus");
 local conn = ubus.connect(); 
 local acl = conn:call("session", "access", { ubus_rpc_session = juci.query("sid") }); 
 
-print("Content-Type: text/plain\n"); 
+print("Content-Type: application/octet-stream\n"); 
+print("Content-Disposition: attachment; filename=\"juci-logs.txt\"\n");
 
 if(not juci.session.access(juci.query("sid"), "juci-io", "backup", { "read" })) then 
 	print("Access Denied!"); 
