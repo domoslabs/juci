@@ -19,9 +19,26 @@
  */
 
 JUCI.app
-.controller("StatusRestartPageCtrl", function($scope, $rpc){
+.controller("StatusRestartPageCtrl", function($scope, $rpc, $juciDialog, $tr, gettext){
 	$scope.onRestart = function(){
-		$scope.showConfirmation = 1; 
+		$juciDialog.show(null, {
+			title: $tr(gettext("Reboot")),
+			content: $tr(gettext("Are you sure you want to reboot?")),
+			on_button: function(btn, inst){
+				if(btn.value == "yes"){
+					window.location = "/reboot.html";
+					$rpc.juci.system.reboot().done(function(){
+						inst.close();
+					});
+				}
+				inst.close();
+			},
+			buttons: [
+				{ label: $tr(gettext("Yes")), value: "yes", primary: true },
+				{ label: $tr(gettext("No")), value: "no" }
+			]
+		});
+
 		/*$rpc.juci.system.reboot().done(function(){
 			console.log("Restarting the system..."); 
 		}); */
