@@ -1,18 +1,64 @@
-<html>
+<html ng-app="myApp">
 	<head>
 		<title>Rebooting..</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<script type="text/javascript">
-			var timer = 300; 
-			setInterval(function(){
-				document.getElementById("counter").innerHTML = timer; 
-				if(timer == 0) window.location = "/"; 
-				timer--; 
-			}, 1000); 
+			var app = angular.module("myApp", []);
+			app.controller("RebootPageCtrl", function($scope, $http){
+				var has_gon_down = false;
+				function checkIP(){
+					$http({
+						method: 'GET',
+						url: 'http://192.168.1.1'
+					}).then(function successCallback(responce){
+						console.log("success");
+						window.location = "/";
+					}, function errorCallback(responce){
+						console.log("error");
+						console.log(responce);
+						setTimeout(checkIP, 3000);
+					});
+				};
+				$scope.$watch("online", function(){
+					if($scope.online && has_gon_down){
+						setTimeout(checkIP, 2000);
+					}
+					if($scope.online == false){
+						has_gon_down = true;
+					}
+				},false);
+			});
+			app.run(function($window, $rootScope) {
+				$rootScope.online = navigator.onLine;
+				$window.addEventListener("offline", function () {
+					$rootScope.$apply(function() {
+						$rootScope.online = false;
+					});
+				}, false);
+				$window.addEventListener("online", function () {
+					$rootScope.$apply(function() {
+						$rootScope.online = true;
+					});
+				}, false);
+			});
 		</script>
 	</head>
 	<body>
-		<h2>Your router is rebooting</h2>
-		<p>Please wait <span id="counter">300</span> seconds until your router has rebooted.</p>
-		<p><a href="/">Or click here</a></p>
+		<div ng-controller="RebootPageCtrl">
+			<div class="modal show" data-backdrop="static" data-keyboard="false">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Rebooting router</h4>
+						</div>
+						<div class="modal-body">
+							<h1 style="text-align:center;margin:10px;">Your router is rebooting <i class="fa fa-spinner fa-spin"></i></h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
