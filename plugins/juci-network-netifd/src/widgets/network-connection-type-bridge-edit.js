@@ -102,7 +102,7 @@ JUCI.app
 					.filter(function(x){ return x != ""; })
 					.map(function(dev_name){
 						var dev = adapters.find(function(d){ return d.device == dev_name; }); 
-					);
+					});
 					updateDevices($scope.connection);
 				}); 
 			}); 
