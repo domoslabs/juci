@@ -55,7 +55,7 @@ JUCI.app
 		return deferred.promise(); 
 	}
 	
-	function upgradeStart(path){
+	function upgradeStart(path, keep){
 		$scope.showUpgradeStatus = 1; 
 		$scope.error = null; 
 		$scope.message = gettext("Verifying firmware image")+"...";					
@@ -68,15 +68,20 @@ JUCI.app
 			$scope.showUpgradeStatus = 0; 
 			$scope.$apply(); 
 
-			if(result && result.error) {
-				alert("Image check failed: "+result.stdout); 
+			if(result && result.error && result.stdout) {
+				$juciDialog.show(null, {
+					title: $tr(gettext("Image check failed")),
+					buttons: [{ label: $tr(gettext("OK")), value: "ok", primary: true }],
+					on_button: function(btn, inst){
+						inst.dismiss("ok");
+					},
+					content: ($tr(gettext("Error: ")) + result.stdout)
+				});
 				return; 
 			}
 
-			confirmKeep().done(function(keep){
-				$rpc.juci.system.upgrade.start({"path": path, "keep": ((keep)?1:0)}); // this never completes
-				window.location = "/reboot.html";  
-			}); 
+			$rpc.juci.system.upgrade.start({"path": path, "keep": ((keep)?1:0)}); // this never completes
+			window.location = "/reboot.html";  
 		}).fail(function(){
 			$scope.showUpgradeStatus = 0; 
 			$scope.$apply(); 
@@ -173,7 +178,7 @@ JUCI.app
 			var obj = {}; 
 			try {
 				obj = JSON.parse(json); 
-				upgradeStart($scope.uploadFilename); 
+				upgradeStart($scope.uploadFilename, keep_configs); 
 			} catch(e){
 				$scope.error = $tr(gettext("The server returned an error"))+" ("+JSON.stringify(json)+")";
 				$scope.message = $tr(gettext("Upload completed!"))
@@ -184,8 +189,5 @@ JUCI.app
 			$(this).unbind("load"); 
 		}); 
 		$("form[name='uploadForm']").submit();
-	}
-	$scope.onDismissModal = function(){
-		$scope.showUpgradeStatus = 0; 
 	}
 }); 
