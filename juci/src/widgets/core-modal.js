@@ -26,6 +26,7 @@ JUCI.app
 		transclude: true,
 		replace:true,
 		scope: {
+			hideButtons: "@",
 			acceptLabel: "@",
 			dismissLabel: "@",
 			ngShow: "=",
@@ -35,7 +36,6 @@ JUCI.app
 			title: "@",
 			hideCloseBtn : "@"
 		}, 
-		controller: "ModalController", 
 		link: function (scope, element, attrs) {
 			scope.element = element;
 			scope.$watch("ngShow", function(value){
@@ -46,7 +46,4 @@ JUCI.app
 			});
 		}
 	};
-})
-.controller('ModalController', function($scope) {
-	
 });
