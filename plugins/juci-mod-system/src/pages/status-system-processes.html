@@ -9,7 +9,8 @@
 			</div>
 		</div>
 		<accordion close-others="false">
-			<accordion-group is-open="isopen" heading="Click here to view details {{isopen ? 'v' : '>'}}">
+			<accordion-group is-open="isopen">
+				<accordion-heading>Click here to view details <i class="fa fa-chevron-circle-{{isopen ? 'down' : 'right'}}"></i></accordion-heading>
 				<h2 translate>Running Processes</h2>
 				<juci-config-info>{{'status.system.processes.info'|translate}}</juci-config-info>
 				<table class="table">
