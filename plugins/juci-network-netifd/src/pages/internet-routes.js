@@ -32,7 +32,6 @@ JUCI.app
 	}); 
 
 	$scope.getError = function(option){
-		console.log(option);
 		if(option.value == "") return false;
 		if(option.error == null) return true;
 		return false;
