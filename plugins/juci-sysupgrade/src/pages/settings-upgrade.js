@@ -88,6 +88,9 @@ JUCI.app
 			alert("Image check failed!"); 
 		});
 	}
+	$scope.onDismissModal = function(){
+		$scope.showUpgradeStatus = false;
+	};
 	
 	$scope.onCheckOnline = function(){
 		$scope.onlineUpgradeAvailable = false;
