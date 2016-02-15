@@ -57,9 +57,9 @@ wps_checkpin(){
 	if [ "$PIN" == "" ]; then exit 5; fi
 	json_init
 	if [ $(wps_cmd checkpin "$PIN") != ""  ]; then 
-		json_add_boolean "valid" true
+		json_add_boolean "valid" 1
 	else
-		json_add_boolean "valid" false
+		json_add_boolean "valid" 0
 	fi
 	json_dump
 }

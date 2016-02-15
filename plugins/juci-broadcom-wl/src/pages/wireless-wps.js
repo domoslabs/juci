@@ -34,7 +34,8 @@ JUCI.app
 	$scope.router = $router;
 	
 	$scope.data = {
-		userPIN: ""
+		userPIN: "",
+		valid_wps_pin: ""
 	}
 	$scope.progress = 0; 
 	
@@ -66,9 +67,29 @@ JUCI.app
 		$rpc.juci.wireless.wps.pbc();
 	}
 	$scope.onPairUserPIN = function(){
-		var pin = $scope.data.userPIN.replace("-", "").replace(" ", ""); 
-		$rpc.juci.wireless.wps.stapin({ pin: pin });
+		var pin = $scope.data.userPIN.replace("-", "").replace(" ", "").match(/\d+/g).join("");
+		$rpc.juci.wireless.wps.checkpin({pin:pin }).done(function(value){
+			if(!value || value.valid == undefined) return;
+			if(!value || !value.valid){
+				console.log("invalid wps key");
+				alert($tr(gettext("Invalid WPS key")));
+				return;
+			}
+			$rpc.juci.wireless.wps.stapin({ pin: pin });
+		});
 	}
+	
+	$scope.validPin = function(){
+		var pin = $scope.data.userPIN;
+		if(pin.match(/^[0-9]{4}([- ]?[0-9]{4})?$/)){
+			$scope.data.valid_wps_pin = true;
+			$scope.data.pin_error = null;
+		}else{
+			$scope.data.valid_wps_pin = false;
+			$scope.data.pin_error = $tr(gettext("Invalid format! WPS pin must be ether 4 or 8 digits alternatively 8 digits with a space or dash in the middle"));
+		}
+	};
+		
 	$scope.onGeneratePIN = function(){
 		$rpc.juci.wireless.wps.genpin().done(function(data){
 			if(!data || data.pin == "") return;

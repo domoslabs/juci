@@ -9,6 +9,7 @@
 					"setpin", 
 					"showpin", 
 					"stapin", 
+					"checkpin",
 					"status", 
 					"stop"
 				], 
