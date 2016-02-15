@@ -473,7 +473,7 @@ msgid "internet-firewall-zones-title"
 msgstr "Firewall Zones"
 
 msgid "internet-firewall-port-mapping-title"
-msgstr "Port Forwarding"
+msgstr "Port Mapping"
 
 msgid "internet-firewall-services-title"
 msgstr "Services"
