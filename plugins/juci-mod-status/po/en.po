@@ -63,10 +63,6 @@ msgstr ""
 msgid "Event Log"
 msgstr ""
 
-msgid "status.eventlog.info"
-msgstr ""
-"Here you can view system event log (Note: only latest 20 lines are shown) "
-
 # /home/martin/juci/plugins/juci-mod-status/src/pages/status-events.html
 msgid "Select events to show"
 msgstr ""

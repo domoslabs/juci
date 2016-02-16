@@ -71,7 +71,7 @@ msgid "Event Log"
 msgstr ""
 
 msgid "status.eventlog.info"
-msgstr "Select the categories for which you would like to view the event log."
+msgstr "Here you can view system event log"
 
 # /home/martin/juci/plugins/juci-event/src/pages/status-events.html
 msgid "Log"
