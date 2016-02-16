@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -17,18 +17,8 @@ msgid ""
 "continue?"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-configuration.js
-msgid ""
-"Configuration has been restored. You need to reboot the device for settings "
-"to take effect! Do you want to reboot now?"
-msgstr ""
-
 # /home/martin/juci/plugins/juci-mod-system/src/pages/settings-password.js
 msgid "Passwords do not match!"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-configuration.js
-msgid "Are you sure you want to save backup without password?"
 msgstr ""
 
 # /home/martin/juci/plugins/juci-mod-system/src/pages/settings-password.js
@@ -57,6 +47,14 @@ msgstr ""
 msgid "Firmware Version"
 msgstr ""
 
+# /home/martin/juci/plugins/juci-mod-system/src/pages/status-system.js
+msgid "Kernel Version"
+msgstr ""
+
+# /home/martin/juci/plugins/juci-mod-system/src/pages/status-system.js
+msgid "Target"
+msgstr ""
+
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # /home/martin/juci/plugins/juci-mod-system/src/pages/status-system.js
 # #-#-#-#-#  template.pot  #-#-#-#-#
@@ -72,19 +70,8 @@ msgstr ""
 msgid "CPU"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system.js
-msgid "System Load Avg. (1m)"
-msgstr ""
-
 # /home/martin/juci/plugins/juci-mod-system/src/pages/status-system.js
-msgid "Kernel Version"
-msgstr ""
-
-msgid "Filesystem"
-msgstr "Filesystem"
-
-# /home/martin/juci/plugins/juci-mod-system/src/pages/status-system.js
-msgid "Target"
+msgid "Load Average"
 msgstr ""
 
 # /home/martin/juci/plugins/juci-mod-system/src/pages/status-system.js
@@ -104,11 +91,11 @@ msgid "Swap"
 msgstr ""
 
 # /home/martin/juci/plugins/juci-mod-system/src/pages/internet-services-ntp.html
-msgid "URL"
+msgid "List of NTP servers"
 msgstr ""
 
 # /home/martin/juci/plugins/juci-mod-system/src/pages/internet-services-ntp.html
-msgid "List of NTP servers"
+msgid "URL"
 msgstr ""
 
 msgid "NTP Settings"
@@ -231,8 +218,8 @@ msgstr ""
 msgid "settings.password.info"
 msgstr "Set a new password to restrict management access to the router."
 
-# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-password.html
-msgid "Change password for user"
+# /home/martin/juci/plugins/juci-mod-system/src/pages/settings-password.html
+msgid "Your account"
 msgstr ""
 
 # /home/martin/juci/plugins/juci-mod-system/src/pages/settings-password.html
@@ -268,10 +255,6 @@ msgstr ""
 msgid "Timezone"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system.html
-msgid "Time servers (NTP)"
-msgstr ""
-
 # /home/martin/juci/plugins/juci-mod-system/src/pages/settings-system.html
 msgid "General System Settings"
 msgstr ""
@@ -291,32 +274,41 @@ msgstr ""
 msgid "Storage"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system.html
-msgid "Unsaved changes"
-msgstr ""
-
 msgid "status.system.processes.info"
 msgstr "Processes currently running on the router. "
-
-# /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system-processes.html
-msgid "Processes"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system-processes.html
-msgid "System processes and CPU usage."
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system-processes.html
-msgid "Total number of processes: {{processes.length}}"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system-processes.html
-msgid "Total CPU usage: {{getCpuUsage()}}"
-msgstr ""
 
 # /home/martin/juci/plugins/juci-mod-system/src/pages/status-system-processes.html
 msgid "Running Processes"
 msgstr ""
+
+msgid "settings-password-title"
+msgstr "Change Account Passwords"
+
+msgid "settings-configuration-title"
+msgstr "Configuration"
+
+# share/menu.d/settings.json
+msgid "settings-system-title"
+msgstr "System Settings"
+
+msgid "status-system-processes-title"
+msgstr "Processes"
+
+msgid "internet-services-ntp-title"
+msgstr "NTP Configuration"
+
+msgid "settings-services-title"
+msgstr "Services"
+
+msgid "status-system-title"
+msgstr "System Status"
+
+msgid "system-title"
+msgstr "System"
+
+# share/menu.d/settings.json
+msgid "settings-uci-title"
+msgstr "UCI Settings"
 
 msgid "settings-management-title"
 msgstr "Management Settings"
@@ -324,75 +316,40 @@ msgstr "Management Settings"
 msgid "settings-energy-title"
 msgstr "Energy Settings"
 
-msgid "internet-services-ntp-title"
-msgstr "NTP Configuration"
+msgid "menu-settings-password-title"
+msgstr "Passwords"
 
-msgid "status-system-title"
-msgstr "System Status"
-
-# share/menu.d/settings.json
-msgid "settings-uci-title"
-msgstr "UCI Settings"
-
-msgid "system-title"
-msgstr "System"
-
-msgid "settings-password-title"
-msgstr "Router Password"
-
-# share/menu.d/settings.json
-msgid "settings-system-title"
-msgstr "System Settings"
-
-msgid "settings-services-title"
-msgstr "Services"
-
-msgid "settings-users-title"
-msgstr "Manage Router Users"
-
-msgid "settings-configuration-title"
+msgid "menu-settings-configuration-title"
 msgstr "Configuration"
 
-msgid "status-system-processes-title"
+# share/menu.d/settings.json
+msgid "menu-settings-system-title"
+msgstr "Settings"
+
+msgid "menu-status-system-processes-title"
 msgstr "Processes"
-
-msgid "menu-settings-management-title"
-msgstr "Management"
-
-msgid "menu-settings-energy-title"
-msgstr "Energy Settings"
 
 msgid "menu-internet-services-ntp-title"
 msgstr "NTP"
 
+msgid "menu-settings-services-title"
+msgstr "Services"
+
 msgid "menu-status-system-title"
+msgstr "System"
+
+msgid "menu-system-title"
 msgstr "System"
 
 # share/menu.d/settings.json
 msgid "menu-settings-uci-title"
 msgstr "UCI Settings"
 
-msgid "menu-system-title"
-msgstr "System"
+msgid "menu-settings-management-title"
+msgstr "Management"
 
-msgid "menu-settings-password-title"
-msgstr "Router Password"
-
-# share/menu.d/settings.json
-msgid "menu-settings-system-title"
-msgstr "Settings"
-
-msgid "menu-settings-services-title"
-msgstr "Services"
-
-msgid "menu-settings-users-title"
-msgstr "Router Users"
-
-msgid "menu-settings-configuration-title"
-msgstr "Configuration"
-
-msgid "menu-status-system-processes-title"
-msgstr "Processes"
+msgid "menu-settings-energy-title"
+msgstr "Energy Settings"
 
 #~ msgid "status.eventlog.info"
 #~ msgstr ""
@@ -611,6 +568,9 @@ msgstr "Processes"
 
 #~ msgid "Static Routes"
 #~ msgstr "Static Routes"
+
+#~ msgid "System"
+#~ msgstr "System"
 
 #~ msgid "Theme"
 #~ msgstr "Theme"
