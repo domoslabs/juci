@@ -76,6 +76,11 @@
 		}
 	},
 	"juci-mod-system-admin": {
+		"read": {
+			"uci": [
+				"rpcd"
+			]
+		},
 		"write": {
 			"passwd": [ "otheruser" ]
 		}

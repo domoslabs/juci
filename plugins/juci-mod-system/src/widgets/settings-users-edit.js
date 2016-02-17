@@ -24,6 +24,28 @@ JUCI.app
 			var read =  ($scope.user.read.value.find(function(r){return r == acc}) == null ? false: true);
 			return { name: acc, read: (write || read), write: write};
 		});
-		console.log($scope.accesslist);
+		//console.log($scope.accesslist);
 	}, false);
+	$scope.$watch("accesslist", function(accesslist){
+		if(!accesslist || !(accesslist instanceof Array)) return;
+		var i = 0;
+		var access;
+		while(access = accesslist[i]){
+			if(access.read == false && access.write == true){
+				$scope.accesslist[i].read = true;
+			}
+			var read = access.read;
+			var write = access.write;
+			var old_write = ($scope.user.write.value.find(function(w){ return w == access.name; }) != null);
+			var old_read = old_write || ($scope.user.read.value.find(function(r){ return r == access.name; }) != null);
+			if(write != old_write){
+				console.log("owrite: " + old_write + " write: " + write);
+			}
+			if(read != old_read){
+				console.log("oread: " + old_read + " read: " + read)
+			}
+			i++;
+		}
+		console.log($scope.user);
+	}, true);
 });
