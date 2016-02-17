@@ -1,8 +1,7 @@
 <div>
 	<juci-config-lines>
-		<juci-config-line ng-repeat="access in accesslist track by $index" title="{{access.name}}">
-			{{'Read'|translate}}<switch class="green" ng-model="access.read" />
-			{{'Write'|translate}}<switch class="green" ng-model="access.write" />
+		<juci-config-line ng-repeat="page in data.pages track by $index" title="{{page.path.value}}">
+			<switch class="green" ng-model="page['_access']" ng-change="onSwitch(page)" ng-show="!page['_disabled']" />
 		</juci-config-line>
 	</juci-config-lines>
 </div>

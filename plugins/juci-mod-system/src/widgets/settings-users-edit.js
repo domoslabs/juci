@@ -12,40 +12,88 @@ JUCI.app
 		controller: "settingsUsersEditCtrl"
 	};
 })
-.controller("settingsUsersEditCtrl", function($scope){
-	$rpc.session.list().done(function(data){
-		$scope.allAccessGroups = Object.keys(data.acls["access-group"]);
-		$scope.$apply();
-	 });
-	 $scope.$watch("user", function(){
-	 	if(!$scope.user || !$scope.user.write || !$scope.user.read) return;
-		$scope.accesslist = $scope.allAccessGroups.map(function(acc){
-			var write = ($scope.user.write.value.find(function(w){return w == acc}) == null ? false: true);
-			var read =  ($scope.user.read.value.find(function(r){return r == acc}) == null ? false: true);
-			return { name: acc, read: (write || read), write: write};
+.controller("settingsUsersEditCtrl", function($scope, $rpc, $uci){
+	var user_acls = {};
+	$scope.$watch("user", function(user){
+		$scope.allAccessGroups = [];
+		$scope.data = {
+			pages: [],
+			this_user_type: ""
+		};
+		user_acls = {};
+		if(!user) return;
+		async.series([
+			function(next){
+				$rpc.session.list().done(function(data){
+					$scope.allAccessGroups = Object.keys(data.acls["access-group"]);
+				 }).always(function(){next();});
+			},
+			function(next){
+				console.log(user);
+				if(user.write.value.find(function(w){ return w == "user-support"; })){
+					$scope.data.this_user_type = "user-support";
+				}
+				$scope.user.write.value.map(function(w){
+					user_acls[w] = true;
+				});
+				next();
+			},
+			function(next){
+				$uci.$sync(["rpcd","juci"]).done(function(){
+					$scope.data.pages = $uci.juci["@menu"].map(function(menu){
+						if(menu.acls.value.find(function(acl){
+							return !user_acls[acl];
+						})){
+							menu["_access"] = false;
+						}else{
+							menu["_access"] = true;
+						}
+						if(menu.acls.value.length == 0) menu["_disabled"] = true;
+						return menu;
+					});
+				}).always(function(){next();});
+			}],
+		function(){
+			$scope.onSwitch = function(page){
+				var tmp = [];
+				if($scope.user.username.value == "user"){
+					page.acls.value.map(function(acl){
+						if(!page["_access"] && acl == "user-support")return;
+						if(!page["_access"] && acl == "user-admin") return;
+						tmp.push(acl);
+					});
+					if(page["_access"])tmp.push("user-support");
+					page.acls.value = tmp;
+				}else{
+					page.acls.value.map(function(acl){
+						if(!page["_access"] && acl == "user-admin")return;
+						tmp.push(acl);
+					});
+					if(page["_access"])tmp.push("user-admin");
+					page.acls.value = tmp;
+				}
+				console.log(page);
+			};
+			$scope.$apply();
 		});
-		//console.log($scope.accesslist);
 	}, false);
-	$scope.$watch("accesslist", function(accesslist){
-		if(!accesslist || !(accesslist instanceof Array)) return;
-		var i = 0;
-		var access;
-		while(access = accesslist[i]){
-			if(access.read == false && access.write == true){
-				$scope.accesslist[i].read = true;
-			}
-			var read = access.read;
-			var write = access.write;
-			var old_write = ($scope.user.write.value.find(function(w){ return w == access.name; }) != null);
-			var old_read = old_write || ($scope.user.read.value.find(function(r){ return r == access.name; }) != null);
-			if(write != old_write){
-				console.log("owrite: " + old_write + " write: " + write);
-			}
-			if(read != old_read){
-				console.log("oread: " + old_read + " read: " + read)
-			}
-			i++;
+	JUCI.interval.repeat("test-user-asdfasdf", 1000, function(done){
+		if(!$scope.data || !$scope.data.pages || !$uci || !$uci.juci["@menu"]){
+			done();
+			return;
 		}
-		console.log($scope.user);
-	}, true);
+		$scope.data.pages = $uci.juci["@menu"].map(function(menu){
+			if(menu.acls.value.find(function(acl){
+				return !user_acls[acl];
+			})){
+				menu["_access"] = false;
+			}else{
+				menu["_access"] = true;
+			}
+			if(menu.acls.value.length == 0) menu["_disabled"] = true;
+			return menu;
+		});
+		$scope.$apply();
+		done();
+	});
 });

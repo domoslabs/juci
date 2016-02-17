@@ -78,11 +78,15 @@
 	"juci-mod-system-admin": {
 		"read": {
 			"uci": [
-				"rpcd"
+				"rpcd",
+				"juci"
 			]
 		},
 		"write": {
-			"passwd": [ "otheruser" ]
+			"passwd": [ "otheruser" ],
+			"uci": [
+				"juci"
+			]
 		}
 	}
 }
