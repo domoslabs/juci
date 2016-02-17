@@ -3,7 +3,7 @@
 . /usr/share/libubox/jshn.sh
 
 get_wireless_devices(){
-	echo `ip link | awk 'BEGIN { FS=": "; } /^[[:digit:]]{2}/ { if(match($2, /wl/)) print $2 }'`
+	echo `ip link | awk 'BEGIN { FS=": "; } /^[[:digit:]]{1,2}/ { if(match($2, /wl/)) print $2 }'`
 }
 
 # wireless info dump. Expected output of wlctl: 
