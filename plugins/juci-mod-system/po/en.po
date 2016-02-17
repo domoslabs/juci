@@ -414,7 +414,7 @@ msgstr "Menu Access"
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "menu-settings-configuration-title"
-msgstr "Configuration"
+msgstr "Backup Settings"
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system-processes.html
 msgid "menu-status-system-processes-title"
