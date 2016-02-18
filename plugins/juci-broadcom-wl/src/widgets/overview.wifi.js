@@ -45,14 +45,10 @@ JUCI.app
 	$scope.wps = {}; 
 	
 	$scope.onWPSToggle = function(){
-		$uci.wireless.status.wps.value = !$uci.wireless.status.wps.value; 
-		$scope.wifiWPSStatus = (($uci.wireless.status.wps.value)?gettext("on"):gettext("off")); 
-		refresh(); 
+		$scope.wifiStatus.wps.value = !$scope.wifiStatus.wps.value;
 	}
 	$scope.onWIFISchedToggle = function(){
-		$uci.wireless.status.schedule.value = !$uci.wireless.status.schedule.value; 
-		$scope.wifiSchedStatus = (($uci.wireless.status.schedule.value)?gettext("on"):gettext("off")); 
-		refresh(); 
+		$scope.wifiStatus.schedule.value = !$scope.wifiStatus.schedule.value;
 	}
 
 	$scope.onEditSSID = function(iface){
@@ -80,8 +76,6 @@ JUCI.app
 
 	function refresh() {
 		var def = $.Deferred(); 
-		$scope.wifiSchedStatus = gettext("off"); 
-		$scope.wifiWPSStatus = gettext("off"); 
 		async.series([
 			function(next){
 				$uci.$sync("wireless").done(function(){
@@ -95,8 +89,7 @@ JUCI.app
 							return dev; 
 						}).filter(function(x){ return x != null; }); 
 						if($uci.wireless && $uci.wireless.status) {
-							$scope.wifiSchedStatus = (($uci.wireless.status.schedule.value)?gettext("on"):gettext("off")); 
-							$scope.wifiWPSStatus = (($uci.wireless.status.wps.value)?gettext("on"):gettext("off")); 
+							$scope.wifiStatus = $uci.wireless.status; 
 						}
 					}).always(function(){ next(); }); 
 				}); 

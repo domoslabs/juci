@@ -11,7 +11,7 @@
 				<a class="overview-list-item-text" href="#!/wireless-schedule"><strong>{{'Schedule'|translate}}</strong></a>
 			</div>
 			<div class="col-xs-2">
-				<a class="label label-{{(wifiSchedStatus)?'success':'default'}} pull-right overview-list-item-label" href="" ng-click="onWIFISchedToggle()"><strong>{{wifiSchedStatus| translate}}</strong></a>
+				<a class="label label-{{(wifiStatus.schedule.value)?'success':'default'}} pull-right overview-list-item-label" href="" ng-click="onWIFISchedToggle()"><strong ng-show="!wifiStatus.schedule.value">{{'Off'|translate}}</strong><strong ng-show="wifiStatus.schedule.value">{{'On'|translate}}</strong></a>
 			</div>
 		</div>
 		<div class="row" style="margin-bottom: 10px;">
@@ -20,7 +20,7 @@
 				<a class="overview-list-item-text" href="#!/wireless-wps"><strong>WPS</strong></a><br/>
 			</div>
 			<div class="col-xs-2">
-				<a class="label label-{{(wifiWPSStatus)?'success':'default'}} pull-right overview-list-item-label" href="" ng-click="onWPSToggle()"><strong>{{wifiWPSStatus | translate}}</strong></a>
+				<a class="label label-{{(wifiStatus.wps.value)?'success':'default'}} pull-right overview-list-item-label" href="" ng-click="onWPSToggle()"><strong ng-show="!wifiStatus.wps.value">{{'Off'|translate}}</strong><strong ng-show="wifiStatus.wps.value">{{'On'|translate}}</strong></a>
 			</div>
 		</div>
 		<div class="row">
