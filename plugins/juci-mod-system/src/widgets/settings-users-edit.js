@@ -29,7 +29,6 @@ JUCI.app
 				 }).always(function(){next();});
 			},
 			function(next){
-				console.log(user);
 				if(user.write.value.find(function(w){ return w == "user-support"; })){
 					$scope.data.this_user_type = "user-support";
 				}
@@ -72,7 +71,6 @@ JUCI.app
 					if(page["_access"])tmp.push("user-admin");
 					page.acls.value = tmp;
 				}
-				console.log(page);
 			};
 			$scope.$apply();
 		});
