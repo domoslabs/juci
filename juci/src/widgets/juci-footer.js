@@ -25,7 +25,7 @@ JUCI.app
 		controller: "juciFooter"
 	}; 
 })
-.controller("juciFooter", function($scope, $rpc, $network, $languages, gettextCatalog, gettext, $tr, $config){
+.controller("juciFooter", function($scope, $rpc, $firewall, $languages, gettextCatalog, gettext, $tr, $config){
 	// TODO: move this into a higher level controller maybe? 
 	$scope.languages = $languages.getLanguages(); 
 	$scope.isActiveLanguage = function(lang){
@@ -42,8 +42,8 @@ JUCI.app
 			window.location.href="/";
 		});
 	}
-	$network.getDefaultRouteNetworks().done(function(result){
-		$scope.wanifs = result.map(function(x){ return x.$info; }); 
+	$firewall.getZoneNetworks("wan").done(function(networks){
+		$scope.wanifs = networks.map(function(x){ return x.$info; }); 
 		$scope.$apply(); 
 	}); 
 	$rpc.system.board().done(function(res){
