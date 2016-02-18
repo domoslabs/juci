@@ -50,9 +50,12 @@ JUCI.app
 	$scope.showDnsSettings = function(){
 		if(!$scope.wan_ifs) return;
 		$firewall.getZoneNetworks("wan").done(function(nets){
+			var dhcp_nets = nets.filter(function(iface){
+				return iface.proto.value == "dhcp";
+			});
 			var model = {
 				aquired: $scope.wan_ifs,
-				settings: nets
+				settings: dhcp_nets
 			};
 			$juciDialog.show("network-wan-dns-settings-edit", {
 				title: $tr(gettext("Edit DNS servers")),
@@ -62,7 +65,7 @@ JUCI.app
 				],
 				on_button: function(btn, inst){
 					if(btn.value == "cancel"){
-						nets.map(function(x){
+						dhcp_nets.map(function(x){
 							if(x.$reset) x.$reset();
 						});
 						inst.dismiss("cancel");
