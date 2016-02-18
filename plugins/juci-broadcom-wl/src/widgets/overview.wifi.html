@@ -37,7 +37,7 @@
 							<i class="fa fa-edit" style="float: right; cursor: pointer;" ng-click="onEditSSID(iface)"></i>
 							<i class="fa fa-toggle-right" style="cursor: pointer;" ng-show="!iface._expanded" ng-click="iface._expanded = !iface._expanded"></i>
 							<i class="fa fa-toggle-down" style="cursor: pointer;" ng-show="iface._expanded" ng-click="iface._expanded = !iface._expanded"></i>
-							<span ng-click="iface._expanded = !iface._expanded" style="cursor: pointer;">{{iface.ssid + ' (' + iface.mode + ')'}}</span>
+							<span ng-click="iface._expanded = !iface._expanded" style="cursor: pointer;">{{iface.ssid + ' (' + iface.frequency + ')'}}</span>
 						</th>
 					</thead>
 					<tr ng-show="iface._expanded" ng-repeat="i in [['Frequency', 'frequency'], ['Channel', 'channel'], ['Noise', 'noise']]">

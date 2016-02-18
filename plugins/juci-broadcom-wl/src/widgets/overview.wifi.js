@@ -69,6 +69,7 @@ JUCI.app
 				}
 				if(btn.value == "save"){
 					inst.close();
+					iface.ssid = iface.uci_dev.ssid.value;
 				}
 			},
 			model: iface.uci_dev
