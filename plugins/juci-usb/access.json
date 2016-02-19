@@ -3,6 +3,9 @@
 		"description": "JUCI USB Module",
 		"read": {
 			"ubus": {
+				"router":[
+					"usb"
+				],
 				"/juci/usb": [
 					"list"
 				]

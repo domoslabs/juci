@@ -26,6 +26,14 @@ JUCI.app
 	
 	USB.prototype.getDevices = function(){
 		var def = $.Deferred(); 
+		$rpc.router.usb().done(function(res){
+			var usbs = Object.keys(res).map(function(usb){
+				return res[usb];
+			});
+			if(usbs) def.resolve(usbs);
+			else def.resolve([]);
+		});
+		return def.promise();
 		$rpc.juci.usb.list().done(function(result){
 			if(result && result.devices) def.resolve(result.devices); 
 			else def.reject(); 
