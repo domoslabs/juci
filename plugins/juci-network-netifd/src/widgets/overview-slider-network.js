@@ -414,8 +414,8 @@ JUCI.app
 				var interfaces = stats.interface; 
 				var gw_if = interfaces.find(function(x){ return x.route && x.route[0] && x.route[0].target == "0.0.0.0"; }); 
 				$firewall.getZones().done(function(zones){
-					var wan = zones.find(function(x){ return x.name.value == "wan"; }); 
-					var lan = zones.find(function(x){ return x.name.value == "lan"; }); 
+					var wan = zones.find(function(x){ return x.masq.value == true; }); 
+					var lan = zones.find(function(x){ return x.masq.value == false; }); 
 					var guest = zones.find(function(x){ return x.name.value == "guest"; }); 
 					
 					[wan, lan, guest].map(function(zone){
@@ -429,9 +429,9 @@ JUCI.app
 							physics: false, 
 							fixed: { x: false, y: false }
 						}
-						if(zone == wan) { node.x = 180; node.y = 0; node.image = "/img/net-interface-wan-icon.png"}
-						else if(zone == lan) { node.x = -180; node.y = -50; }
-						else if(zone == guest) { node.x = -180; node.y = 50; }
+						if(zone == wan) { node.x = 160; node.y = 0; node.image = "/img/net-interface-wan-icon.png"}
+						else if(zone == lan) { node.x = -160; node.y = -50; }
+						else if(zone == guest) { node.x = -160; node.y = 50; }
 						nodes.push(node);
 						
 						if(zone != wan)
@@ -458,8 +458,11 @@ JUCI.app
 								var flags = []; 
 								if(gw_if && gw_if.route[0].nexthop == cl.ipaddr) flags.push("Default GW"); 
 								if(nameservers.find(function(x){ return x == cl.ipaddr; })) flags.push("DNS"); 
-								if(flags.length) cl_node.label = "("+flags.join("/")+") "+cl_node.label; 
-								if(cl.hostname) cl_node.label = cl_node.label + " (" + cl.hostname + ")"; 
+								if(flags.length) cl_node.label = "("+flags.join("/")+")\n"+cl_node.label; 
+								if(cl.hostname){
+									if(cl.hostname.length < 16) cl_node.label = cl_node.label + "\n(" + cl.hostname + ")"; 
+									if(cl.hostname.length > 15) cl_node.label = cl_node.label + "\n(" + cl.hostname.substring(0 ,15) + "...)"; 
+								}
 								nodes.push(cl_node); 
 								edges.push({ from: node.id, to: cl_node.id, width: 2 });  
 							}); 
