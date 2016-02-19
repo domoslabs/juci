@@ -29,7 +29,7 @@ JUCI.app
 		replace: true
 	 };  
 })
-.controller("networkConnectionTypeBridgeEdit", function($scope, $network, $ethernet, $modal, $tr, gettext){
+.controller("networkConnectionTypeBridgeEdit", function($scope, $network, $ethernet, $modal, $tr, gettext, $uci){
 	$scope.getItemTitle = function(dev){
 	
 		return dev.name + " ("+dev.device+")"; 
@@ -85,7 +85,7 @@ JUCI.app
 			// remove the device from any other interface that may be using it right now (important!); 
 			$network.getNetworks().done(function(nets){
 				$ethernet.getAdapters().done(function(adapters){
-					nets.filter(function(net){ return net.type.value == "bridge"; }).map(function(net){
+					nets.filter(function(net){ return net.type.value == "anywan" || net.type.value == "bridge"; }).map(function(net){
 						net.ifname.value = net.ifname.value.split(" ").filter(function(dev){ 
 							if(dev == device && !confirm($tr(gettext("Are you sure you want to remove device "+dev+" from network "+net['.name']+" and use it in this bridge?")))) {
 								keep_device = true; 
@@ -95,8 +95,18 @@ JUCI.app
 							return true; 
 						}).join(" ");
 					}); 
-					
 					if(keep_device) return; 
+					if(device.match(/^wl.+/)){
+						$uci.$sync("wireless").done(function(){
+							var wliface = $uci.wireless["@wifi-iface"].find(function(iface){
+								return iface.ifname.value == device;
+							});
+							if(wliface) {
+								wliface.network.value = $scope.connection[".name"];
+							}
+							$scope.$apply();
+						});
+					}
 					$scope.connection.ifname.value += " " + device; 
 					$scope.connection.ifname.value.split(" ")
 					.filter(function(x){ return x != ""; })
