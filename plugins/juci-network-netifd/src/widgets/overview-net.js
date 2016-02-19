@@ -36,15 +36,10 @@ JUCI.app
 .controller("overviewStatusWidgetNetwork", function($scope, $rpc, $firewall){
 	$scope.statusClass = "text-success";
 	JUCI.interval.repeat("overview-network", 1000, function(done){
-		async.series([function(next){
-			// TODO: move this to factory
-			$firewall.getZoneClients("lan").done(function(clients){
-				$scope.numClients = clients.filter(function(x){return x.online}).length;
-				$scope.done = 1;
-			});
-		}], function(){
-			done();
-		});
+		$firewall.getZoneClients("lan").done(function(clients){
+			$scope.numClients = clients.filter(function(x){return x.online}).length;
+			$scope.$apply();;
+		}).always(function(){done();});
 	});
 })
 .controller("overviewWidgetNetwork", function($scope, $firewall, $tr, gettext, $juciDialog, $uci){
@@ -62,7 +57,6 @@ JUCI.app
 				net["_dhcp_enabled"] = net["_uci_dhcp"] && !net["_uci_dhcp"].ignore.value || false;
 				return net;
 			});
-			console.log(networks);
 			$scope.lanNetworks = networks;
 			$scope.$apply();
 		});
