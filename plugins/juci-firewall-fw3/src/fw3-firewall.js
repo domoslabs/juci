@@ -98,7 +98,13 @@ JUCI.app
 			async.series([
 				function(next){
 					sync().always(function(){
-						selected_zone = $uci.firewall["@zone"].find(function(x){ return x.name.value == zone;});
+						if(zone == "lan"){
+							selected_zone = $uci.firewall["@zone"].filter(function(x){ return x.masq.value == false;});
+						}else if(zone == "wan"){
+							selected_zone = $uci.firewall["@zone"].filter(function(x){ return x.masq.value == true;});
+						}else{
+							selected_zone = [$uci.firewall["@zone"].filter(function(x){ return x.name.value == zone;})];
+						}
 						if(!selected_zone) {
 							def.reject({error: gettext("Zone does not exist!")}); 
 							return; 
@@ -119,7 +125,9 @@ JUCI.app
 			], function(){
 				//filter out networks by the selected zone
 				var zone_networks = networks.filter(function(net){
-					return selected_zone.network.value.find(function(zone_net){ return zone_net == net[".name"]; }) !== undefined;
+					return selected_zone.find(function(zone){
+						return zone.network.value.find(function(zone_net){ return zone_net == net[".name"]; }) !== undefined;
+					}) !== undefined;
 				});
 				if(zone_networks.length == 0){
 					def.reject({ error: "Found no networks in zone" });
