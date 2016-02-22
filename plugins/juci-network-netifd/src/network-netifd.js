@@ -271,3 +271,77 @@
 	}); 
 }(); 
 
+JUCI.app.factory("$networkHelper", function($uci, $tr, gettext, $network){
+	return {
+		setNetwork: function(dev, network){
+			var deferred = $.Deferred();
+			if(!dev || !network) return deferred.reject($tr(gettext("no device or network given")));
+			$uci.$sync("wireless").done(function(){
+				var wliface = $uci.wireless["@wifi-iface"].find(function(iface){
+					return iface.ifname.value == dev;
+				});
+				if(wliface && wliface.network){
+					wliface.network.value = network;
+				}
+				deferred.resolve();
+			}).fail(function(){deferred.reject("failed");});
+			return deferred;
+		},
+		addDevice(interface, device){
+			var deferred = $.Deferred();
+			if(!device || typeof device != "string") return deferred.reject("No Device given");
+			if(!interface || !interface.type) return deferred.reject("Invalid interface");
+			var type = "unknown";
+			if(interface.type.value == "bridge") type = "Bridge";
+			if(interface.type.value == "") type = "Standalone Connection";
+			if(interface.type.value == "anywan") type = "Any-wan";
+			if(device.match(/^wl.+/) || interface.type.value == "bridge"){
+				$network.getNetworks().done(function(nets){ 
+					var filtered = nets.filter(function(net){ return net[".name"] != interface[".name"];});
+					var keep_device = false;
+					if(!device.match(/^wl.+/)) filtered = filtered.filter(function(net){ return net.type.value == "bridge" });
+					filtered.map(function(net){
+						net.ifname.value = net.ifname.value.split(" ").filter(function(dev){
+							if(dev == device && !confirm($tr(gettext("Are you sure you want to remove device "+dev+" from network "+net[".name"]+" and use it in this "+type)))){
+								keep_device = true;
+								return true;
+							}else if(dev == device) return false;
+							return true;
+						}).join(" ");
+					});
+					if(!keep_device){
+						if(interface.type.value == ""){
+							interface.ifname.value = device;
+						}else{
+							interface.ifname.value += " " + device;
+						}
+						if(device.match(/^wl.+/)){
+							$uci.$sync("wireless").done(function(){
+								var wliface = $uci.wireless["@wifi-iface"].find(function(iface){
+									return iface.ifname.value == device;
+								});
+								if(wliface && wliface.network){
+									wliface.network.value = interface[".name"];
+								}
+								deferred.resolve();
+							});
+						}else{
+							deferred.resolve();
+						}
+					}else{
+						deferred.reject();
+					}
+				});
+			}else{
+				if(interface.type.value == ""){
+					interface.ifname.value = device;
+				}else{
+					interface.ifname.value += " " + device;
+				}
+				deferred.resolve();
+			}
+			return deferred;
+		}
+	}
+});
+	

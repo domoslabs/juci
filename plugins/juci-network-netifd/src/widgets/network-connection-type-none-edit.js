@@ -31,7 +31,7 @@ JUCI.app
 		replace: true
 	 };
 })
-.controller("networkConnectionTypeNoneEdit", function($scope, $ethernet, $modal, $tr, gettext){
+.controller("networkConnectionTypeNoneEdit", function($scope, $ethernet, $modal, $tr, gettext, $networkHelper){
 	// expose tab title
 	gettext("network.interface.type.none.tab.title");
 
@@ -47,4 +47,15 @@ JUCI.app
 		}
 		$scope.$apply();
 	});
+	$scope.onChangeDevice = function(value, oldvalue){
+		if(value == oldvalue) return false;
+		$networkHelper.addDevice($scope.interface, value).done(function(){
+			if(oldvalue.match(/^wl.+/)){
+				$networkHelper.setNetwork(oldvalue, "none").done(function(){
+					$scope.$apply();
+				});
+			}
+		});
+		return false;
+	};
 });
