@@ -287,7 +287,7 @@ JUCI.app.factory("$networkHelper", function($uci, $tr, gettext, $network){
 			}).fail(function(){deferred.reject("failed");});
 			return deferred;
 		},
-		addDevice(interface, device){
+		addDevice: function(interface, device){
 			var deferred = $.Deferred();
 			if(!device || typeof device != "string") return deferred.reject("No Device given");
 			if(!interface || !interface.type) return deferred.reject("Invalid interface");
