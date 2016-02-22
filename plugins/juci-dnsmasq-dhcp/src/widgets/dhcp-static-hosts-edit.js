@@ -34,10 +34,11 @@ JUCI.app
 		if(!dhcp) return; 
 		
 		$network.getConnectedClients().done(function(clients){
-			// we do not sync uci here because we only use this control inside dhcp pages that do that already
-			dhcp.staticHosts = $uci.dhcp["@host"].filter(function(host){
-				return host.dhcp.value == dhcp[".name"] || host.network.value == dhcp[".name"];  
-			}); 
+			$uci.$sync("dhcp").done(function(){
+				dhcp.staticHosts = $uci.dhcp["@host"].filter(function(host){
+					return host.dhcp.value == dhcp[".name"] || host.network.value == dhcp[".name"];  
+				}); 
+			});
 			dhcp.connectedHosts = clients.filter(function(cl){
 				// filter out only clients that are connected to network that this dhcp entry is servicing
 				//return cl.network == dhcp.interface.value; 
