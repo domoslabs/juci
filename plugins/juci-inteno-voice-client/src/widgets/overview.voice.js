@@ -55,7 +55,7 @@ JUCI.app
 	});
 	$scope.onPhoneToggle = function(){
 		var status = $uci.voice_client.RINGING_STATUS; 
-		if(status){
+		if(status && status.enabled){
 			status.enabled.value = !status.enabled.value; 
 		}
 	}
