@@ -35,10 +35,6 @@ JUCI.app.directive("dhcpHostEntriesEdit", function(){
 		});
 	});
 	$scope.placeholder = {};
-	lanIpFactory.getIp().done(function(res){
-		$scope.placeholder.ipv4 = res.ipv4;
-		$scope.placeholder.ipv6 = res.ipv6;
-	});
 
 	$scope.onAddressTypeChange = function(value){
 		if(!$scope.model) return;
@@ -51,6 +47,15 @@ JUCI.app.directive("dhcpHostEntriesEdit", function(){
 	];
 	$scope.$watch("model", function(){
 		if(!$scope.model) return;
+		if($scope.model.network){
+			var net = $scope.model.network.value;
+			if(!net || net == "") net = "lan";
+		}
+		lanIpFactory.getIp(net).done(function(res){
+			$scope.placeholder.ipv4 = res.ipv4;
+			$scope.placeholder.ipv6 = res.ipv6;
+			$scope.$apply();
+		});
 		$scope.model.ip.validator = ($scope.model.family.value == 'ipv4') ? new $uci.validators.IP4AddressValidator(): new $uci.validators.IP6AddressValidator();
 		$scope.names = $scope.model.name.value.map(function(name){ return { value: name }});
 	}, false);
