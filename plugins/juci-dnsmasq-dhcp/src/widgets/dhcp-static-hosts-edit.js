@@ -29,11 +29,11 @@ JUCI.app
 		replace: true
 	};  
 })
-.controller("dhcpStaticHostsEdit", function($scope, $network, $uci){
+.controller("dhcpStaticHostsEdit", function($scope, $firewall, $uci){
 	$scope.$watch("dhcp", function(dhcp){
 		if(!dhcp) return; 
 		
-		$network.getConnectedClients().done(function(clients){
+		$firewall.getZoneClients("lan").done(function(clients){
 			$uci.$sync("dhcp").done(function(){
 				dhcp.staticHosts = $uci.dhcp["@host"].filter(function(host){
 					return host.dhcp.value == dhcp[".name"] || host.network.value == dhcp[".name"];  
