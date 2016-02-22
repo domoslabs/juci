@@ -936,7 +936,7 @@
 						}
 					}*/
 					self[cf].$sync().done(function(){
-						console.log("Synched config "+cf); 
+						//console.log("Synched config "+cf); 
 						//self[cf].$lastSync = new Date(); 
 						next(); 
 					}).fail(function(){
