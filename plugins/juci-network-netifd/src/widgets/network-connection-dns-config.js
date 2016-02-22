@@ -16,8 +16,11 @@ JUCI.app
 	$scope.data = [];
 	$scope.$watch("interface", function(){
 		if(!$scope.interface || !$scope.interface.dns) return;
-		$scope.data = $scope.interface.dns.value.map(function(dns){
-			return { value:dns}
+		$scope.data = [];
+		$scope.interface.dns.value.map(function(dns){
+			var dnsList = dns.split(" ").map(function(d){
+				$scope.data.push({ value:d});
+			});
 		});
 		$scope.interface.dns.validator = new dnsValidator;
 	}, false);
