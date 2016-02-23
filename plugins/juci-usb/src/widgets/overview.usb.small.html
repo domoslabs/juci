@@ -4,7 +4,7 @@
 			<td style="width:1%"><i class="juci juci-usb"></i></td>
 			<td style="padding-left: 10px;">{{'USB'|translate}}</td>
 			<td style="width:1%">
-				<div class="badge" ng-show="devices">{{devices.length}}</div>
+				<span ng-show="devices" class="label label-{{(devices.length == 0)?'default':'success'}}">{{devices.length}}</span>
 				<i class="fa fa-spinner fa-spin" ng-show="!devices"></i>
 			</td>
 		</tr>
