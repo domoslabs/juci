@@ -18,6 +18,10 @@ JUCI.app
 	$scope.sipAccounts = []; 
 	$scope.phoneSchedStatus = gettext("off"); 
 	$scope.str_unknown = $tr(gettext("Unknown"));
+	if(!$rpc.asterisk){
+		$scope.showVoiceWidget = false;
+		return;
+	}
 
 	JUCI.interval.repeat("load-phone-small-widget", 5000, function(done){
 		async.series([
