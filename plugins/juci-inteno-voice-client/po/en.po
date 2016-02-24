@@ -11,6 +11,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
+# /home/reidar/juci/plugins/juci-inteno-voice-client/src/inteno-voice-client.js
+msgid "SIP users needs a name"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-inteno-voice-client/src/inteno-voice-client.js
+msgid "SIP users needs a valid extension"
+msgstr ""
+
 msgid "Today"
 msgstr ""
 
@@ -330,8 +338,8 @@ msgstr ""
 msgid "No Account"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
-msgid "Advanced BRCM Settings"
+# /home/reidar/juci/plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings.html
+msgid "Advanced Line Settings"
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
@@ -460,11 +468,14 @@ msgstr ""
 msgid "Receive gain"
 msgstr ""
 
-msgid "Phone Lines"
+msgid "Voice Lines"
 msgstr ""
 
 msgid "phone.lines.info"
 msgstr "Configure Voice lines."
+
+msgid "Phone Lines"
+msgstr ""
 
 msgid "Advanced SIP Settings"
 msgstr "Advanced SIP Settings"
@@ -838,8 +849,9 @@ msgstr ""
 msgid "Incoming Phone Lines"
 msgstr ""
 
-msgid "SIP Service Providers"
-msgstr "SIP Service Providers"
+# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider.html
+msgid "SIP Accounts"
+msgstr ""
 
 # /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
 msgid "Extension"
@@ -896,9 +908,6 @@ msgstr ""
 msgid "Your Phone Numbers"
 msgstr ""
 
-msgid "Voice Lines"
-msgstr ""
-
 msgid "status.voice_lines.info"
 msgstr "Status of your voice lines."
 
@@ -923,10 +932,6 @@ msgid "State"
 msgstr ""
 
 msgid "Voice service is not available!"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings.html
-msgid "Advanced Line Settings"
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings.html
@@ -1039,6 +1044,9 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
+msgid "voice-sip-users-title"
+msgstr "SIP Users"
+
 # share/menu.d/status.json
 msgid "status-phone-title"
 msgstr "Phone Status"
@@ -1077,6 +1085,9 @@ msgstr "Ringing Schedule"
 msgid "voice-advanced-settings-title"
 msgstr "Advanced Settings"
 
+msgid "menu-voice-sip-users-title"
+msgstr "SIP Users"
+
 # share/menu.d/status.json
 msgid "menu-status-phone-title"
 msgstr "Phone"
@@ -1113,3 +1124,6 @@ msgstr "Ringing Schedule"
 
 msgid "menu-voice-advanced-settings-title"
 msgstr "Advanced Settings"
+
+#~ msgid "SIP Service Providers"
+#~ msgstr "SIP Service Providers"
