@@ -140,7 +140,11 @@ JUCI.app
 						}
 						cl_count ++;
 						nodes.push(cl_node);
-						edges.push({ from: node.id, to: cl_node.id, width: 4});
+						if(cl.wireless){
+							edges.push({ from: node.id, to: cl_node.id, width: 4, dashes: true});
+						}else{
+							edges.push({ from: node.id, to: cl_node.id, width: 4});
+						}
 					});
 				});
 				def.resolve();
