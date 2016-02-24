@@ -59,22 +59,22 @@ JUCI.app
 			});
 			$scope.lanNetworks = networks;
 			$scope.$apply();
-		});
-	});
 
-	JUCI.interval.repeat("overview-netowrk-widget", 2000, function(done){
-		if($scope.lanNetworks.lenth == 0) return;
-		$rpc.router.clients().done(function(data){
-			$scope.lanNetworks.map(function(net){
-				net["_clients"] = [];
-				Object.keys(data).map(function(client){
-					if(data[client].network == net[".name"]){
-						net["_clients"].push(data[client]);
-					}
-				});
+			JUCI.interval.repeat("overview-netowrk-widget", 2000, function(done){
+				if($scope.lanNetworks.lenth == 0) return;
+				$rpc.router.clients().done(function(data){
+					$scope.lanNetworks.map(function(net){
+						net["_clients"] = [];
+						Object.keys(data).map(function(client){
+							if(data[client].network == net[".name"]){
+								net["_clients"].push(data[client]);
+							}
+						});
+					});
+					$scope.$apply();
+				}).always(function(){done();});
 			});
-			$scope.$apply();
-		}).always(function(){done();});
+		});
 	});
 
 	$scope.onEditLan = function(lan){
@@ -102,6 +102,28 @@ JUCI.app
 				}
 			},
 			model: model
+		});
+	};
+	$scope.onEditClient = function(client){
+		var model = {
+			client:client
+		};
+		$juciDialog.show("network-client-edit", {
+			buttons: [{ label: $tr(gettext("Close")), value: "cancel"}],
+			model:model,
+			on_button: function(btn, inst){
+				$uci.$sync("firewall").done(function(){
+					var del = $uci.firewall["@redirect"].filter(function(re){return re[".new"];});
+					if(del){
+						del.map(function(d){
+							d.$delete().done(function(){
+								$scope.$apply();
+							});
+						});
+					}
+					inst.close();
+				});
+			}
 		});
 	};
 });

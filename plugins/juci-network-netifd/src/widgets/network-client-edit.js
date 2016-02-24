@@ -24,15 +24,11 @@ JUCI.app
 		templateUrl: "/widgets/network-client-edit.html", 
 		controller: "networkClientEdit", 
 		scope: {
-			opts: "=ngModel"
+			model: "=ngModel"
 		},
 		replace: true, 
 		require: "^ngModel"
 	 };  
-}).controller("networkClientEdit", function($scope, $ethernet, $location){	
-	$scope.closeDialog = function(){
-		if(!$scope.opts || !$scope.opts.modal) return; 
-		$scope.opts.modal.dismiss("cancel"); 
-	}
+}).controller("networkClientEdit", function(){	
 }); 
 
