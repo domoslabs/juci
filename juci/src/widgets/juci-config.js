@@ -132,18 +132,13 @@ JUCI.app
 			$uci.$save().done(function(){
 				$scope.numUnsavedChanges(); 
 				console.log("Saved uci configuration!"); 
+				$scope.$apply(); 
 			}).fail(function(errors){
 				$scope.errors = errors; 
 				$scope.$emit("errors", errors); 
 				console.error("Could not save uci configuration!"); 
 			}).always(function(){
 				$scope.busy = 0; 
-				// I'm removing the success reporting for now because the pane automatically hides when all changes have been applied.  
-				//$scope.success = gettext("Settings have been applied successfully!"); 
-				$scope.$apply(); 
-				/*setTimeout(function(){
-					$scope.success = null; 
-				}, 1000); */
 			}); 
 		} catch(e){
 			$scope.busy = 0; 
