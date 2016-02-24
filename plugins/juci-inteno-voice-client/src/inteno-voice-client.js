@@ -91,7 +91,7 @@ UCI.voice_client.$registerSectionType("sip_service_provider",  {
 }); 
 UCI.voice_client.$registerSectionType("sip_user", {
 	"name":			{ dvalue: "", type: String },
-	"enable":		{ dvalue: false, type: Boolean },
+	"enabled":		{ dvalue: false, type: Boolean },
 	"extension":	{ dvalue: "", type: Number },
 	"secret":		{ dvalue: "", type: String },
 	"user":			{ dvalue: "", type: String },
