@@ -82,17 +82,23 @@ JUCI.app
 		return ($scope.interface.$info.pending) ? $tr(gettext("PENDING")) : (($scope.interface.$info.up) ? $tr(gettext("UP")) : $tr(gettext("DOWN")));
 	};
 	$scope.onChangeProtocol = function(value, oldvalue){
-		//TODO maby change confirm to juciDialog
 		if(value == oldvalue) return;
-		if(confirm($tr(gettext("Are you sure you want to switch? Your settings will be lost!")))){
-			if(exceptions[value]){
-				var exc = exceptions[value].concat(standard_exc);
+		var change = false;
+		$juciDialog.show(null, {
+			content: "<h4>"+$tr(gettext("Are you sure you want to switch? Your settings will be lost!"))+"</h4>",
+			on_button: function(btn, inst){
+					inst.close(btn.value);
 			}
-			$scope.interface.$reset_defaults(exc || []);
-			setProto(value);
-			return true;
-		}
-		return false;
+		}).done(function(data){
+			if(data == "cancel"){
+				$scope.interface.proto.value = oldvalue;
+			}
+			if(data == "apply"){
+				$scope.interface.proto.value = value;
+			}
+			setProto($scope.interface.proto.value);
+			$scope.$apply();
+		});
 	};
 
 	function setProto(proto){

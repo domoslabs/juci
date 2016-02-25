@@ -56,7 +56,7 @@ UCI.validators.REQPrefixValidator = function(){
 UCI.$registerConfig("network"); 
 UCI.network.$registerSectionType("interface", {
 	"is_lan":				{ dvalue: '', type: Boolean }, // please stop relying on this!
-	"auto": 				{ dvalue: '', type: Boolean }, // bring up on boot
+	"auto": 				{ dvalue: '1', type: Boolean }, // bring up on boot
 	"ifname":				{ dvalue: '', type: String }, 
 	"device":				{ dvalue: '', type: String }, 
 	"proto":				{ dvalue: '', type: String }, 
