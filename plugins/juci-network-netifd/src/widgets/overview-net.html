@@ -5,13 +5,13 @@
 		</h3>
 	</div>
 	<div class="panel-body">
-		<h4 style="text-align: center;" translate ng-show="{{lanNetworks.length == 0}}">No Lan networks</h4>
+		<h4 style="text-align: center;" translate ng-show="lanNetworks.length == 0">No Lan networks</h4>
 		<div ng-repeat="network in lanNetworks track by $index">
 			<div class="row" style="margin-bottom: 10px; border-bottom: 1px solid #eee; border-top: 1px solid #eee;">
 				<div class="col-xs-2"><i class="juci juci-network fa-2x"></i></div>
 				<div class="col-xs-5" style="padding:10px;">{{network.ipaddr.value}}<i class="fa fa-spinner fa-spin" ng-show="!network.ipaddr"></i></div>
 				<div class="col-xs-3" style="padding:10px;">{{network[".name"].toUpperCase()}}</div>
-				<div class="col-xs-2" style="padding:10px;" ng-show="network.ipaddr"><i class="fa fa-edit fa-2x" style="float:right; cursor:pointer;" ng-click="onEditLan(network)"></i></div>
+				<div class="col-xs-2" style="padding:10px;" ng-show="network.ipaddr"><i class="fa fa-edit fa-lg" style="float:right; cursor:pointer;" ng-click="onEditLan(network)"></i></div>
 			</div>
 			<div class="row" style="padding:10px;" ng-show="!network._clients"><i class="fa fa-spinner fa-spin"></i></div>
 			<div class="row" ng-show="network._clients && network._clients.length == 0" translate style="text-align: center">No Clients in {{network[".name"].toUpperCase()}} network</div>
