@@ -46,7 +46,7 @@ JUCI.app
 		return (sec+ 's');
     };
 })
-.controller("overviewWidgetWAN", function($scope, $uci, $rpc, $firewall, $juciDialog, $tr, gettext){
+.controller("overviewWidgetWAN", function($scope, $uci, $rpc, $firewall, $network, $juciDialog, $tr, gettext){
 	$scope.showDnsSettings = function(){
 		if(!$scope.wan_ifs) return;
 		$firewall.getZoneNetworks("wan").done(function(nets){
@@ -81,16 +81,17 @@ JUCI.app
 	};
 	$scope.statusClass = "text-success"; 
 	JUCI.interval.repeat("overview-wan", 2000, function(done){
-		$rpc.network.interface.dump().done(function(result){
-			var interfaces = result.interface; 
+		$network.getNetworks().done(function(networks){
+			var bridgedNets = networks.filter(function(net){ return net.proto.value == "dhcp" && net.type.value == "bridge";});
 			$firewall.getZoneNetworks("wan").done(function(wan_ifs){
 				var default_route_ifs = wan_ifs.filter(function(x){ 
 					return x.$info && x.$info.route && x.$info.route.length && 
 						(x.$info.route.find(function(r){ return r.target == "0.0.0.0" || r.target == "::"; }));
-				}).map(function(x){ return x.$info}); 
+				}); 
 				var con_types = {}; 
 				var all_gateways = {}; 
-				default_route_ifs.map(function(i){
+				var wan_ifs = default_route_ifs.concat(bridgedNets);
+				wan_ifs.map(function(wan_if){return wan_if.$info;}).map(function(i){
 					var con_type = "ETH"; 
 					if(i.l3_device.match(/atm/)) con_type = "ADSL"; 
 					else if(i.l3_device.match(/ptm/)) con_type = "VDSL"; 
@@ -103,7 +104,6 @@ JUCI.app
 				}); 
 				$scope.connection_types = Object.keys(con_types); 
 				$scope.all_gateways = Object.keys(all_gateways); 
-				$scope.default_route_ifs = default_route_ifs; 
 				$scope.wan_ifs = wan_ifs; 
 				$scope.$apply(); 
 				done(); 

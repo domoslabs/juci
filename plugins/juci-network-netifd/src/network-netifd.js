@@ -77,7 +77,6 @@
 		// should be renamed to getInterfaces for NETWORK (!) interfaces. 
 		NetworkBackend.prototype.getNetworks = function(opts){
 			var deferred = $.Deferred(); 
-			var filter = filter || {}; 
 			var networks = []; 
 			var self = this; 
 			var devmap = {}; 

@@ -57,9 +57,12 @@ JUCI.app
 				net["_dhcp_enabled"] = net["_uci_dhcp"] && !net["_uci_dhcp"].ignore.value || false;
 				return net;
 			});
-			$scope.lanNetworks = networks;
-			$scope.$apply();
-
+			$scope.lanNetworks = networks || [];
+			if($scope.lanNetworks.length == 0){
+				$scope.numClients = 0;
+				$scope.$apply();
+				return;
+			}
 			JUCI.interval.repeat("overview-netowrk-widget", 2000, function(done){
 				if($scope.lanNetworks.lenth == 0) return;
 				$rpc.router.clients().done(function(data){

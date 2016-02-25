@@ -5,6 +5,7 @@
 		</h3>
 	</div>
 	<div class="panel-body">
+		<h4 style="text-align: center;" translate ng-show="{{lanNetworks.length == 0}}">No Lan networks</h4>
 		<div ng-repeat="network in lanNetworks track by $index">
 			<div class="row" style="margin-bottom: 10px; border-bottom: 1px solid #eee; border-top: 1px solid #eee;">
 				<div class="col-xs-2"><i class="juci juci-network fa-2x"></i></div>
