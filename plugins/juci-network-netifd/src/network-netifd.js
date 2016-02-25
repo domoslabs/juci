@@ -22,7 +22,7 @@
 	// add control dependency 
 	JUCI.app.requires.push("dropdown-multi-select");
 
-	JUCI.app.factory("$network", function($rpc, $uci, $ethernet){
+	JUCI.app.factory("$network", function($rpc, $uci, $ethernet, $tr, gettext){
 		var sync_hosts = $uci.$sync("hosts"); 
 		function _refreshClients(self){
 			var deferred = $.Deferred(); 
@@ -73,6 +73,34 @@
 		NetworkBackend.prototype.getDevices = function(){
 			alert("$network.getDevices has been removed. Use $ethernet.getDevices instead!"); 
 		}
+		NetworkBackend.prototype.getProtocolTypes = function(){
+			return [
+				{ label: $tr(gettext("Unmanaged")),								value: "none",		physical: true },
+				{ label: $tr(gettext("Static Address")), 						value: "static",	physical: true }, 
+				{ label: $tr(gettext("DHCP v4")), 								value: "dhcp",		physical: true }, 
+				{ label: $tr(gettext("DHCP v6")), 								value: "dhcpv6",	physical: true }, 
+				{ label: $tr(gettext("PPP")), 									value: "ppp",		physical: false }, 
+				{ label: $tr(gettext("PPP over Ethernet")), 					value: "pppoe", 	physical: true }, 
+				{ label: $tr(gettext("PPP over ATM")), 							value: "pppoa", 	physical: true }, 
+				{ label: $tr(gettext("3G (ppp over GPRS/EvDO/CDMA or UTMS)")), 	value: "3g", 		physical: false }, 
+				{ label: $tr(gettext("4G (LTE/HSPA+)")), 						value: "4g", 		physical: false }, 
+				//{ label: $tr(gettext("QMI (USB modem)")), 						value: "qmi", 		physical: true }, 
+				//{ label: $tr(gettext("NCM (USB modem)")), 						value: "ncm", 		physical: true }, 
+				//{ label: $tr(gettext("HNET (self-managing home network)")), 	value: "hnet", 		physical: true }, 
+				{ label: $tr(gettext("Point-to-Point Tunnel")), 				value: "pptp", 		physical: false }, 
+				{ label: $tr(gettext("IPv6 tunnel in IPv4 (6in4)")), 			value: "6in4", 		physical: false }, 
+				{ label: $tr(gettext("IPv6 tunnel in IPv4 (6to4)")), 			value: "6to4", 		physical: false }, 
+				//{ label: $tr(gettext("Automatic IPv6 Connectivity Client")),	value: "aiccu", 	physical: false }, 
+				{ label: $tr(gettext("IPv6 rapid deployment")), 				value: "6rd", 		physical: false }, 
+				{ label: $tr(gettext("Dual-Stack Lite")), 						value: "dslite", 	physical: false }, 
+				{ label: $tr(gettext("PPP over L2TP")), 						value: "l2tp", 		physical: false }//, 
+				//{ label: $tr(gettext("Relayd Pseudo Bridge")),					value: "relay", 	physical: true }, 
+				//{ label: $tr(gettext("GRE Tunnel over IPv4")), 					value: "gre", 		physical: true }, 
+				//{ label: $tr(gettext("Ethernet GRE over IPv4")), 				value: "gretap", 	physical: true }, 
+				//{ label: $tr(gettext("GRE Tunnel over IPv6")), 					value: "grev6", 	physical: true }, 
+				//{ label: $tr(gettext("Ethernet GRE over IPv6")), 				value: "grev6tap", 	physical: true },
+			]; 
+		};
 		
 		// should be renamed to getInterfaces for NETWORK (!) interfaces. 
 		NetworkBackend.prototype.getNetworks = function(opts){

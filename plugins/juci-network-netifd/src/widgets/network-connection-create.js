@@ -19,46 +19,43 @@
  */
 
 JUCI.app
-.factory("networkConnectionCreate", function($modal, $network){
+.directive("networkConnectionCreate", function(){
 	return {
-		show: function(opts){
-			var def = $.Deferred(); 
-			var modalInstance = $modal.open({
-				animation: true,
-				templateUrl: 'widgets/network-connection-create.html',
-				controller: 'networkConnectionCreateModal',
-				resolve: {
-					
-				}
-			});
-
-			modalInstance.result.then(function (data) {
-				setTimeout(function(){ // do this because the callback is called during $apply() cycle
-					def.resolve(data); 
-				}, 0); 
-			}, function () {
-				
-			});
-			return def.promise(); 
-		}
-	}; 
+		templateUrl: "/widgets/network-connection-create.html",
+		scope: {
+			model: "=ngModel"
+		},
+		replace: true,
+		require: "^ngModel",
+		controller: "networkConnectionCreateModalCtrl"
+	}
 })
-.controller("networkConnectionCreateModal", function($scope, $modalInstance, gettext){
-	$scope.data = {}; 
+.controller("networkConnectionCreateModalCtrl", function($scope, $tr, gettext, $network){
 	$scope.interfaceTypes = [
-		{ label: "Standalone", value: "" },
-		{ label: "AnyWAN", value: "anywan"}, 
-		{ label: "Bridge", value: "bridge"}
+		{ label: $tr(gettext("Standalone")), value: "" },
+		{ label: $tr(gettext("AnyWAN")), value: "anywan"}, 
+		{ label: $tr(gettext("Bridge")), value: "bridge"}
 	]; 
-	$scope.ok = function () {
-		if(!$scope.data.name) {
-			alert(gettext("You need to specify both name and type!")); 
-			return; 
+	$scope.allProtocols = $network.getProtocolTypes();
+	$scope.model.type = "";
+	$scope.model.protocol = "none";
+	$scope.showType = function(){
+		if(!$scope.allProtocols) return false;
+		var type = $scope.allProtocols.find(function(p){
+			return p.value == $scope.model.protocol;
+		});
+		if(type.physical == false) {
+			$scope.model.type = "-";
+			return false;
 		}
-		$modalInstance.close($scope.data);
-	};
-
-	$scope.cancel = function () {
-    	$modalInstance.dismiss('cancel');
+		if(type.value == "none"){
+			$scope.model.type = "bridge";
+			return false; // unmanaged network is always in bridge
+		}
+		if(type.value == "pppoe" || type.value == "pppoa"){
+			$scope.model.type = "";
+			return false;
+		}
+		return true;
 	};
 })

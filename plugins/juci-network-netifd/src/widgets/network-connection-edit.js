@@ -12,7 +12,7 @@ JUCI.app
 		require: "^ngModel"
 	 };  
 })
-.controller("networkConnectionEdit", function($scope, $uci, $network, $rpc, $log, $tr, gettext, $juciDialog){
+.controller("networkConnectionEdit", function($scope, $uci, $network, $rpc, $log, $tr, gettext, $juciConfirm, $juciDialog){
 	$scope.expanded = true; 
 	$scope.existingHost = { }; 
 	
@@ -26,32 +26,7 @@ JUCI.app
 	 	return $scope.allProtocolTypes.find(function(x){ if(x.value == $scope.interface.proto.value) return x.physical;}) != undefined;
 	};
 	
-	$scope.allProtocolTypes = [
-		{ label: $tr(gettext("Unmanaged")),								value: "none",		physical: true },
-		{ label: $tr(gettext("Static Address")), 						value: "static",	physical: true }, 
-		{ label: $tr(gettext("DHCP v4")), 								value: "dhcp",		physical: true }, 
-		{ label: $tr(gettext("DHCP v6")), 								value: "dhcpv6",	physical: true }, 
-		{ label: $tr(gettext("PPP")), 									value: "ppp",		physical: false }, 
-		{ label: $tr(gettext("PPP over Ethernet")), 					value: "pppoe", 	physical: true }, 
-		{ label: $tr(gettext("PPP over ATM")), 							value: "pppoa", 	physical: true }, 
-		{ label: $tr(gettext("3G (ppp over GPRS/EvDO/CDMA or UTMS)")), 	value: "3g", 		physical: false }, 
-		{ label: $tr(gettext("4G (LTE/HSPA+)")), 						value: "4g", 		physical: false }, 
-		//{ label: $tr(gettext("QMI (USB modem)")), 						value: "qmi", 		physical: true }, 
-		//{ label: $tr(gettext("NCM (USB modem)")), 						value: "ncm", 		physical: true }, 
-		//{ label: $tr(gettext("HNET (self-managing home network)")), 	value: "hnet", 		physical: true }, 
-		{ label: $tr(gettext("Point-to-Point Tunnel")), 				value: "pptp", 		physical: false }, 
-		{ label: $tr(gettext("IPv6 tunnel in IPv4 (6in4)")), 			value: "6in4", 		physical: false }, 
-		{ label: $tr(gettext("IPv6 tunnel in IPv4 (6to4)")), 			value: "6to4", 		physical: false }, 
-		//{ label: $tr(gettext("Automatic IPv6 Connectivity Client")),	value: "aiccu", 	physical: false }, 
-		{ label: $tr(gettext("IPv6 rapid deployment")), 				value: "6rd", 		physical: false }, 
-		{ label: $tr(gettext("Dual-Stack Lite")), 						value: "dslite", 	physical: false }, 
-		{ label: $tr(gettext("PPP over L2TP")), 						value: "l2tp", 		physical: false }//, 
-		//{ label: $tr(gettext("Relayd Pseudo Bridge")),					value: "relay", 	physical: true }, 
-		//{ label: $tr(gettext("GRE Tunnel over IPv4")), 					value: "gre", 		physical: true }, 
-		//{ label: $tr(gettext("Ethernet GRE over IPv4")), 				value: "gretap", 	physical: true }, 
-		//{ label: $tr(gettext("GRE Tunnel over IPv6")), 					value: "grev6", 	physical: true }, 
-		//{ label: $tr(gettext("Ethernet GRE over IPv6")), 				value: "grev6tap", 	physical: true },
-	]; 
+	$scope.allProtocolTypes = $network.getProtocolTypes();
 	$rpc.juci.network.protocols().done(function(data){
 		$scope.protocolTypes = $scope.allProtocolTypes.filter(function(x){
 			if(x.value == "static" || x.value == "none") return true; //should allways be there
@@ -83,17 +58,17 @@ JUCI.app
 	};
 	$scope.onChangeProtocol = function(value, oldvalue){
 		if(value == oldvalue) return;
-		var change = false;
-		$juciDialog.show(null, {
-			content: "<h4>"+$tr(gettext("Are you sure you want to switch? Your settings will be lost!"))+"</h4>",
-			on_button: function(btn, inst){
-					inst.close(btn.value);
-			}
-		}).done(function(data){
+		$juciConfirm.show($tr(gettext("Are you sure you want to switch? Your settings will be lost!<br />The only way to get it back is to reload the page")))
+		.done(function(data){
 			if(data == "cancel"){
 				$scope.interface.proto.value = oldvalue;
 			}
-			if(data == "apply"){
+			if(data == "ok"){
+				var exc = [];
+				if(exceptions[value]){
+					exc = exceptions[value].concat(standard_exc);
+				}
+				$scope.interface.$reset_defaults(exc);
 				$scope.interface.proto.value = value;
 			}
 			setProto($scope.interface.proto.value);

@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("InternetNetworkPage", function($scope, $uci, $rpc, $network, $ethernet, $tr, gettext, networkConnectionCreate){
+.controller("InternetNetworkPage", function($scope, $uci, $rpc, $network, $ethernet, $tr, gettext, $juciDialog, $juciConfirm, $juciAlert){
 	$scope.data = {}; 
 	
 	$ethernet.getAdapters().done(function(devices){
@@ -60,22 +60,52 @@ JUCI.app
 	}
 	
 	$scope.onAddConnection = function(){
-		networkConnectionCreate.show().done(function(data){
-			$uci.network.$create({
-				".type": "interface",
-				".name": data.name, 
-				"type": data.type
-			}).done(function(interface){
-				$scope.current_connection = interface; 
-				$scope.networks.push(interface); 
-				$scope.$apply(); 
-			}); 
+		var model = {
+			errors: [],
+		};
+		$juciDialog.show("network-connection-create", {
+			title: "Create New Network Interface",
+			buttons: [
+				{ label: $tr(gettext("OK")), value: "ok", primary: true },
+				{ label: $tr(gettext("Cancel")), value: "cancel" }
+			],
+			model: model,
+			on_button: function(btn, inst){
+				if(btn.value == "cancel"){
+					inst.dismiss();
+				}
+				if(btn.value == "ok"){
+					model.errors = [];
+					if(!model.name)
+						model.errors.push($tr(gettext("The new interface needs a name")));
+					if(model.type == undefined)
+						model.errors.push($tr(gettext("The new interface needs an interface type")));
+					if(!model.protocol == undefined)
+						model.errors.push($tr(gettext("Pleace choose protocol for connection")));
+					if(model.errors.length > 0) return;
+					$uci.network.$create({
+						".type": "interface",
+						".name": model.name, 
+						"type": model.type,
+						"proto": model.protocol
+					}).done(function(interface){
+						$scope.current_connection = interface; 
+						$scope.networks.push(interface); 
+						$scope.$apply(); 
+					}); 
+					inst.close();
+				}
+			}
 		});
 	}
 	
 	$scope.onDeleteConnection = function(conn){
-		if(!conn) alert($tr(gettext("Please select a connection in the list!"))); 
-		if(confirm($tr(gettext("Are you sure you want to delete this connection?")))){
+		if(!conn){
+			$juciAlert($tr(gettext("Please select a connection in the list!")));
+			return;
+		}
+		$juciConfirm.show($tr(gettext("Are you sure you want to delete this connection?"))).done(function(result){
+			if(result != "ok")return;
 			conn.$delete().done(function(){
 				$scope.networks = $scope.networks.filter(function(net){
 					return net[".name"] != conn[".name"]; 
@@ -83,7 +113,7 @@ JUCI.app
 				$scope.current_connection = null; 
 				$scope.$apply(); 
 			}); 
-		}
+		});
 	}
 	
 	$scope.onEditConnection = function(conn){
