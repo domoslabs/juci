@@ -1,7 +1,7 @@
 <div class="overview-small">
-	<div class="overview-small-icon"><i class="juci juci-network"></i></div>
-	<div class="overview-small-name">{{'Ethernet'|translate}}</div>
-	<div class="overview-small-content">
+	<div class="icon"><i class="juci juci-network"></i></div>
+	<div class="name">{{'Ethernet'|translate}}</div>
+	<div class="content">
 		<span ng-show="ethPorts.length" ng-repeat="port in ethPorts track by $index" class="label label-{{getState(port)}}">
 					{{getName(port)}}
 				</span>

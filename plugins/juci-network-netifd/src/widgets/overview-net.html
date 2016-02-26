@@ -1,10 +1,5 @@
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title" style="font-size: 1.7em; padding-top: 0.3em; font-weight: bold; font-family: 'eurostyle';">
-			<i class="juci juci-network" style="margin-right: 10px;"/> {{'LAN'|translate}}
-		</h3>
-	</div>
-	<div class="panel-body">
+<div>
+	<juci-overview-widget title="{{'LAN'|translate}}" icon="juci juci-network">
 		<h4 style="text-align: center;" translate ng-show="lanNetworks.length == 0">No Lan networks</h4>
 		<div ng-repeat="network in lanNetworks track by $index">
 			<div class="row" style="margin-bottom: 10px; border-bottom: 1px solid #eee; border-top: 1px solid #eee;">
@@ -26,5 +21,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</juci-overview-widget>
 </div>
