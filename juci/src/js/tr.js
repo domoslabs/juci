@@ -8,7 +8,7 @@ JUCI.app.factory('$tr', function(gettextCatalog) {
 });
 
 JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) {
-	gettextCatalog.currentLanguage = $localStorage.getItem("language") || $config.settings.localization.default_language.value || "en"; 
+	gettextCatalog.setCurrentLanguage($localStorage.getItem("language") || $config.settings.localization.default_language.value || "en");
 	return {
 		getLanguages: function(){
 			var languages = ($config.settings.localization)?($config.settings.localization.languages.value):[]; 
@@ -22,7 +22,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 			}); 
 		}, 
 		setLanguage: function(short_code){
-			gettextCatalog.currentLanguage = short_code; 
+			gettextCatalog.setCurrentLanguage(short_code);
 			$localStorage.setItem("language", short_code); 
 		}
 	}

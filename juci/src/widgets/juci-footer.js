@@ -27,9 +27,9 @@ JUCI.app
 })
 .controller("juciFooter", function($scope, $rpc, $firewall, $languages, gettextCatalog, gettext, $tr, $config){
 	// TODO: move this into a higher level controller maybe? 
-	$scope.languages = $languages.getLanguages(); 
+	$scope.languages = $languages.getLanguages();
 	$scope.isActiveLanguage = function(lang){
-		return gettextCatalog.currentLanguage == lang.short_code; 
+		return gettextCatalog.getCurrentLanguage() == lang.short_code; 
 	}
 	$scope.setLanguage = function(lang){
 		$languages.setLanguage(lang.short_code); 
