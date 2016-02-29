@@ -80,7 +80,7 @@
 			if(is_range && parts.length != 2) return gettext("Port range must have start and end port!"); 
 			if(!is_range && parts.length != 1) return gettext("You must specify port value!"); 
 			var invalid = parts.find(function(x){ return !String(x).match(/^\d+$/) || Number(x) < 1 || Number(x) > 65535; }); 
-			if(invalid != undefined) return gettext("Invalid port number (must be a number between 1 and 65535!)"+" ("+invalid+")"); 
+			if(invalid != undefined) return gettext("Invalid port number (must be a number between 1 and 65535!) (") + invalid + ")"; 
 			if(is_range && Number(parts[0]) > Number(parts[1])) return gettext("Start port must be smaller or equal to end port!"); 
 			return null; 
 		};
