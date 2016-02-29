@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -31,6 +31,14 @@ msgstr "WEP krypteringsnyckel # måste vara 10-26 tecken lång."
 
 msgid "WPA key must be 8-63 characters long!"
 msgstr "WPA nyckeln måste vara 8-63 tecken. "
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-interfaces.js
+msgid ""
+"No more Wireless Interface spaces left. There can't be more then 4 "
+"Interfaces on each radio"
+msgstr ""
+"Inge fler platser för Trådlösa anslutningar. Det kan max vara 4 anslutningar "
+"per fysisk radio"
 
 msgid "Please select a connection in the list!"
 msgstr "Välj en uppkoppling från listan!"
@@ -80,11 +88,26 @@ msgstr "Överlapp"
 msgid "wps.status.unknown"
 msgstr "Okänd status"
 
-msgid "on"
-msgstr "på"
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
+msgid "Invalid WPS PIN"
+msgstr "Ogiltig WPS pin"
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
+msgid ""
+"Invalid format! WPS PIN must be ether 4 or 8 digits alternatively 8 digits "
+"with a space or dash in the middle"
+msgstr ""
+"otillåtet format! WPS pin måste vara 4 eller 8 siffror eller 8 siffror med "
+"mellanslag eller bindesträck i mitten"
 
 msgid "Edit wireless interface"
 msgstr "Ändra wifi uppkopplingar"
+
+msgid "Save"
+msgstr "Spara"
+
+msgid "Cancel"
+msgstr "Avbryt"
 
 msgid "No IP address"
 msgstr "Ingen IP adress"
@@ -103,34 +126,34 @@ msgstr "TKIP/CCMP (AES)"
 
 # /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.js
 msgid "None"
-msgstr ""
+msgstr "Ingen"
 
 msgid "WEP"
 msgstr "WEP"
 
 # /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.js
 msgid "WPA2 Personal (PSK)"
-msgstr ""
+msgstr "WPA2 Personal (PSK)"
 
 # /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.js
 msgid "WPA Personal (PSK)"
-msgstr ""
+msgstr "WPA Personal (PSK)"
 
 # /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.js
 msgid "WPA/WPA2 Personal (PSK) Mixed Mode"
-msgstr ""
+msgstr "WPA/WPA2 Personal (PSK) Mixed Mode"
 
 # /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.js
 msgid "WPA2 Enterprise"
-msgstr ""
+msgstr "WPA2 Enterprise"
 
 # /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.js
 msgid "WPA Enterprise"
-msgstr ""
+msgstr "WPA Enterprise"
 
 # /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.js
 msgid "WPA/WPA2 Enterprise Mixed Mode"
-msgstr ""
+msgstr "WPA/WPA2 Enterprise Mixed Mode"
 
 msgid ""
 "If you disable SSID broadcasting, WPS function will be disabled as well. You "
@@ -273,14 +296,22 @@ msgstr ""
 "Är du säker på att du vill skapa en ny SSID med samma namn som en befintlig "
 "SSID? "
 
-msgid "WiFi"
-msgstr "WiFi"
-
 msgid "Schedule"
 msgstr "Schemaläggning"
 
+msgid "Off"
+msgstr "Av"
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.html
+msgid "On"
+msgstr "På"
+
 msgid "Wireless"
 msgstr "Trådlösa nätverk"
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.device.edit.html
+msgid "Radio On/Off"
+msgstr "Radio På/Av"
 
 msgid "Wifi Mode"
 msgstr "WiFi typ"
@@ -302,34 +333,34 @@ msgstr "Välj kanal"
 
 # /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.device.edit.html
 msgid "RIFS"
-msgstr ""
+msgstr "RIFS"
 
 # /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.device.edit.html
 msgid "RIFS Advertisement"
-msgstr ""
+msgstr "RIFS Advertisement"
 
 # /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.device.edit.html
 msgid "Framebursting"
-msgstr ""
+msgstr "Framebursting"
 
 # /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.device.edit.html
 msgid "Beamforming"
-msgstr ""
+msgstr "Beamforming"
 
 msgid "DFS Channels"
 msgstr "DFS Kanaler"
 
 # /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.device.edit.html
 msgid "OBSS Co-Existence"
-msgstr ""
+msgstr "OBSS Co-Existence"
 
 # /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.device.edit.html
 msgid "RX Chain PowerSave Quiet Time"
-msgstr ""
+msgstr "RX Chain PowerSave Quiet Time"
 
 # /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.device.edit.html
 msgid "RX Chain PowerSave PPS"
-msgstr ""
+msgstr "RX Chain PowerSave PPS"
 
 # /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.device.edit.html
 msgid "Max. Assoc Clients"
@@ -397,12 +428,6 @@ msgstr "Lägg till anslutna enheter"
 
 msgid "Add clients to MAC filtering list"
 msgstr "Lägg till klienter till filter-listan"
-
-msgid "Cancel"
-msgstr "Avbryt"
-
-msgid "Save"
-msgstr "Spara"
 
 msgid "You must enter a valid MAC address!"
 msgstr "Värdet måste vara en giltig MAC-adress"
@@ -533,6 +558,9 @@ msgstr "WiFi Status"
 msgid "status.wifi.info"
 msgstr "Informaiton om dina WiFi uppkopplingar"
 
+msgid "Radio"
+msgstr "Radio"
+
 # /home/martin/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.html
 msgid "Scan neighboring APs"
 msgstr "Skanna närliggande nätverk"
@@ -547,9 +575,6 @@ msgid ""
 msgstr ""
 "För tillfällen kan du inte skanna 5Ghz bandet när du samtidigt använder DFS "
 "kanaler. "
-
-msgid "WPS"
-msgstr "WPS"
 
 msgid "wifi.wps.info"
 msgstr "Med hjälp av WPS kan du enkelt autentisera med ditt wifi nätverk. "
@@ -625,12 +650,32 @@ msgstr ""
 msgid "{{text_status}}"
 msgstr ""
 
-#, fuzzy
+msgid "wireless-clients-title"
+msgstr "Klienter"
+
+msgid "wireless-title"
+msgstr "Wireless"
+
 msgid "wireless-status-title"
 msgstr "Status"
 
+msgid "wireless-client-mode-title"
+msgstr "Använd som klient"
+
+msgid "wireless-wps-title"
+msgstr "WPS"
+
+msgid "wireless-devices-title"
+msgstr "WiFi Kort"
+
 msgid "wireless-filtering-title"
 msgstr "MAC Filtrering"
+
+msgid "wireless-schedule-title"
+msgstr "Schemaläggning"
+
+msgid "wireless-link-to-interfaces-title"
+msgstr "Uppkopplingar"
 
 msgid "wireless-interfaces-title"
 msgstr "Uppkopplingar"
@@ -638,33 +683,33 @@ msgstr "Uppkopplingar"
 msgid "wireless-general-title"
 msgstr "Inställningar"
 
-msgid "wireless-schedule-title"
-msgstr "Schemaläggning"
-
-msgid "wireless-wps-title"
-msgstr "WPS"
-
-msgid "wireless-client-mode-title"
-msgstr "Använd som klient"
-
-msgid "wireless-devices-title"
-msgstr "WiFi Kort"
-
-msgid "wireless-title"
-msgstr "Wireless"
-
-msgid "wireless-clients-title"
+msgid "menu-wireless-clients-title"
 msgstr "Klienter"
 
-msgid "wireless-link-to-interfaces-title"
-msgstr "Uppkopplingar"
+msgid "menu-wireless-title"
+msgstr "WiFi"
 
 # /home/martin/juci/juci//src/pages/bootstrap.html
 msgid "menu-wireless-status-title"
 msgstr "Status"
 
+msgid "menu-wireless-client-mode-title"
+msgstr "Använd som klient"
+
+msgid "menu-wireless-wps-title"
+msgstr "WPS"
+
+msgid "menu-wireless-devices-title"
+msgstr "Enheter"
+
 msgid "menu-wireless-filtering-title"
 msgstr "MAC-Filter"
+
+msgid "menu-wireless-schedule-title"
+msgstr "Schemaläggning"
+
+msgid "menu-wireless-link-to-interfaces-title"
+msgstr "Uppkopplingar"
 
 msgid "menu-wireless-interfaces-title"
 msgstr "Uppkopplingar"
@@ -673,26 +718,14 @@ msgstr "Uppkopplingar"
 msgid "menu-wireless-general-title"
 msgstr "Inställningar"
 
-msgid "menu-wireless-schedule-title"
-msgstr "Schemaläggning"
+#~ msgid "on"
+#~ msgstr "på"
 
-msgid "menu-wireless-wps-title"
-msgstr "WPS"
+#~ msgid "WiFi"
+#~ msgstr "WiFi"
 
-msgid "menu-wireless-client-mode-title"
-msgstr "Använd som klient"
-
-msgid "menu-wireless-devices-title"
-msgstr "Enheter"
-
-msgid "menu-wireless-title"
-msgstr "WiFi"
-
-msgid "menu-wireless-clients-title"
-msgstr "Klienter"
-
-msgid "menu-wireless-link-to-interfaces-title"
-msgstr "Uppkopplingar"
+#~ msgid "WPS"
+#~ msgstr "WPS"
 
 #~ msgid "New interface"
 #~ msgstr "Ny enhet"
@@ -2061,9 +2094,6 @@ msgstr "Uppkopplingar"
 
 #~ msgid "RX Rate"
 #~ msgstr "RX"
-
-#~ msgid "Radios"
-#~ msgstr "Radiorna"
 
 #~ msgid "Re-type password"
 #~ msgstr "Skriv lösenord igen"

@@ -3,13 +3,31 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
+
+msgid "Standard Container"
+msgstr "Standard-behållare"
+
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.js
+msgid "Browse directory"
+msgstr "Välj mapp"
+
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.js
+msgid "Music"
+msgstr "Musik"
+
+msgid "Video"
+msgstr "Videofilmer"
+
+# /home/martin/juci/plugins/juci-minidlna/src/widgets/minidlna-file-tree.js
+msgid "Pictures"
+msgstr "Bilder"
 
 # /home/martin/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.js
 msgid "Add folder to share"
@@ -42,14 +60,29 @@ msgstr "Välj mapp"
 msgid "Enable"
 msgstr "Aktivera"
 
+msgid "General Settings"
+msgstr "Generella Inställningar"
+
 msgid "Port"
 msgstr "Port"
+
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Port for HTTP (descriptions, SOAP, media transfer) traffic."
+msgstr "Port för HTTP (beskrivning, SOAP, mediaöverförings) traffik."
 
 msgid "Network"
 msgstr "Nätverk"
 
+msgid "Network interfaces to serve."
+msgstr "Nätverks gränssnitt att tjäna"
+
 msgid "Friendly Name"
 msgstr "Friendly Namn"
+
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid ""
+"Set this if you want to customize the name that shows up on your clients."
+msgstr "Ställ in detta om du vill ändra namnet som visas upp hos klienterna."
 
 msgid "Root Container"
 msgstr "Root-behållare"
@@ -60,21 +93,117 @@ msgstr "Mediamappar"
 msgid "Album-Art Names"
 msgstr "Album-Art Namn"
 
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "This is a list of file names to check for when searching for album art."
+msgstr ""
+"Detta är en lista av filnamn att söka efter för att hitta album omslagsbilder"
+
 # /home/martin/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
 msgid "write list of album-art names"
 msgstr "Skriv in lista av album-art filnamn"
 
-msgid "MiniDLNA Settings"
-msgstr "MiniDLNA inställnignar"
+msgid "Advanced settings"
+msgstr "Avancerade inställningar"
 
-msgid "minidlna.settings.info"
-msgstr "Inställningar för MiniDLNA"
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Database directory"
+msgstr "Databas mapp"
+
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Log directory"
+msgstr "Log mapp"
+
+msgid "Enable inotify"
+msgstr "Aktivera Inotify"
+
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid ""
+"Set this to enable inotify monitoring to automatically discover new files."
+msgstr ""
+"Sett detta för att möjliggöra inotify monitorering att automatiskt upptäcka "
+"nya filer."
+
+msgid "Enable TIVO"
+msgstr "Aktivera NAT"
+
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid ""
+"Set this to enable support for streaming .jpg and .mp3 files to a TiVo "
+"supporting HMO."
+msgstr ""
+"Ställ in detta för att lägga till support för att streama .jpg och .mp3 "
+"filer till ett TiVo enheter"
+
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Strict to DLNA standard"
+msgstr "Strikt mot DLNA standarden"
+
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Presentation URL"
+msgstr "Pressentations URL"
+
+# /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.device.edit.html
+msgid "Notify interval"
+msgstr "notifieringsintervall"
+
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Notify interval in seconds."
+msgstr "Notifierings intervall i sekunder"
+
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Announced serial number"
+msgstr "Angett Serie nummer"
+
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid ""
+"Serial number the miniDLNA daemon will report to clients in its XML "
+"description."
+msgstr ""
+"Serienummer som miniDLNA demonen kommer att rapportera till klienterna i XML "
+"beskrivningen"
+
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Announced model number"
+msgstr "Angett modell nummer"
+
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid ""
+"Model number the miniDLNA daemon will report to clients in its XML "
+"description."
+msgstr ""
+"Modelnummer som miniDLNA demonen kommer att rapportera till klienterna i XML "
+"beskrivningen"
+
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "miniSSDP socket"
+msgstr "miniSSDP anslutning"
+
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Specify the path to the MiniSSDPd socket."
+msgstr "Ange sökväg till miniSSDPd anslutiningen."
+
+msgid "MiniDLNA"
+msgstr "MiniDLNA"
+
+# /home/reidar/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid ""
+"MiniDLNA is server software with the aim of being fully compliant with DLNA/"
+"UPnP-AV clients."
+msgstr ""
+"MiniDLNA är en server mjukvara vars mål är att vara fullt kompatibel med "
+"DLNA och UPnP-AV klienter"
 
 msgid "internet-services-minidlna-title"
 msgstr "MiniDLNA"
 
 msgid "menu-internet-services-minidlna-title"
 msgstr "MiniDLNA"
+
+#~ msgid "MiniDLNA Settings"
+#~ msgstr "MiniDLNA inställnignar"
+
+#~ msgid "minidlna.settings.info"
+#~ msgstr "Inställningar för MiniDLNA"
 
 # /home/martin/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan.interface.edit.html
 #~ msgid "Weight"
@@ -354,9 +483,6 @@ msgstr "MiniDLNA"
 # internet
 #~ msgid "Enable firewall"
 #~ msgstr "Aktivera brandvägg"
-
-#~ msgid "Enable NAT"
-#~ msgstr "Aktivera NAT"
 
 # internet
 #~ msgid "Firewall settings"
@@ -1119,10 +1245,6 @@ msgstr "MiniDLNA"
 #~ msgstr "Tid mellan skanningar"
 
 # /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.device.edit.html
-#~ msgid "Timer Interval"
-#~ msgstr "Tidsintervall"
-
-# /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.device.edit.html
 #~ msgid "Enable WMM Multimedia Extensions"
 #~ msgstr "WMM Multimedia Tillägg"
 
@@ -1243,9 +1365,6 @@ msgstr "MiniDLNA"
 
 #~ msgid "Scheduled"
 #~ msgstr "Schemalagd"
-
-#~ msgid "Enable WiFi"
-#~ msgstr "Aktivera WiFi"
 
 #~ msgid "Enable WiFi On/Off button"
 #~ msgstr "Aktivera WiFI On/Off knapp"
@@ -1450,9 +1569,6 @@ msgstr "MiniDLNA"
 
 #~ msgid "menu-wireless-link-to-interfaces-title"
 #~ msgstr "Uppkopplingar"
-
-#~ msgid "New interface"
-#~ msgstr "Ny enhet"
 
 #~ msgid "Pick base device"
 #~ msgstr "Välj grundenhet"
@@ -2091,9 +2207,6 @@ msgstr "MiniDLNA"
 #~ msgid "Add password"
 #~ msgstr "Lägg till lösenord"
 
-#~ msgid "Advanced"
-#~ msgstr "Avancerat"
-
 #~ msgid "Allow Guest Access"
 #~ msgstr "Tillåt guest-åtkomst"
 
@@ -2272,9 +2385,6 @@ msgstr "MiniDLNA"
 #~ msgid "General"
 #~ msgstr "Inställningar"
 
-#~ msgid "General Settings"
-#~ msgstr "Generella Inställningar"
-
 #~ msgid "ID"
 #~ msgstr "ID"
 
@@ -2381,9 +2491,6 @@ msgstr "MiniDLNA"
 
 #~ msgid "Method"
 #~ msgstr "Metod"
-
-#~ msgid "MiniDLNA"
-#~ msgstr "MiniDLNA"
 
 #~ msgid "Missing uci config boardpanel."
 #~ msgstr "Saknar uci config-panel"

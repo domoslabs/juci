@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -22,6 +22,22 @@ msgstr "DHCP server"
 
 msgid "PPP over Ethernet"
 msgstr "PPP över Ethernet"
+
+msgid "IPv4 Address"
+msgstr "IPv4-adress"
+
+msgid "IPv4 Subnet Mask"
+msgstr "IPv4-nätmask"
+
+msgid "IPv4 Default Gateway"
+msgstr "IPv4 gateway"
+
+# /home/reidar/juci/plugins/juci-simple-gui/src/widgets/simple-lan-settings-edit.html
+msgid "IPv4 Broadcast"
+msgstr "IPv4 Broadcast"
+
+msgid "DHCP Server"
+msgstr "DHCP Server"
 
 msgid "wireless.2g.info"
 msgstr "Här kan du konfigurera din 2Ghz trådlöst nätverk.  "
@@ -56,6 +72,9 @@ msgstr "DHCP Konfiguration"
 msgid "wan.config.info"
 msgstr "WAN konfiguration"
 
+msgid "Enabled"
+msgstr "Aktiv"
+
 msgid "Configuration Method"
 msgstr "Konfigurationsmetod"
 
@@ -65,51 +84,57 @@ msgstr "Välj konfigurationsväg"
 msgid "WAN Configuration"
 msgstr "WAN konfiguration"
 
-# share/menu.d/wifi.json
-msgid "simple-lan-config-title"
-msgstr "LAN"
+msgid "No wan interface found"
+msgstr "Hittade inget WAN interface"
+
+msgid "WAN IPv6 Configuration"
+msgstr "WAN IPv6 konfiguration"
 
 msgid "simple-services-title"
 msgstr "Tjänster"
 
 # share/menu.d/wifi.json
-msgid "simple-wan-config-title"
-msgstr "WAN"
+msgid "simple-admin-title"
+msgstr "Admin"
 
 # /home/martin/juci/plugins/juci-simple-gui/src/pages/simple-lan-dhcp-config.html
 msgid "simple-lan-dhcp-config-title"
 msgstr "DHCP"
 
+msgid "simple-2g-wireless-title"
+msgstr "2.4Ghz WiFi"
+
 # share/menu.d/wifi.json
-msgid "simple-admin-title"
-msgstr "Admin"
+msgid "simple-lan-config-title"
+msgstr "LAN"
 
 msgid "simple-5g-wireless-title"
 msgstr "5Ghz WiFi"
 
-msgid "simple-2g-wireless-title"
+# share/menu.d/wifi.json
+msgid "simple-wan-config-title"
+msgstr "WAN"
+
+msgid "menu-simple-services-title"
+msgstr "Tjänster"
+
+msgid "menu-simple-admin-title"
+msgstr "Admin"
+
+msgid "menu-simple-lan-dhcp-config-title"
+msgstr "DHCP"
+
+msgid "menu-simple-2g-wireless-title"
 msgstr "2.4Ghz WiFi"
 
 msgid "menu-simple-lan-config-title"
 msgstr "LAN"
 
-msgid "menu-simple-services-title"
-msgstr "Tjänster"
-
-msgid "menu-simple-wan-config-title"
-msgstr "WAN"
-
-msgid "menu-simple-lan-dhcp-config-title"
-msgstr "DHCP"
-
-msgid "menu-simple-admin-title"
-msgstr "Admin"
-
 msgid "menu-simple-5g-wireless-title"
 msgstr "5Ghz WiFi"
 
-msgid "menu-simple-2g-wireless-title"
-msgstr "2.4Ghz WiFi"
+msgid "menu-simple-wan-config-title"
+msgstr "WAN"
 
 #~ msgid "off"
 #~ msgstr "av"
@@ -140,9 +165,6 @@ msgstr "2.4Ghz WiFi"
 
 #~ msgid "Wireless Interfaces"
 #~ msgstr "WiFi uppkopplingar"
-
-#~ msgid "Enabled"
-#~ msgstr "Aktiv"
 
 #~ msgid "Disabled"
 #~ msgstr "Inaktiverad"
@@ -721,9 +743,6 @@ msgstr "2.4Ghz WiFi"
 #~ msgid "menu-wireless-link-to-interfaces-title"
 #~ msgstr "Uppkopplingar"
 
-#~ msgid "New interface"
-#~ msgstr "Ny enhet"
-
 #~ msgid "Name"
 #~ msgstr "Namn"
 
@@ -1036,9 +1055,6 @@ msgstr "2.4Ghz WiFi"
 #~ msgstr "Kontonamn"
 
 #~ msgid "SIP Host"
-#~ msgstr "SIP Server"
-
-#~ msgid "SIP Server"
 #~ msgstr "SIP Server"
 
 # /home/martin/juci/plugins/juci-asterisk/src/pages/phone-numbers.html
@@ -1754,15 +1770,6 @@ msgstr "2.4Ghz WiFi"
 
 #~ msgid "IPTV"
 #~ msgstr "IPTV"
-
-#~ msgid "IPv4 Address"
-#~ msgstr "IPv4-adress"
-
-#~ msgid "IPv4 Default Gateway"
-#~ msgstr "IPv4 gateway"
-
-#~ msgid "IPv4 Subnet Mask"
-#~ msgstr "IPv4-nätmask"
 
 #~ msgid "IPv4-Address"
 #~ msgstr "IPv4-Adress"

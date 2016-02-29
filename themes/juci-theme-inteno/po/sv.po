@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -14,9 +14,19 @@ msgstr ""
 msgid "WAN IP Address"
 msgstr "WAN IP-adress"
 
+msgid "No WAN IP"
+msgstr "inget WAN-IP"
+
 # /home/martin/juci/themes/juci-theme-inteno/src/widgets/juci-footer.html
 msgid "Logout"
 msgstr "Logga ut"
+
+# /home/reidar/juci/themes/juci-theme-inteno/src/widgets/juci-navbar.html
+msgid "You have "
+msgstr "Du har"
+
+msgid " new events"
+msgstr "Inga nya händelser att visa"
 
 msgid "Toggle navigation"
 msgstr "Toggla navigation"
@@ -34,7 +44,7 @@ msgid "overview-title"
 msgstr "Översikt"
 
 msgid "menu-status-about-title"
-msgstr "About"
+msgstr "Om"
 
 msgid "menu-overview-title"
 msgstr "Översikt"
@@ -3198,9 +3208,6 @@ msgstr "Översikt"
 
 #~ msgid "Voice"
 #~ msgstr "Telefoni"
-
-#~ msgid "WAN IP"
-#~ msgstr "WAN-ip "
 
 #~ msgid "WAN Settings"
 #~ msgstr "WAN-inställningar"

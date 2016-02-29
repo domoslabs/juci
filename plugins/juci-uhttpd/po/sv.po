@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -11,33 +11,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-msgid "uHTTPD Settings"
-msgstr "uHTTPD inställningar"
+msgid "HTTPD Settings"
+msgstr "HTTPD inställningar"
 
 msgid "uhttpd.settings.info"
 msgstr "Här kan du konfigurera den embeddade web servern "
 
 # /home/martin/juci/plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
 msgid "WWW-root"
-msgstr ""
+msgstr "WWW-root"
 
 # /home/martin/juci/plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
 msgid "WWW-root path"
-msgstr ""
-
-# /home/martin/juci/plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
-msgid "Max Requests"
-msgstr ""
-
-msgid "Max Connections"
-msgstr "Max. Uppkopplingar"
+msgstr "WWW-root sökväg"
 
 msgid "UBUS Prefix"
 msgstr "UBUS prefix (ändra ej!)"
 
 # /home/martin/juci/plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
 msgid "ex. /ubus"
-msgstr ""
+msgstr "ex. /ubus"
+
+# /home/martin/juci/plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
+msgid "Max Requests"
+msgstr "Max antal förfrågningar"
+
+msgid "Max Connections"
+msgstr "Max. Uppkopplingar"
+
+# /home/reidar/juci/plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
+msgid "Specify UBUS return codes to log into system log"
+msgstr "Ange UBUS svarskod som skall loggas på systemet"
+
+# /home/reidar/juci/plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
+msgid "Will only log status codes above that are returned by these ubus calls"
+msgstr "Vill bara logga status koder över som returneras av dessa UBUS anrop"
 
 msgid "Object.Method"
 msgstr "<objekt>.<metod>"

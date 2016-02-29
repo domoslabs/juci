@@ -3,13 +3,27 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
+
+# /home/reidar/juci/plugins/juci-mod-status/src/pages/status-restart.js
+msgid "Reboot"
+msgstr "Starta om"
+
+msgid "Are you sure you want to reboot?"
+msgstr "Är du säker på att du vill starta om?"
+
+msgid "Yes"
+msgstr "Ja"
+
+# /home/reidar/juci/plugins/juci-mod-status/src/pages/status-restart.js
+msgid "No"
+msgstr "Nej"
 
 msgid "Hostname"
 msgstr "Datornamn"
@@ -47,27 +61,6 @@ msgstr "Aktiva uppkopplingar"
 msgid "No active stations"
 msgstr "Inga aktiva klienter"
 
-msgid "Event Log"
-msgstr "Händelselogg"
-
-msgid "status.eventlog.info"
-msgstr "Händelseflöde"
-
-msgid "Log"
-msgstr "Logg"
-
-msgid "Date"
-msgstr "Datum"
-
-msgid "Type"
-msgstr "Typ"
-
-msgid "Source"
-msgstr "Källa"
-
-msgid "Message"
-msgstr "Meddelande"
-
 msgid "Restart"
 msgstr "Starta om"
 
@@ -76,13 +69,6 @@ msgstr "Starta om din router"
 
 msgid "Click here to restart your device"
 msgstr "Klicka här för att starta om din gateway."
-
-msgid ""
-"Restart takes about 3 minutes. When restart is completed the page will "
-"reload automatically. "
-msgstr ""
-"Omstart tar cirka 3 minuter. När omstarted är klar så laddas sidan om "
-"automatiskt."
 
 msgid "Connections"
 msgstr "Uppkopplingar"
@@ -93,6 +79,9 @@ msgstr "DHCP Leasar"
 msgid "Active Stations"
 msgstr "Aktiva klienter"
 
+msgid "status-status-network-title"
+msgstr "Nätverk"
+
 # share/menu.d/status.json
 msgid "status-title"
 msgstr "Status"
@@ -100,10 +89,7 @@ msgstr "Status"
 msgid "status-restart-title"
 msgstr "Omstart"
 
-msgid "status-events-title"
-msgstr "Logghändelser"
-
-msgid "status-status-network-title"
+msgid "menu-status-status-network-title"
 msgstr "Nätverk"
 
 msgid "menu-status-title"
@@ -112,11 +98,39 @@ msgstr "Status"
 msgid "menu-status-restart-title"
 msgstr "Omstart"
 
-msgid "menu-status-events-title"
-msgstr "Events"
+#~ msgid "Event Log"
+#~ msgstr "Händelselogg"
 
-msgid "menu-status-status-network-title"
-msgstr "Nätverk"
+#~ msgid "status.eventlog.info"
+#~ msgstr "Händelseflöde"
+
+#~ msgid "Log"
+#~ msgstr "Logg"
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "Type"
+#~ msgstr "Typ"
+
+#~ msgid "Source"
+#~ msgstr "Källa"
+
+#~ msgid "Message"
+#~ msgstr "Meddelande"
+
+#~ msgid ""
+#~ "Restart takes about 3 minutes. When restart is completed the page will "
+#~ "reload automatically. "
+#~ msgstr ""
+#~ "Omstart tar cirka 3 minuter. När omstarted är klar så laddas sidan om "
+#~ "automatiskt."
+
+#~ msgid "status-events-title"
+#~ msgstr "Logghändelser"
+
+#~ msgid "menu-status-events-title"
+#~ msgstr "Events"
 
 # /home/martin/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.js
 #~ msgid "Add folder to share"
@@ -261,9 +275,6 @@ msgstr "Nätverk"
 
 #~ msgid "Please select a rule to delete!"
 #~ msgstr "Välj regel du vill ta bort"
-
-#~ msgid "Are you sure you want to delete this rule?"
-#~ msgstr "Är du säker på att du vill ta bort denna regel? "
 
 #~ msgid "Please select a zone to delete!"
 #~ msgstr "Välj zon som du vill ta bort"
@@ -3020,6 +3031,3 @@ msgstr "Nätverk"
 #, fuzzy
 #~ msgid "wifi.wpspairmodal.successinfo"
 #~ msgstr "Med hjälp av WPS kan du enkelt autentisera med ditt wifi nätverk. "
-
-#~ msgid "yes"
-#~ msgstr "Ja"

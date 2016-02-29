@@ -3,13 +3,47 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
+
+# /home/reidar/juci/plugins/juci-event/src/pages/status-events.js
+msgid "All types"
+msgstr "Alla typer"
+
+# /home/reidar/juci/plugins/juci-event/src/pages/status-events.js
+msgid "Emergency"
+msgstr "Akut"
+
+# /home/reidar/juci/plugins/juci-event/src/pages/status-events.js
+msgid "Alert"
+msgstr "Varning"
+
+# /home/reidar/juci/plugins/juci-event/src/pages/status-events.js
+msgid "Critical"
+msgstr "Kritisk"
+
+# /home/reidar/juci/plugins/juci-event/src/pages/status-events.js
+msgid "Warning"
+msgstr "Varning"
+
+# /home/reidar/juci/plugins/juci-event/src/pages/status-events.js
+msgid "Notice"
+msgstr "Notis"
+
+msgid "Informational"
+msgstr "Informell"
+
+# /home/reidar/juci/plugins/juci-event/src/pages/status-events.js
+msgid "Debug"
+msgstr "Debug"
+
+msgid "Log Settings"
+msgstr "Log inställningar"
 
 # /home/martin/juci/plugins/juci-event/src/pages/event-log-config.html
 msgid "Log size"
@@ -63,12 +97,74 @@ msgstr "Portnummer på syslog servern"
 msgid "Server port"
 msgstr "Server port"
 
+msgid "Event Log"
+msgstr "Händelselogg"
+
+msgid "status.eventlog.info"
+msgstr "Händelseflöde"
+
+# /home/reidar/juci/plugins/juci-event/src/pages/status-events.html
+msgid "(Note: only latest"
+msgstr "(Notera: bara sista"
+
+# /home/reidar/juci/plugins/juci-event/src/pages/status-events.html
+msgid "lines are shown)"
+msgstr "raderna visas)"
+
+msgid "Log"
+msgstr "Logg"
+
+# /home/reidar/juci/plugins/juci-event/src/pages/status-events.html
+msgid "Download All Logs"
+msgstr "Ladda ner alla Loggar"
+
+# /home/reidar/juci/plugins/juci-event/src/pages/status-events.html
+msgid "Limit log list"
+msgstr "Limitera log listan"
+
+# /home/reidar/juci/plugins/juci-event/src/pages/status-events.html
+msgid "Filter log messages by Source"
+msgstr "Filtrera log-meddelanden på ursprung"
+
+# /home/reidar/juci/plugins/juci-event/src/pages/status-events.html
+msgid "Enter search string"
+msgstr "Ange sök-text"
+
+# /home/reidar/juci/plugins/juci-event/src/pages/status-events.html
+msgid "Filter by type:"
+msgstr "Filtrera på typ:"
+
+msgid "Filter by:"
+msgstr "Filtrera på:"
+
+# /home/reidar/juci/plugins/juci-event/src/pages/status-events.html
+msgid "Download As Text"
+msgstr "Ladda ner i text format"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "Source"
+msgstr "Källa"
+
+msgid "Message"
+msgstr "Meddelande"
+
 # share/menu.d/wifi.json
 msgid "event-log-config-title"
 msgstr "Inställningar"
 
+msgid "status-events-title"
+msgstr "Händelser"
+
 msgid "menu-event-log-config-title"
 msgstr "Inställningar"
+
+msgid "menu-status-events-title"
+msgstr "Händelser"
 
 #~ msgid "Layer-2 Ethernet Devices"
 #~ msgstr "Layer-2 enheter"
@@ -296,9 +392,6 @@ msgstr "Inställningar"
 #~ msgstr "Resultat trace"
 
 #~ msgid "status-diagnostics-title"
-#~ msgstr "Diagnostik"
-
-#~ msgid "menu-status-diagnostics-title"
 #~ msgstr "Diagnostik"
 
 # /home/martin/juci/plugins/juci-ddns/src/widgets/ddns-network-settings-edit.js
@@ -754,9 +847,6 @@ msgstr "Inställningar"
 #~ msgid "wifi.radios.info"
 #~ msgstr "Här kan du ändra inställningar på routerns wifi kort. "
 
-#~ msgid "MAC Filter"
-#~ msgstr "MAC Filter"
-
 #~ msgid "wifi.macfilter.info"
 #~ msgstr ""
 #~ "Med hjälp av MAC filter kan du begränsa åtkomst till nätverket på "
@@ -1031,9 +1121,6 @@ msgstr "Inställningar"
 #~ msgid "New device"
 #~ msgstr "Nytt enhet"
 
-#~ msgid "DSL Status Information"
-#~ msgstr "DSL Status"
-
 #~ msgid "DSL Mode"
 #~ msgstr "DSL Mode"
 
@@ -1202,9 +1289,6 @@ msgstr "Inställningar"
 
 #~ msgid "Pick phone"
 #~ msgstr "Välj telefon"
-
-#~ msgid "Date"
-#~ msgstr "Datum"
 
 #~ msgid "External Number"
 #~ msgstr "Extern nummer"
@@ -1845,9 +1929,6 @@ msgstr "Inställningar"
 #~ msgid "Ethernet"
 #~ msgstr "Ethernet"
 
-#~ msgid "Event Log"
-#~ msgstr "Händelselogg"
-
 #~ msgid "Events"
 #~ msgstr "Händelser"
 
@@ -2002,9 +2083,6 @@ msgstr "Inställningar"
 #~ msgid "LAN Port"
 #~ msgstr "Lan-port"
 
-#~ msgid "LAN Settings"
-#~ msgstr "LAN-inställningar"
-
 #~ msgid "Leasetime remaining"
 #~ msgstr "Återstående lease-tid"
 
@@ -2022,9 +2100,6 @@ msgstr "Inställningar"
 
 #~ msgid "Local port"
 #~ msgstr "Lokal port"
-
-#~ msgid "Log"
-#~ msgstr "Logg"
 
 #~ msgid "Loop Attenuation"
 #~ msgstr "Loop attenuation"
@@ -2052,9 +2127,6 @@ msgstr "Inställningar"
 
 #~ msgid "Memory"
 #~ msgstr "Minne"
-
-#~ msgid "Message"
-#~ msgstr "Meddelande"
 
 #~ msgid "Method"
 #~ msgstr "Metod"
@@ -2296,9 +2368,6 @@ msgstr "Inställningar"
 #~ msgid "Signal"
 #~ msgstr "Signal"
 
-#~ msgid "Source"
-#~ msgstr "Källa"
-
 #~ msgid "Start Time"
 #~ msgstr "Start-tid"
 
@@ -2350,9 +2419,6 @@ msgstr "Inställningar"
 #~ msgstr ""
 #~ "Detta kommer att återställa dina inställningar till tillverkarens "
 #~ "konfiguration"
-
-#~ msgid "Type"
-#~ msgstr "Typ"
 
 #~ msgid "URL"
 #~ msgstr "URL"
@@ -2714,12 +2780,6 @@ msgstr "Inställningar"
 
 #~ msgid "status.about.title"
 #~ msgstr "Om"
-
-#~ msgid "status.eventlog.info"
-#~ msgstr "Händelseflöde"
-
-#~ msgid "status.events.title"
-#~ msgstr "Händelser"
 
 #~ msgid "status.nat.connections.info"
 #~ msgstr "Aktiva NAT-uppkopplingar. "
