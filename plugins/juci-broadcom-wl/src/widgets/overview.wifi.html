@@ -23,7 +23,7 @@
 				<table class="table table-condensed">
 					<tr>
 						<td><strong translate>WPS pin:</strong></td>
-						<td style="text-align: right;"><span ng-show="wifiWPSStatus" style="font-size: 0.8pn">{{wps.pin || "-"}}</span></td>
+						<td style="text-align: right;"><span ng-show="wifiStatus.wps.value" style="font-size: 0.8pn">{{wps.pin || "-"}}</span></td>
 					</tr>
 				</table>
 				<table class="table table-condensed" ng-repeat="iface in vifs track by $index">
@@ -35,7 +35,7 @@
 							<span ng-click="iface._expanded = !iface._expanded" style="cursor: pointer;">{{iface.ssid + ' (' + iface.frequency + ')'}}</span>
 						</th>
 					</thead>
-					<tr ng-show="iface._expanded" ng-repeat="i in [['Frequency', 'frequency'], ['Channel', 'channel'], ['Noise', 'noise']]">
+					<tr ng-show="iface._expanded" ng-repeat="i in [['Frequency', 'frequency'], ['Channel', 'channel'], ['Noise', 'noise'], ['Rates', 'rates']]">
 						<td><strong translate>{{i[0] | translate}}</strong></td>
 						<td style="font-size: 0.8pn; text-align: right;">{{iface[i[1]] || "-"}}</td>
 					</tr>
