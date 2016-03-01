@@ -4,9 +4,8 @@
 		<juci-config-info>{{ 'status.wifi.info' | translate }}</juci-config-info>
 		<div class="row">
 			<div class="col-md-6"  ng-repeat="radio in wlRadios track by $index">
-				<h2>{{'Radio'|translate}} {{radio.device}}</h2>
+				<h2>{{'Radio'|translate}} {{radio.frequency}}</h2>
 				<table class="table table-condensed">
-					<tr><th translate>Frequency</th><td width="1%">{{radio.frequency}}</td></tr>
 					<tr><th translate>Current Channel</th><td>{{radio.current_channel}}</td></tr>
 				</table>
 			</div>
