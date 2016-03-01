@@ -98,11 +98,11 @@ JUCI.app
 	$scope.$watch("data.dest_ips", function(ips){
 		if(!$scope.rule || !ips) return;
 		$scope.rule.dest_ip.value = ips.map(function(x){ return x.text;});;
-	}, false);
+	}, true);
 	$scope.$watch("data.src_ips", function(ips){
 		if(!$scope.rule || !ips) return;
 		$scope.rule.src_ip.value = ips.map(function(x){ return x.text;});;
-	}, false);
+	}, true);
 
 	var ipv4 = new $uci.validators.IP4AddressValidator;
 	var iprange = new $uci.validators.IP4CIDRValidator;

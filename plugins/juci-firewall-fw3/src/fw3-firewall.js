@@ -298,11 +298,11 @@ UCI.firewall.$registerSectionType("rule", {
 	"name":				{ dvalue: "", type: String }, 
 	"src":				{ dvalue: "", type: String }, 
 	"src_ip":			{ dvalue: [], type: Array }, // needs to be extended type of ip address/mask
-	"src_mac": 			{ dvalue: [], type: Array, validator: UCI.validators.MACListValidator }, 
+	"src_mac": 			{ dvalue: "", type: String, validator: UCI.validators.MACAddressValidator }, 
 	"src_port":			{ dvalue: "", type: String, validator:  UCI.validators.portValidator }, // can be a range
 	"dest":				{ dvalue: "", type: String }, 
 	"dest_ip":			{ dvalue: [], type: Array }, // needs to be extended type of ip address/mask
-	"dest_mac":			{ dvalue: "", type: String },
+	"dest_mac":			{ dvalue: "", type: String, validator: UCI.validators.MACAddressValidator },
 	"dest_port":		{ dvalue: "", type: String, validator: UCI.validators.portValidator }, // can be a range
 	"proto":			{ dvalue: "any", type: String }, 
 	"target":			{ dvalue: "REJECT", type: String }, 
