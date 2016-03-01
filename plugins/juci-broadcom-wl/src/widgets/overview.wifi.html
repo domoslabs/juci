@@ -11,11 +11,10 @@
 		</div>
 		<div class="row" style="margin-bottom: 10px;">
 			<div class="col-xs-3" style="text-align: center;"><i class="fa fa-wifi fa-2x"></i></div>
-			<div class="col-xs-7" style="padding-left: 0px">
-				<a class="overview-list-item-text" href="#!/wireless-wps"><strong>WPS</strong></a><br/>
-			</div>
-			<div class="col-xs-2">
-				<a class="label label-{{(wifiStatus.wps.value)?'success':'default'}} pull-right overview-list-item-label" href="" ng-click="onWPSToggle()"><strong ng-show="!wifiStatus.wps.value">{{'Off'|translate}}</strong><strong ng-show="wifiStatus.wps.value">{{'On'|translate}}</strong></a>
+<!--				<a class="overview-list-item-text" href="#!/wireless-wps"><strong>{{'Pair (within 2 minutes)'|translate}}</strong></a><br/>-->
+			<div class="col-xs-9" style="float:right;text-align:right;">
+				<button class="btn btn-default {{wifiStatus.wps.value?'':'disabled'}}" title="{{'(within 2 minutes)'|translate}}" ng-click="onPairPBC()">{{'Pair'|translate}}</button>
+				<!--<a class="label label-{{(wifiStatus.wps.value)?'success':'default'}} pull-right overview-list-item-label" href="" ng-click="onWPSToggle()"><strong ng-show="!wifiStatus.wps.value">{{'Off'|translate}}</strong><strong ng-show="wifiStatus.wps.value">{{'On'|translate}}</strong></a>-->
 			</div>
 		</div>
 		<div class="row">
@@ -43,5 +42,13 @@
 				</table>
 			</div>
 		</div>
+		<modal title="{{'Attempting to Pair'|translate}}" data-keyboard="false" data-backdrop="static" ng-show="wps.progress > 0 && wps.progress != 2 && wps.progress < 8" dismiss-label="Cancel" on-dismiss="onCancelWPS()">
+			<div style="text-align: center;">
+				<div ng-show="progress != 0">
+					<i class="fa fa-spinner fa-spin fa-3x"></i>
+				</div>
+				<p>{{text_status}}</p>
+			</div>
+		</modal>
 	</juci-overview-widget>
 </div>

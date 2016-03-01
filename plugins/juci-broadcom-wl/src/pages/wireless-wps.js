@@ -69,8 +69,8 @@ JUCI.app
 	$scope.onPairUserPIN = function(){
 		var pin = $scope.data.userPIN.replace("-", "").replace(" ", "").match(/\d+/g).join("");
 		$rpc.juci.wireless.wps.checkpin({pin:pin }).done(function(value){
-			if(!value || value.valid == undefined) return;
-			if(!value || !value.valid){
+			if(!value) return;
+			if(!value.valid){
 				console.log("invalid wps pin");
 				alert($tr(gettext("Invalid WPS PIN")));
 				return;
