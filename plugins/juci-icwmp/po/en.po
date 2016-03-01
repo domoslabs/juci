@@ -129,9 +129,9 @@ msgstr ""
 
 # /home/reidar/juci/plugins/juci-icwmp/src/pages/icwmp-config.html 
 msgid "icwmp-config-title"
-msgstr "ICWMP Settings"
+msgstr "TR69 Settings"
 
 # /home/reidar/juci/plugins/juci-icwmp/src/pages/icwmp-config.html 
 msgid "menu-icwmp-config-title"
-msgstr "ICWMP Settings"
+msgstr "TR69 Settings"
 
