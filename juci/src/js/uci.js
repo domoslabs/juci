@@ -171,6 +171,18 @@
 		}
 	};
 
+	function IP6CIDRValidator(){
+		this.validate = function(field){
+			var error = gettext("Address must be a valid IPv6 CIDR Validator (IPv6-address/Mask)");
+			var ip = field.value.split("/")[0];
+			var mask = field.value.split("/")[1];
+			if(!ip || !mask) return error;
+			if(parseInt(mask) > 128 || parseInt(mask) < 1) return error;
+			var ip6 = new IP6AddressValidator();
+			return ip6.validate({value:ip});
+		}
+	};
+
 	function MACAddressValidator(){
 		this.validate = function(field){
 			if(!(typeof field.value == "string") ||
@@ -1124,6 +1136,7 @@
 		MACListValidator: MACListValidator,
 		IPAddressValidator: IPAddressValidator,
 		IP6AddressValidator: IP6AddressValidator,
+		IP6CIDRValidator: IP6CIDRValidator,
 		IP4AddressValidator: IP4AddressValidator,
 		IP4NetmaskValidator: IP4NetmaskValidator,
 		IP4MulticastAddressValidator: IP4MulticastAddressValidator,
