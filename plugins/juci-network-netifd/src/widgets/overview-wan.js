@@ -104,7 +104,7 @@ JUCI.app
 				}); 
 				$scope.connection_types = Object.keys(con_types); 
 				$scope.all_gateways = Object.keys(all_gateways); 
-				$scope.wan_ifs = wan_ifs; 
+				$scope.wan_ifs = wan_ifs || []; 
 				$scope.$apply(); 
 				done(); 
 			}); 
