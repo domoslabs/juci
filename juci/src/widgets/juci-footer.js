@@ -26,9 +26,17 @@ JUCI.app
 	}; 
 })
 .controller("juciFooter", function($localStorage, $scope, $rpc, $firewall, $languages, gettextCatalog, gettext, $tr, $config){
-	// TODO: move this into a higher level controller maybe? 
-	gettextCatalog.setCurrentLanguage($localStorage.getItem("language") || $config.settings.localization.default_language.value || "en");
 	$scope.languages = $languages.getLanguages();
+	if(!$scope.languages){
+		gettextCatalog.setCurrentLanguage("en") //if config is missing or broken set default language to english
+	}else {
+		var lang = $localStorage.getItem("language");
+		if($scope.languages.find(function(l){ return l.short_code == lang; })){
+			gettextCatalog.setCurrentLanguage(lang);
+		}else{
+			gettextCatalog.setCurrentLanguage($config.settings.localization.default_language.value || "en");
+		}
+	}
 	$scope.isActiveLanguage = function(lang){
 		return gettextCatalog.getCurrentLanguage() == lang.short_code; 
 	}
