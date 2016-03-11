@@ -32,7 +32,7 @@ msgstr ""
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-configuration.js
 msgid "Are you sure you want to save backup without password?"
-msgstr ""
+msgstr "Are you sure you want to save backup without password?"
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-password.js
 msgid ""
@@ -125,7 +125,7 @@ msgid "NTP Settings"
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "Configuration"
+msgid "Backup Settings"
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
@@ -182,7 +182,7 @@ msgstr ""
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "Backup file password"
-msgstr ""
+msgstr "Backup file password"
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "Password (if encrypted)"
@@ -228,6 +228,14 @@ msgstr ""
 msgid "Missing uci config boardpanel."
 msgstr ""
 
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-management-buttons.html
+msgid "Configure Buttons"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-management.html
+msgid "settings.management.buttons.info"
+msgstr "Enable/disable the buttons on your router"
+
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-management.html
 msgid "Management"
 msgstr ""
@@ -235,6 +243,10 @@ msgstr ""
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-management.html
 msgid "system.management.info"
 msgstr "Configure settings for managing your box over WAN interface."
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-password.html
+msgid "Change Account Passwords"
+msgstr ""
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-password.html
 msgid "settings.password.info"
@@ -266,7 +278,7 @@ msgstr ""
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-services.html
 msgid "Action"
-msgstr ""
+msgstr "Action"
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system.html
 msgid "settings.system.general"
@@ -313,6 +325,14 @@ msgid "Unsaved changes"
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system-processes.html
+msgid "Total number of processes: "
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system-processes.html
+msgid "Total CPU usage: "
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system-processes.html
 msgid "status.system.processes.info"
 msgstr "Processes currently running on the router. "
 
@@ -322,14 +342,6 @@ msgstr ""
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system-processes.html
 msgid "System processes and CPU usage."
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system-processes.html
-msgid "Total number of processes: {{processes.length}}"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system-processes.html
-msgid "Total CPU usage: {{getCpuUsage()}}"
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system-processes.html
@@ -360,6 +372,10 @@ msgstr "UCI Settings"
 msgid "system-title"
 msgstr "System"
 
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-management.html
+msgid "settings-management-buttons-title"
+msgstr "Configure Buttons"
+
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-password.html
 msgid "settings-password-title"
 msgstr "Change Account Passwords"
@@ -371,6 +387,18 @@ msgstr "SystemSettings"
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-services.html
 msgid "settings-services-title"
 msgstr "Services"
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-users.html
+msgid "settings-users-title"
+msgstr "Manage Users"
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "settings-configuration-title"
+msgstr "Backup Settings"
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system-processes.html
+msgid "status-system-processes-title"
+msgstr "Processes"
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-management.html
 msgid "menu-settings-management-title"
@@ -395,6 +423,10 @@ msgstr "UCI Settings"
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/system.html
 msgid "menu-system-title"
 msgstr "System"
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-management.html
+msgid "menu-settings-management-buttons-title"
+msgstr "Buttons"
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-password.html
 msgid "menu-settings-password-title"
