@@ -41,8 +41,7 @@ JUCI.app
 	});
 	function update(){
 		$usb.getDevices().done(function(devices){
-			$scope.devices = devices.filter(function(dev){ return dev.product && !dev.product.match(/Platform/) && !dev.product.match(/Host Controller/); }); 
-			$scope.loaded = true; 
+			$scope.devices = devices || [];
 			$scope.$apply(); 
 		}); 
 	}update();
