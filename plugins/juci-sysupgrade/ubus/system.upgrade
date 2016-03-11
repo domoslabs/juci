@@ -9,12 +9,10 @@ function sysupgrade_check(params)
 	local res = { all = {} }; 
 	for k,v in ipairs(type) do
 		local path,ret = juci.shell("sysupgrade --"..v.." 2>/dev/null");  
-		if( ret == 0 ) then
-			path = path:gsub("\n", ""); 
-			if path and path:len() > 0 then 
-				res[v] = path;
-				table.insert(res.all, path); 
-			end
+		path = path:gsub("\n", ""); 
+		if path and path:len() > 0 then 
+			res[v] = path;
+			table.insert(res.all, path); 
 		end
 	end
 	print(json.encode(res)); 
@@ -33,13 +31,14 @@ function sysupgrade_test(params)
 end
 
 function sysupgrade_start(params)
-	local res = {}; 
+	print(json.encode({}));
+	local stdout = ""; 
+	local err = "";
 	local path = "/tmp/firmware.bin"; 
 	local keep = ""; 
 	if params["keep"] ~= 1 then keep = "-n" end
 	if params["path"] then path = params["path"] end
-	res["stdout"],res["error"] = juci.shell("sysupgrade "..keep.." %s", path); 
-	print(json.encode(res)); 
+	stdout,err = juci.shell("sysupgrade "..keep.." %s", path); 
 end
 
 function sysupgrade_clean()
