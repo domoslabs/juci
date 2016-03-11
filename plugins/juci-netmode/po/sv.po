@@ -44,4 +44,3 @@ msgstr "Inga profiler tillgängliga"
 
 msgid "Change Profile"
 msgstr "Ändra Profil"
-

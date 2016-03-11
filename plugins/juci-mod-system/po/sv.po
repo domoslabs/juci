@@ -11,11 +11,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-msgid "This will reset your configuration to factory defaults. Do you want to continue?"
-msgstr "Detta kommer att återställa dina inställningar till tillverkarens konfiguration"
+msgid ""
+"This will reset your configuration to factory defaults. Do you want to "
+"continue?"
+msgstr ""
+"Detta kommer att återställa dina inställningar till tillverkarens "
+"konfiguration"
 
-msgid "Configuration has been restored. You need to reboot the device for settings to take effect! Do you want to reboot now?"
-msgstr "Konfigurationen har återställts. En omstart krävs för att inställningarna skall ta effekt! Vill du starta om nu?"
+msgid ""
+"Configuration has been restored. You need to reboot the device for settings "
+"to take effect! Do you want to reboot now?"
+msgstr ""
+"Konfigurationen har återställts. En omstart krävs för att inställningarna "
+"skall ta effekt! Vill du starta om nu?"
 
 msgid "Passwords do not match!"
 msgstr "Lösenorden stämmer inte överens!"
@@ -23,8 +31,11 @@ msgstr "Lösenorden stämmer inte överens!"
 msgid "Are you sure you want to save backup without password?"
 msgstr "Är du säker på att du vill spara backup utan lösenord? "
 
-msgid "Was unable to set password. Please make sure you have entered correct current password!"
-msgstr "Kunde inte ställa in lösenordet. Kontrollera att nuvarande lösenord är rätt!"
+msgid ""
+"Was unable to set password. Please make sure you have entered correct "
+"current password!"
+msgstr ""
+"Kunde inte ställa in lösenordet. Kontrollera att nuvarande lösenord är rätt!"
 
 msgid "Hostname"
 msgstr "Datornamn"
@@ -87,7 +98,11 @@ msgid "Backup Settings"
 msgstr "Skapa en backup av inställnigarna"
 
 msgid "settings.config.info"
-msgstr "Spara dina inställningar, återställa tidigare sparade inställningar och återställ EasyBox till fabrikstillstånd.Din EasyBox kan spara din konfiguration till en dator. Vi rekommenderar att alltid spara dina senaste ändrade inställningar till en dator."
+msgstr ""
+"Spara dina inställningar, återställa tidigare sparade inställningar och "
+"återställ EasyBox till fabrikstillstånd.Din EasyBox kan spara din "
+"konfiguration till en dator. Vi rekommenderar att alltid spara dina senaste "
+"ändrade inställningar till en dator."
 
 msgid "Save settings to computer with password protection"
 msgstr "Spara konfigurationen till fil"
@@ -161,14 +176,24 @@ msgstr "Power-LED Ljusstyrka"
 msgid "Missing uci config boardpanel."
 msgstr "Saknar uci config-panel"
 
+msgid "Configure Buttons"
+msgstr ""
+
+msgid "settings.management.buttons.info"
+msgstr "Management"
+
 msgid "Management"
 msgstr "Management"
 
 msgid "system.management.info"
 msgstr "Här kan du öppna tillgång till olika tjänster från WAN sidan"
 
+msgid "Change Account Passwords"
+msgstr "Ändra lösenord"
+
 msgid "settings.password.info"
-msgstr "Ställ en ny Easybox lösenord för att begränsa hanteringsåtkomst till routern."
+msgstr ""
+"Ställ en ny Easybox lösenord för att begränsa hanteringsåtkomst till routern."
 
 msgid "Change password for user"
 msgstr "Ändra lösenord för användare"
@@ -242,42 +267,6 @@ msgstr "Systemets prosesser och CPU användning"
 msgid "Running Processes"
 msgstr "Processer"
 
-msgid "settings-management-title"
-msgstr "Management"
-
-msgid "settings-energy-title"
-msgstr "Energispar"
-
-msgid "internet-services-ntp-title"
-msgstr "NTP"
-
-msgid "status-system-title"
-msgstr "Systemstatus"
-
-msgid "settings-uci-title"
-msgstr "UCI"
-
-msgid "system-title"
-msgstr "System"
-
-msgid "settings-password-title"
-msgstr "Lösenord"
-
-msgid "settings-system-title"
-msgstr "Systeminställningar"
-
-msgid "settings-services-title"
-msgstr "Tjänster"
-
-msgid "settings-users-title"
-msgstr "Användare"
-
-msgid "settings-configuration-title"
-msgstr "Spara Inställningar"
-
-msgid "status-system-processes-title"
-msgstr "Processer"
-
 msgid "menu-settings-management-title"
 msgstr "Management"
 
@@ -296,6 +285,9 @@ msgstr "UCI"
 msgid "menu-system-title"
 msgstr "System"
 
+msgid "menu-settings-management-buttons-title"
+msgstr "Management"
+
 msgid "menu-settings-password-title"
 msgstr "Lösenord"
 
@@ -313,3 +305,14 @@ msgstr "Backup"
 
 msgid "menu-status-system-processes-title"
 msgstr "Processer"
+
+
+
+
+
+
+
+
+
+
+

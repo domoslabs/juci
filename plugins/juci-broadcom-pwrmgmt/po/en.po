@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -11,18 +11,42 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-msgid "Test"
+msgid "1/1 Sync"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-pwrmgmt/src/pages/broadcom-pwrmgmt.html 
+msgid "full speed Async"
+msgstr ""
+
+msgid "1/2 speed Async"
+msgstr ""
+
+msgid "1/4 speed Async"
+msgstr ""
+
+msgid "1/8 speed Async"
+msgstr ""
+
+msgid "1/8 Async when entering wait, 1/1 Sync otherwise"
+msgstr ""
+
+msgid "CPU Speed"
+msgstr ""
+
+msgid "CPU r4k Wait"
+msgstr ""
+
+msgid "DRAM Self-Refresh"
+msgstr ""
+
+msgid "Ethernet Auto Power Down"
+msgstr ""
+
+msgid "Energy Efficient Ethernet"
+msgstr ""
+
 msgid "Power Management Settings"
 msgstr ""
 
--e # /home/reidar/juci/plugins/juci-broadcom-pwrmgmt/src/pages/broadcom-pwrmgmt.html 
-msgid "broadcom-pwrmgmt-title"
-msgstr "Power Management"
-
--e # /home/reidar/juci/plugins/juci-broadcom-pwrmgmt/src/pages/broadcom-pwrmgmt.html 
 msgid "menu-broadcom-pwrmgmt-title"
 msgstr "Power Management"
 

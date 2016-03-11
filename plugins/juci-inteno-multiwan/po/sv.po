@@ -14,22 +14,18 @@ msgstr ""
 msgid "Source addr:"
 msgstr "Källaddress:"
 
-# /home/reidar/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.html
 msgid "All"
 msgstr ""
 
 msgid "Destination addr:"
 msgstr "Destinationsaddress:"
 
-# /home/reidar/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.js
 msgid "UDP"
 msgstr "UDP"
 
-# /home/reidar/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.js
 msgid "TCP"
 msgstr "TCP"
 
-# /home/reidar/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.js
 msgid "ICMP"
 msgstr "ICMP"
 
@@ -39,47 +35,36 @@ msgstr "LAN"
 msgid "WAN"
 msgstr "WAN"
 
-# /home/reidar/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.js
 msgid "WAN6"
 msgstr "WAN6"
 
-# /home/reidar/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.js
 msgid "Load Balancer (Performance)"
 msgstr "Load Balancer (Performance)"
 
-# /home/reidar/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.js
 msgid "Load Balancer (Compability)"
 msgstr "Load Balancer (Compability)"
 
-# /home/reidar/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan.interface.edit.html
 msgid "Load Balancer Distribution"
 msgstr "Load Balancer Distribution"
 
-# /home/reidar/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan.interface.edit.html
 msgid "Health Monitor Method"
 msgstr "Health Monitor Method"
 
-# /home/reidar/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan.interface.edit.html
 msgid "Health Monitor Interval"
 msgstr "Health Monitor Interval"
 
-# /home/reidar/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan.interface.edit.html
 msgid "Health Monitor ICMP Host(s)"
 msgstr "Health Monitor ICMP Host(s)"
 
-# /home/reidar/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan.interface.edit.html
 msgid "Health Monitor ICMP Timeout"
 msgstr "Health Monitor ICMP Timeout"
 
-# /home/reidar/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan.interface.edit.html
 msgid "Attempts Before WAN Failover"
 msgstr "Attempts Before WAN Failover"
 
-# /home/reidar/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan.interface.edit.html
 msgid "Attempts Before WAN Recovery"
 msgstr "Attempts Before WAN Recovery"
 
-# /home/reidar/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan.interface.edit.html
 msgid "Failover Traffic Destination"
 msgstr "Failover Traffic Destination"
 
@@ -89,7 +74,6 @@ msgstr "DNS-servrar"
 msgid "Source Address"
 msgstr "Käll IP-adress"
 
-# /home/reidar/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.html
 msgid "Leave empty for all"
 msgstr "Lämna tom för alla"
 
@@ -102,9 +86,11 @@ msgstr "Protokol"
 msgid "Ports"
 msgstr "Portar"
 
-# /home/reidar/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.html
 msgid "WAN Uplink"
 msgstr "WAN uplänk"
+
+msgid "MultiWAN Configuration"
+msgstr ""
 
 msgid "Basic Settings"
 msgstr "inställningar"
@@ -118,8 +104,6 @@ msgstr "Default-rutt"
 msgid "Multi-WAN Traffic Rules"
 msgstr "MultiWAN trafikregler"
 
-msgid "internet-multiwan-title"
-msgstr "MultiWAN"
-
 msgid "menu-internet-multiwan-title"
 msgstr "MultiWAN"
+

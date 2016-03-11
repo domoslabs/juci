@@ -62,8 +62,12 @@ msgstr "Dela användarnas hemmamappar"
 msgid "Interface"
 msgstr "Interface"
 
-msgid "the interface(s) samba will listen on. Samba will not start if no interface is selected"
-msgstr "Interface(t) som samba kommer att lyssna på. Samba startas inte om inget interface är valt"
+msgid ""
+"the interface(s) samba will listen on. Samba will not start if no interface "
+"is selected"
+msgstr ""
+"Interface(t) som samba kommer att lyssna på. Samba startas inte om inget "
+"interface är valt"
 
 msgid "Samba Users"
 msgstr "Användare"
@@ -77,8 +81,6 @@ msgstr "Samba delning"
 msgid "samba.shares.info"
 msgstr "Konfigurera Samba-delning på den lokala nätverket. "
 
-msgid "internet-services-samba-title"
-msgstr "Samba"
-
 msgid "menu-internet-services-samba-title"
 msgstr "Samba"
+

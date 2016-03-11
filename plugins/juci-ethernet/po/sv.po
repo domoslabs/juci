@@ -20,8 +20,6 @@ msgstr "Här kan du ställa in ethernet enheter"
 msgid "Status"
 msgstr "Status"
 
-msgid "internet-ethernet-title"
-msgstr "Ethernet"
-
 msgid "menu-internet-ethernet-title"
 msgstr "Ethernet"
+

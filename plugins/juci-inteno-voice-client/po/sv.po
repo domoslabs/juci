@@ -11,11 +11,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/inteno-voice-client.js
 msgid "SIP users needs a name"
 msgstr "SIP användare behöver ett namn"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/inteno-voice-client.js
 msgid "SIP users needs a valid extension"
 msgstr "SIP användare behöver ett korrekt tillägg"
 
@@ -28,7 +26,6 @@ msgstr "Aktiv"
 msgid "Disabled"
 msgstr "Inaktiverad"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.js
 msgid "Fixed"
 msgstr "Fast"
 
@@ -38,109 +35,84 @@ msgstr "Adaptiv"
 msgid "Yes"
 msgstr "Ja"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.js
 msgid "No"
 msgstr "Nej"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "Australia"
 msgstr "Australien"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "Belgium"
 msgstr "Belgien"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "Brazil"
 msgstr "Brasilien"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "Chile"
 msgstr "Chile"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "China"
 msgstr "China"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "Czech"
 msgstr "Tjeckien"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "Denmark"
 msgstr "Danmark"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "ETSI"
 msgstr "ETSI"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "Finland"
 msgstr "Finland"
 
 msgid "France"
 msgstr "Frankrike"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "Germany"
 msgstr "Tyskland"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "Hungary"
 msgstr "Ungern"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "India"
 msgstr "Indien"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "Italy"
 msgstr "Italien"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "Japan"
 msgstr "Japan"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "Netherlands"
 msgstr "Holland"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "New Zealand"
 msgstr "Nya Zeland"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "North America"
 msgstr "Nordamerika"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "Spain"
 msgstr "Spanien"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "Sweden"
 msgstr "Sverige"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "Switzerland"
 msgstr "Schweiz"
 
 msgid "Norway"
 msgstr "Norge"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "Taiwan"
 msgstr "Taiwan"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "United Kingdoms"
 msgstr "England "
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "United Arab Emirates"
 msgstr "Förenade arabemiraten"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/language-factory.js
 msgid "CFG TR57"
 msgstr "CFG TR57"
 
@@ -168,23 +140,18 @@ msgstr "Aggressiv"
 msgid "White noise"
 msgstr "White noise"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/phone-lines-list-editor.js
 msgid "Hot noise"
 msgstr "Hot noise"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/phone-lines-list-editor.js
 msgid "Spectrum estimate"
 msgstr "Spectrum estimate"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.js
 msgid "TLS v1"
 msgstr "TLS v1"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.js
 msgid "SSL v2"
 msgstr "SSL v2"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.js
 msgid "SSL v3"
 msgstr "SSL v3"
 
@@ -194,102 +161,60 @@ msgstr "Lyssna på alla interface"
 msgid "Congestion"
 msgstr "Upptaget"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.js
 msgid "Info"
 msgstr "Information"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.js
 msgid "Compatibility"
 msgstr "Kompabilitet"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.js
 msgid "RFC 2833"
 msgstr "RFC 2833"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.js
 msgid "SIP INFO"
 msgstr "SIP INFO"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.js
 msgid "Inband"
 msgstr "Inband"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.js
 msgid "No Mailbox"
 msgstr "Ingen Mejlbox"
 
 msgid "Select Codec"
 msgstr "Välj Codec"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.js
 msgid "G 723.1"
 msgstr "G 723.1"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.js
 msgid "GSM"
 msgstr "GSM"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.js
 msgid "G.711MuLaw"
 msgstr "G.711MuLaw"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.js
 msgid "G. 726"
 msgstr "G. 726"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.js
 msgid "iLBC"
 msgstr "iLBC"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.js
 msgid "G. 729a"
 msgstr "G. 729a"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.js
 msgid "G.711ALaw"
 msgstr "G.711ALaw"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
 msgid "UDP"
 msgstr "UDP"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
 msgid "TCP"
 msgstr "TCP"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
 msgid "TLS"
 msgstr "TLS"
 
-# /home/martin/juci/plugins/juci-asterisk/src/pages/phone-numbers.html
 msgid "Account "
 msgstr "Konto"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider.js
 msgid "Direct"
 msgstr "Direkt"
 
@@ -299,51 +224,39 @@ msgstr "Inga Konton"
 msgid "Advanced Line Settings"
 msgstr "Avancerade Linje Inställningar"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
 msgid "Locale selecton"
 msgstr "Land sektion"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
 msgid "A restart is required for country changes to take effect"
 msgstr "En omstart behövs för att land ändringen skall slutföras"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
 msgid "Enable Jitter Buffer"
 msgstr "Aktivera Jitter Buffer"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
 msgid "Force Jitter Buffer"
 msgstr "Tvinga Jitter Buffer"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
 msgid "Jitter Buffer implementation"
 msgstr "Jitter Buffer implementering"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
 msgid "Maximum Jitter Buffer size [ms]"
 msgstr "Maximum Jitter Buffer size [ms]"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
 msgid "Enable Packet Loss Concealment"
 msgstr "Aktivera döljande av paket förlust"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
 msgid "Inter-digit timeout [ms]"
 msgstr "Inter-digit timeout [ms]"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/custom-dialplan.html
 msgid "Custom Dialplan"
 msgstr "Manuell Dialplan"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/custom-dialplan.html
 msgid "Enable incomming dialplan"
 msgstr "Aktivera inkommande dialplan"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/custom-dialplan.html
 msgid "Enable outgoing dialplan"
 msgstr "Aktivera utgående dialplan"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/custom-dialplan.html
 msgid "Enable custom hangup"
 msgstr "Aktivera egna påläggningar"
 
@@ -356,8 +269,8 @@ msgstr "Testa Ljudtillägg"
 msgid "Test Echo Extension"
 msgstr "Testa echotillägg"
 
-msgid "Phone"
-msgstr "Telefoni"
+msgid "Voice"
+msgstr "Voiceportar"
 
 msgid "Schedule"
 msgstr "Schemaläggning"
@@ -380,45 +293,24 @@ msgstr "Utgående nummer"
 msgid "Pick Outgoing Number"
 msgstr "Välj utgående tel. nummer"
 
-# phone
 msgid "Call Waiting"
 msgstr "Samtal väntar"
 
 msgid "Call ID Restriction"
 msgstr "Call-id restriktion"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/phone-lines.html
 msgid "Voice Activity Detection"
 msgstr "Voice Activity Detection"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/phone-lines.html
 msgid "Comfort Noice Generation"
 msgstr "Comfort Noice Generation"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/phone-lines.html
 msgid "Echo cancellation"
 msgstr "Echo cancellation"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/phone-lines.html
 msgid "Transmit gain"
 msgstr "Sändnings vinst"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/phone-lines.html
 msgid "Receive gain"
 msgstr "Mottagen vinst"
 
@@ -434,37 +326,30 @@ msgstr "Telefonlinjer"
 msgid "Advanced SIP Settings"
 msgstr "Avancerade SIP inställningar"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Sip Proxy servers"
 msgstr "Sip Proxy server"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Allow incomming calls from the specified proxies"
 msgstr "Tillåt inkommande sammtal från den specifierade proxien"
 
-# /home/martin/juci/plugins/juci-asterisk/src/pages/phone-numbers.html
 msgid "Add SIP Proxy"
 msgstr "Lägg till SIP proxy"
 
 msgid "Bind Interface"
 msgstr "Bindnings Interface"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "WAN Interface to bind to (listen on)"
 msgstr "WAN interface att binda mot (lyssna på)"
 
 msgid "Bindport"
 msgstr "Bindningsport"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "UDP Port to bind to (listen on)"
 msgstr "UDP Port att binda mot (lyssna på)"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "User Agent"
 msgstr "Användaragent"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Allow the SIP header User-Agent to be customized"
 msgstr "Tillåt SIP header User-Agent att bli ändrad"
 
@@ -474,19 +359,15 @@ msgstr "RTP portintervall"
 msgid "DTMF Mode"
 msgstr "DTMF Mode"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Register Interval"
 msgstr "Registrerings intervall"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Time in seconds between registration attempts"
 msgstr "Tid i sekunder mellan registrerings försök"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Realm"
 msgstr "Rike"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid ""
 "Realm for digest authentication, set this to your host name or domain name"
 msgstr ""
@@ -495,36 +376,29 @@ msgstr ""
 msgid "Localnet"
 msgstr "Lokalt nät"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Network addresses that are considered inside of the NATted network"
 msgstr "Nätverksaddress som övervägs inuti det NATade nätverket"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Add Localnet"
 msgstr "Lägg till lokalt nät"
 
 msgid "Register Timeout"
 msgstr "Registreringstimeout"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Time before giving up a registration attempt"
 msgstr "Tid innan registrerings försök uppges"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Register Attempts"
 msgstr "Registrerings försök"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid ""
 "Number of registration attempts before giving up (Set to 0 or empty to try "
 "forever)"
 msgstr "Antal registrerings försök (Sett till 0 eller tom för eviga försök)"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Register Back-off Attempts"
 msgstr "Register Back-off Attempts"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid ""
 "Number of registration attempts before entering back-off state (Set to 0 or "
 "empty to disable)"
@@ -532,50 +406,39 @@ msgstr ""
 "Antal registrerings försök innan back-off tillstånd (Set till 0 eller tom "
 "för att inaktivera)"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Register Back-off Timeout"
 msgstr "Register Back-off Timeout"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Time before giving up a registration attempt in back-off state"
 msgstr "Tid innan registrerings försök ges upp i back-off tillstånd"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Remote Hold"
 msgstr "Remote Hold"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Send hold events to proxy (Let network handle music on hold)"
 msgstr "Send hold events to proxy (Let network handle music on hold)"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "SRV Lookup"
 msgstr "SRV Lookup"
 
 msgid "Enable DNS SRV lookup"
 msgstr "Aktivera DNS server uppslagningar"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "DNS Manager"
 msgstr "DNS Hanterare"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Enable Asterisk DNS manager"
 msgstr "Aktivera Asterisk DNS hantering"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "DNS Manager Refresh Interval"
 msgstr "DNS Hanterarens Uppdaterings intervall"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Refresh intervall"
 msgstr "Uppdaterings intervall"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Line suffix in contact header"
 msgstr "Linje suffix i kontakt-huvudet"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid ""
 "Add a suffix indicating which lines are called to the sip contact header"
 msgstr ""
@@ -585,59 +448,45 @@ msgstr ""
 msgid "SIP DiffServ"
 msgstr "SIP Diff Server"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Differentiated services/TOS for SIP data. Recommended value: cs3"
 msgstr "Differentiated services/TOS for SIP data. Recommended value: cs3"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Audio DiffServ"
 msgstr "Ljud DiffServ"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Differentiated services/TOS for Audio data. Recommended value: ef"
 msgstr "Differentiated services/TOS for Audio data. Recommended value: ef"
 
 msgid "Congestion tone"
 msgstr "Upptaget signal"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Tone to play on congestion"
 msgstr "Ljud att spela upp vid upptaget"
 
 msgid "STUN server"
 msgstr "STUN Server"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Leave empty to disable the STUN monitor"
 msgstr "Lämna tom för att inaktivera STUN övervakning"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "TLS/SSL Version"
 msgstr "TLS/SSL Version"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Cipher string"
 msgstr "Cipher Sträng"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Trusted CA"
 msgstr "Betrodd CA"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
 msgid "Don't forget to press save to save your changes"
 msgstr "Glöm inte att spara dina ändringar"
 
-# /home/martin/juci/plugins/juci-asterisk/src/pages/phone-numbers.html
 msgid "Account Name"
 msgstr "Kontonamn"
 
 msgid "Incoming calls to"
 msgstr "Inkommande samtal till"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
 msgid "Mailbox"
 msgstr "Mejlbox"
 
@@ -650,7 +499,6 @@ msgstr "Domännamn"
 msgid "SIP Username"
 msgstr "SIP Användarnamn"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
 msgid " The User id for the account, may be a phone number"
 msgstr "Användar ID för kontot, kan vara ett telefonnummer"
 
@@ -660,21 +508,15 @@ msgstr "Användare"
 msgid "SIP Authentication Name"
 msgstr "SIP Autentiserings namn"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
 msgid "Used in combination with password to register against SIP server"
 msgstr "Använd i kombination med lösenord för att registrera mot SIP server"
 
-# /home/martin/juci/plugins/juci-asterisk/src/pages/phone-numbers.html
 msgid "Auth User"
 msgstr "Användarnamn"
 
 msgid "SIP Password"
 msgstr "SIP Lösenord"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
 msgid ""
 "When your password is saved, it disappears from this field and is not "
 "displayed for your protection. The previously saved password will be changed "
@@ -690,52 +532,36 @@ msgstr "Visa Lösenord"
 msgid "Display Name"
 msgstr "Uppvisnings namn"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
 msgid "Display name used in Caller Id"
 msgstr "Uppvisningsnamn som visas på Caller ID"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
 msgid "Preferred codecs"
 msgstr "Föredragen kodex"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
 msgid "GSM packetization"
 msgstr "GSM packetization"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
 msgid "G.723.1 packetization"
 msgstr "G.723.1 packetization"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
 msgid "G.711MuLaw packetization"
 msgstr "G.711MuLaw packetization"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
 msgid "G. 726 packetization"
 msgstr "G. 726 packetization"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
 msgid "iLBC packetization"
 msgstr "iLBC packetization"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
 msgid "G. 729a packetization"
 msgstr "G. 729a packetization"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
 msgid "G.711ALaw packetization"
 msgstr "G.711ALaw packetization"
 
 msgid "Autoframing"
 msgstr "Autoframing"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
 msgid "Negotiate packetization at call establishment"
 msgstr "Negotiate packetization at call establishment"
 
@@ -745,15 +571,12 @@ msgstr "SIP Transport"
 msgid "Encryption"
 msgstr "Kryptering"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
 msgid "Use Secure Real-time Transport Protocol (SRTP)"
 msgstr "Använd Secure Real-time Transport Protocol (SRTP)"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
 msgid "Use as Fax"
 msgstr "Använd som fax"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
 msgid ""
 "Indicate that this SIP account will be used for a fax machine. This will "
 "force some settings to enable inband fax."
@@ -764,33 +587,27 @@ msgstr ""
 msgid "SIP Server/Registrar"
 msgstr "SIP Server"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
 msgid "Optional"
 msgstr "Frivillig"
 
 msgid "SIP Server"
 msgstr "SIP Server"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
 msgid "SIP Server/Registrar Port"
 msgstr "SIP Server/Registrar Port"
 
 msgid "SIP Server Port"
 msgstr "SIP Server port"
 
-# /home/martin/juci/plugins/juci-asterisk/src/pages/phone-numbers.html
 msgid "SIP Outbound Proxy"
 msgstr "SIP utgående proxy"
 
-# /home/martin/juci/plugins/juci-asterisk/src/pages/phone-numbers.html
 msgid "SIP Proxy"
 msgstr "SIP proxy"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
 msgid "SIP Outbound Proxy Port"
 msgstr "SIP Utgående Proxy Port"
 
-# /home/martin/juci/plugins/juci-asterisk/src/pages/phone-numbers.html
 msgid "SIP Proxy Port"
 msgstr "SIP proxy"
 
@@ -803,38 +620,35 @@ msgstr "SIP Konton"
 msgid "Extension"
 msgstr "Telefontillägg"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
 msgid "Extension for this user"
 msgstr "tillägg för den här användaren"
 
 msgid "Username"
 msgstr "Användarnamn"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
 msgid "The User id for the account (defaultuser)"
 msgstr "Användar id för kontot (standard användaren)"
 
 msgid "Password"
 msgstr "SIP Lösenord"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
 msgid "Call out using SIP provider"
 msgstr "Ring med SIP kontot"
 
 msgid "Host"
 msgstr "Värd"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
 msgid "Host for this user (leave empty for dynamic)"
 msgstr "Värd för den här användaren (lämna tom för dynamisk)"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
 msgid "Qualify"
 msgstr "Kvalificera"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
 msgid "Check that user is reachable"
 msgstr "Kolla så att användaren är nåbar"
+
+msgid "SIP Users"
+msgstr "SIP Användare"
 
 msgid "Voice Status"
 msgstr "Telefonstatus"
@@ -854,11 +668,9 @@ msgstr "Dina telefonlinjer"
 msgid "Domain"
 msgstr "Domän"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/pages/status-phone.html
 msgid "Registration interval (s)"
 msgstr "Registrerings intervall"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/pages/status-phone.html
 msgid "Last registration"
 msgstr "Sista registreringen"
 
@@ -871,11 +683,9 @@ msgstr "Tillstånd"
 msgid "Voice service is not available!"
 msgstr "Telefoni är inte tillgänglig"
 
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings.html
 msgid "Custom Dialplan Settings"
 msgstr "Custom Dialplan Settings"
 
-# phone
 msgid "Call Log"
 msgstr "Samtalslogg"
 
@@ -902,6 +712,9 @@ msgstr "Ditt nummer"
 
 msgid "Duration"
 msgstr "Varaktighet"
+
+msgid "Phone"
+msgstr "Telefoni"
 
 msgid "Number Blocking"
 msgstr "Nummerblockering"
@@ -981,59 +794,12 @@ msgstr "Ta bort alla nummer från snabbuppringningslistan"
 msgid "Clear"
 msgstr "Rensa"
 
-msgid "voice-sip-users-title"
-msgstr "SIP Användare"
-
-# share/menu.d/status.json
-msgid "status-phone-title"
-msgstr "Status"
-
-# menu.d/juci-mod-voice.json
-msgid "voice-title"
-msgstr "Telefoni"
-
-msgid "voice-number-blocking-title"
-msgstr "Nummerblockering"
-
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings-dialplan.html
-msgid "voice-advanced-settings-dialplan-title"
-msgstr "Dialplan inställningar"
-
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings-sip.html
-msgid "voice-advanced-settings-sip-title"
-msgstr "SIP inställningar"
-
-msgid "voice-call-log-title"
-msgstr "Samtals logg"
-
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings-lines.html
-msgid "voice-advanced-settings-lines-title"
-msgstr "Linje inställningar"
-
-# /home/reidar/juci/plugins/juci-inteno-voice-client/src/pages/voice-sip-accounts.html
-msgid "voice-sip-accounts-title"
-msgstr "SIP Konton"
-
-msgid "voice-lines-title"
-msgstr "Telefon linjer"
-
-msgid "voice-speed-dialing-title"
-msgstr "Snabbuppringning"
-
-msgid "voice-ringing-schedule-title"
-msgstr "Schemaläggning"
-
-msgid "voice-advanced-settings-title"
-msgstr "Avancerade Inställningar"
-
 msgid "menu-voice-sip-users-title"
 msgstr "SIP användare"
 
-# /home/martin/juci/juci//src/pages/bootstrap.html
 msgid "menu-status-phone-title"
 msgstr "Status"
 
-# share/menu.d/wifi.json
 msgid "menu-voice-title"
 msgstr "Telefoni"
 
@@ -1067,6 +833,3 @@ msgstr "Schemaläggning"
 msgid "menu-voice-advanced-settings-title"
 msgstr "Avancerade inställningar"
 
-#, fuzzy
-#~ msgid "SIP Users"
-#~ msgstr "SIP Användare"

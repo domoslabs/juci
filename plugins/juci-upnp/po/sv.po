@@ -11,11 +11,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-# /home/reidar/juci/plugins/juci-upnp/src/pages/upnpd-settings.js
 msgid "Allow"
 msgstr "Tillåt"
 
-# /home/reidar/juci/plugins/juci-upnp/src/pages/upnpd-settings.js
 msgid "Deny"
 msgstr "Förneka"
 
@@ -23,24 +21,22 @@ msgid "UPNP Settings"
 msgstr "UPNP Inställningar"
 
 msgid "internet.services.upnp.info"
-msgstr "Konfigurera UPNP för att kunna automatiskt öppna port-forwarding på boxen (användbart för spel och annat) "
+msgstr ""
+"Konfigurera UPNP för att kunna automatiskt öppna port-forwarding på boxen "
+"(användbart för spel och annat) "
 
 msgid "General Settings"
 msgstr "Generella Inställningar"
 
-# /home/reidar/juci/plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Automatically Start Service At Bootup"
 msgstr "Starta servicen automatiskt vid uppstart"
 
-# /home/reidar/juci/plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Enable upnp daemon at boot time"
 msgstr "Aktivera UPnP demon vid uppstart"
 
-# /home/martin/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.html
 msgid "Start / Stop Service"
 msgstr "Starta/Stoppa tjänsten"
 
-# /home/reidar/juci/plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Start/stop upnp daemon (make sure you have WAN connection!)"
 msgstr "Starta/Stoppa UPnP demonen (Se till att du har en WAN anslutning!)"
 
@@ -59,26 +55,21 @@ msgstr "Aktivera NAT-PMP protokol"
 msgid "Enable secure mode"
 msgstr "Slå på Säkert läge"
 
-# /home/reidar/juci/plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Allow adding forwards only to requesting ip addresses"
 msgstr "Allow adding forwards only to requesting ip addresses"
 
 msgid "Enable additional logging"
 msgstr "Slå på ytterligare-loggning"
 
-# /home/reidar/juci/plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Puts extra debugging information into the system log"
 msgstr "Lägger till extra debugging information till system loggarna"
 
-# /home/reidar/juci/plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Downlink"
 msgstr "Nedlänk"
 
-# /home/reidar/juci/plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Value in KByte/s, informational only"
 msgstr "Värde i KByte/s, endast information"
 
-# /home/reidar/juci/plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Uplink"
 msgstr "Upplänk"
 
@@ -97,41 +88,33 @@ msgstr "Avanserade inställningar"
 msgid "Device UUID"
 msgstr "Enhets-UUID"
 
-# /home/reidar/juci/plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Announced serial number"
 msgstr "Annonserat serie nummer"
 
 msgid "Serial Number"
 msgstr "Serienummer"
 
-# /home/reidar/juci/plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Announced model number"
 msgstr "Annonserat modell nummer"
 
 msgid "Model Number"
 msgstr "Modell nummer"
 
-# /home/martin/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.device.edit.html
-
 msgid "Notify interval"
 msgstr "Notifieringsintervall"
 
-# /home/reidar/juci/plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Clean rules threshold"
 msgstr "Clean rules threshold"
 
-# /home/reidar/juci/plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Clean rules interval"
 msgstr "Clean rules interval"
 
-# /home/reidar/juci/plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Presentation URL"
 msgstr "Presentations URL"
 
 msgid "UPnP lease file"
 msgstr "UPnP lease fil"
 
-# /home/reidar/juci/plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "UPnP ACLs"
 msgstr "UPnP ACL listor"
 
@@ -189,15 +172,10 @@ msgstr "Antal paket"
 msgid "Proto"
 msgstr "Protokoll"
 
-msgid "upnpd-settings-title"
-msgstr "UHTTPD"
-
-msgid "upnpd-status-title"
-msgstr "UHTTPD"
-
 msgid "menu-upnpd-settings-title"
 msgstr "UHTTPD"
 
 msgid "menu-upnpd-status-title"
 msgstr "UHTTPD"
+
 

@@ -14,6 +14,19 @@ msgstr ""
 msgid "Zone does not exist!"
 msgstr "Zonen existerar inte!"
 
+msgid "Port can only contain spaces numbers and -"
+msgstr ""
+
+msgid "A port range can only contain one -"
+msgstr ""
+
+msgid ""
+"A port is between 1 and 65535 and start port must be lower than stop port"
+msgstr ""
+
+msgid "A port must be between 1 and 65535"
+msgstr ""
+
 msgid "Rule name can not be empty!"
 msgstr "Regeln måste ha ett namn"
 
@@ -26,8 +39,11 @@ msgstr "Destinationsporten får inte vara tom"
 msgid "Failed to create dmz configuration!"
 msgstr "Misslyckades med att skapa dmz konfiguration"
 
-msgid "A port forwarding rule with the same name already exists! Please specify a different name!"
-msgstr "Det finns redan en regel med samma namn! Var vänlig välj ett annat namn"
+msgid ""
+"A port forwarding rule with the same name already exists! Please specify a "
+"different name!"
+msgstr ""
+"Det finns redan en regel med samma namn! Var vänlig välj ett annat namn"
 
 msgid "Please select a rule to delete!"
 msgstr "Välj regel du vill ta bort"
@@ -125,14 +141,11 @@ msgstr "Välj befintlig enhet"
 msgid "Invalid MAC address"
 msgstr "Ogiltigt MAC adress"
 
-msgid "Source zone"
-msgstr "Käll-zon"
+msgid "Zone"
+msgstr ""
 
 msgid "IP"
 msgstr "IP"
-
-msgid "IP Address"
-msgstr "IP-adress"
 
 msgid "MAC"
 msgstr "MAC"
@@ -140,11 +153,8 @@ msgstr "MAC"
 msgid "Port"
 msgstr "Port"
 
-msgid "Destination zone"
-msgstr "Destinations-zon"
-
-msgid "Family"
-msgstr "Familj"
+msgid "IP Version"
+msgstr ""
 
 msgid "Firewall Action"
 msgstr "Åtgärd"
@@ -263,14 +273,21 @@ msgstr "IPv6-adress"
 msgid "Pick Existing Host"
 msgstr "Välj befintlig klient"
 
-msgid "Firewall dmz configuration does not exist yet. Do you want to create it?"
+msgid ""
+"Firewall dmz configuration does not exist yet. Do you want to create it?"
 msgstr "Brandväggs dmz inställnigarna existerar inte. Vill du skapa den?"
 
 msgid "Create"
 msgstr "Skapa"
 
-msgid "Choose the local IP address that should be exposed to Internet. Additionally you should configure this IP address as static DHCP address for your device (see Settings/Network)."
-msgstr "Välj vilken lokal IP-adress som ska exponeras mot Internet. Du bör konfigurera den enheten med statisk DHCP-adress (inställningen finns i Inställningar/Nätverk). "
+msgid ""
+"Choose the local IP address that should be exposed to Internet. Additionally "
+"you should configure this IP address as static DHCP address for your device "
+"(see Settings/Network)."
+msgstr ""
+"Välj vilken lokal IP-adress som ska exponeras mot Internet. Du bör "
+"konfigurera den enheten med statisk DHCP-adress (inställningen finns i "
+"Inställningar/Nätverk). "
 
 msgid "Packet Forwarding"
 msgstr "Vidarebefordring"
@@ -299,8 +316,12 @@ msgstr "Lägg till / ändra portmappning"
 msgid "Port Mapping"
 msgstr "Portmappning"
 
-msgid "Port mapping allows remote computers to connect to a specific device within your private network."
-msgstr "Portmappning tillåter andra datorer på internet att koppla upp sig till datorer på ditt lokala nätverk"
+msgid ""
+"Port mapping allows remote computers to connect to a specific device within "
+"your private network."
+msgstr ""
+"Portmappning tillåter andra datorer på internet att koppla upp sig till "
+"datorer på ditt lokala nätverk"
 
 msgid "Direction"
 msgstr "Riktning"
@@ -374,39 +395,6 @@ msgstr "Stopp tid"
 msgid "MAC Addresses"
 msgstr "MAC-adresser"
 
-msgid "internet-firewall-forwarding-title"
-msgstr "Paketforwarding"
-
-msgid "internet-firewall-wordfilter-title"
-msgstr "Ordfilter"
-
-msgid "internet-parental-control-title"
-msgstr "Föräldrakontroll"
-
-msgid "internet-firewall-zones-title"
-msgstr "Zoner"
-
-msgid "internet-firewall-port-mapping-title"
-msgstr "Port-mappning"
-
-msgid "internet-firewall-services-title"
-msgstr "Tjänster"
-
-msgid "internet-firewall-title"
-msgstr "Brandvägg"
-
-msgid "internet-firewall-dmz-title"
-msgstr "DMZ"
-
-msgid "internet-firewall-svcfilter-title"
-msgstr "Tjänstefilter"
-
-msgid "internet-firewall-rules-title"
-msgstr "Brandväggsregler"
-
-msgid "internet-firewall-urlblock-title"
-msgstr "URL-blockering"
-
 msgid "menu-internet-firewall-forwarding-title"
 msgstr "Paketforwarding"
 
@@ -439,3 +427,18 @@ msgstr "Brandväggsregler"
 
 msgid "menu-internet-firewall-urlblock-title"
 msgstr "URL-blockering"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

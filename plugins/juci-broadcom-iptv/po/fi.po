@@ -1,0 +1,132 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: Inteno\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+msgid "No DSCP"
+msgstr ""
+
+msgid "Standard (CS0)"
+msgstr ""
+
+msgid "Low-Priority Data"
+msgstr ""
+
+msgid "High-Throughput Data"
+msgstr ""
+
+msgid "Operation, Administration and Maintenance"
+msgstr ""
+
+msgid "Low-Latency Data"
+msgstr ""
+
+msgid "Broadcast Video"
+msgstr ""
+
+msgid "Multimedia Streamingi"
+msgstr ""
+
+msgid "Realtime Interactive"
+msgstr ""
+
+msgid "Multimedia Conferencing"
+msgstr ""
+
+msgid "Signaling"
+msgstr ""
+
+msgid "Telephony"
+msgstr ""
+
+msgid "Network Control"
+msgstr ""
+
+msgid "IGMP version "
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+msgid "Standard"
+msgstr ""
+
+msgid "Blocking"
+msgstr ""
+
+msgid "Differentiated Services Code Point (DSCP)"
+msgstr ""
+
+msgid "Will be used to mark all outgoing IGMP packets"
+msgstr ""
+
+msgid "Proxy interface"
+msgstr ""
+
+msgid "Default version"
+msgstr ""
+
+msgid "Choose default version from list"
+msgstr ""
+
+msgid "Query interval"
+msgstr ""
+
+msgid "Query response interval"
+msgstr ""
+
+msgid "Last member query interval"
+msgstr ""
+
+msgid "Robustness value"
+msgstr ""
+
+msgid "LAN to LAN multicast"
+msgstr ""
+
+msgid "Check box to enable LAN to LAN multicast"
+msgstr ""
+
+msgid "Max groups"
+msgstr ""
+
+msgid "Max sources"
+msgstr ""
+
+msgid "Max members"
+msgstr ""
+
+msgid "Fast leave"
+msgstr ""
+
+msgid "Join immediate"
+msgstr ""
+
+msgid "Enable IGMP proxy"
+msgstr ""
+
+msgid "Ignore SSM Range"
+msgstr ""
+
+msgid "Check box to ignore SSM RFC to enable regular multicast on SSM-Range"
+msgstr ""
+
+msgid "IGMP snooping mode"
+msgstr ""
+
+msgid "IGMP snooping interfaces"
+msgstr ""
+
+msgid "No mcpd configuration found!"
+msgstr ""
+
+msgid "menu-broadcom-iptv-title"
+msgstr ""

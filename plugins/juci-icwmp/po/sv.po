@@ -1,0 +1,102 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+msgid "Enabled"
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+msgid "Emergency"
+msgstr ""
+
+msgid "Alert"
+msgstr ""
+
+msgid "Critical"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Warning"
+msgstr ""
+
+msgid "Notice"
+msgstr ""
+
+msgid "Info"
+msgstr ""
+
+msgid "Debug"
+msgstr ""
+
+msgid "TR69 Settings"
+msgstr ""
+
+msgid "ACS User Name"
+msgstr ""
+
+msgid "ACS Password"
+msgstr ""
+
+msgid "URL"
+msgstr ""
+
+msgid "Periodic Inform Enable"
+msgstr ""
+
+msgid "Periodic Inform Interval"
+msgstr ""
+
+msgid "Periodic Inform Time"
+msgstr ""
+
+msgid "DHCP Discovery"
+msgstr ""
+
+msgid "WAN Interface"
+msgstr ""
+
+msgid "Connection Request User Name"
+msgstr ""
+
+msgid "Connection Request Password"
+msgstr ""
+
+msgid "Port"
+msgstr ""
+
+msgid "Log Severity Level"
+msgstr ""
+
+msgid "Log to console"
+msgstr ""
+
+msgid "Log to file"
+msgstr ""
+
+msgid "Log file max size"
+msgstr ""
+
+msgid "Provisioning Code"
+msgstr ""
+
+msgid "Configure ACS specific settings"
+msgstr ""
+
+msgid "Configure CPE specific settings"
+msgstr ""
+
+msgid "menu-icwmp-config-title"
+msgstr ""

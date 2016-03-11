@@ -35,8 +35,6 @@ msgstr "VLAN inställningar"
 msgid "VLAN Devices"
 msgstr "VLAN-enheter"
 
-msgid "page-broadcom-ethernet-vlan-title"
-msgstr "VLAN"
-
 msgid "menu-page-broadcom-ethernet-vlan-title"
 msgstr "VLAN"
+

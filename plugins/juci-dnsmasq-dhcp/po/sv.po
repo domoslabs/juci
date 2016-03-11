@@ -128,6 +128,9 @@ msgstr "IPv6 Värd-ID"
 msgid "DHCP Server"
 msgstr "DHCP server"
 
+msgid "DHCP Settings"
+msgstr "Generella Inställningar"
+
 msgid "General Settings"
 msgstr "Generella Inställningar"
 
@@ -186,19 +189,29 @@ msgid "Filter usless"
 msgstr "Filtrera värdelösa"
 
 msgid "Do not forward requests that cannot be answered by public name servers"
-msgstr "Vidarebefodra inte förfrågningar som inte kan svaras på av de publika namn-servrarna"
+msgstr ""
+"Vidarebefodra inte förfrågningar som inte kan svaras på av de publika namn-"
+"servrarna"
 
 msgid "Localise queries"
 msgstr "Localise queries"
 
-msgid "Localise hostname depending on the requesting subnet if multiple IPs are available"
-msgstr "Localise hostname depending on the requesting subnet if multiple IPs are available"
+msgid ""
+"Localise hostname depending on the requesting subnet if multiple IPs are "
+"available"
+msgstr ""
+"Localise hostname depending on the requesting subnet if multiple IPs are "
+"available"
 
 msgid "Local server"
 msgstr "Lokal server"
 
-msgid "Local domain specification. Names matching this domain are never forwared and resolved from DHCP or hosts files only"
-msgstr "Lokal domän specifikation. Namn som matchar detta domän kommer aldrig att vidarebefodras och resolv endast från DHCP eller värd filer"
+msgid ""
+"Local domain specification. Names matching this domain are never forwared "
+"and resolved from DHCP or hosts files only"
+msgstr ""
+"Lokal domän specifikation. Namn som matchar detta domän kommer aldrig att "
+"vidarebefodras och resolv endast från DHCP eller värd filer"
 
 msgid "Expand hosts"
 msgstr "Expandera värdar"
@@ -245,7 +258,8 @@ msgstr "Förkasta uppströms RFC1918 svar"
 msgid "Allow localhost"
 msgstr "Tillåt lokalvärd"
 
-msgid "Allow upstream responses in the 127.0.0.0/8 range, e.g. for RBL services"
+msgid ""
+"Allow upstream responses in the 127.0.0.0/8 range, e.g. for RBL services"
 msgstr "Tillåt uppströms svar i 127.0.0.0/8 räckvidden, tex. RBL services"
 
 msgid "Domain whitelist"
@@ -290,14 +304,10 @@ msgstr "Maximalt tillåtet antal samverkande DNS förfrågningar"
 msgid "Hostname Entries"
 msgstr "Värdnamnsinlägg"
 
-msgid "dhcp-status-title"
-msgstr "DHCP Status"
-
-msgid "dhcp-settings-title"
-msgstr "DHCP Inställningar"
-
 msgid "menu-dhcp-status-title"
 msgstr "DHCP Status"
 
 msgid "menu-dhcp-settings-title"
 msgstr "DHCP Inställningar"
+
+

@@ -11,18 +11,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-# /home/martin/juci/plugins/juci-sysupgrade/src/sysupgrade.js
-msgid "A new system software upgrade is available. Do you want to visit upgrade page and upgrade now?"
+msgid ""
+"A new system software upgrade is available. Do you want to visit upgrade "
+"page and upgrade now?"
 msgstr "Nytt version av mjukvaran är tillgänglig. Vill du uppgradera nu? "
 
 msgid "Verifying firmware image"
 msgstr "Verifierar firmwarefil"
 
-# /home/reidar/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.js
 msgid "Image check failed"
 msgstr "Test av filen misslyckades"
 
-# /home/martin/juci/juci//src/js/rpc.js
 msgid "OK"
 msgstr "OK"
 
@@ -32,48 +31,44 @@ msgstr "Fel:"
 msgid "No upgrade has been found!"
 msgstr "Ingen uppgradering hittades"
 
-# /home/martin/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "Online upgrade check failed"
 msgstr "Online uppgraderingstest misslyckades"
 
-# /home/martin/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "USB upgrade check failed"
 msgstr "USB uppgraderingstest misslyckades. "
 
-# /home/reidar/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.js
 msgid "Do you want to keep your configuration?"
 msgstr "Vill du spara inställningarna?"
 
-msgid "If you answer yes then your configuration will be saved before the upgrade and restored after the upgrade has completed. If you choose 'no' then all your current configuration will be reset to defaults."
-msgstr "Om du svarar ja så kommer dina inställningar att bevaras under uppgraderingen. "
+msgid ""
+"If you answer yes then your configuration will be saved before the upgrade "
+"and restored after the upgrade has completed. If you choose 'no' then all "
+"your current configuration will be reset to defaults."
+msgstr ""
+"Om du svarar ja så kommer dina inställningar att bevaras under "
+"uppgraderingen. "
 
 msgid "Yes"
 msgstr "Ja"
 
-# /home/martin/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-dhcpv6-edit.js
 msgid "No"
 msgstr "Nej"
 
-# /home/reidar/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.js
 msgid "Abort"
 msgstr "Avbryt"
 
-# /home/reidar/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.js
 msgid "The server returned an error"
 msgstr "Servern returnerade ett fel"
 
 msgid "Upload completed!"
 msgstr "Uppladdningen slutförd"
 
-# /home/martin/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
 msgid ".w (JFFS Image)"
 msgstr ".w (JFFS Mjukvara)"
 
-# /home/martin/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
 msgid ".y (UBIFS Image)"
 msgstr ".y (UBIS Mjukvara)"
 
-# /home/martin/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
 msgid "fs_image (RAW Rootfs Image)"
 msgstr "fs_image (RAW Rootfs Mjukvara)"
 
@@ -83,7 +78,6 @@ msgstr "Du måste välja ett nätverk!"
 msgid "Pick image to upgrade"
 msgstr "Välj firmware för uppladdning"
 
-# /home/martin/juci/plugins/juci-sysupgrade/src/widgets/upgrade.popup.html
 msgid "New software is available"
 msgstr "Ny uppgradering finns tillgänglig!"
 
@@ -91,7 +85,11 @@ msgid "Firmware Upgrade"
 msgstr "Uppgradering"
 
 msgid "settings.upgrade.info"
-msgstr "Här kan du uppdatera programvaran på din EasyBox. Om det behövs, är det möjligt att uppdatera Easybox inbyggda programvaran manuellt. Dina nuvarande inställningar kommer inte att påverkas av programvara uppgradering förfarande."
+msgstr ""
+"Här kan du uppdatera programvaran på din EasyBox. Om det behövs, är det "
+"möjligt att uppdatera Easybox inbyggda programvaran manuellt. Dina nuvarande "
+"inställningar kommer inte att påverkas av programvara uppgradering "
+"förfarande."
 
 msgid "Current Firmware Version"
 msgstr "Nuvarande mjukvaruversion"
@@ -100,7 +98,10 @@ msgid "Online Update"
 msgstr "Online-uppgradering"
 
 msgid "settings.upgrade.online.info"
-msgstr "Klicka på \"Sök efter uppdatering\" för att starta en online-programvaruuppgradering. Om en ny firmware finns, kommer det att installeras automatiskt på din EasyBox (Internet-anslutning krävs)."
+msgstr ""
+"Klicka på \"Sök efter uppdatering\" för att starta en online-"
+"programvaruuppgradering. Om en ny firmware finns, kommer det att installeras "
+"automatiskt på din EasyBox (Internet-anslutning krävs)."
 
 msgid "Check for Upgrade"
 msgstr "Sök efter uppdatering"
@@ -112,13 +113,20 @@ msgid "USB Firmware Upgrade"
 msgstr "USB Uppgradering"
 
 msgid "settings.upgrade.usb.info"
-msgstr "Det är möjligt att uppdatera firmware från en fil som sparats på ett USB-minne ansluten till USB-porten på din EasyBox. Klicka på \"Install Update\" för att starta uppgraderingen av automatiska firmware. Observera att det bör finnas en enda firmware-fil att den bör vara placerad under huvudkatalogen (ingen sökning i undermappar)."
+msgstr ""
+"Det är möjligt att uppdatera firmware från en fil som sparats på ett USB-"
+"minne ansluten till USB-porten på din EasyBox. Klicka på \"Install Update\" "
+"för att starta uppgraderingen av automatiska firmware. Observera att det bör "
+"finnas en enda firmware-fil att den bör vara placerad under huvudkatalogen "
+"(ingen sökning i undermappar)."
 
 msgid "Manual Firmware Upgrade"
 msgstr "Manuell uppgradering"
 
 msgid "settings.upgrade.manual.info"
-msgstr "Det är möjligt att uppdatera firmware från fil en sparad uppdatering. Den senaste versionen kan hittas på www.dsl-easybox.de."
+msgstr ""
+"Det är möjligt att uppdatera firmware från fil en sparad uppdatering. Den "
+"senaste versionen kan hittas på www.dsl-easybox.de."
 
 msgid "Pick firmware file to upload"
 msgstr "Välj firmware för uppladdning"
@@ -129,11 +137,9 @@ msgstr "Påbörja uppgradering"
 msgid "Upgrade"
 msgstr "Uppgradera"
 
-# /home/martin/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "Online upgrade is disabled"
 msgstr "Online uppgradering är avaktiverad. "
 
-# /home/martin/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "USB upgrade is disabled"
 msgstr "USB uppgradering är avaktiverad. "
 
@@ -146,18 +152,15 @@ msgstr "Uppgraderingsalternativ"
 msgid "settings.upgrade.options.info"
 msgstr "Här kan du uppgradera mjukvaran på boxen till senaste versionen"
 
-# /home/martin/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
 msgid "URL for file with latest image filename"
 msgstr "URL för filen som innehåller sökvägen till senaste upgrade"
 
 msgid "URL"
 msgstr "URL"
 
-# /home/martin/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
 msgid "Upgrade URL base path"
 msgstr "Bas-URL för uppgraderingen"
 
-# /home/martin/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
 msgid "HTTP Directory"
 msgstr "HTTP mapp"
 
@@ -170,14 +173,10 @@ msgstr "Online-uppgradering"
 msgid "USB Upgrade"
 msgstr "USB uppgradering"
 
-msgid "settings-upgrade-title"
-msgstr "Uppgradera"
-
-msgid "settings-upgrade-options-title"
-msgstr "Uppgradera"
-
 msgid "menu-settings-upgrade-title"
 msgstr "Uppgradera"
 
 msgid "menu-settings-upgrade-options-title"
 msgstr "Uppgradera"
+
+

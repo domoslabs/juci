@@ -56,8 +56,6 @@ msgstr "Status"
 msgid "Action"
 msgstr "Handling"
 
-msgid "voice-dect-title"
-msgstr "DECT"
-
 msgid "menu-voice-dect-title"
 msgstr "DECT"
+

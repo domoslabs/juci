@@ -11,7 +11,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-# /home/reidar/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.js
 msgid "Dropbear Instance on Interface: "
 msgstr "Dropbear på interface: "
 
@@ -21,14 +20,12 @@ msgstr "Alla"
 msgid "Please select a instance in the list to remove"
 msgstr "Välj vilken som skall tas bort"
 
-# /home/reidar/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.js
 msgid "Unable to remove last instance"
 msgstr "Kunde inte ta bort sista"
 
 msgid "Are you sure you want to remove this instance?"
 msgstr "Är du säker på att du vill ta bort denna? "
 
-# /home/reidar/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.js
 msgid "Key ending with"
 msgstr "Nyckel som slutar med"
 
@@ -38,15 +35,14 @@ msgstr "Du måste ange din publika nyckel!"
 msgid "Paste your key here:"
 msgstr "Skriv din PIN här"
 
-# /home/reidar/juci/plugins/juci-dropbear/src/widgets/dropbear-add-key.html
 msgid "Add new SSH key"
 msgstr "Lägg till ny SSH nyckel"
 
 msgid "Banner File"
 msgstr "Banner-fil"
 
-# /home/martin/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.html
-msgid "Name of a file to be printed before the user has authenticated successfully"
+msgid ""
+"Name of a file to be printed before the user has authenticated successfully"
 msgstr "Namn på filen som ska användas som banner när användaren loggar in"
 
 msgid "Banner File Path"
@@ -67,7 +63,6 @@ msgstr "Tillåt inloggning med lösenord för root"
 msgid "Enable Root Login"
 msgstr "Tillåt inloggning för root"
 
-# /home/martin/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.html
 msgid "Enable Forwarded Ports"
 msgstr "Slå på port-forwarding funktionalitet"
 
@@ -92,25 +87,21 @@ msgstr "SSH"
 msgid "General settings"
 msgstr "Generella Inställningar"
 
-# /home/martin/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.html
 msgid "Start/Stop Service"
 msgstr "Starta/Stoppa tjänsten"
 
-# /home/martin/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.html
 msgid "Start or stop service"
 msgstr "Starta eller stoppa tjänsten"
 
 msgid "Enabled"
 msgstr "Aktiv"
 
-# /home/martin/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.html
 msgid "Enable/Disable starting SSH service during boot"
 msgstr "Slå på/av SSH tjänsten"
 
 msgid "Verbose logging"
 msgstr "Utförlig loggning"
 
-# /home/martin/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.html
 msgid "Set to 1 to enable verbose output by the start script"
 msgstr "Sätt till 1 för att slå på extra logginformation"
 
@@ -120,13 +111,9 @@ msgstr "Dropbear instanser"
 msgid "settings.dropbear.instance"
 msgstr "Inställningar för SSH-åtkomst till din router"
 
-# /home/reidar/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.html
 msgid "Accepted SSH keys"
 msgstr "Accepterade SSH nycklar"
 
-msgid "settings-management-dropbear-title"
-msgstr "SSH"
-
-# /home/martin/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.html
 msgid "menu-settings-management-dropbear-title"
 msgstr "SSH"
+

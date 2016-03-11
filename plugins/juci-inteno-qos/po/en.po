@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -11,16 +11,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
+msgid "Low"
+msgstr ""
 
-# /home/reidar/juci/plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html 
+msgid "All"
+msgstr ""
+
+msgid "TCP"
+msgstr ""
+
+msgid "UDP"
+msgstr ""
+
+msgid "ICMP"
+msgstr ""
+
+msgid "Target"
+msgstr ""
+
+msgid "Precedence"
+msgstr ""
+
+msgid "Source host"
+msgstr ""
+
+msgid "Destination host"
+msgstr ""
+
+msgid "Protocol"
+msgstr ""
+
+msgid "Port"
+msgstr ""
+
+msgid "Filter by port, when there are no ports no filter will be applied"
+msgstr ""
+
 msgid "Quality of service settings"
 msgstr ""
 
--e # /home/reidar/juci/plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html 
-msgid "juci-inteno-qos-title"
-msgstr "Quality of service"
-
--e # /home/reidar/juci/plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html 
 msgid "menu-juci-inteno-qos-title"
 msgstr "Quality of service"
 
