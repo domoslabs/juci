@@ -21,6 +21,7 @@ function sysupgrade_check(params)
 end
 
 function sysupgrade_test(params)
+	print(json.encode({ ret="success"}));
 	local res = {}; 
 	local path = "/tmp/firmware.bin"; 
 	if params["path"] then path = params["path"] end
@@ -28,7 +29,7 @@ function sysupgrade_test(params)
 	res["stdout"] = stdout;
 	res["stderr"] = stderr; 
 	res["error"] = ret; 
-	print(json.encode(res)); 
+	juci.shell("ubus send 'sysupgrade-test' '{\"stdout\":\""..stdout.."\", \"stderr\":\""..stderr.."\", \"error\":\""..ret.."\"}'");
 end
 
 function sysupgrade_start(params)

@@ -19,7 +19,7 @@
  */
  
 JUCI.app
-.controller("SettingsUpgradeCtrl", function($scope, $uci, $config, $rpc, $tr, gettext, $juciDialog){
+.controller("SettingsUpgradeCtrl", function($scope, $uci, $config, $rpc, $tr, gettext, $juciDialog, $events){
 	$scope.sessionID = $rpc.$sid();
 	$scope.uploadFilename = "/tmp/firmware.bin";
 	$scope.usbFileName = "()"; 
@@ -56,6 +56,8 @@ JUCI.app
 	}
 	
 	function upgradeStart(path, keep){
+		$scope.$PATH = path;
+		$scope.$KEEP = keep;
 		$scope.showUpgradeStatus = 1; 
 		$scope.error = null; 
 		$scope.message = gettext("Verifying firmware image")+"...";					
@@ -64,30 +66,29 @@ JUCI.app
 		
 		console.log("Trying to upgrade from "+path); 
 	
-		$rpc.juci.system.upgrade.test({"path": path}).done(function(result){
-			$scope.showUpgradeStatus = 0; 
-			$scope.$apply(); 
-
-			if(result && result.error && result.stdout) {
-				$juciDialog.show(null, {
-					title: $tr(gettext("Image check failed")),
-					buttons: [{ label: $tr(gettext("OK")), value: "ok", primary: true }],
-					on_button: function(btn, inst){
-						inst.dismiss("ok");
-					},
-					content: ($tr(gettext("Error: ")) + result.stdout)
-				});
-				return; 
-			}
-
-			$rpc.juci.system.upgrade.start({"path": path, "keep": ((keep)?1:0)}); // this never completes
-			window.location = "/reboot.html";  
-		}).fail(function(){
+		$rpc.juci.system.upgrade.test({"path": path}).fail(function(){
 			$scope.showUpgradeStatus = 0; 
 			$scope.$apply(); 
 			alert("Image check failed!"); 
 		});
-	}
+	};
+	$events.subscribe("sysupgrade-test", function(result){
+		$scope.showUpgradeStatus = 0; 
+		$scope.$apply();
+		if(result.data && result.data.error && result.data.stdout) {
+			$juciDialog.show(null, {
+				title: $tr(gettext("Image check failed")),
+				buttons: [{ label: $tr(gettext("OK")), value: "ok", primary: true }],
+				on_button: function(btn, inst){
+					inst.dismiss("ok");
+				},
+				content: ($tr(gettext("Error: ")) + result.data.stdout)
+			});
+			return; 
+		}
+		$rpc.juci.system.upgrade.start({"path": $scope.$PATH, "keep": (($scope.$KEEP)?1:0)}); // this never completes
+		window.location = "/reboot.html";  
+	});
 	$scope.onDismissModal = function(){
 		$scope.showUpgradeStatus = false;
 	};
