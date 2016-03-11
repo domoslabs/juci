@@ -18,7 +18,7 @@
  * 02110-1301 USA
  */
 
-JUCI.app.run(function($uci, $rpc, $tr, gettext, upgradePopup){
+/*JUCI.app.run(function($uci, $rpc, $tr, gettext, upgradePopup){
 	var upgrades = []; 
 	
 	async.series([
@@ -39,9 +39,9 @@ JUCI.app.run(function($uci, $rpc, $tr, gettext, upgradePopup){
 		function(next){
 			$rpc.juci.system.upgrade.check().done(function(response){
 				if(response.all && response.all.length) {
-					/*upgradePopup.show({ images: response.all.map(function(x){ return { label: x, value: x }; }) }).done(function(selected){
+					upgradePopup.show({ images: response.all.map(function(x){ return { label: x, value: x }; }) }).done(function(selected){
 						$rpc
-					}); */
+					}); 
 					if(confirm($tr(gettext("A new system software upgrade is available. Do you want to visit upgrade page and upgrade now?")))) {
 						window.location = "/#!/settings-upgrade"; 
 					}
@@ -52,4 +52,4 @@ JUCI.app.run(function($uci, $rpc, $tr, gettext, upgradePopup){
 	], function(){
 		
 	}); 
-}); 
+}); /*
