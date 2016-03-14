@@ -21,7 +21,7 @@
 						</div>
 					</juci-config-line>
 					<juci-config-line title="{{'MAC'|translate}}">
-						<input type="text" class="form-control" ng-model="rule.src_mac.value" placeholder="{{'MAC Address'|translate}}"/>
+						<tags-input ng-model="data.src_macs" on-tag-adding="testMac($tag)" placeholder="Add MAC Address" add-on-space="true"></tags-input>
 					</juci-config-line>
 					<juci-config-line title="{{'Port'|translate}}">
 						<input type="text" class="form-control" ng-model="rule.src_port.value" placeholder="{{'Port'|translate}}"/>
@@ -43,7 +43,7 @@
 						</div>
 					</juci-config-line>
 					<juci-config-line title="{{'MAC'|translate}}">
-						<input type="text" class="form-control" ng-model="rule.dest_mac.value" placeholder="{{'MAC Address'|translate}}"/>
+						<tags-input ng-model="data.dest_macs" on-tag-adding="testMac($tag)" placeholder="Add MAC Address" add-on-space="true"></tags-input>
 					</juci-config-line>
 					<juci-config-line title="{{'Port'|translate}}">
 						<input type="text" class="form-control" ng-model="rule.dest_port.value" placeholder="{{'Port'|translate}}"/>

@@ -92,12 +92,22 @@ JUCI.app
 	$scope.$watch("rule", function(rule){
 		if(!rule) return; 
 		var rule = $scope.rule; 
+		$scope.data.src_macs = rule.src_mac.value.map(function(x){ return {text:x}; });
+		$scope.data.dest_macs = rule.dest_mac.value.map(function(x){ return {text:x}; });
 		$scope.data.dest_ips = rule.dest_ip.value.map(function(x){ return {text:x}; });
 		$scope.data.src_ips = rule.src_ip.value.map(function(x){ return {text:x}; });
 	}); 
 	$scope.$watch("data.dest_ips", function(ips){
 		if(!$scope.rule || !ips) return;
 		$scope.rule.dest_ip.value = ips.map(function(x){ return x.text;});;
+	}, true);
+	$scope.$watch("data.src_macs", function(mac){
+		if(!$scope.rule || !mac) return;
+		$scope.rule.src_mac.value = mac.map(function(x){ return x.text;});;
+	}, true);
+	$scope.$watch("data.dest_macs", function(mac){
+		if(!$scope.rule || !mac) return;
+		$scope.rule.dest_mac.value = mac.map(function(x){ return x.text;});;
 	}, true);
 	$scope.$watch("data.src_ips", function(ips){
 		if(!$scope.rule || !ips) return;
@@ -108,10 +118,15 @@ JUCI.app
 	var iprange = new $uci.validators.IP4CIDRValidator;
 	var ipv6 = new $uci.validators.IP6AddressValidator;
 	var ip6range = new $uci.validators.IP6CIDRValidator;
+	var mac = new $uci.validators.MACAddressValidator;
 
 	$scope.testIp = function($tag){
 		if(ipv4.validate({value:$tag.text}) == null || iprange.validate({value:$tag.text}) == null || 
 			ipv6.validate({value:$tag.text}) == null || ip6range.validate({value:$tag.text}) == null) return true;
+		return false;
+	};
+	$scope.testMac = function($tag){
+		if(mac.validate({value:$tag.text}) == null) return true;
 		return false;
 	};
 			
