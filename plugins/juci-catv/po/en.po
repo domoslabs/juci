@@ -1,0 +1,48 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+# /home/reidar/juci/plugins/juci-catv/src/pages/settings-management-catv.js
+msgid "47MHz ~ 1000MHz"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-catv/src/pages/settings-management-catv.js
+msgid "47MHz ~ 591MHz"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-catv/src/pages/settings-management-catv.js
+msgid "47MHz ~ 431MHz"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-catv/src/pages/settings-management-catv.html
+msgid "CATV Settings"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-catv/src/pages/settings-management-catv.html
+msgid "Enable"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-catv/src/pages/settings-management-catv.html
+msgid "Enable bandwidth filtering"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-catv/src/pages/settings-management-catv.html
+msgid "Filter"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-catv/src/pages/status-catv.html
+msgid "menu-status-catv-title"
+msgstr "CATV"
+
+# /home/reidar/juci/plugins/juci-catv/src/pages/settings-management-catv.html
+msgid "menu-settings-management-catv-title"
+msgstr "CATV"
