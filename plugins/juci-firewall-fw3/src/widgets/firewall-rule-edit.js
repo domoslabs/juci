@@ -53,7 +53,7 @@ JUCI.app
 	
 	$firewall.getZones().done(function(zones){
 		$scope.allZones = []; 
-		$scope.allZones.push({ label: $tr(gettext("Unspecified")), value: "" }); 
+		$scope.allZones.push({ label: $tr(gettext("Device")), value: "" }); 
 		$scope.allZones.push({ label: $tr(gettext("Any")), value: "*" }); 
 		zones.map(function(x){
 			$scope.allZones.push({ label: String(x.name.value).toUpperCase(), value: x.name.value }); 
