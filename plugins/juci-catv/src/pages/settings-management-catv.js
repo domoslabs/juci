@@ -4,7 +4,6 @@ JUCI.app
 .controller("settingsManagementCatvCtrl", function($uci, $scope, $tr, gettext){
 	$uci.$sync("catv").done(function(){
 		$scope.catv = $uci.catv.catv;
-		console.log($scope.catv);
 		$scope.$apply();
 	});
 	$scope.filterTypes = [
