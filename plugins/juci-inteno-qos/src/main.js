@@ -31,6 +31,12 @@ UCI.qos.$registerSectionType("classgroup", {
 	"classes":	{ dvalue: 'Priority Express Normal Bulk', type: String },
 	"default": 	{ dvalue: 'Normal', type: String }
 });
+UCI.qos.$registerSectionType("interface", {
+	"iface":	{ dvalue: 'No Interface', type: String },
+	"enabled":	{ dvalue: false, type: Boolean },
+	"download":	{ dvalue: '', type: Number },
+	"upload":	{ dvalue: '', type: Number }
+});
 
 JUCI.app.factory("intenoQos", function($uci){
 	function Qos(){ }

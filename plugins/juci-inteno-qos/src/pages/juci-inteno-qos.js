@@ -21,6 +21,7 @@
 JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, intenoQos){
 	$uci.$sync(["qos"]).done(function(){
 		$scope.qos = $uci.qos["@classify"];
+		$scope.ifaces = $uci.qos["@interface"];
 		$scope.$apply();
 	});
 
@@ -29,12 +30,32 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 		$scope.$apply(); 
 	}); 
 
-	$scope.onAddRule = function(item){
+	$scope.onAddRule = function(){
 		$uci.qos.$create({
 			".type": "classify"
 		}).done(function(section){
 			$scope.$apply(); 
 		}); 
+	};
+
+	$scope.onAddIface = function(){
+		$uci.qos.$create({
+			".type": "interface"
+		}).done(function(){
+			$scope.$apply();
+		});
+	};
+
+	$scope.onDeleteIface = function(item){
+		if(!item) return;
+		item.$delete().done(function(){
+			$scope.$apply();
+		});
+	};
+
+	$scope.getIfaceTitle = function(item){
+		if(!item) return "";
+		return String(item.iface.value).toUpperCase();
 	};
 
 	$scope.onDeleteRule = function(item){

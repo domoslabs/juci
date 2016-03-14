@@ -1,0 +1,18 @@
+<div>
+	<juci-config-lines>
+		<juci-config-line title="{{'Enable'|translate}}">
+			<switch class="green" ng-model="instance.enabled.value" />
+		</juci-config-line>
+		<div ng-show="instance.enabled.value">
+			<juci-config-line title="{{'Interface'|translate}}" help="{{'Interface to apply the restrictions on'|translate}}">
+				<juci-select ng-items="ifaces" ng-model="instance.iface.value"></juci-select>
+			</juci-config-line>
+			<juci-config-line title="{{'Download Speed Limit'|translate}}">
+				<input type="number" min="1" class="form-control" ng-model="instance.download.value" />
+			</juci-config-line>
+			<juci-config-line title="{{'Upload Speed Limit'|translate}}">
+				<input type="number" min="1" class="form-control" ng-model="instance.upload.value" />
+			</juci-config-line>
+		</div>
+	</juci-config-lines>
+</div>
