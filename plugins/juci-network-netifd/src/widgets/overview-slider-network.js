@@ -50,7 +50,7 @@ JUCI.app
 		
 		nodes.push({
 			id: ".root",
-			label: $config.board.system,
+			label: $config.board.system.hardware,
 			image: "/img/net-router-icon.png", 
 			shape: "image", 
 			x: 50, y: 0, 

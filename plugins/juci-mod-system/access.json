@@ -45,6 +45,9 @@
 					"disable",
 					"reload"
 				],
+				"router": [
+					"info"
+				],
 				"system": [
 					"info",
 					"board"
