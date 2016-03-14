@@ -1,0 +1,25 @@
+{
+	"juci-sfp": {
+		"description": "JUCI SFP module",
+		"read": {
+			"ubus": {
+				"sfp.ddm": [
+					"get-all"
+				],
+				"sfp.rom": [
+					"get-all"
+				]
+			}
+		}, 
+		"write": {
+			"ubus": {
+				"sfp.ddm": [
+					"get-all"
+				],
+				"sfp.rom": [
+					"get-all"
+				]
+			}
+		}
+	}
+}
