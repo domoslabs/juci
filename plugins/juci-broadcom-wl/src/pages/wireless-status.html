@@ -6,11 +6,15 @@
 			<div class="col-md-6"  ng-repeat="radio in wlRadios track by $index">
 				<h2>{{'Radio'|translate}} {{radio.frequency}}</h2>
 				<table class="table table-condensed">
-					<tr><th translate>Current Channel</th><td>{{radio.current_channel}}</td></tr>
+					<tr><th translate>Channel</th><td>{{radio.current_channel}}</td></tr>
+					<tr><th translate>Radio Rate</th><td>{{radio.rate}}</td></tr>
 				</table>
 			</div>
 		</div>
 		<juci-config-lines>
+			<juci-config-line title="{{'Frequency to Scan'|translate}}">
+				<juci-select ng-items="scanableRadios" ng-model="radioToScan.value"></juci-select>
+			</juci-config-line>
 			<juci-config-line title="{{'Scan neighboring APs'|translate}}">
 				<button ng-disabled="scanning" ng-click="doScan()" class="btn btn-default">
 					<span ng-show="!scanning">Scan</span>
@@ -18,7 +22,7 @@
 				</button>
 			</juci-config-line>
 		</juci-config-lines>
-		<div ng-show="dfs_enabled" class="alert alert-info" translate>You will not be able to scan 5Ghz band because your 5Ghz wifi radio is configured to use DFS channels</div> 
+		<div ng-show="dfs_enabled" class="alert alert-info" translate>You will not be able to scan 5Ghz band because your 5Ghz wifi radio is operating at a DFS channel</div> 
 		<wireless-aps-graph ng-model="access_points"></wireless-aps-graph>
 		<br>
 		<table class="table" ng-show="access_points">

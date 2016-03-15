@@ -35,7 +35,6 @@
 				if(UBUS.router){
 					UBUS.router.info().done(function(info){
 						self.board = info; 
-						console.log(info);
 					}).always(function(){ next(); }); 
 				} else {
 					next(); 

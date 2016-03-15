@@ -21,7 +21,7 @@
 					"scan", 
 					"scanresults"
 				],
-				"juci.broadcom.wld": [
+				"/juci/broadcom.wireless.lua": [
 					"scan", 
 					"scanresults"
 				]

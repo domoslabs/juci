@@ -73,7 +73,15 @@ JUCI.app
 
 	$scope.$watch("scan_list", function(value){
 		if(!value) return; 		
-	
+		var min = parseInt(value[0].channel);
+		var max = parseInt(value[0].channel);
+		value.map(function(val){
+			if(parseInt(val.channel) > max) max = parseInt(val.channel);
+			if(parseInt(val.channel) < min) min = parseInt(val.channel);
+		});
+		options.start = (min - 5);
+		options.end = (max + 5);
+		graph2d.setOptions(options);
 		dataset.remove(dataset.getIds()); 
 		value.map(function(ap){
 			var group = 1; 

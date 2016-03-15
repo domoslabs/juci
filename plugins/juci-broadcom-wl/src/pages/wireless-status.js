@@ -22,27 +22,33 @@ JUCI.app
 		$scope.predicate = pred; 
 		$scope.reverse = !$scope.reverse;
 	}
+	$scope.radioToScan = {};
 	$uci.$sync("wireless").done(function(){
 		$rpc.juci.wireless.radios().done(function(data){
 			$scope.wlRadios = Object.keys(data).map(function(x){ return data[x]; }); ; 
+			$scope.scanableRadios = $scope.wlRadios.filter(function(radio){
+				return parseInt(radio.current_channel) < 52;
+			}).map(function(radio){
+				return { label: radio.frequency, value: radio.device };
+			});
+			$scope.dfs_enabled = ($scope.wlRadios.length != $scope.scanableRadios.length);
+			$scope.radioToScan.value = $scope.scanableRadios[0].value || null;
+			console.log($scope.radioToScan.value);
 			$scope.$apply(); 
 		});
-		$scope.dfs_enabled = $uci.wireless["@wifi-device"].find(function(x){ return x.dfsc.value != 0; }) != null; 
 		$scope.doScan = function(){
+			if($scope.radioToScan.value == null)return;
 			$scope.scanning = 1; 
-			async.eachSeries($uci.wireless["@wifi-device"].filter(function(x){ return x.dfsc.value == 0; }), function(dev, next){
-				console.log("Scanning on "+dev[".name"]); 
-				$wireless.scan({device: dev[".name"]}).done(function(){
-					setTimeout(function(){
-						console.log("Getting scan results for "+dev[".name"]); 
-						$wireless.getScanResults({device: dev[".name"]}).done(function(aps){
-							$scope.access_points = aps;
-							$scope.scanning = 0; 
-							$scope.$apply(); 
-						}); 
-					}, 5000); 
-					next(); 
-				}); 
+			console.log("Scanning on "+$scope.radioToScan.value); 
+			$wireless.scan({device: $scope.radioToScan.value}).done(function(){
+				setTimeout(function(){
+					console.log("Getting scan results for "+$scope.radioToScan.value); 
+					$wireless.getScanResults({device: $scope.radioToScan.value }).done(function(aps){
+						$scope.access_points = aps;
+						$scope.scanning = 0; 
+						$scope.$apply(); 
+					}); 
+				}, 5000); 
 			}); 
 		} 
 	}); 
