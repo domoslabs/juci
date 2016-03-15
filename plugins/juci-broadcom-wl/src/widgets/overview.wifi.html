@@ -11,10 +11,8 @@
 		</div>
 		<div class="row" style="margin-bottom: 10px;">
 			<div class="col-xs-3" style="text-align: center;"><i class="juci juci-wps fa-2x"></i></div>
-<!--				<a class="overview-list-item-text" href="#!/wireless-wps"><strong>{{'Pair (within 2 minutes)'|translate}}</strong></a><br/>-->
 			<div class="col-xs-9" style="float:right;text-align:right;">
-				<button class="btn btn-default {{wifiStatus.wps.value?'':'disabled'}}" title="{{'(within 2 minutes)'|translate}}" ng-click="onPairPBC()">{{'Pair'|translate}}</button>
-				<!--<a class="label label-{{(wifiStatus.wps.value)?'success':'default'}} pull-right overview-list-item-label" href="" ng-click="onWPSToggle()"><strong ng-show="!wifiStatus.wps.value">{{'Off'|translate}}</strong><strong ng-show="wifiStatus.wps.value">{{'On'|translate}}</strong></a>-->
+				<button class="btn btn-default {{wifiStatus.wps.value?'':'disabled'}}" title="{{'(within 2 minutes)'|translate}}" ng-click="onPairPBC()">{{'WPS Pair'|translate}}</button>
 			</div>
 		</div>
 		<div class="row">
@@ -28,13 +26,13 @@
 				<table class="table table-condensed" ng-repeat="iface in vifs track by $index">
 					<thead>
 						<th colspan="2">
-							<i class="fa fa-edit fa-lg" style="float: right; cursor: pointer;" ng-click="onEditSSID(iface)"></i>
+							<i class="fa fa-edit fa-2x" style="float: right; cursor: pointer;" ng-click="onEditSSID(iface)"></i>
 							<i class="fa fa-toggle-right" style="cursor: pointer;" ng-show="!iface._expanded" ng-click="iface._expanded = !iface._expanded"></i>
 							<i class="fa fa-toggle-down" style="cursor: pointer;" ng-show="iface._expanded" ng-click="iface._expanded = !iface._expanded"></i>
 							<span ng-click="iface._expanded = !iface._expanded" style="cursor: pointer;">{{iface.ssid + ' (' + iface.frequency + ')'}}</span>
 						</th>
 					</thead>
-					<tr ng-show="iface._expanded" ng-repeat="i in [['Frequency', 'frequency'], ['Channel', 'channel'], ['Noise', 'noise']]">
+					<tr ng-show="iface._expanded" ng-repeat="i in [['Frequency', 'frequency'], ['Channel', 'channel'], ['Noise', 'noise'], ['Rate', 'rate']]">
 						<td><strong translate>{{i[0] | translate}}</strong></td>
 						<td style="font-size: 0.8pn; text-align: right;">{{iface[i[1]] || "-"}}</td>
 					</tr>

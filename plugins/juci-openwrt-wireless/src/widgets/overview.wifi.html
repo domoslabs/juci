@@ -29,7 +29,7 @@
 				<table class="table table-condensed" ng-repeat="iface in vifs track by $index">
 					<thead>
 						<th colspan="2">
-							<i class="fa fa-edit fa-lg" style="float: right; cursor: pointer;" ng-click="onEditSSID(iface)"></i>
+							<i class="fa fa-edit fa-2x" style="float: right; cursor: pointer;" ng-click="onEditSSID(iface)"></i>
 							<i class="fa fa-toggle-right" style="cursor: pointer;" ng-show="!iface._expanded" ng-click="iface._expanded = !iface._expanded"></i>
 							<i class="fa fa-toggle-down" style="cursor: pointer;" ng-show="iface._expanded" ng-click="iface._expanded = !iface._expanded"></i>
 							<span ng-click="iface._expanded = !iface._expanded" style="cursor: pointer;">{{iface.ssid + ' (' + iface.mode + ')'}}</span>
