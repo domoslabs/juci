@@ -136,7 +136,7 @@ JUCI.app
 							image: "/img/net-laptop-icon.png",
 							shape: "image",
 							fixed: { x: true, y: false },
-							x: -(250 + (100 * Math.floor(cl_count/8)))
+							x: -(250 + (100 * Math.floor(cl_count/5)))
 						}
 						cl_count ++;
 						nodes.push(cl_node);
