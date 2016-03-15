@@ -40,7 +40,7 @@ JUCI.app
 							$scope.scanning = 0; 
 							$scope.$apply(); 
 						}); 
-					}, 4000); 
+					}, 5000); 
 					next(); 
 				}); 
 			}); 
