@@ -1,0 +1,104 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "xDSL Settings"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "xDSL Line settings and profiles"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "Modulation"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "G.Dmt"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "G.lite"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "T.1413"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "ADSL2"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "AnnexL"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "ADSL2+"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "AnnexM"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "VDSL2"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "VDSL Profile"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "8a"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "8b"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "8c"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "8d"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "12a"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "12b"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "17a"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "US0"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "Bitswap"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "SRA"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-xdsl/src/pages/network-xdsl.html
+msgid "menu-network-xdsl-title"
+msgstr "xDSL"
