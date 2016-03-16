@@ -15,7 +15,7 @@ msgid "Unmanaged"
 msgstr ""
 
 msgid "Static Address"
-msgstr "Static Routes"
+msgstr ""
 
 msgid "DHCP v4"
 msgstr ""
@@ -81,7 +81,7 @@ msgid "GRE Tunnel over IPv6"
 msgstr ""
 
 msgid "Ethernet GRE over IPv6"
-msgstr "Internet IPv6"
+msgstr ""
 
 msgid ""
 "A new ethernet device has been connected to your router. Do you want to add "
@@ -101,10 +101,10 @@ msgid "Valid values are: auto, no, 0-64"
 msgstr ""
 
 msgid "Network interface "
-msgstr "New interface"
+msgstr ""
 
 msgid "Unnamed interface"
-msgstr "New interface"
+msgstr ""
 
 msgid " MUST have  a protocol set"
 msgstr ""
@@ -140,7 +140,7 @@ msgid "Service type needed for 3G interface"
 msgstr ""
 
 msgid "APN needed for 3G interface"
-msgstr "New interface"
+msgstr ""
 
 msgid "Device needed for 4G interface"
 msgstr ""
@@ -185,7 +185,7 @@ msgid "IPv4 Routes needs a Netmask"
 msgstr ""
 
 msgid "IPv4 Routes needs a Gateway"
-msgstr "Default Route"
+msgstr ""
 
 msgid "IPv6 Routes needs an interface"
 msgstr ""
@@ -194,7 +194,7 @@ msgid "IPv6 Routes needs a Target"
 msgstr ""
 
 msgid "IPv6 Routes needs a Gateway"
-msgstr "Default Route"
+msgstr ""
 
 msgid "OK"
 msgstr ""
@@ -301,7 +301,7 @@ msgid "Unknown"
 msgstr ""
 
 msgid "Edit LAN Settings"
-msgstr "LAN Settings"
+msgstr ""
 
 msgid "Save"
 msgstr ""
@@ -310,16 +310,16 @@ msgid "Close"
 msgstr ""
 
 msgid "Edit DNS servers"
-msgstr "Enter DDNS Provider"
+msgstr ""
 
 msgid "Network device"
-msgstr "New device"
+msgstr ""
 
 msgid "Pick network device"
-msgstr "Pick base device"
+msgstr ""
 
 msgid "Name"
-msgstr "Rule Name"
+msgstr ""
 
 msgid "Displayname"
 msgstr ""
@@ -328,22 +328,22 @@ msgid "VLAN Tag"
 msgstr ""
 
 msgid "Device"
-msgstr "Device"
+msgstr ""
 
 msgid "Ports"
-msgstr "USB Port"
+msgstr ""
 
 msgid "Do you want to:"
 msgstr ""
 
 msgid "Interface Name"
-msgstr "Interfaces"
+msgstr ""
 
 msgid "Protocol"
 msgstr ""
 
 msgid "Interface Type"
-msgstr "Interfaces"
+msgstr ""
 
 msgid "Add/Remove custom DNS Servers"
 msgstr ""
@@ -352,10 +352,10 @@ msgid "General"
 msgstr ""
 
 msgid "Choose Configuration Option"
-msgstr "Reset Configuration"
+msgstr ""
 
 msgid "Physical Settings"
-msgstr "NTP Settings"
+msgstr ""
 
 msgid "Advanced"
 msgstr ""
@@ -367,10 +367,10 @@ msgid "Use gateway metric"
 msgstr ""
 
 msgid "Override MAC address"
-msgstr "Overview"
+msgstr ""
 
 msgid "Override MTU"
-msgstr "Overview"
+msgstr ""
 
 msgid "Method"
 msgstr ""
@@ -379,13 +379,13 @@ msgid "DHCP"
 msgstr ""
 
 msgid "Pick Network"
-msgstr "Network"
+msgstr ""
 
 msgid "Enable IPv6 negotiation on the PPP link"
 msgstr ""
 
 msgid "Use default gateway"
-msgstr "Default Route"
+msgstr ""
 
 msgid "If unchecked, no default route is configured"
 msgstr ""
@@ -427,10 +427,10 @@ msgid ""
 msgstr ""
 
 msgid "Modem device"
-msgstr "New device"
+msgstr ""
 
 msgid "Service Type"
-msgstr "Services"
+msgstr ""
 
 msgid "APN"
 msgstr ""
@@ -475,7 +475,7 @@ msgid "Hostname"
 msgstr ""
 
 msgid "Default gateway"
-msgstr "Default Route"
+msgstr ""
 
 msgid "Use TTL on tunnel interface"
 msgstr ""
@@ -568,7 +568,7 @@ msgid "Hostname to include in DHCP requests"
 msgstr ""
 
 msgid "Create default route"
-msgstr "Default Route"
+msgstr ""
 
 msgid "Automatically set up default route for this interface"
 msgstr ""
@@ -604,7 +604,7 @@ msgid "DNS Name"
 msgstr ""
 
 msgid "L2TP Server"
-msgstr "Service"
+msgstr ""
 
 msgid "PAP/CHAP username"
 msgstr ""
@@ -631,13 +631,13 @@ msgid "Leave empty to autodetect"
 msgstr ""
 
 msgid "auto"
-msgstr "Auto"
+msgstr ""
 
 msgid "Service Name"
-msgstr "Services"
+msgstr ""
 
 msgid "VPN Server"
-msgstr "Service"
+msgstr ""
 
 msgid "IPv4 Address"
 msgstr ""
@@ -649,7 +649,7 @@ msgid "IPv4 Broadcast"
 msgstr ""
 
 msgid "IPv4 Default Gateway"
-msgstr "Default Route"
+msgstr ""
 
 msgid "IPv6 assignment length"
 msgstr ""
@@ -670,10 +670,10 @@ msgid "Static IPv6 Address"
 msgstr ""
 
 msgid "IPv6 Default Gateway"
-msgstr "Default Route"
+msgstr ""
 
 msgid "Default IPv6 Gateway"
-msgstr "Default Route"
+msgstr ""
 
 msgid "IPv6 Prefix"
 msgstr ""
@@ -682,19 +682,19 @@ msgid "IPv6 Address Mask"
 msgstr ""
 
 msgid "IPv4 Settings"
-msgstr "NTP Settings"
+msgstr ""
 
 msgid "IPv6 Settings"
-msgstr "NTP Settings"
+msgstr ""
 
 msgid "Select Base Device"
-msgstr "Pick base device"
+msgstr ""
 
 msgid "Device ID"
-msgstr "Device"
+msgstr ""
 
 msgid "Base Device"
-msgstr "Dst. Device"
+msgstr ""
 
 msgid "ID"
 msgstr ""
@@ -703,7 +703,7 @@ msgid "Select Connected Host"
 msgstr ""
 
 msgid "Pick a host"
-msgstr "Pick Preset"
+msgstr ""
 
 msgid "Aquired DNS servers"
 msgstr ""
@@ -718,7 +718,7 @@ msgid "LAN"
 msgstr ""
 
 msgid "No Lan networks"
-msgstr "Network"
+msgstr ""
 
 msgid "No Clients in {{network['.name'].toUpperCase()}} network"
 msgstr ""
@@ -743,7 +743,7 @@ msgstr ""
 "assign the same IP address to specific devices."
 
 msgid "Static Routes"
-msgstr "Static Routes"
+msgstr ""
 
 msgid "internet.lan.routes.info"
 msgstr ""
@@ -760,22 +760,22 @@ msgid "Netmask"
 msgstr ""
 
 msgid "Default Gateway"
-msgstr "Default Route"
+msgstr ""
 
 msgid "0"
 msgstr ""
 
 msgid "Iface MTU"
-msgstr "Interfaces"
+msgstr ""
 
 msgid "IPv6 Routes"
-msgstr "IGPM TV Status"
+msgstr ""
 
 msgid "IPv6 Gateway"
-msgstr "Default Route"
+msgstr ""
 
 msgid "Interface"
-msgstr "Interfaces"
+msgstr ""
 
 msgid "Target"
 msgstr ""
@@ -790,7 +790,7 @@ msgid "MTU"
 msgstr ""
 
 msgid "Services"
-msgstr "Services"
+msgstr ""
 
 msgid "internet.services.info"
 msgstr "Here you can configure network services. "
@@ -802,10 +802,10 @@ msgid "MAC Address"
 msgstr ""
 
 msgid "VLAN Configuration"
-msgstr "Reset Configuration"
+msgstr ""
 
 msgid "Status"
-msgstr "Status"
+msgstr ""
 
 msgid "status.status.info"
 msgstr ""
@@ -822,7 +822,7 @@ msgid "Secondary DNS"
 msgstr ""
 
 msgid "Line Status"
-msgstr "Status"
+msgstr ""
 
 msgid "Active Connections"
 msgstr ""
@@ -843,7 +843,7 @@ msgid "status.network.routes.info"
 msgstr "Static routes configuration"
 
 msgid "Routing Status"
-msgstr "Status"
+msgstr ""
 
 msgid "ARP Table"
 msgstr ""
@@ -879,7 +879,7 @@ msgid "No IPv6 devices connected"
 msgstr ""
 
 msgid "IPv6 status"
-msgstr "IGPM TV Status"
+msgstr ""
 
 msgid "Router"
 msgstr ""
@@ -910,270 +910,3 @@ msgstr "NAT"
 
 msgid "menu-internet-services-title"
 msgstr "Services"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

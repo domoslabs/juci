@@ -33,44 +33,51 @@ JUCI.app
 		replace: true
 	 };  
 })
-.controller("overviewWidgetNetmode", function($scope, $tr, gettext, $uci, $rpc, $netmode, $netmodePicker){
-	$scope.done = 1;  
-		
-	$netmode.getCurrentMode().done(function(current_mode){
-		if(!current_mode) return; 
-		$scope.currentNetmode = current_mode; 
-		$netmode.list().done(function(modes){
-			$scope.allNetmodes = modes.map(function(x){
-				return { label: $tr(x.desc.value), value: x }; 
-			}); 
-			$scope.currentNetmode = modes.find(function(x){ return x[".name"] == current_mode[".name"]; }); 
-			$scope.$apply(); 
-		}); 
-	}); 
-
+.controller("overviewWidgetNetmode", function($scope, $tr, gettext, $uci, $rpc, $juciConfirm, $juciDialog){
+	$scope.data = {
+		currentNetmode: ""
+	};
+	$uci.$sync("netmode").done(function(){
+		$scope.allNetmodes = $uci.netmode["@netmode"].map(function(nm){ return { label: nm.desc.value, value: nm[".name"], desc: nm.exp.value }; });
+		$scope.setup = $uci.netmode.setup;
+		$scope.data.currentNetmode = $scope.setup.curmode.value;
+		$scope.$apply();
+	});
 	$scope.onChangeMode = function(){
-		var current_mode = $scope.currentNetmode; 
-		if(!current_mode) return; 
-		$netmodePicker.show({ selected: current_mode[".name"] }).done(function(selected){
-			if(!selected) return; 
-			$netmode.select(selected[".name"]).done(function(){
-				console.log("Netmode set to "+selected['.name']); 
-				window.location = "/reboot.html"; 
-			}); 
-		}); 
-	}
+		if(!$scope.data || !$scope.data.currentNetmode || !$scope.setup || !$scope.setup.curmode) return;
+		var model = {
+			allNetmodes: $scope.allNetmodes,
+			selected: $scope.data.currentNetmode
+		};
+		$juciDialog.show("netmode-picker", {
+			title: $tr(gettext("Select Profile")),
+			model: model,
+			on_apply: function(btn, inst){
+				if(model.selected == $scope.data.currentNetmode) return false;
+				setNetmode(model.selected);
+				return true;
+			}
+		});
+	};
 
-	$scope.onApplyNetmode = function(){
-		if(!$scope.currentNetmode) return; 
-		$netmode.select($scope.currentNetmode[".name"]).done(function(){
-			console.log("Netmode set to "+$scope.currentNetmode['.name']); 
-			window.location = "/reboot.html"; 
-		}); 
-	}
-
+		
 	$scope.onChangeModeConfirm = function(){
-		if(confirm($tr(gettext("Changing netmode will reset your configuration completely to match that netmode. Do you want to continue?")))){
-			$scope.onApplyNetmode(); 
-		}
+		if(!$scope.data || !$scope.data.currentNetmode || !$scope.setup || !$scope.setup.curmode) return;
+		if($scope.data.currentNetmode == $scope.setup.curmode.value) return;
+		$juciConfirm.show($tr(gettext("Changing netmode will reset your configuration completely to match that netmode. Do you want to continue?"))).done(function(value){
+			if(value == "ok"){
+				setNetmode($scope.data.currentNetmode);
+			}
+		});
 	}
+	function setNetmode(netmode){
+		$scope.setup.curmode.value = netmode;
+		$uci.$save().done(function(){
+			if($uci.netmode[netmode].reboot.value){
+				window.location = "/reboot.html";
+			}
+			$scope.$apply();
+		});
+	};
+		
 }); 

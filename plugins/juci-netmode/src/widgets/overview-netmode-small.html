@@ -2,7 +2,6 @@
 	<div class="icon"><i class="juci juci-profile"></i></div>
 	<div class="name">{{'Profile'|translate}}</div>
 	<div class="content">
-		<span class="label label-default" ng-click="onChangeMode()" style="cursor: pointer;">{{(currentNetmode.desc.value ||'N/A') | translate}}</span>
-		<i class="fa fa-spinner fa-spin" ng-hide="done"></i>
+		<span class="label label-{{data.currentNetmode?'success':'default'}}" ng-click="onChangeMode()" style="cursor: pointer;">{{(data.currentNetmode ||'N/A') | translate}}</span>
 	</div>
 </div>
