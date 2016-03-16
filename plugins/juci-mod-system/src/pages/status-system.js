@@ -107,7 +107,7 @@ JUCI.app
 
 			$scope.systemStatusTbl.rows = [
 				[$tr(gettext("Hostname")), board.hostname || info.system.name],
-				[$tr(gettext("Model")), board.model || info.system.hardware || $tr(gettext("N/A"))],
+				[$tr(gettext("Model")), $config.hardware || $tr(gettext("N/A"))],
 				[$tr(gettext("Release")), board.release.description || info.system.firmware || $tr(gettext("N/A"))],
 				[$tr(gettext("Firmware Version")), board.release.revision || $tr(gettext("N/A"))],
 				[$tr(gettext("Local Time")), new Date(sys.localtime * 1000)],
