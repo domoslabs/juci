@@ -40,7 +40,7 @@ ul.left-menu a:active{
 }
 
 ul.left-menu li a.open {
-	color: #e60000;
+	color: #ff007d;
 	font-weight: bold;
 }
 
@@ -60,5 +60,4 @@ ul.left-sub-menu li {
 	outline: 0 none;
 	vertical-align: middle;
 }
-
 
