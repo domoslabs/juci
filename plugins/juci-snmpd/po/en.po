@@ -147,7 +147,7 @@ msgstr ""
 msgid "Mask"
 msgstr ""
 
-msgid "SNMPD Configuration"
+msgid "SNMP Configuration"
 msgstr ""
 
 msgid "snmpd.config.info"
