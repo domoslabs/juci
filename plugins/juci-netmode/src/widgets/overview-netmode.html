@@ -1,5 +1,6 @@
 <div>
 	<juci-overview-widget title="{{'Profile'|translate}}" icon="juci juci-profile" allow-overflow="true">
+		<juci-config-info>{{getDesc()}}</juci-config-info>
 		<div class="col-xs-8" style="white-space: nowrap;">
 			<juci-select ng-show="allNetmodes.length" ng-model="data.currentNetmode" ng-items="allNetmodes" ></juci-select>
 			<p translate ng-show="!allNetmodes.length">No profiles available</p>

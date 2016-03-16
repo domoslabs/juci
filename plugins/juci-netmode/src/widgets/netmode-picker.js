@@ -11,9 +11,9 @@ JUCI.app
 		controller: "netmodePickerCtrl",
 		replace: true
 	};
-}).controller("netmodePickerCtrl", function($scope, $tr, gettext){
+}).controller("netmodePickerCtrl", function($scope){
 	$scope.getDesc = function(){
 		if(!$scope.model || !$scope.model.allNetmodes) return "";
-		return $scope.model.allNetmodes.find(function(nm){ return nm.value == $scope.model.selected; }).desc || $tr(gettext("No Description available"));
+		return $scope.model.allNetmodes.find(function(nm){ return nm.value == $scope.model.selected; }).desc || ""
 	};
 });

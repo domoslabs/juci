@@ -60,6 +60,10 @@ JUCI.app
 		});
 	};
 
+	$scope.getDesc = function(){
+		if(!$scope.allNetmodes || !$scope.data.currentNetmode) return "";
+		return $scope.allNetmodes.find(function(nm){ return nm.value == $scope.data.currentNetmode; }).desc || ""
+	};
 		
 	$scope.onChangeModeConfirm = function(){
 		if(!$scope.data || !$scope.data.currentNetmode || !$scope.setup || !$scope.setup.curmode) return;
