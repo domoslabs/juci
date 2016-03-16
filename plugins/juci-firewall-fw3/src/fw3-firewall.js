@@ -76,7 +76,7 @@ JUCI.app
 					}else{
 						var selected_zone = [$uci.firewall["@zone"].find(function(x){ return x.name.value == zone; }) ];
 					}
-					if(!selected_zone) {
+					if(selected_zone.length < 1) {
 						def.reject({error: "Zone does not exist!"}); 
 						return; 
 					}
@@ -105,7 +105,7 @@ JUCI.app
 						}else{
 							selected_zone = [$uci.firewall["@zone"].filter(function(x){ return x.name.value == zone;})];
 						}
-						if(!selected_zone) {
+						if(selected_zone.length < 1) {
 							def.reject({error: gettext("Zone does not exist!")}); 
 							return; 
 						}

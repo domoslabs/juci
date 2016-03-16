@@ -1,11 +1,11 @@
 //!Author: Reidar Cederqvist <reidar.cederqvist@gmail.com>
 
 JUCI.app
-.directive("qosIfaceEdit", function($compile, $parse){
+.directive("addBwInterfaceEdit", function(){
 	return {
-		templateUrl: "/widgets/qos-iface-edit.html",
+		templateUrl: "/widgets/add-bw-interface-edit.html",
 		scope: {
-			instance: "=ngModel"
+			model: "=ngModel"
 		},
 		replace: true,
 		require: "^ngModel"

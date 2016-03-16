@@ -32,7 +32,6 @@ UCI.qos.$registerSectionType("classgroup", {
 	"default": 	{ dvalue: 'Normal', type: String }
 });
 UCI.qos.$registerSectionType("interface", {
-	"iface":	{ dvalue: 'No Interface', type: String },
 	"enabled":	{ dvalue: false, type: Boolean },
 	"download":	{ dvalue: '', type: Number },
 	"upload":	{ dvalue: '', type: Number }

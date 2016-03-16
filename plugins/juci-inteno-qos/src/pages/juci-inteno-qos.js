@@ -18,13 +18,20 @@
  * 02110-1301 USA
  */
 
-JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, intenoQos){
+JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, intenoQos, $juciDialog, $firewall){
 	$uci.$sync(["qos"]).done(function(){
 		$scope.qos = $uci.qos["@classify"];
 		$scope.ifaces = $uci.qos["@interface"];
-		$scope.$apply();
+		getNetworks();
 	});
-
+	function getNetworks(){
+		$firewall.getZoneNetworks("wan").done(function(nets){
+			$scope.interfaces = nets.filter(function(net){ return !net.ifname.value.match(/^@.*/); })
+			.map(function(net){ return {label:String(net.$info.interface).toUpperCase(), value: net.$info.interface}; })
+			.filter(function(net){ return !$scope.ifaces.find(function(i){ return i[".name"] == net.value; }); });
+			$scope.$apply();
+		});
+	}
 	intenoQos.getDefaultTargets().done(function(targets){
 		$scope.targets = targets.map(function(x){ return { label: x, value: x }; }); 
 		$scope.$apply(); 
@@ -39,23 +46,40 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 	};
 
 	$scope.onAddIface = function(){
-		$uci.qos.$create({
-			".type": "interface"
-		}).done(function(){
-			$scope.$apply();
+		if(!$scope.interfaces || $scope.interfaces.length < 1) return;
+		var model = {
+			interfaces: $scope.interfaces,
+			name: $scope.interfaces[0].value
+		}
+		$juciDialog.show("add-bw-interface-edit", {
+			title: $tr(gettext("Add Bandwidth Limitation")),
+			model: model,
+			on_apply: function(btn, inst){
+				if(!model.name){
+					model.error = true;
+					return false;
+				}
+				$uci.qos.$create({
+					".type": "interface",
+					".name": model.name
+				}).done(function(){
+					getNetworks();
+				});
+				return true;
+			}
 		});
 	};
 
 	$scope.onDeleteIface = function(item){
 		if(!item) return;
 		item.$delete().done(function(){
-			$scope.$apply();
+			getNetworks();
 		});
 	};
 
 	$scope.getIfaceTitle = function(item){
 		if(!item) return "";
-		return String(item.iface.value).toUpperCase();
+		return String(item[".name"]).toUpperCase();
 	};
 
 	$scope.onDeleteRule = function(item){
