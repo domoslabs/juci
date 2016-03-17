@@ -28,7 +28,11 @@ JUCI.app
 	}
 
 	$scope.$watch("client", function(client){
-		reload();
+		if(!$rpc.juci.firewall) return;
+		$rpc.juci.firewall.excluded_ports().done(function(res){
+			$scope.excluded_ports = res.result || "";
+			reload();
+		});
 	}, false);
 	function reload(){
 		if(!$scope.client) return;
@@ -53,7 +57,6 @@ JUCI.app
 					if(wanZones.find(function(zone){
 						return zone.name.value == pm.src.value;
 					}) == undefined) return false;
-					if(pm.src_dport.value.match(/.*-.*/) || pm.dest_port.value.match(/.*-.*/)) return false;
 					if(pm.dest_ip.value != $scope.client.ipaddr) return false;
 					return true;
 				});
@@ -78,14 +81,48 @@ JUCI.app
 			$scope.$apply();
 		});
 	};
+	var portValidator = new $uci.validators.PortValidator();
+	$scope.getValid = function(port){
+		if(!port || !$scope.data || !$scope.data[port]) return null;
+		var error = portValidator.validate({value:$scope.data[port]});
+		if(error) return String(error);
+		if(isExcluded($scope.data.src_dport))
+			return $tr(gettext("Rule may not have any excluded Public ports"));
+		return null;
+	};
+
+	function isExcluded(port){
+		if(portValidator.validate({value:port}) != null) return false;
+		if(port == "") return false;
+		var ex = $scope.excluded_ports.split(" ").map(function(x){ return parseInt(x); }).sort();
+		if(port.match(/-/)){
+			var start = parseInt(port.split("-")[0]);
+			var stop = parseInt(port.split("-")[1]);
+			var ok = false;
+			ex.map(function(e){
+				if(e == start || e == stop || (e > start && e < stop)) ok = true;
+			});
+			return ok;
+		}
+		var ok = false;
+		ex.map(function(e){ if(e == parseInt(port)) ok = true; });
+		return ok;
+	}
+
 	$scope.onSaveEdit = function(){
 		var error = [];
 		if($scope.mapping.name.value == "")
 			error.push($tr(gettext("Port mapping rule needs a name")));
-		if($scope.data.dest_port < 1 || $scope.data.dest_port > 65535)
-			error.push($tr(gettext("Rule has invalid Client port")));
-		if($scope.data.src_dport < 1 || $scope.data.src_dport > 65535)
-			error.push($tr(gettext("Rule has invalid Router port")));
+		var dest_error = portValidator.validate({value:$scope.data.dest_port})
+		var src_errors = portValidator.validate({value:$scope.data.src_dport})
+		if(dest_error)
+			error.push($tr(gettext("Rule has invalid Private port")));
+		if(src_errors)
+			error.push($tr(gettext("Rule has invalid Public port")));
+		if($scope.data.src_dport == "")
+			error.push($tr(gettext("Rule can not have empty Private port")));
+		if(isExcluded($scope.data.src_dport))
+			error.push($tr(gettext("Rule may not have any excluded Public ports")));
 		if(error.length > 0){
 			$scope.error = error;
 			return;
@@ -112,6 +149,8 @@ JUCI.app
 	};
 	$scope.onEditPM = function(pm){
 		$scope.mapping = pm;
+		$scope.data.dest_port = pm.dest_port.value;
+		$scope.data.src_dport = pm.src_dport.value;
 	}
 	$scope.onDeletePM = function(pm){
 		if(confirm("Are you sure you want to delete " + pm.name.value)){

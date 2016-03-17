@@ -9,8 +9,8 @@
 					<th translate>Direction</th>
 					<th translate>Dst. IP</th>
 					<th translate>Protocol</th>
-					<th translate>Local port</th>
-					<th translate>Public Port</th>
+					<th translate>Public Port(s)</th>
+					<th translate>Private Port(s)</th>
 					<th></th>
 					<th></th>
 				</thead>
@@ -20,8 +20,8 @@
 						<td>{{ r.src.value }} {{'to'|translate}} {{ r.dest.value }}</td>
 						<td>{{ r.dest_ip.value }}</td>
 						<td>{{ r.proto.value }}</td>
-						<td>{{ r.dest_port.value }}</td>
 						<td>{{ r.src_dport.value }}</td>
+						<td>{{ r.dest_port.value || r.src_dport.value }}</td>
 						<td style="width: 1%"><button class="btn btn-default" ng-click="onEditRule(r)" ><i class="fa fa-pencil" style="{{editColor}}"></i></button></td>
 						<td style="width: 1%"><button class="btn btn-default" ng-click="onDeleteRule(r)"><i class="fa fa-trash-o"></i></button></td>
 					</tr>

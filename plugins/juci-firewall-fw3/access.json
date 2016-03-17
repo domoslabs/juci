@@ -6,7 +6,7 @@
 				"network.interface": [
 					"status"
 				],
-				"/juci/firewall.dmz": [
+				"/juci/firewall": [
 					"excluded_ports"
 				],
 				"/juci/system.time": [

@@ -214,30 +214,6 @@ JUCI.app.run(function($uci){
 	}); 
 }); 
 
-UCI.validators.portValidator = function(){
-	this.validate = function(field){
-		if(!field || !field.value) return null;
-		var error = [];
-		field.value.split(" ").map(function(port){
-			if(!port.match(/^[\-0-9]+$/))
-				error.push(gettext("Port can only contain spaces numbers and -"));
-			var split = port.split("-");
-			if(split.length > 2)
-				error.push(gettext("A port range can only contain one -"));
-			if(split.length == 2){
-				var start = parseInt(split[0]);
-				var stop = parseInt(split[1]);
-				if(start < 1 || start > 65535 || stop < 1 || stop > 65535 || start > stop) error.push(gettext("A port is between 1 and 65535 and start port must be lower than stop port"));
-				return;
-			}
-			var p = parseInt(port);
-			if(p < 1 || p > 65535) error.push(gettext("A port must be between 1 and 65535"));
-		});
-		if(error.length == 0) return null;
-		return error;
-	};
-}
-
 UCI.$registerConfig("firewall"); 
 UCI.firewall.$registerSectionType("defaults", {
 	"syn_flood":		{ dvalue: true, type: Boolean }, 
@@ -274,9 +250,7 @@ UCI.firewall.$registerSectionType("redirect", {
 	"dest_port":		{ dvalue: "", type: String, validator: UCI.validators.PortValidator },
 	"reflection": 		{ dvalue: false, type: Boolean }
 }, function(section){
-	if(!section.name.value) return gettext("Rule name can not be empty!"); 
 	if(!section.src_dport.value) return gettext("Source port can not be empty!"); 
-	if(!section.dest_port.value) return gettext("Dest. port can not be empty!"); 
 	return null; 
 }); 
 
@@ -299,11 +273,11 @@ UCI.firewall.$registerSectionType("rule", {
 	"src":				{ dvalue: "", type: String }, 
 	"src_ip":			{ dvalue: [], type: Array }, // needs to be extended type of ip address/mask
 	"src_mac": 			{ dvalue: [], type: Array, validator: UCI.validators.MACListValidator }, 
-	"src_port":			{ dvalue: "", type: String, validator:  UCI.validators.portValidator }, // can be a range
+	"src_port":			{ dvalue: "", type: String, validator:  UCI.validators.PortValidator }, // can be a range
 	"dest":				{ dvalue: "", type: String }, 
 	"dest_ip":			{ dvalue: [], type: Array }, // needs to be extended type of ip address/mask
 	"dest_mac":			{ dvalue: [], type: Array, validator: UCI.validators.MACListValidator },
-	"dest_port":		{ dvalue: "", type: String, validator: UCI.validators.portValidator }, // can be a range
+	"dest_port":		{ dvalue: "", type: String, validator: UCI.validators.PortValidator }, // can be a range
 	"proto":			{ dvalue: "any", type: String }, 
 	"target":			{ dvalue: "REJECT", type: String }, 
 	"family": 			{ dvalue: "ipv4", type: String }, 

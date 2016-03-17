@@ -74,16 +74,20 @@
 
 	function PortValidator(){
 		this.validate = function(field){
-			if(field.value == undefined) return null; 
-			var is_range = String(field.value).indexOf("-") != -1; 
-			var parts = String(field.value).split("-"); 
-			if(is_range && parts.length != 2) return gettext("Port range must have start and end port!"); 
-			if(!is_range && parts.length != 1) return gettext("You must specify port value!"); 
-			var invalid = parts.find(function(x){ return !String(x).match(/^\d+$/) || Number(x) < 1 || Number(x) > 65535; }); 
-			if(invalid != undefined) return gettext("Invalid port number (must be a number between 1 and 65535!) (") + invalid + ")"; 
-			if(is_range && Number(parts[0]) > Number(parts[1])) return gettext("Start port must be smaller or equal to end port!"); 
-			return null; 
-		};
+			if(!field || !field.value) return null;
+			if(field.value.match(/^[0-9]+-[0-9]+$/)){ //type is port range
+				var start = parseInt(field.value.split("-")[0]);
+				var stop = parseInt(field.value.split("-")[1]);
+				if(start < 1 || start > 65535 || stop < 1 || stop > 65535 || start > stop || start == stop) return gettext("A port is between 1 and 65535 and start port must be lower than stop port");
+			}else if(field.value.match(/^[0-9]+$/)){
+				var num = parseInt(field.value);
+				if(num < 1 || num > 65535) return gettext("A port is between 1 and 65535");
+			}
+			else {
+				return gettext("A port can only be a number between 1 and 65535 or a range on the form number-number");
+			}
+			return null;
+		};	
 	}
 	
 	function NumberLimitValidator(min, max){

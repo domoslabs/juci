@@ -1,24 +1,25 @@
 <div>
 	<juci-config-section>
 		<juci-config-heading>{{'Configure Port Mapping'|translate}}</juci-config-heading>
+		<juci-config-info>{{'Edit Port Mappings for'|translate}} {{client.hostname || client.ipaddr}}</juci-config-info>
 		<h3 translate>Current Port mappings</h3>
 		<div style="max-height: 150px; overflow:auto;">
 			<table class="table table-hover">
 				<tr>
 					<th translate>Name</th>
-					<th translate>Client port</th>
-					<th translate>Router port</th>
+					<th translate>Public port</th>
+					<th translate>Private port</th>
 					<th translate>Protocol</th>
 					<th></th>
 				</tr>
 				<tr ng-repeat="pm in portMaps track by $index">
 					<td>{{pm.name.value}}</td>
-					<td>{{pm.dest_port.value}}</td>
 					<td>{{pm.src_dport.value}}</td>
+					<td>{{pm.dest_port.value || pm.src_dport.value}}</td>
 					<td>{{pm.proto.value}}</td>
 					<td>
-						<button ng-click="onEditPM(pm)" class="btn btn-default"><i class="fa fa-edit fa-lg"></i></button>
-						<button ng-click="onDeletePM(pm)" class="btn btn-default"><i class="fa fa-trash"></i></button>
+						<button ng-click="onEditPM(pm)" class="btn btn-default {{mapping?'disabled':''}}"><i class="fa fa-edit fa-lg"></i></button>
+						<button ng-click="onDeletePM(pm)" class="btn btn-default"><i class="fa fa-trash fa-lg"></i></button>
 					</td>
 				</tr>
 			</table>
@@ -28,11 +29,11 @@
 			<juci-config-line title="{{'Name'|translate}}">
 				<input class="form-control" type="text" ng-model="mapping.name.value" />
 			</juci-config-line>
-			<juci-config-line title="{{'Client port'|translate}}">
-				<input class="form-control" type="number" ng-model="data.dest_port" />
+			<juci-config-line title="{{'Public port'|translate}}" help="{{'Ports can be a space separeated list or on the form <range-start>-<range-end>'|translate}}" error="getValid('src_dport')">
+				<input class="form-control" type="text" ng-model="data.src_dport" />
 			</juci-config-line>
-			<juci-config-line title="{{'Router port'|translate}}">
-				<input class="form-control" type="number" ng-model="data.src_dport" />
+			<juci-config-line title="{{'Private port'|translate}}" help="{{'Ports can be a space separeated list or on the form <range-start>-<range-end>'|translate}}" error="getValid('dest_port')">
+				<input class="form-control" type="text" ng-model="data.dest_port" placeholder="{{data.src_dport}}"/>
 			</juci-config-line>
 			<juci-config-line title="{{'Protocol'|translate}}">
 				<juci-select ng-items="ProtocolTypes" ng-model="mapping.proto.value"></juci-select>
