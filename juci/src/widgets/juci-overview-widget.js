@@ -6,6 +6,7 @@ JUCI.app
 		templateUrl: "/widgets/juci-overview-widget.html",
 		scope: {
 			title: "@",
+			href: "@",
 			icon: "@",
 			of: "@allowOverflow"
 		},

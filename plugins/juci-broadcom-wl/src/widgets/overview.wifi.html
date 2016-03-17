@@ -1,7 +1,7 @@
 <div>
-	<juci-overview-widget title="wifi" icon="fa fa-wifi">
+	<juci-overview-widget title="wifi" icon="fa fa-wifi" href="#!/wireless-interfaces">
 		<div class="row" style="margin-bottom: 10px;">
-			<div class="col-xs-3" style="text-align: center;"><i class="fa fa-calendar fa-2x"></i></div>
+			<div class="col-xs-3" style="text-align: center;"><i class="fa fa-calendar fa-lg"></i></div>
 			<div class="col-xs-7" style="padding-left: 0px">
 				<a class="overview-list-item-text" href="#!/wireless-schedule"><strong>{{'Schedule'|translate}}</strong></a>
 			</div>
@@ -10,9 +10,12 @@
 			</div>
 		</div>
 		<div class="row" style="margin-bottom: 10px;">
-			<div class="col-xs-3" style="text-align: center;"><i class="juci juci-wps fa-2x"></i></div>
-			<div class="col-xs-9" style="float:right;text-align:right;">
-				<button class="btn btn-default {{wifiStatus.wps.value?'':'disabled'}}" title="{{'(within 2 minutes)'|translate}}" ng-click="onPairPBC()">{{'WPS Pair'|translate}}</button>
+			<div class="col-xs-3" style="text-align: center;"><i class="juci juci-wps fa-lg"></i></div>
+			<div class="col-xs-6">
+				<a class="overview-list-item-text" href="#!/wireless-wps"><strong>{{'WPS'|translate}}</strong></a>
+			</div>
+			<div class="col-xs-3" style="float:right;text-align:right;">
+				<button class="btn btn-default {{wifiStatus.wps.value?'':'disabled'}}" title="{{'(within 2 minutes)'|translate}}" ng-click="onPairPBC()">{{'Pair'|translate}}</button>
 			</div>
 		</div>
 		<div class="row">
@@ -26,7 +29,7 @@
 				<table class="table table-condensed" ng-repeat="iface in vifs track by $index">
 					<thead>
 						<th colspan="2">
-							<i class="fa fa-edit fa-2x" style="float: right; cursor: pointer;" ng-click="onEditSSID(iface)"></i>
+							<i class="fa fa-edit fa-lg" style="float: right; cursor: pointer;" ng-click="onEditSSID(iface)"></i>
 							<i class="fa fa-toggle-right" style="cursor: pointer;" ng-show="!iface._expanded" ng-click="iface._expanded = !iface._expanded"></i>
 							<i class="fa fa-toggle-down" style="cursor: pointer;" ng-show="iface._expanded" ng-click="iface._expanded = !iface._expanded"></i>
 							<span ng-click="iface._expanded = !iface._expanded" style="cursor: pointer;">{{iface.ssid + ' (' + iface.frequency + ')'}}</span>
