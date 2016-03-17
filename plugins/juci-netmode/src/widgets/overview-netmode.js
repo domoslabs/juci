@@ -38,6 +38,7 @@ JUCI.app
 		currentNetmode: ""
 	};
 	$uci.$sync("netmode").done(function(){
+		if(!$uci.netmode || !$uci.netmode.setup)return;
 		$scope.allNetmodes = $uci.netmode["@netmode"].map(function(nm){ return { label: nm.desc.value, value: nm[".name"], desc: nm.exp.value }; });
 		$scope.setup = $uci.netmode.setup;
 		$scope.data.currentNetmode = $scope.setup.curmode.value;
