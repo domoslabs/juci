@@ -26,7 +26,7 @@ UCI.juci.$registerSectionType("pagesystemstatus", {
 UCI.juci.$insertDefaults("pagesystemstatus"); 
 
 JUCI.app
-.controller("StatusSystemPage", function ($scope, $rootScope, $uci, $rpc, gettext, $tr, $config) {
+.controller("StatusSystemPage", function ($scope, $rootScope, $uci, $rpc, gettext, $tr, $config, $network) {
 	$scope.changes = [];
 	Object.keys($uci).map(function(x){
 		var tmp = []
@@ -67,6 +67,7 @@ JUCI.app
 	var sys = {};  
 	var board = { release: {} }; 
 	var filesystems = []; 
+	var netLoad = {};
 
 	var prev_cpu = {}; 
 
@@ -74,6 +75,7 @@ JUCI.app
 		async.parallel([
 			function (cb){$rpc.juci.system.info().done(function(res){info = res; cb();}).fail(function(res){cb();});},
 			function (cb){$rpc.system.info().done(function(res){sys = res; cb();}).fail(function(res){cb();});},
+			function (cb){$network.getNetworkLoad().done(function(load){ netLoad = load; cb(); }).fail(function(){cb();});},
 			function (cb){
 				if(!$rpc.system.board) cb(); 
 				else $rpc.system.board().done(function(res){board = res; cb();}).fail(function(res){cb();});
@@ -107,9 +109,8 @@ JUCI.app
 
 			$scope.systemStatusTbl.rows = [
 				[$tr(gettext("Hostname")), board.hostname || info.system.name],
-				[$tr(gettext("Model")), $config.hardware || $tr(gettext("N/A"))],
-				[$tr(gettext("Release")), board.release.description || info.system.firmware || $tr(gettext("N/A"))],
-				[$tr(gettext("Firmware Version")), board.release.revision || $tr(gettext("N/A"))],
+				[$tr(gettext("Model")), $config.board.system.hardware || $tr(gettext("N/A"))],
+				[$tr(gettext("Firmware Version")), $config.board.system.firmware || $tr(gettext("N/A"))],
 				[$tr(gettext("Local Time")), new Date(sys.localtime * 1000)],
 				[$tr(gettext("Uptime")), timeFormat(sys.uptime)],
 				[$tr(gettext("CPU")), ""+(cpu_load || 0)+"%"]
@@ -121,7 +122,7 @@ JUCI.app
 				var arr = $scope.systemStatusTbl.rows; 
 				arr.push([$tr(gettext("Kernel Version")), board.kernel || info.system.kernel || $tr(gettext("N/A"))]); 
 				arr.push([$tr(gettext("Filesystem")), info.system.filesystem || $tr(gettext("N/A"))]);
-				arr.push([$tr(gettext("Target")), board.release.target || board.system || info.system.socver || $tr(gettext("N/A"))]);  
+				arr.push([$tr(gettext("Active Connections")), '<juci-progress value="'+netLoad.active_connections+'" total="'+netLoad.max_connections+'"></juci-progress>']);
 			}
 			
 			$scope.systemMemoryTbl.rows = [
