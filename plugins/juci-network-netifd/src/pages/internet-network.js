@@ -83,11 +83,17 @@ JUCI.app
 					if(!model.protocol == undefined)
 						model.errors.push($tr(gettext("Pleace choose protocol for connection")));
 					if(model.errors.length > 0) return;
+					if(model.protocol === "dhcp"){
+						var vendorid = getVendorID() || "";
+						var hostname = getHostname() || "";
+					}
 					$uci.network.$create({
 						".type": "interface",
 						".name": model.name, 
 						"type": model.type,
-						"proto": model.protocol
+						"proto": model.protocol,
+						"vendorid": vendorid,
+						"hostname": hostname
 					}).done(function(interface){
 						$scope.current_connection = interface; 
 						$scope.networks.push(interface); 
@@ -98,7 +104,15 @@ JUCI.app
 			}
 		});
 	}
-	
+
+	function getVendorID(){
+		if(!$scope.networks || $scope.networks.length < 1) return "";
+		return $scope.networks.find(function(net){ return net.vendorid.value !== ""; }).vendorid.value;
+	}
+	function getHostname(){
+		if(!$scope.networks || $scope.networks.length < 1) return "";
+		return $scope.networks.find(function(net){ return net.hostname.value !== ""; }).hostname.value;
+	}
 	$scope.onDeleteConnection = function(conn){
 		if(!conn){
 			$juciAlert($tr(gettext("Please select a connection in the list!")));
