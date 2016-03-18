@@ -12,7 +12,7 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 
 msgid "off"
-msgstr "Off"
+msgstr ""
 
 msgid "5GHz"
 msgstr ""
@@ -44,7 +44,7 @@ msgid "Are you sure you want to delete this wireless interface?"
 msgstr ""
 
 msgid "Wireless Interfaces"
-msgstr "Interfaces"
+msgstr ""
 
 msgid "Enabled"
 msgstr ""
@@ -274,12 +274,13 @@ msgid "Schedule"
 msgstr ""
 
 msgid "Off"
-msgstr "Off"
+msgstr ""
 
 msgid "On"
 msgstr ""
 
-msgid "Pair (within 2 minutes)"
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.html
+msgid "WPS"
 msgstr ""
 
 msgid "(within 2 minutes)"
@@ -364,7 +365,7 @@ msgid "Reset to default password"
 msgstr ""
 
 msgid "Choose Key"
-msgstr "Network"
+msgstr ""
 
 msgid "Radius Server"
 msgstr ""
@@ -473,7 +474,7 @@ msgstr ""
 "manage up to 32 devices."
 
 msgid "General WiFi Settings"
-msgstr "WAN Settings"
+msgstr ""
 
 msgid "wifi.general.info"
 msgstr ""
@@ -481,7 +482,7 @@ msgstr ""
 "wireless connection of your devices."
 
 msgid "Wifi Network"
-msgstr "Network"
+msgstr ""
 
 msgid "Scheduled"
 msgstr ""
@@ -508,8 +509,6 @@ msgstr ""
 
 msgid "WiFi Scheduling"
 msgstr ""
-"Schedule the times when your WiFi should be turned on or off automatically. "
-"Note: If WiFi is turned off, both Main and Guest WiFi are disabled"
 
 msgid "wifi.schedule.info"
 msgstr ""
@@ -535,15 +534,19 @@ msgid "Time"
 msgstr ""
 
 msgid "Status"
-msgstr "Status"
+msgstr ""
 
 msgid "WiFi Status"
-msgstr "WiFi Status"
+msgstr ""
 
 msgid "status.wifi.info"
 msgstr "Wireless status information"
 
 msgid "Radio"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.html
+msgid "Frequency to Scan"
 msgstr ""
 
 msgid "Scan neighboring APs"
@@ -552,13 +555,14 @@ msgstr ""
 msgid "Scanning..."
 msgstr ""
 
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.html
 msgid ""
 "You will not be able to scan 5Ghz band because your 5Ghz wifi radio is "
-"configured to use DFS channels"
+"operating at a DFS channel"
 msgstr ""
 
 msgid "WPS Settings"
-msgstr "DNS Settings"
+msgstr ""
 
 msgid "wifi.wps.info"
 msgstr ""
@@ -577,6 +581,9 @@ msgstr ""
 
 msgid ""
 "Pressing WiFi on/off button on your router for long time activates pairing "
+msgstr ""
+
+msgid "Pair (within 2 minutes)"
 msgstr ""
 
 msgid "WPS Using Generated PIN"
@@ -621,257 +628,35 @@ msgstr ""
 msgid "wifi.wps.otherpin.info"
 msgstr "Enter the WPS-PIN provided by the other device here."
 
+msgid "menu-wireless-filtering-title"
+msgstr "MAC Filter"
+
+msgid "menu-wireless-interfaces-title"
+msgstr "Wireless"
+
+msgid "menu-wireless-client-mode-title"
+msgstr "Client Mode"
+
+msgid "menu-wireless-general-title"
+msgstr "General"
+
 msgid "menu-wireless-clients-title"
 msgstr "Clients"
 
 msgid "menu-wireless-title"
 msgstr "WiFi"
 
-msgid "menu-wireless-status-title"
-msgstr "WiFi Status"
-
-msgid "menu-wireless-client-mode-title"
-msgstr "Client Mode"
-
-msgid "menu-wireless-wps-title"
-msgstr "WPS"
-
 msgid "menu-wireless-devices-title"
 msgstr "Radios"
-
-msgid "menu-wireless-filtering-title"
-msgstr "MAC Filter"
 
 msgid "menu-wireless-schedule-title"
 msgstr "Scheduling"
 
+msgid "menu-wireless-status-title"
+msgstr "WiFi Status"
+
+msgid "menu-wireless-wps-title"
+msgstr "WPS"
+
 msgid "menu-wireless-link-to-interfaces-title"
 msgstr "Wireless"
-
-msgid "menu-wireless-interfaces-title"
-msgstr "Wireless"
-
-msgid "menu-wireless-general-title"
-msgstr "General"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

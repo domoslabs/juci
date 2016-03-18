@@ -54,24 +54,19 @@ JUCI.app
 		if(!value || !$scope.timezones) return; 
 		$scope.system.timezone.value = $scope.timezones[value]; 
 	}); 
-	
+
 	$scope.$watch("system.hostname.value", function(value){
-		if(value == undefined) return; 
-		if(!value) $scope.system.hostname.value = $scope.boardinfo.model.replace(" ", "_"); 
-	}); 
+		if(value == undefined) return;
+		if(!value) $scope.system.hostname.value = $scope.boardinfo.model.replace(" ", "_");
+	});
 
 	JUCI.interval.repeat("system.time", 1000, function(done){
 		$rpc.juci.system.time.get().done(function(result){
-			$scope.localtime = result.local_time; 
-			$scope.$apply(); 
-			done(); 
-		}); 
-	}); 
-	
-	$scope.setRouterTimeToBrowserTime = function(){
-		$rpc.juci.system.time.set({ unix_time: Math.floor((new Date()).getTime() / 1000) }).done(function(){
-			
-		}); 
-	}; 
-}); 
+			$scope.localtime = result.local_time;
+			$scope.$apply();
+			done();
+		});
+	});
+
+});
 

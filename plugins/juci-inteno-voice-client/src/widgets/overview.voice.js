@@ -1,13 +1,13 @@
 //! Author: Martin K. Schröder <mkschreder.uk@gmail.com>
 JUCI.app
-.directive("overviewWidget20Voice", function(){
+.directive("overviewWidget40Voice", function(){
 	return {
 		templateUrl: "widgets/overview.voice.html", 
 		controller: "overviewWidgetVoice", 
 		replace: true
 	 };  
 })
-.directive("overviewStatusWidget20Voice", function(){
+.directive("overviewStatusWidget40Voice", function(){
 	return {
 		templateUrl: "widgets/overview.voice.small.html", 
 		controller: "overviewWidgetVoice", 
