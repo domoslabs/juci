@@ -10,18 +10,11 @@
 					"info"
 				]
 			}
-		}
-	}, 
-	"juci-broadcom-vlan-admin": {
+		},
 		"write": {
 			"uci": [
 				"layer2_interface"
-			],
-			"ubus": {
-				"router": [
-					"info"
-				]
-			}
+			]
 		}
 	}
 }
