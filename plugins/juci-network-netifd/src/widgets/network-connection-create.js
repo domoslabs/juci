@@ -39,6 +39,13 @@ JUCI.app
 	$scope.allProtocols = $network.getProtocolTypes();
 	$scope.model.type = "";
 	$scope.model.protocol = "none";
+	$scope.evalName = function(){
+		if(!$scope.model) return;
+		var name = $scope.model.name || "";
+		if(name == "") return $tr(gettext("Interface Name is needed"));
+		if(!name.match(/^[a-zA-Z0-9]+$/)) return $tr(gettext("Interface names can only contain letters and numbers"));
+		if(name.length > 12) return $tr(gettext("Interface name may only be 12 characters long"));
+	}
 	$scope.showType = function(){
 		if(!$scope.allProtocols) return false;
 		var type = $scope.allProtocols.find(function(p){

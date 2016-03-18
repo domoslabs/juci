@@ -59,6 +59,13 @@ JUCI.app
 		return i[".name"]; 
 	}
 	
+	function evalName(name){
+		if(!name) return;
+		if(name == "") return $tr(gettext("Interface Name is needed"));
+		if(!name.match(/^[a-zA-Z0-9]+$/)) return $tr(gettext("Interface names can only contain letters and numbers"));
+		if(name.length > 12) return $tr(gettext("Interface name may only be 12 characters long"));
+	}
+
 	$scope.onAddConnection = function(){
 		var model = {
 			errors: [],
@@ -78,6 +85,9 @@ JUCI.app
 					model.errors = [];
 					if(!model.name)
 						model.errors.push($tr(gettext("The new interface needs a name")));
+					var er;
+					if((er = evalName(model.name)) != null)
+						model.errors.push(er);
 					if(model.type == undefined)
 						model.errors.push($tr(gettext("The new interface needs an interface type")));
 					if(!model.protocol == undefined)
