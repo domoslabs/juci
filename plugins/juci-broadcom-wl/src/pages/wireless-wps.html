@@ -15,7 +15,7 @@
 			</juci-config-section>
 			<juci-config-section ng-show="wireless.status.wps.value && progress != 1">
 				<juci-config-lines ng-repeat="interface in wireless['@wifi-iface'] track by $index">
-					<juci-config-line title="{{'Enable WPS on'|translate}} {{interface.ssid.value}}">
+					<juci-config-line title="{{'Enable WPS on'|translate}} {{interface.ssid.value}} ({{getFrequensy(interface.device.value)}})">
 						<switch ng-show="wpsUnlocked(interface)" ng-model="interface.wps_pbc.value" class="green" ng-change="save()" ></switch>
 						<strong ng-hide="wpsUnlocked(interface)" translate>Disabled</strong>
 					</juci-config-line>
@@ -36,33 +36,35 @@
 					</juci-config-line>
 				</juci-config-lines>
 			</juci-config-section>
-			<juci-config-section ng-show="wireless.status.wps.value">
-				<h2 translate>WPS-REG: Router provides PIN</h2>
-				<p translate>wifi.wps.pin.info</p>
-				<juci-config-lines>
-					<juci-config-line title="{{'WPS Using Generated PIN'|translate}}">
-						<switch id="enabled" name="enabled" ng-model="router.wps_devicepin"  class="green"></switch>
-					</juci-config-line>
-					<juci-config-line title="{{'Generated PIN'|translate}}" >
-						<input type="text" class="form-control input-lg"  ng-model="generatedPIN" readonly />
-					</juci-config-line>
-					<juci-config-line title="{{'Generate New PIN'|translate}}" >
-						<button class="btn btn-lg btn-default" ng-click="onGeneratePIN()" translate>Generate</button>
-					</juci-config-line>
-				</juci-config-lines>
-			</juci-config-section>
-			<juci-config-section ng-show="wireless.status.wps.value">
-				<h2 translate>WPS-PIN: Another Device provides PIN</h2>
-				<p translate>wifi.wps.otherpin.info</p>
-				<juci-config-lines>
-					<juci-config-line title="{{'Enter your device PIN'|translate}}" error="data.pin_error">
-						<input type="text" class="form-control input-lg" ng-model="data.userPIN" ng-change="validPin()" placeholder="{{'Enter your PIN here'|translate}}"/>
-					</juci-config-line>
-					<juci-config-line title="{{'Pair (within 2 minutes)'|translate}}">
-						<button class="btn btn-lg btn-default {{(data.valid_wps_pin)?'':'disabled'}}" ng-click="onPairUserPIN()" translate>Pair</button>
-					</juci-config-line>
-				</juci-config-lines>
-			</juci-config-section>
+			<div ng-show="showExpert">
+				<juci-config-section ng-show="wireless.status.wps.value">
+					<h2 translate>WPS-REG: Router provides PIN</h2>
+					<p translate>wifi.wps.pin.info</p>
+					<juci-config-lines>
+						<juci-config-line title="{{'WPS Using Generated PIN'|translate}}">
+							<switch id="enabled" name="enabled" ng-model="router.wps_devicepin"  class="green"></switch>
+						</juci-config-line>
+						<juci-config-line title="{{'Generated PIN'|translate}}" >
+							<input type="text" class="form-control input-lg"  ng-model="generatedPIN" readonly />
+						</juci-config-line>
+						<juci-config-line title="{{'Generate New PIN'|translate}}" >
+							<button class="btn btn-lg btn-default" ng-click="onGeneratePIN()" translate>Generate</button>
+						</juci-config-line>
+					</juci-config-lines>
+				</juci-config-section>
+				<juci-config-section ng-show="wireless.status.wps.value">
+					<h2 translate>WPS-PIN: Another Device provides PIN</h2>
+					<p translate>wifi.wps.otherpin.info</p>
+					<juci-config-lines>
+						<juci-config-line title="{{'Enter your device PIN'|translate}}" error="data.pin_error">
+							<input type="text" class="form-control input-lg" ng-model="data.userPIN" ng-change="validPin()" placeholder="{{'Enter your PIN here'|translate}}"/>
+						</juci-config-line>
+						<juci-config-line title="{{'Pair (within 2 minutes)'|translate}}">
+							<button class="btn btn-lg btn-default {{(data.valid_wps_pin)?'':'disabled'}}" ng-click="onPairUserPIN()" translate>Pair</button>
+						</juci-config-line>
+					</juci-config-lines>
+				</juci-config-section>
+			</div>
 		</juci-config>
 		<modal title="{{'Attempting to Pair'|translate}}" data-keyboard="false" data-backdrop="static" ng-show="progress > 0 && progress != 2 && progress < 8" dismiss-label="Cancel" on-dismiss="onCancelWPS()">
 			<div style="text-align: center;">

@@ -19,7 +19,8 @@
  */
 
 JUCI.app
-.controller("wirelessWPSPage", function($scope, $uci, $rpc, $interval, $router, gettext, $tr){
+.controller("wirelessWPSPage", function($scope, $config, $uci, $rpc, $interval, $router, gettext, $tr){
+	$scope.showExpert = $config.local.mode == "expert";
 	var wps_status_strings = {
 		"-1": $tr(gettext("wps.status.disabled")),
 		0: $tr(gettext("wps.status.init")),
@@ -45,6 +46,13 @@ JUCI.app
 	
 	$uci.$sync(["wireless"]).done(function(){
 		$scope.wireless = $uci.wireless; 
+		$scope.getFrequensy = function(dev){
+			if($scope.wireless[dev] && $scope.wireless[dev].band){
+				if($scope.wireless[dev].band.value == "b") return "2.4GHz";
+				if($scope.wireless[dev].band.value == "a") return "5GHz";
+			}
+			return "";
+		};
 		$scope.$apply(); 
 	}).fail(function(err){
 		console.log("failed to sync config: "+err); 

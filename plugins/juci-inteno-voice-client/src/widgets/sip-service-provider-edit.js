@@ -11,7 +11,7 @@ JUCI.app
 		require: "^ngModel",
 		controller: "sipServiceProviderEditCtrl"
 	};
-}).controller("sipServiceProviderEditCtrl", function($scope, $uci, $tr, gettext){
+}).controller("sipServiceProviderEditCtrl", function($scope, $uci, $tr, gettext, $config){
 	$scope.selected_lines = [];
 	$uci.$sync("voice_client").done(function(){
 		$scope.brcm_lines = $uci.voice_client["@brcm_line"];
@@ -22,6 +22,7 @@ JUCI.app
 	});
 	$scope.$watch("model", function(){
 		if(!$scope.model) return;
+		$scope.showExpert = $config.local.mode == "expert";
 		$scope.selected_lines = $scope.model.call_lines.value.split(" ").map(function(x){
 			var name = String(x);
 			var number = name.split("/").pop();

@@ -9,9 +9,6 @@
 		<juci-config-line ng-show="false" title="{{ 'Incoming calls to' | translate }}">
 			<juci-select ng-items="targets" ng-model="model.target.value"></juci-select>
 		</juci-config-line>
-		<juci-config-line title="{{ 'Mailbox' | translate }}">
-			<juci-select ng-items="mboxes" ng-model="model.mailbox.value"></juci-select>
-		</juci-config-line>
 		<juci-config-line title="{{ 'SIP domain name' | translate }}">
 			<input type="text" class="form-control" ng-model="model.domain.value" placeholder="{{'Domain name' | translate }}" />
 		</juci-config-line>
@@ -33,48 +30,6 @@
 		<juci-config-line title="{{ 'Display Name' | translate }}" help="{{'Display name used in Caller Id' | translate }}">
 			<input type="text" class="form-control" ng-model="model.displayname.value" placehoder="{{'Display Name' | translate }}" />
 		</juci-config-line>
-		<juci-config-line title="{{ 'Preferred codecs' | translate }}">
-			<juci-select ng-items="codecs.codec0" ng-model="model.codec0.value" on-change="updateCodecList($value, 0)"></juci-select>
-			<juci-select ng-show="model.codec0.value != ''" ng-items="codecs.codec1" ng-model="model.codec1.value" on-change="updateCodecList($value, 1)"></juci-select>
-			<juci-select ng-show="model.codec1.value != ''" ng-items="codecs.codec2" ng-model="model.codec2.value" on-change="updateCodecList($value, 2)"></juci-select>
-			<juci-select ng-show="model.codec2.value != ''" ng-items="codecs.codec3" ng-model="model.codec3.value" on-change="updateCodecList($value, 3)"></juci-select>
-			<juci-select ng-show="model.codec3.value != ''" ng-items="codecs.codec4" ng-model="model.codec4.value" on-change="updateCodecList($value, 4)"></juci-select>
-			<juci-select ng-show="model.codec4.value != ''" ng-items="codecs.codec5" ng-model="model.codec5.value" on-change="updateCodecList($value, 5)"></juci-select>
-			<juci-select ng-show="model.codec5.value != ''" ng-items="codecs.codec6" ng-model="model.codec6.value" on-change="updateCodecList($value, 6)"></juci-select>
-		</juci-config-line>
-		<juci-config-line ng-show="showPtime('gsm')" title="{{ 'GSM packetization' | translate }}">
-			<span>{{model.ptime_gsm.value}} ms</span><input type="range" min="10" max="300" step="10" ng-model="model.ptime_gsm.value" />
-		</juci-config-line>
-		<juci-config-line ng-show="showPtime('g723')" title="{{ 'G.723.1 packetization' | translate }}">
-			<span>{{model.ptime_g723.value}} ms</span><input type="range" min="30" max="300" step="30" ng-model="model.ptime_g723.value" />
-		</juci-config-line>
-		<juci-config-line ng-show="showPtime('ulaw')" title="{{ 'G.711MuLaw packetization' | translate }}">
-			<span>{{model.ptime_ulaw.value}} ms</span><input type="range" min="10" max="150" step="10" ng-model="model.ptime_ulaw.value" />
-		</juci-config-line>
-		<juci-config-line ng-show="showPtime('g726')" title="{{ 'G. 726 packetization' | translate }}">
-			<span>{{model.ptime_g726.value}} ms</span><input type="range" min="10" max="300" step="10" ng-model="model.ptime_g726.value" />
-		</juci-config-line>
-		<juci-config-line ng-show="showPtime('ilbc')" title="{{ 'iLBC packetization' | translate }}">
-			<span>{{model.ptime_ilbc.value}} ms</span><input type="range" min="10" max="300" step="10" ng-model="model.ptime_ilbc.value" />
-		</juci-config-line>
-		<juci-config-line ng-show="showPtime('g729')" title="{{ 'G. 729a packetization' | translate }}">
-			<span>{{model.ptime_g729.value}} ms</span><input type="range" min="10" max="230" step="10" ng-model="model.ptime_g729.value" />
-		</juci-config-line>
-		<juci-config-line ng-show="showPtime('alaw')" title="{{ 'G.711ALaw packetization' | translate }}">
-			<span>{{model.ptime_alaw.value}} ms</span><input type="range" min="10" max="150" step="10" ng-model="model.ptime_alaw.value" />
-		</juci-config-line>
-		<juci-config-line title="{{ 'Autoframing' | translate }}" help="{{'Negotiate packetization at call establishment' | translate }}">
-			<switch class="green" ng-model="model.autoframing.value" />
-		</juci-config-line>
-		<juci-config-line title="{{ 'SIP Transport' | translate }}">
-			<juci-select ng-items="transportTypes" ng-model="model.transport.value"></juci-select>
-		</juci-config-line>
-		<juci-config-line title="{{ 'Encryption' | translate }}" help="{{'Use Secure Real-time Transport Protocol (SRTP)' | translate }}">
-			<switch class="green" ng-model="model.encryption.value" />
-		</juci-config-line>
-		<juci-config-line title="{{ 'Use as Fax' | translate }}" help="{{'Indicate that this SIP account will be used for a fax machine. This will force some settings to enable inband fax.' | translate }}">
-			<switch class="green" ng-model="model.is_fax.value" />
-		</juci-config-line>
 		<juci-config-line title="{{'SIP Server/Registrar'|translate}}" help="{{'Optional' | translate }}">
 			<input type="text" class="form-control" ng-model="model.host.value" placeholder="{{'SIP Server'|translate}}"/>
 		</juci-config-line>
@@ -95,6 +50,53 @@
 				</div>
 			</div>
 		</juci-config-line>
+		<div ng-show="showExpert">
+			<juci-config-line title="{{ 'Preferred codecs' | translate }}">
+				<juci-select ng-items="codecs.codec0" ng-model="model.codec0.value" on-change="updateCodecList($value, 0)"></juci-select>
+				<juci-select ng-show="model.codec0.value != ''" ng-items="codecs.codec1" ng-model="model.codec1.value" on-change="updateCodecList($value, 1)"></juci-select>
+				<juci-select ng-show="model.codec1.value != ''" ng-items="codecs.codec2" ng-model="model.codec2.value" on-change="updateCodecList($value, 2)"></juci-select>
+				<juci-select ng-show="model.codec2.value != ''" ng-items="codecs.codec3" ng-model="model.codec3.value" on-change="updateCodecList($value, 3)"></juci-select>
+				<juci-select ng-show="model.codec3.value != ''" ng-items="codecs.codec4" ng-model="model.codec4.value" on-change="updateCodecList($value, 4)"></juci-select>
+				<juci-select ng-show="model.codec4.value != ''" ng-items="codecs.codec5" ng-model="model.codec5.value" on-change="updateCodecList($value, 5)"></juci-select>
+				<juci-select ng-show="model.codec5.value != ''" ng-items="codecs.codec6" ng-model="model.codec6.value" on-change="updateCodecList($value, 6)"></juci-select>
+			</juci-config-line>
+			<juci-config-line ng-show="showPtime('gsm')" title="{{ 'GSM packetization' | translate }}">
+				<span>{{model.ptime_gsm.value}} ms</span><input type="range" min="10" max="300" step="10" ng-model="model.ptime_gsm.value" />
+			</juci-config-line>
+			<juci-config-line ng-show="showPtime('g723')" title="{{ 'G.723.1 packetization' | translate }}">
+				<span>{{model.ptime_g723.value}} ms</span><input type="range" min="30" max="300" step="30" ng-model="model.ptime_g723.value" />
+			</juci-config-line>
+			<juci-config-line ng-show="showPtime('ulaw')" title="{{ 'G.711MuLaw packetization' | translate }}">
+				<span>{{model.ptime_ulaw.value}} ms</span><input type="range" min="10" max="150" step="10" ng-model="model.ptime_ulaw.value" />
+			</juci-config-line>
+			<juci-config-line ng-show="showPtime('g726')" title="{{ 'G. 726 packetization' | translate }}">
+				<span>{{model.ptime_g726.value}} ms</span><input type="range" min="10" max="300" step="10" ng-model="model.ptime_g726.value" />
+			</juci-config-line>
+			<juci-config-line ng-show="showPtime('ilbc')" title="{{ 'iLBC packetization' | translate }}">
+				<span>{{model.ptime_ilbc.value}} ms</span><input type="range" min="10" max="300" step="10" ng-model="model.ptime_ilbc.value" />
+			</juci-config-line>
+			<juci-config-line ng-show="showPtime('g729')" title="{{ 'G. 729a packetization' | translate }}">
+				<span>{{model.ptime_g729.value}} ms</span><input type="range" min="10" max="230" step="10" ng-model="model.ptime_g729.value" />
+			</juci-config-line>
+			<juci-config-line ng-show="showPtime('alaw')" title="{{ 'G.711ALaw packetization' | translate }}">
+				<span>{{model.ptime_alaw.value}} ms</span><input type="range" min="10" max="150" step="10" ng-model="model.ptime_alaw.value" />
+			</juci-config-line>
+			<juci-config-line title="{{ 'Autoframing' | translate }}" help="{{'Negotiate packetization at call establishment' | translate }}">
+				<switch class="green" ng-model="model.autoframing.value" />
+			</juci-config-line>
+			<juci-config-line title="{{ 'SIP Transport' | translate }}">
+				<juci-select ng-items="transportTypes" ng-model="model.transport.value"></juci-select>
+			</juci-config-line>
+			<juci-config-line title="{{ 'Encryption' | translate }}" help="{{'Use Secure Real-time Transport Protocol (SRTP)' | translate }}">
+				<switch class="green" ng-model="model.encryption.value" />
+			</juci-config-line>
+			<juci-config-line title="{{ 'Use as Fax' | translate }}" help="{{'Indicate that this SIP account will be used for a fax machine. This will force some settings to enable inband fax.' | translate }}">
+				<switch class="green" ng-model="model.is_fax.value" />
+			</juci-config-line>
+			<juci-config-line title="{{ 'Mailbox' | translate }}">
+				<juci-select ng-items="mboxes" ng-model="model.mailbox.value"></juci-select>
+			</juci-config-line>
+		</div>
 	</juci-config-lines>
 </div>
 
