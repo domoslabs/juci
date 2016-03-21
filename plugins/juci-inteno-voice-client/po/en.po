@@ -789,7 +789,7 @@ msgid "menu-voice-sip-users-title"
 msgstr "SIP Users"
 
 msgid "menu-status-phone-title"
-msgstr "Phone"
+msgstr "Voice"
 
 msgid "menu-voice-title"
 msgstr "Voice"
