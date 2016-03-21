@@ -29,6 +29,9 @@
 			<juci-config-line title="{{'Name'|translate}}">
 				<input class="form-control" type="text" ng-model="mapping.name.value" />
 			</juci-config-line>
+			<juci-config-line title="{{'Excluded ports'|translate}}" help="{{'These ports may not be mapped they are protected'|translate}}">
+				<h3><span class="label label-info">{{excluded_ports || "N/A"}}</span></h3>
+			</juci-config-line>
 			<juci-config-line title="{{'Public port'|translate}}" help="{{'Ports can be a space separeated list or on the form <range-start>-<range-end>'|translate}}" error="getValid('src_dport')">
 				<input class="form-control" type="text" ng-model="data.src_dport" />
 			</juci-config-line>
