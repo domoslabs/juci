@@ -1,4 +1,5 @@
 //! Author: Reidar Cederqvist <reidar.cederqvist@gmail.com>
+/*global Promise:false*/
 
 JUCI.app
 .controller("MiniDLNAConfigPage", function($network, $scope, $minidlna, $tr, gettext, $rpc, $juciDialog){
