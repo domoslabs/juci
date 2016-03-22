@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("networkConnectionTypeAnywanEdit", function($compile){
+.directive("networkConnectionTypeAnywanEdit", function(){
 	return {
 		scope: {
 			connection: "=ngModel"
@@ -27,9 +27,9 @@ JUCI.app
 		controller: "networkConnectionTypeAnywanEdit", 
 		templateUrl: "/widgets/network-connection-type-anywan-edit.html", 
 		replace: true
-	 };  
+	};
 })
-.controller("networkConnectionTypeAnywanEdit", function($scope, $network, $ethernet, $modal, $tr, gettext, $uci, $networkHelper){
+.controller("networkConnectionTypeAnywanEdit", function($scope, $ethernet, $modal, $tr, gettext, $uci, $networkHelper){
 	$scope.getItemTitle = function(dev){
 	
 		return dev.name + " ("+dev.device+")"; 
@@ -58,7 +58,7 @@ JUCI.app
 			net.$addableDevices = Object.keys(aptmap).map(function(k){ return aptmap[k]; }); 
 			$scope.$apply(); 
 		}); 
-	}; 
+	} 
 	
 	$scope.$watch("connection", function(value){
 		if(!value) return; 
@@ -91,8 +91,8 @@ JUCI.app
 	}
 	
 	$scope.onDeleteBridgeDevice = function(adapter){
-		if(!adapter) alert(gettext("Please select a device in the list!")); 
-		if(confirm(gettext("Are you sure you want to delete this device from bridge?"))){
+		if(!adapter) alert($tr(gettext("Please select a device in the list!")));
+		if(confirm($tr(gettext("Are you sure you want to delete this device from bridge?")))){
 			if(adapter.device && adapter.device.match(/^wl.+/)){
 				$uci.$sync("wireless").done(function(){
 					var wliface = $uci.wireless["@wifi-iface"].find(function(iface){

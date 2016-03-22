@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("uciWirelessInterface", function($compile){
+.directive("uciWirelessInterface", function(){
 	return {
 		templateUrl: "/widgets/uci.wireless.interface.html", 
 		scope: {
@@ -28,7 +28,7 @@ JUCI.app
 		controller: "WifiInterfaceController", 
 		replace: true, 
 		require: "^ngModel"
-	 };  
+	};  
 }).controller("WifiInterfaceController", function($scope, $uci, $tr, gettext, $wireless, $network){
 	$scope.errors = []; 
 	$scope.showPassword = true; 
@@ -136,9 +136,9 @@ JUCI.app
 					$scope.interface.cipher.value = "ccmp"; 
 				break; 
 			}
-		}; 
+		}
 	}
-	 
+
 	$scope.onPreApply = function(){
 		$scope.errors.length = 0; 
 	}

@@ -24,7 +24,7 @@ JUCI.app
 		templateUrl: "widgets/overview-net.html",
 		controller: "overviewWidgetNetwork",
 		replace: true
-	 };
+	};
 })
 .directive("overviewStatusWidget10Network", function(){
 	return {
@@ -38,11 +38,11 @@ JUCI.app
 	JUCI.interval.repeat("overview-network", 1000, function(done){
 		$firewall.getZoneClients("lan").done(function(clients){
 			$scope.numClients = clients.filter(function(x){return x.online}).length;
-			$scope.$apply();;
+			$scope.$apply();
 		}).always(function(){done();});
 	});
 })
-.controller("overviewWidgetNetwork", function($scope, $firewall, $tr, gettext, $juciDialog, $uci){
+.controller("overviewWidgetNetwork", function($scope, $firewall, $tr, gettext, $juciDialog, $uci, $rpc){
 	$scope.defaultHostName = $tr(gettext("Unknown"));
 	$scope.model = {};
 	$scope.lanNetworks = [];
@@ -94,7 +94,6 @@ JUCI.app
 				{ label: $tr(gettext("Cancel")), value: "cancel" }
 			],
 			on_button: function(btn, inst){
-				pauseSync = false;
 				if(btn.value == "cancel") {
 					model.lan.$reset();
 					model.dhcp.$reset();

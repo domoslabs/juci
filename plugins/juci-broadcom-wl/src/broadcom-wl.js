@@ -30,7 +30,7 @@ JUCI.app.run(function($network, $uci, $wireless){
 							wcl.snr = (wcl.rssi / wcl.noise); 
 							cl._display_widget = "wireless-client-lan-display-widget"; 
 							cl._wireless = wcl; 
-						}; 
+						} 
 					}); 
 					def.resolve(); 
 				}).fail(function(){
@@ -67,7 +67,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 				adapters.push({
 					name: device.ssid.value, 
 					device: device.ifname.value, 
-					type: "wireless", 
+					type: "wireless"
 				}); 
 			}); 
 			// set type for devices whose names start with wl
@@ -166,9 +166,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 	
 	Wireless.prototype.scan = function(opts){
 		var deferred = $.Deferred(); 
-		$rpc.juci.broadcom.wireless.lua.scan(opts).done(function(result){
-			
-		}).always(function(){
+		$rpc.juci.broadcom.wireless.lua.scan(opts).always(function(){
 			deferred.resolve(); 
 		});  
 		return deferred.promise(); 
@@ -272,7 +270,6 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"radius_server":	{ dvalue: "", type: String },
 		"radius_port":		{ dvalue: "", type: String },
 		"radius_secret":	{ dvalue: "", type: String },
-		"ifname":			{ dvalue: "", type: String },
 		"gtk_rekey":		{ dvalue: false, type: Boolean },
 		"net_rekey":		{ dvalue: 0, type: Number },
 		"wps_pbc":			{ dvalue: false, type: Boolean },

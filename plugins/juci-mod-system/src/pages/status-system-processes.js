@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("StatusSystemProcesses", function ($scope, $rpc, gettext, $tr) {
+.controller("StatusSystemProcesses", function ($scope, $rpc) {
 	JUCI.interval.repeat("juci-process-list", 5000, function(done){
 		$rpc.juci.system.process.list().done(function(processes){
 			$scope.processes = processes.list; 

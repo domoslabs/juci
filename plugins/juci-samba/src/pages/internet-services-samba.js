@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("ServiceSambaPage", function($scope, $tr, gettext, $uci, $samba, gettext, $firewall){
+.controller("ServiceSambaPage", function($scope, $tr, gettext, $uci, $samba, $firewall){
 	$scope.data = {
 		networks: [],
 		output: []

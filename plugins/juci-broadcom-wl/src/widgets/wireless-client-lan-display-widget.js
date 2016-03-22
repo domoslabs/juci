@@ -17,16 +17,13 @@
  */
 
 JUCI.app
-.directive("wirelessClientLanDisplayWidget", function($compile, $parse){
+.directive("wirelessClientLanDisplayWidget", function(){
 	return {
 		templateUrl: "/widgets/wireless-client-lan-display-widget.html", 
-		controller: "wirelessClientLanDisplayWidget", 
 		scope: {
 			client: "=ngModel"
 		},
 		replace: true, 
 		require: "^ngModel"
-	 };  
-}).controller("wirelessClientLanDisplayWidget", function($scope){	
-
+	};
 }); 

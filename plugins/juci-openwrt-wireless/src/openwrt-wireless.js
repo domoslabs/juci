@@ -29,14 +29,14 @@ JUCI.app.run(function($network, $uci, $wireless){
 						if(wcl) { 
 							cl._display_widget = "wireless-client-lan-display-widget"; 
 							cl._wireless = wcl; 
-						}; 
+						} 
 					}); 
 					def.resolve(); 
 				}).fail(function(){
 					def.reject(); 
 				}); 
 				return def.promise(); 
-			}, 
+			} 
 		}
 	}); 
 }); 
@@ -249,7 +249,6 @@ UCI.wireless.$registerSectionType("wifi-iface", {
 	"radius_server":	{ dvalue: "", type: String },
 	"radius_port":		{ dvalue: "", type: String },
 	"radius_secret":	{ dvalue: "", type: String },
-	"ifname":			{ dvalue: "", type: String },
 	"gtk_rekey":		{ dvalue: false, type: Boolean },
 	"net_rekey":		{ dvalue: 0, type: Number },
 	"wps_pbc":			{ dvalue: false, type: Boolean },

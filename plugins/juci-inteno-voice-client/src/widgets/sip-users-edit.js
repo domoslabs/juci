@@ -59,7 +59,7 @@ JUCI.app
 				return true;
 			});
 		}
-	};
+	}
 	$scope.updateCodecList = function(value, index){
 		for(var i = index; i < 7; i++){
 			$scope.model[codecNames[i]].value = "";

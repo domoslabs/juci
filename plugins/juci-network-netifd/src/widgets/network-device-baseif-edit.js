@@ -19,16 +19,12 @@
  */
 
 JUCI.app
-.directive("networkDeviceBaseifEdit", function($compile){
+.directive("networkDeviceBaseifEdit", function(){
 	return {
 		scope: {
 			device: "=ngModel"
 		},
 		templateUrl: "/widgets/network-device-baseif-edit.html", 
-		controller: "networkDeviceBaseifEdit", 
 		replace: true
-	 };  
-})
-.controller("networkDeviceBaseifEdit", function($scope){
-	
+	};
 }); 

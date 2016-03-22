@@ -19,9 +19,9 @@
  */
 
 JUCI.app
-.factory("dropbearAddKey", function($modal, $network){
+.factory("dropbearAddKey", function($modal){
 	return {
-		show: function(opts){
+		show: function(){
 			var def = $.Deferred(); 
 			var modalInstance = $modal.open({
 				animation: true,

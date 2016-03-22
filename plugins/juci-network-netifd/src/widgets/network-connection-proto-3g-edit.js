@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("networkConnectionProto3gEdit", function($compile){
+.directive("networkConnectionProto3gEdit", function(){
 	return {
 		scope: {
 			interface: "=ngModel"
@@ -27,9 +27,9 @@ JUCI.app
 		templateUrl: "/widgets/network-connection-proto-3g-edit.html", 
 		controller: "networkConnectionProto3gEdit", 
 		replace: true
-	 };  
+	};  
 })
-.controller("networkConnectionProto3gEdit", function($scope, $network, $modal, $tr, gettext){
+.controller("networkConnectionProto3gEdit", function($scope, $network, $modal, $tr, gettext, $rpc){
 	$scope.showPass = false;
 	$scope.togglePasswd = function(){
 		$scope.showPass = !$scope.showPass;
@@ -42,7 +42,7 @@ JUCI.app
 		{ label: $tr(gettext("UMTS/GPRS")),	value: "umts" },
 		{ label: $tr(gettext("UMTS only")),	value: "umts_only" },
 		{ label: $tr(gettext("GPRS only")),	value: "gprs_only" },
-		{ label: $tr(gettext("GPRS only")),	value: "evdo" },
+		{ label: $tr(gettext("GPRS only")),	value: "evdo" }
 	];
 })
 .directive("networkConnectionProto3gAdvancedEdit", function(){

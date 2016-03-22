@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("ddnsNetworkSettingsEdit", function($compile){
+.directive("ddnsNetworkSettingsEdit", function(){
 	return {
 		scope: {
 			ddns: "=ngModel"

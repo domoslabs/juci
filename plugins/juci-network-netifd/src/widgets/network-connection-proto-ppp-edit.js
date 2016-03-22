@@ -1,7 +1,7 @@
 //! Author Reidar Cederqvist <reidar.cederqvist@gmail.com>
 
 JUCI.app
-.directive("networkConnectionProtoPppEdit", function($compile, $parse){
+.directive("networkConnectionProtoPppEdit", function(){
 	return {
 		templateUrl: "/widgets/network-connection-proto-ppp-edit.html", 
 		scope: {
@@ -10,9 +10,9 @@ JUCI.app
 		controller: "networkConnectionProtoPppEdit", 
 		replace: true, 
 		require: "^ngModel"
-	 };  
+	};
 })
-.controller("networkConnectionProtoPppEdit", function($scope, $uci, $network, $rpc, $log, gettext){
+.controller("networkConnectionProtoPppEdit", function($scope, $rpc){
 	$scope.modemDevices = [];
 	$rpc.juci.modems.list().done(function(data){
 		$scope.modemDevices = data.modems.map(function(x){ return { label:x, value:x}});

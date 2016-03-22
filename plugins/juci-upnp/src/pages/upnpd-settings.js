@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("UPNPMainPage", function($scope, $uci, $systemService, $network, $firewall, $upnp, $tr, gettext){
+.controller("UPNPMainPage", function($scope, $uci, $systemService, $network, $firewall, $upnp, $tr, gettext, $rpc){
 	JUCI.interval.repeat("upnp-status-refresh", 1000, function(done){
 		$systemService.find("miniupnpd").done(function(service){
 			$scope.service = service;

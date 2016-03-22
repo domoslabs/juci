@@ -8,7 +8,7 @@ JUCI.app
 		replace: true,
 		controller: "sipServiceProviderCtrl"
 	};
-}).controller("sipServiceProviderCtrl", function($scope, $uci, $tr, gettext){
+}).controller("sipServiceProviderCtrl", function($scope, $rpc, $uci, $tr, gettext){
 	$uci.$sync(["voice_client"]).done(function(){
 		$scope.providers = $uci.voice_client["@sip_service_provider"];
 		$scope.$apply();
@@ -39,7 +39,7 @@ JUCI.app
 			codec0: "alaw",
 			ptime_alaw: 20,
 			transport: "udp"
-		}).done(function(item){$scope.$apply()});
+		}).done(function(){$scope.$apply()});
 	};
 	$scope.onDeleteProvider = function(item){
 		if(!item) return;

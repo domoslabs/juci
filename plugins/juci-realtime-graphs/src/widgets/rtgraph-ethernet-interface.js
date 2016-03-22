@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("rtgraphEthernetInterface", function($compile, $parse){
+.directive("rtgraphEthernetInterface", function(){
 	return {
 		templateUrl: "/widgets/rtgraph-ethernet-interface.html", 
 		controller: "rtgraphEthernetInterface", 
@@ -28,7 +28,7 @@ JUCI.app
 		},
 		replace: true, 
 		require: "^ngModel"
-	 };  
+	};
 }).controller("rtgraphEthernetInterface", function($scope, $rpc, $element){	
 	$scope.$watch("ifname", function(value){
 		if(!value) return; 
@@ -46,10 +46,10 @@ JUCI.app
 		
 		var groups = new vis.DataSet(); 	
 		groups.add({
-			id: 1,
+			id: 1
 		});
 		groups.add({
-			id: 2,
+			id: 2
 		});
 
 		var graph2d = new vis.Graph2d(container, dataset, groups, options);

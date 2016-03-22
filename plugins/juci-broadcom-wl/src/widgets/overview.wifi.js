@@ -22,14 +22,14 @@ JUCI.app
 		templateUrl: "widgets/overview.wifi.html", 
 		controller: "overviewWidgetWifi", 
 		replace: true
-	 };  
+	};  
 })
 .directive("overviewStatusWidget00Wifi", function(){
 	return {
 		templateUrl: "widgets/overview.wifi.small.html", 
 		controller: "overviewStatusWidgetWifi", 
 		replace: true
-	 };  
+	};  
 })
 .controller("overviewStatusWidgetWifi", function($scope, $uci, $rpc){
 	$scope.wifiRadios = [];
@@ -132,13 +132,13 @@ JUCI.app
 				}).always(function(){
 					next();
 				});
-			},
+			}
 		], function(){
 			$scope.$apply(); 
 			def.resolve(); 
 		}); 
 		return def.promise(); 
-	}; 
+	}
 	JUCI.interval.repeat("wifi-overview", 10000, function(done){
 		if($scope && $scope.vifs){
 			var tab_info = {};

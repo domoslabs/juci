@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("StatusNATPageCtrl", function($scope, $rpc, $tr, $network, gettext){
+.controller("StatusNATPageCtrl", function($scope, $network){
 	$scope.order = function(pred){
 		$scope.predicate = pred; 
 		$scope.reverse = ($scope.predicate === pred) ? !$scope.reverse : false;

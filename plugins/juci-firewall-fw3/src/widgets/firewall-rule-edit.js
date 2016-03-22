@@ -60,9 +60,6 @@ JUCI.app
 		}); 
 	}); 
 	
-	function update(){
-	}
-	
 	$scope.onSelectSrcHost = function(){
 		if(!$scope.rule) return; 
 		networkHostPicker.show({ net: $scope.rule.src.value }).done(function(client){
@@ -89,8 +86,8 @@ JUCI.app
 		}); 
 	}
 	
-	$scope.$watch("rule", function(rule){
-		if(!rule) return; 
+	$scope.$watch("rule", function(r){
+		if(!r) return; 
 		var rule = $scope.rule; 
 		$scope.data.src_macs = rule.src_mac.value.map(function(x){ return {text:x}; });
 		$scope.data.dest_macs = rule.dest_mac.value.map(function(x){ return {text:x}; });
@@ -99,19 +96,19 @@ JUCI.app
 	}); 
 	$scope.$watch("data.dest_ips", function(ips){
 		if(!$scope.rule || !ips) return;
-		$scope.rule.dest_ip.value = ips.map(function(x){ return x.text;});;
+		$scope.rule.dest_ip.value = ips.map(function(x){ return x.text;});
 	}, true);
 	$scope.$watch("data.src_macs", function(mac){
 		if(!$scope.rule || !mac) return;
-		$scope.rule.src_mac.value = mac.map(function(x){ return x.text;});;
+		$scope.rule.src_mac.value = mac.map(function(x){ return x.text;});
 	}, true);
 	$scope.$watch("data.dest_macs", function(mac){
 		if(!$scope.rule || !mac) return;
-		$scope.rule.dest_mac.value = mac.map(function(x){ return x.text;});;
+		$scope.rule.dest_mac.value = mac.map(function(x){ return x.text;});
 	}, true);
 	$scope.$watch("data.src_ips", function(ips){
 		if(!$scope.rule || !ips) return;
-		$scope.rule.src_ip.value = ips.map(function(x){ return x.text;});;
+		$scope.rule.src_ip.value = ips.map(function(x){ return x.text;});
 	}, true);
 
 	var ipv4 = new $uci.validators.IP4AddressValidator;

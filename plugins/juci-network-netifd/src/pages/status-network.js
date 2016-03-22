@@ -19,10 +19,11 @@
  */
 
 JUCI.app
-.controller("NetifdNetworkStatusPage", function ($scope, $uci, $rpc, gettext) {
+.controller("NetifdNetworkStatusPage", function ($scope, $uci, $rpc) {
 	//$scope.expanded = false; 
 	
 	JUCI.interval.repeat("status.refresh", 2000, function(resume){
+		var _interfaces;
 		async.series([
 			function(next){
 				$uci.$sync("boardpanel").done(function(){ next(); }); 

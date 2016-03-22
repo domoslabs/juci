@@ -5,14 +5,14 @@ JUCI.app
 		templateUrl: "widgets/overview.voice.html", 
 		controller: "overviewWidgetVoice", 
 		replace: true
-	 };  
+	};  
 })
 .directive("overviewStatusWidget40Voice", function(){
 	return {
 		templateUrl: "widgets/overview.voice.small.html", 
 		controller: "overviewWidgetVoice", 
 		replace: true
-	 };  
+	};  
 })
 .controller("overviewWidgetVoice", function($scope, $rpc, $uci, $tr, gettext){
 	$scope.sipAccounts = []; 

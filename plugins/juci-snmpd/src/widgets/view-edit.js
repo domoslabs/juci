@@ -8,6 +8,6 @@ JUCI.app
 			view: "=ngModel"
 		},
 		replace: true,
-		require: "^ngModel",
+		require: "^ngModel"
 	}
 });

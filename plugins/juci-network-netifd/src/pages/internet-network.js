@@ -68,7 +68,7 @@ JUCI.app
 
 	$scope.onAddConnection = function(){
 		var model = {
-			errors: [],
+			errors: []
 		};
 		$juciDialog.show("network-connection-create", {
 			title: "Create New Network Interface",

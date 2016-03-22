@@ -22,14 +22,14 @@ JUCI.app
 		templateUrl: "widgets/overview.wifi.html", 
 		controller: "overviewWidgetWifi", 
 		replace: true
-	 };  
+	};  
 })
 .directive("overviewStatusWidget00Wifi", function(){
 	return {
 		templateUrl: "widgets/overview.wifi.small.html", 
 		controller: "overviewStatusWidgetWifi", 
 		replace: true
-	 };  
+	};  
 })
 .controller("overviewStatusWidgetWifi", function($scope, $uci, $rpc){
 	JUCI.interval.repeat("overview-wireless", 1000, function(done){
@@ -57,6 +57,7 @@ JUCI.app
 				$scope.wifiClients = clients; 
 				$scope.wifiBands = Object.keys(clients); 
 				$scope.$apply(); 
+				next();
 			}); 
 		}], function(){
 			done(); 
@@ -88,7 +89,7 @@ JUCI.app
 	$scope.onEditSSID = function(iface){
 		$juciDialog.show("wireless-interface-edit", {
 			title: $tr(gettext("Edit wireless interface")),  
-			on_apply: function(btn, dlg){
+			on_apply: function(){
 				$uci.$save(); 
 				return true; 
 			}, 
@@ -138,13 +139,13 @@ JUCI.app
 				}).fail(function(){
 					next();
 				});
-			},
+			}
 		], function(){
 			$scope.$apply(); 
 			def.resolve(); 
 		}); 
 		return def.promise(); 
-	}; 
+	} 
 	JUCI.interval.repeat("wifi-overview", 10000, function(done){
 		refresh().done(function(){
 			done(); 

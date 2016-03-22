@@ -33,7 +33,7 @@ JUCI.app
 		}
 	}; 
 })
-.controller("dslBaseDevicePicker", function($scope, $modalInstance, $wireless, items, gettext){
+.controller("dslBaseDevicePicker", function($scope, $modalInstance, $wireless, items, gettext, $tr){
 	$scope.items = items; 
 	$scope.data = {}; 
 	$scope.ok = function () {

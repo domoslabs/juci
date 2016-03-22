@@ -19,11 +19,10 @@
  */
 
 JUCI.app
-.factory("upgradePopup", function($modal, $network){
+.factory("upgradePopup", function($modal){
 	return {
 		show: function(opts){
 			var def = $.Deferred(); 
-			var exclude = {}; // allready added nets that will be excluded from the list
 			if(!opts) opts = {}; 
 			
 			var modalInstance = $modal.open({

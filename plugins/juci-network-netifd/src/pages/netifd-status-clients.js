@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("NetifdStatusClientsPage", function($scope, $network, $firewall){
+.controller("NetifdStatusClientsPage", function($scope, $network, $firewall, $rpc){
 	$network.getConnectedClients().done(function(clients){
 		$scope.clients = []; 
 		// TODO: this is duplicate of what is in overview-net widget. We need a better way to list lan clients without treating lan as special network. 

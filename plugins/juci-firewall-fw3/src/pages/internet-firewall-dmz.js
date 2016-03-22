@@ -47,7 +47,7 @@ JUCI.app
         option target    ACCEPT
 	*/		
 	$scope.onCreateDMZConfig = function(){
-		$uci.firewall.$create({".type": "dmz", ".name": "dmz"}).done(function(dmz){
+		$uci.firewall.$create({".type": "dmz", ".name": "dmz"}).done(function(){
 			//$uci.firewall.$mark_for_reload(); 
 			refresh(); 	
 		}).fail(function(){

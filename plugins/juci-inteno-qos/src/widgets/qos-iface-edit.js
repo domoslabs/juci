@@ -1,7 +1,7 @@
 //!Author: Reidar Cederqvist <reidar.cederqvist@gmail.com>
 
 JUCI.app
-.directive("qosIfaceEdit", function($compile, $parse){
+.directive("qosIfaceEdit", function(){
 	return {
 		templateUrl: "/widgets/qos-iface-edit.html",
 		scope: {

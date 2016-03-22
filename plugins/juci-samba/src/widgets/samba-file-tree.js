@@ -32,7 +32,7 @@ JUCI.app
 	$scope.data = {
 			tree: [{
 			label: $tr(gettext("Loading.."))
-		}], 
+		}]
 	}; 
 	$scope.on_select = function(branch){
 		if(!branch || !branch.path) return;

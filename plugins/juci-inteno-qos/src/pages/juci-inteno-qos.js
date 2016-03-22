@@ -40,7 +40,7 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 	$scope.onAddRule = function(){
 		$uci.qos.$create({
 			".type": "classify"
-		}).done(function(section){
+		}).done(function(){
 			$scope.$apply(); 
 		}); 
 	};
@@ -54,7 +54,7 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 		$juciDialog.show("add-bw-interface-edit", {
 			title: $tr(gettext("Add Bandwidth Limitation")),
 			model: model,
-			on_apply: function(btn, inst){
+			on_apply: function(){
 				if(!model.name){
 					model.error = true;
 					return false;

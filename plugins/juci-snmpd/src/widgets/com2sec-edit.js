@@ -8,6 +8,6 @@ JUCI.app
 			com2sec: "=ngModel"
 		},
 		replace: true,
-		require: "^ngModel",
+		require: "^ngModel"
 	}
 });

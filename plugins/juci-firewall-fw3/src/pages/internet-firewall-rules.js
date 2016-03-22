@@ -38,7 +38,7 @@ JUCI.app
 			".type": "rule", 
 			"name": "new_rule",
 			"hidden": true
-		}).done(function(rule){
+		}).done(function(){
 			$scope.$apply(); 
 		}); 
 	}

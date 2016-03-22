@@ -1,7 +1,7 @@
 //! Author: Reidar Cederqvist <reidar.cederqvist@gmail.com>
 
 JUCI.app
-.factory("utilsAddTestserverPicker", function($modal, $network){
+.factory("utilsAddTestserverPicker", function($modal){
 	return {
 		show: function(){
 			var def = $.Deferred(); 

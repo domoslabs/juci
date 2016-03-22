@@ -8,6 +8,6 @@ JUCI.app
 			group: "=ngModel"
 		},
 		replace: true,
-		require: "^ngModel",
+		require: "^ngModel"
 	}
 });

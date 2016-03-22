@@ -4,6 +4,6 @@ JUCI.app
 .directive("rebootDialog", function(){
 	return {
 		templateUrl: "/widgets/reboot-dialog.html",
-		scope: true,
+		scope: true
 	}
 });

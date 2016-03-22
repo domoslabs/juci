@@ -18,7 +18,7 @@
  * 02110-1301 USA
  */
 
-JUCI.app.factory("$ethernet", function($rpc, $uci){
+JUCI.app.factory("$ethernet", function($rpc){
 	function Ethernet() {
 		this._adapters = []; 
 		this._subsystems = []; 

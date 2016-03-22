@@ -24,14 +24,14 @@ JUCI.app
 		templateUrl: "widgets/overview.usb.html", 
 		controller: "overviewWidget20USBCtrl", 
 		replace: true
-	 };  
+	};
 })
 .directive("overviewStatusWidget20USB", function(){
 	return {
 		templateUrl: "widgets/overview.usb.small.html", 
 		controller: "overviewWidget20USBCtrl", 
 		replace: true
-	 };  
+	};
 })
 .controller("overviewWidget20USBCtrl", function($scope, $uci, $usb, $events){
 	$events.subscribe("hotplug.usb", function(res){

@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("uciFirewallNatRuleEdit", function($compile, $parse){
+.directive("uciFirewallNatRuleEdit", function(){
 	return {
 		templateUrl: "/widgets/uci.firewall.nat.rule.edit.html", 
 		scope: {
@@ -27,8 +27,8 @@ JUCI.app
 		}, 
 		controller: "uciFirewallNatRuleEdit", 
 		replace: true
-	 };  
-}).controller("uciFirewallNatRuleEdit", function($scope, $uci, $rpc, $firewall, $network, $log){
+	};  
+}).controller("uciFirewallNatRuleEdit", function($scope, $uci, $rpc, $firewall, $network){
 	$scope.portIsRange = 0;
 	$scope.data = {}; 
 	$scope.$watch("rule", function(value){

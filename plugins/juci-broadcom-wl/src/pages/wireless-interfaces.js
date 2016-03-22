@@ -7,7 +7,6 @@ JUCI.app
 		$wireless.getDevices().done(function(devices){
 			$scope.devices = devices; 
 			$scope.interfaces = interfaces; 
-			var devcounter = {}; 
 			$scope.interfaces.map(function(x){
 				var dev = devices.find(function(dev) { return dev[".name"] == x.device.value; });  
 				if(dev){

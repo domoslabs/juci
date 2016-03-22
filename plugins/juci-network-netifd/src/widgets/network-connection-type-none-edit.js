@@ -21,7 +21,7 @@
 gettext("network.interface.type.none.tab.title");
 
 JUCI.app
-.directive("networkConnectionTypeNoneEdit", function($compile){
+.directive("networkConnectionTypeNoneEdit", function(){
 	return {
 		scope: {
 			interface: "=ngModel"
@@ -29,7 +29,7 @@ JUCI.app
 		templateUrl: "/widgets/network-connection-type-none-edit.html",
 		controller: "networkConnectionTypeNoneEdit",
 		replace: true
-	 };
+	};
 })
 .controller("networkConnectionTypeNoneEdit", function($scope, $ethernet, $modal, $tr, gettext, $networkHelper){
 	// expose tab title

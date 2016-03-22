@@ -17,7 +17,7 @@
  */
 
 JUCI.app
-.directive("wifiSignalIndicator", function($compile, $parse){
+.directive("wifiSignalIndicator", function(){
 	return {
 		templateUrl: "/widgets/wifi.signal.indicator.html", 
 		scope: {
@@ -26,8 +26,8 @@ JUCI.app
 		controller: "wifiSignalIndicator", 
 		replace: true, 
 		require: "^ngModel"
-	 };  
-}).controller("wifiSignalIndicator", function($scope, $uci, $rpc){
+	};  
+}).controller("wifiSignalIndicator", function($scope){
 	$scope.bars = [false, false, false, false]; 
 	$scope.$watch("value", function(value){
 		var q = value/5; 

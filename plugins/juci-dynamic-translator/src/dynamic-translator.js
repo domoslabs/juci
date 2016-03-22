@@ -18,12 +18,11 @@
  * 02110-1301 USA
  */
 
-JUCI.app.factory("dynamicTranslator", function($rootScope){
+JUCI.app.factory("dynamicTranslator", function($rootScope, gettextCatalog){
 	var strings = []; 
 	$rootScope.$on("$locationChangeSuccess", function(){
 		console.log("removing string cache of "+strings.length+" strings."); 
 		// reset strings on page
-		page_strings = []; 	
 	}); 
 
 	return {

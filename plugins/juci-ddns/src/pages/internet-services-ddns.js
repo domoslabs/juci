@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("DDNSPage", function ($scope, $uci, $network) {
+.controller("DDNSPage", function ($scope, $uci) {
 	$scope.data = {}; 
 	$uci.$sync(["ddns"]).done(function () {
 		$scope.ddns_list = $uci.ddns["@service"]; 
@@ -31,7 +31,7 @@ JUCI.app
 			".type": "service", 
 			".name": "new ddns config",
 			"enabled": true
-		}).done(function(ddns){
+		}).done(function(){
 			$scope.$apply(); 
 		}); 
 	} 

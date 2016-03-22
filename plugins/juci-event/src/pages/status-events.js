@@ -41,7 +41,7 @@ JUCI.app
 			if($scope.filters[i].name == filter) return i;
 		}
 		return -1;
-	};
+	}
 	
 	$scope.allLimits = [
 		{ label: 20, value: 20 }, 
@@ -107,7 +107,7 @@ JUCI.app
 		}
 		update().always(function(){
 			done();
-		});;
+		});
 	}); 
 
 	$scope.lineClass = function(line){

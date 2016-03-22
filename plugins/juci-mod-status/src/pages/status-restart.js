@@ -70,7 +70,7 @@ JUCI.app
 			var rpc = true; 
 			$scope.message = "Waiting for reboot..."; 
 			$scope.$apply(); 
-			var interval = setInterval(function(){
+			setInterval(function(){
 				$scope.progress++; 
 				$scope.$apply(); 
 				if(!rpc){

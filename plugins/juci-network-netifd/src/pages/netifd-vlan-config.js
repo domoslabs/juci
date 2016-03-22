@@ -28,7 +28,7 @@ JUCI.app
 	$scope.onAddVlan = function(){
 		$uci.network.$create({
 			".type": "switch_vlan"
-		}).done(function(interface){
+		}).done(function(){
 			$scope.$apply(); 
 		}); 
 	}

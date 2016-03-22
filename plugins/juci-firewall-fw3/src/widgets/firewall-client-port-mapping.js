@@ -12,7 +12,7 @@ JUCI.app
 		controller: "firewallClientPortMappingCtrl"
 	}
 })
-.controller("firewallClientPortMappingCtrl", function($scope, $uci, $firewall, $tr, gettext){
+.controller("firewallClientPortMappingCtrl", function($scope, $uci, $firewall, $tr, gettext, $rpc){
 	$scope.ProtocolTypes = [
 		{ label: $tr(gettext("TCP + UDP")), value: "tcp udp" },
 		{ label: $tr(gettext("TCP")), value: "tcp" },
@@ -27,7 +27,7 @@ JUCI.app
 		dest_port: ""
 	}
 
-	$scope.$watch("client", function(client){
+	$scope.$watch("client", function(){
 		if(!$rpc.juci.firewall) return;
 		$rpc.juci.firewall.excluded_ports().done(function(res){
 			$scope.excluded_ports = res.result || "";
@@ -95,16 +95,16 @@ JUCI.app
 		if(portValidator.validate({value:port}) != null) return false;
 		if(port == "") return false;
 		var ex = $scope.excluded_ports.split(" ").map(function(x){ return parseInt(x); }).sort();
+		var ok = false;
 		if(port.match(/-/)){
 			var start = parseInt(port.split("-")[0]);
 			var stop = parseInt(port.split("-")[1]);
-			var ok = false;
 			ex.map(function(e){
 				if(e == start || e == stop || (e > start && e < stop)) ok = true;
 			});
 			return ok;
 		}
-		var ok = false;
+		ok = false;
 		ex.map(function(e){ if(e == parseInt(port)) ok = true; });
 		return ok;
 	}

@@ -1,7 +1,7 @@
 //! Author: Martin K. Schröder <mkschreder.uk@gmail.com>
 
 JUCI.app
-.directive("networkConnectionProto4gEdit", function($compile){
+.directive("networkConnectionProto4gEdit", function(){
 	return {
 		scope: {
 			interface: "=ngModel"
@@ -9,9 +9,9 @@ JUCI.app
 		templateUrl: "/widgets/network-connection-proto-4g-edit.html", 
 		controller: "networkConnectionProto4gEdit", 
 		replace: true
-	 };  
+	};  
 })
-.controller("networkConnectionProto4gEdit", function($scope, $network, $modal, $tr, gettext){
+.controller("networkConnectionProto4gEdit", function($scope, $rpc){
 	$scope.device = {};
 	$rpc.juci.modems.list4g().done(function(data){
 		if(data.info) return;

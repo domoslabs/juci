@@ -55,7 +55,7 @@ UCI.dhcp.$registerSectionType("dhcp", {
 	"ignore":		{ dvalue: false, type: Boolean }
 });
 UCI.dhcp.$registerSectionType("domain", {
-	"name":		{ dvalue: [], type: Array, },
+	"name":		{ dvalue: [], type: Array },
 	"ip":		{ dvalue: "", type: String, required: true },  // TODO: change to ip address
 	"family":	{ dvalue: "ipv4", type: String, required: true },
 	"network":	{ dvalue: "", type: String}

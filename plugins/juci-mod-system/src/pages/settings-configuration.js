@@ -61,9 +61,10 @@ JUCI.app
 		$("#postiframe").bind("load", function(){
 			var json = $(this).contents().text(); 
 			try {
-				var obj = JSON.parse(json); 
 				$scope.onUploadComplete(JSON.parse(json));
-			} catch(e){}
+			} catch(e){
+				console.log(e);
+			}
 			$(this).unbind("load"); 
 		}); 
 		$("form[name='restoreForm']").submit();

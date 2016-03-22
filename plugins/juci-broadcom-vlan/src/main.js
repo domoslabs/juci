@@ -16,7 +16,7 @@
  * 02110-1301 USA
  */
 
-JUCI.app.factory("$broadcomVLAN", function($uci, $rpc){
+JUCI.app.factory("$broadcomVLAN", function($uci){
 	return {
 		annotateAdapters: function(adapters){
 			var def = $.Deferred(); 

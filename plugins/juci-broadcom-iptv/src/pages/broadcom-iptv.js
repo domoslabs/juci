@@ -83,6 +83,6 @@ JUCI.app
 	$scope.snooping_mode = [
 		{ label: $tr(gettext("Disabled")),	value:0 },
 		{ label: $tr(gettext("Standard")),	value:1 },
-		{ label: $tr(gettext("Blocking")),	value:2 },
+		{ label: $tr(gettext("Blocking")),	value:2 }
 	];
 }); 

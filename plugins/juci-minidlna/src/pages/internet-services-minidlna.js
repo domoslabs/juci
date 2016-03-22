@@ -98,7 +98,7 @@ JUCI.app
 		$juciDialog.show("minidlna-file-tree", {
 			title: $tr(gettext("Add folder to share")),
 			model: model,
-			on_apply: function(btn, dlg){
+			on_apply: function(){
 				if(!model.selected || !model.selected.path)return false;
 				for(var i=0; i < $scope.tagslistData.length; i++){
 					var prefix = $scope.tagslistData[i].path.substr(0,2);

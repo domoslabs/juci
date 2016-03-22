@@ -1,7 +1,7 @@
 //! Author: Reidar Cederqvist <reidar.cederqvist@gmail.com>
 
 JUCI.app
-.directive("networkConnectionProtoStaticEdit", function($compile, $parse){
+.directive("networkConnectionProtoStaticEdit", function(){
 	return {
 		templateUrl: "/widgets/network-connection-proto-static-edit.html", 
 		scope: {
@@ -10,13 +10,13 @@ JUCI.app
 		controller: "networkConnectionProtoStaticEdit", 
 		replace: true, 
 		require: "^ngModel"
-	 };  
+	};
 })
-.controller("networkConnectionProtoStaticEdit", function($scope, $uci, $network, $rpc, $log, $tr, gettext){
+.controller("networkConnectionProtoStaticEdit", function($scope, $tr, gettext){
 	$scope.$watch("interface", function(){
 		if(!$scope.interface) return;
 		$scope.ip.type = ($scope.interface.ip6assign.value == "" ? "alloc" : "assign");
-		$scope.interface.dns.value = $scope.interface.dns.value.filter(function(x){ if(x == "") return false; return true});;
+		$scope.interface.dns.value = $scope.interface.dns.value.filter(function(x){ if(x == "") return false; return true});
 		$scope.dnslist = $scope.interface.dns.value.map(function(x){return { text:x }});
 	}); 
 	$scope.interface_types = [

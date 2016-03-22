@@ -21,7 +21,7 @@
 // this control gets pointer to network connection and looks up proper dhcp server entry for it. 
 
 JUCI.app
-.directive("networkConnectionDhcpServerSettings", function($compile){
+.directive("networkConnectionDhcpServerSettings", function(){
 	return {
 		scope: {
 			connection: "=ngConnection"

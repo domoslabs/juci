@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("PageBroadcomVdsl", function($scope, $uci, $broadcomDsl, dslBaseDevicePicker){
+.controller("PageBroadcomVdsl", function($scope, $uci, $broadcomDsl, gettext){
 	$scope.getItemTitle = function(dev){
 		if(!dev) return "Unknown"; 
 		return dev.name.value + " (" +dev.ifname.value + ")"; 

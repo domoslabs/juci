@@ -56,7 +56,7 @@ JUCI.app
 		{ label: $tr(gettext("Compatibility")),	value: "compatibility" },
 		{ label: $tr(gettext("RFC 2833")),	value: "rfc2833" },
 		{ label: $tr(gettext("SIP INFO")),	value: "info" },
-		{ label: $tr(gettext("Inband")),	value: "inband" },
+		{ label: $tr(gettext("Inband")),	value: "inband" }
 	];
 	$scope.onLocalnetAdded = function(){
 		$scope.sip.localnet.value = $scope.localnets.map(function(x){return x.label});

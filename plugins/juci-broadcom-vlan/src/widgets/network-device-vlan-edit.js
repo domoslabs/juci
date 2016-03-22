@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("networkDeviceVlanEdit", function($compile){
+.directive("networkDeviceVlanEdit", function(){
 	return {
 		scope: {
 			device: "=ngModel"

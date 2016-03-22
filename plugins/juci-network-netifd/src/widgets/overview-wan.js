@@ -24,14 +24,14 @@ JUCI.app
 		templateUrl: "widgets/overview-wan.html", 
 		controller: "overviewWidgetWAN", 
 		replace: true
-	 };  
+	};
 })
 .directive("overviewStatusWidget11WAN", function(){
 	return {
 		templateUrl: "widgets/overview-wan-small.html", 
 		controller: "overviewWidgetWAN", 
 		replace: true
-	 };  
+	};
 })
 .filter('formatTimer', function() {
     return function(seconds) {
@@ -83,8 +83,8 @@ JUCI.app
 	JUCI.interval.repeat("overview-wan", 2000, function(done){
 		$network.getNetworks().done(function(networks){
 			var bridgedNets = networks.filter(function(net){ return net.proto.value == "dhcp" && net.type.value == "bridge";});
-			$firewall.getZoneNetworks("wan").done(function(wan_ifs){
-				var default_route_ifs = wan_ifs.filter(function(x){ 
+			$firewall.getZoneNetworks("wan").done(function(wan_iface){
+				var default_route_ifs = wan_iface.filter(function(x){ 
 					return x.$info && x.$info.route && x.$info.route.length && 
 						(x.$info.route.find(function(r){ return r.target == "0.0.0.0" || r.target == "::"; }));
 				}); 

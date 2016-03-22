@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("networkClientEdit", function($compile, $parse){
+.directive("networkClientEdit", function(){
 	return {
 		templateUrl: "/widgets/network-client-edit.html", 
 		controller: "networkClientEdit", 
@@ -28,7 +28,7 @@ JUCI.app
 		},
 		replace: true, 
 		require: "^ngModel"
-	 };  
+	};  
 }).controller("networkClientEdit", function(){	
 }); 
 

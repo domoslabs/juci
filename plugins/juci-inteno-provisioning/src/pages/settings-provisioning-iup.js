@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("icwmpProvisioningPage", function($scope, $tr, gettext, $uci, $juciDialog){
+.controller("icwmpProvisioningPage", function($scope, $tr, gettext, $uci/*, $juciDialog*/,$rpc){
 	$scope.showPasswd = false;
 	$scope.togglepw = function(){$scope.showPasswd = !$scope.showPasswd;};
 	$uci.$sync(["provisioning"]).done(function(){
@@ -31,7 +31,7 @@ JUCI.app
 		$scope.$apply();
 	});
 	$scope.times = [];
-	for(var i = 100; i < 124; i++){$scope.times[i-100] = { label: i.toString().substr(-2), value: i.toString().substr(-2) }};
+	for(var i = 100; i < 124; i++){$scope.times[i-100] = { label: i.toString().substr(-2), value: i.toString().substr(-2) }}
 	$scope.update_interval = [
 		{ label: $tr(gettext("Hourly")),	value: "hourly" },
 		{ label: $tr(gettext("Daily")),	value: "daily" },
@@ -43,7 +43,7 @@ JUCI.app
 			$scope.$apply();
 		});
 	};
-	$scope.onAddConf = function(config){
+	$scope.onAddConf = function(){
 		$uci.provisioning.$create({
 			".type": "subconfig",
 			"enabled":"off"

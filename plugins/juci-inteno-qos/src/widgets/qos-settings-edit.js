@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("qosSettingsEdit", function($compile, $parse){
+.directive("qosSettingsEdit", function(){
 	return {
 		templateUrl: "/widgets/qos-settings-edit.html",
 		scope: {
@@ -66,6 +66,6 @@ JUCI.app
 		{ label: $tr(gettext("All")),		value: '' },
 		{ label: $tr(gettext("TCP")),		value: 'tcp' },
 		{ label: $tr(gettext("UDP")),		value: 'udp' },
-		{ label: $tr(gettext("ICMP")),		value: 'icmp' },
+		{ label: $tr(gettext("ICMP")),		value: 'icmp' }
 	];
 });

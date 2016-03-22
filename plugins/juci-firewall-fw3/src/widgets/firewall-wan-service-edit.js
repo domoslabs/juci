@@ -28,7 +28,7 @@ JUCI.app
 		templateUrl: "/widgets/firewall-wan-service-edit.html"
 	}; 
 })
-.controller("firewallWanServiceEdit", function($scope, $uci, $firewall){
+.controller("firewallWanServiceEdit", function($scope, $uci){
 	$scope.onChangeState = function(){ 
 		var service = $scope.service; 
 		if(!service.$rule || !service.$rule[".name"]){

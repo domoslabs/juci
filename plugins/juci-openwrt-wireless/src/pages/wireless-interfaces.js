@@ -39,7 +39,6 @@ JUCI.app
 			animation: $scope.animationsEnabled,
 			templateUrl: 'widgets/wifi-radio-picker-modal.html',
 			controller: 'WifiRadioPickerModal',
-			size: size,
 			resolve: {
 				interfaces: function () {
 					return $scope.interfaces;

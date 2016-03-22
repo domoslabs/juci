@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("SettingsSystemGeneral", function($scope, $rpc, $uci, $tr, gettext){
+.controller("SettingsSystemGeneral", function($scope, $rpc, $uci){
 	async.series([
 		function(next){
 			$uci.$sync("system").done(function(){

@@ -41,7 +41,7 @@ JUCI.app
 		var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
 		var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
 		var enoughRegex = new RegExp("(?=.{4,}).*", "g");
-		 
+
 		if(strongRegex.test(p)) return 3; 
 		if(mediumRegex.test(p)) return 2; 
 		if(enoughRegex.test(p)) return 1; 
@@ -78,7 +78,7 @@ JUCI.app
 				//$rpc.$logout().done(function(){
 				//	window.location.reload(); 
 				//}); 
-			}).fail(function(response){
+			}).fail(function(){
 				$scope.error = gettext("Was unable to set password. Please make sure you have entered correct current password!"); 
 				$scope.$apply(); 
 			}); 

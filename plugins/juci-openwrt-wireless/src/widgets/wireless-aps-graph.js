@@ -17,7 +17,7 @@
  */
 
 JUCI.app
-.directive("wirelessApsGraph", function($compile, $parse){
+.directive("wirelessApsGraph", function(){
 	return {
 		templateUrl: "/widgets/wireless-aps-graph.html", 
 		scope: {
@@ -25,7 +25,7 @@ JUCI.app
 		}, 
 		controller: "wirelessApsGraph", 
 		replace: true 
-	 };  
+	};
 }).controller("wirelessApsGraph", function($scope){
 	var	container = document.getElementById('graph');	
 	var items = []; 
@@ -36,7 +36,7 @@ JUCI.app
 		end: 20,
 		style: 'bar',
 		drawPoints: {
-			onRender: function(item, group, grap2d) {
+			onRender: function(item, group, graph2d) {
 				return item.label != null;
 			},
 			style: 'circle'

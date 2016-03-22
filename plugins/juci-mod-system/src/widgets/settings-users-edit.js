@@ -26,7 +26,7 @@ JUCI.app
 			function(next){
 				$rpc.session.list().done(function(data){
 					$scope.allAccessGroups = Object.keys(data.acls["access-group"]);
-				 }).always(function(){next();});
+				}).always(function(){next();});
 			},
 			function(next){
 				if(user.write.value.find(function(w){ return w == "user-support"; })){

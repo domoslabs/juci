@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("dhcpStaticHostsEdit", function($compile){
+.directive("dhcpStaticHostsEdit", function(){
 	return {
 		scope: {
 			dhcp: "=ngModel"
@@ -27,7 +27,7 @@ JUCI.app
 		templateUrl: "/widgets/dhcp-static-hosts-edit.html", 
 		controller: "dhcpStaticHostsEdit", 
 		replace: true
-	};  
+	};
 })
 .controller("dhcpStaticHostsEdit", function($scope, $firewall, $uci){
 	$scope.$watch("dhcp", function(dhcp){
@@ -39,11 +39,7 @@ JUCI.app
 					return host.dhcp.value == dhcp[".name"] || host.network.value == dhcp[".name"];  
 				}); 
 			});
-			dhcp.connectedHosts = clients.filter(function(cl){
-				// filter out only clients that are connected to network that this dhcp entry is servicing
-				//return cl.network == dhcp.interface.value; 
-				return true; // for now let's include all of them since the new lua based clients listing does not supply us with "network" field. 
-			}).map(function(cl){
+			dhcp.connectedHosts = clients.map(function(cl){
 				return {
 					label: cl.hostname || cl.ipaddr || cl.ip6addr, 
 					value: cl

@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("simple2GWirelessPage", function($scope, $uci, $config){
+.controller("simple2GWirelessPage", function($scope, $uci){
 	$uci.$sync("wireless").done(function(){
 		$scope.radio = $uci.wireless.r2g; 
 		$scope.wifi_main = $uci.wireless.i2g; 

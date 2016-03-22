@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("dropbearSettingsEdit", function($compile, $parse){
+.directive("dropbearSettingsEdit", function(){
 	return {
 		templateUrl: "/widgets/dropbear-settings-edit.html",
 		scope: {

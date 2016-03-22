@@ -19,16 +19,12 @@
  */
 
 JUCI.app
-.directive("networkConnectionProtoQmiEdit", function($compile){
+.directive("networkConnectionProtoQmiEdit", function(){
 	return {
 		scope: {
 			interface: "=ngModel"
 		}, 
 		templateUrl: "/widgets/network-connection-proto-Qmi-edit.html", 
-		controller: "networkConnectionProtoQmiEdit", 
 		replace: true
-	 };  
-})
-.controller("networkConnectionProtoQmiEdit", function($scope, $network, $modal, $tr, gettext){
-	
+	};
 }); 

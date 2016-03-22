@@ -62,10 +62,9 @@ JUCI.app.factory("$systemService", function($rpc){
 	return {
 		list: function(){
 			var def = $.Deferred(); 
-			var self = this; 
-			$rpc.juci.system.service.list().done(function(result){
-				if(result && result.services){
-					var result = result.services.map(function(service){
+			$rpc.juci.system.service.list().done(function(res){
+				if(res && res.services){
+					var result = res.services.map(function(service){
 						service.enable = function(){
 							var self = this; 
 							console.log("enabling service "+self.name); 

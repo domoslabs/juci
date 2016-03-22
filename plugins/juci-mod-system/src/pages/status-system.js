@@ -48,18 +48,18 @@ JUCI.app
 
 	JUCI.interval.repeat("status.system.refresh", 1000, function(resume){
 		async.parallel([
-			function (cb){$rpc.juci.system.info().done(function(res){info = res; cb();}).fail(function(res){cb();});},
-			function (cb){$rpc.system.info().done(function(res){sys = res; cb();}).fail(function(res){cb();});},
+			function (cb){$rpc.juci.system.info().done(function(res){info = res; cb();}).fail(function(){cb();});},
+			function (cb){$rpc.system.info().done(function(res){sys = res; cb();}).fail(function(){cb();});},
 			function (cb){$network.getNetworkLoad().done(function(load){ netLoad = load; cb(); }).fail(function(){cb();});},
 			function (cb){
 				if(!$rpc.system.board) cb(); 
-				else $rpc.system.board().done(function(res){board = res; cb();}).fail(function(res){cb();});
+				else $rpc.system.board().done(function(res){board = res; cb();}).fail(function(){cb();});
 			},
 			function (cb){$rpc.juci.system.filesystems().done(function(res){
 				filesystems = res.filesystems; 
 				cb();
-			}).fail(function(res){cb();});}
-		], function(err){
+			}).fail(function(){cb();});}
+		], function(){
 			function timeFormat(secs){
 				secs = Math.round(secs);
 				var days = Math.floor(secs / (60 * 60 * 24)); 
@@ -71,7 +71,7 @@ JUCI.app
 				var divisor_for_seconds = divisor_for_minutes % 60;
 				var seconds = Math.ceil(divisor_for_seconds);
 				
-				function pad(a,b){return(1e15+a+"").slice(-b)}; 
+				function pad(a,b){return(1e15+a+"").slice(-b)}
 				
 				return ((days > 0)?""+days+"d ":"")+pad(hours,2)+":"+pad(minutes,2)+":"+pad(seconds,2);
 			}
@@ -79,7 +79,9 @@ JUCI.app
 			var cpu_load = 0; 
 			try {
 				cpu_load = Math.round(100 * (prev_cpu.usr - info.system.cpu.usr) / (prev_cpu.total - info.system.cpu.total)); 
-			} catch(e){ }
+			} catch(e){
+				console.log(e);
+			}
 			prev_cpu = info.system.cpu; 
 
 			$scope.systemStatusTbl.rows = [
@@ -91,7 +93,7 @@ JUCI.app
 				[$tr(gettext("CPU")), ""+(cpu_load || 0)+"%"],
 				[$tr(gettext("Kernel Version")), board.kernel || info.system.kernel || $tr(gettext("N/A"))],
 				[$tr(gettext("Filesystem")), info.system.filesystem || $tr(gettext("N/A"))],
-				[$tr(gettext("Active Connections")), '<juci-progress value="'+netLoad.active_connections+'" total="'+netLoad.max_connections+'"></juci-progress>'],
+				[$tr(gettext("Active Connections")), '<juci-progress value="'+netLoad.active_connections+'" total="'+netLoad.max_connections+'"></juci-progress>']
 			];
 			
 			$scope.systemMemoryTbl.rows = [

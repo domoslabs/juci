@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("StatusNetworkRoutes", function($scope, $rpc, $tr, $network, gettext){
+.controller("StatusNetworkRoutes", function($scope, $rpc){
 	$rpc.juci.network.status.arp().done(function(arp_table){
 		$scope.arp_table = arp_table.clients; 
 		$rpc.juci.network.status.ipv4routes().done(function(ipv4_routes){

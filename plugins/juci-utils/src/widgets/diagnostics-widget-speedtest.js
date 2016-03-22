@@ -1,13 +1,13 @@
 //! Author: Reidar Cederqvist <reidar.cederqvist@gmail.com>
 
 JUCI.app
-.directive("diagnosticsWidget90Speedtest", function($compile, $parse){
+.directive("diagnosticsWidget90Speedtest", function(){
 	return {
 		scope: true,
 		replace: true,
 		templateUrl: "/widgets/diagnostics-widget-speedtest.html",
-		controller: "diagnosticsWidget90Speedtest", 
-	 };  
+		controller: "diagnosticsWidget90Speedtest"
+	};
 })
 .controller("diagnosticsWidget90Speedtest", function($scope, $rpc, $events, $uci, utilsAddTestserverPicker){
 	$scope.data = {

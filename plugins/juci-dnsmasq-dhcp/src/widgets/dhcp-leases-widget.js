@@ -46,7 +46,7 @@ JUCI.app
 	function pad(a){
 		if(a < 10) return "0"+a;
 		return ""+a;
-	};
+	}
 	$scope.to_time_remaining = function(time){
 		var date_now = new Date();
 		var time_now = date_now.getTime();

@@ -177,9 +177,7 @@ JUCI.app
 		$scope.progress = 'uploading'; 
 		$("#postiframe").bind("load", function(){
 			var json = $(this).contents().text(); 
-			var obj = {}; 
 			try {
-				obj = JSON.parse(json); 
 				$scope.$KEEP = keep;
 				$rpc.juci.system.upgrade.test({"path":$scope.uploadFilename}).fail(function(){
 					$scope.showUpgradeStatus = 0;

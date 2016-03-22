@@ -1,7 +1,7 @@
 //! Author: Reidar Cederqvist <reidar.cederqvist@gmail.com>
 
 JUCI.app
-.directive("networkConnectionEdit", function($compile, $parse){
+.directive("networkConnectionEdit", function(){
 	return {
 		templateUrl: "/widgets/network-connection-edit.html", 
 		scope: {
@@ -10,9 +10,9 @@ JUCI.app
 		controller: "networkConnectionEdit", 
 		replace: true, 
 		require: "^ngModel"
-	 };  
+	};  
 })
-.controller("networkConnectionEdit", function($scope, $uci, $network, $rpc, $log, $tr, gettext, $juciConfirm, $juciDialog){
+.controller("networkConnectionEdit", function($scope, $network, $rpc, $tr, gettext, $juciConfirm){
 	$scope.expanded = true; 
 	$scope.existingHost = { }; 
 	
@@ -21,10 +21,10 @@ JUCI.app
 		{ label: $tr(gettext("AnyWAN")), value: "anywan" }, 
 		{ label: $tr(gettext("Bridge")), value: "bridge" }
 	]; 
-	 $scope.showPhysical = function(){
-	 	if(!$scope.interface) return false;
-	 	return $scope.allProtocolTypes.find(function(x){ if(x.value == $scope.interface.proto.value) return x.physical;}) != undefined;
-	};
+	$scope.showPhysical = function(){
+		if(!$scope.interface) return false;
+		return $scope.allProtocolTypes.find(function(x){ if(x.value == $scope.interface.proto.value) return x.physical;}) != undefined;
+	}
 	
 	$scope.allProtocolTypes = $network.getProtocolTypes();
 	$rpc.juci.network.protocols().done(function(data){
@@ -80,15 +80,15 @@ JUCI.app
 		$scope.interface.$proto_editor = "<network-connection-proto-"+proto+"-edit ng-model='interface'/>"; 
 		$scope.interface.$proto_editor_ph = "<network-connection-proto-"+proto+"-physical-edit ng-model='interface' protos='allInterfaceTypes' />"; 
 		$scope.interface.$proto_editor_ad = "<network-connection-proto-"+proto+"-advanced-edit ng-model='interface' />"; 
-	};	
+	}
 	JUCI.interval.repeat("load-info", 5000, function(done){
 		if(!$scope.interface || !$rpc.network.interface || !$rpc.network.interface.dump) return;
 		$rpc.network.interface.dump().done(function(ifaces){
 			$scope.interface.$info = ifaces.interface.find(function(x){ return x.interface == $scope.interface[".name"]; });
 			$scope.$apply();
-		});
+		}).always(function(){done();});
 	});
-	$scope.$watch("interface.type.value", function(value){
+	$scope.$watch("interface.type.value", function(){
 		if(!$scope.interface) return; 
 		$scope.interface.$type_editor = "<network-connection-type-"+($scope.interface.type.value||'none')+"-edit ng-model='interface'/>"; 
 	}); 

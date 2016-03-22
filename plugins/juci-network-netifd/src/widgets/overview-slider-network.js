@@ -24,9 +24,9 @@ JUCI.app
 		templateUrl: "widgets/overview-slider-network.html", 
 		controller: "overviewSliderWidget10Network", 
 		replace: true
-	 };  
+	};
 })
-.controller("overviewSliderWidget10Network", function($scope, $uci, $rpc, $network, $config, $firewall, $juciDialog, $tr, gettext){
+.controller("overviewSliderWidget10Network", function($scope, $rpc, $config, $firewall){
 	var nodes = []; 
 	var edges = []; 
 	
@@ -75,17 +75,12 @@ JUCI.app
 		});
 		edges.push({ from: ".root", to: ".wan_hub", width: 8, smooth: { enabled: false } }); 
 		
-		var clients, interfaces, gw_if, lan_nets, wan_nets;
+		var clients, lan_nets, wan_nets;
 		async.series([
 			function(next){
 				$rpc.router.clients().done(function(cli){
 					clients = cli;
 			}).always(function(){next();});
-			}, function(next){
-					$rpc.network.interface.dump().done(function(stats){
-					interfaces = stats.interface; 
-					gw_if = interfaces.find(function(x){ return x.route && x.route[0] && x.route[0].target == "0.0.0.0"; }); 
-				}).always(function(){next();});
 			}, function(next){
 				$firewall.getZoneNetworks("lan").done(function(nets){
 					lan_nets = nets;
@@ -95,7 +90,6 @@ JUCI.app
 					wan_nets = nets;
 				}).always(function(){next();});
 			}], function(){
-				numwans = wan_nets.length;
 				var count = 0;
 				wan_nets.map(function(wan){
 					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value == false || !wan.$info.up) return;
@@ -125,7 +119,7 @@ JUCI.app
 					count++;
 					nodes.push(node);
 					edges.push( { from: ".lan_hub", to: node.id, width: 6, smooth: { enabled: true } });
-					cl_count = 0;
+					var cl_count = 0;
 					Object.keys(clients).map(function(cl){ return clients[cl];})
 					.filter(function(cl){ return (cl.network && cl.network == lan.$info.interface);})
 					.map(function(cl){
@@ -171,30 +165,3 @@ JUCI.app
 		});
 	});
 });
-					/*// if we click on a node, we want to open it up!
-					network.on("click", function (params) {
-						if (params.nodes.length == 1) {
-							var node = nodes.find(function(x){ return x.id == params.nodes[0]; }); 
-							if(!node || !node._lan_client) return; 
-							// this is probably ugliest part of juci right now. 
-							// juci dialog creates network-client-edit, we supply our own controller inside which we set the model of that network-client-edit
-							// the network-client-edit then responds to a user click and calls close on the modal instance that is part of the model passed to it. 
-							// in other words: this sucks. Needs a major rewrite!
-							$juciDialog.show("network-client-edit", {
-								controller: function($scope, $modalInstance, $wireless, dialogOptions, gettext){
-									$scope.opts = dialogOptions; 
-									$scope.data = {};
-									$scope.on_button_click = function(btn){ 
-										if(btn && btn.value == "cancel") $modalInstance.dismiss("cancel"); 
-									}, 
-									$scope.model = {
-										client: dialogOptions.model,
-										modal: $modalInstance
-									}; 
-								}, 
-								model: node._lan_client,
-								buttons: [ { label: $tr(gettext("Cancel")), value: "cancel" } ] 
-							}).done(function(){
-
-							}); 
-						}*/

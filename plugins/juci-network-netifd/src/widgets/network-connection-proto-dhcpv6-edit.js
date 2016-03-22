@@ -1,7 +1,7 @@
 //! Author Reidar Cederqvist <reidar.cederqvist@gmail.com>
 
 JUCI.app
-.directive("networkConnectionProtoDhcpv6Edit", function($compile, $parse){
+.directive("networkConnectionProtoDhcpv6Edit", function(){
 	return {
 		templateUrl: "/widgets/network-connection-proto-dhcpv6-edit.html", 
 		scope: {
@@ -10,7 +10,7 @@ JUCI.app
 		controller: "networkConnectionProtoDhcpv6Edit", 
 		replace: true, 
 		require: "^ngModel"
-	 };  
+	};
 })
 .controller("networkConnectionProtoDhcpv6Edit", function($scope, $uci, $network, $rpc, $log, $tr, gettext){
 	$scope.allReqAddrTypes = [
@@ -45,11 +45,7 @@ JUCI.app
 		scope:	{
 			interface: "=ngModel"
 		},
-		controller: "networkConnectionProtoDhcpv6AdvancedEdit",
 		replace: true,
 		require: "^ngModel"
 	};
-})
-.controller("networkConnectionProtoDhcpv6AdvancedEdit", function($scope){
-	
 });

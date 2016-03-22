@@ -19,19 +19,18 @@
  */
 
 JUCI.app
-.directive("wirelessInterfaceEditor", function($compile, $parse){
+.directive("wirelessInterfaceEditor", function(){
 	return {
 		templateUrl: "/widgets/wireless-interface-editor.html", 
 		controller: "wirelessInterfaceEditor", 
 		replace: true, 
 		require: "^ngModel"
-	 };  
+	};
 }).controller("wirelessInterfaceEditor", function($scope, $uci, $wireless, gettext, prompt, $modal){
 	$wireless.getInterfaces().done(function(interfaces){
 		$wireless.getDevices().done(function(devices){
 			$scope.devices = devices; 
 			$scope.interfaces = interfaces; 
-			var devcounter = {}; 
 			$scope.interfaces.map(function(x){
 				var dev = devices.find(function(dev) { return dev[".name"] == x.device.value; });  
 				if(dev){

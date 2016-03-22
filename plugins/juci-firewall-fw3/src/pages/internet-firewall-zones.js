@@ -34,7 +34,7 @@ JUCI.app
 		$uci.firewall.$create({
 			".type": "zone", 
 			"name": "new_zone"
-		}).done(function(zone){
+		}).done(function(){
 			$scope.$apply(); 
 		}); 
 	}

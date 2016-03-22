@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("ServicesStatusPage", function($scope, $rpc, gettext){
+.controller("ServicesStatusPage", function($scope, $rpc){
 	JUCI.interval.repeat("juci-services-page", 5000, function(done){
 		$rpc.juci.system.service.list().done(function(result){
 			$scope.services = result.services; 
@@ -39,12 +39,12 @@ JUCI.app
 
 	$scope.onServiceEnable = function(service){
 		if(service.enabled){
-			$rpc.juci.system.service.disable(service).done(function(result){
+			$rpc.juci.system.service.disable(service).done(function(){
 				console.log("service: " + service.name + " is disabled");
-				$scope.$apply(); 
+				$scope.$apply();
 			});	
 		} else {
-			$rpc.juci.system.service.enable(service).done(function(result){
+			$rpc.juci.system.service.enable(service).done(function(){
 				console.log("service: " + service.name + " is enabled");
 				$scope.$apply();
 			});
@@ -53,7 +53,7 @@ JUCI.app
 	
 	$scope.onServiceReload = function(service){
 		service.reload = true;
-		$rpc.juci.system.service.reload(service).done(function(result){
+		$rpc.juci.system.service.reload(service).done(function(){
 			console.log("service: " + service.name + " is reloded");
 			service.reload = false;
 			$scope.$apply();
@@ -62,13 +62,13 @@ JUCI.app
 
 	$scope.onServiceToggle = function(service){
 		if(service.running){
-			$rpc.juci.system.service.stop(service).done(function(result){
+			$rpc.juci.system.service.stop(service).done(function(){
 				service.running = true;
 				console.log("service: " + service.name + " is stoped");
-				$scope.$apply(); 
+				$scope.$apply();
 			});	
 		} else {
-			$rpc.juci.system.service.start(service).done(function(result){
+			$rpc.juci.system.service.start(service).done(function(){
 				service.running = false;
 				console.log("service: " + service.name + " is started");
 				$scope.$apply();

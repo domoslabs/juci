@@ -1,7 +1,7 @@
 //! Author: Reidar Cederqvist <reidar.cederqvist@gmail.com>
 
 JUCI.app
-.directive("networkConnectionProtoPppoeEdit", function($compile, $parse){
+.directive("networkConnectionProtoPppoeEdit", function(){
 	return {
 		templateUrl: "/widgets/network-connection-proto-pppoe-edit.html", 
 		scope: {
@@ -10,9 +10,9 @@ JUCI.app
 		controller: "networkConnectionProtoPppoeEdit", 
 		replace: true, 
 		require: "^ngModel"
-	 };  
+	};
 })
-.controller("networkConnectionProtoPppoeEdit", function($scope, $uci, $network, $rpc, $log, gettext){
+.controller("networkConnectionProtoPppoeEdit", function($scope){
 	$scope.$watch("interface", function(){
 		if(!$scope.interface) return;
 		$scope.interface.type.value = "";

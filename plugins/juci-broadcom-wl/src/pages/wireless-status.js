@@ -25,7 +25,7 @@ JUCI.app
 	$scope.radioToScan = {};
 	$uci.$sync("wireless").done(function(){
 		$rpc.juci.wireless.radios().done(function(data){
-			$scope.wlRadios = Object.keys(data).map(function(x){ return data[x]; }); ; 
+			$scope.wlRadios = Object.keys(data).map(function(x){ return data[x]; });
 			$scope.scanableRadios = $scope.wlRadios.filter(function(radio){
 				return parseInt(radio.current_channel) < 52;
 			}).map(function(radio){

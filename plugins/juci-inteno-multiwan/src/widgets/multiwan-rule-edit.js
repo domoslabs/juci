@@ -18,7 +18,7 @@
  * 02110-1301 USA
  */
 
-JUCI.app.directive("multiwanRuleEdit", function($compile, $parse){
+JUCI.app.directive("multiwanRuleEdit", function(){
 	return {
 		scope: {
 			model: "=ngModel"

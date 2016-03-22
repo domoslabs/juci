@@ -24,14 +24,14 @@ JUCI.app
 		templateUrl: "widgets/overview-netmode-small.html", 
 		controller: "overviewWidgetNetmode", 
 		replace: true
-	 };  
+	};  
 })
 .directive("overviewWidget99Netmode", function(){
 	return {
 		templateUrl: "widgets/overview-netmode.html", 
 		controller: "overviewWidgetNetmode", 
 		replace: true
-	 };  
+	};
 })
 .controller("overviewWidgetNetmode", function($scope, $tr, gettext, $uci, $rpc, $juciConfirm, $juciDialog){
 	$scope.data = {
@@ -53,7 +53,7 @@ JUCI.app
 		$juciDialog.show("netmode-picker", {
 			title: $tr(gettext("Select Profile")),
 			model: model,
-			on_apply: function(btn, inst){
+			on_apply: function(){
 				if(model.selected == $scope.data.currentNetmode) return false;
 				setNetmode(model.selected);
 				return true;
@@ -83,6 +83,5 @@ JUCI.app
 			}
 			$scope.$apply();
 		});
-	};
-		
+	}
 }); 

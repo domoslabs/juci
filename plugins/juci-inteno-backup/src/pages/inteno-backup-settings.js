@@ -18,7 +18,7 @@
  * 02110-1301 USA
  */
 
-JUCI.app.controller("IntenoBackupSettingsCtrl", function($scope, $uci, $tr, gettext){
+JUCI.app.controller("IntenoBackupSettingsCtrl", function($scope, $uci){
 	$uci.$sync(["backup"]).done(function(){
 		$scope.services = $uci.backup["@service"];
 		$scope.backup = $uci.backup; 

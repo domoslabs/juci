@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("EventLogConfigPage", function($scope, $uci, $systemService){ 
+.controller("EventLogConfigPage", function($scope, $uci){ 
 	$uci.$sync("system").done(function(){
 		$scope.system = $uci.system["@system"][0]; 
 		$scope.$apply(); 

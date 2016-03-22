@@ -37,7 +37,7 @@ JUCI.app
 		});
 		fixCodecs();
 	});
-	$scope.onLineChange = function(line){
+	$scope.onLineChange = function(){
 		$scope.model.call_lines.value = $scope.lines.filter(function(x){return x.checked}).map(function(x){
 			return x.value.toUpperCase().slice(0, -1) + "/" + x.value.toUpperCase().slice(-1);
 		}).join(" ");
@@ -64,7 +64,7 @@ JUCI.app
 				return true;
 			});
 		}
-	};
+	}
 	$scope.updateCodecList = function(value, index){
 		for(var i = index; i < 7; i++){
 			$scope.model[codecNames[i]].value = "";
@@ -84,7 +84,7 @@ JUCI.app
 	$scope.transportTypes = [
 		{ label: $tr(gettext("UDP")),	value: "udp" },
 		{ label: $tr(gettext("TCP")),	value: "tcp" },
-		{ label: $tr(gettext("TLS")),	value: "tls" },
+		{ label: $tr(gettext("TLS")),	value: "tls" }
 	];
 	$scope.showPassword = false;
 	$scope.togglePassword = function(){
