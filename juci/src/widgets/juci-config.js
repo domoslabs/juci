@@ -64,7 +64,7 @@ JUCI.app
 			'<div class="col-xs-6 juci-config-line-data">'+
 				'<div class="{{pullClass}}" ng-transclude></div>'+
 			'</div></div>'+
-			'<div class="alert alert-danger" style="font-size: 0.8em" ng-show="error">{{error}}</div>'+
+			'<div class="alert alert-danger" style="font-size: 0.8em" ng-show="er">{{er}}</div>'+
 			'</div>', 
 		replace: true, 
 		scope: {
@@ -72,18 +72,22 @@ JUCI.app
 			help: "@", 
 			error: "="
 		}, 
+		controller: "juciConfigLineController",
 		transclude: true, 
 		link: function (scope, element, attrs) {
 			if(!("noPull" in attrs)) scope.pullClass = "pull-right";
-			scope.$watch("error", function(value){
-				if(value){
-					scope.errorClass = "field-error"; 
-				} else {
-					scope.errorClass = ""; 
-				}
-			}); 
 		}
 	};  
+})
+.controller("juciConfigLineController", function($scope, $tr){
+	$scope.$watch("error", function(er){
+		if(er){
+			$scope.er = $tr(er);
+			$scope.errorClass = "field-error";
+		}else{
+			$scope.errorClass = "";
+		}
+	},false);
 })
 .directive("juciConfigApply", function(){
 	return {
@@ -134,7 +138,7 @@ JUCI.app
 				console.log("Saved uci configuration!"); 
 				$scope.$apply(); 
 			}).fail(function(errors){
-				$scope.errors = errors; 
+				$scope.errors = errors.map(function(e){return $tr(e);}); 
 				$scope.$emit("errors", errors); 
 				console.error("Could not save uci configuration!"); 
 			}).always(function(){

@@ -19,7 +19,6 @@
  */
 
 (function(scope){
-	//var JUCI = exports.JUCI; 
 	var $rpc = scope.UBUS; 
 	
 	function DefaultValidator(){
@@ -194,7 +193,7 @@
 				return gettext("Value must be a valid MAC-48 address"); 
 			return null; 
 		}
-	};	 
+	}; 
 
 	function MACListValidator(){
 		this.validate = function(field){
@@ -472,7 +471,7 @@
 			Object.keys(type).map(function(k){
 				var err = self[k].error; 
 				if(err){
-					errors.push(k+": "+err); 
+					errors.push(err); 
 				}
 			}); 
 			var type = this[".section_type"]; 
@@ -564,9 +563,9 @@
 				if(self[x] && self[x].constructor == UCI.Section) {
 					self[x].$getErrors().map(function(e){
 						if(e instanceof Array){
-							errors = errors.concat(e.map(function(err){ return self[".name"]+"."+x+": "+err;}));
+							errors = errors.concat(e);
 						}else{
-							errors.push(self[".name"]+"."+x+": "+e);
+							errors.push(e);
 						}
 					}); 
 				}
