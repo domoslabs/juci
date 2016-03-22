@@ -15,6 +15,7 @@ define Plugin/juci
 	STYLES-y+=src/lib/css/awesome-bootstrap-checkbox.css
 	STYLES-y+=src/lib/css/vis.min.css
 	STYLES-y+=src/lib/css/ng-tags-input.css
+	STYLES-y+=src/lib/css/abn_tree.css
 	STYLES-y+=src/lib/css/ng-tags-input.bootstrap.css
 	STYLES-y+=src/lib/css/dropdown-multi-select.css
 	STYLES-y+=src/css/juci-icons.css
@@ -35,6 +36,7 @@ define Plugin/juci
 	JAVASCRIPT-y+=src/lib/js/angular-gettext.min.js
 	JAVASCRIPT-y+=src/lib/js/angular-prompt.js
 	JAVASCRIPT-y+=src/lib/js/bootstrap-select.min.js
+	JAVASCRIPT-y+=src/lib/js/abn_tree_directive.js
 	JAVASCRIPT-y+=src/lib/js/select.min.js
 	JAVASCRIPT-y+=src/lib/js/angular-animate.min.js
 	JAVASCRIPT-y+=src/lib/js/angular-drag-and-drop-lists.js
