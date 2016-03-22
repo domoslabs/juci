@@ -48,7 +48,7 @@ msgid "Connection"
 msgstr ""
 
 msgid "Network"
-msgstr "Network"
+msgstr ""
 
 msgid "Hostname"
 msgstr ""
@@ -111,7 +111,7 @@ msgid "Static DHCP"
 msgstr ""
 
 msgid "Device Name"
-msgstr "Device Name"
+msgstr ""
 
 msgid "MAC Address"
 msgstr ""
@@ -129,10 +129,10 @@ msgid "DHCP Server"
 msgstr ""
 
 msgid "DHCP Settings"
-msgstr "DNS Settings"
+msgstr ""
 
 msgid "General Settings"
-msgstr "General Settings"
+msgstr ""
 
 msgid "Local domain"
 msgstr ""
@@ -165,7 +165,7 @@ msgid "Ignore Hosts file"
 msgstr ""
 
 msgid "Advanced Settings"
-msgstr "Advanced Settings"
+msgstr ""
 
 msgid "Domain required"
 msgstr ""
@@ -303,286 +303,3 @@ msgstr "DHCP Status"
 
 msgid "menu-dhcp-settings-title"
 msgstr "DHCP"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

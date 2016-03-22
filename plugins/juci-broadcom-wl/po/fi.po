@@ -52,31 +52,53 @@ msgstr "Käytössä"
 msgid "Disabled"
 msgstr "Pois käytöstä"
 
-msgid "wps.status.disabled"
-msgstr "WPS pois päältä"
-
-msgid "wps.status.init"
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
+msgid "Initializing"
 msgstr "WPS status"
 
-msgid "wps.status.processing"
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
+msgid "Processing"
 msgstr "WPS käynnissä"
 
-msgid "wps.status.success"
-msgstr "WPS onnistui"
-
-msgid "wps.status.fail"
-msgstr "WPS ei onnitustunut"
-
-msgid "wps.status.timeout"
-msgstr "WPS aikakatkaisu"
-
-msgid "wps.status.msgdone"
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
+msgid "Done!"
 msgstr "WPS valmis"
 
-msgid "wps.status.overlap"
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
+msgid "Failed"
+msgstr "WPS ei onnitustunut"
+
+msgid "Timed out"
+msgstr "WPS aikakatkaisu"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
+msgid "Overlap"
 msgstr "Overlap"
 
-msgid "wps.status.unknown"
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
+msgid "Unknown"
 msgstr "WPS tuntematon"
 
 msgid "Invalid WPS PIN"
@@ -98,6 +120,24 @@ msgstr "Peruuta"
 
 msgid "No IP address"
 msgstr "Ei IP osoitetta"
+
+msgid "11a"
+msgstr "802.11c"
+
+msgid "11ac"
+msgstr "802.11ac"
+
+msgid "11b"
+msgstr "802.11b"
+
+msgid "11bg"
+msgstr "802.11n"
+
+msgid "11g"
+msgstr "802.11bg"
+
+msgid "11n"
+msgstr "802.11a"
 
 msgid "Key"
 msgstr "Avain"
@@ -149,120 +189,6 @@ msgstr ""
 "WPS ei ole käytössä, kun käytetään WEP-salausta. Oletko varma, että haluat "
 "jatkaa?"
 
-msgid "wifi-iface.device"
-msgstr "Taajuus"
-
-msgid "wifi-iface.network"
-msgstr "Langaton verkko"
-
-msgid "wifi-iface.mode"
-msgstr "Tila"
-
-msgid "wifi-iface.ssid"
-msgstr "WiFi verkon nimi (SSID)"
-
-msgid "wifi-iface.encryption"
-msgstr "Suojaustila"
-
-msgid "wifi-iface.cipher"
-msgstr "Salaus"
-
-msgid "wifi-iface.key"
-msgstr "Wifi salsana"
-
-msgid "wifi-iface.key1"
-msgstr "WiFi avain #1"
-
-msgid "wifi-iface.key2"
-msgstr "WiFi avain #2"
-
-msgid "wifi-iface.key3"
-msgstr "WiFi avain #3"
-
-msgid "wifi-iface.key4"
-msgstr "WiFi avain #4"
-
-msgid "wifi-iface.gtk_rekey"
-msgstr "Avainparien uusimisen aikaväli"
-
-msgid "wifi-iface.wps_pbc"
-msgstr "WPS"
-
-msgid "wifi-iface.wmf_bss_enable"
-msgstr "BSS"
-
-msgid "wifi-iface.bss_max"
-msgstr "BSS Max"
-
-msgid "wifi-iface.instance"
-msgstr "Laite"
-
-msgid "wifi-iface.up"
-msgstr "Ylös"
-
-msgid "wifi-iface.closed"
-msgstr "Lähetä SSID"
-
-msgid "wifi-iface.disabled"
-msgstr "Pois käytöstä"
-
-msgid "wifi-iface.macmode"
-msgstr "MAC tila"
-
-msgid "wifi-iface.macfilter"
-msgstr "MAC suodatin"
-
-msgid "wifi-iface.maclist"
-msgstr "MAC lista"
-
-msgid "interface.macmode.allow"
-msgstr "Salli"
-
-msgid "interface.macmode.deny"
-msgstr "Evää"
-
-msgid "wifi.enc.none"
-msgstr "Ei salausta (Ei tietoturvaa!)"
-
-msgid "wifi.enc.wep"
-msgstr "WEP Open System"
-
-msgid "wifi.enc.wep-shared"
-msgstr "WEP jaettu avain"
-
-msgid "wifi.enc.wpa2"
-msgstr "WPA2radius"
-
-msgid "wifi.enc.mixed-wpa"
-msgstr "WPA2 Mixed"
-
-msgid "wifi.enc.psk"
-msgstr "WPA jaettu avain"
-
-msgid "wifi.enc.psk2"
-msgstr "WPA2 jaettu avain"
-
-msgid "wifi.enc.mixed-psk"
-msgstr "WPA/WPA2 PSK mixed"
-
-msgid "11b"
-msgstr "802.11b"
-
-msgid "11g"
-msgstr "802.11bg"
-
-msgid "11bg"
-msgstr "802.11n"
-
-msgid "11n"
-msgstr "802.11a"
-
-msgid "11a"
-msgstr "802.11c"
-
-msgid "11ac"
-msgstr "802.11ac"
-
 msgid "Access Point (AP)"
 msgstr "Access Point (AP)"
 
@@ -285,8 +211,8 @@ msgstr "Pois päältä"
 msgid "On"
 msgstr ""
 
-msgid "Pair (within 2 minutes)"
-msgstr "Parita (kahden minuutin sisällä)"
+msgid "WPS"
+msgstr ""
 
 msgid "(within 2 minutes)"
 msgstr "Parita (kahden minuutin sisällä)"
@@ -309,17 +235,17 @@ msgstr "WiFi tila"
 msgid "Pick Hardware Mode"
 msgstr "Valitse laitteistotila"
 
-msgid "Bandwidth"
-msgstr "Kaistanleveys"
-
-msgid "Pick Bandwidth"
-msgstr "Kaistanleveys"
-
 msgid "Channel"
 msgstr "Kanava"
 
 msgid "Pick Channel"
 msgstr "Kanava"
+
+msgid "Bandwidth"
+msgstr "Kaistanleveys"
+
+msgid "Pick Bandwidth"
+msgstr "Kaistanleveys"
 
 msgid "RIFS"
 msgstr "RIFS"
@@ -366,31 +292,49 @@ msgstr "Poista WMM Ack käytöstä"
 msgid "Enable WMM UAPSD Power Saving"
 msgstr "Ota käyttöön WMM UAPSD virransäästö"
 
+msgid "WiFi Network Name (SSID)"
+msgstr "WiFi verkon nimi (SSID)"
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
+msgid "Broadcast SSID"
+msgstr "Lähetä SSID"
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
+msgid "Frequency"
+msgstr "Taajuus"
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
+msgid "Encryption"
+msgstr "Suojaustila"
+
+msgid "Cipher"
+msgstr "Salausavain"
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
+msgid "WiFi Key (Password)"
+msgstr "Wifi salsana"
+
 msgid "Reset to default password"
 msgstr "Palauta oletussalasana"
 
 msgid "Choose Key"
 msgstr "Valitse avain"
 
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
+msgid "WiFi Key"
+msgstr "WiFi avain"
+
 msgid "Radius Server"
 msgstr "Radius palvelin"
-
-msgid "wifi-iface.radius_server"
-msgstr "Radiuspalvelin"
 
 msgid "Radius Port"
 msgstr "Radius portti"
 
-msgid "wifi-iface.radius_port"
-msgstr "Radiuspalvelimen portti"
-
 msgid "Radius Secret"
 msgstr "Radius salasana"
 
-msgid "wifi-iface.radius_secret"
-msgstr "Radiuspalvelimen salasana"
-
-msgid "wifi-iface.show_password"
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
+msgid "Show Key Text"
 msgstr "Näytä salasana"
 
 msgid "MAC Filtering"
@@ -443,9 +387,6 @@ msgstr "SSID"
 
 msgid "SNR"
 msgstr "SNR"
-
-msgid "Cipher"
-msgstr "Salausavain"
 
 msgid "Connect"
 msgstr "Yhdistä"
@@ -549,15 +490,20 @@ msgstr " WiFi"
 msgid "Radio"
 msgstr "DECT Radio"
 
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.html
+msgid "Frequency to Scan"
+msgstr ""
+
 msgid "Scan neighboring APs"
 msgstr "Skannaa ympäristön tukiasemat"
 
 msgid "Scanning..."
 msgstr "(Skannataan...)"
 
+#, fuzzy
 msgid ""
 "You will not be able to scan 5Ghz band because your 5Ghz wifi radio is "
-"configured to use DFS channels"
+"operating at a DFS channel"
 msgstr ""
 "Et voi skannata 5Ghz taajuutta koska 5Ghz Wifi radio on määritetty "
 "käyttämään DFS kanavia"
@@ -585,6 +531,9 @@ msgstr ""
 "Aktivoi WPS-paritus painamalla pitkään WiFi päälle / pois-painiketta "
 "reitittimestä"
 
+msgid "Pair (within 2 minutes)"
+msgstr "Parita (kahden minuutin sisällä)"
+
 msgid "WPS Using Generated PIN"
 msgstr "WPS luotua PIN-koodia käyttäen"
 
@@ -600,13 +549,18 @@ msgstr "Syötä laitteesi PIN koodi"
 msgid "Enter your PIN here"
 msgstr "Syötä PIN koodi tähän"
 
-msgid "wifi.wps.in.progress"
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.html
+msgid "Your router is now attempting to pair with other devices."
 msgstr "WPS käynnissä"
 
 msgid "WPS-PBC: Push Button on Device"
 msgstr "WPS-PBC: Paina laitteessa olevaa WPS-painiketta"
 
-msgid "wifi.wps.pbc.info"
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.html
+msgid ""
+"To pair your device, press Pair. Afterwards, press the corresponding button "
+"on the device you wish to connect. Your router will be open for pairing for "
+"2 minutes after you pressed Pair."
 msgstr ""
 "Parittaaksesi laitteesi paina \"Parita\". Tämän jälkeen paina vastaavaa "
 "painiketta yhdistettävässä laitteessa. WPS paritus on aktiivinen kahden "
@@ -615,7 +569,8 @@ msgstr ""
 msgid "WPS-REG: Router provides PIN"
 msgstr "WPS-REG: reititin tarjoaa PIN-koodin"
 
-msgid "wifi.wps.pin.info"
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.html
+msgid "Enter the WPS-PIN below on the device you wish to pair."
 msgstr "Syötä alle paritettavan laitteen WPS-PIN-koodi"
 
 msgid "Generate"
@@ -624,7 +579,8 @@ msgstr "Luonti"
 msgid "WPS-PIN: Another Device provides PIN"
 msgstr "WPS-PIN: Toinen laite tarjoaa PIN-koodin"
 
-msgid "wifi.wps.otherpin.info"
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.html
+msgid "Enter the WPS-PIN provided by the other device here."
 msgstr "Syötä paritettavan laitteen PIN-koodi tähän kohtaan."
 
 msgid "menu-wireless-clients-title"
@@ -660,179 +616,152 @@ msgstr "Liitännät"
 msgid "menu-wireless-general-title"
 msgstr "WiFi"
 
+#~ msgid "wps.status.disabled"
+#~ msgstr "WPS pois päältä"
 
+#~ msgid "wps.status.init"
+#~ msgstr "WPS status"
 
+#~ msgid "wps.status.processing"
+#~ msgstr "WPS käynnissä"
 
+#~ msgid "wps.status.success"
+#~ msgstr "WPS onnistui"
 
+#~ msgid "wps.status.fail"
+#~ msgstr "WPS ei onnitustunut"
 
+#~ msgid "wps.status.timeout"
+#~ msgstr "WPS aikakatkaisu"
 
+#~ msgid "wps.status.msgdone"
+#~ msgstr "WPS valmis"
 
+#~ msgid "wps.status.overlap"
+#~ msgstr "Overlap"
 
+#~ msgid "wps.status.unknown"
+#~ msgstr "WPS tuntematon"
 
+#~ msgid "wifi-iface.device"
+#~ msgstr "Taajuus"
 
+#~ msgid "wifi-iface.network"
+#~ msgstr "Langaton verkko"
 
+#~ msgid "wifi-iface.mode"
+#~ msgstr "Tila"
 
+#~ msgid "wifi-iface.ssid"
+#~ msgstr "WiFi verkon nimi (SSID)"
 
+#~ msgid "wifi-iface.encryption"
+#~ msgstr "Suojaustila"
 
+#~ msgid "wifi-iface.cipher"
+#~ msgstr "Salaus"
 
+#~ msgid "wifi-iface.key"
+#~ msgstr "Wifi salsana"
 
+#~ msgid "wifi-iface.key1"
+#~ msgstr "WiFi avain #1"
 
+#~ msgid "wifi-iface.key2"
+#~ msgstr "WiFi avain #2"
 
+#~ msgid "wifi-iface.key3"
+#~ msgstr "WiFi avain #3"
 
+#~ msgid "wifi-iface.key4"
+#~ msgstr "WiFi avain #4"
 
+#~ msgid "wifi-iface.gtk_rekey"
+#~ msgstr "Avainparien uusimisen aikaväli"
 
+#~ msgid "wifi-iface.wps_pbc"
+#~ msgstr "WPS"
 
+#~ msgid "wifi-iface.wmf_bss_enable"
+#~ msgstr "BSS"
 
+#~ msgid "wifi-iface.bss_max"
+#~ msgstr "BSS Max"
 
+#~ msgid "wifi-iface.instance"
+#~ msgstr "Laite"
 
+#~ msgid "wifi-iface.up"
+#~ msgstr "Ylös"
 
+#~ msgid "wifi-iface.closed"
+#~ msgstr "Lähetä SSID"
 
+#~ msgid "wifi-iface.disabled"
+#~ msgstr "Pois käytöstä"
 
+#~ msgid "wifi-iface.macmode"
+#~ msgstr "MAC tila"
 
+#~ msgid "wifi-iface.macfilter"
+#~ msgstr "MAC suodatin"
 
+#~ msgid "wifi-iface.maclist"
+#~ msgstr "MAC lista"
 
+#~ msgid "interface.macmode.allow"
+#~ msgstr "Salli"
 
+#~ msgid "interface.macmode.deny"
+#~ msgstr "Evää"
 
+#~ msgid "wifi.enc.none"
+#~ msgstr "Ei salausta (Ei tietoturvaa!)"
 
+#~ msgid "wifi.enc.wep"
+#~ msgstr "WEP Open System"
 
+#~ msgid "wifi.enc.wep-shared"
+#~ msgstr "WEP jaettu avain"
 
+#~ msgid "wifi.enc.wpa2"
+#~ msgstr "WPA2radius"
 
+#~ msgid "wifi.enc.mixed-wpa"
+#~ msgstr "WPA2 Mixed"
 
+#~ msgid "wifi.enc.psk"
+#~ msgstr "WPA jaettu avain"
 
+#~ msgid "wifi.enc.psk2"
+#~ msgstr "WPA2 jaettu avain"
 
+#~ msgid "wifi.enc.mixed-psk"
+#~ msgstr "WPA/WPA2 PSK mixed"
 
+#~ msgid "wifi-iface.radius_server"
+#~ msgstr "Radiuspalvelin"
 
+#~ msgid "wifi-iface.radius_port"
+#~ msgstr "Radiuspalvelimen portti"
 
+#~ msgid "wifi-iface.radius_secret"
+#~ msgstr "Radiuspalvelimen salasana"
 
+#~ msgid "wifi-iface.show_password"
+#~ msgstr "Näytä salasana"
 
+#~ msgid "wifi.wps.in.progress"
+#~ msgstr "WPS käynnissä"
 
+#~ msgid "wifi.wps.pbc.info"
+#~ msgstr ""
+#~ "Parittaaksesi laitteesi paina \"Parita\". Tämän jälkeen paina vastaavaa "
+#~ "painiketta yhdistettävässä laitteessa. WPS paritus on aktiivinen kahden "
+#~ "minuutin ajan parituspainikkeen painamisen jälkeen."
 
+#~ msgid "wifi.wps.pin.info"
+#~ msgstr "Syötä alle paritettavan laitteen WPS-PIN-koodi"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#~ msgid "wifi.wps.otherpin.info"
+#~ msgstr "Syötä paritettavan laitteen PIN-koodi tähän kohtaan."

@@ -27,7 +27,7 @@ JUCI.app
 		replace: true, 
 		require: "^ngModel"
 	};  
-}).controller("WifiDeviceEditController", function($scope, $config, $rpc, $tr){
+}).controller("WifiDeviceEditController", function($scope, $config, $rpc, $tr, gettext){
 	$scope.showExpert = $config.local.mode == "expert";
 	$scope.$watch("device", function(device){
 		if(!device) return; 
@@ -42,5 +42,11 @@ JUCI.app
 			$scope.$apply(); 
 		}); 
 	}); 
-	
+	//make these avalible for translation
+	gettext("11a");
+	gettext("11ac");
+	gettext("11b");
+	gettext("11bg");
+	gettext("11g");
+	gettext("11n");
 }); 

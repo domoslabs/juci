@@ -22,14 +22,14 @@ JUCI.app
 .controller("wirelessWPSPage", function($scope, $config, $uci, $rpc, $interval, $router, gettext, $tr){
 	$scope.showExpert = $config.local.mode == "expert";
 	var wps_status_strings = {
-		"-1": $tr(gettext("wps.status.disabled")),
-		0: $tr(gettext("wps.status.init")),
-		1: $tr(gettext("wps.status.processing")),
-		2: $tr(gettext("wps.status.success")),
-		3: $tr(gettext("wps.status.fail")),
-		4: $tr(gettext("wps.status.timeout")),
-		7: $tr(gettext("wps.status.msgdone")),
-		8: $tr(gettext("wps.status.overlap"))
+		"-1": $tr(gettext("Disabled")),
+		0: $tr(gettext("Initializing")),
+		1: $tr(gettext("Processing")),
+		2: $tr(gettext("Done!")),
+		3: $tr(gettext("Failed")),
+		4: $tr(gettext("Timed out")),
+		7: $tr(gettext("Done!")),
+		8: $tr(gettext("Overlap"))
 	}; 
 	
 	$scope.router = $router;
@@ -61,7 +61,7 @@ JUCI.app
 	JUCI.interval.repeat("wifi.wps.retry", 1000, function(next){
 		$rpc.juci.wireless.wps.status().done(function(result){
 			$scope.progress = result.code; 
-			$scope.text_status = wps_status_strings[result.code]||gettext("wps.status.unknown"); 
+			$scope.text_status = wps_status_strings[result.code]||gettext("Unknown"); 
 			$scope.$apply();	
 			next();
 		}); 

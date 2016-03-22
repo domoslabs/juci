@@ -11,7 +11,7 @@
 				</juci-config-lines>
 			</juci-config-section>
 			<juci-config-section ng-show="progress == 1">
-				<p translate>wifi.wps.in.progress</p>
+				<p translate>Your router is now attempting to pair with other devices.</p>
 			</juci-config-section>
 			<juci-config-section ng-show="wireless.status.wps.value && progress != 1">
 				<juci-config-lines ng-repeat="interface in wireless['@wifi-iface'] track by $index">
@@ -23,7 +23,7 @@
 			</juci-config-section>
 			<juci-config-section ng-show="wireless.status.wps.value">
 				<h2 translate>WPS-PBC: Push Button on Device</h2>
-				<p translate>wifi.wps.pbc.info</p>
+				<p translate>To pair your device, press Pair. Afterwards, press the corresponding button on the device you wish to connect. Your router will be open for pairing for 2 minutes after you pressed Pair.</p>
 				<juci-config-lines>
 					<juci-config-line title="{{'Enable WPS button on router'|translate}}">
 						<switch id="enabled" name="enabled" ng-model="router.wps_button_enabled" class="green" ng-change="save()" ></switch>
@@ -39,7 +39,7 @@
 			<div ng-show="showExpert">
 				<juci-config-section ng-show="wireless.status.wps.value">
 					<h2 translate>WPS-REG: Router provides PIN</h2>
-					<p translate>wifi.wps.pin.info</p>
+					<p translate>Enter the WPS-PIN below on the device you wish to pair.</p>
 					<juci-config-lines>
 						<juci-config-line title="{{'WPS Using Generated PIN'|translate}}">
 							<switch id="enabled" name="enabled" ng-model="router.wps_devicepin"  class="green"></switch>
@@ -54,7 +54,7 @@
 				</juci-config-section>
 				<juci-config-section ng-show="wireless.status.wps.value">
 					<h2 translate>WPS-PIN: Another Device provides PIN</h2>
-					<p translate>wifi.wps.otherpin.info</p>
+					<p translate>Enter the WPS-PIN provided by the other device here.</p>
 					<juci-config-lines>
 						<juci-config-line title="{{'Enter your device PIN'|translate}}" error="data.pin_error">
 							<input type="text" class="form-control input-lg" ng-model="data.userPIN" ng-change="validPin()" placeholder="{{'Enter your PIN here'|translate}}"/>
