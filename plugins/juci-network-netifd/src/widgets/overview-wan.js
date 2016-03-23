@@ -82,7 +82,7 @@ JUCI.app
 	$scope.statusClass = "text-success"; 
 	JUCI.interval.repeat("overview-wan", 2000, function(done){
 		$network.getNetworks().done(function(networks){
-			var bridgedNets = networks.filter(function(net){ return net.proto.value == "dhcp" && net.type.value == "bridge";});
+			var bridgedNets = networks.filter(function(net){ return net.proto.value == "dhcp" && net.type.value == "bridge" && net.defaultroute.value});
 			$firewall.getZoneNetworks("wan").done(function(wan_iface){
 				var default_route_ifs = wan_iface.filter(function(x){ 
 					return x.$info && x.$info.route && x.$info.route.length && 
