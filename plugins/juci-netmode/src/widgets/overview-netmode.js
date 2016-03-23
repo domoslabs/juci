@@ -45,6 +45,10 @@ JUCI.app
 		$scope.data.currentNetmode = $scope.setup.curmode.value;
 		$scope.$apply();
 	});
+	$scope.disabled = function(){
+		if(!$scope.data.currentNetmode || !$scope.setup || !$scope.allNetmodes || $scope.allNetmodes.length === 0) return true;
+		return $scope.data.currentNetmode === $scope.setup.curmode.value;
+	}
 	$scope.onChangeMode = function(){
 		if(!$scope.data || !$scope.data.currentNetmode || !$scope.setup || !$scope.setup.curmode) return;
 		var model = {

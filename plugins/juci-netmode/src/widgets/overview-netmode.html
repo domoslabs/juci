@@ -6,7 +6,7 @@
 			<p translate ng-show="!allNetmodes.length">No profiles available</p>
 		</div>
 		<div class="col-xs-4">
-			<button class="btn btn-success pull-right" ng-click="onChangeModeConfirm()" ng-disabled="!(allNetmodes.length > 0)" translate>Change Profile</button>
+			<button class="btn btn-success pull-right {{disabled()?'disabled':'active'}}" ng-click="onChangeModeConfirm()" translate>Change Profile</button>
 		</div>
 	</juci-overview-widget>
 </div>
