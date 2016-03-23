@@ -81,7 +81,7 @@ JUCI.app
 			return; 
 		}
 		$rpc.juci.system.upgrade.start({"path": $scope.$PATH, "keep": (($scope.$KEEP)?1:0)}); // this never completes
-		window.location = "/reboot.html";  
+		setTimeout(function(){window.location = "/reboot.html"; }, 1000);
 	});
 	$scope.onDismissModal = function(){
 		$scope.showUpgradeStatus = false;
