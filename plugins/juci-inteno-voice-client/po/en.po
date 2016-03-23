@@ -117,16 +117,16 @@ msgid "CFG TR57"
 msgstr ""
 
 msgid "off"
-msgstr "Off"
+msgstr ""
 
 msgid "Unknown"
 msgstr ""
 
 msgid "on"
-msgstr "On"
+msgstr ""
 
 msgid "Off"
-msgstr "Off"
+msgstr ""
 
 msgid "Transparent"
 msgstr ""
@@ -180,7 +180,7 @@ msgid "No Mailbox"
 msgstr ""
 
 msgid "Select Codec"
-msgstr "Select Codec"
+msgstr ""
 
 msgid "G 723.1"
 msgstr ""
@@ -285,7 +285,7 @@ msgid "Name"
 msgstr ""
 
 msgid "Internal Number"
-msgstr "Internal Number"
+msgstr ""
 
 msgid "Outgoing Calls Number"
 msgstr ""
@@ -324,7 +324,7 @@ msgid "Phone Lines"
 msgstr ""
 
 msgid "Advanced SIP Settings"
-msgstr "Advanced SIP Settings"
+msgstr ""
 
 msgid "Sip Proxy servers"
 msgstr ""
@@ -336,7 +336,7 @@ msgid "Add SIP Proxy"
 msgstr ""
 
 msgid "Bind Interface"
-msgstr "Bind Interface"
+msgstr ""
 
 msgid "WAN Interface to bind to (listen on)"
 msgstr ""
@@ -482,9 +482,6 @@ msgstr ""
 msgid "Incoming calls to"
 msgstr ""
 
-msgid "Mailbox"
-msgstr ""
-
 msgid "SIP domain name"
 msgstr ""
 
@@ -527,6 +524,36 @@ msgstr ""
 msgid "Display name used in Caller Id"
 msgstr ""
 
+msgid "SIP Server/Registrar"
+msgstr ""
+
+msgid "Optional"
+msgstr ""
+
+msgid "SIP Server"
+msgstr ""
+
+msgid "SIP Server/Registrar Port"
+msgstr ""
+
+msgid "SIP Server Port"
+msgstr ""
+
+msgid "SIP Outbound Proxy"
+msgstr ""
+
+msgid "SIP Proxy"
+msgstr ""
+
+msgid "SIP Outbound Proxy Port"
+msgstr ""
+
+msgid "SIP Proxy Port"
+msgstr ""
+
+msgid "Incoming Phone Lines"
+msgstr ""
+
 msgid "Preferred codecs"
 msgstr ""
 
@@ -561,7 +588,7 @@ msgid "SIP Transport"
 msgstr ""
 
 msgid "Encryption"
-msgstr "Encryption"
+msgstr ""
 
 msgid "Use Secure Real-time Transport Protocol (SRTP)"
 msgstr ""
@@ -574,34 +601,7 @@ msgid ""
 "force some settings to enable inband fax."
 msgstr ""
 
-msgid "SIP Server/Registrar"
-msgstr ""
-
-msgid "Optional"
-msgstr ""
-
-msgid "SIP Server"
-msgstr ""
-
-msgid "SIP Server/Registrar Port"
-msgstr ""
-
-msgid "SIP Server Port"
-msgstr ""
-
-msgid "SIP Outbound Proxy"
-msgstr ""
-
-msgid "SIP Proxy"
-msgstr ""
-
-msgid "SIP Outbound Proxy Port"
-msgstr ""
-
-msgid "SIP Proxy Port"
-msgstr ""
-
-msgid "Incoming Phone Lines"
+msgid "Mailbox"
 msgstr ""
 
 msgid "SIP Accounts"
@@ -667,7 +667,7 @@ msgid "Last registration"
 msgstr ""
 
 msgid "Status"
-msgstr "Status"
+msgstr ""
 
 msgid "State"
 msgstr ""
@@ -706,7 +706,7 @@ msgid "Duration"
 msgstr ""
 
 msgid "Phone"
-msgstr "Phone"
+msgstr ""
 
 msgid "Number Blocking"
 msgstr ""
@@ -823,4 +823,3 @@ msgstr "Ringing Schedule"
 
 msgid "menu-voice-advanced-settings-title"
 msgstr "Advanced Settings"
-

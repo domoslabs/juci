@@ -14,26 +14,7 @@ msgstr ""
 msgid "Zone does not exist!"
 msgstr ""
 
-msgid "Port can only contain spaces numbers and -"
-msgstr ""
-
-msgid "A port range can only contain one -"
-msgstr ""
-
-msgid ""
-"A port is between 1 and 65535 and start port must be lower than stop port"
-msgstr ""
-
-msgid "A port must be between 1 and 65535"
-msgstr ""
-
-msgid "Rule name can not be empty!"
-msgstr ""
-
 msgid "Source port can not be empty!"
-msgstr ""
-
-msgid "Dest. port can not be empty!"
 msgstr ""
 
 msgid "Failed to create dmz configuration!"
@@ -71,13 +52,19 @@ msgstr ""
 msgid "All"
 msgstr ""
 
+msgid "Rule may not have any excluded Public ports"
+msgstr ""
+
 msgid "Port mapping rule needs a name"
 msgstr ""
 
-msgid "Rule has invalid Client port"
+msgid "Rule has invalid Private port"
 msgstr ""
 
-msgid "Rule has invalid Router port"
+msgid "Rule has invalid Public port"
+msgstr ""
+
+msgid "Rule can not have empty Private port"
 msgstr ""
 
 msgid "ACCEPT"
@@ -92,7 +79,7 @@ msgstr ""
 msgid "DROP"
 msgstr ""
 
-msgid "Unspecified"
+msgid "Device"
 msgstr ""
 
 msgid "Any"
@@ -110,13 +97,26 @@ msgstr ""
 msgid "Configure Port Mapping"
 msgstr ""
 
+msgid "Edit Port Mappings for"
+msgstr ""
+
 msgid "Name"
 msgstr ""
 
-msgid "Client port"
+msgid "Excluded ports"
 msgstr ""
 
-msgid "Router port"
+msgid "These ports may not be mapped they are protected"
+msgstr ""
+
+msgid "Public port"
+msgstr ""
+
+msgid ""
+"Ports can be a space separeated list or on the form <range-start>-<range-end>"
+msgstr ""
+
+msgid "Private port"
 msgstr ""
 
 msgid "Protocol"
@@ -174,7 +174,7 @@ msgid "Configure firewall rule for this service"
 msgstr ""
 
 msgid "Default Policy"
-msgstr "Default Policy"
+msgstr ""
 
 msgid "Masquerading"
 msgstr ""
@@ -189,7 +189,7 @@ msgid "Allow forward from source zones:"
 msgstr ""
 
 msgid "Zone members:"
-msgstr "Zone members:"
+msgstr ""
 
 msgid "Input"
 msgstr ""
@@ -201,7 +201,7 @@ msgid "Forward"
 msgstr ""
 
 msgid "Rule Name"
-msgstr "Rule Name"
+msgstr ""
 
 msgid "Select Zone"
 msgstr ""
@@ -219,33 +219,30 @@ msgid "Source Zone"
 msgstr ""
 
 msgid "Dst. Device"
-msgstr "Dst. Device"
+msgstr ""
 
 msgid "Dst. IP Address"
 msgstr ""
 
-msgid "Public port"
+msgid "Public Port(s)"
 msgstr ""
 
-msgid "Public port range"
-msgstr ""
-
-msgid "Private port"
-msgstr "Private port"
-
-msgid "Private port range"
+msgid "Private Port(s)"
 msgstr ""
 
 msgid "Select protocol"
 msgstr ""
 
-msgid "Device"
-msgstr "Device"
-
 msgid "Local IP Address"
 msgstr ""
 
 msgid "Type"
+msgstr ""
+
+msgid "Public port range"
+msgstr ""
+
+msgid "Private port range"
 msgstr ""
 
 msgid "DMZ / Exposed Host"
@@ -309,7 +306,7 @@ msgstr ""
 "certain services to the outside world. "
 
 msgid "to"
-msgstr "To"
+msgstr ""
 
 msgid "Add / Edit Port Mapping"
 msgstr ""
@@ -328,12 +325,6 @@ msgstr ""
 msgid "Dst. IP"
 msgstr ""
 
-msgid "Local port"
-msgstr ""
-
-msgid "Public Port"
-msgstr ""
-
 msgid "Firewall Rules"
 msgstr ""
 
@@ -347,13 +338,6 @@ msgstr ""
 
 msgid "internet.wan.services.info"
 msgstr "WAN Services configuration"
-
-msgid "Service Filtering"
-msgstr "Service Filtering"
-
-msgid "internet.firewall.svcfilter.info"
-msgstr ""
-"This filter allows you to filter out packets going out to a specific port. "
 
 msgid "URL Filtering"
 msgstr ""
@@ -405,9 +389,6 @@ msgstr ""
 msgid "menu-internet-firewall-forwarding-title"
 msgstr "Zone Forwarding"
 
-msgid "menu-internet-firewall-wordfilter-title"
-msgstr "Word Filter"
-
 msgid "menu-internet-parental-control-title"
 msgstr "Parental Control"
 
@@ -426,284 +407,9 @@ msgstr "Firewall"
 msgid "menu-internet-firewall-dmz-title"
 msgstr "DMZ"
 
-msgid "menu-internet-firewall-svcfilter-title"
-msgstr "Service Filter"
-
 msgid "menu-internet-firewall-rules-title"
 msgstr "Rules"
 
 msgid "menu-internet-firewall-urlblock-title"
 msgstr "URL Blocking"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -49,4 +49,3 @@ msgstr ""
 
 msgid "menu-broadcom-pwrmgmt-title"
 msgstr "Power Management"
-

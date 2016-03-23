@@ -18,27 +18,6 @@ msgstr ""
 "Ohjelmistopäivitys on saatavilla. Haluatko avata päivityssivun ja päivittää "
 "nyt?"
 
-msgid "Verifying firmware image"
-msgstr "Tarkistetaan ohjelmistoa"
-
-msgid "Image check failed"
-msgstr ""
-
-msgid "OK"
-msgstr ""
-
-msgid "Error: "
-msgstr ""
-
-msgid "No upgrade has been found!"
-msgstr "Päivitystä ei saatavilla!"
-
-msgid "Online upgrade check failed"
-msgstr ""
-
-msgid "USB upgrade check failed"
-msgstr ""
-
 msgid "Do you want to keep your configuration?"
 msgstr ""
 
@@ -55,6 +34,42 @@ msgid "No"
 msgstr ""
 
 msgid "Abort"
+msgstr ""
+
+msgid "Image check failed"
+msgstr ""
+
+msgid "OK"
+msgstr ""
+
+msgid "Error: "
+msgstr ""
+
+msgid "New Software Available!"
+msgstr ""
+
+msgid "No upgrade has been found!"
+msgstr "Päivitystä ei saatavilla!"
+
+msgid "USB upgrade check failed"
+msgstr ""
+
+msgid "Online upgrade check failed"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid "Downloading and verifying image..."
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid "Uploading"
+msgstr ""
+
+msgid "Verifying image..."
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid "Verifying"
 msgstr ""
 
 msgid "The server returned an error"
@@ -167,339 +182,3 @@ msgstr "Päivitä"
 
 msgid "menu-settings-upgrade-options-title"
 msgstr "Valinnat"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

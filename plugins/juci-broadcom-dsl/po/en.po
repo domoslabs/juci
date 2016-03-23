@@ -172,4 +172,3 @@ msgstr "DSL Status"
 
 msgid "menu-page-broadcom-vdsl-title"
 msgstr "VDSL"
-

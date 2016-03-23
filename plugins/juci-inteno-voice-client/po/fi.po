@@ -482,9 +482,6 @@ msgstr "Tilin nimi"
 msgid "Incoming calls to"
 msgstr "Saapuvat puhelut"
 
-msgid "Mailbox"
-msgstr ""
-
 msgid "SIP domain name"
 msgstr ""
 
@@ -526,6 +523,36 @@ msgstr "DNS Nimi"
 
 msgid "Display name used in Caller Id"
 msgstr ""
+
+msgid "SIP Server/Registrar"
+msgstr "SIP-palvelin"
+
+msgid "Optional"
+msgstr ""
+
+msgid "SIP Server"
+msgstr "SIP-palvelin"
+
+msgid "SIP Server/Registrar Port"
+msgstr ""
+
+msgid "SIP Server Port"
+msgstr "SIP-palvelin"
+
+msgid "SIP Outbound Proxy"
+msgstr "SIP Välityspalvelin"
+
+msgid "SIP Proxy"
+msgstr "SIP Välityspalvelin"
+
+msgid "SIP Outbound Proxy Port"
+msgstr ""
+
+msgid "SIP Proxy Port"
+msgstr "SIP Välityspalvelin"
+
+msgid "Incoming Phone Lines"
+msgstr "VOIP-linjat"
 
 msgid "Preferred codecs"
 msgstr ""
@@ -574,35 +601,8 @@ msgid ""
 "force some settings to enable inband fax."
 msgstr ""
 
-msgid "SIP Server/Registrar"
-msgstr "SIP-palvelin"
-
-msgid "Optional"
+msgid "Mailbox"
 msgstr ""
-
-msgid "SIP Server"
-msgstr "SIP-palvelin"
-
-msgid "SIP Server/Registrar Port"
-msgstr ""
-
-msgid "SIP Server Port"
-msgstr "SIP-palvelin"
-
-msgid "SIP Outbound Proxy"
-msgstr "SIP Välityspalvelin"
-
-msgid "SIP Proxy"
-msgstr "SIP Välityspalvelin"
-
-msgid "SIP Outbound Proxy Port"
-msgstr ""
-
-msgid "SIP Proxy Port"
-msgstr "SIP Välityspalvelin"
-
-msgid "Incoming Phone Lines"
-msgstr "VOIP-linjat"
 
 msgid "SIP Accounts"
 msgstr "SIP tilit"
@@ -824,127 +824,3 @@ msgstr "Ajastus"
 
 msgid "menu-voice-advanced-settings-title"
 msgstr "Linjat"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

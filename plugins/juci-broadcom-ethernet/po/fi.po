@@ -12,31 +12,31 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 
 msgid "Full auto-negotiation"
-msgstr "Full auto-negotiation"
+msgstr ""
 
 msgid "Max 100Mb auto-negotiation, full duplex"
-msgstr "Max 100Mb auto-negotiation, full duplex"
+msgstr ""
 
 msgid "Max 100Mb auto-negotiation, half duplex"
-msgstr "Max 100Mb auto-negotiation, half duplex"
+msgstr ""
 
 msgid "Max 10Mb auto-negotiation, full duplex"
-msgstr "Max 10Mb auto-negotiation, full duplex"
+msgstr ""
 
 msgid "Max 10Mb auto-negotiation, half duplex"
-msgstr "Max 10Mb auto-negotiation, half duplex"
+msgstr ""
 
 msgid "Only 100Mb, full duplex"
-msgstr "Only 100Mb, full duplex"
+msgstr ""
 
 msgid "Only 100Mb, half duplex"
-msgstr "Only 100Mb, half duplex"
+msgstr ""
 
 msgid "Only 10Mb, full duplex"
-msgstr "Only 100Mb, full duplex"
+msgstr ""
 
 msgid "Only 10Mb, half duplex"
-msgstr "Only 100Mb, half duplex"
+msgstr ""
 
 msgid "Disabled"
 msgstr "Pois käytöstä"
@@ -45,7 +45,7 @@ msgid "Port speed"
 msgstr "Portin nopeus"
 
 msgid "Pause frames"
-msgstr "Pause frames"
+msgstr ""
 
 msgid "Ethernet"
 msgstr "Ethernet portit"
@@ -69,4 +69,3 @@ msgstr "käytetään internetyhteytenä"
 
 msgid "menu-page-broadcom-ethernet-phy-title"
 msgstr "Ethernet"
-

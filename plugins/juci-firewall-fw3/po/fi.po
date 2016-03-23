@@ -14,26 +14,7 @@ msgstr ""
 msgid "Zone does not exist!"
 msgstr ""
 
-msgid "Port can only contain spaces numbers and -"
-msgstr ""
-
-msgid "A port range can only contain one -"
-msgstr ""
-
-msgid ""
-"A port is between 1 and 65535 and start port must be lower than stop port"
-msgstr ""
-
-msgid "A port must be between 1 and 65535"
-msgstr ""
-
-msgid "Rule name can not be empty!"
-msgstr ""
-
 msgid "Source port can not be empty!"
-msgstr ""
-
-msgid "Dest. port can not be empty!"
 msgstr ""
 
 msgid "Failed to create dmz configuration!"
@@ -71,13 +52,19 @@ msgstr "UDP"
 msgid "All"
 msgstr ""
 
+msgid "Rule may not have any excluded Public ports"
+msgstr ""
+
 msgid "Port mapping rule needs a name"
 msgstr ""
 
-msgid "Rule has invalid Client port"
+msgid "Rule has invalid Private port"
 msgstr ""
 
-msgid "Rule has invalid Router port"
+msgid "Rule has invalid Public port"
+msgstr ""
+
+msgid "Rule can not have empty Private port"
 msgstr ""
 
 msgid "ACCEPT"
@@ -92,8 +79,8 @@ msgstr "EDELLEENLÄHETYS"
 msgid "DROP"
 msgstr "HYLKÄÄ"
 
-msgid "Unspecified"
-msgstr "Määrittelemätön"
+msgid "Device"
+msgstr "Laite"
 
 msgid "Any"
 msgstr "Kaikki"
@@ -110,13 +97,26 @@ msgstr "Haluatko varmasti poistaa tämän verkon tältä vyöhykkeeltä?"
 msgid "Configure Port Mapping"
 msgstr "Porttiohjaus"
 
+msgid "Edit Port Mappings for"
+msgstr ""
+
 msgid "Name"
 msgstr "Nimi"
 
-msgid "Client port"
-msgstr "Asiakas IP"
+msgid "Excluded ports"
+msgstr ""
 
-msgid "Router port"
+msgid "These ports may not be mapped they are protected"
+msgstr ""
+
+msgid "Public port"
+msgstr "Julkinen Portti"
+
+msgid ""
+"Ports can be a space separeated list or on the form <range-start>-<range-end>"
+msgstr ""
+
+msgid "Private port"
 msgstr "Yksityinen portti"
 
 msgid "Protocol"
@@ -224,29 +224,26 @@ msgstr "Kohdelaite"
 msgid "Dst. IP Address"
 msgstr "Kohdeosoite"
 
-msgid "Public port"
-msgstr "Julkinen Portti"
+msgid "Public Port(s)"
+msgstr ""
 
-msgid "Public port range"
-msgstr "Julkinen porttialue"
-
-msgid "Private port"
-msgstr "Yksityinen portti"
-
-msgid "Private port range"
-msgstr "Yksityinen porttialue"
+msgid "Private Port(s)"
+msgstr ""
 
 msgid "Select protocol"
 msgstr "Valitse protokolla"
-
-msgid "Device"
-msgstr "Laite"
 
 msgid "Local IP Address"
 msgstr "Paikallinen IP osoite"
 
 msgid "Type"
 msgstr "Palvelutyyppi"
+
+msgid "Public port range"
+msgstr "Julkinen porttialue"
+
+msgid "Private port range"
+msgstr "Yksityinen porttialue"
 
 msgid "DMZ / Exposed Host"
 msgstr "DMZ / Exposed Host"
@@ -331,12 +328,6 @@ msgstr "Suunta"
 msgid "Dst. IP"
 msgstr "Dst. IP"
 
-msgid "Local port"
-msgstr "Paikallinen portti"
-
-msgid "Public Port"
-msgstr "Julkinen Portti"
-
 msgid "Firewall Rules"
 msgstr "Palomuurivyöhykkeet"
 
@@ -348,12 +339,6 @@ msgstr "Salli WAN-pääsy käynnissä oleviin palveluihin"
 
 msgid "internet.wan.services.info"
 msgstr "Palvelut"
-
-msgid "Service Filtering"
-msgstr "Palvelu suodatus"
-
-msgid "internet.firewall.svcfilter.info"
-msgstr " "
 
 msgid "URL Filtering"
 msgstr "URL"
@@ -405,9 +390,6 @@ msgstr "MAC-osoitteet"
 msgid "menu-internet-firewall-forwarding-title"
 msgstr "Edelleenlähetys"
 
-msgid "menu-internet-firewall-wordfilter-title"
-msgstr "Sanasuodatin"
-
 msgid "menu-internet-parental-control-title"
 msgstr "Lapsilukko"
 
@@ -426,247 +408,9 @@ msgstr "Palomuuri"
 msgid "menu-internet-firewall-dmz-title"
 msgstr "DMZ"
 
-msgid "menu-internet-firewall-svcfilter-title"
-msgstr "SVC"
-
 msgid "menu-internet-firewall-rules-title"
 msgstr "Palomuurisäännöt"
 
 msgid "menu-internet-firewall-urlblock-title"
 msgstr "URL esto"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

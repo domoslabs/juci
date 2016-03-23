@@ -146,7 +146,8 @@ msgstr ""
 msgid "Mask"
 msgstr ""
 
-msgid "SNMPD Configuration"
+# /home/reidar/juci/plugins/juci-snmpd/src/pages/snmpd-config.html
+msgid "SNMP Configuration"
 msgstr ""
 
 msgid "snmpd.config.info"

@@ -54,19 +54,19 @@ msgid "Enable"
 msgstr ""
 
 msgid "General Settings"
-msgstr "Settings"
+msgstr ""
 
 msgid "Port"
-msgstr "Port"
+msgstr ""
 
 msgid "Port for HTTP (descriptions, SOAP, media transfer) traffic."
 msgstr ""
 
 msgid "Network"
-msgstr "Network"
+msgstr ""
 
 msgid "Network interfaces to serve."
-msgstr "New interface"
+msgstr ""
 
 msgid "Friendly Name"
 msgstr ""
@@ -91,7 +91,7 @@ msgid "write list of album-art names"
 msgstr ""
 
 msgid "Advanced settings"
-msgstr "LAN Settings"
+msgstr ""
 
 msgid "Database directory"
 msgstr ""
@@ -149,7 +149,7 @@ msgid "Specify the path to the MiniSSDPd socket."
 msgstr ""
 
 msgid "MiniDLNA"
-msgstr "MiniDLNA Settings"
+msgstr ""
 
 msgid ""
 "MiniDLNA is server software with the aim of being fully compliant with DLNA/"
@@ -158,286 +158,3 @@ msgstr ""
 
 msgid "menu-internet-services-minidlna-title"
 msgstr "MiniDLNA"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -15,10 +15,10 @@ msgid "off"
 msgstr "Pois päältä"
 
 msgid "5GHz"
-msgstr "5GHz"
+msgstr ""
 
 msgid "2.4GHz"
-msgstr "2.4GHz"
+msgstr ""
 
 msgid "please pick at least one day to schedule on"
 msgstr "valitse vähintään yksi päivä ajastettavaksi"
@@ -52,52 +52,24 @@ msgstr "Käytössä"
 msgid "Disabled"
 msgstr "Pois käytöstä"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
 msgid "Initializing"
 msgstr "WPS status"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
 msgid "Processing"
 msgstr "WPS käynnissä"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
 msgid "Done!"
 msgstr "WPS valmis"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
 msgid "Failed"
 msgstr "WPS ei onnitustunut"
 
 msgid "Timed out"
 msgstr "WPS aikakatkaisu"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
 msgid "Overlap"
 msgstr "Overlap"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
 msgid "Unknown"
 msgstr "WPS tuntematon"
 
@@ -295,22 +267,18 @@ msgstr "Ota käyttöön WMM UAPSD virransäästö"
 msgid "WiFi Network Name (SSID)"
 msgstr "WiFi verkon nimi (SSID)"
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
 msgid "Broadcast SSID"
 msgstr "Lähetä SSID"
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
 msgid "Frequency"
 msgstr "Taajuus"
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
 msgid "Encryption"
 msgstr "Suojaustila"
 
 msgid "Cipher"
 msgstr "Salausavain"
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
 msgid "WiFi Key (Password)"
 msgstr "Wifi salsana"
 
@@ -320,7 +288,6 @@ msgstr "Palauta oletussalasana"
 msgid "Choose Key"
 msgstr "Valitse avain"
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
 msgid "WiFi Key"
 msgstr "WiFi avain"
 
@@ -333,7 +300,6 @@ msgstr "Radius portti"
 msgid "Radius Secret"
 msgstr "Radius salasana"
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
 msgid "Show Key Text"
 msgstr "Näytä salasana"
 
@@ -359,7 +325,7 @@ msgid "Hostname"
 msgstr "Isäntäkoneen nimi"
 
 msgid "MAC"
-msgstr "MAC"
+msgstr ""
 
 msgid "Pick Wireless Radio"
 msgstr "Valitse Langaton Radio"
@@ -383,10 +349,10 @@ msgid "wifi.client.info"
 msgstr "Lähellä olevat langattomat laitteet"
 
 msgid "SSID"
-msgstr "SSID"
+msgstr ""
 
 msgid "SNR"
-msgstr "SNR"
+msgstr ""
 
 msgid "Connect"
 msgstr "Yhdistä"
@@ -490,7 +456,6 @@ msgstr " WiFi"
 msgid "Radio"
 msgstr "DECT Radio"
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.html
 msgid "Frequency to Scan"
 msgstr ""
 
@@ -500,13 +465,10 @@ msgstr "Skannaa ympäristön tukiasemat"
 msgid "Scanning..."
 msgstr "(Skannataan...)"
 
-#, fuzzy
 msgid ""
 "You will not be able to scan 5Ghz band because your 5Ghz wifi radio is "
 "operating at a DFS channel"
 msgstr ""
-"Et voi skannata 5Ghz taajuutta koska 5Ghz Wifi radio on määritetty "
-"käyttämään DFS kanavia"
 
 msgid "WPS Settings"
 msgstr "Yleiset Wifi asetukset"
@@ -549,14 +511,12 @@ msgstr "Syötä laitteesi PIN koodi"
 msgid "Enter your PIN here"
 msgstr "Syötä PIN koodi tähän"
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.html
 msgid "Your router is now attempting to pair with other devices."
 msgstr "WPS käynnissä"
 
 msgid "WPS-PBC: Push Button on Device"
 msgstr "WPS-PBC: Paina laitteessa olevaa WPS-painiketta"
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.html
 msgid ""
 "To pair your device, press Pair. Afterwards, press the corresponding button "
 "on the device you wish to connect. Your router will be open for pairing for "
@@ -569,7 +529,6 @@ msgstr ""
 msgid "WPS-REG: Router provides PIN"
 msgstr "WPS-REG: reititin tarjoaa PIN-koodin"
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.html
 msgid "Enter the WPS-PIN below on the device you wish to pair."
 msgstr "Syötä alle paritettavan laitteen WPS-PIN-koodi"
 
@@ -579,7 +538,6 @@ msgstr "Luonti"
 msgid "WPS-PIN: Another Device provides PIN"
 msgstr "WPS-PIN: Toinen laite tarjoaa PIN-koodin"
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.html
 msgid "Enter the WPS-PIN provided by the other device here."
 msgstr "Syötä paritettavan laitteen PIN-koodi tähän kohtaan."
 

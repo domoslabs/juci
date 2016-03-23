@@ -43,9 +43,6 @@ msgstr "Malli"
 msgid "N/A"
 msgstr "Ei saatavilla"
 
-msgid "Release"
-msgstr "Julkaisuaika:"
-
 msgid "Firmware Version"
 msgstr "Ohjelmistoversio"
 
@@ -58,17 +55,15 @@ msgstr "Päälläoloaika"
 msgid "CPU"
 msgstr "CPU"
 
-msgid "System Load Avg. (1m)"
-msgstr ""
-
 msgid "Kernel Version"
 msgstr "Kernel versio"
 
 msgid "Filesystem"
 msgstr ""
 
-msgid "Target"
-msgstr "Kohde"
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system.js
+msgid "Active Connections"
+msgstr ""
 
 msgid "Usage"
 msgstr "Käyttö"
@@ -84,12 +79,6 @@ msgstr "Swap"
 
 msgid "URL"
 msgstr "URL"
-
-msgid "List of NTP servers"
-msgstr "Luettelo NTP-palvelimista"
-
-msgid "NTP Settings"
-msgstr "NTP-asetukset"
 
 msgid "Backup Settings"
 msgstr "Tehdasasetukset"
@@ -216,9 +205,6 @@ msgstr "Toiminto"
 msgid "settings.system.general"
 msgstr " "
 
-msgid "Set to Browser Time"
-msgstr "Aseta selaimen aikaan"
-
 msgid "Timezone"
 msgstr "Aikavyöhyke"
 
@@ -242,9 +228,6 @@ msgstr "Muisti"
 
 msgid "Storage"
 msgstr "Tallennustila"
-
-msgid "Unsaved changes"
-msgstr ""
 
 msgid "Total number of processes: "
 msgstr ""
@@ -270,8 +253,8 @@ msgstr "Hallinta"
 msgid "menu-settings-energy-title"
 msgstr "Virranhallinta"
 
-msgid "menu-internet-services-ntp-title"
-msgstr "NTP"
+msgid "menu-settings-hardware-title"
+msgstr ""
 
 msgid "menu-status-system-title"
 msgstr "Järjestelmä"
@@ -281,9 +264,6 @@ msgstr "UCI"
 
 msgid "menu-system-title"
 msgstr "Järjestelmä"
-
-msgid "menu-settings-management-buttons-title"
-msgstr "Hallinta"
 
 msgid "menu-settings-password-title"
 msgstr "Salanat"
@@ -300,286 +280,26 @@ msgstr "Palvelut"
 msgid "menu-settings-configuration-title"
 msgstr "Konfiguraatio"
 
+msgid "menu-settings-hardware-buttons-title"
+msgstr ""
+
 msgid "menu-status-system-processes-title"
 msgstr "Prosessit"
 
+#~ msgid "Release"
+#~ msgstr "Julkaisuaika:"
 
+#~ msgid "Target"
+#~ msgstr "Kohde"
 
+#~ msgid "List of NTP servers"
+#~ msgstr "Luettelo NTP-palvelimista"
 
+#~ msgid "NTP Settings"
+#~ msgstr "NTP-asetukset"
 
+#~ msgid "Set to Browser Time"
+#~ msgstr "Aseta selaimen aikaan"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#~ msgid "menu-internet-services-ntp-title"
+#~ msgstr "NTP"

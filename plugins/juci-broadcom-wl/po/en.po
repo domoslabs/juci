@@ -52,56 +52,24 @@ msgstr ""
 msgid "Disabled"
 msgstr ""
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
 msgid "Initializing"
 msgstr ""
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
 msgid "Processing"
 msgstr ""
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
 msgid "Done!"
 msgstr ""
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
 msgid "Failed"
 msgstr ""
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
 msgid "Timed out"
 msgstr ""
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
 msgid "Overlap"
 msgstr ""
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
 msgid "Unknown"
 msgstr ""
 
@@ -209,7 +177,6 @@ msgstr ""
 msgid "On"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.html
 msgid "WPS"
 msgstr ""
 
@@ -291,26 +258,21 @@ msgstr ""
 msgid "Enable WMM UAPSD Power Saving"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
 msgid "WiFi Network Name (SSID)"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
 msgid "Broadcast SSID"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
 msgid "Frequency"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
 msgid "Encryption"
 msgstr ""
 
 msgid "Cipher"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
 msgid "WiFi Key (Password)"
 msgstr ""
 
@@ -320,7 +282,6 @@ msgstr ""
 msgid "Choose Key"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
 msgid "WiFi Key"
 msgstr ""
 
@@ -333,7 +294,6 @@ msgstr ""
 msgid "Radius Secret"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
 msgid "Show Key Text"
 msgstr ""
 
@@ -491,7 +451,6 @@ msgstr "Wireless status information"
 msgid "Radio"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.html
 msgid "Frequency to Scan"
 msgstr ""
 
@@ -501,7 +460,6 @@ msgstr ""
 msgid "Scanning..."
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.html
 msgid ""
 "You will not be able to scan 5Ghz band because your 5Ghz wifi radio is "
 "operating at a DFS channel"
@@ -547,14 +505,12 @@ msgstr ""
 msgid "Enter your PIN here"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.html
 msgid "Your router is now attempting to pair with other devices."
 msgstr ""
 
 msgid "WPS-PBC: Push Button on Device"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.html
 msgid ""
 "To pair your device, press Pair. Afterwards, press the corresponding button "
 "on the device you wish to connect. Your router will be open for pairing for "
@@ -564,7 +520,6 @@ msgstr ""
 msgid "WPS-REG: Router provides PIN"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.html
 msgid "Enter the WPS-PIN below on the device you wish to pair."
 msgstr ""
 
@@ -574,7 +529,6 @@ msgstr ""
 msgid "WPS-PIN: Another Device provides PIN"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.html
 msgid "Enter the WPS-PIN provided by the other device here."
 msgstr ""
 
@@ -610,150 +564,3 @@ msgstr "Wireless"
 
 msgid "menu-wireless-general-title"
 msgstr "General"
-
-#~ msgid "wps.status.unknown"
-#~ msgstr "Unknown"
-
-#~ msgid "wps.status.disabled"
-#~ msgstr "Disabled"
-
-#~ msgid "wps.status.init"
-#~ msgstr "Initializing"
-
-#~ msgid "wps.status.processing"
-#~ msgstr "Processing"
-
-#~ msgid "wps.status.fail"
-#~ msgstr "Failed"
-
-#~ msgid "wps.status.timeout"
-#~ msgstr "Timed out"
-
-#~ msgid "wps.status.msgdone"
-#~ msgstr "Done!"
-
-#~ msgid "wps.status.overlap"
-#~ msgstr "Overlap"
-
-#~ msgid "wifi.wps.in.progress"
-#~ msgstr "Your router is now attempting to pair with other devices."
-
-#~ msgid "wifi.wps.pbc.info"
-#~ msgstr ""
-#~ "To pair your device, press \"Pair\". Afterwards, press the corresponding "
-#~ "button on the device you wish to connect. Your router will be open for "
-#~ "pairing for 2 minutes after you pressed Pair."
-
-#~ msgid "wifi.wps.pin.info"
-#~ msgstr "Enter the WPS-PIN below on the device you wish to pair."
-
-#~ msgid "wifi.wps.otherpin.info"
-#~ msgstr "Enter the WPS-PIN provided by the other device here."
-
-#~ msgid "wifi-iface.device"
-#~ msgstr "Frequency"
-
-#~ msgid "wifi-iface.network"
-#~ msgstr "WiFi Network"
-
-#~ msgid "wifi-iface.mode"
-#~ msgstr "Mode"
-
-#~ msgid "wifi-iface.ssid"
-#~ msgstr "WiFi Network Name (SSID)"
-
-#~ msgid "wifi-iface.encryption"
-#~ msgstr "Encryption"
-
-#~ msgid "wifi-iface.cipher"
-#~ msgstr "Cipher"
-
-#~ msgid "wifi-iface.key"
-#~ msgstr "WiFi Key (Password)"
-
-#~ msgid "wifi-iface.key1"
-#~ msgstr "WiFi Key #1"
-
-#~ msgid "wifi-iface.key2"
-#~ msgstr "WiFi Key #2"
-
-#~ msgid "wifi-iface.key3"
-#~ msgstr "WiFi Key #3"
-
-#~ msgid "wifi-iface.key4"
-#~ msgstr "WiFi Key #4"
-
-#~ msgid "wifi-iface.gtk_rekey"
-#~ msgstr "Rekey Interval"
-
-#~ msgid "wifi-iface.wps_pbc"
-#~ msgstr "WPS"
-
-#~ msgid "wifi-iface.wmf_bss_enable"
-#~ msgstr "BSS"
-
-#~ msgid "wifi-iface.bss_max"
-#~ msgstr "BSS Max"
-
-#~ msgid "wifi-iface.instance"
-#~ msgstr "Device"
-
-#~ msgid "wifi-iface.up"
-#~ msgstr "Up"
-
-#~ msgid "wifi-iface.closed"
-#~ msgstr "Broadcast SSID"
-
-#~ msgid "wifi-iface.disabled"
-#~ msgstr "Disabled"
-
-#~ msgid "wifi-iface.macmode"
-#~ msgstr "Mac Mode"
-
-#~ msgid "wifi-iface.macfilter"
-#~ msgstr "Mac Filter"
-
-#~ msgid "wifi-iface.maclist"
-#~ msgstr "Mac List"
-
-#~ msgid "interface.macmode.allow"
-#~ msgstr "Allow"
-
-#~ msgid "interface.macmode.deny"
-#~ msgstr "Deny"
-
-#~ msgid "wifi.enc.none"
-#~ msgstr "No Encryption (Dangerous!)"
-
-#~ msgid "wifi.enc.wep"
-#~ msgstr "WEP Open System"
-
-#~ msgid "wifi.enc.wep-shared"
-#~ msgstr "WEP Shared Key"
-
-#~ msgid "wifi.enc.wpa2"
-#~ msgstr "WPA2-EAP"
-
-#~ msgid "wifi.enc.mixed-wpa"
-#~ msgstr "WPA/WPA2-EAP Mixed"
-
-#~ msgid "wifi.enc.psk"
-#~ msgstr "WPA-PSK"
-
-#~ msgid "wifi.enc.psk2"
-#~ msgstr "WPA2-PSK"
-
-#~ msgid "wifi.enc.mixed-psk"
-#~ msgstr "WPA/WPA2-PSK Mixed"
-
-#~ msgid "wifi-iface.radius_server"
-#~ msgstr "Radius Server"
-
-#~ msgid "wifi-iface.radius_port"
-#~ msgstr "Radius Port"
-
-#~ msgid "wifi-iface.radius_secret"
-#~ msgstr "Radius Secret"
-
-#~ msgid "wifi-iface.show_password"
-#~ msgstr "Show Key Text"

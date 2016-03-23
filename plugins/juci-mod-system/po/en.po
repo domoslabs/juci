@@ -25,7 +25,7 @@ msgid "Passwords do not match!"
 msgstr ""
 
 msgid "Are you sure you want to save backup without password?"
-msgstr "Are you sure you want to save backup without password?"
+msgstr ""
 
 msgid ""
 "Was unable to set password. Please make sure you have entered correct "
@@ -41,9 +41,6 @@ msgstr ""
 msgid "N/A"
 msgstr ""
 
-msgid "Release"
-msgstr ""
-
 msgid "Firmware Version"
 msgstr ""
 
@@ -56,16 +53,14 @@ msgstr ""
 msgid "CPU"
 msgstr ""
 
-msgid "System Load Avg. (1m)"
-msgstr ""
-
 msgid "Kernel Version"
 msgstr ""
 
 msgid "Filesystem"
 msgstr ""
 
-msgid "Target"
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system.js
+msgid "Active Connections"
 msgstr ""
 
 msgid "Usage"
@@ -81,12 +76,6 @@ msgid "Swap"
 msgstr ""
 
 msgid "URL"
-msgstr ""
-
-msgid "List of NTP servers"
-msgstr ""
-
-msgid "NTP Settings"
 msgstr ""
 
 msgid "Backup Settings"
@@ -132,7 +121,7 @@ msgid "Pick configuration backup to upload"
 msgstr ""
 
 msgid "Backup file password"
-msgstr "Backup file password"
+msgstr ""
 
 msgid "Password (if encrypted)"
 msgstr ""
@@ -204,13 +193,10 @@ msgid "Enable"
 msgstr ""
 
 msgid "Action"
-msgstr "Action"
+msgstr ""
 
 msgid "settings.system.general"
 msgstr "General system settings."
-
-msgid "Set to Browser Time"
-msgstr ""
 
 msgid "Timezone"
 msgstr ""
@@ -234,9 +220,6 @@ msgid "Memory"
 msgstr ""
 
 msgid "Storage"
-msgstr ""
-
-msgid "Unsaved changes"
 msgstr ""
 
 msgid "Total number of processes: "
@@ -265,9 +248,6 @@ msgstr "Energy Settings"
 
 msgid "menu-settings-hardware-title"
 msgstr "Hardware"
-
-msgid "menu-internet-services-ntp-title"
-msgstr "NTP"
 
 msgid "menu-status-system-title"
 msgstr "System"
@@ -298,3 +278,6 @@ msgstr "Buttons"
 
 msgid "menu-status-system-processes-title"
 msgstr "Processes"
+
+#~ msgid "menu-internet-services-ntp-title"
+#~ msgstr "NTP"

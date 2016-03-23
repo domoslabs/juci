@@ -83,12 +83,6 @@ msgstr "GRE Tunnel over IPv6"
 msgid "Ethernet GRE over IPv6"
 msgstr "Ethernet GRE over IPv6"
 
-msgid ""
-"A new ethernet device has been connected to your router. Do you want to add "
-"it to a network?"
-msgstr ""
-"Uusi ethernet-laite on kytketty reitittimeen. Haluatko lisätä sen verkkoon?"
-
 msgid "no device or network given"
 msgstr ""
 
@@ -197,6 +191,23 @@ msgstr "IPv6-reititystaulukko"
 msgid "IPv6 Routes needs a Gateway"
 msgstr "IPv6 Oletusyhdyskäytävä"
 
+msgid "Interface Name is needed"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-network-netifd/src/pages/internet-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-create.js
+msgid "Interface names can only contain letters and numbers"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-network-netifd/src/pages/internet-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-create.js
+msgid "Interface name may only be 12 characters long"
+msgstr ""
+
 msgid "OK"
 msgstr ""
 
@@ -229,6 +240,14 @@ msgstr "AnyWAN"
 
 msgid "Bridge"
 msgstr "Silta"
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-dns-config.js
+msgid "All DNS-servers must be valid"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-dns-config.js
+msgid "All DNS-servers must be unique"
+msgstr ""
 
 msgid "ERROR"
 msgstr ""
@@ -912,268 +931,9 @@ msgstr "NAT"
 msgid "menu-internet-services-title"
 msgstr "Palvelut"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#~ msgid ""
+#~ "A new ethernet device has been connected to your router. Do you want to "
+#~ "add it to a network?"
+#~ msgstr ""
+#~ "Uusi ethernet-laite on kytketty reitittimeen. Haluatko lisätä sen "
+#~ "verkkoon?"
