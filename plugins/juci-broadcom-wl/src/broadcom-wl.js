@@ -1,3 +1,4 @@
+/*global gettext:false*/
 /*
  * Copyright (C) 2015 Inteno Broadband Technology AB. All rights reserved.
  *

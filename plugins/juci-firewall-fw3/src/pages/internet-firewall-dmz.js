@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("InternetExHostPageCtrl", function($scope, $rpc, $config, $network, $uci, $tr){
+.controller("InternetExHostPageCtrl", function($scope, $rpc, $config, $network, $uci, $tr, gettext){
 	$scope.config = $config; 
 	$scope.wan = {}; 
 	$scope.connectedHosts = []; 
