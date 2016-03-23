@@ -67,9 +67,9 @@ JUCI.app
 	
 	
 	$events.subscribe("sysupgrade-test", function(result){
-		$scope.showUpgradeStatus = 0; 
-		$scope.$apply();
 		if(result.data && result.data.error && result.data.stdout) {
+			$scope.showUpgradeStatus = 0; 
+			$scope.$apply();
 			$juciDialog.show(null, {
 				title: $tr(gettext("Image check failed")),
 				buttons: [{ label: $tr(gettext("OK")), value: "ok", primary: true }],
@@ -80,8 +80,16 @@ JUCI.app
 			});
 			return; 
 		}
+		console.log("calling ubus call /juci/system.upgrade start now");
+		//$scope.progress = $tr(gettext("Upgrading"));
 		$rpc.juci.system.upgrade.start({"path": $scope.$PATH, "keep": (($scope.$KEEP)?1:0)}); // this never completes
-		setTimeout(function(){window.location = "/reboot.html"; }, 1000);
+		//console.log("done with sysupgrade call");
+		//TODO: This needs to be fixed so that sysupgrade returns and so the rpc-call does and we can redirect then TODO//
+		setTimeout(function(){
+			$scope.showUpgradeStatus = 0; 
+			$scope.$apply();
+			window.location = "/reboot.html";
+		}, 10000);
 	});
 	$scope.onDismissModal = function(){
 		$scope.showUpgradeStatus = false;
