@@ -82,6 +82,7 @@ JUCI.app
 		}
 		//console.log("calling ubus call /juci/system.upgrade start now");
 		$scope.progress = $tr(gettext("Upgrading"));
+		$scope.$apply();
 		$rpc.juci.system.upgrade.start({"path": $scope.$PATH, "keep": (($scope.$KEEP)?1:0)}).always(function(){ // this always returns true;
 			$scope.showUpgradeStatus = 0; 
 			$scope.$apply();
