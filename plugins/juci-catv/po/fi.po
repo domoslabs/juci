@@ -30,7 +30,7 @@ msgid "Enable bandwidth filtering"
 msgstr ""
 
 msgid "Filter"
-msgstr ""
+msgstr "Filtteri"
 
 msgid "CATV Status"
 msgstr ""
