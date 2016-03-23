@@ -33,13 +33,14 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("overviewWidgetNetmode", function($scope, $tr, gettext, $uci, $rpc, $juciConfirm, $juciDialog){
+.controller("overviewWidgetNetmode", function($scope, $tr, gettext, $uci, $rpc, $juciConfirm, $juciDialog, $languages){
 	$scope.data = {
 		currentNetmode: ""
 	};
 	$uci.$sync("netmode").done(function(){
 		if(!$uci.netmode || !$uci.netmode.setup)return;
-		$scope.allNetmodes = $uci.netmode["@netmode"].map(function(nm){ return { label: nm.desc.value, value: nm[".name"], desc: nm.exp.value }; });
+		var lang = $languages.getLanguage();
+		$scope.allNetmodes = $uci.netmode["@netmode"].map(function(nm){ return { label: (nm[("desc_"+lang)].value || nm["desc_en"].value || nm.desc.value), value: nm[".name"], desc: (nm[("exp_"+lang)].value || nm["exp_en"].value || "")}; });
 		$scope.setup = $uci.netmode.setup;
 		$scope.data.currentNetmode = $scope.setup.curmode.value;
 		$scope.$apply();

@@ -17,7 +17,13 @@ UCI.netmode.$registerSectionType("netmode", {
 	"reboot":	{ dvalue: true, type: Boolean },
 	"name":		{ dvalue: '', type: String }, 
 	"desc":		{ dvalue: '', type: String }, 
+	"desc_fi":	{ dvalue: '', type: String }, 
+	"desc_en":	{ dvalue: '', type: String }, 
+	"desc_sv":	{ dvalue: '', type: String },
 	"conf":		{ dvalue: '', type: String }, 
-	"exp":		{ dvalue: '', type: String }
+	"exp":		{ dvalue: '', type: String },
+	"exp_en":	{ dvalue: '', type: String },
+	"exp_fi":	{ dvalue: '', type: String },
+	"exp_sv":	{ dvalue: '', type: String }
 }); 
 

@@ -20,6 +20,9 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 				}
 			}); 
 		}, 
+		getLanguage: function(){
+			return gettextCatalog.getCurrentLanguage();
+		},
 		setLanguage: function(short_code){
 			gettextCatalog.setCurrentLanguage(short_code);
 			$localStorage.setItem("language", short_code); 
