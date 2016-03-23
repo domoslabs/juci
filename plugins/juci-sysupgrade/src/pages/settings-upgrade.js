@@ -80,16 +80,13 @@ JUCI.app
 			});
 			return; 
 		}
-		console.log("calling ubus call /juci/system.upgrade start now");
-		//$scope.progress = $tr(gettext("Upgrading"));
-		$rpc.juci.system.upgrade.start({"path": $scope.$PATH, "keep": (($scope.$KEEP)?1:0)}); // this never completes
-		//console.log("done with sysupgrade call");
-		//TODO: This needs to be fixed so that sysupgrade returns and so the rpc-call does and we can redirect then TODO//
-		setTimeout(function(){
+		//console.log("calling ubus call /juci/system.upgrade start now");
+		$scope.progress = $tr(gettext("Upgrading"));
+		$rpc.juci.system.upgrade.start({"path": $scope.$PATH, "keep": (($scope.$KEEP)?1:0)}).always(function(){ // this always returns true;
 			$scope.showUpgradeStatus = 0; 
 			$scope.$apply();
 			window.location = "/reboot.html";
-		}, 10000);
+		});
 	});
 	$scope.onDismissModal = function(){
 		$scope.showUpgradeStatus = false;
