@@ -24,7 +24,7 @@ msgid "DSL Status Information"
 msgstr "DSL Status"
 
 msgid "Line Status"
-msgstr "Puheen tila"
+msgstr "Linjan tila"
 
 msgid "DSL Mode"
 msgstr "DSL Mode"
@@ -153,12 +153,10 @@ msgid "DSL Status"
 msgstr "Tila"
 
 msgid "dsl.status.info"
-msgstr ""
-"Tällä sivulla on yleisnäkymä aktiivisista puhelinnumeroistasi. Mahdollisia "
-"muutoksia varten navigoi kohtaan \"Puhelin\"."
+msgstr "Tällä sivulla näet DSL yhteyden tilan"
 
 msgid "No DSL info available."
-msgstr "Puhepalvelu ei ole saatavilla!"
+msgstr "DSL info ei ole saatavilla"
 
 msgid "internet.ethernet.vdsl.info"
 msgstr "VDSL"

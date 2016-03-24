@@ -51,7 +51,7 @@ msgid "Ethernet"
 msgstr "Ethernet portit"
 
 msgid "internet.ethernet.phy.info"
-msgstr " Ethernet porttien konfigurointi"
+msgstr "Ethernet porttien konfigurointi"
 
 msgid ""
 "This will be the port that will be used to configure the physical ethernet "

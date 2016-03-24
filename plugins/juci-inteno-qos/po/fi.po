@@ -9,16 +9,16 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "Low"
 msgstr ""
 
 msgid "Add Bandwidth Limitation"
-msgstr ""
+msgstr "Lisää kaistanrajoitussääntö"
 
 msgid "All"
-msgstr ""
+msgstr "Kaikki"
 
 msgid "TCP"
 msgstr ""
@@ -30,52 +30,52 @@ msgid "ICMP"
 msgstr ""
 
 msgid "Select which interface you want to put the Bandwidth Limitation on"
-msgstr ""
+msgstr "Valitse käytettävä yhteys"
 
 msgid "Interface"
-msgstr ""
+msgstr "Liitäntä"
 
 msgid "Interface to apply the restrictions on"
-msgstr ""
+msgstr " "
 
 msgid "Enable"
-msgstr ""
+msgstr "Ota käyttöön"
 
 msgid "Download Speed Limit"
-msgstr ""
+msgstr "Latausnopeuden rajoitus"
 
 msgid "Upload Speed Limit"
-msgstr ""
+msgstr "Lähetysnopeuden rajoitus"
 
 msgid "Acceleration will be disabled when Bandwidth limitation is enabled"
-msgstr ""
+msgstr "Laitteistokiihdytys poistetaan käytöstä, kun kaistanrajoitus on käytössä"
 
 msgid "Target"
-msgstr ""
+msgstr "Kohde"
 
 msgid "Precedence"
-msgstr ""
+msgstr "Presedenssi"
 
 msgid "Source host"
-msgstr ""
+msgstr "Lähde"
 
 msgid "Destination host"
-msgstr ""
+msgstr "Kohde"
 
 msgid "Protocol"
-msgstr ""
+msgstr "Protokolla"
 
 msgid "Port"
-msgstr ""
+msgstr "Portti"
 
 msgid "Filter by port, when there are no ports no filter will be applied"
-msgstr ""
+msgstr "Porttikohtainen suodatus. Kun portteja ei ole määritelty, suodatinsääntöjä ei sovelleta"
 
 msgid "Bandwidth Limitation"
-msgstr ""
+msgstr "Internet-yhteyden rajoitus"
 
 msgid "Quality of Service Settings"
-msgstr ""
+msgstr "QoS säännöt"
 
 msgid "menu-juci-inteno-qos-title"
-msgstr ""
+msgstr "QoS"
