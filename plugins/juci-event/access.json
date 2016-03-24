@@ -3,6 +3,9 @@
 		"description": "JUCI event module",
 		"read": {
 			"ubus": {
+				"router": [
+					"events"
+				],
 				"juci.event": [
 					"poll"
 				]
