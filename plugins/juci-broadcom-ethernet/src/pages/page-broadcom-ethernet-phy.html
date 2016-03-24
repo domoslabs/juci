@@ -14,7 +14,7 @@
 				</div>
 				<p ng-show="data.wan_port" translate><strong>{{data.wan_port[".name"]}}</strong> socket will be used for passing packets to the internet.</p>
 			</juci-config-line>
-			<juci-config-line title="This device will be used in a bridge">
+			<juci-config-line title="{{'This device will be used in a bridge'|translate}}">
 				<switch class="green" ng-model="config.bridge.value"></switch>
 			</juci-config-line>
 		</juci-config-section>
