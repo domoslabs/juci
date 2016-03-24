@@ -121,18 +121,7 @@ JUCI.app
 				$rpc.juci.wireless.wps.showpin().done(function(result){
 					$scope.wps.pin = result.pin; 
 				}).always(function(){ next(); }); 
-			}, 
-			function(next){
-				$rpc.juci.wireless.clients().done(function(clients){
-					$scope.wireless.clients = clients.clients; 
-					$scope.wireless.clients.map(function(cl){
-						// check flags 
-						if(cl.flags.match(/NOIP/)) cl.ipaddr = $tr(gettext("No IP address")); 
-					}); 
-				}).always(function(){
-					next();
-				});
-			}
+			} 
 		], function(){
 			$scope.$apply(); 
 			def.resolve(); 
