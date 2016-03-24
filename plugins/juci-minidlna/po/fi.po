@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "Standard Container"
 msgstr "Juurikansio"
@@ -18,7 +18,7 @@ msgid "Browse directory"
 msgstr ""
 
 msgid "Music"
-msgstr ""
+msgstr "Musiikki"
 
 msgid "Video"
 msgstr "Vain video"
@@ -60,20 +60,20 @@ msgid "Port"
 msgstr "Portti"
 
 msgid "Port for HTTP (descriptions, SOAP, media transfer) traffic."
-msgstr ""
+msgstr "HTTP portti"
 
 msgid "Network"
 msgstr "Verkko"
 
 msgid "Network interfaces to serve."
-msgstr ""
+msgstr "Käytettävät liitännät"
 
 msgid "Friendly Name"
 msgstr "Nimi"
 
 msgid ""
 "Set this if you want to customize the name that shows up on your clients."
-msgstr ""
+msgstr "Aseta tämä mikäli haluat muuttaa DLNA nimeä joka näkyy asiakaskoneille"
 
 msgid "Root Container"
 msgstr "Juurikansio"
@@ -85,7 +85,7 @@ msgid "Album-Art Names"
 msgstr "Albumin Kansikuvanimet"
 
 msgid "This is a list of file names to check for when searching for album art."
-msgstr ""
+msgstr "Tämä on tiedostonimilista jonka mukaan etsitään kansiokuvia"
 
 msgid "write list of album-art names"
 msgstr "Albumin Kansikuvanimet"
@@ -94,17 +94,17 @@ msgid "Advanced settings"
 msgstr "Lisäasetukset"
 
 msgid "Database directory"
-msgstr ""
+msgstr "Tietokantakansio"
 
 msgid "Log directory"
-msgstr ""
+msgstr "Lokikansio"
 
 msgid "Enable inotify"
 msgstr "Ota käyttöön"
 
 msgid ""
 "Set this to enable inotify monitoring to automatically discover new files."
-msgstr ""
+msgstr "Ota käyttöön inotify monitorointi"
 
 msgid "Enable TIVO"
 msgstr "Käytössä"
@@ -115,10 +115,10 @@ msgid ""
 msgstr ""
 
 msgid "Strict to DLNA standard"
-msgstr ""
+msgstr "Tiukka DLNA standardi"
 
 msgid "Presentation URL"
-msgstr ""
+msgstr "DLNA osoite"
 
 msgid "Notify interval"
 msgstr ""
@@ -127,20 +127,20 @@ msgid "Notify interval in seconds."
 msgstr ""
 
 msgid "Announced serial number"
-msgstr ""
+msgstr "Imoitettava sarjanumero"
 
 msgid ""
 "Serial number the miniDLNA daemon will report to clients in its XML "
 "description."
-msgstr ""
+msgstr "MiniDLNA XML-tiedoston sarjanumero"
 
 msgid "Announced model number"
-msgstr ""
+msgstr "Ilmoitettava mallinumero"
 
 msgid ""
 "Model number the miniDLNA daemon will report to clients in its XML "
 "description."
-msgstr ""
+msgstr "MiniDLNA XML-tiedoston mallinumero"
 
 msgid "miniSSDP socket"
 msgstr ""
@@ -155,6 +155,8 @@ msgid ""
 "MiniDLNA is server software with the aim of being fully compliant with DLNA/"
 "UPnP-AV clients."
 msgstr ""
+"MiniDLNA on palvelinohjelmisto jonka tarkoituksena on olla täysin "
+"yhteensopiva DLNA/UPnP-AV koneiden kanssa"
 
 msgid "menu-internet-services-minidlna-title"
 msgstr "MiniDLNA"

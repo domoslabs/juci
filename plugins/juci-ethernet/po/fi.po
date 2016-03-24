@@ -9,13 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "Layer-2 Devices"
 msgstr "Layer-2 Ethernet-laitteet"
 
 msgid "internet.ethernet.info"
-msgstr " Ethernet"
+msgstr "Ethernet"
 
 msgid "Status"
 msgstr "Status"

@@ -9,21 +9,21 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "Zone does not exist!"
-msgstr ""
+msgstr "Vyöhykettä ei ole!"
 
 msgid "Source port can not be empty!"
-msgstr ""
+msgstr "Lähdeportti ei voi olla tyhjä!"
 
 msgid "Failed to create dmz configuration!"
-msgstr ""
+msgstr "DMZ-konfigurointi ei onnistunut!"
 
 msgid ""
 "A port forwarding rule with the same name already exists! Please specify a "
 "different name!"
-msgstr ""
+msgstr "Samanniminen porttiohjaussääntö on jo olemassa! Syötä uusi nimi!"
 
 msgid "Please select a rule to delete!"
 msgstr "Valitse poistettava sääntö!"
@@ -50,22 +50,22 @@ msgid "UDP"
 msgstr "UDP"
 
 msgid "All"
-msgstr ""
+msgstr "Kaikki"
 
 msgid "Rule may not have any excluded Public ports"
-msgstr ""
+msgstr "Säännöllä ei voi olla yhtäkään poissuljettua julkista porttia"
 
 msgid "Port mapping rule needs a name"
-msgstr ""
+msgstr "Porttiohjaussäännöllä tulee olla nimi"
 
 msgid "Rule has invalid Private port"
-msgstr ""
+msgstr "Säännöllä on virheellinen sisäinen portti"
 
 msgid "Rule has invalid Public port"
-msgstr ""
+msgstr "Säännöllä on virheellinen julkinen portti"
 
 msgid "Rule can not have empty Private port"
-msgstr ""
+msgstr "Säännöllä ei voi olla tyhjää sisäistä porttia"
 
 msgid "ACCEPT"
 msgstr "HYVÄKSY"
@@ -86,7 +86,7 @@ msgid "Any"
 msgstr "Kaikki"
 
 msgid "Firewall Zones can't have the same name"
-msgstr ""
+msgstr "Palomuurivyöhykkeet eivät voi olla saman nimisiä"
 
 msgid "Please select a connection in the list!"
 msgstr "Valitse yhteys luettelosta!"
@@ -98,16 +98,16 @@ msgid "Configure Port Mapping"
 msgstr "Porttiohjaus"
 
 msgid "Edit Port Mappings for"
-msgstr ""
+msgstr "Muokkaa porttiohjausta"
 
 msgid "Name"
 msgstr "Nimi"
 
 msgid "Excluded ports"
-msgstr ""
+msgstr "Poissuljetut portit"
 
 msgid "These ports may not be mapped they are protected"
-msgstr ""
+msgstr "Näitä portteja ei voi määritellä ohjattavaksi, koska ne on suojattu"
 
 msgid "Public port"
 msgstr "Julkinen Portti"
@@ -115,6 +115,8 @@ msgstr "Julkinen Portti"
 msgid ""
 "Ports can be a space separeated list or on the form <range-start>-<range-end>"
 msgstr ""
+"Portit voivat olla erillisessä listassa tai niiden alue voidaan määritetellä "
+"<ensimmäinen portti>-<viimeinen portti>"
 
 msgid "Private port"
 msgstr "Yksityinen portti"
@@ -141,7 +143,7 @@ msgid "Invalid MAC address"
 msgstr "Virheellinen MAC osoite"
 
 msgid "Zone"
-msgstr ""
+msgstr "Vyöhyke"
 
 msgid "IP"
 msgstr "IP"
@@ -153,7 +155,7 @@ msgid "Port"
 msgstr "Portti"
 
 msgid "IP Version"
-msgstr ""
+msgstr "IP-versio"
 
 msgid "Firewall Action"
 msgstr "Palomuuritoiminto"
@@ -177,16 +179,16 @@ msgid "Default Policy"
 msgstr "Oletussääntö"
 
 msgid "Masquerading"
-msgstr ""
+msgstr "NAT"
 
 msgid "MSS clamping"
 msgstr ""
 
 msgid "Allow forward to destination zones:"
-msgstr ""
+msgstr "Salli edelleenlähetys kohdevyöhykkeille:"
 
 msgid "Allow forward from source zones:"
-msgstr ""
+msgstr "Salli edelleenlähetys lähdevyöhykkeiltä:"
 
 msgid "Zone members:"
 msgstr "Vyöhykkeen jäsenet:"
@@ -225,10 +227,10 @@ msgid "Dst. IP Address"
 msgstr "Kohdeosoite"
 
 msgid "Public Port(s)"
-msgstr ""
+msgstr "Julkiset portit"
 
 msgid "Private Port(s)"
-msgstr ""
+msgstr "Sisäiset portit"
 
 msgid "Select protocol"
 msgstr "Valitse protokolla"
@@ -273,10 +275,10 @@ msgstr "Valitse isäntäkone"
 
 msgid ""
 "Firewall dmz configuration does not exist yet. Do you want to create it?"
-msgstr ""
+msgstr "DMZ ei ole määritelty. Haluatko määritellä sen nyt ?"
 
 msgid "Create"
-msgstr ""
+msgstr "Luo"
 
 msgid ""
 "Choose the local IP address that should be exposed to Internet. Additionally "
@@ -387,30 +389,29 @@ msgstr "Lopetusaika"
 msgid "MAC Addresses"
 msgstr "MAC-osoitteet"
 
-msgid "menu-internet-firewall-forwarding-title"
-msgstr "Edelleenlähetys"
-
 msgid "menu-internet-parental-control-title"
 msgstr "Lapsilukko"
-
-msgid "menu-internet-firewall-zones-title"
-msgstr "Vyöhykkeet"
-
-msgid "menu-internet-firewall-port-mapping-title"
-msgstr "Porttiohjaus"
-
-msgid "menu-internet-firewall-services-title"
-msgstr "Palvelut"
-
-msgid "menu-internet-firewall-title"
-msgstr "Palomuuri"
-
-msgid "menu-internet-firewall-dmz-title"
-msgstr "DMZ"
 
 msgid "menu-internet-firewall-rules-title"
 msgstr "Palomuurisäännöt"
 
+msgid "menu-internet-firewall-services-title"
+msgstr "Palvelut"
+
+msgid "menu-internet-firewall-dmz-title"
+msgstr "DMZ"
+
+msgid "menu-internet-firewall-title"
+msgstr "Palomuuri"
+
 msgid "menu-internet-firewall-urlblock-title"
 msgstr "URL esto"
 
+msgid "menu-internet-firewall-zones-title"
+msgstr "Vyöhykkeet"
+
+msgid "menu-internet-firewall-forwarding-title"
+msgstr "Edelleenlähetys"
+
+msgid "menu-internet-firewall-port-mapping-title"
+msgstr "Porttiohjaus"

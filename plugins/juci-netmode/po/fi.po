@@ -9,27 +9,26 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
-#, fuzzy
 msgid "Select Profile"
-msgstr "Profiili"
+msgstr "Valitse profiili"
 
 msgid ""
 "Changing netmode will reset your configuration completely to match that "
 "netmode. Do you want to continue?"
 msgstr ""
-"Changing netmode will reset your configuration completely to match that "
-"netmode. Do you want to continue?"
+"Profiilin vaihto asettaa laitteen täysin valitun profiilin mukaiseksi. "
+"Haluatko jatkaa?"
 
 msgid "Pick Preset"
-msgstr "Esiasetukset"
+msgstr "Valitse profiili"
 
 msgid "Profile"
 msgstr "Profiili"
 
 msgid "No profiles available"
-msgstr "Puhepalvelu ei ole saatavilla!"
+msgstr "Ei profiileja"
 
 msgid "Change Profile"
-msgstr "Profiili"
+msgstr "Vaihda profiili"

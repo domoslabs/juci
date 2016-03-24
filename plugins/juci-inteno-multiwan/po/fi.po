@@ -9,16 +9,16 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "Source addr:"
-msgstr ""
+msgstr "Lähdeosoite:"
 
 msgid "All"
-msgstr ""
+msgstr "Kaikki"
 
 msgid "Destination addr:"
-msgstr ""
+msgstr "Kohdeosoite:"
 
 msgid "UDP"
 msgstr ""
@@ -39,52 +39,52 @@ msgid "WAN6"
 msgstr ""
 
 msgid "Load Balancer (Performance)"
-msgstr ""
+msgstr "Kuormanjako (Suorituskyky)"
 
 msgid "Load Balancer (Compability)"
-msgstr ""
+msgstr "Kuormanjako (Yhteensopivuus)"
 
 msgid "Load Balancer Distribution"
-msgstr ""
+msgstr "Kuormanjaon jakaminen"
 
 msgid "Health Monitor Method"
-msgstr ""
+msgstr "Valvontamenetelmä"
 
 msgid "Health Monitor Interval"
-msgstr ""
+msgstr "Valvontamenetelmän intervalli"
 
 msgid "Health Monitor ICMP Host(s)"
-msgstr ""
+msgstr "Valvontamenetelmän ICMP-kohteet"
 
 msgid "Health Monitor ICMP Timeout"
-msgstr ""
+msgstr "Valvontamelmän ICMP aikakatkaisu"
 
 msgid "Attempts Before WAN Failover"
-msgstr ""
+msgstr "Yritysten määrä ennenkuin WAN otetaan pois käytöstä"
 
 msgid "Attempts Before WAN Recovery"
-msgstr ""
+msgstr "Yritysten määrä kunnes WAN otetaan takaisin käyttöön"
 
 msgid "Failover Traffic Destination"
-msgstr ""
+msgstr "Toissijainen yhteys"
 
 msgid "DNS Server(s)"
-msgstr ""
+msgstr "DNS palvelimet"
 
 msgid "Source Address"
-msgstr ""
+msgstr "Lähdeosoite"
 
 msgid "Leave empty for all"
-msgstr ""
+msgstr "Jätä tyhjäksi kaikkia varten"
 
 msgid "Destination Address"
-msgstr ""
+msgstr "Kohdeosoite"
 
 msgid "Protocol"
-msgstr ""
+msgstr "Protokolla"
 
 msgid "Ports"
-msgstr ""
+msgstr "Portit"
 
 msgid "WAN Uplink"
 msgstr ""
@@ -93,7 +93,7 @@ msgid "MultiWAN Configuration"
 msgstr "MultiWAN Määritys"
 
 msgid "Basic Settings"
-msgstr ""
+msgstr "Perusasetukset"
 
 msgid "MultiWAN Enabled"
 msgstr "MultiWAN Käytössä"
@@ -102,7 +102,7 @@ msgid "Default Route"
 msgstr "Oletusreitti"
 
 msgid "Multi-WAN Traffic Rules"
-msgstr ""
+msgstr "Multi-WAN säännöt"
 
 msgid "menu-internet-multiwan-title"
 msgstr "Multiwan"

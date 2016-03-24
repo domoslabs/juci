@@ -9,13 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "LAN does not have IPv6 configured"
-msgstr ""
+msgstr "Lähiverkolla ei ole IPv6 konfigurointia"
 
 msgid "Minutes"
-msgstr ""
+msgstr "Minuutit"
 
 msgid "Hour"
 msgstr "Tunti"
@@ -30,13 +30,13 @@ msgid "IPv6"
 msgstr ""
 
 msgid "Hostname(s) for "
-msgstr ""
+msgstr "Isäntäkoneen nimi"
 
 msgid "DHCP Pool Start"
-msgstr ""
+msgstr "DHCP ensimmäinen osoite"
 
 msgid "DHCP Pool Size"
-msgstr ""
+msgstr "DHCP viimeinen osoite"
 
 msgid "DHCP Lease Time"
 msgstr "DHCP-varauksen aika"
@@ -54,46 +54,46 @@ msgid "Hostname"
 msgstr "Isäntäkoneen nimi"
 
 msgid "Add a host"
-msgstr ""
+msgstr "Lisää isäntäkone"
 
 msgid "Family"
-msgstr ""
+msgstr "Perhe"
 
 msgid "IPv4 Address"
 msgstr "IPv4-osoite"
 
 msgid "IPv6 Address"
-msgstr ""
+msgstr "IPv6 osoite"
 
 msgid "Hostnames"
-msgstr ""
+msgstr "Isäntäkoneiden nimet"
 
 msgid "DHCPv4 leases"
-msgstr ""
+msgstr "DHCPv4 varaukset"
 
 msgid "DHCPv6 leases"
-msgstr ""
+msgstr "DHCPv6 varaukset"
 
 msgid "Active DHCP Leases"
-msgstr ""
+msgstr "Aktiiviset DHCP-varaukset"
 
 msgid "IPv4-Address"
-msgstr ""
+msgstr "IPv4 osoite"
 
 msgid "MAC-Address"
-msgstr ""
+msgstr "MAC osoite"
 
 msgid "Leasetime remaining"
-msgstr ""
+msgstr "Varausaikaa jäljellä"
 
 msgid "There are no active leases"
-msgstr ""
+msgstr "DHCP varauksia ei ole"
 
 msgid "IPv6-Address"
-msgstr ""
+msgstr "IPv6 osoite"
 
 msgid "DUID"
-msgstr ""
+msgstr "DUID"
 
 msgid "MAC"
 msgstr "MAC"
@@ -129,28 +129,28 @@ msgid "DHCP Server"
 msgstr "DHCP-palvelin"
 
 msgid "DHCP Settings"
-msgstr ""
+msgstr "DHCP-asetukset"
 
 msgid "General Settings"
-msgstr ""
+msgstr "Yleiset asetukset"
 
 msgid "Local domain"
-msgstr ""
+msgstr "Paikallinen toimialuenimi"
 
 msgid "Local domain suffix appended to DHCP names and hosts file entries"
 msgstr ""
 
 msgid "Log queries"
-msgstr ""
+msgstr "Kirjaa kyselyt lokiin"
 
 msgid "Write received DNS requests to syslog"
-msgstr ""
+msgstr "Kirjoita DNS kyselyt syslokiin"
 
 msgid "Leasefile"
-msgstr ""
+msgstr "DHCP-varaustiedosto"
 
 msgid "file where given DHCP-leases will be stored"
-msgstr ""
+msgstr "tiedosto, jonne DHCP-varaukset tallennetaan"
 
 msgid "Ignore resolve file"
 msgstr ""
@@ -159,147 +159,157 @@ msgid "Resolve file"
 msgstr ""
 
 msgid "local DNS file"
-msgstr ""
+msgstr "paikallinen DNS-tiedosto"
 
 msgid "Ignore Hosts file"
-msgstr ""
+msgstr "Ohita Hosts-tiedosto"
 
 msgid "Advanced Settings"
-msgstr ""
+msgstr "Edistyneet asetukset"
 
 msgid "Domain required"
-msgstr ""
+msgstr "Toimialueen nimi vaadittu"
 
 msgid "Do not forward DNS-Requests without DNS-Name"
-msgstr ""
+msgstr "Älä edelleenlähetä DNS-kyselyitä ilman DNS-nimeä"
 
 msgid "Authoritative"
-msgstr ""
+msgstr "Määräävä"
 
 msgid "This is the only DHCP in the local network"
-msgstr ""
+msgstr "Tämä on ainoa DHCP-palvelin paikallisessa verkossa"
 
 msgid "Filter private"
-msgstr ""
+msgstr "Suodata yksityiset"
 
 msgid "Do not forward reverse lookups for local networks"
-msgstr ""
+msgstr "Älä edelleenlähetä käänteisiä hakuja paikallisesta verkosta"
 
 msgid "Filter usless"
-msgstr ""
+msgstr "Suodata käyttämättömät"
 
 msgid "Do not forward requests that cannot be answered by public name servers"
 msgstr ""
+"Älä edelleenlähetä kyselyitä joihin ei voida vastata julkisista DNS-"
+"palvelimista"
 
 msgid "Localise queries"
-msgstr ""
+msgstr "Paikallista kyselyt"
 
 msgid ""
 "Localise hostname depending on the requesting subnet if multiple IPs are "
 "available"
 msgstr ""
+"Paikallista isäntäkone kysyvän aliverkon perusteella mikäli käytössä on "
+"useita IP-osoitteita"
 
 msgid "Local server"
-msgstr ""
+msgstr "Paikallinen palvelin"
 
 msgid ""
 "Local domain specification. Names matching this domain are never forwared "
 "and resolved from DHCP or hosts files only"
 msgstr ""
+"Paikallinen toimialue-erittely. Nimet, jotka vastaavat tätä toimialuetta ei "
+"koskaan edelleenlähetetä."
 
 msgid "Expand hosts"
-msgstr ""
+msgstr "Laajenna isäntäkoneet"
 
 msgid "Add local domain suffix to names served from hosts files"
-msgstr ""
+msgstr "Lisää paikallinen toimialueen pääte tarjoittuihin nimiin"
 
 msgid "No negative cache"
-msgstr ""
+msgstr "Ei negatiivista välimuistia"
 
 msgid "Do not cache negative replies, e.g. for not existing domains"
 msgstr ""
+"Älä tallenna välimuistiin negatiivisia vastauksia kuten esimerkiksi "
+"olemattomia toimialuenimiä"
 
 msgid "Strict order"
-msgstr ""
+msgstr "Ehdoton järjestys"
 
 msgid "DNS servers will be queried in the order of the resolvfile"
 msgstr ""
+"DNS-palvelimille lähetetään kyselyt siinä järjestyksessä miten ne on "
+"konfiguroitu resolv-tiedostoon"
 
 msgid "Bogus NX Domain Override"
-msgstr ""
+msgstr "Virheellisen NX-toimialuenimen ohitus"
 
 msgid "List of hosts that supply bogus NX domain results"
-msgstr ""
+msgstr "Virheellisiä NX-toimialuenimiä lähettävien isäntäkoneiden lista"
 
 msgid "ex. 67.215.65.132"
-msgstr ""
+msgstr "esimerkiksi 67.215.65.132"
 
 msgid "DNS forwarding"
-msgstr ""
+msgstr "DNS edelleenlähetys"
 
 msgid "List of DNS servers to forward requests to"
-msgstr ""
+msgstr "DNS palvelelimien lista joihin edelleenlähetetään pyynnöt"
 
 msgid "ex. /example.org/10.1.2.3"
-msgstr ""
+msgstr "esim. /example.org/10.1.2.3"
 
 msgid "Rebind protection"
-msgstr ""
+msgstr "Rebind-suojaus"
 
 msgid "Discard upstream RFC1918 responses"
-msgstr ""
+msgstr "Hylkää ylävirran RFC1918 vastaukset"
 
 msgid "Allow localhost"
-msgstr ""
+msgstr "Salli localhost"
 
 msgid ""
 "Allow upstream responses in the 127.0.0.0/8 range, e.g. for RBL services"
-msgstr ""
+msgstr "Salli ylävirran vastatukset 127.0.0.0/8 verkosta. Esim RBL palvelut"
 
 msgid "Domain whitelist"
-msgstr ""
+msgstr "Sallitujen verkkotunnusten lista "
 
 msgid "List of domains to allow RFC1918 responses for"
-msgstr ""
+msgstr "Verkkotunnusten lista, joista sallitaan RFC1918 vastaukset"
 
 msgid "ex. ihost.netflix.com"
-msgstr ""
+msgstr "esim. ihost.netflix.com"
 
 msgid "DNS server port"
-msgstr ""
+msgstr "DNS-palvelimen portti"
 
 msgid "Listening port for inbound DNS queries"
-msgstr ""
+msgstr "DNS-kyselyiden sisääntuleva portti"
 
 msgid "DNS query port"
-msgstr ""
+msgstr "DNS-kyselyiden portti"
 
 msgid "Fixed source port for outbound DNS queries"
-msgstr ""
+msgstr "Kiinteä lähdeportti ulosmenevilel DNS-kyselyille"
 
 msgid "Max DHCP leases"
-msgstr ""
+msgstr "Max DHCP-varaukset"
 
 msgid "Maximum allowed number of active DHCP leases"
-msgstr ""
+msgstr "Aktiivisten DHCP-varauksien suurin sallittu määrä"
 
 msgid "Max. EDNS0 packet size"
-msgstr ""
+msgstr "Suurin sallittu EDNS0 pakettikoko"
 
 msgid "Maximum allowed size of EDNS.0 UDP packets"
-msgstr ""
+msgstr "Suurin sallittu EDNS0 UDP-pakettikoko"
 
 msgid "Max. concurrent queries"
-msgstr ""
+msgstr "Suurin sallittu samanaikanen kyselymäärä"
 
 msgid "Maximum allowed number of concurrent DNS queries"
-msgstr ""
+msgstr "Suurin sallittu määrä samanaikaisia DNS-kyselyitä"
 
 msgid "Hostname Entries"
-msgstr ""
+msgstr "Isäntäkoneiden merkinnät"
 
 msgid "menu-dhcp-status-title"
-msgstr ""
+msgstr "DHCP"
 
 msgid "menu-dhcp-settings-title"
-msgstr ""
+msgstr "DHCP"

@@ -9,25 +9,25 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "All types"
-msgstr ""
+msgstr "Kaikki tyypit"
 
 msgid "Emergency"
-msgstr ""
+msgstr "Hätätila"
 
 msgid "Alert"
-msgstr ""
+msgstr "Hälytys"
 
 msgid "Critical"
-msgstr ""
+msgstr "Kriittinen"
 
 msgid "Warning"
-msgstr ""
+msgstr "Varoitus"
 
 msgid "Notice"
-msgstr ""
+msgstr "Huomio"
 
 msgid "Informational"
 msgstr "Konfiguraatio"
@@ -36,7 +36,7 @@ msgid "Debug"
 msgstr ""
 
 msgid "Log Settings"
-msgstr ""
+msgstr "Lokiasetukset"
 
 msgid "Log size"
 msgstr "Lokin koko"
@@ -82,52 +82,52 @@ msgid "Server port"
 msgstr "Palvelimen portti"
 
 msgid "Event Log"
-msgstr ""
+msgstr "Tapahtumaloki"
 
 msgid "status.eventlog.info"
 msgstr "Puhelinlinjojen tila."
 
 msgid "(Note: only latest"
-msgstr ""
+msgstr "(Huom: vain viimeisimmät"
 
 msgid "lines are shown)"
-msgstr ""
+msgstr "rivit ovat näkyvissä"
 
 msgid "Log"
-msgstr ""
+msgstr "Loki"
 
 msgid "Download All Logs"
-msgstr ""
+msgstr "Lataa kaikki lokit"
 
 msgid "Limit log list"
-msgstr ""
+msgstr "Rajoita lokilistaa"
 
 msgid "Filter log messages by Source"
-msgstr ""
+msgstr "Suodata viestit kohteen mukaan"
 
 msgid "Enter search string"
-msgstr ""
+msgstr "Syötä etsittävä teksti"
 
 msgid "Filter by type:"
-msgstr ""
+msgstr "Suodata tyypin mukaan"
 
 msgid "Filter by:"
-msgstr ""
+msgstr "Suodata:"
 
 msgid "Download As Text"
-msgstr ""
+msgstr "Lataa tekstinä"
 
 msgid "Date"
 msgstr "Päivämäärä"
 
 msgid "Type"
-msgstr ""
+msgstr "Tyyppi"
 
 msgid "Source"
-msgstr ""
+msgstr "Lähde"
 
 msgid "Message"
-msgstr ""
+msgstr "Viesti"
 
 msgid "menu-event-log-config-title"
 msgstr "Tapahtumaloki"

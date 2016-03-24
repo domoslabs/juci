@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "SIP users needs a name"
 msgstr ""
@@ -786,11 +786,29 @@ msgstr "Poista kaikki merkinnät pikavalintaluettelosta"
 msgid "Clear"
 msgstr "Tyhjennä"
 
-msgid "menu-voice-sip-users-title"
-msgstr "Numerot"
+msgid "menu-voice-sip-accounts-title"
+msgstr "Linjat"
+
+msgid "menu-voice-advanced-settings-lines-title"
+msgstr "Linjat"
+
+msgid "menu-voice-lines-title"
+msgstr "Linjat"
+
+msgid "menu-voice-advanced-settings-title"
+msgstr "Linjat"
+
+msgid "menu-voice-call-log-title"
+msgstr "Puheluloki"
 
 msgid "menu-status-phone-title"
 msgstr "Puhelin"
+
+msgid "menu-voice-advanced-settings-sip-title"
+msgstr "Linjat"
+
+msgid "menu-voice-advanced-settings-dialplan-title"
+msgstr "Pikavalinta"
 
 msgid "menu-voice-title"
 msgstr "Puheluloki"
@@ -798,29 +816,11 @@ msgstr "Puheluloki"
 msgid "menu-voice-number-blocking-title"
 msgstr "Kontrolloi puhelinlaskuasi ja estä puhelut ei-haluttuihin numeroihin."
 
-msgid "menu-voice-advanced-settings-dialplan-title"
-msgstr "Pikavalinta"
-
-msgid "menu-voice-advanced-settings-sip-title"
-msgstr "Linjat"
-
-msgid "menu-voice-call-log-title"
-msgstr "Puheluloki"
-
-msgid "menu-voice-advanced-settings-lines-title"
-msgstr "Linjat"
-
-msgid "menu-voice-sip-accounts-title"
-msgstr "Linjat"
-
-msgid "menu-voice-lines-title"
-msgstr "Linjat"
+msgid "menu-voice-ringing-schedule-title"
+msgstr "Ajastus"
 
 msgid "menu-voice-speed-dialing-title"
 msgstr "Pikavalinta"
 
-msgid "menu-voice-ringing-schedule-title"
-msgstr "Ajastus"
-
-msgid "menu-voice-advanced-settings-title"
-msgstr "Linjat"
+msgid "menu-voice-sip-users-title"
+msgstr "Numerot"

@@ -9,42 +9,40 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "Dropbear Instance on Interface: "
-msgstr ""
+msgstr "Dropbear-instanssi:"
 
 msgid "ANY"
 msgstr "APN"
 
 msgid "Please select a instance in the list to remove"
-msgstr ""
+msgstr "Valitse poistettava instanssi listasta"
 
 msgid "Unable to remove last instance"
-msgstr ""
+msgstr "Viimeistä instanssia ei voitu poistaa"
 
 msgid "Are you sure you want to remove this instance?"
 msgstr "Haluatko varmasti poistaa tämän vyöhykkeen?"
 
 msgid "Key ending with"
-msgstr ""
+msgstr "Avain joka loppuu"
 
 msgid "You need to insert the public key data!"
-msgstr ""
+msgstr "Julkisen avaimen tieto on lisättävä"
 
 msgid "Paste your key here:"
-msgstr ""
+msgstr "Liitä avaimesi tähän:"
 
 msgid "Add new SSH key"
-msgstr ""
+msgstr "Lisää uusi SSH-avain"
 
 msgid "Banner File"
 msgstr "Banner tiedosto"
 
-msgid ""
-"Name of a file to be printed before the user has authenticated successfully"
-msgstr ""
-"Tiedoston nimi tulostetaan ennen kuin käyttäjä on todennettu onnistuneesti"
+msgid "Name of a file to be printed before the user has authenticated successfully"
+msgstr "Tiedoston nimi tulostetaan ennen kuin käyttäjä on todennettu onnistuneesti"
 
 msgid "Banner File Path"
 msgstr "Bannerin tiedostopolku"
@@ -86,7 +84,7 @@ msgid "Dropbear SSH"
 msgstr "Dropbear SSH"
 
 msgid "General settings"
-msgstr ""
+msgstr "Yleiset asetukset"
 
 msgid "Start/Stop Service"
 msgstr "Käynnistä/Pysäytä"
@@ -113,7 +111,7 @@ msgid "settings.dropbear.instance"
 msgstr "Konfiguroi SSH-pääsy modeemiin."
 
 msgid "Accepted SSH keys"
-msgstr ""
+msgstr "Sallitut SSH-avaimet"
 
 msgid "menu-settings-management-dropbear-title"
 msgstr "SSH"

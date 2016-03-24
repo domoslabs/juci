@@ -9,13 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "Auto"
-msgstr ""
+msgstr "Automaattinen"
 
 msgid "On"
-msgstr ""
+msgstr "Päällä"
 
 msgid "Off"
 msgstr "Pois päältä"
@@ -30,7 +30,7 @@ msgid "Radio Status"
 msgstr "Puheen tila"
 
 msgid "Pair DECT Device (3 min)"
-msgstr ""
+msgstr "Parita DECT-laite (3 min)"
 
 msgid "Attempting to Pair"
 msgstr "Yritetään parittaa laitetta"
@@ -39,7 +39,7 @@ msgid "Trying to Pair"
 msgstr "Yritetään parittaa laitetta"
 
 msgid "Pair"
-msgstr ""
+msgstr "Parita"
 
 msgid "Number"
 msgstr "Numero"

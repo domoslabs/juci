@@ -9,70 +9,70 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "Hourly"
-msgstr ""
+msgstr "Tunneittain"
 
 msgid "Daily"
-msgstr ""
+msgstr "Päivittäin"
 
 msgid "Weekly"
-msgstr ""
+msgstr "Viikottain"
 
 msgid "Add password protection"
-msgstr ""
+msgstr "Lisää salasanasuojaus"
 
 msgid "Backup Password:"
-msgstr ""
+msgstr "Varmuuskopion salasana:"
 
 msgid "Retype Password:"
-msgstr ""
+msgstr "Kirjoita salasana uudelleen:"
 
 msgid "IUP Provisioning"
-msgstr ""
+msgstr "IUP Provisiointi"
 
 msgid "Enabled"
-msgstr ""
+msgstr "Käytössä"
 
 msgid "Update interval start time"
-msgstr ""
+msgstr "Päivityksen aloitusaika"
 
 msgid "Update interval"
-msgstr ""
+msgstr "Päivityksen intervalli"
 
 msgid "Export file"
-msgstr ""
+msgstr "Vientitiedosto"
 
 msgid "If added will override DHCP Discover Provisioning"
 msgstr ""
 
 msgid "Reboot"
-msgstr ""
+msgstr "Käynnistä uudelleen"
 
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 msgid "Decryption Key"
-msgstr ""
+msgstr "Purkuavain"
 
 msgid "If not entered, Default onboard DES Key will be used insted"
-msgstr ""
+msgstr "Jos purkuavainta ei lisätä, käytetään laitteen DES-avainta"
 
 msgid "Defaultreset"
-msgstr ""
+msgstr "Tehdasasetukset"
 
 msgid "Software URL"
-msgstr ""
+msgstr "Ohjelmisto URL"
 
 msgid "Setup your IUP Provisioning parameterrs"
-msgstr ""
+msgstr "Aseta IUP provisiointiasetukset"
 
 msgid "General"
-msgstr ""
+msgstr "Yleiset"
 
 msgid "Main Provisioning Server"
-msgstr ""
+msgstr "Ensisijainen proviointipalvelin"
 
 msgid "DHCP Discover Provisioning Server"
 msgstr ""
@@ -90,4 +90,4 @@ msgid "Add sub config"
 msgstr ""
 
 msgid "menu-settings-provisioning-iup-title"
-msgstr ""
+msgstr "IUP provisiointi"

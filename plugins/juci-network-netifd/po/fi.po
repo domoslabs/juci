@@ -9,10 +9,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "Unmanaged"
-msgstr ""
+msgstr "Valvomaton"
 
 msgid "Static Address"
 msgstr "Kiinteä IP-osoite"
@@ -84,16 +84,16 @@ msgid "Ethernet GRE over IPv6"
 msgstr "Ethernet GRE over IPv6"
 
 msgid "no device or network given"
-msgstr ""
+msgstr "laitetta tai verkkoa ei annettu"
 
 msgid "valid values are: 'no' and 48-64"
-msgstr ""
+msgstr "sallitut arvot ovat: 'ei' ja 48-64"
 
 msgid "value must be a valid MAC-48 address"
 msgstr "arvon on oltava kelvollinen MAC-48-osoite"
 
 msgid "Valid values are: auto, no, 0-64"
-msgstr ""
+msgstr "Sallitut arvot ovat: 'auto' ja 0-64"
 
 msgid "Network interface "
 msgstr "Luo Uusi Verkkoyhteys"
@@ -102,88 +102,88 @@ msgid "Unnamed interface"
 msgstr "Interface"
 
 msgid " MUST have  a protocol set"
-msgstr ""
+msgstr "Protokollan on asetettava"
 
 msgid "Unmanaged networks need to be setup as a bridge"
-msgstr ""
+msgstr "Valvomattomat verkot on asetettava sillaksi"
 
 msgid "Unmanaged networks need at least one device in bridge"
-msgstr ""
+msgstr "Valmomattomalla verkolla täytyy olla vähintään yksi liitäntä sillassa"
 
 msgid "Either ipv4 or ipv6 address is needed"
-msgstr ""
+msgstr "Joko IPv4 tai IPv6 osoite tarvitaan"
 
 msgid "Physical interface unspecified"
-msgstr ""
+msgstr "Fyysinen liitäntä määrittelemättä"
 
 msgid "DHCP interface needs physical interface"
-msgstr ""
+msgstr "DHCP yhteys tarvitsee fyysisen liitännän"
 
 msgid "DHCPv6 interface needs physical interface"
-msgstr ""
+msgstr "DHCPv6 yhteys tarvitsee fyysisen liitännän"
 
 msgid "Modem device needed for PPP interface"
-msgstr ""
+msgstr "PPP liitäntä vaatii modeemilaitteen"
 
 msgid "PPPoE interface needs physical interface"
-msgstr ""
+msgstr "PPPoE yhteys vaatii fyysisen liitännän"
 
 msgid "Modem device needed for 3G interface"
-msgstr ""
+msgstr "Modeemilaite tarvitaan 3G liitäntää varten"
 
 msgid "Service type needed for 3G interface"
-msgstr ""
+msgstr "3G liitäntä vaatii palvelutyypin"
 
 msgid "APN needed for 3G interface"
-msgstr ""
+msgstr "APN tarvitaan 3G liitännässä"
 
 msgid "Device needed for 4G interface"
-msgstr ""
+msgstr "Laite tarvitaan 4G liitännässä"
 
 msgid "VPN Server needed for Point-to-Point tunnel"
 msgstr "Point-to-Point Tunnel"
 
 msgid "Remote IPv4 address needed for 6in4 interface"
-msgstr ""
+msgstr "Ulkoinen IPv4 osoite tarvitaan 6in4 yhteydelle"
 
 msgid "Local IPv6 address needed for 6in4 interface"
-msgstr ""
+msgstr "Paikallinen IPv6 osoite tarvitaan 6in4 yhteydelle"
 
 msgid "Remote IPv4 address needed for IPv6 rapid deployment interface"
-msgstr ""
+msgstr "Ulkoinen IPv4 osoite tarvitaan 6RD yhteydelle"
 
 msgid "IPv6 prefix needed for IPv6 rapid deployment interface"
-msgstr ""
+msgstr "IPv6 etuliite tarvitaan IPv6 RD yhteydelle"
 
 msgid "IPv6 prefix length needed for IPv6 rapid deployment interface"
-msgstr ""
+msgstr "IPv6 etuliitteen pituus tarvitaan 6RD yhteydelle"
 
 msgid "DS-Lite AFTR address needed for DS lite interface"
-msgstr ""
+msgstr "DS-Lite AFTR osoite tarvitaan DS lite yhteydelle"
 
 msgid "L2TP server needed for PPP over L2TP"
-msgstr ""
+msgstr "L2TP palvelin tarvitaan PPP L2TP yhteydelle"
 
 msgid "Password needed when username is set"
-msgstr ""
+msgstr "Salasana tarvitaan, kun käyttäjätunnus on asetettu"
 
 msgid "Unsupported protocol: "
-msgstr ""
+msgstr "Ei-tuettu protokolla:"
 
 msgid "IPv4 Routes needs an interface"
-msgstr ""
+msgstr "IPv4 reitit tarvitsevat yhteyden"
 
 msgid "IPv4 Routes needs a Target"
 msgstr "IPv4-reititystaulukko"
 
 msgid "IPv4 Routes needs a Netmask"
-msgstr ""
+msgstr "IPv4 reitit tarvitsevat aliverkon peitteen"
 
 msgid "IPv4 Routes needs a Gateway"
 msgstr "IPv4 Oletusyhdyskäytävä"
 
 msgid "IPv6 Routes needs an interface"
-msgstr ""
+msgstr "IPv6 reitit tarvitsevat yhteyden"
 
 msgid "IPv6 Routes needs a Target"
 msgstr "IPv6-reititystaulukko"
@@ -192,36 +192,36 @@ msgid "IPv6 Routes needs a Gateway"
 msgstr "IPv6 Oletusyhdyskäytävä"
 
 msgid "Interface Name is needed"
-msgstr ""
+msgstr "Yhteyden nimi tarvitaan"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # /home/reidar/juci/plugins/juci-network-netifd/src/pages/internet-network.js
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-create.js
 msgid "Interface names can only contain letters and numbers"
-msgstr ""
+msgstr "Yhteyksien nimet voivat sisältää vain numeroita ja kirjaimia"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # /home/reidar/juci/plugins/juci-network-netifd/src/pages/internet-network.js
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-create.js
 msgid "Interface name may only be 12 characters long"
-msgstr ""
+msgstr "Yhteyden nimi voi olla korkeintaan 12 merkkiä"
 
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgid "Cancel"
 msgstr "Peruuta"
 
 msgid "The new interface needs a name"
-msgstr ""
+msgstr "Uusi yhteys tarvitsee nimen"
 
 msgid "The new interface needs an interface type"
-msgstr ""
+msgstr "Uusi yhteys tarvitsee yhteystyypin"
 
 msgid "Pleace choose protocol for connection"
-msgstr ""
+msgstr "Valitse yhteyden protokolla"
 
 msgid "Please select a connection in the list!"
 msgstr "Valitse yhteys luettelosta!"
@@ -243,28 +243,30 @@ msgstr "Silta"
 
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-dns-config.js
 msgid "All DNS-servers must be valid"
-msgstr ""
+msgstr "Kaikkien DNS-palvelimien tulee olla voimassa oleva"
 
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-dns-config.js
 msgid "All DNS-servers must be unique"
-msgstr ""
+msgstr "Kaikkien DNS-palvelimien tulee olla ainutlaatuisia"
 
 msgid "ERROR"
-msgstr ""
+msgstr "VIRHE"
 
 msgid "PENDING"
-msgstr ""
+msgstr "AVOIN"
 
 msgid "UP"
-msgstr ""
+msgstr "KÄYTÖSSÄ"
 
 msgid "DOWN"
-msgstr ""
+msgstr "EI KÄUYTÖSSÄ"
 
 msgid ""
 "Are you sure you want to switch? Your settings will be lost!<br />The only "
 "way to get it back is to reload the page"
 msgstr ""
+"Haluatko varmasti vaihtaa? Kaikki asetukset menetetään!<br />Takaisin pääsee "
+"vain päivittämällä sivun"
 
 msgid "You need to select a network!"
 msgstr "You need to select a network!"
@@ -273,10 +275,10 @@ msgid "UMTS/GPRS"
 msgstr ""
 
 msgid "UMTS only"
-msgstr ""
+msgstr "Vain UMTS"
 
 msgid "GPRS only"
-msgstr ""
+msgstr "Vain GPRS"
 
 msgid "Try"
 msgstr "Try"
@@ -300,10 +302,10 @@ msgid "Downlink"
 msgstr ""
 
 msgid "Address Allocation"
-msgstr ""
+msgstr "Osoitejako"
 
 msgid "Address Assignment"
-msgstr ""
+msgstr "Osoitteen varaaminen"
 
 msgid "Please select a device in the list!"
 msgstr "Valitse laite luettelosta!"
@@ -324,7 +326,7 @@ msgid "Edit LAN Settings"
 msgstr "IPv4-asetukset"
 
 msgid "Save"
-msgstr ""
+msgstr "Tallenna"
 
 msgid "Close"
 msgstr "Sulje"
@@ -360,13 +362,13 @@ msgid "Interface Name"
 msgstr "Liitännän Nimi"
 
 msgid "Protocol"
-msgstr ""
+msgstr "Protokolla"
 
 msgid "Interface Type"
 msgstr "Liitännän Tyyppi"
 
 msgid "Add/Remove custom DNS Servers"
-msgstr ""
+msgstr "Lisää/poista mukautettuja DNS palvelimia"
 
 msgid "General"
 msgstr "Yleiset"
@@ -384,7 +386,7 @@ msgid "Bring up on boot"
 msgstr "Bring-Up on Boot"
 
 msgid "Use gateway metric"
-msgstr ""
+msgstr "Käytä reitittimen metric-arvoa"
 
 msgid "Override MAC address"
 msgstr "Override MAC Address"
@@ -402,13 +404,13 @@ msgid "Pick Network"
 msgstr "Valitse verkko"
 
 msgid "Enable IPv6 negotiation on the PPP link"
-msgstr ""
+msgstr "Ota käyttöön IPv6 neuvottelu PPP-linkissä"
 
 msgid "Use default gateway"
 msgstr "Oletusreitti"
 
 msgid "If unchecked, no default route is configured"
-msgstr ""
+msgstr "Jos ei valittu, oletusreittä ei konfiguroida"
 
 msgid "Modem init timeout"
 msgstr ""
@@ -815,6 +817,10 @@ msgstr ""
 "Palvelut-sivulla voidaan konfiguroida erilaisia ohjelmia kuten Verkkojakoja "
 "ja MiniDLNA"
 
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-network-netifd/src/pages/netifd-status-clients.html
+msgid "N/A"
+msgstr ""
+
 msgid "Connected Clients"
 msgstr "Yhdistetyt laitteet"
 
@@ -904,32 +910,32 @@ msgstr "IPv6 Tila"
 msgid "Router"
 msgstr "Reititin"
 
+msgid "menu-network-title"
+msgstr "Verkko"
+
+msgid "menu-netifd-vlan-config-title"
+msgstr "menu-netifd-vlan-config-title"
+
+msgid "menu-internet-services-title"
+msgstr "Palvelut"
+
+msgid "menu-status-network-nat-title"
+msgstr "NAT"
+
 msgid "menu-internet-network-title"
 msgstr "Verkko"
 
 msgid "menu-netifd-status-clients-title"
 msgstr "Clients"
 
-msgid "menu-network-title"
-msgstr "Verkko"
-
 msgid "menu-status-network-routes-title"
-msgstr "Reitit"
-
-msgid "menu-internet-routes-title"
 msgstr "Reitit"
 
 msgid "menu-status-network-title"
 msgstr "Verkko"
 
-msgid "menu-netifd-vlan-config-title"
-msgstr "menu-netifd-vlan-config-title"
-
-msgid "menu-status-network-nat-title"
-msgstr "NAT"
-
-msgid "menu-internet-services-title"
-msgstr "Palvelut"
+msgid "menu-internet-routes-title"
+msgstr "Reitit"
 
 #~ msgid ""
 #~ "A new ethernet device has been connected to your router. Do you want to "

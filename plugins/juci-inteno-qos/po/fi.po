@@ -36,7 +36,7 @@ msgid "Interface"
 msgstr "Liitäntä"
 
 msgid "Interface to apply the restrictions on"
-msgstr " "
+msgstr " Liitäntä johon määrityksiä käytetään"
 
 msgid "Enable"
 msgstr "Ota käyttöön"
@@ -48,7 +48,8 @@ msgid "Upload Speed Limit"
 msgstr "Lähetysnopeuden rajoitus"
 
 msgid "Acceleration will be disabled when Bandwidth limitation is enabled"
-msgstr "Laitteistokiihdytys poistetaan käytöstä, kun kaistanrajoitus on käytössä"
+msgstr ""
+"Laitteistokiihdytys poistetaan käytöstä, kun kaistanrajoitus on käytössä"
 
 msgid "Target"
 msgstr "Kohde"
@@ -69,7 +70,9 @@ msgid "Port"
 msgstr "Portti"
 
 msgid "Filter by port, when there are no ports no filter will be applied"
-msgstr "Porttikohtainen suodatus. Kun portteja ei ole määritelty, suodatinsääntöjä ei sovelleta"
+msgstr ""
+"Porttikohtainen suodatus. Kun portteja ei ole määritelty, suodatinsääntöjä "
+"ei sovelleta"
 
 msgid "Bandwidth Limitation"
 msgstr "Internet-yhteyden rajoitus"
