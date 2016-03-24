@@ -3,7 +3,7 @@
 		"description": "JUCI Diagnostics module",
 		"read": {
 			"ubus": {
-				"juci.utils.speedtest": [
+				"/juci/speedtest": [
 					"run"
 				],
 				"/juci/diagnostics": [
