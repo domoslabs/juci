@@ -1,0 +1,52 @@
+#!/usr/bin/lua
+
+local juci = require("juci/core");
+local json = require("juci/json");
+
+function string.starts(String,Start)
+   return string.sub(String,1,string.len(Start))==Start
+end
+
+function string.ends(String,End)
+   return End=='' or string.sub(String,-string.len(End))==End
+end
+
+function dect_status()
+	local stdout = juci.shell("dect -s");
+	local res = { handsets = {}, radio = {} };
+	for line in stdout:gmatch("[^\r\n]+") do
+		if line:starts("hset") then
+			local id, status, addr, present, ping = line:match("hset:%s+(%S+)%s+([^\t]+)%s+([^\t]+)%s+([^\t]+)%s+([^\t]+)");
+			if id then 
+				table.insert(res.handsets, { id = tonumber(id), status = status, address = addr:gsub(" ",""), online = present, ping = ping });
+			end
+		elseif line:starts("radio:") then
+			local state = line:match("radio:%s+(%S+)");
+			res.radio.state = state;
+		elseif line:starts("reg_state") then
+			local state = line:match("reg_state:%s+(%S+)");
+			res.radio.registration = state;
+		end
+	end
+	print(json.encode(res));
+end
+
+function dect_ping(arg)
+	if not arg["id"] then
+		print(json.encode({status = "error No id given"}));
+		return;
+	end
+	juci.shell("dect -p %s", arg["id"]);
+	print(json.encode({status = "success"}));
+end
+
+function dect_pair()
+	juci.shell("dect -r");
+	print(json.encode({status = "success"}));
+end
+
+juci.ubus({
+	["status"] = dect_status,
+	["pair"] = dect_pair,
+	["ping"] = dect_ping
+}, arg);

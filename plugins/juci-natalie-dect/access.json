@@ -3,13 +3,10 @@
 		"description": "JUCI natalie-dect module",
 		"read": {
 			"ubus": {
-				"sys.dect": [
+				"/juci/dect": [
 					"status",
 					"ping", 
 					"pair"
-				],
-				"sys.dect.handset.*": [
-					"ping"
 				]
 			},
 			"uci": [

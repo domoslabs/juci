@@ -27,7 +27,7 @@ msgid "DECT Radio"
 msgstr ""
 
 msgid "Radio Status"
-msgstr "Statu"
+msgstr ""
 
 msgid "Pair DECT Device (3 min)"
 msgstr ""
