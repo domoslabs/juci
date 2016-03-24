@@ -32,7 +32,8 @@
 							<i class="fa fa-edit fa-lg" style="float: right; cursor: pointer;" ng-click="onEditSSID(iface)"></i>
 							<i class="fa fa-toggle-right" style="cursor: pointer;" ng-show="!iface._expanded" ng-click="iface._expanded = !iface._expanded"></i>
 							<i class="fa fa-toggle-down" style="cursor: pointer;" ng-show="iface._expanded" ng-click="iface._expanded = !iface._expanded"></i>
-							<span ng-click="iface._expanded = !iface._expanded" style="cursor: pointer;">{{iface.ssid + ' (' + iface.frequency + ')'}}</span>
+							<!-- TODO: change iface.uci_dev.ssid.value to iface.ssid when ssid is extracted correctly -->
+							<span ng-click="iface._expanded = !iface._expanded" style="cursor: pointer;">{{iface.uci_dev.ssid.value + ' (' + iface.frequency + ')'}}</span>
 						</th>
 					</thead>
 					<tr ng-show="iface._expanded" ng-repeat="i in [['Frequency', 'frequency'], ['Channel', 'channel'], ['Noise', 'noise'], ['Rate', 'rate']]">
