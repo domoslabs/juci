@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "47MHz ~ 1000MHz"
 msgstr ""
@@ -21,19 +21,19 @@ msgid "47MHz ~ 431MHz"
 msgstr ""
 
 msgid "CATV Settings"
-msgstr ""
+msgstr "Kaapeli TV asetukset"
 
 msgid "Enable"
-msgstr ""
+msgstr "Ota käyttöön"
 
 msgid "Enable bandwidth filtering"
-msgstr ""
+msgstr "Ota käyttöön kaistanleveyden säädin"
 
 msgid "Filter"
 msgstr "Filtteri"
 
 msgid "CATV Status"
-msgstr ""
+msgstr "Kaapeli TV tila"
 
 msgid "menu-status-catv-title"
 msgstr "CATV Status"

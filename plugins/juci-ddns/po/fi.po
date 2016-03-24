@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "Interface"
 msgstr "Fyysinen liitäntä"
@@ -30,7 +30,7 @@ msgid "Label"
 msgstr "Nimi"
 
 msgid "IP Retreival Method"
-msgstr "IP Retreival Method"
+msgstr "IP osoitteen hakutapa"
 
 msgid "Pick Connection"
 msgstr "Valitse yhteys"
