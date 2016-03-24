@@ -26,7 +26,8 @@
 				], 
 				"router": [
 					"boardinfo", 
-					"clients"
+					"clients",
+					"clients6"
 				]
 			}, 
 			"uci": [

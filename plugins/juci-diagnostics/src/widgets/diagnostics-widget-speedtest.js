@@ -9,7 +9,7 @@ JUCI.app
 		controller: "diagnosticsWidget90Speedtest"
 	};
 })
-.controller("diagnosticsWidget90Speedtest", function($scope, $rpc, $events, $uci, utilsAddTestserverPicker){
+.controller("diagnosticsWidget90Speedtest", function($scope, $rpc, $events, $uci, utilsAddTestserverPicker, $tr, gettext){
 	$scope.data = {
 		packagesize: 50,
 		test_type: "up_down",
@@ -35,9 +35,9 @@ JUCI.app
 	}
 
 	$scope.testType = [
-		{value:"up_down", label: "up and down"}, 
-		{value:"up", label: "up"}, 
-		{value:"down", label:"down"} 
+		{value:"up_down", label: $tr(gettext("Up and Down")) }, 
+		{value:"up", label: $tr(gettext("Up")) }, 
+		{value:"down", label: $tr(gettext("Down")) } 
 	];
 
 	$uci.$sync("speedtest").done(function(){
@@ -48,18 +48,18 @@ JUCI.app
 
 	$scope.runTest = function(){
 		if(!$scope.testServers.length){
-			window.alert("Server and port is mandatory");
+			window.alert($tr(gettext("Server and port is mandatory")));
 			return;
 		}
 		if($scope.data.state == "running"){
-			window.alert("Only one test can be run at a time");
+			window.alert($tr(gettext("Only one test can be run at a time")));
 			return;
 		}
 		var server = $scope.testServers.find(function(x){ return $scope.data.server == x.server.value;});
 		var port = server.port.value;
 		var address = server.server.value;
 		$scope.data.state="running";
-		$rpc.juci.utils.speedtest.run({
+		$rpc.juci.speedtest.run({
 			"testmode": $scope.data.test_type,
 			"port": port,
 			"packagesize": $scope.data.packagesize * 1000,
@@ -72,6 +72,12 @@ JUCI.app
 			}
 			$scope.$apply();
 		});
+		setTimeout(function(){
+			if($scope.data.state === "running"){
+				$scope.data.state = "error";
+				$scope.data.result = $tr(gettext("Unknown error"));
+			}
+		}, 15000);
 	};
 	
 	$scope.onRemoveAddress = function(){
@@ -79,7 +85,7 @@ JUCI.app
 			return $scope.data.server == x.server.value
 		});
 		if(!server){
-			alert("error deleting server");
+			alert($tr(gettext("error deleting server")));
 			return;
 		}
 		server.$delete().done(function(){
@@ -118,22 +124,22 @@ JUCI.app
 					downstream = downstream / 1000 / 1000;
 				}
 				if(res.data.upstream != "none" && res.data.downstream != "none"){
-					$scope.data.result="Upstream: " + upstream.toFixed(2) + " Mbit/s\nDownstream: " + downstream.toFixed(2) + " Mbit/s";
+					$scope.data.result=$tr(gettext("Upstream:"))+" " + upstream.toFixed(2) +" "+$tr(gettext("Mbit/s\nDownstream:"))+" " + downstream.toFixed(2) +" "+$tr(gettext("Mbit/s"));
 				}else if(res.data.upstream != "none"){
-					$scope.data.result="Upstream: " + upstream.toFixed(2) + " Mbit/s";
+					$scope.data.result=$tr(gettext("Upstream:"))+" " + upstream.toFixed(2) + " "+$tr(gettext("Mbit/s"));
 				}else if(res.data.downstream != "none"){
-					$scope.data.result="Downstream: " + downstream.toFixed(2) + " Mbit/s";
+					$scope.data.result=$tr(gettext("Downstream:"))+" " + downstream.toFixed(2) + " "+$tr(gettext("Mbit/s"));
 				}else {
 					$scope.data.result="No speeds found";
 				}
 				$scope.data.state="result";
 				break;
 			case -1:
-				$scope.data.result="Wrong TP-test address and/or port";
+				$scope.data.result=$tr(gettext("Wrong TP-test address and/or port"));
 				$scope.data.state="error";
 				break;
 			case -2:
-				$scope.data.result="Wrong TP-test port but correct address";
+				$scope.data.result=$tr(gettext("Wrong TP-test port but correct address"));
 				$scope.data.state="error";
 				break;
 			}

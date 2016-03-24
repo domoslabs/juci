@@ -28,7 +28,6 @@ JUCI.app.run(function($network, $uci, $wireless){
 					clients.map(function(cl){
 						var wcl = wclients.find(function(wc){ return String(wc.macaddr).toLowerCase() == String(cl.macaddr).toLowerCase(); }); 
 						if(wcl) { 	
-							wcl.snr = (wcl.rssi / wcl.noise); 
 							cl._display_widget = "wireless-client-lan-display-widget"; 
 							cl._wireless = wcl; 
 						} 
@@ -97,15 +96,23 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 
 	Wireless.prototype.getConnectedClients = function(){
 		var def = $.Deferred(); 
-		$rpc.juci.wireless.clients().done(function(clients){
-			if(clients && clients.clients) {
-				clients.clients.map(function(cl){
-					cl.snr = Math.floor(1 - (cl.rssi / cl.noise)); 
-				}); 
-				def.resolve(clients.clients); 
-			}
-			else def.reject(); 
-		}); 
+		$rpc.router.stas().done(function(clients){
+			$rpc.router.clients6().done(function(cl6){
+				var wlclients = Object.keys(clients).map(function(c){return clients[c];}).map(function(client){
+					Object.keys(cl6).map(function(c6){return cl6[c6];}).map(function(client6){
+						if(client.macaddr === client6.macaddr){
+							client.ip6addr = client6.ip6addr;
+						}
+					});
+					return client;
+				});
+				def.resolve(wlclients);
+			}).fail(function(){
+				def.reject();
+			});
+		}).fail(function(){
+			def.reject();
+		});
 		return def.promise(); 
 	}
 

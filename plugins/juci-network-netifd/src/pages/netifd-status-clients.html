@@ -13,7 +13,7 @@
 				<td>{{cl.hostname || '-'}}</td>
 				<td>{{cl.macaddr}}</td>
 				<td>{{cl.ipaddr || '-'}}</td>
-				<td><span ng-show="cl.ip6addr">{{cl.ip6addr}} ({{cl.ip6status}})</span></td>
+				<td><span ng-show="cl.ip6addr">{{cl.ip6addr}}</span><span ng-show="!cl.ip6addr">{{'N/A'|translate}}</span></td>
 				<td>{{cl.device}}</td>
 			</tr>
 		</table>

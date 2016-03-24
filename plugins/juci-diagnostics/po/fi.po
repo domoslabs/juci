@@ -11,6 +11,44 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.js
+msgid "Address and port needed"
+msgstr "Osoite ja portti tarvitaan"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Direction"
+msgstr "Suunta"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Package Size"
+msgstr "Pakettikoko"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Speedtest Server"
+msgstr "Speedtest Server"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Run test"
+msgstr "Suorita testi..."
+
+msgid "Test results"
+msgstr "Jäljityksen tulokset"
+
+msgid "Error"
+msgstr "Virhe"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
+msgid "Server"
+msgstr "Palvelin"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
+msgid "Port"
+msgstr "Palvelin"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
+msgid "Add test server"
+msgstr "Lisää Testipalvelin"
+
 msgid "Diagnostic Utility"
 msgstr "Diagnostiikkatyökalu"
 
@@ -41,9 +79,6 @@ msgstr "Ping"
 
 msgid "Ping results"
 msgstr "Ping-tulokset"
-
-msgid "Error"
-msgstr "Virhe"
 
 msgid "Tracing Tool"
 msgstr "Jäljitystyökalu"

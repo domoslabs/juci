@@ -11,6 +11,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.js
+msgid "Address and port needed"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Direction"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Package Size"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Speedtest Server"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Run test"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Test results"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
+msgid "Server"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
+msgid "Port"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
+msgid "Add test server"
+msgstr ""
+
 msgid "Diagnostic Utility"
 msgstr ""
 
@@ -43,9 +82,6 @@ msgid "Ping"
 msgstr ""
 
 msgid "Ping results"
-msgstr ""
-
-msgid "Error"
 msgstr ""
 
 msgid "Tracing Tool"

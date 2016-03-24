@@ -17,17 +17,16 @@
  */
 
 JUCI.app
-.controller("wirelessClientsPage", function($scope, $uci, $wireless){
+.controller("wirelessClientsPage", function($scope, $wireless, $tr, gettext){
 	$scope.lines = [
-		{ title: "Hostname", field: "hostname" }, 
-		{ title: "IPv4 Address", field: "ipaddr" }, 
-		{ title: "Frequency", field: "band" },
-		{ title: "MAC-Address", field: "macaddr" }, 
-		{ title: "RSSI", field: "rssi" }, 
-		{ title: "Noise", field: "noise" }
+		{ title: $tr(gettext("Hostname")), field: "hostname" }, 
+		{ title: $tr(gettext("IPv4 Address")), field: "ipaddr" }, 
+		{ title: $tr(gettext("IPv6 Address")), field: "ip6addr" }, 
+		{ title: $tr(gettext("Frequency")), field: "frequency" },
+		{ title: $tr(gettext("MAC-Address")), field: "macaddr" }
 	]; 
 	$wireless.getConnectedClients().done(function(clients){
-		$scope.clients = clients; 
-		$scope.$apply(); 
-	}); 
+		$scope.clients = clients;
+		$scope.$apply();
+	});
 }); 
