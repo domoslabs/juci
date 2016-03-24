@@ -24,6 +24,10 @@
 				"/juci/broadcom.wireless.lua": [
 					"scan", 
 					"scanresults"
+				],
+				"router": [
+					"stas",
+					"clients6"
 				]
 			}, 
 			"uci": [

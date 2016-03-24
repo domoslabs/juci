@@ -17,17 +17,25 @@
  */
 
 JUCI.app
-.controller("wirelessClientsPage", function($scope, $uci, $wireless){
+.controller("wirelessClientsPage", function($scope, $rpc){
 	$scope.lines = [
 		{ title: "Hostname", field: "hostname" }, 
 		{ title: "IPv4 Address", field: "ipaddr" }, 
-		{ title: "Frequency", field: "band" },
-		{ title: "MAC-Address", field: "macaddr" }, 
-		{ title: "RSSI", field: "rssi" }, 
-		{ title: "Noise", field: "noise" }
+		{ title: "IPv6 Address", field: "ip6addr" }, 
+		{ title: "Frequency", field: "frequency" },
+		{ title: "MAC-Address", field: "macaddr" }
 	]; 
-	$wireless.getConnectedClients().done(function(clients){
-		$scope.clients = clients; 
-		$scope.$apply(); 
-	}); 
+	$rpc.router.stas().done(function(clients){
+		$rpc.router.clients6().done(function(cl6){
+			$scope.clients = Object.keys(clients).map(function(c){return clients[c];}).map(function(client){
+				Object.keys(cl6).map(function(c6){return cl6[c6];}).map(function(client6){
+					if(client.macaddr === client6.macaddr){
+						client.ip6addr = client6.ip6addr;
+					}
+				});
+				return client;
+			});
+			$scope.$apply();
+		});
+	});
 }); 
