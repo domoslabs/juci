@@ -28,3 +28,10 @@ tmp/
 ./juci-local-server.config
 *.patch
 /*.config
+.built
+.built_check
+.configured_
+.dep_files
+.git_update
+.prepared_*
+ipkg-*
