@@ -44,7 +44,7 @@ JUCI.app
 .controller("NavigationCtrl", function($scope, $location, $localStorage, $navigation, $rootScope, $config, $rpc, $events){
 	$scope.tree = $navigation.tree(); 
 	$scope.log_events = []; 
-	$scope.showLogButton = ($localStorage.getItem("mode") == "expert")?true:false;
+	//$scope.showLogButton = ($localStorage.getItem("mode") == "expert")?true:false;
 	
 	$scope.homepage = $config.settings.juci.homepage.value; 
 
