@@ -9,10 +9,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "Static Address"
-msgstr ""
+msgstr "Kiinteä osoite"
 
 msgid "DHCP v4"
 msgstr "DHCP IPv4"
@@ -21,16 +21,16 @@ msgid "DHCP v6"
 msgstr "DHCPv6"
 
 msgid "PPP over Ethernet"
-msgstr ""
+msgstr "PPPoE"
 
 msgid "IPv4 Address"
-msgstr ""
+msgstr "IPv4 osoite"
 
 msgid "IPv4 Subnet Mask"
-msgstr ""
+msgstr "IPv4 aliverkon peite"
 
 msgid "IPv4 Default Gateway"
-msgstr ""
+msgstr "IPv4 oletusyhdyskäytävä"
 
 msgid "IPv4 Broadcast"
 msgstr ""
@@ -57,19 +57,19 @@ msgid "5Ghz Wireless"
 msgstr "Wifi"
 
 msgid "lan.config.info"
-msgstr ""
+msgstr " "
 
 msgid "LAN Configuration"
 msgstr "Konfiguraatio"
 
 msgid "dhcp.config.info"
-msgstr ""
+msgstr " "
 
 msgid "DHCP Configuration"
 msgstr "Konfiguraatio"
 
 msgid "wan.config.info"
-msgstr ""
+msgstr " "
 
 msgid "Enabled"
 msgstr "Käytössä"
@@ -84,28 +84,28 @@ msgid "WAN Configuration"
 msgstr "Konfiguraatio"
 
 msgid "No wan interface found"
-msgstr ""
+msgstr "WAN liitäntää ei löydy"
 
 msgid "WAN IPv6 Configuration"
-msgstr ""
+msgstr "WAN IPv6 konfigurointi"
 
-msgid "menu-simple-services-title"
-msgstr ""
+msgid "menu-simple-wan-config-title"
+msgstr "Puheluloki"
 
 msgid "menu-simple-admin-title"
 msgstr ""
 
-msgid "menu-simple-lan-dhcp-config-title"
-msgstr "Puheluloki"
-
 msgid "menu-simple-2g-wireless-title"
 msgstr "WiFi"
 
-msgid "menu-simple-lan-config-title"
+msgid "menu-simple-lan-dhcp-config-title"
 msgstr "Puheluloki"
 
 msgid "menu-simple-5g-wireless-title"
 msgstr "WiFi"
 
-msgid "menu-simple-wan-config-title"
+msgid "menu-simple-lan-config-title"
 msgstr "Puheluloki"
+
+msgid "menu-simple-services-title"
+msgstr "Palvelut"

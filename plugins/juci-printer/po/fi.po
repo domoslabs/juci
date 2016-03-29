@@ -9,31 +9,31 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "Printers"
-msgstr ""
+msgstr "Tulostimet"
 
 msgid "internet-services-printer-info"
-msgstr ""
+msgstr "Tulostuspalvelin"
 
 msgid "Printer"
-msgstr ""
+msgstr "Tulostin"
 
 msgid "Enable"
-msgstr ""
+msgstr "Ota käyttöön"
 
 msgid "Interface"
-msgstr ""
+msgstr "Verkko"
 
 msgid "Specifies the interface to listen on"
-msgstr ""
+msgstr "Määrittele verkko jota käytetään"
 
 msgid "Port"
-msgstr ""
+msgstr "Portti"
 
 msgid "Bidirectional mode"
-msgstr ""
+msgstr "Kaksisuuntainen"
 
 msgid "menu-internet-services-printer-title"
-msgstr ""
+msgstr "Tulostuspalvelin"

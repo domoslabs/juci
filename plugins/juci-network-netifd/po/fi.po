@@ -413,27 +413,29 @@ msgid "If unchecked, no default route is configured"
 msgstr "Jos ei valittu, oletusreittä ei konfiguroida"
 
 msgid "Modem init timeout"
-msgstr ""
+msgstr "Aikakatkaisu"
 
 msgid "Maximum amount of seconds to wait for the modem to become ready"
-msgstr ""
+msgstr "Enimmäismäärä sekunteita mitä odotetaan modeemia"
 
 msgid "Use DNS servers advertised by peer"
-msgstr ""
+msgstr "Käytä yhdyskäytävän mainostamia DNS palvelimia"
 
 msgid "If unchecked, the advertised DNS server addresses are ignored"
-msgstr ""
+msgstr "Jos ei valittuna, mainostettuja DNS palvelimien osoitteita ei käytetä"
 
 msgid "LCP echo failure threshold"
-msgstr ""
+msgstr "LCP echo vian alaraja"
 
 msgid ""
 "Presume peer to be dead after given amount of LCP echo failures, use 0 to "
 "ignore failures"
 msgstr ""
+"Oleta, että yhdyskäytävä ei toimi annetun echo LCP raja-arvon jälkeen .Käytä "
+"0 ohittaaksesi virheet"
 
 msgid "LCP echo interval"
-msgstr ""
+msgstr "LCP echo intervalli"
 
 msgid ""
 "Send LCP echo requests at the given interval in seconds, only effective in "
@@ -441,12 +443,14 @@ msgid ""
 msgstr ""
 
 msgid "Inactivity timeout"
-msgstr ""
+msgstr "Toimimattomuuden aikakatkaisu"
 
 msgid ""
 "Close inactive connection after the given amount of seconds, use 0 to "
 "persist connection"
 msgstr ""
+"Sulje toimimaton yhteys tietyn aikavälin jälkeen. Käytä 0 pakotettuun "
+"yhteyteen"
 
 msgid "Modem device"
 msgstr "Valitse modeemi"
@@ -473,10 +477,10 @@ msgid "Password"
 msgstr "Salasana"
 
 msgid "Use broadcast flag"
-msgstr ""
+msgstr "Käytä broadcast flag"
 
 msgid "Required for certain ISPs, e.g. Charter with DOCSIS 3"
-msgstr ""
+msgstr "Jotkin operaattorit vaativat. Esim Charter DOCSIS 3:n kanssa"
 
 msgid "Client ID to send when requesting DHCP"
 msgstr "Client ID to send when requesting DHCP"
@@ -488,7 +492,7 @@ msgid "Vendor Class to send when requesting DHCP"
 msgstr "Client ID to send when requesting DHCP"
 
 msgid "Vendo Class"
-msgstr ""
+msgstr "Vendor Class"
 
 msgid "Hostname to send when requesting DHCP"
 msgstr "Client ID to send when requesting DHCP"
@@ -500,20 +504,20 @@ msgid "Default gateway"
 msgstr "Oletusreitti"
 
 msgid "Use TTL on tunnel interface"
-msgstr ""
+msgstr "Käytä TTL tunneliyhteydessä"
 
 msgid "Local IPv4 address"
 msgstr "Osoite"
 
 msgid "Leave empty to use the current WAN address"
-msgstr ""
+msgstr "Jätä tyhjäksi käyttääksesi nykyistä WAN osoitetta"
 
 msgid "Remote IPv4 address"
 msgstr "Osoite"
 
 msgid ""
 "This is usually the address of the nearest PoP operated by the tunnel broker"
-msgstr ""
+msgstr "Tämä on yleensä lähimmän PoP tunnelikytkimen osoite"
 
 msgid "Local IPv6 address"
 msgstr "Osoite"
@@ -522,31 +526,33 @@ msgid ""
 "This is the local endpoint address assigned by the tunnel broker, it usually "
 "ends with :2"
 msgstr ""
+"Tämä on yleensä paikallinen päätepiste jonka tunnelikytkin antaa ja se "
+"yleensä päättyy :2"
 
 msgid "IPv6 routed prefix"
 msgstr "IPv6 etuliite"
 
 msgid ""
 "This is the prefix routed to you by the tunnel broker for use by clients"
-msgstr ""
+msgstr "Tämä on tunnelikytkimen reititetty etuliite jota asiakaskoneet käyttää"
 
 msgid "IPv6 prefix"
 msgstr "IPv6 etuliite"
 
 msgid "Dynamic tunnel"
-msgstr ""
+msgstr "Dynaaminen tunneli"
 
 msgid "Enable HE.net dynamic endpoint update"
-msgstr ""
+msgstr "Ota käyttöön HE.net dynaaminen päätepistepäivitys"
 
 msgid "Tunnel ID"
-msgstr ""
+msgstr "Tunnelin ID"
 
 msgid "HE.net username"
 msgstr "Käyttäjänimi"
 
 msgid "This is the plain username for logging into the account"
-msgstr ""
+msgstr "Tämä on tekstimuotoinen käyttäjänimi tilille kirjautumista varten"
 
 msgid "HE.net password"
 msgstr "Varmuuskopiotiedoston salasana"
@@ -555,6 +561,8 @@ msgid ""
 "This is either the Update Key configured for the tunnel or the account "
 "password if no update key has been configured"
 msgstr ""
+"Tämä on joko päivititysavain tunnelin konfigurointia varten tai tilin "
+"salasana mikäli päivitysavainta ei ole konfiguroitu"
 
 msgid "The IPv4 address of the relay"
 msgstr ""
@@ -572,28 +580,28 @@ msgid "IPv4 prefix length"
 msgstr "IPv6 Assigned Prefix Length"
 
 msgid "If uncchecked, no default rout is configured"
-msgstr ""
+msgstr "Jos ei valittu, niin oletusreittiä ei konfiguroida"
 
 msgid "help If unchecked, the advertised DNS server addresses are ignored"
 msgstr ""
 
 msgid "Additional DHCP options to request from the server"
-msgstr ""
+msgstr "DHCP:n lisäoptiot joita pyydetään palvelimelta"
 
 msgid "Custom client ID"
 msgstr "Client ID"
 
 msgid "Custom Vendor class"
-msgstr ""
+msgstr "Kustumoitu vendor class"
 
 msgid "Hostname to include in DHCP requests"
-msgstr ""
+msgstr "DHCP pyyntöön liitettävä isäntänimi"
 
 msgid "Create default route"
 msgstr "Määritä oletusreitiksi"
 
 msgid "Automatically set up default route for this interface"
-msgstr ""
+msgstr "Aseta oletusreitti automaattisesti tälle yhteydelle"
 
 msgid "Custom delegated IPv6-prefix"
 msgstr "Custom Delegated IPv6 Prefix"
@@ -629,7 +637,7 @@ msgid "L2TP Server"
 msgstr "DHCP-palvelin"
 
 msgid "PAP/CHAP username"
-msgstr ""
+msgstr "PAP/CHAP käyttäjänimi"
 
 msgid "PAP/CHAP password"
 msgstr "Salasana"
@@ -650,10 +658,10 @@ msgid "Access Concentrator"
 msgstr ""
 
 msgid "Leave empty to autodetect"
-msgstr ""
+msgstr "Jätä tyhjäksi automaattista havaintoa varten"
 
 msgid "auto"
-msgstr ""
+msgstr "automaattinen"
 
 msgid "Service Name"
 msgstr "Palvelut"
@@ -677,7 +685,7 @@ msgid "IPv6 assignment length"
 msgstr "IPv6 Assigned Prefix Length"
 
 msgid "Leave empty for Disabled"
-msgstr ""
+msgstr "Tyhjä = ei käytössä"
 
 msgid "IPv6 Assigned Prefix Hint"
 msgstr "IPv6 Assigned Prefix Hint"
@@ -728,13 +736,13 @@ msgid "Pick a host"
 msgstr "Valitse isäntäkone"
 
 msgid "Aquired DNS servers"
-msgstr ""
+msgstr "Hankittu DNS palvelin"
 
 msgid "Aquired from"
-msgstr ""
+msgstr "Hankittu"
 
 msgid "For {{interface['.name'].toUpperCase()}} interface"
-msgstr ""
+msgstr "{{interface['.name'].toUpperCase()}} liitännälle"
 
 msgid "LAN"
 msgstr "Lähiverkko (LAN)"
@@ -743,7 +751,7 @@ msgid "No Lan networks"
 msgstr "Verkko"
 
 msgid "No Clients in {{network['.name'].toUpperCase()}} network"
-msgstr ""
+msgstr "Ei asiakaslaitteita {{network['.name'].toUpperCase()}} verkossa"
 
 msgid "WAN"
 msgstr "Internet (WAN)"
@@ -819,7 +827,7 @@ msgstr ""
 
 # /home/jari/GIT/IOPSYS/juci/plugins/juci-network-netifd/src/pages/netifd-status-clients.html
 msgid "N/A"
-msgstr ""
+msgstr "Ei saatavilla"
 
 msgid "Connected Clients"
 msgstr "Yhdistetyt laitteet"

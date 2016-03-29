@@ -9,13 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "Allow"
-msgstr ""
+msgstr "Salli"
 
 msgid "Deny"
-msgstr ""
+msgstr "Estä"
 
 msgid "UPNP Settings"
 msgstr "UPNP asetukset"
@@ -24,107 +24,106 @@ msgid "internet.services.upnp.info"
 msgstr "UPnP"
 
 msgid "General Settings"
-msgstr ""
+msgstr "Yleiset asetukset"
 
 msgid "Automatically Start Service At Bootup"
-msgstr ""
+msgstr "Käynnistä palvelu automaattisesti, kun reititin käynnistetään"
 
 msgid "Enable upnp daemon at boot time"
-msgstr ""
+msgstr "Ota käyttöön UPNP käynnistyksen yhteydessä"
 
 msgid "Start / Stop Service"
-msgstr ""
+msgstr "Käynnistä / Sammuta palvelu"
 
 msgid "Start/stop upnp daemon (make sure you have WAN connection!)"
-msgstr ""
+msgstr "Käynnistä/sammuta UPNP daemon (varmista, että WAN yhteys on käytössä!)"
 
 msgid "Enable UPNP"
-msgstr ""
+msgstr "Ota UPNP käyttöön"
 
 msgid "Enable UPNP protocol"
-msgstr ""
+msgstr "Ota käyttöön UPNP protokolla"
 
 msgid "Enable NAT-PMP"
-msgstr ""
+msgstr "Ota käyttöön NAT-PMP"
 
 msgid "Enable NAT-PMP protocol"
-msgstr ""
+msgstr "Ota käyttöön NAT-PMP protokolla"
 
 msgid "Enable secure mode"
-msgstr ""
+msgstr "Ota käyttöön turvallinen tila"
 
 msgid "Allow adding forwards only to requesting ip addresses"
-msgstr ""
+msgstr "Salli edelleenlähetykset vain pyyntöjä lähettäviltä IP-osoitteilta"
 
 msgid "Enable additional logging"
-msgstr ""
+msgstr "Ota käyttöön lisälokitus"
 
 msgid "Puts extra debugging information into the system log"
-msgstr ""
+msgstr "Kirjoittaa lokiin lisätietoa"
 
 msgid "Downlink"
-msgstr ""
+msgstr "Latausnopeus"
 
 msgid "Value in KByte/s, informational only"
-msgstr ""
+msgstr "Arvo KByte/s. Vain informatiivinen"
 
 msgid "Uplink"
-msgstr ""
+msgstr "Lähetysnopeus"
 
 msgid "Port"
-msgstr ""
+msgstr "Portti"
 
 msgid "External Interface"
-msgstr ""
+msgstr "Ulkoinen liitäntä"
 
 msgid "Internal Interface"
-msgstr ""
+msgstr "Sisäinen liitäntä"
 
 msgid "Advanced Settings"
-msgstr ""
+msgstr "Edistyneet asetukset"
 
 msgid "Device UUID"
-msgstr ""
+msgstr "Laitteen UUID"
 
 msgid "Announced serial number"
-msgstr ""
+msgstr "Ilmoitettu sarjanumero"
 
 msgid "Serial Number"
-msgstr ""
+msgstr "Sarjanumero"
 
 msgid "Announced model number"
-msgstr ""
+msgstr "Ilmoitettu mallinumero"
 
 msgid "Model Number"
-msgstr ""
+msgstr "Mallinumero"
 
 msgid "Notify interval"
-msgstr ""
+msgstr "Ilmoitusintervalli"
 
 msgid "Clean rules threshold"
-msgstr ""
+msgstr "Sääntöjen tyhjentämisen raja-arvo"
 
 msgid "Clean rules interval"
-msgstr ""
+msgstr "Sääntöjen tyhjentämisen intervalli"
 
 msgid "Presentation URL"
-msgstr ""
+msgstr "Esitysosoite"
 
 msgid "UPnP lease file"
-msgstr ""
+msgstr "UPnP vuokratiedosto"
 
 msgid "UPnP ACLs"
 msgstr ""
 
 msgid "UPnP Open Ports"
-msgstr ""
-"Käyttää UPnP:tä avaamaan automaattisesti tarvittavat portit reititimestäsi"
+msgstr "Käyttää UPnP:tä avaamaan automaattisesti tarvittavat portit reititimestäsi"
 
 msgid "No UPnP ports currently in use"
 msgstr "Ei käytössä olevia UPnP-porttteja"
 
 msgid "Pkts. cnt."
-msgstr ""
+msgstr "Pakettilaskuri"
 
 msgid "Bytes"
 msgstr "Bytes"
@@ -133,7 +132,7 @@ msgid "Target"
 msgstr "Kohde"
 
 msgid "Proto."
-msgstr ""
+msgstr "Protokolla"
 
 msgid "Opt"
 msgstr "Opt"
@@ -145,25 +144,25 @@ msgid "Dest."
 msgstr "Dest."
 
 msgid "Comment"
-msgstr ""
+msgstr "Kommentti"
 
 msgid "External ports"
-msgstr ""
+msgstr "Ulkoiset portit"
 
 msgid "Internal addresses"
-msgstr ""
+msgstr "Sisäiset osoitteet"
 
 msgid "Internal ports"
-msgstr ""
+msgstr "Sisäiset portit"
 
 msgid "Action"
 msgstr "Toiminto"
 
 msgid "Sort"
-msgstr ""
+msgstr "Järjestä"
 
 msgid "Delete"
-msgstr ""
+msgstr "Poista"
 
 msgid "Packets cnt."
 msgstr "Packets cnt."
@@ -171,8 +170,8 @@ msgstr "Packets cnt."
 msgid "Proto"
 msgstr "Proto"
 
-msgid "menu-upnpd-settings-title"
-msgstr "UPNP"
-
 msgid "menu-upnpd-status-title"
 msgstr "PuhelinUPNP"
+
+msgid "menu-upnpd-settings-title"
+msgstr "UPNP"

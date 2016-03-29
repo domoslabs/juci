@@ -9,10 +9,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "HTTPD Settings"
-msgstr ""
+msgstr "HTTPD asetukset"
 
 msgid "uhttpd.settings.info"
 msgstr "UHTTPd"
@@ -36,10 +36,10 @@ msgid "Max Connections"
 msgstr "Yhteyksien enimmäismäärä"
 
 msgid "Specify UBUS return codes to log into system log"
-msgstr ""
+msgstr "Määritä lokiin kirjoitettavat UBUS paluukoodit"
 
 msgid "Will only log status codes above that are returned by these ubus calls"
-msgstr ""
+msgstr "Lokiin kirjoitetaan vain yllä olevat statuskoodit jotka UBUS palauttaa"
 
 msgid "Object.Method"
 msgstr "Object.Method"

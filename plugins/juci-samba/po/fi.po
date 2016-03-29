@@ -9,19 +9,19 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid "New samba share"
 msgstr "Uusi samba jako"
 
 msgid "Loading.."
-msgstr ""
+msgstr "Ladataan.."
 
 msgid "Add folder to share"
-msgstr ""
+msgstr "Lisää jaettava kansio"
 
 msgid "Select folder"
-msgstr ""
+msgstr "Valitse kansio"
 
 msgid "Name"
 msgstr "Nimi"
@@ -30,7 +30,7 @@ msgid "Path"
 msgstr "Polku"
 
 msgid "Allowed users"
-msgstr ""
+msgstr "Sallitut käyttäjät"
 
 msgid "Allow Guest Access"
 msgstr "Salli vierasverkkopääsy"
@@ -60,12 +60,13 @@ msgid "Share User Home Directory"
 msgstr "Jaa käyttäjän kotihakemisto"
 
 msgid "Interface"
-msgstr ""
+msgstr "Verkko"
 
 msgid ""
 "the interface(s) samba will listen on. Samba will not start if no interface "
 "is selected"
 msgstr ""
+"Verkot joita samba käyttää. Samba ei käynnisty mikäli verkkoa ei ole valittu"
 
 msgid "Samba Users"
 msgstr "Samba Käyttäjät"
@@ -81,339 +82,3 @@ msgstr " "
 
 msgid "menu-internet-services-samba-title"
 msgstr "Samba"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

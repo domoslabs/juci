@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 msgid ""
 "A new system software upgrade is available. Do you want to visit upgrade "
@@ -19,64 +19,71 @@ msgstr ""
 "nyt?"
 
 msgid "Do you want to keep your configuration?"
-msgstr ""
+msgstr "Haluatko säilyttää asetukset?"
 
 msgid ""
 "If you answer yes then your configuration will be saved before the upgrade "
 "and restored after the upgrade has completed. If you choose 'no' then all "
 "your current configuration will be reset to defaults."
 msgstr ""
+"Jos vastaat kyllä, niin asetukset säilytetään ohjelmiston päivityksen "
+"yhteydessä. Mikäli valitse \"ei\", niin otetaan käyttöön uuden ohjelmiston "
+"oletusasetukset."
 
 msgid "Yes"
-msgstr ""
+msgstr "Kyllä"
 
 msgid "No"
-msgstr ""
+msgstr "Ei"
 
 msgid "Abort"
-msgstr ""
+msgstr "Keskeytä"
 
 msgid "Image check failed"
-msgstr ""
+msgstr "Ohjelmiston tarkistus epäonnistui"
 
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgid "Error: "
-msgstr ""
+msgstr "Virhe:"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid "Upgrading"
+msgstr "Päivitetään"
 
 msgid "New Software Available!"
-msgstr ""
+msgstr "Uusi ohjelmisto saatavilla!"
 
 msgid "No upgrade has been found!"
 msgstr "Päivitystä ei saatavilla!"
 
 msgid "USB upgrade check failed"
-msgstr ""
+msgstr "USB päivityksen tarkistus epäonnistui"
 
 msgid "Online upgrade check failed"
-msgstr ""
+msgstr "Verkkopäivityksen tarkistaminen epäonnistui"
 
 # /home/reidar/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.js
 msgid "Downloading and verifying image..."
-msgstr ""
+msgstr "Ladataan ja tarkistetaan ohjelmistoa.."
 
 # /home/reidar/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.js
 msgid "Uploading"
-msgstr ""
+msgstr "Lähetetään"
 
 msgid "Verifying image..."
-msgstr ""
+msgstr "Tarkistetaan ohjelmistoa.."
 
 # /home/reidar/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.js
 msgid "Verifying"
-msgstr ""
+msgstr "Tarkistetaan"
 
 msgid "The server returned an error"
-msgstr ""
+msgstr "Palvelinvirhe"
 
 msgid "Upload completed!"
-msgstr ""
+msgstr "Lähetys valmis!"
 
 msgid ".w (JFFS Image)"
 msgstr ".w (JFFS Image)"
