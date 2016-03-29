@@ -61,6 +61,7 @@ JUCI.app
 		$scope.wifiStatus.wps.value = !$scope.wifiStatus.wps.value;
 	}
 	$scope.onWIFISchedToggle = function(){
+		if(!$scope.wifiStatus) return;
 		$scope.wifiStatus.schedule.value = !$scope.wifiStatus.schedule.value;
 	}
 
