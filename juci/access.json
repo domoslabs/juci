@@ -20,7 +20,8 @@
 		"read": {
 			"juci": {
 				"capabilities": [ 
-					"can-pick-uplink-port"
+					"can-pick-uplink-port",
+					"can-view-changes"
 				]
 			}
 		}
