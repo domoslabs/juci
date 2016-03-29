@@ -35,3 +35,4 @@ tmp/
 .git_update
 .prepared_*
 ipkg-*
+tags
