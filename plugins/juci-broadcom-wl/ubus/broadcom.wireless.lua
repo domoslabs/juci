@@ -4,7 +4,7 @@ local json = require("juci/json");
 local juci = require("juci/core"); 
 
 function wireless_scan(opts)
-	juci.shell("wlctl scan 2>/dev/null"); 
+	juci.shell("wlctl -i %s scan 2>/dev/null", (opts.device or "wl0"));
 	print("{}"); 
 end
 
