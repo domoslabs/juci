@@ -108,18 +108,21 @@ msgstr "Ohjelmistopäivitys"
 
 msgid "settings.upgrade.info"
 msgstr ""
-"Modeemi päivittää automaattisesti viimeisimmän saatavilla olevan "
-"ohjelmiston. On myös mahdollista päivittää modeemin ohjelmisto manuaalisesti "
-"mikäli se on välttämätöntä. Päivittäminen ei vaikuta nykyisiin asetuksiin."
+"Reititin tarkistaa palvelimelta automaattisesti viimeisimmän saatavilla "
+"olevan ohjelmiston. On myös mahdollista päivittää reitittimen ohjelmisto "
+"manuaalisesti mikäli se on välttämätöntä. Päivittäminen ei vaikuta nykyisiin "
+"asetuksiin."
 
 msgid "Current Firmware Version"
 msgstr "Nykyinen ohjelmistoversio"
 
 msgid "Online Update"
-msgstr "Verkkopäivitys"
+msgstr "Online päivitys"
 
 msgid "settings.upgrade.online.info"
-msgstr "Online päivitys"
+msgstr ""
+"Mikäli palvelimella on saatavilla uudempi ohjelmisto, voidaan se päivittää "
+"verkon yli"
 
 msgid "Check for Upgrade"
 msgstr "Tarkista päivitykset"
@@ -131,13 +134,15 @@ msgid "USB Firmware Upgrade"
 msgstr "USB päivitys"
 
 msgid "settings.upgrade.usb.info"
-msgstr "USB päivitys"
+msgstr ""
+"Mikäli reitittimeen kytketyllä USB:lla on saatavilla ohjelmisto voidaan se "
+"päivitttää tässä"
 
 msgid "Manual Firmware Upgrade"
 msgstr "Manuaalinen ohjelmistopäivitys"
 
 msgid "settings.upgrade.manual.info"
-msgstr "Manuaalinen päivitys"
+msgstr " "
 
 msgid "Pick firmware file to upload"
 msgstr "Valitse ladattava ohjelmisto"
@@ -185,7 +190,7 @@ msgid "USB Upgrade"
 msgstr "USB päivitys"
 
 msgid "menu-settings-upgrade-title"
-msgstr "Päivitä"
+msgstr "Ohjelmistopäivitys"
 
 msgid "menu-settings-upgrade-options-title"
 msgstr "Valinnat"
