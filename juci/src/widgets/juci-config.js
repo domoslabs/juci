@@ -81,10 +81,11 @@ JUCI.app
 })
 .controller("juciConfigLineController", function($scope, $tr){
 	$scope.$watch("error", function(er){
-		if(er){
+		if(er !== null){
 			$scope.er = $tr(er);
 			$scope.errorClass = "field-error";
 		}else{
+			$scope.er = false;
 			$scope.errorClass = "";
 		}
 	},false);
