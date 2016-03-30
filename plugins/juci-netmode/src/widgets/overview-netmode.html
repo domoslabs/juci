@@ -1,9 +1,9 @@
 <div>
 	<juci-overview-widget title="{{'Profile'|translate}}" icon="juci juci-profile" allow-overflow="true">
-		<juci-config-info>{{getDesc()}}</juci-config-info>
+		<juci-config-info>{{getExp() || ""}}</juci-config-info>
 		<div class="col-xs-8" style="white-space: nowrap;">
-			<juci-select ng-show="allNetmodes.length" ng-model="data.currentNetmode" ng-items="allNetmodes" ></juci-select>
-			<p translate ng-show="!allNetmodes.length">No profiles available</p>
+			<juci-select ng-show="allNetmodes.length" title="{{getFullDesc()}}"ng-model="data.selected" ng-items="allNetmodes" ></juci-select>
+			<p ng-show="!allNetmodes.length">{{'No profiles available'|translate}}</p>
 		</div>
 		<div class="col-xs-4">
 			<button class="btn btn-success pull-right {{disabled()?'disabled':'active'}}" ng-click="onChangeModeConfirm()" translate>Change Profile</button>
