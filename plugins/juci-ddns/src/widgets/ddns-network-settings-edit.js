@@ -29,7 +29,6 @@ JUCI.app
 	};
 })
 .controller("ddnsNetworkSettingsEdit", function($scope, $rpc, $tr, gettext, $ethernet, $network){
-	$scope.data = {};
 	$scope.allSourceTypes = [
 		{ label: $tr(gettext("Interface")), value: "interface" }, 
 		{ label: $tr(gettext("Network")), value: "network" }, 
@@ -53,12 +52,4 @@ JUCI.app
 		$scope.allServices = result.providers.map(function(p){ return { label: p, value: p }}); 
 		$scope.$apply(); 
 	});
-	$scope.$watch("ddns", function(ddns){
-		if(!$scope.data || !ddns) return;
-		$scope.data.name = ddns[".name"];
-	},false);
-	$scope.$watch("data.name", function(name){
-		if(!name || !$scope.ddns) return;
-		$scope.ddns[".name"] == name;
-	},false);
 }); 
