@@ -35,52 +35,71 @@ JUCI.app
 })
 .controller("overviewWidgetNetmode", function($scope, $tr, gettext, $uci, $rpc, $juciConfirm, $juciDialog, $languages){
 	$scope.data = {
-		currentNetmode: ""
+		selected: ""
 	};
+	$scope.allNetmodes = [];
 	$uci.$sync("netmode").done(function(){
 		if(!$uci.netmode || !$uci.netmode.setup)return;
 		var lang = $languages.getLanguage();
-		$scope.allNetmodes = $uci.netmode["@netmode"].map(function(nm){ return { label: (nm[("desc_"+lang)].value || nm["desc_en"].value || nm.desc.value), value: nm[".name"], desc: (nm[("exp_"+lang)].value || nm["exp_en"].value || "")}; });
+		if(lang !== "en" && lang !== "fi" && lang !== "sv") lang = "en";
+		$scope.allNetmodes = $uci.netmode["@netmode"].map(function(nm){ 
+			return { 
+				longLabel: nm[("desc_"+lang)].value || nm.desc.value || nm["desc_en"].value, 
+				label: (nm[("desc_"+lang)].value || nm.desc.value || nm["desc_en"].value).substring(0,20), 
+				value: nm[".name"], 
+				desc:  nm[("exp_"+lang)].value || nm.exp.value || nm["exp_en"].value || ""
+			}; 
+		});
 		$scope.setup = $uci.netmode.setup;
-		$scope.data.currentNetmode = $scope.setup.curmode.value;
+		if(!$scope.setup) { $scope.$apply(); return;}
+		var tmp = $scope.allNetmodes.find(function(nm){ return nm.value === $scope.setup.curmode.value; });
+		$scope.data.selected = (tmp)?tmp.value:"";
 		$scope.$apply();
 	});
 	$scope.disabled = function(){
-		if(!$scope.data.currentNetmode || !$scope.setup || !$scope.allNetmodes || $scope.allNetmodes.length === 0) return true;
-		return $scope.data.currentNetmode === $scope.setup.curmode.value;
+		if(!$scope.data || !$scope.setup || !$scope.setup.curmode || $scope.allNetmodes.length < 1) return true;
+		return $scope.data.selected === $scope.setup.curmode.value;
 	}
 	$scope.onChangeMode = function(){
-		if(!$scope.data || !$scope.data.currentNetmode || !$scope.setup || !$scope.setup.curmode) return;
+		if(!$scope.setup || !$scope.setup.curmode || $scope.allNetmodes.length < 1) return;
 		var model = {
 			allNetmodes: $scope.allNetmodes,
-			selected: $scope.data.currentNetmode
+			selected: $scope.setup.curmode.value
 		};
 		$juciDialog.show("netmode-picker", {
 			title: $tr(gettext("Select Profile")),
 			model: model,
 			on_apply: function(){
-				if(model.selected == $scope.data.currentNetmode) return false;
+				if(model.selected === $scope.setup.curmode.value) return true;
 				setNetmode(model.selected);
 				return true;
 			}
 		});
 	};
 
-	$scope.getDesc = function(){
-		if(!$scope.allNetmodes || !$scope.data.currentNetmode) return "";
-		return $scope.allNetmodes.find(function(nm){ return nm.value == $scope.data.currentNetmode; }).desc || ""
-	};
-		
 	$scope.onChangeModeConfirm = function(){
-		if(!$scope.data || !$scope.data.currentNetmode || !$scope.setup || !$scope.setup.curmode) return;
-		if($scope.data.currentNetmode == $scope.setup.curmode.value) return;
+		if(!$scope.data || !$scope.setup || !$scope.setup.curmode) return;
+		if($scope.data.selected === $scope.setup.curmode.value) return;
 		$juciConfirm.show($tr(gettext("Changing netmode will reset your configuration completely to match that netmode. Do you want to continue?"))).done(function(value){
 			if(value == "ok"){
-				setNetmode($scope.data.currentNetmode);
+				setNetmode($scope.data.selected);
 			}
 		});
 	}
+	$scope.getExp = function(){
+		if(!$scope.data || !$scope.data.selected || $scope.allNetmodes.length < 1) return "";
+		return $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; }).desc;
+	}
+	$scope.getDesc = function(){
+		if(!$scope.data || !$scope.data.selected || $scope.allNetmodes.length < 1) return "";
+		return $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; }).label;
+	}
+	$scope.getFullDesc = function(){
+		if(!$scope.data || !$scope.data.selected || $scope.allNetmodes.length < 1) return "";
+		return $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; }).longLabel;
+	}
 	function setNetmode(netmode){
+		$scope.data.selected = netmode;
 		$scope.setup.curmode.value = netmode;
 		$uci.$save().done(function(){
 			if($uci.netmode[netmode].reboot.value){

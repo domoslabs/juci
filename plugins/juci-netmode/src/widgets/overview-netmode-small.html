@@ -1,7 +1,7 @@
-<div class="overview-small">
+<div class="overview-small" ng-click="onChangeMode()">
 	<div class="icon"><i class="juci juci-profile"></i></div>
-	<div class="name"><a href="" ng-click="onChangeMode()" style="color:white;">{{'Profile'|translate}}</a></div>
+	<div class="name"><a href="" style="color:white;">{{'Profile'|translate}}</a></div>
 	<div class="content">
-		<span class="label label-{{data.currentNetmode?'success':'default'}}" ng-click="onChangeMode()" style="cursor: pointer;">{{(data.currentNetmode ||'N/A') | translate}}</span>
+		<span class="label label-{{setup.curmode.value?'success':'default'}}" title={{getFullDesc()}}" style="cursor: pointer;">{{(getDesc() ||'N/A') | translate}}</span>
 	</div>
 </div>
