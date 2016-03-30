@@ -167,8 +167,8 @@ msgstr "VDSL-laitteet"
 msgid "menu-page-broadcom-adsl-title"
 msgstr "ADSL"
 
-msgid "menu-page-broadcom-dsl-status-title"
-msgstr "DSL Status"
-
 msgid "menu-page-broadcom-vdsl-title"
 msgstr "VDSL"
+
+msgid "menu-page-broadcom-dsl-status-title"
+msgstr "DSL Status"

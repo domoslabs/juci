@@ -32,6 +32,24 @@ msgstr "WEP-salausavaimen # \"  id  \" on oltava 10-26 heksadesimaalimerkkiä!"
 msgid "WPA key must be 8-63 characters long!"
 msgstr "WPA-avaimen on oltava 8-63 merkkiä pitkä!"
 
+msgid "Hostname"
+msgstr "Isäntäkoneen nimi"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-broadcom-wl/src/pages/wireless-clients.js
+msgid "IPv4 Address"
+msgstr "IPv4 osoite"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-broadcom-wl/src/pages/wireless-clients.js
+msgid "IPv6 Address"
+msgstr "IPv6 osoite"
+
+msgid "Frequency"
+msgstr "Taajuus"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-broadcom-wl/src/pages/wireless-clients.js
+msgid "MAC-Address"
+msgstr "MAC osoite"
+
 msgid ""
 "No more Wireless Interface spaces left. There can't be more then 4 "
 "Interfaces on each radio"
@@ -91,9 +109,6 @@ msgstr "Tallenna"
 
 msgid "Cancel"
 msgstr "Peruuta"
-
-msgid "No IP address"
-msgstr "Ei IP osoitetta"
 
 msgid "11a"
 msgstr "802.11c"
@@ -272,9 +287,6 @@ msgstr "WiFi verkon nimi (SSID)"
 msgid "Broadcast SSID"
 msgstr "Lähetä SSID"
 
-msgid "Frequency"
-msgstr "Taajuus"
-
 msgid "Encryption"
 msgstr "Suojaustila"
 
@@ -323,11 +335,8 @@ msgstr "Lisää isäntäkoneita MAC-suodatinlistaan"
 msgid "You must enter a valid MAC address!"
 msgstr "Tarkista MAC-osoite!"
 
-msgid "Hostname"
-msgstr "Isäntäkoneen nimi"
-
 msgid "MAC"
-msgstr ""
+msgstr "MAC"
 
 msgid "Pick Wireless Radio"
 msgstr "Valitse Langaton Radio"
@@ -351,10 +360,10 @@ msgid "wifi.client.info"
 msgstr "Lähellä olevat langattomat laitteet"
 
 msgid "SSID"
-msgstr ""
+msgstr "SSID"
 
 msgid "SNR"
-msgstr ""
+msgstr "SNR"
 
 msgid "Connect"
 msgstr "Yhdistä"
@@ -459,7 +468,7 @@ msgid "Radio"
 msgstr "Radio"
 
 msgid "Frequency to Scan"
-msgstr "Skanntattava taajuus"
+msgstr "Skannatattava taajuus"
 
 msgid "Scan neighboring APs"
 msgstr "Skannaa ympäristön tukiasemat"
@@ -544,38 +553,41 @@ msgstr "WPS-PIN: Toinen laite tarjoaa PIN-koodin"
 msgid "Enter the WPS-PIN provided by the other device here."
 msgstr "Syötä paritettavan laitteen PIN-koodi tähän kohtaan."
 
-msgid "menu-wireless-clients-title"
-msgstr "Clients"
-
-msgid "menu-wireless-title"
-msgstr "WiFi"
-
-msgid "menu-wireless-status-title"
-msgstr "WiFi"
-
 msgid "menu-wireless-client-mode-title"
 msgstr "Client Mode"
+
+msgid "menu-wireless-general-title"
+msgstr "WiFi"
+
+msgid "menu-wireless-clients-title"
+msgstr "Clients"
 
 msgid "menu-wireless-wps-title"
 msgstr "WPS"
 
-msgid "menu-wireless-devices-title"
-msgstr "Laitteet"
-
 msgid "menu-wireless-filtering-title"
 msgstr "Filtteröinti"
+
+msgid "menu-wireless-status-title"
+msgstr "WiFi"
+
+msgid "menu-wireless-title"
+msgstr "WiFi"
+
+msgid "menu-wireless-link-to-interfaces-title"
+msgstr "WiFi"
 
 msgid "menu-wireless-schedule-title"
 msgstr "Ajastus"
 
-msgid "menu-wireless-link-to-interfaces-title"
-msgstr "Link"
-
 msgid "menu-wireless-interfaces-title"
 msgstr "Liitännät"
 
-msgid "menu-wireless-general-title"
-msgstr "WiFi"
+msgid "menu-wireless-devices-title"
+msgstr "Laitteet"
+
+#~ msgid "No IP address"
+#~ msgstr "Ei IP osoitetta"
 
 #~ msgid "wps.status.disabled"
 #~ msgstr "WPS pois päältä"
