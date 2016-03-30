@@ -94,7 +94,6 @@ JUCI.app
 				var wan_ifs = default_route_ifs.concat(bridgedNets).filter(function(i){
 					return (i.$info.up && i.$info.device && i.$info.route)
 				});
-				console.log(wan_ifs);
 				wan_ifs.map(function(wan_if){return wan_if.$info;}).map(function(i){
 					var con_type = "ETH"; 
 					if(i.device.match(/atm/)) con_type = "ADSL"; 
