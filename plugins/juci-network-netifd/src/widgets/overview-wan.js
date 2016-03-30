@@ -85,17 +85,21 @@ JUCI.app
 			var bridgedNets = networks.filter(function(net){ return net.proto.value == "dhcp" && net.type.value == "bridge" && net.defaultroute.value});
 			$firewall.getZoneNetworks("wan").done(function(wan_iface){
 				var default_route_ifs = wan_iface.filter(function(x){ 
+					if(bridgedNets.find(function(bn){ return bn[".name"] == x[".name"]; })) return false;
 					return x.$info && x.$info.route && x.$info.route.length && 
 						(x.$info.route.find(function(r){ return r.target == "0.0.0.0" || r.target == "::"; }));
 				}); 
 				var con_types = {}; 
 				var all_gateways = {}; 
-				var wan_ifs = default_route_ifs.concat(bridgedNets);
+				var wan_ifs = default_route_ifs.concat(bridgedNets).filter(function(i){
+					return (i.$info.up && i.$info.device && i.$info.route)
+				});
+				console.log(wan_ifs);
 				wan_ifs.map(function(wan_if){return wan_if.$info;}).map(function(i){
 					var con_type = "ETH"; 
-					if(i.l3_device.match(/atm/)) con_type = "ADSL"; 
-					else if(i.l3_device.match(/ptm/)) con_type = "VDSL"; 
-					else if(i.l3_device.match(/wwan/)) con_type = "3G/4G"; 
+					if(i.device.match(/atm/)) con_type = "ADSL"; 
+					else if(i.device && i.l3_device.match(/ptm/)) con_type = "VDSL"; 
+					else if(i.device && i.l3_device.match(/wwan/)) con_type = "3G/4G"; 
 					con_types[con_type] = con_type; 
 					i.route.map(function(r){
 						if(r.nexthop != "0.0.0.0" && r.nexthop != "::") // ignore dummy routes. Note that current gateways should actually be determined by pinging them, but showing all of them is sufficient for now. 
