@@ -32,9 +32,11 @@ UCI.qos.$registerSectionType("classgroup", {
 	"default": 	{ dvalue: 'Normal', type: String }
 });
 UCI.qos.$registerSectionType("interface", {
-	"enabled":	{ dvalue: false, type: Boolean },
-	"download":	{ dvalue: '', type: Number },
-	"upload":	{ dvalue: '', type: Number }
+	"classgroup":	{ dvalue: "Default", type: String },
+	"download":		{ dvalue: '', type: Number },
+	"enabled":		{ dvalue: false, type: Boolean },
+	"overhead":		{ dvalue: false, type: Boolean },
+	"upload":		{ dvalue: '', type: Number }
 });
 
 JUCI.app.factory("intenoQos", function($uci){

@@ -5,6 +5,12 @@
 		</juci-config-line>
 		<div ng-show="instance.enabled.value">
 			<label class="label label-danger" translate>Acceleration will be disabled when Bandwidth limitation is enabled</label>
+			<juci-config-line title="{{'Classification group'|translate}}">
+				<juci-select ng-items="allClassgroups" ng-model="instance.classgroup.value"></juci-select>
+			</juci-config-line>
+			<juci-config-line title="{{'Calculate overhead'|translate}}">
+				<switch class="green" ng-model="instance.overhead.value" />
+			</juci-config-line>
 			<juci-config-line title="{{'Download Speed Limit'|translate}}">
 				<div class="input-group">
 					<input type="number" min="1" class="form-control" ng-model="instance.download.value" />

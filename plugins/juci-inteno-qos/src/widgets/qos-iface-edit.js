@@ -8,6 +8,15 @@ JUCI.app
 			instance: "=ngModel"
 		},
 		replace: true,
+		controller: "qosIfaceEditCtrl",
 		require: "^ngModel"
 	};
+})
+.controller("qosIfaceEditCtrl", function($scope, $uci){
+	$uci.$sync("qos").done(function(){
+		$scope.allClassgroups = $uci.qos["@classgroup"].map(function(cg){
+			return { value: cg[".name"], label: cg[".name"] };
+		});
+		$scope.$apply();
+	});
 });
