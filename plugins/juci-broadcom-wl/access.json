@@ -9,9 +9,9 @@
 					"setpin",
 					"showpin",
 					"stapin",
-					"checkpin"
+					"checkpin",
 					"status",
-					"stop
+					"stop"
 				], 
 				"/juci/wireless": [
 					"run"
