@@ -7,8 +7,9 @@
 					"run"
 				],
 				"/juci/diagnostics": [
-					"ping", 
-					"traceroute"
+					"run"
+					/*"ping", */
+					/*"traceroute"*/
 				]
 			},
 			"uci": [

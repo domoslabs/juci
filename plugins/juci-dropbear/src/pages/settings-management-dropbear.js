@@ -78,7 +78,7 @@ JUCI.app
 		}
 	}
 	function refresh(){
-		$rpc.juci.dropbear.get_public_keys().done(function(result){
+		$rpc.juci.dropbear.run({"method":"get_public_keys"}).done(function(result){
 			$scope.keyList = result.keys;
 			$scope.$apply();
 		}).fail(function(){
@@ -88,7 +88,7 @@ JUCI.app
 	refresh(); 
 
 	$scope.onDeleteKey = function(item){
-		$rpc.juci.dropbear.remove_public_key(item).done(function(res){
+		$rpc.juci.dropbear.run({"method":"remove_public_key","args":JSON.stringify(item)}).done(function(res){
 			if(res.error) alert($tr(res.error)); 	
 			refresh();
 		});
@@ -96,7 +96,7 @@ JUCI.app
 
 	$scope.onAddKey = function(){
 		dropbearAddKey.show().done(function(data){
-			$rpc.juci.dropbear.add_public_key(data).done(function(result){
+			$rpc.juci.dropbear.run({"method":"add_public_key", "args":JSON.stringify(data)}).done(function(result){
 				if(result.error) alert($tr(result.error)); 
 				refresh();
 			});

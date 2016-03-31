@@ -34,7 +34,7 @@ JUCI.app
 			}).always(function(){next();}); 
 		}, 
 		function(next){
-			$rpc.juci.system.time.zonelist().done(function(result){
+			$rpc.juci.system.time.run({"method":"zonelist"}).done(function(result){
 				if(result && result.zones){
 					$scope.timezones = result.zones; 
 					$scope.allTimeZones = Object.keys(result.zones).sort().map(function(k){
@@ -61,7 +61,7 @@ JUCI.app
 	});
 
 	JUCI.interval.repeat("system.time", 1000, function(done){
-		$rpc.juci.system.time.get().done(function(result){
+		$rpc.juci.system.time.run({"method":"get"}).done(function(result){
 			$scope.localtime = result.local_time;
 			$scope.$apply();
 			done();

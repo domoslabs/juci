@@ -4,26 +4,29 @@
 		"read": {
 			"ubus": {
 				"/juci/wireless.wps": [
-					"genpin", 
-					"pbc", 
-					"setpin", 
-					"showpin", 
-					"stapin", 
-					"checkpin",
-					"status", 
-					"stop"
+					"run"
+					/*"genpin", */
+					/*"pbc", */
+					/*"setpin", */
+					/*"showpin", */
+					/*"stapin", */
+					/*"checkpin",*/
+					/*"status", */
+					/*"stop"*/
 				], 
 				"/juci/wireless": [
-					"defaults", 
-					"radios", 
-					"devices", 
-					"clients", 
-					"scan", 
-					"scanresults"
+					"run"
+					/*"defaults", */
+					/*"radios", */
+					/*"devices", */
+					/*"clients", */
+					/*"scan", */
+					/*"scanresults"*/
 				],
 				"/juci/broadcom.wireless.lua": [
-					"scan", 
-					"scanresults"
+					"run"
+					/*"scan", */
+					/*"scanresults"*/
 				],
 				"router": [
 					"stas",

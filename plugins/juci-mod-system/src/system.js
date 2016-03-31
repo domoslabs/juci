@@ -62,32 +62,32 @@ JUCI.app.factory("$systemService", function($rpc){
 	return {
 		list: function(){
 			var def = $.Deferred(); 
-			$rpc.juci.system.service.list().done(function(res){
+			$rpc.juci.system.service.run({"method":"list"}).done(function(res){
 				if(res && res.services){
 					var result = res.services.map(function(service){
 						service.enable = function(){
 							var self = this; 
 							console.log("enabling service "+self.name); 
-							return $rpc.juci.system.service.enable({ name: self.name }).done(function(){ self.enabled = true; }); 
+							return $rpc.juci.system.service.run({"method":"enable","args":JSON.stringify({ name: self.name })}).done(function(){ self.enabled = true; }); 
 						}
 						service.disable = function(){
 							var self = this; 
 							console.log("disabling service "+self.name); 
-							return $rpc.juci.system.service.disable({ name: self.name }).done(function(){ self.enabled = false; });
+							return $rpc.juci.system.service.run({"method":"disable","args":JSON.stringify({ name: self.name })}).done(function(){ self.enabled = false; });
 						}
 						service.start = function(){
 							var self = this; 
 							console.log("starting service "+self.name); 
-							return $rpc.juci.system.service.start({ name: self.name }).done(function(){ self.running = true; }); 
+							return $rpc.juci.system.service.run({"method":"start","args":JSON.stringify({ name: self.name })}).done(function(){ self.running = true; }); 
 						}
 						service.stop = function(){
 							var self = this; 
 							console.log("stopping service "+self.name); 
-							return $rpc.juci.system.service.stop({ name: self.name }).done(function(){ self.running = false; }); 
+							return $rpc.juci.system.service.run({"method":"stop","args":JSON.stringify({ name: self.name })}).done(function(){ self.running = false; }); 
 						}
 						service.reload = function(){
 							var self = this; 
-							return $rpc.juci.system.service.reload({ name: self.name }); 
+							return $rpc.juci.system.service.run({"method":"reload","args":JSON.stringify({ name: self.name })}); 
 						}
 						return service;	
 					}); 

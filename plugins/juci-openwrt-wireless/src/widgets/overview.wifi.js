@@ -47,7 +47,7 @@ JUCI.app
 				next(); 
 			}); 
 		}, function(next){
-			$rpc.juci.wireless.clients().done(function(result){
+			$rpc.juci.wireless.run({"method":"clients"}).done(function(result){
 				$scope.done = 1; 
 				var clients = {}; 
 				result.clients.map(function(x){ 
@@ -106,7 +106,7 @@ JUCI.app
 		async.series([
 			function(next){
 				$uci.$sync("wireless").done(function(){
-					$rpc.juci.wireless.devices().done(function(result){
+					$rpc.juci.wireless.run({"method":"devices"}).done(function(result){
 						$scope.wifi = $uci.wireless;  
 						$scope.vifs = result.devices.map(function(dev){
 							var uci_dev = $uci.wireless["@wifi-iface"].find(function(w){
@@ -123,7 +123,7 @@ JUCI.app
 				}); 
 			}, 
 			function(next){
-				$rpc.juci.wireless.clients().done(function(clients){
+				$rpc.juci.wireless.run({"method":"clients"}).done(function(clients){
 					$scope.wireless.clients = clients.clients; 
 					$scope.wireless.clients.map(function(cl){
 						// check flags 

@@ -7,10 +7,12 @@
 					"status"
 				],
 				"/juci/firewall": [
-					"excluded_ports"
+					"run"
+					/*"excluded_ports"*/
 				],
 				"/juci/system.time": [
-					"timediff"
+					"run"
+					/*"timediff"*/
 				]
 			}, 
 			"uci": [

@@ -7,12 +7,14 @@
 			],
 			"ubus": {
 				"/juci/minidlna": [
-					"folder_tree",
-					"autocomplete",
-					"status"
+					"run"
+					/*"folder_tree",*/
+					/*"autocomplete",*/
+					/*"status"*/
 				],
 				"/juci/system.service": [
-					"status"
+					"run"
+					/*"status"*/
 				]
 			}
 		},

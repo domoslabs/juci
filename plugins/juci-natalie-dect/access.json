@@ -4,9 +4,10 @@
 		"read": {
 			"ubus": {
 				"/juci/dect": [
-					"status",
-					"ping", 
-					"pair"
+					"run"
+					/*"status",*/
+					/*"ping", */
+					/*"pair"*/
 				]
 			},
 			"uci": [

@@ -27,7 +27,7 @@ JUCI.app
 			on_button: function(btn, inst){
 				if(btn.value == "yes"){
 					window.location = "/reboot.html";
-					$rpc.juci.system.reboot().done(function(){
+					$rpc.juci.system.run({"method":"reboot"}).done(function(){
 						inst.close();
 					});
 				}
@@ -38,10 +38,6 @@ JUCI.app
 				{ label: $tr(gettext("No")), value: "no" }
 			]
 		});
-
-		/*$rpc.juci.system.reboot().done(function(){
-			console.log("Restarting the system..."); 
-		}); */
 	}
 	
 	function waitUntilDown(){
@@ -66,7 +62,7 @@ JUCI.app
 		$scope.showRestartProgress = 1; 
 		$scope.showConfirmation = 0; 
 		$scope.progress = 0; 
-		$rpc.juci.system.reboot().done(function(){
+		$rpc.juci.system.run({"method":"reboot"}).done(function(){
 			var rpc = true; 
 			$scope.message = "Waiting for reboot..."; 
 			$scope.$apply(); 

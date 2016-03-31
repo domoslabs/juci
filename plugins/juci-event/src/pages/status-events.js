@@ -71,11 +71,7 @@ JUCI.app
 		if($scope.data.filter == "") limit = limit.slice(0, -1);
 		else limit += $scope.data.filter;
 		if(request === null){
-			request = $rpc.juci.system.log({
-				limit: $scope.data.limit, 
-				filter: limit,
-				type: $scope.data.type
-			}).done(function(result){
+			request = $rpc.juci.system.run({"method":"log", "args": "{\"limit\":\""+$scope.data.limit+"\",\"filter\":\""+limit+"\",\"type\": \""+$scope.data.type+"\"}"}).done(function(result){
 				if(result && result.lines){
 					$scope.logs = result.lines; 
 					$scope.$apply();

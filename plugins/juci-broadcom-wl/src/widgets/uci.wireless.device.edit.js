@@ -32,7 +32,7 @@ JUCI.app
 	$scope.$watch("device", function(device){
 		if(!device) return; 
 
-		$rpc.juci.wireless.radios().done(function(result){
+		$rpc.juci.wireless.run({"method":"radios"}).done(function(result){
 			if(device[".name"] in result){
 				var settings = result[device[".name"]]; 
 				$scope.allChannels = settings.channels.map(function(x){ return { label: x, value: x }; }); 

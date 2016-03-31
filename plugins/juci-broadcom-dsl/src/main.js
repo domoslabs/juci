@@ -74,7 +74,7 @@ JUCI.app
 			return deferred.promise(); 
 		}, 
 		status: function(){
-			return $rpc.juci.broadcom.dsl.status(); 
+			return $rpc.juci.broadcom.dsl.run({"method":"status"}); 
 		}
 	}; 
 }).run(function($ethernet, $network, $uci, $broadcomDsl){

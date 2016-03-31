@@ -7,8 +7,9 @@
 			],
 			"ubus": {
 				"/juci/samba": [
-					"folder_tree",
-					"autocomplete"
+					"run"
+					/*"folder_tree",*/
+					/*"autocomplete"*/
 				]
 			}
 		}, 
@@ -18,8 +19,9 @@
 			],
 			"ubus": {
 				"/juci/samba": [
-					"folder_tree",
-					"autocomplete"
+					"run"
+					/*"folder_tree",*/
+					/*"autocomplete"*/
 				]
 			}
 		}

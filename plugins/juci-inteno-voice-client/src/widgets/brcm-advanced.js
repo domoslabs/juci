@@ -28,7 +28,7 @@ JUCI.app
 				on_apply: function(btn){
 					if(btn.value == "apply"){
 						$uci.$save().done(function(){
-							$rpc.juci.system.reboot()
+							$rpc.juci.system.run({"method":"reboot"})
 							console.log("rebooting");
 							location = "/reboot.html";
 						});

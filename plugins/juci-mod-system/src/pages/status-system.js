@@ -48,14 +48,14 @@ JUCI.app
 
 	JUCI.interval.repeat("status.system.refresh", 1000, function(resume){
 		async.parallel([
-			function (cb){$rpc.juci.system.info().done(function(res){info = res; cb();}).fail(function(){cb();});},
+			function (cb){$rpc.juci.system.run({"method":"info"}).done(function(res){info = res; cb();}).fail(function(){cb();});},
 			function (cb){$rpc.system.info().done(function(res){sys = res; cb();}).fail(function(){cb();});},
 			function (cb){$network.getNetworkLoad().done(function(load){ netLoad = load; cb(); }).fail(function(){cb();});},
 			function (cb){
 				if(!$rpc.system.board) cb(); 
 				else $rpc.system.board().done(function(res){board = res; cb();}).fail(function(){cb();});
 			},
-			function (cb){$rpc.juci.system.filesystems().done(function(res){
+			function (cb){$rpc.juci.system.run({"method":"filesystems"}).done(function(res){
 				filesystems = res.filesystems; 
 				cb();
 			}).fail(function(){cb();});}

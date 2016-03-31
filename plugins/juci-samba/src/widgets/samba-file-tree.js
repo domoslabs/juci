@@ -38,7 +38,7 @@ JUCI.app
 		if(!branch || !branch.path) return;
 		$scope.model.path = branch.path.slice(4); 
 	}
-	$rpc.juci.samba.folder_tree().done(function(data){
+	$rpc.juci.samba.run({"method":"folder_tree"}).done(function(data){
 		function to_tree_format(obj){
 			return Object.keys(obj).map(function(folder){
 				if(obj[folder]["children"]){

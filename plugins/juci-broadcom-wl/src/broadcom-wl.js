@@ -159,7 +159,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 	
 	Wireless.prototype.getDefaults = function(){
 		var deferred = $.Deferred(); 
-		$rpc.juci.wireless.defaults().done(function(result){
+		$rpc.juci.wireless.run({"method":"defaults"}).done(function(result){
 			if(!result) {
 				deferred.reject(); 
 				return; 
@@ -174,7 +174,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 	
 	Wireless.prototype.scan = function(opts){
 		var deferred = $.Deferred(); 
-		$rpc.juci.broadcom.wireless.lua.scan(opts).always(function(){
+		$rpc.juci.broadcom.wireless.lua.run({"method":"scan", "args":JSON.stringify(opts)}).always(function(){
 			deferred.resolve(); 
 		});  
 		return deferred.promise(); 
@@ -182,7 +182,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 	
 	Wireless.prototype.getScanResults = function(opts){
 		var deferred = $.Deferred(); 
-		$rpc.juci.broadcom.wireless.lua.scanresults(opts).done(function(result){
+		$rpc.juci.broadcom.wireless.lua.run({"method":"scanresults", "args":JSON.stringify(opts)}).done(function(result){
 			deferred.resolve(result.access_points); 
 		}); 
 		return deferred.promise(); 

@@ -19,7 +19,7 @@
 JUCI.app
 .controller("wirelessClientsPage", function($scope, $network, $rpc){
 	JUCI.interval.repeat("wireless-clients-refresh", 5000, function(done){
-		$rpc.juci.wireless.clients().done(function(result){
+		$rpc.juci.wireless.run({"method":"clients"}).done(function(result){
 			if(!result || !result.clients) return; 
 			$network.getConnectedClients().done(function(clients){
 				$scope.clients = clients.filter(function(cl){

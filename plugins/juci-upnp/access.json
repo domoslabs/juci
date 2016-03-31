@@ -4,7 +4,8 @@
 		"read": {
 			"ubus": {	
 				"/juci/upnpd": [
-					"ports"
+					"run"
+					/*"ports"*/
 				]
 			}, 
 			"uci": [

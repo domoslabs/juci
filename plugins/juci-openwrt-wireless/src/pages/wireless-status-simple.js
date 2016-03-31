@@ -21,7 +21,7 @@
 JUCI.app
 .controller("wirelessStatusSimplePage", function($scope, $rpc, $tr, gettext){
 	JUCI.interval.repeat("wireless-refresh", 5000, function(done){
-		$rpc.juci.wireless.devices().done(function(result){
+		$rpc.juci.wireless.run({"method":"devices"}).done(function(result){
 			if(!result || !result.devices) return; 
 			$scope.devices = result.devices.map(function(dev){
 				dev._table = [

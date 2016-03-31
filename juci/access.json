@@ -31,7 +31,8 @@
 		"read": {
 			"ubus": {
 				"/juci/system": [
-					"events"
+					"run"
+					/*"events"*/
 				], 
 				"juci.ui": [
 					"*"

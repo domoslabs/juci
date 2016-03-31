@@ -4,46 +4,53 @@
 		"read": {
 			"ubus": {
 				"/juci/system": [
-					"defaultreset", 
-					"filesystems", 
-					"log", 
-					"reboot", 
-					"info"
+					"run"
+					/*"defaultreset", */
+					/*"filesystems", */
+					/*"log", */
+					/*"reboot", */
+					/*"info"*/
 				], 
 				"session": [
 					"list"
 				],
 				"/juci/system.upgrade": [
-					"check", 
-					"test", 
-					"start", 
-					"clean"
+					"run"
+					/*"check", */
+					/*"test", */
+					/*"start", */
+					/*"clean"*/
 				], 
 				"/juci/system.user": [
-					"setpassword",
-					"listusers"
+					"run"
+					/*"setpassword",*/
+					/*"listusers"*/
 				], 
 				"/juci/system.time": [
-					"zonelist", 
-					"get", 
-					"set"
+					"run"
+					/*"zonelist", */
+					/*"get", */
+					/*"set"*/
 				], 
 				"/juci/system.conf": [
-					"restore", 
-					"defaultreset", 
-					"features",
-					"list"
+					"run"
+					/*"restore", */
+					/*"defaultreset", */
+					/*"features",*/
+					/*"list"*/
 				], 
 				"/juci/system.process": [
-					"list"
+					"run"
+					/*"list"*/
 				],
 				"/juci/system.service": [
-					"list",
-					"start",
-					"stop",
-					"enable",
-					"disable",
-					"reload"
+					"run"
+					/*"list",*/
+					/*"start",*/
+					/*"stop",*/
+					/*"enable",*/
+					/*"disable",*/
+					/*"reload"*/
 				],
 				"router": [
 					"info"
@@ -67,11 +74,12 @@
 			"passwd": [ "self" ],
 			"ubus": {
 				"/juci/system.service": [
-					"start",
-					"stop",
-					"enable",
-					"disable",
-					"reload"
+					"run"
+					/*"start",*/
+					/*"stop",*/
+					/*"enable",*/
+					/*"disable",*/
+					/*"reload"*/
 				]
 			},
 			"uci": [

@@ -28,7 +28,7 @@ JUCI.app
 })
 .controller("dhcpLeasesWidget", function($rpc, $uci, $scope){
 	JUCI.interval.repeat("ipv4leases", 1000, function(done){
-		$rpc.juci.dhcp.ipv4leases().done(function(data){
+		$rpc.juci.dhcp.run({"method":"ipv4leases"}).done(function(data){
 			$scope.ipv4leases = data.leases;
 			$scope.$apply();
 		}).always(function(){
@@ -36,7 +36,7 @@ JUCI.app
 		});
 	});
 	JUCI.interval.repeat("ipv6leases", 1000, function(done){
-		$rpc.juci.dhcp.ipv6leases().done(function(data){
+		$rpc.juci.dhcp.run({"method":"ipv6leases"}).done(function(data){
 			$scope.ipv6leases = data.leases;
 			$scope.$apply();
 		}).always(function(){

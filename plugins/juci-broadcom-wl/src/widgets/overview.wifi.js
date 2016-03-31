@@ -33,7 +33,7 @@ JUCI.app
 })
 .controller("overviewStatusWidgetWifi", function($scope, $uci, $rpc){
 	$scope.wifiRadios = [];
-	$rpc.juci.wireless.radios().done(function(data){
+	$rpc.juci.wireless.run({"method":"radios"}).done(function(data){
 		$scope.wifiRadios = Object.keys(data).map(function(radio){ return data[radio]; });
 		$scope.$apply(); 
 	});
@@ -102,7 +102,7 @@ JUCI.app
 		async.series([
 			function(next){
 				$uci.$sync("wireless").done(function(){
-					$rpc.juci.wireless.devices().done(function(result){
+					$rpc.juci.wireless.run({"method":"devices"}).done(function(result){
 						$scope.vifs = $uci.wireless["@wifi-iface"].map(function(iface){
 							var dev = result.devices.find(function(dev){
 								return iface.ifname.value == dev.device; 

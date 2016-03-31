@@ -46,7 +46,7 @@ JUCI.app
 		}; 
 
 		JUCI.interval.repeat("dslstatus", 1000, function(done){
-			$rpc.juci.broadcom.dsl.status().done(function(dslstats){
+			$rpc.juci.broadcom.dsl.run({"method":"status"}).done(function(dslstats){
 				dslstats = dslstats.dslstats; 
 				
 				// compute floating point values (because ubus blobs do not support floats yet)
