@@ -123,12 +123,6 @@ JUCI.app
 				}); 
 			}, 
 			function(next){
-				/*$rpc.juci.wireless.wps.showpin().done(function(result){
-					$scope.wps.pin = result.pin; 
-				}).always(function(){ next(); });*/
-				next(); 
-			}, 
-			function(next){
 				$rpc.juci.wireless.clients().done(function(clients){
 					$scope.wireless.clients = clients.clients; 
 					$scope.wireless.clients.map(function(cl){

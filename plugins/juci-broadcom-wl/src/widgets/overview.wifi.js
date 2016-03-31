@@ -40,7 +40,7 @@ JUCI.app
 })
 .controller("overviewWidgetWifi", function($scope, $rpc, $uci, $tr, gettext, $juciDialog){
 	$scope.onPairPBC = function(){
-		$rpc.juci.wireless.wps.pbc();
+		$rpc.wps.pbc();
 	}
 	var wps_status_strings = {
 		"-1": $tr(gettext("Disabled")),
@@ -66,7 +66,7 @@ JUCI.app
 	}
 
 	JUCI.interval.repeat("overview.wifi.wps.retry", 1000, function(next){
-		$rpc.juci.wireless.wps.status().done(function(result){
+		$rpc.wps.status().done(function(result){
 			$scope.wps.progress = result.code; 
 			$scope.wps.text_status = wps_status_strings[result.code]||gettext("Unknown"); 
 			$scope.$apply();	
@@ -118,8 +118,8 @@ JUCI.app
 				}); 
 			}, 
 			function(next){
-				if(!$rpc.juci.wireless || !$rpc.juci.wireless.wps) { next(); return; }
-				$rpc.juci.wireless.wps.showpin().done(function(result){
+				if(!$rpc.wps) { next(); return; }
+				$rpc.wps.showpin().done(function(result){
 					$scope.wps.pin = result.pin; 
 				}).always(function(){ next(); }); 
 			} 
@@ -146,6 +146,6 @@ JUCI.app
 		}); 
 	}); 
 	$scope.onCancelWPS = function(){
-		$rpc.juci.wireless.wps.stop(); 
+		$rpc.wps.stop(); 
 	} 
 }); 

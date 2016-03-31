@@ -59,7 +59,7 @@ JUCI.app
 	}); 
 	
 	JUCI.interval.repeat("wifi.wps.retry", 1000, function(next){
-		$rpc.juci.wireless.wps.status().done(function(result){
+		$rpc.wps.status().done(function(result){
 			$scope.progress = result.code; 
 			$scope.text_status = wps_status_strings[result.code]||gettext("Unknown"); 
 			$scope.$apply();	
@@ -67,23 +67,23 @@ JUCI.app
 		}); 
 	}); 
 	
-	$rpc.juci.wireless.wps.showpin().done(function(data){
+	$rpc.wps.showpin().done(function(data){
 		$scope.generatedPIN = data.pin; 
 	}); 
 	
 	$scope.onPairPBC = function(){
-		$rpc.juci.wireless.wps.pbc();
+		$rpc.wps.pbc();
 	}
 	$scope.onPairUserPIN = function(){
 		var pin = $scope.data.userPIN.replace("-", "").replace(" ", "").match(/\d+/g).join("");
-		$rpc.juci.wireless.wps.checkpin({pin:pin }).done(function(value){
+		$rpc.wps.checkpin({pin:pin }).done(function(value){
 			if(!value) return;
 			if(!value.valid){
 				console.log("invalid wps pin");
 				alert($tr(gettext("Invalid WPS PIN")));
 				return;
 			}
-			$rpc.juci.wireless.wps.stapin({ pin: pin });
+			$rpc.wps.stapin({ pin: pin });
 		});
 	}
 	
@@ -99,9 +99,9 @@ JUCI.app
 	};
 		
 	$scope.onGeneratePIN = function(){
-		$rpc.juci.wireless.wps.genpin().done(function(data){
+		$rpc.wps.genpin().done(function(data){
 			if(!data || data.pin == "") return;
-			$rpc.juci.wireless.wps.setpin({pin: data.pin}).done(function(){
+			$rpc.wps.setpin({pin: data.pin}).done(function(){
 				$scope.generatedPIN = data.pin; 
 				$scope.$apply(); 
 			}); 
@@ -109,6 +109,6 @@ JUCI.app
 	}
 	
 	$scope.onCancelWPS = function(){
-		$rpc.juci.wireless.wps.stop(); 
+		$rpc.wps.stop(); 
 	} 
 }); 
