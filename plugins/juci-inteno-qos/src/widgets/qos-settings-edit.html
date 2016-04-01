@@ -15,6 +15,7 @@
 		<juci-select ng-items="protocols" ng-model="rule.proto.value" editable="true" placeholder="{{'All'|translate}}"></juci-select>
 	</juci-config-line>
 	<juci-config-line title="{{ 'Port' | translate }}" help="{{ 'Filter by port, when there are no ports no filter will be applied' | translate }}">
-		<tags-input ng-model="ports" display-property="value" placeholder="Add a tag"></tags-input>
+		<tags-input ng-model="data.ports" key-property="value" display-property="value" max-length="5" min-length="1" add-on-space="true" 
+					on-tag-added="onAddPort()" add-on-paste="true" on-tag-adding="evalPort($tag)" placeholder="Add a port"></tags-input>
 	</juci-config-line>
 </div>

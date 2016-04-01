@@ -31,6 +31,10 @@ JUCI.app
 	};
 })
 .controller("qosSettingsEdit", function($scope, $uci, $tr, gettext, $network, intenoQos){
+	$scope.data = {
+		ports: []
+	};
+
 	$network.getConnectedClients().done(function(data){
 		$scope.clients = data.map(function(x){
 			return {label: x.ipaddr, value: x.ipaddr }
@@ -43,12 +47,19 @@ JUCI.app
 		});
 		$scope.$apply();
 	});
-	var done = false;
 	$scope.$watch("rule", function(){
-		if(!$scope.rule || done) return;
-		done = true;
-		$scope.ports = $scope.rule.ports.value.split(",").map(function(port){return {value: port }});
+		if(!$scope.rule) return;
+		$scope.data.ports = $scope.rule.ports.value.split(",").map(function(port){return {value: port }});
 	}, false);
+
+	$scope.onAddPort = function(){
+		$scope.rule.ports.value = $scope.data.ports.map(function(p){return p.value; }).join(",");
+	}
+
+	$scope.evalPort = function(port){
+		if(port.value.match(/^[0-9]+$/) && parseInt(port.value) < 65536) return true;
+		return false;
+	}
 
 	$scope.precedence = [
 		{ label: $tr(gettext("All")),	value: '' },
