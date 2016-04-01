@@ -7,7 +7,7 @@
 		</juci-config-section>
 		<h2 translate>Quality of Service Settings</h2>
 		<juci-config-section>
-			<juci-list-editor ng-items="qos" item-editor="qos-settings-edit" sortable="true" on-item-moved="onItemMoved($item, $new_index, $prev_index)" get-item-title="$item.target.value" on-create="onAddRule()" on-delete="onDeleteRule($item)" ></juci-list-editor>
+			<juci-list-editor ng-items="qos" item-editor="qos-settings-edit" sortable="true" on-item-moved="onItemMoved($item, $new_index, $prev_index)" get-item-title="getRuleTitle($item)" on-create="onAddRule()" on-delete="onDeleteRule($item)" ></juci-list-editor>
 		</juci-config-section>
 	</div>
 </juci-layout-with-sidebar>

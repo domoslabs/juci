@@ -77,6 +77,12 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 		});
 	};
 
+	$scope.getRuleTitle = function(item){
+		return (item.target.value+" "+(item.srchost.value?("(src host: "+item.srchost.value+") "):"")+
+					(item.dsthost.value?("(dst host: "+item.dsthost.value+") "):"")+
+					(item.proto.value?("(protocol: "+item.proto.value.toUpperCase()+") "):"")+
+					(item.ports.value?("(ports: "+item.ports.value+") "):"")).substring(0, 70);
+	}
 	$scope.getIfaceTitle = function(item){
 		if(!item) return "";
 		return String(item[".name"]).toUpperCase();
