@@ -24,13 +24,13 @@ JUCI.app
 	$scope.resetPossible = 0; 
 	$scope.resetPossible = 1; 
 
-	$rpc.juci.system.conf.features().done(function(features){
+	$rpc.juci.system.conf.run({"method":"features"}).done(function(features){
 		$scope.features = features; 
 	}); 
 
 	$scope.onReset = function(){
 		if(confirm(gettext("This will reset your configuration to factory defaults. Do you want to continue?"))){
-			$rpc.juci.system.defaultreset().done(function(result){
+			$rpc.juci.system.run({"method":"defaultreset"}).done(function(result){
 				console.log("Performing reset: "+JSON.stringify(result)); 
 				window.location = "/reboot.html";  
 			}); 
@@ -61,25 +61,26 @@ JUCI.app
 		$("#postiframe").bind("load", function(){
 			var json = $(this).contents().text(); 
 			try {
-				var obj = JSON.parse(json); 
 				$scope.onUploadComplete(JSON.parse(json));
-			} catch(e){}
+			} catch(e){
+				console.log(e);
+			}
 			$(this).unbind("load"); 
 		}); 
 		$("form[name='restoreForm']").submit();
 	}
 	$scope.onUploadComplete = function(result){
 		console.log("Uploaded: "+JSON.stringify(result)); 
-		$rpc.juci.system.conf.restore({
+		$rpc.juci.system.conf.run({"method":"restore","args":JSON.stringify({
 			pass: $scope.data.pass
-		}).done(function(result){
+		})}).done(function(result){
 			if(result.error){
 				alert(result.error); 
 			} else {
 				$scope.showUploadModal = 0; 
 				$scope.$apply(); 
 				if(confirm($tr(gettext("Configuration has been restored. You need to reboot the device for settings to take effect! Do you want to reboot now?")))){
-					$rpc.juci.system.reboot(); 
+					$rpc.juci.system.run({"method":"reboot"}); 
 				}
 			}
 		}).fail(function(err){

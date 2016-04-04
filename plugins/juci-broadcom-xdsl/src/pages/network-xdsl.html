@@ -1,0 +1,80 @@
+<juci-layout-with-sidebar>
+	<div ng-controller="broadcomXdslCtrl">
+		<juci-config-heading>{{'xDSL Settings'|translate}}</juci-config-heading>
+		<juci-config-info>{{'xDSL Line settings and profiles'|translate}}</juci-config-info>
+		<accordion close-others="true">
+			<accordion-group heading="{{'Modulation'|translate}}" is-open="true">
+				<juci-config-section>
+					<juci-config-lines>
+						<juci-config-line title="{{'G.Dmt'|translate}}">
+							<switch class="green" ng-model="cap.GDmt.value" />
+						</juci-config-line>
+						<juci-config-line title="{{'G.lite'|translate}}">
+							<switch class="green" ng-model="cap.Glite.value" />
+						</juci-config-line>
+						<juci-config-line title="{{'T.1413'|translate}}">
+							<switch class="green" ng-model="cap.T1413.value" />
+						</juci-config-line>
+						<juci-config-line title="{{'ADSL2'|translate}}">
+							<switch class="green" ng-model="cap.ADSL2.value" />
+						</juci-config-line>
+						<juci-config-line title="{{'AnnexL'|translate}}">
+							<switch class="green" ng-model="cap.AnnexL.value" />
+						</juci-config-line>
+						<juci-config-line title="{{'ADSL2+'|translate}}">
+							<switch class="green" ng-model="cap.ADSL2plus.value" />
+						</juci-config-line>
+						<juci-config-line title="{{'AnnexM'|translate}}">
+							<switch class="green" ng-model="cap.AnnexM.value" />
+						</juci-config-line>
+						<juci-config-line title="{{'VDSL2'|translate}}">
+							<switch class="green" ng-model="cap.VDSL2.value" />
+						</juci-config-line>
+					</juci-config-lines>
+				</juci-config-section>
+			</accordion-group>
+			<accordion-group heading="{{'VDSL Profile'|translate}}" ng-show="hasVdsl" is-open="false">
+				<juci-config-section>
+					<juci-config-lines>
+						<juci-config-line title="{{'8a'|translate}}">
+							<switch class="green" ng-model="cap['8a'].value" />
+						</juci-config-line>
+						<juci-config-line title="{{'8b'|translate}}">
+							<switch class="green" ng-model="cap['8b'].value" />
+						</juci-config-line>
+						<juci-config-line title="{{'8c'|translate}}">
+							<switch class="green" ng-model="cap['8c'].value" />
+						</juci-config-line>
+						<juci-config-line title="{{'8d'|translate}}">
+							<switch class="green" ng-model="cap['8d'].value" />
+						</juci-config-line>
+						<juci-config-line title="{{'12a'|translate}}">
+							<switch class="green" ng-model="cap['12a'].value" />
+						</juci-config-line>
+						<juci-config-line title="{{'12b'|translate}}">
+							<switch class="green" ng-model="cap['12b'].value" />
+						</juci-config-line>
+						<juci-config-line title="{{'17a'|translate}}">
+							<switch class="green" ng-model="cap['17a'].value" />
+						</juci-config-line>
+					</juci-config-lines>
+				</juci-config-section>
+			</accordion-group>
+			<accordion-group heading="{{'Capabilities'|translate}}" ng-show="hasVdsl" is-open="false">
+				<juci-config-section>
+					<juci-config-lines>
+						<juci-config-line title="{{'US0'|translate}}">
+							<switch class="green" ng-model="cap['US0'].value" />
+						</juci-config-line>
+						<juci-config-line title="{{'Bitswap'|translate}}">
+							<switch class="green" ng-model="cap['bitswap'].value" />
+						</juci-config-line>
+						<juci-config-line title="{{'SRA'|translate}}">
+							<switch class="green" ng-model="cap['sra'].value" />
+						</juci-config-line>
+					</juci-config-lines>
+				</juci-config-section>
+			</accordion-group>
+		</accordion>
+	</div>
+</juci-layout-width-sidebar>

@@ -64,7 +64,7 @@ JUCI.app
 			'<div class="col-xs-6 juci-config-line-data">'+
 				'<div class="{{pullClass}}" ng-transclude></div>'+
 			'</div></div>'+
-			'<div class="alert alert-danger" style="font-size: 0.8em" ng-show="error">{{error}}</div>'+
+			'<div class="alert alert-danger" style="font-size: 0.8em" ng-show="er">{{er}}</div>'+
 			'</div>', 
 		replace: true, 
 		scope: {
@@ -72,18 +72,25 @@ JUCI.app
 			help: "@", 
 			error: "="
 		}, 
+		controller: "juciConfigLineController",
 		transclude: true, 
 		link: function (scope, element, attrs) {
 			if(!("noPull" in attrs)) scope.pullClass = "pull-right";
-			scope.$watch("error", function(value){
-				if(value){
-					scope.errorClass = "field-error"; 
-				} else {
-					scope.errorClass = ""; 
-				}
-			}); 
 		}
 	};  
+})
+.controller("juciConfigLineController", function($scope, $tr){
+	$scope.errorClass = "";
+	$scope.$watch("error", function(er){
+		if(er !== null && er !== undefined){
+			console.log(er);
+			$scope.er = $tr(er);
+			$scope.errorClass = "field-error";
+		}else{
+			$scope.er = false;
+			$scope.errorClass = "";
+		}
+	},false);
 })
 .directive("juciConfigApply", function(){
 	return {
@@ -91,7 +98,7 @@ JUCI.app
 			'<div class="alert alert-danger" ng-show="errors && errors.length"><ul><li ng-repeat="e in errors track by $index">{{e|translate}}</li></ul></div>'+
 			'<div class="alert alert-success" ng-show="!errors.length && success">{{success}}</div>'+
 			'<div class="btn-toolbar" >'+
-			'<button class="btn btn-lg btn-default" ng-show="changes && changes.length" ng-click="showChanges()">{{"Unapplied Changes" | translate}} <span class="badge">{{numUnsavedChanges()}}</span></button>'+
+			'<button class="btn btn-lg btn-default" ng-show="changes && changes.length && hasCapability" ng-click="showChanges()">{{"Unapplied Changes" | translate}} <span class="badge">{{numUnsavedChanges()}}</span></button>'+
 			'<span ng-hide="changes && changes.length">{{"No unsaved changes" | translate}}</span>'+
 			'<button class="btn btn-lg btn-default col-lg-2 pull-right" ng-click="onCancel()" ng-disabled="changes && !changes.length" title="{{\'Discard all changes and reload\'|translate}}">{{ "Cancel" | translate }}</button>'+
 			'<button class="btn btn-lg btn-primary col-lg-2 pull-right" ng-click="onApply()" title="{{\'Write settings to the router\'|translate}}" ng-disabled="busy"><i class="fa fa-spinner" ng-show="busy"/>{{ "Apply"| translate }}</button>'+
@@ -103,6 +110,7 @@ JUCI.app
 		controller: "juciConfigApplyController"
 	 }; 
 }).controller("juciConfigApplyController", function($scope, $uci, $rootScope, $tr, gettext, $juciDialog){
+	$scope.hasCapability = $rootScope.has_capability("can-view-changes");
 	$scope.numUnsavedChanges = function(){
 		$scope.changes = $uci.$getChanges();
 		return $scope.changes.length;
@@ -132,18 +140,13 @@ JUCI.app
 			$uci.$save().done(function(){
 				$scope.numUnsavedChanges(); 
 				console.log("Saved uci configuration!"); 
+				$scope.$apply(); 
 			}).fail(function(errors){
-				$scope.errors = errors; 
+				$scope.errors = errors.map(function(e){return $tr(e);}); 
 				$scope.$emit("errors", errors); 
 				console.error("Could not save uci configuration!"); 
 			}).always(function(){
 				$scope.busy = 0; 
-				// I'm removing the success reporting for now because the pane automatically hides when all changes have been applied.  
-				//$scope.success = gettext("Settings have been applied successfully!"); 
-				$scope.$apply(); 
-				/*setTimeout(function(){
-					$scope.success = null; 
-				}, 1000); */
 			}); 
 		} catch(e){
 			$scope.busy = 0; 

@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("SettingsSystemGeneral", function($scope, $rpc, $uci, $tr, gettext){
+.controller("SettingsSystemGeneral", function($scope, $rpc, $uci){
 	async.series([
 		function(next){
 			$uci.$sync("system").done(function(){
@@ -34,7 +34,7 @@ JUCI.app
 			}).always(function(){next();}); 
 		}, 
 		function(next){
-			$rpc.juci.system.time.zonelist().done(function(result){
+			$rpc.juci.system.time.run({"method":"zonelist"}).done(function(result){
 				if(result && result.zones){
 					$scope.timezones = result.zones; 
 					$scope.allTimeZones = Object.keys(result.zones).sort().map(function(k){
@@ -54,24 +54,19 @@ JUCI.app
 		if(!value || !$scope.timezones) return; 
 		$scope.system.timezone.value = $scope.timezones[value]; 
 	}); 
-	
+
 	$scope.$watch("system.hostname.value", function(value){
-		if(value == undefined) return; 
-		if(!value) $scope.system.hostname.value = $scope.boardinfo.model.replace(" ", "_"); 
-	}); 
+		if(value == undefined) return;
+		if(!value) $scope.system.hostname.value = $scope.boardinfo.model.replace(" ", "_");
+	});
 
 	JUCI.interval.repeat("system.time", 1000, function(done){
-		$rpc.juci.system.time.get().done(function(result){
-			$scope.localtime = result.local_time; 
-			$scope.$apply(); 
-			done(); 
-		}); 
-	}); 
-	
-	$scope.setRouterTimeToBrowserTime = function(){
-		$rpc.juci.system.time.set({ unix_time: Math.floor((new Date()).getTime() / 1000) }).done(function(){
-			
-		}); 
-	}; 
-}); 
+		$rpc.juci.system.time.run({"method":"get"}).done(function(result){
+			$scope.localtime = result.local_time;
+			$scope.$apply();
+			done();
+		});
+	});
+
+});
 

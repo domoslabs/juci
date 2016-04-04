@@ -3,7 +3,7 @@
 . /usr/share/libubox/jshn.sh
 
 get_wireless_devices(){
-	echo `ip link | awk 'BEGIN { FS=": "; } /^[[:digit:]]{2}/ { if(match($2, /wl/)) print $2 }'`
+	echo `ip link | awk 'BEGIN { FS=": "; } /^[[:digit:]]{1,2}/ { if(match($2, /wl/)) print $2 }'`
 }
 
 # wireless info dump. Expected output of wlctl: 
@@ -66,6 +66,8 @@ wireless_devices(){
 		
 		json_add_object
 		json_add_string "device" "$wdev"; 
+		RATE=$(wlctl -i $wdev rate);
+		json_add_string "rate" "$RATE";
 		for field in $DATA; do 
 			type=${field%%|*}
 			nv=${field##*|}
@@ -158,6 +160,8 @@ wireless_radios(){
 		# the Mode line will contain channel 
 		CHAN=$(wlctl -i $radio assoc|grep "Primary channel"|awk '{print $NF}');
 		json_add_string "current_channel" $CHAN
+		RATE=$(wlctl -i $radio rate);
+		json_add_string "rate" "$RATE";
 		json_add_string "frequency" "$FREQ"
 		json_add_boolean "isup" "$(wlctl -i $radio isup)";
 		json_close_object

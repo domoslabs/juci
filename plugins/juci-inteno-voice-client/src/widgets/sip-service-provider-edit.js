@@ -11,7 +11,7 @@ JUCI.app
 		require: "^ngModel",
 		controller: "sipServiceProviderEditCtrl"
 	};
-}).controller("sipServiceProviderEditCtrl", function($scope, $uci, $tr, gettext){
+}).controller("sipServiceProviderEditCtrl", function($scope, $uci, $tr, gettext, $config){
 	$scope.selected_lines = [];
 	$uci.$sync("voice_client").done(function(){
 		$scope.brcm_lines = $uci.voice_client["@brcm_line"];
@@ -22,6 +22,7 @@ JUCI.app
 	});
 	$scope.$watch("model", function(){
 		if(!$scope.model) return;
+		$scope.showExpert = $config.local.mode == "expert";
 		$scope.selected_lines = $scope.model.call_lines.value.split(" ").map(function(x){
 			var name = String(x);
 			var number = name.split("/").pop();
@@ -36,7 +37,7 @@ JUCI.app
 		});
 		fixCodecs();
 	});
-	$scope.onLineChange = function(line){
+	$scope.onLineChange = function(){
 		$scope.model.call_lines.value = $scope.lines.filter(function(x){return x.checked}).map(function(x){
 			return x.value.toUpperCase().slice(0, -1) + "/" + x.value.toUpperCase().slice(-1);
 		}).join(" ");
@@ -63,7 +64,7 @@ JUCI.app
 				return true;
 			});
 		}
-	};
+	}
 	$scope.updateCodecList = function(value, index){
 		for(var i = index; i < 7; i++){
 			$scope.model[codecNames[i]].value = "";
@@ -83,7 +84,7 @@ JUCI.app
 	$scope.transportTypes = [
 		{ label: $tr(gettext("UDP")),	value: "udp" },
 		{ label: $tr(gettext("TCP")),	value: "tcp" },
-		{ label: $tr(gettext("TLS")),	value: "tls" },
+		{ label: $tr(gettext("TLS")),	value: "tls" }
 	];
 	$scope.showPassword = false;
 	$scope.togglePassword = function(){

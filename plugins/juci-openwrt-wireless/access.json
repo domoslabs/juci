@@ -4,13 +4,14 @@
 		"read": {
 			"ubus": {
 				"/juci/wireless": [
-					"devices",
-					"caps", 
-					"radios", 
-					"clients",
-					"countrylist",
-					"htmodelist", 
-					"freqlist"
+					"run"
+					/*"devices",*/
+					/*"caps", */
+					/*"radios", */
+					/*"clients",*/
+					/*"countrylist",*/
+					/*"htmodelist", */
+					/*"freqlist"*/
 				]
 			},
 			"uci": [ "wireless" ]

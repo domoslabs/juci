@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("firewallMaclistEdit", function($compile){
+.directive("firewallMaclistEdit", function(){
 	return {
 		templateUrl: "/widgets/firewall-maclist-edit.html", 
 		scope: {
@@ -27,9 +27,9 @@ JUCI.app
 		}, 
 		controller: "firewallMaclistEdit", 
 		replace: true
-	 };  
+	};  
 })
-.controller("firewallMaclistEdit", function($scope, $config, $uci, $rpc, $network, $localStorage, $state, gettext){ 
+.controller("firewallMaclistEdit", function($scope, $network){ 
 	$network.getConnectedClients().done(function(clients){
 		$scope.connectedHosts = clients.map(function(client){
 			return { 

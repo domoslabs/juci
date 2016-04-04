@@ -17,7 +17,7 @@
  */
 
 JUCI.app
-.directive("wirelessApsGraph", function($compile, $parse){
+.directive("wirelessApsGraph", function(){
 	return {
 		templateUrl: "/widgets/wireless-aps-graph.html", 
 		scope: {
@@ -25,7 +25,7 @@ JUCI.app
 		}, 
 		controller: "wirelessApsGraph", 
 		replace: true 
-	 };  
+	};
 }).controller("wirelessApsGraph", function($scope){
 	var	container = document.getElementById('graph');	
 	var items = []; 
@@ -36,7 +36,7 @@ JUCI.app
 		end: 20,
 		style: 'bar',
 		drawPoints: {
-			onRender: function(item, group, grap2d) {
+			onRender: function(item) {
 				return item.label != null;
 			},
 			style: 'circle'
@@ -73,7 +73,15 @@ JUCI.app
 
 	$scope.$watch("scan_list", function(value){
 		if(!value) return; 		
-	
+		var min = parseInt(value[0].channel);
+		var max = parseInt(value[0].channel);
+		value.map(function(val){
+			if(parseInt(val.channel) > max) max = parseInt(val.channel);
+			if(parseInt(val.channel) < min) min = parseInt(val.channel);
+		});
+		options.start = (min - 5);
+		options.end = (max + 5);
+		graph2d.setOptions(options);
 		dataset.remove(dataset.getIds()); 
 		value.map(function(ap){
 			var group = 1; 

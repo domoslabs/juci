@@ -19,16 +19,12 @@
  */
 
 JUCI.app
-.directive("sambaUserEdit", function($compile){
+.directive("sambaUserEdit", function(){
 	return {
 		scope: {
 			user: "=ngModel"
 		}, 
 		templateUrl: "/widgets/samba-user-edit.html", 
-		controller: "sambaUserEdit", 
 		replace: true
-	 };  
-})
-.controller("sambaUserEdit", function($scope){
-
+	};
 }); 

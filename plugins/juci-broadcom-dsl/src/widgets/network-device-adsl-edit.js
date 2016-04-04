@@ -1,7 +1,7 @@
 //! Author: Martin K. Schröder <mkschreder.uk@gmail.com>
 
 JUCI.app
-.directive("networkDeviceAdslEdit", function($compile){
+.directive("networkDeviceAdslEdit", function(){
 	return {
 		scope: {
 			device: "=ngModel"
@@ -36,7 +36,7 @@ JUCI.app
 			{ label: $tr(gettext("UBR With PCR")), value: "ubr_pcr" }, 
 			{ label: $tr(gettext("CBR")), value: "cbr" }, 
 			{ label: $tr(gettext("Non-Realtime VBR")), value: "nrtvbr" }, 
-			{ label: $tr(gettext("Realtime VBR")), value: "rtvbr" }, 
+			{ label: $tr(gettext("Realtime VBR")), value: "rtvbr" }
 		]; 
 		
 		$scope.baseDevices = baseDevices; 

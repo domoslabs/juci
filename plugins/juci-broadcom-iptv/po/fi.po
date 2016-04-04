@@ -1,0 +1,132 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: Inteno\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.5\n"
+
+msgid "No DSCP"
+msgstr "Ei DSCP:tä"
+
+msgid "Standard (CS0)"
+msgstr "Normaali (CS0)"
+
+msgid "Low-Priority Data"
+msgstr "Alhaisen prioriteetin data"
+
+msgid "High-Throughput Data"
+msgstr "Korkean prioriteetin data"
+
+msgid "Operation, Administration and Maintenance"
+msgstr "Käyttö, hallinta ja ylläpito"
+
+msgid "Low-Latency Data"
+msgstr "Alhaisen latenssin data"
+
+msgid "Broadcast Video"
+msgstr "Video broadcast"
+
+msgid "Multimedia Streamingi"
+msgstr "Multimedian suoratoisto"
+
+msgid "Realtime Interactive"
+msgstr "Reaaliaikainen interaktiivinen"
+
+msgid "Multimedia Conferencing"
+msgstr "Multimedia Conferencing"
+
+msgid "Signaling"
+msgstr "Signalointi"
+
+msgid "Telephony"
+msgstr "Puheliikenne"
+
+msgid "Network Control"
+msgstr "Verkon hallinta"
+
+msgid "IGMP version "
+msgstr "IGMP versio"
+
+msgid "Disabled"
+msgstr "Pois käytöstä"
+
+msgid "Standard"
+msgstr "Normaali"
+
+msgid "Blocking"
+msgstr "Estävä"
+
+msgid "Differentiated Services Code Point (DSCP)"
+msgstr ""
+
+msgid "Will be used to mark all outgoing IGMP packets"
+msgstr "Käytetään kaikkien lähtevien IGMP pakettien merkitsemiseen"
+
+msgid "Proxy interface"
+msgstr "Välityspalvelimen liitäntä"
+
+msgid "Default version"
+msgstr "Oletusversio"
+
+msgid "Choose default version from list"
+msgstr "Valitse oletusversio listasta"
+
+msgid "Query interval"
+msgstr ""
+
+msgid "Query response interval"
+msgstr ""
+
+msgid "Last member query interval"
+msgstr ""
+
+msgid "Robustness value"
+msgstr ""
+
+msgid "LAN to LAN multicast"
+msgstr ""
+
+msgid "Check box to enable LAN to LAN multicast"
+msgstr " "
+
+msgid "Max groups"
+msgstr "Max ryhmät"
+
+msgid "Max sources"
+msgstr "Max lähteet"
+
+msgid "Max members"
+msgstr "Max jäsenet"
+
+msgid "Fast leave"
+msgstr ""
+
+msgid "Join immediate"
+msgstr "Liity heti"
+
+msgid "Enable IGMP proxy"
+msgstr "Ota IGMP välityspalvelin käyttöön"
+
+msgid "Ignore SSM Range"
+msgstr ""
+
+msgid "Check box to ignore SSM RFC to enable regular multicast on SSM-Range"
+msgstr ""
+
+msgid "IGMP snooping mode"
+msgstr ""
+
+msgid "IGMP snooping interfaces"
+msgstr ""
+
+msgid "No mcpd configuration found!"
+msgstr "MCPD konfiguraatiota ei löydy"
+
+msgid "menu-broadcom-iptv-title"
+msgstr "IPTV"

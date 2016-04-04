@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("uciFirewallNatRuleEdit", function($compile, $parse){
+.directive("uciFirewallNatRuleEdit", function(){
 	return {
 		templateUrl: "/widgets/uci.firewall.nat.rule.edit.html", 
 		scope: {
@@ -27,21 +27,17 @@ JUCI.app
 		}, 
 		controller: "uciFirewallNatRuleEdit", 
 		replace: true
-	 };  
-}).controller("uciFirewallNatRuleEdit", function($scope, $uci, $rpc, $firewall, $network, $log){
+	};  
+}).controller("uciFirewallNatRuleEdit", function($scope, $uci, $rpc, $firewall, $network){
 	$scope.portIsRange = 0;
 	$scope.data = {}; 
 	$scope.$watch("rule", function(value){
 		if(!value) return;
-		// TODO: why does rule all of a sudden gets value that is not a uci sectioN??
 		if(!value[".config"]) { 
 			console.error("nat-rule-edit: invalid ngModel! must be config section! "+Object.keys(value)); 
 			return; 
 		}
 		$scope.data.src_ip_enabled = (value.src_ip.value)?true:false; 
-		if(value.src_dport.value && value.dest_port.value){	
-			$scope.portIsRange = (value.src_dport.value.indexOf("-") != -1) || (value.dest_port.value.indexOf("-") != -1); 
-		}
 	}); 
 	$scope.$watch("data.src_ip_enabled", function(value){
 		if($scope.rule && value == false) $scope.rule.src_ip.value = ""; 

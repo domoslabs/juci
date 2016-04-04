@@ -19,7 +19,6 @@
  */
 
 (function(scope){
-	//var JUCI = exports.JUCI; 
 	var $rpc = scope.UBUS; 
 	
 	function DefaultValidator(){
@@ -74,16 +73,20 @@
 
 	function PortValidator(){
 		this.validate = function(field){
-			if(field.value == undefined) return null; 
-			var is_range = String(field.value).indexOf("-") != -1; 
-			var parts = String(field.value).split("-"); 
-			if(is_range && parts.length != 2) return gettext("Port range must have start and end port!"); 
-			if(!is_range && parts.length != 1) return gettext("You must specify port value!"); 
-			var invalid = parts.find(function(x){ return !String(x).match(/^\d+$/) || Number(x) < 1 || Number(x) > 65535; }); 
-			if(invalid != undefined) return gettext("Invalid port number (must be a number between 1 and 65535!)"+" ("+invalid+")"); 
-			if(is_range && Number(parts[0]) > Number(parts[1])) return gettext("Start port must be smaller or equal to end port!"); 
-			return null; 
-		};
+			if(!field || !field.value) return null;
+			if(field.value.match(/^[0-9]+-[0-9]+$/)){ //type is port range
+				var start = parseInt(field.value.split("-")[0]);
+				var stop = parseInt(field.value.split("-")[1]);
+				if(start < 1 || start > 65535 || stop < 1 || stop > 65535 || start > stop || start == stop) return gettext("A port is between 1 and 65535 and start port must be lower than stop port");
+			}else if(field.value.match(/^[0-9]+$/)){
+				var num = parseInt(field.value);
+				if(num < 1 || num > 65535) return gettext("A port is between 1 and 65535");
+			}
+			else {
+				return gettext("A port can only be a number between 1 and 65535 or a range on the form number-number");
+			}
+			return null;
+		};	
 	}
 	
 	function NumberLimitValidator(min, max){
@@ -171,6 +174,18 @@
 		}
 	};
 
+	function IP6CIDRValidator(){
+		this.validate = function(field){
+			var error = gettext("Address must be a valid IPv6 CIDR Validator (IPv6-address/Mask)");
+			var ip = field.value.split("/")[0];
+			var mask = field.value.split("/")[1];
+			if(!ip || !mask) return error;
+			if(parseInt(mask) > 128 || parseInt(mask) < 1) return error;
+			var ip6 = new IP6AddressValidator();
+			return ip6.validate({value:ip});
+		}
+	};
+
 	function MACAddressValidator(){
 		this.validate = function(field){
 			if(!(typeof field.value == "string") ||
@@ -178,7 +193,7 @@
 				return gettext("Value must be a valid MAC-48 address"); 
 			return null; 
 		}
-	};	 
+	}; 
 
 	function MACListValidator(){
 		this.validate = function(field){
@@ -456,7 +471,7 @@
 			Object.keys(type).map(function(k){
 				var err = self[k].error; 
 				if(err){
-					errors.push(k+": "+err); 
+					errors.push(err); 
 				}
 			}); 
 			var type = this[".section_type"]; 
@@ -548,9 +563,9 @@
 				if(self[x] && self[x].constructor == UCI.Section) {
 					self[x].$getErrors().map(function(e){
 						if(e instanceof Array){
-							errors = errors.concat(e.map(function(err){ return self[".name"]+"."+x+": "+err;}));
+							errors = errors.concat(e);
 						}else{
-							errors.push(self[".name"]+"."+x+": "+e);
+							errors.push(e);
 						}
 					}); 
 				}
@@ -936,7 +951,7 @@
 						}
 					}*/
 					self[cf].$sync().done(function(){
-						console.log("Synched config "+cf); 
+						//console.log("Synched config "+cf); 
 						//self[cf].$lastSync = new Date(); 
 						next(); 
 					}).fail(function(){
@@ -1124,6 +1139,7 @@
 		MACListValidator: MACListValidator,
 		IPAddressValidator: IPAddressValidator,
 		IP6AddressValidator: IP6AddressValidator,
+		IP6CIDRValidator: IP6CIDRValidator,
 		IP4AddressValidator: IP4AddressValidator,
 		IP4NetmaskValidator: IP4NetmaskValidator,
 		IP4MulticastAddressValidator: IP4MulticastAddressValidator,

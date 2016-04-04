@@ -4,29 +4,33 @@
 		"read": {
 			"ubus": {
 				"/juci/network": [
-					"clients", 
+					"run"
+					/*"clients", 
 					"load", 
 					"nat_table", 
 					"nameservers",
 					"services",
-					"protocols"
+					"protocols"*/
 				], 
 				"/juci/modems": [
-					"list",
-					"list4g"
+					"run"
+					/*"list",
+					"list4g"*/
 				],
 				"/juci/network.status": [ 
-					"arp", 
+					"run"
+					/*"arp", 
 					"ipv4routes", 
 					"ipv6routes",
-					"ipv6neigh"
+					"ipv6neigh"*/
 				], 
 				"network.interface": [
 					"dump"
 				], 
 				"router": [
 					"boardinfo", 
-					"clients"
+					"clients",
+					"clients6"
 				]
 			}, 
 			"uci": [

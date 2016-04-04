@@ -4,7 +4,8 @@
 		"read": {
 			"ubus": {
 				"/juci/broadcom.dsl": [
-					"status"
+					"run"
+					/*"status"*/
 				]
 			}, 
 			"uci": [

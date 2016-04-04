@@ -31,11 +31,11 @@ JUCI.app
 		$scope.adapters = adapters.filter(function(a){
 			return (!a.flags || !a.flags.match("NOARP")); 
 		}).map(function(a){
-			var type = "unknown"; 
-			if(["eth", "eth-bridge", "eth-port", "vlan", "wireless", "vdsl", "adsl"].indexOf(a.type) != -1){ 
-				type = a.type; 
-			} 
-			a._icon = type+((a.state == "DOWN")?"_disabled":""); 
+			if(a.device.match(/^wl.*/)) a._icon = "fa fa-wifi";
+			if(a.device.match(/^eth.*/)) a._icon = "juci juci-ethernet";
+			if(a.device.match(/^br.*/)) a._icon = "juci juci-bridge";
+			if(a.device.match(/^ptm.*/)) a._icon = "juci juci-VDSL";
+			if(a.device.match(/^atm.*/)) a._icon = "juci juci-ADSL";
 			return a; 
 		}); 
 		$scope.$apply(); 

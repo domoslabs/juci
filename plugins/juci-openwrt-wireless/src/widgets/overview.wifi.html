@@ -1,10 +1,5 @@
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title" style="font-size: 1.7em; padding-top: 0.3em; font-weight: bold; font-family: 'eurostyle';">
-			<i class="fa fa-wifi" style="margin-right: 10px;"/>{{'WiFi'|translate}}
-		</h3>
-	</div>
-	<div class="panel-body">
+<div>
+	<juci-overview-widget title="{{'WiFi'|translate}}" icon="fa fa-wifi">
 		<div class="row" style="margin-bottom: 10px;">
 			<div class="col-xs-3" style="text-align: center;"><i class="fa fa-calendar fa-2x"></i></div>
 			<div class="col-xs-7" style="padding-left: 0px">
@@ -34,7 +29,7 @@
 				<table class="table table-condensed" ng-repeat="iface in vifs track by $index">
 					<thead>
 						<th colspan="2">
-							<i class="fa fa-edit" style="float: right; cursor: pointer;" ng-click="onEditSSID(iface)"></i>
+							<i class="fa fa-edit fa-2x" style="float: right; cursor: pointer;" ng-click="onEditSSID(iface)"></i>
 							<i class="fa fa-toggle-right" style="cursor: pointer;" ng-show="!iface._expanded" ng-click="iface._expanded = !iface._expanded"></i>
 							<i class="fa fa-toggle-down" style="cursor: pointer;" ng-show="iface._expanded" ng-click="iface._expanded = !iface._expanded"></i>
 							<span ng-click="iface._expanded = !iface._expanded" style="cursor: pointer;">{{iface.ssid + ' (' + iface.mode + ')'}}</span>
@@ -48,5 +43,5 @@
 				</table>
 			</div>
 		</div>
-	</div>
+	</juci-overview-widget>
 </div>

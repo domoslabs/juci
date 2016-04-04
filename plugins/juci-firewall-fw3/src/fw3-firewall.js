@@ -1,3 +1,4 @@
+/*global gettext:false*/
 /*
  * Copyright (C) 2015 Inteno Broadband Technology AB. All rights reserved.
  *
@@ -19,7 +20,7 @@
  */
 
 JUCI.app
-.factory("$firewall", function($uci, $network){
+.factory("$firewall", function($uci, $network, gettext){
 	var firewall = 0; 
 	function sync(){
 		var deferred = $.Deferred(); 
@@ -44,13 +45,14 @@ JUCI.app
 			var deferred = $.Deferred(); 
 			if(!opts) opts = {}; 
 			sync().done(function(){
+				var rules;
 				if(opts.from_zone){
-					var rules = $uci.firewall["@rule"].filter(function(rule){
+					rules = $uci.firewall["@rule"].filter(function(rule){
 						return rule.src == opts.from_zone; 
 					});
 					deferred.resolve(rules); 
 				} if(opts.to_zone){
-					var rules = $uci.firewall["@rule"].filter(function(rule){
+					rules = $uci.firewall["@rule"].filter(function(rule){
 						return rule.dest == opts.to_zone; 
 					});
 					deferred.resolve(rules); 
@@ -74,9 +76,9 @@ JUCI.app
 					}else if(zone == "wan"){
 						selected_zone = $uci.firewall["@zone"].filter(function(x){ return x.masq.value == true; });
 					}else{
-						var selected_zone = [$uci.firewall["@zone"].find(function(x){ return x.name.value == zone; }) ];
+						selected_zone = [$uci.firewall["@zone"].find(function(x){ return x.name.value == zone; }) ];
 					}
-					if(!selected_zone) {
+					if(selected_zone.length < 1) {
 						def.reject({error: "Zone does not exist!"}); 
 						return; 
 					}
@@ -98,8 +100,14 @@ JUCI.app
 			async.series([
 				function(next){
 					sync().always(function(){
-						selected_zone = $uci.firewall["@zone"].find(function(x){ return x.name.value == zone;});
-						if(!selected_zone) {
+						if(zone == "lan"){
+							selected_zone = $uci.firewall["@zone"].filter(function(x){ return x.masq.value == false;});
+						}else if(zone == "wan"){
+							selected_zone = $uci.firewall["@zone"].filter(function(x){ return x.masq.value == true;});
+						}else{
+							selected_zone = [$uci.firewall["@zone"].filter(function(x){ return x.name.value == zone;})];
+						}
+						if(selected_zone.length < 1) {
 							def.reject({error: gettext("Zone does not exist!")}); 
 							return; 
 						}
@@ -119,7 +127,9 @@ JUCI.app
 			], function(){
 				//filter out networks by the selected zone
 				var zone_networks = networks.filter(function(net){
-					return selected_zone.network.value.find(function(zone_net){ return zone_net == net[".name"]; }) !== undefined;
+					return selected_zone.find(function(zone){
+						return zone.network.value.find(function(zone_net){ return zone_net == net[".name"]; }) !== undefined;
+					}) !== undefined;
 				});
 				if(zone_networks.length == 0){
 					def.reject({ error: "Found no networks in zone" });
@@ -199,7 +209,7 @@ JUCI.app.run(function($uci){
 			$uci.firewall.$create({
 				".type": "settings", 
 				".name": "settings"
-			}).done(function(settings){
+			}).done(function(){
 				$uci.$save(); 
 			}); 
 		}
@@ -242,9 +252,7 @@ UCI.firewall.$registerSectionType("redirect", {
 	"dest_port":		{ dvalue: "", type: String, validator: UCI.validators.PortValidator },
 	"reflection": 		{ dvalue: false, type: Boolean }
 }, function(section){
-	if(!section.name.value) return gettext("Rule name can not be empty!"); 
 	if(!section.src_dport.value) return gettext("Source port can not be empty!"); 
-	if(!section.dest_port.value) return gettext("Dest. port can not be empty!"); 
 	return null; 
 }); 
 
@@ -262,16 +270,16 @@ UCI.firewall.$registerSectionType("dmz", {
 }); 
 
 UCI.firewall.$registerSectionType("rule", {
-	"type": 				{ dvalue: "generic", type: String }, 
-	"name":					{ dvalue: "", type: String }, 
-	"src":					{ dvalue: "", type: String }, 
-	"src_ip":				{ dvalue: "", type: String }, // needs to be extended type of ip address/mask
+	"type": 			{ dvalue: "generic", type: String }, 
+	"name":				{ dvalue: "", type: String }, 
+	"src":				{ dvalue: "", type: String }, 
+	"src_ip":			{ dvalue: [], type: Array }, // needs to be extended type of ip address/mask
 	"src_mac": 			{ dvalue: [], type: Array, validator: UCI.validators.MACListValidator }, 
-	"src_port":			{ dvalue: "", type: String }, // can be a range
+	"src_port":			{ dvalue: "", type: String, validator:  UCI.validators.PortValidator }, // can be a range
 	"dest":				{ dvalue: "", type: String }, 
-	"dest_ip":			{ dvalue: "", type: String }, // needs to be extended type of ip address/mask
-	"dest_mac":			{ dvalue: "", type: String },
-	"dest_port":		{ dvalue: "", type: String }, // can be a range
+	"dest_ip":			{ dvalue: [], type: Array }, // needs to be extended type of ip address/mask
+	"dest_mac":			{ dvalue: [], type: Array, validator: UCI.validators.MACListValidator },
+	"dest_port":		{ dvalue: "", type: String, validator: UCI.validators.PortValidator }, // can be a range
 	"proto":			{ dvalue: "any", type: String }, 
 	"target":			{ dvalue: "REJECT", type: String }, 
 	"family": 			{ dvalue: "ipv4", type: String }, 
@@ -287,8 +295,7 @@ UCI.firewall.$registerSectionType("rule", {
 	"stop_time":		{ dvalue: "", type: String, validator:  UCI.validators.TimeValidator }, 
 	"weekdays":			{ dvalue: "", type: String }, 
 	"monthdays":		{ dvalue: "", type: String }, 
-	"utc_time":			{ dvalue: "", type: Boolean }, 
-	"enabled":			{ dvalue: true, type: Boolean }, 
+	"utc_time":			{ dvalue: "", type: Boolean }
 });
 
 UCI.firewall.$registerSectionType("settings", {
@@ -298,7 +305,7 @@ UCI.firewall.$registerSectionType("settings", {
 }); 
 
 UCI.firewall.$registerSectionType("urlblock", {
-	"enabled": { dvalue: false, type: Boolean }, 
-	"url": 					{ dvalue: [], type: Array }, 
-	"src_mac": 			{ dvalue: [], type: Array, validator: UCI.validators.MACListValidator }, 
+	"enabled":	{ dvalue: false, type: Boolean }, 
+	"url": 		{ dvalue: [], type: Array }, 
+	"src_mac": 	{ dvalue: [], type: Array, validator: UCI.validators.MACListValidator }
 }); 

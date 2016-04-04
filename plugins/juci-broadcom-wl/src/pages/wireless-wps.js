@@ -19,22 +19,24 @@
  */
 
 JUCI.app
-.controller("wirelessWPSPage", function($scope, $uci, $rpc, $interval, $router, gettext, $tr){
+.controller("wirelessWPSPage", function($scope, $config, $uci, $rpc, $interval, $router, gettext, $tr){
+	$scope.showExpert = $config.local.mode == "expert";
 	var wps_status_strings = {
-		"-1": $tr(gettext("wps.status.disabled")),
-		0: $tr(gettext("wps.status.init")),
-		1: $tr(gettext("wps.status.processing")),
-		2: $tr(gettext("wps.status.success")),
-		3: $tr(gettext("wps.status.fail")),
-		4: $tr(gettext("wps.status.timeout")),
-		7: $tr(gettext("wps.status.msgdone")),
-		8: $tr(gettext("wps.status.overlap"))
+		"-1": $tr(gettext("Disabled")),
+		0: $tr(gettext("Initializing")),
+		1: $tr(gettext("Processing")),
+		2: $tr(gettext("Done!")),
+		3: $tr(gettext("Failed")),
+		4: $tr(gettext("Timed out")),
+		7: $tr(gettext("Done!")),
+		8: $tr(gettext("Overlap"))
 	}; 
 	
 	$scope.router = $router;
 	
 	$scope.data = {
-		userPIN: ""
+		userPIN: "",
+		valid_wps_pin: ""
 	}
 	$scope.progress = 0; 
 	
@@ -44,35 +46,62 @@ JUCI.app
 	
 	$uci.$sync(["wireless"]).done(function(){
 		$scope.wireless = $uci.wireless; 
+		$scope.getFrequensy = function(dev){
+			if($scope.wireless[dev] && $scope.wireless[dev].band){
+				if($scope.wireless[dev].band.value == "b") return "2.4GHz";
+				if($scope.wireless[dev].band.value == "a") return "5GHz";
+			}
+			return "";
+		};
 		$scope.$apply(); 
 	}).fail(function(err){
 		console.log("failed to sync config: "+err); 
 	}); 
 	
 	JUCI.interval.repeat("wifi.wps.retry", 1000, function(next){
-		$rpc.juci.wireless.wps.status().done(function(result){
+		$rpc.wps.status().done(function(result){
 			$scope.progress = result.code; 
-			$scope.text_status = wps_status_strings[result.code]||gettext("wps.status.unknown"); 
+			$scope.text_status = wps_status_strings[result.code]||gettext("Unknown"); 
 			$scope.$apply();	
 			next();
 		}); 
 	}); 
 	
-	$rpc.juci.wireless.wps.showpin().done(function(data){
+	$rpc.wps.showpin().done(function(data){
 		$scope.generatedPIN = data.pin; 
 	}); 
 	
 	$scope.onPairPBC = function(){
-		$rpc.juci.wireless.wps.pbc();
+		$rpc.wps.pbc();
 	}
 	$scope.onPairUserPIN = function(){
-		var pin = $scope.data.userPIN.replace("-", "").replace(" ", ""); 
-		$rpc.juci.wireless.wps.stapin({ pin: pin });
+		var pin = $scope.data.userPIN.replace("-", "").replace(" ", "").match(/\d+/g).join("");
+		$rpc.wps.checkpin({pin:pin }).done(function(value){
+			if(!value) return;
+			if(!value.valid){
+				console.log("invalid wps pin");
+				alert($tr(gettext("Invalid WPS PIN")));
+				return;
+			}
+			$rpc.wps.stapin({ pin: pin });
+		});
 	}
+	
+	$scope.validPin = function(){
+		var pin = $scope.data.userPIN;
+		if(pin.match(/^[0-9]{4}([- ]?[0-9]{4})?$/)){
+			$scope.data.valid_wps_pin = true;
+			$scope.data.pin_error = null;
+		}else{
+			$scope.data.valid_wps_pin = false;
+			$scope.data.pin_error = $tr(gettext("Invalid format! WPS PIN must be ether 4 or 8 digits alternatively 8 digits with a space or dash in the middle"));
+		}
+	};
+		
 	$scope.onGeneratePIN = function(){
-		$rpc.juci.wireless.wps.genpin().done(function(data){
+		$rpc.wps.genpin().done(function(data){
 			if(!data || data.pin == "") return;
-			$rpc.juci.wireless.wps.setpin({pin: data.pin}).done(function(){
+			$rpc.wps.setpin({pin: data.pin}).done(function(){
 				$scope.generatedPIN = data.pin; 
 				$scope.$apply(); 
 			}); 
@@ -80,6 +109,6 @@ JUCI.app
 	}
 	
 	$scope.onCancelWPS = function(){
-		$rpc.juci.wireless.wps.stop(); 
+		$rpc.wps.stop(); 
 	} 
 }); 

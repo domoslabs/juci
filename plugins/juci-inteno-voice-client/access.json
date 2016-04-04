@@ -10,11 +10,13 @@
 					"list"
 				],
 				"/juci/voice_client": [
-					"get_trusted_ca",
-					"set_trusted_ca"
+					"run"
+					/*"get_trusted_ca",*/
+					/*"set_trusted_ca"*/
 				],
 				"/juci/system": [
-					"reboot"
+					"run"
+					/*"reboot"*/
 				]
 			}, 
 			"uci": [

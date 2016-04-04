@@ -1,0 +1,177 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+msgid "Unknown"
+msgstr ""
+
+msgid "Unnamed System"
+msgstr ""
+
+msgid "Agent "
+msgstr ""
+
+msgid "without address"
+msgstr ""
+
+msgid "Empty Com2sec"
+msgstr ""
+
+msgid "Group: "
+msgstr ""
+
+msgid "Unknown Group"
+msgstr ""
+
+msgid " Version: "
+msgstr ""
+
+msgid "Unknown Version"
+msgstr ""
+
+msgid " SecName: "
+msgstr ""
+
+msgid "Unknown SecName"
+msgstr ""
+
+msgid "Empty View"
+msgstr ""
+
+msgid " Read: "
+msgstr ""
+
+msgid " Write: "
+msgstr ""
+
+msgid "Persist: "
+msgstr ""
+
+msgid " Priority: "
+msgstr ""
+
+msgid " MIB OID: "
+msgstr ""
+
+msgid " Program: "
+msgstr ""
+
+msgid "Are you sure you want to delete System?"
+msgstr ""
+
+msgid "Group"
+msgstr ""
+
+msgid "Context"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "Level"
+msgstr ""
+
+msgid "Prefix"
+msgstr ""
+
+msgid "Read"
+msgstr ""
+
+msgid "Write"
+msgstr ""
+
+msgid "Notify"
+msgstr ""
+
+msgid "Agent Address"
+msgstr ""
+
+msgid "Community"
+msgstr ""
+
+msgid "Source"
+msgstr ""
+
+msgid "SecName"
+msgstr ""
+
+msgid "Persist"
+msgstr ""
+
+msgid "Priority"
+msgstr ""
+
+msgid "MIB OID"
+msgstr ""
+
+msgid "Program"
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid "Contact"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Services"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Object ID"
+msgstr ""
+
+msgid "View Name"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "OID"
+msgstr ""
+
+msgid "Mask"
+msgstr ""
+
+msgid "SNMPD Configuration"
+msgstr ""
+
+msgid "snmpd.config.info"
+msgstr ""
+
+msgid "Enabled"
+msgstr ""
+
+msgid "System"
+msgstr ""
+
+msgid "Agent"
+msgstr ""
+
+msgid "Com2sec"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid "Access"
+msgstr ""
+
+msgid "Pass"
+msgstr ""
+
+msgid "menu-snmpd-config-title"
+msgstr ""

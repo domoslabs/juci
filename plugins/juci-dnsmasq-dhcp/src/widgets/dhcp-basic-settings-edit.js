@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("dhcpBasicSettingsEdit", function($compile){
+.directive("dhcpBasicSettingsEdit", function(){
 	return {
 		scope: {
 			dhcp: "=ngModel", 
@@ -37,7 +37,7 @@ JUCI.app
 		{ label: "1 "+$tr(gettext("Hour")), value: "1h" }, 
 		{ label: "6 "+$tr(gettext("Hours")), value: "6h" }, 
 		{ label: "12 "+$tr(gettext("Hours")), value: "12h" }, 
-		{ label: "24 "+$tr(gettext("Hours")), value: "24h" }, 
+		{ label: "24 "+$tr(gettext("Hours")), value: "24h" }
 	];  
 	
 }); 

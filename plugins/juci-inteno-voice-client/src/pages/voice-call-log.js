@@ -4,7 +4,7 @@ JUCI.app
 .controller("voiceCallLog", function($scope, $uci, gettext, $tr, $rpc){ 
 	$scope.phoneFilter = ""; 
 	$scope.phoneFilterSelected = {}; 
-	$scope.phoneList = []; 
+	$scope.phoneList = [];
 	$scope.call_log = []; 
 	JUCI.interval.repeat("call_log", 2000, function(done){
 		if(!$rpc.asterisk) return; 
@@ -13,7 +13,6 @@ JUCI.app
 			$scope.call_log = res.call_log.map(function(log){
 				var parts = log.time.split(" "); 
 				var date = new Date(parts[0]); 
-				var time = new Date(parts[1]); 
 				var now = new Date(); 
 				if(now.getDate() == date.getDate() && now.getMonth() == date.getMonth() && date.getFullYear() == now.getFullYear())
 					log.date = $tr(gettext("Today")); 

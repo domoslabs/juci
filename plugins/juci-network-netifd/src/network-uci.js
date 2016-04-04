@@ -56,7 +56,7 @@ UCI.validators.REQPrefixValidator = function(){
 UCI.$registerConfig("network"); 
 UCI.network.$registerSectionType("interface", {
 	"is_lan":				{ dvalue: '', type: Boolean }, // please stop relying on this!
-	"auto": 				{ dvalue: '', type: Boolean }, // bring up on boot
+	"auto": 				{ dvalue: '1', type: Boolean }, // bring up on boot
 	"ifname":				{ dvalue: '', type: String }, 
 	"device":				{ dvalue: '', type: String }, 
 	"proto":				{ dvalue: '', type: String }, 
@@ -71,7 +71,7 @@ UCI.network.$registerSectionType("interface", {
 	"ip6hint": 				{ dvalue: '', type: String, validator: UCI.validators.IP6AddressValidator },
 	"clientid": 			{ dvalue: "", type: String },
 	"type":					{ dvalue: '', type: String }, 
-	"defaultroute":			{ dvalue: '', type: Boolean },	
+	"defaultroute":			{ dvalue: true, type: Boolean },	
 	"bridge_instance": 		{ dvalue: '', type: Boolean }, 
 	"vendorid":				{ dvalue: '', type: String }, 
 	"ipv6":					{ dvalue: '', type: Boolean },
@@ -128,16 +128,8 @@ UCI.network.$registerSectionType("interface", {
 		case "static":
 			if(section.ipaddr.value && section.netmask.value){
 				var ip = section.ipaddr.value.split("."); 
-				var np = section.netmask.value.split("."); 
 				if(ip[ip.length - 1] == "0") errors.push("IP address can not be a range address (can not end with 0s)!"); 	
 				if(ip[0] == "0") errors.push("IP address can not start with a '0'!"); 	
-				/*if(ip.length == np.length == 4){
-					var bad = false; 
-					ip.forEach(function(x, i){
-						if(x == "0" && np[i] == "0") bad = true;
-					}); 
-					if(bad) errors.push("Given IP address and netmask are invalid together!"); 
-				}*/
 			}
 			if((section.ipaddr.value == "" || section.netmask.value == "") && section.ip6addr.value == "")
 				errors.push(gettext("Either ipv4 or ipv6 address is needed"));

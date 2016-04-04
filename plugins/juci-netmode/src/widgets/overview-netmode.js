@@ -24,53 +24,88 @@ JUCI.app
 		templateUrl: "widgets/overview-netmode-small.html", 
 		controller: "overviewWidgetNetmode", 
 		replace: true
-	 };  
+	};  
 })
 .directive("overviewWidget99Netmode", function(){
 	return {
 		templateUrl: "widgets/overview-netmode.html", 
 		controller: "overviewWidgetNetmode", 
 		replace: true
-	 };  
+	};
 })
-.controller("overviewWidgetNetmode", function($scope, $tr, gettext, $uci, $rpc, $netmode, $netmodePicker){
-	$scope.done = 1;  
-		
-	$netmode.getCurrentMode().done(function(current_mode){
-		if(!current_mode) return; 
-		$scope.currentNetmode = current_mode; 
-		$netmode.list().done(function(modes){
-			$scope.allNetmodes = modes.map(function(x){
-				return { label: $tr(x.desc.value), value: x }; 
-			}); 
-			$scope.currentNetmode = modes.find(function(x){ return x[".name"] == current_mode[".name"]; }); 
-			$scope.$apply(); 
-		}); 
-	}); 
-
+.controller("overviewWidgetNetmode", function($scope, $tr, gettext, $uci, $rpc, $juciConfirm, $juciDialog, $languages){
+	$scope.data = {
+		selected: ""
+	};
+	$scope.allNetmodes = [];
+	$uci.$sync("netmode").done(function(){
+		if(!$uci.netmode || !$uci.netmode.setup)return;
+		var lang = $languages.getLanguage();
+		if(lang !== "en" && lang !== "fi" && lang !== "sv") lang = "en";
+		$scope.allNetmodes = $uci.netmode["@netmode"].map(function(nm){ 
+			return { 
+				longLabel: nm[("desc_"+lang)].value || nm.desc.value || nm["desc_en"].value, 
+				label: (nm[("desc_"+lang)].value || nm.desc.value || nm["desc_en"].value).substring(0,20), 
+				value: nm[".name"], 
+				desc:  nm[("exp_"+lang)].value || nm.exp.value || nm["exp_en"].value || ""
+			}; 
+		});
+		$scope.setup = $uci.netmode.setup;
+		if(!$scope.setup) { $scope.$apply(); return;}
+		var tmp = $scope.allNetmodes.find(function(nm){ return nm.value === $scope.setup.curmode.value; });
+		$scope.data.selected = (tmp)?tmp.value:"";
+		$scope.$apply();
+	});
+	$scope.disabled = function(){
+		if(!$scope.data || !$scope.setup || !$scope.setup.curmode || $scope.allNetmodes.length < 1) return true;
+		return $scope.data.selected === $scope.setup.curmode.value;
+	}
 	$scope.onChangeMode = function(){
-		var current_mode = $scope.currentNetmode; 
-		if(!current_mode) return; 
-		$netmodePicker.show({ selected: current_mode[".name"] }).done(function(selected){
-			if(!selected) return; 
-			$netmode.select(selected[".name"]).done(function(){
-				console.log("Netmode set to "+selected['.name']); 
-				window.location = "/reboot.html"; 
-			}); 
-		}); 
-	}
-
-	$scope.onApplyNetmode = function(){
-		if(!$scope.currentNetmode) return; 
-		$netmode.select($scope.currentNetmode[".name"]).done(function(){
-			console.log("Netmode set to "+$scope.currentNetmode['.name']); 
-			window.location = "/reboot.html"; 
-		}); 
-	}
+		if(!$scope.setup || !$scope.setup.curmode || $scope.allNetmodes.length < 1) return;
+		var model = {
+			allNetmodes: $scope.allNetmodes,
+			selected: $scope.setup.curmode.value
+		};
+		$juciDialog.show("netmode-picker", {
+			title: $tr(gettext("Select Profile")),
+			model: model,
+			on_apply: function(){
+				if(model.selected === $scope.setup.curmode.value) return true;
+				setNetmode(model.selected);
+				return true;
+			}
+		});
+	};
 
 	$scope.onChangeModeConfirm = function(){
-		if(confirm($tr(gettext("Changing netmode will reset your configuration completely to match that netmode. Do you want to continue?")))){
-			$scope.onApplyNetmode(); 
-		}
+		if(!$scope.data || !$scope.setup || !$scope.setup.curmode) return;
+		if($scope.data.selected === $scope.setup.curmode.value) return;
+		$juciConfirm.show($tr(gettext("Changing netmode will reset your configuration completely to match that netmode. Do you want to continue?"))).done(function(value){
+			if(value == "ok"){
+				setNetmode($scope.data.selected);
+			}
+		});
+	}
+	$scope.getExp = function(){
+		if(!$scope.data || !$scope.data.selected || $scope.allNetmodes.length < 1) return "";
+		return $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; }).desc;
+	}
+	$scope.getDesc = function(){
+		if(!$scope.data || !$scope.data.selected || $scope.allNetmodes.length < 1) return "";
+		return $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; }).label;
+	}
+	$scope.getFullDesc = function(){
+		if(!$scope.data || !$scope.data.selected || $scope.allNetmodes.length < 1) return "";
+		return $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; }).longLabel;
+	}
+	function setNetmode(netmode){
+		$scope.data.selected = netmode;
+		$scope.setup.curmode.value = netmode;
+		$uci.$save().done(function(){
+			if($uci.netmode[netmode].reboot.value){
+				window.location = "/reboot.html";
+			}
+			$scope.$apply();
+		});
 	}
 }); 

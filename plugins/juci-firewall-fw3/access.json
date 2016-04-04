@@ -6,11 +6,13 @@
 				"network.interface": [
 					"status"
 				],
-				"/juci/firewall.dmz": [
-					"excluded_ports"
+				"/juci/firewall": [
+					"run"
+					/*"excluded_ports"*/
 				],
 				"/juci/system.time": [
-					"timediff"
+					"run"
+					/*"timediff"*/
 				]
 			}, 
 			"uci": [

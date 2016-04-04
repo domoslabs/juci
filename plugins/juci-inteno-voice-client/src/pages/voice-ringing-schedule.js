@@ -30,7 +30,7 @@ JUCI.app
 	
 	$uci.$sync(["voice_client"]).done(function(){
 		if(!$uci.voice_client.RINGING_STATUS){
-			$uci.voice_client.$create({".type": "ringing_status", ".name": "RINGING_STATUS"}).done(function(section){
+			$uci.voice_client.$create({".type": "ringing_status", ".name": "RINGING_STATUS"}).done(function(){
 				$scope.settings = $uci.voice_client.RINGING_STATUS; 
 				$scope.$apply(); 
 			}); 
@@ -68,7 +68,7 @@ JUCI.app
 		$scope.schedule = null; 
 	}
 	
-	$scope.onDismissSchedule = function(schedule){
+	$scope.onDismissSchedule = function(){
 		if($scope.schedule.uci_item && $scope.schedule.uci_item[".new"]){
 			$scope.schedule.uci_item.$delete().done(function(){
 				$scope.$apply(); 
@@ -90,9 +90,9 @@ JUCI.app
 			};
 			$scope.$apply(); 
 			console.log("Added new schedule!"); 
-		}).fail(function(err){
+		}).fail(function(){
 			console.log("Failed to create schedule!"); 
-		}); ; 
+		});
 	}
 	
 	$scope.onEditSchedule = function(item){

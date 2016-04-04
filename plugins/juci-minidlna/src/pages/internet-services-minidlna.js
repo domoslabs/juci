@@ -1,4 +1,5 @@
 //! Author: Reidar Cederqvist <reidar.cederqvist@gmail.com>
+/*global Promise:false*/
 
 JUCI.app
 .controller("MiniDLNAConfigPage", function($network, $scope, $minidlna, $tr, gettext, $rpc, $juciDialog){
@@ -57,12 +58,12 @@ JUCI.app
 		});
 	});
 
-	$rpc.juci.minidlna.status().done(function(data){
+	$rpc.juci.minidlna.run({"method":"status"}).done(function(data){
 		$scope.count = data.count;
 		$scope.$apply();
 	});
 	
-	$rpc.juci.system.service.status({name:"minidlna"}).done(function(result){
+	$rpc.juci.system.service.run({"method":"status", "args":"{\"name\":\"minidlna\"}"}).done(function(result){
 		$scope.is_running = result.running ? "active" : "inactive";
 		$scope.$apply();
 	});
@@ -98,7 +99,7 @@ JUCI.app
 		$juciDialog.show("minidlna-file-tree", {
 			title: $tr(gettext("Add folder to share")),
 			model: model,
-			on_apply: function(btn, dlg){
+			on_apply: function(){
 				if(!model.selected || !model.selected.path)return false;
 				for(var i=0; i < $scope.tagslistData.length; i++){
 					var prefix = $scope.tagslistData[i].path.substr(0,2);
@@ -139,7 +140,7 @@ JUCI.app
 	var tag_promise = null;
 	$scope.loadTags = function(text){
 		if(!tag_promise) tag_promise = new Promise(function(resolve, reject){
-			$rpc.juci.minidlna.autocomplete({path:text}).done(function(data){
+			$rpc.juci.minidlna.run({"method":"autocomplete", "args":"{\"path\":\""+text+"\"}"}).done(function(data){
 				tag_promise = null;
 				if(data.folders) resolve(data.folders);
 				else reject(data);

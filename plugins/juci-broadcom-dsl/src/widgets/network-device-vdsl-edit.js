@@ -1,7 +1,7 @@
 //! Author: Martin K. Schröder <mkschreder.uk@gmail.com>
 
 JUCI.app
-.directive("networkDeviceVdslEdit", function($compile){
+.directive("networkDeviceVdslEdit", function(){
 	return {
 		scope: {
 			device: "=ngModel"

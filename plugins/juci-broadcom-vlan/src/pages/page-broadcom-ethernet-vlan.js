@@ -35,7 +35,7 @@ JUCI.app
 		$uci.layer2_interface_vlan.$create({
 			".type": "vlan_interface",
 			"name": gettext("New interface")
-		}).done(function(interface){
+		}).done(function(){
 			$scope.$apply(); 
 		});
 	}

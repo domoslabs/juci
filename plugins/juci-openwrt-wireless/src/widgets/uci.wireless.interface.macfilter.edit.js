@@ -17,7 +17,7 @@
  */
 
 JUCI.app
-.directive("uciWirelessInterfaceMacfilterEdit", function($compile){
+.directive("uciWirelessInterfaceMacfilterEdit", function(){
 	return {
 		templateUrl: "/widgets/uci.wireless.interface.macfilter.edit.html", 
 		scope: {
@@ -26,7 +26,7 @@ JUCI.app
 		controller: "uciWirelessInterfaceMacfilterEditController", 
 		replace: true, 
 		require: "^ngModel"
-	 };  
+	};
 }).controller("uciWirelessInterfaceMacfilterEditController", function($scope, $rpc, $uci){
 	$scope.maclist = []; 
 	
@@ -78,7 +78,7 @@ JUCI.app
 		}
 	}; 
 	
-	$rpc.juci.wireless.clients().done(function(clients){
+	$rpc.juci.wireless.run({"method":"clients"}).done(function(clients){
 		$scope.client_list = Object.keys(clients)
 			.filter(function(k){
 				return clients[k].connected; 

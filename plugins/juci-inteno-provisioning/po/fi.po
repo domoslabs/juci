@@ -1,0 +1,93 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: Inteno\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.5\n"
+
+msgid "Hourly"
+msgstr "Tunneittain"
+
+msgid "Daily"
+msgstr "Päivittäin"
+
+msgid "Weekly"
+msgstr "Viikottain"
+
+msgid "Add password protection"
+msgstr "Lisää salasanasuojaus"
+
+msgid "Backup Password:"
+msgstr "Varmuuskopion salasana:"
+
+msgid "Retype Password:"
+msgstr "Kirjoita salasana uudelleen:"
+
+msgid "IUP Provisioning"
+msgstr "IUP Provisiointi"
+
+msgid "Enabled"
+msgstr "Käytössä"
+
+msgid "Update interval start time"
+msgstr "Päivityksen aloitusaika"
+
+msgid "Update interval"
+msgstr "Päivityksen intervalli"
+
+msgid "Export file"
+msgstr "Vientitiedosto"
+
+msgid "If added will override DHCP Discover Provisioning"
+msgstr ""
+
+msgid "Reboot"
+msgstr "Käynnistä uudelleen"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Decryption Key"
+msgstr "Purkuavain"
+
+msgid "If not entered, Default onboard DES Key will be used insted"
+msgstr "Jos purkuavainta ei lisätä, käytetään laitteen DES-avainta"
+
+msgid "Defaultreset"
+msgstr "Tehdasasetukset"
+
+msgid "Software URL"
+msgstr "Ohjelmisto URL"
+
+msgid "Setup your IUP Provisioning parameterrs"
+msgstr "Aseta IUP provisiointiasetukset"
+
+msgid "General"
+msgstr "Yleiset"
+
+msgid "Main Provisioning Server"
+msgstr "Ensisijainen proviointipalvelin"
+
+msgid "DHCP Discover Provisioning Server"
+msgstr ""
+
+msgid "Software Update Config"
+msgstr ""
+
+msgid "Sub Configs"
+msgstr ""
+
+msgid "Package Control"
+msgstr ""
+
+msgid "Add sub config"
+msgstr ""
+
+msgid "menu-settings-provisioning-iup-title"
+msgstr "IUP provisiointi"

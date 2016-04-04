@@ -34,7 +34,7 @@ JUCI.app
 		var i = 1; 
 		for(i; i < 100; i++){ if(!$uci.multiwan["wan"+i]) break; }
 		if(i == 99) return; 
-		$uci.multiwan.$create({".type": "interface", ".name": "wan"+i, "failover_to": "balancer"}).done(function(iface){
+		$uci.multiwan.$create({".type": "interface", ".name": "wan"+i, "failover_to": "balancer"}).done(function(){
 			$scope.$apply(); 
 		}); 
 	}

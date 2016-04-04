@@ -24,7 +24,7 @@ JUCI.app
 		templateUrl: "widgets/overview-net.html",
 		controller: "overviewWidgetNetwork",
 		replace: true
-	 };
+	};
 })
 .directive("overviewStatusWidget10Network", function(){
 	return {
@@ -36,75 +36,57 @@ JUCI.app
 .controller("overviewStatusWidgetNetwork", function($scope, $rpc, $firewall){
 	$scope.statusClass = "text-success";
 	JUCI.interval.repeat("overview-network", 1000, function(done){
-		async.series([function(next){
-			// TODO: move this to factory
-			$firewall.getZoneClients("lan").done(function(clients){
-				$scope.numClients = clients.filter(function(x){return x.online}).length;
-				$scope.done = 1;
-			});
-		}], function(){
-			done();
-		});
+		$firewall.getZoneClients("lan").done(function(clients){
+			$scope.numClients = clients.filter(function(x){return x.online}).length;
+			$scope.$apply();
+		}).always(function(){done();});
 	});
 })
-.controller("overviewWidgetNetwork", function($scope, $firewall, $tr, gettext, $juciDialog, $uci){
+.controller("overviewWidgetNetwork", function($scope, $firewall, $tr, gettext, $juciDialog, $uci, $rpc){
 	$scope.defaultHostName = $tr(gettext("Unknown"));
 	$scope.model = {};
-	var pauseSync = false;
-
-	JUCI.interval.repeat("overview-netowrk-widget", 2000, function(done){
-		if(pauseSync) {
-			done();
-			return;
-		}
-		$firewall.getZoneClients("lan").done(function(clients){
-			$scope.clients = [];
-			console.log(JSON.stringify(clients)); 
-			clients.map(function(client){
-				client._display_html = "<"+client._display_widget + " ng-model='client'/>";
-				$scope.clients.push(client);
-			});
-			$firewall.getZoneNetworks("lan").done(function(networks){
-				if(networks.length < 1) return;
-				$scope.model.lan = networks[0];
-				$scope.ipaddr = networks[0].ipaddr.value || networks[0].ip6addr.value;
-				done();
-			});
-		});
-	});
-
-
-	$scope.$watch("model.lan", function(){
-		if(!$scope.model.lan) return;
+	$scope.lanNetworks = [];
+	$firewall.getZoneNetworks("lan").done(function(nets){
+		var dnss = [];
 		$uci.$sync("dhcp").done(function(){
-			$scope.model.dhcp = $uci.dhcp["@dhcp"].find(function(x){
-				return x.interface.value == $scope.model.lan[".name"] || x[".name"] == $scope.model.lan[".name"];
-			});
-			$scope.model.dhcpEnabled = $scope.model.dhcp && !$scope.model.dhcp.ignore.value || false;
-		});
-	}, false);
-
-	$scope.$watch("model.dhcpEnabled", function(){
-		if(!$scope.model.dhcp){
-			if($scope.model.lan && $scope.model.dhcpEnabled != undefined){
-				$uci.dhcp.$create({
-					".type":"dhcp",
-					".name": $scope.model.lan[".name"],
-					"interface": $scope.model.lan[".name"],
-					"ignore": $scope.model.dhcpEnabled
-				}).done(function(dhcp){
-					$scope.model.dhcp = dhcp;
-					$scope.$apply();
+			dnss = $uci.dhcp["@dhcp"];
+			var networks = nets.map(function(net){
+				net["_uci_dhcp"] = dnss.find(function(dns){
+					return dns.interface.value == net[".name"] || dns[".name"] == net[".name"];
 				});
+				net["_dhcp_enabled"] = net["_uci_dhcp"] && !net["_uci_dhcp"].ignore.value || false;
+				return net;
+			});
+			$scope.lanNetworks = networks || [];
+			if($scope.lanNetworks.length == 0){
+				$scope.numClients = 0;
+				$scope.$apply();
+				return;
 			}
-		}else {
-			$scope.model.dhcp.ignore.value = !$scope.model.dhcpEnabled;
-		}
+			JUCI.interval.repeat("overview-netowrk-widget", 2000, function(done){
+				if($scope.lanNetworks.lenth == 0) return;
+				$rpc.router.clients().done(function(data){
+					$scope.lanNetworks.map(function(net){
+						net["_clients"] = [];
+						Object.keys(data).map(function(client){
+							if(data[client].network == net[".name"]){
+								net["_clients"].push(data[client]);
+							}
+						});
+					});
+					$scope.$apply();
+				}).always(function(){done();});
+			});
+		});
 	});
 
-	$scope.onEditLan = function(){
-		if(!$scope.model.lan || $scope.model.dhcpEnabled == undefined) return;
-		pauseSync = true;
+	$scope.onEditLan = function(lan){
+		if(!lan || lan["_dhcp_enabled"] == undefined) return;
+		var model = {
+			lan: lan,
+			dhcp: lan["_uci_dhcp"],
+			dhcpEnabled: lan["_dhcp_enabled"]
+		};
 		$juciDialog.show("simple-lan-settings-edit", {
 			title: $tr(gettext("Edit LAN Settings")),
 			buttons: [
@@ -112,17 +94,38 @@ JUCI.app
 				{ label: $tr(gettext("Cancel")), value: "cancel" }
 			],
 			on_button: function(btn, inst){
-				pauseSync = false;
 				if(btn.value == "cancel") {
-					$scope.model.lan.$reset();
-					$scope.model.dhcp.$reset();
+					model.lan.$reset();
+					model.dhcp.$reset();
 					inst.dismiss("cancel"); 
 				}
 				if(btn.value == "save") { 
 					inst.close();
 				}
 			},
-			model: $scope.model
+			model: model
+		});
+	};
+	$scope.onEditClient = function(client){
+		var model = {
+			client:client
+		};
+		$juciDialog.show("network-client-edit", {
+			buttons: [{ label: $tr(gettext("Close")), value: "cancel"}],
+			model:model,
+			on_button: function(btn, inst){
+				$uci.$sync("firewall").done(function(){
+					var del = $uci.firewall["@redirect"].filter(function(re){return re[".new"];});
+					if(del){
+						del.map(function(d){
+							d.$delete().done(function(){
+								$scope.$apply();
+							});
+						});
+					}
+					inst.close();
+				});
+			}
 		});
 	};
 });

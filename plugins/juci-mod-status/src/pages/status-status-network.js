@@ -39,10 +39,10 @@ JUCI.app
 	
 	JUCI.interval.repeat("status.system.refresh", 1000, function(resume){
 		async.parallel([
-			function (cb){$rpc.juci.network.conntrack_count().done(function(res){conntrack = res; cb();}).fail(function(res){cb();});},
-			function (cb){$rpc.juci.network.clients().done(function(res){clients = res.clients; cb();}).fail(function(res){cb();});},
-			function (cb){$rpc.juci.network.dhcp_leases().done(function(res){leases = res.leases || []; cb();}).fail(function(res){cb();});}
-		], function(err, next){
+			function (cb){$rpc.juci.network.run({"method":"conntrack_count"}).done(function(res){conntrack = res; cb();}).fail(function(){cb();});},
+			function (cb){$rpc.juci.network.run({"method":"clients"}).done(function(res){clients = res.clients; cb();}).fail(function(){cb();});},
+			function (cb){$rpc.juci.network.run({"method":"dhcp_leases"}).done(function(res){leases = res.leases || []; cb();}).fail(function(){cb();});}
+		], function(){
 			$scope.systemConnectionsTbl.rows = [
 				[$tr(gettext("Active Connections")), '<juci-progress value="'+ conntrack.count +'" total="'+conntrack.limit+'"></juci-progress>']
 			]; 

@@ -22,15 +22,6 @@
 			</juci-config-lines>
 		</juci-config-section>
 		<juci-config-section>
-			<juci-config-heading>{{ 'Samba Shares' | translate }}</juci-config-heading>
-			<juci-config-info >{{'samba.shares.info'|translate}}</juci-config-info>
-			<juci-list-editor ng-items="shares" 
-				item-editor="samba-share-edit" 
-				get-item-title="getSambaShareTitle($item)"
-				on-create="onCreateShare()"
-				on-delete="onDeleteShare($item)"></juci-list-editor>
-		</juci-config-section>
-		<juci-config-section>
 			<juci-config-heading>{{ 'Samba Users' | translate }}</juci-config-heading>
 			<juci-config-info >{{'samba.users.info'|translate}}</juci-config-info>
 			<juci-list-editor ng-items="users" 
@@ -38,6 +29,15 @@
 				get-item-title="$item.user.value"
 				on-create="onCreateUser()"
 				on-delete="onDeleteUser($item)"></juci-list-editor>
+		</juci-config-section>
+		<juci-config-section>
+			<juci-config-heading>{{ 'Samba Shares' | translate }}</juci-config-heading>
+			<juci-config-info >{{'samba.shares.info'|translate}}</juci-config-info>
+			<juci-list-editor ng-items="shares" 
+				item-editor="samba-share-edit" 
+				get-item-title="getSambaShareTitle($item)"
+				on-create="onCreateShare()"
+				on-delete="onDeleteShare($item)"></juci-list-editor>
 		</juci-config-section>
 	</div>
 </juci-layout-with-sidebar>

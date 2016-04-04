@@ -27,9 +27,9 @@ JUCI.app
 		}, 
 		controller: "systemNtpSettingsEdit", 
 		replace: true
-	 };  
+	};  
 })
-.controller("systemNtpSettingsEdit", function($scope, $rpc, $uci, $tr, gettext){
+.controller("systemNtpSettingsEdit", function($scope, $uci){
 	$uci.$sync("system").done(function(){
 		if(!$uci.system.ntp) return; 
 		$scope.ntp = $uci.system.ntp.server.value.map(function(x){ return { server: x }; }); 

@@ -1,0 +1,84 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: Inteno\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.5\n"
+
+msgid "Low"
+msgstr ""
+
+msgid "Add Bandwidth Limitation"
+msgstr "Lisää kaistanrajoitussääntö"
+
+msgid "All"
+msgstr "Kaikki"
+
+msgid "TCP"
+msgstr ""
+
+msgid "UDP"
+msgstr ""
+
+msgid "ICMP"
+msgstr ""
+
+msgid "Select which interface you want to put the Bandwidth Limitation on"
+msgstr "Valitse käytettävä yhteys"
+
+msgid "Interface"
+msgstr "Liitäntä"
+
+msgid "Interface to apply the restrictions on"
+msgstr " Liitäntä johon määrityksiä käytetään"
+
+msgid "Enable"
+msgstr "Ota käyttöön"
+
+msgid "Download Speed Limit"
+msgstr "Latausnopeuden rajoitus"
+
+msgid "Upload Speed Limit"
+msgstr "Lähetysnopeuden rajoitus"
+
+msgid "Acceleration will be disabled when Bandwidth limitation is enabled"
+msgstr ""
+"Laitteistokiihdytys poistetaan käytöstä, kun kaistanrajoitus on käytössä"
+
+msgid "Target"
+msgstr "Kohde"
+
+msgid "Precedence"
+msgstr "Presedenssi"
+
+msgid "Source host"
+msgstr "Lähde"
+
+msgid "Destination host"
+msgstr "Kohde"
+
+msgid "Protocol"
+msgstr "Protokolla"
+
+msgid "Port"
+msgstr "Portti"
+
+msgid "Filter by port, when there are no ports no filter will be applied"
+msgstr ""
+"Porttikohtainen suodatus. Kun portteja ei ole määritelty, suodatinsääntöjä "
+"ei sovelleta"
+
+msgid "Bandwidth Limitation"
+msgstr "Internet-yhteyden rajoitus"
+
+msgid "Quality of Service Settings"
+msgstr "QoS säännöt"
+
+msgid "menu-juci-inteno-qos-title"
+msgstr "QoS"

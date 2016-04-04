@@ -26,7 +26,8 @@
 		"read": {
 			"ubus": {
 				"/juci/ethernet": [
-					"adapters"
+					"run"
+					/*"adapters"*/
 				] 
 			}, 
 			"uci": [

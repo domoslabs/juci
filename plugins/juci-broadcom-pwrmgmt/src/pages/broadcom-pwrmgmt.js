@@ -29,7 +29,7 @@ JUCI.app
 		{ label: $tr(gettext("1/2 speed Async")),	value: 2 },
 		{ label: $tr(gettext("1/4 speed Async")),	value: 4 },
 		{ label: $tr(gettext("1/8 speed Async")),	value: 8 },
-		{ label: $tr(gettext("1/8 Async when entering wait, 1/1 Sync otherwise")),	value: 256 },
+		{ label: $tr(gettext("1/8 Async when entering wait, 1/1 Sync otherwise")),	value: 256 }
 	];
 	$scope.$watch("pwr.cpur4kwait.value", function() {
 		if(!$scope.pwr) return;

@@ -31,7 +31,7 @@ You can now try JUCI on openwrt.
 Here is how to install it:
 
 - Add juci feed to your feeds.conf.default
-src-git-full juci git@public.inteno.se:inteno-juci-feed.git
+src-git-full juci git@public.inteno.se:juci.git
 
 - Update and install the feed (with -f to force overrides)
 ./scripts/feeds update juci

@@ -11,7 +11,7 @@
 		<juci-config-lines>
 			<juci-config-line title="{{'Access for listed devices'|translate}}">
 				<div class="btn-group">
-					<button ng-repeat="mode in [[1,'allow'], [2, 'deny']]" class="btn btn-default" ng-model="interface.macmode.value" btn-radio="mode[0]">{{ 'interface.macmode.'+mode[1] | translate}}</button>
+					<button ng-repeat="mode in [[1,'allow','Allow'], [2, 'deny','Deny']]" class="btn btn-default" ng-model="interface.macmode.value" btn-radio="mode[0]">{{ mode[2] | translate}}</button>
 				</div>
 			</juci-config-line>
 			<juci-config-line title="{{'Currently added devices'|translate}}">

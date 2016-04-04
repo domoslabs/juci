@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -11,11 +11,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-# /home/reidar/juci/plugins/juci-inteno-backup/src/pages/inteno-backup-settings.html 
-msgid "inteno-backup-settings-title"
-msgstr "Backup settings"
+msgid "Backup settings"
+msgstr ""
 
-# /home/reidar/juci/plugins/juci-inteno-backup/src/pages/inteno-backup-settings.html 
+msgid "Select the services/settings to backup"
+msgstr ""
+
 msgid "menu-inteno-backup-settings-title"
 msgstr "Settings"
-

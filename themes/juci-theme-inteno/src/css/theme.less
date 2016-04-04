@@ -70,7 +70,6 @@ ul.left-menu li a.open, .nav-tabs &>li &>a {
 
 .juci-container {
 	min-height: 1000px;
-	margin-top: 80px;
 	.juci-sidebar {
 		ul.left-menu {
 			padding: 10px; 
@@ -148,10 +147,10 @@ a, a:focus, a:hover {
 	}
 }
 div.logo {
-	background-image: url('../img/header_logo.png');
+	background-image: url('../img/inteno_logo.png');
 	background-size: 100% auto;
 	width: 189px;
-	height: 40px;
+	height: 45px;
 }
 
 .overview-banner {
@@ -159,18 +158,20 @@ div.logo {
 	background-color: "#fafffa";
 	height: 400px;
 	margin-bottom: 30px;
-	margin-top:60px;
 }
 .overview-box {
 	h3 {
 		line-height: 40px;
-		margin-left: 90px;
 		font-family: eurostyle;
 		font-weight: bold;
 		text-transform: uppercase;
 	}
 	.box-header {
 		text-align: center;
+	}
+	.panel-body {
+		max-height: 400px;
+		overflow: auto;
 	}
 	.overview-circle {
 		background-color: #009CFF;
@@ -193,7 +194,6 @@ div.logo {
 	color: #111 !important;
 	background-color: white;
 	z-index: 10;
-	position: fixed;
 	width: 100%;
 	top: 0;
 	border-bottom: 1px solid #ccc;
@@ -217,17 +217,15 @@ div.logo {
 			}
 			
 			& > a, & > a:hover {
-				background-color: #eee;
-				color: #111 !important;
+				background-color: white;
+				color: #e62f39 !important;
 				@media screen and (max-width: 968px) {
 					background-color: #ddd; 
 				}
 			}
 		}
-		@media screen and (min-width: 968px) {
-			margin-top: 20px; 
+			margin-top: 40px; 
 			margin-left: 30px; 
-		}
 	}
 	.navbar-toggle {
 		background-color: #ddd; 
@@ -295,7 +293,6 @@ div.error {
 	color: #a94442;
 }
 .modal-backdrop {
-	width: 4000px;
 	height: 4000px;
 	z-index: 50;
 }
@@ -305,4 +302,29 @@ div.error {
 .carousel-indicators {
 	top: auto;
 	bottom: 15px;
+}
+.overview-small {
+	margin-left: -15px;
+	margin-right: -15px;
+	.label {
+		margin-left: 1px;
+		margin-righh: 1px;
+	}
+	.icon {
+		padding-left: 10px;
+		width: 10%;
+		float:left;
+	}
+	.name {
+		padding-left:10px;
+		width: 30%;
+		float:left;
+	}
+	.content {
+		margin-right: 5%;
+		text-align:right;
+		width: 55%;
+		float:right;
+		overflow:hidden;
+	}
 }

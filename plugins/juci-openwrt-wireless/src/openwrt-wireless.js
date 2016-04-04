@@ -29,14 +29,14 @@ JUCI.app.run(function($network, $uci, $wireless){
 						if(wcl) { 
 							cl._display_widget = "wireless-client-lan-display-widget"; 
 							cl._wireless = wcl; 
-						}; 
+						} 
 					}); 
 					def.resolve(); 
 				}).fail(function(){
 					def.reject(); 
 				}); 
 				return def.promise(); 
-			}, 
+			} 
 		}
 	}); 
 }); 
@@ -78,7 +78,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 
 	Wireless.prototype.getConnectedClients = function(){
 		var def = $.Deferred(); 
-		$rpc.juci.wireless.clients().done(function(clients){
+		$rpc.juci.wireless.run({"method":"clients"}).done(function(clients){
 			if(clients && clients.clients) {
 				clients.clients.map(function(cl){
 					if(cl.rssi && cl.noise && cl.noise > 0)
@@ -132,7 +132,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 	
 	Wireless.prototype.getDefaults = function(){
 		var deferred = $.Deferred(); 
-		$rpc.juci.wireless.defaults().done(function(result){
+		$rpc.juci.wireless.run({"method":"defaults"}).done(function(result){
 			if(!result) {
 				deferred.reject(); 
 				return; 
@@ -144,25 +144,6 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 		});  
 		return deferred.promise(); 
 	}
-/*	
-	Wireless.prototype.scan = function(){
-		var deferred = $.Deferred(); 
-		$rpc.juci.broadcom.wld.scan().done(function(result){
-			
-		}).always(function(){
-			deferred.resolve(); 
-		});  
-		return deferred.promise(); 
-	}
-	
-	Wireless.prototype.getScanResults = function(){
-		var deferred = $.Deferred(); 
-		$rpc.juci.broadcom.wld.scanresults().done(function(result){
-			deferred.resolve(result.list); 
-		}); 
-		return deferred.promise(); 
-	}
-*/	
 	return new Wireless(); 
 }); 
 
@@ -249,7 +230,6 @@ UCI.wireless.$registerSectionType("wifi-iface", {
 	"radius_server":	{ dvalue: "", type: String },
 	"radius_port":		{ dvalue: "", type: String },
 	"radius_secret":	{ dvalue: "", type: String },
-	"ifname":			{ dvalue: "", type: String },
 	"gtk_rekey":		{ dvalue: false, type: Boolean },
 	"net_rekey":		{ dvalue: 0, type: Number },
 	"wps_pbc":			{ dvalue: false, type: Boolean },

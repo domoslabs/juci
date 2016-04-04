@@ -11,6 +11,7 @@ JUCI.app
 }).controller("brcmAdvancedCtrl", function($scope, $uci, $tr, gettext, $network, $rpc, $juciDialog, languages){
 	$uci.$sync(["voice_client"]).done(function(){
 		$scope.brcm = $uci.voice_client.BRCM;
+		$scope.$apply();
 	});
 	$scope.jbimpl = [
 		{ label: $tr(gettext("Fixed")),		value: "fixed" },
@@ -24,13 +25,14 @@ JUCI.app
 					{ label: $tr(gettext("Yes")), value: "apply", primary: true },
 					{ label: $tr(gettext("No")), value: "cancel" }
 				],
-				on_apply: function(btn, dlg){
-					$uci.$save().done(function(){
-						//$rpc.juci.system.reboot().done(function(){
-						console.log("rebooting");
-						location = "/reboot.html";
-						//});
-					});
+				on_apply: function(btn){
+					if(btn.value == "apply"){
+						$uci.$save().done(function(){
+							$rpc.juci.system.run({"method":"reboot"})
+							console.log("rebooting");
+							location = "/reboot.html";
+						});
+					}
 					return true;
 				}
 			});	 

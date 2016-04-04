@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("dhcpEntryEdit", function($compile){
+.directive("dhcpEntryEdit", function(){
 	return {
 		scope: {
 			dhcp: "=ngModel"

@@ -2,17 +2,6 @@
 	<div ng-controller="InternetPortMappingPageCtrl">
 		<h2 translate>Port Mapping</h2>
 		<p translate>Port mapping allows remote computers to connect to a specific device within your private network.</p>
-		<!--<div class="panel panel-default" ng-show="rule">
-			<div class="panel-heading">
-				<h3 class="panel-title">{{rule[".name"]}}</h3>
-			</div>
-			<div class="panel-body">
-				<uci-firewall-nat-rule-edit ng-model="rule"></uci-firewall-nat-rule-edit>
-			</div>
-			<div class="panel-footer">
-				<juci-config-apply ></juci-config-apply>
-			</div>
-		</div>-->
 		<juci-config-section ng-show="redirects">
 			<table class="table">
 				<thead>
@@ -20,8 +9,8 @@
 					<th translate>Direction</th>
 					<th translate>Dst. IP</th>
 					<th translate>Protocol</th>
-					<th translate>Local port</th>
-					<th translate>Public Port</th>
+					<th translate>Public Port(s)</th>
+					<th translate>Private Port(s)</th>
 					<th></th>
 					<th></th>
 				</thead>
@@ -31,8 +20,8 @@
 						<td>{{ r.src.value }} {{'to'|translate}} {{ r.dest.value }}</td>
 						<td>{{ r.dest_ip.value }}</td>
 						<td>{{ r.proto.value }}</td>
-						<td>{{ r.dest_port.value }}</td>
 						<td>{{ r.src_dport.value }}</td>
+						<td>{{ r.dest_port.value || r.src_dport.value }}</td>
 						<td style="width: 1%"><button class="btn btn-default" ng-click="onEditRule(r)" ><i class="fa fa-pencil" style="{{editColor}}"></i></button></td>
 						<td style="width: 1%"><button class="btn btn-default" ng-click="onDeleteRule(r)"><i class="fa fa-trash-o"></i></button></td>
 					</tr>

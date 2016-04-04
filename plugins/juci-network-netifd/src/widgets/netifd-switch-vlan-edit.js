@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("netifdSwitchVlanEdit", function($compile, $parse){
+.directive("netifdSwitchVlanEdit", function(){
 	return {
 		templateUrl: "/widgets/netifd-switch-vlan-edit.html", 
 		controller: "netifdSwitchVlanEdit", 
@@ -28,7 +28,7 @@ JUCI.app
 		},
 		replace: true, 
 		require: "^ngModel"
-	 };  
+	};  
 }).controller("netifdSwitchVlanEdit", function($scope, $ethernet, $uci){	
 	$scope.allSwitchPorts = []; 
 	$scope.selectedSwitchPorts = []; 
@@ -62,7 +62,7 @@ JUCI.app
 	}); 
 
 	// when model changes, reload the values
-	$scope.$watch("vlan", function(vlan){
+	$scope.$watch("vlan", function(){
 		loadConfig(); 
 	}); 
 }); 

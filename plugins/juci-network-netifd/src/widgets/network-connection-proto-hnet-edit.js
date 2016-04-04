@@ -19,17 +19,13 @@
  */
 
 JUCI.app
-.directive("networkConnectionProtoHnetEdit", function($compile, $parse){
+.directive("networkConnectionProtoHnetEdit", function(){
 	return {
 		templateUrl: "/widgets/network-connection-proto-dhcp-edit.html", 
 		scope: {
 			interface: "=ngModel"
 		}, 
-		controller: "networkConnectionProtoHnetEdit", 
 		replace: true, 
 		require: "^ngModel"
-	 };  
-})
-.controller("networkConnectionProtoHnetEdit", function($scope, $uci, $network, $rpc, $log, gettext){
-	
+	};
 }); 

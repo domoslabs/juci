@@ -1,0 +1,21 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: Inteno\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.5\n"
+
+msgid "Backup settings"
+msgstr "Varmuuskopiasetukset"
+
+msgid "Select the services/settings to backup"
+msgstr "Valitse varmuuskopioitavat palvelut/asetukset"
+
+msgid "menu-inteno-backup-settings-title"
+msgstr "Varmuuskopio"

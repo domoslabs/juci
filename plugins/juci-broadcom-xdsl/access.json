@@ -1,0 +1,20 @@
+{
+	"juci-broadcom-xdsl": {
+		"description": "Broadcom xdsl plugin",
+		"read": {
+			"uci": [
+				"layer2_interface"
+			],
+			"ubus": {
+				"router": [
+					"info"
+				]
+			}
+		},
+		"write": {
+			"uci": [
+				"layer2_interface"
+			]
+		}
+	}
+}

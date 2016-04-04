@@ -41,7 +41,7 @@ JUCI.app
 			if($scope.filters[i].name == filter) return i;
 		}
 		return -1;
-	};
+	}
 	
 	$scope.allLimits = [
 		{ label: 20, value: 20 }, 
@@ -71,11 +71,11 @@ JUCI.app
 		if($scope.data.filter == "") limit = limit.slice(0, -1);
 		else limit += $scope.data.filter;
 		if(request === null){
-			request = $rpc.juci.system.log({
-				limit: $scope.data.limit, 
-				filter: limit,
-				type: $scope.data.type
-			}).done(function(result){
+			request = $rpc.juci.system.run({"method":"log", "args": JSON.stringify({
+				limit:$scope.data.limit,
+				filter:limit,
+				type:$scope.data.type
+			})}).done(function(result){
 				if(result && result.lines){
 					$scope.logs = result.lines; 
 					$scope.$apply();
@@ -107,7 +107,7 @@ JUCI.app
 		}
 		update().always(function(){
 			done();
-		});;
+		});
 	}); 
 
 	$scope.lineClass = function(line){

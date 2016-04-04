@@ -1,4 +1,5 @@
-;(jQuery && jQuery.fn.upload) || (function( $) {
+/*global jQuery:false*/
+(jQuery && jQuery.fn.upload) || (function( $) {
 		// abort if xhr progress is not supported
 	if( !($.support.ajaxProgress = ("onprogress" in $.ajaxSettings.xhr()))) {
 		return;

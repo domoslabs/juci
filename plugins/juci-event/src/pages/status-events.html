@@ -2,7 +2,7 @@
 	<div ng-controller="StatusEventsPageCtrl">
 		<juci-config-section>
 			<juci-config-heading>{{ 'Event Log' | translate }}</juci-config-heading>
-			<juci-config-info>{{ 'status.eventlog.info' | translate }}</juci-config-info>
+			<juci-config-info>{{ 'status.eventlog.info' | translate }} {{'(Note: only latest'|translate}} {{data.limit}} {{'lines are shown)'|translate}}</juci-config-info>
 			</juci-config-section>
 		<juci-config-section>
 			<juci-config-heading>{{'Log' | translate}}</juci-config-heading>
@@ -12,7 +12,7 @@
 			<juci-config-line title="{{'Limit log list'|translate}}">
 				<juci-select ng-model="data.limit" ng-items="allLimits"/>
 			</juci-config-line>
-			<juci-config-line title="{{'Filter log messages'|translate}}">
+			<juci-config-line title="{{'Filter log messages by Source'|translate}}">
 				<input type="text" class="form-control" ng-model="data.filter" ng-change="applyFilter()" placeholder="{{'Enter search string'|translate}}">
 			</juci-config-line>
 			<juci-config-line title="{{'Filter by type:'|translate}}">

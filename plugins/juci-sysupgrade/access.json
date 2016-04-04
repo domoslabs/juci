@@ -4,10 +4,11 @@
 		"read": {
 			"ubus": {
 				"/juci/system.upgrade": [
-					"check", 
-					"test", 
-					"start", 
-					"clean"
+					"run"
+					/*"check", */
+					/*"test", */
+					/*"start", */
+					/*"clean"*/
 				]
 			}, 
 			"uci": [ "system" ]
@@ -16,10 +17,11 @@
 			"uci": [ "system" ],
 			"ubus": {
 				"/juci/system.upgrade": [
-					"check", 
-					"test", 
-					"start", 
-					"clean"
+					"run"
+					/*"check", */
+					/*"test", */
+					/*"start", */
+					/*"clean"*/
 				]
 			}
 		}

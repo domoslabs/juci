@@ -22,11 +22,11 @@
 	// add control dependency 
 	JUCI.app.requires.push("dropdown-multi-select");
 
-	JUCI.app.factory("$network", function($rpc, $uci, $ethernet){
+	JUCI.app.factory("$network", function($rpc, $uci, $ethernet, $tr, gettext){
 		var sync_hosts = $uci.$sync("hosts"); 
 		function _refreshClients(self){
 			var deferred = $.Deferred(); 
-			$rpc.juci.network.clients().done(function(res){
+			$rpc.juci.network.run({"method":"clients"}).done(function(res){
 				sync_hosts.done(function(){
 					if(res && res.clients){
 						self.clients = res.clients.map(function(cl){
@@ -49,10 +49,6 @@
 			return deferred.promise(); 
 		}
 		
-		function NetworkDevice(){
-			this.name = ""; 
-		}
-		
 		function NetworkBackend() {
 			this.clients = []; 
 			this._subsystems = []; 
@@ -66,20 +62,46 @@
 			this._subsystems.push(subsys); 
 		}
 		
-		NetworkBackend.prototype.getDevice = function(opts){
+		NetworkBackend.prototype.getDevice = function(){
 			alert("$network.getDevice has been removed. No alternative. "); 
 		}; 
 		
 		NetworkBackend.prototype.getDevices = function(){
 			alert("$network.getDevices has been removed. Use $ethernet.getDevices instead!"); 
 		}
+		NetworkBackend.prototype.getProtocolTypes = function(){
+			return [
+				{ label: $tr(gettext("Unmanaged")),								value: "none",		physical: true },
+				{ label: $tr(gettext("Static Address")), 						value: "static",	physical: true }, 
+				{ label: $tr(gettext("DHCP v4")), 								value: "dhcp",		physical: true }, 
+				{ label: $tr(gettext("DHCP v6")), 								value: "dhcpv6",	physical: true }, 
+				{ label: $tr(gettext("PPP")), 									value: "ppp",		physical: false }, 
+				{ label: $tr(gettext("PPP over Ethernet")), 					value: "pppoe", 	physical: true }, 
+				{ label: $tr(gettext("PPP over ATM")), 							value: "pppoa", 	physical: true }, 
+				{ label: $tr(gettext("3G (ppp over GPRS/EvDO/CDMA or UTMS)")), 	value: "3g", 		physical: false }, 
+				{ label: $tr(gettext("4G (LTE/HSPA+)")), 						value: "4g", 		physical: false }, 
+				//{ label: $tr(gettext("QMI (USB modem)")), 						value: "qmi", 		physical: true }, 
+				//{ label: $tr(gettext("NCM (USB modem)")), 						value: "ncm", 		physical: true }, 
+				//{ label: $tr(gettext("HNET (self-managing home network)")), 	value: "hnet", 		physical: true }, 
+				{ label: $tr(gettext("Point-to-Point Tunnel")), 				value: "pptp", 		physical: false }, 
+				{ label: $tr(gettext("IPv6 tunnel in IPv4 (6in4)")), 			value: "6in4", 		physical: false }, 
+				{ label: $tr(gettext("IPv6 tunnel in IPv4 (6to4)")), 			value: "6to4", 		physical: false }, 
+				//{ label: $tr(gettext("Automatic IPv6 Connectivity Client")),	value: "aiccu", 	physical: false }, 
+				{ label: $tr(gettext("IPv6 rapid deployment")), 				value: "6rd", 		physical: false }, 
+				{ label: $tr(gettext("Dual-Stack Lite")), 						value: "dslite", 	physical: false }, 
+				{ label: $tr(gettext("PPP over L2TP")), 						value: "l2tp", 		physical: false }//, 
+				//{ label: $tr(gettext("Relayd Pseudo Bridge")),					value: "relay", 	physical: true }, 
+				//{ label: $tr(gettext("GRE Tunnel over IPv4")), 					value: "gre", 		physical: true }, 
+				//{ label: $tr(gettext("Ethernet GRE over IPv4")), 				value: "gretap", 	physical: true }, 
+				//{ label: $tr(gettext("GRE Tunnel over IPv6")), 					value: "grev6", 	physical: true }, 
+				//{ label: $tr(gettext("Ethernet GRE over IPv6")), 				value: "grev6tap", 	physical: true },
+			]; 
+		};
 		
 		// should be renamed to getInterfaces for NETWORK (!) interfaces. 
 		NetworkBackend.prototype.getNetworks = function(opts){
 			var deferred = $.Deferred(); 
-			var filter = filter || {}; 
 			var networks = []; 
-			var self = this; 
 			var devmap = {}; 
 			if(!opts) opts = {}; 
 			var filter = opts.filter || {};
@@ -155,8 +177,7 @@
 		
 		NetworkBackend.prototype.getNameServers = function(){
 			var deferred = $.Deferred(); 
-			var self = this; 
-			$rpc.juci.network.nameservers().done(function(result){
+			$rpc.juci.network.run({"method":"nameservers"}).done(function(result){
 				if(result && result.nameservers) deferred.resolve(result.nameservers); 
 				else deferred.reject(); 
 			}); 
@@ -167,7 +188,7 @@
 		NetworkBackend.prototype.getNetworkLoad = function(){
 			var def = $.Deferred(); 
 			
-			$rpc.juci.network.load().done(function(res){
+			$rpc.juci.network.run({"method":"load"}).done(function(res){
 				def.resolve(res); 
 			});
 			
@@ -177,7 +198,7 @@
 		NetworkBackend.prototype.getNatTable = function(){
 			var def = $.Deferred(); 
 			
-			$rpc.juci.network.nat_table().done(function(result){
+			$rpc.juci.network.run({"method":"nat_table"}).done(function(result){
 				if(result && result.table){
 					def.resolve(result.table); 
 				} else {
@@ -238,7 +259,7 @@
 
 		NetworkBackend.prototype.getServices = function(){
 			var def = $.Deferred(); 
-			$rpc.juci.network.services().done(function(result){
+			$rpc.juci.network.run({"method":"services"}).done(function(result){
 				if(result && result.list) def.resolve(result.list); 
 				else def.reject(); 
 			}); 
@@ -247,27 +268,80 @@
 		
 		return new NetworkBackend(); 
 	}); 
-	
-	// register basic vlan support 
-	JUCI.app.run(function($network, $uci, $rpc, $events, gettext, $tr, $ethernet, networkConnectionPicker){
-		$events.subscribe("hotplug.net", function(ev){
-			if(ev.data.action == "add"){
-				// we need to make sure that the new device is not already added to a network. 
-				$uci.$sync("network").done(function(){
-					var found = $uci.network["@interface"].find(function(net){
-						return net.ifname.value.split(" ").find(function(x){ return x == ev.data.interface; }); 
-					}); 
-					// currently does not work correctly
-					/*if(!found){
-						if(confirm($tr(gettext("A new ethernet device has been connected to your router. Do you want to add it to a network?")))){
-							networkConnectionPicker.show().done(function(picked){
-								picked.ifname.value = picked.ifname.value.split(" ").concat([ev.data.interface]).join(" "); 
-							});
-						}
-					}*/ 
-				}); 
-			}
-		}); 
-	}); 
+
 }(); 
 
+JUCI.app.factory("$networkHelper", function($uci, $tr, gettext, $network){
+	return {
+		setNetwork: function(dev, network){
+			var deferred = $.Deferred();
+			if(!dev || !network) return deferred.reject($tr(gettext("no device or network given")));
+			$uci.$sync("wireless").done(function(){
+				var wliface = $uci.wireless["@wifi-iface"].find(function(iface){
+					return iface.ifname.value == dev;
+				});
+				if(wliface && wliface.network){
+					wliface.network.value = network;
+				}
+				deferred.resolve();
+			}).fail(function(){deferred.reject("failed");});
+			return deferred;
+		},
+		addDevice: function(interface, device){
+			var deferred = $.Deferred();
+			if(!device || typeof device != "string") return deferred.reject("No Device given");
+			if(!interface || !interface.type) return deferred.reject("Invalid interface");
+			var type = "unknown";
+			if(interface.type.value == "bridge") type = "Bridge";
+			if(interface.type.value == "") type = "Standalone Connection";
+			if(interface.type.value == "anywan") type = "Any-wan";
+			if(device.match(/^wl.+/) || interface.type.value == "bridge"){
+				$network.getNetworks().done(function(nets){ 
+					var filtered = nets.filter(function(net){ return net[".name"] != interface[".name"];});
+					var keep_device = false;
+					if(!device.match(/^wl.+/)) filtered = filtered.filter(function(net){ return net.type.value == "bridge" });
+					filtered.map(function(net){
+						net.ifname.value = net.ifname.value.split(" ").filter(function(dev){
+							if(dev == device && !confirm($tr(gettext("Are you sure you want to remove device "+dev+" from network "+net[".name"]+" and use it in this "+type)))){
+								keep_device = true;
+								return true;
+							}else if(dev == device) return false;
+							return true;
+						}).join(" ");
+					});
+					if(!keep_device){
+						if(interface.type.value == ""){
+							interface.ifname.value = device;
+						}else{
+							interface.ifname.value += " " + device;
+						}
+						if(device.match(/^wl.+/)){
+							$uci.$sync("wireless").done(function(){
+								var wliface = $uci.wireless["@wifi-iface"].find(function(iface){
+									return iface.ifname.value == device;
+								});
+								if(wliface && wliface.network){
+									wliface.network.value = interface[".name"];
+								}
+								deferred.resolve();
+							});
+						}else{
+							deferred.resolve();
+						}
+					}else{
+						deferred.reject();
+					}
+				});
+			}else{
+				if(interface.type.value == ""){
+					interface.ifname.value = device;
+				}else{
+					interface.ifname.value += " " + device;
+				}
+				deferred.resolve();
+			}
+			return deferred;
+		}
+	}
+});
+	

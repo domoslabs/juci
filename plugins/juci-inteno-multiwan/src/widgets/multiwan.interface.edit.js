@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("multiwanInterfaceEdit", function($compile, $parse){
+.directive("multiwanInterfaceEdit", function(){
 	return {
 		templateUrl: "/widgets/multiwan.interface.edit.html", 
 		scope: {
@@ -28,7 +28,7 @@ JUCI.app
 		controller: "multiwanInterfaceEdit", 
 		replace: true, 
 		require: "^ngModel"
-	 };  
+	};  
 })
 .controller("multiwanInterfaceEdit", function($scope, $uci, $network, $rpc, $tr, gettext){
 	$scope.icmp = {hosts:'custom'};

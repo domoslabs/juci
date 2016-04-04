@@ -11,38 +11,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-# /home/reidar/juci/plugins/juci-printer/src/pages/internet-services-printer.html
-msgid "internet-services-printer-title"
-msgstr "Printers"
+msgid "Printers"
+msgstr ""
 
-# /home/reidar/juci/plugins/juci-printer/src/pages/internet-services-printer.html
 msgid "internet-services-printer-info"
 msgstr "Edit settings for printers"
 
-# /home/reidar/juci/plugins/juci-printer/src/pages/internet-services-printer.html
 msgid "Printer"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-printer/src/pages/internet-services-printer.html
 msgid "Enable"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-printer/src/pages/internet-services-printer.html
 msgid "Interface"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-printer/src/pages/internet-services-printer.html
 msgid "Specifies the interface to listen on"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-printer/src/pages/internet-services-printer.html
 msgid "Port"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-printer/src/pages/internet-services-printer.html
 msgid "Bidirectional mode"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-printer/src/pages/internet-services-printer.html
 msgid "menu-internet-services-printer-title"
 msgstr "Printer Server"

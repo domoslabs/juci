@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: Inteno\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.5\n"
+
+msgid "Unknown"
+msgstr "Tuntematon"
+
+msgid "Unnamed System"
+msgstr "Nimeämätön järjestelmä"
+
+msgid "Agent "
+msgstr "Agentti"
+
+msgid "without address"
+msgstr "ilman osoitetta"
+
+msgid "Empty Com2sec"
+msgstr "Tyhjä Com2sec"
+
+msgid "Group: "
+msgstr "Ryhmä:"
+
+msgid "Unknown Group"
+msgstr "Tuntematon ryhmä"
+
+msgid " Version: "
+msgstr "Versio:"
+
+msgid "Unknown Version"
+msgstr "Tuntematon versio"
+
+msgid " SecName: "
+msgstr "SecNimi:"
+
+msgid "Unknown SecName"
+msgstr "Tuntematon SecNimi"
+
+msgid "Empty View"
+msgstr "Tyhjä näkymä"
+
+msgid " Read: "
+msgstr "Lue:"
+
+msgid " Write: "
+msgstr "Kirjoita:"
+
+msgid "Persist: "
+msgstr ""
+
+msgid " Priority: "
+msgstr "Prioriteetti"
+
+msgid " MIB OID: "
+msgstr ""
+
+msgid " Program: "
+msgstr "Ohjelma"
+
+msgid "Are you sure you want to delete System?"
+msgstr "Haluatko varmasti poistaa järjestelmän"
+
+msgid "Group"
+msgstr "Ryhmä"
+
+msgid "Context"
+msgstr "Konteksti"
+
+msgid "Version"
+msgstr "Versio"
+
+msgid "Level"
+msgstr "Taso"
+
+msgid "Prefix"
+msgstr "Etuliite"
+
+msgid "Read"
+msgstr "Lue"
+
+msgid "Write"
+msgstr "Kirjoita"
+
+msgid "Notify"
+msgstr "Ilmoitus"
+
+msgid "Agent Address"
+msgstr "Agentin osoite"
+
+msgid "Community"
+msgstr "Yhteisö"
+
+msgid "Source"
+msgstr "Lähde"
+
+msgid "SecName"
+msgstr "SecNimi"
+
+msgid "Persist"
+msgstr ""
+
+msgid "Priority"
+msgstr "Prioriteetti"
+
+msgid "MIB OID"
+msgstr ""
+
+msgid "Program"
+msgstr "Ohjelma"
+
+msgid "Location"
+msgstr "Sijainti"
+
+msgid "Contact"
+msgstr "Yhteyshenkilö"
+
+msgid "Name"
+msgstr "Nimi"
+
+msgid "Services"
+msgstr "Palvelut"
+
+msgid "Description"
+msgstr "Kuvaus"
+
+msgid "Object ID"
+msgstr "Objektin ID"
+
+msgid "View Name"
+msgstr "Näkymän nimi"
+
+msgid "Type"
+msgstr "Tyyppi"
+
+msgid "OID"
+msgstr ""
+
+msgid "Mask"
+msgstr "Maski"
+
+# /home/reidar/juci/plugins/juci-snmpd/src/pages/snmpd-config.html
+msgid "SNMP Configuration"
+msgstr "SNMP konfiguraatio"
+
+msgid "snmpd.config.info"
+msgstr " "
+
+msgid "Enabled"
+msgstr "Käytössä"
+
+msgid "System"
+msgstr "Järjestelmä"
+
+msgid "Agent"
+msgstr "Agentti"
+
+msgid "Com2sec"
+msgstr "Com2Sec"
+
+msgid "View"
+msgstr "Näkymä"
+
+msgid "Access"
+msgstr "Pääsy"
+
+msgid "Pass"
+msgstr ""
+
+msgid "menu-snmpd-config-title"
+msgstr "SNMPD"

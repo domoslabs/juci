@@ -1,3 +1,4 @@
+/*global gettext:false*/
 /*
  * Copyright (C) 2015 Inteno Broadband Technology AB. All rights reserved.
  *
@@ -27,10 +28,9 @@ JUCI.app.run(function($network, $uci, $wireless){
 					clients.map(function(cl){
 						var wcl = wclients.find(function(wc){ return String(wc.macaddr).toLowerCase() == String(cl.macaddr).toLowerCase(); }); 
 						if(wcl) { 	
-							wcl.snr = (wcl.rssi / wcl.noise); 
 							cl._display_widget = "wireless-client-lan-display-widget"; 
 							cl._wireless = wcl; 
-						}; 
+						} 
 					}); 
 					def.resolve(); 
 				}).fail(function(){
@@ -67,7 +67,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 				adapters.push({
 					name: device.ssid.value, 
 					device: device.ifname.value, 
-					type: "wireless", 
+					type: "wireless"
 				}); 
 			}); 
 			// set type for devices whose names start with wl
@@ -96,15 +96,23 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 
 	Wireless.prototype.getConnectedClients = function(){
 		var def = $.Deferred(); 
-		$rpc.juci.wireless.clients().done(function(clients){
-			if(clients && clients.clients) {
-				clients.clients.map(function(cl){
-					cl.snr = Math.floor(1 - (cl.rssi / cl.noise)); 
-				}); 
-				def.resolve(clients.clients); 
-			}
-			else def.reject(); 
-		}); 
+		$rpc.router.stas().done(function(clients){
+			$rpc.router.clients6().done(function(cl6){
+				var wlclients = Object.keys(clients).map(function(c){return clients[c];}).map(function(client){
+					Object.keys(cl6).map(function(c6){return cl6[c6];}).map(function(client6){
+						if(client.macaddr === client6.macaddr){
+							client.ip6addr = client6.ip6addr;
+						}
+					});
+					return client;
+				});
+				def.resolve(wlclients);
+			}).fail(function(){
+				def.reject();
+			});
+		}).fail(function(){
+			def.reject();
+		});
 		return def.promise(); 
 	}
 
@@ -151,7 +159,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 	
 	Wireless.prototype.getDefaults = function(){
 		var deferred = $.Deferred(); 
-		$rpc.juci.wireless.defaults().done(function(result){
+		$rpc.juci.wireless.run({"method":"defaults"}).done(function(result){
 			if(!result) {
 				deferred.reject(); 
 				return; 
@@ -166,9 +174,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 	
 	Wireless.prototype.scan = function(opts){
 		var deferred = $.Deferred(); 
-		$rpc.juci.broadcom.wld.scan(opts).done(function(result){
-			
-		}).always(function(){
+		$rpc.juci.broadcom.wireless.lua.run({"method":"scan", "args":JSON.stringify(opts)}).always(function(){
 			deferred.resolve(); 
 		});  
 		return deferred.promise(); 
@@ -176,8 +182,8 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 	
 	Wireless.prototype.getScanResults = function(opts){
 		var deferred = $.Deferred(); 
-		$rpc.juci.broadcom.wld.scanresults(opts).done(function(result){
-			deferred.resolve(result.list); 
+		$rpc.juci.broadcom.wireless.lua.run({"method":"scanresults", "args":JSON.stringify(opts)}).done(function(result){
+			deferred.resolve(result.access_points); 
 		}); 
 		return deferred.promise(); 
 	}
@@ -226,34 +232,32 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		return null; 
 	}); 
 	UCI.wireless.$registerSectionType("wifi-device", {
-		"type": 			{ dvalue: "", type: String },
-		"country": 		{ dvalue: "", type: String},
-		"band": 			{ dvalue: "none", type: String, allow: [ "a", "b" ] },
-		"bandwidth": 	{ dvalue: 0, type: String, allow: [ "20", "40", "80" ] },
+		"type": 		{ dvalue: "", type: String },
+		"country": 		{ dvalue: "EU/13", type: String},
+		"band": 		{ dvalue: "b", type: String, allow: [ "a", "b" ] },
+		"bandwidth": 	{ dvalue: 80, type: String, allow: [ "20", "40", "80" ] },
 		"channel":		{ dvalue: "auto", type: String, allow: [ "auto", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 36, 40, 44, 48 ] },
 		"scantimer":	{ dvalue: 0, type: Number },
-		"wmm":			{ dvalue: false, type: Boolean },
+		"wmm":			{ dvalue: true, type: Boolean },
 		"wmm_noack":	{ dvalue: false, type: Boolean },
-		"wmm_apsd":		{ dvalue: false, type: Boolean },
-		"txpower":		{ dvalue: 0, type: Number },
+		"wmm_apsd":		{ dvalue: true, type: Boolean },
+		"txpower":		{ dvalue: 100, type: Number },
 		"rateset":		{ dvalue: "default", type: String, allow: [ "default" ] },
-		"frag":			{ dvalue: 0, type: Number },
-		"rts":			{ dvalue: 0, type: Number },
-		"dtim_period":	{ dvalue: 0, type: Number },
-		"beacon_int":	{ dvalue: 0, type: Number },
-		"rxchainps":	{ dvalue: false, type: Boolean },
-		"rxchainps_qt":	{ dvalue: 0, type: Number },
-		"rxchainps_pps":{ dvalue: 0, type: Number },
+		"frag":			{ dvalue: 2346, type: Number },
+		"rts":			{ dvalue: 2347, type: Number },
+		"dtim_period":	{ dvalue: 1, type: Number },
+		"beacon_int":	{ dvalue: 100, type: Number },
+		"rxchainps":	{ dvalue: true, type: Boolean },
+		"rxchainps_qt":	{ dvalue: 10, type: Number },
+		"rxchainps_pps":{ dvalue: 10, type: Number },
 		"rifs":			{ dvalue: false, type: Boolean },
-		"rifs_advert":	{ dvalue: false, type: Boolean },
-		"maxassoc":		{ dvalue: 0, type: Number },
-		"doth":			{ dvalue: false, type: Boolean },
-		"dfsc":			{ dvalue: false, type: Boolean }, // ? 
-		"hwmode":		{ dvalue: "auto", type: String },
+		"rifs_advert":	{ dvalue: true, type: Boolean },
+		"maxassoc":		{ dvalue: 32, type: Number },
+		"dfsc":			{ dvalue: true, type: Boolean }, // ? 
+		"hwmode":		{ dvalue: "11ac", type: String },
 		"disabled":		{ dvalue: false, type: Boolean },
 		"frameburst": 	{ dvalue: false, type: Boolean },
-		"obss_coex": 	{ dvalue: false, type: Boolean }, 
-		"beamforming": 	{ dvalue: false, type: Boolean }
+		"beamforming": 	{ dvalue: true, type: Boolean }
 	}); 
 	UCI.wireless.$registerSectionType("wifi-iface", {
 		"device": 			{ dvalue: "", type: String },
@@ -261,7 +265,7 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"network":			{ dvalue: "", type: String },
 		"mode":				{ dvalue: "ap", type: String },
 		"ssid":				{ dvalue: "", type: String },
-		"encryption":		{ dvalue: "mixed-psk", type: String },
+		"encryption":		{ dvalue: "none", type: String },
 		"cipher":			{ dvalue: "auto", type: String },
 		"key":				{ dvalue: "", type: String },
 		"key_index": 		{ dvalue: 1, type: Number }, 
@@ -272,14 +276,11 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"radius_server":	{ dvalue: "", type: String },
 		"radius_port":		{ dvalue: "", type: String },
 		"radius_secret":	{ dvalue: "", type: String },
-		"ifname":			{ dvalue: "", type: String },
-		"gtk_rekey":		{ dvalue: false, type: Boolean },
-		"net_rekey":		{ dvalue: 0, type: Number },
+		"gtk_rekey":		{ dvalue: 3600, type: Number },
+		"net_reauth":		{ dvalue: 36000, type: Number },
 		"wps_pbc":			{ dvalue: false, type: Boolean },
 		"wmf_bss_enable":	{ dvalue: false, type: Boolean },
-		"bss_max":			{ dvalue: 0, type: Number },
-		"instance":			{ dvalue: 0, type: Number },
-		"up":				{ dvalue: false, type: Boolean },
+		"bss_max":			{ dvalue: 32, type: Number },
 		"closed":			{ dvalue: false, type: Boolean },
 		"disabled":			{ dvalue: false, type: Boolean },
 		"macmode":			{ dvalue: 1, type: Number },

@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("InternetExHostPageCtrl", function($scope, $rpc, $config, $network, $uci, $tr){
+.controller("InternetExHostPageCtrl", function($scope, $rpc, $config, $network, $uci, $tr, gettext){
 	$scope.config = $config; 
 	$scope.wan = {}; 
 	$scope.connectedHosts = []; 
@@ -31,7 +31,7 @@ JUCI.app
 		$uci.firewall.dmz.ip6addr.value = value.ip6addr; 
 	}); 
 	// Excluded ports is read from a tmp file that is not created by default. This is a patch feature added to dmz firewall script. Please update your script if you want to use it. 
-	$rpc.juci.firewall && $rpc.juci.firewall.dmz.excluded_ports().done(function(data){
+	$rpc.juci.firewall && $rpc.juci.firewall.run({"method":"excluded_ports"}).done(function(data){
 		if(data.result && data.result.length){
 			$scope.nonforwardedPorts = data.result;
 			$scope.$apply();
@@ -47,7 +47,7 @@ JUCI.app
         option target    ACCEPT
 	*/		
 	$scope.onCreateDMZConfig = function(){
-		$uci.firewall.$create({".type": "dmz", ".name": "dmz"}).done(function(dmz){
+		$uci.firewall.$create({".type": "dmz", ".name": "dmz"}).done(function(){
 			//$uci.firewall.$mark_for_reload(); 
 			refresh(); 	
 		}).fail(function(){

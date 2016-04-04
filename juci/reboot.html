@@ -22,6 +22,7 @@
 					});
 				};
 				$scope.$watch("online", function(){
+					console.log("online = " + $scope.online + " has gon down = " + has_gon_down);
 					if($scope.online && has_gon_down){
 						setTimeout(checkIP, 2000);
 					}

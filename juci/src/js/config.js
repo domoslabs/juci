@@ -32,8 +32,8 @@
 
 		async.series([
 			function(next){
-				if(UBUS.system){
-					UBUS.system.board().done(function(info){
+				if(UBUS.router){
+					UBUS.router.info().done(function(info){
 						self.board = info; 
 					}).always(function(){ next(); }); 
 				} else {

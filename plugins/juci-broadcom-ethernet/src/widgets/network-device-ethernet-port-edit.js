@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("networkDeviceEthernetPortEdit", function($compile){
+.directive("networkDeviceEthernetPortEdit", function(){
 	return {
 		scope: {
 			port: "=ngModel"

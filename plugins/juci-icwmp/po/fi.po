@@ -1,0 +1,102 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: Inteno\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.5\n"
+
+msgid "Enabled"
+msgstr "Käytössä"
+
+msgid "Disabled"
+msgstr "Ei käytössä"
+
+msgid "Emergency"
+msgstr "Hätätila"
+
+msgid "Alert"
+msgstr "Hälytys"
+
+msgid "Critical"
+msgstr "Kriittinen"
+
+msgid "Error"
+msgstr "Virhe"
+
+msgid "Warning"
+msgstr "Varoitus"
+
+msgid "Notice"
+msgstr "Huomio"
+
+msgid "Info"
+msgstr "Info"
+
+msgid "Debug"
+msgstr ""
+
+msgid "TR69 Settings"
+msgstr "TR69 asetukset"
+
+msgid "ACS User Name"
+msgstr "ACS käyttäjänimi"
+
+msgid "ACS Password"
+msgstr "ACS salasana"
+
+msgid "URL"
+msgstr ""
+
+msgid "Periodic Inform Enable"
+msgstr "Ota käyttöön säännöllinen ilmoitus"
+
+msgid "Periodic Inform Interval"
+msgstr "Säännöllisen ilmoituksen intervalli"
+
+msgid "Periodic Inform Time"
+msgstr "Säännöllisen ilmoituksen aika"
+
+msgid "DHCP Discovery"
+msgstr ""
+
+msgid "WAN Interface"
+msgstr "WAN liitäntä"
+
+msgid "Connection Request User Name"
+msgstr ""
+
+msgid "Connection Request Password"
+msgstr ""
+
+msgid "Port"
+msgstr "Portti"
+
+msgid "Log Severity Level"
+msgstr "Lokitaso"
+
+msgid "Log to console"
+msgstr "Lähetä loki konsoliin"
+
+msgid "Log to file"
+msgstr "Kirjoita lokitiedostoon"
+
+msgid "Log file max size"
+msgstr "Lokitiedoston suurin sallittu koko"
+
+msgid "Provisioning Code"
+msgstr "Privisiointikoodi"
+
+msgid "Configure ACS specific settings"
+msgstr "Konfiguroi ACS asetukset"
+
+msgid "Configure CPE specific settings"
+msgstr "Konfiguroi päätelaitteen asetukset"
+
+msgid "menu-icwmp-config-title"
+msgstr "ICWMP"

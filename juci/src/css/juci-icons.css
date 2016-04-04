@@ -1,32 +1,57 @@
 @font-face {
-	font-family: 'juci-icons';
-	src:url('/fonts/juci-icons.eot?5vw8je');
-	src:url('/fonts/juci-icons.eot?5vw8je#iefix') format('embedded-opentype'),
-		url('/fonts/juci-icons.ttf?5vw8je') format('truetype'),
-		url('/fonts/juci-icons.woff?5vw8je') format('woff'),
-		url('/fonts/juci-icons.svg?5vw8je#juci-icons') format('svg');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'juci-icons';
+    src:    url('../fonts/juci-icons.eot?803rg3');
+    src:    url('../fonts/juci-icons.eot?803rg3#iefix') format('embedded-opentype'),
+        url('../fonts/juci-icons.ttf?803rg3') format('truetype'),
+        url('../fonts/juci-icons.woff?803rg3') format('woff'),
+        url('../fonts/juci-icons.svg?803rg3#juci-icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
-i.juci {
-	font-family: 'juci-icons';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
+i[class^="juci-"], i[class*=" juci-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'juci-icons' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
 
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
+.juci-bridge:before {
+    content: "\e906";
+}
+.juci-VDSL:before {
+    content: "\e907";
+}
+.juci-ADSL:before {
+    content: "\e908";
+}
+.juci-ethernet:before {
+    content: "\e909";
+}
+.juci-profile:before {
+    content: "\e902";
+}
+.juci-wps:before {
+    content: "\e900";
+}
+.juci-world:before {
+    content: "\e901";
+}
+.juci-settings:before {
+    content: "\e903";
+}
 .juci-network:before {
-	content: "\e900";
+    content: "\e904";
 }
-.juci-usb:before {
-	content: "\e901";
+.juci-web:before {
+    content: "\e905";
 }
 

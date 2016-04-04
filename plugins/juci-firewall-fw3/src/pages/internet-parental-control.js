@@ -60,7 +60,7 @@ JUCI.app
 				next(); 
 			}
 		}, function(next){
-			$rpc.juci.system.time.timediff().done(function(data){
+			$rpc.juci.system.time.run({"method":"timediff"}).done(function(data){
 				$scope.diff = data.diff;
 			}).always(function(){next();});
 		}], function(){

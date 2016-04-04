@@ -17,16 +17,12 @@
  */
 
 JUCI.app
-.directive("networkDeviceWirelessEdit", function($compile){
+.directive("networkDeviceWirelessEdit", function(){
 	return {
 		scope: {
 			device: "=ngModel"
 		}, 
 		templateUrl: "/widgets/network-device-wireless-edit.html", 
-		controller: "networkDeviceWirelessEdit", 
 		replace: true
 	};
-})
-.controller("networkDeviceWirelessEdit", function($scope){
-	
 }); 

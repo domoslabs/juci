@@ -4,43 +4,56 @@
 		"read": {
 			"ubus": {
 				"/juci/system": [
-					"defaultreset", 
-					"filesystems", 
-					"log", 
-					"reboot", 
-					"info"
+					"run"
+					/*"defaultreset", */
+					/*"filesystems", */
+					/*"log", */
+					/*"reboot", */
+					/*"info"*/
 				], 
-				"/juci/system.upgrade": [
-					"check", 
-					"test", 
-					"start", 
-					"clean"
-				], 
-				"/juci/system.user": [
-					"setpassword",
-					"listusers"
-				], 
-				"/juci/system.time": [
-					"zonelist", 
-					"get", 
-					"set"
-				], 
-				"/juci/system.conf": [
-					"restore", 
-					"defaultreset", 
-					"features",
-					"list"
-				], 
-				"/juci/system.process": [
+				"session": [
 					"list"
 				],
+				"/juci/system.upgrade": [
+					"run"
+					/*"check", */
+					/*"test", */
+					/*"start", */
+					/*"clean"*/
+				], 
+				"/juci/system.user": [
+					"run"
+					/*"setpassword",*/
+					/*"listusers"*/
+				], 
+				"/juci/system.time": [
+					"run"
+					/*"zonelist", */
+					/*"get", */
+					/*"set"*/
+				], 
+				"/juci/system.conf": [
+					"run"
+					/*"restore", */
+					/*"defaultreset", */
+					/*"features",*/
+					/*"list"*/
+				], 
+				"/juci/system.process": [
+					"run"
+					/*"list"*/
+				],
 				"/juci/system.service": [
-					"list",
-					"start",
-					"stop",
-					"enable",
-					"disable",
-					"reload"
+					"run"
+					/*"list",*/
+					/*"start",*/
+					/*"stop",*/
+					/*"enable",*/
+					/*"disable",*/
+					/*"reload"*/
+				],
+				"router": [
+					"info"
 				],
 				"system": [
 					"info",
@@ -49,7 +62,8 @@
 
 			},
 			"uci": [
-				"system"
+				"system",
+				"buttons"
 			],
 			"juci-io": [
 				"backup"
@@ -60,21 +74,32 @@
 			"passwd": [ "self" ],
 			"ubus": {
 				"/juci/system.service": [
-					"start",
-					"stop",
-					"enable",
-					"disable",
-					"reload"
+					"run"
+					/*"start",*/
+					/*"stop",*/
+					/*"enable",*/
+					/*"disable",*/
+					/*"reload"*/
 				]
 			},
 			"uci": [
-				"system"
+				"system",
+				"buttons"
 			]
 		}
 	},
 	"juci-mod-system-admin": {
+		"read": {
+			"uci": [
+				"rpcd",
+				"juci"
+			]
+		},
 		"write": {
-			"passwd": [ "otheruser" ]
+			"passwd": [ "otheruser" ],
+			"uci": [
+				"juci"
+			]
 		}
 	}
 }

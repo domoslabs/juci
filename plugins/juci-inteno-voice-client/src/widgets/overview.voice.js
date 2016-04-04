@@ -1,23 +1,27 @@
 //! Author: Martin K. Schröder <mkschreder.uk@gmail.com>
 JUCI.app
-.directive("overviewWidget20Voice", function(){
+.directive("overviewWidget40Voice", function(){
 	return {
 		templateUrl: "widgets/overview.voice.html", 
 		controller: "overviewWidgetVoice", 
 		replace: true
-	 };  
+	};  
 })
-.directive("overviewStatusWidget20Voice", function(){
+.directive("overviewStatusWidget40Voice", function(){
 	return {
 		templateUrl: "widgets/overview.voice.small.html", 
 		controller: "overviewWidgetVoice", 
 		replace: true
-	 };  
+	};  
 })
 .controller("overviewWidgetVoice", function($scope, $rpc, $uci, $tr, gettext){
 	$scope.sipAccounts = []; 
 	$scope.phoneSchedStatus = gettext("off"); 
 	$scope.str_unknown = $tr(gettext("Unknown"));
+	if(!$rpc.asterisk){
+		$scope.showVoiceWidget = false;
+		return;
+	}
 
 	JUCI.interval.repeat("load-phone-small-widget", 5000, function(done){
 		async.series([
@@ -55,7 +59,7 @@ JUCI.app
 	});
 	$scope.onPhoneToggle = function(){
 		var status = $uci.voice_client.RINGING_STATUS; 
-		if(status){
+		if(status && status.enabled){
 			status.enabled.value = !status.enabled.value; 
 		}
 	}

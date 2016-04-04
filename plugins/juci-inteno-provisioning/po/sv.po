@@ -1,0 +1,93 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+msgid "Hourly"
+msgstr ""
+
+msgid "Daily"
+msgstr ""
+
+msgid "Weekly"
+msgstr ""
+
+msgid "Add password protection"
+msgstr ""
+
+msgid "Backup Password:"
+msgstr ""
+
+msgid "Retype Password:"
+msgstr ""
+
+msgid "IUP Provisioning"
+msgstr ""
+
+msgid "Enabled"
+msgstr ""
+
+msgid "Update interval start time"
+msgstr ""
+
+msgid "Update interval"
+msgstr ""
+
+msgid "Export file"
+msgstr ""
+
+msgid "If added will override DHCP Discover Provisioning"
+msgstr ""
+
+msgid "Reboot"
+msgstr ""
+
+msgid "URL"
+msgstr ""
+
+msgid "Decryption Key"
+msgstr ""
+
+msgid "If not entered, Default onboard DES Key will be used insted"
+msgstr ""
+
+msgid "Defaultreset"
+msgstr ""
+
+msgid "Software URL"
+msgstr ""
+
+msgid "Setup your IUP Provisioning parameterrs"
+msgstr ""
+
+msgid "General"
+msgstr ""
+
+msgid "Main Provisioning Server"
+msgstr ""
+
+msgid "DHCP Discover Provisioning Server"
+msgstr ""
+
+msgid "Software Update Config"
+msgstr ""
+
+msgid "Sub Configs"
+msgstr ""
+
+msgid "Package Control"
+msgstr ""
+
+msgid "Add sub config"
+msgstr ""
+
+msgid "menu-settings-provisioning-iup-title"
+msgstr ""

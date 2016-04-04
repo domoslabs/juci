@@ -52,7 +52,7 @@ JUCI.app
 		}
 	}
 	
-	$scope.onDismissSchedule = function(schedule){
+	$scope.onDismissSchedule = function(){
 		if($scope.schedule && $scope.schedule.uci_item ){
 			if($scope.schedule.uci_item[".new"]){
 				$scope.schedule.uci_item.$delete().done(function(){
@@ -77,9 +77,9 @@ JUCI.app
 			};
 			$scope.$apply(); 
 			console.log("Added new schedule!"); 
-		}).fail(function(err){
+		}).fail(function(){
 			console.log("Failed to create schedule!"); 
-		}); ; 
+		});
 	}
 	
 	$scope.onEditSchedule = function(item){

@@ -76,14 +76,13 @@ $(2)/po/template.pot: $(JAVASCRIPT_$(1)) $(TEMPLATES_$(1))
 	@echo "" > $$@
 	$(Q)if [ "" != "$$^" ]; then ./scripts/extract-strings $$^ > $$@; msguniq $$@ > $$@.tmp; mv $$@.tmp $$@; fi
 	@echo "" >> $$@
-	@for file in `find $(2)/src/pages/ -name "*.html"`; do PAGE=$$$${file%%.*}; echo -e "# $$$$file \nmsgid \"$$$$(basename $$$$PAGE)-title\"\nmsgstr \"\"\n" >> $$@; done
 	@for file in `find $(2)/src/pages/ -name "*.html"`; do PAGE=$$$${file%%.*}; echo -e "# $$$$file \nmsgid \"menu-$$$$(basename $$$$PAGE)-title\"\nmsgstr \"\"\n" >> $$@; done
 $(CODE_DIR)/$(CODE_LOAD)-$(1).js: $(TMP_DIR)/$(CODE_LOAD)-$(1).js $(TMP_DIR)/$(STYLE_LOAD)-$(1).css.js $(TMP_DIR)/$(TPL_LOAD)-$(1).tpl.js  
 	cat $$^ > $$@
 $(1)-install: $(2)/po/template.pot $(CODE_DIR)/$(CODE_LOAD)-$(1).js
 	$(call Plugin/$(1)/install,$(BIN))
 	$(Q)if [ -d $(2)/ubus ]; then $(CP) $(2)/ubus/* $(BACKEND_BIN_DIR); fi
-	$(Q)if [ -d $(2)/service ]; then $(CP) $(2)/service/* $(BIN)/usr/lib/ubus-services/; fi
+	#$(Q)if [ -d $(2)/service ]; then $(CP) $(2)/service/* $(BIN)/usr/lib/ubus-services/; fi
 	@-chmod +x $(BACKEND_BIN_DIR)/* 
 	$(Q)if [ -f $(2)/menu.json ]; then $(CP) $(2)/menu.json $(BIN)/usr/share/rpcd/menu.d/$(1).json; fi
 	$(Q)if [ -f $(2)/access.json ]; then $(CP) $(2)/access.json $(BIN)/usr/share/rpcd/acl.d/$(1).json; fi
@@ -128,9 +127,6 @@ prepare: .cleaned
 	@echo "BACKEND: $(UBUS_MODS)"
 	@echo "DIRS: $(DIRS-y)"
 	@echo "MODULE: $(MODULE)"
-	#fixjsstyle --disable 5,110,131 $(JSLINT_FILES)
-	#fixjsstyle --disable 5,110,131 $(JSLINT_FILES)
-	#gjslint --disable 5,110,131 $(JSLINT_FILES)	
 	@./scripts/bootstrap.sh
 	@mkdir -p $(TMP_DIR)
 	@mkdir -p $(BIN)/www/js/
@@ -141,7 +137,7 @@ prepare: .cleaned
 	@mkdir -p $(BIN)/usr/share/rpcd/menu.d/
 	@mkdir -p $(BIN)/usr/share/rpcd/acl.d/
 	@mkdir -p $(BACKEND_BIN_DIR)
-	@mkdir -p $(BIN)/usr/lib/ubus-services/
+	#@mkdir -p $(BIN)/usr/lib/ubus-services/
 	@mkdir -p $(BIN)/etc/hotplug.d/
 	
 node_modules: package.json

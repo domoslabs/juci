@@ -3,7 +3,7 @@
 		"description": "JUCI Realtime Graphs Module",
 		"read": {
 			"ubus": {
-				"/juci/rtgraphs": [ "get" ]
+				"/juci/rtgraphs": [ "run"/*"get"*/ ]
 			}
 		} 
 	}

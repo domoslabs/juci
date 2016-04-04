@@ -29,8 +29,8 @@ JUCI.app.run(function($config, $rpc, $window){
 		if(!$config.settings.iconnect || $config.settings.iconnect.username.value == "") return; 
 		$rpc.$login({
 			"username": $config.settings.iconnect.username.value, 
-			"password": $config.settings.iconnect.password.value, 
-		}).done(function success(res){
+			"password": $config.settings.iconnect.password.value
+		}).done(function success(){
 			//$state.go("home", {}, {reload: true});
 			$window.location.href="/#!iconnect-overview"; 
 		}); 

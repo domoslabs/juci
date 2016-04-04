@@ -22,7 +22,7 @@ JUCI.app
 				value: x[".name"]
 			}
 		});
-		$scope.mbox.unshift({ label: $tr(gettext("No Mailbox")), value: ""});
+		$scope.mbox.unshift({ label: $tr(gettext("No Mailbox")), value: "-"});
 		$scope.providers = $uci.voice_client["@sip_service_provider"];
 		$scope.provs = $scope.providers.map(function(x){
 			return {
@@ -30,7 +30,7 @@ JUCI.app
 				value: x[".name"]
 			}
 		});
-		$scope.provs.unshift({ label:$tr(gettext("No Account")), value: ""});
+		$scope.provs.unshift({ label:$tr(gettext("No Account")), value: "-"});
 	});
 	$scope.$watch("model", function(){
 		if(!$scope.model) return;
@@ -59,7 +59,7 @@ JUCI.app
 				return true;
 			});
 		}
-	};
+	}
 	$scope.updateCodecList = function(value, index){
 		for(var i = index; i < 7; i++){
 			$scope.model[codecNames[i]].value = "";

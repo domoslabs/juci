@@ -28,7 +28,8 @@ JUCI.app
 		templateUrl: "/widgets/firewall-rule-edit.html"
 	}; 
 })
-.controller("firewallRuleEdit", function($scope, $firewall, gettext, $tr, $network, networkHostPicker){
+.controller("firewallRuleEdit", function($scope, $firewall, gettext, $tr, $network, networkHostPicker, $uci){
+	$scope.data = {};
 	
 	$scope.protocolChoices = [
 		{ label: "UDP", value: "udp"}, 
@@ -52,56 +53,78 @@ JUCI.app
 	
 	$firewall.getZones().done(function(zones){
 		$scope.allZones = []; 
-		$scope.allZones.push({ label: $tr(gettext("Unspecified")), value: "" }); 
+		$scope.allZones.push({ label: $tr(gettext("Device")), value: "" }); 
 		$scope.allZones.push({ label: $tr(gettext("Any")), value: "*" }); 
 		zones.map(function(x){
 			$scope.allZones.push({ label: String(x.name.value).toUpperCase(), value: x.name.value }); 
 		}); 
 	}); 
 	
-	function update(){
-		var rule = $scope.rule; 
-		if(!rule || !rule.src_ip) return; 
-		$scope.data = {
-			src_ip_enabled: rule.src_ip.value != "", 
-			src_mac_enabled: rule.src_mac.value != "", 
-			src_port_enabled: rule.src_port.value != "", 
-			dest_ip_enabled: rule.dest_ip.value != "", 
-			dest_mac_enabled: rule.dest_mac.value != "", 
-			dest_port_enabled: rule.dest_port.value != ""
-		};
-		// clear a field if user unclicks the checkbox
-		Object.keys($scope.data).map(function(k){
-			$scope.$watch("data."+k, function(value){
-				var field = k.replace("_enabled", ""); 
-				if(!value && $scope.rule) $scope.rule[field].value = ""; 
-			}); 
-		}); 
-		setTimeout(function(){
-			$scope.$apply(); 
-		}); 
-	}
-	
 	$scope.onSelectSrcHost = function(){
 		if(!$scope.rule) return; 
 		networkHostPicker.show({ net: $scope.rule.src.value }).done(function(client){
-			$scope.rule.src_ip.value = client.ipaddr; 
-			$scope.rule.src_mac.value = client.macaddr; 
-			update(); 
+			if($scope.data.src_ips.find(function(ip){
+				return ip.text == client.ipaddr;
+			}) != undefined) return;
+			if($scope.testIp({text:client.ipaddr})){
+				$scope.data.src_ips.push({text:client.ipaddr});
+				$scope.rule.src_mac.value = client.macaddr; 
+			}
 		}); 
 	}
 	
 	$scope.onSelectDestHost = function(){
 		if(!$scope.rule) return; 
 		networkHostPicker.show({ net: $scope.rule.dest.value }).done(function(client){
-			$scope.rule.dest_ip.value = client.ipaddr; 
-			$scope.rule.dest_mac.value = client.macaddr; 
-			update(); 
+			if($scope.data.dest_ips.find(function(ip){
+				return ip.text == client.ipaddr;
+			}) != undefined) return;
+			if($scope.testIp({text:client.ipaddr})){
+				$scope.data.dest_ips.push({text:client.ipaddr}); 
+				$scope.rule.dest_mac.value = client.macaddr; 
+			}
 		}); 
 	}
 	
-	$scope.$watch("rule", function(rule){
-		if(!rule) return; 
-		update(); 
+	$scope.$watch("rule", function(r){
+		if(!r) return; 
+		var rule = $scope.rule; 
+		$scope.data.src_macs = rule.src_mac.value.map(function(x){ return {text:x}; });
+		$scope.data.dest_macs = rule.dest_mac.value.map(function(x){ return {text:x}; });
+		$scope.data.dest_ips = rule.dest_ip.value.map(function(x){ return {text:x}; });
+		$scope.data.src_ips = rule.src_ip.value.map(function(x){ return {text:x}; });
 	}); 
+	$scope.$watch("data.dest_ips", function(ips){
+		if(!$scope.rule || !ips) return;
+		$scope.rule.dest_ip.value = ips.map(function(x){ return x.text;});
+	}, true);
+	$scope.$watch("data.src_macs", function(mac){
+		if(!$scope.rule || !mac) return;
+		$scope.rule.src_mac.value = mac.map(function(x){ return x.text;});
+	}, true);
+	$scope.$watch("data.dest_macs", function(mac){
+		if(!$scope.rule || !mac) return;
+		$scope.rule.dest_mac.value = mac.map(function(x){ return x.text;});
+	}, true);
+	$scope.$watch("data.src_ips", function(ips){
+		if(!$scope.rule || !ips) return;
+		$scope.rule.src_ip.value = ips.map(function(x){ return x.text;});
+	}, true);
+
+	var ipv4 = new $uci.validators.IP4AddressValidator;
+	var iprange = new $uci.validators.IP4CIDRValidator;
+	var ipv6 = new $uci.validators.IP6AddressValidator;
+	var ip6range = new $uci.validators.IP6CIDRValidator;
+	var mac = new $uci.validators.MACAddressValidator;
+
+	$scope.testIp = function($tag){
+		if(ipv4.validate({value:$tag.text}) == null || iprange.validate({value:$tag.text}) == null || 
+			ipv6.validate({value:$tag.text}) == null || ip6range.validate({value:$tag.text}) == null) return true;
+		return false;
+	};
+	$scope.testMac = function($tag){
+		if(mac.validate({value:$tag.text}) == null) return true;
+		return false;
+	};
+			
 }); 

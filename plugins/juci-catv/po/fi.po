@@ -1,0 +1,42 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: Inteno\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.5\n"
+
+msgid "47MHz ~ 1000MHz"
+msgstr ""
+
+msgid "47MHz ~ 591MHz"
+msgstr ""
+
+msgid "47MHz ~ 431MHz"
+msgstr ""
+
+msgid "CATV Settings"
+msgstr "Kaapeli TV asetukset"
+
+msgid "Enable"
+msgstr "Ota käyttöön"
+
+msgid "Enable bandwidth filtering"
+msgstr "Ota käyttöön kaistanleveyden säädin"
+
+msgid "Filter"
+msgstr "Filtteri"
+
+msgid "CATV Status"
+msgstr "Kaapeli TV tila"
+
+msgid "menu-status-catv-title"
+msgstr "CATV Status"
+
+msgid "menu-settings-management-catv-title"
+msgstr "CATV"

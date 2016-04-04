@@ -1,19 +1,17 @@
 //! Author: Reidar Cederqvist <reidar.cederqvist@gmail.com> 
 
 JUCI.app
-.directive("networkConnectionProtoDhcpEdit", function($compile, $parse){
+.directive("networkConnectionProtoDhcpEdit", function(){
 	return {
 		templateUrl: "/widgets/network-connection-proto-dhcp-edit.html", 
 		scope: {
 			interface: "=ngModel"
 		}, 
-		controller: "networkConnectionProtoDhcpEdit", 
 		replace: true, 
 		require: "^ngModel"
-	 };  
+	};
 })
-.controller("networkConnectionProtoDhcpEdit", function($scope, $uci, $network, $rpc, $log, gettext){
-}).directive("networkConnectionProtoDhcpPhysicalEdit", function(){
+.directive("networkConnectionProtoDhcpPhysicalEdit", function(){
 	return {
 		templateUrl: "/widgets/network-connection-standard-physical.html",
 		scope: {
@@ -55,7 +53,7 @@ JUCI.app
 		}
 		return true;
 	};
-	$scope.evalReqopts = function(tag){
+	$scope.evalReqopts = function(){
 		var opts = $scope.interface.reqopts.value.split(" ").filter(function(x){ return x != ""}).map(function(x){ return parseInt(x)});
 		if(opts.find(function(opt){ 
 			if(opt > 0 && opt < 255  ) return false;

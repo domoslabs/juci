@@ -22,14 +22,14 @@ JUCI.app
 		templateUrl: "widgets/overview.wifi.html", 
 		controller: "overviewWidgetWifi", 
 		replace: true
-	 };  
+	};  
 })
 .directive("overviewStatusWidget00Wifi", function(){
 	return {
 		templateUrl: "widgets/overview.wifi.small.html", 
 		controller: "overviewStatusWidgetWifi", 
 		replace: true
-	 };  
+	};  
 })
 .controller("overviewStatusWidgetWifi", function($scope, $uci, $rpc){
 	JUCI.interval.repeat("overview-wireless", 1000, function(done){
@@ -47,7 +47,7 @@ JUCI.app
 				next(); 
 			}); 
 		}, function(next){
-			$rpc.juci.wireless.clients().done(function(result){
+			$rpc.juci.wireless.run({"method":"clients"}).done(function(result){
 				$scope.done = 1; 
 				var clients = {}; 
 				result.clients.map(function(x){ 
@@ -57,6 +57,7 @@ JUCI.app
 				$scope.wifiClients = clients; 
 				$scope.wifiBands = Object.keys(clients); 
 				$scope.$apply(); 
+				next();
 			}); 
 		}], function(){
 			done(); 
@@ -88,7 +89,7 @@ JUCI.app
 	$scope.onEditSSID = function(iface){
 		$juciDialog.show("wireless-interface-edit", {
 			title: $tr(gettext("Edit wireless interface")),  
-			on_apply: function(btn, dlg){
+			on_apply: function(){
 				$uci.$save(); 
 				return true; 
 			}, 
@@ -105,7 +106,7 @@ JUCI.app
 		async.series([
 			function(next){
 				$uci.$sync("wireless").done(function(){
-					$rpc.juci.wireless.devices().done(function(result){
+					$rpc.juci.wireless.run({"method":"devices"}).done(function(result){
 						$scope.wifi = $uci.wireless;  
 						$scope.vifs = result.devices.map(function(dev){
 							var uci_dev = $uci.wireless["@wifi-iface"].find(function(w){
@@ -122,13 +123,7 @@ JUCI.app
 				}); 
 			}, 
 			function(next){
-				/*$rpc.juci.wireless.wps.showpin().done(function(result){
-					$scope.wps.pin = result.pin; 
-				}).always(function(){ next(); });*/
-				next(); 
-			}, 
-			function(next){
-				$rpc.juci.wireless.clients().done(function(clients){
+				$rpc.juci.wireless.run({"method":"clients"}).done(function(clients){
 					$scope.wireless.clients = clients.clients; 
 					$scope.wireless.clients.map(function(cl){
 						// check flags 
@@ -138,13 +133,13 @@ JUCI.app
 				}).fail(function(){
 					next();
 				});
-			},
+			}
 		], function(){
 			$scope.$apply(); 
 			def.resolve(); 
 		}); 
 		return def.promise(); 
-	}; 
+	} 
 	JUCI.interval.repeat("wifi-overview", 10000, function(done){
 		refresh().done(function(){
 			done(); 

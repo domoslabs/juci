@@ -76,7 +76,6 @@ UCI.voice_client.$registerSectionType("sip_service_provider",  {
 	"domain":				{ dvalue: "", type: String },      
 	"user":					{ dvalue: "", type: String }, 
 	"authuser":				{ dvalue: "", type: String }, 
-	"displayname":			{ dvalue: "", type: String }, 
 	"ptime_gsm":			{ dvalue: 20, type: Number },
 	"ptime_g723":			{ dvalue: 20, type: Number },
 	"ptime_ulaw":			{ dvalue: 20, type: Number }, 
@@ -91,12 +90,12 @@ UCI.voice_client.$registerSectionType("sip_service_provider",  {
 }); 
 UCI.voice_client.$registerSectionType("sip_user", {
 	"name":			{ dvalue: "", type: String },
-	"enable":		{ dvalue: false, type: Boolean },
-	"extension":	{ dvalue: "", type: String },
+	"enabled":		{ dvalue: false, type: Boolean },
+	"extension":	{ dvalue: "", type: Number },
 	"secret":		{ dvalue: "", type: String },
 	"user":			{ dvalue: "", type: String },
-	"sip_provider":	{ dvalue: "", type: String },
-	"mailbox":		{ dvalue: "", type: String },
+	"sip_provider":	{ dvalue: "-", type: String },
+	"mailbox":		{ dvalue: "-", type: String },
 	"codec0":		{ dvalue: "", type: String },
 	"codec1":		{ dvalue: "", type: String },
 	"codec2":		{ dvalue: "", type: String },
@@ -104,9 +103,16 @@ UCI.voice_client.$registerSectionType("sip_user", {
 	"codec4":		{ dvalue: "", type: String },
 	"codec5":		{ dvalue: "", type: String },
 	"codec6":		{ dvalue: "", type: String },
-	"codec7":		{ dvalue: "", type: String },
 	"host":			{ dvalue: "", type: String },
 	"qualify":		{ dvalue: "", type: String }
+},function(section){
+	var errors = [];
+	if(!section.name || section.name.value == "")
+		errors.push(gettext("SIP users needs a name"));
+	if(!section.extension || section.extension.value == "" || section.extension.value < 1)
+		errors.push(gettext("SIP users needs a valid extension"));
+	if(errors.length == 0) return null;
+	return errors;
 });
 UCI.voice_client.$registerSectionType("call_filter", { 
 	"name":							{ dvalue: "", type: String }, 
@@ -140,7 +146,6 @@ UCI.voice_client.$registerSectionType("sip_advanced", {
 	"rtpend":					{ dvalue: 20000, type: Number },
 	"dtmfmode":					{ dvalue: "rfc2833", type: String},
 	"remotehold":				{ dvalue: "yes", type: Boolean },
-	"contact_line_suffix":		{ dvalue: 1, type: Number },
 	"registertimeoutbackoff":	{ dvalue: 512, type: Number },
 	"registerattemptsbackoff":	{ dvalue: 0, type: Number },
 	"register403timeout":		{ dvalue: 0, type: Number },

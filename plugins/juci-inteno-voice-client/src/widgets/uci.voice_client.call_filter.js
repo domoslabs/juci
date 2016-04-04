@@ -2,10 +2,6 @@
 JUCI.app.directive("uciVoiceClientCallFilterEdit", function(){
 	return {
 		restrict: "E", 
-		templateUrl: "/widgets/uci.voice_client.call_filter.html", 
-		controller: "uciVoiceClientCallFilterEdit"
+		templateUrl: "/widgets/uci.voice_client.call_filter.html"
 	}
-})
-.controller("uciVoiceClientCallFilterEdit", function($scope, $uci){
-	
 }); 

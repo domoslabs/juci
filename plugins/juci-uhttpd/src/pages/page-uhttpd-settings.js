@@ -34,7 +34,7 @@ JUCI.app
 			{label: "Not supported",	value: "not_supported"},
 			{label: "Unknown error", 	value: "unknown_error"},
 			{label: "Connection failed",value: "connection_failed"}
-		],
+		]
 	};
 	$scope.method = {};
 	$scope.data = {status:  [],method: []}
@@ -46,7 +46,7 @@ JUCI.app
 		$scope.data.status.map(function(item){
 			if(item.value == $scope.status.new){
 				alert("Status allredy in list, please select another one");
-				ret = true;;
+				ret = true;
 			}
 		});
 		if(ret)return;
@@ -62,7 +62,7 @@ JUCI.app
 			return
 		}
 		$scope.logopts.ubus_method.value.push($scope.method.new);
-		$scope.logopts.ubus_method.value = $scope.logopts.ubus_method.value.filter(function(x){return true;});
+		$scope.logopts.ubus_method.value = $scope.logopts.ubus_method.value;
 		$scope.method.new = "";
 	};
 	$scope.deleteStatusItem = function(item){
@@ -99,5 +99,5 @@ JUCI.app
 		$scope.logopts.ubus_method.value = $scope.logopts.ubus_method.value.filter(function(x){
 			return (x != item);
 		});
-	 };
+	};
 }); 

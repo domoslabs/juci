@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("dropbearSettings", function($scope, $uci, $systemService, dropbearAddKey, $network, $tr, gettext){
+.controller("dropbearSettings", function($scope, $uci, $rpc, $systemService, dropbearAddKey, $network, $tr, gettext){
 	$scope.data = {
 
 	};
@@ -43,7 +43,7 @@ JUCI.app
 
 	$scope.onAddInstance = function(){
 		$uci.dropbear.$create({
-			".type":"dropbear",
+			".type":"dropbear"
 		}).done(function() {
 			$scope.$apply();
 		});
@@ -53,15 +53,15 @@ JUCI.app
 		if($scope.dropbear.length <= 0) {
 			alert($tr(gettext("Unable to remove last instance")));
 		} else {
-		 	 if(confirm($tr(gettext("Are you sure you want to remove this instance?")))){
+			if(confirm($tr(gettext("Are you sure you want to remove this instance?")))){
 				ins.$delete().done(function(){
 					$scope.$apply();
 				});
-		 	}
+			}
 		}
 	}
 
-	$scope.onServiceEnableDisable = function(enabled){
+	$scope.onServiceEnableDisable = function(){
 		if(!$scope.service) return;
 		if($scope.service.enabled){
 			$scope.service.disable().always(function(){ $scope.$apply(); });
@@ -78,7 +78,7 @@ JUCI.app
 		}
 	}
 	function refresh(){
-		$rpc.juci.dropbear.get_public_keys().done(function(result){
+		$rpc.juci.dropbear.run({"method":"get_public_keys"}).done(function(result){
 			$scope.keyList = result.keys;
 			$scope.$apply();
 		}).fail(function(){
@@ -88,15 +88,15 @@ JUCI.app
 	refresh(); 
 
 	$scope.onDeleteKey = function(item){
-	   $rpc.juci.dropbear.remove_public_key(item).done(function(res){
-	  		if(res.error) alert($tr(res.error)); 	
+		$rpc.juci.dropbear.run({"method":"remove_public_key","args":JSON.stringify(item)}).done(function(res){
+			if(res.error) alert($tr(res.error)); 	
 			refresh();
 		});
 	}
 
 	$scope.onAddKey = function(){
 		dropbearAddKey.show().done(function(data){
-			$rpc.juci.dropbear.add_public_key(data).done(function(result){
+			$rpc.juci.dropbear.run({"method":"add_public_key", "args":JSON.stringify(data)}).done(function(result){
 				if(result.error) alert($tr(result.error)); 
 				refresh();
 			});

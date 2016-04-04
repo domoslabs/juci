@@ -24,7 +24,7 @@ JUCI.app
 		scope: {
 			ngModel: "=ngModel"
 		}, 
-		link: function(scope, element, attrs){
+		link: function(scope, element){
 			if(scope.ngModel && scope.ngModel.type){
 				element.html($compile("<network-device-"+scope.ngModel.type+"-edit ng-model='ngModel'></network-device-"+scope.ngModel.type+"-edit>")(scope));
 			} else {

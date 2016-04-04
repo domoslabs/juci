@@ -10,13 +10,13 @@ JUCI.app
 	};
 }).controller("sipAdvancedCtrl", function($scope, $uci, $tr, gettext, $network, $rpc){
 	$scope.ssl = {};
-	$rpc.juci.voice_client.get_trusted_ca().done(function(data){
+	$rpc.juci.voice_client.run({"method":"get_trusted_ca"}).done(function(data){
 		$scope.ssl.ovalue = $scope.ssl.value = data.result;
 		$scope.$apply();
 	});
 	$scope.save_ssl = function(){
 		var test = $scope.ssl.value.split("\n").join("\n\r");
-		$rpc.juci.voice_client.set_trusted_ca({data:test}).done(function(data){
+		$rpc.juci.voice_client.run({"method":"set_trusted_ca","args":JSON.stringify({data:test})}).done(function(data){
 			if(data.result == "success"){
 				$scope.ssl.ovalue = $scope.ssl.value;
 				$scope.ssl.saved = true;
@@ -56,7 +56,7 @@ JUCI.app
 		{ label: $tr(gettext("Compatibility")),	value: "compatibility" },
 		{ label: $tr(gettext("RFC 2833")),	value: "rfc2833" },
 		{ label: $tr(gettext("SIP INFO")),	value: "info" },
-		{ label: $tr(gettext("Inband")),	value: "inband" },
+		{ label: $tr(gettext("Inband")),	value: "inband" }
 	];
 	$scope.onLocalnetAdded = function(){
 		$scope.sip.localnet.value = $scope.localnets.map(function(x){return x.label});

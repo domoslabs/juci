@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("InternetNetworkPage", function($scope, $uci, $rpc, $network, $ethernet, $tr, gettext, networkConnectionCreate){
+.controller("InternetNetworkPage", function($scope, $uci, $rpc, $network, $ethernet, $tr, gettext, $juciDialog, $juciConfirm, $juciAlert){
 	$scope.data = {}; 
 	
 	$ethernet.getAdapters().done(function(devices){
@@ -59,23 +59,77 @@ JUCI.app
 		return i[".name"]; 
 	}
 	
+	function evalName(name){
+		if(!name) return;
+		if(name == "") return $tr(gettext("Interface Name is needed"));
+		if(!name.match(/^[a-zA-Z0-9]+$/)) return $tr(gettext("Interface names can only contain letters and numbers"));
+		if(name.length > 12) return $tr(gettext("Interface name may only be 12 characters long"));
+	}
+
 	$scope.onAddConnection = function(){
-		networkConnectionCreate.show().done(function(data){
-			$uci.network.$create({
-				".type": "interface",
-				".name": data.name, 
-				"type": data.type
-			}).done(function(interface){
-				$scope.current_connection = interface; 
-				$scope.networks.push(interface); 
-				$scope.$apply(); 
-			}); 
+		var model = {
+			errors: []
+		};
+		$juciDialog.show("network-connection-create", {
+			title: "Create New Network Interface",
+			buttons: [
+				{ label: $tr(gettext("OK")), value: "ok", primary: true },
+				{ label: $tr(gettext("Cancel")), value: "cancel" }
+			],
+			model: model,
+			on_button: function(btn, inst){
+				if(btn.value == "cancel"){
+					inst.dismiss();
+				}
+				if(btn.value == "ok"){
+					model.errors = [];
+					if(!model.name)
+						model.errors.push($tr(gettext("The new interface needs a name")));
+					var er;
+					if((er = evalName(model.name)) != null)
+						model.errors.push(er);
+					if(model.type == undefined)
+						model.errors.push($tr(gettext("The new interface needs an interface type")));
+					if(!model.protocol == undefined)
+						model.errors.push($tr(gettext("Pleace choose protocol for connection")));
+					if(model.errors.length > 0) return;
+					if(model.protocol === "dhcp"){
+						var vendorid = getVendorID() || "";
+						var hostname = getHostname() || "";
+					}
+					$uci.network.$create({
+						".type": "interface",
+						".name": model.name, 
+						"type": model.type,
+						"proto": model.protocol,
+						"vendorid": vendorid,
+						"hostname": hostname
+					}).done(function(interface){
+						$scope.current_connection = interface; 
+						$scope.networks.push(interface); 
+						$scope.$apply(); 
+					}); 
+					inst.close();
+				}
+			}
 		});
 	}
-	
+
+	function getVendorID(){
+		if(!$scope.networks || $scope.networks.length < 1) return "";
+		return $scope.networks.find(function(net){ return net.vendorid.value !== ""; }).vendorid.value;
+	}
+	function getHostname(){
+		if(!$scope.networks || $scope.networks.length < 1) return "";
+		return $scope.networks.find(function(net){ return net.hostname.value !== ""; }).hostname.value;
+	}
 	$scope.onDeleteConnection = function(conn){
-		if(!conn) alert($tr(gettext("Please select a connection in the list!"))); 
-		if(confirm($tr(gettext("Are you sure you want to delete this connection?")))){
+		if(!conn){
+			$juciAlert($tr(gettext("Please select a connection in the list!")));
+			return;
+		}
+		$juciConfirm.show($tr(gettext("Are you sure you want to delete this connection?"))).done(function(result){
+			if(result != "ok")return;
 			conn.$delete().done(function(){
 				$scope.networks = $scope.networks.filter(function(net){
 					return net[".name"] != conn[".name"]; 
@@ -83,7 +137,7 @@ JUCI.app
 				$scope.current_connection = null; 
 				$scope.$apply(); 
 			}); 
-		}
+		});
 	}
 	
 	$scope.onEditConnection = function(conn){

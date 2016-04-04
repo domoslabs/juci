@@ -1,19 +1,14 @@
 <div>
-	<div class="modal-header">
-		<h3 class="modal-title" translate>Create New Network Interface</h3>
-	</div>
-	<div class="modal-body">
-		<juci-config-lines>
-			<juci-config-line title="{{'Interface Name'|translate}}">
-				<input type="text" class="form-control" ng-model="data.name" />
-			</juci-config-line>
-			<juci-config-line title="{{'Interface Type'|translate}}">
-				<juci-select ng-model="data.type" ng-items="interfaceTypes" ></juci-select>
-			</juci-config-line>
-		</juci-config-lines>
-	</div>
-	<div class="modal-footer">
-		<button class="btn btn-primary" ng-click="ok()">OK</button>
-		<button class="btn btn-default" ng-click="cancel()">Cancel</button>
-	</div>
+	<juci-config-lines>
+		<juci-config-line title="{{'Interface Name'|translate}}" error="evalName()">
+			<input type="text" class="form-control" ng-model="model.name" />
+		</juci-config-line>
+		<juci-config-line title="{{'Protocol'|translate}}">
+			<juci-select ng-model="model.protocol" ng-items="allProtocols"></juci-select>
+		</juci-config-line>
+		<juci-config-line ng-show="showType()" title="{{'Interface Type'|translate}}">
+			<juci-select ng-model="model.type" ng-items="interfaceTypes" ></juci-select>
+		</juci-config-line>
+	</juci-config-lines>
+	<div class="alert alert-danger" ng-repeat="error in model.errors track by $index" ng-show="model.errors.length > 0">{{error}}</div>
 </div>

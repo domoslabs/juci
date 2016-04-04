@@ -1,0 +1,7 @@
+<div>
+	<juci-config-lines>
+		<juci-config-line ng-repeat="page in data.pages track by $index" title="{{page.path.value}}">
+			<switch class="green" ng-model="page['_access']" ng-change="onSwitch(page)" ng-show="!page['_disabled']" />
+		</juci-config-line>
+	</juci-config-lines>
+</div>

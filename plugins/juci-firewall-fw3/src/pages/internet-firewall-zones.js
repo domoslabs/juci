@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("InternetFirewallZonesPage", function($scope, $firewall, $uci){
+.controller("InternetFirewallZonesPage", function($scope, $firewall, $uci, $tr, gettext){
 
 	$firewall.getZones().done(function(zones){
 		$scope.zones = zones; 
@@ -34,14 +34,14 @@ JUCI.app
 		$uci.firewall.$create({
 			".type": "zone", 
 			"name": "new_zone"
-		}).done(function(zone){
+		}).done(function(){
 			$scope.$apply(); 
 		}); 
 	}
 	
 	$scope.onDeleteZone = function(zone){
-		if(!zone) alert(gettext("Please select a zone to delete!")); 
-		if(confirm(gettext("Are you sure you want to delete this zone?"))){
+		if(!zone) alert($tr(gettext("Please select a zone to delete!"))); 
+		if(confirm($tr(gettext("Are you sure you want to delete this zone?")))){
 			zone.$delete().done(function(){
 				var rem = [];
 				$uci.firewall["@forwarding"].map(function(fw){

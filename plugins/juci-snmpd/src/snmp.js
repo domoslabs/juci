@@ -17,28 +17,49 @@
  */
 
 UCI.$registerConfig("snmpd"); 
-UCI.snmpd.$registerSectionType("mini_snmpd", {
-	"enabled":			{ dvalue: false, type: Boolean }, 	
-	"community":		{ dvalue: "", type: String }, 	
-	"location":			{ dvalue: "", type: String }, 	
-	"contact":			{ dvalue: "", type: String }, 	
-	"disks":			{ dvalue: "", type: String }, 	
-	"interfaces":		{ dvalue: "", type: String }, 	
-	"manager_ip":		{ dvalue: "", type: String }, 	
-	"name":				{ dvalue: "", type: String }, 	
-	"read_community": 	{ dvalue: "", type: String }, 	
-	"set_community": 	{ dvalue: "", type: String }
-}); 
-
+UCI.snmpd.$registerSectionType("snmp", {
+	"enabled":	{ dvalue: false, type: Boolean }
+});
 UCI.snmpd.$registerSectionType("system", {
-	"enabled":			{ dvalue: "", type: String },
-	"contact":			{ dvalue: "", type: String }, 	
-	"manager_ip":		{ dvalue: "", type: String }, 	
-	"read_community": 	{ dvalue: "", type: String }, 	
-	"set_community": 	{ dvalue: "", type: String },
-	"sysLocation": 		{ dvalue: "", type: String }, 
-	"sysName":	 		{ dvalue: "", type: String }, 
-	"sysContact": 		{ dvalue: "", type: String }, 
-	"sysDescr": 		{ dvalue: "", type: String } 
+	"sysLocation":	{ dvalue: "", type: String },
+	"sysContact":	{ dvalue: "", type: String }, 	
+	"sysName":		{ dvalue: "", type: String }, 	
+	"sysServices":	{ dvalue: "", type: String }, 	
+	"sysDescr": 	{ dvalue: "", type: String },
+	"sysObjectID": 	{ dvalue: "", type: String } 
 }); 
-
+UCI.snmpd.$registerSectionType("agent", {
+	"agentaddress": { dvalue: "", type: String }
+});
+UCI.snmpd.$registerSectionType("com2sec", {
+	"secname":	{ dvalue: "", type: String },
+	"source":	{ dvalue: "", type: String },
+	"community":{ dvalue: "", type: String }
+});
+UCI.snmpd.$registerSectionType("group", {
+	"group":	{ dvalue: "", type: String },
+	"version":	{ dvalue: "", type: String },
+	"secname":	{ dvalue: "", type: String }
+});
+UCI.snmpd.$registerSectionType("view", {
+	"viewname":	{ dvalue: "", type: String },
+	"type":		{ dvalue: "", type: String },
+	"oid":		{ dvalue: "", type: String },
+	"mask":		{ dvalue: "", type: String }
+});
+UCI.snmpd.$registerSectionType("access", {
+	"group":	{ dvalue: "", type: String },
+	"context":	{ dvalue: "", type: String },
+	"version":	{ dvalue: "", type: String },
+	"level":	{ dvalue: "", type: String },
+	"prefix":	{ dvalue: "", type: String },
+	"read":		{ dvalue: "", type: String },
+	"write":	{ dvalue: "", type: String },
+	"notify":	{ dvalue: "", type: String }
+});
+UCI.snmpd.$registerSectionType("pass", {
+	"persist":	{ dvalue: false, type: Boolean },
+	"priority":	{ dvalue: "", type: String },
+	"miboid":	{ dvalue: "", type: String },
+	"program":	{ dvalue: "", type: String }
+});

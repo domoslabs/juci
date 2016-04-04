@@ -45,13 +45,15 @@ JUCI.app
 		parts.forEach(function(v, i){
 			$scope.data.parts[i] = v;
 		});
-		if($scope.placeholder && typeof $scope.placeholder == "string"){
-			var validator = new $uci.validators.IP4AddressValidator();
-			if(validator.validate({value:$scope.placeholder}) == null){
-				$scope.placeholders = $scope.placeholder.split(".");
-			}
-		}
 	},true);
+
+	$scope.$watch("placeholder", function(){
+		if(!$scope.placeholder || typeof $scope.placeholder != "string") return;
+		var validator = new $uci.validators.IP4AddressValidator();
+		if(validator.validate({value:$scope.placeholder}) == null){
+			$scope.placeholders = $scope.placeholder.split(".");
+		}
+	}, false);
 
 	// reassemble model when parts change
 	$scope.updateModel = function() {

@@ -21,7 +21,7 @@
 // this control gets pointer to network connection and looks up proper dhcp server entry for it. 
 
 JUCI.app
-.directive("networkConnectionDhcpServerSettings", function($compile){
+.directive("networkConnectionDhcpServerSettings", function(){
 	return {
 		scope: {
 			connection: "=ngConnection"
@@ -44,8 +44,8 @@ JUCI.app
 		}); 
 	}); 
 	$scope.$watch("data.dhcpEnabled", function(value){
-		if($scope.dhcp == undefined) return;
-		if($scope.connection && $scope.connection.proto && $scope.connection.proto.value == "static") {
+		if(!$scope.connection || !$scope.connection.proto || $scope.connection.proto.value != "static") return;
+		if($scope.dhcp == undefined) {
 			console.log("Added new DHCP section");
 			if($scope.connection){
 				$uci.dhcp.$create({

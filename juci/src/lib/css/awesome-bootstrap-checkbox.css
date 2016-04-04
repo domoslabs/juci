@@ -7,7 +7,7 @@
     display: inline-block;
     vertical-align: middle;
     position: relative;
-    padding-left: 5px;
+    padding-left: 20px;
 }
 .checkbox label::before {
     content: "";

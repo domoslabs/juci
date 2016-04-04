@@ -19,21 +19,21 @@
  */
 
 JUCI.app
-.directive("overviewWidget40USB", function(){
+.directive("overviewWidget20USB", function(){
 	return {
 		templateUrl: "widgets/overview.usb.html", 
-		controller: "overviewWidget40USB", 
+		controller: "overviewWidget20USBCtrl", 
 		replace: true
-	 };  
+	};
 })
-.directive("overviewStatusWidget40USB", function(){
+.directive("overviewStatusWidget20USB", function(){
 	return {
 		templateUrl: "widgets/overview.usb.small.html", 
-		controller: "overviewWidget40USB", 
+		controller: "overviewWidget20USBCtrl", 
 		replace: true
-	 };  
+	};
 })
-.controller("overviewWidget40USB", function($scope, $uci, $usb, $events){
+.controller("overviewWidget20USBCtrl", function($scope, $uci, $usb, $events){
 	$events.subscribe("hotplug.usb", function(res){
 		if(res.data && res.data.action && (res.data.action == "add" || res.data.action == "remove")){
 			update();
@@ -41,8 +41,7 @@ JUCI.app
 	});
 	function update(){
 		$usb.getDevices().done(function(devices){
-			$scope.devices = devices.filter(function(dev){ return dev.product && !dev.product.match(/Platform/) && !dev.product.match(/Host Controller/); }); 
-			$scope.loaded = true; 
+			$scope.devices = devices || [];
 			$scope.$apply(); 
 		}); 
 	}update();

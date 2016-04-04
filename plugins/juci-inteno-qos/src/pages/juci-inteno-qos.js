@@ -18,23 +18,76 @@
  * 02110-1301 USA
  */
 
-JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, intenoQos){
+JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, intenoQos, $juciDialog, $firewall){
 	$uci.$sync(["qos"]).done(function(){
 		$scope.qos = $uci.qos["@classify"];
-		$scope.$apply();
+		$scope.ifaces = $uci.qos["@interface"];
+		getNetworks();
 	});
-
+	function getNetworks(){
+		$firewall.getZoneNetworks("wan").done(function(nets){
+			$scope.interfaces = nets.filter(function(net){ return !net.ifname.value.match(/^@.*/); })
+			.map(function(net){ return {label:String(net.$info.interface).toUpperCase(), value: net.$info.interface}; })
+			.filter(function(net){ return !$scope.ifaces.find(function(i){ return i[".name"] == net.value; }); });
+			$scope.$apply();
+		});
+	}
 	intenoQos.getDefaultTargets().done(function(targets){
 		$scope.targets = targets.map(function(x){ return { label: x, value: x }; }); 
 		$scope.$apply(); 
 	}); 
 
-	$scope.onAddRule = function(item){
+	$scope.onAddRule = function(){
 		$uci.qos.$create({
 			".type": "classify"
-		}).done(function(section){
+		}).done(function(){
 			$scope.$apply(); 
 		}); 
+	};
+
+	$scope.onAddIface = function(){
+		if(!$scope.interfaces || $scope.interfaces.length < 1) return;
+		var model = {
+			interfaces: $scope.interfaces,
+			name: $scope.interfaces[0].value
+		}
+		$juciDialog.show("add-bw-interface-edit", {
+			title: $tr(gettext("Add Bandwidth Limitation")),
+			model: model,
+			on_apply: function(){
+				if(!model.name){
+					model.error = true;
+					return false;
+				}
+				$uci.qos.$create({
+					".type": "interface",
+					".name": model.name
+				}).done(function(){
+					getNetworks();
+				});
+				return true;
+			}
+		});
+	};
+
+	$scope.onDeleteIface = function(item){
+		if(!item) return;
+		item.$delete().done(function(){
+			getNetworks();
+		});
+	};
+
+	$scope.getRuleTitle = function(item){
+		var str = (item.target.value+" "+(item.srchost.value?("(src host: "+item.srchost.value+") "):"")+
+					(item.dsthost.value?("(dst host: "+item.dsthost.value+") "):"")+
+					(item.proto.value?("(protocol: "+item.proto.value.toUpperCase()+") "):"")+
+					(item.ports.value?("(ports: "+item.ports.value+") "):""));
+		if(str.length > 53) return str.substring(0, 50)+"...";
+		return str;
+	}
+	$scope.getIfaceTitle = function(item){
+		if(!item) return "";
+		return String(item[".name"]).toUpperCase();
 	};
 
 	$scope.onDeleteRule = function(item){

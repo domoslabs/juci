@@ -17,7 +17,7 @@
  */
 
 JUCI.app
-.directive("uciWirelessDeviceEdit", function($compile){
+.directive("uciWirelessDeviceEdit", function(){
 	return {
 		templateUrl: "/widgets/uci.wireless.device.edit.html", 
 		scope: {
@@ -26,20 +26,27 @@ JUCI.app
 		controller: "WifiDeviceEditController", 
 		replace: true, 
 		require: "^ngModel"
-	 };  
-}).controller("WifiDeviceEditController", function($scope, $rpc, $tr, gettext){
+	};  
+}).controller("WifiDeviceEditController", function($scope, $config, $rpc, $tr, gettext){
+	$scope.showExpert = $config.local.mode == "expert";
 	$scope.$watch("device", function(device){
 		if(!device) return; 
 
-		$rpc.juci.wireless.radios().done(function(result){
+		$rpc.juci.wireless.run({"method":"radios"}).done(function(result){
 			if(device[".name"] in result){
 				var settings = result[device[".name"]]; 
 				$scope.allChannels = settings.channels.map(function(x){ return { label: x, value: x }; }); 
-				$scope.allModes = settings.hwmodes.map(function(x){ return { label: $tr(x), value: x }; }); ; 
-				$scope.allBandwidths = settings.bwcaps.map(function(x){ return { label: x, value: x }; }); ; 
+				$scope.allModes = settings.hwmodes.map(function(x){ return { label: $tr(x), value: x }; });
+				$scope.allBandwidths = settings.bwcaps.map(function(x){ return { label: x, value: x }; });
 			} 
 			$scope.$apply(); 
 		}); 
 	}); 
-	
+	//make these avalible for translation
+	gettext("11a");
+	gettext("11ac");
+	gettext("11b");
+	gettext("11bg");
+	gettext("11g");
+	gettext("11n");
 }); 

@@ -55,9 +55,10 @@ UCI.dhcp.$registerSectionType("dhcp", {
 	"ignore":		{ dvalue: false, type: Boolean }
 });
 UCI.dhcp.$registerSectionType("domain", {
-	"name":		{ dvalue: [], type: Array, },
+	"name":		{ dvalue: [], type: Array },
 	"ip":		{ dvalue: "", type: String, required: true },  // TODO: change to ip address
-	"family":	{ dvalue: "ipv4", type: String, required: true }
+	"family":	{ dvalue: "ipv4", type: String, required: true },
+	"network":	{ dvalue: "", type: String}
 });
 UCI.dhcp.$registerSectionType("host", {
 	"name":		{ dvalue: "", type: String, required: false},
@@ -71,10 +72,13 @@ UCI.dhcp.$registerSectionType("host", {
 
 JUCI.app.factory("lanIpFactory", function($firewall, $tr, gettext){
 	return {
-		getIp: function(){
+		getIp: function(network){
 			var deferred = $.Deferred();
+			if(!network){
+				return deferred.reject("no network given");
+			}
 			var res = { ipv6:"LAN does not have IPv6 configured", ipv4:"LAN does not have IPv4 configured"};
-			$firewall.getZoneNetworks("lan").done(function(networks){
+			$firewall.getZoneNetworks(network).done(function(networks){
 				if(networks.length == 0 || !networks[0].$info) return;
 				if(networks[0].$info["ipv4-address"].length != 0 && networks[0].$info["ipv4-address"][0].address){
 					res.ipv4 = networks[0].$info["ipv4-address"][0].address;

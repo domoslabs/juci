@@ -4,7 +4,8 @@
 		"read": {
 			"ubus": {
 				"/juci/netmode": [
-					"select"
+					"run"
+					/*"select"*/
 				]
 			}, 
 			"uci": [

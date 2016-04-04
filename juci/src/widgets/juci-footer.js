@@ -25,11 +25,20 @@ JUCI.app
 		controller: "juciFooter"
 	}; 
 })
-.controller("juciFooter", function($scope, $rpc, $network, $languages, gettextCatalog, gettext, $tr, $config){
-	// TODO: move this into a higher level controller maybe? 
-	$scope.languages = $languages.getLanguages(); 
+.controller("juciFooter", function($localStorage, $scope, $rpc, $firewall, $languages, gettextCatalog, gettext, $tr, $config){
+	$scope.languages = $languages.getLanguages();
+	if(!$scope.languages){
+		gettextCatalog.setCurrentLanguage("en") //if config is missing or broken set default language to english
+	}else {
+		var lang = $localStorage.getItem("language");
+		if($scope.languages.find(function(l){ return l.short_code == lang; })){
+			gettextCatalog.setCurrentLanguage(lang);
+		}else{
+			gettextCatalog.setCurrentLanguage($config.settings.localization.default_language.value || "en");
+		}
+	}
 	$scope.isActiveLanguage = function(lang){
-		return gettextCatalog.currentLanguage == lang.short_code; 
+		return gettextCatalog.getCurrentLanguage() == lang.short_code; 
 	}
 	$scope.setLanguage = function(lang){
 		$languages.setLanguage(lang.short_code); 
@@ -42,8 +51,8 @@ JUCI.app
 			window.location.href="/";
 		});
 	}
-	$network.getDefaultRouteNetworks().done(function(result){
-		$scope.wanifs = result.map(function(x){ return x.$info; }); 
+	$firewall.getZoneNetworks("wan").done(function(networks){
+		$scope.wanifs = networks.map(function(x){ return x.$info; }); 
 		$scope.$apply(); 
 	}); 
 	$rpc.system.board().done(function(res){

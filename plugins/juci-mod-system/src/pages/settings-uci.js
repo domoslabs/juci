@@ -43,7 +43,7 @@ JUCI.app
 			}); 
 			$scope.loading = 0; 
 			$scope.$apply(); 
-		}).fail(function(err){
+		}).fail(function(){
 			$scope.error = "Could not retreive data!"; 
 			$scope.loading = 0; 
 			$scope.$apply(); 
@@ -56,10 +56,10 @@ JUCI.app
 			"config": $scope.selectedConfig.id, 
 			"section": id, 
 			"values": $scope.subsections[id]
-		}).done(function(resp){
+		}).done(function(){
 			$rpc.uci.commit({
 				config: $scope.selectedConfig.id
-			}).done(function(resp){
+			}).done(function(){
 				$scope.onResetSection(id); 
 			}); 
 		}); 

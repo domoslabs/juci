@@ -22,7 +22,7 @@ JUCI.app.requires.push("ui.bootstrap.typeahead");
 JUCI.app.requires.push("ngAnimate"); 
 
 JUCI.app
-.directive("sambaShareEdit", function($compile){
+.directive("sambaShareEdit", function(){
 	return {
 		scope: {
 			share: "=ngModel"
@@ -30,9 +30,9 @@ JUCI.app
 		templateUrl: "/widgets/samba-share-edit.html", 
 		controller: "sambaShareEdit", 
 		replace: true
-	 };  
+	};
 })
-.controller("sambaShareEdit", function($scope, $network, $modal, $juciDialog, $tr, gettext, $uci){
+.controller("sambaShareEdit", function($scope, $network, $modal, $juciDialog, $tr, gettext, $uci, $rpc){
 	$scope.data = {}; 
 	$scope.users = {
 		all: [],
@@ -78,25 +78,27 @@ JUCI.app
 		$scope.share.path.value = "/mnt" + value;
 	}, false);
 
-	var def = null
 	$scope.onAutocomplete = function(query){
-		if(!def){
-			var def = $.Deferred(); 
-			$scope.loadingLocations = true;
-			$rpc.juci.samba.autocomplete({ path: query.slice(1) }).done(function(result){
-				def.resolve(result.folders); 
-			}).fail(function(){
-				def.reject(); 
-			}).always(function(){def = null; $scope.loadingLocations = false;});
-		}
-		return def.promise(); 
+		var def = null
+		return function(){
+			if(!def){
+				def = $.Deferred(); 
+				$scope.loadingLocations = true;
+				$rpc.juci.samba.run({"method":"autocomplete","args":JSON.stringify({ path: query.slice(1) })}).done(function(result){
+					def.resolve(result.folders); 
+				}).fail(function(){
+					def.reject(); 
+				}).always(function(){def = null; $scope.loadingLocations = false;});
+			}
+			return def.promise(); 
+		}();
 	}
 	$scope.onAddFolder = function(){
 		var model = {}
 		$juciDialog.show("samba-file-tree", {
 			title: $tr(gettext("Add folder to share")),
 			model: model,
-			on_apply: function(btn, dlg){
+			on_apply: function(){
 				if(!model.path)return true;
 					$scope.data.model = model.path;
 				return true;

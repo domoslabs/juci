@@ -32,7 +32,6 @@ JUCI.app
 	}); 
 
 	$scope.getError = function(option){
-		console.log(option);
 		if(option.value == "") return false;
 		if(option.error == null) return true;
 		return false;
@@ -41,7 +40,7 @@ JUCI.app
 	$scope.onAddRoute = function(){
 		$uci.network.$create({
 			".type": "route"
-		}).done(function(route){
+		}).done(function(){
 			$scope.$apply(); 
 		}); 
 	}
@@ -56,7 +55,7 @@ JUCI.app
 	$scope.onAddRoute6 = function(){
 		$uci.network.$create({
 			".type": "route6"
-		}).done(function(route){
+		}).done(function(){
 			$scope.$apply(); 
 		}); 
 	}

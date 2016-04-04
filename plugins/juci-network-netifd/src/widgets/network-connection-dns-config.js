@@ -1,7 +1,7 @@
 //! Author: Reidar Cederqvist <reidar.cederqvist@gmail.com>
 
 JUCI.app
-.directive("networkConnectionDnsConfig", function($compile, $parse){
+.directive("networkConnectionDnsConfig", function(){
 	return {
 		templateUrl: "/widgets/network-connection-dns-config.html",
 		scope: {
@@ -10,14 +10,17 @@ JUCI.app
 		controller: "networkConnectionDnsConfig",
 		replace: true,
 		require: "^ngModel"
-	 };
+	};
 })
-.controller("networkConnectionDnsConfig", function($scope, $uci, $network, $rpc, $log, gettext){
+.controller("networkConnectionDnsConfig", function($scope, $uci, $network, $rpc, $log, gettext, $tr){
 	$scope.data = [];
 	$scope.$watch("interface", function(){
 		if(!$scope.interface || !$scope.interface.dns) return;
-		$scope.data = $scope.interface.dns.value.map(function(dns){
-			return { value:dns}
+		$scope.data = [];
+		$scope.interface.dns.value.map(function(dns){
+			dns.split(" ").map(function(d){
+				$scope.data.push({ value:d});
+			});
 		});
 		$scope.interface.dns.validator = new dnsValidator;
 	}, false);
@@ -27,12 +30,12 @@ JUCI.app
 			if(data.value.find(function(dns){
 				if( ipv4validator.validate({value:dns}) != null) return true;
 				return false;
-			}) != undefined) return "All DNS-servers must be valid";
-			if(duplicatesInData()) return "All DNS-servers must be unique"
+			}) != undefined) return $tr(gettext("All DNS-servers must be valid"));
+			if(duplicatesInData()) return $tr(gettext("All DNS-servers must be unique"));
 			return null;
 		};
-	};
-	$scope.addDns = function(dns){ $scope.data.push({ value: ""})};
+	}
+	$scope.addDns = function(){ $scope.data.push({ value: ""})};
 	$scope.removeDns = function(index){ if($scope.data[index]) $scope.data.splice(index, 1);};
 	$scope.$watch("data", function(){
 		if(!$scope.data || !$scope.interface || !$scope.interface.dns) return;
@@ -45,5 +48,5 @@ JUCI.app
 			if(sorted_list[i+1] == sorted_list[i]) return true;
 		}
 		return false;
-	};
+	}
 });

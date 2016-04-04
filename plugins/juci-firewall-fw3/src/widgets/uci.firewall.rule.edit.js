@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("uciFirewallRuleEdit", function($compile, $parse){
+.directive("uciFirewallRuleEdit", function(){
 	return {
 		templateUrl: "/widgets/uci.firewall.rule.edit.html", 
 		scope: {
@@ -27,7 +27,7 @@ JUCI.app
 		}, 
 		controller: "uciFirewallRuleEdit", 
 		replace: true
-	 };  
+	};  
 }).controller("uciFirewallRuleEdit", function($scope, $uci, $rpc, $network, $log, $tr, gettext){
 	$scope.$watch("ngModel", function(value){
 		if(!value) return; 

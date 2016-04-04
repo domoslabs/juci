@@ -1,0 +1,10 @@
+<div class="panel panel-default" style="min-hight :180px">
+	<div class="panel-heading">
+		<div style="text-align:center !important;"><h3 class="panel-title" style="font-size: 1.7em; padding-top: 0.3em; font-weight: bold; font-family: 'eurostyle';">
+			<a href="{{href || ''}}"><i class="{{icon}}" style="margin-right: 10px;"></i>{{title || ("No Title"|translate) | uppercase}}</a>
+		</h3></div>
+	</div>
+	<div class="panel-body" style="{{of?'overflow:visible':''}}">
+		<div class="ng-transclude"></div>
+	</div>
+</div>

@@ -23,7 +23,6 @@ JUCI.app
 	return {
 		show: function(opts){
 			var def = $.Deferred(); 
-			var exclude = {}; // allready added nets that will be excluded from the list
 			if(!opts) opts = {}; 
 			$network.getConnectedClients().done(function(clients){
 				var modalInstance = $modal.open({
@@ -32,11 +31,7 @@ JUCI.app
 					controller: 'networkHostPickerModal',
 					resolve: {
 						hosts: function () {
-							return clients.filter(function(cl){
-								// network option is no longer present so we can no longer do this
-								// if(opts.net && opts.net != "" && opts.net != "*" && opts.net != cl.network) return false; 
-								return true; 
-							}).map(function(cl){
+							return clients.map(function(cl){
 								return { label: cl.ipaddr, value: cl }; 
 							}); 
 						}

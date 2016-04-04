@@ -8,7 +8,7 @@ JUCI.app
 		replace: true,
 		controller: "sipUsersCtrl"
 	};
-}).controller("sipUsersCtrl", function($scope, $uci, $tr, gettext){
+}).controller("sipUsersCtrl", function($scope, $uci){
 	$uci.$sync(["voice_client"]).done(function(){
 		$scope.users = $uci.voice_client["@sip_user"];
 		$scope.$apply();
