@@ -35,8 +35,8 @@
 		var last_handled_time = 0;  
 		var self = JUCI.events;
 		setInterval(function(){
-			if($rpc.router == undefined || !$rpc.router.events) return;  
-			$rpc.router.events().done(function(result){
+			if($rpc.event == undefined || !$rpc.event.list) return;  
+			$rpc.event.list().done(function(result){
 				var new_time = 0; 
 				if(!result || !result.list) return; 
 				result.list.map(function(event){
