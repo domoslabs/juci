@@ -21,11 +21,10 @@
 JUCI.app
 .controller("SettingsConfigurationCtrl", function($scope, $rpc, $tr, gettext){
 	$scope.sessionID = $rpc.$sid(); 
-	$scope.resetPossible = 0; 
-	$scope.resetPossible = 1; 
 
 	$rpc.juci.system.conf.run({"method":"features"}).done(function(features){
 		$scope.features = features; 
+		$scope.$apply();
 	}); 
 
 	$scope.onReset = function(){
