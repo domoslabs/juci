@@ -118,7 +118,7 @@ wireless_radios(){
 	
 	json_init
 	for radio in $RADIOS; do
-		if [ "$(wlctl -i $radio apsta)" == "1" ]; then continue; fi
+		if [ "$(wlctl -i $radio apsta 2>/dev/null)" == "1" ]; then continue; fi
 		json_add_object "$radio"
 		json_add_string "device" $radio
 		FREQ=$(wlctl -i $radio assoc | awk -F' ' '/Chanspec/ { print $2; }'); 
