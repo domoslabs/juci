@@ -14,6 +14,10 @@ JUCI.app
 		$scope.$apply();
 	});
 	JUCI.interval.repeat("voice.sip-service-provicers", 4000, function(done){
+		if(!$rpc || !$rpc.asterisk){
+			$scope.sipAccStatus = null;
+			return;
+		}
 		$rpc.asterisk.status().done(function(data){
 			$scope.sipAccStatus = data.sip;
 			$scope.$apply();
