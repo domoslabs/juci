@@ -26,10 +26,11 @@
 		var sync_hosts = $uci.$sync("hosts"); 
 		function _refreshClients(self){
 			var deferred = $.Deferred(); 
-			$rpc.juci.network.run({"method":"clients"}).done(function(res){
+			if(!$rpc.router) return deferred.reject();
+			$rpc.router.clients().done(function(res){
 				sync_hosts.done(function(){
-					if(res && res.clients){
-						self.clients = res.clients.map(function(cl){
+					if(res){
+						self.clients = Object.keys(res).map(function(x){return res[x];}).map(function(cl){
 							// update clients with some extra information from hosts database
 							var key = cl.macaddr.replace(/:/g, "_"); 
 							if($uci.hosts[key]) {

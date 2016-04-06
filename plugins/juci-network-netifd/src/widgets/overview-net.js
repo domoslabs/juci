@@ -37,7 +37,7 @@ JUCI.app
 	$scope.statusClass = "text-success";
 	JUCI.interval.repeat("overview-network", 1000, function(done){
 		$firewall.getZoneClients("lan").done(function(clients){
-			$scope.numClients = clients.filter(function(x){return x.online}).length;
+			$scope.numClients = clients.filter(function(x){return x.connected}).length;
 			$scope.$apply();
 		}).always(function(){done();});
 	});
