@@ -34,7 +34,6 @@ created.
 yourplugin-page-main.js: 
 
 	JUCI.app.controller("yourpluginPageMain", function($scope, $rpc, $uci){
-		$rpc.juci.system.info().done(function(info){
 			$scope.text = JSON.stringify(info); 
 			$scope.$apply(); 
 		}); 

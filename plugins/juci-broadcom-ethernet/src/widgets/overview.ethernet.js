@@ -8,7 +8,7 @@ JUCI.app
 })
 .controller("overviewWidgetEthernet", function($scope, $ethernet){
 	$scope.ethPorts = [];
-	JUCI.interval.repeat("overview-status-widget-ethernet", 1000, function(done){
+	JUCI.interval.repeat("overview-status-widget-ethernet", 5000, function(done){
 		$ethernet.getAdapters().done(function(adapters){
 			$scope.ethPorts = adapters.filter(function(a){ return a.type == "eth-port"; }).sort(function(a, b){
 				if(a.name == "WAN") return 1;

@@ -103,26 +103,16 @@
 		NetworkBackend.prototype.getNetworks = function(opts){
 			var deferred = $.Deferred(); 
 			var networks = []; 
-			var devmap = {}; 
 			if(!opts) opts = {}; 
 			var filter = opts.filter || {};
 			var info = {};
 			async.series([
 				function(next){
-					$ethernet.getAdapters().done(function(devs){
-						devs.map(function(x){ devmap[x.name] = x; }); 
-					}).always(function(){ next(); }); 
-				}, function(next){
 					$uci.$sync("network").done(function(){
 						$uci.network["@interface"].map(function(i){
-							i.devices = []; 
-							var fixed = i.ifname.value.split(" ").filter(function(name){
+							i.ifname.value = i.ifname.value.split(" ").filter(function(name){
 								return name && name != ""; 
-							}).map(function(name){
-								if(name in devmap) i.devices.push(devmap[name]); 
-								return name; 
 							}).join(" "); 
-							i.ifname.value = fixed;
 							if(i[".name"] == "loopback") return; 
 							if(filter.no_aliases && i[".name"].indexOf("@") == 0 || i.type.value == "alias") return; 
 							networks.push(i); 
