@@ -98,7 +98,7 @@ JUCI.app
 			alert($tr(gettext("Passwords do not match!"))); 
 			return; 
 		}
-		if($scope.data.pass == undefined || $scope.data.pass_repeat == undefined){
+		if($scope.data.pass == ""){
 			if(!confirm($tr(gettext("Are you sure you want to save backup without password?")))) return; 
 		}
 		$("form[name='backupForm']").submit();
