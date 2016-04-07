@@ -29,7 +29,8 @@
 				],
 				"router": [
 					"stas",
-					"clients6"
+					"clients6",
+					"radios"
 				]
 			}, 
 			"uci": [

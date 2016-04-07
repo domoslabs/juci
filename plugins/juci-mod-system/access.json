@@ -53,7 +53,8 @@
 					/*"reload"*/
 				],
 				"router": [
-					"info"
+					"info",
+					"filesystem"
 				],
 				"system": [
 					"info",

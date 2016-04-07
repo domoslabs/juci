@@ -23,8 +23,6 @@ JUCI.app
 	$scope.data = {}; 
 	
 	$ethernet.getAdapters().done(function(devices){
-		$scope.devices = devices; 
-		
 		$network.getNetworks().done(function(nets){
 			$scope.networks = nets.filter(function(x){ 
 				if(x.defaultroute.value) $scope.data.wan_network = x; 

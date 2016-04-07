@@ -33,7 +33,7 @@ JUCI.app
 })
 .controller("overviewStatusWidgetWifi", function($scope, $uci, $rpc){
 	$scope.wifiRadios = [];
-	$rpc.juci.wireless.run({"method":"radios"}).done(function(data){
+	$rpc.router.radios().done(function(data){
 		$scope.wifiRadios = Object.keys(data).map(function(radio){ return data[radio]; });
 		$scope.$apply(); 
 	});

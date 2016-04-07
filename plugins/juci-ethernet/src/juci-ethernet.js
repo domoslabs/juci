@@ -32,19 +32,21 @@ JUCI.app.factory("$ethernet", function($rpc){
 	Ethernet.prototype.getAdapters = function(){
 		var def = $.Deferred(); 
 		var self = this; 
-		$rpc.juci.ethernet.run({"method":"adapters"}).done(function(result){
-			if(result && result.adapters) {
+		$rpc.network.device.status().done(function(result){
+			var res = Object.keys(result).map(function(name){ result[name].device = name; return result[name]; });
+			if(res) {
 				// pipe all adapters though all subsystems and annotate them
 				async.each(self._subsystems, function(sys, next){
 					if(sys.annotateAdapters && sys.annotateAdapters instanceof Function){
-						sys.annotateAdapters(result.adapters).always(function(){
+						sys.annotateAdapters(res).always(function(){
 							next(); 
 						});
 					} else {
 						next(); 
 					}
 				}, function(){ 
-					def.resolve(result.adapters);
+					res = res.filter(function(x){ return x.device !== "lo"; });
+					def.resolve(res);
 				}); 
 			} else def.reject(); 
 		}).fail(function(){ def.reject(); }); 	

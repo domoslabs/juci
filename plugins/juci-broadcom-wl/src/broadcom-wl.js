@@ -74,20 +74,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 			adapters.forEach(function(dev){
 				if(dev.device && dev.device.indexOf("wl") == 0) dev.type = "wireless"; 
 			});
-			$uci.$sync("wireless").done(function(){
-				if($uci.wireless["@wifi-iface"]){
-					var wifiIfs = $uci.wireless["@wifi-iface"];
-					for(var i = adapters.length - 1; i >= 0; i--){
-						if(!adapters[i].device || !adapters[i].type || adapters[i].type != "wireless") continue;
-						if(wifiIfs.find(function(wifiIf){ return adapters[i].device == wifiIf.ifname.value; }) == null){
-							adapters.splice(i, 1);
-						}
-					}
-				}
-				def.resolve(); 
-			}).fail(function(){
-				def.reject(); 
-			});
+			def.resolve(); 
 		}).fail(function(){
 			def.reject();
 		}); 

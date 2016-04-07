@@ -28,9 +28,7 @@ JUCI.app
 	}
 
 	$ethernet.getAdapters().done(function(adapters){
-		$scope.adapters = adapters.filter(function(a){
-			return (!a.flags || !a.flags.match("NOARP")); 
-		}).map(function(a){
+		$scope.adapters = adapters.map(function(a){
 			if(a.device.match(/^wl.*/)) a._icon = "fa fa-wifi";
 			if(a.device.match(/^eth.*/)) a._icon = "juci juci-ethernet";
 			if(a.device.match(/^br.*/)) a._icon = "juci juci-bridge";

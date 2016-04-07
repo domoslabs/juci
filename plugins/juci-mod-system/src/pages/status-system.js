@@ -51,8 +51,8 @@ JUCI.app
 				if(!$rpc.system.board) cb(); 
 				else $rpc.system.board().done(function(res){board = res; cb();}).fail(function(){cb();});
 			},
-			function (cb){$rpc.juci.system.run({"method":"filesystems"}).done(function(res){
-				filesystems = res.filesystems; 
+			function (cb){$rpc.router.filesystem().done(function(res){
+				filesystems = res.filesystem; 
 				cb();
 			}).fail(function(){cb();});}
 		], function(){
@@ -94,7 +94,8 @@ JUCI.app
 				$scope.show_diskinfo = true; 
 				$scope.systemStorageTbl.rows = []; 
 				filesystems.map(function(disk){
-					$scope.systemStorageTbl.rows.push([disk.filesystem+" ("+disk.path+")", '<juci-progress value="'+Math.round(disk.used)+'" total="'+ Math.round(disk.total) +'" units="kB"></juci-progress>']); 
+					if(disk.name.split(":").length === 2) return;
+					$scope.systemStorageTbl.rows.push([disk.name+" ("+disk.mounted_on+")", '<juci-progress value="'+Math.round(disk.used)+'" total="'+ Math.round(disk.available + disk.used) +'" units="kB"></juci-progress>']); 
 				}); 
 			}
 

@@ -35,10 +35,8 @@ JUCI.app.factory("$broadcomEthernet", function($rpc, $uci){
 		self.getPorts().done(function(list){
 			var ports = {};
 			list.map(function(x){ ports[x.id] = x; }); 
-			var to_remove = []; // list of interface indexes to remove
 			adapters.forEach(function(dev, idx){
 				// remove bcm switch interface from the list because it should never be used
-				if(dev.device == "bcmsw") to_remove.unshift(idx); 
 				if(dev.device in ports){
 					dev.name = ports[dev.device].name; 
 					dev.type = ports[dev.device].type; 
@@ -47,21 +45,8 @@ JUCI.app.factory("$broadcomEthernet", function($rpc, $uci){
 					// rename the bridge to a better name
 					dev.name = dev.device.substr(3).toUpperCase() + "-BRIDGE"; 
 					dev.type = "eth-bridge" 
-				} else if(dev.device == "lo"){
-					dev.name = "LOOPBACK"; 
-					dev.type = "eth"
 				}
 			});
-			to_remove.forEach(function(i){ adapters.splice(i, 1); }); 	
-			/*Object.keys(ports).map(function(k){
-				var port = ports[k]; 
-				adapters.push({
-					name: port.name, 
-					device: port.id, 
-					type: port.type, 
-					state: "DOWN"
-				}); 
-			});*/ 
 			def.resolve(); 
 		}).fail(function(){
 			def.reject(); 
