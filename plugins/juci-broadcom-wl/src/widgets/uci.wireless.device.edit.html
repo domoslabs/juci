@@ -24,7 +24,7 @@
 			<juci-config-line title="{{'Framebursting'|translate}}">
 				<switch class="green" ng-model="device.frameburst.value"/>
 			</juci-config-line>-->
-			<juci-config-line title="{{'Beamforming'|translate}}">
+			<juci-config-line title="{{'Beamforming'|translate}}" ng-show="device.band.value == 'a'">
 				<switch class="green" ng-model="device.beamforming.value"/>
 			</juci-config-line>
 			<juci-config-line title="{{'DFS Channels'|translate}}" ng-show="device.band.value == 'a'">
