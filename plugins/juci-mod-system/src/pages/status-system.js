@@ -38,18 +38,14 @@ JUCI.app
 	$scope.systemStorageTbl = {
 		rows: [["", ""]]
 	}; 
-	var info = {};
 	var sys = {};  
 	var board = { release: {} }; 
 	var filesystems = []; 
 	var netLoad = {};
 
-	var prev_cpu = {}; 
-
-	JUCI.interval.repeat("status.system.refresh", 1000, function(resume){
+	JUCI.interval.repeat("status.system.refresh", 5000, function(resume){
 		async.parallel([
-			function (cb){$rpc.juci.system.run({"method":"info"}).done(function(res){info = res; cb();}).fail(function(){cb();});},
-			function (cb){$rpc.system.info().done(function(res){sys = res; cb();}).fail(function(){cb();});},
+			function (cb){$rpc.router.info().done(function(res){sys = res; cb();}).fail(function(){cb();});},
 			function (cb){$network.getNetworkLoad().done(function(load){ netLoad = load; cb(); }).fail(function(){cb();});},
 			function (cb){
 				if(!$rpc.system.board) cb(); 
@@ -75,32 +71,23 @@ JUCI.app
 				
 				return ((days > 0)?""+days+"d ":"")+pad(hours,2)+":"+pad(minutes,2)+":"+pad(seconds,2);
 			}
-			
-			var cpu_load = 0; 
-			try {
-				cpu_load = Math.round(100 * (prev_cpu.usr - info.system.cpu.usr) / (prev_cpu.total - info.system.cpu.total)); 
-			} catch(e){
-				console.log(e);
-			}
-			prev_cpu = info.system.cpu; 
-
 			$scope.systemStatusTbl.rows = [
-				[$tr(gettext("Hostname")), board.hostname || info.system.name],
+				[$tr(gettext("Hostname")), board.hostname || $tr(gettext("N/A"))],
 				[$tr(gettext("Model")), $config.board.system.hardware || $tr(gettext("N/A"))],
 				[$tr(gettext("Firmware Version")), $config.board.system.firmware || $tr(gettext("N/A"))],
-				[$tr(gettext("Local Time")), new Date(sys.localtime * 1000)],
-				[$tr(gettext("Uptime")), timeFormat(sys.uptime)],
-				[$tr(gettext("CPU")), ""+(cpu_load || 0)+"%"],
-				[$tr(gettext("Kernel Version")), board.kernel || info.system.kernel || $tr(gettext("N/A"))],
-				[$tr(gettext("Filesystem")), info.system.filesystem || $tr(gettext("N/A"))],
+				[$tr(gettext("Local Time")), sys.system.localtime],
+				[$tr(gettext("Uptime")), sys.system.uptime],
+				[$tr(gettext("CPU")), (sys.system.cpu_per || 0)+"%"],
+				[$tr(gettext("Kernel Version")), board.kernel || sys.system.kernel || $tr(gettext("N/A"))],
+				[$tr(gettext("Filesystem")), sys.system.filesystem || $tr(gettext("N/A"))],
 				[$tr(gettext("Active Connections")), '<juci-progress value="'+netLoad.active_connections+'" total="'+netLoad.max_connections+'"></juci-progress>']
 			];
 			
 			$scope.systemMemoryTbl.rows = [
-				[$tr(gettext("Usage")), '<juci-progress value="'+Math.round((sys.memory.total - sys.memory.free) / 1000)+'" total="'+ Math.round(sys.memory.total / 1000) +'" units="kB"></juci-progress>'],
-				[$tr(gettext("Shared")), '<juci-progress value="'+Math.round(sys.memory.shared / 1000)+'" total="'+ Math.round(sys.memory.total / 1000) +'" units="kB"></juci-progress>'],
-				[$tr(gettext("Buffered")), '<juci-progress value="'+Math.round(sys.memory.buffered / 1000)+'" total="'+ Math.round(sys.memory.total / 1000) +'" units="kB"></juci-progress>'],
-				[$tr(gettext("Swap")), '<juci-progress value="'+Math.round((sys.swap.total - sys.swap.free) / 1000)+'" total="'+ Math.round(sys.swap.total / 1000) +'" units="kB"></juci-progress>']
+				[$tr(gettext("Usage")), '<juci-progress value="'+Math.round((sys.memoryKB.total - sys.memoryKB.free) / 1000)+'" total="'+ Math.round(sys.memoryKB.total / 1000) +'" units="kB"></juci-progress>'],
+				[$tr(gettext("Shared")), '<juci-progress value="'+Math.round(sys.memoryKB.shared / 1000)+'" total="'+ Math.round(sys.memoryKB.total / 1000) +'" units="kB"></juci-progress>'],
+				[$tr(gettext("Buffered")), '<juci-progress value="'+Math.round(sys.memoryKB.buffers / 1000)+'" total="'+ Math.round(sys.memoryKB.total / 1000) +'" units="kB"></juci-progress>'],
+				[$tr(gettext("Swap")), '<juci-progress value="0" total="0" units="kB"></juci-progress>']
 			];
 			
 			if($uci.juci["pagesystemstatus"] && $uci.juci["pagesystemstatus"].show_diskinfo.value){ 
