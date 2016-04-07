@@ -1,9 +1,0 @@
-<div class="overview-small">
-	<div class="icon"><i class="fa fa-wifi"></i></td>
-	<div class="name">{{'Wireless'|translate}}</td>
-	<div class="content">
-		<span ng-show="wifiBands.length" ng-repeat="band in wifiBands track by $index" class="badge">{{band}}: {{wifiClients[band].length}}</span>
-		<span ng-show="wifiBands.length == 0" class="badge">0</span>
-		<i class="fa fa-spinner fa-spin" ng-show="!wifiClients"></i>
-	</div>
-</div>
