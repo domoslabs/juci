@@ -1,6 +1,6 @@
 <div>
 	<div class="row"> 
-		<div ng-class="{ 'col-xs-9': !hideButtons, 'col-xs-12': hideButtons }">
+		<div ng-class="{ 'col-xs-12 col-sm-9': !hideButtons, 'col-xs-12': hideButtons }">
 			<i class="fa fa-spinner fa-spin fa-2x" ng-show="!items"></i>
 			<div ng-show="!sortable" class="list-group">
 				<a ng-show="items" href="" class="list-group-item" ng-repeat="i in items track by $index" ng-click="onListEditItem(i)" ng-class="{active: item == i}">{{getItemTitle({"$item": i})}}
@@ -17,14 +17,19 @@
 				</div>
 			</div>
 		</div>
-		<div ng-class="{ 'col-xs-3': !hideButtons }" ng-hide="hideButtons" >
-			<div class="btn-group-vertical" style="width: 100%;" >
+		<div class="col-sm-3 col-xs-12" ng-hide="hideButtons" >
+			<div class="hidden-xs btn-group-vertical" style="width: 100%;" >
 				<button class="btn btn-lg btn-default" ng-click="onListAddItem()" ng-class="{disabled: !editable || !items}" translate>Add</button>
 				<button class="btn btn-lg btn-default" ng-click="onListRemoveItem(item)" ng-class="{disabled: item == null || !editable || !items}" translate>Delete</button>
+			</div>
+			<div class="btn-group visible-xs-block" style="width: 100%;padding-left:20px;" >
+				<button class="btn btn-lg btn-default" style="padding:10px;" ng-click="onListAddItem()" ng-class="{disabled: !editable || !items}" translate>Add</button>
+				<button class="btn btn-lg btn-default" style="padding:10px;" ng-click="onListRemoveItem(item)" ng-class="{disabled: item == null || !editable || !items}" translate>Delete</button>
 			</div>
 		</div>
 	</div>
 	<div style="clear: both; margin-top: 10px;"></div>
+	<hr class="visible-xs-block" style="color:grey;" />
 	<div ng-show="item">
 		<div dynamic="dynamicHtml"/>
 	</div>
