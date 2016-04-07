@@ -44,8 +44,8 @@ JUCI.app.directive("multiwanRuleEdit", function(){
 		{ label: $tr(gettext("LAN")),	value: "lan" },
 		{ label: $tr(gettext("WAN")),	value: "wan" },
 		{ label: $tr(gettext("WAN6")),	value: "wan6" },
-		{ label: $tr(gettext("Load Balancer (Performance)")),	value: "fastbalncer" },
-		{ label: $tr(gettext("Load Balancer (Compability)")),	value: "balancer" }
+		{ label: $tr(gettext("Load Balancer (Best Compatibility)")),	value: "balancer" },
+		{ label: $tr(gettext("Fast Balancer (Best Distribution)")),	value: "fastbalncer" }
 	];
 	var first = true;
 	$scope.$watch("model", function(){

@@ -25,7 +25,8 @@ JUCI.app
 		$scope.allInterfaces = $uci.multiwan["@interface"].map(function(x){
 			return { label: x[".name"], value: x[".name"] }; 
 		}); 
-		$scope.allInterfaces.push({ label: "[Balancer]", value: "balancer" }); 
+		$scope.allInterfaces.push({ label: "Load Balancer (Best Compatibility)", value: "balancer" });
+		$scope.allInterfaces.push({ label: "Fast Balancer (Best Distribution)", value: "fastbalancer" });
 		$scope.trafic_rules = $uci.multiwan["@mwanfw"];
 		$scope.$apply(); 
 	}); 
