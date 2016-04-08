@@ -78,7 +78,7 @@ JUCI.app
 	}refresh();
 
 	$events.subscribe("client", function(res){
-		if(res && res.data && res.data.action === "disconnect" && res.data.action === "connect"){
+		if(res && res.data && (res.data.action === "disconnect" || res.data.action === "connect")){
 			refresh();
 		}
 	});
