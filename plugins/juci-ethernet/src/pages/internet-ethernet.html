@@ -13,12 +13,12 @@
 					<th width="1px"><a href="" ng-click="order('state')" translate>Status</th>
 				</thead>
 				<tr ng-repeat="dev in adapters track by $index | orderBy:predicate:reverse">
-					<td><i class="{{dev._icon}} fa-2x" ng-class="{'text-success': dev.up}"></i></td>
+					<td><i class="{{dev._icon}} fa-2x" ng-class="{'text-success': dev.carrier}"></i></td>
 					<td>{{dev.name}}</td>
 					<td>{{dev.device}}</td>
 					<td>{{dev.macaddr}}</td>
 					<td>{{dev.mtu}}</td>
-					<td style="white-space: nowrap;"><i class="fa fa-circle" ng-class="{'text-success': dev.up}"></i></td>
+					<td style="white-space: nowrap;"><i class="fa fa-circle" ng-class="{'text-success': dev.carrier}"></i></td>
 				</tr>
 			</table>
 		</juci-config-section>
