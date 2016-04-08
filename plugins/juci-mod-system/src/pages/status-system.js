@@ -99,7 +99,7 @@ JUCI.app
 				}); 
 			}
 
-			$scope.$apply(); 
+			$scope.$apply();
 			resume(); 
 		});
 	}); 

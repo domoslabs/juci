@@ -121,25 +121,18 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 	//! returns virtual interfaces that are configured
 	Wireless.prototype.getInterfaces = function(){
 		var deferred = $.Deferred(); 
+		var self = this;
 		$uci.$sync("wireless").done(function(){
-			var ifs = $uci.wireless["@wifi-iface"]; 
-			// TODO: this is an ugly hack to automatically calculate wifi device name
-			// it is not guaranteed to be exact and should be replaced by a change to 
-			// how openwrt handles wireless device by adding an ifname field to wireless 
-			// interface configuration which will be used to create the ethernet device.  
-			/*
-			ifs.map(function(i){
-			var counters = {}; 
-				if(i.ifname.value == ""){
-					if(!counters[i.device.value]) counters[i.device.value] = 0; 
-					if(counters[i.device.value] == 0)
-						i.ifname.value = i.device.value; 
-					else
-						i.ifname.value = i.device.value + "." + counters[i.device.value]; 
-					counters[i.device.value]++; 
-				}
-			});*/ 
-			deferred.resolve(ifs); 
+			var ifs = $uci.wireless["@wifi-iface"];
+			self.getDevices().done(function(devices){
+				ifs.map(function(iface){
+					var dev = devices.find(function(dev){
+						return dev[".name"] === iface.device.value;
+					});
+					iface[".frequency"] = (dev.band.value === "a") ? "5GHz" : "2.4GHz";
+				});
+				deferred.resolve(ifs);
+			});			 
 		}); 
 		return deferred.promise(); 
 	}

@@ -18,38 +18,56 @@
 
 JUCI.app
 .controller("wirelessStatusPage", function($scope, $uci, $wireless, gettext, $rpc){
-	$scope.order = function(pred){
-		$scope.predicate = pred; 
-		$scope.reverse = !$scope.reverse;
-	}
-	$scope.radioToScan = {};
+	$scope.radios = [];
+	$scope.interfaces = [];
+	$scope.clients = [];
+	$scope.clientsTbl = [];
+
 	$uci.$sync("wireless").done(function(){
-		$rpc.juci.wireless.run({"method":"radios"}).done(function(data){
-			$scope.wlRadios = Object.keys(data).map(function(x){ return data[x]; });
-			$scope.scanableRadios = $scope.wlRadios.filter(function(radio){
-				return parseInt(radio.current_channel) < 52;
-			}).map(function(radio){
-				return { label: radio.frequency, value: radio.device };
-			});
-			$scope.dfs_enabled = ($scope.wlRadios.length != $scope.scanableRadios.length);
-			$scope.radioToScan.value = $scope.scanableRadios[0].value || null;
-			console.log($scope.radioToScan.value);
-			$scope.$apply(); 
-		});
-		$scope.doScan = function(){
-			if($scope.radioToScan.value == null)return;
-			$scope.scanning = 1; 
-			console.log("Scanning on "+$scope.radioToScan.value); 
-			$wireless.scan({device: $scope.radioToScan.value}).done(function(){
-				setTimeout(function(){
-					console.log("Getting scan results for "+$scope.radioToScan.value); 
-					$wireless.getScanResults({device: $scope.radioToScan.value }).done(function(aps){
-						$scope.access_points = aps;
-						$scope.scanning = 0; 
-						$scope.$apply(); 
-					}); 
-				}, 5000); 
-			}); 
-		} 
+		async.series([
+			function(next){
+				$wireless.getDevices().done(function(rds){
+					$scope.radios = rds;
+					$scope.radios.map(function(radio){ radio[".interfaces"] = []; });
+					console.log($scope.radios);
+				})
+				.always(function(){ next(); });
+			},
+			function(next){
+				$wireless.getInterfaces().done(function(ifs){
+					$scope.interfaces = ifs;
+					$scope.interfaces.map(function(i){ i[".clients"] = []; });
+					console.log($scope.interfaces);
+				})
+				.always(function(){ next(); });
+			},
+			function(next){
+				$wireless.getConnectedClients().done(function(cls){
+					$scope.clients = cls;
+					//$scope.clientsTbl = cls.map(function(prop){ $scope.clientsTbl.push([prop,cls[prop]]) });
+					console.log($scope.clients);
+					console.log($scope.clientsTbl);
+				})
+				.always(function(){ next(); });
+			}],
+			function(){
+				// Add clients to interfaces
+				$scope.clients.map(function(client){
+					var iface = $scope.interfaces.find(function(i){
+						return i["ifname"]["value"] === client["wdev"];
+					});
+					iface[".clients"].push(client);
+				});
+				//Add interfaces to radios
+				$scope.interfaces.map(function(iface){
+					var radio = $scope.radios.find(function(r){
+						return r[".name"] === iface["device"]["value"];
+					});
+					radio[".interfaces"].push(iface);
+				});
+				$scope.$apply();
+			}
+		);
+		
 	}); 
 }); 
