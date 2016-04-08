@@ -29,55 +29,60 @@ JUCI.app
 .directive("overviewStatusWidget10Network", function(){
 	return {
 		templateUrl: "widgets/overview-net-small.html",
-		controller: "overviewStatusWidgetNetwork",
+		controller: "overviewWidgetNetwork",
 		replace: true
 	};
 })
-.controller("overviewStatusWidgetNetwork", function($scope, $rpc, $firewall){
-	$scope.statusClass = "text-success";
-	JUCI.interval.repeat("overview-network", 1000, function(done){
-		$firewall.getZoneClients("lan").done(function(clients){
-			$scope.numClients = clients.filter(function(x){return x.connected}).length;
-			$scope.$apply();
-		}).always(function(){done();});
-	});
-})
-.controller("overviewWidgetNetwork", function($scope, $firewall, $tr, gettext, $juciDialog, $uci, $rpc){
+.controller("overviewWidgetNetwork", function($scope, $firewall, $tr, gettext, $juciDialog, $uci, $rpc, $events){
 	$scope.defaultHostName = $tr(gettext("Unknown"));
 	$scope.model = {};
 	$scope.lanNetworks = [];
-	$firewall.getZoneNetworks("lan").done(function(nets){
-		var dnss = [];
-		$uci.$sync("dhcp").done(function(){
-			dnss = $uci.dhcp["@dhcp"];
-			var networks = nets.map(function(net){
+	var lanNets = [];
+	var lanClients = [];
+	function refresh(){
+		async.series([
+			function(next){
+				$firewall.getZoneNetworks("lan").done(function(nets){
+					lanNets = nets;
+					next();
+				});
+			}, function(next){
+				$uci.$sync("dhcp").always(function(){next();});
+			}, function(next){
+				$firewall.getZoneClients("lan").done(function(clients){
+					lanClients = clients;
+				}).always(function(){next();});
+			}
+		], function(){
+			var dnss = $uci.dhcp["@dhcp"];
+			lanNets.map(function(net){
 				net["_uci_dhcp"] = dnss.find(function(dns){
 					return dns.interface.value == net[".name"] || dns[".name"] == net[".name"];
 				});
 				net["_dhcp_enabled"] = net["_uci_dhcp"] && !net["_uci_dhcp"].ignore.value || false;
 				return net;
 			});
-			$scope.lanNetworks = networks || [];
-			if($scope.lanNetworks.length == 0){
-				$scope.numClients = 0;
-				$scope.$apply();
-				return;
-			}
-			JUCI.interval.repeat("overview-netowrk-widget", 2000, function(done){
-				if($scope.lanNetworks.lenth == 0) return;
-				$rpc.router.clients().done(function(data){
-					$scope.lanNetworks.map(function(net){
-						net["_clients"] = [];
-						Object.keys(data).map(function(client){
-							if(data[client].network == net[".name"]){
-								net["_clients"].push(data[client]);
-							}
-						});
-					});
-					$scope.$apply();
-				}).always(function(){done();});
+			$scope.lanNetworks = lanNets;
+			$scope.lanNetworks.map(function(net){
+				net["_clients"] = [];
+				lanClients.map(function(client){
+					if(client.network === net[".name"]){
+						net["_clients"].push(client);
+					}
+				});
 			});
+			$scope.numClients = lanClients.filter(function(x){ return x.connected;}).length;
+			console.log($scope.lanNetworks);
+			console.log($scope.numClients);
+			$scope.$apply();
+
 		});
+	}refresh();
+
+	$events.subscribe("client", function(res){
+		if(res && res.data && res.data.action === "disconnect" res.data.action === "connect"){
+			refresh();
+		}
 	});
 
 	$scope.onEditLan = function(lan){
