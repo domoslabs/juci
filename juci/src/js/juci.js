@@ -244,7 +244,7 @@
 						// scroll to top
 						$window.scrollTo(0, 0); 
 					}, 
-					onExit: function($uci, $tr, gettext, $interval, $events){
+					onExit: function($uci, $tr, gettext, $events){
 						if($uci.$hasChanges()){
 							if(confirm($tr(gettext("You have unsaved changes. Do you want to save them before leaving this page?"))))
 								$uci.$save(); 

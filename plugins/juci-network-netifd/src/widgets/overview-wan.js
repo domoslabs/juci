@@ -46,7 +46,7 @@ JUCI.app
 		return (sec+ 's');
     };
 })
-.controller("overviewWidgetWAN", function($scope, $uci, $rpc, $firewall, $network, $juciDialog, $tr, gettext){
+.controller("overviewWidgetWAN", function($scope, $uci, $rpc, $firewall, $network, $juciDialog, $tr, gettext, $events){
 	$scope.showDnsSettings = function(){
 		if(!$scope.wan_ifs) return;
 		$firewall.getZoneNetworks("wan").done(function(nets){
@@ -80,7 +80,16 @@ JUCI.app
 		});
 	};
 	$scope.statusClass = "text-success"; 
-	JUCI.interval.repeat("overview-wan", 2000, function(done){
+	JUCI.interval.repeat("update_wan_uptime", 1000, function(next){
+		if(!$scope.wan_ifs || $scope.wan_ifs.length === 0){ next(); return; }
+		$scope.wan_ifs.map(function(i){
+			if(!i.uptime) return;
+			i.uptime = i.uptime + 1;
+		});
+		$scope.$apply();
+		next();
+	});
+	function refresh(){
 		$network.getNetworks().done(function(networks){
 			var bridgedNets = networks.filter(function(net){ return net.proto.value == "dhcp" && net.type.value == "bridge" && net.defaultroute.value});
 			$firewall.getZoneNetworks("wan").done(function(wan_iface){
@@ -109,8 +118,10 @@ JUCI.app
 				$scope.all_gateways = Object.keys(all_gateways); 
 				$scope.wan_ifs = wan_ifs.map(function(iface){ return iface.$info; }) || []; 
 				$scope.$apply(); 
-				done(); 
 			}); 
 		}); 
-	}); 
+	}refresh(); 
+	$events.subscribe("network.interface", function(res){
+		refresh();
+	});
 });

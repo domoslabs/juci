@@ -120,6 +120,7 @@ JUCI.app
 					nodes.push(node);
 					edges.push( { from: ".lan_hub", to: node.id, width: 6, smooth: { enabled: true } });
 					var cl_count = 0;
+					if(!clients)return;
 					Object.keys(clients).map(function(cl){ return clients[cl];})
 					.filter(function(cl){ return (cl.network && cl.network == lan.$info.interface);})
 					.map(function(cl){
