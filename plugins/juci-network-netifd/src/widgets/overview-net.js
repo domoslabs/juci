@@ -72,15 +72,13 @@ JUCI.app
 				});
 			});
 			$scope.numClients = lanClients.filter(function(x){ return x.connected;}).length;
-			console.log($scope.lanNetworks);
-			console.log($scope.numClients);
 			$scope.$apply();
 
 		});
 	}refresh();
 
 	$events.subscribe("client", function(res){
-		if(res && res.data && res.data.action === "disconnect" res.data.action === "connect"){
+		if(res && res.data && res.data.action === "disconnect" && res.data.action === "connect"){
 			refresh();
 		}
 	});
