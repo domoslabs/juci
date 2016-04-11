@@ -26,7 +26,7 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("overviewSliderWidget10Network", function($scope, $rpc, $config, $firewall){
+.controller("overviewSliderWidget10Network", function($rpc, $config, $firewall, $events){
 	var nodes = []; 
 	var edges = []; 
 	
@@ -151,17 +151,26 @@ JUCI.app
 	updateData().done(function(){
 		// create a network
 		var containerFA = document.getElementById('mynetworkFA');
+		var time = Date.now();
+		window.onresize=function(){
+			if(Date.now() - time > 100){ //limit the number of time this is called to every 100 ms
+				network.setData({nodes: nodes, edges: edges});
+				time = Date.now();
+			}
+		}
 		var dataFA = {
 			nodes: nodes,
 			edges: edges
 		};
 		var network = new vis.Network(containerFA, dataFA, optionsFA);
-		$scope.$apply();
-		JUCI.interval.repeat("overview-slider-network", 5000, function(done){
+		$events.subscribe("client", function(){
 			updateData().done(function(){
 				network.setData({nodes: nodes, edges: edges});
-				$scope.$apply();
-				done();
+			});
+		});
+		$events.subscribe("network.interface", function(){
+			updateData().done(function(){
+				network.setData({nodes: nodes, edges: edges});
 			});
 		});
 	});
