@@ -10,17 +10,17 @@
 				<a href="/cgi-bin/juci-log-download?sid={{sid}}" class="btn btn-default btn-lg" translate>Download As Text</a>
 			</juci-config-line>
 			<juci-config-line title="{{'Limit log list'|translate}}">
-				<juci-select ng-model="data.limit" ng-items="allLimits"/>
+				<juci-select ng-model="data.limit" ng-items="allLimits"></juci-select>
 			</juci-config-line>
 			<juci-config-line title="{{'Filter log messages by Source'|translate}}">
-				<input type="text" class="form-control" ng-model="data.filter" ng-change="applyFilter()" placeholder="{{'Enter search string'|translate}}">
+				<input type="text" class="form-control" ng-model="data.filter" ng-change="update()" placeholder="{{'Enter search string'|translate}}">
 			</juci-config-line>
 			<juci-config-line title="{{'Filter by type:'|translate}}">
 				<juci-select ng-items="types" ng-model="data.type"></juci-select>
 			</juci-config-line>
 			<juci-config-line title="{{'Filter by:'|translate}}" ng-show="filters.length > 0">
 				<div class="checkbox checkbox-info" ng-repeat="filter in filters track by $index">
-					<input type="checkbox" ng-model="filter.checked" ng-change="applyFilter()" />
+					<input type="checkbox" ng-model="filter.checked" ng-change="update()" />
 					<label><strong>{{filter.name}}</strong></label>
 				</div>
 			</juci-config-line>

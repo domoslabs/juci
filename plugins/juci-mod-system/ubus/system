@@ -22,25 +22,10 @@ function system_filesystems(opts)
 end
 
 function system_logread(opts)
-	local filter = opts.filter;
-	local type = opts.type;
-	local res = {}; 
-	local lines = {}; 
-	local limit = 20
-	res["lines"] = lines; 
-	local stdout;
-	if opts.limit then limit = opts.limit; end
-	if limit > 200 then limit = 200; end
-	-- TODO: change so that filter and limit is sent in insted of concatenated does not work with | now
-	if ((not filter or filter == "") and (not type or type == "")) then
-		stdout = juci.shell("logread | tail -n %d 2>/dev/null", limit); 
-	elseif (not filter or filter == "") then
-		stdout = juci.shell("logread | awk '{if($6~/"..type.."/) print($0)}' | tail -n %d 2>/dev/null", limit);
-	elseif(not type or type == "") then
-		stdout = juci.shell("logread | awk '{if($7~/"..filter.."/) print($0)}' | tail -n %d 2>/dev/null", limit);
-	else
-		stdout = juci.shell("logread | awk '{if($6~/"..type.."/ && $7~/"..filter.."/) print($0)}' | tail -n %d 2>/dev/null", limit); 
-	end
+	local res = {};
+	local lines = {};
+	res["lines"] = lines;
+	stdout = juci.shell("logread | tail -n 400"); 
 	for line in stdout:gmatch("[^\r\n]+") do 
 		local date,type,source,message = line:match("([^%s]*%s+[^%s]*%s+[^%s]*%s+[^%s]*%s+[^%s]*)%s+([^%s]*)%s+([^%s:]*):%s+(.*)"); 
 		string.gsub(message, "\n", ""); 
