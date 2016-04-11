@@ -5,10 +5,10 @@
 
 		<div ng-repeat="radio in radios track by $index">
 			<juci-config-section>
-				<h2>{{radio['.frequency']|uppercase}} {{'channel:'|translate}} {{radio['channel']['value']}}</h2>
-				<juci-expandable title="{{interface.ssid.value}} ({{interface.encryption.value}})" ng-repeat="interface in radio['.interfaces'] track by $index">
+			<h2>{{radio.frequency|uppercase}} {{'Channel:'|translate}} {{radio.channel}} {{'Noise'|translate}}: {{radio.noise||'N/A'}}dB</h2>
+				<juci-expandable title="{{interface.ssid.value}} ({{'Encryption'|translate}}: {{translate[interface.encryption.value]}})" ng-repeat="interface in radio['.interfaces'] track by $index">
 					<juci-expandable title="{{client.hostname}}" ng-repeat="client in interface['.clients'] track by $index" open="false">
-						<!--<juci-table title="{{'ABRA KADABRA'|translate}}" data="x in client track by $index"></juci-table>-->
+						<juci-table data="client"></juci-table>
 					</juci-expandable>
 				</juci-expandable>
 			</juci-config-section>

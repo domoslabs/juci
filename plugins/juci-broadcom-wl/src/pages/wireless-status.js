@@ -17,19 +17,32 @@
  */
 
 JUCI.app
-.controller("wirelessStatusPage", function($scope, $uci, $wireless, gettext, $rpc){
+.controller("wirelessStatusPage", function($scope, $uci, $wireless, gettext, $rpc, $tr, gettext){
 	$scope.radios = [];
 	$scope.interfaces = [];
 	$scope.clients = [];
-	$scope.clientsTbl = [];
 
-	$uci.$sync("wireless").done(function(){
+	$scope.translate = {
+		"none" : $tr(gettext("None")),
+		"wep" : $tr(gettext("WEP")),
+		"psk2" : $tr(gettext("WPA2 Personal (PSK)")),
+		"psk" : $tr(gettext("WPA Personal (PSK)")),
+		"mixed-psk" : $tr(gettext("WPA/WPA2 Personal (PSK) Mixed Mode")),
+		"wpa2" : $tr(gettext("WPA2 Enterprise")),
+		"wpa" : $tr(gettext("WPA Enterprise")),
+		"wpa-mixed" : $tr(gettext("WPA/WPA2 Enterprise Mixed Mode"))
+	};
+
+	JUCI.interval.repeat("wifi-status-page",5000,function(next){
 		async.series([
 			function(next){
-				$wireless.getDevices().done(function(rds){
-					$scope.radios = rds;
+				$rpc.router.radios().done(function(rds){
+					$scope.radios = Object.keys(rds).map(function(r){
+						var radio = rds[r];
+						radio[".name"] = r;
+						return radio;
+					});
 					$scope.radios.map(function(radio){ radio[".interfaces"] = []; });
-					console.log($scope.radios);
 				})
 				.always(function(){ next(); });
 			},
@@ -37,16 +50,28 @@ JUCI.app
 				$wireless.getInterfaces().done(function(ifs){
 					$scope.interfaces = ifs;
 					$scope.interfaces.map(function(i){ i[".clients"] = []; });
-					console.log($scope.interfaces);
 				})
 				.always(function(){ next(); });
 			},
 			function(next){
 				$wireless.getConnectedClients().done(function(cls){
 					$scope.clients = cls;
-					//$scope.clientsTbl = cls.map(function(prop){ $scope.clientsTbl.push([prop,cls[prop]]) });
+					cls.map( function(c){
+						c["rows"] = [
+							[$tr(gettext("IP-Address")),c.ipaddr],
+							[$tr(gettext("MAC-Address")), String(c.macaddr).toUpperCase()],
+							[$tr(gettext("DHCP")), c.dhcp],
+							[$tr(gettext("Idle")), c.idle],
+							[$tr(gettext("In Network")), c.in_network],
+							[$tr(gettext("RSSI")), c.rssi+" dBm"],
+							[$tr(gettext("SNR")), c.snr+ " dBm"],
+							[$tr(gettext("TX Bytes")), c.tx_bytes],
+							[$tr(gettext("RX Bytes")), c.rx_bytes],
+							[$tr(gettext("TX Rate")), c.tx_rate],
+							[$tr(gettext("RX Rate")), c.rx_rate]
+						];
+					});
 					console.log($scope.clients);
-					console.log($scope.clientsTbl);
 				})
 				.always(function(){ next(); });
 			}],
@@ -66,8 +91,8 @@ JUCI.app
 					radio[".interfaces"].push(iface);
 				});
 				$scope.$apply();
+				next();
 			}
 		);
-		
 	}); 
 }); 
