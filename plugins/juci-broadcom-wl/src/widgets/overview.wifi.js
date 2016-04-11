@@ -31,14 +31,14 @@ JUCI.app
 		replace: true
 	};  
 })
-.controller("overviewStatusWidgetWifi", function($scope, $uci, $rpc){
+.controller("overviewStatusWidgetWifi", function($scope, $rpc){
 	$scope.wifiRadios = [];
 	$rpc.router.radios().done(function(data){
 		$scope.wifiRadios = Object.keys(data).map(function(radio){ return data[radio]; });
 		$scope.$apply(); 
 	});
 })
-.controller("overviewWidgetWifi", function($scope, $rpc, $uci, $tr, gettext, $juciDialog){
+.controller("overviewWidgetWifi", function($scope, $rpc, $uci, $tr, gettext, $juciDialog, $events, $wireless){
 	$scope.onPairPBC = function(){
 		$rpc.wps.pbc();
 	}
@@ -65,14 +65,15 @@ JUCI.app
 		$scope.wifiStatus.schedule.value = !$scope.wifiStatus.schedule.value;
 	}
 
-	JUCI.interval.repeat("overview.wifi.wps.retry", 1000, function(next){
+	function update_wps(){
+		if(!$rpc.wps) return;
 		$rpc.wps.status().done(function(result){
 			$scope.wps.progress = result.code; 
 			$scope.wps.text_status = wps_status_strings[result.code]||gettext("Unknown"); 
 			$scope.$apply();	
-			next();
 		}); 
-	}); 
+	}update_wps(); 
+	$events.subscribe("wps", function(){update_wps();});
 
 	$scope.onEditSSID = function(iface){
 		$juciDialog.show("uci-wireless-interface", {
@@ -91,55 +92,46 @@ JUCI.app
 					iface.ssid = iface.uci_dev.ssid.value;
 				}
 			},
-			model: iface.uci_dev
+			model: iface
 		}).done(function(){
 
 		});
 	}
-
-	function refresh() {
+	function update_wifi(){
+		if(!$rpc.router) return;
 		var def = $.Deferred(); 
-		async.series([
-			function(next){
-				$uci.$sync("wireless").done(function(){
-					$rpc.juci.wireless.run({"method":"devices"}).done(function(result){
-						$scope.vifs = $uci.wireless["@wifi-iface"].map(function(iface){
-							var dev = result.devices.find(function(dev){
-								return iface.ifname.value == dev.device; 
-							}); 
-							if(!dev) return null;
-							dev.uci_dev = iface; 
-							return dev; 
-						}).filter(function(x){ return x != null; }); 
-						if($uci.wireless && $uci.wireless.status) {
-							$scope.wifiStatus = $uci.wireless.status; 
-						}
-					}).always(function(){ next(); }); 
-				}); 
-			}, 
-			function(next){
-				if(!$rpc.wps) { next(); return; }
-				$rpc.wps.showpin().done(function(result){
-					$scope.wps.pin = result.pin; 
-				}).always(function(){ next(); }); 
-			} 
-		], function(){
-			$scope.$apply(); 
-			def.resolve(); 
-		}); 
-		return def.promise(); 
+		$rpc.router.radios().done(function(radios){
+			$wireless.getInterfaces().done(function(interfaces){
+				$scope.wifs = interfaces.map(function(iface){
+					if(!iface.device.value in radios) return null;
+					iface.$radio = radios[iface.device.value];
+					return iface;
+				}).filter(function(x){ return x !== null; });
+				if($uci.wireless && $uci.wireless.status) {
+					$scope.wifiStatus = $uci.wireless.status; 
+				}
+				def.resolve();
+			}).fail(function(){ def.reject(); });
+		}).fail(function(){ def.reject(); });
+		return def;
+	}
+	if($rpc.wps){
+		$rpc.wps.showpin().done(function(result){
+			$scope.wps.pin = result.pin;
+			$scope.$apply();
+		});
 	}
 	JUCI.interval.repeat("wifi-overview", 10000, function(done){
-		if($scope && $scope.vifs){
+		if($scope && $scope.wifs){
 			var tab_info = {};
-			$scope.vifs.map(function(vif){
-				if(vif && vif._expanded) tab_info[vif.device] = vif._expanded;
+			$scope.wifs.map(function(wif){
+				if(wif && wif._expanded) tab_info[wif.device.value] = wif._expanded;
 			});
 		}
-		refresh().done(function(){
-			if(!$scope || !$scope.vifsi || !tab_info) return;
-			$scope.vifs.map(function(vif){
-				if(tab_info[vif.device]) vif._expanded = tab_info[vif.evice];
+		update_wifi().done(function(){
+			if(!$scope || !$scope.wifs || !tab_info) return;
+			$scope.wifs.map(function(wif){
+				if(tab_info[wif.device.value]) wif._expanded = tab_info[wif.device.value];
 			});
 			$scope.$apply();
 			done(); 

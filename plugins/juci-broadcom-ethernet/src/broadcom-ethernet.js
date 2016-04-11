@@ -47,6 +47,15 @@ JUCI.app.factory("$broadcomEthernet", function($rpc, $uci){
 					dev.type = "eth-bridge" 
 				}
 			});
+			// add any devices that are not in the list of adapters (ones that are down for instance) 
+			Object.keys(ports).map(function(k){
+				var device = ports[k]; 
+				adapters.push({
+					name: device.name, 
+					device: device.id, 
+					type: device.type
+				}); 
+			}); 
 			def.resolve(); 
 		}).fail(function(){
 			def.reject(); 
@@ -69,12 +78,14 @@ JUCI.app.factory("$broadcomEthernet", function($rpc, $uci){
 					};
 				});
 			}
-			if($uci.layer2_interface_ethernet.Wan){
-				var port = $uci.layer2_interface_ethernet.Wan;
-				devices.push({
-					get name(){ return "WAN"; },
-					get id(){ return port.ifname.value; },
-					get type(){ return "vlan"; }
+			if($uci["layer2_interface_ethernet"] && $uci["layer2_interface_ethernet"]["@ethernet_interface"]){
+				var ports = $uci["layer2_interface_ethernet"]["@ethernet_interface"];
+				ports.map(function(port){
+					devices.push({
+						get name(){ return "WAN"; },
+						get id(){ return port.ifname.value; },
+						get type(){ return "vlan"; }
+					});
 				});
 			}
 			def.resolve(devices);

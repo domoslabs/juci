@@ -93,7 +93,7 @@ JUCI.app
 			clearTimeout(timeoutID);
 		}
 		log.autoRefresh = false;
-		timeoutID = setTimeout(function(){log.autoRefresh = true;}, 1000);
+		timeoutID = setTimeout(function(){log.autoRefresh = true;}, 5000);
 		update().always(function() {
 			$scope.inprogress = false;
 			$scope.$apply();	
