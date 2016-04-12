@@ -45,7 +45,7 @@ JUCI.app
 			rows: []
 		}; 
 
-		JUCI.interval.repeat("dslstatus", 1000, function(done){
+		JUCI.interval.repeat("dslstatus", 5000, function(done){
 			$rpc.juci.broadcom.dsl.run({"method":"status"}).done(function(dslstats){
 				dslstats = dslstats.dslstats; 
 				

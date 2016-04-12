@@ -4,7 +4,7 @@ JUCI.app
 .controller("PageStatusPhone", function($scope, $rpc, $uci){
 	if($rpc.asterisk){
 		$scope.voice_available = true; 
-		JUCI.interval.repeat("voice.status", 4000, function(done){
+		JUCI.interval.repeat("voice.status", 5000, function(done){
 			$uci.$sync("voice_client").done(function(){
 				var sipProviders = $uci.voice_client["@sip_service_provider"]; 
 				var brcmLines = $uci.voice_client["@brcm_line"]; 

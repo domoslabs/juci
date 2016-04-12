@@ -129,6 +129,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 					var dev = devices.find(function(dev){
 						return dev[".name"] === iface.device.value;
 					});
+					if(!dev) return;
 					iface[".frequency"] = (dev.band.value === "a") ? "5GHz" : "2.4GHz";
 				});
 				deferred.resolve(ifs);

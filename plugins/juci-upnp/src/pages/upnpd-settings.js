@@ -20,17 +20,19 @@
 
 JUCI.app
 .controller("UPNPMainPage", function($scope, $uci, $systemService, $network, $firewall, $upnp, $tr, gettext, $rpc){
-	JUCI.interval.repeat("upnp-status-refresh", 1000, function(done){
-		$systemService.find("miniupnpd").done(function(service){
-			$scope.service = service;
-			$rpc.juci.upnpd.run({"method":"ports"}).done(function(result){ 
-				$scope.upnpOpenPorts = result.ports; 
-				$scope.$apply();
-				done(); 
-			}); 
+	JUCI.interval.repeat("upnp-status-refresh", 5000, function(done){
+		if($rpc.juci && $rpc.juci.upnpd) $rpc.juci.upnpd.run({"method":"ports"}).done(function(result){ 
+			$scope.upnpOpenPorts = result.ports; 
+			$scope.$apply();
+			done(); 
 		});
+		else done();
 	}); 
 	$scope.networks = [];
+	$systemService.find("miniupnpd").done(function(service){
+		$scope.service = service;
+		$scope.$apply();
+	});
 
 	$scope.acls = [];
 	$scope.action = [

@@ -121,7 +121,7 @@ JUCI.app
 			$scope.$apply();
 		});
 	}
-	JUCI.interval.repeat("wifi-overview", 10000, function(done){
+	JUCI.interval.repeat("wifi-overview", 60000, function(done){
 		if($scope && $scope.wifs){
 			var tab_info = {};
 			$scope.wifs.map(function(wif){

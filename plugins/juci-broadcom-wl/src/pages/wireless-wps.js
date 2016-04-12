@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("wirelessWPSPage", function($scope, $config, $uci, $rpc, $interval, $router, gettext, $tr){
+.controller("wirelessWPSPage", function($scope, $config, $uci, $rpc, $router, gettext, $tr, $events){
 	$scope.showExpert = $config.local.mode == "expert";
 	var wps_status_strings = {
 		"-1": $tr(gettext("Disabled")),
@@ -58,14 +58,14 @@ JUCI.app
 		console.log("failed to sync config: "+err); 
 	}); 
 	
-	JUCI.interval.repeat("wifi.wps.retry", 1000, function(next){
+	$events.subscribe("wps", function(){refresh();});
+	function refresh() {
 		$rpc.wps.status().done(function(result){
 			$scope.progress = result.code; 
 			$scope.text_status = wps_status_strings[result.code]||gettext("Unknown"); 
 			$scope.$apply();	
-			next();
 		}); 
-	}); 
+	}refresh(); 
 	
 	$rpc.wps.showpin().done(function(data){
 		$scope.generatedPIN = data.pin; 
