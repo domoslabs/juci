@@ -19,7 +19,7 @@
 UCI.$registerConfig("system"); 
 
 UCI.system.$registerSectionType("system", {
-	"hostname":		{ dvalue: '', type: String },
+	"hostname":		{ dvalue: '', type: String, required: true},
 	"timezone":		{ dvalue: '', type: String },
 	"zonename":		{ dvalue: '', type: String },
 	"conloglevel":		{ dvalue: 7, type: Number },

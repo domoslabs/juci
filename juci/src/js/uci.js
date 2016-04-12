@@ -302,6 +302,7 @@
 			},
 			get error(){
 				// make sure we ignore errors if value is default and was not changed by user
+				if(this.value === "" && this.schema.required) return gettext("Field is required");
 				if(this.uvalue == this.schema.dvalue || this.uvalue == this.ovalue) return null; 
 				if(this.validator) return this.validator.validate(this); 
 				return null; 
@@ -469,12 +470,12 @@
 			var self = this; 
 			var type = self[".section_type"]; 
 			Object.keys(type).map(function(k){
-				var err = self[k].error; 
+				if(self[k].value === "" && self[k].schema.required) errors.push(k+" "+gettext("is required"));
+				else var err = self[k].error; 
 				if(err){
 					errors.push(err); 
 				}
 			}); 
-			var type = this[".section_type"]; 
 			if(type && type[".validator"] && (type[".validator"] instanceof Function)){
 				try {
 					var e = type[".validator"](self); 
