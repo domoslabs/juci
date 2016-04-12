@@ -19,6 +19,7 @@
  */
 
 (function(scope){
+	var DEBUG_MODE = false;
 	var RPC_HOST = ""; //(($config.rpc.host)?$config.rpc.host:"")
 	var RPC_DEFAULT_SESSION_ID = "00000000000000000000000000000000"; 
 	var RPC_SESSION_ID = scope.localStorage.getItem("sid")||RPC_DEFAULT_SESSION_ID; 
@@ -34,6 +35,7 @@
 	]; 
 	
 	function rpc_request(type, namespace, method, data){
+		if(DEBUG_MODE)console.log("UBUS call " + namespace + " " + method);
 		var sid = ""; 
 		
 		// check if the request has been made only recently with same parameters
