@@ -33,7 +33,7 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("overviewWidget20USBCtrl", function($scope, $uci, $usb, $events){
+.controller("overviewWidget20USBCtrl", function($scope, $uci, $usb, $events, $juciDialog){
 	$events.subscribe("hotplug.usb", function(res){
 		if(res.data && res.data.action && (res.data.action == "add" || res.data.action == "remove")){
 			update();
@@ -42,7 +42,12 @@ JUCI.app
 	function update(){
 		$usb.getDevices().done(function(devices){
 			$scope.devices = devices || [];
+			console.log($scope.devices);
 			$scope.$apply(); 
 		}); 
 	}update();
+
+	$scope.createShare = function(device){
+		$juciDialog.show("samba-share-edit");
+	};
 }); 
