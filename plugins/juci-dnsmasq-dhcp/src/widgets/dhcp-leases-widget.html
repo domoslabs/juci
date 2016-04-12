@@ -16,7 +16,7 @@
 					<td>{{ v4lease.hostname }}</td>
 					<td>{{ v4lease.ipaddr }}</td>
 					<td>{{ v4lease.macaddr }}</td>
-					<td>{{ to_time_remaining(v4lease.leasetime) }}</td>
+					<td>{{ to_time_remaining(v4lease.leaseno) }}</td>
 				</tr>
 				<tr ng-show="ipv4leases.length === 0">
 					<td colspan="4" translate>There are no active leases</td>
