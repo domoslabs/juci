@@ -41,7 +41,7 @@ JUCI.app
 		});
 	}refresh();
 			
-	JUCI.interval.repeat("ipv4leases", 1000, function(done){
+	JUCI.interval.repeat("leases-update-time", 1000, function(done){
 		if(!$scope.ipv4leases) { done();return;}
 		$scope.ipv4leases.map(function(lease){
 			if(lease.leaseno > Date.now()) lease.leaseno += 1;

@@ -30,7 +30,7 @@ JUCI.app
 	};
 	var numDevices = 0;
 	if($rpc.juci && $rpc.juci.dect){
-		JUCI.interval.repeat("dect.refresh", 1000, function(done){
+		JUCI.interval.repeat("dect.refresh", 2000, function(done){
 			$rpc.juci.dect.run({"method":"status"}).done(function(stats){
 				if(stats.handsets && stats.handsets.length !== numDevices){
 					numDevices = stats.handsets.length;

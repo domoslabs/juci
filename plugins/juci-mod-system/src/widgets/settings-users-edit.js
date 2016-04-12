@@ -57,8 +57,8 @@ JUCI.app
 				var tmp = [];
 				if($scope.user.username.value == "user"){
 					page.acls.value.map(function(acl){
-						if(!page["_access"] && acl == "user-support")return;
-						if(!page["_access"] && acl == "user-admin") return;
+						if(!page["_access"] && acl === "user-support")return;
+						if(!page["_access"] && acl === "user-admin") return;
 						tmp.push(acl);
 					});
 					if(page["_access"])tmp.push("user-support");
@@ -75,23 +75,4 @@ JUCI.app
 			$scope.$apply();
 		});
 	}, false);
-	JUCI.interval.repeat("test-user-asdfasdf", 1000, function(done){
-		if(!$scope.data || !$scope.data.pages || !$uci || !$uci.juci["@menu"]){
-			done();
-			return;
-		}
-		$scope.data.pages = $uci.juci["@menu"].map(function(menu){
-			if(menu.acls.value.find(function(acl){
-				return !user_acls[acl];
-			})){
-				menu["_access"] = false;
-			}else{
-				menu["_access"] = true;
-			}
-			if(menu.acls.value.length == 0) menu["_disabled"] = true;
-			return menu;
-		});
-		$scope.$apply();
-		done();
-	});
 });

@@ -43,7 +43,7 @@ JUCI.app
 	var filesystems = []; 
 	var netLoad = {};
 
-	JUCI.interval.repeat("status.system.refresh", 5000, function(resume){
+	JUCI.interval.repeat("status_system_page_refresh", 5000, function(resume){
 		async.parallel([
 			function (cb){$rpc.router.info().done(function(res){sys = res; cb();}).fail(function(){cb();});},
 			function (cb){$network.getNetworkLoad().done(function(load){ netLoad = load; cb(); }).fail(function(){cb();});},
