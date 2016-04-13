@@ -33,7 +33,7 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("overviewWidget20USBCtrl", function($scope, $uci, $usb, $events, $juciDialog){
+.controller("overviewWidget20USBCtrl", function($scope, $uci, $usb, $events, $juciDialog, $tr, gettext){
 	$events.subscribe("hotplug.usb", function(res){
 		if(res.data && res.data.action && (res.data.action == "add" || res.data.action == "remove")){
 			update();
@@ -48,6 +48,23 @@ JUCI.app
 	}update();
 
 	$scope.createShare = function(device){
-		$juciDialog.show("samba-share-edit");
+		$uci.samba.$create({
+			".type":"sambashare",
+			"name": $tr(gettext("Share for "+device.product)),
+			"path": "/mnt/"+device.mntdir
+		}).done(function(section){
+			$juciDialog.show("samba-share-edit", {
+				title: device.product,
+				model: section,
+				buttons: [
+					{label: $tr(gettext("Ok")), value: "Ok", primary: "true"},
+					{label: $tr(gettext("Cancel")), value: "Cancel"}
+				],
+				on_button: function(btn,dialog){
+					if(btn.label==="Ok"){ dialog.close(); }
+					if(btn.label==="Cancel"){ section.$delete().always(function(){dialog.close();}); }
+				}
+			});
+		});
 	};
 }); 
