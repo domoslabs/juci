@@ -29,13 +29,14 @@
 	
 	function TimeValidator(){
 		this.validate = function(field){
+			if(field.value.match(/[^\d:]/)) return gettext("please enter time in form hh:mm");
 			var parts = field.value.split(":");
 			if(parts.length != 2) return gettext("please specify both hour and minute value for time separated by ':'"); 
 			if(parts[0].length <= 2 && Number(parts[0]) >= 0 && Number(parts[0]) < 24 && 
 				parts[1].length <= 2 && Number(parts[1]) >= 0 && Number(parts[1]) < 60){
 				return null; 
 			} else {
-				return gettext("please enter valid time in form hh:mm"); 
+				return gettext("please enter valid time in form hh:mm " + field.value); 
 			}
 		}
 	}
@@ -43,15 +44,15 @@
 	function TimespanValidator(){
 		var timeValidator = new TimeValidator(); 
 		this.validate = function(field){
-			var parts = field.value.split("-"); 
+			var parts = field.value.split("-");
 			if(parts.length != 2) return gettext("Please specify both start time and end time for schedule!"); 
-			var err = timeValidator.validate({ value: parts[0] }) || 
-				timeValidator.validate({ value: parts[1] }); 
+			var err = timeValidator.validate({ value: parts[0] });
+			if(err) return err;
+			err = timeValidator.validate({ value: parts[1] });
 			if(err) return err; 
-			
-			function split(value) { return value.split(":").map(function(x){ return Number(x); }); };
-			var from = split(parts[0]);
-			var to = split(parts[1]); 
+			function splitToNumber(value) { return value.split(":").map(function(x){ return Number(x); }); };
+			var from = splitToNumber(parts[0]);
+			var to = splitToNumber(parts[1]); 
 			if((from[0]*60+from[1]) < (to[0]*60+to[1])) {
 				return null; 
 			} else {

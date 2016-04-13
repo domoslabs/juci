@@ -19,15 +19,31 @@
  */
  
 JUCI.app
-.controller("SettingsUpgradeOptions", function($scope, $uci, $rpc, $tr, gettext){
+.controller("SettingsUpgradeOptions", function($scope, $uci, $rpc, $tr, gettext, $juciDialog){
 	$scope.allImageExtensions = [
-		{ label: $tr(gettext(".w (JFFS Image)")), value: ".w" },
-		{ label: $tr(gettext(".y (UBIFS Image)")), value: ".y" }, 
-		{ label: $tr(gettext("fs_image (RAW Rootfs Image)")), value: "fs_image" }
+		{ label: $tr(gettext(".w (JFFS Image with CFE)")), value: ".w" },
+		{ label: $tr(gettext(".y (UBIFS Image)")), value: ".y" },
+		{ label: $tr(gettext(".y2 (new UBIFS Image)")), value: ".y2" },
+		{ label: $tr(gettext("fs_image (JFFS Image)")), value: "fs_image" }
 	]; 
 	
 	$uci.$sync("system").done(function(){
-		$scope.system = $uci.system; 
-		$scope.$apply(); 
+		if($uci.system["@upgrade"].length === 0){
+			$uci.system.$create({
+				".type":"upgrade"
+			}).done(function(upgrade){
+				$juciDialog.show(null, {
+					content: $tr(gettext("A missing section has been created")),
+					buttons: [{ label: $tr(gettext("OK")), value: "ok", primary: true }],
+					on_button: function(btn, inst){inst.close();},
+					size: "sm"
+				});
+				$scope.upgrade = upgrade;
+				$scope.$apply();
+			});
+		}else{
+			$scope.upgrade = $uci.system["@upgrade" ][0];
+			$scope.$apply(); 
+		}
 	}); 
 }); 

@@ -1,7 +1,7 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="wirelessStatusScanPage">
-		<juci-config-heading>{{ 'WiFi Status' | translate }}</juci-config-heading>
-		<juci-config-info>{{ 'status.wifi.info' | translate }}</juci-config-info>
+		<juci-config-heading>{{ 'WiFi Scan' | translate }}</juci-config-heading>
+		<juci-config-info>{{ 'status.wifi.scan.info' | translate }}</juci-config-info>
 		<div class="row">
 			<div class="col-md-6"  ng-repeat="radio in wlRadios track by $index">
 				<h2>{{'Radio'|translate}} {{radio.frequency}}</h2>

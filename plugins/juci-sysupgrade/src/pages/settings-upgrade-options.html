@@ -3,19 +3,18 @@
 		<juci-config-section> 
 			<juci-config-heading>{{ 'Upgrade Options' | translate }}</juci-config-heading>
 			<juci-config-info>{{ 'settings.upgrade.options.info' | translate }}</juci-config-info>
+			<juci-config-lines>
+				<juci-config-line title="{{'Firmware image extension'|translate}}">
+					<juci-select ng-model="upgrade.fw_find_ext.value" ng-items="allImageExtensions"/>
+				</juci-config-line>
+			</juci-config-lines>
 			<h2 translate>Online Upgrade</h2>
 			<juci-config-lines>
 				<juci-config-line title="{{'URL for file with latest image filename'|translate}}">
-					<input type="text" class="form-control" ng-model="system.upgrade.fw_check_url.value" placeholder="{{'URL'|translate}}"/>
+					<input type="text" class="form-control" ng-model="upgrade.fw_check_url.value" placeholder="{{'URL'|translate}}"/>
 				</juci-config-line>
 				<juci-config-line title="{{'Upgrade URL base path'|translate}}">
-					<input type="text" class="form-control" ng-model="system.upgrade.fw_path_url.value" placeholder="{{'HTTP Directory'|translate}}"/>
-				</juci-config-line>
-			</juci-config-lines>
-			<h2 translate>USB Upgrade</h2>
-			<juci-config-lines>
-				<juci-config-line title="{{'Firmware image extension'|translate}}">
-					<juci-select ng-model="system.upgrade.fw_find_ext.value" ng-items="allImageExtensions"/>
+					<input type="text" class="form-control" ng-model="upgrade.fw_path_url.value" placeholder="{{'HTTP Directory'|translate}}"/>
 				</juci-config-line>
 			</juci-config-lines>
 		</juci-config-section>

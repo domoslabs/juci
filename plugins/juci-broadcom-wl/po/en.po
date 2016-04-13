@@ -504,6 +504,13 @@ msgstr ""
 msgid "Noise"
 msgstr ""
 
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status-scan.html
+msgid "WiFi Scan"
+msgstr ""
+
+msgid "status.wifi.scan.info"
+msgstr "Here you can scan for other wireless access points in your area."
+
 msgid "Radio"
 msgstr ""
 

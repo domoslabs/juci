@@ -142,7 +142,15 @@ JUCI.app
 					$scope.$apply(); 
 				}); 
 			}
-			
+
+			function removeDuplicates(){
+				if(!$scope.errors || $scope.errors.length === 0) return;
+				map = {};
+				$scope.errors.map(function(er){
+					if(!map[er]) map[er] = true;
+				});
+				$scope.errors = Object.keys(map);
+			}
 			$scope.onAcceptEdit = function(){
 				if($scope.rule.macList.find(function(k){
 					return $scope.validateMAC(k.mac); 
@@ -156,12 +164,17 @@ JUCI.app
 				rule.src_mac.value = $scope.rule.macList.map(function(k){
 					return k.mac; 
 				}); 
-				rule.start_time.value = $scope.convertTime($scope.rule.time_start, -$scope.diff);
-				rule.stop_time.value = $scope.convertTime($scope.rule.time_end, -$scope.diff); 
-				rule.weekdays.value = $scope.rule.days.join(" "); 
-				
-				$scope.errors = rule.$getErrors().concat($scope.validateTimeSpan($scope.rule.time_start+"-"+$scope.rule.time_end)).filter(function(x){ return x; }); 
+				$scope.errors = rule.$getErrors();
+				if(!$scope.rule.time_start || !$scope.rule.time_end){
+					$scope.errors.push($tr(gettext("No start and/or end time given!")));
+				}else {
+					$scope.errors.concat($scope.validateTimeSpan($scope.rule.time_start+"-"+$scope.rule.time_end)).filter(function(x){ return x; }); 
+				}
+				removeDuplicates();
 				if(!$scope.errors || $scope.errors.length == 0)
+					rule.start_time.value = $scope.convertTime($scope.rule.time_start, -$scope.diff);
+					rule.stop_time.value = $scope.convertTime($scope.rule.time_end, -$scope.diff); 
+					rule.weekdays.value = $scope.rule.days.join(" "); 
 					$scope.rule = null; 
 			}
 			

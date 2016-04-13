@@ -41,7 +41,7 @@ UCI.system.$registerSectionType("upgrade", {
 	"fw_check_url":		{ dvalue: "", type: String, required: false},
 	"fw_path_url":		{ dvalue: "", type: String },
 	"fw_usb_path": 		{ dvalue: "", type: String }, 
-	"fw_find_ext":		{ dvalue: "", type: String, required: false},
+	"fw_find_ext":		{ dvalue: ".y", type: String, required: false},
 	"fw_upload_path":	{ dvalue: "", type: String, required: false}
 }); 
 

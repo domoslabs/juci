@@ -15,7 +15,20 @@
 				</div>
 			</juci-config-line>
 			<juci-config-line title="{{'Time'|translate}}" no-pull>
-				<juci-input-timespan ng-model="time_span" ></juci-input-timespan>
+				<div class="row" ng-class="{'field-error': validateTimespan(schedule.time_start+'-'+schedule.time_end) || validateTime(schedule.time_start) || validateTime(schedule.time_end)}" data-toggle="tooltip" data-placement="top" title="{{model.error}}">
+					<div class="col-xs-2">
+						<label translate>from</label>
+					</div>
+					<div class="col-xs-4">
+						<input class="form-control" type="text" ng-model="schedule.time_start" placeholder="09:00" style="min-width: 40px !important"/>
+					</div>
+					<div class="col-xs-2">
+						<label translate>to</label>
+					</div>
+					<div class="col-xs-4">
+						<input class="form-control" type="text" ng-model="schedule.time_end" placeholder="09:00" style="min-width: 40px !important"/>
+					</div>
+				</div>
 			</juci-config-line>
 		</juci-config-lines>
 	<!--</div>-->

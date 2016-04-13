@@ -86,9 +86,8 @@ JUCI.app
 		}); 
 	}
 	
-	$scope.$watch("rule", function(r){
-		if(!r) return; 
-		var rule = $scope.rule; 
+	$scope.$watch("rule", function(rule){
+		if(!rule || !rule.constructor || rule.constructor !== "UCISection") return; 
 		$scope.data.src_macs = rule.src_mac.value.map(function(x){ return {text:x}; });
 		$scope.data.dest_macs = rule.dest_mac.value.map(function(x){ return {text:x}; });
 		$scope.data.dest_ips = rule.dest_ip.value.map(function(x){ return {text:x}; });
