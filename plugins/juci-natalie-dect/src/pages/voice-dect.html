@@ -25,17 +25,17 @@
 			<table class="table">
 				<thead style="text-align: center;">
 					<th style="width:1%" translate>Number</th>
-					<th translate>RFPI</th>
+					<th class="hidden-xs" translate>RFPI</th>
 					<th translate>State</th>
 					<th style="width:20%" translate>Status</th>
-					<th style="width:1%" translate>Action</th>
+					<th class="hidden-xs" style="width:1%" translate>Action</th>
 				</thead>
 				<tr ng-repeat="hs in status.handsets track by $index">
 					<td>{{hs.id}}</td>
-					<td>{{toHexaDecimal(hs.address)}}</td>
+					<td class="hidden-xs">{{toHexaDecimal(hs.address)}}</td>
 					<td>{{hs.online|uppercase}}</td>
 					<td>{{hs.status|uppercase}}</td>
-					<td><button class="btn btn-default" ng-click="onPingHandset(hs)" translate>Ping</button></td>
+					<td class="hidden-xs"><button class="btn btn-default" ng-click="onPingHandset(hs)" translate>Ping</button></td>
 				</tr>
 			</table>
 		</div>
