@@ -42,6 +42,14 @@ JUCI.app
 	var board = { release: {} }; 
 	var filesystems = []; 
 	var netLoad = {};
+	JUCI.interval.repeat("update_status_system_page_clock", 1000, function(resume){
+		if(sys && sys.system && sys.system.localtime){
+			sys.system.localtime += 1;
+			updateTable();
+			setTimeout(function(){$scope.$apply();}, 0);
+		}
+		resume();
+	});
 
 	JUCI.interval.repeat("status_system_page_refresh", 5000, function(resume){
 		async.parallel([
@@ -71,37 +79,41 @@ JUCI.app
 				
 				return ((days > 0)?""+days+"d ":"")+pad(hours,2)+":"+pad(minutes,2)+":"+pad(seconds,2);
 			}
-			$scope.systemStatusTbl.rows = [
-				[$tr(gettext("Hostname")), board.hostname || $tr(gettext("N/A"))],
-				[$tr(gettext("Model")), $config.board.system.hardware || $tr(gettext("N/A"))],
-				[$tr(gettext("Firmware Version")), $config.board.system.firmware || $tr(gettext("N/A"))],
-				[$tr(gettext("Local Time")), sys.system.localtime],
-				[$tr(gettext("Uptime")), sys.system.uptime],
-				[$tr(gettext("CPU")), (sys.system.cpu_per || 0)+"%"],
-				[$tr(gettext("Kernel Version")), board.kernel || sys.system.kernel || $tr(gettext("N/A"))],
-				[$tr(gettext("Filesystem")), sys.system.filesystem || $tr(gettext("N/A"))],
-				[$tr(gettext("Active Connections")), '<juci-progress value="'+netLoad.active_connections+'" total="'+netLoad.max_connections+'"></juci-progress>']
-			];
-			
-			$scope.systemMemoryTbl.rows = [
-				[$tr(gettext("Usage")), '<juci-progress value="'+Math.round((sys.memoryKB.total - sys.memoryKB.free) / 1000)+'" total="'+ Math.round(sys.memoryKB.total / 1000) +'" units="kB"></juci-progress>'],
-				[$tr(gettext("Shared")), '<juci-progress value="'+Math.round(sys.memoryKB.shared / 1000)+'" total="'+ Math.round(sys.memoryKB.total / 1000) +'" units="kB"></juci-progress>'],
-				[$tr(gettext("Buffered")), '<juci-progress value="'+Math.round(sys.memoryKB.buffers / 1000)+'" total="'+ Math.round(sys.memoryKB.total / 1000) +'" units="kB"></juci-progress>'],
-				[$tr(gettext("Swap")), '<juci-progress value="0" total="0" units="kB"></juci-progress>']
-			];
-			
-			if($uci.juci["pagesystemstatus"] && $uci.juci["pagesystemstatus"].show_diskinfo.value){ 
-				$scope.show_diskinfo = true; 
-				$scope.systemStorageTbl.rows = []; 
-				filesystems.map(function(disk){
-					if(disk.name.split(":").length === 2) return;
-					$scope.systemStorageTbl.rows.push([disk.name+" ("+disk.mounted_on+")", '<juci-progress value="'+Math.round(disk.used)+'" total="'+ Math.round(disk.available + disk.used) +'" units="kB"></juci-progress>']); 
-				}); 
-			}
-
+			updateTable();
 			$scope.$apply();
 			resume(); 
 		});
 	}); 
+	function updateTable(){
+		$scope.systemStatusTbl.rows = [
+			[$tr(gettext("Hostname")), board.hostname || $tr(gettext("N/A"))],
+			[$tr(gettext("Model")), $config.board.system.hardware || $tr(gettext("N/A"))],
+			[$tr(gettext("Firmware Version")), $config.board.system.firmware || $tr(gettext("N/A"))],
+			[$tr(gettext("Kernel Version")), board.kernel || sys.system.kernel || $tr(gettext("N/A"))],
+			[$tr(gettext("Filesystem")), sys.system.filesystem || $tr(gettext("N/A"))],
+			[$tr(gettext("BRCM Version")), sys.system.brcmver || $tr(gettext("N/A"))],
+			[$tr(gettext("Local Time")), Date(sys.system.localtime)],
+			[$tr(gettext("Uptime")), sys.system.uptime],
+			[$tr(gettext("CPU")), (sys.system.cpu_per || 0)+"%"],
+			[$tr(gettext("Active Connections")), '<juci-progress value="'+netLoad.active_connections+'" total="'+netLoad.max_connections+'"></juci-progress>']
+		];
+
+		$scope.systemMemoryTbl.rows = [
+			[$tr(gettext("Usage")), '<juci-progress value="'+Math.round((sys.memoryKB.total - sys.memoryKB.free) / 1000)+'" total="'+ Math.round(sys.memoryKB.total / 1000) +'" units="kB"></juci-progress>'],
+			[$tr(gettext("Shared")), '<juci-progress value="'+Math.round(sys.memoryKB.shared / 1000)+'" total="'+ Math.round(sys.memoryKB.total / 1000) +'" units="kB"></juci-progress>'],
+			[$tr(gettext("Buffered")), '<juci-progress value="'+Math.round(sys.memoryKB.buffers / 1000)+'" total="'+ Math.round(sys.memoryKB.total / 1000) +'" units="kB"></juci-progress>'],
+			[$tr(gettext("Swap")), '<juci-progress value="0" total="0" units="kB"></juci-progress>']
+		];
+
+		if($uci.juci["pagesystemstatus"] && $uci.juci["pagesystemstatus"].show_diskinfo.value){ 
+			$scope.show_diskinfo = true; 
+			$scope.systemStorageTbl.rows = []; 
+			filesystems.map(function(disk){
+				if(disk.name.split(":").length === 2) return;
+				$scope.systemStorageTbl.rows.push([disk.name+" ("+disk.mounted_on+")", '<juci-progress value="'+Math.round(disk.used)+'" total="'+ Math.round(disk.available + disk.used) +'" units="kB"></juci-progress>']); 
+			}); 
+		}
+	}
+
 }); 
 
