@@ -359,7 +359,7 @@
 							value = n; 
 							break; 
 						case Array: 
-							if(!(data[k] instanceof Array)) value = [data[k]]; 
+							if(!(data[k] instanceof Array)) value = data[k].split(" "); 
 							else value = data[k];  
 							if(!value) value = []; 
 							break; 
