@@ -10,12 +10,12 @@
 			</div>
 		</div>-->
 		<div class="row" style="margin-bottom: 10px;">
-			<div class="col-xs-3" style="text-align: center;"><i class="juci juci-wps fa-lg"></i></div>
+			<div class="col-xs-3" style="text-align: center;"><i style="color:{{wpsColor}};" class="juci juci-wps fa-lg"></i></div>
 			<div class="col-xs-6">
 				<a class="overview-list-item-text" href="#!/wireless-wps"><strong>{{'WPS'|translate}}</strong></a>
 			</div>
 			<div class="col-xs-3" style="float:right;text-align:right;">
-				<button class="btn btn-default {{wifiStatus.wps.value?'':'disabled'}}" title="{{'(within 2 minutes)'|translate}}" ng-click="onPairPBC()">{{'Pair'|translate}}</button>
+				<button class="btn btn-default {{wifiStatus.wps.value?'':'disabled'}}" title="{{'(within 2 minutes)'|translate}}" ng-mouseup="mouseUp()" ng-mousedown="mouseDown()">{{'Pair'|translate}}</button>
 			</div>
 		</div>
 		<div class="row">

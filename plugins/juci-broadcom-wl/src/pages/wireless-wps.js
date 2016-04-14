@@ -70,9 +70,22 @@ JUCI.app
 	$rpc.wps.showpin().done(function(data){
 		$scope.generatedPIN = data.pin; 
 	}); 
-	
-	$scope.onPairPBC = function(){
-		$rpc.wps.pbc();
+		
+	var longPress = false;
+	var timeout;
+	$scope.wpsButtonColor = "default"
+	$scope.mouseDown = function() {
+		timeout = setTimeout(function(){longPress = true; $scope.wpsButtonColor = "success"; $scope.$apply();}, 5000);
+	}
+	$scope.mouseUp = function() {
+		if(!longPress){
+			if($rpc.wps && $rpc.wps.pbc) $rpc.wps.pbc();
+			clearTimeout(timeout);
+		}else{
+			if($rpc.wps && $rpc.wps.pbc_client) $rpc.wps.pbc_client();
+			longPress = false;
+			$scope.wpsButtonColor = "default";
+		}
 	}
 	$scope.onPairUserPIN = function(){
 		var pin = $scope.data.userPIN.replace("-", "").replace(" ", "").match(/\d+/g).join("");

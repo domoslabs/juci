@@ -39,8 +39,21 @@ JUCI.app
 	});
 })
 .controller("overviewWidgetWifi", function($scope, $rpc, $uci, $tr, gettext, $juciDialog, $events, $wireless){
-	$scope.onPairPBC = function(){
-		$rpc.wps.pbc();
+	var longPress = false;
+	var timeout;
+	$scope.wpsColor = "black"
+	$scope.mouseDown = function() {
+		timeout = setTimeout(function(){longPress = true; $scope.wpsColor = "green"; $scope.$apply();}, 5000);
+	}
+	$scope.mouseUp = function() {
+		if(!longPress){
+			if($rpc.wps && $rpc.wps.pbc) $rpc.wps.pbc();
+			clearTimeout(timeout);
+		}else{
+			if($rpc.wps && $rpc.wps.pbc_client) $rpc.wps.pbc_client();
+			longPress = false;
+			$scope.wpsColor = "black";
+		}
 	}
 	var wps_status_strings = {
 		"-1": $tr(gettext("Disabled")),

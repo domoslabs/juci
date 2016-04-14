@@ -32,7 +32,7 @@
 						<switch id="enabled" name="enabled" ng-model="router.wifi_button_wps_function_enabled" class="green" ng-change="save()" ></switch>
 					</juci-config-line>
 					<juci-config-line title="{{'Pair (within 2 minutes)'|translate}}">
-						<button class="btn btn-lg btn-default col-xs-12" ng-click="onPairPBC()" translate>Pair</button>
+						<button class="btn btn-lg btn-{{wpsButtonColor}} col-xs-12" ng-mouseup="mouseUp()" ng-mousedown="mouseDown()" translate>Pair</button>
 					</juci-config-line>
 				</juci-config-lines>
 			</juci-config-section>
