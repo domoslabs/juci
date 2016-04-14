@@ -235,7 +235,7 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"rifs_advert":	{ dvalue: true, type: Boolean },
 		"maxassoc":		{ dvalue: 32, type: Number },
 		"dfsc":			{ dvalue: true, type: Boolean }, // ? 
-		"hwmode":		{ dvalue: "11ac", type: String },
+		"hwmode":		{ dvalue: "auto", type: String },
 		"disabled":		{ dvalue: false, type: Boolean },
 		"frameburst": 	{ dvalue: false, type: Boolean },
 		"beamforming": 	{ dvalue: true, type: Boolean }
