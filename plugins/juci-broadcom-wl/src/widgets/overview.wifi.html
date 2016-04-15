@@ -43,12 +43,12 @@
 				</table>
 			</div>
 		</div>
-		<modal title="{{'Attempting to Pair'|translate}}" data-keyboard="false" data-backdrop="static" ng-show="wps.progress > 0 && wps.progress != 2 && wps.progress < 8" dismiss-label="Cancel" on-dismiss="onCancelWPS()">
+		<modal title="{{'Attempting to Pair'|translate}}" data-keyboard="false" data-backdrop="static" ng-show="wps.progress > 0 && wps.progress != 2 && wps.progress < 9" dismiss-label="Cancel" on-dismiss="onCancelWPS()">
 			<div style="text-align: center;">
 				<div ng-show="progress != 0">
 					<i class="fa fa-spinner fa-spin fa-3x"></i>
 				</div>
-				<p>{{text_status}}</p>
+				<p>{{wps.text_status}}</p>
 			</div>
 		</modal>
 	</juci-overview-widget>

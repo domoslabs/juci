@@ -29,7 +29,8 @@ JUCI.app
 		3: $tr(gettext("Failed")),
 		4: $tr(gettext("Timed out")),
 		7: $tr(gettext("Done!")),
-		8: $tr(gettext("Overlap"))
+		8: $tr(gettext("Rebooting into client mode")),
+		9: $tr(gettext("Overlap"))
 	}; 
 	
 	$scope.router = $router;
@@ -83,6 +84,8 @@ JUCI.app
 			clearTimeout(timeout);
 		}else{
 			if($rpc.wps && $rpc.wps.pbc_client) $rpc.wps.pbc_client();
+			$scope.progress = 8;
+			$scope.text_status = wps_status_strings[8];
 			longPress = false;
 			$scope.wpsButtonColor = "default";
 		}
