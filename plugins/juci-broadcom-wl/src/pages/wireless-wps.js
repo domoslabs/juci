@@ -29,7 +29,7 @@ JUCI.app
 		3: $tr(gettext("Failed")),
 		4: $tr(gettext("Timed out")),
 		7: $tr(gettext("Done!")),
-		8: $tr(gettext("Rebooting into client mode")),
+		8: $tr(gettext("Switching to repeater mode")),
 		9: $tr(gettext("Overlap"))
 	}; 
 	

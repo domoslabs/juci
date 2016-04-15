@@ -6,6 +6,7 @@
 				"wps": [
 					"genpin",
 					"pbc",
+					"pbc_client",
 					"setpin",
 					"showpin",
 					"stapin",
