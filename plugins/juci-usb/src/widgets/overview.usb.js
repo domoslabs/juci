@@ -48,23 +48,39 @@ JUCI.app
 	}update();
 
 	$scope.createShare = function(device){
-		$uci.samba.$create({
-			".type":"sambashare",
-			"name": $tr(gettext("Share for "+device.product)),
-			"path": "/mnt/"+device.mntdir
-		}).done(function(section){
+		function showModal(sambaShare){
 			$juciDialog.show("samba-share-edit", {
 				title: device.product,
-				model: section,
+				model: sambaShare,
 				buttons: [
-					{label: $tr(gettext("Ok")), value: "Ok", primary: "true"},
+					{label: $tr(gettext("Save")), value: "Save", primary: "true"},
+					{label: $tr(gettext("Delete")), value: "Delete"},
 					{label: $tr(gettext("Cancel")), value: "Cancel"}
 				],
 				on_button: function(btn,dialog){
-					if(btn.label==="Ok"){ dialog.close(); }
-					if(btn.label==="Cancel"){ section.$delete().always(function(){dialog.close();}); }
+					if(btn.label==="Save"){ dialog.close(); }
+					if(btn.label==="Delete"){ sambaShare.$delete().always(function(){dialog.close();}); }
+					if(btn.label==="Cancel"){ sambaShare.$reset(); dialog.close(); }
 				}
 			});
+		}
+
+		$uci.$sync("samba").done(function(){
+			var existingShare = $uci.samba["@sambashare"].find(function(sambashare){return sambashare.path.value === "/mnt/"+device.mntdir});
+			if(existingShare){
+				showModal(existingShare);
+			}
+			else{
+				$uci.samba.$create({
+					".type":"sambashare",
+					"name": $tr(gettext("Share for "+device.product)),
+					"path": "/mnt/"+device.mntdir
+				}).done(function(newShare){
+					//var newShare = $uci.samba["@sambashare"].find(function(sambashare){return sambashare.path.value === "/mnt/"+device.mntdir});
+					showModal(newShare);
+				});
+			}
 		});
+
 	};
 }); 
