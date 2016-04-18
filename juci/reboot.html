@@ -9,7 +9,6 @@
 			var i = 0;
 			setInterval(ping, 3000);
 			function ping(){
-				console.log("test " + i++);
 				$.ajax({
 					type: 'GET',
 					cache: false,
@@ -18,7 +17,6 @@
 						window.location.href = targetUrl;
 					},
 					error: function(result) {
-						console.log(result);
 					}
 				});
 			}
