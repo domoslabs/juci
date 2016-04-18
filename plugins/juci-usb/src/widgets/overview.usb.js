@@ -48,7 +48,7 @@ JUCI.app
 	}update();
 
 	$scope.createShare = function(device){
-		function showModal(sambaShare){
+		function showModal(sambaShare,addingNew){
 			$juciDialog.show("samba-share-edit", {
 				title: device.product,
 				model: sambaShare,
@@ -60,7 +60,10 @@ JUCI.app
 				on_button: function(btn,dialog){
 					if(btn.label==="Save"){ dialog.close(); }
 					if(btn.label==="Delete"){ sambaShare.$delete().always(function(){dialog.close();}); }
-					if(btn.label==="Cancel"){ sambaShare.$reset(); dialog.close(); }
+					if(btn.label==="Cancel"){ 
+						if (addingNew){ sambaShare.$delete().always(function(){dialog.close();}); }
+						else { sambaShare.$reset(); dialog.close(); }
+					}
 				}
 			});
 		}
@@ -68,7 +71,7 @@ JUCI.app
 		$uci.$sync("samba").done(function(){
 			var existingShare = $uci.samba["@sambashare"].find(function(sambashare){return sambashare.path.value === "/mnt/"+device.mntdir});
 			if(existingShare){
-				showModal(existingShare);
+				showModal(existingShare,false);
 			}
 			else{
 				$uci.samba.$create({
@@ -77,7 +80,7 @@ JUCI.app
 					"path": "/mnt/"+device.mntdir
 				}).done(function(newShare){
 					//var newShare = $uci.samba["@sambashare"].find(function(sambashare){return sambashare.path.value === "/mnt/"+device.mntdir});
-					showModal(newShare);
+					showModal(newShare,true);
 				});
 			}
 		});
