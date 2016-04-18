@@ -39,6 +39,16 @@ JUCI.app
 			update();
 		}
 	});
+
+	$uci.$sync("samba").done(function(){
+		$scope.getColor = function(device){
+			if($uci.samba["@sambashare"].find(function(sambashare){return sambashare.path.value === "/mnt/"+device.mntdir})){
+				return "green";
+			}
+			return "black";
+		}
+	});
+
 	function update(){
 		$usb.getDevices().done(function(devices){
 			$scope.devices = devices || [];
