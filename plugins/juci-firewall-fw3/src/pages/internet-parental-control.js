@@ -59,10 +59,6 @@ JUCI.app
 			} else {
 				next(); 
 			}
-		}, function(next){
-			$rpc.juci.system.time.run({"method":"timediff"}).done(function(data){
-				$scope.diff = data.diff;
-			}).always(function(){next();});
 		}], function(){
 			$scope.accessRules = $uci.firewall["@rule"].filter(function(x){
 				return x.parental.value; 
@@ -99,14 +95,6 @@ JUCI.app
 					return rule.parental.value; 
 				}); 
 			} updateRules(); 
-			$scope.convertTime = function(orig, diff){
-				if(orig.match(/^[0-9]+:.+$/) == null || typeof diff != "number") return;
-				var parts = orig.split(":");
-				var new_hour = parseInt(parts[0]) + diff;
-				if(new_hour < 10) parts[0] = "0"+new_hour;
-				else parts[0] = ""+new_hour;
-				return parts.join(":");
-			};
 			$scope.onCreateAccessRule = function(){
 				console.log("Adding rule.."); 
 				$uci.firewall.$create({
@@ -128,8 +116,8 @@ JUCI.app
 			
 			$scope.onEditAccessRule = function(rule){
 				$scope.rule = {
-					time_start: $scope.convertTime(rule.start_time.value, $scope.diff),
-					time_end: $scope.convertTime(rule.stop_time.value, $scope.diff),
+					time_start: rule.start_time.value,
+					time_end: rule.stop_time.value,
 					days: rule.weekdays.value.split(" "), 
 					macList: rule.src_mac.value.map(function(x){ return { mac: x }; }), 
 					uci_rule: rule
@@ -172,8 +160,8 @@ JUCI.app
 				}
 				removeDuplicates();
 				if(!$scope.errors || $scope.errors.length == 0)
-					rule.start_time.value = $scope.convertTime($scope.rule.time_start, -$scope.diff);
-					rule.stop_time.value = $scope.convertTime($scope.rule.time_end, -$scope.diff); 
+					rule.start_time.value = $scope.rule.time_start;
+					rule.stop_time.value = $scope.rule.time_end; 
 					rule.weekdays.value = $scope.rule.days.join(" "); 
 					$scope.rule = null; 
 			}
