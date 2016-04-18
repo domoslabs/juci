@@ -153,17 +153,19 @@ JUCI.app
 					return k.mac; 
 				}); 
 				$scope.errors = rule.$getErrors();
-				if(!$scope.rule.time_start || !$scope.rule.time_end){
+				if($scope.rule.time_start === "" || $scope.rule.time_end === ""){
 					$scope.errors.push($tr(gettext("No start and/or end time given!")));
 				}else {
 					$scope.errors.concat($scope.validateTimeSpan($scope.rule.time_start+"-"+$scope.rule.time_end)).filter(function(x){ return x; }); 
 				}
+				console.log($scope.errors);
 				removeDuplicates();
-				if(!$scope.errors || $scope.errors.length == 0)
+				if(!$scope.errors || $scope.errors.length == 0){
 					rule.start_time.value = $scope.rule.time_start;
 					rule.stop_time.value = $scope.rule.time_end; 
 					rule.weekdays.value = $scope.rule.days.join(" "); 
 					$scope.rule = null; 
+				}
 			}
 			
 			$scope.onCancelEdit = function(){

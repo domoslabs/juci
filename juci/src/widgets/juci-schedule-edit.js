@@ -80,7 +80,6 @@ JUCI.app
 
 	$scope.$watch("schedule", function(value){
 		if(!value) return;
-		console.log(value);
 		value.days.map(function(x){ $scope.days.push(x); }); 
 	}, false); 
 	
