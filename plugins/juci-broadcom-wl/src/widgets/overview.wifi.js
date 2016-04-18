@@ -100,12 +100,11 @@ JUCI.app
 			],
 			on_button: function(btn, inst){
 				if(btn.value == "cancel"){
-					iface.uci_dev.$reset();
+					iface.$reset();
 					inst.dismiss("cancel");
 				}
 				if(btn.value == "save"){
 					inst.close();
-					iface.ssid = iface.uci_dev.ssid.value;
 				}
 			},
 			model: iface
