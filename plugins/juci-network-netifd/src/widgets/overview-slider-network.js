@@ -80,6 +80,7 @@ JUCI.app
 			function(next){
 				$rpc.router.clients().done(function(cli){
 					clients = cli;
+					console.log(cli);
 			}).always(function(){next();});
 			}, function(next){
 				$firewall.getZoneNetworks("lan").done(function(nets){
@@ -94,7 +95,7 @@ JUCI.app
 				wan_nets.map(function(wan){
 					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value == false || !wan.$info.up) return;
 					var node = {
-						id: wan[".name"] + "network." + count,
+						id: wan[".name"] + ".network." + count + Date(),
 						label: String(wan[".name"]).toUpperCase(),
 						image: "/img/net-interface-wan-icon.png",
 						shape: "image",
