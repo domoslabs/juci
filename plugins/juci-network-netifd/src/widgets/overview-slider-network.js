@@ -94,7 +94,7 @@ JUCI.app
 				wan_nets.map(function(wan){
 					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value == false || !wan.$info.up) return;
 					var node = {
-						id: "wan.network." + count,
+						id: wan[".name"] + "network." + count,
 						label: String(wan[".name"]).toUpperCase(),
 						image: "/img/net-interface-wan-icon.png",
 						shape: "image",
