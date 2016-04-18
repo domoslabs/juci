@@ -69,14 +69,14 @@ JUCI.app
 			$scope.service.enable().always(function(){ $scope.$apply(); });
 		}
 	}
-	$scope.onStartStopService = function(){
+	/*$scope.onStartStopService = function(){
 		if(!$scope.service) return;
 		if($scope.service.running){
 			$scope.service.stop().always(function(){ $scope.$apply(); });
 		} else {
 			$scope.service.start().always(function(){ $scope.$apply(); });
 		}
-	}
+	}*/
 	function refresh(){
 		$rpc.juci.dropbear.run({"method":"get_public_keys"}).done(function(result){
 			$scope.keyList = result.keys;
