@@ -22,10 +22,10 @@ JUCI.app
 .controller("StatusEventsPageCtrl", function($scope, $rpc, $config, $tr, gettext){
 	var AllLogs;
 	JUCI.interval.repeat("event-log-page", 5000, function(next){
-		if(!$rpc.juci.system) return;
-		$rpc.juci.system.run({method:"log"}).done(function(data){
-			if(!data || !data.lines) return;
-			AllLogs = data.lines;
+		if(!$rpc.router) return;
+		$rpc.router.logs().done(function(data){
+			if(!data || !data.logs) return;
+			AllLogs = data.logs;
 			$scope.update();
 			$scope.$apply();
 		}).always(function(){next();});
@@ -61,7 +61,7 @@ JUCI.app
 			if(sources.length && !sources.find(function(x){ return log.source.match(RegExp(x));})) return false;
 			return (log.message.match(RegExp($scope.data.filter)) || 
 					log.source.match(RegExp($scope.data.filter))) &&
-					log.type.match(RegExp($scope.data.type));
+					log.id.match(RegExp($scope.data.type));
 		}).slice(0, $scope.data.limit);
 	}
 	$scope.$watch("data.limit", function(lim){
@@ -91,9 +91,9 @@ JUCI.app
 	];
 
 	$scope.lineClass = function(line){
-		if(line.type.indexOf("error") >= 0) return "label-danger"; 
-		if(line.type.indexOf("warn") >= 0) return "label-warning";  
-		if(line.type.indexOf("notice") >= 0 || line.type.indexOf("info") >= 0) return "label-info"; 
+		if(line.id.indexOf("error") >= 0) return "label-danger"; 
+		if(line.id.indexOf("warn") >= 0) return "label-warning";  
+		if(line.id.indexOf("notice") >= 0 || line.id.indexOf("info") >= 0) return "label-info"; 
 		return ""; 
 	}
 }); 
