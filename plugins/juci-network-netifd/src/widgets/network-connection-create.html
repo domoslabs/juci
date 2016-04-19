@@ -9,6 +9,9 @@
 		<juci-config-line ng-show="showType()" title="{{'Interface Type'|translate}}">
 			<juci-select ng-model="model.type" ng-items="interfaceTypes" ></juci-select>
 		</juci-config-line>
+		<juci-config-line title="{{'Add network to a firewall zone'|translate}}" help="{{'If you select a zone the network will be added to that firewall zone when it is created'|translate}}">
+			<juci-select ng-model="model.zone" ng-items="AllZones" placeholder="{{'Do not add to firewall zone'|translate}}"></juci-select>
+		</juci-config-line>
 	</juci-config-lines>
 	<div class="alert alert-danger" ng-repeat="error in model.errors track by $index" ng-show="model.errors.length > 0">{{error}}</div>
 </div>

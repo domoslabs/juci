@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("InternetNetworkPage", function($scope, $uci, $rpc, $network, $ethernet, $tr, gettext, $juciDialog, $juciConfirm, $juciAlert){
+.controller("InternetNetworkPage", function($firewall, $scope, $uci, $rpc, $network, $ethernet, $tr, gettext, $juciDialog, $juciConfirm, $juciAlert){
 	$scope.data = {}; 
 	
 	$ethernet.getAdapters().done(function(devices){
@@ -101,8 +101,19 @@ JUCI.app
 						"type": model.type,
 						"proto": model.protocol,
 						"vendorid": vendorid,
-						"hostname": hostname
+						"hostname": hostname,
+						"is_lan": (model.protocol === "static") ? true : false
 					}).done(function(interface){
+						if(model.zone){
+							$firewall.getZones().done(function(zones){
+								zones.map(function(zone){
+									if(zone.name.value === model.zone){
+										zone.network.value.push(model.name);
+									}
+								});
+								$scope.$apply();
+							});
+						}
 						$scope.current_connection = interface; 
 						$scope.networks.push(interface); 
 						$scope.$apply(); 
