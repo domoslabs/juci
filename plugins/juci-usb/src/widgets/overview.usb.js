@@ -42,7 +42,7 @@ JUCI.app
 
 	$uci.$sync("samba").done(function(){
 		$scope.getColor = function(device){
-			if($uci.samba["@sambashare"].find(function(sambashare){return sambashare.path.value === "/mnt/"+device.mntdir})){
+			if($uci.samba["@sambashare"].find(function(sambashare){return sambashare.path.value.match(RegExp(device.mntdir));})){
 				return "green";
 			}
 			return "black";
@@ -52,7 +52,6 @@ JUCI.app
 	function update(){
 		$usb.getDevices().done(function(devices){
 			$scope.devices = devices || [];
-			console.log($scope.devices);
 			$scope.$apply(); 
 		}); 
 	}update();
@@ -63,14 +62,14 @@ JUCI.app
 				title: device.product,
 				model: sambaShare,
 				buttons: [
-					{label: $tr(gettext("Save")), value: "Save", primary: "true"},
-					{label: $tr(gettext("Delete")), value: "Delete"},
-					{label: $tr(gettext("Cancel")), value: "Cancel"}
+					{label: $tr(gettext("Save")), value: "save", primary: "true"},
+					{label: $tr(gettext("Delete")), value: "delete"},
+					{label: $tr(gettext("Cancel")), value: "cancel"}
 				],
 				on_button: function(btn,dialog){
-					if(btn.label==="Save"){ dialog.close(); }
-					if(btn.label==="Delete"){ sambaShare.$delete().always(function(){dialog.close();}); }
-					if(btn.label==="Cancel"){ 
+					if(btn.value === "save"){ dialog.close(); }
+					if(btn.value === "delete"){ sambaShare.$delete().always(function(){dialog.close();}); }
+					if(btn.value === "cancel"){ 
 						if (addingNew){ sambaShare.$delete().always(function(){dialog.close();}); }
 						else { sambaShare.$reset(); dialog.close(); }
 					}
@@ -79,7 +78,7 @@ JUCI.app
 		}
 
 		$uci.$sync("samba").done(function(){
-			var existingShare = $uci.samba["@sambashare"].find(function(sambashare){return sambashare.path.value === "/mnt/"+device.mntdir});
+			var existingShare = $uci.samba["@sambashare"].find(function(sambashare){return sambashare.path.value.match(RegExp(device.mntdir))});
 			if(existingShare){
 				showModal(existingShare,false);
 			}
@@ -89,7 +88,6 @@ JUCI.app
 					"name": $tr(gettext("Share for "+device.product)),
 					"path": "/mnt/"+device.mntdir
 				}).done(function(newShare){
-					//var newShare = $uci.samba["@sambashare"].find(function(sambashare){return sambashare.path.value === "/mnt/"+device.mntdir});
 					showModal(newShare,true);
 				});
 			}
