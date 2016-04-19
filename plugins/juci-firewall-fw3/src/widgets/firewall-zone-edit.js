@@ -90,10 +90,7 @@ JUCI.app
 	$scope.onAddNetwork = function(){
 		if(!$scope.zone) return; 
 		networkConnectionPicker.show({ exclude: $scope.zone.network.value }).done(function(network){
-			var tmp = [];
-			$scope.zone.network.value.map(function(net){ tmp.push(net);});
-			tmp.push(network[".name"]);
-			$scope.zone.network.value = tmp;
+			$scope.zone.network.value = $scope.zone.network.value.concat([network[".name"]]);;
 		}); 
 	}
 	
