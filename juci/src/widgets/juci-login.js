@@ -39,7 +39,7 @@ JUCI.app
 		"host": "" 
 	}; 
 	$scope.showlogin = $config.settings.login.showusername.value; 
-	$scope.form.username = $config.settings.login.defaultuser.value||"admin"; 
+	$scope.form.username = $config.settings.login.defaultuser.value;
 	$scope.connecting = true; 
 
 	$scope.errors = []; 
@@ -89,11 +89,9 @@ JUCI.app
 					"password": $scope.form.password, 
 					"remember": $scope.form.remember
 				}).done(function success(res){
-					//$state.go("home", {}, {reload: true});
 					$window.location.href="/"; 
 					deferred.resolve(); 
 				}).fail(function fail(res){
-					//$scope.errors.push(res); 
 					$scope.errors.push(gettext("Please enter correct username and password!"));
 					$scope.logging_in = false; 
 					$scope.$apply(); 

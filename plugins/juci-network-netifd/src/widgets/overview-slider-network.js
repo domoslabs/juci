@@ -80,7 +80,6 @@ JUCI.app
 			function(next){
 				$rpc.router.clients().done(function(cli){
 					clients = cli;
-					console.log(cli);
 			}).always(function(){next();});
 			}, function(next){
 				$firewall.getZoneNetworks("lan").done(function(nets){

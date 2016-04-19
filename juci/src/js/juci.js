@@ -28,35 +28,6 @@
 		this.pages = {}; 
 	}
 	
-	JUCIMain.prototype.module = function(name, root, data){
-		console.error("WARNING: JUCI.module() is deprecated! ["+name+"]"); 
-		/*var self = this; 
-		if(data){
-			data.plugin_root = root; 
-			self.plugins[name] = data; 
-		}
-		var plugin = self.plugins[name]; 
-		var juci = self; 
-		return {
-			plugin_root: "", //((plugin||{}).plugin_root||"plugins/"+name+"/"), 
-			directive: function(name, fn){
-				return angular.module("juci").directive(name, fn);
-			}, 
-			controller: function(name, fn){
-				return angular.module("juci").controller(name, fn); 
-			}, 
-			state: function(name, obj){
-				if(obj.templateUrl && plugin.plugin_root) obj.templateUrl = plugin.plugin_root + "/" + obj.templateUrl; 
-				if(obj.views) Object.keys(obj.views).map(function(k){
-					var v = obj.views[k]; 
-					if(v.templateUrl && plugin.plugin_root) v.templateUrl = plugin.plugin_root + "/" + v.templateUrl; 
-				}); 
-				$juci.$stateProvider.state(name, obj); 
-				return this; 
-			}
-		}*/
-	}; 
-
 	JUCIMain.prototype.style = function(style){
 		var css = document.createElement("style");
 		css.type = "text/css";
@@ -164,9 +135,7 @@
 				next(); 
 			}, 
 			function(next){
-				// set various gui settings such as mode (and maybe theme) here
-				// TODO: fix this. (mode will not be set automatically for now when we load the page. Need to decide where to put this one) 
-				//$juci.config.mode = localStorage.getItem("mode") || "basic"; 
+				$juci.config.mode = localStorage.getItem("mode") || "basic"; 
 				next(); 
 			}
 		], function(){
@@ -206,25 +175,9 @@
 							templateUrl: (page.redirect)?"pages/default.html":page.template
 						}
 					},
-					// Perfect! This loads our controllers on demand! :) 
-					// Leave this code here because it serves as a valuable example
-					// of how this can be done. 
-					/*resolve: {
-						deps : function ($q, $rootScope) {
-							var deferred = $q.defer();
-							require([plugin_root + "/" + page.view + ".js"], function (tt) {
-								$rootScope.$apply(function () {
-										deferred.resolve();
-								});
-								deferred.resolve()
-							});
-							return deferred.promise;
-						}
-					},*/
 					// this function will run upon load of every page in the gui
 					onEnter: function($uci, $window, $rootScope, $tr, gettext){
 						if(page.redirect) {
-							//alert("page redirect to "+page.redirect); 
 							$juci.redirect(page.redirect); 
 							return; 
 						}
@@ -238,7 +191,6 @@
 							$juci.redirect("login");
 						});
 						
-						// document.title = $tr(name.replace(/\//g, ".").replace(/-/g, ".")+".title")+" - "+$tr(gettext("application.name")); 
 						document.title = $tr(name+"-title"); 
 
 						// scroll to top
@@ -333,7 +285,7 @@
 
 	UCI.juci.$registerSectionType("login", {
 		"showusername":		{ dvalue: true, type: Boolean }, // whether to show or hide the username on login page 
-		"defaultuser":		{ dvalue: "admin", type: String } // default user to display on login page or to use when username is hidden 
+		"defaultuser":		{ dvalue: "user", type: String } // default user to display on login page or to use when username is hidden 
 	}); 
 	UCI.juci.$insertDefaults("login"); 
 
