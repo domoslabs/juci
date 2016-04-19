@@ -108,7 +108,7 @@ JUCI.app
 							$firewall.getZones().done(function(zones){
 								zones.map(function(zone){
 									if(zone.name.value === model.zone){
-										zone.network.value.push(model.name);
+										zone.network.value = zone.network.value.concat([model.name]);
 									}
 								});
 								$scope.$apply();
