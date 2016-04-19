@@ -92,7 +92,7 @@ JUCI.app
 			}], function(){
 				var count = 0;
 				wan_nets.map(function(wan){
-					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value == false || !wan.$info.up) return;
+					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value == false || !wan.$info || !wan.$info.up) return;
 					var node = {
 						id: wan[".name"] + ".network." + count + Date(),
 						label: String(wan[".name"]).toUpperCase(),
