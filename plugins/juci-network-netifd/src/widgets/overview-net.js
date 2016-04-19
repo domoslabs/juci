@@ -82,6 +82,7 @@ JUCI.app
 			refresh();
 		}
 	});
+	JUCI.interval.repeat("update-lan-overview-widget-slow", 60000, function(done){ refresh(); done();});
 
 	$scope.onEditLan = function(lan){
 		if(!lan || lan["_dhcp_enabled"] == undefined) return;
