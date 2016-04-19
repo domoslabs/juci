@@ -255,6 +255,7 @@
 					// store original value
 					Object.assign(this.ovalue, value); 
 				} else {
+					if(typeof value === "string") value = value.trim();
 					if(!keep_user || !this.dirty) {
 						this.uvalue = value; 
 						this.dirty = false; 
