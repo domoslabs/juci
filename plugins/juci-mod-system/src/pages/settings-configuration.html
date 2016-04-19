@@ -21,7 +21,7 @@
 			</juci-config-lines>
 		</juci-config-section>
 		<modal title="{{'Save Configuration to Computer'|translate}}" ng-show="showModal" on-accept="onAcceptModal()" on-dismiss="onDismissModal()" dismiss-label="Cancel" accept-label="Continue">
-			<form name="backupForm" action="/cgi-bin/juci-backup" method="get" autocomplete="off">
+			<form name="backupForm" action="/cgi-bin/juci-backup" autocomplete="off">
 				<input type="hidden" name="sid" value="{{sessionID}}"/>
 				<!--<input type="hidden" name="password" />-->
 				<div class="form-group" ng-show="features.comment">
@@ -38,6 +38,8 @@
 				</div>
 				<div class="alert alert-danger" ng-show="!features.encryption" 
 					translate>Encryption of backups has been disabled (please make sure you have openssl cli utility installed!)</div>
+				<div class="alert alert-danger" ng-show="passwordError" 
+					translate>Encryption password may only contain letters a-z, A-Z and numbers 0-9.</div>
 			</form>
 		</modal>
 		<modal title="Load New Configuration" ng-show="showUploadModal" on-accept="onUploadConfig()" on-dismiss="onCancelRestore()" dismiss-label="Cancel" accept-label="Continue">

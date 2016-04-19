@@ -21,6 +21,9 @@
 JUCI.app
 .controller("SettingsConfigurationCtrl", function($scope, $rpc, $tr, gettext){
 	$scope.sessionID = $rpc.$sid(); 
+	$scope.resetPossible = 0; 
+	$scope.resetPossible = 1; 
+	$scope.passwordError = false;
 
 	$rpc.juci.system.conf.run({"method":"features"}).done(function(features){
 		$scope.features = features; 
@@ -90,11 +93,12 @@ JUCI.app
 		}); 
 	}
 	$scope.onAcceptModal = function(){
+		if($scope.passwordError){ return; }
 		if($scope.data.pass != $scope.data.pass_repeat) {
 			alert($tr(gettext("Passwords do not match!"))); 
 			return; 
 		}
-		if($scope.data.pass == undefined || $scope.data.pass_repeat == undefined){
+		if($scope.data.pass == ""){
 			if(!confirm($tr(gettext("Are you sure you want to save backup without password?")))) return; 
 		}
 		$("form[name='backupForm']").submit();
@@ -104,4 +108,15 @@ JUCI.app
 	$scope.onDismissModal = function(){
 		$scope.showModal = 0; 
 	}
+	$scope.$watch("data",function(data){
+		if(!data || !data.pass || !data.pass_repeat){
+			return;
+		}
+		if(data.pass.match(/[\W_]/)){
+			$scope.passwordError = true;
+		}else {
+			$scope.passwordError = false;
+		}
+
+	},true);
 }); 
