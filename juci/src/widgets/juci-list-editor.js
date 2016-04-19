@@ -50,6 +50,16 @@ JUCI.app
 		$scope.item = null; 
 		$scope.onCreate();
 	}
+	var n_items;
+	$scope.$watch("items.length", function(){
+		if(!$scope.items || $scope.items.length < 1) return;
+		if(!n_items || n_items < $scope.items.length){
+			$scope.item = $scope.items[$scope.items.length -1];
+		}else{
+			$scope.item = $scope.items[0];
+		}
+		n_items = $scope.items.length;
+	}, false);
 	$scope.onListEditItem = function(i){
 		$scope.item = i; 
 		$scope.onEditStart({"$item": i}); 
