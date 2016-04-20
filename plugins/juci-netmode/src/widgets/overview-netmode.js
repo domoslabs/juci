@@ -88,15 +88,22 @@ JUCI.app
 	}
 	$scope.getExp = function(){
 		if(!$scope.data || !$scope.data.selected || $scope.allNetmodes.length < 1) return "";
-		return $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; }).desc;
+		var tmp = $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; });
+		if(tmp && tmp.desc) return tmp.desc;
+		return "";
 	}
 	$scope.getDesc = function(){
-		if(!$scope.data || !$scope.data.selected || $scope.allNetmodes.length < 1) return "";
-		return $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; }).label;
+		if($scope.allNetmodes.length < 1) return "";
+		var tmp = $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; });
+		console.log(tmp && tmp.label);
+		if(tmp && tmp.label) return tmp.label;
+		return $tr(gettext("No profile selected"));
 	}
 	$scope.getFullDesc = function(){
 		if(!$scope.data || !$scope.data.selected || $scope.allNetmodes.length < 1) return "";
-		return $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; }).longLabel;
+		var tmp = $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; });
+		if(tmp && tmp.longLabel) return tmp.longLabel;
+		return "";
 	}
 	function setNetmode(netmode){
 		$scope.data.selected = netmode;

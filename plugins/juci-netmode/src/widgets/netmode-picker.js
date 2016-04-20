@@ -14,6 +14,8 @@ JUCI.app
 }).controller("netmodePickerCtrl", function($scope){
 	$scope.getDesc = function(){
 		if(!$scope.model || !$scope.model.allNetmodes) return "";
-		return $scope.model.allNetmodes.find(function(nm){ return nm.value == $scope.model.selected; }).desc || ""
+		var tmp = $scope.model.allNetmodes.find(function(nm){ return nm.value == $scope.model.selected; });
+		if(tmp && tmp.desc) return tmp.desc;
+		return "";
 	};
 });
