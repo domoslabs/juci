@@ -27,8 +27,10 @@ JUCI.app
 	};
 })
 .controller("overviewSliderWidget10Network", function($rpc, $config, $firewall, $events){
+	var d = new Date();
 	var nodes = []; 
 	var edges = []; 
+	var def;
 	
 	var optionsFA = {
 		nodes: {
@@ -46,7 +48,8 @@ JUCI.app
 	function updateData(){
 		nodes = [];
 		edges = [];
-		var def = $.Deferred(); 
+		if(def) return def.promise();
+		def = $.Deferred(); 
 		
 		nodes.push({
 			id: ".root",
@@ -94,7 +97,7 @@ JUCI.app
 				wan_nets.map(function(wan){
 					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value == false || !wan.$info || !wan.$info.up) return;
 					var node = {
-						id: wan[".name"] + ".network." + count + Date(),
+						id: wan[".name"] + ".network." + count + d.getTime(),
 						label: String(wan[".name"]).toUpperCase(),
 						image: "/img/net-interface-wan-icon.png",
 						shape: "image",
@@ -143,6 +146,7 @@ JUCI.app
 					});
 				});
 				def.resolve();
+				def = undefined;
 			}
 		);
 		return def;
@@ -151,11 +155,11 @@ JUCI.app
 	updateData().done(function(){
 		// create a network
 		var containerFA = document.getElementById('mynetworkFA');
-		var time = Date.now();
+		var time = d.getTime();
 		window.onresize=function(){
-			if(Date.now() - time > 100){ //limit the number of time this is called to every 100 ms
+			if(d.getTime() - time > 100){ //limit the number of time this is called to every 100 ms
 				network.setData({nodes: nodes, edges: edges});
-				time = Date.now();
+				time = d.getTime();
 			}
 		}
 		var dataFA = {
