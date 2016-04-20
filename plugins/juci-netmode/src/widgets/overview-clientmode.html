@@ -1,0 +1,34 @@
+<div ng-show="show()">
+	<juci-overview-widget title="{{'Client Mode'|translate}}" icon="juci jci-profile">
+		<div class="row" style="margin-bottom: 10px;">
+			<div class="col-xs-3" style="text-align: center;"><i style="color:{{wpsColor}};" class="juci juci-wps fa-lg"></i></div>
+			<div class="col-xs-6">
+				<a class="overview-list-item-text" href="#!/wireless-wps"><strong>{{'WPS'|translate}}</strong></a>
+			</div>
+			<div class="col-xs-3" style="float:right;text-align:right;">
+				<button class="btn btn-default {{wps?'':'disabled'}}" title="{{'(within 2 minutes)'|translate}}" ng-click="onPairWps()">{{'Pair'|translate}}</button>
+			</div>
+		</div>
+		<hr />
+		<juci-config-section>
+			<h2>{{'Manual setup'|translate}}</h2>
+			<juci-config-lines>
+				<juci-config-line title="{{'SSID'|translate}}" error="manual.error">
+					<input type="text" ng-model="manual.ssid" class="form-control" />
+				</juci-config-line>
+				<juci-config-line title="{{'Key'|translate}}">
+					<input type="text" ng-model="manual.key" class="form-control" />
+				</juci-config-line>
+				<juci-config-line>
+					<button class="btn btn-default {{onManualConnect?'':'disabled'}}" ng-click="onManualConnect()">{{'Connect'|translate}}</button>
+				</juci-config-line>
+			</juci-config-lines>
+		</juci-config-section>
+		<div style="margin-left:auto;magin-right:auto;"><button class="btn btn-default">{{'Scan for avalible APs'|translate}}</button></div>
+		<modal title="{{'Attempting to Pair'|translate}}" data-keyboard="false" data-backdrop="static" ng-show="showModal">
+			<div style="text-align: center;">
+				<i class="fa fa-spinner fa-spin fa-3x"></i>
+			</div>
+		</modal>
+	</juci-overview-widget>
+</div>

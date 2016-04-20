@@ -263,6 +263,7 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"macfilter":		{ dvalue: false, type: Boolean },
 		"maclist":			{ dvalue: [], type: Array } // match_each: /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/ }
 	}, function validator(section){
+		if(section.disabled) return null;
 		// validate ssid
 		if(section.ssid.value.length >= 32) 
 			return gettext("SSID string can be at most 32 characters long!"); 

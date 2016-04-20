@@ -37,22 +37,19 @@
 		setInterval(function(){
 			if($rpc.event == undefined || !$rpc.event.list) return;  
 			$rpc.event.list().done(function(result){
-				var new_time = 0; 
 				if(!result || !result.list) return; 
 				result.list.map(function(event){
 					if(event.time > last_handled_time){
-						if(new_time < event.time) new_time = event.time;
 						console.log("Event: "+JSON.stringify(event)); 
 						var cb = self.callbacks[event.type]; 
 						if(cb){
 							cb.map(function(c){
 								c.apply(event, [event]); 
 							});  
-							last_handled_time = event.time; 
 						}
+						last_handled_time = event.time; 
 					}
 				}); 
-				last_handled_time = new_time; 
 			}); 
 		}, 2000);  
 	}); 

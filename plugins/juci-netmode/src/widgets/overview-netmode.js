@@ -26,7 +26,7 @@ JUCI.app
 		replace: true
 	};  
 })
-.directive("overviewWidget99Netmode", function(){
+.directive("overviewWidget90Netmode", function(){
 	return {
 		templateUrl: "widgets/overview-netmode.html", 
 		controller: "overviewWidgetNetmode", 

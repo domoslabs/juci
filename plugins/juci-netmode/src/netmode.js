@@ -26,6 +26,9 @@ UCI.netmode.$registerSectionType("netmode", {
 	"exp":		{ dvalue: '', type: String },
 	"exp_en":	{ dvalue: '', type: String },
 	"exp_fi":	{ dvalue: '', type: String },
-	"exp_sv":	{ dvalue: '', type: String }
+	"exp_sv":	{ dvalue: '', type: String },
+	"askcred":	{ dvalue: false, type: Boolean },
+	"ssid":		{ dvalue: '', type: String },
+	"key":		{ dvalue: '', type: String }
 }); 
 
