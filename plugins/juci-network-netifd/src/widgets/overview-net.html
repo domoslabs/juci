@@ -2,22 +2,22 @@
 	<juci-overview-widget title="{{'LAN'|translate}}" icon="juci juci-network" href="#!/internet-ethernet">
 		<h4 style="text-align: center;" translate ng-show="lanNetworks.length == 0">No Lan networks</h4>
 		<div ng-repeat="network in lanNetworks track by $index">
-			<div class="row" style="margin-bottom: 10px; border-bottom: 1px solid #eee; border-top: 1px solid #eee;">
-				<div class="col-xs-2"><i class="juci juci-network fa-lg"></i></div>
+			<div class="row lan-overview-network">
+				<div class="col-xs-2" style="margin-top:10px"><i class="juci juci-network fa-lg"></i></div>
 				<div class="col-xs-5" style="padding:10px;">{{network.ipaddr.value}}<i class="fa fa-spinner fa-spin" ng-show="!network.ipaddr"></i></div>
 				<div class="col-xs-3" style="padding:10px;">{{network[".name"].toUpperCase()}}</div>
 				<div class="col-xs-2" style="padding:10px;" ng-show="network.ipaddr"><i class="fa fa-edit fa-lg" style="float:right; cursor:pointer;" ng-click="onEditLan(network)"></i></div>
 			</div>
 			<div class="row" style="padding:10px;" ng-show="!network._clients"><i class="fa fa-spinner fa-spin"></i></div>
 			<div class="row" ng-show="network._clients && network._clients.length == 0" translate style="text-align: center">No Clients in {{network[".name"].toUpperCase()}} network</div>
-			<div class="row" ng-repeat="client in network._clients track by $index" ng-click="onEditClient(client)" style="cursor:pointer;position:relative; {{client.connected?'':'color:grey !important;'}}">
+			<div class="row lan-overview-client" ng-repeat="client in network._clients track by $index" ng-click="onEditClient(client)" style="cursor:pointer;position:relative; {{client.connected?'':'color:grey !important;'}}">
 				<div class="col-xs-2"><i class="fa fa-laptop fa-lg"></i></div>
 				<div class="col-xs-8">{{client.hostname}}<br ng-show="client.hostname"/>{{client.ipaddr}}<br ng-show="client.ip6addr"/>{{client.ip6addr}}</div>
 				<div ng-show="client.wireless">
 					<div class="col-xs-2" style="color: #a9b400;">
 						<wifi-signal-indicator ng-model="client.snr"></wifi-signal-indicator>
 					</div>
-					<div style="position: absolute;top: 25px;right: 12px;font-size: 10px;">{{client.frequency}}</div>
+					<div style="position: absolute;top: 32px;right: 10px;font-size: 10px;">{{client.frequency}}</div>
 				</div>
 			</div>
 		</div>
