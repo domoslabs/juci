@@ -1,22 +1,15 @@
-<juci-top-bar></juci-top-bar>
 <div>
-	<div class="container" role="main" style="min-height: 1000px;">
-		<juci-main>
-			<div class="row">
-					<juci-navbar></juci-navbar>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<ng-transclude></ng-transclude>
+	<juci-navbar></juci-navbar>
+	<div ng-cloak class="container dynheight" role="main" >
+		<div class="row" style="padding-top: 30px;">
+			<div class="col-xs-12">
+				<div class="row">
+					<div class="col-xs-12 vf-content ">
+						<ng-transclude></ng-transclude>
+					</div>
 				</div>
-			</div>
-		</juci-main>
-	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<juci-footer></juci-footer>
 			</div>
 		</div>
 	</div>
+	<juci-footer></juci-footer>
 </div>

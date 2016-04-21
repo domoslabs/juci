@@ -18,6 +18,7 @@ define Plugin/juci
 	STYLES-y+=src/lib/css/abn_tree.css
 	STYLES-y+=src/lib/css/ng-tags-input.bootstrap.css
 	STYLES-y+=src/lib/css/dropdown-multi-select.css
+	STYLES-y+=src/css/menu.css
 	STYLES-y+=src/css/juci-icons.css
 	STYLES-y+=src/css/nga.min.css
 	STYLES-y+=src/css/app.css
