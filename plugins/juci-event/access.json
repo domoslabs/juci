@@ -6,8 +6,8 @@
 				"event": [
 					"list"
 				],
-				"juci.event": [
-					"poll"
+				"router": [
+					"logs"
 				]
 			}
 		}
