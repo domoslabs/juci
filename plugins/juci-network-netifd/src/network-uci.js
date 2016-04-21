@@ -59,7 +59,7 @@ UCI.network.$registerSectionType("interface", {
 	"auto": 				{ dvalue: '1', type: Boolean }, // bring up on boot
 	"ifname":				{ dvalue: '', type: String }, 
 	"device":				{ dvalue: '', type: String }, 
-	"proto":				{ dvalue: '', type: String }, 
+	"proto":				{ dvalue: 'none', type: String }, 
 	"ipaddr":				{ dvalue: '', type: String, validator: UCI.validators.IP4AddressValidator }, 
 	"netmask":				{ dvalue: '', type: String, validator: UCI.validators.IP4NetmaskValidator },
 	"gateway":				{ dvalue: '', type: String, validator: UCI.validators.IP4AddressValidator }, 
