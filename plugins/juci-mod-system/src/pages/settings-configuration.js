@@ -83,6 +83,7 @@ JUCI.app
 				$scope.$apply(); 
 				if(confirm($tr(gettext("Configuration has been restored. You need to reboot the device for settings to take effect! Do you want to reboot now?")))){
 					$rpc.juci.system.run({"method":"reboot"}); 
+					setTimeout(function(){window.location = "/reboot.html";}, 0);
 				}
 			}
 		}).fail(function(err){
