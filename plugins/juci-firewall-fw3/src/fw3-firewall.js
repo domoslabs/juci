@@ -270,7 +270,6 @@ UCI.firewall.$registerSectionType("dmz", {
 }); 
 
 UCI.firewall.$registerSectionType("rule", {
-	"type": 			{ dvalue: "generic", type: String }, 
 	"name":				{ dvalue: "", type: String }, 
 	"src":				{ dvalue: "", type: String }, 
 	"src_ip":			{ dvalue: [], type: Array }, // needs to be extended type of ip address/mask
