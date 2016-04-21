@@ -56,7 +56,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 			list.map(function(x){ devices[x.ifname.value] = x; }); 
 			adapters.map(function(dev){
 				if(dev.device in devices){
-					dev.name = devices[dev.device].ssid.value + "@" + dev.device; 
+					dev.name = devices[dev.device].ssid.value; 
 					dev.type = "wireless"; 
 					delete devices[dev.device]; 
 				}
