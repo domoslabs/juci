@@ -15,7 +15,9 @@ JUCI.app
 .controller("networkConnectionProtoPppoeEdit", function($scope){
 	$scope.$watch("interface", function(){
 		if(!$scope.interface) return;
-		$scope.interface.type.value = "";
+		if($scope.interface.proto.value === "pppoe"){
+			$scope.interface.type.value = "";
+		}
 	}, false);
 })
 .directive("networkConnectionProtoPppoeAdvancedEdit", function(){
