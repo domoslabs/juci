@@ -9,28 +9,28 @@
 				</juci-config-line>
 			</juci-config-lines>
 		</juci-config-section>
-		<accordion close-others="true" ng-show="enabled.enabled.value">
-			<accordion-group heading="{{'System'|translate}}" is-open="true">
+		<tabset>
+			<tab heading="{{'System'|translate}}">
 				<juci-list-editor ng-items="systems" item-editor="snmpd-system-edit" get-item-title="getSystemTitle($item)" on-create="onAddSystem()" on-delete="onDeleteSection($item)"></juci-list-editor>
-			</accordion-group>
-			<accordion-group heading="{{'Agent'|translate}}" is-open="false">
+			</tab>
+			<tab heading="{{'Agent'|translate}}">
 				<juci-list-editor ng-items="agents" item-editor="snmpd-agent-edit" get-item-title="getAgentTitle($item)" on-create="onAddAgent()" on-delete="onDeleteSection($item)"></juci-list-editor>
-			</accordion-group>
-			<accordion-group heading="{{'Com2sec'|translate}}" is-open="false">
+			</tab>
+			<tab heading="{{'Com2sec'|translate}}">
 				<juci-list-editor ng-items="com2secs" item-editor="snmpd-com2sec-edit" get-item-title="getCom2secTitle($item)" on-create="onAddCom2sec()" on-delete="onDeleteSection($item)"></juci-list-editor>
-			</accordion-group>
-			<accordion-group heading="{{'Group'|translate}}" is-open="false">
+			</tab>
+			<tab heading="{{'Group'|translate}}">
 				<juci-list-editor ng-items="groups" item-editor="snmpd-group-edit" get-item-title="getGroupTitle($item)" on-create="onAddGroup()" on-delete="onDeleteSection($item)"></juci-list-editor>
-			</accordion-group>
-			<accordion-group heading="{{'View'|translate}}" is-open="false">
+			</tab>
+			<tab heading="{{'View'|translate}}">
 				<juci-list-editor ng-items="views" item-editor="snmpd-view-edit" get-item-title="getViewTitle($item)" on-create="onAddView()" on-delete="onDeleteSection($item)"></juci-list-editor>
-			</accordion-group>
-			<accordion-group heading="{{'Access'|translate}}" is-open="false">
+			</tab>
+			<tab heading="{{'Access'|translate}}">
 				<juci-list-editor ng-items="accesses" item-editor="snmpd-access-edit" get-item-title="getAccessTitle($item)" on-create="onAddAccess()" on-delete="onDeleteSection($item)"></juci-list-editor>
-			</accordion-group>
-			<accordion-group heading="{{'Pass'|translate}}" is-open="false">
+			</tab>
+			<tab heading="{{'Pass'|translate}}">
 				<juci-list-editor ng-items="passes" item-editor="snmpd-pass-edit" get-item-title="getPassTitle($item)" on-create="onAddPass()" on-delete="onDeleteSection($item)"></juci-list-editor>
-			</accordion-group>
-		</accordion>
+			</tab>
+		</tabset>
 	</div>
 </juci-layout-with-sidebar>

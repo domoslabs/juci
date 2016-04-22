@@ -1,8 +1,8 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="InternetMultiWANPage">
 		<h2>{{ 'MultiWAN Configuration' | translate }}</h2>
-		<accordion close-others=true>
-			<accordion-group heading="{{ 'Basic Settings' | translate }}" is-open=true>
+		<tabset>
+			<tab heading="{{'Settings'|translate}}">
 				<juci-config-section>
 					<juci-config-lines>
 						<juci-config-line title="{{'MultiWAN Enabled'|translate}}">
@@ -16,11 +16,11 @@
 				<juci-config-section>
 					<juci-list-editor ng-items="multiwan['@interface']" item-editor="multiwan-interface-edit" get-item-title="onGetItemTitle($item)" on-create="onAddInterface()" on-delete="onDeleteInterface($item)"/>
 				</juci-config-section>
-			</accordion-group>
-			<accordion-group heading="{{ 'Multi-WAN Traffic Rules' | translate }}" is-open=false>
+			</tab>
+			<tab heading="{{'Traffic Rules'|translate}}">
 				<juci-list-editor ng-items="trafic_rules" item-editor="multiwan-rule-edit"
 				get-item-title="onGetRuleTitle($item)" on-create="onAddRule()" on-delete="onDeleteRule($item)" />
-			</accordion-group>
-		</accordion>
+			</tab>
+		</tabset>
 	</div>
 </juci-layout-with-sidebar>
