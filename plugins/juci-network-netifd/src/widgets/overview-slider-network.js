@@ -27,7 +27,6 @@ JUCI.app
 	};
 })
 .controller("overviewSliderWidget10Network", function($rpc, $config, $firewall, $events){
-	var d = new Date();
 	var nodes = []; 
 	var edges = []; 
 	var def;
@@ -97,7 +96,7 @@ JUCI.app
 				wan_nets.map(function(wan){
 					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value == false || !wan.$info || !wan.$info.up) return;
 					var node = {
-						id: wan[".name"] + ".network." + count + d.getTime(),
+						id: wan[".name"] + ".network." + count + Date.now(),
 						label: String(wan[".name"]).toUpperCase(),
 						image: "/img/net-interface-wan-icon.png",
 						shape: "image",
@@ -155,11 +154,12 @@ JUCI.app
 	updateData().done(function(){
 		// create a network
 		var containerFA = document.getElementById('mynetworkFA');
-		var time = d.getTime();
+		var time = Date.now();
 		window.onresize=function(){
-			if(d.getTime() - time > 100){ //limit the number of time this is called to every 100 ms
+				console.log(time);
+			if(Date.now() - time > 100){ //limit the number of time this is called to every 100 ms
 				network.setData({nodes: nodes, edges: edges});
-				time = d.getTime();
+				time = Date.now();
 			}
 		}
 		var dataFA = {
