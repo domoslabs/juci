@@ -30,8 +30,9 @@ JUCI.app
 		require: "^ngModel"
 	};  
 }).controller("juciScheduleEdit", function($scope, gettext, $uci){
-	$scope.data = {}; 
-	$scope.time_span = { value: "" }; 
+	$scope.data = {
+		selectedTimeFrame: ""
+	}; 
 	$scope.days = []; 
 	
 	var dayTranslation = {
@@ -55,20 +56,10 @@ JUCI.app
 		{ label: gettext("Saturday"), value: "sat" }, 
 		{ label: gettext("Sunday"), value: "sun" }
 	]; 
-	$scope.selectedTimeFrame = $scope.allTimeFrames[0].value; 
 	
 	$scope.$watch("days", function(){
 		if(!$scope.schedule) return; 
-		$scope.schedule.days.splice(0, $scope.schedule.days.length); 
-		$scope.days.map(function(x){ $scope.schedule.days.push(x); }); 
-		$scope.selectedTimeFrame = "individual"; 
-		Object.keys(dayTranslation).map(function(x){ 
-			var days = dayTranslation[x]; 
-			var equal = $scope.days.filter(function(day){
-				return dayTranslation[x].indexOf(day) != -1; 
-			}).length; 
-			if(equal == $scope.days.length && equal == dayTranslation[x].length) $scope.selectedTimeFrame = x; 
-		}); 
+		$scope.schedule.days = $scope.days;
 	}, true); 
 
 	$scope.validateTime = function(time){
@@ -80,13 +71,23 @@ JUCI.app
 
 	$scope.$watch("schedule", function(value){
 		if(!value) return;
-		value.days.map(function(x){ $scope.days.push(x); }); 
+		if(!value.days) value.days = [];
+		Object.keys(dayTranslation).map(function(dt){
+		$scope.data.selectedTimeFrame = "individual";
+			if(dayTranslation[dt] === value.days){
+				$scope.data.selectedTimeFrame = dt;
+			}
+		});
+		$scope.days.splice(0, $scope.days.length);
+		value.days.map(function(day){$scope.days.push(day);});
 	}, false); 
 	
-	$scope.onChangeDays = function($value){
-		$scope.selectedTimeFrame = $value; 
-		$scope.days.splice(0, $scope.schedule.days.length); 
-		if(dayTranslation[$value]) 
-			dayTranslation[$value].map(function(x){ $scope.days.push(x); });
-	}
+	//$scope.onChangeDays = function(value){
+	$scope.$watch("data.selectedTimeFrame", function(value){
+		if(!value) return;
+		$scope.days.splice(0, $scope.days.length);
+		if(dayTranslation[value]){
+			dayTranslation[value].map(function(day){ $scope.days.push(day);});
+		}
+	}, false);
 }); 

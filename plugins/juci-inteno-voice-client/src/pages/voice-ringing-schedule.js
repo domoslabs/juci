@@ -21,11 +21,11 @@
  */
  
 JUCI.app
-.controller("PagePhoneRingingSchedule", function($scope, $uci, gettext){
+.controller("PagePhoneRingingSchedule", function($scope, $uci, gettext, $tr){
 	$scope.allSipAccountsMap = {}; 
 	$scope.enabledDisabledItems = [
-		{ label: gettext("Enabled"), value: true }, 
-		{ label: gettext("Disabled"), value: false }
+		{ label: $tr(gettext("Enabled")), value: true }, 
+		{ label: $tr(gettext("Disabled")), value: false }
 	]; 
 	
 	$uci.$sync(["voice_client"]).done(function(){
@@ -55,10 +55,23 @@ JUCI.app
 		}
 		$scope.$apply(); 
 	});
+	function validateTimeSpan(range) { return (new UCI.validators.TimespanValidator()).validate({value: range});} 
+	function validateTime(time){ return (new UCI.validators.TimeValidator()).validate({value: time });}
 
 	$scope.onAcceptSchedule = function(){
-		var item = $scope.schedule.uci_item; 
-		var view = $scope.schedule; 
+		let item = $scope.schedule.uci_item; 
+		let view = $scope.schedule; 
+		$scope.errors = item.$getErrors();
+		if(!view.sip_service_provider){
+			$scope.errors.push($tr(gettext("No Phone number selected")));
+		}
+		if(!view.days || view.days.length === 0){
+			$scope.errors.push($tr(gettext("No Day selected")));
+		}
+		let timeErr = validateTime(view.time_start) || validateTime(view.time_end) ||
+						validateTimeSpan(view.time_start + "-" + view.time_end);
+		if(timeErr && timeErr.length) $scope.errors.concat(timeErr);
+		if($scope.errors.length > 0) return;
 		if(item[".new"]) { 
 			item[".new"] = false; 
 		}
@@ -96,7 +109,6 @@ JUCI.app
 	}
 	
 	$scope.onEditSchedule = function(item){
-		console.log("Editing: "+item[".name"]); 
 		var time = item.time.value.split("-"); 
 		$scope.schedule = {
 			time_start: time[0], 
