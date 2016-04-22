@@ -16,11 +16,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d6d6', end
 			</div>
 			<div class="col-sm-6 col-xs-12 form-group footer-right" >
 				<div class="row">{{firmware}}</div>
-				<span ng-repeat="i in wanifs track by $index">
-					<div class="row" ng-show="i['ipv4-address'].length > 0 || i['ipv6-address'].length > 0"><span translate>WAN IP Address</span>: 
-						<span ng-show="i['ipv4-address'][0] != undefined">IPv4: {{i["ipv4-address"][0].address}}</span>
-						<span ng-show="i['ipv6-address'][0] != undefined">IPv6: {{i["ipv6-address"][0].address}}</span>
-					</div>
+				<juci-mode-picker style="margin-top:10px;" class="row visible-xs visible-sm"></juci-mode-picker>
 				</span>
 				<div class="row" ng-show="i['ipv4-address'].length == 0 && i['ipv6-address'].length == 0" translate>No WAN IP</div>
 			</div>
