@@ -10,8 +10,8 @@
 		<div class="alert alert-info" translate>The miniDLNA service is {{ is_running || 'unknown' }}, serving {{ (count.audio != undefined) ? count.audio :  'unknown' }} audio, 
 					{{ (count.video != undefined) ? count.video : 'unknown' }} video and 
 					{{ (count.image != undefined) ?  count.image : 'unknown' }} image files.</div>
-		<accordion close-others="true" ng-show="config.enabled.value">
-			<accordion-group heading="{{ 'General Settings' | translate }}" is-open=true >
+		<tabset>
+			<tab heading="{{ 'General' | translate }}">
 				<juci-config-lines>
 					<juci-config-line title="{{'Port'|translate}}" help="{{ 'Port for HTTP (descriptions, SOAP, media transfer) traffic.' | translate }}">
 						<input type="number" class="form-control" min="0" max="65535" ng-model="port.value"/>
@@ -44,8 +44,8 @@
 						</tags-input>
 					</juci-config-line>
 				</juci-config-lines>
-			</accordion-group>
-			<accordion-group heading="{{ 'Advanced settings' | translate }}">
+			</tab>
+			<tab heading="{{ 'Advanced' | translate }}">
 				<juci-config-lines>
 					<juci-config-line title="{{ 'Database directory' | translate }}" help="{{ 'Set this if you would like to specify the directory where you want 
 							MiniDLNA to store	its database and album art cache.' | translate }}">
@@ -81,7 +81,7 @@
 						<input type="text" class="form-control" placeholder="/var/run/minissdpd.sock" ng-model="config.minissdpsocket.value"/>
 					</juci-config-line>
 				</juci-config-lines>
-			</accordion-group>
-		</accordion>
+			</tab>
+		</tabset>
 	</div>
 </juci-layout-with-sidebar>

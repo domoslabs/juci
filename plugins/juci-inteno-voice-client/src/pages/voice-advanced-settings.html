@@ -1,15 +1,15 @@
 <div>
 	<juci-layout-with-sidebar>
-		<accordion close-others="true">
-			<accordion-group heading="{{'Advanced SIP Settings' | translate }}" is-open="true">
+		<tabset>
+			<tab heading="{{'Advanced SIP Settings' | translate }}">
 				<phone-sip-advanced></phone-sip-advanced>
-			</accordion-group>
-			<accordion-group heading="{{'Advanced Line Settings' | translate }}" is-open="false">
+			</tab>
+			<tab heading="{{'Advanced Line Settings' | translate }}">
 				<phone-brcm-advanced></phone-brcm-advanced>
-			</accordion-group>
-			<accordion-group heading="{{ 'Custom Dialplan Settings' | translate }}" is-open="false">
+			</tab>
+			<tab heading="{{ 'Custom Dialplan Settings' | translate }}">
 				<phone-custom-dialplan></phone-custom-dialplan>
-			</accordion-group>
-		</accordion>
+			</tab>
+		</tabset>
 	</juci-layout-with-sidebar>
 </div>

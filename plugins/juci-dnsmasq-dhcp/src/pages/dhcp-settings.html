@@ -1,8 +1,8 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="dhcpSettingsPage">
-		<h2>{{'DHCP Settings'| translate}}</h2>
-		<accordion close-others="true">
-			<accordion-group heading="{{ 'General Settings' | translate }}" is-open=true>
+		<h2>{{'DHCP'| translate}}</h2>
+		<tabset>
+			<tab heading="{{ 'General Settings' | translate }}">
 				<juci-config-lines>
 					<juci-config-line title="{{ 'Local domain' | translate }}" 
 						help="{{ 'Local domain suffix appended to DHCP names and hosts file entries' | translate }}">
@@ -27,8 +27,8 @@
 						<tags-input ng-model="hostfiles" display-property="label" add-on-space="true"></tags-input>
 					</juci-config-line>
 				</juci-config-lines>
-			</accordion-group>
-			<accordion-group heading="{{ 'Advanced Settings' | translate }}" is-open=false>
+			</tab>
+			<tab heading="{{ 'Advanced Settings' | translate }}">
 				<juci-config-lines>
 					<juci-config-line title="{{ 'Domain required' | translate }}" help="{{ 'Do not forward DNS-Requests without DNS-Name' | translate }}">
 						<switch class="green" ng-model="dnsmasq.domainneeded.value" />
@@ -88,10 +88,10 @@
 						<input type="text" class="form-control" placeholder="150" ng-model="dnsmasq.dnsforwardmax.value" ng-change="on_port_change('dnsforwardmax')" />
 					</juci-config-line>
 				</juci-config-lines>
-			</accordion-group>
-			<accordion-group heading="{{ 'Hostname Entries' | translate }}" is-open="false">
+			</tab>
+			<tab heading="{{ 'Hostname Entries' | translate }}">
 				<dhcp-host-entries></dhcp-host-entries>
-			</accordion-group>
-		</accordion>
+			</tab>
+		</tabset>
 	</div>
 </juci-layout-with-sidebar>

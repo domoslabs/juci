@@ -2,8 +2,8 @@
 	<div ng-controller="broadcomXdslCtrl">
 		<juci-config-heading>{{'xDSL Settings'|translate}}</juci-config-heading>
 		<juci-config-info>{{'xDSL Line settings and profiles'|translate}}</juci-config-info>
-		<accordion close-others="true">
-			<accordion-group heading="{{'Modulation'|translate}}" is-open="true">
+		<tabset>
+			<tab heading="{{'Modulation'|translate}}">
 				<juci-config-section>
 					<juci-config-lines>
 						<juci-config-line title="{{'G.Dmt'|translate}}">
@@ -32,8 +32,8 @@
 						</juci-config-line>
 					</juci-config-lines>
 				</juci-config-section>
-			</accordion-group>
-			<accordion-group heading="{{'VDSL Profile'|translate}}" ng-show="hasVdsl" is-open="false">
+			</tab>
+			<tab heading="{{'VDSL Profile'|translate}}">
 				<juci-config-section>
 					<juci-config-lines>
 						<juci-config-line title="{{'8a'|translate}}">
@@ -59,8 +59,8 @@
 						</juci-config-line>
 					</juci-config-lines>
 				</juci-config-section>
-			</accordion-group>
-			<accordion-group heading="{{'Capabilities'|translate}}" ng-show="hasVdsl" is-open="false">
+			</tab>
+			<tab heading="{{'Capabilities'|translate}}">
 				<juci-config-section>
 					<juci-config-lines>
 						<juci-config-line title="{{'US0'|translate}}">
@@ -74,7 +74,7 @@
 						</juci-config-line>
 					</juci-config-lines>
 				</juci-config-section>
-			</accordion-group>
-		</accordion>
+			</tab>
+		</tabset>
 	</div>
 </juci-layout-width-sidebar>
