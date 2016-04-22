@@ -35,7 +35,7 @@
 							<span ng-click="wif._expanded = !wif._expanded" style="cursor: pointer;">{{wif.ssid.value + ' (' + wif.$radio.frequency + ')'}}</span>
 						</th>
 					</thead>
-					<tr ng-show="wif._expanded" ng-repeat="i in [['Frequency', 'frequency'], ['Channel', 'channel'], ['Noise', 'noise'], ['Rate', 'rate'], ['Mode','mode']]">
+					<tr ng-show="wif._expanded" ng-repeat="i in [['Frequency', 'frequency'], ['Channel', 'channel'], ['Rate', 'rate'], ['Mode','mode']]">
 						<td><strong translate>{{i[0] | translate}}</strong></td>
 						<td style="font-size: 0.8pn; text-align: right;">{{wif.$radio[i[1]] || wif[i[1]].value.toUpperCase() || "-"}}</td>
 					</tr>
