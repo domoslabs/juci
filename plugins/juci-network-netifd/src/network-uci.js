@@ -218,7 +218,7 @@ UCI.network.$registerSectionType("route", {
 	var errors = [];
 	if(section.interface.value == "") errors.push(gettext("IPv4 Routes needs an interface"));
 	if(section.target.value == "") errors.push(gettext("IPv4 Routes needs a Target"));
-	if(section.netmask.value == "") errors.push(gettext("IPv4 Routes needs a Netmask"));
+	//if(section.netmask.value == "") errors.push(gettext("IPv4 Routes needs a Netmask"));
 	if(section.gateway.value == "") errors.push(gettext("IPv4 Routes needs a Gateway"));
 	if(errors.length > 0) return errors;
 	return null;
