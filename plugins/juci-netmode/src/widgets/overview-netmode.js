@@ -95,7 +95,6 @@ JUCI.app
 	$scope.getDesc = function(){
 		if($scope.allNetmodes.length < 1) return "";
 		var tmp = $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; });
-		console.log(tmp && tmp.label);
 		if(tmp && tmp.label) return tmp.label;
 		return $tr(gettext("No profile selected"));
 	}
