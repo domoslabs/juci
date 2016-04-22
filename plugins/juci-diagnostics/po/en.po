@@ -11,6 +11,60 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Up and Down"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Up"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Down"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Server and port is mandatory"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Only one test can be run at a time"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Unknown error"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "error deleting server"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Downstream:"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid ""
+"Mbit/s\n"
+"Upstream:"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Mbit/s"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Upstream:"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Wrong TP-test address and/or port"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Wrong TP-test port but correct address"
+msgstr ""
+
 # /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.js
 msgid "Address and port needed"
 msgstr ""
@@ -102,5 +156,12 @@ msgstr ""
 msgid "Trace results"
 msgstr ""
 
+# /home/cnagy/juci/plugins/juci-diagnostics/src/pages/status-diagnostics-speedtest.html
+msgid "Speed Test"
+msgstr ""
+
 msgid "menu-status-diagnostics-title"
 msgstr "Diagnostics"
+
+msgid "menu-status-diagnostics-speedtest-title"
+msgstr "Speed Test"
