@@ -86,5 +86,5 @@ msgstr "Network Status"
 msgid "menu-status-title"
 msgstr "Status"
 
-msgid "menu-status-restart-title"
+msgid "menu-settings-restart-title"
 msgstr "Restart"
