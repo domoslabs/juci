@@ -626,7 +626,7 @@ msgid "menu-wireless-interfaces-title"
 msgstr "Wireless"
 
 msgid "menu-wireless-status-scan-title"
-msgstr "Wifi Scanning"
+msgstr "Wifi Scan"
 
 msgid "menu-wireless-general-title"
 msgstr "General"
