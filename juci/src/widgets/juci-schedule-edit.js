@@ -33,7 +33,6 @@ JUCI.app
 	$scope.data = {
 		selectedTimeFrame: ""
 	}; 
-	$scope.days = []; 
 	
 	var dayTranslation = {
 		"everyday": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], 
@@ -57,9 +56,12 @@ JUCI.app
 		{ label: gettext("Sunday"), value: "sun" }
 	]; 
 	
-	$scope.$watch("days", function(){
+	$scope.$watch("allDayNames", function(){
 		if(!$scope.schedule) return; 
-		$scope.schedule.days = $scope.days;
+		$scope.schedule.days = $scope.allDayNames.map(function(day){ 
+			if(day.checked) return day.value; 
+			else return null;
+		}).filter(function(d){return d !== null; });
 	}, true); 
 
 	$scope.validateTime = function(time){
@@ -78,16 +80,25 @@ JUCI.app
 				$scope.data.selectedTimeFrame = dt;
 			}
 		});
-		$scope.days.splice(0, $scope.days.length);
-		value.days.map(function(day){$scope.days.push(day);});
+		$scope.allDayNames.map(function(day){ 
+			if(value.days.find(function(d){ return d === day.value; })){
+				day.checked = true;
+			}else{
+				day.checked = false;
+			}
+		});
 	}, false); 
 	
 	//$scope.onChangeDays = function(value){
 	$scope.$watch("data.selectedTimeFrame", function(value){
 		if(!value) return;
-		$scope.days.splice(0, $scope.days.length);
 		if(dayTranslation[value]){
-			dayTranslation[value].map(function(day){ $scope.days.push(day);});
+			$scope.allDayNames.map(function(day){
+				if(dayTranslation[value].find(function(d){
+					return d === day.value;
+				})) day.checked = true;
+				else day.checked = false;
+			});
 		}
 	}, false);
 }); 

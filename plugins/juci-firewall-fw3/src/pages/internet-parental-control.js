@@ -82,7 +82,7 @@ JUCI.app
 			}); 
 		}
 		$scope.onAcceptEdit = function(){
-			let r = $scope.rule;
+			var r = $scope.rule;
 			if(!r) return;
 			$scope.errors = [];
 			if(!r.days || r.days.length === 0){
@@ -95,13 +95,13 @@ JUCI.app
 					$scope.errors.push($scope.validateMAC(k.mac));
 				}); 	
 			}
-			let rule = r.uci_rule; 
-			let uciErr = rule.$getErrors();
+			var rule = r.uci_rule; 
+			var uciErr = rule.$getErrors();
 			if(uciErr && uciErr.length > 0) $scope.errors.concat(uciErr);
 			if(r.time_start === "" || r.time_end === ""){
 				$scope.errors.push($tr(gettext("No start and/or end time selected!")));
 			}else {
-				let er = $scope.validateTime(r.time_start) || $scope.validateTime(r.time_end) ||
+				var er = $scope.validateTime(r.time_start) || $scope.validateTime(r.time_end) ||
 					$scope.validateTimeSpan(r.time_start+"-"+r.time_end); 
 				if(er) $scope.errors.push(er);
 			}
@@ -115,9 +115,9 @@ JUCI.app
 			rule.start_time.value = r.time_start;
 			rule.stop_time.value = r.time_end;
 			if(rule[".new"]) {
-				$scope.accessRules.push(rule); 
 				rule[".new"] = false; 
 			}
+			updateRules();
 			$scope.rule = null; 
 		}
 		

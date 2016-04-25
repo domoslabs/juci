@@ -7,7 +7,7 @@
 			<div class="row" ng-class="{'field-error': schedule.days.error}" >
 				<div class="col-xs-6 " ng-repeat="day in allDayNames">
 					<div class="checkbox checkbox-info">
-						<input type="checkbox" class="{{(data.selectedTimeFrame != 'individual')?'disabled':''}}" checklist-model="days" checklist-value="day.value">
+						<input type="checkbox" ng-disabled="(data.selectedTimeFrame != 'individual')" ng-model="day.checked" />
 						<label><strong>{{day.label}}</strong></label>
 					</div>
 				</div>
