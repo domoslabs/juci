@@ -2,6 +2,9 @@
 	"juci-event": {
 		"description": "JUCI event module",
 		"read": {
+			"juci-io": [
+				"backup"
+			],
 			"ubus": {
 				"event": [
 					"list"

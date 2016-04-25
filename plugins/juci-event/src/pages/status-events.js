@@ -21,6 +21,8 @@
 JUCI.app
 .controller("StatusEventsPageCtrl", function($scope, $rpc, $config, $tr, gettext){
 	var AllLogs;
+	// to make it possible to send sid to cgi-bin!!
+	if($rpc.$sid) $scope.sid = $rpc.$sid();
 	JUCI.interval.repeat("event-log-page", 5000, function(next){
 		if(!$rpc.router) return;
 		$rpc.router.logs().done(function(data){
