@@ -71,7 +71,6 @@ JUCI.app
 							[$tr(gettext("RX Rate")), c.rx_rate]
 						];
 					});
-					console.log($scope.clients);
 				})
 				.always(function(){ next(); });
 			}],

@@ -156,7 +156,6 @@ JUCI.app
 		var containerFA = document.getElementById('mynetworkFA');
 		var time = Date.now();
 		window.onresize=function(){
-				console.log(time);
 			if(Date.now() - time > 100){ //limit the number of time this is called to every 100 ms
 				network.setData({nodes: nodes, edges: edges});
 				time = Date.now();

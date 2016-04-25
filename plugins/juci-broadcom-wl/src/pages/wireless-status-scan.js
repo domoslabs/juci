@@ -33,7 +33,6 @@ JUCI.app
 			});
 			$scope.dfs_enabled = ($scope.wlRadios.length != $scope.scanableRadios.length);
 			$scope.radioToScan.value = $scope.scanableRadios[0].value || null;
-			console.log($scope.radioToScan.value);
 			$scope.$apply(); 
 		});
 		$scope.doScan = function(){
