@@ -48,21 +48,18 @@ JUCI.app
 			}); 
 		} updateRules(); 
 		$scope.onCreateAccessRule = function(){
-			$uci.firewall.$create({
+			/*$uci.firewall.$create({
 				".type": "rule", 
 				"parental": true,
 				"name": $tr(gettext("Parental Rule")) 
-			}).done(function(rule){
-				rule[".new"] = true; 
-				$scope.rule = {
-					days: [], 
-					macList: [], 
-					uci_rule: rule,
-					time_start: "",
-					time_end: ""
-				}; 
-				$scope.$apply(); 
-			}); 
+			}).done(function(rule){*/
+			$scope.rule = {
+				days: [], 
+				macList: [], 
+				uci_rule: "new",
+				time_start: "",
+				time_end: ""
+			}; 
 		}
 		
 		$scope.onEditAccessRule = function(rule){
@@ -95,9 +92,6 @@ JUCI.app
 					$scope.errors.push($scope.validateMAC(k.mac));
 				}); 	
 			}
-			var rule = r.uci_rule; 
-			var uciErr = rule.$getErrors();
-			if(uciErr && uciErr.length > 0) $scope.errors.concat(uciErr);
 			if(r.time_start === "" || r.time_end === ""){
 				$scope.errors.push($tr(gettext("No start and/or end time selected!")));
 			}else {
@@ -106,6 +100,24 @@ JUCI.app
 				if(er) $scope.errors.push(er);
 			}
 			$scope.errors = $scope.errors.filter(function(er){ return er !== null;});
+			if($scope.errors && $scope.errors.length > 0) return;
+			var rule = r.uci_rule; 
+			if(rule === "new"){
+				$uci.firewall.$create({
+					".type": "rule", 
+					"parental": true,
+					"name": $tr(gettext("Parental Rule")) 
+				}).done(function(rule){
+					finish(rule, r);
+					$scope.$apply();
+				});
+			}else{
+				finish(rule, r);
+			}
+		}
+		function finish(rule, r){
+			var uciErr = rule.$getErrors();
+			if(uciErr && uciErr.length > 0) $scope.errors.concat(uciErr);
 			if($scope.errors && $scope.errors.length > 0) return;
 
 			rule.src_mac.value = $scope.rule.macList.map(function(k){
@@ -122,10 +134,6 @@ JUCI.app
 		}
 		
 		$scope.onCancelEdit = function(){
-			if($scope.rule && $scope.rule.uci_rule){
-				if($scope.rule.uci_rule[".new"])
-					$scope.rule.uci_rule.$delete(); 
-			}
 			$scope.rule = null; 
 		}
 	});
