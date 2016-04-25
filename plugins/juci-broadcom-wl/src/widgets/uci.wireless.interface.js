@@ -32,6 +32,9 @@ JUCI.app
 }).controller("WifiInterfaceController", function($scope, $uci, $tr, gettext, $wireless, $network){
 	$scope.errors = []; 
 	$scope.showPassword = true; 
+	$wireless.getDefaults().done(function(res){
+		if(res && res.keys && res.keys.wpa)$scope.default_key = res.keys.wpa;
+	});
 	
 	$scope.$on("error", function(ev, err){
 		ev.stopPropagation(); 
