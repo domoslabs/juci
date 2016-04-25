@@ -82,7 +82,7 @@ msgid "Backup Settings"
 msgstr ""
 
 msgid "settings.config.info"
-msgstr ""
+msgstr "Save/Load settings and prform a factory reset"
 
 msgid "Save settings to computer with password protection"
 msgstr ""
@@ -262,7 +262,7 @@ msgid "menu-settings-password-title"
 msgstr "Passwords"
 
 msgid "menu-settings-system-title"
-msgstr "Settings"
+msgstr "Backup Settings"
 
 msgid "menu-settings-services-title"
 msgstr "Services"
@@ -271,7 +271,7 @@ msgid "menu-settings-users-title"
 msgstr "Menu Access"
 
 msgid "menu-settings-configuration-title"
-msgstr "Backup Settings"
+msgstr "Restore/Backup"
 
 msgid "menu-settings-hardware-buttons-title"
 msgstr "Buttons"
