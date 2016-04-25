@@ -76,7 +76,7 @@ JUCI.app
 		if(!value.days) value.days = [];
 		Object.keys(dayTranslation).map(function(dt){
 		$scope.data.selectedTimeFrame = "individual";
-			if(dayTranslation[dt] === value.days){
+			if(eq(dayTranslation[dt], value.days)){
 				$scope.data.selectedTimeFrame = dt;
 			}
 		});
@@ -101,4 +101,11 @@ JUCI.app
 			});
 		}
 	}, false);
+	function eq(ar1, ar2){
+		if(ar1.length !== ar2.length) return false;
+		for(var i = 0; i < ar1.length; i++){
+			if(ar1[i] !== ar2[i]) return false;
+		}
+		return true;
+		}
 }); 
