@@ -99,9 +99,9 @@ JUCI.app
 		];
 
 		$scope.systemMemoryTbl.rows = [
-			[$tr(gettext("Usage")), '<juci-progress value="'+Math.round((sys.memoryKB.total - sys.memoryKB.free) / 1000)+'" total="'+ Math.round(sys.memoryKB.total / 1000) +'" units="kB"></juci-progress>'],
-			[$tr(gettext("Shared")), '<juci-progress value="'+Math.round(sys.memoryKB.shared / 1000)+'" total="'+ Math.round(sys.memoryKB.total / 1000) +'" units="kB"></juci-progress>'],
-			[$tr(gettext("Buffered")), '<juci-progress value="'+Math.round(sys.memoryKB.buffers / 1000)+'" total="'+ Math.round(sys.memoryKB.total / 1000) +'" units="kB"></juci-progress>'],
+			[$tr(gettext("Usage")), '<juci-progress value="'+Math.round(sys.memoryKB.total - sys.memoryKB.free)+'" total="'+ Math.round(sys.memoryKB.total) +'" units="kB"></juci-progress>'],
+			[$tr(gettext("Shared")), '<juci-progress value="'+Math.round(sys.memoryKB.shared)+'" total="'+ Math.round(sys.memoryKB.total) +'" units="kB"></juci-progress>'],
+			[$tr(gettext("Buffered")), '<juci-progress value="'+Math.round(sys.memoryKB.buffers)+'" total="'+ Math.round(sys.memoryKB.total) +'" units="kB"></juci-progress>'],
 			[$tr(gettext("Swap")), '<juci-progress value="0" total="0" units="kB"></juci-progress>']
 		];
 
