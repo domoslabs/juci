@@ -4,5 +4,5 @@
 		<switch ng-model="service.$rule.enabled.value" class="green" ng-change="onChangeState()"></switch>
 	</juci-config-line>
 
-	<firewall-rule-edit ng-model="service.$rule" ng-show="service.$rule"></firewall-rule-edit>
+	<firewall-rule-edit ng-model="service.$rule" ng-show="service.$rule && service.$rule.enabled.value"></firewall-rule-edit>
 </div>
