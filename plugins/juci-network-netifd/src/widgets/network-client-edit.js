@@ -29,6 +29,40 @@ JUCI.app
 		replace: true, 
 		require: "^ngModel"
 	};  
-}).controller("networkClientEdit", function(){	
+}).controller("networkClientEdit", function($scope, $uci){	
+	$scope.$watch("model", function(value){
+		if(!value || !value.client) return;
+		$uci.$sync("dhcp").done(function(){
+			$scope.staticLeses = $uci.dhcp["@host"];
+			$scope.csh = $scope.staticLeses.filter(function(l){
+				return l.mac.value === value.client.macaddr && l.network.value === value.client.network;
+			})[0];
+			$scope.$apply();
+		});
+		$scope.onAddStaticLease = function(){
+			$uci.$sync("dhcp").done(function(){
+				$uci.dhcp.$create({
+					".type":"host",
+					ip: $scope.model.client.ipaddr,
+					mac: $scope.model.client.macaddr,
+					network: $scope.model.client.network,
+					name: $scope.model.client.hostname
+				}).done(function(value){
+					$scope.csh = value;
+				});
+			});
+		}
+		$scope.onDeleteStaticLease = function(){
+			if(!$scope.csh || !$scope.csh.$delete) return;
+			$scope.csh.$delete().done(function(){
+				$scope.csh = null;
+				$scope.$apply();
+			});
+		}
+		$scope.values = Object.keys(value.client).map(function(x){
+			if(x.match(/^_.+$/)) return null;
+			return { label: x, value: value.client[x] };
+		}).filter(function(x){ return x !== null;});
+	},false);
 }); 
 

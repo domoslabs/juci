@@ -1,11 +1,42 @@
 <div>
-	<!--<h2 translate>Do you want to:</h2>
-	<div class="row">
-		<ul class="nav">
-			<li><a href="#!/internet-firewall-port-mapping" ng-click="opts.modal.close()" translate>Configure Port Mapping</a></li>
-			<li><a href="#!/internet-firewall-rules" ng-click="opts.modal.close()" translate>Configure Firewall Rules</a></li>
-			<li><a href="#!/internet-parental-control" ng-click="opts.modal.close()" translate>Configure Parental Control</a></li>
-		</ul>
-	</div>-->
-	<firewall-client-port-mapping ng-model="model.client"></firewall-client-port-mapping>
+	<tabset>
+		<tab heading="{{'Status'|translate}}">
+			<h2>{{'Client Status'|translate}}</h2>
+			<table class="table table-hover">
+				<tr ng-repeat="value in values track by $index">
+					<td>{{value.label}}</td>
+					<td>{{value.value}}</td>
+				</tr>
+			</table>
+		</tab>
+		<tab heading="{{'Port Forwarding'|translate}}">
+			<firewall-client-port-mapping ng-model="model.client"></firewall-client-port-mapping>
+		</tab>
+		<tab heading="{{'Static Leases'| translate}}">
+			<juci-config-section>
+				<juci-config-lines>
+					<div ng-hide="csh">
+						<juci-config-line title="{{'No Static Lease configured for this client'|translate}}">
+							<button class="btn btn-default" ng-click="onAddStaticLease()"><i class="fa fa-plus"></i></button>
+						</juci-config-line>
+					</div>
+					<div ng-show="csh">
+						<juci-config-line title="{{'Device Name'|translate}}">
+							<input type="text" class="form-control" ng-model="csh.name.value" />
+						</juci-config-line>
+						<juci-config-line title="{{'IP Address'|translate}}">
+							<input type="text" class="form-control" ng-model="csh.ip.value" />
+						</juci-config-line>
+						<juci-config-line title="{{'DUID (IPv6)'|translate}}">
+							<input type="text" class="form-control" ng-model="csh.duid.value" />
+						</juci-config-line>
+						<juci-config-line title="{{'Host ID (IPv6)'|translate}}">
+							<input type="text" class="form-control" ng-model="csh.hostid.value" />
+						</juci-config-line>
+						<juci-config-line>
+							<button class="btn btn-default" ng-click="onDeleteStaticLease()"><i class="fa fa-minus"></i></button>
+						</juci-config-line>
+				</juci-config-lines>
+			</juci-config-section>
+		</tab>
 </div>

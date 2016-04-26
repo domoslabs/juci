@@ -61,9 +61,9 @@ UCI.dhcp.$registerSectionType("domain", {
 	"network":	{ dvalue: "", type: String}
 });
 UCI.dhcp.$registerSectionType("host", {
-	"name":		{ dvalue: "", type: String, required: false},
-	"dhcp":		{ dvalue: "", type: String, required: true},
-	"network": { dvalue: "lan", type: String, required: true }, 
+	"name":		{ dvalue: "", type: String },
+	"dhcp":		{ dvalue: "", type: String },
+	"network":	{ dvalue: "lan", type: String }, 
 	"mac":		{ dvalue: "", type: String, required: true, validator: UCI.validators.MACAddressValidator },
 	"ip":		{ dvalue: "", type: String, required: true, validator: UCI.validators.IPAddressValidator },  // TODO: change to ip address
 	"duid": 	{ dvalue: "", type: String }, 
