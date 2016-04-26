@@ -130,6 +130,8 @@ JUCI.app
 						var cl_node = {
 							id: cl.macaddr+cl.ipaddr,
 							label: String(cl.hostname || "Unknown").toUpperCase()+"\n"+String(cl.ipaddr).toUpperCase(),
+							// TODO: give extra info about client here
+							// title: "Hostname: " + cl.hostname + "<br />"+cl.ipaddr+"<br />"+cl.macaddr,
 							image: "/img/net-laptop-icon.png",
 							shape: "image",
 							fixed: { x: true, y: false },
