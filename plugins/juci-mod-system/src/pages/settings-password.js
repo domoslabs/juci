@@ -67,24 +67,18 @@ JUCI.app
 		$scope.error = ""; 
 		if($scope.modal.password != $scope.modal.password2) alert($tr(gettext("Passwords do not match!"))); 
 		else {
-			// TODO: change to correct username
-			$rpc.juci.system.user.run({"method":"setpassword","args":JSON.stringify({sid: $rpc.$sid(), username: username, password: $scope.modal.password, oldpassword: $scope.modal.old_password})}).done(function(data){
-				if(data.error){
-					alert(data.error); 
-				} else {
-					$scope.showModal = 0; 
-					$scope.$apply(); 
-				}
-				//$rpc.$logout().done(function(){
-				//	window.location.reload(); 
-				//}); 
-			}).fail(function(){
+			$rpc.router.password_set({user: username, password: $scope.modal.password, curpass: $scope.modal.old_password}).done(function(data){
+				$scope.showModal = 0; 
+				$scope.error = 0;
+				$scope.$apply(); 
+			}).fail(function(data){
 				$scope.error = gettext("Was unable to set password. Please make sure you have entered correct current password!"); 
 				$scope.$apply(); 
 			}); 
 		}
 	}
 	$scope.onDismissModal = function(){
+		$scope.error = 0;
 		$scope.showModal = 0; 
 	}
 }); 

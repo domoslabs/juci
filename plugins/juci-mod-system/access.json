@@ -54,6 +54,7 @@
 				],
 				"router": [
 					"info",
+					"password_set",
 					"filesystem"
 				],
 				"system": [
