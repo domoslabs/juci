@@ -23,9 +23,17 @@ UCI.juci.$registerSectionType("pagesystemstatus", {
 	"show_diskinfo": 	{ dvalue: true, type: Boolean },
 	"show_loadavg":		{ dvalue: false, type: Boolean }
 }); 
-UCI.juci.$insertDefaults("pagesystemstatus"); 
 
-JUCI.app
+JUCI.app.run(function($uci){
+	$uci.$sync("juci").done(function(){
+		if($uci.juci && !$uci.juci.pagesystemstatus){
+			$uci.juci.$create({
+				".type":"pagesystemstatus",
+				".name":"pagesystemstatus"
+			});
+		}
+	});
+})
 .controller("StatusSystemPage", function ($scope, $rootScope, $uci, $rpc, gettext, $tr, $config, $network) {
 	$scope.showExpert = $config.local.mode == "expert";
 
@@ -105,7 +113,7 @@ JUCI.app
 			[$tr(gettext("Swap")), '<juci-progress value="0" total="0" units="kB"></juci-progress>']
 		];
 
-		if($uci.juci["pagesystemstatus"] && $uci.juci["pagesystemstatus"].show_diskinfo.value){ 
+		if($config.settings && $config.settings.pagesystemstatus && $config.settings.pagesystemstatus.show_diskinfo.value){ 
 			$scope.show_diskinfo = true; 
 			$scope.systemStorageTbl.rows = []; 
 			filesystems.map(function(disk){

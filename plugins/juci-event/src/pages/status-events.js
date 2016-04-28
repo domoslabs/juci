@@ -38,12 +38,14 @@ JUCI.app
 	$scope.data = { limit: 20, filter: "", type: "" };
 	$scope.logs = [];
 	$scope.filters = [];
-	$config.settings.juci_event.filter.value.map(function(x){
-		var filter = x.split(".")[0];
-		var id = x.split(".")[1];
-		if(inFilters(filter) === -1) $scope.filters.push({name:filter, filters:[id], checked:false});
-		else $scope.filters[inFilters(filter)].filters.push(id);
-	});
+	if($config.settings && $config.settings.juci_event){
+		$config.settings.juci_event.filter.value.map(function(x){
+			var filter = x.split(".")[0];
+			var id = x.split(".")[1];
+			if(inFilters(filter) === -1) $scope.filters.push({name:filter, filters:[id], checked:false});
+			else $scope.filters[inFilters(filter)].filters.push(id);
+		});
+	}
 	function inFilters(filter){
 		for(var i = 0; i < $scope.filters.length; i++){
 			if($scope.filters[i].name == filter) return i;

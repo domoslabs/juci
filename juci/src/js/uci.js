@@ -689,14 +689,6 @@
 			//console.log("Registered new section type "+config+"."+name); 
 		}
 		
-		UCIConfig.prototype.$insertDefaults = function(typename, sectionname){
-			if(!sectionname) sectionname = typename; 
-			// insert a default section with the same name as the type
-			// this allows us to use $uci.config.section.setting.value without having to first check for the existence of the section.
-			// we will get defaults by default and if the section exists in the config file then we will get the values from the config.
-			_insertSection(this, { ".type": typename, ".name": sectionname });  
-		}
-
 		UCIConfig.prototype.$deleteSection = function(section){
 			var self = this; 
 			var deferred = $.Deferred(); 

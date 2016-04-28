@@ -281,19 +281,38 @@
 		"language_debug":	{ dvalue: false, type: String },
 		"default_language": { dvalue: "en", type: String }
 	}); 
-	UCI.juci.$insertDefaults("juci"); 
 
 	UCI.juci.$registerSectionType("login", {
 		"showusername":		{ dvalue: true, type: Boolean }, // whether to show or hide the username on login page 
 		"defaultuser":		{ dvalue: "user", type: String } // default user to display on login page or to use when username is hidden 
 	}); 
-	UCI.juci.$insertDefaults("login"); 
 
 	UCI.juci.$registerSectionType("localization", {
 		"default_language":		{ dvalue: "en", type: String }, // language used when user first visits the page 
 		"languages":			{ dvalue: [], type: Array } // list of languages available (use name of po file without .po extension and in lower case: se, en etc..)
 	});  
 	// register default localization localization section so that we don't need to worry about it not existing
-	UCI.juci.$insertDefaults("localization"); 
+	JUCI.app.run(function($uci){
+		$uci.$sync("juci").done(function(){
+			if(!$uci.juci.juci){
+				$uci.juci.$create({
+					".type":"juci",
+					".name":"juci"
+				});
+			}
+			if(!$uci.juci.login){
+				$uci.juci.$create({
+					".type":"login",
+					".name":"login"
+				});
+			}
+			if(!$uci.juci.localization){
+				$uci.juci.$create({
+					".type":"localization",
+					".name":"localization"
+				});
+			}
+		});
+	 });
 
 })(typeof exports === 'undefined'? this : exports); 

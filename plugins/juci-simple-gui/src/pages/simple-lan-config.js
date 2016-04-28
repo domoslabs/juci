@@ -21,6 +21,7 @@
 JUCI.app
 .controller("simpleLANConfigPage", function($scope, $uci, $config){
 	$uci.$sync("network").done(function(){
+		if(!$config.settings || !$config.settings.simplegui) return;
 		$scope.lan = $uci.network[$config.settings.simplegui.lan_network.value]; 
 		$scope.$apply(); 
 	}); 

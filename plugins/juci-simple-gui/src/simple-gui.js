@@ -24,4 +24,3 @@ UCI.juci.$registerSectionType("simplegui", {
 	"2g_radio": 		{ dvalue: "", type: String }, 
 	"5g_radio": 		{ dvalue: "", type: String }
 }); 
-UCI.juci.$insertDefaults("simplegui"); 
