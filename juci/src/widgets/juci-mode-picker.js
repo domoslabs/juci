@@ -33,6 +33,7 @@ JUCI.app
 		{label: $tr(gettext("Expert Mode")), value: "expert"},
 	];   
 	$scope.onChangeMode = function(selected){
+		if($scope.selectedModeValue === selected) return;
 		$scope.selectedModeValue = selected; 
 		console.log("selected value", selected);
 		$localStorage.setItem("mode", selected);
