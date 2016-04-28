@@ -4,12 +4,6 @@
 			<juci-config-heading>{{ 'HTTPD Settings' | translate }}</juci-config-heading>
 			<juci-config-info>{{ 'uhttpd.settings.info' | translate }}</juci-config-info>
 			<juci-config-lines>
-				<!--<juci-config-line title="{{'WWW-root'|translate}}">
-					<input type="text" ng-model="config.home.value" class="form-control" placeholder="{{'WWW-root path'|translate}}"/>
-				</juci-config-line>
-				<juci-config-line title="{{'UBUS Prefix'|translate}}">
-					<input type="text" ng-model="config.ubus_prefix.value" class="form-control" placeholder="{{'ex. /ubus'|translate}}"/>
-				</juci-config-line>-->
 				<juci-config-line title="{{'Max Requests'|translate}}">
 					<input type="number" ng-model="config.max_requests.value" class="form-control" placeholder="{{'Max Requests'|translate}}"/>
 				</juci-config-line>
@@ -21,17 +15,17 @@
 		<juci-config-section>
 			<juci-config-lines>
 				<juci-config-line title="Log UBUS return codes" help="{{'Specify UBUS return codes to log into system log'|translate}}" no-pull>
-					<juci-list-simple-editor ng-model="data.status" get-item-title="getStatusItemTitle($item)" 
+					<juci-list-simple-editor ng-model="data.status" get-item-title="$item.label" 
 						on-add-item="addStatusItem()" on-delete-item="deleteStatusItem($item)" hide-buttons="false">
-						<juci-select ng-model="status.new" ng-items="status.items"></juci-select>
+						<juci-select ng-model="status.selected" ng-items="status.selectable"></juci-select>
 					</juci-list-simple-editor>
 				</juci-config-line>
 				<juci-config-line title="Log only these UBUS calls" help="{{'Will only log status codes above that are returned by these ubus calls'|translate}}" no-pull>
-					<juci-list-simple-editor ng-model="logopts.ubus_method.value" get-item-title="getMethodItemTitle($item)"
+					<juci-list-simple-editor ng-model="logopts.ubus_method.value" get-item-title="$item"
 						on-add-item="addMethodItem()" on-delete-item="deleteMethodItem($item)">
 						<div class="input-group">
-							<span class="input-group-addon" translate>Object.Method</span>
-							<input type="text" ng-model="method.new" ng-keyup="onKeyup($event)" class="form-control">
+							<span class="input-group-addon">{{'Object.Method'|translate}}</span>
+							<input type="text" ng-model="data.newMethod" class="form-control">
 						</div>
 					</juci-list-simple-editor>
 				</juci-config-line>
