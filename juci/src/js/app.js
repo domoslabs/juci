@@ -120,14 +120,6 @@ JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $
 		});
 	}, 10000); 
 }) 
-// TODO: figure out how to avoid forward declarations of things we intend to override.
-//.directive("juciFooter", function(){ return {} })
-//.directive("juciLayoutNaked", function(){ return {} })
-//.directive("juciLayoutSingleColumn", function(){ return {} })
-//.directive("juciLayoutWithSidebar", function(){ return {} })
-//.directive("juciNav", function(){ return {} })
-//.directive("juciNavbar", function(){ return {} })
-//.directive("juciTopBar", function(){ return {} })
 .directive('ngOnload', [function(){
 	return {
 		scope: {
