@@ -108,7 +108,6 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 		});
 	}
 
-
 	$scope.onAddRule = function(){
 		$uci.qos.$create({
 			".type": "classify"
@@ -116,31 +115,6 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 			$scope.$apply(); 
 		}); 
 	};
-
-	/*$scope.onAddIface = function(){
-		if(!$scope.interfaces || $scope.interfaces.length < 1) return;
-		var model = {
-			interfaces: $scope.interfaces,
-			name: $scope.interfaces[0].value
-		}
-		$juciDialog.show("add-bw-interface-edit", {
-			title: $tr(gettext("Add Bandwidth Limitation")),
-			model: model,
-			on_apply: function(){
-				if(!model.name){
-					model.error = true;
-					return false;
-				}
-				$uci.qos.$create({
-					".type": "interface",
-					".name": model.name
-				}).done(function(){
-					getNetworks();
-				});
-				return true;
-			}
-		});
-	};*/
 
 	$scope.onDeleteIface = function(item){
 		if(!item) return;
