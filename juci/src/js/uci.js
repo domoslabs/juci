@@ -75,16 +75,28 @@
 	function PortValidator(){
 		this.validate = function(field){
 			if(!field || !field.value) return null;
-			if(field.value.match(/^[0-9]+-[0-9]+$/)){ //type is port range
-				var start = parseInt(field.value.split("-")[0]);
-				var stop = parseInt(field.value.split("-")[1]);
+			if(field.value.match(/^[0-9]+$/)){
+				var num = parseInt(field.value);
+				if(num < 1 || num > 65535) return gettext("A port is between 1 and 65535");
+			} else {
+				return gettext("A port can only be a number between 1 and 65535 or a range on the form number-number");
+			}
+			return null;
+		};	
+	}
+	function PortRangeValidator(){
+		this.validate = function(field){
+			if(!field || !field.value) return null;
+			if(field.value.match(/^[0-9]+:[0-9]+$/)){ //type is port range
+				var start = parseInt(field.value.split(":")[0]);
+				var stop = parseInt(field.value.split(":")[1]);
 				if(start < 1 || start > 65535 || stop < 1 || stop > 65535 || start > stop || start == stop) return gettext("A port is between 1 and 65535 and start port must be lower than stop port");
 			}else if(field.value.match(/^[0-9]+$/)){
 				var num = parseInt(field.value);
 				if(num < 1 || num > 65535) return gettext("A port is between 1 and 65535");
 			}
 			else {
-				return gettext("A port can only be a number between 1 and 65535 or a range on the form number-number");
+				return gettext("A port can only be a number between 1 and 65535 or a range on the form number:number");
 			}
 			return null;
 		};	
@@ -142,7 +154,7 @@
 			var err = ipv4.validate({ value: field.value.split("/")[0] });
 			if(err) return err;
 			var mask = field.value.split("/")[1];
-			if(!mask.match(/^0/) && mask.match(/^[\d\.]+$/) && parseInt(mask) < 25) return null
+			if(!mask.match(/^0/) && mask.match(/^[\d]+$/) && parseInt(mask) < 33) return null
 			return gettext("Netmask must be a value between 0 and 24");
 		};
 	};
@@ -1128,6 +1140,7 @@
 		WeekDayListValidator: WeekDayListValidator, 
 		TimespanValidator: TimespanValidator, 
 		PortValidator: PortValidator, 
+		PortRangeValidator: PortRangeValidator,
 		NumberLimitValidator: NumberLimitValidator, 
 		TimeValidator: TimeValidator,
 		MACAddressValidator: MACAddressValidator,

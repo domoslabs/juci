@@ -12,16 +12,16 @@
 					<juci-config-line title="{{'Zone'|translate}}">
 						<juci-select ng-model="rule.src.value" ng-items="allZones"></juci-select>
 					</juci-config-line>
-					<juci-config-line title="{{'IP'|translate}}">
+					<juci-config-line title="{{'IP'|translate}}" error="srcIpErr">
 						<div class="input-group">
-							<tags-input ng-model="data.src_ips" on-tag-adding="testIp($tag)" placeholder="Add IP Address" add-on-space="true"></tags-input>
+							<tags-input ng-model="data.src_ips" on-tag-adding="testIp($tag, 'src')" placeholder="Add IP Address" add-on-space="true"></tags-input>
 							<span class="input-group-addon" ng-click="onSelectSrcHost()" style="cursor:pointer;">
 								<i class="fa fa-desktop"></i>
 							</span>
 						</div>
 					</juci-config-line>
-					<juci-config-line title="{{'MAC'|translate}}">
-						<tags-input ng-model="data.src_macs" on-tag-adding="testMac($tag)" placeholder="Add MAC Address" add-on-space="true"></tags-input>
+					<juci-config-line title="{{'MAC'|translate}}" error="srcMacErr">
+						<tags-input ng-model="data.src_macs" on-tag-adding="testMac($tag, 'src')" placeholder="Add MAC Address" add-on-space="true"></tags-input>
 					</juci-config-line>
 					<juci-config-line title="{{'Port'|translate}}" error="rule.src_port.error">
 						<input type="text" class="form-control" ng-model="rule.src_port.value" placeholder="{{'Port'|translate}}"/>
@@ -34,16 +34,16 @@
 					<juci-config-line title="{{'Zone'|translate}}">
 						<juci-select ng-model="rule.dest.value" ng-items="allZones"></juci-select>
 					</juci-config-line>
-					<juci-config-line title="{{'IP'|translate}}">
+					<juci-config-line title="{{'IP'|translate}}" error="dstIpErr">
 						<div class="input-group">
-							<tags-input ng-model="data.dest_ips" on-tag-adding="testIp($tag)" placeholder="Add IP Address" add-on-space="true"></tags-input>
+							<tags-input ng-model="data.dest_ips" on-tag-adding="testIp($tag, 'dst')" placeholder="Add IP Address" add-on-space="true"></tags-input>
 							<span class="input-group-addon" ng-click="onSelectDestHost()" style="cursor:pointer;">
 								<i class="fa fa-desktop"></i>
 							</span>
 						</div>
 					</juci-config-line>
-					<juci-config-line title="{{'MAC'|translate}}">
-						<tags-input ng-model="data.dest_macs" on-tag-adding="testMac($tag)" placeholder="Add MAC Address" add-on-space="true"></tags-input>
+					<juci-config-line title="{{'MAC'|translate}}" error="dstMacErr">
+						<tags-input ng-model="data.dest_macs" on-tag-adding="testMac($tag, 'dst')" placeholder="Add MAC Address" add-on-space="true"></tags-input>
 					</juci-config-line>
 					<juci-config-line title="{{'Port'|translate}}" error="rule.dest_port.error">
 						<input type="text" class="form-control" ng-model="rule.dest_port.value" placeholder="{{'Port'|translate}}"/>

@@ -116,14 +116,27 @@ JUCI.app
 	var ip6range = new $uci.validators.IP6CIDRValidator;
 	var mac = new $uci.validators.MACAddressValidator;
 
-	$scope.testIp = function($tag){
-		if(ipv4.validate({value:$tag.text}) == null || iprange.validate({value:$tag.text}) == null || 
-			ipv6.validate({value:$tag.text}) == null || ip6range.validate({value:$tag.text}) == null) return true;
-		return false;
+	$scope.testIp = function($tag, target){
+		var er = [ipv4.validate({value:$tag.text}), iprange.validate({value:$tag.text}),
+			ipv6.validate({value:$tag.text}), ip6range.validate({value:$tag.text})].filter(function(x){ return x !== null; });
+		if(er.length === 4){
+			if(target === "src") $scope.srcIpErr = $tr(gettext("IP must be ether a valid IPv4 or a valid IPv6 Address"));
+			if(target === "dst") $scope.dstIpErr = $tr(gettext("IP must be ether a valid IPv4 or a valid IPv6 Address"));
+			return false;
+		}
+		if(target === "src") $scope.srcIpErr = null;
+		if(target === "dst") $scope.dstIpErr = null;
+		return true;
 	};
-	$scope.testMac = function($tag){
-		if(mac.validate({value:$tag.text}) == null) return true;
-		return false;
+	$scope.testMac = function($tag, target){
+		var er = mac.validate({value:$tag.text});
+		if(er !== null){
+			if(target === "src") $scope.srcMacErr = er;
+			if(target === "dst") $scope.dstMacErr = er;
+			return false;
+		}
+		if(target === "src") $scope.srcMacErr = null;
+		if(target === "dst") $scope.dstMacErr = null;
+		return true;
 	};
-			
 }); 
