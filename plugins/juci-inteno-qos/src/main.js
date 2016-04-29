@@ -38,6 +38,14 @@ UCI.qos.$registerSectionType("interface", {
 	"overhead":		{ dvalue: false, type: Boolean },
 	"upload":		{ dvalue: '', type: Number }
 });
+UCI.qos.$registerSectionType("class", {
+	"priority":		{ dvalue: 1, type: Number},
+	//"maxsize":		{ dvalue: 1000, type: Number},
+	"packetsize":		{ dvalue: 1500, type: Number},
+	"packetdelay":		{ dvalue: 0, type: Number },
+	"avgrate":		{ dvalue: 0, type: Number},
+	"limitrate":		{ dvalue: 100, type: Number},
+});
 
 JUCI.app.factory("intenoQos", function($uci){
 	function Qos(){ }

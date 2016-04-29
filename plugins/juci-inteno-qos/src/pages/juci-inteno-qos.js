@@ -22,6 +22,7 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 	$uci.$sync(["qos"]).done(function(){
 		$scope.qos = $uci.qos["@classify"];
 		$scope.ifaces = $uci.qos["@interface"];
+		$scope.classes = $uci.qos["@class"];
 		getNetworks();
 	});
 	function getNetworks(){
@@ -36,6 +37,32 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 		$scope.targets = targets.map(function(x){ return { label: x, value: x }; }); 
 		$scope.$apply(); 
 	}); 
+
+	$scope.onAddClass = function(){
+		var newClassName = { name : "" };
+
+		$juciDialog.show("new-class-modal", {
+			title: $tr(gettext("New Class")),
+			model: newClassName,
+			on_apply: function(btn, dlg){
+				if(newClassName.name.match(/[\W]/) === null) { // If name contains no invalid character
+					$uci.qos.$create(
+						{
+						".type": "class",
+						".name": newClassName.name
+						}
+					).done(function(){ $scope.$apply(); });
+					return true;
+				}
+				else { alert("Class name may only contain characters, numbers and underscore."); }
+			},
+		}).done(function(){
+		}).fail(function(){
+		});
+
+		
+
+	}
 
 	$scope.onAddRule = function(){
 		$uci.qos.$create({
@@ -77,6 +104,10 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 		});
 	};
 
+	$scope.getClassTitle = function(item){
+		if(!item) return "";
+		return String(item[".name"]);
+	}
 	$scope.getRuleTitle = function(item){
 		var str = (item.target.value+" "+(item.srchost.value?("(src host: "+item.srchost.value+") "):"")+
 					(item.dsthost.value?("(dst host: "+item.dsthost.value+") "):"")+
