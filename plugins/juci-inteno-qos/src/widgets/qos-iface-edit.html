@@ -7,7 +7,11 @@
 		<juci-config-line title="{{'Calculate overhead'|translate}}">
 			<switch class="green" ng-model="instance.overhead.value" />
 		</juci-config-line>
-		<juci-config-line title="{{'Download Speed Limit'|translate}}">
+		<juci-config-line title="{{'Download speed limit'|translate}}">
+			<switch class="green" ng-model="minNyaVar.prutt" />
+		</juci-config-line>
+		<juci-config-line title="{{'Download Speed Limit'|translate}}" ng-show="minNyaVar.prutt">
+		{{minNyaVar.prutt}}
 			<div class="input-group">
 				<input type="number" min="1" class="form-control" ng-model="instance.download.value" />
 				<span class="input-group-addon">Kbps</span>
