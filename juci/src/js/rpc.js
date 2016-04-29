@@ -135,7 +135,6 @@
 			}
 
 			self.session.access({
-				//"ubus_rpc_session": RPC_SESSION_ID,
 				"scope": "ubus" 
 			}).done(function(result){
         		if(!("username" in (result.data||{}))) {
