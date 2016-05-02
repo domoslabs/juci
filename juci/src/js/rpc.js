@@ -20,6 +20,7 @@
 
 (function(scope){
 	var DEBUG_MODE = 0;
+	var retries = 3;
 	var RPC_HOST = ""; //(($config.rpc.host)?$config.rpc.host:"")
 	var RPC_DEFAULT_SESSION_ID = "00000000000000000000000000000000"; 
 	var RPC_SESSION_ID = scope.localStorage.getItem("sid")||RPC_DEFAULT_SESSION_ID; 
@@ -150,8 +151,12 @@
 					deferred.resolve(result); 
 				}  
 			}).fail(function err(result){
-				RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID; 
-				console.error("Session access call failed: you will be logged out!"); 
+				if(retries === 0){
+					RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID; 
+					if(DEBUG_MODE) console.error("Session access call failed: you will be logged out!"); 
+					retries = 3;
+				}
+				retries --;	
 				deferred.reject(); 
 			}); 
 			return deferred.promise(); 
