@@ -59,10 +59,31 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 		}).done(function(){
 		}).fail(function(){
 		});
-
-		
-
 	}
+
+	$scope.onAddIface = function(){
+		var newIfaceName = { name : "" };
+
+		$juciDialog.show("add-bw-interface-edit", {
+			title: $tr(gettext("New Interface")),
+			model: newIfaceName,
+			on_apply: function(btn, dlg){
+				if(newIfaceName.name.match(/[\W]/) === null) { // If name contains no invalid character
+					$uci.qos.$create(
+						{
+						".type": "interface",
+						".name": newIfaceName.name
+						}
+					).done(function(){ $scope.$apply(); });
+					return true;
+				}
+				else { alert("Interface name may only contain characters, numbers and underscore."); }
+			},
+		}).done(function(){
+		}).fail(function(){
+		});
+	}
+
 
 	$scope.onAddRule = function(){
 		$uci.qos.$create({
@@ -72,7 +93,7 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 		}); 
 	};
 
-	$scope.onAddIface = function(){
+	/*$scope.onAddIface = function(){
 		if(!$scope.interfaces || $scope.interfaces.length < 1) return;
 		var model = {
 			interfaces: $scope.interfaces,
@@ -95,7 +116,7 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 				return true;
 			}
 		});
-	};
+	};*/
 
 	$scope.onDeleteIface = function(item){
 		if(!item) return;

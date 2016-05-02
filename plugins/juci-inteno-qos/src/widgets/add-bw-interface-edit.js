@@ -3,11 +3,11 @@
 JUCI.app
 .directive("addBwInterfaceEdit", function(){
 	return {
-		templateUrl: "/widgets/add-bw-interface-edit.html",
 		scope: {
-			model: "=ngModel"
+			newIface: "=ngModel"
 		},
 		replace: true,
-		require: "^ngModel"
+		templateUrl: "/widgets/add-bw-interface-edit.html"
+		//require: "^ngModel"
 	};
 });
