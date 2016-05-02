@@ -19,7 +19,7 @@
  */
 
 (function(scope){
-	var DEBUG_MODE = false;
+	var DEBUG_MODE = 0;
 	var RPC_HOST = ""; //(($config.rpc.host)?$config.rpc.host:"")
 	var RPC_DEFAULT_SESSION_ID = "00000000000000000000000000000000"; 
 	var RPC_SESSION_ID = scope.localStorage.getItem("sid")||RPC_DEFAULT_SESSION_ID; 
@@ -35,7 +35,7 @@
 	]; 
 	
 	function rpc_request(type, namespace, method, data){
-		if(DEBUG_MODE)console.log("UBUS call " + namespace + " " + method);
+		if(DEBUG_MODE > 1)console.log("UBUS call " + namespace + " " + method);
 		var sid = ""; 
 		
 		// check if the request has been made only recently with same parameters
@@ -88,7 +88,7 @@
 								default: return gettext("RPC error #")+result.result[0]+": "+result.result[1]; 
 							}
 						}
-						console.log("RPC succeeded ("+namespace+"."+method+"), but returned error: "+JSON.stringify(result)+": "+_errstr(result.result[0]));
+						if(DEBUG_MODE)console.log("RPC succeeded ("+namespace+"."+method+"), but returned error: "+JSON.stringify(result)+": "+_errstr(result.result[0]));
 						RPC_CACHE[key].deferred.reject(_errstr(result.result[0])); 
 						return; 
 					}
@@ -106,7 +106,7 @@
 					}
 				}, 
 				error: function(result){
-					console.error("RPC error ("+namespace+"."+method+"): "+JSON.stringify(result));
+					if(DEBUG_MODE)console.error("RPC error ("+namespace+"."+method+"): "+JSON.stringify(result));
 					if(result && result.error){
 						RPC_CACHE[key].deferred.reject(result.error);  
 						//$rootScope.$broadcast("error", result.error.message); 
@@ -244,7 +244,7 @@
 			if(host) {
 				if(host.host) RPC_HOST = host.host;
 			} 
-			console.log("Init UBUS -> "+RPC_HOST); 
+			if(DEBUG_MODE)console.log("Init UBUS -> "+RPC_HOST); 
 			var deferred = $.Deferred(); 
 			default_calls.map(function(x){ self.$register(x); }); 
 			// request list of all methods and construct rpc object containing all of the methods in javascript. 
