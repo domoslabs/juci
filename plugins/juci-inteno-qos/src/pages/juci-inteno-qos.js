@@ -108,6 +108,7 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 		});
 	}
 
+
 	$scope.onAddRule = function(){
 		$uci.qos.$create({
 			".type": "classify"
