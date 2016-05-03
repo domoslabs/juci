@@ -29,8 +29,7 @@ set_creds() {
 		return 1
 	fi
 	config_load "wireless"
-	config_foreach set_uci "wifi-iface"
-	ubus call uci commit '{"config":"wireless"}' &
+	wifi import "$1"
 	ubus send 'wifi-credential-change'
 	ubus send 'wifi-repeater-send'
 	json_add_string "code", "success"
