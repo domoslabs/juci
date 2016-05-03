@@ -78,7 +78,7 @@ JUCI.app
 		}
 	}
 	function setValues(ssid, key, encr){
-		$rpc.juci.client.run({"method":"set","args": JSON.stringify({
+		$rpc.juci.repeater.run({"method":"set","args": JSON.stringify({
 			ssid:ssid,
 			key:key,
 			encryption:encr
@@ -109,8 +109,7 @@ JUCI.app
 						if(ap.cipher) encrypt = "psk2";
 						return { label: ap.ssid, value: ap.bssid, encryption: encrypt };
 					}).filter(function(ap){ return ap !== null; });
-					console.log($scope.avalibleAps);
-					$scope.$apply;
+					$scope.$apply();
 				});
 			}, 3000);
 		});
