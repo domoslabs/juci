@@ -109,6 +109,18 @@ JUCI.app
 					else if(i.device && i.l3_device.match(/ptm/)) con_type = "VDSL"; 
 					else if(i.device && i.l3_device.match(/wwan/)) con_type = "3G/4G"; 
 					con_types[con_type] = con_type; 
+					if(con_type && con_type.match(/^[AV]DSL$/)){
+						if($rpc.router && $rpc.router.dslstats){
+							$rpc.router.dslstats().done(function(data){
+								if(!data || !data.dslstats || !data.dslstats.bearers || data.dslstats.bearers.length < 1) return;
+								$scope.dslDown = [];
+								data.dslstats.bearers.map(function(b){
+									if(b.rate_down) $scope.dslDown.push(b.rate_down);
+								});
+								$scope.$apply();
+							});
+						}
+					}
 					i.route.map(function(r){
 						if(r.nexthop != "0.0.0.0" && r.nexthop != "::") // ignore dummy routes. Note that current gateways should actually be determined by pinging them, but showing all of them is sufficient for now. 
 							all_gateways[r.nexthop] = true; 
