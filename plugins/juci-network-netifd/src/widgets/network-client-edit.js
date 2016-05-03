@@ -29,7 +29,7 @@ JUCI.app
 		replace: true, 
 		require: "^ngModel"
 	};  
-}).controller("networkClientEdit", function($scope, $uci){	
+}).controller("networkClientEdit", function($scope, $uci, $tr, gettext){	
 	$scope.$watch("model", function(value){
 		if(!value || !value.client) return;
 		$uci.$sync("dhcp").done(function(){
@@ -60,8 +60,27 @@ JUCI.app
 			});
 		}
 		$scope.values = Object.keys(value.client).map(function(x){
-			if(x.match(/^_.+$/)) return null;
-			return { label: x, value: value.client[x] };
+			var val = value.client[x];
+			if(x === "n_cap") return { label: $tr(gettext("N Mode")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
+			if(x === "vht_cap") return { label: $tr(gettext("VHT Mode")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
+			if(x === "wme") return { label: $tr(gettext("WME")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
+			if(x === "ps") return { label: $tr(gettext("Power Save")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
+			if(x === "hostname") return { label: $tr(gettext("Hostname")), value: val };
+			if(x === "ipaddr") return { label: $tr(gettext("IP Address")), value: val };
+			if(x === "macaddr") return { label: $tr(gettext("MAC Address")), value: String(val).toUpperCase() };
+			if(x === "dhcp") return { label: $tr(gettext("DHCP")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
+			if(x === "connected") return { label: $tr(gettext("Connected")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
+			if(x === "wireless") return { label: $tr(gettext("Wireless")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
+			if(x === "frequency") return { label: $tr(gettext("Frequency")), value: val };
+			if(x === "rssi") return { label: $tr(gettext("RSSI")), value: val + " dBm" };
+			if(x === "snr") return { label: $tr(gettext("SNR")), value: val + " dBm" };
+			if(x === "idle") return { label: $tr(gettext("Idle")), value: val + " s" };
+			if(x === "in_network") return { label: $tr(gettext("In Network")), value: val + " s" };
+			if(x === "tx_bytes") return { label: $tr(gettext("TX Bytes")), value: val };
+			if(x === "rx_bytes") return { label: $tr(gettext("RX Bytes")), value: val };
+			if(x === "tx_rate") return { label: $tr(gettext("TX Rate")), value: Math.floor(parseInt(val)/1000) + " Mbps" };
+			if(x === "rx_rate") return { label: $tr(gettext("RX Rate")), value: Math.floor(parseInt(val)/1000) + " Mbps" };
+			return null;
 		}).filter(function(x){ return x !== null;});
 	},false);
 }); 
