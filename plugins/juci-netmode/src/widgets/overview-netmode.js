@@ -111,7 +111,7 @@ JUCI.app
 			if($uci.netmode[netmode].reboot.value){
 				window.location = "/reboot.html";
 			}
-			$scope.$apply();
+			setTimeout(function(){window.location.reload(true);}, 1000);
 		});
 	}
 }); 
