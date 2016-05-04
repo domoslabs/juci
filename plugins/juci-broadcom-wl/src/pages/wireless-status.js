@@ -86,7 +86,7 @@ JUCI.app
 								htcapsString = htcapsString + attrname+", ";
 							}
 						}
-						if(htcapsString != "" ){ c["rows"].push(["HT caps",htcapsString.slice(0,-2).toUpperCase()]); }
+						if(htcapsString != "" ){ c["rows"].push(["HT Capabilities",htcapsString.slice(0,-2).toUpperCase()]); }
 
 						var vhtcapsString= "";
 						for (var attrname in c.vhtcaps){
@@ -94,7 +94,7 @@ JUCI.app
 								vhtcapsString = vhtcapsString + attrname+", ";
 							}
 						}
-						if(vhtcapsString != "" ){ c["rows"].push(["VHT caps",vhtcapsString.slice(0,-2).toUpperCase()]); }
+						if(vhtcapsString != "" ){ c["rows"].push(["VHT Capabilities",vhtcapsString.slice(0,-2).toUpperCase()]); }
 
 
 
