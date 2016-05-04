@@ -161,7 +161,7 @@ angular.element(document).ready(function() {
 			angular.bootstrap(document, ["juci"]);
 		}).fail(function(){
 			if(starting + 1000 > Date.now()){
-				setTimeout({function(){init();},50);
+				setTimeout(function(){init();},50);
 			}else{
 				window.location = "/initfail.html";
 			}
