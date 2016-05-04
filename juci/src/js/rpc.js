@@ -60,7 +60,6 @@
 		}); 
 		RPC_CACHE = retain; 
 
-		console.log(RPC_SESSION_ID);
 		// setup default rpcs
 		$.jsonRPC.withOptions({
 			namespace: "", 
