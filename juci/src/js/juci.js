@@ -55,14 +55,6 @@
 		var $rpc = scope.UBUS; 
 		async.series([
 			function(next){
-				$rpc.$authenticate().done(function(){
-					next(); 
-				}).fail(function(){
-					console.log("Failed to verify session."); 
-					next(); 
-				}); 
-			},
-			function(next){
 				$rpc.$init().done(function(){
 					if(!$rpc.juci || !$rpc.juci.system || !$rpc.uci){
 						deferred.reject(); 
@@ -75,6 +67,14 @@
 					return;
 				}); 
 			},  
+			function(next){
+				$rpc.$authenticate().done(function(){
+					next(); 
+				}).fail(function(){
+					console.log("Failed to verify session."); 
+					next(); 
+				}); 
+			},
 			function(next){
 				$uci.$init().done(function(){
 					next(); 
