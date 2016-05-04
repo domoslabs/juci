@@ -24,15 +24,17 @@ JUCI.app
 	}
 	$scope.radioToScan = {};
 	$uci.$sync("wireless").done(function(){
-		$rpc.juci.wireless.run({"method":"radios"}).done(function(data){
-			$scope.wlRadios = Object.keys(data).map(function(x){ return data[x]; });
+		$rpc.router.radios().done(function(data){
+			$scope.wlRadios = Object.keys(data).map(function(x){ data[x].device = x; return data[x]; });
 			$scope.scanableRadios = $scope.wlRadios.filter(function(radio){
-				return parseInt(radio.current_channel) < 52;
+				return parseInt(radio.channel) < 52;
 			}).map(function(radio){
 				return { label: radio.frequency, value: radio.device };
 			});
 			$scope.dfs_enabled = ($scope.wlRadios.length != $scope.scanableRadios.length);
-			$scope.radioToScan.value = $scope.scanableRadios[0].value || null;
+			if($scope.scanableRadios.length > 0){
+				$scope.radioToScan.value = $scope.scanableRadios[0].value;
+			}
 			$scope.$apply(); 
 		});
 		$scope.doScan = function(){

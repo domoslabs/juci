@@ -165,7 +165,8 @@ JUCI.app
 		});
 		if(ret === "Flags: "){ ret = ret + $tr(gettext("No Flags"));}
 		else{ret = String(ret).substring(0,ret.length-2);}
-		ret += "<br />"+ $tr(gettext("TX Rate: ")) + cl.tx_rate + "<br />" + $tr(gettext("RX Rate: ")) + cl.rx_rate;
+		ret += "<br />"+ $tr(gettext("TX Rate: ")) + Math.floor(parseInt(cl.tx_rate)/1000) + $tr(gettext(" Mbps")) + "<br />" + 
+						 $tr(gettext("RX Rate: ")) + Math.floor(parseInt(cl.rx_rate)/1000) + $tr(gettext(" Mbps"));
 		return ret;
 	}
 	updateData().done(function(){
