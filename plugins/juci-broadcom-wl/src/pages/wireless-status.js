@@ -64,7 +64,10 @@ JUCI.app
 							[$tr(gettext("Idle")), c.idle],
 							[$tr(gettext("In Network")), c.in_network],
 							[$tr(gettext("RSSI")), c.rssi+" dBm"],
-							[$tr(gettext("SNR")), c.snr+ " dBm"]
+							[$tr(gettext("SNR")), c.snr+ " dBm"],
+							["Number of Antennas", c.rssi_per_antenna.length],
+							["TX Rate", parseInt(c.scbstats.rate_of_last_tx_pkt/1000 +0.5) + " Mbps"],
+							["RX Rate", parseInt(c.scbstats.rate_of_last_rx_pkt/1000 +0.5) + " Mbps"],
 						];
 
 
@@ -75,7 +78,7 @@ JUCI.app
 								flagsString = flagsString + attrname+", ";
 							}
 						}
-						if(flagsString != "" ){ c["rows"].push(["Flags",flagsString.toUpperCase()]); }
+						if(flagsString != "" ){ c["rows"].push(["Flags",flagsString.slice(0,-2).toUpperCase()]); }
 						
 						var htcapsString= "";
 						for (var attrname in c.htcaps){
@@ -83,7 +86,7 @@ JUCI.app
 								htcapsString = htcapsString + attrname+", ";
 							}
 						}
-						if(htcapsString != "" ){ c["rows"].push(["HT caps",htcapsString.toUpperCase()]); }
+						if(htcapsString != "" ){ c["rows"].push(["HT caps",htcapsString.slice(0,-2).toUpperCase()]); }
 
 						var vhtcapsString= "";
 						for (var attrname in c.vhtcaps){
@@ -91,29 +94,27 @@ JUCI.app
 								vhtcapsString = vhtcapsString + attrname+", ";
 							}
 						}
-						if(vhtcapsString != "" ){ c["rows"].push(["VHT caps",vhtcapsString.toUpperCase()]); }
+						if(vhtcapsString != "" ){ c["rows"].push(["VHT caps",vhtcapsString.slice(0,-2).toUpperCase()]); }
 
 
 
-						var scbstatRows = [
-							["tx total pkts", c.scbstats.tx_total_pkts],
-							["ucast pkts", c.scbstats.tx_ucast_pkts],
-							["tx ucast pkts", c.scbstats.tx_ucast_pkts],
-							["tx mcast/bcast pkts", c.scbstats.tx_mcast_bcast_pkts],
-							["tx failures", c.scbstats.tx_failures],
-							["rx data pkts", c.scbstats.rx_data_pkts],
-							["rx ucast pkts", c.scbstats.rx_ucast_pkts],
-							["rx mcast/bcast pkts", c.scbstats.rx_mcast_bcast_pkts],
-							["rate of last tx pkt", c.scbstats.rate_of_last_tx_pkt],
-							["rate of last rx pkt", c.scbstats.rate_of_last_rx_pkt],
-							["tx data pkts retried", c.scbstats.tx_data_pkts_retried],
-							["per antenna average rssi of rx data frames", c.rssi_per_antenna[1]],
-							["tx total pkts sent", c.scbstats.tx_total_pkts_sent],
-							["tx pkts retries", c.scbstats.tx_pkts_retries],
-							["tx pkts retry exhausted", c.scbstats.tx_pkts_retry_exhausted],
-							["rx total pkts retried", c.scbstats.rx_total_pkts_retried],
+						var most_of_scbstat= [
+							["TX Total Packets", c.scbstats.tx_total_pkts],
+							["Unicast Packets", c.scbstats.tx_ucast_pkts],
+							["TX Unicast Packets", c.scbstats.tx_ucast_pkts],
+							["TX Multicast/Broadcast Packets", c.scbstats.tx_mcast_bcast_pkts],
+							["TX Failures", c.scbstats.tx_failures],
+							["RX Data Packets", c.scbstats.rx_data_pkts],
+							["RX Unicast Packets", c.scbstats.rx_ucast_pkts],
+							["RX Multicast/Broadcast Packets", c.scbstats.rx_mcast_bcast_pkts],
+							["TX Data Packets Retried", c.scbstats.tx_data_pkts_retried],
+							["TX Total Packets Sent", c.scbstats.tx_total_pkts_sent],
+							["TX Packets Retries", c.scbstats.tx_pkts_retries],
+							["TX Packets Retry Exhausted", c.scbstats.tx_pkts_retry_exhausted],
+							["RX Total Packets Retried", c.scbstats.rx_total_pkts_retried],
 						];
-						scbstatRows.map(function(r){ c["rows"].push(r); });
+						most_of_scbstat.map(function(r){ c["rows"].push(r); });
+						
 					});
 				})
 				.always(function(){ next(); });
