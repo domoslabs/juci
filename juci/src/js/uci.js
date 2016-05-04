@@ -829,20 +829,18 @@
 		var self = this; 
 
 		if(!$rpc.uci) {
-			setTimeout(function(){ deferred.reject(); }, 0); 
-			return deferred.promise(); 
+			return deferred.reject("Missing $rpc.uci"); 
 		}
 		
 		$rpc.uci.configs().done(function(response){
 			var cfigs = response.configs; 
-			if(!cfigs) { next("could not retrieve list of configs!"); return; }
+			if(!cfigs) { return deferred.reject("could not retrieve list of configs!"); }
 			cfigs.map(function(k){
 				if(!(k in section_types)) {
 					console.log("Missing type definition for config "+k); 
 					return; 
 				}
 				if(!(k in self)){
-					//console.log("Adding new config "+k); 
 					self[k] = new UCI.Config(self, k); 
 				}
 			}); 

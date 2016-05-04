@@ -154,11 +154,18 @@ JUCI.app.directive('autofocus', ['$timeout', function($timeout) {
 
 // This ensures that we have control over the initialization order (base system first, then angular). 
 angular.element(document).ready(function() {
-	JUCI.$init().done(function(){
-		angular.bootstrap(document, ["juci"]);
-	}).fail(function(){
-		window.location = "/initfail.html"; 
-		//alert("JUCI failed to initialize! look in browser console for more details (this should not happen!)"); 
-	}); 
+	//the init process will try for 1 sec to initialize and if it fails it will go to init fale page
+	starting = Date.now();
+	(function init(){
+		JUCI.$init().done(function(){
+			angular.bootstrap(document, ["juci"]);
+		}).fail(function(){
+			if(starting + 1000 > Date.now()){
+				setTimeout({function(){init();},50);
+			}else{
+				window.location = "/initfail.html";
+			}
+		});
+	})();
 });
 

@@ -36,7 +36,6 @@
 	}
 
 	JUCIMain.prototype.page = function(name, template, redirect){
-		//console.log("Registering page "+name+": "+template); 
 		var page = {
 			template: template, 
 			url: name
@@ -54,42 +53,7 @@
 		var scripts = []; 
 		var deferred = $.Deferred(); 
 		var $rpc = scope.UBUS; 
-		// TODO: maybe rewrite the init sequence
 		async.series([
-			function(next){
-				$rpc.$init().done(function(){
-					if(!$rpc.juci || !$rpc.juci.system){
-						// TODO: make this prettier. 
-						//alert("Can not establish ubus connection to router. If the router is rebooting then please wait a few minutes and try again."); 
-						//return; 
-						deferred.reject(); 
-						return; 
-					} 
-					next();
-				}).fail(function(){
-					console.error("UBUS failed to initialize: this means that no rpc calls will be available. You may get errors if other parts of the application assume a valid RPC connection!"); 
-					deferred.reject(); 
-					//next(); 
-				}); 
-			},  
-			function(next){
-				$uci.$init().done(function(){
-					next(); 
-				}).fail(function(){
-					console.error("UCI failed to initialize!"); 
-					next(); 
-					//deferred.reject(); 
-				}); 
-			}, 
-			function(next){
-				$juci.config.$init().done(function(){
-					next(); 
-				}).fail(function(){
-					console.error("CONFIG failed to initialize!"); 
-					next(); 
-					//deferred.reject(); 
-				}); 
-			}, 
 			function(next){
 				$rpc.$authenticate().done(function(){
 					next(); 
@@ -98,6 +62,35 @@
 					next(); 
 				}); 
 			},
+			function(next){
+				$rpc.$init().done(function(){
+					if(!$rpc.juci || !$rpc.juci.system || !$rpc.uci){
+						deferred.reject(); 
+						return; 
+					} 
+					next();
+				}).fail(function(){
+					console.error("UBUS failed to initialize: this means that no rpc calls will be available. You may get errors if other parts of the application assume a valid RPC connection!"); 
+					deferred.reject(); 
+					return;
+				}); 
+			},  
+			function(next){
+				$uci.$init().done(function(){
+					next(); 
+				}).fail(function(){
+					console.error("UCI failed to initialize!"); 
+					deferred.reject(); 
+				}); 
+			}, 
+			function(next){
+				$juci.config.$init().done(function(){
+					next(); 
+				}).fail(function(){
+					console.error("CONFIG failed to initialize!"); 
+					next(); 
+				}); 
+			}, 
 			function(next){
 				// get the menu navigation
 				if(!$rpc.juci){
@@ -234,7 +227,6 @@
 			}
 			// register all templates 
 			Object.keys(self.templates).map(function(k){
-				//console.log("Registering template "+k); 
 				$templateCache.put(k, self.templates[k]); 
 			}); 
 			// subscribe to uci change events and notify uci object
@@ -251,10 +243,6 @@
 
 		app.factory('$rpc', function(){
 			return scope.UBUS; 
-		});
-
-		app.factory('$rpc2', function(){
-			return scope.UBUS2; 
 		});
 
 		app.factory('$uci', function(){

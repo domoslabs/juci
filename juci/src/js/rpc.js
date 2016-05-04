@@ -36,7 +36,7 @@
 	]; 
 	
 	function rpc_request(type, namespace, method, data){
-		if(DEBUG_MODE > 1)console.log("UBUS call " + namespace + " " + method);
+		if(DEBUG_MODE > 1)console.log("UBUS " + type + " " + namespace + " " + method);
 		var sid = ""; 
 		
 		// check if the request has been made only recently with same parameters
@@ -44,9 +44,8 @@
 		if(!RPC_CACHE[key]){
 			RPC_CACHE[key] = {}; 
 		}
-		//if(RPC_CACHE[key].time && ((new Date()).getTime() - RPC_CACHE[key].time.getTime()) < 3000){
 		// if this request with same parameters is already in progress then just return the existing promise 
-		if(RPC_CACHE[key].deferred && RPC_CACHE[key].deferred.state() == "pending"){
+		if(RPC_CACHE[key].deferred && RPC_CACHE[key].deferred.state() === "pending"){
 			return RPC_CACHE[key].deferred.promise(); 
 		} else {
 			RPC_CACHE[key].deferred = $.Deferred(); 
@@ -55,20 +54,19 @@
 		// remove completed requests from cache
 		var retain = {}; 
 		Object.keys(RPC_CACHE).map(function(k){
-			if(RPC_CACHE[k].deferred && RPC_CACHE[k].deferred.state() == "pending"){
+			if(RPC_CACHE[k].deferred && RPC_CACHE[k].deferred.state() === "pending"){
 				retain[k] = RPC_CACHE[k]; 
 			}
 		}); 
 		RPC_CACHE = retain; 
 
+		console.log(RPC_SESSION_ID);
 		// setup default rpcs
 		$.jsonRPC.withOptions({
 			namespace: "", 
 			endPoint: RPC_HOST+"/ubus"
 		}, function(){	 
 			//var sid = "00000000000000000000000000000000"; 
-			//if($rootScope.sid) sid = $rootScope.sid; 
-			//data.ubus_rpc_session = sid;  
 			this.request(type, {
 				params: [ RPC_SESSION_ID, namespace, method, data],
 				success: function(result){
@@ -110,7 +108,6 @@
 					if(DEBUG_MODE)console.error("RPC error ("+namespace+"."+method+"): "+JSON.stringify(result));
 					if(result && result.error){
 						RPC_CACHE[key].deferred.reject(result.error);  
-						//$rootScope.$broadcast("error", result.error.message); 
 					}
 				}
 			})
