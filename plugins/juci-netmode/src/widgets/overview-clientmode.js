@@ -85,7 +85,7 @@ JUCI.app
 		})}).done(function(ret){
 			$scope.showModal = true;
 			$scope.modalTitle = $tr(gettext("Attempting to Pair"));
-			setTimeout(function(){ if($scope.showModal) $scope.showModal = false; $scope.$apply();}, 5000);
+			setTimeout(function(){ if($scope.showModal) $scope.showModal = false; window.location.reload(true);}, 30000);
 			$scope.$apply();
 		});
 	}

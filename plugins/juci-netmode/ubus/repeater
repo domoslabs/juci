@@ -30,8 +30,6 @@ set_creds() {
 	fi
 	config_load "wireless"
 	wifi import "$1" &
-	ubus send 'wifi-credential-change'
-	ubus send 'wifi-repeater-send'
 	json_add_string "code", "success"
 	json_dump
 }
