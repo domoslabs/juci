@@ -64,12 +64,56 @@ JUCI.app
 							[$tr(gettext("Idle")), c.idle],
 							[$tr(gettext("In Network")), c.in_network],
 							[$tr(gettext("RSSI")), c.rssi+" dBm"],
-							[$tr(gettext("SNR")), c.snr+ " dBm"],
-							[$tr(gettext("TX Bytes")), c.tx_bytes],
-							[$tr(gettext("RX Bytes")), c.rx_bytes],
-							[$tr(gettext("TX Rate")), c.tx_rate],
-							[$tr(gettext("RX Rate")), c.rx_rate]
+							[$tr(gettext("SNR")), c.snr+ " dBm"]
 						];
+
+
+
+						var flagsString = "";
+						for (var attrname in c.flags){
+							if(c.flags[attrname] !== false){
+								flagsString = flagsString + attrname+", ";
+							}
+						}
+						if(flagsString != "" ){ c["rows"].push(["Flags",flagsString.toUpperCase()]); }
+						
+						var htcapsString= "";
+						for (var attrname in c.htcaps){
+							if(c.htcaps[attrname] !== false){
+								htcapsString = htcapsString + attrname+", ";
+							}
+						}
+						if(htcapsString != "" ){ c["rows"].push(["HT caps",htcapsString.toUpperCase()]); }
+
+						var vhtcapsString= "";
+						for (var attrname in c.vhtcaps){
+							if(c.vhtcaps[attrname] !== false){
+								vhtcapsString = vhtcapsString + attrname+", ";
+							}
+						}
+						if(vhtcapsString != "" ){ c["rows"].push(["VHT caps",vhtcapsString.toUpperCase()]); }
+
+
+
+						var scbstatRows = [
+							["tx total pkts", c.scbstats.tx_total_pkts],
+							["ucast pkts", c.scbstats.tx_ucast_pkts],
+							["tx ucast pkts", c.scbstats.tx_ucast_pkts],
+							["tx mcast/bcast pkts", c.scbstats.tx_mcast_bcast_pkts],
+							["tx failures", c.scbstats.tx_failures],
+							["rx data pkts", c.scbstats.rx_data_pkts],
+							["rx ucast pkts", c.scbstats.rx_ucast_pkts],
+							["rx mcast/bcast pkts", c.scbstats.rx_mcast_bcast_pkts],
+							["rate of last tx pkt", c.scbstats.rate_of_last_tx_pkt],
+							["rate of last rx pkt", c.scbstats.rate_of_last_rx_pkt],
+							["tx data pkts retried", c.scbstats.tx_data_pkts_retried],
+							["per antenna average rssi of rx data frames", c.rssi_per_antenna[1]],
+							["tx total pkts sent", c.scbstats.tx_total_pkts_sent],
+							["tx pkts retries", c.scbstats.tx_pkts_retries],
+							["tx pkts retry exhausted", c.scbstats.tx_pkts_retry_exhausted],
+							["rx total pkts retried", c.scbstats.rx_total_pkts_retried],
+						];
+						scbstatRows.map(function(r){ c["rows"].push(r); });
 					});
 				})
 				.always(function(){ next(); });
