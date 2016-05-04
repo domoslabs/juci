@@ -26,7 +26,7 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("overviewSliderWidget10Network", function($rpc, $config, $firewall, $events){
+.controller("overviewSliderWidget10Network", function($rpc, $config, $firewall, $events, $tr, gettext){
 	var nodes = []; 
 	var edges = []; 
 	var def;
@@ -130,13 +130,13 @@ JUCI.app
 						var cl_node = {
 							id: cl.macaddr+cl.ipaddr,
 							label: String(cl.hostname || "Unknown").toUpperCase()+"\n"+String(cl.ipaddr).toUpperCase(),
-							// TODO: give extra info about client here
-							// title: "Hostname: " + cl.hostname + "<br />"+cl.ipaddr+"<br />"+cl.macaddr,
+							//title: "Hostname: " + cl.hostname + "<br />"+cl.ipaddr+"<br />"+cl.macaddr,
 							image: "/img/net-laptop-icon.png",
 							shape: "image",
 							fixed: { x: true, y: false },
 							x: -(250 + (100 * Math.floor(cl_count/5)))
 						}
+						if(cl.wireless) cl_node.title = getTitle(cl);
 						cl_count ++;
 						nodes.push(cl_node);
 						if(cl.wireless){
@@ -152,7 +152,22 @@ JUCI.app
 		);
 		return def;
 	}
-
+	function getTitle(cl){
+		var flags = [
+			{ title: $tr(gettext("Power Save")), value: "ps" }, 
+			{ title: $tr(gettext("WME")), value: "wme" }, 
+			{ title: $tr(gettext("N Mode")), value:"n_cap" }, 
+			{ title: $tr(gettext("VHT Mode")), value: "vht_cap"}
+		];
+		var ret = "Flags: ";
+		flags.map(function(flag){
+			if(cl[flag.value]) ret = ret + flag.title + ", ";
+		});
+		if(ret === "Flags: "){ ret = ret + $tr(gettext("No Flags"));}
+		else{ret = String(ret).substring(0,ret.length-2);}
+		ret += "<br />"+ $tr(gettext("TX Rate: ")) + cl.tx_rate + "<br />" + $tr(gettext("RX Rate: ")) + cl.rx_rate;
+		return ret;
+	}
 	updateData().done(function(){
 		// create a network
 		var containerFA = document.getElementById('mynetworkFA');
