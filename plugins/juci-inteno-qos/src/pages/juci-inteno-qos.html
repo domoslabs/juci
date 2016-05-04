@@ -41,6 +41,17 @@
 
 
 
+			<tab heading="{{'classgroup'|translate}}">
+				<juci-config-section>
+					<juci-list-editor ng-items="classgroups" item-editor="qos-classgroups-edit" get-item-title="getClassgroupTitle($item)" on-create="onAddClassgroup()" on-delete="onDeleteIface($item)" ></juci-list-editor>
+				</juci-config-section>
+			</tab>
+
+
+
+
+
+
 		</tabset>
 	</div>
 </juci-layout-with-sidebar>

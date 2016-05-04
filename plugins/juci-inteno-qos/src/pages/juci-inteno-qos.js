@@ -23,6 +23,7 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 		$scope.qos = $uci.qos["@classify"];
 		$scope.ifaces = $uci.qos["@interface"];
 		$scope.classes = $uci.qos["@class"];
+		$scope.classgroups = $uci.qos["@classgroup"];
 		getNetworks();
 	});
 	function getNetworks(){
@@ -55,6 +56,29 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 					return true;
 				}
 				else { alert("Class name may only contain characters, numbers and underscore."); }
+			},
+		}).done(function(){
+		}).fail(function(){
+		});
+	}
+
+	$scope.onAddClassgroup = function(){
+		var newClassgroupName = { name : "" };
+
+		$juciDialog.show("new-classgroup-modal", {
+			title: $tr(gettext("New Classgroup")),
+			model: newClassgroupName,
+			on_apply: function(btn, dlg){
+				if(newClassgroupName.name.match(/[\W]/) === null) { // If name contains no invalid character
+					$uci.qos.$create(
+						{
+						".type": "classgroup",
+						".name": newClassgroupName.name
+						}
+					).done(function(){ $scope.$apply(); });
+					return true;
+				}
+				else { alert("Classgroup name may only contain characters, numbers and underscore."); }
 			},
 		}).done(function(){
 		}).fail(function(){
@@ -141,6 +165,10 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 		if(!item) return "";
 		return String(item[".name"]).toUpperCase();
 	};
+	$scope.getClassgroupTitle = function(item){
+		if(!item) return "";
+		return String(item[".name"]);
+	}
 
 	$scope.onDeleteRule = function(item){
 		if(!item) return; 

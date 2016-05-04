@@ -28,7 +28,7 @@ UCI.qos.$registerSectionType("classify", {
 	"proto":	{ dvalue: '', type: String }
 });
 UCI.qos.$registerSectionType("classgroup", {
-	"classes":	{ dvalue: 'Priority Express Normal Bulk', type: String },
+	"classes":	{ dvalue: 'Priority Express Normal Bulk', type: Array},
 	"default": 	{ dvalue: 'Normal', type: String }
 });
 UCI.qos.$registerSectionType("interface", {
@@ -54,10 +54,11 @@ JUCI.app.factory("intenoQos", function($uci){
 		$uci.$sync(["qos"]).done(function(){
 			var targets = []; 
 			if($uci.qos.Default){
-				targets = $uci.qos.Default.classes.value.split(" ").map(function(x){
+				targets = $uci.qos.Default.classes.value;
+				/*targets = $uci.qos.Default.classes.value.split(" ").map(function(x){
 					//if(x == "Bulk") return { label: $tr(gettext("Low")), value: x };
 					return x; 
-				});
+				});*/
 			}
 			def.resolve(targets); 
 		}).fail(function(){ def.reject(); });

@@ -1,0 +1,18 @@
+<div>
+	<juci-config-line  title="Default class">
+		<juci-select ng-items="classes" ng-model="instance.default.value"></juci-select>
+	</juci-config-line>
+
+
+	<juci-config-line title="{{'Classes'|translate}}">
+		<div class="input-group">
+			<tags-input ng-model="instance.classes.value">
+				<auto-complete
+					source="classes" 
+					load-on-focus="true"
+					load-on-empty="true">
+				</auto-comlete>
+			</tags-input>
+		</div>
+	</juci-config-line>
+</div>
