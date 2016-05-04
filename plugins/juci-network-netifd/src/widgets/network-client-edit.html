@@ -8,6 +8,14 @@
 					<td>{{value.value}}</td>
 				</tr>
 			</table>
+			<juci-expandable title="{{'Wireless Values'|translate}}" open="false" ng-show="wireless">
+				<table class="table table-hover">
+					<tr ng-repeat="wlValue in wirelessValues track by $index">
+						<td>{{wlValue.label}}</td>
+						<td>{{wlValue.value}}</td>
+					</tr>
+				</table>
+			</juci-expandable>
 		</tab>
 		<tab heading="{{'Port Forwarding'|translate}}">
 			<firewall-client-port-mapping ng-model="model.client"></firewall-client-port-mapping>
