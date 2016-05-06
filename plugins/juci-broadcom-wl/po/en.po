@@ -20,7 +20,7 @@ msgstr ""
 msgid "2.4GHz"
 msgstr ""
 
-msgid "please pick at least one day to schedule on"
+msgid "please select at least one day to schedule on"
 msgstr ""
 
 msgid "SSID string can be at most 32 characters long!"
@@ -252,22 +252,22 @@ msgstr ""
 msgid "Radio On/Off"
 msgstr ""
 
-msgid "Wifi Mode"
+msgid "WiFi Mode"
 msgstr ""
 
-msgid "Pick Hardware Mode"
+msgid "Select Hardware Mode"
 msgstr ""
 
 msgid "Channel"
 msgstr ""
 
-msgid "Pick Channel"
+msgid "Select Channel"
 msgstr ""
 
 msgid "Bandwidth"
 msgstr ""
 
-msgid "Pick Bandwidth"
+msgid "Select Bandwidth"
 msgstr ""
 
 msgid "RIFS"
@@ -372,10 +372,10 @@ msgstr ""
 msgid "MAC"
 msgstr ""
 
-msgid "Pick Wireless Radio"
+msgid "Select Wireless Radio"
 msgstr ""
 
-msgid "Pick SSID"
+msgid "Select SSID"
 msgstr ""
 
 msgid "New SSID"
@@ -435,7 +435,7 @@ msgstr ""
 "Your router supports the industry-wide WiFi standards, enabling easy "
 "wireless connection of your devices."
 
-msgid "Wifi Network"
+msgid "WiFi Network"
 msgstr ""
 
 msgid "Scheduled"
@@ -626,7 +626,7 @@ msgid "menu-wireless-interfaces-title"
 msgstr "Wireless"
 
 msgid "menu-wireless-status-scan-title"
-msgstr "Wifi Scan"
+msgstr "WiFi Scan"
 
 msgid "menu-wireless-general-title"
 msgstr "General"
