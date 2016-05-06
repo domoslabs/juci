@@ -170,6 +170,12 @@ msgstr "Konfiguraatio"
 msgid "settings.management.buttons.info"
 msgstr "Hallinta"
 
+msgid "Configure LEDs"
+msgstr ""
+
+msgid "settings.management.leds.info"
+msgstr "Enable/disable the LEDs on your router"
+
 msgid "Management"
 msgstr "Hallinta"
 
@@ -269,6 +275,9 @@ msgstr "Järjestelmä"
 
 msgid "menu-settings-hardware-buttons-title"
 msgstr "Laitteiston painikkeet"
+
+msgid "menu-settings-hardware-leds-title"
+msgstr "LEDs"
 
 msgid "menu-settings-hardware-title"
 msgstr "Laitteisto"

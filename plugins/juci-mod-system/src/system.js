@@ -53,8 +53,14 @@ UCI.rpcd.$registerSectionType("login", {
 	"write":	{ dvalue: [], type: Array},
 	"read":		{ dvalue: [], type: Array}
 });
+
 UCI.$registerConfig("buttons");
 UCI.buttons.$registerSectionType("button", {
+	"enable":	{ dvalue: true, type: Boolean }
+});
+
+UCI.$registerConfig("leds");
+UCI.leds.$registerSectionType("led", {
 	"enable":	{ dvalue: true, type: Boolean }
 });
 

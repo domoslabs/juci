@@ -65,7 +65,8 @@
 			},
 			"uci": [
 				"system",
-				"buttons"
+				"buttons",
+				"leds"
 			],
 			"juci-io": [
 				"backup"
@@ -86,7 +87,8 @@
 			},
 			"uci": [
 				"system",
-				"buttons"
+				"buttons",
+				"leds"
 			]
 		}
 	},
