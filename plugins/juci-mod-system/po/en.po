@@ -82,7 +82,7 @@ msgid "Backup Settings"
 msgstr ""
 
 msgid "settings.config.info"
-msgstr "Save/Load settings and prform a factory reset"
+msgstr "Save/Load settings or perform factory reset"
 
 msgid "Save settings to computer with password protection"
 msgstr ""
@@ -117,7 +117,7 @@ msgstr ""
 msgid "Re-type password"
 msgstr ""
 
-msgid "Pick configuration backup to upload"
+msgid "Select configuration backup to upload"
 msgstr ""
 
 msgid "Backup file password"
