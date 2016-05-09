@@ -3,7 +3,7 @@
 		<juci-config-heading>{{ 'Connections' | translate }}</juci-config-heading>
 		<juci-config-info>{{ 'settings.network.info' | translate }}</juci-config-info>
 		<juci-config-section>
-			<juci-list-editor ng-items="networks" item-editor="network-connection-edit" get-item-title="onGetItemTitle($item)" on-create="onAddConnection($item)" on-delete="onDeleteConnection($item)"/>
+			<juci-list-editor-new ng-items="networks" item-editor="network-connection-edit" get-item-title="onGetItemTitle($item)" on-create="onAddConnection($item)" on-delete="onDeleteConnection($item)"/>
 		</juci-config-section>
 		<juci-errors></juci-errors>
 	</div>

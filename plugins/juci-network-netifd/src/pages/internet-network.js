@@ -25,10 +25,21 @@ JUCI.app
 	$ethernet.getAdapters().done(function(devices){
 		$network.getNetworks().done(function(nets){
 			$scope.networks = nets.filter(function(x){ 
-				if(x.defaultroute.value) $scope.data.wan_network = x; 
 				return x.ifname.value != "lo" 
-			}); 
-			$scope.networks = $scope.networks.map(function(net){ 
+			}).map(function(net){ 
+				net.$statusList = [
+					{ label:"some label", value: "some value" },
+					{ label:"some label", value: "some value" },
+					{ label:"some label", value: "some value" },
+					{ label:"some label", value: "some value" },
+					{ label:"some label", value: "some value" }
+				]
+				net.$buttons = [
+					{ label: "fist button", type: "success", on_click: function(){ alert("test " + this.label);} },
+					{ label: "second button", type: "success", on_click: function(){ alert("test " + this.label);} },
+					{ label: "third button", type: "success", on_click: function(){ alert("test " + this.label);} },
+					{ label: "fourth button", type: "success", on_click: function(){ alert("test " + this.label);} }
+				]
 				net.addedDevices = []; 
 				var addedDevices = net.ifname.value.split(" "); 
 				//net.$type_editor = "<network-connection-proto-"+net.type.value+"-edit/>";
