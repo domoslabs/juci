@@ -181,10 +181,32 @@ JUCI.app
 			$scope.$apply();
 		}).always(function(){next();});
 	});
+	var onConnect = function(iface){
+		console.log("test");
+		console.log(iface);
+		if(!$rpc.network || !$rpc.network.interface || 
+			!$rpc.network.interface[iface[".name"]] || !$rpc.network.interface[iface[".name"]].up) return;
+		$rpc.network.interface[iface[".name"]].up()
+		console.log("up");
+	}
+	var onDisconnect = function(iface){
+		if(!$rpc.network || !$rpc.network.interface || 
+			!$rpc.network.interface[iface[".name"]] || !$rpc.network.interface[iface[".name"]].down) return;
+		$rpc.network.interface[iface[".name"]].down().done(function(){
+			console.log("down succeded");
+		}).fail(function(error){
+			console.log("down failed");
+			console.log(error);
+		});
+	}
 
 	function updateStatus(){
 		if(!$scope.networks) return;
 		$scope.networks.map(function(net){
+			net.$buttons = [
+				{ label: $tr(gettext("Connect")), on_click: onConnect },
+				{ label: $tr(gettext("Disconnect")), on_click: onDisconnect }
+			]
 			net.$statusList = [
 				{ label: $tr(gettext("Status")), value: (net.$info.pending) ? $tr(gettext("PENDING")) : ((net.$info.up) ? $tr(gettext("UP")) : $tr(gettext("DOWN")))},
 				{ label: $tr(gettext("Device")), value: net.$info.l3_device},
