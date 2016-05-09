@@ -45,22 +45,17 @@ JUCI.app
 	}; 
 })
 .controller("juciListEditor", function($scope){
+	$scope.item = null;
 	$scope.dynamicHtml = "<"+$scope.editor+" ng-model='item'/>"; 
 	$scope.onListAddItem = function(){
 		$scope.item = null; 
 		$scope.onCreate();
 	}
-	var n_items;
-	$scope.$watch("items.length", function(){
-		if(!$scope.items || $scope.items.length < 1) return;
-		if(!n_items || n_items < $scope.items.length){
-			$scope.item = $scope.items[$scope.items.length -1];
-		}else{
-			$scope.item = $scope.items[0];
-		}
-		n_items = $scope.items.length;
-	}, false);
+	$scope.hideEditor = function(){
+		$scope.item = null;
+	}
 	$scope.onListEditItem = function(i){
+		console.log("edit item");
 		$scope.item = i; 
 		$scope.onEditStart({"$item": i}); 
 	}
@@ -99,9 +94,4 @@ JUCI.app
 		arr.splice(idx + 1, 0, i); 
 		$scope.onItemMoved({ $item: i, $prev_index: idx, $index: idx + 1}); 
 	}
-	
-	$scope.$watch("items", function(){
-		if(!$scope.items ) return;
-		if($scope.items.length > 0) $scope.item = $scope.items[0]; 
-	})
 }); 

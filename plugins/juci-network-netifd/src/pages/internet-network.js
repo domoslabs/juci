@@ -27,19 +27,6 @@ JUCI.app
 			$scope.networks = nets.filter(function(x){ 
 				return x.ifname.value != "lo" 
 			}).map(function(net){ 
-				net.$statusList = [
-					{ label:"some label", value: "some value" },
-					{ label:"some label", value: "some value" },
-					{ label:"some label", value: "some value" },
-					{ label:"some label", value: "some value" },
-					{ label:"some label", value: "some value" }
-				]
-				net.$buttons = [
-					{ label: "fist button", type: "success", on_click: function(){ alert("test " + this.label);} },
-					{ label: "second button", type: "success", on_click: function(){ alert("test " + this.label);} },
-					{ label: "third button", type: "success", on_click: function(){ alert("test " + this.label);} },
-					{ label: "fourth button", type: "success", on_click: function(){ alert("test " + this.label);} }
-				]
 				net.addedDevices = []; 
 				var addedDevices = net.ifname.value.split(" "); 
 				//net.$type_editor = "<network-connection-proto-"+net.type.value+"-edit/>";
@@ -60,6 +47,7 @@ JUCI.app
 					}); 
 				return net; 
 			}); 
+			updateStatus();
 			$scope.$apply(); 
 		}); 
 	}); 
@@ -180,12 +168,45 @@ JUCI.app
 		net.ifname.value = Object.keys(devs).join(" "); 
 		net.addedDevices = Object.keys(devs).map(function(x){ return { label: x, value: x }; }); 
 	}
-	
+	JUCI.interval.repeat("update-connection-information", 5000, function(next){
+		if(!$scope.networks) return;
+		$network.getNetworks().done(function(nets){
+			$scope.networks.map(function(net){
+				var tmp = nets.find(function(n){ return n[".name"] === net[".name"]; });
+				if(tmp && tmp.$info){
+					net.$info = tmp.$info;
+				}
+			});
+			updateStatus();
+			$scope.$apply();
+		}).always(function(){next();});
+	});
+
+	function updateStatus(){
+		if(!$scope.networks) return;
+		$scope.networks.map(function(net){
+			net.$statusList = [
+				{ label: $tr(gettext("Status")), value: (net.$info.pending) ? $tr(gettext("PENDING")) : ((net.$info.up) ? $tr(gettext("UP")) : $tr(gettext("DOWN")))},
+				{ label: $tr(gettext("Device")), value: net.$info.l3_device},
+				{ label: $tr(gettext("Protocol:")), value: net.$info.proto}
+			]
+			if(net.$info && net.$info['ipv4-address'] && net.$info['ipv4-address'].length){
+				net.$info['ipv4-address'].map(function(ipv4){
+					net.$statusList.push({ label: $tr(gettext("IPv4-Address")), value: ipv4.address + "/" + ipv4.mask});
+				});
+			}
+			if(net.$info && net.$info['ipv6-address'] && net.$info['ipv6-address'].length){
+				net.$info['ipv6-address'].map(function(ipv6){
+					net.$statusList.push({ label: $tr(gettext("IPv6-Address")), value: ipv6.address + "/" + ipv6.mask});
+				});
+			}
+		});
+	}
+
 	$scope.onRemoveDevice = function(net, name){
 		console.log("removing device "+name+" from "+net.ifname.value); 
 		var items = net.ifname.value.split(" ").filter(function(x){ return x != name; }); 
 		net.addedDevices = items.map(function(x){ return {label: x, value: x}; }); 
 		net.ifname.value = items.join(" "); 
 	}
-	
 }); 

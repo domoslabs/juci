@@ -2,18 +2,28 @@
 	<div class="row juci-list-editor"> 
 		<div ng-class="{ 'col-xs-12 col-sm-9': !hideButtons, 'col-xs-12': hideButtons }">
 			<i class="fa fa-spinner fa-spin fa-2x" ng-show="!items"></i>
-			<div ng-show="!sortable" class="list-group">
-				<a ng-show="items" href="" class="list-group-item" ng-repeat="i in items track by $index" ng-click="onListEditItem(i)" ng-class="{active: item == i}">{{getItemTitle({"$item": i})}}
-					<i ng-show="showIcon" class="{{getIcon(iconStatus({$item:i}))}}" style="float:right;position:relative;top:-4px;"></i>
-				</a>
-			</div>
-			<div ng-show="sortable" class="list-group">
-				<div ng-show="items" class="list-group-item" ng-repeat="i in items track by $index" ng-class="{active: item == i}">
-					<div class="btn-group pull-right">
-						<button class="btn btn-default btn-xs" ng-click="onMoveUp(i)"><i class="fa fa-caret-up"></i></button>
-						<button class="btn btn-default btn-xs" ng-click="onMoveDown(i)"><i class="fa fa-caret-down"></i></button>
+			<div class="list-group">
+				<div ng-show="items" href="" class="list-group-item row" style="padding: 0 15px;" ng-repeat="i in items track by $index" ng-class="{active: item === i}">
+					<div ng-click="onListEditItem(i)" class="row" style="position:relative;width:100%;margin:0px;padding: 10px 0 10px 0; text-align: left; cursor:pointer;">
+						<h3>{{getItemTitle({"$item": i })}}</h3>
+						<i ng-show="showIcon" class="{{getIcon(iconStatus({$item:i}))}}" style="float:right;position:relative;top:-40px;"></i>
 					</div>
-					<a href=""  ng-click="onListEditItem(i)" style="text-decoration: none !important; outline: 0; color: inherit; display: block; width: 100%;" >{{getItemTitle({"$item": i})}}</a>
+					<div class="content" ng-hide="item">
+						<div class="col-xs-12 col-sm-9">
+							<div class="row" ng-repeat="status in i.$statusList track by $index">
+								<div class="col-xs-12 col-sm-6">{{status.label}}</div>
+								<label class="col-xs-12 col-sm-6">{{status.value}}</label>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-3">
+							<button class="btn btn-default" style="width:100%;margin-bottom:5px;" ng-click="onListEditItem(i)">{{'Edit'|translate}}</button>
+							<button class="btn btn-default" ng-show="sortable" style="width:100%;margin-bottom:5px;" ng-click="onMoveUp(i)">{{'Move Up'|translate}}</button>
+							<button class="btn btn-default" ng-show="sortable" style="width:100%;margin-bottom:5px;" ng-click="onMoveDown(i)">{{'Move down'|translate}}</button>
+							<button ng-repeat="button in i.$buttons track by $index" style="width:100%;margin-bottom:5px;" style="margin:5px;" class="btn btn-{{buttons.type || 'default'}}" ng-click="button.on_click()">	
+								{{button.label}}
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -31,6 +41,7 @@
 	<div style="clear: both; margin-top: 10px;"></div>
 	<hr class="visible-xs-block" style="color:grey;" />
 	<div ng-show="item">
+		<button class="btn btn-default" style="margin-bottom: 5px;" ng-click="hideEditor()">hide Editor</button>
 		<div dynamic="dynamicHtml"/>
 	</div>
 </div>
