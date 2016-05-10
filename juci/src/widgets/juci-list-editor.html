@@ -43,7 +43,7 @@
 	<div style="clear: both; margin-top: 10px;"></div>
 	<hr class="visible-xs-block" style="color:grey;" />
 	<div ng-show="item">
-		<button class="btn btn-default" style="margin-bottom: 5px;" ng-click="hideEditor()">hide Editor</button>
+		<button class="btn btn-default" ng-show="editor" style="margin-bottom: 5px;" ng-click="hideEditor()">hide Editor</button>
 		<div dynamic="dynamicHtml"/>
 	</div>
 </div>
