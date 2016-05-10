@@ -27,6 +27,10 @@
 				"network.interface": [
 					"dump"
 				], 
+				"network.interface.*": [
+					"up",
+					"down"
+				], 
 				"router": [
 					"networks",
 					"usb",

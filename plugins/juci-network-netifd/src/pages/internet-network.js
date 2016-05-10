@@ -169,7 +169,10 @@ JUCI.app
 		net.addedDevices = Object.keys(devs).map(function(x){ return { label: x, value: x }; }); 
 	}
 	JUCI.interval.repeat("update-connection-information", 5000, function(next){
-		if(!$scope.networks) return;
+		if(!$scope.networks){
+			next();
+			return;
+		}
 		$network.getNetworks().done(function(nets){
 			$scope.networks.map(function(net){
 				var tmp = nets.find(function(n){ return n[".name"] === net[".name"]; });
@@ -182,22 +185,14 @@ JUCI.app
 		}).always(function(){next();});
 	});
 	var onConnect = function(iface){
-		console.log("test");
-		console.log(iface);
 		if(!$rpc.network || !$rpc.network.interface || 
 			!$rpc.network.interface[iface[".name"]] || !$rpc.network.interface[iface[".name"]].up) return;
 		$rpc.network.interface[iface[".name"]].up()
-		console.log("up");
 	}
 	var onDisconnect = function(iface){
 		if(!$rpc.network || !$rpc.network.interface || 
 			!$rpc.network.interface[iface[".name"]] || !$rpc.network.interface[iface[".name"]].down) return;
-		$rpc.network.interface[iface[".name"]].down().done(function(){
-			console.log("down succeded");
-		}).fail(function(error){
-			console.log("down failed");
-			console.log(error);
-		});
+		$rpc.network.interface[iface[".name"]].down();
 	}
 
 	function updateStatus(){
