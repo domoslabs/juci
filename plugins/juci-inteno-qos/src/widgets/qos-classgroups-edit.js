@@ -25,9 +25,6 @@ JUCI.app
 			return addedClassNames.indexOf(x.value) === -1;
 		});
 
-
-
-
 		$scope.delClassFromGroup = function(className){ 
 			$scope.instance.classes.value = $scope.instance.classes.value.filter(function(c){
 				return c !== className
@@ -36,9 +33,6 @@ JUCI.app
 		$scope.addClassToGroup = function(className){
 			$scope.instance.classes.value = $scope.instance.classes.value.concat([className]);
 		};
-
-
-
 
 		$scope.reloadClasses = function(){
 			$scope.addedClasses = $scope.instance.classes.value.map(function(c){
