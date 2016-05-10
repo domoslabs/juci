@@ -107,14 +107,24 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 	Wireless.prototype.getDevices = function(){
 		var deferred = $.Deferred(); 
 		$uci.$sync("wireless").done(function(){
-			$uci.wireless["@wifi-device"].map(function(x){
-				// TODO: this should be a uci "displayname" or something
-				// TODO: actually this should be based on wireless ubus call field
-				if(x.band.value == "a") x[".frequency"] = gettext("5GHz"); 
-				else if(x.band.value == "b") x[".frequency"] = gettext("2.4GHz"); 
-			}); 
-			deferred.resolve($uci.wireless["@wifi-device"]); 
-		}); 
+			$rpc.router.radios().done(function(radios){
+				var devices = $uci.wireless["@wifi-device"].map(function(dev){
+					var radio = radios[dev[".name"]];
+					if(radio){
+						dev.$info = radio;
+						dev[".frequency"] = radio.frequency || ((dev.band.value === 'a') ? gettext("5GHz") : gettext("2.4GHz"));
+					}else{
+						dev[".frequency"] = (dev.band.value === 'a') ? gettext("5GHz") : gettext("2.4GHz");
+					}
+					return dev;
+				});
+				deferred.resolve(devices); 
+			}).fail(function(){ 
+				deferred.reject("ubus call router radios was not found"); 
+			});
+		}).fail(function(){
+			deferred.reject("could not read uci wireless config");
+		});
 		return deferred.promise(); 
 	}
 

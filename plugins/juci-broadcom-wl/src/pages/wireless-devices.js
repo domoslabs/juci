@@ -17,9 +17,24 @@
  */
 
 JUCI.app
-.controller("wirelessDevicesPage", function($scope, $uci, $wireless){
-	$wireless.getDevices().done(function(devices){
-		$scope.devices = devices; 
-		$scope.$apply(); 
-	}); 
+.controller("wirelessDevicesPage", function($tr, gettext, $scope, $uci, $wireless){
+	JUCI.interval.repeat("update-radios-information", 5000, function(done){
+		$wireless.getDevices().done(function(devices){
+			$scope.devices = devices.map(function(dev){
+				dev.$statusList = [
+					{ label: $tr(gettext("Bandwidth")), value: dev.$info.bandwidth || $tr(gettext("N/A")) },
+					{ label: $tr(gettext("Channel")), value: dev.$info.channel || $tr(gettext("N/A")) },
+					{ label: $tr(gettext("Noise")), value: dev.$info.noise + $tr(gettext("dBm")) || $tr(gettext("N/A")) },
+					{ label: $tr(gettext("Rate")), value: dev.$info.rate || $tr(gettext("N/A")) },
+				]
+				dev.$buttons =  [
+					{ label: (dev.$info && dev.$info.isup) ? $tr(gettext("Disable")) : $tr(gettext("Enable")), on_click: function(){dev.disabled.value = !dev.disabled.value;} }
+				]
+				return dev;
+			});
+			$scope.$apply(); 
+		}).always(function(){
+			done();
+		}); 
+	});
 }); 

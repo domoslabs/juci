@@ -4,6 +4,7 @@
 		<juci-config-info>{{ 'wifi.radios.info' | translate }}</juci-config-info>
 		<juci-config-section>
 			<juci-list-editor ng-items="devices" item-editor="uci-wireless-device-edit" 
+				show-icon="true" icon-status="$item.$info.isup ? 'online' : 'offline'"
 				on-create="onCreateDevice()" on-delete="onDeleteDevice($item)" 
 				get-item-title="$item['.name'] + ' (' + $item['.frequency'] + ')'" hide-buttons="true"></juci-list-editor>
 		</juci-config-section>
