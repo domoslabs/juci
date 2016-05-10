@@ -19,18 +19,18 @@
  */
 
 JUCI.app
-.directive("qosSettingsEdit", function(){
+.directive("qosClassifyEdit", function(){
 	return {
-		templateUrl: "/widgets/qos-settings-edit.html",
+		templateUrl: "/widgets/qos-classify-edit.html",
 		scope: {
 			rule: "=ngModel"
 		},
-		controller: "qosSettingsEdit",
+		controller: "qosClassifyEdit",
 		replace: true,
 		require: "^ngModel"
 	};
 })
-.controller("qosSettingsEdit", function($scope, $uci, $tr, gettext, $network, intenoQos){
+.controller("qosClassifyEdit", function($scope, $uci, $tr, gettext, $network, intenoQos){
 	$scope.data = {
 		ports: []
 	};

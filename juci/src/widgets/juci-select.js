@@ -29,6 +29,7 @@ JUCI.app
 			checkbox: "@",
 			enabled: "=",
 			onChange: "&", 
+			onClick: "&", 
 			placeholder: "@"
 		}, 
 		require: ["^ngModel", "?placeholder"], 

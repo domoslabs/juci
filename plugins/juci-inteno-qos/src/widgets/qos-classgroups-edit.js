@@ -10,21 +10,52 @@ JUCI.app
 		require: "^ngModel"
 	};
 })
-.controller("qosClassgroupsCtrl", function($scope, $uci){
+.controller("qosClassgroupsCtrl", function($scope, $uci, $tr){
 	$uci.$sync("qos").done(function(){
-		/*$scope.classgroups = $uci.qos["@classgroup"].map(function(c){
+
+		$scope.dummy = {value:""};
+		$scope.addedClasses = $scope.instance.classes.value.map(function(c){
+			return { value: c, label: c };
+		});
+		$scope.allClasses = $uci.qos["@class"].map(function(c){
 			return { value: c[".name"], label: c[".name"] };
 		});
-		*/
-		$scope.classes = $uci.qos["@class"].map(function(c){
-			return { text: c[".name"], value: c[".name"], label: c[".name"] };
+		var addedClassNames = $scope.addedClasses.map(function(x){ return x.value; });
+		$scope.unAddedClasses = $scope.allClasses.filter(function(x){
+			return addedClassNames.indexOf(x.value) === -1;
 		});
 
-//		$scope.lista = [ {text:"HEJ"},{text:"PA"},{text:"deJ"} ];
-//		console.log($scope.instance.classes.value);
+
+
+
+		$scope.delClassFromGroup = function(className){ 
+			$scope.instance.classes.value = $scope.instance.classes.value.filter(function(c){
+				return c !== className
+			});
+		};
+		$scope.addClassToGroup = function(className){
+			$scope.instance.classes.value = $scope.instance.classes.value.concat([className]);
+		};
+
+
+
+
+		$scope.reloadClasses = function(){
+			$scope.addedClasses = $scope.instance.classes.value.map(function(c){
+				return { value: c, label: c };
+			});
+			$scope.allClasses = $uci.qos["@class"].map(function(c){
+				return { value: c[".name"], label: c[".name"] };
+			});
+
+			var addedClassNames = $scope.addedClasses.map(function(x){ return x.value; });
+			$scope.unAddedClasses = $scope.allClasses.filter(function(x){
+				return addedClassNames.indexOf(x.value) === -1;
+			});
+		}
+
 
 
 		$scope.$apply();
 	});
-
 });

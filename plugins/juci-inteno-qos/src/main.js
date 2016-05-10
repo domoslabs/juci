@@ -28,7 +28,7 @@ UCI.qos.$registerSectionType("classify", {
 	"proto":	{ dvalue: '', type: String }
 });
 UCI.qos.$registerSectionType("classgroup", {
-	"classes":	{ dvalue: 'Priority Express Normal Bulk', type: Array},
+	"classes":	{ dvalue: ['Priority', 'Express', 'Normal', 'Bulk'], type: Array},
 	"default": 	{ dvalue: 'Normal', type: String }
 });
 UCI.qos.$registerSectionType("interface", {
