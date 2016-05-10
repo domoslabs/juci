@@ -799,7 +799,17 @@
 			$rpc.uci.order({ 
 				config: self[".name"], 
 				sections: order
-			}).done(function(){ def.resolve(); }).fail(function(){ def.reject(); });
+			}).done(function(){ 
+				$rpc.uci.commit({
+					config: self[".name"]
+				}).done(function(){
+					def.resolve();
+				}).fail(function(){
+					def.reject();
+				});
+			}).fail(function(){ 
+				def.reject(); 
+			});
 			return def.promise(); 
 		}
 		

@@ -32,7 +32,6 @@ JUCI.app
 		return item.name.value || item[".name"]; 
 	}
 	
-	
 	$scope.onCreateRule = function(){
 		$uci.firewall.$create({
 			".type": "rule", 
@@ -41,6 +40,10 @@ JUCI.app
 		}).done(function(){
 			$scope.$apply(); 
 		}); 
+	}
+	$scope.onItemMoved = function(){
+		if(!$uci.firewall) return;
+		$uci.firewall.$save_order("rule").done(function(){console.log("saved");});
 	}
 	
 	$scope.onDeleteRule = function(rule){
