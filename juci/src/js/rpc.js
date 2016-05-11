@@ -28,6 +28,7 @@
 	var METHODS = {};
 	var RPC_QUERY_IDS = {};
 	var rpc_query_id = 1;
+	var ws;
 	
 	var gettext = function(text){ return text; }; 
 	
@@ -78,25 +79,13 @@
 				method,
 				data
 			],
-			id: rpc_query_id++;
+			id: rpc_query_id++
 		};
 
 		RPC_QUERY_IDS[jsonrrpc_obj.id] = RPC_CACHE[key];
 
-		this.ws.send(JSON.stringify(jsonrrpc_obj));
+		ws.send(JSON.stringify(jsonrrpc_obj));
 
-		/*
-		// setup default rpcs
-		$.jsonRPC.withOptions({
-			namespace: "", 
-			endPoint: RPC_HOST+"/ubus"
-		}, function(){	 
-			//var sid = "00000000000000000000000000000000"; 
-			this.request(type, {
-				params: [ RPC_SESSION_ID, object, method, data],
-				success: 			})
-		});
-		*/
 		return RPC_CACHE[key].deferred.promise(); 
 	}
 	
@@ -262,8 +251,8 @@
 			var deferred = $.Deferred(); 
 			default_calls.map(function(x){ self.$register(x); }); 
 			// request list of all methods and construct rpc object containing all of the methods in javascript.
-			self.$init_websocket(window.location).done(function(ws) {
-				self.ws = ws;
+			self.$init_websocket(window.location).done(function(ws_result) {
+				ws = ws_result;
 				rpc_request("list", "*", "", {}).done(function(result){
 					//alert(JSON.stringify(result));
 					Object.keys(result).map(function(obj){
@@ -297,7 +286,7 @@
 
 			ws.onopen = function(ev) {
 				console.log("Connected " + ws.readyState);
-				deferred.resolve(ws);;
+				deferred.resolve(ws);
 			};
 			// response_should look like this
 			// { jsonrpc: 2.0, id: 234, result: [retcode, {...data...}], }
@@ -355,19 +344,20 @@
 				return;
 			};
 
-			ws.onerror: function(result){
+			ws.onerror = function(result){
 				if(DEBUG_MODE)console.error("RPC error ("+object+"."+method+"): "+JSON.stringify(result));
 				if(result && result.error){
 					RPC_CACHE[key].deferred.reject(result.error);
 				}
 			}
-			w.onclose = function(e) {
+			ws.onclose = function(e) {
 				console.log( "Close(" + e.reason + ")");
 				// TODO reinit everything, reload, ...
 			};
 
 			return deferred.promise();
-		};
+		}
+	}
 	
 	scope.UBUS = scope.$rpc = rpc; 
 	
