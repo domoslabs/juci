@@ -26,6 +26,8 @@
 	var RPC_SESSION_ID = scope.localStorage.getItem("sid")||RPC_DEFAULT_SESSION_ID; 
 	var RPC_CACHE = {}; 
 	var METHODS = {};
+	var RPC_QUERY_IDS = {};
+	var rpc_query_id = 1;
 	
 	var gettext = function(text){ return text; }; 
 	
@@ -36,12 +38,18 @@
 		"local.set_rpc_host"
 	]; 
 	
-	function rpc_request(type, namespace, method, data){
-		if(DEBUG_MODE > 1)console.log("UBUS " + type + " " + namespace + " " + method);
+	// type = "sonrpc mehod parameter (i.e. call, list, ...
+	// object = ubus object
+	// method = ubus method
+	// data = ubus parameters
+	//
+	// {jsonrpc..., method: type, [ RPC_SESSION_D , namespace, method, { ... data ...  } }
+	function rpc_request(type, object, method, data){
+		if(DEBUG_MODE > 1)console.log("UBUS " + type + " " + object + " " + method);
 		var sid = ""; 
 		
 		// check if the request has been made only recently with same parameters
-		var key = namespace+method+JSON.stringify(data); 
+		var key = object+method+JSON.stringify(data);
 		if(!RPC_CACHE[key]){
 			RPC_CACHE[key] = {}; 
 		}
@@ -61,6 +69,23 @@
 		}); 
 		RPC_CACHE = retain; 
 
+		var jsonrrpc_obj = {
+			jsonrpc: "2.0",
+			method: type,
+			params: [
+				RPC_SESSION_ID,
+				object,
+				method,
+				data
+			],
+			id: rpc_query_id++;
+		};
+
+		RPC_QUERY_IDS[jsonrrpc_obj.id] = RPC_CACHE[key];
+
+		this.ws.send(JSON.stringify(jsonrrpc_obj));
+
+		/*
 		// setup default rpcs
 		$.jsonRPC.withOptions({
 			namespace: "", 
@@ -68,50 +93,10 @@
 		}, function(){	 
 			//var sid = "00000000000000000000000000000000"; 
 			this.request(type, {
-				params: [ RPC_SESSION_ID, namespace, method, data],
-				success: function(result){
-					if(result.result instanceof Array && result.result[0] != 0){ // || result.result[1] == undefined) {
-						function _errstr(error){
-							switch(error){
-								case 0: return gettext("OK"); 
-								case 1: return gettext("Invalid command"); 
-								case 2: return gettext("Invalid parameters"); 
-								case 3: return gettext("Method not found"); 
-								case 4: return gettext("Object not found"); 
-								case 5: return gettext("No data"); 
-								case 6: return gettext("Access denied"); 
-								case 7: return gettext("Timed out"); 
-								case 8: return gettext("Not supported"); 
-								case 9: return gettext("Unknown error"); 
-								case 10: return gettext("Connection failed"); 
-								default: return gettext("RPC error #")+result.result[0]+": "+result.result[1]; 
-							}
-						}
-						if(DEBUG_MODE)console.log("RPC succeeded ("+namespace+"."+method+"), but returned error: "+JSON.stringify(result)+": "+_errstr(result.result[0]));
-						RPC_CACHE[key].deferred.reject(_errstr(result.result[0])); 
-						return; 
-					}
-
-					//console.log("SID: "+sid + " :: "+ JSON.stringify(result)); 
-					RPC_CACHE[key].time = new Date();
-					// valid rpc response is either [code,{result}] or just {result}
-					// we handle both! (if code == 0 it means success. We already check for errors above) 
-					if(result.result instanceof Array){	
-						RPC_CACHE[key].data = result.result[1];
-						RPC_CACHE[key].deferred.resolve(result.result[1]);
-					} else {
-						RPC_CACHE[key].data = result.result; 
-						RPC_CACHE[key].deferred.resolve(result.result); 
-					}
-				}, 
-				error: function(result){
-					if(DEBUG_MODE)console.error("RPC error ("+namespace+"."+method+"): "+JSON.stringify(result));
-					if(result && result.error){
-						RPC_CACHE[key].deferred.reject(result.error);  
-					}
-				}
-			})
+				params: [ RPC_SESSION_ID, object, method, data],
+				success: 			})
 		});
+		*/
 		return RPC_CACHE[key].deferred.promise(); 
 	}
 	
@@ -305,30 +290,84 @@
 			console.log("connecting to " + host);
 			try {
 				var ws = new WebSocket(host, "ubus-json");
-
-				ws.onopen = function(ev) {
-					console.log("Connected " + ws.readyState);
-					deferred.resolve(ws);;
-				};
-				ws.onmessage = function(ev) {
-					// TODO
-					console.log("Received " + ev.data);
-				};
-				ws.onerror = function(e) {
-					deferred.reject("Exception " + e.reason);
-				};
-				w.onclose = function(e) {
-					console.log( "Close(" + e.reason + ")");
-					// TODO reinit everything, reload, ...
-				};
-
 			} catch (exc) {
 				deferred.reject("Exception " + exc.message);
+				return;
 			}
 
+			ws.onopen = function(ev) {
+				console.log("Connected " + ws.readyState);
+				deferred.resolve(ws);;
+			};
+			// response_should look like this
+			// { jsonrpc: 2.0, id: 234, result: [retcode, {...data...}], }
+			ws.onmessage = function(response_str) {
+				var response_obj;
+				var query_deferred;
+				try {
+					response_obj = JSON.parse(response_str);
+					query_deferred = RPC_QUERY_IDS[response_obj.id];
+					if (query_deferred === undefined) {
+						throw { message: "no id" };
+					}
+				} catch (err) {
+					console.log("Warning: invalid json response recved");
+					return;
+				}
+
+				delete RPC_QUERY_IDS[response_obj.id];
+
+				if(response_obj.result instanceof Array && result.result[0] != 0) {
+					function _errstr(error){
+						switch(error){
+						case 0: return gettext("OK");
+						case 1: return gettext("Invalid command");
+						case 2: return gettext("Invalid parameters");
+						case 3: return gettext("Method not found");
+						case 4: return gettext("Object not found");
+						case 5: return gettext("No data");
+						case 6: return gettext("Access denied");
+						case 7: return gettext("Timed out");
+						case 8: return gettext("Not supported");
+						case 9: return gettext("Unknown error");
+						case 10: return gettext("Connection failed");
+						default: return gettext("RPC error #")+result.result[0]+": "+result.result[1];
+						}
+					}
+					if(DEBUG_MODE)console.log("RPC succeeded ("+object+"."+method+"), but returned error: "+JSON.stringify(result)+": "+_errstr(result.result[0]));
+					query_deferred.deferred.reject(_errstr(result.result[0]));
+					return;
+				}
+
+				//console.log("SID: "+sid + " :: "+ JSON.stringify(result));
+				query_deferred.time = Date.now();
+				// valid rpc response is either [code,{result}]
+				// if code == 0 it means success. We already check for errors above)
+				if(result.result instanceof Array) {
+					query_deferred.data = result.result[1];
+					query_deferred.deferred.resolve(result.result[1]);
+					return;
+				}
+
+				var msg = "Warning: non-array result in JSONRPC response";
+				console.log(msg);
+				query_deferred.deferred.reject(msg);
+				return;
+			};
+
+			ws.onerror: function(result){
+				if(DEBUG_MODE)console.error("RPC error ("+object+"."+method+"): "+JSON.stringify(result));
+				if(result && result.error){
+					RPC_CACHE[key].deferred.reject(result.error);
+				}
+			}
+			w.onclose = function(e) {
+				console.log( "Close(" + e.reason + ")");
+				// TODO reinit everything, reload, ...
+			};
+
 			return deferred.promise();
-		}
-	}; 
+		};
 	
 	scope.UBUS = scope.$rpc = rpc; 
 	
