@@ -272,22 +272,61 @@
 			if(host) {
 				if(host.host) RPC_HOST = host.host;
 			} 
+			console.log("init called with host " + host + ", RPC_HOST = " + RPC_HOST);
 			if(DEBUG_MODE)console.log("Init UBUS -> "+RPC_HOST); 
 			var deferred = $.Deferred(); 
 			default_calls.map(function(x){ self.$register(x); }); 
-			// request list of all methods and construct rpc object containing all of the methods in javascript. 
-			rpc_request("list", "*", "", {}).done(function(result){
-				//alert(JSON.stringify(result)); 
-				Object.keys(result).map(function(obj){
-					Object.keys(result[obj]).map(function(method){
-						self.$register(obj, method); 
-					}); 
-				}); 
-				deferred.resolve(); 
-			}).fail(function(){
-				deferred.reject(); 
-			}); 
-			return deferred.promise(); 
+			// request list of all methods and construct rpc object containing all of the methods in javascript.
+			self.$init_websocket(window.location).done(function(ws) {
+				self.ws = ws;
+				rpc_request("list", "*", "", {}).done(function(result){
+					//alert(JSON.stringify(result));
+					Object.keys(result).map(function(obj){
+						Object.keys(result[obj]).map(function(method){
+							self.$register(obj, method);
+						});
+					});
+					deferred.resolve();
+				}).fail(function(){
+					console.log("ubus list failed");
+					deferred.reject();
+				});
+			}).fail(function(emsg) {
+				console.log("ws failed " + emsg);
+				deferred.reject(emsg);
+			});
+			return deferred.promise();
+		},
+		$init_websocket: function(host){
+			var self = this;
+			var deferred = $.Deferred();
+			if(DEBUG_MODE)console.log("Init WS -> "+host);
+			host = host.replace(/^http/);
+			console.log("connecting to " + host);
+			try {
+				var ws = new WebSocket(host, "ubus-json");
+
+				ws.onopen = function(ev) {
+					console.log("Connected " + ws.readyState);
+					deferred.resolve(ws);;
+				};
+				ws.onmessage = function(ev) {
+					// TODO
+					console.log("Received " + ev.data);
+				};
+				ws.onerror = function(e) {
+					deferred.reject("Exception " + e.reason);
+				};
+				w.onclose = function(e) {
+					console.log( "Close(" + e.reason + ")");
+					// TODO reinit everything, reload, ...
+				};
+
+			} catch (exc) {
+				deferred.reject("Exception " + exc.message);
+			}
+
+			return deferred.promise();
 		}
 	}; 
 	
