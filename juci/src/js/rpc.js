@@ -246,12 +246,11 @@
 			if(host) {
 				if(host.host) RPC_HOST = host.host;
 			} 
-			console.log("init called with host " + host + ", RPC_HOST = " + RPC_HOST);
-			if(DEBUG_MODE)console.log("Init UBUS -> "+RPC_HOST); 
+			if(DEBUG_MODE)console.log("Init UBUS ->");
 			var deferred = $.Deferred(); 
 			default_calls.map(function(x){ self.$register(x); }); 
 			// request list of all methods and construct rpc object containing all of the methods in javascript.
-			self.$init_websocket(window.location).done(function(ws_result) {
+			self.$init_websocket(window.location.origin).done(function(ws_result) {
 				ws = ws_result;
 				rpc_request("list", "*", "", {}).done(function(result){
 					//alert(JSON.stringify(result));
@@ -275,13 +274,12 @@
 			var self = this;
 			var deferred = $.Deferred();
 			if(DEBUG_MODE)console.log("Init WS -> "+host);
-			host = host.replace(/^http/);
+			host = host.replace(/^http/, 'ws');
 			console.log("connecting to " + host);
 			try {
 				var ws = new WebSocket(host, "ubus-json");
 			} catch (exc) {
-				deferred.reject("Exception " + exc.message);
-				return;
+				return deferred.reject("Exception " + exc.message);
 			}
 
 			ws.onopen = function(ev) {
@@ -290,11 +288,11 @@
 			};
 			// response_should look like this
 			// { jsonrpc: 2.0, id: 234, result: [retcode, {...data...}], }
-			ws.onmessage = function(response_str) {
+			ws.onmessage = function(response_event) {
 				var response_obj;
 				var query_deferred;
 				try {
-					response_obj = JSON.parse(response_str);
+					response_obj = JSON.parse(response_event.data);
 					query_deferred = RPC_QUERY_IDS[response_obj.id];
 					if (query_deferred === undefined) {
 						throw { message: "no id" };
@@ -304,9 +302,11 @@
 					return;
 				}
 
+				console.log(response_obj);
+
 				delete RPC_QUERY_IDS[response_obj.id];
 
-				if(response_obj.result instanceof Array && result.result[0] != 0) {
+				if(response_obj.result instanceof Array && response_obj.result[0] != 0) {
 					function _errstr(error){
 						switch(error){
 						case 0: return gettext("OK");
@@ -320,21 +320,21 @@
 						case 8: return gettext("Not supported");
 						case 9: return gettext("Unknown error");
 						case 10: return gettext("Connection failed");
-						default: return gettext("RPC error #")+result.result[0]+": "+result.result[1];
+						default: return gettext("RPC error #")+response_obj.result[0]+": "+response_obj.result[1];
 						}
 					}
-					if(DEBUG_MODE)console.log("RPC succeeded ("+object+"."+method+"), but returned error: "+JSON.stringify(result)+": "+_errstr(result.result[0]));
-					query_deferred.deferred.reject(_errstr(result.result[0]));
+					if(DEBUG_MODE)console.log("RPC succeeded ("+object+"."+method+"), but returned error: "+JSON.stringify(response_obj)+": "+_errstr(response_obj.result[0]));
+					query_deferred.deferred.reject(_errstr(response_obj.result[0]));
 					return;
 				}
 
-				//console.log("SID: "+sid + " :: "+ JSON.stringify(result));
+				//console.log("SID: "+sid + " :: "+ JSON.stringify(response_obj));
 				query_deferred.time = Date.now();
 				// valid rpc response is either [code,{result}]
 				// if code == 0 it means success. We already check for errors above)
-				if(result.result instanceof Array) {
-					query_deferred.data = result.result[1];
-					query_deferred.deferred.resolve(result.result[1]);
+				if(response_obj.result instanceof Array) {
+					query_deferred.data = response_obj.result[1];
+					query_deferred.deferred.resolve(response_obj.result[1]);
 					return;
 				}
 
