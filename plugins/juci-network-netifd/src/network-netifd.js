@@ -29,7 +29,7 @@
 			$rpc.$call("router", "clients").done(function(res){
 				sync_hosts.done(function(){
 					if(res){
-						self.clients = Object.keys(res).map(function(x){return res[x];}).map(function(cl){
+						var clients = Object.keys(res).map(function(x){return res[x];}).map(function(cl){
 							// update clients with some extra information from hosts database
 							var key = cl.macaddr.replace(/:/g, "_"); 
 							if($uci.hosts[key]) {
@@ -40,7 +40,7 @@
 							}
 							return cl; 
 						}); 
-						deferred.resolve(self.clients);  
+						deferred.resolve(clients);
 					} else {
 						deferred.reject(); 
 					}

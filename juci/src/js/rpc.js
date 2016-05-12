@@ -71,7 +71,7 @@
 		}); 
 		RPC_CACHE = retain; 
 
-		var jsonrrpc_obj = {
+		var jsonrpc_obj = {
 			jsonrpc: "2.0",
 			method: type,
 			params: [
@@ -79,13 +79,16 @@
 				object,
 				method,
 				data
-			],
+			].filter(function(param){ return param !== undefined; }),
 			id: rpc_query_id++
 		};
 
-		RPC_QUERY_IDS[jsonrrpc_obj.id] = RPC_CACHE[key];
+		RPC_QUERY_IDS[jsonrpc_obj.id] = RPC_CACHE[key];
 
-		ws.send(JSON.stringify(jsonrrpc_obj));
+		console.log("sending ");
+		console.log(jsonrpc_obj);
+
+		ws.send(JSON.stringify(jsonrpc_obj));
 
 		return RPC_CACHE[key].deferred.promise(); 
 	}
@@ -178,12 +181,6 @@
 		$registerEventHandler: function(func){
 			EVENT_HANDLER = func;
 		},
-		$registerEvent: function(evtype){
-
-		},
-		$unregisterEvent: function(tupe){
-
-		},
 		$register: function(object, method){
 			// console.log("registering: "+object+", method: "+method); 
 			if(!object || !method) return; 
@@ -211,14 +208,24 @@
 			if(object.startsWith("/")) npath = object.substring(1); 
 			_find(npath.split(/[\.\/]/), method, METHODS); 
 		}, 
+		$registerEvent: function(evtype){
+			// {"jsonrpc":"2.0","id":234, "method":"subscribe", "params": [ "SESSION_ID", "foo.*"]}
+			return rpc_request("subscribe", evtype);
+		},
+		$unregisterEvent: function(evtype){
+			// {"jsonrpc":"2.0","id":234, "method":"unsubscribe", "params": [ "SESSION_ID", "foo.*"]}
+			return rpc_request("unsubscribe", evtype);
+		},
 		$list: function(){
-			return rpc_request("list", "*", "", {}); 
+			// {"jsonrpc":"2.0","id":234, "method":"list", "params": [ <ignored>, "pattern*" ]} -> ubus list pattern*
+			// {"jsonrpc":"2.0","id":234, "method":"list", "params": [ <ignored> ]} -> ubus list
+			return rpc_request("list", "*");
 		},
 		$isConnected: function(){
 			// we do a simple list request. If it fails then we assume we do not have a proper connection to the router
 			var self = this; 
 			var deferred = $.Deferred(); 
-			rpc_request("list", "*", "", {}).done(function(result){
+			self.$list().done(function(result){
 				deferred.resolve(); 
 			}).fail(function(){
 				deferred.reject(); 
@@ -262,7 +269,7 @@
 			// request list of all methods and construct rpc object containing all of the methods in javascript.
 			self.$init_websocket(window.location.origin).done(function(ws_result) {
 				ws = ws_result;
-				rpc_request("list", "*", "", {}).done(function(result){
+				self.$list().done(function(result){
 					//alert(JSON.stringify(result));
 					Object.keys(result).map(function(obj){
 						Object.keys(result[obj]).map(function(method){
@@ -315,6 +322,8 @@
 					console.log("Warning: invalid json response recved: " + response_event.data);
 					return;
 				}
+				console.log("recved: ");
+				console.log(response_obj);
 
 				if (response_obj.id && !response_obj.method) {
 					var query_deferred = RPC_QUERY_IDS[response_obj.id];
@@ -326,25 +335,25 @@
 					delete RPC_QUERY_IDS[response_obj.id];
 
 					if (response_obj.error) {
-						query_deferred.reject(response_event.data);
+						query_deferred.deferred.reject(response_event.data);
 						return;
 					}
 
 					handle_call_result(response_obj.result, query_deferred);
 					return;
 				} else if (response_obj.method) {
-					if (response.obj.method !== "event") {
+					if (response_obj.method !== "event") {
 						console.log("Warning: received json method which is not 'event'");
 						console.log(response_obj);
 						return;
 					}
-					if(EVENT_CALLBACK && typeof EVENT_CALLBACK === "function"){
-						EVENT_CALLBACK(response_obj.params);
+					if(EVENT_HANDLER && typeof EVENT_HANDLER === "function"){
+						EVENT_HANDLER(response_obj.params);
 					}
 					return;
 				}
 
-				function handle_call_result(call_result, deferred) {
+				function handle_call_result(call_result, query_deferred) {
 
 					if(call_result instanceof Array && call_result[0] != 0) {
 						function _errstr(error){

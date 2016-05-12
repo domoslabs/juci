@@ -33,7 +33,7 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("overviewWidgetNetwork", function($scope, $firewall, $tr, gettext, $juciDialog, $uci, $rpc, $events){
+.controller("overviewWidgetNetwork", function($scope, $firewall, $tr, gettext, $juciDialog, $uci, $events){
 	$scope.defaultHostName = $tr(gettext("Unknown"));
 	$scope.model = {};
 	$scope.lanNetworks = [];

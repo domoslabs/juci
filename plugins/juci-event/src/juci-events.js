@@ -24,7 +24,7 @@
 	}
 	EventManager.prototype.removeAll = function(){
 		Object.keys(this.callbacks).map(function(type){
-			$rpc.unregisterEvent(tupe);
+			$rpc.$unregisterEvent(type);
 			//TODO: handle errors
 		});
 		this.callbacks = {};
@@ -32,7 +32,7 @@
 	EventManager.prototype.subscribe = function(type, callback){
 		if(!this.callbacks[type]){
 		   	this.callbacks[type] = [];
-			$rpc.registerEvent(type);
+			$rpc.$registerEvent(type);
 			//TODO: handle errors
 		}
 		this.callbacks[type].push(callback); 
@@ -41,12 +41,12 @@
 	
 	JUCI.app.run(function($rpc){
 		var self = JUCI.events;
-		$rpc.registerEventHandler(function(e){
-			if (!ev || !ev.type) {
+		$rpc.$registerEventHandler(function(e){
+			if (!e || !e.type) {
 				return;
 			}
-			self.callbacks[ev.type].map(Function(cb){
-				if(cb && typeof cb === "function") cb(ev);
+			self.callbacks[e.type].map(function(cb){
+				if(cb && typeof cb === "function") cb(e);
 			});
 		});
 	}); 
