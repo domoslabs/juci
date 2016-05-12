@@ -26,6 +26,7 @@
 	var RPC_SESSION_ID = scope.localStorage.getItem("sid")||RPC_DEFAULT_SESSION_ID; 
 	var RPC_CACHE = {}; 
 	var METHODS = {};
+	var EVENT_HANDLER;
 	var RPC_QUERY_IDS = {};
 	var rpc_query_id = 1;
 	var ws;
@@ -174,6 +175,15 @@
 			}); 
 			return deferred.promise(); 
 		},
+		$registerEventHandler: function(func){
+			EVENT_HANDLER = func;
+		},
+		$registerEvent: function(evtype){
+
+		},
+		$unregisterEvent: function(tupe){
+
+		},
 		$register: function(object, method){
 			// console.log("registering: "+object+", method: "+method); 
 			if(!object || !method) return; 
@@ -286,62 +296,93 @@
 				console.log("Connected " + ws.readyState);
 				deferred.resolve(ws);
 			};
-			// response_should look like this
-			// { jsonrpc: 2.0, id: 234, result: [retcode, {...data...}], }
+			// response_should look like this:
+			// a) if it's response to a call
+			//   { jsonrpc: 2.0, id: 234, result: [retcode, {...data...}], }
+			// b) if it's an event
+			//   { jsonrpc: 2.0, method:"event",
+			//     params {
+			//       "type": "network.client",
+			//       "data": {...data...},
+			//       "subscription":{"pattern":"network.*","id":...sub_id... (deprecated)
+			//     }
+			//   }
 			ws.onmessage = function(response_event) {
 				var response_obj;
-				var query_deferred;
 				try {
 					response_obj = JSON.parse(response_event.data);
-					query_deferred = RPC_QUERY_IDS[response_obj.id];
-					if (query_deferred === undefined) {
-						throw { message: "no id" };
-					}
 				} catch (err) {
-					console.log("Warning: invalid json response recved");
+					console.log("Warning: invalid json response recved: " + response_event.data);
 					return;
 				}
 
-				console.log(response_obj);
-
-				delete RPC_QUERY_IDS[response_obj.id];
-
-				if(response_obj.result instanceof Array && response_obj.result[0] != 0) {
-					function _errstr(error){
-						switch(error){
-						case 0: return gettext("OK");
-						case 1: return gettext("Invalid command");
-						case 2: return gettext("Invalid parameters");
-						case 3: return gettext("Method not found");
-						case 4: return gettext("Object not found");
-						case 5: return gettext("No data");
-						case 6: return gettext("Access denied");
-						case 7: return gettext("Timed out");
-						case 8: return gettext("Not supported");
-						case 9: return gettext("Unknown error");
-						case 10: return gettext("Connection failed");
-						default: return gettext("RPC error #")+response_obj.result[0]+": "+response_obj.result[1];
-						}
+				if (response_obj.id && !response_obj.method) {
+					var query_deferred = RPC_QUERY_IDS[response_obj.id];
+					if (query_deferred === undefined) {
+						console.log("Warning: result for unknown call");
+						console.log(response_obj);
+						return;
 					}
-					if(DEBUG_MODE)console.log("RPC succeeded ("+object+"."+method+"), but returned error: "+JSON.stringify(response_obj)+": "+_errstr(response_obj.result[0]));
-					query_deferred.deferred.reject(_errstr(response_obj.result[0]));
+					delete RPC_QUERY_IDS[response_obj.id];
+
+					if (response_obj.error) {
+						query_deferred.reject(response_event.data);
+						return;
+					}
+
+					handle_call_result(response_obj.result, query_deferred);
+					return;
+				} else if (response_obj.method) {
+					if (response.obj.method !== "event") {
+						console.log("Warning: received json method which is not 'event'");
+						console.log(response_obj);
+						return;
+					}
+					if(EVENT_CALLBACK && typeof EVENT_CALLBACK === "function"){
+						EVENT_CALLBACK(response_obj.params);
+					}
 					return;
 				}
 
-				//console.log("SID: "+sid + " :: "+ JSON.stringify(response_obj));
-				query_deferred.time = Date.now();
-				// valid rpc response is either [code,{result}]
-				// if code == 0 it means success. We already check for errors above)
-				if(response_obj.result instanceof Array) {
-					query_deferred.data = response_obj.result[1];
-					query_deferred.deferred.resolve(response_obj.result[1]);
+				function handle_call_result(call_result, deferred) {
+
+					if(call_result instanceof Array && call_result[0] != 0) {
+						function _errstr(error){
+							switch(error){
+							case 0: return gettext("OK");
+							case 1: return gettext("Invalid command");
+							case 2: return gettext("Invalid parameters");
+							case 3: return gettext("Method not found");
+							case 4: return gettext("Object not found");
+							case 5: return gettext("No data");
+							case 6: return gettext("Access denied");
+							case 7: return gettext("Timed out");
+							case 8: return gettext("Not supported");
+							case 9: return gettext("Unknown error");
+							case 10: return gettext("Connection failed");
+							default: return gettext("RPC error #")+call_result[0]+": "+call_result[1];
+							}
+						}
+						if(DEBUG_MODE)console.log("RPC succeeded ("+object+"."+method+"), but returned error: "+_errstr(call_result[0]));
+						query_deferred.deferred.reject(_errstr(call_result[0]));
+						return;
+					}
+
+					//console.log("SID: "+sid + " :: "+ JSON.stringify(response_obj));
+					query_deferred.time = Date.now();
+					// valid rpc response is either [code,{result}]
+					// if code == 0 it means success. We already check for errors above)
+					if(call_result instanceof Array) {
+						query_deferred.data = call_result[1];
+						query_deferred.deferred.resolve(call_result[1]);
+						return;
+					}
+
+					var msg = "Warning: non-array result in JSONRPC response";
+					console.log(msg);
+					query_deferred.deferred.reject(msg);
 					return;
 				}
-
-				var msg = "Warning: non-array result in JSONRPC response";
-				console.log(msg);
-				query_deferred.deferred.reject(msg);
-				return;
 			};
 
 			ws.onerror = function(result){

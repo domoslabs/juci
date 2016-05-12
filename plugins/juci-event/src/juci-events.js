@@ -23,34 +23,32 @@
 			this.callbacks = {};
 	}
 	EventManager.prototype.removeAll = function(){
+		Object.keys(this.callbacks).map(function(type){
+			$rpc.unregisterEvent(tupe);
+			//TODO: handle errors
+		});
 		this.callbacks = {};
 	}
 	EventManager.prototype.subscribe = function(type, callback){
-		if(!this.callbacks[type]) this.callbacks[type] = []; 
+		if(!this.callbacks[type]){
+		   	this.callbacks[type] = [];
+			$rpc.registerEvent(type);
+			//TODO: handle errors
+		}
 		this.callbacks[type].push(callback); 
 	}
 	JUCI.events = new EventManager();
 	
 	JUCI.app.run(function($rpc){
-		var last_handled_time = 0;  
 		var self = JUCI.events;
-		setInterval(function(){
-			$rpc.$call("event", "list").done(function(result){
-				if(!result || !result.list) return; 
-				result.list.map(function(event){
-					if(event.time > last_handled_time){
-						console.log("Event: "+JSON.stringify(event)); 
-						var cb = self.callbacks[event.type]; 
-						if(cb){
-							cb.map(function(c){
-								c.apply(event, [event]); 
-							});  
-						}
-						last_handled_time = event.time; 
-					}
-				}); 
-			}); 
-		}, 2000);  
+		$rpc.registerEventHandler(function(e){
+			if (!ev || !ev.type) {
+				return;
+			}
+			self.callbacks[ev.type].map(Function(cb){
+				if(cb && typeof cb === "function") cb(ev);
+			});
+		});
 	}); 
 	
 	JUCI.app.factory("$events", function(){
