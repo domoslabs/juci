@@ -268,7 +268,7 @@ msgid "menu-settings-password-title"
 msgstr "Passwords"
 
 msgid "menu-settings-system-title"
-msgstr "Backup Settings"
+msgstr "General Settings"
 
 msgid "menu-settings-services-title"
 msgstr "Services"
