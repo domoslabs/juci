@@ -67,8 +67,12 @@ JUCI.app
 			return (x != item);
 		});
 	};
+	$scope.onTagChange = function(){
+		$scope.config.listen_http.value = $scope.data.ips.map(function(x){ return x.text});
+	}
 	$uci.$sync("uhttpd").done(function(){
 		$scope.config = $uci.uhttpd.main; 
+		$scope.data.ips = $scope.config.listen_http.value.map(function(ip){return {text:ip} });;
 		$scope.logopts = $uci.uhttpd.logopts;
 		$scope.status.all.map(function(status){
 			if($scope.logopts.ubus_status.value.find(function(st){

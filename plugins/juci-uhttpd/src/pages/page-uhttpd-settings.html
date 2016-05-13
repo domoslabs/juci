@@ -10,6 +10,10 @@
 				<juci-config-line title="{{'Max Connections'|translate}}">
 					<input type="number" ng-model="config.max_connections.value" class="form-control" placeholder="{{'Max Connections'|translate}}"/>
 				</juci-config-line>
+				<juci-config-line title="{{'Listening IP:Port'|translate}}">
+					<tags-input ng-model="data.ips" placeholder="{{'Add IP:Port'|translate}}" allowed-tags-pattern=".+:.+" on-tag-added="onTagChange()"
+							on-tag-removed="onTagChange()" add-on-space="true"></tags-input>
+				</juci-config-line>
 			</juci-config-lines>
 		</juci-config-section>
 		<juci-config-section>

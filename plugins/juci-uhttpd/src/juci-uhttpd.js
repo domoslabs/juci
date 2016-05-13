@@ -20,6 +20,7 @@
 
 UCI.$registerConfig("uhttpd"); 
 UCI.uhttpd.$registerSectionType("uhttpd", {
+	"listen_http":		{ dvalue: [], type: Array },
 	"home":				{ dvalue: "/www", type: String }, 
 	"max_requests":		{ dvalue: false, type: Number }, 
 	"max_connections":	{ dvalue: false, type: Number }, 
