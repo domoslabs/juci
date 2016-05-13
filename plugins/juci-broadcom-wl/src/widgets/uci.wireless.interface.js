@@ -61,7 +61,7 @@ JUCI.app
 	
 	$scope.cryptoChoices = [
 		{ label: $tr(gettext("None")), value: "none" },
-		{ label: $tr(gettext("WEP")), value: "wep" },
+		{ label: $tr(gettext("WEP")), value: "wep-open" },
 		{ label: $tr(gettext("WPA2 Personal (PSK)")), value: "psk2" },
 //		{ label: $tr(gettext("WPA Personal (PSK)")), value: "psk" }, //not supported
 		{ label: $tr(gettext("WPA/WPA2 Personal (PSK) Mixed Mode")), value: "mixed-psk" },
@@ -117,7 +117,8 @@ JUCI.app
 				}
 				break; 
 			}
-			case "wep": 
+			case "wep":
+			case "wep-open":
 			case "wep-shared": {
 				if($scope.interface.wps_pbc.value && !confirm(gettext("WPS will be disabled when using WEP encryption. Are you sure you want to continue?"))){
 					setTimeout(function(){

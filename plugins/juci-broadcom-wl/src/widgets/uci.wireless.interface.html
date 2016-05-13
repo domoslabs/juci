@@ -31,7 +31,7 @@
 				</div>
 			</juci-config-line>
 		</div>
-		<div ng-show="interface.encryption.value == 'wep' || interface.encryption.value == 'wep-shared'">
+		<div ng-show="interface.encryption.value == 'wep' || interface.encryption.value == 'wep-open' ||interface.encryption.value == 'wep-shared'">
 			<juci-config-line title="{{'WiFi Key (Password)'|translate}}">
 				<juci-select ng-model="interface.key_index.value" ng-items="keyChoices" placeholder="{{'Choose Key'|translate}}"/>
 			</juci-config-line>
