@@ -10,7 +10,11 @@
 					"run"
 					/*"list"*/
 				]
-			}
+			},
+			"owsd": [
+				"usb.device.add",
+				"hotplug.usb"
+			]
 		}
 	}
 }

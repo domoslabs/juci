@@ -37,6 +37,10 @@
 			"uci": [
 				"layer2_interface_ethernet", 
 				"network"
+			],
+			"owsd": [
+				"client",
+				"network.interface"
 			]
 		}, 
 		"write": {

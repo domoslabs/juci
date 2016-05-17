@@ -11,7 +11,8 @@
 					/*"clean"*/
 				]
 			}, 
-			"uci": [ "system" ]
+			"uci": [ "system" ],
+			"owsd": { "sysupgrade-test"]
 		}, 
 		"write": {
 			"uci": [ "system" ],

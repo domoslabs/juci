@@ -38,6 +38,10 @@
 				"hosts", 
 				"wireless",
 				"boardpanel"
+			],
+			"owsd": [
+				"wps",
+				"wifi-repeater-success"
 			]
 		}
 	}, 

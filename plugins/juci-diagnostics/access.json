@@ -14,7 +14,8 @@
 			},
 			"uci": [
 				"speedtest"	
-			]
+			],
+			"owsd": [ "juci.utils.speedtest" ]
 		},
 		"write": {
 			"uci": [

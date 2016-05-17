@@ -34,7 +34,7 @@
 	var gettext = function(text){ return text; }; 
 	
 	var default_calls = [
-		"session.access", 
+		"session.list",
 		"session.login", 
 		"local.features", 
 		"local.set_rpc_host"
@@ -85,9 +85,6 @@
 
 		RPC_QUERY_IDS[jsonrpc_obj.id] = RPC_CACHE[key];
 
-		console.log("sending ");
-		console.log(jsonrpc_obj);
-
 		ws.send(JSON.stringify(jsonrpc_obj));
 
 		return RPC_CACHE[key].deferred.promise(); 
@@ -110,9 +107,7 @@
 				return deferred.promise(); 
 			}
 
-			METHODS.session.access({
-				"scope": "ubus" 
-			}).done(function(result){
+			METHODS.session.list().done(function(result){
         		if(!("username" in (result.data||{}))) {
 					// username must be returned in the response. If it is not returned then rpcd is of wrong version. 
 					//alert(gettext("You have been logged out due to inactivity")); 
@@ -278,7 +273,6 @@
 					});
 					deferred.resolve();
 				}).fail(function(){
-					console.log("ubus list failed");
 					deferred.reject();
 				});
 			}).fail(function(emsg) {
@@ -292,7 +286,7 @@
 			var deferred = $.Deferred();
 			if(DEBUG_MODE)console.log("Init WS -> "+host);
 			host = host.replace(/^http/, 'ws');
-			console.log("connecting to " + host);
+			if(DEBUG_MODE)console.log("connecting to " + host);
 			try {
 				var ws = new WebSocket(host, "ubus-json");
 			} catch (exc) {
@@ -300,7 +294,7 @@
 			}
 
 			ws.onopen = function(ev) {
-				console.log("Connected " + ws.readyState);
+				if(DEBUG_MODE)console.log("Connected " + ws.readyState);
 				deferred.resolve(ws);
 			};
 			// response_should look like this:
@@ -322,8 +316,6 @@
 					console.log("Warning: invalid json response recved: " + response_event.data);
 					return;
 				}
-				console.log("recved: ");
-				console.log(response_obj);
 
 				if (response_obj.id && !response_obj.method) {
 					var query_deferred = RPC_QUERY_IDS[response_obj.id];
@@ -372,7 +364,7 @@
 							default: return gettext("RPC error #")+call_result[0]+": "+call_result[1];
 							}
 						}
-						if(DEBUG_MODE)console.log("RPC succeeded ("+object+"."+method+"), but returned error: "+_errstr(call_result[0]));
+						if(DEBUG_MODE)console.log("RPC succeeded "+ JSON.stringify(call_result) +", but returned error: "+_errstr(call_result[0]));
 						query_deferred.deferred.reject(_errstr(call_result[0]));
 						return;
 					}

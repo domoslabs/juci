@@ -12,7 +12,8 @@
 			},
 			"uci": [
 				"dect"
-			]
+			],
+			"owsd": [ "ubus.object.add" ]
 		},
 		"write": {
 			"uci": [

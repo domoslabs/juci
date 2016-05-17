@@ -33,7 +33,8 @@
 			"uci": [
 				"layer2_interface_ethernet",
 				"ports"
-			]
+			],
+			"owsd": [ "hotplug.switch" ]
 		}, 
 		"write": {
 			"uci": [
