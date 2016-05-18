@@ -270,7 +270,7 @@ msgstr "Klientens IPv4-adress"
 msgid "IPv6 Address"
 msgstr "IPv6-adress"
 
-msgid "Pick Existing Host"
+msgid "Select Existing Host"
 msgstr "Välj befintlig klient"
 
 msgid ""

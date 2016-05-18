@@ -23,11 +23,11 @@ JUCI.app
 		scope: {
 			device: "=ngModel"
 		}, 
-		controller: "WifiDeviceEditController", 
+		controller: "WiFiDeviceEditController", 
 		replace: true, 
 		require: "^ngModel"
 	};  
-}).controller("WifiDeviceEditController", function($scope, $config, $rpc, $tr, gettext){
+}).controller("WiFiDeviceEditController", function($scope, $config, $rpc, $tr, gettext){
 	$scope.showExpert = $config.local.mode == "expert";
 	$scope.$watch("device", function(device){
 		if(!device) return; 

@@ -17,28 +17,28 @@
  */
 
 JUCI.app
-.directive("overviewWidget00Wifi", function(){
+.directive("overviewWidget00WiFi", function(){
 	return {
 		templateUrl: "widgets/overview.wifi.html", 
-		controller: "overviewWidgetWifi", 
+		controller: "overviewWidgetWiFi", 
 		replace: true
 	};  
 })
-.directive("overviewStatusWidget00Wifi", function(){
+.directive("overviewStatusWidget00WiFi", function(){
 	return {
 		templateUrl: "widgets/overview.wifi.small.html", 
-		controller: "overviewStatusWidgetWifi", 
+		controller: "overviewStatusWidgetWiFi", 
 		replace: true
 	};  
 })
-.controller("overviewStatusWidgetWifi", function($scope, $rpc){
+.controller("overviewStatusWidgetWiFi", function($scope, $rpc){
 	$scope.wifiRadios = [];
 	$rpc.router.radios().done(function(data){
 		$scope.wifiRadios = Object.keys(data).map(function(radio){ return data[radio]; });
 		$scope.$apply(); 
 	});
 })
-.controller("overviewWidgetWifi", function($scope, $rpc, $uci, $tr, gettext, $juciDialog, $events, $wireless){
+.controller("overviewWidgetWiFi", function($scope, $rpc, $uci, $tr, gettext, $juciDialog, $events, $wireless){
 	var longPress = false;
 	var timeout;
 	$scope.wpsColor = "black"

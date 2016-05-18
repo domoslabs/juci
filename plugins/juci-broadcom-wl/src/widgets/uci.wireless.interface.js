@@ -25,11 +25,11 @@ JUCI.app
 		scope: {
 			interface: "=ngModel"
 		}, 
-		controller: "WifiInterfaceController", 
+		controller: "WiFiInterfaceController", 
 		replace: true, 
 		require: "^ngModel"
 	};  
-}).controller("WifiInterfaceController", function($scope, $uci, $tr, gettext, $wireless, $network){
+}).controller("WiFiInterfaceController", function($scope, $uci, $tr, gettext, $wireless, $network){
 	$scope.errors = []; 
 	$scope.showPassword = true; 
 	$wireless.getDefaults().done(function(res){

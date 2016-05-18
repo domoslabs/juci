@@ -17,7 +17,7 @@
  */
 
 JUCI.app
-.controller("WifiRadioPickerModal", function($scope, $modalInstance, $wireless, interfaces, $tr, gettext){
+.controller("WiFiRadioPickerModal", function($scope, $modalInstance, $wireless, interfaces, $tr, gettext){
 	$scope.data = {}; 
 	$scope.interfaces = interfaces; 
 	

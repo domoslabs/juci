@@ -288,7 +288,7 @@ msgstr "Yleisnäkymä"
 #~ msgstr "Peruuta"
 
 #, fuzzy
-#~ msgid "Pick network device"
+#~ msgid "Select network device"
 #~ msgstr "Fyysinen liitäntä"
 
 #, fuzzy
@@ -414,7 +414,7 @@ msgstr "Yleisnäkymä"
 #~ msgstr "Lisää isäntäkone"
 
 #, fuzzy
-#~ msgid "Pick a host"
+#~ msgid "Select a host"
 #~ msgstr "Valitse puhelin"
 
 #, fuzzy
@@ -902,11 +902,11 @@ msgstr "Yleisnäkymä"
 #~ msgstr "Puhelinlinjojen tila."
 
 #, fuzzy
-#~ msgid "Pick Connection"
+#~ msgid "Select Connection"
 #~ msgstr "Yhteydet"
 
 #, fuzzy
-#~ msgid "Pick Interface"
+#~ msgid "Select Interface"
 #~ msgstr "Fyysinen liitäntä"
 
 #~ msgid "Choose DNS Provider"
@@ -1008,7 +1008,7 @@ msgstr "Yleisnäkymä"
 #~ msgstr "Kaistanleveys"
 
 #, fuzzy
-#~ msgid "Pick Bandwidth"
+#~ msgid "Select Bandwidth"
 #~ msgstr "Kaistanleveys"
 
 #~ msgid "Channel"
@@ -1183,7 +1183,7 @@ msgstr "Yleisnäkymä"
 #~ msgid "Outgoing Calls Number"
 #~ msgstr "Lähtevät numerot"
 
-#~ msgid "Pick Outgoing Number"
+#~ msgid "Select Outgoing Number"
 #~ msgstr "Valitse lähtevä numero"
 
 #~ msgid "Call Waiting"
@@ -1253,7 +1253,7 @@ msgstr "Yleisnäkymä"
 #~ msgid "Add a new Ringing Schedule"
 #~ msgstr "Lisää uusi soittoajastus"
 
-#~ msgid "Pick Phone Number"
+#~ msgid "Select Phone Number"
 #~ msgstr "Valitse puhelinnumero"
 
 #~ msgid "Speed Dialing"

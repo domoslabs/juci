@@ -65,7 +65,7 @@ msgstr "Liitäntää käytetään sillatussa yhteydessä."
 msgid "Ethernet Ports"
 msgstr "Ethernet portit"
 
-msgid "Pick uplink port"
+msgid "Select uplink port"
 msgstr "Valitse Internetportti"
 
 msgid " socket will be used for passing packets to the internet."

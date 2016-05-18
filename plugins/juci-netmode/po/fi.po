@@ -21,7 +21,7 @@ msgstr ""
 "Profiilin vaihto asettaa laitteen täysin valitun profiilin mukaiseksi. "
 "Haluatko jatkaa?"
 
-msgid "Pick Preset"
+msgid "Select Preset"
 msgstr "Valitse profiili"
 
 msgid "Profile"

@@ -270,7 +270,7 @@ msgstr "IPv6-osoite"
 msgid "IPv6 Address"
 msgstr "IPv6-osoite"
 
-msgid "Pick Existing Host"
+msgid "Select Existing Host"
 msgstr "Valitse isäntäkone"
 
 msgid ""

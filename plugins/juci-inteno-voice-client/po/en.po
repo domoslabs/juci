@@ -290,7 +290,7 @@ msgstr ""
 msgid "Outgoing Calls Number"
 msgstr ""
 
-msgid "Pick Outgoing Number"
+msgid "Select Outgoing Number"
 msgstr ""
 
 msgid "Call Waiting"
@@ -687,7 +687,7 @@ msgstr "Latest calls."
 msgid "Show calls for"
 msgstr ""
 
-msgid "Pick phone"
+msgid "Select phone"
 msgstr ""
 
 msgid "Date"
@@ -762,7 +762,7 @@ msgstr ""
 msgid "Phone Number"
 msgstr ""
 
-msgid "Pick Phone Number"
+msgid "Select Phone Number"
 msgstr ""
 
 msgid "Day"

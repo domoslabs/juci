@@ -339,7 +339,7 @@ msgstr ""
 msgid "Network device"
 msgstr ""
 
-msgid "Pick network device"
+msgid "Select network device"
 msgstr ""
 
 msgid "Name"
@@ -402,7 +402,7 @@ msgstr ""
 msgid "DHCP"
 msgstr ""
 
-msgid "Pick Network"
+msgid "Select Network"
 msgstr ""
 
 msgid "Enable IPv6 negotiation on the PPP link"
@@ -726,7 +726,7 @@ msgstr ""
 msgid "Select Connected Host"
 msgstr ""
 
-msgid "Pick a host"
+msgid "Select a host"
 msgstr ""
 
 msgid "Aquired DNS servers"

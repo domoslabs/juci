@@ -269,7 +269,7 @@ msgstr ""
 msgid "IPv6 Address"
 msgstr ""
 
-msgid "Pick Existing Host"
+msgid "Select Existing Host"
 msgstr ""
 
 msgid ""

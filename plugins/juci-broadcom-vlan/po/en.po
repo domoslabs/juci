@@ -26,7 +26,7 @@ msgstr ""
 msgid "Base Device"
 msgstr ""
 
-msgid "Pick base device"
+msgid "Select base device"
 msgstr ""
 
 msgid "internet.ethernet.vlan.info"

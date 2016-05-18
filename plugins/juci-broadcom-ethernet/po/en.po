@@ -61,7 +61,7 @@ msgstr ""
 msgid "Ethernet Ports"
 msgstr ""
 
-msgid "Pick uplink port"
+msgid "Select uplink port"
 msgstr ""
 
 msgid " socket will be used for passing packets to the internet."

@@ -222,7 +222,7 @@ msgstr "Översikt"
 #~ msgid "You need to select a network!"
 #~ msgstr "Du måste välja ett nätverk!"
 
-#~ msgid "Pick image to upgrade"
+#~ msgid "Select image to upgrade"
 #~ msgstr "Välj firmware för uppladdning"
 
 # /home/martin/juci/plugins/juci-sysupgrade/src/widgets/upgrade.popup.html
@@ -276,7 +276,7 @@ msgstr "Översikt"
 #~ "Det är möjligt att uppdatera firmware från fil en sparad uppdatering. Den "
 #~ "senaste versionen kan hittas på www.dsl-easybox.de."
 
-#~ msgid "Pick firmware file to upload"
+#~ msgid "Select firmware file to upload"
 #~ msgstr "Välj firmware för uppladdning"
 
 #~ msgid "Start upgrade"
@@ -514,7 +514,7 @@ msgstr "Översikt"
 #~ msgid "Network device"
 #~ msgstr "Nätverksenhet"
 
-#~ msgid "Pick network device"
+#~ msgid "Select network device"
 #~ msgstr "Välj nätverksenhet"
 
 #~ msgid "Displayname"
@@ -589,7 +589,7 @@ msgstr "Översikt"
 #~ msgid "Status"
 #~ msgstr "Status"
 
-#~ msgid "Pick Network"
+#~ msgid "Select Network"
 #~ msgstr "Välj nätverk"
 
 #~ msgid "APN"
@@ -721,7 +721,7 @@ msgstr "Översikt"
 #~ msgid "Select Connected Host"
 #~ msgstr "Välj uppkopplad klient"
 
-#~ msgid "Pick a host"
+#~ msgid "Select a host"
 #~ msgstr "Välj enhet"
 
 #~ msgid "LAN"
@@ -898,7 +898,7 @@ msgstr "Översikt"
 #~ "Detta kommer att återställa dina inställningar till tillverkarens "
 #~ "konfiguration. Vill du fortsätta? "
 
-#~ msgid "Pick Preset"
+#~ msgid "Select Preset"
 #~ msgstr "Välj inställningspaket"
 
 #~ msgid "Reset Configuration"
@@ -1023,7 +1023,7 @@ msgstr "Översikt"
 #~ msgid "Re-type password"
 #~ msgstr "Skriv lösenord igen"
 
-#~ msgid "Pick configuration backup to upload"
+#~ msgid "Select configuration backup to upload"
 #~ msgstr "Välj konfigurationsbackup för uppladdning"
 
 #~ msgid "Backup file password"
@@ -1454,7 +1454,7 @@ msgstr "Översikt"
 #~ msgid "Host IPv4 Address"
 #~ msgstr "Klientens IPv4-adress"
 
-#~ msgid "Pick Existing Host"
+#~ msgid "Select Existing Host"
 #~ msgstr "Välj befintlig klient"
 
 #~ msgid ""
@@ -1853,10 +1853,10 @@ msgstr "Översikt"
 #~ msgid "IP Retreival Method"
 #~ msgstr "IP Uppslagningsmetod"
 
-#~ msgid "Pick Connection"
+#~ msgid "Select Connection"
 #~ msgstr "Välj uppkoppling"
 
-#~ msgid "Pick Interface"
+#~ msgid "Select Interface"
 #~ msgstr "Välj enhet"
 
 # /home/martin/juci/plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
@@ -2122,22 +2122,22 @@ msgstr "Översikt"
 #~ msgid "Wireless"
 #~ msgstr "Trådlösa nätverk"
 
-#~ msgid "Wifi Mode"
+#~ msgid "WiFi Mode"
 #~ msgstr "WiFi typ"
 
-#~ msgid "Pick Hardware Mode"
+#~ msgid "Select Hardware Mode"
 #~ msgstr "Välj hårdvaruläge"
 
 #~ msgid "Bandwidth"
 #~ msgstr "Bandbredd"
 
-#~ msgid "Pick Bandwidth"
+#~ msgid "Select Bandwidth"
 #~ msgstr "Välj bandbredd"
 
 #~ msgid "Channel"
 #~ msgstr "Kanal"
 
-#~ msgid "Pick Channel"
+#~ msgid "Select Channel"
 #~ msgstr "Välj kanal"
 
 #~ msgid "DFS Channels"
@@ -2210,10 +2210,10 @@ msgstr "Översikt"
 #~ msgid "You must enter a valid MAC address!"
 #~ msgstr "Värdet måste vara en giltig MAC-adress"
 
-#~ msgid "Pick Wireless Radio"
+#~ msgid "Select Wireless Radio"
 #~ msgstr "Välj WiFi radio"
 
-#~ msgid "Pick SSID"
+#~ msgid "Select SSID"
 #~ msgstr "Välj SSID"
 
 #~ msgid "New SSID"
@@ -2262,8 +2262,8 @@ msgstr "Översikt"
 #~ msgid "wifi.general.info"
 #~ msgstr "Generell information "
 
-#~ msgid "Wifi Network"
-#~ msgstr "Wifi Nätverk"
+#~ msgid "WiFi Network"
+#~ msgstr "WiFi Nätverk"
 
 #~ msgid "Scheduled"
 #~ msgstr "Schemalagd"
@@ -2468,7 +2468,7 @@ msgstr "Översikt"
 #~ msgid "New interface"
 #~ msgstr "Ny enhet"
 
-#~ msgid "Pick base device"
+#~ msgid "Select base device"
 #~ msgstr "Välj grundenhet"
 
 #~ msgid "internet.ethernet.vlan.info"
@@ -2502,7 +2502,7 @@ msgstr "Översikt"
 #~ "Denna port kommer att användas för att sätta upp fysisk uppkoppling till "
 #~ "internet. "
 
-#~ msgid "Pick uplink port"
+#~ msgid "Select uplink port"
 #~ msgstr "Välj port för upplänk"
 
 #~ msgid " socket will be used for passing packets to the internet."
@@ -2650,7 +2650,7 @@ msgstr "Översikt"
 #~ msgid "Show calls for"
 #~ msgstr "Visa samtal för"
 
-#~ msgid "Pick phone"
+#~ msgid "Select phone"
 #~ msgstr "Välj telefon"
 
 #~ msgid "External Number"
@@ -2668,7 +2668,7 @@ msgstr "Översikt"
 #~ msgid "Outgoing Calls Number"
 #~ msgstr "Utgående nummer"
 
-#~ msgid "Pick Outgoing Number"
+#~ msgid "Select Outgoing Number"
 #~ msgstr "Välj utgående tel. nummer"
 
 # phone
@@ -2766,7 +2766,7 @@ msgstr "Översikt"
 #~ msgid "Phone Number"
 #~ msgstr "Telefonnummer"
 
-#~ msgid "Pick Phone Number"
+#~ msgid "Select Phone Number"
 #~ msgstr "Välj telefonnummer"
 
 #~ msgid "Speed Dialing"
@@ -3361,7 +3361,7 @@ msgstr "Översikt"
 #~ msgstr "Lägg till befintlig enhet"
 
 #~ msgid "wifi.mac_filter.title"
-#~ msgstr "Wifi MAC-filter"
+#~ msgstr "WiFi MAC-filter"
 
 #~ msgid "Choose Bandwidth"
 #~ msgstr "Välj bandbredd"
@@ -3387,7 +3387,7 @@ msgstr "Översikt"
 #~ msgid "Upload file"
 #~ msgstr "Ladda upp fil"
 
-#~ msgid "Wifi"
+#~ msgid "WiFi"
 #~ msgstr "WiFi"
 
 #~ msgid "no"

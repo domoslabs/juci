@@ -32,7 +32,7 @@ JUCI.app
 		var modalInstance = $modal.open({
 			animation: $scope.animationsEnabled,
 			templateUrl: 'widgets/wifi-radio-picker-modal.html',
-			controller: 'WifiRadioPickerModal',
+			controller: 'WiFiRadioPickerModal',
 			resolve: {
 				interfaces: function () {
 					return $scope.interfaces;

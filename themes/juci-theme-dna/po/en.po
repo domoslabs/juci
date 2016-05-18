@@ -255,7 +255,7 @@ msgstr "Overview"
 #~ "wireless connection of your devices."
 
 #, fuzzy
-#~ msgid "Wifi Network"
+#~ msgid "WiFi Network"
 #~ msgstr "Network"
 
 #, fuzzy

@@ -318,7 +318,7 @@ msgstr "DNS-servrar"
 msgid "Network device"
 msgstr "Nätverksenhet"
 
-msgid "Pick network device"
+msgid "Select network device"
 msgstr "Välj nätverksenhet"
 
 msgid "Name"
@@ -381,7 +381,7 @@ msgstr "Metod"
 msgid "DHCP"
 msgstr "DHCPv4"
 
-msgid "Pick Network"
+msgid "Select Network"
 msgstr "Välj nätverk"
 
 msgid "Enable IPv6 negotiation on the PPP link"
@@ -705,7 +705,7 @@ msgstr "ID"
 msgid "Select Connected Host"
 msgstr "Välj uppkopplad klient"
 
-msgid "Pick a host"
+msgid "Select a host"
 msgstr "Välj enhet"
 
 msgid "Aquired DNS servers"

@@ -97,7 +97,7 @@ msgstr "fs_image (RAW Rootfs Image)"
 msgid "You need to select a network!"
 msgstr "Valitse verkko!"
 
-msgid "Pick image to upgrade"
+msgid "Choose image to upgrade"
 msgstr "Valitse päivitystiedosto"
 
 msgid "New software is available"
@@ -144,7 +144,7 @@ msgstr "Manuaalinen ohjelmistopäivitys"
 msgid "settings.upgrade.manual.info"
 msgstr " "
 
-msgid "Pick firmware file to upload"
+msgid "Choose firmware file to upload"
 msgstr "Valitse ladattava ohjelmisto"
 
 msgid "Start upgrade"

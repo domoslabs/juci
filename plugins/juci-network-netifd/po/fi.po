@@ -337,7 +337,7 @@ msgstr "Valitse DNS-palveluntarjoaja"
 msgid "Network device"
 msgstr "Valitse verkkolaite"
 
-msgid "Pick network device"
+msgid "Select network device"
 msgstr "Valitse verkkolaite"
 
 msgid "Name"
@@ -400,7 +400,7 @@ msgstr "Method"
 msgid "DHCP"
 msgstr "DHCP IPv4"
 
-msgid "Pick Network"
+msgid "Select Network"
 msgstr "Valitse verkko"
 
 msgid "Enable IPv6 negotiation on the PPP link"
@@ -732,7 +732,7 @@ msgstr "Tunnus/ID"
 msgid "Select Connected Host"
 msgstr "Valitse Yhdistetty Isäntäkone"
 
-msgid "Pick a host"
+msgid "Select a host"
 msgstr "Valitse isäntäkone"
 
 msgid "Aquired DNS servers"
