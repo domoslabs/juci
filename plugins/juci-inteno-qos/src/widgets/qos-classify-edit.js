@@ -90,8 +90,6 @@ JUCI.app
 
 		$scope.rule.portrange.value = p.from.toString() + "-" + p.to.toString();
 
-			console.log("ERROR: "+$scope.rule.portrange.error);
-			console.log("HEJ");
 		if(p.to > p.from){ $scope.rule.portrange.error = null; }
 	}, true);
 
