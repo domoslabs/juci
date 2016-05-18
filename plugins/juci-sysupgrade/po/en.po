@@ -90,7 +90,7 @@ msgstr ""
 msgid "You need to select a network!"
 msgstr ""
 
-msgid "Choose image to upgrade"
+msgid "Select image to upgrade"
 msgstr ""
 
 msgid "New software is available"
@@ -137,7 +137,7 @@ msgstr ""
 msgid "settings.upgrade.manual.info"
 msgstr "It is possible to update the firmware from a saved update file."
 
-msgid "Choose firmware file to upload"
+msgid "Select firmware file to upload"
 msgstr ""
 
 msgid "Start upgrade"
