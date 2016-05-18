@@ -21,11 +21,20 @@ UCI.$registerConfig("qos");
 UCI.qos.$registerSectionType("classify", {
 	"target":	{ dvalue:'Normal', type: String },
 	"ports":	{ dvalue: '', type: String },
+	"srcports":	{ dvalue: '', type: String },
+	"dstports":	{ dvalue: '', type: String },
 	"comment":	{ dvalue: '', type: String },
 	"dscp":		{ dvalue: '', type: String },
 	"srchost":	{ dvalue: '', type: String, validator: UCI.validators.IPAddressValidator },
 	"dsthost":	{ dvalue: '', type: String, validator: UCI.validators.IPAddressValidator },
-	"proto":	{ dvalue: '', type: String }
+	"proto":	{ dvalue: '', type: String },
+	"portrange":	{ dvalue: '', type: String, validator: UCI.validators.PortRangeValidator },
+	"pktsize":	{ dvalue: '', type: String },
+	"tcpflags":	{ dvalue: '', type: String },
+	"mark":		{ dvalue: '', type: String },
+	"connbytes":	{ dvalue: '', type: String },
+	"tos":		{ dvalue: '', type: String },
+	"direction":	{ dvalue: '', type: String }
 });
 UCI.qos.$registerSectionType("classgroup", {
 	"classes":	{ dvalue: ['Priority', 'Express', 'Normal', 'Bulk'], type: Array},
@@ -61,6 +70,18 @@ JUCI.app.factory("intenoQos", function($uci){
 				});*/
 			}
 			def.resolve(targets); 
+		}).fail(function(){ def.reject(); });
+		return def.promise(); 
+	} 
+
+	Qos.prototype.getClassNames = function(){
+		var def = $.Deferred(); 
+		$uci.$sync(["qos"]).done(function(){
+			var classes = []; 
+			if($uci.qos["@class"]){
+				classNames = $uci.qos["@class"].map(function(c){ return c['.name']; });
+			}
+			def.resolve(classNames); 
 		}).fail(function(){ def.reject(); });
 		return def.promise(); 
 	} 

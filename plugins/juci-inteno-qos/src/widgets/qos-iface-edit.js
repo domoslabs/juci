@@ -33,13 +33,23 @@ JUCI.app
 	},false);
 	
 	$scope.$watch('instance.showdown',function(){
-		if($scope.instance && $scope.instance.showdown === false){
-			$scope.instance.download.value = "";
+		if($scope.instance){
+			if($scope.instance.showdown === false){
+				$scope.instance.download.value = "";
+			}
+			if($scope.instance.showdown === true){
+				$scope.instance.download.value = 1;
+			}
 		}
 	},true);
 	$scope.$watch('instance.showup',function(){
-		if($scope.instance && $scope.instance.showup === false){
-			$scope.instance.download.value = "";
+		if($scope.instance){
+			if($scope.instance.showup === false){
+				$scope.instance.upload.value = "";
+			}
+			if($scope.instance.showup === true){
+				$scope.instance.upload.value = 1;
+			}
 		}
 	},true);
 });

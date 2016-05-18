@@ -32,36 +32,10 @@ JUCI.app
 })
 .controller("qosClassifyEdit", function($scope, $uci, $tr, gettext, $network, intenoQos){
 	$scope.data = {
-		ports: []
+		ports: [],
+		portrange: {from:"" , to:""}
 	};
-
-	$network.getConnectedClients().done(function(data){
-		$scope.clients = data.map(function(x){
-			return {label: x.ipaddr, value: x.ipaddr }
-		});
-		$scope.$apply();
-	});
-	intenoQos.getDefaultTargets().done(function(targets){
-		$scope.targets = targets.map(function(x){ 
-			return { label: x, value: x };
-		});
-		$scope.$apply();
-	});
-	$scope.$watch("rule", function(){
-		if(!$scope.rule) return;
-		$scope.data.ports = $scope.rule.ports.value.split(",").map(function(port){return {value: port }});
-	}, false);
-
-	$scope.onAddPort = function(){
-		$scope.rule.ports.value = $scope.data.ports.map(function(p){return p.value; }).join(",");
-	}
-
-	$scope.evalPort = function(port){
-		if(port.value.match(/^[0-9]+$/) && parseInt(port.value) < 65536) return true;
-		return false;
-	}
-
-	$scope.precedence = [
+	$scope.data.precedence = [
 		{ label: $tr(gettext("All")),	value: '' },
 		{ label: '0',					value: '0' },
 		{ label: '1',					value: '8 10 12 14' },
@@ -72,11 +46,64 @@ JUCI.app
 		{ label: '6',					value: '48' },
 		{ label: '7',					value: '56' }
 	];
-
-	$scope.protocols = [
+	$scope.data.protocols = [
 		{ label: $tr(gettext("All")),		value: '' },
 		{ label: $tr(gettext("TCP")),		value: 'tcp' },
 		{ label: $tr(gettext("UDP")),		value: 'udp' },
 		{ label: $tr(gettext("ICMP")),		value: 'icmp' }
 	];
+	
+
+	$network.getConnectedClients().done(function(data){
+		$scope.clients = data.map(function(x){
+			return {label: x.ipaddr, value: x.ipaddr }
+		});
+		$scope.$apply();
+	});
+	intenoQos.getClassNames().done(function(classes){
+		$scope.targets = classes.map(function(x){ 
+			return { label: x, value: x };
+		});
+		$scope.$apply();
+	});
+	$scope.$watch("rule", function(){
+		if(!$scope.rule) return;
+		$scope.data.ports = $scope.rule.ports.value.split(",").map(function(port){return {value: port }});
+		if($scope.rule.srcports){
+			$scope.data.srcports = $scope.rule.srcports.value.split(",").map(function(port){return {value: port }});
+		}else{ $scope.data.srcports = []; }
+		if($scope.rule.dstports){
+			$scope.data.dstports = $scope.rule.dstports.value.split(",").map(function(port){return {value: port }});
+		}else{ $scope.data.dstports = []; }
+
+		if($scope.rule.portrange){
+			$scope.data.portrange.from = parseInt($scope.rule.portrange.value.split("-")[0]);
+			$scope.data.portrange.to = parseInt($scope.rule.portrange.value.split("-")[1]);
+		}else{
+			$scope.data.portrange.from = 0;
+			$scope.data.portrange.to = 0;
+		}
+	}, false);
+
+	$scope.$watch("data.portrange", function(p){
+		if(!$scope.rule || !p.to || !p.from){ return; }
+
+		$scope.rule.portrange.value = p.from.toString() + "-" + p.to.toString();
+
+	}, true);
+
+	$scope.onAddPort = function(){
+		$scope.rule.ports.value = $scope.data.ports.map(function(p){return p.value; }).join(",");
+	}
+	$scope.onAddSrcPort = function(){
+		$scope.rule.srcports.value = $scope.data.srcports.map(function(p){return p.value; }).join(",");
+	}
+	$scope.onAddDstPort = function(){
+		$scope.rule.dstports.value = $scope.data.dstports.map(function(p){return p.value; }).join(",");
+	}
+
+	$scope.evalPort = function(port){
+		if(port.value.match(/^[0-9]+$/) && parseInt(port.value) < 65536) return true;
+		return false;
+	}
 });
