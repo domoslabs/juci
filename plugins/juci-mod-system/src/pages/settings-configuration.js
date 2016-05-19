@@ -116,7 +116,7 @@ JUCI.app
 		}); 
 	}
 	$scope.onAcceptModal = function(){
-		if($scope.passwordError){ return; }
+		if($scope.passwordError || !$rpc.juci || !$rpc.juci.system || !$rpc.file){ return; }
 		if($scope.data.pass != $scope.data.pass_repeat) {
 			alert($tr(gettext("Passwords do not match!"))); 
 			return; 
@@ -124,9 +124,16 @@ JUCI.app
 		if($scope.data.pass == ""){
 			if(!confirm($tr(gettext("Are you sure you want to save backup without password?")))) return; 
 		}
-		$("form[name='backupForm']").submit();
-		$scope.data = {}; 
 		$scope.showModal = 0; 
+		$rpc.juci.system.run({
+			"method":"create_backup",
+			"args": ($scope.data.pass ? JSON.stringify({password: $scope.data.pass}) : undefined)
+		}).done(function(){
+			$rpc.file.read({path:"/tmp/backup.tar.gz", base64: true}).done(function(result){
+				location.href = "data:application/gzip;\r\nContent-Disposition:attachment;filename=\"backup.tar.gz\","+result.data;
+				$scope.data = {}; 
+			}).fail(function(error){$scope.data = {};alert("error" + JSON.stringify(error)); });
+		}).fail(function(error){	$scope.data = {}; alert("error" + JSON.stringify(error)); });
 	}
 	$scope.onDismissModal = function(){
 		$scope.showModal = 0; 

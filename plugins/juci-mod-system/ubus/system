@@ -155,12 +155,23 @@ function system_info()
 		eth_ports = ports
 	})); 
 end
+function system_create_backup(opts)
+	local pass = opts.password;
+	if(pass and pass ~= "" and string.len(pass)) then 
+		output = juci.shell(string.format("sysupgrade --create-backup /tmp/backup.tar.gz -p \"%s\"", pass)); 
+	else
+		output = juci.shell("sysupgrade --create-backup /tmp/backup.tar.gz"); 
+	end
+	print(json.encode({result=output}));
+end
+
 
 juci.ubus({
-	["info"] = system_info, 
-	["log"] = system_logread, 
+	["create_backup"] = system_create_backup,
+	["info"] = system_info,
+	["log"] = system_logread,
 	["defaultreset"] = system_defaultreset,
-	["filesystems"] = system_filesystems, 
+	["filesystems"] = system_filesystems,
 	["reboot"] = system_reboot
 }, arg); 
 

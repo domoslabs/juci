@@ -21,9 +21,8 @@
 			</juci-config-lines>
 		</juci-config-section>
 		<modal title="{{'Save Configuration to Computer'|translate}}" ng-show="showModal" on-accept="onAcceptModal()" on-dismiss="onDismissModal()" dismiss-label="Cancel" accept-label="Continue">
-			<form name="backupForm" action="/cgi-bin/juci-backup" autocomplete="off">
-				<input type="hidden" name="sid" value="{{sessionID}}"/>
-				<!--<input type="hidden" name="password" />-->
+			<form ng-submit="onAcceptModal()" name="backupForm" autocomplete="off">
+				<input type="submit" ng-hide="true" />
 				<div class="form-group" ng-show="features.comment">
 					<label translate>Please add a comment describing this configuration</label>
 					<textarea class="form-control" placeholder="{{'Comments'|translate}}..." name="comment"/>
