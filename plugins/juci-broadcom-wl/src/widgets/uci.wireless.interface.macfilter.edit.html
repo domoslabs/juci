@@ -11,7 +11,7 @@
 		<juci-config-lines>
 			<juci-config-line title="{{'Access for listed devices'|translate}}">
 				<div class="btn-group">
-					<button ng-repeat="mode in [[1,'allow','Allow'], [2, 'deny','Deny']]" class="btn btn-default" ng-model="interface.macmode.value" btn-radio="mode[0]">{{ mode[2] | translate}}</button>
+					<button ng-repeat="mode in [[2,'allow','Allow'], [1, 'deny','Deny']]" class="btn btn-default" ng-model="interface.macfilter.value" btn-radio="mode[0]">{{ mode[2] | translate}}</button>
 				</div>
 			</juci-config-line>
 			<juci-config-line title="{{'Currently added devices'|translate}}">
@@ -22,7 +22,7 @@
 					</div>
 					<div class="col-md-5 form-group">
 						<label class="visible-xs visible-sm" translate>MAC</label>
-						<input type="text" class="form-control" ng-model="mac.macaddr" ng-blur="rebuildMacList()" placeholder="xx:xx:xx:xx:xx:xx" /><!-- ng-pattern="/^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/"-->
+						<input type="text" class="form-control" ng-model="mac.macaddr" ng-blur="rebuildMacList()" placeholder="XX:XX:XX:XX:XX:XX" /><!-- ng-pattern="/^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/"-->
 					</div>
 					<div class="col-md-2">
 						<button class="btn btn-default pull-right" ng-click="onDeleteHost(mac)"><i class="fa fa-trash-o"></i></button>

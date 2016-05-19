@@ -259,8 +259,7 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"bss_max":			{ dvalue: 32, type: Number },
 		"closed":			{ dvalue: false, type: Boolean },
 		"disabled":			{ dvalue: false, type: Boolean },
-		"macmode":			{ dvalue: 1, type: Number },
-		"macfilter":		{ dvalue: false, type: Boolean },
+		"macfilter":			{ dvalue: 0, type: Number },
 		"maclist":			{ dvalue: [], type: Array } // match_each: /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/ }
 	}, function validator(section){
 		if(section.disabled) return null;
