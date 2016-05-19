@@ -59,47 +59,39 @@
 					on-tag-removed="onAddDstPort()" on-tag-added="onAddDstPort()" add-on-paste="true" on-tag-adding="evalPort($tag)" placeholder="Add a port"></tags-input>
 	</juci-config-line>
 
-
+	<juci-config-line title="{{'Port Range'|translate}}" error="rule.portrange.error">
+		<div class="input-group">
+				<input type="number" class="form-control" ng-model="data.portrange.from" placeholder="From" style="max-width: 120px !important;"/>
+				<input type="number" class="form-control" ng-model="data.portrange.to" placeholder="To" style="max-width: 120px !important;"/>
+		</div>
+	</juci-config-line>
 
 <!--
-	<juci-config-line title="{{'Portrange'|translate}}">
-			<div class="row">
-					<label translate class="col-xs-2">from</label>
-					<input class="form-control col-xs-4" type="text" ng-model="data.portrange.from" placeholder="portnumber" />
-					<label translate class="col-xs-2">to</label>
-					<input class="form-control col-xs-4" type="text" ng-model="data.portrange.to" placeholder="portnumber" />
-			</div>
-	</juci-config-line>
--->
-
-
-
+	
 	<juci-config-line title="{{'Port Range'|translate}}" error="rule.portrange.error">
-			<div class="col-xs-4">
+			<div class="col-xs-5">
 				<div class="input-group">
 					<input type="number" class="form-control" ng-model="data.portrange.from" placeholder="portnumber" style="max-width: 120px !important"/>
 				</div>
 			</div>
-			<div class="col-xs-4">
+			<div class="col-xs-2">
 				<div class="text-center">to</div>
 			</div>
-			<div class="col-xs-4">
-				<div class="input-group">
-					<input type="number" class="form-control" ng-model="data.portrange.to" placeholder="portnumber" style="max-width: 120px !important"/>
+			<div class="col-xs-5">
+				<div class="input-group" styling="margin-right: 5px !important">
+					<input type="number" class="form-control" ng-model="data.portrange.to" placeholder="portnumber" style="max-width: 120px !important;"/>
 				</div>
 			</div>
 	</juci-config-line>
+
+-->
+
+
 
 
 	<juci-config-line title="{{ 'Precedence' | translate }}">
 		<juci-select ng-items="data.precedence" ng-model="rule.dscp.value" placeholder="{{'All'|translate}}"/>
 	</juci-config-line>
-
-
-
-
-
-
 
 
 <!--

@@ -37,8 +37,8 @@ JUCI.app
 			if($scope.instance.showdown === false){
 				$scope.instance.download.value = "";
 			}
-			if($scope.instance.showdown === true){
-				$scope.instance.download.value = 1;
+			if($scope.instance.showdown === true && $scope.instance.download.ovalue){
+				$scope.instance.download.value = $scope.instance.download.ovalue;
 			}
 		}
 	},true);
@@ -47,8 +47,8 @@ JUCI.app
 			if($scope.instance.showup === false){
 				$scope.instance.upload.value = "";
 			}
-			if($scope.instance.showup === true){
-				$scope.instance.upload.value = 1;
+			if($scope.instance.showup === true && $scope.instance.upload.ovalue){
+				$scope.instance.upload.value = $scope.instance.upload.ovalue;
 			}
 		}
 	},true);

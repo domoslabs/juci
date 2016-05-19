@@ -28,7 +28,7 @@ UCI.qos.$registerSectionType("classify", {
 	"srchost":	{ dvalue: '', type: String, validator: UCI.validators.IPAddressValidator },
 	"dsthost":	{ dvalue: '', type: String, validator: UCI.validators.IPAddressValidator },
 	"proto":	{ dvalue: '', type: String },
-	"portrange":	{ dvalue: '', type: String, validator: UCI.validators.PortRangeValidator },
+	"portrange":	{ dvalue: '', type: String, validator: UCI.validators.PortRangeDashValidator },
 	"pktsize":	{ dvalue: '', type: String },
 	"tcpflags":	{ dvalue: '', type: String },
 	"mark":		{ dvalue: '', type: String },

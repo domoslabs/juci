@@ -101,6 +101,23 @@
 			return null;
 		};	
 	}
+	function PortRangeDashValidator(){
+		this.validate = function(field){
+			if(!field || !field.value) return null;
+			if(field.value.match(/^[0-9]+-[0-9]+$/)){ //type is port range
+				var start = parseInt(field.value.split("-")[0]);
+				var stop = parseInt(field.value.split("-")[1]);
+				if(start < 1 || start > 65535 || stop < 1 || stop > 65535 || start > stop || start == stop) return gettext("A port is between 1 and 65535 and start port must be lower than stop port");
+			}else if(field.value.match(/^[0-9]+$/)){
+				var num = parseInt(field.value);
+				if(num < 1 || num > 65535) return gettext("A port is between 1 and 65535");
+			}
+			else {
+				return gettext("A port can only be a number between 1 and 65535 or a range on the form number-number");
+			}
+			return null;
+		};	
+	}
 	
 	function NumberLimitValidator(min, max){
 		return function(){
@@ -1149,6 +1166,7 @@
 		TimespanValidator: TimespanValidator, 
 		PortValidator: PortValidator, 
 		PortRangeValidator: PortRangeValidator,
+		PortRangeDashValidator: PortRangeDashValidator,
 		NumberLimitValidator: NumberLimitValidator, 
 		TimeValidator: TimeValidator,
 		MACAddressValidator: MACAddressValidator,
