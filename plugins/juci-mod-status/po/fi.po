@@ -83,7 +83,7 @@ msgstr "Aktiivisia tukiasemia"
 msgid "menu-status-title"
 msgstr "Status"
 
-msgid "menu-status-restart-title"
+msgid "menu-settings-restart-title"
 msgstr "Uudelleenkäynnistys"
 
 msgid "menu-status-status-network-title"

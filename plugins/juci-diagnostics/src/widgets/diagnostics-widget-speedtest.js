@@ -124,7 +124,7 @@ JUCI.app
 					downstream = downstream / 1000 / 1000;
 				}
 				if(res.data.upstream != "none" && res.data.downstream != "none"){
-					$scope.data.result=$tr(gettext("Upstream:"))+" " + upstream.toFixed(2) +" "+$tr(gettext("Mbit/s\nDownstream:"))+" " + downstream.toFixed(2) +" "+$tr(gettext("Mbit/s"));
+					$scope.data.result=$tr(gettext("Downstream:"))+" " + downstream.toFixed(2) + " " + $tr(gettext("Mbit/s\nUpstream:"))+" " + upstream.toFixed(2) +" "+$tr(gettext("Mbit/s"));
 				}else if(res.data.upstream != "none"){
 					$scope.data.result=$tr(gettext("Upstream:"))+" " + upstream.toFixed(2) + " "+$tr(gettext("Mbit/s"));
 				}else if(res.data.downstream != "none"){

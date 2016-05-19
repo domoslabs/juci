@@ -26,7 +26,7 @@ JUCI.app
 		replace: true
 	};  
 })
-.directive("overviewWidget99Netmode", function(){
+.directive("overviewWidget90Netmode", function(){
 	return {
 		templateUrl: "widgets/overview-netmode.html", 
 		controller: "overviewWidgetNetmode", 
@@ -88,15 +88,21 @@ JUCI.app
 	}
 	$scope.getExp = function(){
 		if(!$scope.data || !$scope.data.selected || $scope.allNetmodes.length < 1) return "";
-		return $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; }).desc;
+		var tmp = $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; });
+		if(tmp && tmp.desc) return tmp.desc;
+		return "";
 	}
 	$scope.getDesc = function(){
-		if(!$scope.data || !$scope.data.selected || $scope.allNetmodes.length < 1) return "";
-		return $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; }).label;
+		if($scope.allNetmodes.length < 1) return "";
+		var tmp = $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; });
+		if(tmp && tmp.label) return tmp.label;
+		return $tr(gettext("No profile selected"));
 	}
 	$scope.getFullDesc = function(){
 		if(!$scope.data || !$scope.data.selected || $scope.allNetmodes.length < 1) return "";
-		return $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; }).longLabel;
+		var tmp = $scope.allNetmodes.find(function(nm){return nm.value === $scope.data.selected; });
+		if(tmp && tmp.longLabel) return tmp.longLabel;
+		return "";
 	}
 	function setNetmode(netmode){
 		$scope.data.selected = netmode;
@@ -105,7 +111,7 @@ JUCI.app
 			if($uci.netmode[netmode].reboot.value){
 				window.location = "/reboot.html";
 			}
-			$scope.$apply();
+			setTimeout(function(){window.location.reload(true);}, 1000);
 		});
 	}
 }); 

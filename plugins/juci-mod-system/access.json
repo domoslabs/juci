@@ -53,7 +53,9 @@
 					/*"reload"*/
 				],
 				"router": [
-					"info"
+					"info",
+					"password_set",
+					"filesystem"
 				],
 				"system": [
 					"info",
@@ -63,7 +65,8 @@
 			},
 			"uci": [
 				"system",
-				"buttons"
+				"buttons",
+				"leds"
 			],
 			"juci-io": [
 				"backup"
@@ -84,7 +87,8 @@
 			},
 			"uci": [
 				"system",
-				"buttons"
+				"buttons",
+				"leds"
 			]
 		}
 	},

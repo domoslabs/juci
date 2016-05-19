@@ -37,7 +37,7 @@ JUCI.app
 
 	$ethernet.getAdapters().done(function(devs){
 		$scope.baseDevices = devs.filter(function(dev){
-			return !dev.flags || !dev.flags.split(",").find(function(f){ return f == "NOARP"; });
+			return dev.type !== "eth-bridge";
 		}).map(function(dev){
 			return { label: dev.name + " (" + dev.device + ")", value: dev.device };
 		});

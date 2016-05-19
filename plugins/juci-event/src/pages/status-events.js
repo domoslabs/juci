@@ -20,29 +20,63 @@
 
 JUCI.app
 .controller("StatusEventsPageCtrl", function($scope, $rpc, $config, $tr, gettext){
+	var AllLogs;
+	// to make it possible to send sid to cgi-bin!!
+	if($rpc.$sid) $scope.sid = $rpc.$sid();
+	JUCI.interval.repeat("event-log-page", 5000, function(next){
+		if(!$rpc.router) return;
+		$rpc.router.logs().done(function(data){
+			if(!data || !data.logs) return;
+			AllLogs = data.logs;
+			$scope.update();
+			$scope.$apply();
+		}).always(function(){next();});
+	});
 	var log = {
 		autoRefresh : true
 	};
-	var timeoutID = undefined;
-	var request = null;
 	$scope.data = { limit: 20, filter: "", type: "" };
-	$scope.sid = $rpc.$sid(); 
+	$scope.logs = [];
 	$scope.filters = [];
-	
-	$config.settings.juci_event.filter.value.map(function(x){
-		var filter = x.split(".")[0];
-		var id = x.split(".")[1];
-		if(inFilters(filter) == -1) $scope.filters.push({name:filter, filters:[id], checked:false});
-		else $scope.filters[inFilters(filter)].filters.push(id);
-	});
-
+	if($config.settings && $config.settings.juci_event){
+		$config.settings.juci_event.filter.value.map(function(x){
+			var filter = x.split(".")[0];
+			var id = x.split(".")[1];
+			if(inFilters(filter) === -1) $scope.filters.push({name:filter, filters:[id], checked:false});
+			else $scope.filters[inFilters(filter)].filters.push(id);
+		});
+	}
 	function inFilters(filter){
 		for(var i = 0; i < $scope.filters.length; i++){
 			if($scope.filters[i].name == filter) return i;
 		}
 		return -1;
 	}
-	
+	$scope.update = function(update){
+		if(!AllLogs) return;
+		var sources = [];
+		$scope.filters.map(function(f){
+			if(!f.checked) return;
+			f.filters.map(function(x){
+				sources.push(x);
+			});
+		});
+		$scope.logs = AllLogs.filter(function(log){
+			if(sources.length && !sources.find(function(x){ return log.source.match(RegExp(x));})) return false;
+			return (log.message.match(RegExp($scope.data.filter)) || 
+					log.source.match(RegExp($scope.data.filter))) &&
+					log.id.match(RegExp($scope.data.type));
+		}).slice(0, $scope.data.limit);
+	}
+	$scope.$watch("data.limit", function(lim){
+		if(!lim) return;
+		$scope.update();
+	}, false);
+	$scope.$watch("data.type", function(type){
+		if(!type) return;
+		$scope.update();
+	}, false);
+
 	$scope.allLimits = [
 		{ label: 20, value: 20 }, 
 		{ label: 50, value: 50 }, 
@@ -60,60 +94,10 @@ JUCI.app
 		{ label:$tr(gettext("Debug")),			value: "debug" }
 	];
 
-	function update(){
-		var limit = "";
-		$scope.filters.map(function(x){
-			if(!x.checked) return;
-			x.filters.map(function(lim){
-				limit += lim + "\|";
-			});
-		});
-		if($scope.data.filter == "") limit = limit.slice(0, -1);
-		else limit += $scope.data.filter;
-		if(request === null){
-			request = $rpc.juci.system.run({"method":"log", "args": JSON.stringify({
-				limit:$scope.data.limit,
-				filter:limit,
-				type:$scope.data.type
-			})}).done(function(result){
-				if(result && result.lines){
-					$scope.logs = result.lines; 
-					$scope.$apply();
-				}
-			}).always(function(){
-				request = null;
-			}); 
-		}
-		return request;
-	}
-
-	$scope.applyFilter = function(){
-		$scope.inprogress = true;
-		if(typeof timeoutID === "number"){
-			clearTimeout(timeoutID);
-		}
-		log.autoRefresh = false;
-		timeoutID = setTimeout(function(){log.autoRefresh = true;}, 1000);
-		update().always(function() {
-			$scope.inprogress = false;
-			$scope.$apply();	
-		});
-	};
-
-	JUCI.interval.repeat("syslog", 1000, function(done){
-		if(!log.autoRefresh){
-			done();
-			return;
-		}
-		update().always(function(){
-			done();
-		});
-	}); 
-
 	$scope.lineClass = function(line){
-		if(line.type.indexOf("error") >= 0) return "label-danger"; 
-		if(line.type.indexOf("warn") >= 0) return "label-warning";  
-		if(line.type.indexOf("notice") >= 0 || line.type.indexOf("info") >= 0) return "label-info"; 
+		if(line.id.indexOf("error") >= 0) return "label-danger"; 
+		if(line.id.indexOf("warn") >= 0) return "label-warning";  
+		if(line.id.indexOf("notice") >= 0 || line.id.indexOf("info") >= 0) return "label-info"; 
 		return ""; 
 	}
 }); 

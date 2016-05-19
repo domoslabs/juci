@@ -1,9 +1,11 @@
 JUCI.app.run(function($uci){
 	// automatically create the setup section because without it we can not get current netmode (it should actually be there by default, but just in case);
 	$uci.$sync("netmode").done(function(){
-		$uci.netmode.$create({".type": "mode", ".name": "setup" }).done(function(){
-			$uci.$save(); 
-		}); 
+		if(!$uci.netmode.setup){
+			$uci.netmode.$create({".type": "mode", ".name": "setup" }).done(function(){
+				$uci.$save(); 
+			}); 
+		}
 	}); 
 }); 
 
@@ -24,6 +26,9 @@ UCI.netmode.$registerSectionType("netmode", {
 	"exp":		{ dvalue: '', type: String },
 	"exp_en":	{ dvalue: '', type: String },
 	"exp_fi":	{ dvalue: '', type: String },
-	"exp_sv":	{ dvalue: '', type: String }
+	"exp_sv":	{ dvalue: '', type: String },
+	"askcred":	{ dvalue: false, type: Boolean },
+	"ssid":		{ dvalue: '', type: String },
+	"key":		{ dvalue: '', type: String }
 }); 
 

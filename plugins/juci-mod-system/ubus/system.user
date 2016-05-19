@@ -36,7 +36,14 @@ local function checkpassword(user, pass)
 end
 
 local function user_set_password(opts)
-	if not opts["password"] then return 5; end
+	if not opts["password"] then 
+		print(json.encode({ error = "No password given" }));
+		return 1; 
+	end
+	if opts.password:match("%W") then
+		print(json.encode({ error = "Invalid password, password may only contain A-Z, a-z and 0-9" }));
+		return 1;
+	end
 	local session = juci.session.get(opts.sid); 
 	if not session then 
 		print(json.encode({ error = "Could not find session!" })); 

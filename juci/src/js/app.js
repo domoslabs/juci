@@ -98,14 +98,15 @@ JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $
 	$rootScope.$on("errors_begin", function(ev){
 		$rootScope.errors.splice(0, $rootScope.errors.length); 
 	}); 
-	// set current language
-	gettextCatalog.setCurrentLanguage($config.settings.juci.default_language.value); 
-	gettextCatalog.debug = $config.settings.juci.language_debug.value;
+
+	if($config.settings && $config.settings.juci) gettextCatalog.debug = $config.settings.juci.default_language.value;
+	if($config.settings && $config.settings.juci) gettextCatalog.debug = $config.settings.juci.language_debug.value;
+	var home = ($config.settings && $config.settings.juci)?$config.settings.juci.homepage.value: "";
 	
 	var path = $location.path().replace(/\//g, ""); 
 	// load the right page from the start
 	if($rpc.$isLoggedIn()){
-		$juci.redirect(path||$config.settings.juci.homepage.value || "overview"); 
+		$juci.redirect(path|| home || "overview"); 
 	} else {
 		$juci.redirect("login");
 	}
@@ -153,11 +154,18 @@ JUCI.app.directive('autofocus', ['$timeout', function($timeout) {
 
 // This ensures that we have control over the initialization order (base system first, then angular). 
 angular.element(document).ready(function() {
-	JUCI.$init().done(function(){
-		angular.bootstrap(document, ["juci"]);
-	}).fail(function(){
-		window.location = "/initfail.html"; 
-		//alert("JUCI failed to initialize! look in browser console for more details (this should not happen!)"); 
-	}); 
+	//the init process will try for 1 sec to initialize and if it fails it will go to init fale page
+	starting = Date.now();
+	(function init(){
+		JUCI.$init().done(function(){
+			angular.bootstrap(document, ["juci"]);
+		}).fail(function(){
+			if(starting + 1000 > Date.now()){
+				setTimeout(function(){init();},50);
+			}else{
+				window.location = "/initfail.html";
+			}
+		});
+	})();
 });
 

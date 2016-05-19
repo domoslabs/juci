@@ -6,12 +6,12 @@
 				<juci-config-line title="{{'CPU Speed'|translate}}">
 					<juci-select ng-items="cpu_speeds" ng-model="pwr.cpuspeed.value"></juci-select>
 				</juci-config-line>
-				<juci-config-line title="{{'CPU r4k Wait'|translate}}">
+				<juci-config-line title="{{'CPU r4k Wait'|translate}}" help="{{'keeps CPU in sleep state without spinning' | translate}}">
 					<switch ng-model="pwr.cpur4kwait.value" class="green" />
 				</juci-config-line>
-				<juci-config-line ng-show="pwr.cpur4kwait.value" title="{{'DRAM Self-Refresh'|translate}}">
-					<switch ng-model="pwr.sr.value" class="green" />
-				</juci-config-line>
+<!--				<juci-config-line ng-show="pwr.cpur4kwait.value" title="{{'DRAM Self-Refresh'|translate}}">-->
+<!--					<switch ng-model="pwr.sr.value" class="green" />-->
+<!--				</juci-config-line>-->
 				<juci-config-line title="{{'Ethernet Auto Power Down'|translate}}">
 					<switch ng-model="pwr.ethapd.value" class="green" />
 				</juci-config-line>

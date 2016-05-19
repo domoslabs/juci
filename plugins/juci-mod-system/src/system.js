@@ -19,7 +19,7 @@
 UCI.$registerConfig("system"); 
 
 UCI.system.$registerSectionType("system", {
-	"hostname":		{ dvalue: '', type: String },
+	"hostname":		{ dvalue: '', type: String, required: true},
 	"timezone":		{ dvalue: '', type: String },
 	"zonename":		{ dvalue: '', type: String },
 	"conloglevel":		{ dvalue: 7, type: Number },
@@ -41,7 +41,7 @@ UCI.system.$registerSectionType("upgrade", {
 	"fw_check_url":		{ dvalue: "", type: String, required: false},
 	"fw_path_url":		{ dvalue: "", type: String },
 	"fw_usb_path": 		{ dvalue: "", type: String }, 
-	"fw_find_ext":		{ dvalue: "", type: String, required: false},
+	"fw_find_ext":		{ dvalue: ".y", type: String, required: false},
 	"fw_upload_path":	{ dvalue: "", type: String, required: false}
 }); 
 
@@ -53,8 +53,14 @@ UCI.rpcd.$registerSectionType("login", {
 	"write":	{ dvalue: [], type: Array},
 	"read":		{ dvalue: [], type: Array}
 });
+
 UCI.$registerConfig("buttons");
 UCI.buttons.$registerSectionType("button", {
+	"enable":	{ dvalue: true, type: Boolean }
+});
+
+UCI.$registerConfig("leds");
+UCI.leds.$registerSectionType("led", {
 	"enable":	{ dvalue: true, type: Boolean }
 });
 

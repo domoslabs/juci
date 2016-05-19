@@ -31,13 +31,14 @@ JUCI.app
 	$scope.showExpert = $config.local.mode == "expert";
 	$scope.$watch("device", function(device){
 		if(!device) return; 
-
-		$rpc.juci.wireless.run({"method":"radios"}).done(function(result){
+		$rpc.router.radios().done(function(result){
 			if(device[".name"] in result){
+				
+				
 				var settings = result[device[".name"]]; 
-				$scope.allChannels = settings.channels.map(function(x){ return { label: x, value: x }; }); 
-				$scope.allModes = settings.hwmodes.map(function(x){ return { label: $tr(x), value: x }; });
-				$scope.allBandwidths = settings.bwcaps.map(function(x){ return { label: x, value: x }; });
+				if(settings.channels) $scope.allChannels = [{ label:$tr(gettext("Auto")), value: "auto" }].concat(settings.channels.map(function(x){ return { label: x, value: x }; })); 
+				if(settings.hwmodes) $scope.allModes = [{ label:$tr(gettext("Auto")), value: "auto" }].concat(settings.hwmodes.map(function(x){ return { label: $tr(x), value: x }; }));
+				if(settings.bwcaps) $scope.allBandwidths = settings.bwcaps.map(function(x){ return { label: x, value: x }; });
 			} 
 			$scope.$apply(); 
 		}); 

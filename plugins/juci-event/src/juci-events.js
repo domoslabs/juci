@@ -35,26 +35,23 @@
 		var last_handled_time = 0;  
 		var self = JUCI.events;
 		setInterval(function(){
-			if($rpc.router == undefined || !$rpc.router.events) return;  
-			$rpc.router.events().done(function(result){
-				var new_time = 0; 
+			if($rpc.event == undefined || !$rpc.event.list) return;  
+			$rpc.event.list().done(function(result){
 				if(!result || !result.list) return; 
 				result.list.map(function(event){
 					if(event.time > last_handled_time){
-						if(new_time < event.time) new_time = event.time;
 						console.log("Event: "+JSON.stringify(event)); 
 						var cb = self.callbacks[event.type]; 
 						if(cb){
 							cb.map(function(c){
 								c.apply(event, [event]); 
 							});  
-							last_handled_time = event.time; 
 						}
+						last_handled_time = event.time; 
 					}
 				}); 
-				last_handled_time = new_time; 
 			}); 
-		}, 5000);  
+		}, 2000);  
 	}); 
 	
 	JUCI.app.factory("$events", function(){
@@ -65,4 +62,3 @@
 UCI.juci.$registerSectionType("juci_event", {
 	"filter":	{ dvalue: [], type: Array }
 });
-UCI.juci.$insertDefaults("juci_event");

@@ -1,0 +1,51 @@
+<div ng-show="show()">
+	<juci-overview-widget title="{{'Extender/Repeater'|translate}}" icon="fa fa-signal" allow-overflow="true">
+		<div class="row" style="margin-bottom: 10px;">
+			<div class="col-xs-3" style="text-align: center;"><i style="color:{{wpsColor}};" class="juci juci-wps fa-lg"></i></div>
+			<div class="col-xs-6">
+				<a class="overview-list-item-text" href="#!/wireless-wps"><strong>{{'WPS'|translate}}</strong></a>
+			</div>
+			<div class="col-xs-3" style="float:right;text-align:right;">
+				<button class="btn btn-default {{wps?'':'disabled'}}" title="{{'(within 2 minutes)'|translate}}" ng-click="onPairWps()">{{'Pair'|translate}}</button>
+			</div>
+		</div>
+		<hr />
+		<juci-config-section>
+			<div class="row">
+				<h4 class="col-lg-9" style="margin:0px;">{{'Manual setup'|translate}}</h4>
+				<button class="btn btn-default col-lg-2" ng-click="showManual.toggle()" ng-show="!showManual.value"><i class="fa fa-arrow-down"></i></button>
+			</div>
+			<juci-config-lines ng-show="showManual.value">
+				<juci-config-line title="{{'SSID'|translate}}" error="manual.error">
+					<input type="text" ng-model="manual.ssid" class="form-control" />
+				</juci-config-line>
+				<juci-config-line title="{{'Key'|translate}}">
+					<input type="text" ng-model="manual.key" class="form-control" />
+				</juci-config-line>
+				<div class="row">
+					<div class="col-lg-6" style="text-align:center;"><button class="btn btn-default" ng-click="onScanAp()" ng-show="showManual.value">{{'Scan for avalible APs'|translate}}</button></div>
+					<div class="col-lg-6" style="text-align:center;"><button class="btn btn-default {{onManualConnect?'':'disabled'}}" ng-click="onManualConnect()">{{'Connect'|translate}}</button></div>
+				</div>
+			</juci-config-lines>
+		</juci-config-section>
+		<span ng-show="!showManual.value" class="label label-danger" ng-show="automatic.error">{{automatic.error}}</span>
+		<div ng-show="!showManual.value" class="row">
+			<label style="font-size:1.2em;" class="col-md-5">
+				{{'Select AP'|translate}}
+			</label>
+			<div class="col-md-7"><juci-select ng-items="avalibleAps" ng-model="automatic.bssid"></juci-select></div>
+			<div ng-show="showAutomaticPassword()">
+				<label style="font-size:1.2em;" class="col-md-5 col-lg-12">
+					{{'Encryption key'|translate}}
+				</label>
+				<div class="col-md-7 col-lg-12"><input type="password" ng-model="automatic.key" class="form-control" /></div>
+			</div>
+			<button class="btn btn-default" style="float:right;margin:10px;" ng-click="onAutomaticConnect()">{{'Connect'|translate}}</button>
+		</div>
+		<modal title="{{modalTitle}}" data-keyboard="false" data-backdrop="static" ng-show="showModal">
+			<div style="text-align: center;">
+				<i class="fa fa-spinner fa-spin fa-3x"></i>
+			</div>
+		</modal>
+	</juci-overview-widget>
+</div>

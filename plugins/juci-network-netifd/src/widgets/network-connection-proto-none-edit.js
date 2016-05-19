@@ -21,6 +21,8 @@ JUCI.app
 .controller("networkConnectionProtoNoneEditCtrl", function($scope){
 	$scope.$watch("interface", function(){
 		if(!$scope.interface) return;
-		$scope.interface.type.value = "bridge";
+		if($scope.interface.proto.value === "none"){
+			$scope.interface.type.value = "bridge";
+		}
 	}, false);
 });

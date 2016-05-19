@@ -82,7 +82,7 @@ msgid "Backup Settings"
 msgstr ""
 
 msgid "settings.config.info"
-msgstr ""
+msgstr "Save/Load settings or perform factory reset"
 
 msgid "Save settings to computer with password protection"
 msgstr ""
@@ -117,7 +117,7 @@ msgstr ""
 msgid "Re-type password"
 msgstr ""
 
-msgid "Pick configuration backup to upload"
+msgid "Select configuration backup to upload"
 msgstr ""
 
 msgid "Backup file password"
@@ -161,6 +161,12 @@ msgstr ""
 
 msgid "settings.management.buttons.info"
 msgstr "Enable/disable the buttons on your router"
+
+msgid "Configure LEDs"
+msgstr ""
+
+msgid "settings.management.leds.info"
+msgstr "Enable/disable the LEDs on your router"
 
 msgid "Management"
 msgstr ""
@@ -262,7 +268,7 @@ msgid "menu-settings-password-title"
 msgstr "Passwords"
 
 msgid "menu-settings-system-title"
-msgstr "Settings"
+msgstr "General Settings"
 
 msgid "menu-settings-services-title"
 msgstr "Services"
@@ -271,10 +277,13 @@ msgid "menu-settings-users-title"
 msgstr "Menu Access"
 
 msgid "menu-settings-configuration-title"
-msgstr "Backup Settings"
+msgstr "Restore/Backup"
 
 msgid "menu-settings-hardware-buttons-title"
 msgstr "Buttons"
+
+msgid "menu-settings-hardware-leds-title"
+msgstr "LEDs"
 
 msgid "menu-status-system-processes-title"
 msgstr "Processes"

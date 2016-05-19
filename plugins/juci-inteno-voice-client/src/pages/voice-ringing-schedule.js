@@ -21,11 +21,10 @@
  */
  
 JUCI.app
-.controller("PagePhoneRingingSchedule", function($scope, $uci, gettext){
-	$scope.allSipAccountsMap = {}; 
+.controller("PagePhoneRingingSchedule", function($scope, $uci, gettext, $tr){
 	$scope.enabledDisabledItems = [
-		{ label: gettext("Enabled"), value: true }, 
-		{ label: gettext("Disabled"), value: false }
+		{ label: $tr(gettext("Enabled")), value: true }, 
+		{ label: $tr(gettext("Disabled")), value: false }
 	]; 
 	
 	$uci.$sync(["voice_client"]).done(function(){
@@ -55,10 +54,23 @@ JUCI.app
 		}
 		$scope.$apply(); 
 	});
+	function validateTimeSpan(range) { return (new UCI.validators.TimespanValidator()).validate({value: range});} 
+	function validateTime(time){ return (new UCI.validators.TimeValidator()).validate({value: time });}
 
 	$scope.onAcceptSchedule = function(){
 		var item = $scope.schedule.uci_item; 
 		var view = $scope.schedule; 
+		$scope.errors = item.$getErrors();
+		if(!view.sip_service_provider){
+			$scope.errors.push($tr(gettext("No Phone number selected")));
+		}
+		if(!view.days || view.days.length === 0){
+			$scope.errors.push($tr(gettext("No Day selected")));
+		}
+		var timeErr = validateTime(view.time_start) || validateTime(view.time_end) ||
+						validateTimeSpan(view.time_start + "-" + view.time_end);
+		if(timeErr && timeErr.length) $scope.errors.concat(timeErr);
+		if($scope.errors.length > 0) return;
 		if(item[".new"]) { 
 			item[".new"] = false; 
 		}
@@ -80,12 +92,11 @@ JUCI.app
 	$scope.onAddSchedule = function(){
 		$uci.voice_client.$create({".type": "ringing_schedule"}).done(function(item){
 			item[".new"] = true; 
-			var time = item.time.value.split("-"); 
 			$scope.schedule = {
-				time_start: time[0], 
-				time_end: time[1], 
-				days: item.days.value,
-				sip_service_provider: item.sip_service_provider.value,  
+				time_start: "", 
+				time_end: "", 
+				days: [],
+				sip_service_provider: "",  
 				uci_item: item
 			};
 			$scope.$apply(); 
@@ -96,12 +107,11 @@ JUCI.app
 	}
 	
 	$scope.onEditSchedule = function(item){
-		console.log("Editing: "+item[".name"]); 
 		var time = item.time.value.split("-"); 
 		$scope.schedule = {
-			time_start: time[0], 
-			time_end: time[1], 
-			days: item.days.value, 
+			time_start: time[0].slice(), 
+			time_end: time[1].slice(), 
+			days: item.days.value.slice(), 
 			sip_service_provider: item.sip_service_provider.value, 
 			uci_item: item
 		};

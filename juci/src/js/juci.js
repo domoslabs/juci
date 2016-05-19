@@ -28,35 +28,6 @@
 		this.pages = {}; 
 	}
 	
-	JUCIMain.prototype.module = function(name, root, data){
-		console.error("WARNING: JUCI.module() is deprecated! ["+name+"]"); 
-		/*var self = this; 
-		if(data){
-			data.plugin_root = root; 
-			self.plugins[name] = data; 
-		}
-		var plugin = self.plugins[name]; 
-		var juci = self; 
-		return {
-			plugin_root: "", //((plugin||{}).plugin_root||"plugins/"+name+"/"), 
-			directive: function(name, fn){
-				return angular.module("juci").directive(name, fn);
-			}, 
-			controller: function(name, fn){
-				return angular.module("juci").controller(name, fn); 
-			}, 
-			state: function(name, obj){
-				if(obj.templateUrl && plugin.plugin_root) obj.templateUrl = plugin.plugin_root + "/" + obj.templateUrl; 
-				if(obj.views) Object.keys(obj.views).map(function(k){
-					var v = obj.views[k]; 
-					if(v.templateUrl && plugin.plugin_root) v.templateUrl = plugin.plugin_root + "/" + v.templateUrl; 
-				}); 
-				$juci.$stateProvider.state(name, obj); 
-				return this; 
-			}
-		}*/
-	}; 
-
 	JUCIMain.prototype.style = function(style){
 		var css = document.createElement("style");
 		css.type = "text/css";
@@ -65,7 +36,6 @@
 	}
 
 	JUCIMain.prototype.page = function(name, template, redirect){
-		//console.log("Registering page "+name+": "+template); 
 		var page = {
 			template: template, 
 			url: name
@@ -83,14 +53,10 @@
 		var scripts = []; 
 		var deferred = $.Deferred(); 
 		var $rpc = scope.UBUS; 
-		// TODO: maybe rewrite the init sequence
 		async.series([
 			function(next){
 				$rpc.$init().done(function(){
-					if(!$rpc.juci || !$rpc.juci.system){
-						// TODO: make this prettier. 
-						//alert("Can not establish ubus connection to router. If the router is rebooting then please wait a few minutes and try again."); 
-						//return; 
+					if(!$rpc.juci || !$rpc.juci.system || !$rpc.uci){
 						deferred.reject(); 
 						return; 
 					} 
@@ -98,27 +64,9 @@
 				}).fail(function(){
 					console.error("UBUS failed to initialize: this means that no rpc calls will be available. You may get errors if other parts of the application assume a valid RPC connection!"); 
 					deferred.reject(); 
-					//next(); 
+					return;
 				}); 
 			},  
-			function(next){
-				$uci.$init().done(function(){
-					next(); 
-				}).fail(function(){
-					console.error("UCI failed to initialize!"); 
-					next(); 
-					//deferred.reject(); 
-				}); 
-			}, 
-			function(next){
-				$juci.config.$init().done(function(){
-					next(); 
-				}).fail(function(){
-					console.error("CONFIG failed to initialize!"); 
-					next(); 
-					//deferred.reject(); 
-				}); 
-			}, 
 			function(next){
 				$rpc.$authenticate().done(function(){
 					next(); 
@@ -127,6 +75,22 @@
 					next(); 
 				}); 
 			},
+			function(next){
+				$uci.$init().done(function(){
+					next(); 
+				}).fail(function(){
+					console.error("UCI failed to initialize!"); 
+					deferred.reject(); 
+				}); 
+			}, 
+			function(next){
+				$juci.config.$init().done(function(){
+					next(); 
+				}).fail(function(){
+					console.error("CONFIG failed to initialize!"); 
+					next(); 
+				}); 
+			}, 
 			function(next){
 				// get the menu navigation
 				if(!$rpc.juci){
@@ -164,9 +128,7 @@
 				next(); 
 			}, 
 			function(next){
-				// set various gui settings such as mode (and maybe theme) here
-				// TODO: fix this. (mode will not be set automatically for now when we load the page. Need to decide where to put this one) 
-				//$juci.config.mode = localStorage.getItem("mode") || "basic"; 
+				$juci.config.mode = localStorage.getItem("mode") || "basic"; 
 				next(); 
 			}
 		], function(){
@@ -206,25 +168,9 @@
 							templateUrl: (page.redirect)?"pages/default.html":page.template
 						}
 					},
-					// Perfect! This loads our controllers on demand! :) 
-					// Leave this code here because it serves as a valuable example
-					// of how this can be done. 
-					/*resolve: {
-						deps : function ($q, $rootScope) {
-							var deferred = $q.defer();
-							require([plugin_root + "/" + page.view + ".js"], function (tt) {
-								$rootScope.$apply(function () {
-										deferred.resolve();
-								});
-								deferred.resolve()
-							});
-							return deferred.promise;
-						}
-					},*/
 					// this function will run upon load of every page in the gui
 					onEnter: function($uci, $window, $rootScope, $tr, gettext){
 						if(page.redirect) {
-							//alert("page redirect to "+page.redirect); 
 							$juci.redirect(page.redirect); 
 							return; 
 						}
@@ -238,13 +184,12 @@
 							$juci.redirect("login");
 						});
 						
-						// document.title = $tr(name.replace(/\//g, ".").replace(/-/g, ".")+".title")+" - "+$tr(gettext("application.name")); 
 						document.title = $tr(name+"-title"); 
 
 						// scroll to top
 						$window.scrollTo(0, 0); 
 					}, 
-					onExit: function($uci, $tr, gettext, $interval, $events){
+					onExit: function($uci, $tr, gettext, $events){
 						if($uci.$hasChanges()){
 							if(confirm($tr(gettext("You have unsaved changes. Do you want to save them before leaving this page?"))))
 								$uci.$save(); 
@@ -282,7 +227,6 @@
 			}
 			// register all templates 
 			Object.keys(self.templates).map(function(k){
-				//console.log("Registering template "+k); 
 				$templateCache.put(k, self.templates[k]); 
 			}); 
 			// subscribe to uci change events and notify uci object
@@ -299,10 +243,6 @@
 
 		app.factory('$rpc', function(){
 			return scope.UBUS; 
-		});
-
-		app.factory('$rpc2', function(){
-			return scope.UBUS2; 
 		});
 
 		app.factory('$uci', function(){
@@ -329,19 +269,38 @@
 		"language_debug":	{ dvalue: false, type: String },
 		"default_language": { dvalue: "en", type: String }
 	}); 
-	UCI.juci.$insertDefaults("juci"); 
 
 	UCI.juci.$registerSectionType("login", {
 		"showusername":		{ dvalue: true, type: Boolean }, // whether to show or hide the username on login page 
-		"defaultuser":		{ dvalue: "admin", type: String } // default user to display on login page or to use when username is hidden 
+		"defaultuser":		{ dvalue: "user", type: String } // default user to display on login page or to use when username is hidden 
 	}); 
-	UCI.juci.$insertDefaults("login"); 
 
 	UCI.juci.$registerSectionType("localization", {
 		"default_language":		{ dvalue: "en", type: String }, // language used when user first visits the page 
 		"languages":			{ dvalue: [], type: Array } // list of languages available (use name of po file without .po extension and in lower case: se, en etc..)
 	});  
 	// register default localization localization section so that we don't need to worry about it not existing
-	UCI.juci.$insertDefaults("localization"); 
+	JUCI.app.run(function($uci){
+		$uci.$sync("juci").done(function(){
+			if(!$uci.juci.juci){
+				$uci.juci.$create({
+					".type":"juci",
+					".name":"juci"
+				});
+			}
+			if(!$uci.juci.login){
+				$uci.juci.$create({
+					".type":"login",
+					".name":"login"
+				});
+			}
+			if(!$uci.juci.localization){
+				$uci.juci.$create({
+					".type":"localization",
+					".name":"localization"
+				});
+			}
+		});
+	 });
 
 })(typeof exports === 'undefined'? this : exports); 

@@ -31,6 +31,7 @@
 			_timeouts[name] = i; 
 		}, 
 		repeat: function(name, t, fn){
+			if(_timeouts[name])return;
 			function _onTimeout(){
 				fn(function next(ret, err){
 					if(!ret) {

@@ -1,0 +1,27 @@
+<style>
+p.uppercase {
+    text-transform: uppercase;
+}
+
+p.lowercase {
+    text-transform: lowercase;
+}
+
+p.capitalize {
+    text-transform: capitalize;
+}
+</style>
+
+<juci-layout-with-sidebar>
+	<div ng-controller="ManagementLedsCtrl">
+		<juci-config-heading>{{'Configure LEDs'|translate}}</juci-config-heading>
+		<juci-cofnig-info>{{'settings.management.leds.info'|translate}}</juci-config-info>
+		<juci-config-section>
+			<juci-config-lines>
+				<p class="uppercase"><juci-config-line ng-repeat="led in leds track by $index" title="{{led['.name']}}">
+					<switch ng-model="led.enable.value" class="green" />
+				</juci-config-line></p>
+			</juci-config-lines>
+		</juci-config-section>
+	</div>
+</juci-layout-with-sidebar>

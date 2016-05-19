@@ -26,10 +26,11 @@
 		var sync_hosts = $uci.$sync("hosts"); 
 		function _refreshClients(self){
 			var deferred = $.Deferred(); 
-			$rpc.juci.network.run({"method":"clients"}).done(function(res){
+			if(!$rpc.router) return deferred.reject();
+			$rpc.router.clients().done(function(res){
 				sync_hosts.done(function(){
-					if(res && res.clients){
-						self.clients = res.clients.map(function(cl){
+					if(res){
+						self.clients = Object.keys(res).map(function(x){return res[x];}).map(function(cl){
 							// update clients with some extra information from hosts database
 							var key = cl.macaddr.replace(/:/g, "_"); 
 							if($uci.hosts[key]) {
@@ -102,26 +103,16 @@
 		NetworkBackend.prototype.getNetworks = function(opts){
 			var deferred = $.Deferred(); 
 			var networks = []; 
-			var devmap = {}; 
 			if(!opts) opts = {}; 
 			var filter = opts.filter || {};
 			var info = {};
 			async.series([
 				function(next){
-					$ethernet.getAdapters().done(function(devs){
-						devs.map(function(x){ devmap[x.name] = x; }); 
-					}).always(function(){ next(); }); 
-				}, function(next){
 					$uci.$sync("network").done(function(){
 						$uci.network["@interface"].map(function(i){
-							i.devices = []; 
-							var fixed = i.ifname.value.split(" ").filter(function(name){
+							i.ifname.value = i.ifname.value.split(" ").filter(function(name){
 								return name && name != ""; 
-							}).map(function(name){
-								if(name in devmap) i.devices.push(devmap[name]); 
-								return name; 
 							}).join(" "); 
-							i.ifname.value = fixed;
 							if(i[".name"] == "loopback") return; 
 							if(filter.no_aliases && i[".name"].indexOf("@") == 0 || i.type.value == "alias") return; 
 							networks.push(i); 

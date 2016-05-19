@@ -26,9 +26,10 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("overviewSliderWidget10Network", function($scope, $rpc, $config, $firewall){
+.controller("overviewSliderWidget10Network", function($rpc, $config, $firewall, $events, $tr, gettext){
 	var nodes = []; 
 	var edges = []; 
+	var def;
 	
 	var optionsFA = {
 		nodes: {
@@ -46,7 +47,8 @@ JUCI.app
 	function updateData(){
 		nodes = [];
 		edges = [];
-		var def = $.Deferred(); 
+		if(def) return def.promise();
+		def = $.Deferred(); 
 		
 		nodes.push({
 			id: ".root",
@@ -92,9 +94,9 @@ JUCI.app
 			}], function(){
 				var count = 0;
 				wan_nets.map(function(wan){
-					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value == false || !wan.$info.up) return;
+					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value == false || !wan.$info || !wan.$info.up) return;
 					var node = {
-						id: "wan.network." + count,
+						id: wan[".name"] + ".network." + count + Date.now(),
 						label: String(wan[".name"]).toUpperCase(),
 						image: "/img/net-interface-wan-icon.png",
 						shape: "image",
@@ -120,6 +122,7 @@ JUCI.app
 					nodes.push(node);
 					edges.push( { from: ".lan_hub", to: node.id, width: 6, smooth: { enabled: true } });
 					var cl_count = 0;
+					if(!clients)return;
 					Object.keys(clients).map(function(cl){ return clients[cl];})
 					.filter(function(cl){ return (cl.network && cl.network == lan.$info.interface);})
 					.map(function(cl){
@@ -127,11 +130,13 @@ JUCI.app
 						var cl_node = {
 							id: cl.macaddr+cl.ipaddr,
 							label: String(cl.hostname || "Unknown").toUpperCase()+"\n"+String(cl.ipaddr).toUpperCase(),
+							//title: "Hostname: " + cl.hostname + "<br />"+cl.ipaddr+"<br />"+cl.macaddr,
 							image: "/img/net-laptop-icon.png",
 							shape: "image",
 							fixed: { x: true, y: false },
 							x: -(250 + (100 * Math.floor(cl_count/5)))
 						}
+						if(cl.wireless) cl_node.title = getTitle(cl);
 						cl_count ++;
 						nodes.push(cl_node);
 						if(cl.wireless){
@@ -142,25 +147,51 @@ JUCI.app
 					});
 				});
 				def.resolve();
+				def = undefined;
 			}
 		);
 		return def;
 	}
-
+	function getTitle(cl){
+		var flags = [
+			{ title: $tr(gettext("Power Save")), value: "ps" }, 
+			{ title: $tr(gettext("WME")), value: "wme" }, 
+			{ title: $tr(gettext("N Mode")), value:"n_cap" }, 
+			{ title: $tr(gettext("VHT Mode")), value: "vht_cap"}
+		];
+		var ret = "Flags: ";
+		flags.map(function(flag){
+			if(cl[flag.value]) ret = ret + flag.title + ", ";
+		});
+		if(ret === "Flags: "){ ret = ret + $tr(gettext("No Flags"));}
+		else{ret = String(ret).substring(0,ret.length-2);}
+		ret += "<br />"+ $tr(gettext("TX Rate: ")) + Math.floor(parseInt(cl.tx_rate)/1000) + $tr(gettext(" Mbps")) + "<br />" + 
+						 $tr(gettext("RX Rate: ")) + Math.floor(parseInt(cl.rx_rate)/1000) + $tr(gettext(" Mbps"));
+		return ret;
+	}
 	updateData().done(function(){
 		// create a network
 		var containerFA = document.getElementById('mynetworkFA');
+		var time = Date.now();
+		window.onresize=function(){
+			if(Date.now() - time > 100){ //limit the number of time this is called to every 100 ms
+				network.setData({nodes: nodes, edges: edges});
+				time = Date.now();
+			}
+		}
 		var dataFA = {
 			nodes: nodes,
 			edges: edges
 		};
 		var network = new vis.Network(containerFA, dataFA, optionsFA);
-		$scope.$apply();
-		JUCI.interval.repeat("overview-slider-network", 5000, function(done){
+		$events.subscribe("client", function(){
 			updateData().done(function(){
 				network.setData({nodes: nodes, edges: edges});
-				$scope.$apply();
-				done();
+			});
+		});
+		$events.subscribe("network.interface", function(){
+			updateData().done(function(){
+				network.setData({nodes: nodes, edges: edges});
 			});
 		});
 	});

@@ -56,7 +56,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 			list.map(function(x){ devices[x.ifname.value] = x; }); 
 			adapters.map(function(dev){
 				if(dev.device in devices){
-					dev.name = devices[dev.device].ssid.value + "@" + dev.device; 
+					dev.name = devices[dev.device].ssid.value; 
 					dev.type = "wireless"; 
 					delete devices[dev.device]; 
 				}
@@ -74,20 +74,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 			adapters.forEach(function(dev){
 				if(dev.device && dev.device.indexOf("wl") == 0) dev.type = "wireless"; 
 			});
-			$uci.$sync("wireless").done(function(){
-				if($uci.wireless["@wifi-iface"]){
-					var wifiIfs = $uci.wireless["@wifi-iface"];
-					for(var i = adapters.length - 1; i >= 0; i--){
-						if(!adapters[i].device || !adapters[i].type || adapters[i].type != "wireless") continue;
-						if(wifiIfs.find(function(wifiIf){ return adapters[i].device == wifiIf.ifname.value; }) == null){
-							adapters.splice(i, 1);
-						}
-					}
-				}
-				def.resolve(); 
-			}).fail(function(){
-				def.reject(); 
-			});
+			def.resolve(); 
 		}).fail(function(){
 			def.reject();
 		}); 
@@ -134,25 +121,19 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 	//! returns virtual interfaces that are configured
 	Wireless.prototype.getInterfaces = function(){
 		var deferred = $.Deferred(); 
+		var self = this;
 		$uci.$sync("wireless").done(function(){
-			var ifs = $uci.wireless["@wifi-iface"]; 
-			// TODO: this is an ugly hack to automatically calculate wifi device name
-			// it is not guaranteed to be exact and should be replaced by a change to 
-			// how openwrt handles wireless device by adding an ifname field to wireless 
-			// interface configuration which will be used to create the ethernet device.  
-			/*
-			ifs.map(function(i){
-			var counters = {}; 
-				if(i.ifname.value == ""){
-					if(!counters[i.device.value]) counters[i.device.value] = 0; 
-					if(counters[i.device.value] == 0)
-						i.ifname.value = i.device.value; 
-					else
-						i.ifname.value = i.device.value + "." + counters[i.device.value]; 
-					counters[i.device.value]++; 
-				}
-			});*/ 
-			deferred.resolve(ifs); 
+			var ifs = $uci.wireless["@wifi-iface"];
+			self.getDevices().done(function(devices){
+				ifs.map(function(iface){
+					var dev = devices.find(function(dev){
+						return dev[".name"] === iface.device.value;
+					});
+					if(!dev) return;
+					iface[".frequency"] = (dev.band.value === "a") ? "5GHz" : "2.4GHz";
+				});
+				deferred.resolve(ifs);
+			});			 
 		}); 
 		return deferred.promise(); 
 	}
@@ -203,11 +184,6 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 				$uci.$save();
 			});  
 		} 
-		// remove the deprecated network field from all wireless configs
-		// NOTE: no longer needed because we now handle this properly in /sbin/wifi script!
-		/*$uci.wireless["@wifi-iface"].map(function(x){
-			x.network.value = ""; 
-		});*/ 
 		$uci.$save(); 
 	}); 
 }); 
@@ -254,7 +230,7 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"rifs_advert":	{ dvalue: true, type: Boolean },
 		"maxassoc":		{ dvalue: 32, type: Number },
 		"dfsc":			{ dvalue: true, type: Boolean }, // ? 
-		"hwmode":		{ dvalue: "11ac", type: String },
+		"hwmode":		{ dvalue: "auto", type: String },
 		"disabled":		{ dvalue: false, type: Boolean },
 		"frameburst": 	{ dvalue: false, type: Boolean },
 		"beamforming": 	{ dvalue: true, type: Boolean }
@@ -287,6 +263,7 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"macfilter":		{ dvalue: false, type: Boolean },
 		"maclist":			{ dvalue: [], type: Array } // match_each: /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/ }
 	}, function validator(section){
+		if(section.disabled) return null;
 		// validate ssid
 		if(section.ssid.value.length >= 32) 
 			return gettext("SSID string can be at most 32 characters long!"); 

@@ -55,7 +55,7 @@
 		<!--<modal title="Do you want to keep your configuration?" ng-show="showConfirm" on-accept="onConfirmKeep()" on-dismiss="onConfirmWipe()" accept-label="Yes" dismiss-label="No">
 			<p translate>If you answer yes then your configuration will be saved before the upgrade and restored after the upgrade has completed. If you choose 'no' then all your current configuration will be reset to defaults.</p>
 		</modal>-->
-		<modal hide-buttons="true" title="Firmware Upgrade" ng-show="showUpgradeStatus">
+		<modal hide-buttons="true" data-backdrop="static" title="Firmware Upgrade" ng-show="showUpgradeStatus">
 			<center>
 				<p style="text-align: center;" ng-show="!error">{{message}}</p>
 				<p class="alert alert-danger" style="text-align: center;" ng-show="error">{{error}}</p>

@@ -18,4 +18,4 @@ msgid "Select the services/settings to backup"
 msgstr ""
 
 msgid "menu-inteno-backup-settings-title"
-msgstr "Settings"
+msgstr "Backup Settings"

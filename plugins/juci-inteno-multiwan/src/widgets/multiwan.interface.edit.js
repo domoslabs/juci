@@ -91,9 +91,9 @@ JUCI.app
 			$scope.ICMPH.unshift({label:$scope.interface.icmp_hosts.value, value:$scope.interface.icmp_hosts.value});
 		}
 		$scope.failover_to = [
-			{ label: $tr(gettext('Disable')),						value:'disable' },
-			{ label: $tr(gettext('Load Balancer(Performance)')),	value:'fastbalancer' },
-			{ label: $tr(gettext('Load Balancer(Compability)')),	value:'balancer' }
+			{ label: $tr(gettext('Disable')),				value:'disable' },
+			{ label: $tr(gettext('Load Balancer (Best Compatibility)')),	value:'balancer' },
+			{ label: $tr(gettext('Fast Balancer (Best Distribution)')),	value:'fastbalancer' }
 		];
 		$scope.failover_to = $scope.failover_to.concat($uci.multiwan["@interface"].map(function(x){
 			return { label: x[".name"], value: x[".name"] }; 

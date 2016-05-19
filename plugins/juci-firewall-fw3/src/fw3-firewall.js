@@ -246,10 +246,10 @@ UCI.firewall.$registerSectionType("redirect", {
 	"dest":				{ dvalue: "", type: String }, 
 	"target": 			{ dvalue: "", type: String },
 	"src_ip":			{ dvalue: "", type: String, validator: UCI.validators.IPAddressValidator  },
-	"src_dport":		{ dvalue: "", type: String, validator: UCI.validators.PortValidator },
+	"src_dport":		{ dvalue: "", type: String, validator: UCI.validators.PortRangeValidator },
 	"proto":			{ dvalue: "tcp", type: String }, 
 	"dest_ip":			{ dvalue: "", type: String, validator: UCI.validators.IPAddressValidator  }, 
-	"dest_port":		{ dvalue: "", type: String, validator: UCI.validators.PortValidator },
+	"dest_port":		{ dvalue: "", type: String, validator: UCI.validators.PortRangeValidator },
 	"reflection": 		{ dvalue: false, type: Boolean }
 }, function(section){
 	if(!section.src_dport.value) return gettext("Source port can not be empty!"); 
@@ -275,11 +275,11 @@ UCI.firewall.$registerSectionType("rule", {
 	"src":				{ dvalue: "", type: String }, 
 	"src_ip":			{ dvalue: [], type: Array }, // needs to be extended type of ip address/mask
 	"src_mac": 			{ dvalue: [], type: Array, validator: UCI.validators.MACListValidator }, 
-	"src_port":			{ dvalue: "", type: String, validator:  UCI.validators.PortValidator }, // can be a range
+	"src_port":			{ dvalue: "", type: String, validator:  UCI.validators.PortRangeValidator }, // can be a range
 	"dest":				{ dvalue: "", type: String }, 
 	"dest_ip":			{ dvalue: [], type: Array }, // needs to be extended type of ip address/mask
 	"dest_mac":			{ dvalue: [], type: Array, validator: UCI.validators.MACListValidator },
-	"dest_port":		{ dvalue: "", type: String, validator: UCI.validators.PortValidator }, // can be a range
+	"dest_port":		{ dvalue: "", type: String, validator: UCI.validators.PortRangeValidator }, // can be a range
 	"proto":			{ dvalue: "any", type: String }, 
 	"target":			{ dvalue: "REJECT", type: String }, 
 	"family": 			{ dvalue: "ipv4", type: String }, 

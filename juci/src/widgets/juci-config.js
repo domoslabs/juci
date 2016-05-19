@@ -19,13 +19,6 @@
  */
 
 JUCI.app
-.directive("juciConfig", function(){
-	return {
-		template: '<div ng-transclude></div>', 
-		replace: true, 
-		transclude: true
-	};  
-})
 .directive("juciConfigSection", function(){
 	return {
 		template: '<div><div class="juci-config-section" ng-transclude></div><hr style="width: 100%; border-bottom: 1px solid #ccc; clear: both;"/></div>', 
@@ -57,14 +50,15 @@ JUCI.app
 .directive("juciConfigLine", function(){
 	return {
 		template: '<div><div class="row juci-config-line" style="margin-top: 20px; ">'+
-			'<div class="col-xs-6 {{errorClass}}">'+
+			'<div class="col-sm-6 col-xs-12 {{errorClass}}">'+
 				'<label style="font-size: 1.2em">{{title}}</label>'+
 				'<p style="font-size: 12px">{{help}}</p>'+
 			'</div>'+
-			'<div class="col-xs-6 juci-config-line-data">'+
+			'<div class="col-sm-6 col-xs-12 juci-config-line-data">'+
 				'<div class="{{pullClass}}" ng-transclude></div>'+
 			'</div></div>'+
 			'<div class="alert alert-danger" style="font-size: 0.8em" ng-show="er">{{er}}</div>'+
+			'<hr class="visible-xs" style="color:grey" />'+
 			'</div>', 
 		replace: true, 
 		scope: {
@@ -179,7 +173,9 @@ JUCI.app
 	// TODO: reloading takes a lot of computing (have to go through all fields)
 	// and this reload may happen several times in a row. 
 	// perhaps do not run it every time? 
+	var time = Date.now();
 	$rootScope.$watch(function(){
+		if(Date.now() - time < 100) return;
 		var changes = $uci.$getChanges(); 
 		if(changes.length > 0) {
 			if($scope.hide == true) { 

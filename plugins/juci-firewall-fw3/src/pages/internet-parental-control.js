@@ -20,7 +20,6 @@
 
 JUCI.app
 .controller("InternetParentalControlPage", function($scope, $uci, $rpc, $network, $tr, gettext){
-	$scope.urlList = [];
 	$scope.macList = []; 
 	$scope.errors = []; 
 	$scope.connectedHosts = []; 
@@ -35,147 +34,107 @@ JUCI.app
 		$scope.$apply(); 
 	});
 	
-	async.series([
-		function(next){
-			$uci.$sync("firewall").done(function(){
-				$scope.firewall = $uci.firewall; 
-				if(!$uci.firewall.urlblock){
-					$uci.firewall.$create({".type": "urlblock", ".name": "urlblock"}).done(function(){
-						$uci.$save().always(function(){ next(); }); 
-					}); 
-				} else {
-					next(); 
-				}
-			}).always(function(){next();}); 
-		}, function(next){
-			// create url blocking section if it does not exist
-			if(!$uci.firewall.urlblock){
-				$uci.firewall.$create({
-					".type": "urlblock", 
-					".name": "urlblock"
-				}).always(function(){
-					next(); 
-				}); 
-			} else {
-				next(); 
-			}
-		}, function(next){
-			$rpc.juci.system.time.run({"method":"timediff"}).done(function(data){
-				$scope.diff = data.diff;
-			}).always(function(){next();});
-		}], function(){
-			$scope.accessRules = $uci.firewall["@rule"].filter(function(x){
-				return x.parental.value; 
+	$uci.$sync("firewall").done(function(){
+		$scope.accessRules = $uci.firewall["@rule"].filter(function(x){
+			return x.parental.value; 
+		}); 
+		$scope.validateMAC = function(mac) { return (new UCI.validators.MACAddressValidator()).validate({value: mac}); }
+		$scope.validateTimeSpan = function(range) { return (new UCI.validators.TimespanValidator()).validate({value: range})}; 
+		$scope.validateTime = function(time){ return (new UCI.validators.TimeValidator()).validate({value: time })}
+		
+		function updateRules(){
+			$scope.accessRules = $uci.firewall["@rule"].filter(function(rule){
+				return rule.parental.value; 
 			}); 
-			$scope.urlblock = $uci.firewall.urlblock; 
-			$scope.urlblock.url.value.map(function(x){ $scope.urlList.push({url: x}); }); 
-			$scope.urlblock.src_mac.value.map(function(x){ $scope.macList.push({mac: x}); }); 
-
-			$scope.validateMAC = function(mac) { return (new UCI.validators.MACAddressValidator()).validate({value: mac}); }
-			$scope.validateTimeSpan = function(range) { return (new UCI.validators.TimespanValidator()).validate({value: range})}; 
-			
-			$scope.onAddURL = function(){
-				$scope.urlList.push({url: ""}); 
+		} updateRules(); 
+		$scope.onCreateAccessRule = function(){
+			/*$uci.firewall.$create({
+				".type": "rule", 
+				"parental": true,
+				"name": $tr(gettext("Parental Rule")) 
+			}).done(function(rule){*/
+			$scope.rule = {
+				days: [], 
+				macList: [], 
+				uci_rule: "new",
+				time_start: "",
+				time_end: ""
+			}; 
+		}
+		
+		$scope.onEditAccessRule = function(rule){
+			$scope.rule = {
+				days: rule.weekdays.value.split(" ").filter(function(x){ return x !== "";}), 
+				macList: rule.src_mac.value.map(function(x){ return { mac: x }; }), 
+				time_start: rule.start_time.value,
+				time_end: rule.stop_time.value,
+				uci_rule: rule
+			}; 
+		}
+		
+		$scope.onDeleteAccessRule = function(rule){
+			rule.$delete().done(function(){
+				updateRules(); 
+				$scope.$apply(); 
+			}); 
+		}
+		$scope.onAcceptEdit = function(){
+			var r = $scope.rule;
+			if(!r) return;
+			$scope.errors = [];
+			if(!r.days || r.days.length === 0){
+				$scope.errors.push($tr(gettext("No day selected!")));
 			}
-			$scope.onDeleteURL = function(url){
-				$scope.urlList = $scope.urlList.filter(function(x){
-					return x.url != url; 
-				}); 
+			if(!r.macList || r.macList.length === 0){
+				$scope.errors.push($tr(gettext("No target host selected!")));
+			}else{
+				$scope.rule.macList.map(function(k){
+					$scope.errors.push($scope.validateMAC(k.mac));
+				}); 	
 			}
-			
-			$scope.$watch("urlList", function(){
-				$scope.urlblock.url.value = $scope.urlList.map(function(k){
-					return k.url; 
-				}); 
-			}, true);
-			$scope.$watch("macList", function(){
-				$scope.urlblock.src_mac.value = $scope.macList.map(function(k){
-					return k.mac; 
-				}); 
-			}, true);
-			
-			function updateRules(){
-				$scope.accessRules = $uci.firewall["@rule"].filter(function(rule){
-					return rule.parental.value; 
-				}); 
-			} updateRules(); 
-			$scope.convertTime = function(orig, diff){
-				if(orig.match(/^[0-9]+:.+$/) == null || typeof diff != "number") return;
-				var parts = orig.split(":");
-				var new_hour = parseInt(parts[0]) + diff;
-				if(new_hour < 10) parts[0] = "0"+new_hour;
-				else parts[0] = ""+new_hour;
-				return parts.join(":");
-			};
-			$scope.onCreateAccessRule = function(){
-				console.log("Adding rule.."); 
+			if(r.time_start === "" || r.time_end === ""){
+				$scope.errors.push($tr(gettext("No start and/or end time selected!")));
+			}else {
+				var er = $scope.validateTime(r.time_start) || $scope.validateTime(r.time_end) ||
+					$scope.validateTimeSpan(r.time_start+"-"+r.time_end); 
+				if(er) $scope.errors.push(er);
+			}
+			$scope.errors = $scope.errors.filter(function(er){ return er !== null;});
+			if($scope.errors && $scope.errors.length > 0) return;
+			var rule = r.uci_rule; 
+			if(rule === "new"){
 				$uci.firewall.$create({
 					".type": "rule", 
-					"parental": true
+					"parental": true,
+					"name": $tr(gettext("Parental Rule")) 
 				}).done(function(rule){
-					rule[".new"] = true; 
-					rule.name.value = $tr(gettext("Parental Rule")); 
-					$scope.rule = {
-						time_start: rule.start_time.value, 
-						time_end: rule.stop_time.value, 
-						days: rule.weekdays.value.split(" "), 
-						macList: rule.src_mac.value.map(function(x){ return { mac: x }; }), 
-						uci_rule: rule
-					}; 
-					$scope.$apply(); 
-				}); 
+					finish(rule, r);
+					$scope.$apply();
+				});
+			}else{
+				finish(rule, r);
 			}
-			
-			$scope.onEditAccessRule = function(rule){
-				$scope.rule = {
-					time_start: $scope.convertTime(rule.start_time.value, $scope.diff),
-					time_end: $scope.convertTime(rule.stop_time.value, $scope.diff),
-					days: rule.weekdays.value.split(" "), 
-					macList: rule.src_mac.value.map(function(x){ return { mac: x }; }), 
-					uci_rule: rule
-				}; 
-			}
-			
-			$scope.onDeleteAccessRule = function(rule){
-				rule.$delete().done(function(){
-					updateRules(); 
-					$scope.$apply(); 
-				}); 
-			}
-			
-			$scope.onAcceptEdit = function(){
-				if($scope.rule.macList.find(function(k){
-					return $scope.validateMAC(k.mac); 
-				})) return; 
-				
-				var rule = $scope.rule.uci_rule; 
-				if(rule[".new"]) {
-					$scope.accessRules.push(rule); 
-					rule[".new"] = false; 
-				}
-				rule.src_mac.value = $scope.rule.macList.map(function(k){
-					return k.mac; 
-				}); 
-				rule.start_time.value = $scope.convertTime($scope.rule.time_start, -$scope.diff);
-				rule.stop_time.value = $scope.convertTime($scope.rule.time_end, -$scope.diff); 
-				rule.weekdays.value = $scope.rule.days.join(" "); 
-				
-				$scope.errors = rule.$getErrors().concat($scope.validateTimeSpan($scope.rule.time_start+"-"+$scope.rule.time_end)).filter(function(x){ return x; }); 
-				if(!$scope.errors || $scope.errors.length == 0)
-					$scope.rule = null; 
-			}
-			
-			$scope.onCancelEdit = function(){
-				if($scope.rule && $scope.rule.uci_rule){
-					if($scope.rule.uci_rule[".new"])
-						$scope.rule.uci_rule.$delete(); 
-					else 
-						$scope.rule.uci_rule.$reset(); 
-				}
-				$scope.rule = null; 
-			}
-			
-			$scope.$apply(); 
 		}
-	); 
-}); 
+		function finish(rule, r){
+			var uciErr = rule.$getErrors();
+			if(uciErr && uciErr.length > 0) $scope.errors.concat(uciErr);
+			if($scope.errors && $scope.errors.length > 0) return;
+
+			rule.src_mac.value = $scope.rule.macList.map(function(k){
+				return k.mac; 
+			}); 
+			rule.weekdays.value = $scope.rule.days.join(" ");
+			rule.start_time.value = r.time_start;
+			rule.stop_time.value = r.time_end;
+			if(rule[".new"]) {
+				rule[".new"] = false; 
+			}
+			updateRules();
+			$scope.rule = null; 
+		}
+		
+		$scope.onCancelEdit = function(){
+			$scope.rule = null; 
+		}
+	});
+});

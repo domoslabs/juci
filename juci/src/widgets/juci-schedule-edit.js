@@ -30,9 +30,9 @@ JUCI.app
 		require: "^ngModel"
 	};  
 }).controller("juciScheduleEdit", function($scope, gettext, $uci){
-	$scope.data = {}; 
-	$scope.time_span = { value: "" }; 
-	$scope.days = []; 
+	$scope.data = {
+		selectedTimeFrame: ""
+	}; 
 	
 	var dayTranslation = {
 		"everyday": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], 
@@ -55,43 +55,57 @@ JUCI.app
 		{ label: gettext("Saturday"), value: "sat" }, 
 		{ label: gettext("Sunday"), value: "sun" }
 	]; 
-	$scope.selectedTimeFrame = $scope.allTimeFrames[0].value; 
 	
-	$scope.$watch("time_span.end_time", function(value){
+	$scope.$watch("allDayNames", function(){
 		if(!$scope.schedule) return; 
-		$scope.schedule.time_end = value; 
-	}); 
-	$scope.$watch("time_span.start_time", function(value){
-		if(!$scope.schedule) return; 
-		$scope.schedule.time_start = value; 
-	}); 
-	$scope.$watch("days", function(){
-		if(!$scope.schedule) return; 
-		$scope.schedule.days.splice(0, $scope.schedule.days.length); 
-		$scope.days.map(function(x){ $scope.schedule.days.push(x); }); 
-		$scope.selectedTimeFrame = "individual"; 
-		Object.keys(dayTranslation).map(function(x){ 
-			var days = dayTranslation[x]; 
-			var equal = $scope.days.filter(function(day){
-				return dayTranslation[x].indexOf(day) != -1; 
-			}).length; 
-			if(equal == $scope.days.length && equal == dayTranslation[x].length) $scope.selectedTimeFrame = x; 
-		}); 
+		$scope.schedule.days = $scope.allDayNames.map(function(day){ 
+			if(day.checked) return day.value; 
+			else return null;
+		}).filter(function(d){return d !== null; });
 	}, true); 
-	$scope.$watch("schedule", function(value){
-		if(!value) return; 
-		$scope.time_span.value = (value.time_start||"")+"-"+(value.time_end||""); 
-		$scope.days.splice(0, $scope.days.length); 
-		value.days.map(function(x){ $scope.days.push(x); }); 
-		console.log("Schedule obj changed: "+JSON.stringify(Object.keys(value))); 
-	}); 
-	
-	// when predefined day selection is done 
-	$scope.onChangeDays = function($value){
-		console.log("Changing days to: "+JSON.stringify($value) + " "+ $scope.selectedTimeFrame);  
-		$scope.selectedTimeFrame = $value; 
-		$scope.days.splice(0, $scope.schedule.days.length); 
-		if(dayTranslation[$value]) 
-			dayTranslation[$value].map(function(x){ $scope.days.push(x); });
+
+	$scope.validateTime = function(time){
+		return (new UCI.validators.TimeValidator()).validate({ value: time }); 
 	}
+	$scope.validateTimespan = function(time){
+		return (new UCI.validators.TimespanValidator()).validate({ value: time }); 
+	}
+
+	$scope.$watch("schedule", function(value){
+		if(!value) return;
+		if(!value.days) value.days = [];
+		Object.keys(dayTranslation).map(function(dt){
+		$scope.data.selectedTimeFrame = "individual";
+			if(eq(dayTranslation[dt], value.days)){
+				$scope.data.selectedTimeFrame = dt;
+			}
+		});
+		$scope.allDayNames.map(function(day){ 
+			if(value.days.find(function(d){ return d === day.value; })){
+				day.checked = true;
+			}else{
+				day.checked = false;
+			}
+		});
+	}, false); 
+	
+	//$scope.onChangeDays = function(value){
+	$scope.$watch("data.selectedTimeFrame", function(value){
+		if(!value) return;
+		if(dayTranslation[value]){
+			$scope.allDayNames.map(function(day){
+				if(dayTranslation[value].find(function(d){
+					return d === day.value;
+				})) day.checked = true;
+				else day.checked = false;
+			});
+		}
+	}, false);
+	function eq(ar1, ar2){
+		if(ar1.length !== ar2.length) return false;
+		for(var i = 0; i < ar1.length; i++){
+			if(ar1[i] !== ar2[i]) return false;
+		}
+		return true;
+		}
 }); 

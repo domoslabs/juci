@@ -81,13 +81,10 @@ JUCI.app
 			return; 
 		}
 		//console.log("calling ubus call /juci/system.upgrade start now");
-		$scope.progress = $tr(gettext("Upgrading"));
+		$scope.message = $tr(gettext("Upgrading"));
 		$scope.$apply();
-		$rpc.juci.system.upgrade.run({"method":"start","args":JSON.stringify({"path": $scope.$PATH, "keep": (($scope.$KEEP)?1:0)})}).always(function(){ // this always returns true;
-			$scope.showUpgradeStatus = 0; 
-			$scope.$apply();
-			window.location = "/reboot.html";
-		});
+		$rpc.juci.system.upgrade.run({"method":"start","args":JSON.stringify({"path": $scope.$PATH, "keep": (($scope.$KEEP)?1:0)})});
+		setTimeout(function(){ window.location = "/reboot.html";}, 3000);
 	});
 	$scope.onDismissModal = function(){
 		$scope.showUpgradeStatus = false;

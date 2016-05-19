@@ -2,12 +2,15 @@
 	"juci-event": {
 		"description": "JUCI event module",
 		"read": {
+			"juci-io": [
+				"backup"
+			],
 			"ubus": {
-				"router": [
-					"events"
+				"event": [
+					"list"
 				],
-				"juci.event": [
-					"poll"
+				"router": [
+					"logs"
 				]
 			}
 		}

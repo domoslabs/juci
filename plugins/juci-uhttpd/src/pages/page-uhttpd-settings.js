@@ -22,7 +22,7 @@ JUCI.app
 .controller("PageUhttpdSettings", function($scope, $uci, $systemService){
 	$scope.logopts = {ubus_status: {value: []}};
 	$scope.status = {
-		items: [
+		all: [
 			{label: "OK",		value: "ok"},
 			{label: "Invalid command",	value: "invalid_command"},
 			{label: "Invalid argument",	value: "invalid_argument"},
@@ -34,70 +34,58 @@ JUCI.app
 			{label: "Not supported",	value: "not_supported"},
 			{label: "Unknown error", 	value: "unknown_error"},
 			{label: "Connection failed",value: "connection_failed"}
-		]
+		],
+		selectable: [],
+		selected: ""
 	};
-	$scope.method = {};
-	$scope.data = {status:  [],method: []}
-	$scope.getStatusItemTitle = function(item){return item.label};
-	$scope.getMethodItemTitle = function(item){return item};
+	$scope.data = {status:  [],method: [], newMethod:""}
 	$scope.addStatusItem = function(){
-		if(!$scope.status.new)return;
-		var ret = false;
-		$scope.data.status.map(function(item){
-			if(item.value == $scope.status.new){
-				alert("Status allredy in list, please select another one");
-				ret = true;
-			}
-		});
-		if(ret)return;
-		$scope.data.status.push($scope.status.items.find(function(x){return (x.value == $scope.status.new)}));
-	};
-	$scope.addMethodItem = function(){
-		if($scope.method.new.indexOf('.') === -1){
-			alert("The input must be on the form Object.Method");
-			return;
-		}
-		if($scope.logopts.ubus_method.value.find(function(x){return (x == $scope.method.new)})){
-			alert("Method allredy in list, pease select another one");
-			return
-		}
-		$scope.logopts.ubus_method.value.push($scope.method.new);
-		$scope.logopts.ubus_method.value = $scope.logopts.ubus_method.value;
-		$scope.method.new = "";
+		var index = $scope.status.selectable.findIndex(function(st){ return st.value === $scope.status.selected;});
+		if(index !== -1) $scope.data.status = $scope.data.status.concat($scope.status.selectable.splice(index, 1));
+		$scope.status.selected = $scope.status.selectable.length?$scope.status.selectable[0].value : "";
 	};
 	$scope.deleteStatusItem = function(item){
-		$scope.data.status = $scope.data.status.filter(function(x){
-			return (x != item);
-		});
+		if(!item) return;
+		var index = $scope.data.status.findIndex(function(st){ return item.value === st.value; });
+		if(index !== -1) $scope.status.selectable = $scope.status.selectable.concat($scope.data.status.splice(index, 1));
+		$scope.status.selected = $scope.status.selectable.length?$scope.status.selectable[0].value : "";
 	};
-	$uci.$sync("uhttpd").done(function(){
-		$scope.config = $uci.uhttpd.main; 
-		$scope.logopts = $uci.uhttpd.logopts;
-		$scope.data.status = $scope.logopts.ubus_status.value.map(function(x){
-			return $scope.status.items.find(function(y){
-				return (y.value == x);
-			});
-		});
-		$scope.$watch("data", function(){
-			$scope.logopts.ubus_status.value = $scope.data.status.map(function(x){
-				return x.value;
-			});
-		}, true);
-		$scope.$apply(); 
-	}); 
-	$systemService.find("uhttpd").done(function(service){
-		$scope.service = service; 
-		$scope.$apply(); 
-	});
-	$scope.onKeyup = function(x){
-		if(x.keyCode == 32){//32 = space
-			alert("no spaces allowed");
-			$scope.method.new = $scope.method.new.slice(0,-1);
+	$scope.addMethodItem = function(){
+		if($scope.data.newMethod.split(".").length !== 2 || $scope.data.newMethod.match(/\s/)){
+			alert("The input must be on the form Object.Method and may not contain spaces");
+			return;
 		}
+		if($scope.logopts.ubus_method.value.find(function(x){return (x == $scope.data.newMethod)})){
+			alert("Method allredy in list, pease enter another one");
+			return
+		}
+		$scope.logopts.ubus_method.value = $scope.logopts.ubus_method.value.concat([$scope.data.newMethod]);
+		$scope.data.newMethod = "";
 	};
 	$scope.deleteMethodItem = function(item){
 		$scope.logopts.ubus_method.value = $scope.logopts.ubus_method.value.filter(function(x){
 			return (x != item);
 		});
 	};
+	$uci.$sync("uhttpd").done(function(){
+		$scope.config = $uci.uhttpd.main; 
+		$scope.logopts = $uci.uhttpd.logopts;
+		$scope.status.all.map(function(status){
+			if($scope.logopts.ubus_status.value.find(function(st){
+				return st === status.value;
+			})){
+				$scope.data.status.push(status);
+			}else{
+				$scope.status.selectable.push(status);
+			}
+		});
+		$scope.status.selected = $scope.status.selectable.length?$scope.status.selectable[0].value : "";
+		$scope.$watch("data.status", function(value){
+			if(!value) return;
+			$scope.logopts.ubus_status.value = value.map(function(x){
+				return x.value;
+			});
+		}, true);
+		$scope.$apply(); 
+	}); 
 }); 

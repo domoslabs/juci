@@ -17,39 +17,126 @@
  */
 
 JUCI.app
-.controller("wirelessStatusPage", function($scope, $uci, $wireless, gettext, $rpc){
-	$scope.order = function(pred){
-		$scope.predicate = pred; 
-		$scope.reverse = !$scope.reverse;
-	}
-	$scope.radioToScan = {};
-	$uci.$sync("wireless").done(function(){
-		$rpc.juci.wireless.run({"method":"radios"}).done(function(data){
-			$scope.wlRadios = Object.keys(data).map(function(x){ return data[x]; });
-			$scope.scanableRadios = $scope.wlRadios.filter(function(radio){
-				return parseInt(radio.current_channel) < 52;
-			}).map(function(radio){
-				return { label: radio.frequency, value: radio.device };
-			});
-			$scope.dfs_enabled = ($scope.wlRadios.length != $scope.scanableRadios.length);
-			$scope.radioToScan.value = $scope.scanableRadios[0].value || null;
-			console.log($scope.radioToScan.value);
-			$scope.$apply(); 
-		});
-		$scope.doScan = function(){
-			if($scope.radioToScan.value == null)return;
-			$scope.scanning = 1; 
-			console.log("Scanning on "+$scope.radioToScan.value); 
-			$wireless.scan({device: $scope.radioToScan.value}).done(function(){
-				setTimeout(function(){
-					console.log("Getting scan results for "+$scope.radioToScan.value); 
-					$wireless.getScanResults({device: $scope.radioToScan.value }).done(function(aps){
-						$scope.access_points = aps;
-						$scope.scanning = 0; 
-						$scope.$apply(); 
-					}); 
-				}, 5000); 
-			}); 
-		} 
+.controller("wirelessStatusPage", function($scope, $uci, $wireless, gettext, $rpc, $tr, gettext){
+	$scope.radios = [];
+	$scope.interfaces = [];
+	$scope.clients = [];
+
+	$scope.translate = {
+		"none" : $tr(gettext("None")),
+		"wep" : $tr(gettext("WEP")),
+		"psk2" : $tr(gettext("WPA2 Personal (PSK)")),
+		"psk" : $tr(gettext("WPA Personal (PSK)")),
+		"mixed-psk" : $tr(gettext("WPA/WPA2 Personal (PSK) Mixed Mode")),
+		"wpa2" : $tr(gettext("WPA2 Enterprise")),
+		"wpa" : $tr(gettext("WPA Enterprise")),
+		"wpa-mixed" : $tr(gettext("WPA/WPA2 Enterprise Mixed Mode"))
+	};
+
+	JUCI.interval.repeat("wifi-status-page",5000,function(next){
+		async.series([
+			function(next){
+				$rpc.router.radios().done(function(rds){
+					$scope.radios = Object.keys(rds).map(function(r){
+						var radio = rds[r];
+						radio[".name"] = r;
+						return radio;
+					});
+					$scope.radios.map(function(radio){ radio[".interfaces"] = []; });
+				})
+				.always(function(){ next(); });
+			},
+			function(next){
+				$wireless.getInterfaces().done(function(ifs){
+					$scope.interfaces = ifs;
+					$scope.interfaces.map(function(i){ i[".clients"] = []; });
+				})
+				.always(function(){ next(); });
+			},
+			function(next){
+				$wireless.getConnectedClients().done(function(cls){
+					$scope.clients = cls;
+					cls.map( function(c){
+						c["rows"] = [
+							[$tr(gettext("IP-Address")),c.ipaddr],
+							[$tr(gettext("MAC-Address")), String(c.macaddr).toUpperCase()],
+							[$tr(gettext("DHCP")), c.dhcp],
+							[$tr(gettext("Idle")), c.idle],
+							[$tr(gettext("In Network")), c.in_network],
+							[$tr(gettext("RSSI")), c.rssi+" dBm"],
+							[$tr(gettext("SNR")), c.snr+ " dBm"],
+							["Number of Antennas", c.rssi_per_antenna.length],
+							["TX Rate", parseInt(c.scbstats.rate_of_last_tx_pkt/1000 +0.5) + " Mbps"],
+							["RX Rate", parseInt(c.scbstats.rate_of_last_rx_pkt/1000 +0.5) + " Mbps"],
+						];
+
+
+
+						var flagsString = "";
+						for (var attrname in c.flags){
+							if(c.flags[attrname] !== false){
+								flagsString = flagsString + attrname+", ";
+							}
+						}
+						if(flagsString != "" ){ c["rows"].push(["Flags",flagsString.slice(0,-2).toUpperCase()]); }
+						
+						var htcapsString= "";
+						for (var attrname in c.htcaps){
+							if(c.htcaps[attrname] !== false){
+								htcapsString = htcapsString + attrname+", ";
+							}
+						}
+						if(htcapsString != "" ){ c["rows"].push(["HT Capabilities",htcapsString.slice(0,-2).toUpperCase()]); }
+
+						var vhtcapsString= "";
+						for (var attrname in c.vhtcaps){
+							if(c.vhtcaps[attrname] !== false){
+								vhtcapsString = vhtcapsString + attrname+", ";
+							}
+						}
+						if(vhtcapsString != "" ){ c["rows"].push(["VHT Capabilities",vhtcapsString.slice(0,-2).toUpperCase()]); }
+
+
+
+						var most_of_scbstat= [
+							["TX Total Packets", c.scbstats.tx_total_pkts],
+							["Unicast Packets", c.scbstats.tx_ucast_pkts],
+							["TX Unicast Packets", c.scbstats.tx_ucast_pkts],
+							["TX Multicast/Broadcast Packets", c.scbstats.tx_mcast_bcast_pkts],
+							["TX Failures", c.scbstats.tx_failures],
+							["RX Data Packets", c.scbstats.rx_data_pkts],
+							["RX Unicast Packets", c.scbstats.rx_ucast_pkts],
+							["RX Multicast/Broadcast Packets", c.scbstats.rx_mcast_bcast_pkts],
+							["TX Data Packets Retried", c.scbstats.tx_data_pkts_retried],
+							["TX Total Packets Sent", c.scbstats.tx_total_pkts_sent],
+							["TX Packets Retries", c.scbstats.tx_pkts_retries],
+							["TX Packets Retry Exhausted", c.scbstats.tx_pkts_retry_exhausted],
+							["RX Total Packets Retried", c.scbstats.rx_total_pkts_retried],
+						];
+						most_of_scbstat.map(function(r){ c["rows"].push(r); });
+						
+					});
+				})
+				.always(function(){ next(); });
+			}],
+			function(){
+				// Add clients to interfaces
+				$scope.clients.map(function(client){
+					var iface = $scope.interfaces.find(function(i){
+						return i["ifname"]["value"] === client["wdev"];
+					});
+					iface[".clients"].push(client);
+				});
+				//Add interfaces to radios
+				$scope.interfaces.map(function(iface){
+					var radio = $scope.radios.find(function(r){
+						return r[".name"] === iface["device"]["value"];
+					});
+					radio[".interfaces"].push(iface);
+				});
+				$scope.$apply();
+				next();
+			}
+		);
 	}); 
 }); 

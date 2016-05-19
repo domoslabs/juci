@@ -6,13 +6,13 @@
 	</juci-config-line>
 	<juci-config-lines ng-show="!device.disabled.value">
 		<juci-config-line title="{{'Wifi Mode'|translate}}">
-			<juci-select ng-model="device.hwmode.value" ng-items="allModes" placeholder="{{'Pick Hardware Mode'|translate}}"/>
+			<juci-select ng-model="device.hwmode.value" ng-items="allModes" placeholder="{{'Select Hardware Mode'|translate}}"/>
 		</juci-config-line>
 		<juci-config-line title="{{'Channel'|translate}}">
-			<juci-select ng-model="device.channel.value" ng-items="allChannels" placeholder="{{'Pick Channel'|translate}}"/>
+			<juci-select ng-model="device.channel.value" ng-items="allChannels" placeholder="{{'Select Channel'|translate}}"/>
 		</juci-config-line>
 		<juci-config-line title="{{'Bandwidth'|translate}}">
-			<juci-select ng-model="device.bandwidth.value" ng-items="allBandwidths" placeholder="{{'Pick Bandwidth'|translate}}"/>
+			<juci-select ng-model="device.bandwidth.value" ng-items="allBandwidths" placeholder="{{'Select Bandwidth'|translate}}"/>
 		</juci-config-line>
 		<div ng-show="showExpert">
 			<!--<juci-config-line title="{{'RIFS'|translate}}"> Not in this version of JUCI maby when we have better Accesscontrol
@@ -24,7 +24,7 @@
 			<juci-config-line title="{{'Framebursting'|translate}}">
 				<switch class="green" ng-model="device.frameburst.value"/>
 			</juci-config-line>-->
-			<juci-config-line title="{{'Beamforming'|translate}}">
+			<juci-config-line title="{{'Beamforming'|translate}}" ng-show="device.band.value == 'a'">
 				<switch class="green" ng-model="device.beamforming.value"/>
 			</juci-config-line>
 			<juci-config-line title="{{'DFS Channels'|translate}}" ng-show="device.band.value == 'a'">

@@ -18,7 +18,7 @@
 					<th translate>Date</th>
 					<th translate>Time</th>
 					<th translate>External Number</th>
-					<th translate>Your number</th>
+					<th translate>Internal Number</th>
 					<th translate>Duration</th>
 				</tr>
 				<tr ng-repeat="log in call_log track by $index | filter:phoneFilter">
@@ -28,8 +28,8 @@
 					</td>
 					<td>{{log.date}}</td>
 					<td>{{log.time}}</td>
-					<td>{{log.to}}</td>
-					<td>{{log.from}}</td>
+					<td>{{log.direction=='INCOMING' ? log.from : log.to}}</td>
+					<td>{{log.direction=='OUTGOING' ? log.from : log.to}}</td>
 					<td>{{log.duration}}</td>
 				</tr>
 			</table>

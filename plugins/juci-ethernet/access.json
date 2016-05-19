@@ -3,10 +3,13 @@
 		"description": "JUCI ethernet module",
 		"read": {
 			"ubus": {
-				"/juci/ethernet": [
-					"run"
-					/*"adapters"*/
+				"network.device": [
+					"status"
 				]
+				/*"/juci/ethernet": [
+					"run"
+					"adapters"
+				]*/
 			}
 		}
 	}

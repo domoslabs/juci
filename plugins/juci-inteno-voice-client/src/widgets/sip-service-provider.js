@@ -13,7 +13,11 @@ JUCI.app
 		$scope.providers = $uci.voice_client["@sip_service_provider"];
 		$scope.$apply();
 	});
-	JUCI.interval.repeat("voice.sip-service-provicers", 4000, function(done){
+	JUCI.interval.repeat("voice.sip-service-provicers", 5000, function(done){
+		if(!$rpc || !$rpc.asterisk){
+			$scope.sipAccStatus = null;
+			return;
+		}
 		$rpc.asterisk.status().done(function(data){
 			$scope.sipAccStatus = data.sip;
 			$scope.$apply();

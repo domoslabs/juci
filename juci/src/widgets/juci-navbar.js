@@ -51,6 +51,13 @@ JUCI.app
 	$scope.hasChildren = function(menu){
 		return menu.children_list > 0; 
 	}
+	$scope.itemVisible = function(item){
+		if(!item.modes || !item.modes.length) return true; 
+		else if(item.modes && item.modes.indexOf($config.local.mode) == -1) {
+			return false; 
+		} 
+		else return true; 
+	};
 	
 	$scope.onLogout = function(){
 		$rpc.$logout().always(function(){

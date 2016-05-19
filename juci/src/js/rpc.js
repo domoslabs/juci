@@ -19,6 +19,8 @@
  */
 
 (function(scope){
+	var DEBUG_MODE = 0;
+	var retries = 3;
 	var RPC_HOST = ""; //(($config.rpc.host)?$config.rpc.host:"")
 	var RPC_DEFAULT_SESSION_ID = "00000000000000000000000000000000"; 
 	var RPC_SESSION_ID = scope.localStorage.getItem("sid")||RPC_DEFAULT_SESSION_ID; 
@@ -34,6 +36,7 @@
 	]; 
 	
 	function rpc_request(type, namespace, method, data){
+		if(DEBUG_MODE > 1)console.log("UBUS " + type + " " + namespace + " " + method);
 		var sid = ""; 
 		
 		// check if the request has been made only recently with same parameters
@@ -41,9 +44,8 @@
 		if(!RPC_CACHE[key]){
 			RPC_CACHE[key] = {}; 
 		}
-		//if(RPC_CACHE[key].time && ((new Date()).getTime() - RPC_CACHE[key].time.getTime()) < 3000){
 		// if this request with same parameters is already in progress then just return the existing promise 
-		if(RPC_CACHE[key].deferred && RPC_CACHE[key].deferred.state() == "pending"){
+		if(RPC_CACHE[key].deferred && RPC_CACHE[key].deferred.state() === "pending"){
 			return RPC_CACHE[key].deferred.promise(); 
 		} else {
 			RPC_CACHE[key].deferred = $.Deferred(); 
@@ -52,7 +54,7 @@
 		// remove completed requests from cache
 		var retain = {}; 
 		Object.keys(RPC_CACHE).map(function(k){
-			if(RPC_CACHE[k].deferred && RPC_CACHE[k].deferred.state() == "pending"){
+			if(RPC_CACHE[k].deferred && RPC_CACHE[k].deferred.state() === "pending"){
 				retain[k] = RPC_CACHE[k]; 
 			}
 		}); 
@@ -64,8 +66,6 @@
 			endPoint: RPC_HOST+"/ubus"
 		}, function(){	 
 			//var sid = "00000000000000000000000000000000"; 
-			//if($rootScope.sid) sid = $rootScope.sid; 
-			//data.ubus_rpc_session = sid;  
 			this.request(type, {
 				params: [ RPC_SESSION_ID, namespace, method, data],
 				success: function(result){
@@ -86,7 +86,7 @@
 								default: return gettext("RPC error #")+result.result[0]+": "+result.result[1]; 
 							}
 						}
-						console.log("RPC succeeded ("+namespace+"."+method+"), but returned error: "+JSON.stringify(result)+": "+_errstr(result.result[0]));
+						if(DEBUG_MODE)console.log("RPC succeeded ("+namespace+"."+method+"), but returned error: "+JSON.stringify(result)+": "+_errstr(result.result[0]));
 						RPC_CACHE[key].deferred.reject(_errstr(result.result[0])); 
 						return; 
 					}
@@ -104,10 +104,9 @@
 					}
 				}, 
 				error: function(result){
-					console.error("RPC error ("+namespace+"."+method+"): "+JSON.stringify(result));
+					if(DEBUG_MODE)console.error("RPC error ("+namespace+"."+method+"): "+JSON.stringify(result));
 					if(result && result.error){
 						RPC_CACHE[key].deferred.reject(result.error);  
-						//$rootScope.$broadcast("error", result.error.message); 
 					}
 				}
 			})
@@ -133,7 +132,6 @@
 			}
 
 			self.session.access({
-				//"ubus_rpc_session": RPC_SESSION_ID,
 				"scope": "ubus" 
 			}).done(function(result){
         		if(!("username" in (result.data||{}))) {
@@ -149,8 +147,12 @@
 					deferred.resolve(result); 
 				}  
 			}).fail(function err(result){
-				RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID; 
-				console.error("Session access call failed: you will be logged out!"); 
+				if(retries === 0){
+					RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID; 
+					if(DEBUG_MODE) console.error("Session access call failed: you will be logged out!"); 
+					retries = 3;
+				}
+				retries --;	
 				deferred.reject(); 
 			}); 
 			return deferred.promise(); 
@@ -243,7 +245,7 @@
 			if(host) {
 				if(host.host) RPC_HOST = host.host;
 			} 
-			console.log("Init UBUS -> "+RPC_HOST); 
+			if(DEBUG_MODE)console.log("Init UBUS -> "+RPC_HOST); 
 			var deferred = $.Deferred(); 
 			default_calls.map(function(x){ self.$register(x); }); 
 			// request list of all methods and construct rpc object containing all of the methods in javascript. 

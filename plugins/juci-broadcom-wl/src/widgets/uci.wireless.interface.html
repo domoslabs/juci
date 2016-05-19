@@ -40,7 +40,7 @@
 				<input type="{{(!showPassword)?'password':'text'}}" class="form-control" placeholder="{{'WiFi Key'|translate}} #{{key}}" ng-model="interface['key'+key].value" />
 			</juci-config-line>
 		</div>
-		<div ng-show="interface.encryption.value == 'wpa2' || interface.encryption.value == 'mixed-wpa'">
+		<div ng-show="interface.encryption.value == 'wpa2' || interface.encryption.value == 'wpa-mixed'">
 			<juci-config-line title="{{'Radius Server'|translate}}">
 				<input type="text" class="form-control" placeholder="{{'Radius Server'|translate}}" ng-model="interface.radius_server.value" />
 			</juci-config-line>

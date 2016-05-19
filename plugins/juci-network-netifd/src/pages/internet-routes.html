@@ -21,7 +21,8 @@
 				<td><div class="form-group {{getError(route.target) ? '': 'has-error'}}">
 					<input type="text" class="form-control" ng-model="route.target.value" placeholder="{{'Target IP Address'|translate}}"/>
 				</div></td>
-				<td><div class="form-group {{getError(route.netmask) ? '': 'has-error'}}">
+				<!--<td><div class="form-group {{getError(route.netmask) ? '': 'has-error'}}">-->
+				<td><div class="form-group {{route.netmask.error ? 'has-error': ''}}">
 					<input type="text" class="form-control" ng-model="route.netmask.value" placeholder="{{'Netmask'|translate}}"/>
 				</div></td>
 				<td><div class="form-group {{getError(route.gateway) ? '': 'has-error'}}">

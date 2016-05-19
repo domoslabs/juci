@@ -38,7 +38,7 @@ JUCI.app
 					name:dev.device,
 					ticked: (snooping_interfaces.indexOf(dev.device) > -1)
 				}
-			});
+			}).filter(function(dev){ return (!dev.name || !dev.name.match(/^[eap]t[mh]\d\.\d+$/));});
 			$scope.$apply();
 		});
 		$network.getNetworks().done(function(nets){

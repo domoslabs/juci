@@ -30,6 +30,7 @@ function network_nat_table()
 		return; 
 	end
 	local line = file:read("*l"); 
+	local lnum = 0
 	while(line) do
 		local proto,_,_,state,remote_ip,local_ip,remote_port,local_port = line:match("^(%S+)%s+(%S+)%s+(%S+)%s+(%S+)%s+src=(%S+)%s+dst=(%S+)%s+sport=(%S+)%s+dport=(%S+).*"); 	
 		if(proto and state) then
@@ -41,6 +42,10 @@ function network_nat_table()
 				remote_port = remote_port, 
 				local_port = local_port
 			}); 
+			lnum = lnum + 1
+		end
+		if lnum > 500 then
+			break
 		end
 		line = file:read("*l"); 
 	end

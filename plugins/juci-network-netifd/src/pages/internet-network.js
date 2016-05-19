@@ -19,12 +19,10 @@
  */
 
 JUCI.app
-.controller("InternetNetworkPage", function($scope, $uci, $rpc, $network, $ethernet, $tr, gettext, $juciDialog, $juciConfirm, $juciAlert){
+.controller("InternetNetworkPage", function($firewall, $scope, $uci, $rpc, $network, $ethernet, $tr, gettext, $juciDialog, $juciConfirm, $juciAlert){
 	$scope.data = {}; 
 	
 	$ethernet.getAdapters().done(function(devices){
-		$scope.devices = devices; 
-		
 		$network.getNetworks().done(function(nets){
 			$scope.networks = nets.filter(function(x){ 
 				if(x.defaultroute.value) $scope.data.wan_network = x; 
@@ -103,9 +101,19 @@ JUCI.app
 						"type": model.type,
 						"proto": model.protocol,
 						"vendorid": vendorid,
-						"hostname": hostname
+						"hostname": hostname,
+						"is_lan": (model.protocol === "static") ? true : false
 					}).done(function(interface){
-						$scope.current_connection = interface; 
+						if(model.zone){
+							$firewall.getZones().done(function(zones){
+								zones.map(function(zone){
+									if(zone.name.value === model.zone){
+										zone.network.value = zone.network.value.concat([model.name]);
+									}
+								});
+								$scope.$apply();
+							});
+						}
 						$scope.networks.push(interface); 
 						$scope.$apply(); 
 					}); 
@@ -131,23 +139,22 @@ JUCI.app
 		$juciConfirm.show($tr(gettext("Are you sure you want to delete this connection?"))).done(function(result){
 			if(result != "ok")return;
 			conn.$delete().done(function(){
+				var keep = [];
+				$firewall.getZones().done(function(zones){
+					zones.map(function(zone){
+						keep = zone.network.value.filter(function(net){ return net !== conn[".name"]; });
+						if(keep.length !== zone.network.value.length){
+							zone.network.value = keep;
+						}
+					});
+					$scope.$apply();
+				});
 				$scope.networks = $scope.networks.filter(function(net){
 					return net[".name"] != conn[".name"]; 
 				}); 
-				$scope.current_connection = null; 
 				$scope.$apply(); 
 			}); 
 		});
-	}
-	
-	$scope.onEditConnection = function(conn){
-		// set editing widget for the type specific part of the conneciton wizard
-		$scope.current_connection = conn; 
-		
-	}
-	
-	$scope.onCancelEdit = function(){
-		$scope.current_connection = null; 
 	}
 	
 	$scope.onAddDevice = function(net, dev){

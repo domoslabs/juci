@@ -5,7 +5,6 @@ local json = require("juci.json");
 require("ubus"); 
 
 local conn = ubus.connect(); 
-local acl = conn:call("session", "access", { ubus_rpc_session = juci.query("sid") }); 
 
 
 if(not juci.session.access(juci.query("sid"), "juci-io", "backup", { "read" })) then 

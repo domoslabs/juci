@@ -1,0 +1,41 @@
+#!/bin/sh
+
+. /usr/share/libubox/jshn.sh
+. /lib/functions.sh
+
+local ssid key encryption
+set_uci(){
+	uci set 'wireless.'$1'.ssid='$ssid
+	uci set 'wireless.'$1'.key='$key
+	uci set 'wireless.'$1'.encryption='$encryption
+}
+
+set_creds() {
+	json_load "$1"
+	json_get_var ssid ssid
+	json_get_var key key
+	json_get_var encryption encryption
+	json_init
+	if [ -z "$ssid" -o -z "$encryption" ]; then
+		json_add_string "encryption" "$encryption"
+		json_add_string "ssid" "$ssid"
+		json_add_string "error" "ssid and encryption needed"
+		json_dump
+		return 1
+	fi
+	if [ "$encryption" != "none" -a -z "$key" ]; then
+		json_add_string "error" "key needed if encryption is not set to 'none'"
+		json_dump
+		return 1
+	fi
+	config_load "wireless"
+	wifi import "$1" &
+	json_add_string "code", "success"
+	json_dump
+}
+
+case $1 in
+	set)
+		set_creds "$2"
+		;;
+esac

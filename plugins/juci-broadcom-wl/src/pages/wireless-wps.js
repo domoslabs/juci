@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("wirelessWPSPage", function($scope, $config, $uci, $rpc, $interval, $router, gettext, $tr){
+.controller("wirelessWPSPage", function($scope, $config, $uci, $rpc, $router, gettext, $tr, $events){
 	$scope.showExpert = $config.local.mode == "expert";
 	var wps_status_strings = {
 		"-1": $tr(gettext("Disabled")),
@@ -29,7 +29,8 @@ JUCI.app
 		3: $tr(gettext("Failed")),
 		4: $tr(gettext("Timed out")),
 		7: $tr(gettext("Done!")),
-		8: $tr(gettext("Overlap"))
+		8: $tr(gettext("Switching to repeater mode")),
+		9: $tr(gettext("Overlap"))
 	}; 
 	
 	$scope.router = $router;
@@ -58,21 +59,36 @@ JUCI.app
 		console.log("failed to sync config: "+err); 
 	}); 
 	
-	JUCI.interval.repeat("wifi.wps.retry", 1000, function(next){
+	$events.subscribe("wps", function(){refresh();});
+	function refresh() {
 		$rpc.wps.status().done(function(result){
 			$scope.progress = result.code; 
 			$scope.text_status = wps_status_strings[result.code]||gettext("Unknown"); 
 			$scope.$apply();	
-			next();
 		}); 
-	}); 
+	}refresh(); 
 	
 	$rpc.wps.showpin().done(function(data){
 		$scope.generatedPIN = data.pin; 
 	}); 
-	
-	$scope.onPairPBC = function(){
-		$rpc.wps.pbc();
+		
+	var longPress = false;
+	var timeout;
+	$scope.wpsButtonColor = "default"
+	$scope.mouseDown = function() {
+		timeout = setTimeout(function(){longPress = true; $scope.wpsButtonColor = "success"; $scope.$apply();}, 5000);
+	}
+	$scope.mouseUp = function() {
+		if(!longPress){
+			if($rpc.wps && $rpc.wps.pbc) $rpc.wps.pbc();
+			clearTimeout(timeout);
+		}else{
+			if($rpc.wps && $rpc.wps.pbc_client) $rpc.wps.pbc_client();
+			$scope.progress = 8;
+			$scope.text_status = wps_status_strings[8];
+			longPress = false;
+			$scope.wpsButtonColor = "default";
+		}
 	}
 	$scope.onPairUserPIN = function(){
 		var pin = $scope.data.userPIN.replace("-", "").replace(" ", "").match(/\d+/g).join("");

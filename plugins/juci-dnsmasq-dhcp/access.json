@@ -6,10 +6,8 @@
 				"dhcp"
 			],
 			"ubus": {
-				"/juci/dhcp": [
-					"run"
-					/*"ipv4leases",*/
-					/*"ipv6leases"*/
+				"router": [
+					"leases"
 				]
 			}
 		},

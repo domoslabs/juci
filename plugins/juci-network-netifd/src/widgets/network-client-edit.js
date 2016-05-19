@@ -29,6 +29,65 @@ JUCI.app
 		replace: true, 
 		require: "^ngModel"
 	};  
-}).controller("networkClientEdit", function(){	
+}).controller("networkClientEdit", function($scope, $uci, $tr, gettext){	
+	$scope.$watch("model", function(value){
+		if(!value || !value.client) return;
+		$uci.$sync("dhcp").done(function(){
+			$scope.staticLeses = $uci.dhcp["@host"];
+			$scope.csh = $scope.staticLeses.filter(function(l){
+				return l.mac.value === value.client.macaddr && l.network.value === value.client.network;
+			})[0];
+			$scope.$apply();
+		});
+		$scope.onAddStaticLease = function(){
+			$uci.$sync("dhcp").done(function(){
+				$uci.dhcp.$create({
+					".type":"host",
+					ip: $scope.model.client.ipaddr,
+					mac: $scope.model.client.macaddr,
+					network: $scope.model.client.network,
+					name: $scope.model.client.hostname
+				}).done(function(value){
+					$scope.csh = value;
+				});
+			});
+		}
+		$scope.onDeleteStaticLease = function(){
+			if(!$scope.csh || !$scope.csh.$delete) return;
+			$scope.csh.$delete().done(function(){
+				$scope.csh = null;
+				$scope.$apply();
+			});
+		}
+		$scope.values = Object.keys(value.client).map(function(x){
+			var val = value.client[x];
+			if(x === "hostname") return { label: $tr(gettext("Hostname")), value: val };
+			if(x === "ipaddr") return { label: $tr(gettext("IP Address")), value: val };
+			if(x === "macaddr") return { label: $tr(gettext("MAC Address")), value: String(val).toUpperCase() };
+			if(x === "dhcp") return { label: $tr(gettext("DHCP")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
+			if(x === "connected") return { label: $tr(gettext("Connected")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
+			if(x === "wireless") $scope.wireless = true;
+			return null;
+		}).filter(function(x){ return x !== null;});
+		if($scope.wireless){
+			$scope.wirelessValues = Object.keys(value.client).map(function(x){
+				var val = value.client[x];
+				if(x === "n_cap") return { label: $tr(gettext("N Mode")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
+				if(x === "vht_cap") return { label: $tr(gettext("VHT Mode")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
+				if(x === "wme") return { label: $tr(gettext("WME")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
+				if(x === "ps") return { label: $tr(gettext("Power Save")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
+				if(x === "frequency") return { label: $tr(gettext("Frequency")), value: val };
+				if(x === "rssi") return { label: $tr(gettext("RSSI")), value: val + " dBm" };
+				if(x === "snr") return { label: $tr(gettext("SNR")), value: val + " dBm" };
+				if(x === "idle") return { label: $tr(gettext("Idle")), value: val + " s" };
+				if(x === "in_network") return { label: $tr(gettext("In Network")), value: val + " s" };
+				if(x === "tx_bytes") return { label: $tr(gettext("TX Bytes")), value: val };
+				if(x === "rx_bytes") return { label: $tr(gettext("RX Bytes")), value: val };
+				if(x === "tx_rate") return { label: $tr(gettext("TX Rate")), value: Math.floor(parseInt(val)/1000) + " Mbps" };
+				if(x === "rx_rate") return { label: $tr(gettext("RX Rate")), value: Math.floor(parseInt(val)/1000) + " Mbps" };
+				return null;
+			}).filter(function(x){ return x !== null;});
+		}
+	},false);
 }); 
 

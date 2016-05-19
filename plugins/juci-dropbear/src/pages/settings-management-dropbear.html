@@ -3,9 +3,9 @@
 	<h2>{{ 'Dropbear SSH' | translate }}</h2>
 	<juci-config-heading>{{ 'General settings' |translate }} </juci-config-heading>
 	<juci-config-section>
-		<juci-config-line title="{{'Start/Stop Service'|translate}}" help="{{'Start or stop service'|translate}}">
+		<!--<juci-config-line title="{{'Start/Stop Service'|translate}}" help="{{'Start or stop service'|translate}}">
 			<button class="btn btn-default" ng-click="onStartStopService()"><i class="fa" ng-class="{'fa-play':!service.running,'fa-stop':service.running}"></i></button>
-		</juci-config-line>
+		</juci-config-line>-->
 		<juci-config-line title="{{'Enabled'|translate}}" help="{{'Enable/Disable starting SSH service during boot'|translate}}">
 			<switch ng-model="service.enabled" ng-change="onServiceEnableDisable()" class="green" ></switch>
 		</juci-config-line>

@@ -18,6 +18,7 @@ define Plugin/juci
 	STYLES-y+=src/lib/css/abn_tree.css
 	STYLES-y+=src/lib/css/ng-tags-input.bootstrap.css
 	STYLES-y+=src/lib/css/dropdown-multi-select.css
+	STYLES-y+=src/css/menu.css
 	STYLES-y+=src/css/juci-icons.css
 	STYLES-y+=src/css/nga.min.css
 	STYLES-y+=src/css/app.css
@@ -50,7 +51,6 @@ define Plugin/juci
 
 	JAVASCRIPT-y+=src/js/compat.js
 	JAVASCRIPT-y+=src/js/rpc.js
-	JAVASCRIPT-y+=src/js/rpc2.js
 	JAVASCRIPT-y+=src/js/uci.js
 	JAVASCRIPT-y+=src/js/juci.js
 	JAVASCRIPT-y+=src/js/app.js
@@ -70,7 +70,6 @@ define Plugin/juci/install
 	$(INSTALL_DIR) $(1)/etc/config/
 	$(INSTALL_DIR) $(1)/etc/init.d/
 	$(CP) $(PLUGIN_DIR)/juci.default.config $(1)/etc/config/juci
-	$(CP) $(PLUGIN_DIR)/juci.init $(1)/etc/init.d/juci
 	$(CP) $(PLUGIN_DIR)/src/img/ $(1)/www/
 	$(CP) $(PLUGIN_DIR)/src/fonts/ $(1)/www/
 	$(INSTALL_DIR) $(1)/usr/share/lua/juci/

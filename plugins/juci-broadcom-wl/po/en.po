@@ -20,7 +20,7 @@ msgstr ""
 msgid "2.4GHz"
 msgstr ""
 
-msgid "please pick at least one day to schedule on"
+msgid "please select at least one day to schedule on"
 msgstr ""
 
 msgid "SSID string can be at most 32 characters long!"
@@ -30,6 +30,27 @@ msgid "WEP encryption key #'+id+' must be 10-26 hexadecimal characters!"
 msgstr ""
 
 msgid "WPA key must be 8-63 characters long!"
+msgstr ""
+
+msgid "Hostname"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-clients.js
+msgid "IPv4 Address"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-clients.js
+msgid "IPv6 Address"
+msgstr ""
+
+msgid "Frequency"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-clients.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
+msgid "MAC-Address"
 msgstr ""
 
 msgid ""
@@ -50,6 +71,69 @@ msgid "Enabled"
 msgstr ""
 
 msgid "Disabled"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "WEP"
+msgstr ""
+
+msgid "WPA2 Personal (PSK)"
+msgstr ""
+
+msgid "WPA Personal (PSK)"
+msgstr ""
+
+msgid "WPA/WPA2 Personal (PSK) Mixed Mode"
+msgstr ""
+
+msgid "WPA2 Enterprise"
+msgstr ""
+
+msgid "WPA Enterprise"
+msgstr ""
+
+msgid "WPA/WPA2 Enterprise Mixed Mode"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
+msgid "IP-Address"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
+msgid "DHCP"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
+msgid "Idle"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
+msgid "In Network"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
+msgid "RSSI"
+msgstr ""
+
+msgid "SNR"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
+msgid "TX Bytes"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
+msgid "RX Bytes"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
+msgid "TX Rate"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
+msgid "RX Rate"
 msgstr ""
 
 msgid "Initializing"
@@ -90,9 +174,6 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-msgid "No IP address"
-msgstr ""
-
 msgid "11a"
 msgstr "802.11a"
 
@@ -121,30 +202,6 @@ msgid "CCMP (AES)"
 msgstr ""
 
 msgid "TKIP/CCMP (AES)"
-msgstr ""
-
-msgid "None"
-msgstr ""
-
-msgid "WEP"
-msgstr ""
-
-msgid "WPA2 Personal (PSK)"
-msgstr ""
-
-msgid "WPA Personal (PSK)"
-msgstr ""
-
-msgid "WPA/WPA2 Personal (PSK) Mixed Mode"
-msgstr ""
-
-msgid "WPA2 Enterprise"
-msgstr ""
-
-msgid "WPA Enterprise"
-msgstr ""
-
-msgid "WPA/WPA2 Enterprise Mixed Mode"
 msgstr ""
 
 msgid ""
@@ -195,22 +252,22 @@ msgstr ""
 msgid "Radio On/Off"
 msgstr ""
 
-msgid "Wifi Mode"
+msgid "WiFi Mode"
 msgstr ""
 
-msgid "Pick Hardware Mode"
+msgid "Select Hardware Mode"
 msgstr ""
 
 msgid "Channel"
 msgstr ""
 
-msgid "Pick Channel"
+msgid "Select Channel"
 msgstr ""
 
 msgid "Bandwidth"
 msgstr ""
 
-msgid "Pick Bandwidth"
+msgid "Select Bandwidth"
 msgstr ""
 
 msgid "RIFS"
@@ -264,9 +321,6 @@ msgstr ""
 msgid "Broadcast SSID"
 msgstr ""
 
-msgid "Frequency"
-msgstr ""
-
 msgid "Encryption"
 msgstr ""
 
@@ -315,16 +369,13 @@ msgstr ""
 msgid "You must enter a valid MAC address!"
 msgstr ""
 
-msgid "Hostname"
-msgstr ""
-
 msgid "MAC"
 msgstr ""
 
-msgid "Pick Wireless Radio"
+msgid "Select Wireless Radio"
 msgstr ""
 
-msgid "Pick SSID"
+msgid "Select SSID"
 msgstr ""
 
 msgid "New SSID"
@@ -343,9 +394,6 @@ msgid "wifi.client.info"
 msgstr "Client information"
 
 msgid "SSID"
-msgstr ""
-
-msgid "SNR"
 msgstr ""
 
 msgid "Connect"
@@ -387,7 +435,7 @@ msgstr ""
 "Your router supports the industry-wide WiFi standards, enabling easy "
 "wireless connection of your devices."
 
-msgid "Wifi Network"
+msgid "WiFi Network"
 msgstr ""
 
 msgid "Scheduled"
@@ -447,6 +495,21 @@ msgstr ""
 
 msgid "status.wifi.info"
 msgstr "Wireless status information"
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.html
+msgid "Channel:"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.html
+msgid "Noise"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status-scan.html
+msgid "WiFi Scan"
+msgstr ""
+
+msgid "status.wifi.scan.info"
+msgstr "Here you can scan for other wireless access points in your area."
 
 msgid "Radio"
 msgstr ""
@@ -561,6 +624,9 @@ msgstr "Wireless"
 
 msgid "menu-wireless-interfaces-title"
 msgstr "Wireless"
+
+msgid "menu-wireless-status-scan-title"
+msgstr "WiFi Scan"
 
 msgid "menu-wireless-general-title"
 msgstr "General"

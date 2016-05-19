@@ -29,13 +29,14 @@
 	
 	function TimeValidator(){
 		this.validate = function(field){
+			if(field.value.match(/[^\d:]/)) return gettext("please enter time in form hh:mm");
 			var parts = field.value.split(":");
 			if(parts.length != 2) return gettext("please specify both hour and minute value for time separated by ':'"); 
 			if(parts[0].length <= 2 && Number(parts[0]) >= 0 && Number(parts[0]) < 24 && 
 				parts[1].length <= 2 && Number(parts[1]) >= 0 && Number(parts[1]) < 60){
 				return null; 
 			} else {
-				return gettext("please enter valid time in form hh:mm"); 
+				return gettext("please enter valid time in form hh:mm " + field.value); 
 			}
 		}
 	}
@@ -43,15 +44,15 @@
 	function TimespanValidator(){
 		var timeValidator = new TimeValidator(); 
 		this.validate = function(field){
-			var parts = field.value.split("-"); 
+			var parts = field.value.split("-");
 			if(parts.length != 2) return gettext("Please specify both start time and end time for schedule!"); 
-			var err = timeValidator.validate({ value: parts[0] }) || 
-				timeValidator.validate({ value: parts[1] }); 
+			var err = timeValidator.validate({ value: parts[0] });
+			if(err) return err;
+			err = timeValidator.validate({ value: parts[1] });
 			if(err) return err; 
-			
-			function split(value) { return value.split(":").map(function(x){ return Number(x); }); };
-			var from = split(parts[0]);
-			var to = split(parts[1]); 
+			function splitToNumber(value) { return value.split(":").map(function(x){ return Number(x); }); };
+			var from = splitToNumber(parts[0]);
+			var to = splitToNumber(parts[1]); 
 			if((from[0]*60+from[1]) < (to[0]*60+to[1])) {
 				return null; 
 			} else {
@@ -74,16 +75,28 @@
 	function PortValidator(){
 		this.validate = function(field){
 			if(!field || !field.value) return null;
-			if(field.value.match(/^[0-9]+-[0-9]+$/)){ //type is port range
-				var start = parseInt(field.value.split("-")[0]);
-				var stop = parseInt(field.value.split("-")[1]);
+			if(field.value.match(/^[0-9]+$/)){
+				var num = parseInt(field.value);
+				if(num < 1 || num > 65535) return gettext("A port is between 1 and 65535");
+			} else {
+				return gettext("A port can only be a number between 1 and 65535 or a range on the form number-number");
+			}
+			return null;
+		};	
+	}
+	function PortRangeValidator(){
+		this.validate = function(field){
+			if(!field || !field.value) return null;
+			if(field.value.match(/^[0-9]+:[0-9]+$/)){ //type is port range
+				var start = parseInt(field.value.split(":")[0]);
+				var stop = parseInt(field.value.split(":")[1]);
 				if(start < 1 || start > 65535 || stop < 1 || stop > 65535 || start > stop || start == stop) return gettext("A port is between 1 and 65535 and start port must be lower than stop port");
 			}else if(field.value.match(/^[0-9]+$/)){
 				var num = parseInt(field.value);
 				if(num < 1 || num > 65535) return gettext("A port is between 1 and 65535");
 			}
 			else {
-				return gettext("A port can only be a number between 1 and 65535 or a range on the form number-number");
+				return gettext("A port can only be a number between 1 and 65535 or a range on the form number:number");
 			}
 			return null;
 		};	
@@ -141,7 +154,7 @@
 			var err = ipv4.validate({ value: field.value.split("/")[0] });
 			if(err) return err;
 			var mask = field.value.split("/")[1];
-			if(!mask.match(/^0/) && mask.match(/^[\d\.]+$/) && parseInt(mask) < 25) return null
+			if(!mask.match(/^0/) && mask.match(/^[\d]+$/) && parseInt(mask) < 33) return null
 			return gettext("Netmask must be a value between 0 and 24");
 		};
 	};
@@ -248,12 +261,13 @@
 					// if user has modified value and we have keep user set then we do not discard his changes
 					// otherwise we also update uvalues
 					if(!keep_user || !this.dirty) {
-						Object.assign(this.uvalue, value); 
+						this.uvalue = value; 
 						this.dirty = false; 
 					}
 					// store original value
-					Object.assign(this.ovalue, value); 
+					this.ovalue = value;
 				} else {
+					if(typeof value === "string") value = value.trim();
 					if(!keep_user || !this.dirty) {
 						this.uvalue = value; 
 						this.dirty = false; 
@@ -302,6 +316,7 @@
 			},
 			get error(){
 				// make sure we ignore errors if value is default and was not changed by user
+				if(this.value === "" && this.schema.required) return gettext("Field is required");
 				if(this.uvalue == this.schema.dvalue || this.uvalue == this.ovalue) return null; 
 				if(this.validator) return this.validator.validate(this); 
 				return null; 
@@ -357,7 +372,7 @@
 							value = n; 
 							break; 
 						case Array: 
-							if(!(data[k] instanceof Array)) value = [data[k]]; 
+							if(!(data[k] instanceof Array)) value = data[k].split(" "); 
 							else value = data[k];  
 							if(!value) value = []; 
 							break; 
@@ -469,12 +484,12 @@
 			var self = this; 
 			var type = self[".section_type"]; 
 			Object.keys(type).map(function(k){
-				var err = self[k].error; 
+				if(self[k].value === "" && self[k].schema.required) errors.push(k+" "+gettext("is required"));
+				else var err = self[k].error; 
 				if(err){
 					errors.push(err); 
 				}
 			}); 
-			var type = this[".section_type"]; 
 			if(type && type[".validator"] && (type[".validator"] instanceof Function)){
 				try {
 					var e = type[".validator"](self); 
@@ -686,14 +701,6 @@
 			//console.log("Registered new section type "+config+"."+name); 
 		}
 		
-		UCIConfig.prototype.$insertDefaults = function(typename, sectionname){
-			if(!sectionname) sectionname = typename; 
-			// insert a default section with the same name as the type
-			// this allows us to use $uci.config.section.setting.value without having to first check for the existence of the section.
-			// we will get defaults by default and if the section exists in the config file then we will get the values from the config.
-			_insertSection(this, { ".type": typename, ".name": sectionname });  
-		}
-
 		UCIConfig.prototype.$deleteSection = function(section){
 			var self = this; 
 			var deferred = $.Deferred(); 
@@ -792,7 +799,17 @@
 			$rpc.uci.order({ 
 				config: self[".name"], 
 				sections: order
-			}).done(function(){ def.resolve(); }).fail(function(){ def.reject(); });
+			}).done(function(){ 
+				$rpc.uci.commit({
+					config: self[".name"]
+				}).done(function(){
+					def.resolve();
+				}).fail(function(){
+					def.reject();
+				});
+			}).fail(function(){ 
+				def.reject(); 
+			});
 			return def.promise(); 
 		}
 		
@@ -822,20 +839,18 @@
 		var self = this; 
 
 		if(!$rpc.uci) {
-			setTimeout(function(){ deferred.reject(); }, 0); 
-			return deferred.promise(); 
+			return deferred.reject("Missing $rpc.uci"); 
 		}
 		
 		$rpc.uci.configs().done(function(response){
 			var cfigs = response.configs; 
-			if(!cfigs) { next("could not retrieve list of configs!"); return; }
+			if(!cfigs) { return deferred.reject("could not retrieve list of configs!"); }
 			cfigs.map(function(k){
 				if(!(k in section_types)) {
 					console.log("Missing type definition for config "+k); 
 					return; 
 				}
 				if(!(k in self)){
-					//console.log("Adding new config "+k); 
 					self[k] = new UCI.Config(self, k); 
 				}
 			}); 
@@ -1133,6 +1148,7 @@
 		WeekDayListValidator: WeekDayListValidator, 
 		TimespanValidator: TimespanValidator, 
 		PortValidator: PortValidator, 
+		PortRangeValidator: PortRangeValidator,
 		NumberLimitValidator: NumberLimitValidator, 
 		TimeValidator: TimeValidator,
 		MACAddressValidator: MACAddressValidator,

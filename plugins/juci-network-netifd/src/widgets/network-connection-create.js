@@ -30,12 +30,16 @@ JUCI.app
 		controller: "networkConnectionCreateModalCtrl"
 	}
 })
-.controller("networkConnectionCreateModalCtrl", function($scope, $tr, gettext, $network){
+.controller("networkConnectionCreateModalCtrl", function($scope, $tr, gettext, $network, $firewall){
 	$scope.interfaceTypes = [
 		{ label: $tr(gettext("Standalone")), value: "" },
 		{ label: $tr(gettext("AnyWAN")), value: "anywan"}, 
 		{ label: $tr(gettext("Bridge")), value: "bridge"}
 	]; 
+	$firewall.getZones().done(function(zones){
+		$scope.AllZones = zones.map(function(zone){ return { label: String(zone.name.value).toUpperCase(), value: zone.name.value }; });
+		$scope.$apply();
+	});
 	$scope.allProtocols = $network.getProtocolTypes();
 	$scope.model.type = "";
 	$scope.model.protocol = "none";

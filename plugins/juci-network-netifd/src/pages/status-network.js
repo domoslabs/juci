@@ -19,10 +19,13 @@
  */
 
 JUCI.app
-.controller("NetifdNetworkStatusPage", function ($scope, $uci, $rpc) {
+.controller("NetifdNetworkStatusPage", function ($scope, $uci, $rpc, $events) {
 	//$scope.expanded = false; 
 	
-	JUCI.interval.repeat("status.refresh", 2000, function(resume){
+	$events.subscribe("network.interface", function(){
+		refresh();
+	});
+	function refresh(){
 		var _interfaces;
 		async.series([
 			function(next){
@@ -39,39 +42,23 @@ JUCI.app
 					}); 
 					next(); 
 				}); 
-			}, 
-			function(next){
-				var sections = []; 
-				_interfaces.map(function(i){
-					sections.push({
-						name: i.interface, 
-						interface: i
-					}); 
-				}); 
-				$scope.sections = sections.filter(function(x){ return x.interface !== undefined; }).sort(function(a, b) { return a.interface.up > b.interface.up; }); 
-				for(var c = 0; c < sections.length; c++){
-					var sec = sections[c]; 
-					if(sec.interface.up) sec.status = "ok"; 
-					else if(sec.interface.pending) sec.status = "progress"; 
-					else sec.status = "error"; 
-				} 
-				$scope.$apply(); 
-				next(); 
-			}/*, 
-			function(next){
-				$broadcomDsl.status().done(function(result){
-					switch(result.dslstats.status){
-						case 'Idle': $scope.dsl_status = 'disabled'; break; 
-						case 'Showtime': $scope.dsl_status = 'ok'; break; 
-						default: $scope.dsl_status = 'progress'; break; 
-					}
-					$scope.dslinfo = result.dslstats; 
-					$scope.$apply(); 
-					next(); 
-				});
-			}*/
+			} 
 		], function(){
-			resume(); 
-		}); 
-	}); 
+			var sections = []; 
+			_interfaces.map(function(i){
+				sections.push({
+					name: i.interface, 
+					interface: i
+				}); 
+			}); 
+			$scope.sections = sections.filter(function(x){ return x.interface !== undefined; }).sort(function(a, b) { return a.interface.up > b.interface.up; }); 
+			for(var c = 0; c < sections.length; c++){
+				var sec = sections[c]; 
+				if(sec.interface.up) sec.status = "ok"; 
+				else if(sec.interface.pending) sec.status = "progress"; 
+				else sec.status = "error"; 
+			} 
+			$scope.$apply(); 
+		});
+	}refresh(); 
 }); 

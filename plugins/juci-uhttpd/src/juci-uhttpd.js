@@ -29,4 +29,12 @@ UCI.uhttpd.$registerSectionType("logopts", {
 	"ubus_status":		{ dvalue: [], type: Array },
 	"ubus_method": 		{ dvalue: [], type: Array }
 });
-UCI.uhttpd.$insertDefaults("logopts");
+JUCI.app.run(function($uci){
+	$uci.$sync("uhttpd").done(function(){
+		if($uci.uhttpd.logopts) return;
+		$uci.uhttpd.$create({
+			".type":"logopts",
+			".name":"logopts"
+		});
+	});
+});

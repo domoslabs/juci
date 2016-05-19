@@ -32,6 +32,9 @@ JUCI.app
 }).controller("WifiInterfaceController", function($scope, $uci, $tr, gettext, $wireless, $network){
 	$scope.errors = []; 
 	$scope.showPassword = true; 
+	$wireless.getDefaults().done(function(res){
+		if(res && res.keys && res.keys.wpa)$scope.default_key = res.keys.wpa;
+	});
 	
 	$scope.$on("error", function(ev, err){
 		ev.stopPropagation(); 
@@ -57,14 +60,14 @@ JUCI.app
 	];  
 	
 	$scope.cryptoChoices = [
-		{ label: $tr(gettext("None")), value: "none" }, 
-		{ label: $tr(gettext("WEP")), value: "wep" }, 
-		{ label: $tr(gettext("WPA2 Personal (PSK)")), value: "psk2" }, 
-		{ label: $tr(gettext("WPA Personal (PSK)")), value: "psk" }, 
-		{ label: $tr(gettext("WPA/WPA2 Personal (PSK) Mixed Mode")), value: "mixed-psk" }, 
-		{ label: $tr(gettext("WPA2 Enterprise")), value: "wpa2" }, 
-		{ label: $tr(gettext("WPA Enterprise")), value: "wpa" }, 
-		{ label: $tr(gettext("WPA/WPA2 Enterprise Mixed Mode")), value: "wpa-mixed" } 
+		{ label: $tr(gettext("None")), value: "none" },
+		{ label: $tr(gettext("WEP")), value: "wep" },
+		{ label: $tr(gettext("WPA2 Personal (PSK)")), value: "psk2" },
+//		{ label: $tr(gettext("WPA Personal (PSK)")), value: "psk" }, //not supported
+		{ label: $tr(gettext("WPA/WPA2 Personal (PSK) Mixed Mode")), value: "mixed-psk" },
+		{ label: $tr(gettext("WPA2 Enterprise")), value: "wpa2" },
+//		{ label: $tr(gettext("WPA Enterprise")), value: "wpa" }, //not supported
+		{ label: $tr(gettext("WPA/WPA2 Enterprise Mixed Mode")), value: "wpa-mixed" }
 	]; 
 	
 	$network.getNetworks().done(function(nets){
