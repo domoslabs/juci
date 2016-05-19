@@ -49,29 +49,51 @@ JUCI.app
 		$scope.showUploadModal = 0; 
 	}
 	$scope.data = {}; 
-	/*setInterval(function checkUpload(){
-		var iframe = $("#postiframe").load(function(){; 
-		var json = iframe.contents().text();
-		try {
-			if(json.length && JSON.parse(json)) {
-				$scope.onUploadComplete(JSON.parse(json)); 
-			} 
-		} catch(e){}
-		iframe.each(function(e){$(e).contents().html("<html>");}); ; 
-	}, 500); */
 	$scope.onUploadConfig = function(){
-		$("#postiframe").bind("load", function(){
-			var json = $(this).contents().text(); 
-			try {
-				$scope.onUploadComplete(JSON.parse(json));
-			} catch(e){
-				console.log(e);
+		var upfile = document.getElementById("upload");
+		if(!upfile.name || upfile.size < 1) return;
+		var callId = 0;
+		var fileChunkSize = 500000;
+		var time = Date.now();
+		if($rpc.file && $rpc.file.write){
+			var fileUploadState = {
+				file: upfile.files[0],
+				reader: new FileReader(),
+				offset: 0,
+				id: ++callId,
+				respwatcher: null,
+			};
+			console.log(fileUploadState.file);
+
+			fileUploadState.reader.onload = function(e) {
+				if(e.target.error != null) {
+					console.log("error reading file " + e.target.error);
+					return false;
+				}
+				$rpc.file.write({
+					path: "/tmp/backup.tar.gz",
+					data: e.target.result.split(",")[1],
+					base64: true,
+					append: fileUploadState.offset > 0
+				}).done(function(){
+					fileUploadState.id = ++callId;
+					fileUploadState.offset += fileChunkSize;
+					if(fileUploadState.offset < fileUploadState.file.size){
+						fileUploadState.reader.readAsDataURL(fileUploadState.file.slice(fileUploadState.offset, fileUploadState.offset + fileChunkSize));
+					}
+					else{
+						onUploadComplete(fileUploadState.file.name);
+					}
+				}).fail(function(e){
+					fileUploadState = null;
+					console.log("Error uploading file");
+					console.log(e);
+				});
 			}
-			$(this).unbind("load"); 
-		}); 
-		$("form[name='restoreForm']").submit();
+			fileUploadState.reader.readAsDataURL(fileUploadState.file.slice(fileUploadState.offset, fileUploadState.offset + fileChunkSize));
+		}
 	}
-	$scope.onUploadComplete = function(result){
+	function onUploadComplete(result){
 		console.log("Uploaded: "+JSON.stringify(result)); 
 		$rpc.$call("juci.system.conf", "run", {"method":"restore","args":JSON.stringify({
 			pass: $scope.data.pass

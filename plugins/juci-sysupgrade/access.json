@@ -3,6 +3,9 @@
 		"description": "JUCI Sysupgrade Interface module",
 		"read": {
 			"ubus": {
+				"file": [
+					"write"
+				],
 				"/juci/system.upgrade": [
 					"run"
 					/*"check", */
@@ -12,11 +15,14 @@
 				]
 			}, 
 			"uci": [ "system" ],
-			"owsd": { "sysupgrade-test"]
+			"owsd": [ "sysupgrade-test"]
 		}, 
 		"write": {
 			"uci": [ "system" ],
 			"ubus": {
+				"file": [
+					"write"
+				],
 				"/juci/system.upgrade": [
 					"run"
 					/*"check", */
