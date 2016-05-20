@@ -31,6 +31,7 @@ JUCI.app
 	};  
 }).controller("networkClientEdit", function($scope, $uci, $tr, gettext){	
 	$scope.$watch("model", function(value){
+		console.log(value);
 		if(!value || !value.client) return;
 		$uci.$sync("dhcp").done(function(){
 			$scope.staticLeses = $uci.dhcp["@host"];
