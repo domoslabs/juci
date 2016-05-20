@@ -12,7 +12,7 @@
 			<juci-config-line title="{{'Pair DECT Device (3 min)' | translate }}">
 				<button class="btn btn-default" ng-click="onStartPairing()" translate>Pair</button>
 			</juci-config-line>
-			<modal title="{{'Attempting to Pair'|translate}}" data-keyboard="false" data-backdrop="static" ng-show="status.registration == 'pending active' && !dismissed" dismiss-label="Cancel" on-dismiss="onCancelDECT()">
+			<modal title="{{'Attempting to Pair'|translate}}" data-keyboard="false" data-backdrop="static" ng-show="(status.registration == 'pending active' || status.registration == 'active') && !dismissed" dismiss-label="Cancel" on-dismiss="onCancelDECT()">
 				<div style="text-align: center;">
 					<div ng-show="progress != 0" >
 						<i class="fa fa-spinner fa-spin fa-3x"></i>
@@ -25,16 +25,14 @@
 			<table class="table">
 				<thead style="text-align: center;">
 					<th style="width:1%" translate>ID</th>
-					<th class="hidden-xs" translate>RFPI</th>
-					<th translate>State</th>
-					<th style="width:20%" translate>Status</th>
+					<th translate>IPUI</th>
+					<th translate>Codecs</th>
 					<th class="hidden-xs" style="width:1%" translate>Action</th>
 				</thead>
 				<tr ng-repeat="hs in handset.handsets track by $index">
 					<td>{{hs.id}}</td>
-					<td class="hidden-xs">{{toHexaDecimal(hs.id)}}</td>
-					<td>{{hs.id|uppercase}}</td>
-					<td>{{hs.id|uppercase}}</td>
+					<td>{{hs.ipui}}</td>
+					<td>{{hs.codecs}}</td>
 					<td class="hidden-xs"><button class="btn btn-default" ng-click="onPingHandset(hs)" translate>Ping</button></td>
 				</tr>
 			</table>

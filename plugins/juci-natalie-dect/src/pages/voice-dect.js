@@ -33,16 +33,15 @@ JUCI.app
 		JUCI.interval.repeat("dect.refresh", 1000, function(done){
 			$rpc.dect.status().done(function(result){
 				$scope.status = result;
-				$rpc.dect.handset({"list":""}).done(function(result){
-					if(result.handsets && result.handsets.length !== numDevices){
-						numDevices = result.handsets.length;
-						$scope.dismissed = true;
-					}
-					$scope.handset = result;
-					$scope.$apply();
-				}).always(function(){done()});
 			}).always(function(){done()});
-
+			$rpc.dect.handset({"list":""}).done(function(result){
+				if(result.handsets && result.handsets.length !== numDevices){
+					numDevices = result.handsets.length;
+					$scope.dismissed = true;
+				}
+				$scope.handset = result;
+				$scope.$apply();
+			}).always(function(){done()});
 		});
 		$scope.onStartPairing = function(){
 			$scope.dismissed = false;
@@ -50,8 +49,8 @@ JUCI.app
 			timer = setTimeout(function(){$scope.dismissed = true;}, 1000*180);
 		}
 		$scope.onPingHandset = function(hs){
-			$rpc.dect.call({"terminal":JSON.stringify({ id: hs.id })}).done(function(){
-			});
+			//$rpc.dect.call({"terminal":JSON.stringify({ id: hs.id })}).done(function(){});
+			$rpc.dect.handset({"pageall":""}).done(function(){});
 		}
 	}
 });
