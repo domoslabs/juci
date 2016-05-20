@@ -14,12 +14,15 @@
 				<juci-select ng-model="data.server" ng-items="allTestServers"/>
 			</juci-config-line>
 			<juci-config-line>
-				<button class="btn btn-default" ng-click="onRemoveAddress()">
-					<i class="fa fa-minus"></i>
-				</button>
-				<button class="btn btn-default" ng-click="onAddAddress()">
-					<i class="fa fa-plus"></i>
-				</button>
+				<div class="row">
+					<div class="col-xs-7 text-center" style="font-size: x-small">Remove/Add server</div>
+					<button class="col-xs-2 btn btn-default" ng-click="onRemoveAddress()" >
+						<i class="fa fa-minus"></i>
+					</button>
+					<button class="col-xs-2 btn btn-default" ng-click="onAddAddress()" style="float: right; margin-right: 15px;">
+						<i class="fa fa-plus"></i>
+					</button>
+				</div>
 			</juci-config-line>
 			<juci-config-line>
 				<button class="btn btn-default" ng-click="runTest()">
