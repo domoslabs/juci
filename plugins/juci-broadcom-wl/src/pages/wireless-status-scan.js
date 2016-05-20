@@ -24,21 +24,19 @@ JUCI.app
 	}
 	$scope.radioToScan = {};
 	$uci.$sync("wireless").done(function(){
-		if($rpc.router && $scope.router.radios){
-			$rpc.router.radios().done(function(data){
-				$scope.wlRadios = Object.keys(data).map(function(x){ data[x].device = x; return data[x]; });
-				$scope.scanableRadios = $scope.wlRadios.filter(function(radio){
-					return parseInt(radio.channel) < 52;
-				}).map(function(radio){
-					return { label: radio.frequency, value: radio.device };
-				});
-				$scope.dfs_enabled = ($scope.wlRadios.length != $scope.scanableRadios.length);
-				if($scope.scanableRadios.length > 0){
-					$scope.radioToScan.value = $scope.scanableRadios[0].value;
-				}
-				$scope.$apply(); 
+		$rpc.router.radios().done(function(data){
+			$scope.wlRadios = Object.keys(data).map(function(x){ data[x].device = x; return data[x]; });
+			$scope.scanableRadios = $scope.wlRadios.filter(function(radio){
+				return parseInt(radio.channel) < 52;
+			}).map(function(radio){
+				return { label: radio.frequency, value: radio.device };
 			});
-		}
+			$scope.dfs_enabled = ($scope.wlRadios.length != $scope.scanableRadios.length);
+			if($scope.scanableRadios.length > 0){
+				$scope.radioToScan.value = $scope.scanableRadios[0].value;
+			}
+			$scope.$apply();
+		});
 		$scope.doScan = function(){
 			if($scope.radioToScan.value == null)return;
 			$scope.scanning = 1; 
