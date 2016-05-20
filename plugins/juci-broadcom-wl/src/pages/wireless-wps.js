@@ -61,6 +61,7 @@ JUCI.app
 	
 	$events.subscribe("wps", function(){refresh();});
 	function refresh() {
+		if(!$rpc.wps || !$rpc.wps.status) return;
 		$rpc.wps.status().done(function(result){
 			$scope.progress = result.code; 
 			$scope.text_status = wps_status_strings[result.code]||gettext("Unknown"); 
@@ -68,6 +69,7 @@ JUCI.app
 		}); 
 	}refresh(); 
 	
+	if(!$rpc.wps || !$rpc.wps.showpin) return;
 	$rpc.wps.showpin().done(function(data){
 		$scope.generatedPIN = data.pin; 
 	}); 
@@ -91,6 +93,7 @@ JUCI.app
 		}
 	}
 	$scope.onPairUserPIN = function(){
+		if(!$rpc.wps || !$rpc.wps.checkpin || !$rpc.wps.stapin) return;
 		var pin = $scope.data.userPIN.replace("-", "").replace(" ", "").match(/\d+/g).join("");
 		$rpc.wps.checkpin({pin:pin }).done(function(value){
 			if(!value) return;
@@ -115,6 +118,7 @@ JUCI.app
 	};
 		
 	$scope.onGeneratePIN = function(){
+		if(!$rpc.wps || !$rpc.wps.setpin || !$rpc.wps.genpin) return;
 		$rpc.wps.genpin().done(function(data){
 			if(!data || data.pin == "") return;
 			$rpc.wps.setpin({pin: data.pin}).done(function(){
@@ -125,6 +129,7 @@ JUCI.app
 	}
 	
 	$scope.onCancelWPS = function(){
-		$rpc.wps.stop(); 
+		if($rpc.wps && $rpc.wps.stop)
+			$rpc.wps.stop(); 
 	} 
 }); 

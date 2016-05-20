@@ -1,4 +1,4 @@
-JUCI.app.factory("$broadcomEthernet", function($rpc, $uci){
+JUCI.app.factory("$broadcomEthernet", function($uci){
 	// fire off initial sync
 	var sync = $uci.$sync(["layer2_interface_ethernet", "ports"]);
 	
