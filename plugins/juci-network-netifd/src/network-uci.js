@@ -115,92 +115,92 @@ UCI.network.$registerSectionType("interface", {
 	"comdev":				{ dvalue: "", type: String },
 	"ttl":					{ dvalue: "", type: Number }
 }, function(section){
+	var name = gettext("Network interface ") + (section[".name"] || section.name || gettext("Unnamed interface"));
+	var noPhysical = name + gettext(" has protocol: ") + section.proto.value + gettext(" it needs a physical interface");
 	if(!section.proto || !section.proto.value || section.proto.value == "") 
-		return gettext("Network interface ") + (section[".name"] || section.name || gettext("Unnamed interface")) + gettext(" MUST have  a protocol set");
+		return name + gettext(" MUST have  a protocol set");
 	var errors = [];
 	switch (section.proto.value){
 		case "none":
 			if(section.type.value != "bridge")
-				errors.push(gettext("Unmanaged networks need to be setup as a bridge"));
+				errors.push(name + gettext("is an unmanaged network and need to be setup as a bridge"));
 			if(section.ifname.value == "")
-				errors.push(gettext("Unmanaged networks need at least one device in bridge"));
+				errors.push(name + gettext("is an unmanaged networks and need to have at least one device in bridge"));
 			break;
 		case "static":
 			if(section.ipaddr.value && section.netmask.value){
 				var ip = section.ipaddr.value.split("."); 
-				if(ip[ip.length - 1] == "0") errors.push("IP address can not be a range address (can not end with 0s)!"); 	
-				if(ip[0] == "0") errors.push("IP address can not start with a '0'!"); 	
+				if(ip[ip.length - 1] == "0") errors.push(name + gettext(" has an invalid IP address. It can not be a range address (can not end with 0s)!"));
+				if(ip[0] == "0") errors.push(name + gettext(" has an invalid IP address it can not start with a '0'!"));
 			}
 			if((section.ipaddr.value == "" || section.netmask.value == "") && section.ip6addr.value == "")
-				errors.push(gettext("Either ipv4 or ipv6 address is needed"));
-			if(section.ifname.value == "")
-				errors.push(gettext("Physical interface unspecified"));
+				errors.push(name + gettext(" needs either ipv4 or ipv6 address"));
 			break;
 		case "dhcp":
 			if(section.ifname.value == "")
-				errors.push(gettext("DHCP interface needs physical interface"));
+				errors.push(noPysical);
 			break;
 		case "dhcpv6":
 			if(section.ifname.value == "")
-				errors.push(gettext("DHCPv6 interface needs physical interface"));
+				errors.push(noPhysical);
 			break;
 		case "ppp":
 			if(section.device.value == "")
-				errors.push(gettext("Modem device needed for PPP interface"));
+				errors.push(noPhysical);
 			break;
 		case "pppoe":
 			if(section.ifname.value == "")
-				errors.push(gettext("PPPoE interface needs physical interface"));
+				errors.push(noPhysical);
 			break;
 		case "pppoa":
 			if(section.ifname.value == "")
-				errors.push(gettext("PPPoE interface needs physical interface"));
+				errors.push(noPhysical);
 			break;
 		case "3g":
 			if(section.device.value == "")
-				errors.push(gettext("Modem device needed for 3G interface"));
+				errors.push(name + gettext(" has protocol 3G and needs a Modem device"));
 			if(section.service.value != "umts" && section.service.value != "umts_only" && section.service.value != "gprs_only" && section.service.value != "evdo")
-				errors.push(gettext("Service type needed for 3G interface"));
+				errors.push(name + gettext(" has protocol 3G and needs a Service type"));
 			if(section.apn.value == "")
-				errors.push(gettext("APN needed for 3G interface"));
+				errors.push(name + gettext(" has protocol 3G and needs APN"));
 			break;
 		case "4g":
 			if(section.modem.value == "")
-				errors.push(gettext("Device needed for 4G interface"));
+				errors.push(name + gettext(" has protocol 4G and it needs a Device"));
 			break;
 		case "pptp":
 			if(section.server.value == "")
-				errors.push(gettext("VPN Server needed for Point-to-Point tunnel"));
+				errors.push(name + gettext(" has protocol Point-to-Point tunnel and needs a VPN Server"));
 			break;
 		case "6in4":
 			if(section.peeraddr.value == "")
-				errors.push(gettext("Remote IPv4 address needed for 6in4 interface"));
+				errors.push(name + gettext(" has protocol 6in4 and need a Remote IPv4 address"));
 			if(section.ip6addr.value == "")
-				errors.push(gettext("Local IPv6 address needed for 6in4 interface"));
+				errors.push(name + gettext(" has protocol 6in4 and need Local IPv6 address"));
 			break;
 		case "6to4":
 			//no required values for 6to4 interface
 			break;
 		case "6rd":
 			if(section.peeraddr.value == "")
-				errors.push(gettext("Remote IPv4 address needed for IPv6 rapid deployment interface"));
+				errors.push(name + gettext(" has protocol IPv6 rapid deployment and it needs a Remote IPv4 address"));
 			if(section.ip6prefix.value == "")
-				errors.push(gettext("IPv6 prefix needed for IPv6 rapid deployment interface"));
+				errors.push(name + gettext(" has protocol IPv6 rapid deployment and it needs an IPv6 prefix"));
 			if(section.ip6prefixlen.value == "")
-				errors.push(gettext("IPv6 prefix length needed for IPv6 rapid deployment interface"));
+				errors.push(name + gettext(" has protocol IPv6 rapid deployment and it needs a IPv6 prefix length"));
 			break;
 		case "dslite":
 			if(section.peeraddr.value == "")
-				errors.push(gettext("DS-Lite AFTR address needed for DS lite interface"));
+				errors.push(name + gettext(" has protocol DS lite and it needs a DS-Lite AFTR address"));
 			break;
 		case "l2tp":
 			if(section.server.value == "")
-				errors.push(gettext("L2TP server needed for PPP over L2TP"));
+				errors.push(name + gettext(" has protcol PPP over L2TP and it needs a L2TP server"));
 			if(section.username.value != "" && section.password.value == "")
-				errors.push(gettext("Password needed when username is set"));
+				errors.push(gettext("Username is set but not password on ") + name);
 			break;
 		default: 
-			return gettext("Unsupported protocol: ") + section.proto.value;
+			errors.push(gettext("Unsupported protocol: ") + section.proto.value);
 	}
 	if(errors.length > 0) return errors
 	return null;
