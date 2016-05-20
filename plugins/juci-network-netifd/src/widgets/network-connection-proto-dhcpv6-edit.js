@@ -12,7 +12,7 @@ JUCI.app
 		require: "^ngModel"
 	};
 })
-.controller("networkConnectionProtoDhcpv6Edit", function($scope, $uci, $network, $rpc, $log, $tr, gettext){
+.controller("networkConnectionProtoDhcpv6Edit", function($scope, $uci, $network, $log, $tr, gettext){
 	$scope.allReqAddrTypes = [
 		{ label: $tr(gettext("Try")), value: "try" }, 
 		{ label: $tr(gettext("Force")), value: "force" }, 

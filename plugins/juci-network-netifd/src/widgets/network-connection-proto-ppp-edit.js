@@ -14,6 +14,7 @@ JUCI.app
 })
 .controller("networkConnectionProtoPppEdit", function($scope, $rpc){
 	$scope.modemDevices = [];
+	if(!$rpc.modems) return;
 	$rpc.juci.modems.run({"method":"list"}).done(function(data){
 		$scope.modemDevices = data.modems.map(function(x){ return { label:x, value:x}});
 		$scope.$apply();

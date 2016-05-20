@@ -20,6 +20,7 @@
 
 JUCI.app
 .controller("StatusNetworkRoutes", function($scope, $rpc){
+	if(!$rpc.juci || !$rpc.juci.network || !$rpc.juci.network.status)return;
 	$rpc.juci.network.status.run({"method":"arp"}).done(function(arp_table){
 		$scope.arp_table = arp_table.clients; 
 		$rpc.juci.network.status.run({"method":"ipv4routes"}).done(function(ipv4_routes){

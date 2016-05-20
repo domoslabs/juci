@@ -34,6 +34,7 @@ JUCI.app
 	$scope.togglePasswd = function(){
 		$scope.showPass = !$scope.showPass;
 	};
+	if(!$rpc.modems)return;
 	$rpc.juci.modems.run({"method":"list"}).done(function(data){
 		$scope.allModemDevices = data.modems.map(function(x){return {label: x, value: x}});
 		$scope.$apply();
