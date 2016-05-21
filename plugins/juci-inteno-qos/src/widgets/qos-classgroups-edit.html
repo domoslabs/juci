@@ -1,11 +1,7 @@
 <div>
-	<juci-config-line  title="Default class">
+	<juci-config-line  title="Default Class">
 		<juci-select ng-click="reloadClasses()" ng-items="addedClasses" ng-model="instance.default.value"></juci-select>
 	</juci-config-line>
-
-
-
-
 
 	<juci-config-line title="{{'Classes'|translate}}">
 		<div class="col-xs-12 form-group" ng-repeat="class in instance.classes.value track by $index">
@@ -17,17 +13,10 @@
 			</div>
 		</div>
 
-
-
-
-
-
 		<div class="col-xs-12 form-group">
 			<div class="col-sm-10">
-				<juci-select id="newClassSelect" ng-click="reloadClasses()" ng-model="dummy" ng-items="unAddedClasses" placeholder="{{'Click to add a class'|translate}}" on-change="addClassToGroup($value)"/>
+				<juci-select id="newClassSelect" ng-click="reloadClasses()" ng-model="dummy" ng-items="unAddedClasses" placeholder="{{'Add a new class'|translate}}" on-change="addClassToGroup($value)"/>
 			</div>
 		</div>
 	</juci-config-line>
-
-
 </div>

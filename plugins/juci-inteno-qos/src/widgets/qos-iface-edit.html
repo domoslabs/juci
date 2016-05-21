@@ -1,19 +1,19 @@
 <div>
 	<juci-config-lines>
-		<label class="label label-danger" translate>Acceleration will be disabled when Bandwidth limitation is enabled</label>
-		<juci-config-line title="{{'Classification group'|translate}}">
+		<juci-config-line title="{{'Bandwidth Limitation'|translate}}">
+			<switch class="green" ng-model="instance.enabled.value" />
+		</juci-config-line>
+
+		<label class="label label-danger" translate>Acceleration will be disabled when Bandwidth Limitation is enabled</label>
+		<juci-config-line title="{{'Classification Group'|translate}}">
 			<juci-select ng-items="allClassgroups" ng-model="instance.classgroup.value"></juci-select>
 		</juci-config-line>
 
-
-
-		<juci-config-line title="{{'Calculate overhead'|translate}}">
+		<juci-config-line title="{{'Calculate Overhead'|translate}}">
 			<switch class="green" ng-model="instance.overhead.value" />
 		</juci-config-line>
 
-
-
-		<juci-config-line title="{{'Limit download speed'|translate}}">
+		<juci-config-line title="{{'Limit Download Speed'|translate}}">
 			<switch class="green" ng-model="instance.showdown"/>
 		</juci-config-line>
 		<juci-config-line ng-show="instance.showdown">
@@ -23,10 +23,8 @@
 			</div>
 		</juci-config-line>
 
-
-
-		<juci-config-line title="{{'Limit upload speed'|translate}}">
-		<switch class="green" ng-model="instance.showup"/>
+		<juci-config-line title="{{'Limit Upload Speed'|translate}}">
+			<switch class="green" ng-model="instance.showup"/>
 		</juci-config-line>
 		<juci-config-line ng-show="instance.showup">
 			<div class="input-group">
@@ -34,6 +32,5 @@
 				<span class="input-group-addon">Kbps</span>
 			</div>
 		</juci-config-line>
-
 	</juci-config-lines>
 </div>
