@@ -38,8 +38,7 @@
 			<juci-config-line title="{{'WiFi Key (Password)'|translate}}">
 				<juci-select ng-model="interface.key_index.value" ng-items="keyChoices" placeholder="{{'Choose Key'|translate}}"/>
 			</juci-config-line>
-			<juci-config-line ng-repeat="key in ['1', '2', '3', '4']" 
-				title="{{'WiFi Key'|translate}} #{{key}}">
+			<juci-config-line ng-repeat="key in ['1', '2', '3', '4']" title="{{'WiFi Key'|translate}} #{{key}}" error="interface['key'+key].error">
 				<input type="{{(!showPassword)?'password':'text'}}" class="form-control" placeholder="{{'WiFi Key'|translate}} #{{key}}" ng-model="interface['key'+key].value" />
 			</juci-config-line>
 		</div>

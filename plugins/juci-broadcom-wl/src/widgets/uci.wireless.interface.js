@@ -118,7 +118,9 @@ JUCI.app
 				break; 
 			}
 			case "wep":
-			case "wep-open":
+			case "wep-open": {
+				$scope.interface.key.value = "";
+			}
 			case "wep-shared": {
 				if($scope.interface.wps_pbc.value && !confirm(gettext("WPS will be disabled when using WEP encryption. Are you sure you want to continue?"))){
 					setTimeout(function(){

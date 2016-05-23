@@ -60,7 +60,7 @@
 			}
 		}
 	}
-	
+
 	function WeekDayListValidator(){
 		this.validate = function(field){
 			if(!field.schema.allow) return null; 
@@ -119,6 +119,16 @@
 		};	
 	}
 	
+	function WEPKeyValidator(){
+		this.validate = function(field){
+			if(field.value.length>=10 && field.value.length<=26){
+				var matches = field.value.match(/[a-f0-9A-F]+/);
+				if(matches!==null && field.value.length==matches[0].length){ return null; }
+			}
+			return gettext("WEP encryption key must be 10-26 hexadecimal characters!");
+		}
+	}
+
 	function NumberLimitValidator(min, max){
 		return function(){
 			this.validate = function(field){
@@ -1162,6 +1172,7 @@
 
 	scope.UCI = new UCI(); 
 	scope.UCI.validators = {
+		WEPKeyValidator: WEPKeyValidator,
 		WeekDayListValidator: WeekDayListValidator, 
 		TimespanValidator: TimespanValidator, 
 		PortValidator: PortValidator, 

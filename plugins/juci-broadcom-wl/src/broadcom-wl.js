@@ -245,10 +245,10 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"cipher":			{ dvalue: "auto", type: String },
 		"key":				{ dvalue: "", type: String },
 		"key_index": 		{ dvalue: 1, type: Number }, 
-		"key1":				{ dvalue: "", type: String },
-		"key2":				{ dvalue: "", type: String },
-		"key3":				{ dvalue: "", type: String },
-		"key4":				{ dvalue: "", type: String },
+		"key1":				{ dvalue: "", type: String, validator: UCI.validators.WEPKeyValidator },
+		"key2":				{ dvalue: "", type: String, validator: UCI.validators.WEPKeyValidator },
+		"key3":				{ dvalue: "", type: String, validator: UCI.validators.WEPKeyValidator },
+		"key4":				{ dvalue: "", type: String, validator: UCI.validators.WEPKeyValidator },
 		"radius_server":	{ dvalue: "", type: String },
 		"radius_port":		{ dvalue: "", type: String },
 		"radius_secret":	{ dvalue: "", type: String },
@@ -262,18 +262,26 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"macfilter":			{ dvalue: 0, type: Number },
 		"maclist":			{ dvalue: [], type: Array } // match_each: /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/ }
 	}, function validator(section){
-		if(section.disabled) return null;
+		if(section.disabled.value !== false){ return null; }
+
 		// validate ssid
 		if(section.ssid.value.length >= 32) 
 			return gettext("SSID string can be at most 32 characters long!"); 
 		// validate keys
 		switch(section.encryption.value){
-			case "wep": {
-				for(var id = 1; id <= 4; id++){
-					var key = section["key"+id]; 
-					if(key && key.value != "" && !key.value.match(/[a-f0-9A-F]{10,26}/)) 
-						return gettext("WEP encryption key #"+id+" must be 10-26 hexadecimal characters!"); 
-				}
+			case "wep-open": {
+				var key_index = section['key_index'].value;
+				var key = section['key'+key_index];
+
+				if(key && key.value == ""){ return gettext("Please enter WEP encryption key #"+key_index); }
+
+			// These verifications are done by UCI.validators.WEPKeyValidator
+			//	for(var id = 1; id <= 4; id++){
+			//		var key = section["key"+id]; 
+			//		if(key && key.value != "" && !key.value.match(/[a-f0-9A-F]{10,26}/)){ // this regexp doesnt work as expected
+			//			if(!isValid(key.value)){ return gettext("WEP encryption key #"+id+" must be 10-26 hexadecimal characters!"); }
+			//		}
+			//	}
 			} break;
 			case "psk": 
 			case "psk2": 
