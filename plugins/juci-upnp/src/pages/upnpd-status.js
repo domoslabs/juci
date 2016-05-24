@@ -20,7 +20,7 @@
 
 JUCI.app
 .controller("UPNPStatusPage", function($scope, $rpc){	
-	$rpc.juci.upnpd.run({"method":"ports"}).done(function(result){
+	$rpc.$call("juci.upnpd", "run", {"method":"ports"}).done(function(result){
 		$scope.upnpOpenPorts = result.ports; 
 		$scope.loaded = true; 
 		$scope.$apply(); 

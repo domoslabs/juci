@@ -437,12 +437,7 @@
 			var deferred = $.Deferred(); 
 			var self = this; 
 
-			if(!$rpc.uci) {
-				setTimeout(function(){ deferred.reject(); }, 0); 
-				return deferred.promise(); 
-			}
-			
-			$rpc.uci.get({
+			$rpc.$call("uci", "get", {
 				config: self[".config"][".name"], 
 				section: self[".name"]
 			}).done(function(data){
@@ -462,7 +457,7 @@
 			// try to validate the section using section wide validator
 			if(self[".validator"] instanceof Function) self[".validator"](self); 
 			
-			$rpc.uci.set({
+			$rpc.$call("uci", "set", {
 				config: self[".config"][".name"], 
 				section: self[".name"], 
 				values: self.$getChangedValues()
@@ -652,7 +647,7 @@
 			var self = this; 
 			this.$sync({keep_user_changes: true}); 
 			var def = $.Deferred(); 
-			$rpc.uci.get({config: self[".name"]}).done(function(data){
+			$rpc.$call("uci", "get", {config: self[".name"]}).done(function(data){
 				var vals = data.values;
 				Object.keys(vals).filter(function(x){
 					return vals[x][".type"] in section_types[self[".name"]]; 
@@ -675,12 +670,6 @@
 			
 			self.deferred = deferred; 
 
-			if(!$rpc.uci) {
-				// this will happen if there is no router connection!
-				setTimeout(function(){ deferred.reject(); }, 0); 
-				return deferred.promise(); 
-			}
-
 			var to_delete = {}; 
 			Object.keys(self).map(function(x){
 				// prevent deletion of automatically created type sections with default value which are created by registerSectionType..
@@ -688,11 +677,11 @@
 			}); 
 			//console.log("To delete: "+Object.keys(to_delete)); 
 		
-			$rpc.uci.revert({
+			$rpc.$call("uci", "revert", {
 				config: self[".name"]//, 
 				//ubus_rpc_session: $rpc.$sid()
 			}).always(function(){ // we have to use always because we always want to sync regardless if reverts work or not ( they will not if the config is readonly! )
-				$rpc.uci.get({
+				$rpc.$call("uci", "get", {
 					config: self[".name"]
 				}).done(function(data){
 					var vals = data.values;
@@ -749,15 +738,9 @@
 			var self = this; 
 			var deferred = $.Deferred(); 
 				
-			if(!$rpc.uci) {
-				// this will happen if there is no router connection!
-				setTimeout(function(){ deferred.reject(); }, 0); 
-				return deferred.promise(); 
-			}
-
 			//self[".need_commit"] = true; 
 			console.log("Removing section "+JSON.stringify(section[".name"])); 
-			$rpc.uci.delete({
+			$rpc.$call("uci", "delete", {
 				"config": self[".name"], 
 				"section": section[".name"]
 			}).done(function(){
@@ -786,12 +769,6 @@
 		
 			var deferred = $.Deferred(); 
 			
-			if(!$rpc.uci) {
-				// this will happen if there is no router connection!
-				setTimeout(function(){ deferred.reject(); }, 0); 
-				return deferred.promise(); 
-			}
-
 			// TODO: validate values!
 			var values = {}; 
 			Object.keys(type).map(function(k){ 
@@ -810,7 +787,7 @@
 			}
 			
 			console.log("Adding: "+JSON.stringify(item)+" to "+self[".name"]+": "+JSON.stringify(values)); 
-			$rpc.uci.add({
+			$rpc.$call("uci", "add", {
 				"config": self[".name"], 
 				"type": item[".type"],
 				"name": item[".name"], 
@@ -840,11 +817,11 @@
 			}
 			// get section order and send it to uci. This will be applied when user does $save(); 
 			var order = arr.map(function(x){ return x[".name"]; }).filter(function(x){ return x; }); 
-			$rpc.uci.order({ 
+			$rpc.$call("uci", "order", { 
 				config: self[".name"], 
 				sections: order
 			}).done(function(){ 
-				$rpc.uci.commit({
+				$rpc.$call("uci", "commit", {
 					config: self[".name"]
 				}).done(function(){
 					def.resolve();
@@ -881,12 +858,8 @@
 		var deferred = $.Deferred(); 
 		console.log("Init UCI"); 
 		var self = this; 
-
-		if(!$rpc.uci) {
-			return deferred.reject("Missing $rpc.uci"); 
-		}
 		
-		$rpc.uci.configs().done(function(response){
+		$rpc.$call("uci", "configs").done(function(response){
 			var cfigs = response.configs; 
 			if(!cfigs) { return deferred.reject("could not retrieve list of configs!"); }
 			cfigs.map(function(k){
@@ -1043,12 +1016,6 @@
 		var errors = []; 
 		var self = this; 
 		
-		if(!$rpc.uci) {
-			// this will happen if there is no router connection!
-			setTimeout(function(){ deferred.reject(); }, 0); 
-			return deferred.promise(); 
-		}
-
 		Object.keys(self).map(function(k){
 			if(self[k].constructor == UCI.Config){
 				//if(self[k][".need_commit"]) revert_list.push(self[k][".name"]); 
@@ -1056,7 +1023,7 @@
 			}
 		}); 
 		async.eachSeries(revert_list, function(item, next){
-			$rpc.uci.revert({"config": item[".name"], "ubus_rpc_session": $rpc.$sid()}).done(function(){
+			$rpc.$call("uci", "revert", {"config": item[".name"], "ubus_rpc_session": $rpc.$sid()}).done(function(){
 				console.log("Reverted config "+item[".name"]); 
 				next(); 
 			}).fail(function(){
@@ -1071,19 +1038,13 @@
 	}
 	
 	UCI.prototype.$rollback = function(){
-		if(!$rpc.uci) {
-			var deferred = $.Deferred(); 
-			setTimeout(function(){ deferred.reject(); }, 0); 
-			return deferred.promise(); 
-		}
-
-		return $rpc.uci.rollback(); 
+		return $rpc.$call("uci", "rollback"); 
 	}
 	
 	UCI.prototype.$apply = function(){
 		console.error("Apply method is deprecated and will be removed. Use $save() instead."); 
 		return this.$save(); 
-		//return $rpc.uci.apply({rollback: 0, timeout: 5000}); 
+		//return $rpc.$call("uci", "apply", {rollback: 0, timeout: 5000}); 
 	}
 	
 	UCI.prototype.$save = function(){
@@ -1093,11 +1054,6 @@
 		var add_requests = []; 
 		var errors = []; 
 		
-		if(!$rpc.uci) {
-			setTimeout(function(){ deferred.reject(); }, 0); 
-			return deferred.promise(); 
-		}
-
 		async.series([
 			function(next){ // send all changes to the server
 				console.log("Checking for errors..."); 
@@ -1117,7 +1073,7 @@
 				}); 
 				console.log("Writing changes: "+JSON.stringify(writes)); 
 				async.eachSeries(writes, function(cmd, next){
-					$rpc.uci.set(cmd).done(function(response){
+					$rpc.$call("uci", "set", cmd).done(function(response){
 						console.log("... "+cmd.config+": "+JSON.stringify(response)); 
 						self[cmd.config][".need_commit"] = true; 
 						next(); 
@@ -1139,14 +1095,14 @@
 				//	deferred.resolve(); 
 				//	return; 
 				//} commenting out because we do need to commit if new sections have been added
-				//$rpc.uci.apply({rollback: 0, timeout: 5000}).done(function(){
+				//$rpc.$call("uci", "apply", {rollback: 0, timeout: 5000}).done(function(){
 					async.eachSeries(Object.keys(self), function(config, next){
 						if(self[config].constructor != UCI.Config || !self[config][".need_commit"]) {
 							next(); 
 							return; 
 						}
 						console.log("Committing changes to "+config); 
-						$rpc.uci.commit({config: config}).done(function(){
+						$rpc.$call("uci", "commit", {config: config}).done(function(){
 							self[config][".need_commit"] = false; 
 							// we need to set deferred to null to make sync work (with new changes to how we handle changed fields)
 							// the sync is necessary to make sure that all data is reloaded and has correct names after a commit

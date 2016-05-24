@@ -36,8 +36,7 @@ JUCI.app
 	JUCI.interval.repeat("wifi-status-page",5000,function(next){
 		async.series([
 			function(next){
-				if(!$rpc.router || !$rpc.router.radios) return;
-				$rpc.router.radios().done(function(rds){
+				$rpc.$call("router", "radios").done(function(rds){
 					$scope.radios = Object.keys(rds).map(function(r){
 						var radio = rds[r];
 						radio[".name"] = r;

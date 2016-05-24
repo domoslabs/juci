@@ -31,7 +31,7 @@ JUCI.app
 	$scope.showExpert = $config.local.mode == "expert";
 	$scope.$watch("device", function(device){
 		if(!device) return; 
-		$rpc.router.radios().done(function(result){
+		$rpc.$call("router", "radios").done(function(result){
 			if(device[".name"] in result){
 				
 				

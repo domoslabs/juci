@@ -83,8 +83,8 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 
 	Wireless.prototype.getConnectedClients = function(){
 		var def = $.Deferred(); 
-		$rpc.router.stas().done(function(clients){
-			$rpc.router.clients6().done(function(cl6){
+		$rpc.$call("router", "stas").done(function(clients){
+			$rpc.$call("router", "clients6").done(function(cl6){
 				var wlclients = Object.keys(clients).map(function(c){return clients[c];}).map(function(client){
 					Object.keys(cl6).map(function(c6){return cl6[c6];}).map(function(client6){
 						if(client.macaddr === client6.macaddr){
@@ -140,7 +140,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 	
 	Wireless.prototype.getDefaults = function(){
 		var deferred = $.Deferred(); 
-		$rpc.juci.wireless.run({"method":"defaults"}).done(function(result){
+		$rpc.$call("juci.wireless", "run", {"method":"defaults"}).done(function(result){
 			if(!result) {
 				deferred.reject(); 
 				return; 
@@ -155,7 +155,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 	
 	Wireless.prototype.scan = function(opts){
 		var deferred = $.Deferred(); 
-		$rpc.juci.broadcom.wireless.lua.run({"method":"scan", "args":JSON.stringify(opts)}).always(function(){
+		$rpc.$call("juci.broadcom.wireless.lua", "run", {"method":"scan", "args":JSON.stringify(opts)}).always(function(){
 			deferred.resolve(); 
 		});  
 		return deferred.promise(); 
@@ -163,7 +163,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 	
 	Wireless.prototype.getScanResults = function(opts){
 		var deferred = $.Deferred(); 
-		$rpc.juci.broadcom.wireless.lua.run({"method":"scanresults", "args":JSON.stringify(opts)}).done(function(result){
+		$rpc.$call("juci.broadcom.wireless.lua", "run", {"method":"scanresults", "args":JSON.stringify(opts)}).done(function(result){
 			deferred.resolve(result.access_points); 
 		}); 
 		return deferred.promise(); 

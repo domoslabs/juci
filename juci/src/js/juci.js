@@ -56,7 +56,7 @@
 		async.series([
 			function(next){
 				$rpc.$init().done(function(){
-					if(!$rpc.juci || !$rpc.juci.system || !$rpc.uci){
+					if(!$rpc.$has("juci", "system") || !$rpc.$has("uci")){
 						deferred.reject(); 
 						return; 
 					} 
@@ -93,12 +93,6 @@
 			}, 
 			function(next){
 				// get the menu navigation
-				if(!$rpc.juci){
-					console.log("skipping menu init");  
-					next(); 
-					return; 
-				}
-				
 				// retrieve session acls map
 				var acls = {}; 
 				if(UBUS.$session && UBUS.$session.acls && UBUS.$session.acls["access-group"]){

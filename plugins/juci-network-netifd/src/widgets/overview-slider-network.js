@@ -78,10 +78,9 @@ JUCI.app
 		edges.push({ from: ".root", to: ".wan_hub", width: 8, smooth: { enabled: false } }); 
 		
 		var clients, lan_nets, wan_nets;
-		if(!$rpc.router || !$rpc.router.clients) return;
 		async.series([
 			function(next){
-				$rpc.router.clients().done(function(cli){
+				$rpc.$call("router", "clients").done(function(cli){
 					clients = cli;
 			}).always(function(){next();});
 			}, function(next){

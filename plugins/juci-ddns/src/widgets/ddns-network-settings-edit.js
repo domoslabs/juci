@@ -47,7 +47,7 @@ JUCI.app
 		}); 
 		$scope.$apply(); 
 	}); 
-	$rpc.juci.ddns.run({"method":"providers"}).done(function(result){
+	$rpc.$call("juci.ddns", "run", {"method":"providers"}).done(function(result){
 		if(!result || !result.providers) return; 
 		$scope.allServices = result.providers.map(function(p){ return { label: p, value: p }}); 
 		$scope.$apply(); 

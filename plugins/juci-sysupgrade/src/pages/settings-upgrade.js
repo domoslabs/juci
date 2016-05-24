@@ -32,7 +32,7 @@ JUCI.app
 		$scope.$apply(); 
 	}); 
 	
-	$rpc.system.board().done(function(info){
+	$rpc.$call("system", "board").done(function(info){
 		$scope.board = info; 
 		$scope.$apply(); 
 	}); 
@@ -83,7 +83,7 @@ JUCI.app
 		//console.log("calling ubus call /juci/system.upgrade start now");
 		$scope.message = $tr(gettext("Upgrading"));
 		$scope.$apply();
-		$rpc.juci.system.upgrade.run({"method":"start","args":JSON.stringify({"path": $scope.$PATH, "keep": (($scope.$KEEP)?1:0)})});
+		$rpc.$call("juci.system.upgrade", "run", {"method":"start","args":JSON.stringify({"path": $scope.$PATH, "keep": (($scope.$KEEP)?1:0)})});
 		setTimeout(function(){ window.location = "/reboot.html";}, 3000);
 	});
 	$scope.onDismissModal = function(){
@@ -93,7 +93,7 @@ JUCI.app
 	$scope.onCheckUSB = function(){
 		$scope.usbUpgradeAvailable = false;
 		$scope.usbCheckInProgress = 1; 
-		$rpc.juci.system.upgrade.run({"method":"check","args":JSON.stringify({type: "usb"})}).done(function(response){
+		$rpc.$call("juci.system.upgrade", "run", {"method":"check","args":JSON.stringify({type: "usb"})}).done(function(response){
 			if(response.usb) {
 				$scope.usbUpgrade = response.usb; 
 				$scope.usbUpgradeStatus = $tr(gettext("New Software Available!"));
@@ -111,7 +111,7 @@ JUCI.app
 	$scope.onCheckOnline = function(){
 		$scope.onlineUpgradeAvailable = false;
 		$scope.onlineCheckInProgress = 1; 
-		$rpc.juci.system.upgrade.run({"method":"check","args":JSON.stringify({type: "online"})}).done(function(response){
+		$rpc.$call("juci.system.upgrade", "run", {"method":"check","args":JSON.stringify({type: "online"})}).done(function(response){
 			if(response.online) {
 				$scope.onlineUpgrade = response.online; 
 				$scope.onlineUpgradeStatus = $tr(gettext("New Software Available!"));
@@ -133,7 +133,7 @@ JUCI.app
 			$scope.$KEEP = keep;
 			$scope.$PATH = $scope.uploadFilename;
 			console.log("testing image: "+ $scope.uploadFilename);
-			$rpc.juci.system.upgrade.run({"method":"test","args":JSON.stringify({"path":$scope.onlineUpgrade})}).fail(function(){
+			$rpc.$call("juci.system.upgrade", "run", {"method":"test","args":JSON.stringify({"path":$scope.onlineUpgrade})}).fail(function(){
 				$scope.showUpgradeStatus = 0;
 				$scope.$apply();
 			});
@@ -148,7 +148,7 @@ JUCI.app
 			$scope.$KEEP = keep;
 			$scope.$PATH = $scope.usbUpgrade;
 			console.log("testing image: "+$scope.usbUpgrade);
-			$rpc.juci.system.upgrade.run({"method":"test","args":JSON.stringify({"path":$scope.usbUpgrade})}).fail(function(){
+			$rpc.$call("juci.system.upgrade", "run", {"method":"test","args":JSON.stringify({"path":$scope.usbUpgrade})}).fail(function(){
 				$scope.showUpgradeStatus = 0;
 				$scope.$apply();
 			});
@@ -182,7 +182,7 @@ JUCI.app
 			var json = $(this).contents().text(); 
 			try {
 				$scope.$KEEP = keep;
-				$rpc.juci.system.upgrade.run({"method":"test","args":JSON.stringify({"path":$scope.uploadFilename})}).fail(function(){
+				$rpc.$call("juci.system.upgrade", "run", {"method":"test","args":JSON.stringify({"path":$scope.uploadFilename})}).fail(function(){
 					$scope.showUpgradeStatus = 0;
 					$scope.$apply();
 				});

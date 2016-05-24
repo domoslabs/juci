@@ -2,8 +2,8 @@
 
 JUCI.app
 .controller("NetifdStatusClientsPage", function($scope, $rpc){
-	$rpc.router.clients().done(function(clients){
-		$rpc.router.clients6().done(function(clients6){
+	$rpc.$call("router", "clients").done(function(clients){
+		$rpc.$call("router", "clients6").done(function(clients6){
 			$scope.clients = Object.keys(clients).map(function(c){
 				var cl = clients[c];
 				Object.keys(clients6).map(function(c6){

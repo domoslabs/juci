@@ -32,13 +32,11 @@
 
 		async.series([
 			function(next){
-				if(UBUS.router){
-					UBUS.router.info().done(function(info){
-						self.board = info; 
-					}).always(function(){ next(); }); 
-				} else {
-					next(); 
-				}
+				UBUS.$call("router", "info").done(function(info){
+					self.board = info; 
+				}).fail(function(){
+					self.board = {};
+				}).always(function(){ next(); }); 
 			}, function(next){
 				// load systemwide settings from juci config
 				UCI.$sync("juci").done(function(){

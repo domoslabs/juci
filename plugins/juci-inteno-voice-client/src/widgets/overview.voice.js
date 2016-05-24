@@ -18,8 +18,8 @@ JUCI.app
 	$scope.sipAccounts = []; 
 	$scope.phoneSchedStatus = gettext("off"); 
 	$scope.str_unknown = $tr(gettext("Unknown"));
-	if(!$rpc.asterisk){
-		$scope.showVoiceWidget = false;
+	if(!$rpc.$has("asterisk", "status")){
+		$scope.showVioceWidget = true;
 		return;
 	}
 
@@ -36,7 +36,7 @@ JUCI.app
 				}).always(function(){ next(); }); 
 			},
 			function(next){
-				$rpc.asterisk.status().done(function(data){
+				$rpc.$call("asterisk", "status").done(function(data){
 					$scope.online = false;
 					$scope.sipAccounts.map(function(acc){
 						if(data.sip && data.sip[acc[".name"]]){

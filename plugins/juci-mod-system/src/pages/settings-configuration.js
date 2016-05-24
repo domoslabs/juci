@@ -25,14 +25,14 @@ JUCI.app
 	$scope.resetPossible = 1; 
 	$scope.passwordError = false;
 
-	$rpc.juci.system.conf.run({"method":"features"}).done(function(features){
+	$rpc.$call("juci.system.conf", "run", {"method":"features"}).done(function(features){
 		$scope.features = features; 
 		$scope.$apply();
 	}); 
 
 	$scope.onReset = function(){
 		if(confirm(gettext("This will reset your configuration to factory defaults. Do you want to continue?"))){
-			$rpc.juci.system.run({"method":"defaultreset"}).done(function(result){
+			$rpc.$call("juci.system", "run", {"method":"defaultreset"}).done(function(result){
 				console.log("Performing reset: "+JSON.stringify(result)); 
 				window.location = "/reboot.html";  
 			}); 
@@ -73,7 +73,7 @@ JUCI.app
 	}
 	$scope.onUploadComplete = function(result){
 		console.log("Uploaded: "+JSON.stringify(result)); 
-		$rpc.juci.system.conf.run({"method":"restore","args":JSON.stringify({
+		$rpc.$call("juci.system.conf", "run", {"method":"restore","args":JSON.stringify({
 			pass: $scope.data.pass
 		})}).done(function(result){
 			if(result.error){
@@ -82,7 +82,7 @@ JUCI.app
 				$scope.showUploadModal = 0; 
 				$scope.$apply(); 
 				if(confirm($tr(gettext("Configuration has been restored. You need to reboot the device for settings to take effect! Do you want to reboot now?")))){
-					$rpc.juci.system.run({"method":"reboot"}); 
+					$rpc.$call("juci.system", "run", {"method":"reboot"}); 
 					setTimeout(function(){window.location = "/reboot.html";}, 0);
 				}
 			}

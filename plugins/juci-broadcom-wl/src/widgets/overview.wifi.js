@@ -33,7 +33,7 @@ JUCI.app
 })
 .controller("overviewStatusWidgetWiFi", function($scope, $rpc){
 	$scope.wifiRadios = [];
-	$rpc.router.radios().done(function(data){
+	$rpc.$call("router", "radios").done(function(data){
 		$scope.wifiRadios = Object.keys(data).map(function(radio){ return data[radio]; });
 		$scope.$apply(); 
 	});
@@ -47,10 +47,10 @@ JUCI.app
 	}
 	$scope.mouseUp = function() {
 		if(!longPress){
-			if($rpc.wps && $rpc.wps.pbc) $rpc.wps.pbc();
+			$rpc.$call("wps", "pbc");
 			clearTimeout(timeout);
 		}else{
-			if($rpc.wps && $rpc.wps.pbc_client) $rpc.wps.pbc_client();
+			$rpc.$call("wps", "pbc_client");
 			$scope.wps.progress = 8; 
 			$scope.wps.text_status = wps_status_strings[8]; 
 			longPress = false;
@@ -82,8 +82,7 @@ JUCI.app
 	}
 
 	function update_wps(){
-		if(!$rpc.wps) return;
-		$rpc.wps.status().done(function(result){
+		$rpc.$call("wps", "status").done(function(result){
 			$scope.wps.progress = result.code; 
 			$scope.wps.text_status = wps_status_strings[result.code]||gettext("Unknown"); 
 			$scope.$apply();	
@@ -114,9 +113,8 @@ JUCI.app
 		});
 	}
 	function update_wifi(){
-		if(!$rpc.router) return;
 		var def = $.Deferred(); 
-		$rpc.router.radios().done(function(radios){
+		$rpc.$call("router", "radios").done(function(radios){
 			$wireless.getInterfaces().done(function(interfaces){
 				$scope.wifs = interfaces.map(function(iface){
 					if(!iface.device.value in radios) return null;
@@ -131,12 +129,10 @@ JUCI.app
 		}).fail(function(){ def.reject(); });
 		return def;
 	}
-	if($rpc.wps){
-		$rpc.wps.showpin().done(function(result){
-			$scope.wps.pin = result.pin;
-			$scope.$apply();
-		});
-	}
+	$rpc.$call("wps", "showpin").done(function(result){
+		$scope.wps.pin = result.pin;
+		$scope.$apply();
+	});
 	JUCI.interval.repeat("wifi-overview", 60000, function(done){
 		if($scope && $scope.wifs){
 			var tab_info = {};
@@ -154,6 +150,6 @@ JUCI.app
 		}); 
 	}); 
 	$scope.onCancelWPS = function(){
-		$rpc.wps.stop(); 
+		$rpc.$call("wps", "stop"); 
 	} 
 }); 

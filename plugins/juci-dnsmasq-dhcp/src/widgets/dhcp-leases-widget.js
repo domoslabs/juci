@@ -34,7 +34,7 @@ JUCI.app
 	});
 	function refresh(){
 		lanNets.map(function(net){
-			$rpc.router.leases({network:net[".name"]}).done(function(res){
+			$rpc.$call("router", "leases", {network:net[".name"]}).done(function(res){
 				$scope.ipv4leases = Object.keys(res).map(function(k){return res[k];});
 				$scope.$apply();
 			});

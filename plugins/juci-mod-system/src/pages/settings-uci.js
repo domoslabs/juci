@@ -34,7 +34,7 @@ JUCI.app
 		$scope.error = ""; 
 		$scope.loading = 1; 
 		$scope.subsections = {}; 
-		$rpc.uci.state({
+		$rpc.$call("uci", "state", {
 			config: item.id
 		}).done(function(data){
 			$scope.subsections = data.values; 
@@ -52,12 +52,12 @@ JUCI.app
 	$scope.onSaveSection = function(id){
 		if(!$scope.selectedConfig) return; 
 		$scope.error = ""; 
-		$rpc.uci.set({
+		$rpc.$call("uci", "set", {
 			"config": $scope.selectedConfig.id, 
 			"section": id, 
 			"values": $scope.subsections[id]
 		}).done(function(){
-			$rpc.uci.commit({
+			$rpc.$call("uci", "commit", {
 				config: $scope.selectedConfig.id
 			}).done(function(){
 				$scope.onResetSection(id); 
@@ -67,7 +67,7 @@ JUCI.app
 	$scope.onResetSection = function(id){
 		$scope.error = ""; 
 		if(!$scope.selectedConfig) return; 
-		$rpc.uci.state({
+		$rpc.$call("uci", "state", {
 			config: $scope.selectedConfig.id, 
 			section: id
 		}).done(function(result){
@@ -76,13 +76,13 @@ JUCI.app
 		}); 
 	}
 	async.series([
-		function(next){ $rpc.uci.configs().done(function(list){configs = list.configs; next(); }); }
+		function(next){ $rpc.$call("uci", "configs").done(function(list){configs = list.configs; next(); }); }
 	], function(){
 		$scope.error = ""; 
 		$scope.sections = configs.map(function(x){return {label: x, id: x};}); 
 		$scope.$apply(); 
 	})
-	/*$rpc.uci.state({
+	/*$rpc.$call("uci", "state", {
 		config: "wireless"
 	}).done(function(data){
 		Object.keys(data.values).map(function(k){

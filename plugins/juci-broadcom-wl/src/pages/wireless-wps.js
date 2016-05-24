@@ -61,16 +61,14 @@ JUCI.app
 	
 	$events.subscribe("wps", function(){refresh();});
 	function refresh() {
-		if(!$rpc.wps || !$rpc.wps.status) return;
-		$rpc.wps.status().done(function(result){
+		$rpc.$call("wps", "status").done(function(result){
 			$scope.progress = result.code; 
 			$scope.text_status = wps_status_strings[result.code]||gettext("Unknown"); 
 			$scope.$apply();	
 		}); 
 	}refresh(); 
 	
-	if(!$rpc.wps || !$rpc.wps.showpin) return;
-	$rpc.wps.showpin().done(function(data){
+	$rpc.$call("wps", "showpin").done(function(data){
 		$scope.generatedPIN = data.pin; 
 	}); 
 		
@@ -82,10 +80,10 @@ JUCI.app
 	}
 	$scope.mouseUp = function() {
 		if(!longPress){
-			if($rpc.wps && $rpc.wps.pbc) $rpc.wps.pbc();
+			$rpc.$call("wps", "pbc");
 			clearTimeout(timeout);
 		}else{
-			if($rpc.wps && $rpc.wps.pbc_client) $rpc.wps.pbc_client();
+			$rpc.$call("wps", "pbc_client");
 			$scope.progress = 8;
 			$scope.text_status = wps_status_strings[8];
 			longPress = false;
@@ -93,16 +91,15 @@ JUCI.app
 		}
 	}
 	$scope.onPairUserPIN = function(){
-		if(!$rpc.wps || !$rpc.wps.checkpin || !$rpc.wps.stapin) return;
 		var pin = $scope.data.userPIN.replace("-", "").replace(" ", "").match(/\d+/g).join("");
-		$rpc.wps.checkpin({pin:pin }).done(function(value){
+		$rpc.$call("wps", "checkpin", {pin:pin }).done(function(value){
 			if(!value) return;
 			if(!value.valid){
 				console.log("invalid wps pin");
 				alert($tr(gettext("Invalid WPS PIN")));
 				return;
 			}
-			$rpc.wps.stapin({ pin: pin });
+			$rpc.$call("wps", "stapin", { pin: pin });
 		});
 	}
 	
@@ -118,10 +115,9 @@ JUCI.app
 	};
 		
 	$scope.onGeneratePIN = function(){
-		if(!$rpc.wps || !$rpc.wps.setpin || !$rpc.wps.genpin) return;
-		$rpc.wps.genpin().done(function(data){
+		$rpc.$call("wps", "genpin").done(function(data){
 			if(!data || data.pin == "") return;
-			$rpc.wps.setpin({pin: data.pin}).done(function(){
+			$rpc.$call("wps", "setpin", {pin: data.pin}).done(function(){
 				$scope.generatedPIN = data.pin; 
 				$scope.$apply(); 
 			}); 
@@ -129,7 +125,6 @@ JUCI.app
 	}
 	
 	$scope.onCancelWPS = function(){
-		if($rpc.wps && $rpc.wps.stop)
-			$rpc.wps.stop(); 
+		$rpc.$call("wps", "stop"); 
 	} 
 }); 

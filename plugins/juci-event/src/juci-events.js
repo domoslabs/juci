@@ -35,8 +35,7 @@
 		var last_handled_time = 0;  
 		var self = JUCI.events;
 		setInterval(function(){
-			if($rpc.event == undefined || !$rpc.event.list) return;  
-			$rpc.event.list().done(function(result){
+			$rpc.$call("event", "list").done(function(result){
 				if(!result || !result.list) return; 
 				result.list.map(function(event){
 					if(event.time > last_handled_time){

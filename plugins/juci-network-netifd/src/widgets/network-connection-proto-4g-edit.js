@@ -13,8 +13,7 @@ JUCI.app
 })
 .controller("networkConnectionProto4gEdit", function($scope, $rpc){
 	$scope.device = {};
-	if(!$rpc.modems) return;
-	$rpc.juci.modems.run({"method":"list4g"}).done(function(data){
+	$rpc.$call("juci.modems", "run", {"method":"list4g"}).done(function(data){
 		if(data.info) return;
 		$scope.modems = data.modems;
 		$scope.allModemDevices = data.modems.map(function(x){ return { label: x.name, value:x.service+":"+x.dev+":"+x.ifname }});

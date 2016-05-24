@@ -45,7 +45,7 @@ JUCI.app.controller("iconnectOverviewPage", function($scope, $rpc, $events){
 		if(ledmode == "test") ledmode = "normal"; 
 		else ledmode = "test"; 
 		data.settingmode = true; 
-		$rpc.iconnect.call({
+		$rpc.$call("iconnect", "call", {
 			host: cl.id,
 			object: "leds", 
 			method: "set", 
@@ -61,7 +61,7 @@ JUCI.app.controller("iconnectOverviewPage", function($scope, $rpc, $events){
 
 	$scope.onUpgrade = function(cl){
 		if(confirm("Are you sure you want to do online system upgrade from upgrade server?")){
-			$rpc.iconnect.call({
+			$rpc.$call("iconnect", "call", {
 				host: cl.id,
 				object: "sysupgrade.example", 
 				method: "upgrade", 
@@ -75,10 +75,10 @@ JUCI.app.controller("iconnectOverviewPage", function($scope, $rpc, $events){
 	}
 
 	JUCI.interval.repeat("iconnect-refresh", 2000, function(done){
-		$rpc.iconnect.clients().done(function(result){
+		$rpc.$call("iconnect", "clients").done(function(result){
 			var clients = []; 
 			async.eachSeries(result.clients, function(cl, next){
-				$rpc.iconnect.call({
+				$rpc.$call("iconnect", "call", {
 					host: cl.id, 
 					object: "system", 
 					method: "board"

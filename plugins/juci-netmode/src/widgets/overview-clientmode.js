@@ -71,14 +71,12 @@ JUCI.app
 		if(tmp && tmp.askcred.value) return true;
 		return false;
 	}
-	$scope.wps = ($rpc.wps && $rpc.wps.pbc_client);
+	$scope.wps = $rpc.$has("wps", "pbc_client");
 	$scope.onPairWps = function(){
-		if($rpc.wps){
-			$rpc.wps.pbc_client();
-		}
+		$rpc.$call("wps", "pbc_client");
 	}
 	function setValues(ssid, key, encr){
-		$rpc.juci.repeater.run({"method":"set","args": JSON.stringify({
+		$rpc.$call("juci.repeater", "run", {"method":"set","args": JSON.stringify({
 			ssid:ssid,
 			key:key,
 			encryption:encr

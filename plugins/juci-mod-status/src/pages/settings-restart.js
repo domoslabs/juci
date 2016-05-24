@@ -27,7 +27,7 @@ JUCI.app
 			on_button: function(btn, inst){
 				if(btn.value == "yes"){
 					window.location = "/reboot.html";
-					$rpc.juci.system.run({"method":"reboot"}).done(function(){
+					$rpc.$call("juci.system", "run", {"method":"reboot"}).done(function(){
 						inst.close();
 					});
 				}
@@ -46,7 +46,7 @@ JUCI.app
 		var interval = setInterval(function(){
 			if(!rpc){
 				rpc = true; 
-				$rpc.session.access().done(function(){
+				$rpc.$call("session", "access").done(function(){
 					
 				}).fail(function(){
 					clearInterval(interval); 
@@ -62,7 +62,7 @@ JUCI.app
 		$scope.showRestartProgress = 1; 
 		$scope.showConfirmation = 0; 
 		$scope.progress = 0; 
-		$rpc.juci.system.run({"method":"reboot"}).done(function(){
+		$rpc.$call("juci.system", "run", {"method":"reboot"}).done(function(){
 			var rpc = true; 
 			$scope.message = "Waiting for reboot..."; 
 			$scope.$apply(); 
@@ -71,7 +71,7 @@ JUCI.app
 				$scope.$apply(); 
 				if(!rpc){
 					rpc = true; 
-					$rpc.session.access().done(function(){
+					$rpc.$call("session", "access").done(function(){
 						// it will not succeed anymore because box is rebooting
 					}).fail(function(result){
 						if(result.code && result.code == -32002) { // access denied error. We will get it when it boots up again. 

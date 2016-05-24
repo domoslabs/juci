@@ -20,18 +20,17 @@
 
 JUCI.app
 .controller("StatusNetworkRoutes", function($scope, $rpc){
-	if(!$rpc.juci || !$rpc.juci.network || !$rpc.juci.network.status)return;
-	$rpc.juci.network.status.run({"method":"arp"}).done(function(arp_table){
+	$rpc.$call("juci.network.status", "run", {"method":"arp"}).done(function(arp_table){
 		$scope.arp_table = arp_table.clients; 
-		$rpc.juci.network.status.run({"method":"ipv4routes"}).done(function(ipv4_routes){
+		$rpc.$call("juci.network.status", "run", {"method":"ipv4routes"}).done(function(ipv4_routes){
 			$scope.ipv4_routes = ipv4_routes.routes; 
-			$rpc.juci.network.status.run({"method":"ipv6routes"}).done(function(ipv6_routes){
+			$rpc.$call("juci.network.status", "run", {"method":"ipv6routes"}).done(function(ipv6_routes){
 				$scope.ipv6_routes = ipv6_routes.routes; 
 				$scope.$apply(); 
 			}); 
 		}); 
 	}); 
-	$rpc.juci.network.status.run({"method":"ipv6neigh"}).done(function(result){
+	$rpc.$call("juci.network.status", "run", {"method":"ipv6neigh"}).done(function(result){
 		$scope.neighbors = result.neighbors; 	
 		$scope.$apply(); 
 	}); 

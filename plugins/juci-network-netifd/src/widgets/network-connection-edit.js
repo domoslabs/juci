@@ -27,8 +27,7 @@ JUCI.app
 	}
 	
 	$scope.allProtocolTypes = $network.getProtocolTypes();
-	if(!$rpc.network || !$rpc.juci || !$rpc.juci.network)return;
-	$rpc.juci.network.run({"method":"protocols"}).done(function(data){
+	$rpc.$call("juci.network", "run", {"method":"protocols"}).done(function(data){
 		$scope.protocolTypes = $scope.allProtocolTypes.filter(function(x){
 			if(x.value == "static" || x.value == "none") return true; //should allways be there
 			return data.protocols.find(function(p){ return p == x.value }) != undefined;
@@ -83,8 +82,8 @@ JUCI.app
 		$scope.interface.$proto_editor_ad = "<network-connection-proto-"+proto+"-advanced-edit ng-model='interface' />"; 
 	}
 	function load_info(){
-		if(!$scope.interface || !$rpc.network.interface || !$rpc.network.interface.dump) return;
-		$rpc.network.interface.dump().done(function(ifaces){
+		if(!$scope.interface) return;
+		$rpc.$call("network.interface", "dump").done(function(ifaces){
 			$scope.interface.$info = ifaces.interface.find(function(x){ return x.interface == $scope.interface[".name"]; });
 			$scope.$apply();
 		});

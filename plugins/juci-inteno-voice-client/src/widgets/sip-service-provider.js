@@ -14,13 +14,11 @@ JUCI.app
 		$scope.$apply();
 	});
 	JUCI.interval.repeat("voice.sip-service-provicers", 5000, function(done){
-		if(!$rpc || !$rpc.asterisk){
-			$scope.sipAccStatus = null;
-			return;
-		}
-		$rpc.asterisk.status().done(function(data){
+		$rpc.$call("asterisk", "status").done(function(data){
 			$scope.sipAccStatus = data.sip;
 			$scope.$apply();
+		}).fail(function(){
+			$scope.sipAccStatus = null;
 		}).always(function(){done();});
 	});
 	$scope.getIconStatus = function(item){

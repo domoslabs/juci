@@ -25,6 +25,7 @@
 	var RPC_DEFAULT_SESSION_ID = "00000000000000000000000000000000"; 
 	var RPC_SESSION_ID = scope.localStorage.getItem("sid")||RPC_DEFAULT_SESSION_ID; 
 	var RPC_CACHE = {}; 
+	var METHODS = {};
 	
 	var gettext = function(text){ return text; }; 
 	
@@ -126,12 +127,12 @@
 			var self = this; 
 			var deferred  = $.Deferred(); 
 			
-			if(!self.session){
+			if(!METHODS.session){
 				setTimeout(function(){ deferred.reject(); }, 0); 
 				return deferred.promise(); 
 			}
 
-			self.session.access({
+			METHODS.session.access({
 				"scope": "ubus" 
 			}).done(function(result){
         		if(!("username" in (result.data||{}))) {
@@ -161,12 +162,12 @@
 			var self = this; 
 			var deferred  = $.Deferred(); 
 			
-			if(!self.session) {
+			if(!METHODS.session) {
 				setTimeout(function(){ deferred.reject(); }, 0);  
 				return deferred.promise(); 
 			}
 
-			self.session.login({
+			METHODS.session.login({
 				"username": opts.username, 
 				"password": opts.password
 			}).done(function(result){
@@ -185,12 +186,12 @@
 			var deferred = $.Deferred(); 
 			var self = this; 
 
-			if(!self.session) {
+			if(!METHODS.session) {
 				setTimeout(function(){ deferred.reject(); }, 0);  
 				return deferred.promise(); ; 
 			}
 
-			self.session.destroy().done(function(){
+			METHODS.session.destroy().done(function(){
 				RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID; // reset sid to 000..
 				scope.localStorage.setItem("sid", RPC_SESSION_ID); 
 				deferred.resolve(); 
@@ -224,7 +225,7 @@
 			// support new slash paths /foo/bar..
 			var npath = object; 
 			if(object.startsWith("/")) npath = object.substring(1); 
-			_find(npath.split(/[\.\/]/), method, self); 
+			_find(npath.split(/[\.\/]/), method, METHODS); 
 		}, 
 		$list: function(){
 			return rpc_request("list", "*", "", {}); 
@@ -240,6 +241,32 @@
 			}); 
 			return deferred.promise(); 
 		}, 
+		$has: function(obj, method){
+			var path = obj.replace(/^\//, '').replace(/\//, '.').split(".");
+			path.push(method);
+			function _exist(arr, obj){
+				if(!obj.hasOwnProperty(arr[0])) return false;
+				var child = arr.shift();
+				if(!arr.length) return true;
+				return _exist(arr, obj[child]);
+			}
+			return _exist(path, METHODS);
+		},
+		$call: function(obj, method, args){
+			var def = $.Deferred();
+			var path = obj.replace(/^\//, '').replace(/\//, '.').split(".");
+			path.push(method);
+			function _exist(arr, obj){
+				if(!obj.hasOwnProperty(arr[0])) return false;
+				var child = arr.shift();
+				if(!arr.length) return obj[child];
+				return _exist(arr, obj[child]);
+			}
+			var f = _exist(path, METHODS);
+			if(f && typeof f === "function") return f(args);
+			setTimeout(function(){def.reject("method does not exist");},0);
+			return def.promise();
+		},
 		$init: function(host){
 			var self = this; 
 			if(host) {

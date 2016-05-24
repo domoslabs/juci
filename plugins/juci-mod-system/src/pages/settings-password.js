@@ -30,7 +30,7 @@ JUCI.app
 	}; 
 	$scope.passwordStrength = 1; 
 	
-	$rpc.juci.system.user.run({"method":"listusers","args":JSON.stringify({ sid: $rpc.$sid() })}).done(function(result){
+	$rpc.$call("juci.system.user", "run", {"method":"listusers","args":JSON.stringify({ sid: $rpc.$sid() })}).done(function(result){
 		$scope.allUsers = result.users.map(function(x){
 			return { label: x, value: x }; 
 		}); 
@@ -67,7 +67,7 @@ JUCI.app
 		$scope.error = ""; 
 		if($scope.modal.password != $scope.modal.password2) alert($tr(gettext("Passwords do not match!"))); 
 		else {
-			$rpc.router.password_set({user: username, password: $scope.modal.password, curpass: $scope.modal.old_password}).done(function(data){
+			$rpc.$call("router", "password_set", {user: username, password: $scope.modal.password, curpass: $scope.modal.old_password}).done(function(data){
 				$scope.showModal = 0; 
 				$scope.error = 0;
 				$scope.$apply(); 
