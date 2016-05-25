@@ -134,7 +134,8 @@ JUCI.app
 			$uci.$save().done(function(){
 				$scope.numUnsavedChanges(); 
 				console.log("Saved uci configuration!"); 
-				$scope.$apply(); 
+				//$scope.$apply(); 
+				location.reload();
 			}).fail(function(errors){
 				$scope.errors = errors.map(function(e){return $tr(e);}); 
 				$scope.$emit("errors", errors); 
