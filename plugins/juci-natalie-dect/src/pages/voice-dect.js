@@ -4,53 +4,67 @@ JUCI.app
 		$scope.dect = $uci.dect.dect;
 		$scope.$apply();
 	});
+
 	$events.subscribe("dect", function(event){
-		if(event && event.data && (event.data.handset === "add")){
+		if(!event || !event.data)
+			return;
+
+		if (event.data.handset === "add")
 			$scope.dismissed = true;
-		}
+
+		updateDectStatus();
 	});
+
+	var numDevices = 0;
+	var timer;
+
+	function updateDectStatus() {
+		if(!$rpc.dect || !$rpc.dect.status) return;
+
+		$rpc.dect.status().done(function(result){
+			$scope.status = result;
+		});
+
+		$rpc.dect.handset({"list":""}).done(function(result){
+			if(result.handsets && result.handsets.length !== numDevices){
+				numDevices = result.handsets.length;
+				$scope.dismissed = true;
+			}
+			$scope.handset = result;
+			$scope.$apply();
+		});
+	}updateDectStatus();
+
 	$scope.dectModes = [
 		{ label: $tr(gettext("Auto")),	value: "auto" },
 		{ label: $tr(gettext("On")),	value: "on" },
 		{ label: $tr(gettext("Off")),	value: "off" }
 	];
-	var timer;
+
 	$scope.dismissed = true;
 	$scope.onCancelDECT = function(){
-		//$rpc.dect.state({"registration":"off"});
-		$scope.dismissed = true;
+		$rpc.dect.state({"registration":"off"});
 		clearTimeout(timer);
 	};
-	$scope.toHexaDecimal = function(string){
-		var ret = "";
-		for(var i = 0; i < string.length;i+=2){
-			ret += string.substr(i, 2) + " ";
-		}
-		return ret;
-	};
-	var numDevices = 0;
+
 	if($rpc.dect){
-		JUCI.interval.repeat("dect.refresh", 1000, function(done){
-			$rpc.dect.status().done(function(result){
-				$scope.status = result;
-			}).always(function(){done()});
-			$rpc.dect.handset({"list":""}).done(function(result){
-				if(result.handsets && result.handsets.length !== numDevices){
-					numDevices = result.handsets.length;
-					$scope.dismissed = true;
-				}
-				$scope.handset = result;
-				$scope.$apply();
-			}).always(function(){done()});
-		});
 		$scope.onStartPairing = function(){
 			$scope.dismissed = false;
 			$rpc.dect.state({"registration":"on"});
 			timer = setTimeout(function(){$scope.dismissed = true;}, 1000*180);
 		}
 		$scope.onPingHandset = function(hs){
-			//$rpc.dect.call({"terminal":JSON.stringify({ id: hs.id })}).done(function(){});
+			//$rpc.dect.call({"terminal": hs.id }).done(function(){});
 			$rpc.dect.handset({"pageall":""}).done(function(){});
 		}
+		$scope.onUnpairHandset = function(hs){
+			$rpc.dect.call({"release": hs.id }).done(function(){});
+		}
+	}
+
+	$scope.toHexString = function(byteArray){
+		return byteArray.map(function(byte) {
+			return ('0' + (byte & 0xFF).toString(16)).slice(-2);
+		}).join('')
 	}
 });

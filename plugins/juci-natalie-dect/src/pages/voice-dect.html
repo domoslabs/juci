@@ -1,3 +1,5 @@
+<body onload="updateDectStatus()">
+
 <juci-layout-with-sidebar>
 	<div ng-controller="PhoneDectPage">
 		<h2 translate>DECT Radio</h2>
@@ -27,13 +29,15 @@
 					<th style="width:1%" translate>ID</th>
 					<th translate>IPUI</th>
 					<th translate>Codecs</th>
-					<th class="hidden-xs" style="width:1%" translate>Action</th>
+					<th class="hidden-xs" style="width:1%"></th>
+					<th class="hidden-xs" style="width:1%"></th>
 				</thead>
 				<tr ng-repeat="hs in handset.handsets track by $index">
 					<td>{{hs.id}}</td>
-					<td>{{hs.ipui}}</td>
-					<td>{{hs.codecs}}</td>
+					<td>{{toHexString(hs.ipui)}}</td>
+					<td>{{hs.codecs.toString()}}</td>
 					<td class="hidden-xs"><button class="btn btn-default" ng-click="onPingHandset(hs)" translate>Ping</button></td>
+					<td class="hidden-xs"><button class="btn btn-default" ng-click="onUnpairHandset(hs)" translate>Unpair</button></td>
 				</tr>
 			</table>
 		</div>
