@@ -56,7 +56,7 @@ JUCI.app
 	$scope.mixed_psk_ciphers = [
 		{label: $tr(gettext("Auto")), value: "auto"},
 		{label: $tr(gettext("CCMP (AES)")), value: "ccmp"},
-		{label: $tr(gettext("TKIP/CCMP (AES)")), value: "ccmp"}
+		{label: $tr(gettext("TKIP/CCMP (AES)")), value: "tkip+ccmp"}
 	];  
 	
 	$scope.cryptoChoices = [
@@ -132,12 +132,12 @@ JUCI.app
 			}
 			case "mixed-psk": {
 				if(!$scope.mixed_psk_ciphers.find(function(i){ return i.value == $scope.interface.cipher.value}))
-					$scope.interface.cipher.value = "ccmp"; 
+					$scope.interface.cipher.value = "tkip+ccmp";
 				break; 
 			}
 			case "psk2": {
 				if(!$scope.psk2_ciphers.find(function(i){ return i.value == $scope.interface.cipher.value}))
-					$scope.interface.cipher.value = "ccmp"; 
+					$scope.interface.cipher.value = "ccmp";
 				break; 
 			}
 		}
