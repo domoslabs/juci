@@ -129,6 +129,23 @@
 		}
 	}
 
+	function WPAKeyValidator(){
+		this.validate = function(field){
+			function isNotPrintableASCII(chr){
+				if(chr.charCodeAt()<32 && chr.charCodeAt()>126){ return true; }
+				else{ return false; }
+			}
+
+			if(field.value.length<8 || field.value.length>63){ return gettext("WPA encryption key must be 8-63 printable ASCII characters!"); }
+
+			for(var i=0; i<field.value.length; i++){
+				if(isNotPrintableASCII(field.value.charAt(i))){
+					return gettext("WPA encryption key must be 8-63 printable ASCII characters!");
+				}
+			}
+		}
+	}
+
 	function NumberLimitValidator(min, max){
 		return function(){
 			this.validate = function(field){
@@ -1172,6 +1189,7 @@
 
 	scope.UCI = new UCI(); 
 	scope.UCI.validators = {
+		WPAKeyValidator: WPAKeyValidator,
 		WEPKeyValidator: WEPKeyValidator,
 		WeekDayListValidator: WeekDayListValidator, 
 		TimespanValidator: TimespanValidator, 
