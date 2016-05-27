@@ -5,9 +5,6 @@
 		</juci-config-line>
 	</juci-config-lines>
 	<div ng-show="interface.macfilter.value">
-		<!--<div class="alert alert-danger">
-			<div ng-message="pattern" translate><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>You must enter a valid MAC address!</div>
-		</div>-->
 		<juci-config-lines>
 			<juci-config-line title="{{'Access for listed devices'|translate}}">
 				<div class="btn-group">
@@ -16,19 +13,11 @@
 			</juci-config-line>
 			<juci-config-line title="{{'Currently added devices'|translate}}">
 				<div class="row" ng-repeat="mac in maclist track by $index">
-					<div class="col-md-5 form-group">
-						<label class="visible-xs visible-sm" translate>Hostname</label>
-						<input type="text" class="form-control" ng-model="mac.hostname" ng-blur="rebuildMacList()"/>
+					<div class="input-group {{mac.error!=null ? '' : 'has-error'}}">
+						<input class="form-control col-xs-4" error="mac.error" type="string" ng-model="mac.macaddr" placeholder="MAC address" style="max-width: 195px !important;"/>
+						<button class="btn btn-default col-xs-2" ng-click="onDeleteHost(mac)"><i class="fa fa-trash-o"></i></button>
 					</div>
-					<div class="col-md-5 form-group">
-						<label class="visible-xs visible-sm" translate>MAC</label>
-						<input type="text" class="form-control" ng-model="mac.macaddr" ng-blur="rebuildMacList()" placeholder="XX:XX:XX:XX:XX:XX" /><!-- ng-pattern="/^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/"-->
-					</div>
-					<div class="col-md-2">
-						<button class="btn btn-default pull-right" ng-click="onDeleteHost(mac)"><i class="fa fa-trash-o"></i></button>
-						<br style="clear: both;"/>
-					</div>
-					<div class="col-xs-12"><hr/></div>
+						<div class="col-xs-12"><hr/></div>
 				</div>
 				<div class="row">
 					<div class="col-md-4 col-md-offset-8">
