@@ -66,7 +66,8 @@ JUCI.app
 			if(x === "macaddr") return { label: $tr(gettext("MAC Address")), value: String(val).toUpperCase() };
 			if(x === "dhcp") return { label: $tr(gettext("DHCP")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
 			if(x === "connected") return { label: $tr(gettext("Connected")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
-			if(x === "wireless") $scope.wireless = true;
+			if(x === "wireless") $scope.wireless = val;
+			if(!($scope.wireless) && x === "linkspeed") return { label: $tr(gettext("Link Speed")), value: val };
 			return null;
 		}).filter(function(x){ return x !== null;});
 		if($scope.wireless){
