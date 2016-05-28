@@ -6,7 +6,7 @@
 			<div class="col-md-6"  ng-repeat="radio in wlRadios track by $index">
 				<h2>{{'Radio'|translate}} {{radio.frequency}}</h2>
 				<table class="table table-condensed">
-					<tr><th translate>Channel</th><td>{{radio.current_channel}}</td></tr>
+					<tr><th translate>Channel</th><td>{{radio.channel}}</td></tr>
 					<tr><th translate>Radio Rate</th><td>{{radio.rate}}</td></tr>
 				</table>
 			</div>
