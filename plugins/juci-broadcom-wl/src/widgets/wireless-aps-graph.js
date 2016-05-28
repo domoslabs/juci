@@ -32,15 +32,80 @@ JUCI.app
 
 	var dataset = new vis.DataSet(items);
 	var options = {
-		start: 0,
-		end: 20,
-		style: 'bar',
+		yAxisOrientation: 'left',
+		defaultGroup: 'default',
+		sort: true,
+		sampling: true,
+		stack: false,
+		graphHeight: '400px',
+		shaded: {
+			enabled: false,
+			orientation: 'bottom' // top, bottom
+		},
+		style: 'line',
+		barChart: {
+			width: 25,
+			sideBySide: false,
+			align: 'center' // left, center, right
+		},
+		interpolation: {
+			enabled: true,
+			parametrization: 'centripetal', // uniform (alpha = 0.0), chordal (alpha = 1.0), centripetal (alpha = 0.5)
+			alpha: 0.5
+		},
 		drawPoints: {
-			onRender: function(item) {
-				return item.label != null;
+//			onRender: function(item) {
+//				return item.label != null;
+//			},
+			enabled: true,
+			size: 6,
+			style: 'circle' // square, circle
+		},
+		dataAxis: {
+			showMinorLabels: true,
+			showMajorLabels: true,
+			icons: false,
+			width: '40px',
+			visible: false,
+			alignZeros: true,
+			left: {
+				range: { min: undefined, max: undefined },
+				format: function format(value) {
+					return value;
+				},
+				title: { text: undefined, style: undefined }
 			},
-			style: 'circle'
-		}
+			right: {
+				range: { min: undefined, max: undefined },
+				format: function format(value) {
+					return value;
+				},
+				title: { text: undefined, style: undefined }
+			}
+		},
+		legend: {
+			enabled: false,
+			icons: true,
+			left: {
+				visible: true,
+				position: 'top-left' // top/bottom - left,right
+			},
+			right: {
+				visible: true,
+				position: 'top-right' // top/bottom - left,right
+			}
+		},
+//		groups: {
+//			visibility: {}
+//		},
+
+		start: 0,
+		end: 165,
+		min: 0,
+		max: 165,
+		moveable: false,
+		zoomable: false,
+		direction: 'horizontal' // 'horizontal' or 'vertical'
 	};
 	
 	var groups = new vis.DataSet(); 	
@@ -49,7 +114,7 @@ JUCI.app
 		className: 'green',
 		options: {
 			style:'bar',
-			drawPoints: { style: 'circle', size: 10 }
+			drawPoints: { style: 'circle', size: 1 }
 		}
 	});
 	groups.add({
@@ -57,7 +122,7 @@ JUCI.app
 		className: 'orange',
 		options: {
 			style:'bar',
-			drawPoints: { style: 'circle', size: 10 }
+			drawPoints: { style: 'circle', size: 1 }
 		}
 	});
 	groups.add({
@@ -65,30 +130,48 @@ JUCI.app
 		className: 'red',
 		options: {
 			style:'bar',
-			drawPoints: { style: 'circle', size: 10 }
+			drawPoints: { style: 'circle', size: 1 }
 		}
 	});
 
 	var graph2d = new vis.Graph2d(container, dataset, groups, options);
 
 	$scope.$watch("scan_list", function(value){
-		if(!value) return; 		
-		var min = parseInt(value[0].channel);
-		var max = parseInt(value[0].channel);
+		if(!value || !value[0]) return;
+
+		var minch;
+		var maxch;
+
+		if (parseInt(value[0].channel) >= 36) {
+			minch = 36;
+			maxch = 165;
+		} else {
+			minch = 1;
+			maxch = 14;
+		}
+
 		value.map(function(val){
-			if(parseInt(val.channel) > max) max = parseInt(val.channel);
-			if(parseInt(val.channel) < min) min = parseInt(val.channel);
+			min = minch;
+			max = maxch;
 		});
-		options.start = (min - 5);
-		options.end = (max + 5);
+
+		options.min = (minch - 1);
+		options.max = (maxch + 1);
+		options.start = (minch - 1);
+		options.end = (maxch + 1);
+		options.zoomMin = (minch - 1);
+		options.zoomMax = (maxch + 1);
+		options.moveable = true;
+		options.zoomable = false;
+
 		graph2d.setOptions(options);
 		dataset.remove(dataset.getIds()); 
 		value.map(function(ap){
-			var group = 1; 
-			if(ap.snr < 20) group = 3; 
-			else if(ap.snr < 60) group = 2; 
-			else group = 1; 
-			dataset.add({group: group, x: ap.channel, y: String(ap.snr), label: { content: ap.ssid }}); 
-		}); 
-	}); 
-}); 
+			var group = 1;
+			if(ap.rssi >= -50) group = 1;
+			else if(ap.rssi >= -75) group = 2;
+			else group = 3;
+			dataset.add({group: group, x: ap.channel, y: (100+ap.rssi), label: { content: ap.ssid }});
+		});
+	});
+});
