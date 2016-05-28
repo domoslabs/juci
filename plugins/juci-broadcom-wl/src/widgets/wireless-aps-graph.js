@@ -46,7 +46,7 @@ JUCI.app
 		barChart: {
 			width: 25,
 			sideBySide: false,
-			align: 'center' // left, center, right
+			align: 'right' // left, center, right
 		},
 		interpolation: {
 			enabled: true,
