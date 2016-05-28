@@ -58,7 +58,7 @@ JUCI.app
 			$rpc.dect.handset({"pageall":""}).done(function(){});
 		}
 		$scope.onUnpairHandset = function(hs){
-			$rpc.dect.call({"release": hs.id }).done(function(){});
+			$rpc.dect.handset({"delete": hs.id }).done(function(){});
 		}
 	}
 
