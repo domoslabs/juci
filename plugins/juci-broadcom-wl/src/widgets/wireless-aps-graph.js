@@ -42,7 +42,7 @@ JUCI.app
 			enabled: false,
 			orientation: 'bottom' // top, bottom
 		},
-		style: 'line',
+		style: 'bar',
 		barChart: {
 			width: 25,
 			sideBySide: false,
@@ -155,8 +155,8 @@ JUCI.app
 			max = maxch;
 		});
 
-		options.min = (minch - 1);
-		options.max = (maxch + 1);
+		options.min = (minch);
+		options.max = (maxch);
 		options.start = (minch - 1);
 		options.end = (maxch + 1);
 		options.zoomMin = (minch - 1);
