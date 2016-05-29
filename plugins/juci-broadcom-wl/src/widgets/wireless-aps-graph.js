@@ -100,7 +100,7 @@ JUCI.app
 //		},
 
 		start: 0,
-		end: 165,
+		end: 100,
 		min: 0,
 		max: 165,
 		moveable: false,
@@ -157,8 +157,6 @@ JUCI.app
 
 		options.min = (minch);
 		options.max = (maxch);
-		options.start = (minch - 1);
-		options.end = (maxch + 1);
 		options.zoomMin = (minch - 1);
 		options.zoomMax = (maxch + 1);
 		options.moveable = true;
@@ -171,7 +169,7 @@ JUCI.app
 			if(ap.rssi >= -50) group = 1;
 			else if(ap.rssi >= -75) group = 2;
 			else group = 3;
-			dataset.add({group: group, x: ap.channel, y: (100+ap.rssi), label: { content: ap.ssid }});
+			dataset.add({group: group, x: ap.channel, y: (100 + ap.rssi), label: { content: ap.ssid }});
 		});
 	});
 });
