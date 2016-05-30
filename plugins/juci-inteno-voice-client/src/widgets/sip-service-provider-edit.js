@@ -90,7 +90,8 @@ JUCI.app
 		{ label: $tr(gettext("TCP")),	value: "tcp" },
 		{ label: $tr(gettext("TLS")),	value: "tls" }
 	];
-	$scope.showPassword = false; $scope.togglePassword = function(){
+	$scope.showPassword = false;
+	$scope.togglePassword = function(){
 		$scope.showPassword = !$scope.showPassword;
 	}
 });
