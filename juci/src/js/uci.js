@@ -266,7 +266,6 @@
 		}
 	}; 
 
-
 	
 	var section_types = {};
 	function UCI(){
