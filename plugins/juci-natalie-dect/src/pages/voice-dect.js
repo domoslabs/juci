@@ -20,11 +20,11 @@ JUCI.app
 
 	function updateDectStatus() {
 
-		$rpc.$call("dect" "status").done(function(result){
+		$rpc.$call("dect", "status").done(function(result){
 			$scope.status = result;
 		});
 
-		$rpc.$call("dect" "handset" ,{"list":""}).done(function(result){
+		$rpc.$call("dect", "handset" ,{"list":""}).done(function(result){
 			if(result.handsets && result.handsets.length !== numDevices){
 				numDevices = result.handsets.length;
 				$scope.dismissed = true;
@@ -51,9 +51,23 @@ JUCI.app
 		$rpc.$call("dect", "state", {"registration":"on"});
 		timer = setTimeout(function(){$scope.dismissed = true;}, 1000*180);
 	}
+
+	$scope.pinging = [ 0, 0, 0, 0, 0, 0, 0, 0 ];
+
 	$scope.onPingHandset = function(hs){
-		$rpc.$call("dect", "handset", {"pageall":""}).done(function(){});
+		if ($scope.pinging[hs.id]) {
+			$scope.pinging[hs.id] = 0;
+			$rpc.$call("dect", "call", {"terminal": hs.id, "release": (hs.id-1) }).done(function(result){
+				if (result.errstr && result.errstr != "Success") $scope.pinging[hs.id] = 1;
+			});
+		} else {
+			$scope.pinging[hs.id] = 1;
+			$rpc.$call("dect", "call", {"terminal": hs.id, "add": (hs.id-1) }).done(function(result){
+				if (result.errstr && result.errstr != "Success") $scope.pinging[hs.id] = 0;
+			});
+		}
 	}
+
 	$scope.onUnpairHandset = function(hs){
 		$rpc.$call("dect", "handset", {"delete": hs.id }).done(function(){});
 	}

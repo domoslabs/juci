@@ -36,7 +36,12 @@
 					<td>{{hs.id}}</td>
 					<td>{{toHexString(hs.ipui)}}</td>
 					<td>{{hs.codecs.toString()}}</td>
-					<td class="hidden-xs"><button class="btn btn-default" ng-click="onPingHandset(hs)" translate>Ping</button></td>
+					<td class="hidden-xs">
+						<button ng-click="onPingHandset(hs)" class="btn btn-default">
+							<span ng-show="!pinging[hs.id]">Ping</span>
+							<span ng-show="pinging[hs.id]"><i class="fa fa-spinner fa-spin"></i> <span translate>Pinging...</span></span>
+						</button>
+					</td>
 					<td class="hidden-xs"><button class="btn btn-default" ng-click="onUnpairHandset(hs)" translate>Unpair</button></td>
 				</tr>
 			</table>
