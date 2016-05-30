@@ -19,13 +19,12 @@ JUCI.app
 	var timer;
 
 	function updateDectStatus() {
-		if(!$rpc.dect || !$rpc.dect.status) return;
 
-		$rpc.dect.status().done(function(result){
+		$rpc.$call("dect" "status").done(function(result){
 			$scope.status = result;
 		});
 
-		$rpc.dect.handset({"list":""}).done(function(result){
+		$rpc.$call("dect" "handset" ,{"list":""}).done(function(result){
 			if(result.handsets && result.handsets.length !== numDevices){
 				numDevices = result.handsets.length;
 				$scope.dismissed = true;
@@ -43,23 +42,20 @@ JUCI.app
 
 	$scope.dismissed = true;
 	$scope.onCancelDECT = function(){
-		$rpc.dect.state({"registration":"off"});
+		$rpc.$call("dect", "state", {"registration":"off"});
 		clearTimeout(timer);
 	};
 
-	if($rpc.dect){
-		$scope.onStartPairing = function(){
-			$scope.dismissed = false;
-			$rpc.dect.state({"registration":"on"});
-			timer = setTimeout(function(){$scope.dismissed = true;}, 1000*180);
-		}
-		$scope.onPingHandset = function(hs){
-			//$rpc.dect.call({"terminal": hs.id }).done(function(){});
-			$rpc.dect.handset({"pageall":""}).done(function(){});
-		}
-		$scope.onUnpairHandset = function(hs){
-			$rpc.dect.handset({"delete": hs.id }).done(function(){});
-		}
+	$scope.onStartPairing = function(){
+		$scope.dismissed = false;
+		$rpc.$call("dect", "state", {"registration":"on"});
+		timer = setTimeout(function(){$scope.dismissed = true;}, 1000*180);
+	}
+	$scope.onPingHandset = function(hs){
+		$rpc.$call("dect", "handset", {"pageall":""}).done(function(){});
+	}
+	$scope.onUnpairHandset = function(hs){
+		$rpc.$call("dect", "handset", {"delete": hs.id }).done(function(){});
 	}
 
 	$scope.toHexString = function(byteArray){
