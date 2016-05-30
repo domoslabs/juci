@@ -47,6 +47,7 @@ JUCI.app
 				return addedClassNames.indexOf(x.value) === -1;
 			});
 		}
+
 		$scope.$apply();
 	});
 });

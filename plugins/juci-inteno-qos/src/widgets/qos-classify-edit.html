@@ -1,33 +1,4 @@
 <div>
-	<!--
-	<juci-config-line title="{{ 'Target' | translate }}">
-		<juci-select ng-items="targets" ng-model="rule.target.value" />
-	</juci-config-line>
-	<juci-config-line title="{{ 'Precedence' | translate }}">
-		<juci-select ng-items="data.precedence" ng-model="rule.dscp.value" placeholder="{{'All'|translate}}"/>
-	</juci-config-line>
-	<juci-config-line title="{{ 'Source host' | translate }}">
-		<juci-select ng-items="clients" ng-model="rule.srchost.value" editable="true" placeholder="{{'All'|translate}}"></juci-select>
-	</juci-config-line>
-	<juci-config-line title="{{ 'Destination host' | translate }}">
-		<juci-select ng-items="clients" ng-model="rule.dsthost.value" editable="true" placeholder="{{'All'|translate}}"></juci-select>
-	</juci-config-line>
-	<juci-config-line title="{{ 'Protocol' | translate }}">
-		<juci-select ng-items="data.protocols" ng-model="rule.proto.value" editable="true" placeholder="{{'All'|translate}}"></juci-select>
-	</juci-config-line>
-	<juci-config-line title="{{ 'Port' | translate }}" help="{{ 'Filter by port, when there are no ports no filter will be applied' | translate }}">
-		<tags-input ng-model="data.ports" key-property="value" display-property="value" max-length="5" min-length="1" add-on-space="true" 
-					on-tag-removed="onAddPort()" on-tag-added="onAddPort()" add-on-paste="true" on-tag-adding="evalPort($tag)" placeholder="Add a port"></tags-input>
-	</juci-config-line>
-
--->
-
-
-
-
-
-
-
 	<juci-config-line title="{{ 'Target' | translate }}">
 		<juci-select ng-items="targets" ng-model="rule.target.value" />
 	</juci-config-line>
@@ -59,50 +30,18 @@
 					on-tag-removed="onAddDstPort()" on-tag-added="onAddDstPort()" add-on-paste="true" on-tag-adding="evalPort($tag)" placeholder="Add a port"></tags-input>
 	</juci-config-line>
 
-
-
-<!--
-	<juci-config-line title="{{'Portrange'|translate}}">
-			<div class="row">
-					<label translate class="col-xs-2">from</label>
-					<input class="form-control col-xs-4" type="text" ng-model="data.portrange.from" placeholder="portnumber" />
-					<label translate class="col-xs-2">to</label>
-					<input class="form-control col-xs-4" type="text" ng-model="data.portrange.to" placeholder="portnumber" />
-			</div>
-	</juci-config-line>
--->
-
-
-
 	<juci-config-line title="{{'Port Range'|translate}}" error="rule.portrange.error">
-			<div class="col-xs-4">
-				<div class="input-group">
-					<input type="number" class="form-control" ng-model="data.portrange.from" placeholder="portnumber" style="max-width: 120px !important"/>
-				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="text-center">to</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="input-group">
-					<input type="number" class="form-control" ng-model="data.portrange.to" placeholder="portnumber" style="max-width: 120px !important"/>
-				</div>
-			</div>
+		<div class="input-group">
+				<input type="number" class="form-control" ng-model="data.portrange.from" placeholder="From" style="max-width: 120px !important;"/>
+				<input type="number" class="form-control" ng-model="data.portrange.to" placeholder="To" style="max-width: 120px !important; float: right"/>
+		</div>
 	</juci-config-line>
-
-
 	<juci-config-line title="{{ 'Precedence' | translate }}">
 		<juci-select ng-items="data.precedence" ng-model="rule.dscp.value" placeholder="{{'All'|translate}}"/>
 	</juci-config-line>
 
 
-
-
-
-
-
-
-<!--
+<!-- TODO: add later
 	<juci-config-line title="{{'Packet Size'|translate}}">
 		<div class="input-group">
 			<input type="number" min="1" class="form-control" ng-model="rule.pktsize.value"/>

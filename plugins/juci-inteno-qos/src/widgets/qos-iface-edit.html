@@ -26,6 +26,7 @@
 		<juci-config-line title="{{'Limit Upload Speed'|translate}}">
 			<switch class="green" ng-model="instance.showup"/>
 		</juci-config-line>
+
 		<juci-config-line ng-show="instance.showup">
 			<div class="input-group">
 				<input type="number" min="1" class="form-control" ng-model="instance.upload.value"/>

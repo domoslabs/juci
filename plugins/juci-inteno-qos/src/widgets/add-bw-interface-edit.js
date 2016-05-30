@@ -8,6 +8,5 @@ JUCI.app
 		},
 		replace: true,
 		templateUrl: "/widgets/add-bw-interface-edit.html"
-		//require: "^ngModel"
 	};
 });
