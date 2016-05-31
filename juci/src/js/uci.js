@@ -243,6 +243,16 @@
 		}
 	};
 
+	function IP6HintValidator(){
+		this.validate = function(field){
+			if(field.value.length<=4){
+				var matches = field.value.match(/[a-f0-9A-F]+/);
+				if(matches!==null && field.value.length==matches[0].length){ return null; }
+			}
+			return gettext("IPv6 Prefix Hint must be a hexadecimal number between 1-FFFF");
+		}
+	};
+
 	function MACAddressValidator(){
 		this.validate = function(field){
 			if(!(typeof field.value == "string") ||
@@ -1158,6 +1168,7 @@
 		IPAddressValidator: IPAddressValidator,
 		IP6AddressValidator: IP6AddressValidator,
 		IP6CIDRValidator: IP6CIDRValidator,
+		IP6HintValidator: IP6HintValidator,
 		IP4AddressValidator: IP4AddressValidator,
 		IP4NetmaskValidator: IP4NetmaskValidator,
 		IP4MulticastAddressValidator: IP4MulticastAddressValidator,

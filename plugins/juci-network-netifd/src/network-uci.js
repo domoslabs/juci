@@ -68,7 +68,7 @@ UCI.network.$registerSectionType("interface", {
 	"ip6prefix":			{ dvalue: '', type: String, validator: UCI.validators.IP6AddressValidator }, 
 	"ip6gateway":			{ dvalue: '', type: String, validator: UCI.validators.IP6AddressValidator },  
 	"ip6assign":			{ dvalue: '', type: Number, validator: UCI.validators.NumberLimitValidator(48, 64) },
-	"ip6hint": 				{ dvalue: '', type: String, validator: UCI.validators.NumberLimitValidator(1, 9999) },
+	"ip6hint": 				{ dvalue: '', type: String, validator: UCI.validators.IP6HintValidator },
 	"clientid": 			{ dvalue: "", type: String },
 	"type":					{ dvalue: '', type: String }, 
 	"defaultroute":			{ dvalue: true, type: Boolean },	
