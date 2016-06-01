@@ -119,7 +119,7 @@ JUCI.app
 		if(src_errors)
 			error.push($tr(gettext("Rule has invalid Public port")));
 		if($scope.data.src_dport == "")
-			error.push($tr(gettext("Rule can not have empty Private port")));
+			error.push($tr(gettext("Rule can not have empty Public port")));
 		if(isExcluded($scope.data.src_dport))
 			error.push($tr(gettext("Rule may not have any excluded Public ports")));
 		if(error.length > 0){
