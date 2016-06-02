@@ -41,6 +41,9 @@
 					translate>Encryption password may only contain letters a-z, A-Z and numbers 0-9.</div>
 			</form>
 		</modal>
+		<modal title="{{'Downloading Backup'|translate}}" ng-show="showStatus" data-backdrop="static" data-keyboard="false">
+			<h2 style="text-align:center;"><i class="fa fa-spinner fa-spin fa-2x"></i></h2>
+		</modal>
 		<modal title="Load New Configuration" ng-show="showUploadModal" on-accept="onUploadConfig()" on-dismiss="onCancelRestore()" dismiss-label="Cancel" accept-label="Continue">
 			<form autocomplete="off" ng-submit="onUploadConfig()">
 				<input type="submit" ng-hide="true">

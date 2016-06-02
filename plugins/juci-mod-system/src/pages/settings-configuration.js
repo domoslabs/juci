@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("SettingsConfigurationCtrl", function($scope, $rpc, $tr, gettext){
+.controller("SettingsConfigurationCtrl", function($scope, $rpc, $tr, gettext, $juciDialog){
 	$scope.sessionID = $rpc.$sid();
 	$scope.resetPossible = 0;
 	$scope.resetPossible = 1;
@@ -142,6 +142,7 @@ JUCI.app
 			if(!confirm($tr(gettext("Are you sure you want to save backup without password?")))) return;
 		}
 		$scope.showModal = 0;
+		$scope.showStatus = 1;
 		$rpc.$call("juci.system", "run", {
 			"method":"create_backup",
 			"args": ($scope.data.pass ? JSON.stringify({password: $scope.data.pass}) : undefined)
@@ -150,7 +151,8 @@ JUCI.app
 				saveByteArray(result.data, "backup.tar.gz");
 //				location.href = "data:application/gzip;\r\nContent-Disposition:attachment;filename=\"backup.tar.gz\","+result.data;
 				$scope.data = {pass:"",pass_repeat:""};
-			}).fail(function(error){$scope.data = {pass:"",pass_repeat:""};alert("error" + JSON.stringify(error)); });
+			}).fail(function(error){$scope.data = {pass:"",pass_repeat:""};alert("error" + JSON.stringify(error));
+			}).always(function(){$scope.showStatus = false;$scope.$apply();});
 		}).fail(function(error){	$scope.data = {pass:"",pass_repeat:""}; alert("error" + JSON.stringify(error)); });
 	}
 	$scope.onDismissModal = function(){

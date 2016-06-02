@@ -3,6 +3,10 @@
 		"description": "JUCI system module",
 		"read": {
 			"ubus": {
+				"file": [
+					"write",
+					"read"
+				],
 				"/juci/system": [
 					"run"
 					/*"defaultreset", */
