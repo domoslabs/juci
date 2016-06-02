@@ -286,8 +286,8 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 			case "psk": 
 			case "psk2": 
 			case "mixed-psk": {
-			//	if(!section.key.value || !(section.key.value.length >= 8 && section.key.value.length < 64))
-			//		return gettext("WPA key must be 8-63 characters long!"); 
+				if((!section.key.value || !(section.key.value.length >= 8 && section.key.value.length < 64)) && section.mode.value === "ap")
+					return gettext("Wireless interface ") + section.ssid.value + gettext(". WPA key must be 8-63 characters long!");
 			} break; 
 			default: 
 				break; 
