@@ -3,9 +3,8 @@
 		"description": "JUCI IPTV/IGMP module",
 		"read": {
 			"ubus": {
-				"/juci/iptv": [
-					"run"
-					/*"igmptable"*/
+				"router": [
+					"igmptable"
 				]
 			}
 		}
