@@ -20,17 +20,17 @@ JUCI.app
 		{ label: $tr(gettext("All")), value: "all" }
 	];
 
+	var opts = ["src_dport", "dest_port", "name", "proto"];
 	var lanZones = [];
 	var wanZones = [];
-	$scope.data = {
-		src_dport: "",
-		dest_port: ""
-	}
+	$scope.edit = null;
 
 	$scope.$watch("client", function(){
 		$rpc.$call("juci.firewall", "run", {"method":"excluded_ports"}).done(function(res){
 			$scope.excluded_ports = res.result || "";
 			reload();
+		}).fail(function(e){
+			console.log(e);
 		});
 	}, false);
 	function reload(){
@@ -51,11 +51,11 @@ JUCI.app
 				$scope.portMaps = $uci.firewall["@redirect"].filter(function(pm){
 					if(!pm || !pm.enabled.value || pm.target.value != "DNAT" || pm.reflection.value) return false;
 					if(lanZones.find(function(zone){
-						return zone.name.value == pm.dest.value;
-					}) == undefined) return false;
+						return zone.name.value === pm.dest.value;
+					}) === undefined) return false;
 					if(wanZones.find(function(zone){
-						return zone.name.value == pm.src.value;
-					}) == undefined) return false;
+						return zone.name.value === pm.src.value;
+					}) === undefined) return false;
 					if(pm.dest_ip.value != $scope.client.ipaddr) return false;
 					return true;
 				});
@@ -75,86 +75,91 @@ JUCI.app
 			"dest_ip": $scope.client.ipaddr,
 			".new": true
 		}).done(function(pm){
-			$scope.data.dest_port = $scope.data.src_dport = "";
-			$scope.mapping = pm;
+			pm[".new"] = true;
+			$scope.edit = pm;
 			$scope.$apply();
 		});
 	};
-	//var portValidator = new $uci.validators.PortOrRangeValidator("-");
-	function getPortValidator(port){
-		if(port==="dest_port"){ return new $uci.validators.PortValidator(); }
-		else{ return new $uci.validators.PortOrRangeValidator(":"); }
-	}
+	var portValidator = new $uci.validators.PortValidator();
+	var portOrRange = new $uci.validators.PortOrRangeValidator();
+
 	$scope.getValid = function(port){
-		if(!port || !$scope.data || !$scope.data[port]) return null;
-		var error = getPortValidator(port).validate({value:$scope.data[port]});
-		if(error) return String(error);
-		if(isExcluded($scope.data.src_dport))
+		if(!port || !$scope.edit || !$scope.edit[port]) return null;
+		var err = null;
+		if(port === "src_dport"){
+			err = portOrRange.validate($scope.edit[port]);
+		}
+		if(port === "dest_port"){
+			err = portValidator.validate($scope.edit[port]);
+		}
+		if(err) return String(err);
+		if(isExcluded($scope.edit[port].value)){
 			return $tr(gettext("Rule may not have any excluded Public ports"));
+		}
 		return null;
 	};
-
 	function isExcluded(port){
-		if(getPortValidator(port).validate({value:port}) != null) return false;
-		if(port == "") return false;
+		if(port === "") return false;
 		var ex = $scope.excluded_ports.split(" ").map(function(x){ return parseInt(x); }).sort();
 		var ok = false;
-		if(port.match(/-/)){
-			var start = parseInt(port.split("-")[0]);
-			var stop = parseInt(port.split("-")[1]);
+		if(port.match(/:/)){
+			var start = parseInt(port.split(":")[0]);
+			var stop = parseInt(port.split(":")[1]);
 			ex.map(function(e){
-				if(e == start || e == stop || (e > start && e < stop)) ok = true;
+				if(e === start || e === stop || (e > start && e < stop)) ok = true;
 			});
 			return ok;
 		}
 		ok = false;
-		ex.map(function(e){ if(e == parseInt(port)) ok = true; });
+		ex.map(function(e){ if(e === parseInt(port)) ok = true; });
 		return ok;
 	}
 
 	$scope.onSaveEdit = function(){
 		var error = [];
-		if($scope.mapping.name.value == "")
+		if($scope.edit.name.value === "")
 			error.push($tr(gettext("Port mapping rule needs a name")));
-		var dest_error = getPortValidator("dest_port").validate({value:$scope.data.dest_port});
-		var src_errors = getPortValidator("src_dport").validate({value:$scope.data.src_dport});
-
-		if(dest_error)
-			error.push($tr(gettext("Rule has invalid Private port")));
-		if(src_errors)
-			error.push($tr(gettext("Rule has invalid Public port")));
-		if($scope.data.src_dport == "")
+		var dest_error = getValid("dest_port");
+		if(dest_error !== null) error.push(dest_error);
+		var src_error = getValid("src_dport");
+		if(src_error !== null) error.push(src_error);
+		if($scope.edit.src_dport === "")
 			error.push($tr(gettext("Rule can not have empty Public port")));
-		if(isExcluded($scope.data.src_dport))
-			error.push($tr(gettext("Rule may not have any excluded Public ports")));
 		if(error.length > 0){
 			$scope.error = error;
 			return;
 		}
-		if($scope.mapping[".new"]){
-			$scope.mapping[".new"] = undefined;
+		if($scope.edit[".new"]){
+			$scope.edit[".new"] = undefined;
 		}
-		$scope.mapping.dest_port.value = $scope.data.dest_port+"";
-		$scope.mapping.src_dport.value = $scope.data.src_dport+"";
-		$scope.mapping = null;
+		$scope.edit = null;
 		reload();
 	}
+
 	$scope.onAbortEdit = function(){
-		if($scope.mapping[".new"]){
-			$scope.mapping.$delete().done(function(){
-				$scope.mapping = null;
+		if($scope.edit[".new"]){
+			$scope.edit.$delete().done(function(){
+				$scope.edit = null;
 				reload();
 				return;
 			});
 		}
-		$scope.mapping.$reset();
-		$scope.mapping = null;
+		resetToOld($scope.edit);
+		$scope.edit = null;
 		reload();
 	};
+	function resetToOld(pm){
+		if(!pm) return;
+		opts.map(function(opt){
+			if(!pm[opt] || !pm[".old_"+opt]) return;
+			pm[opt].value = pm[".old_"+opt];
+		});
+	}
 	$scope.onEditPM = function(pm){
-		$scope.mapping = pm;
-		$scope.data.dest_port = pm.dest_port.value;
-		$scope.data.src_dport = pm.src_dport.value;
+		$scope.edit = pm;
+		opts.map(function(opt){
+			$scope.edit[".old_"+opt] = pm[opt].value;
+		});
 	}
 	$scope.onDeletePM = function(pm){
 		if(confirm("Are you sure you want to delete " + pm.name.value)){
