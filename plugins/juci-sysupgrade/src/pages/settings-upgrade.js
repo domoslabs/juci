@@ -33,9 +33,9 @@ JUCI.app
 	});
 	
 	$rpc.$call("system", "board").done(function(info){
-		$scope.board = info; 
-		$scope.$apply(); 
-	}); 
+		$scope.board = info;
+		$scope.$apply();
+	});
 
 	function confirmKeep(){
 		var deferred = $.Deferred();
@@ -93,7 +93,7 @@ JUCI.app
 	
 	$scope.onCheckUSB = function(){
 		$scope.usbUpgradeAvailable = false;
-		$scope.usbCheckInProgress = 1; 
+		$scope.usbCheckInProgress = 1;
 		$rpc.$call("juci.system.upgrade", "run", {"method":"check","args":JSON.stringify({type: "usb"})}).done(function(response){
 			if(response.usb) {
 				$scope.usbUpgrade = response.usb;
@@ -111,7 +111,7 @@ JUCI.app
 
 	$scope.onCheckOnline = function(){
 		$scope.onlineUpgradeAvailable = false;
-		$scope.onlineCheckInProgress = 1; 
+		$scope.onlineCheckInProgress = 1;
 		$rpc.$call("juci.system.upgrade", "run", {"method":"check","args":JSON.stringify({type: "online"})}).done(function(response){
 			if(response.online) {
 				$scope.onlineUpgrade = response.online;
@@ -171,63 +171,27 @@ JUCI.app
 	function startUpload(keep){
 		var upfile = $scope.upfile;
 		if(!upfile.name || upfile.size < 1) return;
-		var callId = 0;
-		var fileChunkSize = 500000;
-		var fileUploadState = {
-			file: upfile.files[0],
-			reader: new FileReader(),
-			offset: 0,
-			id: ++callId,
-			respwatcher: null,
-		};
-		console.log(fileUploadState.file);
-
-		fileUploadState.reader.onload = function(e) {
-			if(e.target.error != null) {
-				console.log("error reading file " + e.target.error);
-				return false;
-			}
-			$scope.showUpgradeStatus = 1;
-			$scope.message = "Uploading...";
-			$scope.progress = 'uploading';
+		$file.uploadFile("firmware.bin", upfile.files[0], function(progress){
+			$scope.progress_percent = progress;
 			$scope.$apply();
-			$rpc.$call("file", "write", {
-				path: "/tmp/firmware.bin",
-				data: e.target.result.split(",")[1],
-				base64: true,
-				append: fileUploadState.offset > 0
-			}).done(function(){
-				fileUploadState.id = ++callId;
-				fileUploadState.offset += fileChunkSize;
-				if(fileUploadState.offset < fileUploadState.file.size){
-					$scope.progress_percent = (100 / fileUploadState.file.size) * fileUploadState.offset;
+		}).done(function(){
+			try {
+				$scope.$KEEP = keep;
+				$rpc.$call("juci.system.upgrade", "run", {"method":"test","args":JSON.stringify({"path":$scope.uploadFilename})}).fail(function(){
+					$scope.showUpgradeStatus = 0;
+					$scope.progress = "";
+					$scope.progress_percent = 0;
 					$scope.$apply();
-					fileUploadState.reader.readAsDataURL(fileUploadState.file.slice(fileUploadState.offset, fileUploadState.offset + fileChunkSize));
-				}
-				else{
-					try {
-						$scope.$KEEP = keep;
-						$rpc.$call("juci.system.upgrade", "run", {"method":"test","args":JSON.stringify({"path":$scope.uploadFilename})}).fail(function(){
-							$scope.showUpgradeStatus = 0;
-							$scope.progress = "";
-							$scope.progress_percent = 0;
-							$scope.$apply();
-						});
-					} catch(e){
-						$scope.error = $tr(gettext("The server returned an error"))+" ("+JSON.stringify(json)+")";
-						$scope.message = $tr(gettext("Upload completed!"))
-						$scope.progress = "";
-						$scope.$apply();
-					}
-				}
-			}).fail(function(e){
-				$scope.showUpgradeStatus = 0;
-				fileUploadState = null;
-				console.log("Error uploading file");
-				console.log(e);
+				});
+			} catch(e){
+				$scope.error = $tr(gettext("The server returned an error"))+" ("+JSON.stringify(e)+")";
+				$scope.message = $tr(gettext("Upload completed!"))
+				$scope.progress = "";
 				$scope.$apply();
-			});
-			fileUploadState.reader.readAsDataURL(fileUploadState.file.slice(fileUploadState.offset, fileUploadState.offset + fileChunkSize));
-		}
+			}
+		}).fail(function(e){
+			$scope.error =  $tr(gettext("The server returned an error"))+" ("+JSON.stringify(e)+")";
+			$scope.$apply();
+		});
 	}
 });

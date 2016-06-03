@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("SettingsConfigurationCtrl", function($scope, $rpc, $tr, gettext, $juciDialog){
+.controller("SettingsConfigurationCtrl", function($scope, $rpc, $tr, gettext, $juciDialog, $file){
 	$scope.sessionID = $rpc.$sid();
 	$scope.resetPossible = 0;
 	$scope.resetPossible = 1;
@@ -52,44 +52,9 @@ JUCI.app
 	$scope.onUploadConfig = function(){
 		var upfile = document.getElementById("upload");
 		if(!upfile.name || upfile.size < 1) return;
-		var callId = 0;
-		var fileChunkSize = 500000;
-		var time = Date.now();
-		var fileUploadState = {
-			file: upfile.files[0],
-			reader: new FileReader(),
-			offset: 0,
-			id: ++callId,
-			respwatcher: null,
-		};
-		console.log(fileUploadState.file);
-
-		fileUploadState.reader.onload = function(e) {
-			if(e.target.error != null) {
-				console.log("error reading file " + e.target.error);
-				return false;
-			}
-			$rpc.$call("file", "write", {
-				path: "/tmp/backup.tar.gz",
-				data: e.target.result.split(",")[1],
-				base64: true,
-				append: fileUploadState.offset > 0
-			}).done(function(){
-				fileUploadState.id = ++callId;
-				fileUploadState.offset += fileChunkSize;
-				if(fileUploadState.offset < fileUploadState.file.size){
-					fileUploadState.reader.readAsDataURL(fileUploadState.file.slice(fileUploadState.offset, fileUploadState.offset + fileChunkSize));
-				}
-				else{
-					onUploadComplete(fileUploadState.file.name);
-				}
-			}).fail(function(e){
-				fileUploadState = null;
-				console.log("Error uploading file");
-				console.log(e);
-			});
-		}
-		fileUploadState.reader.readAsDataURL(fileUploadState.file.slice(fileUploadState.offset, fileUploadState.offset + fileChunkSize));
+		$file.uploadFile("backup.tar.gz", upfile.files[0]).done(function(){
+			onUploadComplete("done");
+		}).fail(function(e){console.log(e);});
 	}
 	function onUploadComplete(result){
 		console.log("Uploaded: "+JSON.stringify(result));
