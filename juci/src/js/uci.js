@@ -135,6 +135,7 @@
 	
 	function WEPKeyValidator(){
 		this.validate = function(field){
+			if(field.value === "") return null;
 			if(field.value.length>=10 && field.value.length<=26){
 				var matches = field.value.match(/[a-f0-9A-F]+/);
 				if(matches!==null && field.value.length==matches[0].length){ return null; }
@@ -145,13 +146,12 @@
 
 	function WPAKeyValidator(){
 		this.validate = function(field){
+			if(field.value === "") return null;
 			function isNotPrintableASCII(chr){
 				if(chr.charCodeAt()<32 && chr.charCodeAt()>126){ return true; }
 				else{ return false; }
 			}
-
-			if(field.value.length<8 || field.value.length>63){ return gettext("WPA encryption key must be 8-63 printable ASCII characters!"); }
-
+			if(field.value.length < 8 || field.value.length > 63){ return gettext("WPA encryption key must be 8-63 printable ASCII characters!"); }
 			for(var i=0; i<field.value.length; i++){
 				if(isNotPrintableASCII(field.value.charAt(i))){
 					return gettext("WPA encryption key must be 8-63 printable ASCII characters!");

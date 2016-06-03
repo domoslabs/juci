@@ -263,20 +263,31 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"maclist":			{ dvalue: [], type: Array } // match_each: /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/ }
 	}, function validator(section){
 		if(section.disabled.value !== false){ return null; }
-
-		// validate ssid
+		var eList = [];
+// validate ssid
 		if(section.ssid.value.length >= 32) 
-			return gettext("Invalid SSID: ") + section.ssid.value + gettext(". SSID can not be more than 32 characters long!"); 
-		// validate keys
+			eList.push(gettext("Invalid SSID: ") + section.ssid.value + gettext(". SSID can not be more than 32 characters long!"));
+// validate keys
 		switch(section.encryption.value){
-			case "wep-open": {
+			case "wep-open":
+			case "wep": {
+				var WEPValidator = new UCI.validators.WEPKeyValidator();
+				var err = null;
+				for(var i = 1; i <= 4; i++){
+					err = WEPValidator.validate(section["key"+i]);
+					if(err !== null) eList.push(gettext("Wireless interface ") + section.ssid.value + gettext(" has invalid key #") + i + gettext(" error: ") + err);
+				}
+				if(section["key"+section.key_index.value].value === ""){
+					eList.push(gettext("Wireless interface ") + section.ssid.value + gettext(" must have key #") + section.key_index.value + gettext(" set!"));
+				}
 			} break;
 			//case "psk":
 			case "psk2":
 			case "mixed-psk": {
+				var WPAValidator = new UCI.validators.WPAKeyValidator();
 				if((!section.key.value) && section.mode.value === "ap"){
-					var error = UCI.validators.WPAKeyValidator().validate(sektion.key);
-					if(error !== null) return gettext("Wireless interface ") + section.ssid.value + gettext(". WPA key must be 8-63 printable ASCII characters long!");
+					var error = WPAValidator.validate(section.key);
+					if(error !== null) eList.push(gettext("Wireless interface ") + section.ssid.value + gettext(". WPA key must be 8-63 printable ASCII characters long!"));
 				}
 			} break;
 			case "wpa-mixed":
@@ -284,6 +295,7 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 			default:
 				break;
 		}
+		if(eList && eList.length > 0) return eList;
 		return null;
 	});
 })();
