@@ -80,10 +80,14 @@ JUCI.app
 			$scope.$apply();
 		});
 	};
-	var portValidator = new $uci.validators.PortValidator();
+	//var portValidator = new $uci.validators.PortOrRangeValidator("-");
+	function getPortValidator(port){
+		if(port==="dest_port"){ return new $uci.validators.PortValidator(); }
+		else{ return new $uci.validators.PortOrRangeValidator(":"); }
+	}
 	$scope.getValid = function(port){
 		if(!port || !$scope.data || !$scope.data[port]) return null;
-		var error = portValidator.validate({value:$scope.data[port]});
+		var error = getPortValidator(port).validate({value:$scope.data[port]});
 		if(error) return String(error);
 		if(isExcluded($scope.data.src_dport))
 			return $tr(gettext("Rule may not have any excluded Public ports"));
@@ -91,7 +95,7 @@ JUCI.app
 	};
 
 	function isExcluded(port){
-		if(portValidator.validate({value:port}) != null) return false;
+		if(getPortValidator(port).validate({value:port}) != null) return false;
 		if(port == "") return false;
 		var ex = $scope.excluded_ports.split(" ").map(function(x){ return parseInt(x); }).sort();
 		var ok = false;
@@ -112,8 +116,9 @@ JUCI.app
 		var error = [];
 		if($scope.mapping.name.value == "")
 			error.push($tr(gettext("Port mapping rule needs a name")));
-		var dest_error = portValidator.validate({value:$scope.data.dest_port})
-		var src_errors = portValidator.validate({value:$scope.data.src_dport})
+		var dest_error = getPortValidator("dest_port").validate({value:$scope.data.dest_port});
+		var src_errors = getPortValidator("src_dport").validate({value:$scope.data.src_dport});
+
 		if(dest_error)
 			error.push($tr(gettext("Rule has invalid Private port")));
 		if(src_errors)

@@ -245,12 +245,12 @@ UCI.firewall.$registerSectionType("redirect", {
 	"src":				{ dvalue: "", type: String }, 
 	"dest":				{ dvalue: "", type: String }, 
 	"target": 			{ dvalue: "", type: String },
-	"src_ip":			{ dvalue: "", type: String, validator: UCI.validators.IPAddressValidator  },
-	"src_dport":		{ dvalue: "", type: String, validator: UCI.validators.PortRangeValidator },
+	"src_ip":			{ dvalue: "", type: String, validator: UCI.validators.IPAddressValidator },
+	"src_dport":			{ dvalue: "", type: String, validator: UCI.validators.PortOrRangeValidator },
 	"proto":			{ dvalue: "tcp", type: String }, 
-	"dest_ip":			{ dvalue: "", type: String, validator: UCI.validators.IPAddressValidator  }, 
-	"dest_port":		{ dvalue: "", type: String, validator: UCI.validators.PortRangeValidator },
-	"reflection": 		{ dvalue: false, type: Boolean }
+	"dest_ip":			{ dvalue: "", type: String, validator: UCI.validators.IPAddressValidator }, 
+	"dest_port":			{ dvalue: "", type: String, validator: UCI.validators.PortOrRangeValidator },
+	"reflection": 			{ dvalue: false, type: Boolean }
 }, function(section){
 	if(!section.src_dport.value) return gettext("Source port can not be empty!"); 
 	return null; 

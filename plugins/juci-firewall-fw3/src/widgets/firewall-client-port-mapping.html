@@ -32,10 +32,10 @@
 			<juci-config-line title="{{'Excluded ports'|translate}}" help="{{'These ports may not be mapped they are protected'|translate}}">
 				<h3><span class="label label-info">{{excluded_ports || "N/A"}}</span></h3>
 			</juci-config-line>
-			<juci-config-line title="{{'Public port'|translate}}" help="{{'Ports can be a space separeated list or on the form <range-start>-<range-end>'|translate}}" error="getValid('src_dport')">
+			<juci-config-line title="{{'Public port(s)'|translate}}" help="{{'A port number or a range on the form startport:endport'|translate}}" error="getValid('src_dport')">
 				<input class="form-control" type="text" ng-model="data.src_dport" />
 			</juci-config-line>
-			<juci-config-line title="{{'Private port'|translate}}" help="{{'Ports can be a space separeated list or on the form <range-start>-<range-end>'|translate}}" error="getValid('dest_port')">
+			<juci-config-line title="{{'Private port'|translate}}" error="getValid('dest_port')">
 				<input class="form-control" type="text" ng-model="data.dest_port" placeholder="{{data.src_dport}}"/>
 			</juci-config-line>
 			<juci-config-line title="{{'Protocol'|translate}}">
