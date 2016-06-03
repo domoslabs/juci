@@ -32,13 +32,13 @@
 		<juci-config-line title="{{'Service Type' | translate}}">
 			<juci-select ng-model="conf.atmtype.value" ng-items="serviceTypes"/>
 		</juci-config-line>
-		<juci-config-line title="{{'Peak Cell Rate' | translate}}" ng-show="conf.atmtype.value == 'ubr_pcr' || conf.atmtype.value == 'cbr' || conf.atmtype.value == 'nrtvbr' || conf.atmtype.value == 'rtvbr'" >
+		<juci-config-line title="{{'Peak Cell Rate' | translate}}" ng-show="conf.atmtype.value == 'ubr_pcr' || conf.atmtype.value == 'cbr' || conf.atmtype.value == 'nrtvbr' || conf.atmtype.value == 'rtvbr'" error="conf.pcr.error">
 			<input type="text" class="form-control" ng-model="conf.pcr.value" placeholder="cells/s"/>
 		</juci-config-line>
-		<juci-config-line title="{{'Sustainable Cell Rate' | translate}}" ng-show="conf.atmtype.value == 'nrtvbr' || conf.atmtype.value == 'rtvbr'">
+		<juci-config-line title="{{'Sustainable Cell Rate' | translate}}" ng-show="conf.atmtype.value == 'nrtvbr' || conf.atmtype.value == 'rtvbr'" error="conf.scr.error">
 			<input type="text" class="form-control" ng-model="conf.scr.value" placeholder="cells/s"/>
 		</juci-config-line>
-		<juci-config-line title="{{'Maximum Burst Size' | translate}}" ng-show="conf.atmtype.value == 'nrtvbr' || conf.atmtype.value == 'rtvbr'">
+		<juci-config-line title="{{'Maximum Burst Size' | translate}}" ng-show="conf.atmtype.value == 'nrtvbr' || conf.atmtype.value == 'rtvbr'" error="conf.mbs.error">
 			<input type="text" class="form-control" ng-model="conf.mbs.value" placeholder="cells"/>
 		</juci-config-line>
 		<juci-config-line title="This device will be used in a bridge">
