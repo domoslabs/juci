@@ -87,15 +87,15 @@ JUCI.app
 		if(!port || !$scope.edit || !$scope.edit[port]) return null;
 		var err = null;
 		if(port === "src_dport"){
+			if(isExcluded($scope.edit[port].value)){
+				return $tr(gettext("Rule may not have any excluded Public ports"));
+			}
 			err = portOrRange.validate($scope.edit[port]);
 		}
 		if(port === "dest_port"){
 			err = portValidator.validate($scope.edit[port]);
 		}
 		if(err) return String(err);
-		if(isExcluded($scope.edit[port].value)){
-			return $tr(gettext("Rule may not have any excluded Public ports"));
-		}
 		return null;
 	};
 	function isExcluded(port){
@@ -119,11 +119,12 @@ JUCI.app
 		var error = [];
 		if($scope.edit.name.value === "")
 			error.push($tr(gettext("Port mapping rule needs a name")));
-		var dest_error = getValid("dest_port");
-		if(dest_error !== null) error.push(dest_error);
-		var src_error = getValid("src_dport");
-		if(src_error !== null) error.push(src_error);
-		if($scope.edit.src_dport === "")
+		var dest_error = $scope.getValid("dest_port");
+		var src_error = $scope.getValid("src_dport");
+		if(src_error !== null || dest_error !== null){
+			error.push($tr(gettext("Fixe Errors before saving")));
+		}
+		if($scope.edit.src_dport.value === "")
 			error.push($tr(gettext("Rule can not have empty Public port")));
 		if(error.length > 0){
 			$scope.error = error;
