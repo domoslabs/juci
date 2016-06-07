@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("SettingsUpgradeCtrl", function($scope, $uci, $config, $rpc, $tr, gettext, $juciDialog, $events){
+.controller("SettingsUpgradeCtrl", function($scope, $uci, $config, $rpc, $tr, gettext, $juciDialog, $events, $file){
 	$scope.sessionID = $rpc.$sid();
 	$scope.uploadFilename = "/tmp/firmware.bin";
 	$scope.usbFileName = "()";
@@ -193,5 +193,6 @@ JUCI.app
 			$scope.error =  $tr(gettext("The server returned an error"))+" ("+JSON.stringify(e)+")";
 			$scope.$apply();
 		});
+		$scope.showUpgradeStatus = 1;
 	}
 });

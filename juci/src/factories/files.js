@@ -21,8 +21,8 @@ JUCI.app.factory("$file", function($rpc){
 		};
 	}());
 	return {
-		fileChunkSize: 500000,
 		uploadFile: function(filename, file, onProgress){
+			var fileChunkSize = 500000;
 			var def = $.Deferred();
 			if(!filename || filename.match("/") || !(file instanceof File)) return def.reject("invalid options");
 			var path = "/tmp/" + filename;
@@ -47,13 +47,13 @@ JUCI.app.factory("$file", function($rpc){
 					append: fileUploadState.offset > 0
 				}).done(function(){
 					fileUploadState.id = ++callId;
-					fileUploadState.offset += this.fileChunkSize;
+					fileUploadState.offset += fileChunkSize;
 					if(fileUploadState.offset < fileUploadState.file.size){
 						if(onProgress && typeof onProgress === "function"){
 							var progress = (100 / fileUploadState.file.size) * fileUploadState.offset;
 							onProgress(progress);
 						}
-						fileUploadState.reader.readAsDataURL(fileUploadState.file.slice(fileUploadState.offset, fileUploadState.offset + this.fileChunkSize));
+						fileUploadState.reader.readAsDataURL(fileUploadState.file.slice(fileUploadState.offset, fileUploadState.offset + fileChunkSize));
 					}else{
 						def.resolve();
 					}
@@ -61,7 +61,7 @@ JUCI.app.factory("$file", function($rpc){
 					def.reject(e);
 				});
 			}
-			fileUploadState.reader.readAsDataURL(fileUploadState.file.slice(fileUploadState.offset, fileUploadState.offset + this.fileChunkSize));
+			fileUploadState.reader.readAsDataURL(fileUploadState.file.slice(fileUploadState.offset, fileUploadState.offset + fileChunkSize));
 			return def.promise();
 		},
 		downloadFile: function(fileName, filetype, downloadName){
