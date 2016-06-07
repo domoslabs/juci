@@ -193,6 +193,7 @@ JUCI.app
 			$scope.error =  $tr(gettext("The server returned an error"))+" ("+JSON.stringify(e)+")";
 			$scope.$apply();
 		});
+		$scope.progress_percent = 0;
 		$scope.showUpgradeStatus = 1;
 	}
 });
