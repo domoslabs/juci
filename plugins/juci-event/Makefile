@@ -1,7 +1,4 @@
 define Plugin/juci-event/install 
-	$(INSTALL_DIR) $(1)/etc/init.d/
 	$(INSTALL_DIR) $(1)/etc/hotplug.d/
-	$(INSTALL_DIR) $(1)/www/cgi-bin/
-	$(CP) $(PLUGIN_DIR)/juci-log-download $(1)/www/cgi-bin/
 	$(CP) $(PLUGIN_DIR)/hotplug/* $(1)/etc/hotplug.d/
 endef

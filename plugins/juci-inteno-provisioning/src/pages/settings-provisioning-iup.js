@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("icwmpProvisioningPage", function($scope, $tr, gettext, $uci/*, $juciDialog*/,$rpc){
+.controller("icwmpProvisioningPage", function($scope, $tr, gettext, $uci, $file, $rpc){
 	$scope.showPasswd = false;
 	$scope.togglepw = function(){$scope.showPasswd = !$scope.showPasswd;};
 	$uci.$sync(["provisioning"]).done(function(){
@@ -52,19 +52,13 @@ JUCI.app
 		});
 	};
 	$scope.onExportFile = function() {
-		window.location = "/cgi-bin/juci-iup-download?sid=" + $rpc.$sid();
-	/*	var model = {};
-		$juciDialog.show("provisioning-export-dialog", {     
-            title: $tr(gettext("Add password protection")),
-            model: model,
-            on_apply: function(btn, dlg){                
-				if(model.value != model.doubble){
-					model.show_error = true;
-					return false;
-				}
-                return true;
-            }   
-        });
-	*/
+		$rpc.$call("juci.provisioning.iup", "run", {"method":"backup", "args":JSON.stringify({"filename":"iup-backup"})}).done(function(){
+			$file.downloadFile("iup-backup", "application/gzip", "provisioning-inteno-"+ Date.now()+".tar.gz").fail(function(e){
+				alert("error: " + JSON.stringify(e));
+			});
+		}).fail(function(e){
+			alert("error: "+ JSON.stringify(e));
+		});
+		return;
 	};
 }); 

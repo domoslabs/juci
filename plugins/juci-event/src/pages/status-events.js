@@ -61,6 +61,21 @@ JUCI.app
 		}
 		return -1;
 	}
+	$scope.downloadLogs = function(){
+		var a = document.createElement("a");
+		document.body.appendChild(a);
+		a.style = "display: none";
+		var string = "JUCI Logs";
+		AllLogs.map(function(log){
+			string += "\n" + JSON.stringify(log);
+		});
+		var blob = new Blob([string],{type:"application/json"});
+		url = window.URL.createObjectURL(blob);
+		a.href = url;
+		a.download = "juci-logs.txt";
+		a.click();
+		window.URL.revokeObjectURL(url);
+	}
 	$scope.update = function(update){
 		if(!AllLogs) return;
 		var sources = [];
