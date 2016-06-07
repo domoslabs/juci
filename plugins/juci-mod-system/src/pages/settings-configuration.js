@@ -112,12 +112,13 @@ JUCI.app
 			"method":"create_backup",
 			"args": ($scope.data.pass ? JSON.stringify({password: $scope.data.pass}) : undefined)
 		}).done(function(){
-			$rpc.$call("file", "read", {path:"/tmp/backup.tar.gz", base64: true}).done(function(result){
-				saveByteArray(result.data, "backup.tar.gz");
-//				location.href = "data:application/gzip;\r\nContent-Disposition:attachment;filename=\"backup.tar.gz\","+result.data;
+			$file.downloadFile("backup.tar.gz", "application/gzip").fail(function(){
+				alert($tr(gettext("Was not able to download backup. Please check access!")));
+			}).always(function(){
 				$scope.data = {pass:"",pass_repeat:""};
-			}).fail(function(error){$scope.data = {pass:"",pass_repeat:""};alert("error" + JSON.stringify(error));
-			}).always(function(){$scope.showStatus = false;$scope.$apply();});
+				$scope.showStatus = false;
+				$scope.$apply();
+			});
 		}).fail(function(error){	$scope.data = {pass:"",pass_repeat:""}; alert("error" + JSON.stringify(error)); });
 	}
 	$scope.onDismissModal = function(){
