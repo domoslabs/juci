@@ -8,4 +8,51 @@
 	<juci-config-line title="{{'DHCP Lease Time'|translate}}">
 		<juci-select ng-model="dhcp.leasetime.value" ng-items="dhcpLeaseTimes" placeholder="{{'Lease Time'|translate}}"/>
 	</juci-config-line>
+	<juci-expandable title="{{'Advanced Settings'|translate}}" open="false">
+		<juci-config-line title="{{'DHCP Options'|translate}}">
+			<input class="form-control pull-right" ng-model="dhcp.dhcp_option.value" placeholder="{{'Space separated options'|translate}}"/>
+		</juci-config-line>
+		<juci-config-line title="{{'Dynamic DHCP'|translate}}">
+			<switch ng-model="dhcp.dynamicdhcp.value" class="green" ></switch>
+		</juci-config-line>
+		<juci-config-line title="{{'Force'|translate}}">
+			<switch ng-model="dhcp.force.value" class="green" ></switch>
+		</juci-config-line>
+		<!-- TODO: Add? Was implemented in luci
+		<juci-config-line title="{{'IPv4 Netmask'|translate}}">
+			<juci-select ng-model="dhcp.TODO.value" ng-items="IPv4Values" placeholder="{{'TODO'|translate}}"/>
+		</juci-config-line>
+		<--
+		<!-- TODO: Add later
+		<juci-config-line title="{{'Ignore'|translate}}">
+			<switch ng-model="dhcp.ignore.value" class="green" ></switch>
+		</juci-config-line>
+		-->
+	</juci-expandable>
+	<juci-expandable title="{{'IPv6 Settings'|translate}}" open="false">
+		<!-- TODO: Add later
+		<juci-config-line title="{{'Ignore'|translate}}">
+			<switch ng-model="dhcp.ignore.value" class="green" ></switch>
+		</juci-config-line>
+		-->
+		<juci-config-line title="{{'DHCPv6-Service'|translate}}">
+			<juci-select ng-model="dhcp.dhcpv6.value" ng-items="dhcpv6Values" placeholder=" "/>
+		</juci-config-line>
+		<juci-config-line title="{{'Router Advertisement-Service'|translate}}">
+			<juci-select ng-model="dhcp.ra.value" ng-items="raValues" placeholder=" "/>
+		</juci-config-line>
+		<juci-config-line title="{{'NDP-Proxy'|translate}}">
+			<juci-select ng-model="dhcp.ndp.value" ng-items="ndpValues" placeholder=" "/>
+		</juci-config-line>
+		<!-- TODO: Add? Was implemented in luci
+		<juci-config-line title="{{'DHCPv6-Mode'|translate}}">
+			<juci-select ng-model="dhcp.ra_management.value" ng-items="ra_managementValues" placeholder=" "/>
+		</juci-config-line>
+		<--
+		<!-- TODO: Add later
+		<juci-config-line title="{{'Master'|translate}}">
+			<switch ng-model="dhcp.master.value" class="green" ></switch>
+		</juci-config-line>
+		-->
+	</juci-expandable>
 </div>

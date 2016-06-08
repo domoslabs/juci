@@ -48,11 +48,26 @@ UCI.dhcp.$registerSectionType("dnsmasq", {
 	"resolvfile":		{ dvalue: "/tmp/resolv.conf.auto", type: String }
 });
 UCI.dhcp.$registerSectionType("dhcp", {
-	"interface":		{ dvalue: "", type: String, required: true},
-	"start":		{ dvalue: 100, type: Number, validator: UCI.validators.NumberLimitValidator(1, 255) },
+	//"interface":		{ dvalue: "", type: String, required: true},
+	//"start":		{ dvalue: 100, type: Number, validator: UCI.validators.NumberLimitValidator(1, 255) },
+	//"limit":		{ dvalue: 150, type: Number, validator: UCI.validators.NumberLimitValidator(1, 255) },
+	//"leasetime":		{ dvalue: "12h", type: String, required: true},
+	//"ignore":		{ dvalue: false, type: Boolean },
+
+
+	"dhcp_option": 		{ dvalue: "", type: String },
+	"dynamicdhcp":		{ dvalue: true, type: Boolean },
+	"force":		{ dvalue: false, type: Boolean },
+	"ignore":		{ dvalue: false, type: Boolean },
+	"dhcpv6":		{ dvalue: "", type: String },
+	"ra":			{ dvalue: "", type: String },
+	"ndp":			{ dvalue: "", type: String },
+	"master":		{ dvalue: false, type: Boolean },
+	"interface":		{ dvalue: "", type: String, required: true },
+	"leasetime":		{ dvalue: "12h", type: String, required: true },
 	"limit":		{ dvalue: 150, type: Number, validator: UCI.validators.NumberLimitValidator(1, 255) },
-	"leasetime":		{ dvalue: "12h", type: String, required: true},
-	"ignore":		{ dvalue: false, type: Boolean }
+	"networkid":		{ dvalue: "", type: String },
+	"start":		{ dvalue: 100, type: Number, validator: UCI.validators.NumberLimitValidator(1, 255) }
 });
 UCI.dhcp.$registerSectionType("domain", {
 	"name":		{ dvalue: [], type: Array },

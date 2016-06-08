@@ -39,5 +39,15 @@ JUCI.app
 		{ label: "12 "+$tr(gettext("Hours")), value: "12h" }, 
 		{ label: "24 "+$tr(gettext("Hours")), value: "24h" }
 	];  
+	$scope.dhcpv6Values = [
+		{ label: "Server", value: "server" }, 
+		{ label: "Relay", value: "relay" }, 
+		{ label: "Disabled", value: "disabled" }, 
+	];  
+	$scope.raValues = $scope.dhcpv6Values;
+	$scope.ndpValues = [
+		{ label: "Relay", value: "relay" }, 
+		{ label: "None", value: "" }, 
+	];
 	
 }); 
