@@ -19,6 +19,25 @@
  */
 
 JUCI.app
+.directive("bigOverviewSliderNetwork", function(){
+	return {
+		templateUrl: "widgets/slider-network-big.html",
+		controller: "bigOverviewSliderNetwork",
+		replace: true,
+		scope: {
+			"model":"=ngModel"
+		}
+	}
+})
+.controller("bigOverviewSliderNetwork", function($scope){
+	console.log($scope.model);
+	var container = document.getElementById('mynetworkBig');
+	var data = {
+		nodes: $scope.model.nodes,
+		edges: $scope.model.edges
+	};
+	var network = new vis.Network(container, data, $scope.model.options);
+})
 .directive("overviewSliderWidget10Network", function(){
 	return {
 		templateUrl: "widgets/overview-slider-network.html", 
@@ -26,16 +45,23 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("overviewSliderWidget10Network", function($rpc, $config, $firewall, $events, $tr, gettext){
+.controller("overviewSliderWidget10Network", function($scope, $rpc, $config, $firewall, $events, $tr, gettext, $juciDialog){
 	var nodes = []; 
 	var edges = []; 
+	var nodes_big = [];
+	var edges_big = [];
 	var def;
-	
 	var optionsFA = {
 		nodes: {
 			color: "#999999", 
 			font: {size:15, color:'white' }, 
 			borderWidth: 3
+		},
+		layout: {
+			hierarchical: {
+				enabled: true,
+				sortMethod: "directed"
+			}
 		},
 		interaction: {
 			dragView: false,
@@ -44,46 +70,38 @@ JUCI.app
 		}
 	};
 	
+	$scope.showBigOverview = function(){
+		var model = {
+			nodes:nodes_big, 
+			edges:edges_big,
+			options: optionsFA
+		}
+		$juciDialog.show("big-overview-slider-network", {
+			title: $tr(gettext("Network Visualization")),
+			size: "lg",
+			buttons: [ { label: $tr(gettext("Close")), value: "close", primary: true }],
+			on_button: function(btn, inst){ inst.close();},
+			model: model
+		});
+	}
 	function updateData(){
 		nodes = [];
 		edges = [];
 		if(def) return def.promise();
 		def = $.Deferred(); 
+		var count = 0;
 		
 		nodes.push({
 			id: ".root",
 			label: $config.board.system.hardware,
+			size: 40,
 			image: "/img/net-router-icon.png", 
 			shape: "image", 
-			x: 50, y: 0, 
-			size: 60, 
-			physics: false, 
-			fixed: { x: true, y: true }
 		}); 
-		
-		nodes.push({
-			id: ".lan_hub",
-			x: -50, y: 0, 
-			physics: false, 
-			fixed: { x: true, y: true }
-		});
-		edges.push({ from: ".root", to: ".lan_hub", width: 8, smooth: { enabled: false } }); 
-		
-		nodes.push({
-			id: ".wan_hub",
-			x: 150, y: 0, 
-			physics: false, 
-			fixed: { x: true, y: true }
-		});
-		edges.push({ from: ".root", to: ".wan_hub", width: 8, smooth: { enabled: false } }); 
 		
 		var clients, lan_nets, wan_nets;
 		async.series([
 			function(next){
-				$rpc.$call("router", "clients").done(function(cli){
-					clients = cli;
-			}).always(function(){next();});
-			}, function(next){
 				$firewall.getZoneNetworks("lan").done(function(nets){
 					lan_nets = nets;
 				}).always(function(){next();});
@@ -92,62 +110,58 @@ JUCI.app
 					wan_nets = nets;
 				}).always(function(){next();});
 			}], function(){
-				var count = 0;
 				wan_nets.map(function(wan){
 					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value == false || !wan.$info || !wan.$info.up) return;
 					var node = {
-						id: wan[".name"] + ".network." + count + Date.now(),
+						id: count++,
 						label: String(wan[".name"]).toUpperCase(),
 						image: "/img/net-interface-wan-icon.png",
 						shape: "image",
-						fixed: { x: true, y: false },
-						x: 250
 					}
-					count++;
 					nodes.push(node);
-					edges.push( { from: ".wan_hub", to: node.id, width: 6, smooth: { enabled: true } });
+					edges.push( { from: node.id, to: ".root", width: 6 });
 				});
-				count = 0;
-				lan_nets.map(function(lan){
-					if(!lan.$info.up) return;
-					var node = {
-						id: "lan.network." + count,
-						label: String(lan[".name"]).toUpperCase(),
-						image: "/img/net-interface-icon.png", 
-						shape: "image",
-						fixed: { x: true, y: false },
-						x: -150
-					}
-					count++;
-					nodes.push(node);
-					edges.push( { from: ".lan_hub", to: node.id, width: 6, smooth: { enabled: true } });
-					var cl_count = 0;
-					if(!clients)return;
-					Object.keys(clients).map(function(cl){ return clients[cl];})
-					.filter(function(cl){ return (cl.network && cl.network == lan.$info.interface);})
-					.map(function(cl){
-						if(!cl.connected) return;
-						var cl_node = {
-							id: cl.macaddr+cl.ipaddr,
-							label: String(cl.hostname || "Unknown").toUpperCase()+"\n"+String(cl.ipaddr).toUpperCase(),
-							//title: "Hostname: " + cl.hostname + "<br />"+cl.ipaddr+"<br />"+cl.macaddr,
-							image: "/img/net-laptop-icon.png",
+				async.eachSeries(lan_nets, function(item, callback){
+					if(!item || !item[".name"]){ callback(); return;}
+					$rpc.$call("router", "ports", { "network": item[".name"] }).done(function(data){
+						var node = {
+							id: count++,
+							label: String(item[".name"]).toUpperCase(),
+							image: "/img/net-interface-icon.png", 
 							shape: "image",
-							fixed: { x: true, y: false },
-							x: -(250 + (100 * Math.floor(cl_count/5)))
 						}
-						if(cl.wireless) cl_node.title = getTitle(cl);
-						cl_count ++;
-						nodes.push(cl_node);
-						if(cl.wireless){
-							edges.push({ from: node.id, to: cl_node.id, width: 4, dashes: true});
-						}else{
-							edges.push({ from: node.id, to: cl_node.id, width: 4});
-						}
-					});
+						nodes.push(node);
+						edges.push( { from: ".root", to: node.id, width: 6 });
+						Object.keys(data).map(function(device){
+							var dev = data[device];
+							var dev_node = {
+								id: count++,
+								label: String((dev.name)?dev.name : dev.ssid).toUpperCase(),
+								image: device.match("eth")?"/img/lan_port.png":"/img/net-drive-icon.png",
+								shape: "image"
+							}
+							nodes.push(dev_node);
+							edges.push( { from: node.id, to: dev_node.id, width: 6 });
+							if(dev.hosts && dev.hosts.length){
+								dev.hosts.map(function(host){
+									var host_node = {
+										id: JSON.stringify(host) + count++,
+										label: String(host.hostname || host.ipaddr || host.macaddr).toUpperCase(),
+										image: "/img/net-laptop-icon.png",
+										shape: "image"
+									}
+									nodes_big.push(host_node);
+									edges_big.push( { from: dev_node.id, to: host_node.id, width: 6 } );
+								});
+							}
+						});
+					}).always(function(){callback();});
+				}, function(){
+					nodes_big = nodes_big.concat(nodes);
+					edges_big = edges_big.concat(edges);
+					def.resolve()
+					def = undefined;
 				});
-				def.resolve();
-				def = undefined;
 			}
 		);
 		return def;
@@ -171,7 +185,7 @@ JUCI.app
 	}
 	updateData().done(function(){
 		// create a network
-		var containerFA = document.getElementById('mynetworkFA');
+		var containerFA = document.getElementById('mynetworkSmall');
 		var time = Date.now();
 		window.onresize=function(){
 			if(Date.now() - time > 100){ //limit the number of time this is called to every 100 ms
