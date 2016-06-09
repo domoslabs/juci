@@ -58,10 +58,19 @@
 			<input type="text" class="form-control" ng-model="rule.dest_port.value" placeholder="{{rule.src_dport.value}}" />
 		</div>
 	</div>
-	<div class="form-group">
+	<!--<div class="form-group">
 		<label class="control-label col-xs-4" translate>NAT Loopback</label>
 		<div class="col-xs-8">
 			<switch class="green" ng-model="rule.reflection"/>
+		</div>
+	</div>-->
+	<div class="form-group">
+		<label class="control-label col-xs-4" translate>NAT Loopback</label>
+		<div class="col-xs-8">
+			<div class="checkbox checkbox-info">
+				<input type="checkbox"  ng-model="rule.reflection"/>
+				<label>{{'on/off'|translate}}</label>
+			</div>
 		</div>
 	</div>
 </div>
