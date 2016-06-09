@@ -219,7 +219,7 @@ UCI.network.$registerSectionType("route", {
 	if(section.interface.value == "") errors.push(gettext("IPv4 Routes needs an interface"));
 	if(section.target.value == "") errors.push(gettext("IPv4 Routes needs a Target"));
 	//if(section.netmask.value == "") errors.push(gettext("IPv4 Routes needs a Netmask"));
-	if(section.gateway.value == "") errors.push(gettext("IPv4 Routes needs a Gateway"));
+	//if(section.gateway.value == "") errors.push(gettext("IPv4 Routes needs a Gateway"));
 	if(errors.length > 0) return errors;
 	return null;
 });
@@ -235,7 +235,7 @@ UCI.network.$registerSectionType("route6", {
 	var errors = [];
 	if(section.interface.value == "") errors.push(gettext("IPv6 Routes needs an interface"));
 	if(section.target.value == "") errors.push(gettext("IPv6 Routes needs a Target"));
-	if(section.gateway.value == "") errors.push(gettext("IPv6 Routes needs a Gateway"));
+	//if(section.gateway.value == "") errors.push(gettext("IPv6 Routes needs a Gateway"));
 	if(errors.length > 0) return errors;
 	return null;
 }); 
