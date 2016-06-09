@@ -455,7 +455,7 @@ msgstr ""
 msgid "wifi.interfaces.info"
 msgstr ""
 "Wireless interfaces are visible to the user in the form of wireless access "
-"point names. Each radio can have several SSIDs and each SSID interface can "
+"point names. Each radio can have up to 4 SSIDs and each SSID interface can "
 "be configured as part of a network bridge or firewall group. "
 
 msgid " page"
