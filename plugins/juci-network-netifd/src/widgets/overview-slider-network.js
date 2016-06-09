@@ -30,7 +30,6 @@ JUCI.app
 	}
 })
 .controller("bigOverviewSliderNetwork", function($scope){
-	console.log($scope.model);
 	var container = document.getElementById('mynetworkBig');
 	var data = {
 		nodes: $scope.model.nodes,
@@ -74,13 +73,15 @@ JUCI.app
 		var model = {
 			nodes:nodes_big, 
 			edges:edges_big,
-			options: optionsFA
+			options: optionsFA,
+			w: window
 		}
 		$juciDialog.show("big-overview-slider-network", {
 			title: $tr(gettext("Network Visualization")),
 			size: "lg",
 			buttons: [ { label: $tr(gettext("Close")), value: "close", primary: true }],
 			on_button: function(btn, inst){ inst.close();},
+			big: true,
 			model: model
 		});
 	}
@@ -93,8 +94,8 @@ JUCI.app
 		
 		nodes.push({
 			id: ".root",
-			label: $config.board.system.hardware,
-			size: 40,
+			label: $config.board.system.hardware.substring(0,10),
+			size: 30,
 			image: "/img/net-router-icon.png", 
 			shape: "image", 
 		}); 
@@ -114,8 +115,10 @@ JUCI.app
 					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value == false || !wan.$info || !wan.$info.up) return;
 					var node = {
 						id: count++,
-						label: String(wan[".name"]).toUpperCase(),
+						label: String(wan[".name"]).toUpperCase().substring(0,10),
+						title: String(wan[".name"] + '<br />' + wan.ifname.value),
 						image: "/img/net-interface-wan-icon.png",
+						size: 30,
 						shape: "image",
 					}
 					nodes.push(node);
@@ -126,8 +129,10 @@ JUCI.app
 					$rpc.$call("router", "ports", { "network": item[".name"] }).done(function(data){
 						var node = {
 							id: count++,
-							label: String(item[".name"]).toUpperCase(),
+							label: String(item[".name"]).toUpperCase().substring(0,10),
+							title: String(item[".name"] + '<br />' + item.ifname.value),
 							image: "/img/net-interface-icon.png", 
+							size: 30,
 							shape: "image",
 						}
 						nodes.push(node);
@@ -136,7 +141,9 @@ JUCI.app
 							var dev = data[device];
 							var dev_node = {
 								id: count++,
-								label: String((dev.name)?dev.name : dev.ssid).toUpperCase(),
+								label: String((dev.name)?dev.name : dev.ssid).toUpperCase().substring(0,10),
+								title: String((dev.name)?dev.name : dev.ssid).toUpperCase() + '<br />' + JSON.stringify(dev),
+								size: 30,
 								image: device.match("eth")?"/img/lan_port.png":"/img/net-drive-icon.png",
 								shape: "image"
 							}
@@ -146,7 +153,9 @@ JUCI.app
 								dev.hosts.map(function(host){
 									var host_node = {
 										id: JSON.stringify(host) + count++,
-										label: String(host.hostname || host.ipaddr || host.macaddr).toUpperCase(),
+										label: String(host.hostname || host.ipaddr || host.macaddr).toUpperCase().substring(0,10),
+										title: JSON.stringify(host),
+										size: 30,
 										image: "/img/net-laptop-icon.png",
 										shape: "image"
 									}

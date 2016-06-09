@@ -22,6 +22,7 @@ define Plugin/juci
 	STYLES-y+=src/css/juci-icons.css
 	STYLES-y+=src/css/nga.min.css
 	STYLES-y+=src/css/app.css
+	STYLES-y+=src/css/modal.css
 	
 	JAVASCRIPT-y:=
 	JAVASCRIPT-y+=src/lib/js/async.js
