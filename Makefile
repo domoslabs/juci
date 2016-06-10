@@ -138,7 +138,6 @@ prepare: .cleaned
 	@mkdir -p $(BIN)/usr/share/rpcd/acl.d/
 	@mkdir -p $(BACKEND_BIN_DIR)
 	#@mkdir -p $(BIN)/usr/lib/ubus-services/
-	@mkdir -p $(BIN)/etc/hotplug.d/
 	
 node_modules: package.json
 	npm install --production
