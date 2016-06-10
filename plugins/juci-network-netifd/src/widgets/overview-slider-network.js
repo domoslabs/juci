@@ -29,31 +29,44 @@ JUCI.app
 		}
 	}
 })
-.controller("bigOverviewSliderNetwork", function($scope){
+.controller("bigOverviewSliderNetwork", function($scope, $events){
+	var network;
 	var container = document.getElementById('mynetworkBig');
-	var data = {
-		nodes: $scope.model.nodes,
-		edges: $scope.model.edges
-	};
-	var network = new vis.Network(container, data, $scope.model.options);
+	if($scope.model && $scope.model.updateData && typeof $scope.model.updateData === "function"){
+		$scope.model.updateData(true).done(function(nodes, edges){
+			var data = {
+				nodes: nodes,
+				edges: edges
+			};
+			network = new vis.Network(container, data, $scope.model.options);
+		});
+		$events.subscribe("client", function(){
+			if(!network || !network.setData) return;
+			$scope.model.updateData(true).done(function(nodes, edges){
+				network.setData({nodes: nodes, edges: edges});
+			});
+		});
+		$events.subscribe("network.interface", function(){
+			if(!network || !network.setData) return;
+			$scope.model.updateData(true).done(function(nodes, edges){
+				network.setData({nodes: nodes, edges: edges});
+			});
+		});
+	}
 })
 .directive("overviewSliderWidget10Network", function(){
 	return {
-		templateUrl: "widgets/overview-slider-network.html", 
-		controller: "overviewSliderWidget10Network", 
+		templateUrl: "widgets/overview-slider-network.html",
+		controller: "overviewSliderWidget10Network",
 		replace: true
 	};
 })
 .controller("overviewSliderWidget10Network", function($scope, $rpc, $config, $firewall, $events, $tr, gettext, $juciDialog){
-	var nodes = []; 
-	var edges = []; 
-	var nodes_big = [];
-	var edges_big = [];
-	var def;
 	var optionsFA = {
+		autoResize: true,
 		nodes: {
-			color: "#999999", 
-			font: {size:15, color:'white' }, 
+			color: "#999999",
+			font: {size:15, color:'white' },
 			borderWidth: 3
 		},
 		layout: {
@@ -69,36 +82,21 @@ JUCI.app
 		}
 	};
 	
-	$scope.showBigOverview = function(){
-		var model = {
-			nodes:nodes_big, 
-			edges:edges_big,
-			options: optionsFA,
-			w: window
-		}
-		$juciDialog.show("big-overview-slider-network", {
-			title: $tr(gettext("Network Visualization")),
-			size: "lg",
-			buttons: [ { label: $tr(gettext("Close")), value: "close", primary: true }],
-			on_button: function(btn, inst){ inst.close();},
-			big: true,
-			model: model
-		});
-	}
-	function updateData(){
-		nodes = [];
-		edges = [];
-		if(def) return def.promise();
-		def = $.Deferred(); 
+	var updateData = function(full){
+		var self = this;
+		var nodes = [];
+		var edges = [];
+		if(self.def) return self.def.promise();
+		self.def = $.Deferred();
 		var count = 0;
 		
 		nodes.push({
 			id: ".root",
 			label: $config.board.system.hardware.substring(0,10),
 			size: 30,
-			image: "/img/net-router-icon.png", 
-			shape: "image", 
-		}); 
+			image: "/img/net-router-icon.png",
+			shape: "image",
+		});
 		
 		var clients, lan_nets, wan_nets;
 		async.series([
@@ -131,7 +129,7 @@ JUCI.app
 							id: count++,
 							label: String(item[".name"]).toUpperCase().substring(0,10),
 							title: String(item[".name"] + '<br />' + item.ifname.value),
-							image: "/img/net-interface-icon.png", 
+							image: "/img/net-interface-icon.png",
 							size: 30,
 							shape: "image",
 						}
@@ -149,6 +147,7 @@ JUCI.app
 							}
 							nodes.push(dev_node);
 							edges.push( { from: node.id, to: dev_node.id, width: 6 });
+							if(!full) return;
 							if(dev.hosts && dev.hosts.length){
 								dev.hosts.map(function(host){
 									var host_node = {
@@ -159,40 +158,38 @@ JUCI.app
 										image: "/img/net-laptop-icon.png",
 										shape: "image"
 									}
-									nodes_big.push(host_node);
-									edges_big.push( { from: dev_node.id, to: host_node.id, width: 6 } );
+									nodes.push(host_node);
+									edges.push( { from: dev_node.id, to: host_node.id, width: 6 } );
 								});
 							}
 						});
 					}).always(function(){callback();});
 				}, function(){
-					nodes_big = nodes_big.concat(nodes);
-					edges_big = edges_big.concat(edges);
-					def.resolve()
-					def = undefined;
+					self.def.resolve(nodes, edges)
+					self.def = undefined;
 				});
 			}
 		);
-		return def;
+		return self.def;
 	}
-	function getTitle(cl){
-		var flags = [
-			{ title: $tr(gettext("Power Save")), value: "ps" }, 
-			{ title: $tr(gettext("WME")), value: "wme" }, 
-			{ title: $tr(gettext("N Mode")), value:"n_cap" }, 
-			{ title: $tr(gettext("VHT Mode")), value: "vht_cap"}
-		];
-		var ret = "Flags: ";
-		flags.map(function(flag){
-			if(cl[flag.value]) ret = ret + flag.title + ", ";
+
+	$scope.showBigOverview = function(){
+		var model = {
+			options: optionsFA,
+			updateData: updateData,
+			w: window
+		}
+		$juciDialog.show("big-overview-slider-network", {
+			title: $tr(gettext("Network Visualization")),
+			size: "lg",
+			buttons: [ { label: $tr(gettext("Close")), value: "close", primary: true }],
+			on_button: function(btn, inst){ inst.close();},
+			big: true,
+			model: model
 		});
-		if(ret === "Flags: "){ ret = ret + $tr(gettext("No Flags"));}
-		else{ret = String(ret).substring(0,ret.length-2);}
-		ret += "<br />"+ $tr(gettext("TX Rate: ")) + Math.floor(parseInt(cl.tx_rate)/1000) + $tr(gettext(" Mbps")) + "<br />" + 
-						 $tr(gettext("RX Rate: ")) + Math.floor(parseInt(cl.rx_rate)/1000) + $tr(gettext(" Mbps"));
-		return ret;
 	}
-	updateData().done(function(){
+
+	updateData(false).done(function(nodes, edges){ // false indicating not full
 		// create a network
 		var containerFA = document.getElementById('mynetworkSmall');
 		var time = Date.now();
