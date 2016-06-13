@@ -146,7 +146,6 @@
 
 	function WPAKeyValidator(){
 		this.validate = function(field){
-			if(field.value === "") return null;
 			function isNotPrintableASCII(chr){
 				if(chr.charCodeAt()<32 && chr.charCodeAt()>126){ return true; }
 				else{ return false; }
