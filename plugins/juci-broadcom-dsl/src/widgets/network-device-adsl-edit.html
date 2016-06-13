@@ -6,15 +6,11 @@
 		<juci-config-line title="{{'Name'|translate}}">
 			<input type="text" class="form-control" ng-model="conf.name.value"/>
 		</juci-config-line>
-		<juci-config-line title="{{'VPI'|translate}}" help="{{'ATM Virtual Path Identifier' | translate}}" >
-			<div class="form-group {{conf.vpi.error ? 'has-error': ''}}">
-				<input type="text" class="form-control" ng-model="conf.vpi.value"/>
-			</div>
+		<juci-config-line title="{{'VPI'|translate}}" help="{{'ATM Virtual Path Identifier' | translate}}" error="conf.vpi.error">
+			<input type="text" class="form-control" ng-model="conf.vpi.value"/>
 		</juci-config-line>
-		<juci-config-line title="{{'VCI'|translate}}" help="{{'ATM Virtual Channel Identifier' | translate}}" >
-			<div class="form-group {{conf.vci.error ? 'has-error': ''}}">
-				<input type="text" class="form-control" ng-model="conf.vci.value"/>
-			</div>
+		<juci-config-line title="{{'VCI'|translate}}" help="{{'ATM Virtual Channel Identifier' | translate}}" error="conf.vci.error">
+			<input type="text" class="form-control" ng-model="conf.vci.value"/>
 		</juci-config-line>
 
 		<juci-config-line title="{{'DSL Link Type' | translate}}" help="{{'EoA is for PPPoE, IPoE and Bridge' | translate}}" >
