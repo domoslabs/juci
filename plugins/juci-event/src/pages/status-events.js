@@ -27,6 +27,7 @@ JUCI.app
 		$rpc.$call("router", "logs").done(function(data){
 			if(!data || !data.logs) return;
 			AllLogs = data.logs;
+			AllLogs.reverse();
 			$scope.update();
 			$scope.$apply();
 		}).always(function(){next();});
