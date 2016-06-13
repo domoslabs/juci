@@ -28,8 +28,10 @@
 					"dump"
 				], 
 				"router": [
+					"ports",
 					"dslstats",
 					"boardinfo", 
+					"radios",
 					"clients",
 					"clients6"
 				]
