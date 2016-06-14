@@ -109,10 +109,10 @@
 					var page = menu.page.value; 
 					if(page == "") page = undefined; 
 					if(redirect == "") redirect = undefined; 
-					page = redirect || page; 
 					var obj = {
 						path: menu.path.value, 
 						href: page, 
+						redirect: redirect,
 						modes: menu.modes.value || [ ], 
 						text: "menu-"+(menu.page.value || menu.path.value.replace(/\//g, "-"))+"-title" 
 					}; 

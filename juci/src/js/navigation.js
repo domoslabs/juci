@@ -66,7 +66,6 @@
 			return list.find(function(ch){ return ch.href == href; }); 
 		}
 		this.insertLeaf = function(path, item){
-			//console.log("INSERT LEAF: "+path); 
 			var parts = item.path.split("/"); 
 			var obj = data; 
 			// find the right leaf node
@@ -77,15 +76,6 @@
 					// do not add items whos parents do not exist!
 					// we can thus hide full hierarchy by simply hiding an item
 					return ;
-					/*var item = {
-						title: "(none)",
-						children: {},
-						children_list: []
-					};
-					obj.children[parts[0]] = item; 
-					//obj.children_list.push(item); 
-					obj = obj.children[parts.shift()]; 
-					*/
 				}
 			} 
 			// make sure that inserted item has empty child lists
@@ -106,9 +96,6 @@
 			obj.children_list = Object.keys(obj.children).map(function (key) {
 				return obj.children[key]; 
 			});
-			//obj.children_list.sort(function(a, b){
-			//	return a.index - b.index; 
-			//}); 
 			return item; 
 		};
 		this.register = function(item){

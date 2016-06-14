@@ -44,10 +44,24 @@ JUCI.app
 .controller("NavigationCtrl", function($scope, $location, $localStorage, $navigation, $rootScope, $config, $rpc, $events){
 	$scope.tree = $navigation.tree(); 
 	$scope.log_events = []; 
-	//$scope.showLogButton = ($localStorage.getItem("mode") == "expert")?true:false;
+	$scope.mode = $localStorage.getItem("mode") || "expert";
 	
 	$scope.homepage = $config.settings.juci.homepage.value; 
 
+	$scope.getHref = function(item){
+		if(!item.redirect) return "#!" + item.href;
+		if(item.redirect === "first"){
+			if(!item.children_list) return "#!/404";
+			var child =  item.children_list.find(function(child){
+				if(child.modes && child.modes.length){
+					return child.modes.indexOf($scope.mode) !== -1;
+				}
+				return true;
+			});
+			return $scope.getHref(child);
+		}
+		return "#!" + item.redirect;
+	}
 	$scope.hasChildren = function(menu){
 		return menu.children_list > 0; 
 	}
@@ -73,21 +87,4 @@ JUCI.app
 		$scope.log_events.push(ev); 
 		setTimeout(function(){ $scope.$apply(); }, 0); 
 	}); 
-	/*
-	$(function(){
-		var themes = $config.themes; 
-		$config.theme = localStorage.getItem("theme") || "default"; 
-		//var bootstrap = $('<link href="'+themes[$config.theme]+'/css/bootstrap.min.css" rel="stylesheet" />');
-		var theme = $('<link href="'+themes[$config.theme]+'/css/theme.css" rel="stylesheet" />');
-		//bootstrap.appendTo('head');
-		theme.appendTo('head'); 
-		$('.theme-link').click(function(){
-			var themename = $(this).attr('data-theme');
-			var themeurl = themes[themename];
-			$config.theme = themename;
-			localStorage.setItem("theme", themename);
-			//bootstrap.attr('href',themeurl+"/css/bootstrap.min.css");
-			theme.attr('href',themeurl+"/css/theme.css");
-		});
-	});*/
 }); 
