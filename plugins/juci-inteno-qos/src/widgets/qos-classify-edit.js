@@ -118,13 +118,29 @@ JUCI.app
 
 		if(p.to > p.from){ $scope.rule.portrange.error = null; }
 	}, true);
-	$scope.$watch("data.connbytes", function(c){ //TODO: FIX THIS AND ADD VALIDATOR
+	$scope.$watch("data.connbytes", function(c){
 		if(!$scope.rule){ return; }
 		var from = $scope.data.connbytes.from
 		var to = $scope.data.connbytes.to
-		if(from && !to){ $scope.rule.connbytes.value = from.toString(); }
-		if(from && to){ $scope.rule.connbytes.value = from.toString()+":"+to.toString(); }
-		if(!from && !to){ $scope.rule.connbytes.value = ""; }
+
+		if(from && !to){
+			$scope.rule.connbytes.value = from.toString();
+			$scope.data.connbytes.error = null;
+		}
+		if(from && to){
+			if(to > from){
+				$scope.rule.connbytes.value = from.toString()+":"+to.toString();
+				$scope.data.connbytes.error = null;
+			}
+			else{ $scope.data.connbytes.error = $tr(gettext("End value has to be larger than start value.")); }
+		}
+		if(!from && !to){
+			$scope.rule.connbytes.value = "";
+			$scope.data.connbytes.error = null;
+		}
+
+
+			
 
 	}, true);
 

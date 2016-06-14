@@ -51,11 +51,10 @@
 	<juci-config-line title="{{ 'Mark' | translate }}">
 		<juci-select ng-items="targets" ng-model="rule.mark.value" placeholder="{{'Choose class'|translate}}"/>
 	</juci-config-line>
-	<juci-config-line title="{{'Connbytes'|translate}}" error="rule.connbytes.error">
-		<!--TODO: Add error handling <div class="input-group {{rule.connbytes.error ? 'has-error': ''}}"> -->
+	<juci-config-line title="{{'Connbytes'|translate}}" error="data.connbytes.error">
 		<div class="input-group">
-			<input type="number" class="form-control" ng-model="data.connbytes.from" placeholder="From" style="max-width: 120px !important;"/>
-			<input type="number" class="form-control" ng-model="data.connbytes.to" placeholder="To (optional)" style="max-width: 120px !important; float: right"/>
+			<input type="number" min="1" class="form-control" ng-model="data.connbytes.from" placeholder="From" style="max-width: 120px !important;"/>
+			<input type="number" min="1" class="form-control" ng-model="data.connbytes.to" placeholder="To (optional)" style="max-width: 120px !important; float: right"/>
 		</div>
 	</juci-config-line>
 	<juci-config-line title="{{'TCP Flags'|translate}}">
@@ -64,27 +63,6 @@
 	</juci-config-line>
 
 <!-- TODO: add later
-
-	<juci-config-line title="{{'tcpflags'|translate}}">
-		<div class="input-group">
-			<input type="number" min="1" class="form-control" ng-model="rule.STR.value" placeholder="TODO"/>
-			<span class="input-group-addon">STR</span>
-		</div>
-	</juci-config-line>
-
-	<juci-config-line title="{{'mark'|translate}}">
-		<div class="input-group">
-			<input type="number" min="1" class="form-control" ng-model="rule.STR.value" placeholder="TODO"/>
-			<span class="input-group-addon">STR</span>
-		</div>
-	</juci-config-line>
-
-	<juci-config-line title="{{'connbytes'|translate}}">
-		<div class="input-group">
-			<input type="number" min="1" class="form-control" ng-model="rule.INT.value" placeholder="TODO"/>
-			<span class="input-group-addon">INT</span>
-		</div>
-	</juci-config-line>
 
 	<juci-config-line title="{{'tos'|translate}}">
 		<div class="input-group">
