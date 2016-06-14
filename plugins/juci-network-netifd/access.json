@@ -28,6 +28,7 @@
 					"dump"
 				], 
 				"router": [
+					"linkspeed",
 					"ports",
 					"dslstats",
 					"boardinfo", 

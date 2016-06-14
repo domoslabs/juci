@@ -128,8 +128,8 @@ JUCI.app
 							t+= $tr(gettext("DSL")) + '<br />';
 							t+= $tr(gettext("Mode")) + ': ' + data.dslstats.mode + '<br />';
 							t+= $tr(gettext("Bit Rate")) + '<br />';
-							t+= $tr(gettext("Downstream")) + ': ' + data.dslstats.bearers[0].rate_down + '<br />';
-							t+= $tr(gettext("Upstream")) + ': ' + data.dslstats.bearers[0].rate_up + '<br />';
+							t+= $tr(gettext("Downstream")) + ': ' + Math.floor(parseInt(data.dslstats.bearers[0].rate_down)/1000) + ' Mbit/s<br />';
+							t+= $tr(gettext("Upstream")) + ': ' + Math.floor(parseInt(data.dslstats.bearers[0].rate_up)/1000) + ' Mbit/s<br />';
 							break;
 						case "vwan":
 							t+= $tr(gettext("3G/4G")) + '<br />';
@@ -222,18 +222,23 @@ JUCI.app
 							if(dev.hosts && dev.hosts.length){
 								dev.hosts.map(function(host){
 									function getHostTitle(host){
-										var title = (host.hostname || host.ipaddr || host.macaddr) + '<br />';
+										var title = String(host.hostname || host.ipaddr || host.macaddr).toUpperCase() + '<br />';
 										[
 											["ipaddr", $tr(gettext("IP Address")), ""],
 											["macaddr", $tr(gettext("MAC Address")), ""],
-											["rssi", $tr(gettext("RSSI")), "dBm"],
+											["rssi", $tr(gettext("RSSI")), " dBm"],
 											["snr", $tr(gettext("SNR")), ""],
-											["tx_rate", $tr(gettext("TX Rate")), "Mbit/s"],
-											["rx_rate", $tr(gettext("RX Rate")), "Mbit/s"],
+											["tx_rate", $tr(gettext("TX Rate")), " Mbit/s"],
+											["rx_rate", $tr(gettext("RX Rate")), " Mbit/s"],
 											["linkspeed", $tr(gettext("Linkspeed")), ""]
 										].map(function(val){
 											if(host[val[0]])
-												title += val[1] + ': ' + host[val[0]] + val[2] + '<br />';
+												if(val[0].match("rate"))
+													title += val[1] + ': ' + Math.floor(parseInt(host[val[0]])/1000) + val[2] + '<br />';
+												else if(val[0].match("macaddr"))
+													title += val[1] + ': ' + String(host[val[0]]).toUpperCase() + val[2] + '<br />';
+												else
+													title += val[1] + ': ' + host[val[0]] + val[2] + '<br />';
 										});
 										return title;
 									}
