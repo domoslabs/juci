@@ -128,8 +128,8 @@ JUCI.app
 							t+= $tr(gettext("DSL")) + '<br />';
 							t+= $tr(gettext("Mode")) + ': ' + data.dslstats.mode + '<br />';
 							t+= $tr(gettext("Bit Rate")) + '<br />';
-							t+= $tr(gettext("Downstream")) + ': ' + Math.floor(parseInt(data.dslstats.bearers[0].rate_down)/1000) + ' Mbit/s<br />';
-							t+= $tr(gettext("Upstream")) + ': ' + Math.floor(parseInt(data.dslstats.bearers[0].rate_up)/1000) + ' Mbit/s<br />';
+							t+= $tr(gettext("Downstream")) + ': ' + parseInt(data.dslstats.bearers[0].rate_down)/1000 + ' Mbit/s<br />';
+							t+= $tr(gettext("Upstream")) + ': ' + parseInt(data.dslstats.bearers[0].rate_up)/1000 + ' Mbit/s<br />';
 							break;
 						case "vwan":
 							t+= $tr(gettext("3G/4G")) + '<br />';
