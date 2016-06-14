@@ -159,6 +159,29 @@
 		}
 	}
 
+	function ConnbytesValidator(separator){
+		if(!separator){ var separator = ":"; }
+		this.validate = function(field){
+			if(!field || !field.value) return null;
+
+			var re = new RegExp("^[0-9]+"+separator+"[0-9]+$|^[0-9]+$");
+			if(field.value.match(re)){ //type is number range
+				var start = parseInt(field.value.split(separator)[0]);
+				var stop = parseInt(field.value.split(separator)[1]);
+				if(stop){
+					if(stop <= start){ return gettext("End value has to be larger than start value."); }
+				}
+				else{
+					if(start <= 0){ return gettext("Size has to be larger than 0."); }
+				}
+			}
+			else{
+				return gettext("Invalid range.");
+			}
+			return null;
+		};	
+	}
+
 	function NumberLimitValidator(min, max){
 		return function(){
 			this.validate = function(field){
@@ -1175,6 +1198,7 @@
 		PortOrRangeValidator: PortOrRangeValidator,
 		PortRangeValidator: PortRangeValidator,
 		PortRangeDashValidator: PortRangeDashValidator,
+		ConnbytesValidator: ConnbytesValidator,
 		NumberLimitValidator: NumberLimitValidator, 
 		TimeValidator: TimeValidator,
 		MACAddressValidator: MACAddressValidator,

@@ -21,7 +21,6 @@ JUCI.app
 		$scope.$apply();
 	});
 
-	//boolean==true => function körs när hela instance byts. false=>när nåt i instance endras
 	$scope.$watch('instance',function(){
 		if(!$scope.instance){ return; }
 		if($scope.instance.download.value > 0){

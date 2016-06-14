@@ -33,8 +33,18 @@ JUCI.app
 .controller("qosClassifyEdit", function($scope, $uci, $tr, gettext, $network, intenoQos){
 	$scope.data = {
 		ports: [],
-		portrange: {from:"" , to:""}
+		portrange: {from:"" , to:""},
+		connbytes: {from:"", to:""}
 	};
+	$scope.directions = [ {value:'in',label:'In'}, {value:'out',label:'Out'}, {value:'',label:'Both'} ];
+	$scope.tcpflags = {};
+	$scope.tcpflags.all = [
+		{value:'SYN',label:'SYN'},
+		{value:'ACK',label:'ACK'},
+		{value:'FIN',label:'FIN'},
+		{value:'RST',label:'RST'},
+		{value:'URG',label:'URG'},
+		{value:'PSH',label:'PSH'}];
 	$scope.data.precedence = [
 		{ label: $tr(gettext("All")),	value: '' },
 		{ label: '0',					value: '0' },
@@ -53,6 +63,10 @@ JUCI.app
 		{ label: $tr(gettext("ICMP")),		value: 'icmp' }
 	];
 	
+	$scope.addSelectedTCPflags = function(){
+		function getValue(x){ return x.value; }
+		$scope.rule.tcpflags.value = $scope.tcpflags.selected.map(getValue).join();
+	};
 
 	$network.getConnectedClients().done(function(data){
 		$scope.clients = data.map(function(x){
@@ -68,6 +82,11 @@ JUCI.app
 	});
 	$scope.$watch("rule", function(){
 		if(!$scope.rule) return;
+		$scope.tcpflags.selected = $scope.rule.tcpflags.value.split(",");
+		function isSelected(flag){ return $scope.tcpflags.selected.indexOf(flag) > -1; }
+		function makeSelected(obj){ obj.selected = isSelected(obj.value); }
+		$scope.tcpflags.all.forEach(makeSelected);
+
 		$scope.data.ports = $scope.rule.ports.value.split(",").map(function(port){return {value: port }});
 		if($scope.rule.srcports){
 			$scope.data.srcports = $scope.rule.srcports.value.split(",").map(function(port){return {value: port }});
@@ -83,14 +102,30 @@ JUCI.app
 			$scope.data.portrange.from = 0;
 			$scope.data.portrange.to = 0;
 		}
+		
+		if($scope.rule.connbytes){
+			$scope.data.connbytes.from = parseInt($scope.rule.connbytes.value.split(":")[0]);
+			$scope.data.connbytes.to = parseInt($scope.rule.connbytes.value.split(":")[1]);
+		}
+
+		//if($scope.rule.pktsize && $scope.rule.pktsize.value===0){ $scope.rule.pktsize.value = ""; }
 	}, false);
 
 	$scope.$watch("data.portrange", function(p){
-		if(!$scope.rule || !p.to || !p.from){ return; }
+		if(!$scope.rule){ return; }
 
 		$scope.rule.portrange.value = p.from.toString() + "-" + p.to.toString();
 
 		if(p.to > p.from){ $scope.rule.portrange.error = null; }
+	}, true);
+	$scope.$watch("data.connbytes", function(c){ //TODO: FIX THIS AND ADD VALIDATOR
+		if(!$scope.rule){ return; }
+		var from = $scope.data.connbytes.from
+		var to = $scope.data.connbytes.to
+		if(from && !to){ $scope.rule.connbytes.value = from.toString(); }
+		if(from && to){ $scope.rule.connbytes.value = from.toString()+":"+to.toString(); }
+		if(!from && !to){ $scope.rule.connbytes.value = ""; }
+
 	}, true);
 
 	$scope.onAddPort = function(){
