@@ -26,12 +26,12 @@
 			</juci-config-line>
 			<table class="table">
 				<thead>
-					<th translate>Date</th>
-					<th translate>Type</th>
-					<th translate>Source</th>
-					<th translate>Message</th>
+					<th translate style="cursor:pointer; textdecoration:none;" ng-click="setOrder('time')">Date</th>
+					<th translate style="cursor:pointer; textdecoration:none;" ng-click="setOrder('id')">Type</th>
+					<th translate style="cursor:pointer; textdecoration:none;" ng-click="setOrder('source')">Source</th>
+					<th translate style="cursor:pointer; textdecoration:none;" ng-click="setOrder('message')">Message</th>
 				</thead>
-				<tr ng-repeat="line in logs track by $index" class="{{lineClass(line)}}">
+				<tr ng-repeat="line in logs | orderBy : order : reverse" class="{{lineClass(line)}}">
 					<td nowrap>{{line.time}}</td>
 					<td>{{line.id}}</td>
 					<td>{{line.source}}</td>
