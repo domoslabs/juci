@@ -47,12 +47,12 @@ JUCI.app
 		{value:'PSH',label:'PSH'}];
 	$scope.data.precedence = [
 		{ label: $tr(gettext("All")),	value: '' },
-		{ label: '0',					value: '0' },
+		{ label: '0',					value: '0 1 2 3 4' },
 		{ label: '1',					value: '8 10 12 14' },
 		{ label: '2',					value: '16 18 20 22' },
 		{ label: '3',					value: '24 26 28 30' },
 		{ label: '4',					value: '32 34 36 38' },
-		{ label: '5',					value: '40 46' },
+		{ label: '5',					value: '40 44 46' },
 		{ label: '6',					value: '48' },
 		{ label: '7',					value: '56' }
 	];
