@@ -41,7 +41,7 @@ JUCI.app
 		if(maclist.length == 0){ return; }
 
 		var validMACs = $scope.maclist.filter(isValidMACAddress);
-		maclist.map(function(mac){ mac.error = null; });
+		maclist.map(function(mac){ mac.error = null; }); //TODO: BUGG? Should be validMACs instead of maclist?
 		validMACs.map(function(mac){ mac.error = "Valid MAC Address"; });
 
 		if(isUnAddedMAC(validMACs)){

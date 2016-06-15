@@ -55,7 +55,8 @@ UCI.dhcp.$registerSectionType("dhcp", {
 	//"ignore":		{ dvalue: false, type: Boolean },
 
 
-	"dhcp_option": 		{ dvalue: "", type: String },
+//	"dhcp_option": 		{ dvalue: "", type: String },
+	"dhcp_option": 		{ dvalue: [], type: Array },
 	"dynamicdhcp":		{ dvalue: true, type: Boolean },
 	"force":		{ dvalue: false, type: Boolean },
 	"ignore":		{ dvalue: false, type: Boolean },

@@ -30,6 +30,8 @@ JUCI.app
 	};  
 })
 .controller("dhcpBasicSettingsEdit", function($scope, $network, $tr, gettext){
+	$scope.data = {};
+	$scope.data.dhcp = { field1:"", field2:"" };
 	
 	$scope.dhcpLeaseTimes = [
 		{ label: "5 "+$tr(gettext("Minutes")), value: "5m"}, 
@@ -49,5 +51,17 @@ JUCI.app
 		{ label: "Relay", value: "relay" }, 
 		{ label: "None", value: "" }, 
 	];
+
+	//$scope.$watch("data.dhcp", function(){
+	//	if(!$scope.data){ return; }
+	//	var f1 = $scope.data.dhcp.field1;
+	//	var f2 = $scope.data.dhcp.field2;
+	//	if($scope.data.dhcp.field1 && $scope.data.dhcp.field2){
+	//		alert("BLABLA");
+	//		newList = $scope.dhcp.dhcp_option.value;
+	//		$scope.dhcp.dhcp_option.value = [];//.push(f1.toString() + f2);
+	//	}
+
+	//},true);
 	
 }); 

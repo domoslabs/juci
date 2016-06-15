@@ -10,7 +10,11 @@
 	</juci-config-line>
 	<juci-expandable title="{{'Advanced Settings'|translate}}" open="false">
 		<juci-config-line title="{{'DHCP Options'|translate}}">
-			<input class="form-control pull-right" ng-model="dhcp.dhcp_option.value" placeholder="{{'Space separated options'|translate}}"/>
+			<!--<input class="form-control pull-right" ng-model="dhcp.dhcp_option.value" placeholder="{{'Space separated options'|translate}}"/>-->
+			<div class="input-group">
+					<input class="form-control" type="number" ng-model="data.dhcp.field1" placeholder="{{'Space separated options'|translate}}" style="max-width: 120px !important;"/>
+					<input class="form-control" ng-model="data.dhcp.field2" placeholder="{{'Space separated options'|translate}}" style="max-width: 120px !important; float: right"/>
+			</div>
 		</juci-config-line>
 		<juci-config-line title="{{'Dynamic DHCP'|translate}}">
 			<switch ng-model="dhcp.dynamicdhcp.value" class="green" ></switch>
