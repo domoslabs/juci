@@ -26,10 +26,10 @@
 			</juci-config-line>
 			<table class="table">
 				<thead>
-					<th translate style="cursor:pointer; textdecoration:none;" ng-click="setOrder('time')">Date</th>
-					<th translate style="cursor:pointer; textdecoration:none;" ng-click="setOrder('id')">Type</th>
-					<th translate style="cursor:pointer; textdecoration:none;" ng-click="setOrder('source')">Source</th>
-					<th translate style="cursor:pointer; textdecoration:none;" ng-click="setOrder('message')">Message</th>
+					<th translate style="cursor:pointer; textdecoration:none;{{order === 'time'? 'background-color:#ddd;':''}}" ng-click="setOrder('time')">Date<i style="float:right;" class="fa fa-caret-{{reverse?'down':'up'}}" ng-show="order === 'time'"></i></th>
+					<th translate style="cursor:pointer; textdecoration:none;{{order === 'id'? 'background-color:#ddd;':''}}" ng-click="setOrder('id')">Type<i style="float:right;" class="fa fa-caret-{{reverse?'down':'up'}}" ng-show="order === 'id'"></i></th>
+					<th translate style="cursor:pointer; textdecoration:none;{{order === 'source'? 'background-color:#ddd;':''}}" ng-click="setOrder('source')">Source<i style="float:right;" class="fa fa-caret-{{reverse?'down':'up'}}" ng-show="order === 'source'"></i></th>
+					<th translate style="cursor:pointer; textdecoration:none;{{order === 'message'? 'background-color:#ddd;':''}}" ng-click="setOrder('message')">Message<i style="float:right;" class="fa fa-caret-{{reverse?'down':'up'}}" ng-show="order === 'message'"></i></th>
 				</thead>
 				<tr ng-repeat="line in logs | orderBy : order : reverse" class="{{lineClass(line)}}">
 					<td nowrap>{{line.time}}</td>

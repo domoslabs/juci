@@ -35,8 +35,8 @@ JUCI.app
 	var log = {
 		autoRefresh : true
 	};
-	$scope.order = 'source';
-	$scope.reverse = false;
+	$scope.order = 'time';
+	$scope.reverse = true;
 	$scope.setOrder = function(order){
 		if($scope.order === order){
 			$scope.reverse = !$scope.reverse;
