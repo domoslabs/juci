@@ -24,25 +24,20 @@
 					<label><strong>{{filter.name}}</strong></label>
 				</div>
 			</juci-config-line>
-			<div ng-show="inprogress">
-				<i class="fa fa-spinner fa-spin"></i>
-			</div>
-			<div ng-hide="inprogress">
-				<table class="table">
-					<thead>
-						<th translate>Date</th>
-						<th translate>Type</th>
-						<th translate>Source</th>
-						<th translate>Message</th>
-					</thead>
-					<tr ng-repeat="line in logs track by $index" class="{{lineClass(line)}}">
-						<td nowrap>{{line.time}}</td>
-						<td>{{line.id}}</td>
-						<td>{{line.source}}</td>
-						<td>{{line.message}}</td>
-					</tr>
-				</table>
-			</div>
+			<table class="table">
+				<thead>
+					<th translate style="cursor:pointer; textdecoration:none;" ng-click="setOrder('time')">Date</th>
+					<th translate style="cursor:pointer; textdecoration:none;" ng-click="setOrder('id')">Type</th>
+					<th translate style="cursor:pointer; textdecoration:none;" ng-click="setOrder('source')">Source</th>
+					<th translate style="cursor:pointer; textdecoration:none;" ng-click="setOrder('message')">Message</th>
+				</thead>
+				<tr ng-repeat="line in logs | orderBy : order : reverse" class="{{lineClass(line)}}">
+					<td nowrap>{{line.time}}</td>
+					<td>{{line.id}}</td>
+					<td>{{line.source}}</td>
+					<td>{{line.message}}</td>
+				</tr>
+			</table>
 		</juci-config-section>
 	</div>
 </juci-layout-with-sidebar>

@@ -35,6 +35,15 @@ JUCI.app
 	var log = {
 		autoRefresh : true
 	};
+	$scope.order = 'source';
+	$scope.reverse = false;
+	$scope.setOrder = function(order){
+		if($scope.order === order){
+			$scope.reverse = !$scope.reverse;
+		}else{
+			$scope.order = order;
+		}
+	}
 	$scope.data = { limit: 20, filter: "", type: "" };
 	$scope.logs = [];
 	$scope.filters = [];
