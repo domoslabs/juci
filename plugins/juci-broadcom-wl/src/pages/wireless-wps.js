@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("wirelessWPSPage", function($scope, $config, $uci, $rpc, $router, gettext, $tr, $events){
+.controller("wirelessWPSPage", function($scope, $config, $uci, $rpc, gettext, $tr, $events){
 	$scope.showExpert = $config.local.mode == "expert";
 	var wps_status_strings = {
 		"-1": $tr(gettext("Disabled")),
@@ -32,8 +32,6 @@ JUCI.app
 		8: $tr(gettext("Switching to repeater mode")),
 		9: $tr(gettext("Overlap"))
 	}; 
-	
-	$scope.router = $router;
 	
 	$scope.data = {
 		userPIN: "",
