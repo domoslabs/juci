@@ -98,11 +98,7 @@ JUCI.app
 		if($scope.rule.portrange){
 			$scope.data.portrange.from = parseInt($scope.rule.portrange.value.split("-")[0]);
 			$scope.data.portrange.to = parseInt($scope.rule.portrange.value.split("-")[1]);
-		}else{
-			$scope.data.portrange.from = 0;
-			$scope.data.portrange.to = 0;
-		}
-		
+		}		
 		if($scope.rule.connbytes){
 			$scope.data.connbytes.from = parseInt($scope.rule.connbytes.value.split(":")[0]);
 			$scope.data.connbytes.to = parseInt($scope.rule.connbytes.value.split(":")[1]);
@@ -113,30 +109,11 @@ JUCI.app
 
 	$scope.$watch("data.portrange", function(p){
 		if(!$scope.rule){ return; }
-
 		var from = $scope.data.portrange.from
 		var to = $scope.data.portrange.to
-
-		if(from && !to){
-			$scope.data.portrange.error = $tr(gettext("End value has to be larger than start value."));
-		}
-		if(from && to){
-			if(to > from){
-				$scope.rule.portrange.value = from.toString()+"-"+to.toString();
-				$scope.data.portrange.error = null;
-			}
-			else{ $scope.data.portrange.error = $tr(gettext("End value has to be larger than start value.")); }
-		}
-		if(!from && !to){
-			$scope.rule.portrange.value = "";
-			$scope.data.portrange.error = null;
-		}
-		if(!from && to){
-			$scope.data.portrange.error = $tr(gettext("End value has to be larger than start value."));
-		}
-		//$scope.rule.portrange.value = p.from.toString() + "-" + p.to.toString();
-
-		//if(p.to > p.from){ $scope.rule.portrange.error = null; }
+		if(!from && !to){ $scope.rule.portrange.value = ""; }
+		if(from && !to){ $scope.rule.portrange.value = from.toString(); }
+		if(from && to){ $scope.rule.portrange.value = from.toString() + "-" + to.toString(); }
 	}, true);
 	$scope.$watch("data.connbytes", function(c){
 		if(!$scope.rule){ return; }
