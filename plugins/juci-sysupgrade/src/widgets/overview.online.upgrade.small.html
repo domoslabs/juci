@@ -1,0 +1,12 @@
+<div class="overview-small" ng-show="upgrade.exist">
+	<div class="icon"><i class="fa fa-arrow-up"></i></div>
+	<div style="float:right" title="{{upgrade.name}}"><button class="btn btn-success btn-xs" ng-click="onUpgrade()" style="float:right;margin-right:15px;margin-top:2px">{{'New software avalible'|translate}}</button></div>
+	<modal hide-buttons="true" data-backdrop="static" title="Firmware Upgrade" ng-show="showUpgradeStatus">
+		<center>
+			<p style="text-align: center;color:black;" ng-show="!error">{{message}}</p>
+			<p class="alert alert-danger" style="text-align: center;" ng-show="error">{{error}}</p>
+			<i style="color:black;" class="fa fa-spinner fa-spin fa-4x" ng-show="!error"></i>
+			<button style="float:right;" class="btn btn-default" ng-click="showUpgradeStatus = false" ng-show="error">{{'Close'|translate}}</button>
+		</center>
+	</modal>
+</div>
