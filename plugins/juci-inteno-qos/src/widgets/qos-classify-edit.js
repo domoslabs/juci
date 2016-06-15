@@ -47,14 +47,14 @@ JUCI.app
 		{value:'PSH',label:'PSH'}];
 	$scope.data.precedence = [
 		{ label: $tr(gettext("All")),	value: '' },
-		{ label: '0',					value: '0 1 2 3 4' },
-		{ label: '1',					value: '8 10 12 14' },
-		{ label: '2',					value: '16 18 20 22' },
-		{ label: '3',					value: '24 26 28 30' },
-		{ label: '4',					value: '32 34 36 38' },
-		{ label: '5',					value: '40 44 46' },
-		{ label: '6',					value: '48' },
-		{ label: '7',					value: '56' }
+		{ label: '0 (None) ',				value: '0 1 2 3 4' },
+		{ label: '1 (CS1, AF11, AF12, AF13)',		value: '8 10 12 14' },
+		{ label: '2 (CS2, AF21, AF22, AF23)',		value: '16 18 20 22' },
+		{ label: '3 (CS3, AF31, AF32, AF33)',		value: '24 26 28 30' },
+		{ label: '4 (CS4, AF41, AF42, AF43)',		value: '32 34 36 38' },
+		{ label: '5 (CS5, Voice-admit, EF)',		value: '40 44 46' },
+		{ label: '6 (CS6)',				value: '48' },
+		{ label: '7 (CS7)',				value: '56' }
 	];
 	$scope.data.protocols = [
 		{ label: $tr(gettext("All")),		value: '' },
@@ -114,9 +114,29 @@ JUCI.app
 	$scope.$watch("data.portrange", function(p){
 		if(!$scope.rule){ return; }
 
-		$scope.rule.portrange.value = p.from.toString() + "-" + p.to.toString();
+		var from = $scope.data.portrange.from
+		var to = $scope.data.portrange.to
 
-		if(p.to > p.from){ $scope.rule.portrange.error = null; }
+		if(from && !to){
+			$scope.data.portrange.error = $tr(gettext("End value has to be larger than start value."));
+		}
+		if(from && to){
+			if(to > from){
+				$scope.rule.portrange.value = from.toString()+"-"+to.toString();
+				$scope.data.portrange.error = null;
+			}
+			else{ $scope.data.portrange.error = $tr(gettext("End value has to be larger than start value.")); }
+		}
+		if(!from && !to){
+			$scope.rule.portrange.value = "";
+			$scope.data.portrange.error = null;
+		}
+		if(!from && to){
+			$scope.data.portrange.error = $tr(gettext("End value has to be larger than start value."));
+		}
+		//$scope.rule.portrange.value = p.from.toString() + "-" + p.to.toString();
+
+		//if(p.to > p.from){ $scope.rule.portrange.error = null; }
 	}, true);
 	$scope.$watch("data.connbytes", function(c){
 		if(!$scope.rule){ return; }
@@ -138,10 +158,9 @@ JUCI.app
 			$scope.rule.connbytes.value = "";
 			$scope.data.connbytes.error = null;
 		}
-
-
-			
-
+		if(!from && to){
+			$scope.data.connbytes.error = $tr(gettext("End value has to be larger than start value."));
+		}
 	}, true);
 
 	$scope.onAddPort = function(){

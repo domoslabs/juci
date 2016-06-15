@@ -30,7 +30,7 @@
 					on-tag-removed="onAddDstPort()" on-tag-added="onAddDstPort()" add-on-paste="true" on-tag-adding="evalPort($tag)" placeholder="Add a port"></tags-input>
 	</juci-config-line>
 
-	<juci-config-line title="{{'Port Range'|translate}}" error="rule.portrange.error">
+	<juci-config-line title="{{'Port Range'|translate}}" error="data.portrange.error">
 		<div class="input-group">
 				<input type="number" class="form-control" ng-model="data.portrange.from" placeholder="From" style="max-width: 120px !important;"/>
 				<input type="number" class="form-control" ng-model="data.portrange.to" placeholder="To" style="max-width: 120px !important; float: right"/>
