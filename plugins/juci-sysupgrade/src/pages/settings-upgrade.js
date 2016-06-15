@@ -124,7 +124,7 @@ JUCI.app
 			if(response.stderr) $scope.$emit("error", $tr(gettext("Online upgrade check failed"))+": "+response.stderr);
 			$scope.onlineCheckInProgress = 0;
 			$scope.$apply();
-		});
+		}).fail(function(e){console.log(e);});
 	}
 	$scope.onUpgradeOnline = function(){
 		confirmKeep().done(function(keep){
