@@ -12,9 +12,22 @@
 		<juci-config-line title="{{'DHCP Options'|translate}}">
 			<!--<input class="form-control pull-right" ng-model="dhcp.dhcp_option.value" placeholder="{{'Space separated options'|translate}}"/>-->
 			<div class="input-group">
-					<input class="form-control" type="number" ng-model="data.dhcp.field1" placeholder="{{'Space separated options'|translate}}" style="max-width: 120px !important;"/>
-					<input class="form-control" ng-model="data.dhcp.field2" placeholder="{{'Space separated options'|translate}}" style="max-width: 120px !important; float: right"/>
+					<input class="form-control" type="number" ng-model="data.dhcp.field1" placeholder="{{'ID'|translate}}" style="max-width: 80px !important;"/>
+					<input class="form-control" ng-model="data.dhcp.field2" placeholder="{{'Option'|translate}}" style="max-width: 120px !important"/>
+				<!--<div class="col-md-4 col-md-offset-8">-->
+					<button class="btn btn-default pull-right" ng-click="addDHCPOption()"><i class="fa fa-plus"></i></button>
+				<!--</div>-->
 			</div>
+			<juci-config-line>
+				<div class="row" ng-repeat="d in data.dhcp_options track by $index" style="margin-bottom: 5px">
+					<div class="input-group pull-right">
+						<input class="form-control" type="number" ng-model="data.dhcp.field1" style="max-width: 80px !important;"/>
+						<input class="form-control" ng-model="data.dhcp.field2" style="max-width: 120px !important"/>
+						<!--<input class="form-control" ng-model="d" style="max-width: 180px !important"/>-->
+						<button class="btn btn-default pull-right" style="margin-right: 15px" ng-click="deleteDHCPOption(d)"><i class="fa fa-trash-o"></i></button>
+					</div>
+				</div>
+			</juci-config-line>
 		</juci-config-line>
 		<juci-config-line title="{{'Dynamic DHCP'|translate}}">
 			<switch ng-model="dhcp.dynamicdhcp.value" class="green" ></switch>
@@ -26,7 +39,7 @@
 		<juci-config-line title="{{'IPv4 Netmask'|translate}}">
 			<juci-select ng-model="dhcp.TODO.value" ng-items="IPv4Values" placeholder="{{'TODO'|translate}}"/>
 		</juci-config-line>
-		<--
+		-->
 		<!-- TODO: Add later
 		<juci-config-line title="{{'Ignore'|translate}}">
 			<switch ng-model="dhcp.ignore.value" class="green" ></switch>

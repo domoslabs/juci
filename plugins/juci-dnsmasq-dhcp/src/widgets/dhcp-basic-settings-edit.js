@@ -52,16 +52,40 @@ JUCI.app
 		{ label: "None", value: "" }, 
 	];
 
-	//$scope.$watch("data.dhcp", function(){
-	//	if(!$scope.data){ return; }
-	//	var f1 = $scope.data.dhcp.field1;
-	//	var f2 = $scope.data.dhcp.field2;
-	//	if($scope.data.dhcp.field1 && $scope.data.dhcp.field2){
-	//		alert("BLABLA");
-	//		newList = $scope.dhcp.dhcp_option.value;
-	//		$scope.dhcp.dhcp_option.value = [];//.push(f1.toString() + f2);
-	//	}
+	$scope.$watch("dhcp", function(){
+		if(!$scope.dhcp){ return; }
+		$scope.data.dhcp_options = $scope.dhcp.dhcp_option.value;
+	},false);
 
-	//},true);
+	$scope.addDHCPOption = function(){
+		var f1 = $scope.data.dhcp.field1;
+		var f2 = $scope.data.dhcp.field2;
+		if(f1 && f2){
+			if(f1>255 || f1<0){
+				alert("Tag must be 0-255.");
+				return;
+			}
+			var newList = $scope.dhcp.dhcp_option.value.slice();
+			var newString = f1+","+f2;
+			if(newList.indexOf(newString) === -1){
+				newList.push(newString);
+				$scope.data.dhcp_options = newList.slice();
+				$scope.dhcp.dhcp_option.value = newList.slice();
+				$scope.data.dhcp.field1 = "";
+				$scope.data.dhcp.field2 = "";
+			}
+			else{
+				alert(newString+" Already added.");
+			}
+		}
+	};
+	$scope.deleteDHCPOption = function(d){
+		var newList = $scope.dhcp.dhcp_option.value.slice();
+		newList.splice(newList.indexOf(d),1);
+
+		$scope.data.dhcp_options = newList.slice();
+		$scope.dhcp.dhcp_option.value = newList.slice();
+	};
+
 	
 }); 
