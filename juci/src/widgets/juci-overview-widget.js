@@ -7,10 +7,12 @@ JUCI.app
 		scope: {
 			title: "@",
 			href: "@",
+			click: "&onExpand",
 			icon: "@",
+			showEdit: "@",
 			of: "@allowOverflow"
 		},
 		transclude: true,
-		restrict: "E",
-	};
+		restrict: "E"
+	}
 });
