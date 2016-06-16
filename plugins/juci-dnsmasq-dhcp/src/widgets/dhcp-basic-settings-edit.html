@@ -21,9 +21,9 @@
 			<juci-config-line>
 				<div class="row" ng-repeat="d in data.dhcp_options track by $index" style="margin-bottom: 5px">
 					<div class="input-group pull-right">
-						<input class="form-control" type="number" ng-model="data.dhcp.field1" style="max-width: 80px !important;"/>
-						<input class="form-control" ng-model="data.dhcp.field2" style="max-width: 120px !important"/>
-						<!--<input class="form-control" ng-model="d" style="max-width: 180px !important"/>-->
+						<!--<input class="form-control" type="number" ng-model="data.dhcp.field1" style="max-width: 80px !important;"/>
+						<input class="form-control" ng-model="data.dhcp.field2" style="max-width: 120px !important"/>-->
+						<input class="form-control" ng-model="d" style="max-width: 180px !important"/>
 						<button class="btn btn-default pull-right" style="margin-right: 15px" ng-click="deleteDHCPOption(d)"><i class="fa fa-trash-o"></i></button>
 					</div>
 				</div>
