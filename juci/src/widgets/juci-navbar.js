@@ -20,20 +20,6 @@
 
 JUCI.app
 .directive("juciNavbar", function($location, $rootScope, $navigation){
-	function activate(){
-		var active_node = $navigation.findNodeByHref($location.path().replace(/\//g, "")); 
-		if(!active_node) return; 
-		var top_node = $navigation.findNodeByPath(active_node.path.split("/")[0]); 
-		if(!top_node) return; 	
-		setTimeout(function(){
-			$("ul.nav li a").parent().removeClass("open"); 
-			$("ul.nav li a[href='#!"+top_node.href+"']").addClass("open"); 
-			$("ul.nav li a[href='#!"+top_node.href+"']").parent().addClass("open"); 
-		}, 0); 
-	}; activate(); 
-	$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-		activate(); 
-	});
 	return {
 		restrict: 'E', 
 		templateUrl: "/widgets/juci-navbar.html", 
@@ -79,12 +65,14 @@ JUCI.app
 		});
 	}
 
-	$scope.isActive = function (viewLocation) { 
-		return viewLocation === $location.path();
+	$scope.isActive = function (path) { 
+		var item = $navigation.findTrunkByPath($location.path().replace("/", ""));
+		if(!item) return path === "overview";
+		return item.path === path;
 	};
 
 	$events.subscribe("logread.msg", function(ev){
-		$scope.log_events.push(ev); 
+		$scope.log_events.push(ev);
 		setTimeout(function(){ $scope.$apply(); }, 0); 
 	}); 
 }); 

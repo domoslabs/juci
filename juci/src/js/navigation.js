@@ -47,6 +47,18 @@
 			} 
 			return obj; 
 		};
+		this.findTrunkByPath = function(path){
+			function findChild(list){
+				return list.find(function(child){
+					if(child.href === path)
+						return true;
+					else if(child.children_list && child.children_list.length)
+						return findChild(child.children_list);
+					return false;
+				});
+			}
+			return findChild(data.children_list);
+		};
 		this.findNodeByPath = function(path){
 			return this.findLeaf(path); 
 		}; 
