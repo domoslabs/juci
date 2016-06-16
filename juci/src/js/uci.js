@@ -1200,7 +1200,6 @@
 		PortValidator: PortValidator, 
 		PortOrRangeValidator: PortOrRangeValidator,
 		PortRangeValidator: PortRangeValidator,
-		PortRangeDashValidator: PortRangeDashValidator,
 		ConnbytesValidator: ConnbytesValidator,
 		NumberLimitValidator: NumberLimitValidator, 
 		TimeValidator: TimeValidator,
