@@ -185,14 +185,10 @@ JUCI.app
 		}).always(function(){next();});
 	});
 	var onConnect = function(iface){
-		if(!$rpc.network || !$rpc.network.interface || 
-			!$rpc.network.interface[iface[".name"]] || !$rpc.network.interface[iface[".name"]].up) return;
-		$rpc.network.interface[iface[".name"]].up()
+		$rpc.$call("network.interface[iface['.name']]", "up");
 	}
 	var onDisconnect = function(iface){
-		if(!$rpc.network || !$rpc.network.interface || 
-			!$rpc.network.interface[iface[".name"]] || !$rpc.network.interface[iface[".name"]].down) return;
-		$rpc.network.interface[iface[".name"]].down();
+		$rpc.$call("network.interface[iface['.name']]", "down");
 	}
 
 	function updateStatus(){

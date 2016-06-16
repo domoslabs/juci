@@ -3,10 +3,10 @@
 		<div ng-class="{ 'col-xs-12 col-sm-9': !hideButtons, 'col-xs-12': hideButtons }">
 			<i class="fa fa-spinner fa-spin fa-2x" ng-show="!items"></i>
 			<div class="list-group">
-				<div ng-show="items" href="" class="list-group-item row" style="padding: 0 15px;" ng-repeat="i in items track by $index" ng-class="{active: item === i}">
-					<div ng-click="onListEditItem(i)" class="row" style="position:relative;width:100%;margin:0px;padding: 10px 0 10px 0; text-align: left; cursor:pointer;">
-						<h3>{{getItemTitle({"$item": i })}}</h3>
-						<i ng-show="showIcon && !sortable" class="{{getIcon(iconStatus({$item:i}))}}" style="float:right;position:absolute;top:20px;right:10px;"></i>
+				<div ng-show="items" href="" class="list-group-item row" style="padding: 10px;" ng-repeat="i in items track by $index" ng-class="{active: item === i}">
+					<div ng-click="onListEditItem(i)" class="row" style="position:relative;width:100%;margin:0px;padding: 0; text-align: left; cursor:pointer;">
+						<h3 style="margin-top:10px">{{getItemTitle({"$item": i })}}</h3>
+						<i ng-show="showIcon && !sortable" class="{{getIcon(iconStatus({$item:i}))}}" style="float:right;position:absolute;top:10px;right:10px;"></i>
 					</div>
 					<div ng-show="sortable" style="position:absolute;top:10px;right:20px;float:right;" class="btn-group-horizontal btn-group-sm">
 					    <button type="button" ng-click="onMoveUp(i)" class="btn btn-default"><i class="fa fa-angle-up"></i></button>

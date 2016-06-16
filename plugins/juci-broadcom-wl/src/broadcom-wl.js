@@ -107,7 +107,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 	Wireless.prototype.getDevices = function(){
 		var deferred = $.Deferred(); 
 		$uci.$sync("wireless").done(function(){
-			$rpc.router.radios().done(function(radios){
+			$rpc.$call("router", "radios").done(function(radios){
 				var devices = $uci.wireless["@wifi-device"].map(function(dev){
 					var radio = radios[dev[".name"]];
 					if(radio){
