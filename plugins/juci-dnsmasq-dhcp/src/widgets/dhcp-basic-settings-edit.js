@@ -23,7 +23,9 @@ JUCI.app
 	return {
 		scope: {
 			dhcp: "=ngModel", 
-			connection: "=ngConnection"
+			connection: "=ngConnection",
+			hideAdvanced: "@",
+			hideIpv6: "@"
 		}, 
 		templateUrl: "/widgets/dhcp-basic-settings-edit.html", 
 		controller: "dhcpBasicSettingsEdit"

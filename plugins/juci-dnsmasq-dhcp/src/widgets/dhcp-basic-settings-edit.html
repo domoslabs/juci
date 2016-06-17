@@ -8,7 +8,7 @@
 	<juci-config-line title="{{'DHCP Lease Time'|translate}}">
 		<juci-select ng-model="dhcp.leasetime.value" ng-items="dhcpLeaseTimes" placeholder="{{'Lease Time'|translate}}"/>
 	</juci-config-line>
-	<juci-expandable title="{{'Advanced Settings'|translate}}" open="false">
+	<juci-expandable ng-hide="hideAdvanced" title="{{'Advanced Settings'|translate}}" open="false">
 		<juci-config-line title="{{'DHCP Options'|translate}}">
 			<div class="input-group">
 					<input class="form-control" type="number" ng-model="data.dhcp.field1" placeholder="{{'ID'|translate}}" style="max-width: 80px !important;"/>
@@ -44,7 +44,7 @@
 		</juci-config-line>
 		-->
 	</juci-expandable>
-	<juci-expandable title="{{'IPv6 Settings'|translate}}" open="false">
+	<juci-expandable ng-hide="hideIpv6" title="{{'IPv6 Settings'|translate}}" open="false">
 		<!-- TODO: Add later
 		<juci-config-line title="{{'Ignore'|translate}}">
 			<switch ng-model="dhcp.ignore.value" class="green" ></switch>
