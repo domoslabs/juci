@@ -29,6 +29,7 @@
 					/*"scanresults"*/
 				],
 				"router": [
+					"wl",
 					"stas",
 					"clients6",
 					"radios"
