@@ -243,7 +243,7 @@
 		}, 
 		$has: function(obj, method){
 			var path = obj.replace(/^\//, '').replace(/\//, '.').split(".");
-			path.push(method);
+			if(method) path.push(method);
 			function _exist(arr, obj){
 				if(!obj.hasOwnProperty(arr[0])) return false;
 				var child = arr.shift();
