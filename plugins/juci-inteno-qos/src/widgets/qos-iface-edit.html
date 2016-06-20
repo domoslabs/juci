@@ -1,10 +1,10 @@
 <div>
 	<juci-config-lines>
-		<juci-config-line title="{{'Bandwidth Limitation'|translate}}">
+		<juci-config-line title="{{'Enable QoS'|translate}}">
 			<switch class="green" ng-model="instance.enabled.value" />
 		</juci-config-line>
 
-		<label class="label label-danger" translate>Acceleration will be disabled when Bandwidth Limitation is enabled</label>
+		<label class="label label-danger" translate>Acceleration will be disabled when QoS is enabled</label>
 		<juci-config-line title="{{'Classification Group'|translate}}">
 			<juci-select ng-items="allClassgroups" ng-model="instance.classgroup.value"></juci-select>
 		</juci-config-line>
