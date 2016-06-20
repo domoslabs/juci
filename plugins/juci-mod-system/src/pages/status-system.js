@@ -95,6 +95,8 @@ JUCI.app.run(function($uci){
 		$scope.systemStatusTbl.rows = [
 			[$tr(gettext("Hostname")), board.hostname || $tr(gettext("N/A"))],
 			[$tr(gettext("Model")), $config.board.system.hardware || $tr(gettext("N/A"))],
+			[$tr(gettext("Serial No")), sys.system.serialno || $tr(gettext("N/A"))],
+			[$tr(gettext("MAC Address")), sys.system.basemac || $tr(gettext("N/A"))],
 			[$tr(gettext("Firmware Version")), $config.board.system.firmware || $tr(gettext("N/A"))],
 			[$tr(gettext("Kernel Version")), board.kernel || sys.system.kernel || $tr(gettext("N/A"))],
 			[$tr(gettext("Filesystem")), sys.system.filesystem || $tr(gettext("N/A"))],
