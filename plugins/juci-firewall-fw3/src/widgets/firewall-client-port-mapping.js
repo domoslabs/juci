@@ -81,7 +81,7 @@ JUCI.app
 		});
 	};
 	var portValidator = new $uci.validators.PortValidator();
-	var portOrRange = new $uci.validators.PortOrRangeValidator();
+	var portOrRange = new ($uci.validators.PortOrRangeValidator())();
 
 	$scope.getValid = function(port){
 		if(!port || !$scope.edit || !$scope.edit[port]) return null;
