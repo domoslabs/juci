@@ -29,64 +29,64 @@ define BuildDir-y
 	$(eval CODE_LOAD:=50) # same as LOAD, LOAD is deprecated
 	$(eval TPL_LOAD:=90)
 	$(eval STYLE_LOAD:=50)
+	$(eval CODE_DIR:=$(BIN)/www/$(if $(3),$(3),js))
 	$(eval PO-y:=po/*.po)
 	$(eval JAVASCRIPT-y:=src/*.js src/pages/*.js src/widgets/*.js)
 	$(eval TEMPLATES-y:=src/widgets/*.html src/pages/*.html)
 	$(eval STYLES-y:=src/css/*.css)
 	$(eval STYLES_LESS-y:=src/css/*.less)
 	$(eval PLUGIN_DIR:=$(2))
-	$(eval -include $(2)/Makefile)
+	$(eval PLUGIN:=$(1))
+	$(eval -include $(PLUGIN_DIR)/Makefile)
 	$(eval $(Plugin/$(1)))
-	$(eval TARGETS+=$(1)-install)
-	$(eval JAVASCRIPT_$(1):=$(wildcard $(addprefix $(2)/,$(JAVASCRIPT-y))))
-	$(eval TEMPLATES_$(1):=$(wildcard $(addprefix $(2)/,$(TEMPLATES-y))))
-	$(eval STYLES_$(1):=$(wildcard $(addprefix $(2)/,$(STYLES-y))))
-	$(eval STYLES_LESS_$(1):=$(wildcard $(addprefix $(2)/,$(STYLES_LESS-y))))
-	$(eval PO_$(1):=$(wildcard $(addprefix $(2)/,$(PO-y))))
-	PHONY += $(1)-install
-$(TMP_DIR)/$(CODE_LOAD)-$(1).js: $(JAVASCRIPT_$(1)) $(PO_$(1))
-	@echo -e "\033[0;33m[JS]\t$(1) -> $$@\033[m"
-	@#echo "   * $$^"
+	$(eval TARGETS+=$(PLUGIN)-install)
+	$(eval JAVASCRIPT_$(PLUGIN):=$(wildcard $(addprefix $(PLUGIN_DIR)/,$(JAVASCRIPT-y))))
+	$(eval TEMPLATES_$(PLUGIN):=$(wildcard $(addprefix $(PLUGIN_DIR)/,$(TEMPLATES-y))))
+	$(eval STYLES_$(PLUGIN):=$(wildcard $(addprefix $(PLUGIN_DIR)/,$(STYLES-y))))
+	$(eval STYLES_LESS_$(PLUGIN):=$(wildcard $(addprefix $(PLUGIN_DIR)/,$(STYLES_LESS-y))))
+	$(eval PO_$(PLUGIN):=$(wildcard $(addprefix $(PLUGIN_DIR)/,$(PO-y))))
+	PHONY += $(PLUGIN)-install
+	# ex. tmp/50-my-awesome-plugin.js: first_file.js second_file.js first_po_file.po ...
+$(TMP_DIR)/$(CODE_LOAD)-$(PLUGIN).js: $(JAVASCRIPT_$(PLUGIN)) $(PO_$(PLUGIN))
+	@echo -e "\033[0;33m[JS]\t$(PLUGIN) -> $$@\033[m"
 	@echo "" > $$@
-	$(Q)if [ "" != "$(JAVASCRIPT_$(1))" ]; then for file in $(JAVASCRIPT_$(1)); do cat $$$$file >> $$@; echo "" >> $$@; done; fi
-	$(Q)if [ "" != "$(PO_$(1))" ]; then ./scripts/po2js $(PO_$(1)) >> $$@; echo "" >> $$@; fi
-$(TMP_DIR)/$(STYLE_LOAD)-$(1).css: $(STYLES_$(1)) $(TMP_DIR)/$(1)-compiled-styles.css
-	@echo -e "\033[0;33m[CSS]\t$(1) -> $$@\033[m"
-	@#echo "   * $$(STYLES_$(1))"
+	$(Q)if [ "" != "$(JAVASCRIPT_$(PLUGIN))" ]; then for file in $(JAVASCRIPT_$(PLUGIN)); do cat $$$$file >> $$@; echo "" >> $$@; done; fi
+	$(Q)if [ "" != "$(PO_$(PLUGIN))" ]; then ./scripts/po2js $(PO_$(PLUGIN)) >> $$@; echo "" >> $$@; fi
+$(TMP_DIR)/$(STYLE_LOAD)-$(PLUGIN).css: $(STYLES_$(PLUGIN)) $(TMP_DIR)/$(PLUGIN)-compiled-styles.css
+	@echo -e "\033[0;33m[CSS]\t$(PLUGIN) -> $$@\033[m"
 	@echo "" > $$@
 	$(Q)if [ "" != "$$^" ]; then for file in $$^; do cat $$$$file >> $$@; echo "" >> $$@; done; fi
-$(TMP_DIR)/$(STYLE_LOAD)-$(1).css.js: $(TMP_DIR)/$(STYLE_LOAD)-$(1).css
+$(TMP_DIR)/$(STYLE_LOAD)-$(PLUGIN).css.js: $(TMP_DIR)/$(STYLE_LOAD)-$(PLUGIN).css
 	$(Q)./scripts/css-to-js $$^
-$(TMP_DIR)/$(1)-compiled-styles.css: $(STYLES_LESS_$(1)) 
-	@echo -e "\033[0,33m[LESS]\t$(1) -> $$@\033[m"
+$(TMP_DIR)/$(PLUGIN)-compiled-styles.css: $(STYLES_LESS_$(PLUGIN))
+	@echo -e "\033[033m[LESS]\t$(PLUGIN) -> $$@\033[m"
 	@echo "" > $$@
 	$(Q)if [ "" != "$$^" ]; then for file in $$^; do lessc $$$$file >> $$@; echo "" >> $$@; done; fi
-$(TMP_DIR)/$(TPL_LOAD)-$(1).tpl.js: $(TEMPLATES_$(1))
-	@echo -e "\033[0;33m[HTML]\t$(1) -> $$@\033[m"
-	@#echo "   * $$^"
+$(TMP_DIR)/$(TPL_LOAD)-$(PLUGIN).tpl.js: $(TEMPLATES_$(PLUGIN))
+	@echo -e "\033[0;33m[HTML]\t$(PLUGIN) -> $$@\033[m"
 	@echo "" > $$@
 	$(Q)if [ "" != "$$^" ]; then ./scripts/juci-build-tpl-cache $$^ $$@; fi
-$(2)/po/template.pot: $(JAVASCRIPT_$(1)) $(TEMPLATES_$(1))
-	@echo -e "\033[0;33m[POT]\t$(1) -> $$@\033[m"
+$(PLUGIN_DIR)/po/template.pot: $(JAVASCRIPT_$(PLUGIN)) $(TEMPLATES_$(PLUGIN))
+	@echo -e "\033[0;33m[POT]\t$(PLUGIN) -> $$@\033[m"
 	@mkdir -p "$$(dir $$@)"
 	@echo "" > $$@
 	$(Q)if [ "" != "$$^" ]; then ./scripts/extract-strings $$^ > $$@; msguniq $$@ > $$@.tmp; mv $$@.tmp $$@; fi
 	@echo "" >> $$@
-	@for file in `find $(2)/src/pages/ -name "*.html"`; do PAGE=$$$${file%%.*}; echo -e "# $$$$file \nmsgid \"menu-$$$$(basename $$$$PAGE)-title\"\nmsgstr \"\"\n" >> $$@; echo -e "# $$$$file \nmsgid \"$$$$(basename $$$$PAGE)-title\"\nmsgstr \"\"\n" >> $$@; done
-$(CODE_DIR)/$(CODE_LOAD)-$(1).js: $(TMP_DIR)/$(CODE_LOAD)-$(1).js $(TMP_DIR)/$(STYLE_LOAD)-$(1).css.js $(TMP_DIR)/$(TPL_LOAD)-$(1).tpl.js  
-	cat $$^ > $$@
-$(1)-install: $(2)/po/template.pot $(CODE_DIR)/$(CODE_LOAD)-$(1).js
-	$(call Plugin/$(1)/install,$(BIN))
-	$(Q)if [ -d $(2)/ubus ]; then $(CP) $(2)/ubus/* $(BACKEND_BIN_DIR); fi
-	#$(Q)if [ -d $(2)/service ]; then $(CP) $(2)/service/* $(BIN)/usr/lib/ubus-services/; fi
+	@for file in `find $(PLUGIN_DIR)/src/pages/ -name "*.html"`; do PAGE=$$$${file%%.*}; echo -e "# $$$$file \nmsgid \"menu-$$$$(basename $$$$PAGE)-title\"\nmsgstr \"\"\n" >> $$@; done
+$(CODE_DIR)/$(CODE_LOAD)-$(PLUGIN).js: $(TMP_DIR)/$(CODE_LOAD)-$(PLUGIN).js $(TMP_DIR)/$(STYLE_LOAD)-$(PLUGIN).css.js $(TMP_DIR)/$(TPL_LOAD)-$(PLUGIN).tpl.js
+	$(Q)cat $$^ > $$@
+$(PLUGIN)-install: $(PLUGIN_DIR)/po/template.pot $(CODE_DIR)/$(CODE_LOAD)-$(PLUGIN).js
+	$(call Plugin/$(PLUGIN)/install,$(BIN))
+	$(Q)if [ -d $(PLUGIN_DIR)/ubus ]; then $(CP) $(PLUGIN_DIR)/ubus/* $(BACKEND_BIN_DIR); fi
 	@-chmod +x $(BACKEND_BIN_DIR)/* 
-	$(Q)if [ -f $(2)/menu.json ]; then $(CP) $(2)/menu.json $(BIN)/usr/share/rpcd/menu.d/$(1).json; fi
-	$(Q)if [ -f $(2)/access.json ]; then $(CP) $(2)/access.json $(BIN)/usr/share/rpcd/acl.d/$(1).json; fi
+	$(Q)if [ -f $(PLUGIN_DIR)/menu.json ]; then $(CP) $(PLUGIN_DIR)/menu.json $(BIN)/usr/share/rpcd/menu.d/$(PLUGIN).json; fi
+	$(Q)if [ -f $(PLUGIN_DIR)/access.json ]; then $(CP) $(PLUGIN_DIR)/access.json $(BIN)/usr/share/rpcd/acl.d/$(PLUGIN).json; fi
 endef
 
 $(eval $(call BuildDir-$(CONFIG_PACKAGE_juci),juci,$(CURDIR)/juci/))
-$(foreach th,$(wildcard $(PLUGINS-y)/*),$(eval $(call BuildDir-$(CONFIG_PACKAGE_$(notdir $(th))),$(notdir $(th)),$(CURDIR)/$(PLUGINS-y)/$(notdir $(th)))))
-$(foreach th,$(wildcard themes/*),$(eval $(call BuildDir-$(CONFIG_PACKAGE_$(notdir $(th))),$(notdir $(th)),$(CURDIR)/themes/$(notdir $(th)))))
+$(foreach th,$(wildcard plugins/*),$(eval $(call BuildDir-y,$(notdir $(th)),$(CURDIR)/plugins/$(notdir $(th)))))
+$(foreach th,$(wildcard themes/*),$(eval $(call BuildDir-y,$(notdir $(th)),$(CURDIR)/themes/$(notdir $(th)),themes)))
+endif
 
 
 export CC:=$(CC)
@@ -111,6 +111,7 @@ prepare: .cleaned
 	@./scripts/bootstrap.sh
 	@mkdir -p $(TMP_DIR)
 	@mkdir -p $(BIN)/www/js/
+	@mkdir -p $(BIN)/www/themes/
 	@mkdir -p $(BIN)/www/css/
 	@mkdir -p $(BIN)/usr/bin/
 	@mkdir -p $(BIN)/usr/share/juci/
@@ -118,7 +119,6 @@ prepare: .cleaned
 	@mkdir -p $(BIN)/usr/share/rpcd/menu.d/
 	@mkdir -p $(BIN)/usr/share/rpcd/acl.d/
 	@mkdir -p $(BACKEND_BIN_DIR)
-	#@mkdir -p $(BIN)/usr/lib/ubus-services/
 	
 node_modules: package.json
 	npm install --production
@@ -132,7 +132,6 @@ release: prepare node_modules $(TARGETS)
 debug: prepare node_modules $(TARGETS)
 	@echo "======= JUCI DEBUG =========="
 	@echo -e "\033[0;33m [GRUNT] $@ \033[m"
-	#@grunt 
 	@echo -e "\033[0;33m [UPDATE] $@ \033[m"
 	@./scripts/juci-update $(BIN)/www DEBUG
 	@cp scripts/juci-update $(BIN)/usr/bin/

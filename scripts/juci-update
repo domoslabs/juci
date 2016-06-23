@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -e 
+set -e
 
 WWW="$1"
 MODE="$2"
@@ -24,16 +24,6 @@ elif [ -d /www ]; then
 elif [ -d /var/www ]; then
 	WWW="/var/www"
 fi
-
-#rm -f $WWW/__all.js
-#for file in $WWW/js/*.js; do
-#	cat $file >> $WWW/__all.js
-#done
-
-#rm -f $WWW/__all.css
-#for file in $WWW/css/*.css; do
-#	cat $file >> $WWW/__all.css
-#done
 
 if [ "$MODE" == "RELEASE" ]; then
 	for file in `find ${WWW} -type f | grep -v "\.gz" | grep -v cgi-bin`; do
