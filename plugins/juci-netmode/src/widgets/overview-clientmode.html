@@ -23,7 +23,7 @@
 					<input type="text" ng-model="manual.key" class="form-control" />
 				</juci-config-line>
 				<div class="row">
-					<div class="col-lg-6" style="text-align:center;"><button class="btn btn-default" ng-click="onScanAp()" ng-show="showManual.value">{{'Scan for avalible APs'|translate}}</button></div>
+					<div class="col-lg-6" style="text-align:center;"><button class="btn btn-default" ng-click="onScanAp()" ng-show="showManual.value">{{'Scan for available APs'|translate}}</button></div>
 					<div class="col-lg-6" style="text-align:center;"><button class="btn btn-default {{onManualConnect?'':'disabled'}}" ng-click="onManualConnect()">{{'Connect'|translate}}</button></div>
 				</div>
 			</juci-config-lines>
@@ -33,7 +33,7 @@
 			<label style="font-size:1.2em;" class="col-md-5">
 				{{'Select AP'|translate}}
 			</label>
-			<div class="col-md-7"><juci-select ng-items="avalibleAps" ng-model="automatic.bssid"></juci-select></div>
+			<div class="col-md-7"><juci-select ng-items="availableAps" ng-model="automatic.bssid"></juci-select></div>
 			<div ng-show="showAutomaticPassword()">
 				<label style="font-size:1.2em;" class="col-md-5 col-lg-12">
 					{{'Encryption key'|translate}}

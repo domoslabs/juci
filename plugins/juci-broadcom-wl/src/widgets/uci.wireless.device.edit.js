@@ -43,7 +43,7 @@ JUCI.app
 			$scope.$apply(); 
 		}); 
 	}); 
-	//make these avalible for translation
+	//make these available for translation
 	gettext("11a");
 	gettext("11ac");
 	gettext("11b");

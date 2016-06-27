@@ -47,7 +47,7 @@ JUCI.app
 						inst.close();
 					},
 					title: $tr(gettext("Error")),
-					content: $tr(gettext("No avalible networks to add!"))
+					content: $tr(gettext("No available networks to add!"))
 				});
 			}else {
 				var model = {
