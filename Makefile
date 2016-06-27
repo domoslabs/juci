@@ -25,11 +25,11 @@ define Plugin/Default
 endef 
 
 define BuildDir-y 
+	$(eval BIN:=$(if $(local),bin,bin/$(1)))
 	$(eval $(call Plugin/Default))
 	$(eval CODE_LOAD:=50) # same as LOAD, LOAD is deprecated
 	$(eval TPL_LOAD:=90)
 	$(eval STYLE_LOAD:=50)
-	$(eval BIN:=$(BIN)$(if $(local),,/$(1)))
 	$(eval BACKEND_BIN_DIR:=$(BIN)/usr/lib/ubus/juci/)
 	$(eval CODE_DIR:=$(BIN)/www/$(if $(3),$(3),js))
 	$(eval PO-y:=po/*.po)
@@ -85,7 +85,6 @@ $(PLUGIN)-install: $(PLUGIN_DIR)/po/template.pot $(CODE_DIR)/$(CODE_LOAD)-$(PLUG
 	@-chmod +x $(BACKEND_BIN_DIR)/* 
 	$(Q)if [ -f $(PLUGIN_DIR)/menu.json ]; then mkdir -p $(BIN)/usr/share/rpcd/menu.d; $(CP) $(PLUGIN_DIR)/menu.json $(BIN)/usr/share/rpcd/menu.d/$(PLUGIN).json; fi
 	$(Q)if [ -f $(PLUGIN_DIR)/access.json ]; then mkdir -p $(BIN)/usr/share/rpcd/acl.d; $(CP) $(PLUGIN_DIR)/access.json $(BIN)/usr/share/rpcd/acl.d/$(PLUGIN).json; fi
-	$(eval BIN:=bin)
 endef
 
 ifeq ($(local),true)
@@ -93,9 +92,9 @@ $(eval $(call BuildDir-$(CONFIG_PACKAGE_juci),juci,$(CURDIR)/juci/))
 $(foreach th,$(wildcard plugins/*),$(eval $(call BuildDir-$(CONFIG_PACKAGE_$(notdir $(th))),$(notdir $(th)),$(CURDIR)/plugins/$(notdir $(th)))))
 $(foreach th,$(wildcard themes/*),$(eval $(call BuildDir-$(CONFIG_PACKAGE_$(notdir $(th))),$(notdir $(th)),$(CURDIR)/themes/$(notdir $(th)),themes)))
 else
-$(eval $(call BuildDir-$(CONFIG_PACKAGE_juci),juci,$(CURDIR)/juci/))
 $(foreach th,$(wildcard plugins/*),$(eval $(call BuildDir-y,$(notdir $(th)),$(CURDIR)/plugins/$(notdir $(th)))))
 $(foreach th,$(wildcard themes/*),$(eval $(call BuildDir-y,$(notdir $(th)),$(CURDIR)/themes/$(notdir $(th)),themes)))
+$(eval $(call BuildDir-y,juci,$(CURDIR)/juci/))
 endif
 
 
@@ -136,7 +135,7 @@ node_modules: package.json
 release: prepare node_modules $(TARGETS)
 	@echo "======= JUCI RELEASE =========="
 	@./scripts/juci-compile $(BIN) 
-	./scripts/juci-update $(BIN) RELEASE
+	@./scripts/juci-update $(BIN) RELEASE
 	@cp juci-update $(BIN)/usr/bin/
 
 debug: prepare node_modules $(TARGETS)
