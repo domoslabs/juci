@@ -29,6 +29,8 @@ define BuildDir-y
 	$(eval CODE_LOAD:=50) # same as LOAD, LOAD is deprecated
 	$(eval TPL_LOAD:=90)
 	$(eval STYLE_LOAD:=50)
+	$(eval BIN:=$(BIN)$(if $(local),,/$(1)))
+	$(eval BACKEND_BIN_DIR:=$(BIN)/usr/lib/ubus/juci/)
 	$(eval CODE_DIR:=$(BIN)/www/$(if $(3),$(3),js))
 	$(eval PO-y:=po/*.po)
 	$(eval JAVASCRIPT-y:=src/*.js src/pages/*.js src/widgets/*.js)
@@ -74,13 +76,16 @@ $(PLUGIN_DIR)/po/template.pot: $(JAVASCRIPT_$(PLUGIN)) $(TEMPLATES_$(PLUGIN))
 	@echo "" >> $$@
 	@for file in `find $(PLUGIN_DIR)/src/pages/ -name "*.html"`; do PAGE=$$$${file%%.*}; echo -e "# $$$$file \nmsgid \"menu-$$$$(basename $$$$PAGE)-title\"\nmsgstr \"\"\n" >> $$@; done
 $(CODE_DIR)/$(CODE_LOAD)-$(PLUGIN).js: $(TMP_DIR)/$(CODE_LOAD)-$(PLUGIN).js $(TMP_DIR)/$(STYLE_LOAD)-$(PLUGIN).css.js $(TMP_DIR)/$(TPL_LOAD)-$(PLUGIN).tpl.js
+	@mkdir -p "$$(dir $$@)"
 	$(Q)cat $$^ > $$@
 $(PLUGIN)-install: $(PLUGIN_DIR)/po/template.pot $(CODE_DIR)/$(CODE_LOAD)-$(PLUGIN).js
+	@mkdir -p $(BACKEND_BIN_DIR)
 	$(call Plugin/$(PLUGIN)/install,$(BIN))
 	$(Q)if [ -d $(PLUGIN_DIR)/ubus ]; then $(CP) $(PLUGIN_DIR)/ubus/* $(BACKEND_BIN_DIR); fi
 	@-chmod +x $(BACKEND_BIN_DIR)/* 
-	$(Q)if [ -f $(PLUGIN_DIR)/menu.json ]; then $(CP) $(PLUGIN_DIR)/menu.json $(BIN)/usr/share/rpcd/menu.d/$(PLUGIN).json; fi
-	$(Q)if [ -f $(PLUGIN_DIR)/access.json ]; then $(CP) $(PLUGIN_DIR)/access.json $(BIN)/usr/share/rpcd/acl.d/$(PLUGIN).json; fi
+	$(Q)if [ -f $(PLUGIN_DIR)/menu.json ]; then mkdir -p $(BIN)/usr/share/rpcd/menu.d; $(CP) $(PLUGIN_DIR)/menu.json $(BIN)/usr/share/rpcd/menu.d/$(PLUGIN).json; fi
+	$(Q)if [ -f $(PLUGIN_DIR)/access.json ]; then mkdir -p $(BIN)/usr/share/rpcd/acl.d; $(CP) $(PLUGIN_DIR)/access.json $(BIN)/usr/share/rpcd/acl.d/$(PLUGIN).json; fi
+	$(eval BIN:=bin)
 endef
 
 ifeq ($(local),true)
@@ -131,8 +136,8 @@ node_modules: package.json
 release: prepare node_modules $(TARGETS)
 	@echo "======= JUCI RELEASE =========="
 	@./scripts/juci-compile $(BIN) 
-	@if [ "$(CONFIG_PACKAGE_juci)" = "y" ]; then ./scripts/juci-update $(BIN)/www RELEASE; fi
-	@cp scripts/juci-update $(BIN)/usr/bin/
+	./scripts/juci-update $(BIN) RELEASE
+	@cp juci-update $(BIN)/usr/bin/
 
 debug: prepare node_modules $(TARGETS)
 	@echo "======= JUCI DEBUG =========="

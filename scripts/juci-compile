@@ -6,7 +6,7 @@ set -e
 BIN=$1
 if [ "$1" == "" ]; then BIN=bin; fi
 
-for file in `find $BIN/www/js/ -name "*.js"`; do 
+for file in `find $BIN/*/www/js/ -name "*.js"`; do 
 	echo "Compiling JS ${file}.."
 	uglifyjs ${file} > ${file}.out
 	mv ${file}.out ${file}
