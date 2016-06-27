@@ -36,6 +36,20 @@ JUCI.app
 	$scope.hasChildren = function(menu){
 		return Object.keys(menu.children) > 0;
 	};
+	$scope.getHref = function(item){
+		if(!item.redirect) return item.href;
+		if(item.redirect === "first"){
+			if(!item.children_list) return "/404";
+			var child =  item.children_list.find(function(child){
+				if(child.modes && child.modes.length){
+					return child.modes.indexOf($scope.mode) !== -1;
+				}
+				return true;
+			});
+			return $scope.getHref(child);
+		}
+		return item.redirect;
+	}
 
 	$scope.isItemActive = function (item) {
 		var active_node = $navigation.findNodeByHref($location.path().replace(/\//g, "")); 

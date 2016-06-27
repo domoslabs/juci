@@ -35,9 +35,9 @@ JUCI.app
 	$scope.homepage = $config.settings.juci.homepage.value; 
 
 	$scope.getHref = function(item){
-		if(!item.redirect) return "#!" + item.href;
+		if(!item.redirect) return item.href;
 		if(item.redirect === "first"){
-			if(!item.children_list) return "#!/404";
+			if(!item.children_list) return "/404";
 			var child =  item.children_list.find(function(child){
 				if(child.modes && child.modes.length){
 					return child.modes.indexOf($scope.mode) !== -1;
@@ -46,7 +46,7 @@ JUCI.app
 			});
 			return $scope.getHref(child);
 		}
-		return "#!" + item.redirect;
+		return item.redirect;
 	}
 	$scope.hasChildren = function(menu){
 		return menu.children_list > 0; 

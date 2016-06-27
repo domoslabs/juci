@@ -109,7 +109,7 @@
 					}
 					if(menu.require.value.length){
 						var ok = true;
-						async.eachSeries(menu.require.value, function(item, next){
+						async.eachSeries(menu.require.value, function(item, n){
 							if(!item || !item.split(":").length || item.split(":").length !== 2){
 								addMenuItem("invalid require: " + item);
 								done();
@@ -121,7 +121,7 @@
 								case "file":
 									$rpc.$call("file", "stat", {"path":value || ""}).fail(function(){
 										ok = false;
-									}).always(function(){next();});
+									}).always(function(){n();});
 									break;
 								case "ubus":
 									var split = value.split("->").filter(function(item){return item !== ""});
@@ -130,11 +130,12 @@
 									else if(split.length === 2)
 										ok = $rpc.$has(split[0], split[1]);
 									else
-										console.log("invalid require ubus: " + value);
-									next();
+										console.log("invalid require ubus with value: " + value);
+									n();
+									break;
 								default:
 									console.log("error: list require " + type + ':' + value + " is not supported");
-									next();
+									n();
 							}
 						}, function(){
 							if(ok)
