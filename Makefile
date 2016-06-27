@@ -83,6 +83,11 @@ $(PLUGIN)-install: $(PLUGIN_DIR)/po/template.pot $(CODE_DIR)/$(CODE_LOAD)-$(PLUG
 	$(Q)if [ -f $(PLUGIN_DIR)/access.json ]; then $(CP) $(PLUGIN_DIR)/access.json $(BIN)/usr/share/rpcd/acl.d/$(PLUGIN).json; fi
 endef
 
+ifeq ($(local),true)
+$(eval $(call BuildDir-$(CONFIG_PACKAGE_juci),juci,$(CURDIR)/juci/))
+$(foreach th,$(wildcard plugins/*),$(eval $(call BuildDir-$(CONFIG_PACKAGE_$(notdir $(th))),$(notdir $(th)),$(CURDIR)/plugins/$(notdir $(th)))))
+$(foreach th,$(wildcard themes/*),$(eval $(call BuildDir-$(CONFIG_PACKAGE_$(notdir $(th))),$(notdir $(th)),$(CURDIR)/themes/$(notdir $(th)),themes)))
+else
 $(eval $(call BuildDir-$(CONFIG_PACKAGE_juci),juci,$(CURDIR)/juci/))
 $(foreach th,$(wildcard plugins/*),$(eval $(call BuildDir-y,$(notdir $(th)),$(CURDIR)/plugins/$(notdir $(th)))))
 $(foreach th,$(wildcard themes/*),$(eval $(call BuildDir-y,$(notdir $(th)),$(CURDIR)/themes/$(notdir $(th)),themes)))
