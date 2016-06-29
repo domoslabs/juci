@@ -93,8 +93,8 @@ else
 ifdef $(THEME_PATH)
 $(foreach th,$(wildcard $(THEME_PATH)/*,$(eval $(call BuildDir-y $(notdir $(th)),$(th)))))
 endif
-$(foreach th,$(wildcard plugins/*),$(eval $(call BuildDir-y,$(notdir $(th)),$(CURDIR)/plugins/$(notdir $(th)))))
-$(foreach th,$(wildcard themes/*),$(eval $(call BuildDir-y,$(notdir $(th)),$(CURDIR)/themes/$(notdir $(th)),themes)))
+$(foreach pl,$(wildcard plugins/*),$(eval $(call BuildDir-y,$(notdir $(pl)),$(pl))))
+###$(foreach th,$(wildcard themes/*),$(eval $(call BuildDir-y,$(notdir $(th)),$(CURDIR)/themes/$(notdir $(th)),themes)))
 $(eval $(call BuildDir-y,juci,$(CURDIR)/juci/))
 endif
 
