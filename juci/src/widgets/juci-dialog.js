@@ -38,8 +38,8 @@ JUCI.app
 				}
 			}
 			if(opts.size == undefined) opts.size = "lg";
-			//if(widget == null && !opts.content) opts.widget = "<div></div>";
-			//if(widget == null && opts.content) opts.widget = opts.content;
+			if(widget == null && !opts.content) opts.widget = "<div></div>";
+			if(widget == null && opts.content) opts.widget = opts.content;
 			else opts.widget = "<" + widget + " ng-model='model'/>"; 
 			var modalInstance = $modal.open({
 				animation: false,
