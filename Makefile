@@ -90,6 +90,9 @@ $(eval $(call BuildDir-$(CONFIG_PACKAGE_juci),juci,$(CURDIR)/juci/))
 $(foreach th,$(wildcard plugins/*),$(eval $(call BuildDir-$(CONFIG_PACKAGE_$(notdir $(th))),$(notdir $(th)),$(CURDIR)/plugins/$(notdir $(th)))))
 $(foreach th,$(wildcard themes/*),$(eval $(call BuildDir-$(CONFIG_PACKAGE_$(notdir $(th))),$(notdir $(th)),$(CURDIR)/themes/$(notdir $(th)),themes)))
 else
+ifdef $(PATH)
+$(foreach th,$(wildcard $(PATH)/*,$(eval $(call BuildDir-y $(notdir $(th)),$(th)))))
+endif
 $(foreach th,$(wildcard plugins/*),$(eval $(call BuildDir-y,$(notdir $(th)),$(CURDIR)/plugins/$(notdir $(th)))))
 $(foreach th,$(wildcard themes/*),$(eval $(call BuildDir-y,$(notdir $(th)),$(CURDIR)/themes/$(notdir $(th)),themes)))
 $(eval $(call BuildDir-y,juci,$(CURDIR)/juci/))
