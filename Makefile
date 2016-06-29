@@ -87,14 +87,13 @@ endef
 
 ifeq ($(local),true)
 $(eval $(call BuildDir-$(CONFIG_PACKAGE_juci),juci,$(CURDIR)/juci/))
-$(foreach th,$(wildcard plugins/*),$(eval $(call BuildDir-$(CONFIG_PACKAGE_$(notdir $(th))),$(notdir $(th)),$(CURDIR)/plugins/$(notdir $(th)))))
-$(foreach th,$(wildcard themes/*),$(eval $(call BuildDir-$(CONFIG_PACKAGE_$(notdir $(th))),$(notdir $(th)),$(CURDIR)/themes/$(notdir $(th)),themes)))
+$(foreach th,$(wildcard plugins/*),$(eval $(call BuildDir-$(CONFIG_PACKAGE_$(notdir $(th))),$(notdir $(th)),$(th))))
+$(foreach th,$(wildcard themes/*),$(eval $(call BuildDir-$(CONFIG_PACKAGE_$(notdir $(th))),$(notdir $(th)),$(th),themes)))
 else
-ifdef $(THEME_PATH)
-$(foreach th,$(wildcard $(THEME_PATH)/*,$(eval $(call BuildDir-y $(notdir $(th)),$(th)))))
+ifneq ($(THEME_PATH),)
+$(foreach th,$(wildcard $(THEME_PATH)*),$(eval $(call BuildDir-y,$(notdir $(th)),$(th),themes)))
 endif
 $(foreach pl,$(wildcard plugins/*),$(eval $(call BuildDir-y,$(notdir $(pl)),$(pl))))
-###$(foreach th,$(wildcard themes/*),$(eval $(call BuildDir-y,$(notdir $(th)),$(CURDIR)/themes/$(notdir $(th)),themes)))
 $(eval $(call BuildDir-y,juci,$(CURDIR)/juci/))
 endif
 
