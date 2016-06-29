@@ -75,6 +75,12 @@ echo "<!doctype html>
 <body role='document' ng-cloak >
 	<div ui-view='content' style='min-height: 1000px;'></div>
 	${SCRIPTS_HTML}
+	<script>
+		var js = document.createElement('script');
+		js.setAttribute('type', 'text/javascript');
+		js.setAttribute('src', 'themes/theme.js?v='+Date.now());
+		document.head.appendChild(js);
+	</script>
 </body>
 </html>" > ${INDEX}
 
