@@ -79,10 +79,8 @@ $(CODE_DIR)/$(CODE_LOAD)-$(PLUGIN).js: $(TMP_DIR)/$(CODE_LOAD)-$(PLUGIN).js $(TM
 	@mkdir -p "$$(dir $$@)"
 	$(Q)cat $$^ > $$@
 $(PLUGIN)-install: $(PLUGIN_DIR)/po/template.pot $(CODE_DIR)/$(CODE_LOAD)-$(PLUGIN).js
-	@mkdir -p $(BACKEND_BIN_DIR)
 	$(call Plugin/$(PLUGIN)/install,$(BIN))
-	$(Q)if [ -d $(PLUGIN_DIR)/ubus ]; then $(CP) $(PLUGIN_DIR)/ubus/* $(BACKEND_BIN_DIR); fi
-	@-chmod +x $(BACKEND_BIN_DIR)/* 
+	$(Q)if [ -d $(PLUGIN_DIR)/ubus ]; then mkdir -p $(BACKEND_BIN_DIR); $(CP) $(PLUGIN_DIR)/ubus/* $(BACKEND_BIN_DIR); chmod +x $(BACKEND_BIN_DIR)/*; fi
 	$(Q)if [ -f $(PLUGIN_DIR)/menu.json ]; then mkdir -p $(BIN)/usr/share/rpcd/menu.d; $(CP) $(PLUGIN_DIR)/menu.json $(BIN)/usr/share/rpcd/menu.d/$(PLUGIN).json; fi
 	$(Q)if [ -f $(PLUGIN_DIR)/access.json ]; then mkdir -p $(BIN)/usr/share/rpcd/acl.d; $(CP) $(PLUGIN_DIR)/access.json $(BIN)/usr/share/rpcd/acl.d/$(PLUGIN).json; fi
 endef
