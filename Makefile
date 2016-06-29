@@ -120,7 +120,7 @@ prepare: .cleaned
 	@mkdir -p $(BIN)/www/js/
 	@mkdir -p $(BIN)/www/themes/
 	@mkdir -p $(BIN)/www/css/
-	@mkdir -p $(BIN)/usr/bin/
+	@mkdir -p $(BIN)/sbin/
 	@mkdir -p $(BIN)/usr/share/juci/
 	@mkdir -p $(BIN)/usr/share/lua/
 	@mkdir -p $(BIN)/usr/share/rpcd/menu.d/
@@ -171,7 +171,6 @@ docs/juci.md: $(wildcard $(PLUGINS-y)/**/docs/*.md)
 install: 
 	$(INSTALL_DIR) $(BIN)/usr/bin/
 	@cp scripts/juci-update $(BIN)/usr/bin/
-	@cp -Rp $(BIN)/* $(DESTDIR)
 
 .PHONY: $(PHONY)
 
