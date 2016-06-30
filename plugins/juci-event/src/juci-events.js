@@ -45,6 +45,7 @@
 			if (!e || !e.type) {
 				return;
 			}
+			console.log(e.type + "-event: "+ JSON.stringify(e.data || {}));
 			self.callbacks[e.type].map(function(cb){
 				if(cb && typeof cb === "function") cb(e);
 			});

@@ -8,22 +8,16 @@ JUCI.app
 	$events.subscribe("dect", function(event){
 		if(!event || !event.data)
 			return;
-
-		if (event.data.handset === "add")
-			$scope.dismissed = true;
-
 		updateDectStatus();
 	});
 
 	var numDevices = 0;
-	var timer;
 
 	function updateDectStatus() {
-
 		$rpc.$call("dect", "status").done(function(result){
 			$scope.status = result;
+			$scope.$apply();
 		});
-
 		$rpc.$call("dect", "handset" ,{"list":""}).done(function(result){
 			if(result.handsets && result.handsets.length !== numDevices){
 				numDevices = result.handsets.length;
@@ -40,16 +34,16 @@ JUCI.app
 		{ label: $tr(gettext("Off")),	value: "off" }
 	];
 
-	$scope.dismissed = true;
 	$scope.onCancelDECT = function(){
-		$rpc.$call("dect", "state", {"registration":"off"});
-		clearTimeout(timer);
+		$rpc.$call("dect", "state", {"registration":"off"}).done(function(){
+			updateDectStatus();
+		}).fail(function(e){console.log(e);});
 	};
 
 	$scope.onStartPairing = function(){
-		$scope.dismissed = false;
-		$rpc.$call("dect", "state", {"registration":"on"});
-		timer = setTimeout(function(){$scope.dismissed = true;}, 1000*180);
+		$rpc.$call("dect", "state", {"registration":"on"}).done(function(){
+			updateDectStatus();
+		}).fail(function(e){console.log(e);});
 	}
 
 	$scope.pinging = [ 0, 0, 0, 0, 0, 0, 0, 0 ];
@@ -59,17 +53,17 @@ JUCI.app
 			$scope.pinging[hs.id] = 0;
 			$rpc.$call("dect", "call", {"terminal": hs.id, "release": (hs.id-1) }).done(function(result){
 				if (result.errstr && result.errstr != "Success") $scope.pinging[hs.id] = 1;
-			});
+			}).fail(function(e){console.log(e)});
 		} else {
 			$scope.pinging[hs.id] = 1;
 			$rpc.$call("dect", "call", {"terminal": hs.id, "add": (hs.id-1) }).done(function(result){
 				if (result.errstr && result.errstr != "Success") $scope.pinging[hs.id] = 0;
-			});
+			}).fail(function(e){console.log(e);});
 		}
 	}
 
 	$scope.onUnpairHandset = function(hs){
-		$rpc.$call("dect", "handset", {"delete": hs.id }).done(function(){});
+		$rpc.$call("dect", "handset", {"delete": hs.id }).done(function(){updateDectStatus();}).fail(function(e){console.log(e)});
 	}
 
 	$scope.toHexString = function(byteArray){
