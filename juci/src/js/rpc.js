@@ -285,10 +285,13 @@
 			var self = this;
 			var deferred = $.Deferred();
 			if(DEBUG_MODE)console.log("Init WS -> "+host);
-			host = host.replace(/^http/, 'ws');
+			if(host.match("localhost"))
+				host = "ws://192.168.1.1";
+			else
+				host = host.replace(/^http/, 'ws');
 			if(DEBUG_MODE)console.log("connecting to " + host);
 			try {
-				var ws = new WebSocket(host, "ubus-json");
+				var ws = new WebSocket("ws://192.168.1.1", "ubus-json");
 			} catch (exc) {
 				return deferred.reject("Exception " + exc.message);
 			}
