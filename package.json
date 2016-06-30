@@ -1,14 +1,15 @@
 {
   "name": "juci",
   "version": "0.0.1",
-  "repository":"http://public.inteno.se:juci.git",
-  "license":"GPL-2.0",
+  "repository": "http://public.inteno.se:juci.git",
+  "license": "GPL-2.0",
   "dependencies": {
     "JSON": "*",
     "array.prototype.find": "*",
     "async": "*",
     "body-parser": "*",
     "expect.js": "*",
+    "express": "^4.14.0",
     "gettext-parser": "*",
     "glob": "*",
     "grunt": "*",
