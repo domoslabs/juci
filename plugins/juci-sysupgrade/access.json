@@ -15,7 +15,7 @@
 				]
 			}, 
 			"uci": [ "system" ],
-			"owsd": [ "sysupgrade-test"]
+			"owsd": [ "sysupgrade"]
 		}, 
 		"write": {
 			"uci": [ "system" ],

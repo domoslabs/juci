@@ -66,9 +66,9 @@ JUCI.app
 		return deferred.promise();
 	}
 	
-	
-	$events.subscribe("sysupgrade-test", function(result){
-		if(result.data && result.data.error && result.data.stdout) {
+	$events.subscribe("sysupgrade", function(result){
+		if(!result || !result.data || !result.data.status) return;
+		if(result.data && result.data.status && result.data.status == "failed") {
 			$scope.showUpgradeStatus = 0;
 			$scope.$apply();
 			$juciDialog.show(null, {
@@ -77,14 +77,13 @@ JUCI.app
 				on_button: function(btn, inst){
 					inst.dismiss("ok");
 				},
-				content: ($tr(gettext("Error: ")) + result.data.stdout)
+				content: ($tr(gettext("Error: ")) + (result.data.test || $tr(gettext("unknown test"))) + ": " + result.data.status)
 			});
 			return;
 		}
 		//console.log("calling ubus call /juci/system.upgrade start now");
 		$scope.message = $tr(gettext("Upgrading"));
 		$scope.$apply();
-		$rpc.$call("juci.system.upgrade", "run", {"method":"start","args":JSON.stringify({"path": $scope.$PATH, "keep": (($scope.$KEEP)?1:0)})});
 		setTimeout(function(){ window.location = "/reboot.html";}, 1000);
 	});
 	$scope.onDismissModal = function(){
@@ -171,29 +170,18 @@ JUCI.app
 	function startUpload(keep){
 		var upfile = $scope.upfile;
 		if(!upfile.name || upfile.size < 1) return;
-		$file.uploadFile("firmware.bin", upfile.files[0], function(progress){
-			$scope.progress_percent = progress;
+		$file.uploadFile("firmware.bin", upfile.files[0], function(progress, total){
+			$scope.progress_byte = progress;
+			$scope.progress_total = total;
 			$scope.$apply();
 		}).done(function(){
-			try {
-				$scope.$KEEP = keep;
-				$rpc.$call("juci.system.upgrade", "run", {"method":"test","args":JSON.stringify({"path":$scope.uploadFilename})}).fail(function(){
-					$scope.showUpgradeStatus = 0;
-					$scope.progress = "";
-					$scope.progress_percent = 0;
-					$scope.$apply();
-				});
-			} catch(e){
-				$scope.error = $tr(gettext("The server returned an error"))+" ("+JSON.stringify(e)+")";
-				$scope.message = $tr(gettext("Upload completed!"))
-				$scope.progress = "";
-				$scope.$apply();
-			}
+			$scope.$KEEP = keep;
+			$rpc.$call("juci.system.upgrade", "run", {"method":"start","args":JSON.stringify({"path":$scope.uploadFilename})});
 		}).fail(function(e){
 			$scope.error =  $tr(gettext("The server returned an error"))+" ("+JSON.stringify(e)+")";
 			$scope.$apply();
 		});
-		$scope.progress_percent = 0;
+		$scope.progress_byte = 0;
 		$scope.showUpgradeStatus = 1;
 	}
 });

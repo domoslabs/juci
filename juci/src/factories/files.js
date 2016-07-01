@@ -50,8 +50,7 @@ JUCI.app.factory("$file", function($rpc, $tr, gettext){
 					fileUploadState.offset += fileChunkSize;
 					if(fileUploadState.offset < fileUploadState.file.size){
 						if(onProgress && typeof onProgress === "function"){
-							var progress = Math.round(100 * ((100 / fileUploadState.file.size) * fileUploadState.offset))/100;
-							onProgress(progress);
+							onProgress(fileUploadState.offset, fileUploadState.file.size);
 						}
 						fileUploadState.reader.readAsDataURL(fileUploadState.file.slice(fileUploadState.offset, fileUploadState.offset + fileChunkSize));
 					}else{
