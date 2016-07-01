@@ -81,6 +81,41 @@ JUCI.app
 			selectable: false
 		}
 	};
+	function getIcon(type, dev){
+		switch(type){
+			case "wan":
+				if(!dev.$info) return "";
+				if(dev.$info.up) return "img/Internet_Green.png";
+				if(dev.$info.pending) return "img/Internet_Yellow.png";
+				return "img/Internet_Red.png";
+			case "lan":
+				if(!dev.$info) return "";
+				if(dev.$info.up) return "img/LanNet_Green.png";
+				if(dev.$info.pending) return "img/LanNet_Yellow.png";
+				return "img/LanNet_Red.png";
+			case "eth":
+				if(dev.down) return "img/Ethernet_Red.png";
+				if(dev.hosts && dev.hosts.length) return "img/Ethernet_Green.png";
+				return "img/Ethernet_Yellow.png";
+			case "wl":
+				if(dev.down) return "img/Wifi2_Red.png";
+				if(dev.hosts && dev.hosts.length) return "img/Wifi2_Green.png";
+				return "img/Wifi2_Yellow.png";
+			case "cl":
+				if(dev.wireless){
+					if(!dev.rssi || parseFloat(dev.rssi) < -75) return "img/Laptop_Red.png";
+					if(parseFloat(dev.rssi) < -50) return "img/Laptop_Yellow.png";
+					return "img/Laptop_Green.png";
+				}else{
+					if(!dev.linkspeed) return "img/Laptop_Red.png";
+					if(dev.linkspeed.match("1000")) return "img/Laptop_Green.png";
+					return "img/Laptop_Yellow.png";
+				}
+			default: return "";
+		}
+	}
+				
+
 	
 	var updateData = function(full){
 		var self = this;
@@ -98,7 +133,7 @@ JUCI.app
 					$tr(gettext("Software Version")) + ": " + $config.board.system.firmware + "<br />" +
 					$tr(gettext("Filesystem Type")) + ": " + $config.board.system.filesystem + "<br />",
 			size: 30,
-			image: "/img/net-router-icon.png",
+			image: "/img/Box_Green.png",
 			shape: "image",
 		});
 		var clients, lan_nets, wan_nets, radios;
@@ -115,7 +150,7 @@ JUCI.app
 				$rpc.$call("router", "radios").done(function(data){
 					radios = data;
 				}).always(function(){next();});
-			}], function(){
+			}, function(next){
 				function getWanTitle(type, wan, data){
 					if(!wan || !wan.$info) return "";
 					var t= wan[".name"] + '<br />' + $tr(gettext('Connection Type')) + ': ';
@@ -140,12 +175,16 @@ JUCI.app
 						default:
 							t+= $tr(gettext("Unknown")) + '<br />';
 					}
-					wan.$info["ipv4-address"].map(function(ip){
-						t += $tr(gettext("IPv4 address")) + ': ' + ip.address;
-					});
-					wan.$info["ipv6-address"].map(function(ip){
-						t += $tr(gettext("IPv6 address")) + ': ' + ip.address;
-					});
+					if(wan.$info["ipv4-address"] && wan.$info["ipv4-address"].length){
+						wan.$info["ipv4-address"].map(function(ip){
+							t += $tr(gettext("IPv4 address")) + ': ' + ip.address;
+						});
+					}
+					if(wan.$info["ipv6-address"] && wan.$info["ipv6-address"].length){
+						wan.$info["ipv6-address"].map(function(ip){
+							t += $tr(gettext("IPv6 address")) + ': ' + ip.address;
+						});
+					}
 					return t;
 				}
 				function addNode(wan, title){
@@ -154,7 +193,7 @@ JUCI.app
 						id: count++,
 						label: String(wan[".name"]).toUpperCase().substring(0,10),
 						title: title,
-						image: "/img/net-interface-wan-icon.png",
+						image: getIcon("wan", wan),
 						ize: 30,
 						shape: "image",
 					}
@@ -163,7 +202,7 @@ JUCI.app
 				}
 				async.eachSeries(wan_nets, function(wan, callback){
 					var title;
-					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value == false || !wan.$info || !wan.$info.up) return;
+					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value === false) return;
 					if(wan.$info.device.match("eth[0-9]")){
 						$rpc.$call("router", "linkspeed", { "interface": wan.$info.device.match("eth[0-9]")[0] }).done(function(data){
 							title = getWanTitle("eth", wan, data);
@@ -178,14 +217,18 @@ JUCI.app
 					}else if(wan.$ifo.device.match("vwan")){
 						title = getWanTitle("vwan", wan);
 						addNode(wan, title);
+						callback();
 					}else if(wan.$info.device.match("br-wan")){
 						title = getWanTitle("bridge", wan);
 						addNode(wan, title);
+						callback();
 					}else{
 						title = getWanTitle("unknown", wan);
 						addNode(wan, title);
+						callback();
 					}
-				});
+				}, function(){next();});
+			}], function(next){
 				async.eachSeries(lan_nets, function(item, callback){
 					if(!item || !item[".name"]){ callback(); return;}
 					$rpc.$call("router", "ports", { "network": item[".name"] }).done(function(data){
@@ -199,7 +242,7 @@ JUCI.app
 							id: count++,
 							label: String(item[".name"]).toUpperCase().substring(0,10),
 							title: item[".name"] + '<br />' + $tr(gettext("Number of Clients")) + ": " + num_cli,
-							image: "/img/net-interface-icon.png",
+							image: getIcon("lan", item),
 							size: 30,
 							shape: "image",
 						}
@@ -213,7 +256,7 @@ JUCI.app
 								title: (dev.name)? String(dev.name).toUpperCase() + '<br />' + $tr(gettext("Link speed")) + ': ' + dev.linkspeed :
 													String(dev.ssid).toUpperCase() + ' @ ' + ((radios[device])? radios[device].frequency : $tr(gettext('unknown'))),
 								size: 30,
-								image: device.match("eth")?"/img/lan_port.png":"/img/net-drive-icon.png",
+								image: device.match("eth")?getIcon("eth",dev):getIcon("wl", dev),
 								shape: "image"
 							}
 							nodes.push(dev_node);
@@ -247,7 +290,7 @@ JUCI.app
 										label: String(host.hostname || host.ipaddr || host.macaddr).toUpperCase().substring(0,10),
 										title: getHostTitle(host),
 										size: 30,
-										image: "/img/net-laptop-icon.png",
+										image: getIcon("cl", host),
 										shape: "image"
 									}
 									nodes.push(host_node);
@@ -262,7 +305,7 @@ JUCI.app
 				});
 			}
 		);
-		return self.def;
+		return self.def
 	}
 
 	$scope.showBigOverview = function(){
