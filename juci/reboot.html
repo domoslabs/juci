@@ -14,7 +14,7 @@
 		<script type="text/javascript">
 			var targetUrl = "/";
 			var i = 0;
-			setInterval(ping, 3000);
+			setTimeout(function(){setInterval(ping, 3000);}, 10000);
 			function ping(){
 				$.ajax({
 					type: 'GET',
