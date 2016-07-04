@@ -43,14 +43,14 @@
 			</juci-config-line>
 		</div>
 		<div ng-show="interface.encryption.value == 'wpa2' || interface.encryption.value == 'wpa-mixed'">
-			<juci-config-line title="{{'Radius Server'|translate}}">
-				<input type="text" class="form-control" placeholder="{{'Radius Server'|translate}}" ng-model="interface.radius_server.value" />
+			<juci-config-line title="{{'Radius Server'|translate}}" error="interface.radius_server.error">
+				<input type="text" class="form-control" placeholder="{{'Radius Server'|translate}}" ng-model="interface.radius_server.value"/>
 			</juci-config-line>
-			<juci-config-line title="{{'Radius Port'|translate}}">
-				<input type="text" class="form-control" placeholder="{{'Radius Port'|translate}}" ng-model="interface.radius_port.value" />
+			<juci-config-line title="{{'Radius Port'|translate}}" error="interface.radius_port.error">
+				<input type="text" class="form-control" placeholder="{{'Radius Port'|translate}}" ng-model="interface.radius_port.value"/>
 			</juci-config-line>
-			<juci-config-line title="{{'Radius Secret'|translate}}">
-				<input type="{{(!showPassword)?'password':'text'}}" class="form-control" placeholder="{{'Radius Secret'|translate}}" ng-model="interface.radius_secret.value" />
+			<juci-config-line title="{{'Radius Secret'|translate}}" error="interface.radius_secret.error">
+				<input type="{{(!showPassword)?'password':'text'}}" class="form-control" placeholder="{{'Radius Secret'|translate}}" ng-model="interface.radius_secret.value"/>
 			</juci-config-line>
 		</div>
 		<juci-config-line ng-show="interface.encryption.value != 'none'">
