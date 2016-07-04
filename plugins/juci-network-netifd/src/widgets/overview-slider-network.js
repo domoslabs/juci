@@ -202,7 +202,7 @@ JUCI.app
 				}
 				async.eachSeries(wan_nets, function(wan, callback){
 					var title;
-					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value === false) return;
+					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value === false){ callback(); return;}
 					if(wan.$info.device.match("eth[0-9]")){
 						$rpc.$call("router", "linkspeed", { "interface": wan.$info.device.match("eth[0-9]")[0] }).done(function(data){
 							title = getWanTitle("eth", wan, data);
