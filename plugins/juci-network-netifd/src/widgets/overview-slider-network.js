@@ -95,11 +95,11 @@ JUCI.app
 				return "img/LanNet_Red.png";
 			case "eth":
 				if(dev.down) return "img/Ethernet_Red.png";
-				if(dev.hosts && dev.hosts.length) return "img/Ethernet_Green.png";
+				if(dev.hosts && dev.hosts.length && dev.hosts.filter(function(dev){ return dev.connected;}).length) return "img/Ethernet_Green.png";
 				return "img/Ethernet_Yellow.png";
 			case "wl":
 				if(dev.down) return "img/Wifi2_Red.png";
-				if(dev.hosts && dev.hosts.length) return "img/Wifi2_Green.png";
+				if(dev.hosts && dev.hosts.length && dev.hosts.filter(function(dev){ return dev.connected;}).length) return "img/Wifi2_Green.png";
 				return "img/Wifi2_Yellow.png";
 			case "cl":
 				if(dev.wireless){
@@ -214,7 +214,7 @@ JUCI.app
 							title = getWanTitle("dsl", wan, data);
 							addNode(wan, title);
 						}).fail(function(e){console.log(e);}).always(function(){callback();});
-					}else if(wan.$ifo.device.match("vwan")){
+					}else if(wan.$info.device.match("vwan")){
 						title = getWanTitle("vwan", wan);
 						addNode(wan, title);
 						callback();
@@ -264,6 +264,7 @@ JUCI.app
 							if(!full) return;
 							if(dev.hosts && dev.hosts.length){
 								dev.hosts.map(function(host){
+									if(!host.connected) return;
 									function getHostTitle(host){
 										var title = String(host.hostname || host.ipaddr || host.macaddr).toUpperCase() + '<br />';
 										[
