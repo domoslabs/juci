@@ -241,16 +241,6 @@
 				$stateProvider.state(name, state);
 			});
 		});
-		
-		// override default handler and throw the error out of angular to
-		// the global error handler
-		app.factory('$exceptionHandler', function() {
-			return function(exception) {
-				//This is causing issues in IE11
-				throw exception;
-				//throw exception+": \n\n"+exception.stack;
-			};
-		});
 
 		app.run(function($templateCache, $uci, $events, $rpc, $rootScope){
 			var self = scope.JUCI;
