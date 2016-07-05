@@ -19,7 +19,7 @@
 (function($juci){
 	function JUCIConfig(){
 		this.settings = {}; 
-		this.system = {}; 
+		this.filename = "";
 	}
 
 	JUCIConfig.prototype.$init = function(){
@@ -34,6 +34,11 @@
 			function(next){
 				UBUS.$call("router", "info").done(function(info){
 					self.board = info; 
+					if(!info.system || !info.system.firmware || !info.system.basemac) return;
+					var parts = info.system.firmware.split("_");
+					if(parts.length < 2) return;
+					var customer = parts[1].split("-")[0];
+					self.filename = info.system.hardware + "-" + customer + "-" + info.system.basemac.replace(/:/g, "");
 				}).fail(function(){
 					self.board = {};
 				}).always(function(){ next(); }); 

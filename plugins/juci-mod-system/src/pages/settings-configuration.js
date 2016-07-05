@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("SettingsConfigurationCtrl", function($scope, $rpc, $tr, gettext, $juciDialog, $file){
+.controller("SettingsConfigurationCtrl", function($scope, $rpc, $tr, gettext, $juciDialog, $file, $config){
 	$scope.sessionID = $rpc.$sid();
 	$scope.resetPossible = 0;
 	$scope.resetPossible = 1;
@@ -78,25 +78,6 @@ JUCI.app
 			$scope.$apply();
 		});
 	}
-	var saveByteArray = (function () {
-		var a = document.createElement("a");
-		document.body.appendChild(a);
-		a.style = "display: none";
-		return function (data, name) {
-			var byteChars = atob(data);
-			var byteNumbers = [];
-			for(var i = 0; i < byteChars.length; i++){
-				byteNumbers.push(byteChars.charCodeAt(i));
-			}
-			var byteArray = new Uint8Array(byteNumbers);
-			var blob = new Blob([byteArray], {type: "application/gzip"}),
-			url = window.URL.createObjectURL(blob);
-			a.href = url;
-			a.download = name;
-			a.click();
-			window.URL.revokeObjectURL(url);
-		};
-	}());
 	$scope.onAcceptModal = function(){
 		if($scope.passwordError) return;
 		if($scope.data.pass !== $scope.data.pass_repeat) {
@@ -112,8 +93,9 @@ JUCI.app
 			"method":"create_backup",
 			"args": ($scope.data.pass ? JSON.stringify({password: $scope.data.pass}) : undefined)
 		}).done(function(){
-			$file.downloadFile("backup.tar.gz", "application/gzip").fail(function(){
+			$file.downloadFile("backup.tar.gz", "application/gzip", "backup-" + $config.filename + ".tar.gz").fail(function(e){
 				alert($tr(gettext("Was not able to download backup. Please check access!")));
+				console.log(e);
 			}).always(function(){
 				$scope.data = {pass:"",pass_repeat:""};
 				$scope.showStatus = false;

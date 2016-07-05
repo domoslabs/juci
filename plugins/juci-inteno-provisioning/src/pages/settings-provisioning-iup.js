@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("icwmpProvisioningPage", function($scope, $tr, gettext, $uci, $file, $rpc){
+.controller("icwmpProvisioningPage", function($scope, $tr, gettext, $uci, $file, $rpc, $config){
 	$scope.showPasswd = false;
 	$scope.togglepw = function(){$scope.showPasswd = !$scope.showPasswd;};
 	$uci.$sync(["provisioning"]).done(function(){
@@ -53,7 +53,7 @@ JUCI.app
 	};
 	$scope.onExportFile = function() {
 		$rpc.$call("juci.provisioning.iup", "run", {"method":"backup", "args":JSON.stringify({"filename":"iup-backup"})}).done(function(){
-			$file.downloadFile("iup-backup", "application/gzip", "provisioning-inteno-"+ Date.now()+".tar.gz").fail(function(e){
+			$file.downloadFile("iup-backup", "application/gzip", "provisioning-" + $config.filename + ".tar.gz").fail(function(e){
 				alert("error: " + JSON.stringify(e));
 			});
 		}).fail(function(e){
