@@ -396,8 +396,8 @@
 				}
 			}
 			ws.onclose = function(e) {
+				window.location.reload();
 				console.log( "Close(" + e.reason + ")");
-				// TODO reinit everything, reload, ...
 			};
 
 			return deferred.promise();
