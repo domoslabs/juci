@@ -132,7 +132,7 @@ JUCI.app
 					$tr(gettext("Base MAC")) + ": " + $config.board.system.basemac + "<br />" +
 					$tr(gettext("Software Version")) + ": " + $config.board.system.firmware + "<br />" +
 					$tr(gettext("Filesystem Type")) + ": " + $config.board.system.filesystem + "<br />",
-			size: 30,
+			size: 60,
 			image: "/img/Box_Green.png",
 			shape: "image",
 		});
@@ -194,7 +194,7 @@ JUCI.app
 						label: String(wan[".name"]).toUpperCase().substring(0,10),
 						title: title,
 						image: getIcon("wan", wan),
-						ize: 30,
+						ize: 20,
 						shape: "image",
 					}
 					nodes.push(node);
@@ -203,7 +203,11 @@ JUCI.app
 				async.eachSeries(wan_nets, function(wan, callback){
 					var title;
 					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value === false){ callback(); return;}
-					if(wan.$info.device.match("eth[0-9]")){
+					if(!wan.$info.device){
+						title = $tr(gettext("DOWN"));
+						addNode(wan, title);
+						callback();
+					}else if(wan.$info.device.match("eth[0-9]")){
 						$rpc.$call("router", "linkspeed", { "interface": wan.$info.device.match("eth[0-9]")[0] }).done(function(data){
 							title = getWanTitle("eth", wan, data);
 							addNode(wan, title);
@@ -243,7 +247,7 @@ JUCI.app
 							label: String(item[".name"]).toUpperCase().substring(0,10),
 							title: item[".name"] + '<br />' + $tr(gettext("Number of Clients")) + ": " + num_cli,
 							image: getIcon("lan", item),
-							size: 30,
+							size: 20,
 							shape: "image",
 						}
 						nodes.push(node);
@@ -255,7 +259,7 @@ JUCI.app
 								label: String((dev.name)?dev.name : dev.ssid).toUpperCase().substring(0,10),
 								title: (dev.name)? String(dev.name).toUpperCase() + '<br />' + $tr(gettext("Link speed")) + ': ' + dev.linkspeed :
 													String(dev.ssid).toUpperCase() + ' @ ' + ((radios[device])? radios[device].frequency : $tr(gettext('unknown'))),
-								size: 30,
+								size: 15,
 								image: device.match("eth")?getIcon("eth",dev):getIcon("wl", dev),
 								shape: "image"
 							}
@@ -290,7 +294,7 @@ JUCI.app
 										id: JSON.stringify(host) + count++,
 										label: String(host.hostname || host.ipaddr || host.macaddr).toUpperCase().substring(0,10),
 										title: getHostTitle(host),
-										size: 30,
+										size: 15,
 										image: getIcon("cl", host),
 										shape: "image"
 									}
