@@ -113,7 +113,10 @@ UCI.network.$registerSectionType("interface", {
 	"apn": 					{ dvalue: "", type: String }, 
 	"pincode": 				{ dvalue: "", type: String },
 	"comdev":				{ dvalue: "", type: String },
-	"ttl":					{ dvalue: "", type: Number }
+	"ttl":					{ dvalue: "", type: Number },
+	// wwan settings
+	"modes":				{ dvalue: "", type: String },
+	"delay":				{ dvalue: 0, type: Number }
 }, function(section){
 	var name = gettext("Network interface ") + (section[".name"] || section.name || gettext("Unnamed interface"));
 	var noPhysical = name + gettext(" has protocol: ") + section.proto.value + gettext(" it needs a physical interface");
@@ -198,6 +201,8 @@ UCI.network.$registerSectionType("interface", {
 				errors.push(name + gettext(" has protcol PPP over L2TP and it needs a L2TP server"));
 			if(section.username.value != "" && section.password.value == "")
 				errors.push(gettext("Username is set but not password on ") + name);
+			break;
+		case "wwan":
 			break;
 		default: 
 			errors.push(gettext("Unsupported protocol: ") + section.proto.value);

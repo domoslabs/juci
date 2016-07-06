@@ -80,6 +80,7 @@
 				{ label: $tr(gettext("PPP over ATM")), 							value: "pppoa", 	physical: true }, 
 				{ label: $tr(gettext("3G (ppp over GPRS/EvDO/CDMA or UTMS)")), 	value: "3g", 		physical: false }, 
 				{ label: $tr(gettext("4G (LTE/HSPA+)")), 						value: "4g", 		physical: false }, 
+				{ label: $tr(gettext("WWAN (LTE/HSPA+)")), 						value: "wwan", 		physical: false }, 
 				//{ label: $tr(gettext("QMI (USB modem)")), 						value: "qmi", 		physical: true }, 
 				//{ label: $tr(gettext("NCM (USB modem)")), 						value: "ncm", 		physical: true }, 
 				//{ label: $tr(gettext("HNET (self-managing home network)")), 	value: "hnet", 		physical: true }, 
