@@ -27,21 +27,111 @@ msgstr ""
 msgid "Are you sure you want to save backup without password?"
 msgstr ""
 
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-configuration.js
+msgid "Was not able to download backup. Please check access!"
+msgstr ""
+
 msgid ""
 "Was unable to set password. Please make sure you have entered correct "
 "current password!"
 msgstr ""
 
-msgid "Hostname"
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Emergency"
 msgstr ""
 
-msgid "Model"
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Alert"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Critical"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Error"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Warning"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Notice"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Info"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Debug"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Everything"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "High verbosity"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Low verbosity"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Executions and Errors"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Only Errors"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "UDP"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "TCP"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Circular"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "File"
+msgstr ""
+
+msgid "Hostname"
 msgstr ""
 
 msgid "N/A"
 msgstr ""
 
+msgid "Model"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system.js
+msgid "Serial No"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system.js
+msgid "MAC Address"
+msgstr ""
+
 msgid "Firmware Version"
+msgstr ""
+
+msgid "Kernel Version"
+msgstr ""
+
+msgid "Filesystem"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system.js
+msgid "BRCM Version"
 msgstr ""
 
 msgid "Local Time"
@@ -51,12 +141,6 @@ msgid "Uptime"
 msgstr ""
 
 msgid "CPU"
-msgstr ""
-
-msgid "Kernel Version"
-msgstr ""
-
-msgid "Filesystem"
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/status-system.js
@@ -73,9 +157,6 @@ msgid "Buffered"
 msgstr ""
 
 msgid "Swap"
-msgstr ""
-
-msgid "URL"
 msgstr ""
 
 msgid "Backup Settings"
@@ -117,19 +198,18 @@ msgstr ""
 msgid "Re-type password"
 msgstr ""
 
-msgid "Select configuration backup to upload"
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Downloading Backup"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Pick configuration backup to upload"
 msgstr ""
 
 msgid "Backup file password"
 msgstr ""
 
 msgid "Password (if encrypted)"
-msgstr ""
-
-msgid "Start upgrade"
-msgstr ""
-
-msgid "Upgrade"
 msgstr ""
 
 msgid "Please add a comment describing this configuration"
@@ -207,10 +287,85 @@ msgstr "General system settings."
 msgid "Timezone"
 msgstr ""
 
+msgid "General System Settings"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "System Log Level"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "Cron Log Level"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "Kernel Log Level"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "If this is set to anything but <info> it will override system log level"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "Buffersize"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "Log File"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "Log IP"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "Log Port"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "Log Prefix"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "Log Protocol"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "Log Remote"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "Log Size"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "Trailing null"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "Use trailing null insted of newline when using TCP"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "Log Type"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "Log Settings"
+msgstr ""
+
 msgid "Time servers (NTP)"
 msgstr ""
 
-msgid "General System Settings"
+msgid "URL"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-timeservers.html
+msgid "Server mode"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-timeservers.html
+msgid "Timeservers Settings"
 msgstr ""
 
 msgid "Loading"
@@ -255,6 +410,12 @@ msgstr "Energy Settings"
 msgid "menu-settings-hardware-title"
 msgstr "Hardware"
 
+msgid "menu-settings-hardware-leds-title"
+msgstr "LEDs"
+
+msgid "menu-settings-system-log-title"
+msgstr "Log Settings"
+
 msgid "menu-status-system-title"
 msgstr "System"
 
@@ -268,7 +429,7 @@ msgid "menu-settings-password-title"
 msgstr "Passwords"
 
 msgid "menu-settings-system-title"
-msgstr "General Settings"
+msgstr "System Settings"
 
 msgid "menu-settings-services-title"
 msgstr "Services"
@@ -276,14 +437,14 @@ msgstr "Services"
 msgid "menu-settings-users-title"
 msgstr "Menu Access"
 
+msgid "menu-settings-system-timeservers-title"
+msgstr "Timeservers"
+
 msgid "menu-settings-configuration-title"
 msgstr "Restore/Backup"
 
 msgid "menu-settings-hardware-buttons-title"
 msgstr "Buttons"
-
-msgid "menu-settings-hardware-leds-title"
-msgstr "LEDs"
 
 msgid "menu-status-system-processes-title"
 msgstr "Processes"

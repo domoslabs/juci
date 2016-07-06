@@ -1,0 +1,23 @@
+<juci-layout-with-sidebar>
+	<div ng-controller="SettingsSystemTimeservers">
+		<h2 translate>Timeservers Settings</h2>
+		<juci-config-section>
+			<juci-config-lines>
+				<juci-config-line title="{{'Time servers (NTP)'|translate}}">
+					<div class="input-group form-group" ng-repeat="n in ntp_servers track by $index">
+						<input type="text" class="form-control" ng-model="n.server" placeholder="{{'URL'|translate}}"/>
+						<span class="input-group-btn">
+							<button class="btn btn-default" ng-click="onDeleteNTPServer(n)">
+								<i class="fa fa-times"></i>
+							</button>
+						</span>
+					</div>
+					<button class="btn btn-default pull-right" ng-click="onAddNTPServer()"><i class="fa fa-plus"></i></button>
+				</juci-config-line>
+				<juci-config-line title="{{'Server mode'|translate}}">
+					<switch class="green" ng-model="ntp['enable_server'].value" />
+				</juci-config-line>
+			</juci-config-lines>
+		</juci-config-section>
+	</div>
+</juci-layout-with-sidebar>

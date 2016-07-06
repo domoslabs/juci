@@ -1,0 +1,47 @@
+<juci-layout-with-sidebar>
+	<div ng-controller="SettingsSystemLog">
+		<h2 translate>Log Settings</h2>
+		<juci-config-section ng-show="system">
+			<juci-config-lines>
+				<juci-config-line title="{{'System Log Level'|translate}}">
+					<juci-select ng-items="loglevels" ng-model="system.conloglevel.value"></juci-select>
+				</juci-config-line>
+				<juci-config-line title="{{'Cron Log Level'|translate}}">
+					<juci-select ng-items="cronloglevels" ng-model="system.cronloglevel.value"></juci-select>
+				</juci-config-line>
+				<juci-config-line title="{{'Kernel Log Level'|translate}}" help="{{'If this is set to anything but <info> it will override system log level'|translate}}">
+					<juci-select ng-items="loglevels" ng-model="system.klogconloglevel.value"></juci-select>
+				</juci-config-line>
+				<juci-config-line ng-show="false" title="{{'Buffersize'|translate}}">
+				</juci-config-line>
+				<juci-config-line title="{{'Log File'|translate}}">
+					<input type="text" class="form-control" ng-model="system.log_file.value" />
+				</juci-config-line>
+				<juci-config-line title="{{'Log IP'|translate}}" error="system.log_ip.error">
+					<juci-input-ipv4-address ng-model="system.log_ip.value"></juci-input-ipv4-address>
+				</juci-config-line>
+				<juci-config-line title="{{'Log Port'|translate}}">
+					<input type="number" min="0" max="65535" class="form-control" ng-model="system.log_port.value" />
+				</juci-config-line>
+				<juci-config-line title="{{'Log Prefix'|translate}}">
+					<input type="text" class="form-control" ng-model="system.log_prefix.value" />
+				</juci-config-line>
+				<juci-config-line title="{{'Log Protocol'|translate}}">
+					<juci-select ng-items="protos" ng-model="system.log_proto.value"></juci-select>
+				</juci-config-line>
+				<juci-config-line title="{{'Log Remote'|translate}}">
+					<switch class="green" ng-model="system.log_remote.value" />
+				</juci-config-line>
+				<juci-config-line title="{{'Log Size'|translate}}">
+					<input type="number" min="0" class="form-control" ng-model="system.log_size.value" />
+				</juci-config-line>
+				<juci-config-line title="{{'Trailing null'|translate}}" help="{{'Use trailing null insted of newline when using TCP'|translate}}">
+					<switch class="green" ng-model="system.log_trailer_null.vlaue" />
+				</juci-config-line>
+				<juci-config-line title="{{'Log Type'|translate}}">
+					<juci-select ng-items="types" ng-model="system.log_type.value"></juci-select>
+				</juci-config-line>
+			</juci-config-lines>
+		</juci-config-section>
+	</div>
+</juci-layout-with-sidebar>
