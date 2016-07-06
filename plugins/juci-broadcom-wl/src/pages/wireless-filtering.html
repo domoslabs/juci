@@ -4,7 +4,8 @@
 		<juci-config-info>{{ 'wifi.macfilter.info' | translate }}</juci-config-info>
 		<juci-config-section ng-show="interfaces && interfaces.length != 0" ng-repeat="iface in interfaces track by $index">
 			<juci-config-heading>{{ iface.ssid.value }} ({{iface[".frequency"]}})</juci-config-heading>
-			<uci-wireless-interface-macfilter-edit ng-model="iface"></uci-wifi-iface-macfilter-edit>
+			<juci-config-info ng-show="match(iface.encryption.value, 'wep')">{{'You cannot enable MAC Filtering on a WEP protected wireless interface!'|translate}}</juci-config-info>
+			<uci-wireless-interface-macfilter-edit ng-model="iface" ng-hide="match(iface.encryption.value, 'wep')"></uci-wifi-iface-macfilter-edit>
 		</juci-config-section>
 		<!--<juci-config-section>
 			<juci-config-heading>str.guest.wifi</juci-config-heading>
