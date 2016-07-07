@@ -81,15 +81,14 @@ JUCI.app
 			selectable: false
 		}
 	};
+	var hasInternet;
 	function getIcon(type, dev){
 		switch(type){
 			case "wan":
-				if(!dev.$info) return "";
-				if(dev.$info.up) return "img/Internet_Green.png";
+				if(dev.$info.up) return hasInternet ? "img/Internet_Green.png": "img/Internet_Red.png";
 				if(dev.$info.pending) return "img/Internet_Yellow.png";
 				return "img/Internet_Red.png";
 			case "lan":
-				if(!dev.$info) return "";
 				if(dev.$info.up) return "img/LanNet_Green.png";
 				if(dev.$info.pending) return "img/LanNet_Yellow.png";
 				return "img/LanNet_Red.png";
@@ -143,6 +142,10 @@ JUCI.app
 					lan_nets = nets;
 				}).always(function(){next();});
 			}, function(next){
+				$rpc.$call("led.internet", "status").done(function(data){
+					hasInternet = data.state && data.state === "ok";
+				}).fail(function(e){console.log(error);}).always(function(){next();});
+			}, function(next){
 				$firewall.getZoneNetworks("wan").done(function(nets){
 					wan_nets = nets;
 				}).always(function(){next();});
@@ -188,6 +191,7 @@ JUCI.app
 					return t;
 				}
 				function addNode(wan, title){
+					if(!full) return;
 					if(!title) return;
 					var node = {
 						id: count++,
@@ -198,11 +202,12 @@ JUCI.app
 						shape: "image",
 					}
 					nodes.push(node);
-					edges.push( { from: node.id, to: ".root", width: 6 });
+					edges.push( { from: node.id, to: ".root", width: 3 });
 				}
+				var up = false;
 				async.eachSeries(wan_nets, function(wan, callback){
 					var title;
-					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value === false){ callback(); return;}
+					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value === false || !wan.$info){ callback(); return;}
 					if(!wan.$info.device){
 						title = $tr(gettext("DOWN"));
 						addNode(wan, title);
@@ -231,10 +236,13 @@ JUCI.app
 						addNode(wan, title);
 						callback();
 					}
-				}, function(){next();});
+					up = wan.$info.up;
+				}, function(){
+					nodes.find(function(node){ return node.id === ".root";}).image = up ? "/img/Box_Green.png" : "/img/Box_Red.png";
+					next();});
 			}], function(next){
 				async.eachSeries(lan_nets, function(item, callback){
-					if(!item || !item[".name"]){ callback(); return;}
+					if(!item || !item[".name"] || !item.$info){ callback(); return;}
 					$rpc.$call("router", "ports", { "network": item[".name"] }).done(function(data){
 						var num_cli = 0;
 						Object.keys(data).map(function(dev){
@@ -251,21 +259,20 @@ JUCI.app
 							shape: "image",
 						}
 						nodes.push(node);
-						edges.push( { from: ".root", to: node.id, width: 6 });
+						edges.push( { from: ".root", to: node.id, width: 3 });
 						Object.keys(data).map(function(device){
 							var dev = data[device];
 							var dev_node = {
 								id: count++,
 								label: String((dev.name)?dev.name : dev.ssid).toUpperCase().substring(0,10),
 								title: (dev.name)? String(dev.name).toUpperCase() + '<br />' + $tr(gettext("Link speed")) + ': ' + dev.linkspeed :
-													String(dev.ssid).toUpperCase() + ' @ ' + ((radios[device])? radios[device].frequency : $tr(gettext('unknown'))),
+													String(dev.ssid).toUpperCase() + ' @ ' + ((radios[device.substring(0,3)])? radios[device.substring(0,3)].frequency : $tr(gettext('unknown'))),
 								size: 15,
 								image: device.match("eth")?getIcon("eth",dev):getIcon("wl", dev),
 								shape: "image"
 							}
 							nodes.push(dev_node);
-							edges.push( { from: node.id, to: dev_node.id, width: 6 });
-							if(!full) return;
+							edges.push( { from: node.id, to: dev_node.id, width: 3 });
 							if(dev.hosts && dev.hosts.length){
 								dev.hosts.map(function(host){
 									if(!host.connected) return;
@@ -299,7 +306,7 @@ JUCI.app
 										shape: "image"
 									}
 									nodes.push(host_node);
-									edges.push( { from: dev_node.id, to: host_node.id, width: 6 } );
+									edges.push( { from: dev_node.id, to: host_node.id, width: 3 } );
 								});
 							}
 						});
@@ -345,13 +352,15 @@ JUCI.app
 		};
 		var network = new vis.Network(containerFA, dataFA, optionsFA);
 		$events.subscribe("client", function(){
-			updateData().done(function(){
+			updateData().done(function(nodes, edges){
 				network.setData({nodes: nodes, edges: edges});
+				$scope.$apply();
 			});
 		});
 		$events.subscribe("network.interface", function(){
-			updateData().done(function(){
+			updateData().done(function(nodes, edges){
 				network.setData({nodes: nodes, edges: edges});
+				$scope.$apply();
 			});
 		});
 	});
