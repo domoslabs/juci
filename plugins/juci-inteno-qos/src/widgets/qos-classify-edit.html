@@ -48,8 +48,8 @@
 	<juci-config-line title="{{'Direction'|translate}}">
 		<juci-select ng-items="directions" ng-model="rule.direction.value"></juci-select>
 	</juci-config-line>
-	<juci-config-line title="{{ 'Mark' | translate }}">
-		<juci-select ng-items="targets" ng-model="rule.mark.value" placeholder="{{'Choose class'|translate}}"/>
+	<juci-config-line title="{{ 'Mark' | translate }}" error="rule.mark.error">
+		<input type="text" class="form-control" ng-model="rule.mark.value" style="max-width: 190px !important; float: right"/>
 	</juci-config-line>
 	<juci-config-line title="{{'Connbytes'|translate}}" error="data.connbytes.error">
 		<div class="input-group">

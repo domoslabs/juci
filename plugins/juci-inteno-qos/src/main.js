@@ -30,7 +30,7 @@ UCI.qos.$registerSectionType("classify", {
 	"portrange":	{ dvalue: '', type: String, validator: UCI.validators.PortOrRangeValidator("-") },
 	"pktsize":	{ dvalue: '', type: Number },
 	"tcpflags":	{ dvalue: '', type: String },
-	"mark":		{ dvalue: '', type: String },
+	"mark":		{ dvalue: '', type: String, validator: UCI.validators.QOSMarkValidator },
 	"connbytes":	{ dvalue: '', type: String },
 	"tos":		{ dvalue: '', type: String },
 	"direction":	{ dvalue: '', type: String },

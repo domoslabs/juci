@@ -173,6 +173,18 @@
 		}
 	}
 
+	function QOSMarkValidator(){
+		this.validate = function(field){
+			if(!field || !field.value) return null;
+			
+			if(field.value.match("^0x[0-9A-Fa-f]{4}$|^!0x[0-9A-Fa-f]{4}$") === null){
+				return gettext("Invalid mark format: it must be between (!)0x0000 - (!)0xFFFF");
+			}
+
+			return null;
+		}
+	}; 
+
 	function ConnbytesValidator(separator){
 		if(!separator){ var separator = ":"; }
 		this.validate = function(field){
@@ -325,6 +337,7 @@
 			return null; 
 		}
 	}; 
+
 
 	
 	var section_types = {};
@@ -1225,7 +1238,8 @@
 		IP4NetmaskValidator: IP4NetmaskValidator,
 		IP4MulticastAddressValidator: IP4MulticastAddressValidator,
 		IP4CIDRValidator: IP4CIDRValidator,
-		IP4UnicastAddressValidator: IP4UnicastAddressValidator
+		IP4UnicastAddressValidator: IP4UnicastAddressValidator,
+		QOSMarkValidator: QOSMarkValidator
 	}; 
 	/*if(exports.JUCI){
 		var JUCI = exports.JUCI; 
