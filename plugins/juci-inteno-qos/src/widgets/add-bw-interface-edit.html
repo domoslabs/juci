@@ -1,7 +1,7 @@
 <div>
 	<juci-config-lines>
 		<juci-config-line title="{{'Interface name'|translate}}">
-			<input type="text" class="form-control" ng-model="newIface.name">
+			<juci-select ng-model="newIface.name" ng-items="nonLANInterfaces" placeholder="-- Select interface --">
 		</juci-config-line>
 	</juci-config-lines>
 </div>
