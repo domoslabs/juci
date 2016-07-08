@@ -1,5 +1,8 @@
 <div>
 	<juci-config-lines>
+		<juci-config-line title="{{'Enable'|translate}}">
+			<switch class="green" ng-model="rule.enabled.value" />
+		</juci-config-line>
 		<juci-config-line title="{{'Name'|translate}}">
 			<input type="text" class="form-control" ng-model="rule.name.value" placeholder="{{'Name'|translate}}"/>
 		</juci-config-line>
