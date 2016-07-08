@@ -30,17 +30,8 @@ JUCI.app
 	};
 }).controller("networkConnectionProtoWwanEditCtrl", function($scope, $tr, gettext, $rpc){
 	$rpc.$call("router", "usb").done(function(ret){
-		$scope.devices = [];
-		var devs = Object.keys(ret).map(function(r){return ret[r];}).filter(function(usb){ return usb.netdevice;});
-		async.eachSeries(devs, function(dev, callback){
-			if(!dev.idproduct || !dev.idvendor){ callback(); return;}
-			console.log(JSON.stringify());
-			$rpc.$call("file", "read", {path:"/lib/network/wwan/"+dev.idvendor+"\:"+dev.idproduct}).done(function(ret){
-				console.log(ret);
-			}).fail(function(e){console.log(e);}).always(function(){callback();});
-		}, function(){
-			$scope.$apply();
-		});
+		$scope.devices = Object.keys(ret).map(function(r){ return ret[r];}).filter(function(dev){return dev.netdevice;}).map(function(dev){ return { label: dev.description || $tr(gettext("Unknown")), value: dev.netdevice }; });
+		$scope.$apply();
 	}).fail(function(e){console.log(e);});
 	$scope.authtypes = [
 		{ label: $tr(gettext("PAP")), value: "pap" },

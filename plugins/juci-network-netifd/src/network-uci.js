@@ -205,7 +205,7 @@ UCI.network.$registerSectionType("interface", {
 		case "wwan":
 			if(section.ifname.value == "")
 				errors.push(name + gettext("has protocol wwan and it needs a modem"));
-			if(section.pincode.value !== "" || !parseInt(section.pincode.value) || parseInt(section.pincode.value) > 9999 || parseInt(section.pincode.value) < 0)
+			if(section.pincode.value !== "" && parseInt(section.pincode.value) && (parseInt(section.pincode.value) > 9999 || parseInt(section.pincode.value) < 0))
 				errors.push(name + gettext(" has protocol wwan and has invalid pincode [0000-9999] or empty"));
 			break;
 		default: 
