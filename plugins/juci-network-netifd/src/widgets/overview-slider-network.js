@@ -144,7 +144,7 @@ JUCI.app
 			}, function(next){
 				$rpc.$call("led.internet", "status").done(function(data){
 					hasInternet = data.state && data.state === "ok";
-				}).fail(function(e){console.log(error);}).always(function(){next();});
+				}).fail(function(e){console.log(e);}).always(function(){next();});
 			}, function(next){
 				$firewall.getZoneNetworks("wan").done(function(nets){
 					wan_nets = nets;

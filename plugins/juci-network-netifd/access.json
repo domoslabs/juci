@@ -39,6 +39,9 @@
 				],
 				"file": [
 					"read"
+				],
+				"led.internet":[
+					"status"
 				]
 			}, 
 			"uci": [
