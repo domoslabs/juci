@@ -70,7 +70,8 @@
 			"uci": [
 				"system",
 				"buttons",
-				"leds"
+				"leds",
+				"passwords"
 			],
 			"juci-io": [
 				"backup"
