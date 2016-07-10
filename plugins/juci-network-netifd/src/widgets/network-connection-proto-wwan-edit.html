@@ -6,11 +6,11 @@
 		<juci-config-line title="{{'APN'|translate}}">
 			<input class="form-control" ng-model="interface.apn.value" placeholder="{{'APN'|translate}}"></input>
 		</juci-config-line>
-		<juci-config-line title="{{'Authentication type'|translate}}">
-			<juci-select ng-items="authtypes" ng-model="interface.auth.value"></juci-select>
-		</juci-config-line>
 		<juci-config-line title="{{'PIN-code'|translate}}">
 			<input class="form-control" ng-model="interface.pincode.value" placeholder="{{'PIN-code'|translate}}"></input>
+		</juci-config-line>
+		<juci-config-line title="{{'Authentication type'|translate}}">
+			<juci-select ng-items="authtypes" ng-model="interface.auth.value"></juci-select>
 		</juci-config-line>
 		<juci-config-line title="{{'Username'|translate}}">
 			<input class="form-control" ng-model="interface.username.value" placeholder="{{'Username'|translate}}"></input>
