@@ -40,7 +40,13 @@ JUCI.app
 		$scope.AllZones = zones.map(function(zone){ return { label: String(zone.name.value).toUpperCase(), value: zone.name.value }; });
 		$scope.$apply();
 	});
-	$scope.allProtocols = $network.getProtocolTypes();
+	$scope.allProtocolTypes = $network.getProtocolTypes();
+	$rpc.$call("juci.network", "run", {"method":"protocols"}).done(function(data){
+		$scope.allProtocols = $scope.allProtocolTypes.filter(function(x){
+			if(x.value == "static" || x.value == "none") return true; //should allways be there
+			return data.protocols.find(function(p){ return p == x.value }) != undefined;
+		});
+	});
 	$scope.model.type = "";
 	$scope.model.protocol = "none";
 	$scope.evalName = function(){
