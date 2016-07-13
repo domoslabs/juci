@@ -85,7 +85,13 @@
 
 		RPC_QUERY_IDS[jsonrpc_obj.id] = RPC_CACHE[key];
 
-		ws.send(JSON.stringify(jsonrpc_obj));
+		function num2str(key,val){
+			if(typeof val === "number"){ return val.toString(); }
+			//if(val instanceof Array){ return val.map(num2str); } // if val is array with numbers
+			return val;
+		}
+
+		ws.send(JSON.stringify(jsonrpc_obj,num2str));
 
 		return RPC_CACHE[key].deferred.promise(); 
 	}
