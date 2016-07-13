@@ -48,7 +48,9 @@ JUCI.app
 				}
 				return "black";
 			}else if(device.netdevice){
-				return $uci.network[device.netdevice] ? "green":"black";
+				if($uci.network["@interface"].find(function(iface){ return iface.ifname.value === device.netdevice;}))
+					return "green";
+				return "black";
 			}
 		}
 	});
@@ -127,7 +129,8 @@ JUCI.app
 		}
 
 		$uci.$sync(["network"]).done(function(){
-			var existingConnection = $uci.network[device.netdevice];
+			if($uci.network[device.netdevice]){alert($tr(gettext("An interface with name " + device.netdevice + " already exists!"))); return; }
+			var existingConnection = $uci.network["@interface"].find(function(iface){ return iface.ifname.value === device.netdevice;});
 			$firewall.getWanZones().done(function(zones){
 				if(existingConnection){
 					showConnModal(existingConnection,false, zones);
