@@ -129,13 +129,16 @@ JUCI.app
 		}
 
 		$uci.$sync(["network"]).done(function(){
-			if($uci.network[device.netdevice]){alert($tr(gettext("An interface with name " + device.netdevice + " already exists!"))); return; }
 			var existingConnection = $uci.network["@interface"].find(function(iface){ return iface.ifname.value === device.netdevice;});
 			$firewall.getWanZones().done(function(zones){
 				if(existingConnection){
 					showConnModal(existingConnection,false, zones);
 				}
 				else{
+					if($uci.network[device.netdevice]){
+						alert($tr(gettext(device.netdevice + " connection already exists!")));
+						return;
+					}
 					$uci.network.$create({
 						".type":"interface",
 						".name":device.netdevice,
