@@ -291,7 +291,7 @@
 				host = host.replace(/^http/, 'ws');
 			if(DEBUG_MODE)console.log("connecting to " + host);
 			try {
-				var ws = new WebSocket("ws://192.168.1.1", "ubus-json");
+				var ws = new WebSocket(host, "ubus-json");
 			} catch (exc) {
 				return deferred.reject("Exception " + exc.message);
 			}
@@ -390,7 +390,7 @@
 			};
 
 			ws.onerror = function(result){
-				if(DEBUG_MODE)console.error("RPC error ("+object+"."+method+"): "+JSON.stringify(result));
+				if(DEBUG_MODE)console.error("RPC error "+JSON.stringif(result));
 				if(result && result.error){
 					RPC_CACHE[key].deferred.reject(result.error);
 				}
