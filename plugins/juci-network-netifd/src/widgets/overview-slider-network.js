@@ -85,12 +85,12 @@ JUCI.app
 	function getIcon(type, dev){
 		switch(type){
 			case "wan":
-				if(dev.$info.up) return hasInternet ? "img/Internet_Green.png": "img/Internet_Red.png";
-				if(dev.$info.pending) return "img/Internet_Yellow.png";
+				if(dev.up) return hasInternet ? "img/Internet_Green.png": "img/Internet_Red.png";
+				if(dev.pending) return "img/Internet_Yellow.png";
 				return "img/Internet_Red.png";
 			case "lan":
-				if(dev.$info.up) return "img/LanNet_Green.png";
-				if(dev.$info.pending) return "img/LanNet_Yellow.png";
+				if(dev.up) return "img/LanNet_Green.png";
+				if(dev.pending) return "img/LanNet_Yellow.png";
 				return "img/LanNet_Red.png";
 			case "eth":
 				if(dev.down) return "img/Ethernet_Red.png";
@@ -132,22 +132,51 @@ JUCI.app
 					$tr(gettext("Software Version")) + ": " + $config.board.system.firmware + "<br />" +
 					$tr(gettext("Filesystem Type")) + ": " + $config.board.system.filesystem + "<br />",
 			size: 60,
-			image: "/img/Box_Green.png",
 			shape: "image",
 		});
-		var clients, lan_nets, wan_nets, radios;
+		var clients, lan_nets, wan_nets, radios, all_nets = [];
 		async.series([
 			function(next){
-				$firewall.getZoneNetworks("lan").done(function(nets){
-					lan_nets = nets;
+				$rpc.$call("network.interface", "dump").done(function(data){
+					if(!data || !data.interface){console.log("error getting interfaces"); next();return}
+					all_nets = data.interface;
+				}).always(function(){next();});
+			},
+			function(next){
+				$rpc.$call("router", "networks").done(function(data){
+					Object.keys(data).map(function(k){
+						all_nets.find(function(n){
+							if(n.interface === k){
+								n["defaultroute"] = data[k].defaultroute;
+								n["is_alias"] = (data[k].ifname && data[k].ifname.match(/^@.*/)) ? true:false;
+								return true;
+							}
+							return false;
+						});
+					});
+				}).fail(function(e){console.log(e);}).always(function(){next();});
+			},
+			function(next){
+				$firewall.getLanZones().done(function(lan_zones){
+					lan_nets = all_nets.filter(function(net){
+						if(net.is_alias || !net.defaultroute)return false;
+						return lan_zones.find(function(z){
+							return z.network && z.network.value && z.network.value.find(function(n){ return n === net.interface;});
+						});
+					});
 				}).always(function(){next();});
 			}, function(next){
 				$rpc.$call("led.internet", "status").done(function(data){
 					hasInternet = data.state && data.state === "ok";
 				}).fail(function(e){console.log(e);}).always(function(){next();});
 			}, function(next){
-				$firewall.getZoneNetworks("wan").done(function(nets){
-					wan_nets = nets;
+				$firewall.getWanZones().done(function(wan_zones){
+					wan_nets = all_nets.filter(function(net){
+						if(net.is_alias || !net.defaultroute)return false;
+						return wan_zones.find(function(z){
+							return z.network && z.network.value && z.network.value.find(function(n){ return n === net.interface;});
+						});
+					});
 				}).always(function(){next();});
 			}, function(next){
 				$rpc.$call("router", "radios").done(function(data){
@@ -155,8 +184,8 @@ JUCI.app
 				}).always(function(){next();});
 			}, function(next){
 				function getWanTitle(type, wan, data){
-					if(!wan || !wan.$info) return "";
-					var t= wan[".name"] + '<br />' + $tr(gettext('Connection Type')) + ': ';
+					if(!wan) return "";
+					var t= wan.interface + '<br />' + $tr(gettext('Connection Type')) + ': ';
 					switch(type){
 						case "eth":
 							t+= $tr(gettext("Ethernet")) + '<br />';
@@ -178,13 +207,13 @@ JUCI.app
 						default:
 							t+= $tr(gettext("Unknown")) + '<br />';
 					}
-					if(wan.$info["ipv4-address"] && wan.$info["ipv4-address"].length){
-						wan.$info["ipv4-address"].map(function(ip){
+					if(wan["ipv4-address"] && wan["ipv4-address"].length){
+						wan["ipv4-address"].map(function(ip){
 							t += $tr(gettext("IPv4 address")) + ': ' + ip.address;
 						});
 					}
-					if(wan.$info["ipv6-address"] && wan.$info["ipv6-address"].length){
-						wan.$info["ipv6-address"].map(function(ip){
+					if(wan["ipv6-address"] && wan["ipv6-address"].length){
+						wan["ipv6-address"].map(function(ip){
 							t += $tr(gettext("IPv6 address")) + ': ' + ip.address;
 						});
 					}
@@ -195,7 +224,7 @@ JUCI.app
 					if(!title) return;
 					var node = {
 						id: count++,
-						label: String(wan[".name"]).toUpperCase().substring(0,10),
+						label: String(wan.interface).toUpperCase().substring(0,10),
 						title: title,
 						image: getIcon("wan", wan),
 						ize: 20,
@@ -207,27 +236,26 @@ JUCI.app
 				var up = false;
 				async.eachSeries(wan_nets, function(wan, callback){
 					var title;
-					if(wan.ifname.value.match(/^@.+/) || wan.defaultroute.value === false || !wan.$info){ callback(); return;}
-					if(!wan.$info.device){
-						title = $tr(gettext("DOWN"));
+					if(!wan.device){
+						title = wan.up ? $tr(gettext("Unknown Working interface")): wan.pending ? $tr(gettext("PENDING")):$tr(gettext("DOWN"));
 						addNode(wan, title);
 						callback();
-					}else if(wan.$info.device.match("eth[0-9]")){
-						$rpc.$call("router", "linkspeed", { "interface": wan.$info.device.match("eth[0-9]")[0] }).done(function(data){
+					}else if(wan.device.match("eth[0-9]")){
+						$rpc.$call("router", "linkspeed", { "interface": wan.device.match("eth[0-9]")[0] }).done(function(data){
 							title = getWanTitle("eth", wan, data);
 							addNode(wan, title);
 						}).fail(function(e){console.log(e);}).always(function(){callback();});
-					}else if(wan.$info.device.match("[pa]tm]")){
+					}else if(wan.device.match("[pa]tm]")){
 						$rpc.$call("router", "dslstats").done(function(data){
 							if(!data || !data.dslstats || !data.dslstats.bearers || !data.dslstats.bearers.length){ callback(); return;}
 							title = getWanTitle("dsl", wan, data);
 							addNode(wan, title);
 						}).fail(function(e){console.log(e);}).always(function(){callback();});
-					}else if(wan.$info.device.match("vwan")){
+					}else if(wan.device.match("vwan")){
 						title = getWanTitle("vwan", wan);
 						addNode(wan, title);
 						callback();
-					}else if(wan.$info.device.match("br-wan")){
+					}else if(wan.device.match("br-wan")){
 						title = getWanTitle("bridge", wan);
 						addNode(wan, title);
 						callback();
@@ -236,14 +264,14 @@ JUCI.app
 						addNode(wan, title);
 						callback();
 					}
-					up = wan.$info.up;
+					if(wan.up) up = true;
 				}, function(){
 					nodes.find(function(node){ return node.id === ".root";}).image = up ? "/img/Box_Green.png" : "/img/Box_Red.png";
 					next();});
 			}], function(next){
 				async.eachSeries(lan_nets, function(item, callback){
-					if(!item || !item[".name"] || !item.$info){ callback(); return;}
-					$rpc.$call("router", "ports", { "network": item[".name"] }).done(function(data){
+					if(!item || !item.interface){ callback(); return;}
+					$rpc.$call("router", "ports", { "network": item.interface }).done(function(data){
 						var num_cli = 0;
 						Object.keys(data).map(function(dev){
 							if(data[dev].hosts && data[dev].hosts.length){
@@ -252,8 +280,8 @@ JUCI.app
 						});
 						var node = {
 							id: count++,
-							label: String(item[".name"]).toUpperCase().substring(0,10),
-							title: item[".name"] + '<br />' + $tr(gettext("Number of Clients")) + ": " + num_cli,
+							label: String(item.interface).toUpperCase().substring(0,10),
+							title: item.interface + '<br />' + $tr(gettext("Number of Clients")) + ": " + num_cli,
 							image: getIcon("lan", item),
 							size: 20,
 							shape: "image",
@@ -310,7 +338,7 @@ JUCI.app
 								});
 							}
 						});
-					}).always(function(){callback();});
+					}).fail(function(e){console.log(e);}).always(function(){callback();});
 				}, function(){
 					self.def.resolve(nodes, edges)
 					self.def = undefined;
