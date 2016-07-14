@@ -2,48 +2,39 @@
 	<juci-overview-widget title="{{'WAN'|translate}}" icon="fa fa-globe" href="#!/internet-ethernet">
 		<table class="table table-condensed">
 			<tr>
-				<td class="col-xs-5"><strong translate>Internet</strong></td>
-				<td class="col-xs-5">
-					<strong ng-show="wan_ifs.length" class="text-success" translate>ONLINE</strong>
-					<strong ng-show="!wan_ifs.length" class="text-danger" translate>OFFLINE</strong>
+				<td class="col-xs-6"><strong translate>Internet</strong></td>
+				<td class="col-xs-6">
+					<strong ng-show="data.up" class="text-success" translate>ONLINE</strong>
+					<strong ng-show="!data.up" class="text-danger" translate>OFFLINE</strong>
 				</td>
-				<td></td><!--for icons-->
 			</tr>
-			<tr ng-show="wan_ifs.length">
+			<tr ng-show="data.ip.length">
 				<td ><strong translate>WAN IP(s)</strong></td>
-				<td><span ng-repeat="i in wan_ifs track by $index" title="{{i['ipv4-address'][0].address}} {{i['ipv6-address'][0].address}}">
-					{{i['ipv4-address'][0].address.substring(0,20)}} {{i['ipv6-address'][0].address.substring(0,20)}}
+				<td><span ng-repeat="i in data.ip track by $index">
+					{{i}}
 				<br/></span></td>
-				<td></td><!--for icons-->
 			</tr>
-			<tr ng-show="wan_ifs.length">
+			<tr ng-show="data.defaultroute.length">
 				<td ><strong translate>Gateway(s)</strong></td>
-				<td><span ng-repeat="g in all_gateways track by $index">{{g}}<br/></span></td>
-				<td></td><!--for icons-->
+				<td><span ng-repeat="g in data.defaultroute track by $index">{{g}}<br/></span></td>
 			</tr>
-			<tr ng-show="wan_ifs.length">
+			<tr ng-show="data.contypes.length">
 				<td ><strong translate>Connection</strong></td>
-				<td><span ng-repeat="i in connection_types track by $index">{{i}}<br/></span></td>
-				<td></td><!--for icons-->
+				<td><span ng-repeat="i in data.contypes track by $index">{{i}}<br/></span></td>
 			</tr>
-			<tr ng-show="dslDown && dslDown.length">
+			<tr ng-show="data.dslDown.length">
 				<td><strong translate>DSL Rate(s)</strong></td>
-				<td><span ng-repeat="down in dslDown track by $index">{{down}} Kb/s</span></td>
-				<td></td>
+				<td><span ng-repeat="down in data.dslDown track by $index">{{down}} Kb/s</span></td>
 			</tr>
-			<tr ng-show="wan_ifs.length">
+			<tr ng-show="data.dns.length">
 				<td ><strong translate>DNS-Servers</strong></td>
 				<td>
-					<div ng-repeat="i in wan_ifs track by $index">
-						<div ng-repeat="dns in i['dns-server'] track by $index">{{dns}}<br/></div>
-					</div>
+					<span ng-repeat="dns in data.dns track by $index">{{dns}}<br/></span>
 				</td>
-				<td><span ng-click="showDnsSettings()" style="cursor:pointer;float: right;"><i class="fa fa-edit fa-lg"></i></span></td>
 			</tr>
-			<tr ng-show="wan_ifs.length">
+			<tr ng-show="uptime && uptime !== 0">
 				<td ><strong translate>WAN Uptime</strong></td>
-				<td><div ng-repeat="i in wan_ifs track by $index">{{i['uptime']|formatTimer}}<br/></div></td>
-				<td></td><!--for icons-->
+				<td><div>{{uptime|formatTimer}}</div></td>
 			</tr>
 		</table>
 	</juci-overview-widget>
