@@ -90,8 +90,12 @@
 			//if(val instanceof Array){ return val.map(num2str); } // if val is array with numbers
 			return val;
 		}
+		function formatter(key,val){
+			if(object === "uci"){ return num2str(key,val); }
+			return val;
+		}
 
-		ws.send(JSON.stringify(jsonrpc_obj,num2str));
+		ws.send(JSON.stringify(jsonrpc_obj,formatter));
 
 		return RPC_CACHE[key].deferred.promise(); 
 	}
