@@ -1,0 +1,15 @@
+{
+	"juci-owsd":{
+		"description": "Owsd acces list",
+		"read": {
+			"uci": [
+				"owsd"
+			]
+		},
+		"write": {
+			"uci": [
+				"owsd"
+			]
+		}
+	}
+}
