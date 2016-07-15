@@ -62,7 +62,7 @@ JUCI.app
 							return w.network.value.find(function(n){ return n === iface.interface;});
 						});
 					});
-				}).always(function(){next();});
+				}).fail(function(e){console.log(e);}).always(function(){next();});
 			},
 			function(next){
 				$rpc.$call("router", "networks").done(function(data){
@@ -70,7 +70,7 @@ JUCI.app
 						var wan = data[w.interface];
 						return wan && wan.defaultroute && wan.ifname && wan.ifname.match(/^[^@].*/);
 					});
-				}).always(function(){next();});
+				}).fail(function(e){console.log(e);}).always(function(){next();});
 			}
 		], function(){
 			$scope.up = false;
@@ -106,7 +106,7 @@ JUCI.app
 							return w.network.value.find(function(n){ return n === iface.interface;});
 						});
 					});
-				}).always(function(){next();});
+				}).fail(function(e){console.log(e);}).always(function(){next();});
 			},
 			function(next){
 				$rpc.$call("router", "networks").done(function(data){
@@ -114,7 +114,7 @@ JUCI.app
 						var wan = data[w.interface];
 						return wan && wan.defaultroute && wan.ifname && wan.ifname.match(/^[^@].*/);
 					});
-				}).always(function(){next();});
+				}).fail(function(e){console.log(e);}).always(function(){next();});
 			}
 		], function(){
 			$scope.data = {ip:[], defaultroute:[], contypes:[], dslDown:[], dns:[], up:false};

@@ -109,7 +109,7 @@
 	function PortValidator(){
 		this.validate = function(field){
 			if(!field || !field.value) return null;
-			if(field.value.match(/^[0-9]+$/)){
+			if(String(field.value).match(/^[0-9]+$/)){
 				var num = parseInt(field.value);
 				if(num < 1 || num > 65535) return gettext("Port has to be a number between 1 and 65535");
 			} else {

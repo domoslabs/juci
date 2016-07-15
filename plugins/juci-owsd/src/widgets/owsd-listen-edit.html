@@ -1,5 +1,19 @@
 <div>
-	<juci-config-section title="{{'Interface'| translate}}">
-		<juci-select ng-items="[]" ng-model="listen.interface.value"></juci-select>
+	<juci-config-section>
+		<juci-config-lines>
+			<juci-config-line title="{{'Interface'|translate}}">
+				<juci-select ng-items="networks" ng-model="listen.interface.value"></juci-select>
+			</juci-config-line>
+			<juci-config-line title="{{'Port'|translate}}">
+				<input type="number" class="form-control" ng-model="listen.port.value" />
+			</juci-config-line>
+			<juci-config-line title="{{'IPv6'|translate}}">
+				<switch class="green" ng-model="listen.ipv6.value" />
+			</juci-config-line>
+			<juci-config-line title="{{'Only IPv6'|translate}}" ng-show="listen.ipv6.value">
+				<switch clasS="green" ng-model="listen.ipv6only.value" />
+			</juci-config-line>
+			<juci-list-editor ng-items="listen.origin.value" on-create="onAddOrigin()" on-delete="onDeleteOrigin($item)" get-item-title="$item"></juci-list-editor>
+		</juci-config-lines>
 	</juci-config-section>
 </div>

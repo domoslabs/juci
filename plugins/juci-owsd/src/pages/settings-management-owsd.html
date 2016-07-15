@@ -3,7 +3,8 @@
 		<juci-config-heading>{{ 'OWSD Settings'|translate}}</juci-config-heading>
 		<juci-config-info>{{'Chage settings for the owsd web-server deamon'|translate}}</juci-config-info>
 		<juci-config-section>
-			<juci-list-editor ng-items="allListen" item-editor="owsd-listen-edit" on-create="onAddListen()" on-delete="onDeleteListen($item)"></juci-list-editor>
+			<juci-list-editor ng-items="allListen" item-editor="owsd-listen-edit" get-item-title="getOwsdListenTitle($item)"
+					on-create="onAddListen()" on-delete="onDeleteListen($item)"></juci-list-editor>
 		</juci-config-section>
 	</div>
 </juci-layout-with-sidebar>
