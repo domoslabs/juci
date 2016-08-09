@@ -75,6 +75,8 @@ echo "<!doctype html>
 <head>
 	<meta charset='utf-8'>
 	<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+	<meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+	<meta HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 	<title>JUCI</title><!--ng-bind='title'-->
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 	<base href='/'>

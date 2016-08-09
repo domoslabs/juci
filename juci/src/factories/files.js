@@ -1,11 +1,8 @@
 //!Author: Reidar Cederqvist <reidar.cederqvist@gmail.com>
 
-JUCI.app.factory("$file", function($rpc){
+JUCI.app.factory("$file", function($rpc, $tr, gettext){
 	var saveByteArray = (function () {
-		var a = document.createElement("a");
-		document.body.appendChild(a);
-		a.style = "display: none";
-		return function (data, name, fileType) {
+		return function (data, name, fileType, a) {
 			var byteChars = atob(data);
 			var byteNumbers = [];
 			for(var i = 0; i < byteChars.length; i++){
@@ -14,10 +11,13 @@ JUCI.app.factory("$file", function($rpc){
 			var byteArray = new Uint8Array(byteNumbers);
 			var blob = new Blob([byteArray], {type:fileType}),
 			url = window.URL.createObjectURL(blob);
-			a.href = url;
-			a.download = name;
+			a.setAttribute("style", "display: none");
+			a.setAttribute("href", url);
+			a.setAttribute("download", name);
+			document.body.appendChild(a);
 			a.click();
-			window.URL.revokeObjectURL(url);
+			document.body.removeChild(a);
+			//window.URL.revokeObjectURL(url);
 		};
 	}());
 	return {
@@ -66,11 +66,16 @@ JUCI.app.factory("$file", function($rpc){
 		},
 		downloadFile: function(fileName, filetype, downloadName){
 			var def = $.Deferred();
-			if(!fileName || fileName.match("/")) return def.resolve();
+			if(!fileName || fileName.match("/")) return def.reject();
+			var link = document.createElement("a");
+			if (link.download === undefined){
+				alert($tr(gettext("your browser does not support this kind of download, please refer to latest Chrome, Firefox, Opera or Edge etc.")));
+				return def.reject();
+			}
 			var name = (downloadName)?downloadName:fileName;
 			var filetype = filetype || "application/gzip";
 			$rpc.$call("file", "read", {path:"/tmp/"+fileName, base64:true}).done(function(result){
-				def.resolve(saveByteArray(result.data, name, filetype));
+				def.resolve(saveByteArray(result.data, name, filetype, link));
 			}).fail(function(e){ def.reject(e);});
 			return def;
 		},

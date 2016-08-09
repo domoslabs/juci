@@ -406,7 +406,8 @@
 				}
 			}
 			ws.onclose = function(e) {
-				window.location.reload();
+				//window.location.reload();
+				console.log(JSON.stringify(e));
 				console.log( "Close(" + e.reason + ")");
 			};
 
