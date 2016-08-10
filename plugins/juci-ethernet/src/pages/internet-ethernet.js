@@ -29,7 +29,7 @@ JUCI.app
 
 	$ethernet.getAdapters().done(function(adapters){
 		$scope.adapters = adapters.map(function(a){
-			if(a.device.match(/^wl.*/)) a._icon = "fa fa-wifi";
+			if(a.device.match(/^wl.*/)) a._icon = "juci juci-wifi";
 			if(a.device.match(/^eth.*/)) a._icon = "juci juci-ethernet";
 			if(a.device.match(/^br.*/)) a._icon = "juci juci-bridge";
 			if(a.device.match(/^ptm.*/)) a._icon = "juci juci-VDSL";

@@ -1,10 +1,6 @@
 @font-face {
     font-family: 'juci-icons';
-    src:    url('../fonts/juci-icons.eot?803rg3');
-    src:    url('../fonts/juci-icons.eot?803rg3#iefix') format('embedded-opentype'),
-        url('../fonts/juci-icons.ttf?803rg3') format('truetype'),
-        url('../fonts/juci-icons.woff?803rg3') format('woff'),
-        url('../fonts/juci-icons.svg?803rg3#juci-icons') format('svg');
+    src: url('../fonts/juci-icons.ttf?803rg3') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -23,36 +19,53 @@ i[class^="juci-"], i[class*=" juci-"] {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+.j-lg{font-size:1.33333333em;line-height:.75em;vertical-align:-15%}
+.j-2x{font-size:2em}
+.j-3x{font-size:3em}
+.j-4x{font-size:4em}
+.j-5x{font-size:5em}.
 
 .juci-bridge:before {
-    content: "\e906";
+    content: "\004c";
+}
+.juci-wifi:before {
+    content: "\0042";
+}
+.juci-share:before {
+    content: "\0072";
+}
+.juci-usb:before {
+    content: "\0074";
+}
+.juci-phone:before {
+    content: "\006d";
 }
 .juci-VDSL:before {
-    content: "\e907";
+    content: "\0062";
 }
 .juci-ADSL:before {
-    content: "\e908";
+    content: "\0063";
 }
 .juci-ethernet:before {
-    content: "\e909";
+    content: "\004a";
 }
 .juci-profile:before {
-    content: "\e902";
+    content: "\0079";
 }
 .juci-wps:before {
-    content: "\e900";
+    content: "\0068";
 }
 .juci-world:before {
-    content: "\e901";
+    content: "\006e";
 }
 .juci-settings:before {
-    content: "\e903";
+    content: "\0068";
 }
 .juci-network:before {
-    content: "\e904";
+    content: "\0071";
 }
 .juci-web:before {
-    content: "\e905";
+    content: "\006e";
 }
 
 .spin {
