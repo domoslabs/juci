@@ -8,6 +8,15 @@ JUCI.app.factory("$broadcomEthernet", function($uci){
 	
 	Ethernet.prototype.configureWANPort = function(devname){
 		var def = $.Deferred(); 
+		if(!devname){
+			// delete the Wan section
+			if($uci.layer2_interface_ethernet.Wan){
+				$uci.layer2_interface_ethernet.Wan.$delete().done(function(){ def.resolve();}).fail(function(e){def.reject(e);});
+			}else{
+				return def.resolve();
+			}
+			return def.promise();
+		}
 		// WAN port for broadcom phy must be configured specially so we do it in layer2_interface_ethernet (the name is a little misleading because the config is only used to set wan port on the ethernet connector!)
 		function setInterface(devname){
 			var wan = $uci.layer2_interface_ethernet.Wan; 
