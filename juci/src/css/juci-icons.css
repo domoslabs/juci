@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'juci-icons';
-    src: url('../fonts/juci-icons.ttf?803rg3') format('truetype');
+    src: url('../fonts/juci-icons.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -23,7 +23,7 @@ i[class^="juci-"], i[class*=" juci-"] {
 .j-2x{font-size:2em}
 .j-3x{font-size:3em}
 .j-4x{font-size:4em}
-.j-5x{font-size:5em}.
+.j-5x{font-size:5em}
 
 .juci-bridge:before {
     content: "\004c";
@@ -39,6 +39,9 @@ i[class^="juci-"], i[class*=" juci-"] {
 }
 .juci-phone:before {
     content: "\006d";
+}
+.juci-calendar:before {
+    content: "\0075";
 }
 .juci-VDSL:before {
     content: "\0062";
