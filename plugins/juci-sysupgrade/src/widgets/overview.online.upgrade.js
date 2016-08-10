@@ -27,7 +27,7 @@ JUCI.app
 		}
 		$scope.$apply();
 	}).fail(function(e){console.log(e);});
-	var confText = '<p>'+$tr(gettext("If you klick 'Yes' all settings will be saved, if you want to have a clen install click 'No', to close this dialog klick 'Cancel'"))+'</p>';
+	var confText = '<p>'+$tr(gettext("If you click 'Yes' all settings will be saved. If you want to have a clean install click 'No'. To close this dialog click 'Cancel'"))+'</p>';
 	var modalText = confText;
 	$scope.onUpgrade = function(){
 		$juciDialog.show(null, {
