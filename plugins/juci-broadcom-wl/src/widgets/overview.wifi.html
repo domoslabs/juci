@@ -29,7 +29,7 @@
 				<table class="table table-condensed" ng-repeat="wif in wifs track by $index">
 					<thead>
 						<th colspan="2">
-							<i class="fa fa-edit fa-lg" style="float: right; cursor: pointer;" ng-click="onEditSSID(wif)"></i>
+							<i class="juci juci-edit j-lg" style="float: right; cursor: pointer;" ng-click="onEditSSID(wif)"></i>
 							<i class="fa fa-toggle-right" style="cursor: pointer;" ng-show="!wif._expanded" ng-click="wif._expanded = !wif._expanded"></i>
 							<i class="fa fa-toggle-down" style="cursor: pointer;" ng-show="wif._expanded" ng-click="wif._expanded = !wif._expanded"></i>
 							<span ng-click="wif._expanded = !wif._expanded" style="cursor: pointer;">{{wif.ssid.value + ' (' + wif.$radio.frequency + ')'}}</span>
