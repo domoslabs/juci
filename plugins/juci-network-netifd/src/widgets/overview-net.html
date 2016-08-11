@@ -15,7 +15,7 @@
 				<div class="col-xs-8">{{client.hostname}}<br ng-show="client.hostname"/>{{client.ipaddr}}<br ng-show="client.ip6addr"/>{{client.ip6addr}}</div>
 				<div ng-show="client.wireless">
 					<div class="col-xs-2" style="color: #a9b400;">
-						<wifi-signal-indicator ng-model="client.snr"></wifi-signal-indicator>
+						<wifi-signal-indicator ng-model="client.rssi"></wifi-signal-indicator>
 					</div>
 					<div style="position: absolute;top: 32px;right: 10px;font-size: 10px;">{{client.frequency}}</div>
 				</div>

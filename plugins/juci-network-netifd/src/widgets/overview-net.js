@@ -98,7 +98,7 @@ JUCI.app
 				update()
 			}
 		});
-		JUCI.interval.repeat("update-big-clients-widget", 6e4, function(next){
+		JUCI.interval.repeat("update-big-clients-widget", 5000, function(next){
 			update();
 			next()
 		})
@@ -175,7 +175,7 @@ JUCI.app
 			refresh();
 		}
 	});
-	JUCI.interval.repeat("update-lan-overview-widget-slow", 60000, function(done){ refresh(); done();});
+	JUCI.interval.repeat("update-lan-overview-widget-slow", 5000, function(done){ refresh(); done();});
 
 	$scope.onEditLan = function(lan){
 		if(!lan || lan["_dhcp_enabled"] == undefined) return;

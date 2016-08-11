@@ -73,6 +73,9 @@ i[class^="juci-"], i[class*=" juci-"] {
 .juci-edit:before {
     content: "\0049";
 }
+.juci-wifi-good:before {
+    content: "\0042";
+}
 
 .spin {
 	animation: spin 2s linear infinite;
@@ -83,4 +86,9 @@ i[class^="juci-"], i[class*=" juci-"] {
 	100% { transform: rotate(360deg); }
 }
 
-
+.juci-wifi-medium:before {
+    content: "\0046";
+}
+.juci-wifi-bad:before {
+    content: "\0045";
+}
