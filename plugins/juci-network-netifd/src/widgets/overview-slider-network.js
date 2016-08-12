@@ -97,9 +97,17 @@ JUCI.app
 				if(dev.hosts && dev.hosts.length && dev.hosts.filter(function(dev){ return dev.connected;}).length) return "img/Ethernet_Green.png";
 				return "img/Ethernet_Yellow.png";
 			case "wl":
-				if(dev.down) return "img/Wifi2_Red.png";
-				if(dev.hosts && dev.hosts.length && dev.hosts.filter(function(dev){ return dev.connected;}).length) return "img/Wifi2_Green.png";
-				return "img/Wifi2_Yellow.png";
+				if(dev.frequency === "2.4GHz"){
+					if(dev.down) return "img/Wifi_Radio_24_Red.png";
+					if(dev.hosts && dev.hosts.length && dev.hosts.filter(function(dev){ return dev.connected;}).length) return "img/Wifi_Radio_24_Green.png";
+					return "img/Wifi_Radio_24_Yellow.png";
+				}
+				else if( dev.frequency === "5GHz"){
+					if(dev.down) return "img/Wifi_Radio_5_Red.png";
+					if(dev.hosts && dev.hosts.length && dev.hosts.filter(function(dev){ return dev.connected;}).length) return "img/Wifi_Radio_5_Green.png";
+					return "img/Wifi_Radio_5_Yellow.png";
+				}
+				return "img/Wifi_Radio_Unknown.png";
 			case "cl":
 				if(dev.wireless){
 					if(!dev.rssi || parseFloat(dev.rssi) < -75) return "img/Laptop_Red.png";
@@ -283,19 +291,20 @@ JUCI.app
 							label: String(item.interface).toUpperCase().substring(0,10),
 							title: item.interface + '<br />' + $tr(gettext("Number of Clients")) + ": " + num_cli,
 							image: getIcon("lan", item),
-							size: 20,
+							size: 30,
 							shape: "image",
 						}
 						nodes.push(node);
 						edges.push( { from: ".root", to: node.id, width: 3 });
 						Object.keys(data).map(function(device){
 							var dev = data[device];
+							dev.frequency = (radios[device.substring(0,3)])? radios[device.substring(0,3)].frequency : $tr(gettext('unknown'));
 							var dev_node = {
 								id: count++,
 								label: String((dev.name)?dev.name : dev.ssid).toUpperCase().substring(0,10),
 								title: (dev.name)? String(dev.name).toUpperCase() + '<br />' + $tr(gettext("Link speed")) + ': ' + dev.linkspeed :
 													String(dev.ssid).toUpperCase() + ' @ ' + ((radios[device.substring(0,3)])? radios[device.substring(0,3)].frequency : $tr(gettext('unknown'))),
-								size: 15,
+								size: 30,
 								image: device.match("eth")?getIcon("eth",dev):getIcon("wl", dev),
 								shape: "image"
 							}
@@ -329,7 +338,7 @@ JUCI.app
 										id: JSON.stringify(host) + count++,
 										label: String(host.hostname || host.ipaddr || host.macaddr).toUpperCase().substring(0,10),
 										title: getHostTitle(host),
-										size: 15,
+										size: 30,
 										image: getIcon("cl", host),
 										shape: "image"
 									}
