@@ -117,7 +117,7 @@ JUCI.app
 				}).fail(function(e){console.log(e);}).always(function(){next();});
 			}
 		], function(){
-			$scope.data = {ip:[], defaultroute:[], contypes:[], dslUp:[], dslDown:[], dns:[], up:false};
+			$scope.data = {ip:[], defaultroute:[], contypes:[], dslUp:[], dslDown:[], dns:[], up:false, linkspeed:[]};
 			$scope.uptime = 0;
 			wans.map(function(w){
 				if(w.up) $scope.data.up = true;
@@ -141,11 +141,17 @@ JUCI.app
 					$rpc.$call("router", "dslstats").done(function(data){
 						if(!data || !data.dslstats || !data.dslstats.bearers || data.dslstats.bearers.length < 1) return;
 						data.dslstats.bearers.map(function(b){
-							if(b.rate_down) $scope.data.dslDown.push(b.rate_down);
-							if(b.rate_up) $scope.data.dslUp.push(b.rate_up);
+							if(b.rate_down) $scope.data.dslDown.push(parseInt(String(b.rate_down))/1000);
+							if(b.rate_up) $scope.data.dslUp.push(parseInt(String(b.rate_up))/1000);
 						});
 						$scope.$apply();
 					});
+				}
+				if(w.device && w.device.match("eth[0-9].[0-9]")){
+					$rpc.$call("router", "linkspeed", {"interface":w.device.substring(0,4)}).done(function(data){
+						if(data && data.linkspeed)
+							$scope.data.linkspeed.push(data.linkspeed);
+					}).fail(function(e){console.log(e);});
 				}
 				if(w["dns-server"] && w["dns-server"].length)
 					$scope.data.dns = $scope.data.dns.concat(w["dns-server"]);
