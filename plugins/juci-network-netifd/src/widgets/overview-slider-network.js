@@ -235,6 +235,7 @@ JUCI.app
 				}
 				var up = false;
 				async.eachSeries(wan_nets, function(wan, callback){
+					if(wan.up) up = true;
 					var title;
 					if(!wan.device){
 						title = wan.up ? $tr(gettext("Unknown Working interface")): wan.pending ? $tr(gettext("PENDING")):$tr(gettext("DOWN"));
@@ -245,7 +246,7 @@ JUCI.app
 							title = getWanTitle("eth", wan, data);
 							addNode(wan, title);
 						}).fail(function(e){console.log(e);}).always(function(){callback();});
-					}else if(wan.device.match("[pa]tm]")){
+					}else if(wan.device.match(/[ap]tm/)){
 						$rpc.$call("router", "dslstats").done(function(data){
 							if(!data || !data.dslstats || !data.dslstats.bearers || !data.dslstats.bearers.length){ callback(); return;}
 							title = getWanTitle("dsl", wan, data);
@@ -264,7 +265,6 @@ JUCI.app
 						addNode(wan, title);
 						callback();
 					}
-					if(wan.up) up = true;
 				}, function(){
 					nodes.find(function(node){ return node.id === ".root";}).image = up ? "/img/Box_Green.png" : "/img/Box_Red.png";
 					next();});

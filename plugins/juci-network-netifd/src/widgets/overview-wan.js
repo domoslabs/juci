@@ -117,7 +117,7 @@ JUCI.app
 				}).fail(function(e){console.log(e);}).always(function(){next();});
 			}
 		], function(){
-			$scope.data = {ip:[], defaultroute:[], contypes:[], dslDown:[], dns:[], up:false};
+			$scope.data = {ip:[], defaultroute:[], contypes:[], dslUp:[], dslDown:[], dns:[], up:false};
 			$scope.uptime = 0;
 			wans.map(function(w){
 				if(w.up) $scope.data.up = true;
@@ -137,11 +137,12 @@ JUCI.app
 				else if(w.device.match(/ptm/)) type = $tr(gettext("VDSL"));
 				else if(w.device.match(/wwan/)) type = $tr(gettext("3G/4G"));
 				$scope.data.contypes.push(type);
-				if(w.device && w.device.match(/[ap]tmL/)){
+				if(w.device && w.device.match(/[ap]tm/)){
 					$rpc.$call("router", "dslstats").done(function(data){
 						if(!data || !data.dslstats || !data.dslstats.bearers || data.dslstats.bearers.length < 1) return;
 						data.dslstats.bearers.map(function(b){
 							if(b.rate_down) $scope.data.dslDown.push(b.rate_down);
+							if(b.rate_up) $scope.data.dslUp.push(b.rate_up);
 						});
 						$scope.$apply();
 					});
