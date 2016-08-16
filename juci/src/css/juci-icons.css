@@ -6,24 +6,35 @@
 }
 
 i[class^="juci-"], i[class*=" juci-"] {
-    /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'juci-icons' !important;
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'juci-icons' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	display:inline-block;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
 
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
-.j-lg{font-size:1.33333333em;line-height:.75em;vertical-align:-15%}
-.j-2x{font-size:2em}
-.j-3x{font-size:3em}
-.j-4x{font-size:4em}
-.j-5x{font-size:5em}
+
+.juci-lg{font-size:1.33333333em;line-height:.75em;vertical-align:-15%}
+.juci-2x{font-size:2em}
+.juci-3x{font-size:3em}
+.juci-4x{font-size:4em}
+.juci-5x{font-size:5em}
+.juci-spin {
+	animation: juci-spin 2s linear infinite;
+}
+
+@keyframes juci-spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
 
 .juci-bridge:before {
     content: "\004c";
@@ -76,28 +87,9 @@ i[class^="juci-"], i[class*=" juci-"] {
 .juci-wifi-good:before {
     content: "\0042";
 }
-
-.spin {
-	animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-	0% { transform: rotate(0deg); }
-	100% { transform: rotate(360deg); }
-}
-
 .juci-wifi-medium:before {
     content: "\0046";
 }
 .juci-wifi-bad:before {
     content: "\0045";
 }
-.spin {
-	animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-	0% { transform: rotate(0deg); }
-	100% { transform: rotate(360deg); }
-}
-
