@@ -35,61 +35,186 @@ i[class^="juci-"], i[class*=" juci-"] {
 	100% { transform: rotate(360deg); }
 }
 
-
-.juci-bridge:before {
-    content: "\004c";
+.juci-reload:before {
+	content: "\0030";
+}
+.juci-stop:before {
+	content: "\0031";
+}
+.juci-play:before {
+	content: "\0032";
+}
+.juci-circle:before {
+	content: "\0033";
+}
+.juci-pause:before {
+	content: "\0035";
+}
+.juci-triangle-right:before {
+	content: "\0036";
+}
+.juci-triangle-left:before {
+	content: "\0037";
+}
+.juci-triangle-down:before {
+	content: "\0038";
+}
+.juci-triangle-up:before {
+	content: "\0039";
+}
+.juci-plus:before {
+	content: "\002b";
+}
+.juci-slider-on:before {
+	content: "\0041";
 }
 .juci-wifi:before {
     content: "\0042";
 }
-.juci-share:before {
-    content: "\0072";
+.juci-wifi-non:before {
+    content: "\0043";
 }
-.juci-usb:before {
-    content: "\0074";
+.juci-wifi-low:before {
+    content: "\0044";
 }
-.juci-phone:before {
-    content: "\006d";
+.juci-wifi-mid:before {
+    content: "\0045";
 }
-.juci-calendar:before {
-    content: "\0075";
+.juci-wifi-high:before {
+    content: "\0046";
 }
-.juci-VDSL:before {
-    content: "\0062";
+.juci-wifi-error:before {
+    content: "\0047";
 }
-.juci-ADSL:before {
-    content: "\0063";
-}
-.juci-ethernet:before {
-    content: "\004a";
-}
-.juci-profile:before {
-    content: "\0079";
-}
-.juci-wps:before {
-    content: "\0068";
-}
-.juci-world:before {
-    content: "\006e";
-}
-.juci-settings:before {
-    content: "\0068";
-}
-.juci-network:before {
-    content: "\0071";
-}
-.juci-web:before {
-    content: "\006e";
+.juci-wifi-warning:before {
+    content: "\0048";
 }
 .juci-edit:before {
     content: "\0049";
 }
-.juci-wifi-good:before {
-    content: "\0042";
+.juci-ethernet:before {
+    content: "\004a";
 }
-.juci-wifi-medium:before {
-    content: "\0046";
+.juci-list:before {
+    content: "\004b";
 }
-.juci-wifi-bad:before {
-    content: "\0045";
+.juci-bridge:before {
+    content: "\004c";
+}
+.juci-radio-arrow:before {
+	content: "\004d";
+}
+.juci-radio:before {
+	content: "\004e";
+}
+.juci-circle-plus:before {
+	content: "\0061";
+}
+.juci-circle-minus:before {
+	content: "\0062";
+}
+.juci-smart-phone:before {
+	content: "\0063";
+}
+.juci-tablet:before {
+	content: "\0064";
+}
+.juci-laptop:before {
+	content: "\0065";
+}
+.juci-desktop:before {
+	content: "\0066";
+}
+.juci-screen:before {
+	content: "\0067";
+}
+.juci-game:before {
+	content: "\0068";
+}
+.juci-printer:before {
+	content: "\0069";
+}
+.juci-webcam:before {
+	content: "\006a";
+}
+.juci-router:before {
+	content: "\006b";
+}
+.juci-cell-phone:before {
+	content: "\006c";
+}
+.juci-phone:before {
+	content: "\006d";
+}
+.juci-world:before {
+	content: "\006e";
+}
+.juci-smart-watch:before {
+	content: "\006f";
+}
+.juci-bluethooth:before {
+	content: "\0070";
+}
+.juci-network:before {
+	content: "\0071";
+}
+.juci-share:before {
+	content: "\0072";
+}
+.juci-radio-side:before {
+	content: "\0073";
+}
+.juci-usb:before {
+	content: "\0074";
+}
+.juci-calendar:before {
+	content: "\0075";
+}
+.juci-trash:before {
+	content: "\0076";
+}
+.juci-cloud:before {
+	content: "\0077";
+}
+.juci-warning:before {
+	content: "\0078";
+}
+.juci-profile:before {
+	content: "\0079";
+}
+.juci-slider-off:before {
+	content: "\007a";
+}
+.juci-warning:before {
+	content: "\0078";
+}
+.juci-warning:before {
+	content: "\0078";
+}
+.juci-minus:before {
+	content: "\2212";
+}
+.juci-wps:before {
+	content: "\004f";
+}
+.juci-wifi-dot:before {
+	content: "\0050";
+}
+.juci-folder:before {
+	content: "\0051";
+}
+.juci-settings:before {
+	content: "\0052";
+}
+.juci-adsl:before {
+	content: "\0053";
+}
+.juci-vdsl:before {
+	content: "\0054";
+}
+.juci-help:before {
+	content: "\0055";
+}
+.juci-expand:before {
+	content: "\0056";
 }

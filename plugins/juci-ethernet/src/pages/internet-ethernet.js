@@ -32,8 +32,8 @@ JUCI.app
 			if(a.device.match(/^wl.*/)) a._icon = "juci juci-wifi";
 			if(a.device.match(/^eth.*/)) a._icon = "juci juci-ethernet";
 			if(a.device.match(/^br.*/)) a._icon = "juci juci-bridge";
-			if(a.device.match(/^ptm.*/)) a._icon = "juci juci-VDSL";
-			if(a.device.match(/^atm.*/)) a._icon = "juci juci-ADSL";
+			if(a.device.match(/^ptm.*/)) a._icon = "juci juci-vdsl";
+			if(a.device.match(/^atm.*/)) a._icon = "juci juci-adsl";
 			return a; 
 		}); 
 		$scope.$apply(); 
