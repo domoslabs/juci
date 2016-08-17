@@ -39,17 +39,25 @@ JUCI.app
 				edges: edges
 			};
 			network = new vis.Network(container, data, $scope.model.options);
+			JUCI.interval.repeat("juci-network-slider-big-update", 5000, function(next){
+				$scope.model.updateData(true).done(function(nodes, edges){
+					network.setData({nodes:nodes, edges:edges});
+					$scope.$apply();
+				}).always(function(){next();});
+			});
 		});
 		$events.subscribe("client", function(){
 			if(!network || !network.setData) return;
 			$scope.model.updateData(true).done(function(nodes, edges){
 				network.setData({nodes: nodes, edges: edges});
+				$scope.$apply();
 			});
 		});
 		$events.subscribe("network.interface", function(){
 			if(!network || !network.setData) return;
 			$scope.model.updateData(true).done(function(nodes, edges){
 				network.setData({nodes: nodes, edges: edges});
+				$scope.$apply();
 			});
 		});
 	}
@@ -385,6 +393,12 @@ JUCI.app
 			nodes: nodes,
 			edges: edges
 		};
+		JUCI.interval.repeat("juci-network-slider-update", 5000, function(next){
+			updateData(false).done(function(nodes, edges){
+				network.setData({nodes:nodes, edges:edges});
+				$scope.$apply();
+			}).always(function(){next();});
+		});
 		var network = new vis.Network(containerFA, dataFA, optionsFA);
 		$events.subscribe("client", function(){
 			updateData().done(function(nodes, edges){
