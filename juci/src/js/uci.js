@@ -106,6 +106,40 @@
 		};
 	}
 
+	function PortsOrRangeValidator(separator){
+		if(!separator){ var separator = ":"; }
+		return function(){
+			this.validate = function(field){
+				var re = new RegExp(separator,"g");
+				var separatorsFound = (field.value.match(re) || []).length;
+				if(separatorsFound === 0){
+					if(!field || !field.value) return null;
+					if(field.value.match(/^[0-9]+( [0-9]+)*$/)){
+						var num = parseInt(field.value);
+						if(num < 1 || num > 65535) return gettext("Port has to be a number between 1 and 65535. Use '"+separator+"' to define a range.");
+					} else {
+						return gettext("Port has to be a number between 1 and 65535. Use '"+separator+"' to define a range.");
+					}
+					return null;
+				}
+				else{
+					if(!field || !field.value) return null;
+
+					var re = new RegExp("^[0-9]+"+separator+"[0-9]+$");
+					if(field.value.match(re)){ //type is port range
+						var start = parseInt(field.value.split(separator)[0]);
+						var stop = parseInt(field.value.split(separator)[1]);
+						if(start < 1 || start > 65535 || stop < 1 || stop > 65535 || start > stop || start == stop) return gettext("Ports has to be between 1 and 65535 and start port must be lower than end port");
+					}
+					else{
+						return gettext("Port range has to be on the form number"+separator+"number");
+					}
+					return null;
+				}
+			};
+		};
+	}
+
 	function PortValidator(){
 		this.validate = function(field){
 			if(!field || !field.value) return null;
@@ -1224,6 +1258,7 @@
 		TimespanValidator: TimespanValidator, 
 		PortValidator: PortValidator, 
 		PortOrRangeValidator: PortOrRangeValidator,
+		PortsOrRangeValidator: PortsOrRangeValidator,
 		PortRangeValidator: PortRangeValidator,
 		ConnbytesValidator: ConnbytesValidator,
 		NumberLimitValidator: NumberLimitValidator, 
