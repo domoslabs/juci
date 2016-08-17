@@ -125,11 +125,15 @@ JUCI.app
 
 	function getVendorID(){
 		if(!$scope.networks || $scope.networks.length < 1) return "";
-		return $scope.networks.find(function(net){ return net.vendorid.value !== ""; }).vendorid.value;
+		var net = $scope.networks.find(function(net){ return net.vendorid.value !== ""; })
+		if(net && net.vendorid) return net.vendorid.value;
+		return "";
 	}
 	function getHostname(){
 		if(!$scope.networks || $scope.networks.length < 1) return "";
-		return $scope.networks.find(function(net){ return net.hostname.value !== ""; }).hostname.value;
+		var net = $scope.networks.find(function(net){ return net.hostname.value !== ""; });
+		if(net && net.hostname) return net.hostname.value;
+		return "";
 	}
 	$scope.onDeleteConnection = function(conn){
 		if(!conn){

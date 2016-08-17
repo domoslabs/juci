@@ -141,7 +141,7 @@ UCI.network.$registerSectionType("interface", {
 			break;
 		case "dhcp":
 			if(section.ifname.value == "")
-				errors.push(noPysical);
+				errors.push(noPhysical);
 			break;
 		case "dhcpv6":
 			if(section.ifname.value == "")
