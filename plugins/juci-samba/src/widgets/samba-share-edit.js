@@ -84,6 +84,7 @@ JUCI.app
 			if(!def){
 				def = $.Deferred(); 
 				$scope.loadingLocations = true;
+				query = query.replace(/\/\.\./g,"");
 				$rpc.$call("juci.samba", "run", {"method":"autocomplete","args":JSON.stringify({ path: query.slice(1) })}).done(function(result){
 					def.resolve(result.folders); 
 				}).fail(function(){
