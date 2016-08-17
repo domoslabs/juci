@@ -85,9 +85,7 @@ JUCI.app
 	function getIcon(type, dev){
 		switch(type){
 			case "wan":
-				if(dev.up) return hasInternet ? "img/Internet_Green.png": "img/Internet_Red.png";
-				if(dev.pending) return "img/Internet_Yellow.png";
-				return "img/Internet_Red.png";
+				return hasInternet ? "img/Internet_Green.png": "img/Internet_Red.png";
 			case "lan":
 				if(dev.up) return "img/LanNet_Green.png";
 				if(dev.pending) return "img/LanNet_Yellow.png";
@@ -95,24 +93,22 @@ JUCI.app
 			case "eth":
 				if(dev.down) return "img/Ethernet_Red.png";
 				if(dev.hosts && dev.hosts.length && dev.hosts.filter(function(dev){ return dev.connected;}).length) return "img/Ethernet_Green.png";
-				return "img/Ethernet_Yellow.png";
+				return "img/Ethernet_Grey.png";
 			case "wl":
 				if(dev.frequency === "2.4GHz"){
-					if(dev.down) return "img/Wifi_Radio_24_Red.png";
-					if(dev.hosts && dev.hosts.length && dev.hosts.filter(function(dev){ return dev.connected;}).length) return "img/Wifi_Radio_24_Green.png";
-					return "img/Wifi_Radio_24_Yellow.png";
+					if(dev.down) return "img/Wifi_Radio_24_Grey.png";
+					return "img/Wifi_Radio_24_Green.png";
 				}
 				else if( dev.frequency === "5GHz"){
-					if(dev.down) return "img/Wifi_Radio_5_Red.png";
-					if(dev.hosts && dev.hosts.length && dev.hosts.filter(function(dev){ return dev.connected;}).length) return "img/Wifi_Radio_5_Green.png";
-					return "img/Wifi_Radio_5_Yellow.png";
+					if(dev.down) return "img/Wifi_Radio_5_Grey.png";
+					return "img/Wifi_Radio_5_Green.png";
 				}
 				return "img/Wifi_Radio_Unknown.png";
 			case "cl":
 				if(dev.wireless){
-					if(!dev.rssi || parseFloat(dev.rssi) < -75) return "img/Laptop_Red.png";
-					if(parseFloat(dev.rssi) < -50) return "img/Laptop_Yellow.png";
-					return "img/Laptop_Green.png";
+					if(!dev.rssi || parseFloat(dev.rssi) < -82) return "img/Wifi_Client_Red.png";
+					if(parseFloat(dev.rssi) < -65) return "img/Wifi_Client_Yellow.png";
+					return "img/Wifi_Client_Green.png";
 				}else{
 					if(!dev.linkspeed) return "img/Laptop_Red.png";
 					if(dev.linkspeed.match("1000")) return "img/Laptop_Green.png";
@@ -134,7 +130,7 @@ JUCI.app
 		
 		nodes.push({
 			id: ".root",
-			label: $config.board.system.hardware.substring(0,10),
+			label: $config.board.system.hardware.substring(0,11),
 			title: $tr(gettext("Hardware Model")) + ": " + $config.board.system.hardware + "<br />" +
 					$tr(gettext("Base MAC")) + ": " + $config.board.system.basemac + "<br />" +
 					$tr(gettext("Software Version")) + ": " + $config.board.system.firmware + "<br />" +
@@ -232,7 +228,7 @@ JUCI.app
 					if(!title) return;
 					var node = {
 						id: count++,
-						label: String(wan.interface).toUpperCase().substring(0,10),
+						label: String(wan.interface).toUpperCase().substring(0,11),
 						title: title,
 						image: getIcon("wan", wan),
 						ize: 20,
@@ -288,7 +284,7 @@ JUCI.app
 						});
 						var node = {
 							id: count++,
-							label: String(item.interface).toUpperCase().substring(0,10),
+							label: String(item.interface).toUpperCase().substring(0,11),
 							title: item.interface + '<br />' + $tr(gettext("Number of Clients")) + ": " + num_cli,
 							image: getIcon("lan", item),
 							size: 30,
@@ -298,10 +294,12 @@ JUCI.app
 						edges.push( { from: ".root", to: node.id, width: 3 });
 						Object.keys(data).map(function(device){
 							var dev = data[device];
-							dev.frequency = (radios[device.substring(0,3)])? radios[device.substring(0,3)].frequency : $tr(gettext('unknown'));
+							var radio = radios[device.substring(0,3)];
+							dev.frequency = (radio)? radio.frequency : $tr(gettext('unknown'));
+							dev.down = radio && !radio.isup;
 							var dev_node = {
 								id: count++,
-								label: String((dev.name)?dev.name : dev.ssid).toUpperCase().substring(0,10),
+								label: String((dev.name)?dev.name : dev.ssid).toUpperCase().substring(0,11),
 								title: (dev.name)? String(dev.name).toUpperCase() + '<br />' + $tr(gettext("Link speed")) + ': ' + dev.linkspeed :
 													String(dev.ssid).toUpperCase() + ' @ ' + ((radios[device.substring(0,3)])? radios[device.substring(0,3)].frequency : $tr(gettext('unknown'))),
 								size: 30,
@@ -336,14 +334,14 @@ JUCI.app
 									}
 									var host_node = {
 										id: JSON.stringify(host) + count++,
-										label: String(host.hostname || host.ipaddr || host.macaddr).toUpperCase().substring(0,10),
+										label: String(host.hostname || host.ipaddr || host.macaddr).toUpperCase().substring(0,11),
 										title: getHostTitle(host),
 										size: 30,
 										image: getIcon("cl", host),
 										shape: "image"
 									}
 									nodes.push(host_node);
-									edges.push( { from: dev_node.id, to: host_node.id, width: 3 } );
+									edges.push( { from: dev_node.id, to: host_node.id, width: 3, dashes: (host.wireless) } );
 								});
 							}
 						});
