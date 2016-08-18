@@ -35,186 +35,207 @@ i[class^="juci-"], i[class*=" juci-"] {
 	100% { transform: rotate(360deg); }
 }
 
-.juci-reload:before {
-	content: "\0030";
-}
-.juci-stop:before {
-	content: "\0031";
-}
-.juci-play:before {
-	content: "\0032";
-}
-.juci-circle:before {
-	content: "\0033";
-}
-.juci-pause:before {
-	content: "\0035";
-}
-.juci-triangle-right:before {
-	content: "\0036";
-}
-.juci-triangle-left:before {
-	content: "\0037";
-}
-.juci-triangle-down:before {
-	content: "\0038";
-}
-.juci-triangle-up:before {
-	content: "\0039";
+/* ##### \0000 to \000f ###### */
+.juci-minus:before {
+	content: "\0000";
 }
 .juci-plus:before {
-	content: "\002b";
-}
-.juci-slider-on:before {
-	content: "\0041";
-}
-.juci-wifi:before {
-    content: "\0042";
-}
-.juci-wifi-non:before {
-    content: "\0043";
-}
-.juci-wifi-low:before {
-    content: "\0044";
-}
-.juci-wifi-mid:before {
-    content: "\0045";
-}
-.juci-wifi-high:before {
-    content: "\0046";
-}
-.juci-wifi-error:before {
-    content: "\0047";
-}
-.juci-wifi-warning:before {
-    content: "\0048";
-}
-.juci-edit:before {
-    content: "\0049";
-}
-.juci-ethernet:before {
-    content: "\004a";
-}
-.juci-list:before {
-    content: "\004b";
-}
-.juci-bridge:before {
-    content: "\004c";
-}
-.juci-radio-arrow:before {
-	content: "\004d";
-}
-.juci-radio:before {
-	content: "\004e";
-}
-.juci-circle-plus:before {
-	content: "\0061";
+	content: "\0001";
 }
 .juci-circle-minus:before {
-	content: "\0062";
+	content: "\0002";
 }
-.juci-smart-phone:before {
-	content: "\0063";
+.juci-circle-plus:before {
+	content: "\0003";
 }
-.juci-tablet:before {
-	content: "\0064";
+.juci-reload:before {
+	content: "\0004";
 }
-.juci-laptop:before {
-	content: "\0065";
+.juci-stop:before {
+	content: "\0005";
 }
-.juci-desktop:before {
-	content: "\0066";
+.juci-play:before {
+	content: "\0006";
 }
-.juci-screen:before {
-	content: "\0067";
+.juci-pause:before {
+	content: "\0007";
 }
-.juci-game:before {
-	content: "\0068";
+.juci-circle:before {
+	content: "\0008";
 }
-.juci-printer:before {
-	content: "\0069";
+
+/* ##### \0010 to \001f ###### */
+.juci-circle-right:before {
+	content: "\0010"
 }
-.juci-webcam:before {
-	content: "\006a";
+.juci-triangle-right:before {
+	content: "\0011";
 }
-.juci-router:before {
-	content: "\006b";
+.juci-triangle-left:before {
+	content: "\0012";
 }
-.juci-cell-phone:before {
-	content: "\006c";
+.juci-triangle-down:before {
+	content: "\0013";
 }
-.juci-phone:before {
-	content: "\006d";
+.juci-triangle-up:before {
+	content: "\0014";
 }
-.juci-world:before {
-	content: "\006e";
-}
-.juci-smart-watch:before {
-	content: "\006f";
-}
-.juci-bluethooth:before {
-	content: "\0070";
-}
-.juci-network:before {
-	content: "\0071";
-}
-.juci-share:before {
-	content: "\0072";
-}
-.juci-radio-side:before {
-	content: "\0073";
-}
-.juci-usb:before {
-	content: "\0074";
-}
-.juci-calendar:before {
-	content: "\0075";
-}
-.juci-trash:before {
-	content: "\0076";
-}
-.juci-cloud:before {
-	content: "\0077";
-}
-.juci-warning:before {
-	content: "\0078";
-}
-.juci-profile:before {
-	content: "\0079";
-}
-.juci-slider-off:before {
-	content: "\007a";
-}
-.juci-warning:before {
-	content: "\0078";
-}
-.juci-warning:before {
-	content: "\0078";
-}
-.juci-minus:before {
-	content: "\2212";
-}
-.juci-wps:before {
-	content: "\004f";
-}
-.juci-wifi-dot:before {
-	content: "\0050";
-}
-.juci-folder:before {
-	content: "\0051";
-}
-.juci-settings:before {
-	content: "\0052";
-}
-.juci-adsl:before {
-	content: "\0053";
-}
-.juci-vdsl:before {
-	content: "\0054";
+.juci-question:before {
+	content: "\0015"
 }
 .juci-help:before {
-	content: "\0055";
+	content: "\0015";
 }
 .juci-expand:before {
+	content: "\0016";
+}
+
+/* ##### \0020 to \002f ###### */
+.juci-bridge:before {
+    content: "\0020";
+}
+.juci-adsl:before {
+	content: "\0021";
+}
+.juci-vdsl:before {
+	content: "\0022";
+}
+.juci-world:before {
+	content: "\0023";
+}
+.juci-network:before {
+	content: "\0024";
+}
+.juci-usb:before {
+	content: "\0025";
+}
+.juci-ethernet:before {
+    content: "\0026";
+}
+.juci-bluethooth:before {
+	content: "\0027";
+}
+.juci-radio:before {
+	content: "\0028";
+}
+.juci-radio-arrow:before {
+	content: "\0029";
+}
+.juci-radio-side:before {
+	content: "\002a";
+}
+.juci-wps:before {
+	content: "\002b";
+}
+
+/* ##### \0030 to \003f ###### */
+.juci-wifi-empty:before {
+	content: "\0030";
+}
+.juci-wifi-low:before {
+	content: "\0031";
+}
+.juci-wifi-mid:before {
+	content: "\0032";
+}
+.juci-wifi-high:before {
+	content: "\0033";
+}
+.juci-wifi-2-empty:before {
+	content: "\0034";
+}
+.juci-wifi-2-low:before {
+	content: "\0035";
+}
+.juci-wifi-2-mid:before {
+	content: "\0036";
+}
+.juci-wifi-2-high:before {
+	content: "\0037";
+}
+.juci-wifi-2-full:before {
+	content: "\0038";
+}
+.juci-wifi-warning-circle:before {
+	content: "\0039";
+}
+.juci-wifi-warning-triangle:before {
+	content: "\003a";
+}
+.juci-wifi-dot:before {
+	content: "\003a";
+}
+/* ##### \0040 to \004f ###### */
+.juci-smart-phone:before {
+	content: "\0040";
+}
+.juci-tablet:before {
+	content: "\0041";
+}
+.juci-laptop:before {
+	content: "\0042";
+}
+.juci-desktop:before {
+	content: "\0043";
+}
+.juci-game:before {
+	content: "\0044";
+}
+.juci-printer:before {
+	content: "\0045";
+}
+.juci-webcam:before {
+	content: "\0046";
+}
+.juci-router:before {
+	content: "\0047";
+}
+.juci-smart-watch:before {
+	content: "\0048";
+}
+.juci-tv:before {
+	content: "\0049";
+}
+.juci-mobile:before {
+	content: "\004a";
+}
+.juci-phone:before {
+	content: "\004b";
+}
+/* ##### \0050 to \005f ###### */
+.juci-folder:before {
+	content: "\0050";
+}
+.juci-settings:before {
+	content: "\0051";
+}
+.juci-slider-on:before {
+	content: "\0052";
+}
+.juci-slider-off:before {
+	content: "\0053";
+}
+.juci-share:before {
+	content: "\0054";
+}
+.juci-cloud:before {
+	content: "\0055";
+}
+.juci-warning-triangle:before {
 	content: "\0056";
+}
+.juci-edit:before {
+    content: "\0057";
+}
+.juci-list:before {
+    content: "\0058";
+}
+.juci-calendar:before {
+	content: "\0059";
+}
+.juci-trash:before {
+	content: "\005a";
+}
+.juci-profile:before {
+	content: "\005b";
 }
