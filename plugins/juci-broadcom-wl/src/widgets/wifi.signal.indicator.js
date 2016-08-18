@@ -29,14 +29,14 @@ JUCI.app
 	};  
 }).controller("wifiSignalIndicator", function($scope){
 	$scope.icon = "";
+	$scope.color= "";
 	$scope.$watch("value", function(value){
 		if(!value) return;
 		if(String(value).match(/^-[0-9]{1,2}$/)){
 			var v = parseInt(String(value).substring(1,3));
-			if(v < 45) $scope.icon = "juci juci-wifi";
-			else if(v < 65) $scope.icon = "juci juci-wifi-high";
-			else if(v < 82) $scope.icon = "juci juci-wifi-mid";
-			else $scope.icon = "juci juci-wifi-low";
+			if(v < 65){ $scope.icon = "juci juci-wifi-high"; $scope.color = "green"; }
+			else if(v < 82){ $scope.icon = "juci juci-wifi-mid"; $scope.color = "#F1C100"; }
+			else{ $scope.icon = "juci juci-wifi-low"; $scope.color = "red"; }
 		}
 	}); 
 }); 
