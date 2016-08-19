@@ -2,6 +2,7 @@
 @theme-heading-color: #66989C; 
 @theme-link-color: #F1C100; 
 @theme-detail-color: #E62f39; 
+@theme-error-color: #E62f39; 
 @theme-footer-base-color: #ddd; 
 @theme-border-color: #eee; 
 
@@ -67,6 +68,12 @@ ul.left-menu li a.open, .nav-tabs &>li &>a {
 .btn-primary.disabled, .btn-primary.disabled.active, .btn-primary.disabled.focus, .btn-primary.disabled:active, .btn-primary.disabled:focus, .btn-primary.disabled:hover, .btn-primary[disabled], .btn-primary.active[disabled], .btn-primary.focus[disabled], .btn-primary[disabled]:active, .btn-primary[disabled]:focus, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary, fieldset[disabled] .btn-primary.active, fieldset[disabled] .btn-primary.focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:hover {
 	background-color: lighten(@theme-success-color, 10%);
 	border-color: lighten(@theme-success-color, 10%);
+}
+.label-danger{
+	background-color: @theme-error-color;
+}
+.text-danger{
+	color: @theme-error-color;
 }
 
 .juci-nav {
