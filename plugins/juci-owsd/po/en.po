@@ -48,7 +48,7 @@ msgid "Only IPv6"
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-owsd/src/pages/settings-management-owsd.html
-msgid "OWSD Settings"
+msgid "OWSD"
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-owsd/src/pages/settings-management-owsd.html
@@ -56,7 +56,7 @@ msgid "Chage settings for the owsd web-server deamon"
 msgstr ""
 
 msgid "menu-settings-management-owsd-title"
-msgstr "OWSD Settings"
+msgstr "OWSD"
 
 #~ msgid "network.interface.type.none.tab.title"
 #~ msgstr "Standard"
