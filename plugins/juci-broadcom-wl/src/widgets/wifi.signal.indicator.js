@@ -34,9 +34,9 @@ JUCI.app
 		if(!value) return;
 		if(String(value).match(/^-[0-9]{1,2}$/)){
 			var v = parseInt(String(value).substring(1,3));
-			if(v < 65){ $scope.icon = "juci juci-wifi-high"; $scope.color = "green"; }
+			if(v < 65){ $scope.icon = "juci juci-wifi-high"; $scope.color = "#5cb85c"; }
 			else if(v < 82){ $scope.icon = "juci juci-wifi-mid"; $scope.color = "#F1C100"; }
-			else{ $scope.icon = "juci juci-wifi-low"; $scope.color = "red"; }
+			else{ $scope.icon = "juci juci-wifi-low"; $scope.color = "#d9534f"; }
 		}
 	}); 
 }); 
