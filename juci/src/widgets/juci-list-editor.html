@@ -3,7 +3,7 @@
 		<div ng-class="{ 'col-xs-12 col-sm-9': !hideButtons, 'col-xs-12': hideButtons }">
 			<i class="fa fa-spinner fa-spin fa-2x" ng-show="!items"></i>
 			<div class="list-group">
-				<div ng-show="items" href="" class="list-group-item row" style="padding: 10px;" ng-repeat="i in items track by $index" ng-class="{active: item === i}">
+				<div ng-show="items" href="" class="list-group-item row" style="padding: 10px;" ng-repeat="i in items track by $index" ng-class="{active: item === i && !hide}">
 					<div ng-click="onListEditItem(i)" class="row" style="position:relative;width:100%;margin:0px;padding: 0; text-align: left; cursor:pointer;">
 						<h3 style="margin-top:10px">{{getItemTitle({"$item": i })}}</h3>
 						<i ng-show="showIcon && !sortable" class="{{getIcon(iconStatus({$item:i}))}}" style="float:right;position:absolute;top:10px;right:10px;"></i>
@@ -12,7 +12,7 @@
 					    <button type="button" ng-click="onMoveUp(i)" class="btn btn-default"><i class="fa fa-angle-up"></i></button>
 						<button type="button" ng-click="onMoveDown(i)" class="btn btn-default"><i class="fa fa-angle-down"></i></button>
 					</div>
-					<div class="content" ng-hide="item">
+					<div class="content" ng-hide="!hide">
 						<div class="col-xs-12 col-sm-9">
 							<div class="row" ng-repeat="status in i.$statusList track by $index">
 								<div class="col-xs-12 col-sm-6">{{status.label}}</div>
@@ -42,8 +42,8 @@
 	</div>
 	<div style="clear: both; margin-top: 10px;"></div>
 	<hr class="visible-xs-block" style="color:grey;" />
-	<div ng-show="item">
+	<div ng-hide="hide">
 		<button class="btn btn-default" ng-show="editor" style="margin-bottom: 5px;" ng-click="hideEditor()">hide Editor</button>
-		<div dynamic="dynamicHtml"/>
+		<div ng-show="item" dynamic="dynamicHtml"><div/>
 	</div>
 </div>
