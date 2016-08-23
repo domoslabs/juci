@@ -23,7 +23,7 @@ JUCI.app
 	]; 
 	$scope.showPhysical = function(){
 		if(!$scope.interface) return false;
-		return $scope.allProtocolTypes.find(function(x){ if(x.value == $scope.interface.proto.value) return x.physical;}) != undefined;
+		return $scope.allProtocolTypes.find(function(x){ if(x.value == $scope.interface.proto.value) return x.physical.length;}) != undefined;
 	}
 	
 	$scope.allProtocolTypes = $network.getProtocolTypes();

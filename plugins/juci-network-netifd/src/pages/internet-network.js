@@ -57,70 +57,101 @@ JUCI.app
 	}
 	
 	function evalName(name){
-		if(!name) return;
+		if(!name) return null;
 		if(name == "") return $tr(gettext("Interface Name is needed"));
 		if(!name.match(/^[a-zA-Z0-9]+$/)) return $tr(gettext("Interface names can only contain letters and numbers"));
 		if(name.length > 12) return $tr(gettext("Interface name may only be 12 characters long"));
+		return null;
 	}
 
 	$scope.onAddConnection = function(){
 		var model = {
+			name: "",
+			type: "",
 			errors: []
 		};
-		$juciDialog.show("network-connection-create", {
-			title: "Create New Network Interface",
-			buttons: [
-				{ label: $tr(gettext("OK")), value: "ok", primary: true },
-				{ label: $tr(gettext("Cancel")), value: "cancel" }
-			],
-			model: model,
-			on_button: function(btn, inst){
-				if(btn.value == "cancel"){
-					inst.dismiss();
-				}
-				if(btn.value == "ok"){
-					model.errors = [];
-					if(!model.name)
-						model.errors.push($tr(gettext("The new interface needs a name")));
-					var er;
-					if((er = evalName(model.name)) != null)
-						model.errors.push(er);
-					if(model.type == undefined)
-						model.errors.push($tr(gettext("The new interface needs an interface type")));
-					if(!model.protocol == undefined)
-						model.errors.push($tr(gettext("Pleace choose protocol for connection")));
-					if(model.errors.length > 0) return;
-					if(model.protocol === "dhcp"){
-						var vendorid = getVendorID() || "";
-						var hostname = getHostname() || "";
-					}
-					$uci.network.$create({
-						".type": "interface",
-						".name": model.name, 
-						"type": model.type,
-						"proto": model.protocol,
-						"vendorid": vendorid,
-						"hostname": hostname,
-						"is_lan": (model.protocol === "static") ? true : false
-					}).done(function(interface){
-						if(model.zone){
-							$firewall.getZones().done(function(zones){
-								zones.map(function(zone){
-									if(zone.name.value === model.zone){
-										zone.network.value = zone.network.value.concat([model.name]);
-									}
-								});
-								$scope.$apply();
-							});
+		async.series([
+			function(cb){
+				$juciDialog.show("network-connection-create", {
+					title: $tr(gettext("Create New Network Interface")),
+					buttons: [
+						{ label: $tr(gettext("OK")), value: "ok", primary: true },
+						{ label: $tr(gettext("Cancel")), value: "cancel" }
+					],
+					model: model,
+					on_button: function(btn, inst){
+						model.errors = [];
+						if(btn.value === "cancel"){
+							inst.close();
+							return;
 						}
-						$scope.networks.push(interface); 
-						$scope.$apply(); 
-					}); 
-					inst.close();
-				}
+						if(!model.name){
+							model.errors.push($tr(gettext("The new interface needs a name")));
+						}else{
+							var er = evalName(model.name);
+							if(er !== null)
+								model.errors.push(er);
+						}
+						if(model.type == "")
+							model.errors.push($tr(gettext("Please select the interface type")));
+						if(model.errors.length)
+							return;
+						inst.close();
+						console.log("testing");
+						cb();
+					}
+				});
+			},
+			function(cb){
+				$uci.network.$create({
+					".type": "interface",
+					".name": model.name,
+					"is_lan": (model.type === "downlink")?true:false,
+					"proto": (model.type === "downlink")?"static":(model.type === "uplink")?"":"none",
+				}).done(function(iface){
+					model.iface = iface;
+					model.errors = [];
+					cb();
+				}).fail(function(e){console.log(e);alert($tr(gettxt("Error while creating Interface")) + " " + JSON.stringify(e))});
+			},
+			function(cb){
+				$juciDialog.show("network-connection-create-settings", {
+					title: $tr(gettext("Finalize Settings")),
+					buttons: [
+						{ label: $tr(gettext("OK")), value: "ok", primary: true },
+						{ label: $tr(gettext("Cancel")), value: "cancel" }
+					],
+					model: model,
+					on_button: function(btn, inst){
+						if(btn.value === "cancel"){
+							if(model.iface.$delete) model.iface.$delete().done();
+							inst.close();
+							return;
+						}
+						model.errors = [];
+						if(model.iface.proto.value === "")
+							model.errors.push($tr(gettext("Please select Protocol")));
+						if(model.errors.length)
+							return;
+						inst.close();
+						cb();
+					}
+				});
 			}
+		], function(){
+			if(model.zone){
+				$firewall.getZones().done(function(zones){
+					zones.map(function(zone){
+						if(zone.name.value === model.zone){
+							zone.network.value = zone.network.value.concat([model.name]);
+						}
+					});
+					$scope.$apply();
+				});
+			}
+			$scope.networks.push(model.iface);
 		});
-	}
+	};
 
 	function getVendorID(){
 		if(!$scope.networks || $scope.networks.length < 1) return "";
