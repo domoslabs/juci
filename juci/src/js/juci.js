@@ -206,10 +206,6 @@
 					},
 					// this function will run upon load of every page in the gui
 					onEnter: function($uci, $window, $rootScope, $tr, gettext){
-						if(page.redirect) {
-							$juci.redirect(page.redirect);
-							return;
-						}
 						
 						$rootScope.errors.splice(0, $rootScope.errors.length);
 						
@@ -226,15 +222,20 @@
 						$window.scrollTo(0, 0);
 					},
 					onExit: function($uci, $tr, gettext, $events){
-						if($uci.$hasChanges()){
-							if(confirm($tr(gettext("You have unsaved changes. Do you want to save them before leaving this page?"))))
-								$uci.$save();
-							else
-								$uci.$clearCache();
-						}
-						// clear all juci intervals when leaving a page
-						JUCI.interval.$clearAll();
-						$events.removeAll();
+						$rpc.$authenticate().done(function(){
+							if($uci.$hasChanges()){
+								if(confirm($tr(gettext("You have unsaved changes. Do you want to save them before leaving this page?"))))
+									$uci.$save();
+								else
+									$uci.$clearCache();
+							}
+						}).fail(function(){
+							$juci.redirect("login");
+						}).always(function(){
+							// clear all juci intervals when leaving a page
+							JUCI.interval.$clearAll();
+							$events.removeAll();
+						});
 					}
 				};
 				
