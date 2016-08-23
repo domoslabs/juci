@@ -225,6 +225,7 @@ JUCI.app
 	function updateStatus(){
 		if(!$scope.networks) return;
 		$scope.networks.map(function(net){
+			if(!net.$info) return;
 			net.$buttons = [
 				{ label: $tr(gettext("Connect")), on_click: onConnect },
 				{ label: $tr(gettext("Disconnect")), on_click: onDisconnect }

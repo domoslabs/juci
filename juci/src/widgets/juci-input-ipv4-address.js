@@ -57,7 +57,6 @@ JUCI.app
 
 	// reassemble model when parts change
 	$scope.updateModel = function() {
-		console.log("Assemble parts: "+$scope.data.parts);
 		var ipaddr = $scope.data.parts.join(".");
 		if(ipaddr == "..." || ipaddr == ".." || ipaddr == ".") ipaddr = "";
 		if($scope.ngModel != ipaddr) ngModel.assign($scope.$parent, ipaddr);
