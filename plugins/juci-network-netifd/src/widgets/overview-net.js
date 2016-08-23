@@ -72,7 +72,8 @@ JUCI.app
 				Object.keys(res).map(function(r){
 					var client = res[r];
 					if(!client.connected) return;
-					if(client["tx_rate"]) client.ratem = Math.floor(parseInt(client["tx_rate"]) / 100) / 10;
+					if(client["tx_rate"]) client.tratem = Math.floor(parseInt(client["tx_rate"]) / 100) / 10;
+					if(client["rx_rate"]) client.rratem = Math.floor(parseInt(client["rx_rate"]) / 100) / 10;
 					var colname = client.frequency ? client.frequency : $tr(gettext("Ethernet"));
 					if(!$scope.clients.hasOwnProperty(colname)){
 						$scope.clients[colname] = [client];
