@@ -70,6 +70,11 @@ JUCI.app
 	};
 })
 .controller("overviewSliderWidget10Network", function($scope, $rpc, $config, $firewall, $events, $tr, gettext, $juciDialog, $wireless){
+	function myString(string){
+		if(string.length > 11)
+			return string.substring(0, 11) + "...";
+		return string;
+	}
 	var optionsFA = {
 		autoResize: true,
 		nodes: {
@@ -138,7 +143,7 @@ JUCI.app
 		
 		nodes.push({
 			id: ".root",
-			label: $config.board.system.hardware.substring(0,11),
+			label: myString(String($config.board.system.hardware)),
 			title: $tr(gettext("Hardware Model")) + ": " + $config.board.system.hardware + "<br />" +
 					$tr(gettext("Base MAC")) + ": " + $config.board.system.basemac + "<br />" +
 					$tr(gettext("Software Version")) + ": " + $config.board.system.firmware + "<br />" +
@@ -236,7 +241,7 @@ JUCI.app
 					if(!title) return;
 					var node = {
 						id: count++,
-						label: String(wan.interface).toUpperCase().substring(0,11),
+						label: myString((wan.interface).toUpperCase()),
 						title: title,
 						image: getIcon("wan", wan),
 						ize: 20,
@@ -292,7 +297,7 @@ JUCI.app
 						});
 						var node = {
 							id: count++,
-							label: String(item.interface).toUpperCase().substring(0,11),
+							label: myString(String(item.interface).toUpperCase()),
 							title: item.interface + '<br />' + $tr(gettext("Number of Clients")) + ": " + num_cli,
 							image: getIcon("lan", item),
 							size: 30,
@@ -307,9 +312,9 @@ JUCI.app
 							dev.down = radio && !radio.isup;
 							var dev_node = {
 								id: count++,
-								label: String((dev.name)?dev.name : dev.ssid).toUpperCase().substring(0,11),
+								label: myString(String(dev.name ? String(dev.name).toUpperCase() : dev.ssid)),
 								title: (dev.name)? String(dev.name).toUpperCase() + '<br />' + $tr(gettext("Link speed")) + ': ' + dev.linkspeed :
-													String(dev.ssid).toUpperCase() + ' @ ' + ((radios[device.substring(0,3)])? radios[device.substring(0,3)].frequency : $tr(gettext('unknown'))),
+													dev.ssid + ' @ ' + ((radios[device.substring(0,3)])? radios[device.substring(0,3)].frequency : $tr(gettext('unknown'))),
 								size: 30,
 								image: device.match("eth")?getIcon("eth",dev):getIcon("wl", dev),
 								shape: "image"
@@ -320,7 +325,7 @@ JUCI.app
 								dev.hosts.map(function(host){
 									if(!host.connected) return;
 									function getHostTitle(host){
-										var title = String(host.hostname || host.ipaddr || host.macaddr).toUpperCase() + '<br />';
+										var title = host.hostname || String(host.ipaddr).toUpperCase() || String(host.macaddr).toUpperCase() + '<br />';
 										[
 											["ipaddr", $tr(gettext("IP Address")), ""],
 											["macaddr", $tr(gettext("MAC Address")), ""],
@@ -342,7 +347,7 @@ JUCI.app
 									}
 									var host_node = {
 										id: JSON.stringify(host) + count++,
-										label: String(host.hostname || host.ipaddr || host.macaddr).toUpperCase().substring(0,11),
+										label: myString(String(host.hostname || String(host.ipaddr).toUpperCase() || String(host.macaddr).toUpperCase())),
 										title: getHostTitle(host),
 										size: 30,
 										image: getIcon("cl", host),
