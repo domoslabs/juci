@@ -11,4 +11,9 @@ JUCI.app
 		{ label: $tr(gettext("47MHz ~ 591MHz")), value: "2"},
 		{ label: $tr(gettext("47MHz ~ 431MHz")), value: "3"}
 	];
+	$rpc.$call("catv", "vendornumber").done(function(data){
+		if(data["Vendor part number"] && String(data["Vendor part number"]).match(/^OHR-[0-1]001\s*$/) === null){
+			$scope.showFilter = true;
+		}
+	}).fail(function(e){console.log(e);});
 });
