@@ -20,7 +20,7 @@
 				</juci-config-line>
 			</juci-config-lines>
 		</juci-config-section>
-		<modal title="{{'Save Configuration to Computer'|translate}}" ng-show="showModal" on-accept="onAcceptModal()" on-dismiss="onDismissModal()" dismiss-label="Cancel" accept-label="Continue">
+		<modal title="{{'Save Configuration to Computer'|translate}}" data-backdrop="static" ng-show="showModal" on-accept="onAcceptModal()" on-dismiss="onDismissModal()" dismiss-label="Cancel" accept-label="Continue">
 			<form ng-submit="onAcceptModal()" name="backupForm" autocomplete="off">
 				<input type="submit" ng-hide="true" />
 				<div class="form-group" ng-show="features.comment">
@@ -44,7 +44,7 @@
 		<modal title="{{'Downloading Backup'|translate}}" ng-show="showStatus" data-backdrop="static" data-keyboard="false">
 			<h2 style="text-align:center;"><i class="fa fa-spinner fa-spin fa-2x"></i></h2>
 		</modal>
-		<modal title="Load New Configuration" ng-show="showUploadModal" on-accept="onUploadConfig()" on-dismiss="onCancelRestore()" dismiss-label="Cancel" accept-label="Continue">
+		<modal title="Load New Configuration" data-backdrop="static" ng-show="showUploadModal" on-accept="onUploadConfig()" on-dismiss="onCancelRestore()" dismiss-label="Cancel" accept-label="Continue">
 			<form autocomplete="off" ng-submit="onUploadConfig()">
 				<input type="submit" ng-hide="true">
 				<juci-config-lines>
