@@ -222,6 +222,8 @@
 						$window.scrollTo(0, 0);
 					},
 					onExit: function($uci, $tr, gettext, $events){
+						JUCI.interval.$clearAll();
+						$events.removeAll();
 						$rpc.$authenticate().done(function(){
 							if($uci.$hasChanges()){
 								if(confirm($tr(gettext("You have unsaved changes. Do you want to save them before leaving this page?"))))
@@ -233,8 +235,6 @@
 							$juci.redirect("login");
 						}).always(function(){
 							// clear all juci intervals when leaving a page
-							JUCI.interval.$clearAll();
-							$events.removeAll();
 						});
 					}
 				};

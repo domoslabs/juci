@@ -85,7 +85,7 @@ JUCI.app
 		$scope.message = $tr(gettext("Upgrading"));
 		$scope.$apply();
 		$rpc.$call("juci.system.upgrade", "run", {"method":"start","args":JSON.stringify({"path": $scope.$PATH, "keep": (($scope.$KEEP)?1:0)})});
-		setTimeout(function(){ window.location = "/reboot.html";}, 3000);
+		setTimeout(function(){ window.location = "/reboot.html";}, 1000);
 	});
 	$scope.onDismissModal = function(){
 		$scope.showUpgradeStatus = false;
