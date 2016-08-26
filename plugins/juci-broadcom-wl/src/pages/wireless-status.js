@@ -57,6 +57,7 @@ JUCI.app
 				$wireless.getConnectedClients().done(function(cls){
 					$scope.clients = cls;
 					cls.map( function(c){
+						if(!c.scbstats || !c.rssi_per_antenna){ return; }
 						c["rows"] = [
 							[$tr(gettext("IP-Address")),c.ipaddr],
 							[$tr(gettext("MAC-Address")), String(c.macaddr).toUpperCase()],
