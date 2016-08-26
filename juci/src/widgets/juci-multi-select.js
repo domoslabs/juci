@@ -31,7 +31,7 @@ JUCI.app
 		replace: true
 	 };  
 })
-.controller("juciMultiSelect", function($scope, $config, $state, $localStorage, $tr, gettext){
+.controller("juciMultiSelect", function($scope, $config, $state, $localStorage){
 	$scope.data = { 
 		input: [], 
 		output: []

@@ -205,7 +205,7 @@
 						}
 					},
 					// this function will run upon load of every page in the gui
-					onEnter: function($uci, $window, $rootScope, $tr, gettext){
+					onEnter: function($uci, $window, $rootScope, $tr){
 						
 						$rootScope.errors.splice(0, $rootScope.errors.length);
 						

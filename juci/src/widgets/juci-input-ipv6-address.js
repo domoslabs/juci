@@ -13,9 +13,9 @@ JUCI.app
 		require: "ngModel"
 	};
 })
-.controller("juciInputIpv6Address", function($scope, $attrs, $parse, $uci){
+.controller("juciInputIpv6Address", function($scope, $attrs, $parse, $uci, gettext, $tr){
 	$scope.validate = function(field){
-		if(field && field != "" && !field.match("^((?:[0-9A-Fa-f]{1,4}))((?::[0-9A-Fa-f]{1,4}))*::((?:[0-9A-Fa-f]{1,4}))((?::[0-9A-Fa-f]{1,4}))*|((?:[0-9A-Fa-f]{1,4}))((?::[0-9A-Fa-f]{1,4})){7}$")) return gettext("Aaddress must be a valid IPv6 address"); 
+		if(field && field != "" && !field.match("^((?:[0-9A-Fa-f]{1,4}))((?::[0-9A-Fa-f]{1,4}))*::((?:[0-9A-Fa-f]{1,4}))((?::[0-9A-Fa-f]{1,4}))*|((?:[0-9A-Fa-f]{1,4}))((?::[0-9A-Fa-f]{1,4})){7}$")) return $tr(gettext("Aaddress must be a valid IPv6 address")); 
 		return null; 
 	}
 });

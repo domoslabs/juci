@@ -31,7 +31,7 @@ JUCI.app
 	};
 })
 .controller("LoginControl", function($scope, $config, $state,
-	$window, $rpc, $localStorage, gettext){
+	$window, $rpc, $localStorage, $tr, gettext){
 	$scope.form = {
 		"username": "",
 		"password": "",
@@ -90,7 +90,7 @@ JUCI.app
 					$window.location.href="/";
 					deferred.resolve();
 				}).fail(function fail(res){
-					$scope.errors.push(gettext("Please enter correct username and password!"));
+					$scope.errors.push($tr(gettext("Please enter correct username and password!")));
 					$scope.logging_in = false;
 					$scope.$apply();
 					deferred.reject();

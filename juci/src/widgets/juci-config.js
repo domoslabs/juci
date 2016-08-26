@@ -78,7 +78,7 @@ JUCI.app
 	$scope.$watch("error", function(er){
 		if(er !== null && er !== undefined){
 			console.log(er);
-			$scope.er = $tr(er);
+			$scope.er = er;
 			$scope.errorClass = "field-error";
 		}else{
 			$scope.er = false;
