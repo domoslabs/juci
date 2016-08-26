@@ -42,10 +42,10 @@ JUCI.app.run(function($network, $uci, $wireless){
 	}); 
 }); 
 
-JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
+JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 	function Wireless(){
-		this.scheduleStatusText = gettext("off"); 
-		this.wpsStatusText = gettext("off"); 
+		this.scheduleStatusText = $tr(gettext("off")); 
+		this.wpsStatusText = $tr(gettext("off")); 
 	}
 	
 	Wireless.prototype.annotateAdapters = function(adapters){
@@ -110,8 +110,8 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 			$uci.wireless["@wifi-device"].map(function(x){
 				// TODO: this should be a uci "displayname" or something
 				// TODO: actually this should be based on wireless ubus call field
-				if(x.band.value == "a") x[".frequency"] = gettext("5GHz"); 
-				else if(x.band.value == "b") x[".frequency"] = gettext("2.4GHz"); 
+				if(x.band.value == "a") x[".frequency"] = $tr(gettext("5GHz")); 
+				else if(x.band.value == "b") x[".frequency"] = $tr(gettext("2.4GHz")); 
 			}); 
 			deferred.resolve($uci.wireless["@wifi-device"]); 
 		}); 
@@ -197,13 +197,11 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"sched_status":	{ dvalue: false, type: Boolean }
 	}); 
 	UCI.wireless.$registerSectionType("wifi-schedule", {
-		"days":		{ dvalue: [], type: Array, 
-			allow: ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], 
-			alidator: UCI.validators.WeekDayListValidator},
+		"days":		{ dvalue: [], type: Array, allow: ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], validator: UCI.validators.WeekDayListValidator},
 		"time":		{ dvalue: "", type: String, validator: UCI.validators.TimespanValidator }
 	}, function validator(section){
 		if(section.days.value.length == 0){
-			return gettext("please pick at least one day to schedule on"); 
+			return JUCI.$tr(gettext("Wifi Schedule: please pick at least one day to schedule on")); 
 		}
 		return null; 
 	}); 
@@ -266,7 +264,7 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		var eList = [];
 // validate ssid
 		if(section.ssid.value.length >= 32) 
-			eList.push(gettext("Invalid SSID: ") + section.ssid.value + gettext(". SSID can not be more than 32 characters long!"));
+			eList.push(JUCI.$tr(gettext("Invalid SSID: ")) + (section.ssid.value || JUCI.$tr(gettext("no SSID"))) + JUCI.$tr(gettext(". SSID can not be more than 32 characters long!")));
 // validate keys
 		switch(section.encryption.value){
 			case "wep-open":
@@ -275,10 +273,10 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 				var err = null;
 				for(var i = 1; i <= 4; i++){
 					err = WEPValidator.validate(section["key"+i]);
-					if(err !== null) eList.push(gettext("Wireless interface ") + section.ssid.value + gettext(" has invalid key #") + i + gettext(" error: ") + err);
+					if(err !== null) eList.push(JUCI.$tr(gettext("Wireless interface ")) + (section.ssid.value || JUCI.$tr(gettext("no SSID"))) + JUCI.$tr(gettext(" has invalid key #")) + i + JUCI.$tr(gettext(" error: ")) + err);
 				}
 				if(section["key"+section.key_index.value].value === ""){
-					eList.push(gettext("Wireless interface ") + section.ssid.value + gettext(" must have key #") + section.key_index.value + gettext(" set!"));
+					eList.push(JUCI.$tr(gettext("Wireless interface ")) + (section.ssid.value || JUCI.$tr(gettext("no SSID"))) + JUCI.$tr(gettext(" must have key #")) + section.key_index.value + JUCI.$tr(gettext(" set!")));
 				}
 			} break;
 			//case "psk":
@@ -287,7 +285,7 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 				var WPAValidator = new UCI.validators.WPAKeyValidator();
 				if((!section.key.value) && section.mode.value === "ap"){
 					var error = WPAValidator.validate(section.key);
-					if(error !== null) eList.push(gettext("Wireless interface ") + section.ssid.value + gettext(". WPA key must be 8-63 printable ASCII characters long!"));
+					if(error !== null) eList.push(JUCI.$tr(gettext("Wireless interface ")) + (section.ssid.value || JUCI.$tr(gettext("no SSID"))) + JUCI.$tr(gettext(". WPA key must be 8-63 printable ASCII characters long!")));
 				}
 			} break;
 			case "wpa-mixed":

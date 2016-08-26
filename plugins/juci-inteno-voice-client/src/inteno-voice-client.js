@@ -108,9 +108,9 @@ UCI.voice_client.$registerSectionType("sip_user", {
 },function(section){
 	var errors = [];
 	if(!section.name || section.name.value == "")
-		errors.push(gettext("SIP users needs a name"));
+		errors.push(JUCI.$tr(gettext("SIP users needs a name")));
 	if(!section.extension || section.extension.value == "" || section.extension.value < 1)
-		errors.push(gettext("SIP users needs a valid extension"));
+		errors.push(JUCI.$tr(gettext("SIP users needs a valid extension")));
 	if(errors.length == 0) return null;
 	return errors;
 });

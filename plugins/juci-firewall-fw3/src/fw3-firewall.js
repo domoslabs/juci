@@ -20,7 +20,7 @@
  */
 
 JUCI.app
-.factory("$firewall", function($uci, $network, gettext){
+.factory("$firewall", function($uci, $network, gettext, $tr){
 	var firewall = 0; 
 	function sync(){
 		var deferred = $.Deferred(); 
@@ -108,7 +108,7 @@ JUCI.app
 							selected_zone = [$uci.firewall["@zone"].filter(function(x){ return x.name.value == zone;})];
 						}
 						if(selected_zone.length < 1) {
-							def.reject({error: gettext("Zone does not exist!")}); 
+							def.reject({error: $tr(gettext("Zone does not exist!"))}); 
 							return; 
 						}
 						next();
@@ -252,7 +252,7 @@ UCI.firewall.$registerSectionType("redirect", {
 	"dest_port":			{ dvalue: "", type: String, validator: UCI.validators.PortOrRangeValidator() },
 	"reflection": 			{ dvalue: true, type: Boolean }
 }, function(section){
-	if(!section.src_dport.value) return gettext("Source port can not be empty!"); 
+	if(!section.src_dport.value) return JUCI.$tr(gettext("Source port can not be empty!")); 
 	return null; 
 }); 
 

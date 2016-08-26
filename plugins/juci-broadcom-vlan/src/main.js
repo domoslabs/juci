@@ -81,11 +81,11 @@ UCI.layer2_interface_vlan.$registerSectionType("vlan_interface", {
 }, function(section){
 	var errors = [];
 	if(!section.vlan8021p || isNaN(section.vlan8021p.value) || section.vlan8021p.value <  0 || section.vlan8021p.value > 7)
-		errors.push("VLAN priority must be between 0 and 7");
+		errors.push(JUCI.$tr(gettext("VLAN")) + " " + (section.name.value || JUCI.$tr(gettext("unknown"))) + " " + JUCI.$tr(gettext("must have priority between 0 and 7")));
 	if(!section.vlan8021q || section.vlan8021q.value == "" || isNaN(section.vlan8021q.value) || section.vlan8021q.value < 1 || section.vlan8021q.value > 4096)
-		errors.push("VLAN Q-tag must be between 1 and 4096");
+		errors.push(JUCI.$tr(gettext("VLAN")) + " " + (section.name.value || JUCI.$tr(gettext("unknown"))) + " " + JUCI.$tr(gettext("must have Q-tag between 1 and 4096")));
 	if(!section.ifname || section.ifname.value == "" || !section.baseifname || section.baseifname.value == "")
-		errors.push("VLAN must have a base-device");
+		errors.push(JUCI.$tr(gettext("VLAN")) + " " + (section.name.value || JUCI.$tr(gettext("unknown"))) + " " + JUCI.$tr(gettext("must have a base-device")));
 	if(errors.length) return errors;
 	return null;
 }); 

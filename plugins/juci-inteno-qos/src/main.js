@@ -56,7 +56,7 @@ UCI.qos.$registerSectionType("class", {
 	"limitrate":		{ dvalue: 100, type: Number},
 });
 
-JUCI.app.factory("intenoQos", function($uci){
+JUCI.app.factory("intenoQos", function($uci, gettext, $tr){
 	function Qos(){ }
 	Qos.prototype.getDefaultTargets = function(){
 		var def = $.Deferred(); 
