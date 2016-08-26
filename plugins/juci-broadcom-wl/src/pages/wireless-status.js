@@ -64,7 +64,7 @@ JUCI.app
 							[$tr(gettext("Idle")), c.idle],
 							[$tr(gettext("In Network")), c.in_network],
 							[$tr(gettext("RSSI")), c.rssi+" dBm"],
-							[$tr(gettext("SNR")), c.snr+ " dBm"],
+							[$tr(gettext("SNR")), c.snr+ " dB"],
 							["Number of Antennas", c.rssi_per_antenna.length],
 							["TX Rate", parseInt(c.scbstats.rate_of_last_tx_pkt/1000 +0.5) + " Mbps"],
 							["RX Rate", parseInt(c.scbstats.rate_of_last_rx_pkt/1000 +0.5) + " Mbps"],
