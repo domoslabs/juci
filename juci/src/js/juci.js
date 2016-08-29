@@ -68,6 +68,10 @@
 				});
 			},
 			function(next){
+				var sid_in = decodeURIComponent(window.location.search).match(/sid=[^&]+/);
+				if(sid_in){
+					$rpc.$sid(String(sid_in).substring(4).replace(/"/g, ""));
+				}
 				$rpc.$authenticate().done(function(){
 					next();
 				}).fail(function(){

@@ -102,7 +102,10 @@
 	
 	var rpc = {
 		$sid: function(sid){
-			if(sid) RPC_SESSION_ID = sid;
+			if(sid) {
+				RPC_SESSION_ID = sid;
+				scope.localStorage.setItem("sid", sid);
+			}
 			else return RPC_SESSION_ID;
 		},
 		$isLoggedIn: function(){
@@ -113,21 +116,18 @@
 			var deferred  = $.Deferred();
 			
 			if(!METHODS.session){
-				setTimeout(function(){ deferred.reject(); }, 0);
-				return deferred.promise();
+				console.log("ubus session object is missing");
+				return deferred.reject();
 			}
 
 			METHODS.session.list().done(function(result){
         		if(!("username" in (result.data||{}))) {
-					// username must be returned in the response. If it is not returned then rpcd is of wrong version.
-					//alert(gettext("You have been logged out due to inactivity"));
 					RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID; // reset sid to 000..
 					scope.localStorage.setItem("sid", RPC_SESSION_ID);
 					deferred.reject();
 				} else {
 					self.$session = result;
 					if(!("data" in self.$session)) self.$session.data = {};
-					//console.log("Session: Loggedin! ");
 					deferred.resolve(result);
 				}
 			}).fail(function err(result){
@@ -409,7 +409,10 @@
 				}
 			}
 			ws.onclose = function(e) {
-				if(!e.isTrusted) window.location.reload();
+				if(!e.isTrusted){
+					console.log("reloading page");
+					window.location.reload();
+				}
 				console.log(JSON.stringify(e));
 				console.log( "Close(" + e.reason + ")");
 			};

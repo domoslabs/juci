@@ -35,6 +35,7 @@ JUCI.app
 	$scope.homepage = $config.settings.juci.homepage.value; 
 
 	$scope.getHref = function(item){
+		if(!item) return "";
 		if(!item.redirect) return item.href;
 		if(item.redirect === "first"){
 			if(!item.children_list) return "/404";
