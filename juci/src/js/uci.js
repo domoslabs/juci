@@ -186,12 +186,22 @@
 		else{ return false; }
 	}
 
-	function WPAKeyValidator(){
-		this.validate = function(field){
-			if(field.value.length < 8 || field.value.length > 63){ return JUCI.$tr(gettext("WPA encryption key must be 8-63 printable ASCII characters!")); }
-			for(var i=0; i<field.value.length; i++){
-				if(isNotPrintableASCII(field.value.charAt(i))){
-					return JUCI.$tr(gettext("WPA encryption key must be 8-63 printable ASCII characters!"));
+	function WPAKeyValidator(notAllowedChars){
+		return function(){
+			this.validate = function(field){
+				if(field.value.length < 8 || field.value.length > 63){ return JUCI.$tr(gettext("WPA encryption key must be 8-63 printable ASCII characters!")); }
+				for(var i=0; i<field.value.length; i++){
+					if(isNotPrintableASCII(field.value.charAt(i))){
+						return JUCI.$tr(gettext("WPA encryption key must be 8-63 printable ASCII characters!"));
+					}
+				}
+
+				if(!notAllowedChars) { return; }
+				var chars = notAllowedChars.split("");
+				for(var i in chars){
+					if(field.value.indexOf(chars[i]) !== -1){
+						return JUCI.$tr(gettext("WPA encryption key cannot contain the following characters:")) + " " +notAllowedChars;
+					}
 				}
 			}
 		}

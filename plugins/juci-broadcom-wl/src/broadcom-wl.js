@@ -241,7 +241,7 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"ssid":				{ dvalue: "", type: String },
 		"encryption":		{ dvalue: "none", type: String },
 		"cipher":			{ dvalue: "auto", type: String },
-		"key":				{ dvalue: "", type: String, validator: UCI.validators.WPAKeyValidator },
+		"key":				{ dvalue: "", type: String, validator: UCI.validators.WPAKeyValidator("#%&'()*,/:;<=>?|[]\"\\") },
 		"key_index": 		{ dvalue: 1, type: Number }, 
 		"key1":				{ dvalue: "", type: String, validator: UCI.validators.WEPKeyValidator },
 		"key2":				{ dvalue: "", type: String, validator: UCI.validators.WEPKeyValidator },
