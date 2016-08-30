@@ -445,6 +445,7 @@
 				else return this.uvalue;
 			},
 			set value(val){
+				if(val === null) val = "";//return;
 				// set dirty if not same
 				var self = this;
 				if(val instanceof Array){
