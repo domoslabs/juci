@@ -69,18 +69,14 @@ JUCI.app
 			visible: false,
 			alignZeros: true,
 			left: {
-				range: { min: undefined, max: undefined },
 				format: function format(value) {
 					return value;
-				},
-				title: { text: undefined, style: undefined }
+				}
 			},
 			right: {
-				range: { min: undefined, max: undefined },
 				format: function format(value) {
 					return value;
-				},
-				title: { text: undefined, style: undefined }
+				}
 			}
 		},
 		legend: {
@@ -105,7 +101,6 @@ JUCI.app
 		max: 165,
 		moveable: false,
 		zoomable: false,
-		direction: 'horizontal' // 'horizontal' or 'vertical'
 	};
 	
 	var groups = new vis.DataSet(); 	
