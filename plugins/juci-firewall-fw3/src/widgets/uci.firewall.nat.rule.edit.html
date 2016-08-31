@@ -53,13 +53,13 @@
 		</div>
 	</div>
 	<div class="form-group" >
-		<label for="range" class="control-label col-xs-4" translate>Public Port(s)</label>
+		<label for="range" class="control-label col-xs-4" translate>Source Port(s)</label>
 		<div class="col-xs-8" ng-class="{'field-error': rule.src_dport.error}" >
 			<input type="text" class="form-control" ng-model="rule.src_dport.value" />
 		</div>
 	</div>
 	<div class="form-group" >
-		<label for="range" class="control-label col-xs-4" translate>Private Port(s)</label>
+		<label for="range" class="control-label col-xs-4" translate>Destination Port(s)</label>
 		<div class="col-xs-8" ng-class="{'field-error': rule.dest_port.error}" >
 			<input type="text" class="form-control" ng-model="rule.dest_port.value" placeholder="{{rule.src_dport.value}}" />
 		</div>
