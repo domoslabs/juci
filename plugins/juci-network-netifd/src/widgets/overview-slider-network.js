@@ -127,6 +127,14 @@ JUCI.app
 					if(dev.linkspeed.match("1000")) return "img/Laptop_Green.png";
 					return "img/Laptop_Yellow.png";
 				}
+			case "asc":
+				if(dev.wireless){
+					return getIcon("cl", dev);
+				}else{
+					if(!dev.linkspeed) return "img/Wifi_Client_Red.png";
+					if(dev.linkspeed.match("1000")) return "img/Wifi_Client_Green.png";
+					return "img/Wifi_Client_Yellow.png";
+				}
 			default: return "";
 		}
 	}
@@ -362,7 +370,7 @@ JUCI.app
 												label: myString(String(asc.hostname || String(host.ipaddr).toUpperCase() || String(host.macaddr).toUpperCase())),
 												title: getHostTitle(asc),
 												size: 30,
-												image: getIcon("cl", host), // get the icon from the repeaters values!!
+												image: getIcon("asc", host), // get the icon from the repeaters values!!
 												shape: "image"
 											}
 											nodes.push(assoc_node);
