@@ -42,7 +42,7 @@ JUCI.app
 		{ label: $tr(gettext("UMTS/GPRS")),	value: "umts" },
 		{ label: $tr(gettext("UMTS only")),	value: "umts_only" },
 		{ label: $tr(gettext("GPRS only")),	value: "gprs_only" },
-		{ label: $tr(gettext("GPRS only")),	value: "evdo" }
+		{ label: $tr(gettext("EVDO")),	value: "evdo" }
 	];
 })
 .directive("networkConnectionProto3gAdvancedEdit", function(){

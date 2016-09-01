@@ -2,12 +2,13 @@
 	<div ng-controller="statusCatvCtrl">
 		<juci-config-section>
 			<juci-config-heading>{{'CATV Status'|translate}}</juci-config-heading>
-			<table class="table table-hover">
+			<table ng-show="values && values.length" class="table table-hover">
 				<tr ng-repeat="row in values track by $index">
 					<td>{{row.key}}</dt>
 					<td>{{row.value}}</td>
 				</tr>
 			</table>
+			<p ng-hide="values && values.length">{{'No status avalible'|translate}}</p>
 		</juci-config-section>
 	</div>
 </juci-layout-with-sidebar>

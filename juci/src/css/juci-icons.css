@@ -92,7 +92,10 @@ i[class^="juci-"], i[class*=" juci-"] {
 
 /* ##### \0020 to \002f ###### */
 .juci-bridge:before {
-    content: "\0020";
+    content: "\002c";
+}
+.juci-wifi-dongle:before {
+    content: "\002d";
 }
 .juci-adsl:before {
 	content: "\0021";
@@ -129,6 +132,9 @@ i[class^="juci-"], i[class*=" juci-"] {
 }
 
 /* ##### \0030 to \003f ###### */
+.juci-wifi:before {
+	content: "\0033";
+}
 .juci-wifi-empty:before {
 	content: "\0030";
 }

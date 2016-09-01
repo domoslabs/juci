@@ -9,7 +9,7 @@
 				<td>{{row.value}}</td>
 			</tr>
 		</table>
-		<h5 ng-show="ddm.length == 0">No DDM Values Available</h5>
+		<h5 ng-show="rom.length == 0">No ROM Values Available</h5>
 		<h3 translate>DDM Values</h3>
 		<table ng-show="rom.length > 0" class="table table-hover">
 			<tr ng-repeat="row in rom track by $index">
@@ -17,6 +17,6 @@
 				<td>{{row.value}}</td>
 			</tr>
 		</table>
-		<h5 ng-show="rom.length == 0">No ROM Values Available</h5>
+		<h5 ng-show="ddm.length == 0">No DDM Values Available</h5>
 	</div>
 </juci-layout-with-sidebar>

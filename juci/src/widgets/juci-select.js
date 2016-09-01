@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("juciSelect", function($parse, gettext){
+.directive("juciSelect", function($parse){
 	return {
 		restrict: 'E', 
 		scope: {

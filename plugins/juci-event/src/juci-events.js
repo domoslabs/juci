@@ -42,9 +42,8 @@
 	JUCI.app.run(function($rpc){
 		var self = JUCI.events;
 		$rpc.$registerEventHandler(function(e){
-			if (!e || !e.type) {
-				return;
-			}
+			if (!e || !e.type) return;
+			if(!self.callbacks[e.type])return;
 			console.log(e.type + "-event: "+ JSON.stringify(e.data || {}));
 			self.callbacks[e.type].map(function(cb){
 				if(cb && typeof cb === "function") cb(e);

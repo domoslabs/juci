@@ -7,8 +7,9 @@
 				<th translate ng-show="clients[col][0].ipaddr" ng-click="setOrder('ipaddr', col)" style="{{getStyle(col, 'ipaddr')}}"><i class="{{iconName(col)}}" style="float:right;" ng-show="showIcon(col, 'ipaddr')"></i>IP Address</th>
 				<th translate ng-show="clients[col][0].macaddr" ng-click="setOrder('macaddr', col)" style="{{getStyle(col, 'macaddr')}}"><i class="{{iconName(col)}}" style="float:right;" ng-show="showIcon(col, 'macaddr')"></i>MAC Address</th>
 				<th translate ng-show="clients[col][0].ethport" ng-click="setOrder('ethport', col)" style="{{getStyle(col, 'ethport')}}"><i class="{{iconName(col)}}" style="float:right;" ng-show="showIcon(col, 'ethport')"></i>Port</th>
-				<th translate ng-show="clients[col][0].snr" ng-click="setOrder('snr', col)" style="{{getStyle(col, 'snr')}}"><i class="{{iconName(col)}}" style="float:right;" ng-show="showIcon(col, 'snr')"></i>SNR</th>
+				<th translate ng-show="clients[col][0].rssi" ng-click="setOrder('rssi', col)" style="{{getStyle(col, 'rssi')}}"><i class="{{iconName(col)}}" style="float:right;" ng-show="showIcon(col, 'rssi')"></i>RSSI</th>
 				<th translate ng-show="clients[col][0]['tx_rate']" ng-click="setOrder('tx_rate', col)" style="{{getStyle(col, 'tx_rate')}}"><i class="{{iconName(col)}}" style="float:right;" ng-show="showIcon(col, 'tx_rate')"></i>TX Rate</th>
+				<th translate ng-show="clients[col][0]['rx_rate']" ng-click="setOrder('rx_rate', col)" style="{{getStyle(col, 'rx_rate')}}"><i class="{{iconName(col)}}" style="float:right;" ng-show="showIcon(col, 'rx_rate')"></i>RX Rate</th>
 				<th translate ng-show="clients[col][0].network" ng-click="setOrder('network', col)" style="{{getStyle(col, 'network')}}"><i class="{{iconName(col)}}" style="float:right;" ng-show="showIcon(col, 'network')"></i>Network</th>
 				<th translate ng-show="clients[col][0].linkspeed" ng-click="setOrder('linkspeed', col)" style="{{getStyle(col, 'linkspeed')}}"><i class="{{iconName(col)}}" style="float:right;" ng-show="showIcon(col, 'linkspeed')"></i>Linkspeed</th>
 			</tr>
@@ -17,8 +18,9 @@
 				<td ng-show="clients[col][0].ipaddr" style="{{style}}" title="{{client.ipaddr}}">{{client.ipaddr}}</td>
 				<td ng-show="clients[col][0].macaddr" style="{{style}}" title="{{client.macaddr | uppercase}}">{{client.macaddr | uppercase}}</td>
 				<td ng-show="clients[col][0].ethport" style="{{style}}" title="{{ports[client.ethport]}}">{{ports[client.ethport]}}</td>
-				<td ng-show="clients[col][0].snr" style="{{style}}" title="{{client.snr}} dBm">{{client.snr}} dBm</td>
-				<td ng-show="clients[col][0]['tx_rate']" style="{{style}}" title="{{client.ratem}} Mbps">{{client.ratem}} Mbps</td>
+				<td ng-show="clients[col][0].rssi" style="{{style}}" title="{{client.rssi}} dBm">{{client.rssi}} dBm</td>
+				<td ng-show="clients[col][0]['tx_rate']" style="{{style}}" title="{{client.tratem}} Mbps">{{client.tratem}} Mbps</td>
+				<td ng-show="clients[col][0]['rx_rate']" style="{{style}}" title="{{client.rratem}} Mbps">{{client.rratem}} Mbps</td>
 				<td ng-show="clients[col][0].network" style="{{style}}" title="{{client.network | uppercase}}">{{client.network | uppercase}}</td>
 				<td ng-show="clients[col][0].linkspeed" style="{{style}}" title="{{client.linkspeed}}">{{client.linkspeed}}</td>
 			<tr>

@@ -1,6 +1,6 @@
 //! Author: Martin K. Schröder <mkschreder.uk@gmail.com>
 JUCI.app
-.controller("OverviewPageCtrl", function($scope, $rpc, $uci, $config, gettext, $tr){
+.controller("OverviewPageCtrl", function($scope, $rpc, $uci, $config){
 	function chunk(array, chunkSize) {
 		return [].concat.apply([],
 			array.map(function(elem,i) {

@@ -3,7 +3,11 @@
 // service for managing session data
 JUCI.app.factory('$tr', function(gettextCatalog) {
 	return function(str){
-		return gettextCatalog.getString(str); 
+		return gettextCatalog.getString(str);
+	}
+}).run(function(gettextCatalog){
+	JUCI.$tr = function(str){
+		return gettextCatalog.getString(str);
 	}
 });
 

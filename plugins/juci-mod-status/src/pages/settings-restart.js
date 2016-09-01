@@ -26,10 +26,10 @@ JUCI.app
 			content: $tr(gettext("Are you sure you want to reboot?")),
 			on_button: function(btn, inst){
 				if(btn.value == "yes"){
-					window.location = "/reboot.html";
 					$rpc.$call("juci.system", "run", {"method":"reboot"}).done(function(){
 						inst.close();
 					});
+					setTimeout(function(){window.location = "/reboot.html";}, 1000);
 				}
 				inst.close();
 			},

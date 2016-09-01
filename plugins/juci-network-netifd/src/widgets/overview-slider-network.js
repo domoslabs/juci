@@ -70,6 +70,11 @@ JUCI.app
 	};
 })
 .controller("overviewSliderWidget10Network", function($scope, $rpc, $config, $firewall, $events, $tr, gettext, $juciDialog, $wireless){
+	function myString(string){
+		if(string.length > 11)
+			return string.substring(0, 11) + "...";
+		return string;
+	}
 	var optionsFA = {
 		autoResize: true,
 		nodes: {
@@ -122,6 +127,14 @@ JUCI.app
 					if(dev.linkspeed.match("1000")) return "img/Laptop_Green.png";
 					return "img/Laptop_Yellow.png";
 				}
+			case "asc":
+				if(dev.wireless){
+					return getIcon("cl", dev);
+				}else{
+					if(!dev.linkspeed) return "img/Wifi_Client_Red.png";
+					if(dev.linkspeed.match("1000")) return "img/Wifi_Client_Green.png";
+					return "img/Wifi_Client_Yellow.png";
+				}
 			default: return "";
 		}
 	}
@@ -138,7 +151,7 @@ JUCI.app
 		
 		nodes.push({
 			id: ".root",
-			label: $config.board.system.hardware.substring(0,11),
+			label: myString(String($config.board.system.hardware)),
 			title: $tr(gettext("Hardware Model")) + ": " + $config.board.system.hardware + "<br />" +
 					$tr(gettext("Base MAC")) + ": " + $config.board.system.basemac + "<br />" +
 					$tr(gettext("Software Version")) + ": " + $config.board.system.firmware + "<br />" +
@@ -236,7 +249,7 @@ JUCI.app
 					if(!title) return;
 					var node = {
 						id: count++,
-						label: String(wan.interface).toUpperCase().substring(0,11),
+						label: myString((wan.interface).toUpperCase()),
 						title: title,
 						image: getIcon("wan", wan),
 						ize: 20,
@@ -292,7 +305,7 @@ JUCI.app
 						});
 						var node = {
 							id: count++,
-							label: String(item.interface).toUpperCase().substring(0,11),
+							label: myString(String(item.interface).toUpperCase()),
 							title: item.interface + '<br />' + $tr(gettext("Number of Clients")) + ": " + num_cli,
 							image: getIcon("lan", item),
 							size: 30,
@@ -307,9 +320,9 @@ JUCI.app
 							dev.down = radio && !radio.isup;
 							var dev_node = {
 								id: count++,
-								label: String((dev.name)?dev.name : dev.ssid).toUpperCase().substring(0,11),
+								label: myString(String(dev.name ? String(dev.name).toUpperCase() : dev.ssid)),
 								title: (dev.name)? String(dev.name).toUpperCase() + '<br />' + $tr(gettext("Link speed")) + ': ' + dev.linkspeed :
-													String(dev.ssid).toUpperCase() + ' @ ' + ((radios[device.substring(0,3)])? radios[device.substring(0,3)].frequency : $tr(gettext('unknown'))),
+													dev.ssid + ' @ ' + ((radios[device.substring(0,3)])? radios[device.substring(0,3)].frequency : $tr(gettext('unknown'))),
 								size: 30,
 								image: device.match("eth")?getIcon("eth",dev):getIcon("wl", dev),
 								shape: "image"
@@ -318,9 +331,9 @@ JUCI.app
 							edges.push( { from: node.id, to: dev_node.id, width: 3 });
 							if(dev.hosts && dev.hosts.length){
 								dev.hosts.map(function(host){
-									if(!host.connected) return;
+									if(!host.connected || host.repeated) return;
 									function getHostTitle(host){
-										var title = String(host.hostname || host.ipaddr || host.macaddr).toUpperCase() + '<br />';
+										var title = host.hostname || String(host.ipaddr).toUpperCase() || String(host.macaddr).toUpperCase() + '<br />';
 										[
 											["ipaddr", $tr(gettext("IP Address")), ""],
 											["macaddr", $tr(gettext("MAC Address")), ""],
@@ -342,7 +355,7 @@ JUCI.app
 									}
 									var host_node = {
 										id: JSON.stringify(host) + count++,
-										label: String(host.hostname || host.ipaddr || host.macaddr).toUpperCase().substring(0,11),
+										label: myString(String(host.hostname || String(host.ipaddr).toUpperCase() || String(host.macaddr).toUpperCase())),
 										title: getHostTitle(host),
 										size: 30,
 										image: getIcon("cl", host),
@@ -350,6 +363,20 @@ JUCI.app
 									}
 									nodes.push(host_node);
 									edges.push( { from: dev_node.id, to: host_node.id, width: 3, dashes: (host.wireless) } );
+									if(host.assoclist && host.assoclist.length){
+										host.assoclist.map(function(asc){
+											var assoc_node = {
+												id: JSON.stringify(asc) + count ++,
+												label: myString(String(asc.hostname || String(host.ipaddr).toUpperCase() || String(host.macaddr).toUpperCase())),
+												title: getHostTitle(asc),
+												size: 30,
+												image: getIcon("asc", host), // get the icon from the repeaters values!!
+												shape: "image"
+											}
+											nodes.push(assoc_node);
+											edges.push( { from: host_node.id, to: assoc_node.id, width: 3, dashes: true } );
+										});
+									}
 								});
 							}
 						});

@@ -47,18 +47,18 @@ JUCI.app
 	}
 
 	$scope.pinging = [ 0, 0, 0, 0, 0, 0, 0, 0 ];
+	function alternatePinging(hs){ $scope.pinging[hs.id]==1 ? $scope.pinging[hs.id]=0 : $scope.pinging[hs.id]=1; };
 
 	$scope.onPingHandset = function(hs){
-		if ($scope.pinging[hs.id]) {
-			$scope.pinging[hs.id] = 0;
+		alternatePinging(hs);
+		if (!$scope.pinging[hs.id]) {
 			$rpc.$call("dect", "call", {"terminal": hs.id, "release": (hs.id-1) }).done(function(result){
-				if (result.errstr && result.errstr != "Success") $scope.pinging[hs.id] = 1;
-			}).fail(function(e){console.log(e)});
+				//if (result.errstr && result.errstr != "Success") $scope.pinging[hs.id] = 1;
+			}).fail(function(e){ console.log(e); });
 		} else {
-			$scope.pinging[hs.id] = 1;
 			$rpc.$call("dect", "call", {"terminal": hs.id, "add": (hs.id-1) }).done(function(result){
-				if (result.errstr && result.errstr != "Success") $scope.pinging[hs.id] = 0;
-			}).fail(function(e){console.log(e);});
+				//if (result.errstr && result.errstr != "Success") $scope.pinging[hs.id] = 0;
+			}).fail(function(e){ console.log(e); });
 		}
 	}
 

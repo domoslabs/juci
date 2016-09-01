@@ -20,41 +20,49 @@ msgstr ""
 msgid "2.4GHz"
 msgstr ""
 
-msgid "please select at least one day to schedule on"
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid "Wifi Schedule: please pick at least one day to schedule on"
 msgstr ""
 
-msgid "SSID string can be at most 32 characters long!"
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid "Invalid SSID: "
 msgstr ""
 
-msgid "WEP encryption key #'+id+' must be 10-26 hexadecimal characters!"
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid ". SSID can not be more than 32 characters long!"
 msgstr ""
 
-msgid "WPA key must be 8-63 characters long!"
+#, fuzzy
+msgid "Wireless interface "
+msgstr "Wireless"
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid "no SSID"
+msgstr "inget SSID"
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid " has invalid key #"
 msgstr ""
 
-msgid "Hostname"
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid " error: "
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-clients.js
-msgid "IPv4 Address"
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid " must have key #"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-clients.js
-msgid "IPv6 Address"
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid " set!"
 msgstr ""
 
-msgid "Frequency"
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid ". WPA key must be 8-63 printable ASCII characters long!"
 msgstr ""
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-clients.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
-msgid "MAC-Address"
-msgstr ""
-
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-interfaces.js
 msgid ""
-"No more Wireless Interface spaces left. There can't be more then 4 "
+"No more Wireless Interface spaces left. There can't be more than 4 "
 "Interfaces on each radio"
 msgstr ""
 
@@ -101,6 +109,13 @@ msgstr ""
 msgid "IP-Address"
 msgstr ""
 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-clients.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
+msgid "MAC-Address"
+msgstr ""
+
 # /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
 msgid "DHCP"
 msgstr ""
@@ -120,22 +135,6 @@ msgstr ""
 msgid "SNR"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
-msgid "TX Bytes"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
-msgid "RX Bytes"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
-msgid "TX Rate"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
-msgid "RX Rate"
-msgstr ""
-
 msgid "Initializing"
 msgstr ""
 
@@ -149,6 +148,13 @@ msgid "Failed"
 msgstr ""
 
 msgid "Timed out"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
+msgid "Switching to repeater mode"
 msgstr ""
 
 msgid "Overlap"
@@ -174,6 +180,9 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
+msgid "Auto"
+msgstr ""
+
 msgid "11a"
 msgstr "802.11a"
 
@@ -193,9 +202,6 @@ msgid "11n"
 msgstr "802.11n"
 
 msgid "Key"
-msgstr ""
-
-msgid "Auto"
 msgstr ""
 
 msgid "CCMP (AES)"
@@ -321,6 +327,13 @@ msgstr ""
 msgid "Broadcast SSID"
 msgstr ""
 
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
+msgid "Wireless Multicast Forwarding"
+msgstr ""
+
+msgid "Frequency"
+msgstr ""
+
 msgid "Encryption"
 msgstr ""
 
@@ -366,12 +379,6 @@ msgstr ""
 msgid "Add clients to MAC filtering list"
 msgstr ""
 
-msgid "You must enter a valid MAC address!"
-msgstr ""
-
-msgid "MAC"
-msgstr ""
-
 msgid "Select Wireless Radio"
 msgstr ""
 
@@ -399,15 +406,6 @@ msgstr ""
 msgid "Connect"
 msgstr ""
 
-msgid "Connected Wireless Clients"
-msgstr ""
-
-msgid "wifi.clients.info"
-msgstr ""
-"Wireless interfaces are visible to the user in the form of wireless access "
-"point names. Each radio can have several SSIDs and each SSID interface can "
-"be configured as part of a network bridge or firewall group."
-
 msgid "Wireless Radios"
 msgstr ""
 
@@ -426,6 +424,10 @@ msgstr ""
 "To make your wireless network more secure, you can specify which devices are "
 "allowed to connect. The devices are identified by their MAC address. You can "
 "manage up to 32 devices."
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-filtering.html
+msgid "You cannot enable MAC Filtering on a WEP protected wireless interface!"
+msgstr ""
 
 msgid "General WiFi Settings"
 msgstr ""
@@ -523,8 +525,9 @@ msgstr ""
 msgid "Scanning..."
 msgstr ""
 
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status-scan.html
 msgid ""
-"You will not be able to scan 5Ghz band because your 5Ghz wifi radio is "
+"You will not be able to scan 5Ghz band because your 5Ghz wireless radio is "
 "operating at a DFS channel"
 msgstr ""
 
@@ -543,17 +546,7 @@ msgstr ""
 msgid "Enable WPS on"
 msgstr ""
 
-msgid "Enable WPS button on router"
-msgstr ""
-
-msgid ""
-"Pressing WiFi on/off button on your router for long time activates pairing "
-msgstr ""
-
 msgid "Pair (within 2 minutes)"
-msgstr ""
-
-msgid "WPS Using Generated PIN"
 msgstr ""
 
 msgid "Generated PIN"
@@ -595,9 +588,6 @@ msgstr ""
 msgid "Enter the WPS-PIN provided by the other device here."
 msgstr ""
 
-msgid "menu-wireless-clients-title"
-msgstr "Clients"
-
 msgid "menu-wireless-title"
 msgstr "WiFi"
 
@@ -630,3 +620,12 @@ msgstr "WiFi Scan"
 
 msgid "menu-wireless-general-title"
 msgstr "General"
+
+#~ msgid "wifi.clients.info"
+#~ msgstr ""
+#~ "Wireless interfaces are visible to the user in the form of wireless "
+#~ "access point names. Each radio can have several SSIDs and each SSID "
+#~ "interface can be configured as part of a network bridge or firewall group."
+
+#~ msgid "menu-wireless-clients-title"
+#~ msgstr "Clients"
