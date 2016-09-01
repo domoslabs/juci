@@ -53,7 +53,7 @@ JUCI.app
 	}); 
 	
 	$scope.onGetItemTitle = function(i){
-		return i[".name"]; 
+		return String(i[".name"]).toUpperCase();
 	}
 	
 	function evalName(name){
