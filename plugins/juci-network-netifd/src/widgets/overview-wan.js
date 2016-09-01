@@ -112,12 +112,12 @@ JUCI.app
 				$rpc.$call("router", "networks").done(function(data){
 					wans = wans.filter(function(w){
 						var wan = data[w.interface];
-						return wan && wan.defaultroute && wan.ifname && wan.ifname.match(/^[^@].*/);
+						return wan && wan.defaultroute;
 					});
 				}).fail(function(e){console.log(e);}).always(function(){next();});
 			}
 		], function(){
-			$scope.data = {ip:[], defaultroute:[], contypes:[], dslUp:[], dslDown:[], dns:[], up:false, linkspeed:[]};
+			$scope.data = {ip:[], defaultroute:[], contypes:[], dslUp:[], dslDown:[], dns:[], up:false, linkspeed:""};
 			$scope.uptime = 0;
 			wans.map(function(w){
 				if(w.up) $scope.data.up = true;
@@ -150,7 +150,7 @@ JUCI.app
 				if(w.device && w.device.match("eth[0-9].[0-9]")){
 					$rpc.$call("router", "linkspeed", {"interface":w.device.substring(0,4)}).done(function(data){
 						if(data && data.linkspeed)
-							$scope.data.linkspeed.push(data.linkspeed);
+							$scope.data.linkspeed = data.linkspeed;
 					}).fail(function(e){console.log(e);});
 				}
 				if(w["dns-server"] && w["dns-server"].length)

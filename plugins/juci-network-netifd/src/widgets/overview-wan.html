@@ -29,10 +29,10 @@
 					<span ng-repeat="up in data.dslUp track by $index">Up: <div style="float:right;">{{up}} Mbit/s</div></span><br />
 				</td>
 			</tr>
-			<tr ng-show="data.linkspeed.length">
+			<tr ng-show="data.linkspeed">
 				<td><strong translate>Linkspeed</strong></td>
 				<td>
-					<span ng-repeat="ls in data.linkspeed track by $index">{{ls}}</span><br />
+					<span>{{data.linkspeed}}</span><br />
 				</td>
 			</tr>
 			<tr ng-show="data.dns.length">
