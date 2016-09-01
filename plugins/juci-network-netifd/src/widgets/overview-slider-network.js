@@ -323,7 +323,7 @@ JUCI.app
 							edges.push( { from: node.id, to: dev_node.id, width: 3 });
 							if(dev.hosts && dev.hosts.length){
 								dev.hosts.map(function(host){
-									if(!host.connected) return;
+									if(!host.connected || host.repeated) return;
 									function getHostTitle(host){
 										var title = host.hostname || String(host.ipaddr).toUpperCase() || String(host.macaddr).toUpperCase() + '<br />';
 										[
@@ -355,6 +355,20 @@ JUCI.app
 									}
 									nodes.push(host_node);
 									edges.push( { from: dev_node.id, to: host_node.id, width: 3, dashes: (host.wireless) } );
+									if(host.assoclist && host.assoclist.length){
+										host.assoclist.map(function(asc){
+											var assoc_node = {
+												id: JSON.stringify(asc) + count ++,
+												label: myString(String(asc.hostname || String(host.ipaddr).toUpperCase() || String(host.macaddr).toUpperCase())),
+												title: getHostTitle(asc),
+												size: 30,
+												image: getIcon("cl", host), // get the icon from the repeaters values!!
+												shape: "image"
+											}
+											nodes.push(assoc_node);
+											edges.push( { from: host_node.id, to: assoc_node.id, width: 3, dashes: true } );
+										});
+									}
 								});
 							}
 						});
