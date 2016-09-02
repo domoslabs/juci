@@ -24,48 +24,22 @@
 (function($juci){
 	function JUCINavigation(){
 		var data = {
-			children: {},
-			children_list: []
+			children: []
 		}; 
 		var self = this; 
+		this.clear = function(){
+			data.children = [];
+		};
 		this.tree = function(path){
 			if(!path)
 				return data; 
 			return this.findLeaf(path); 
 		};
-		this.findLeaf = function(path){
-			var parts = path.split("/"); 
-			var obj = data; 
-			// find the right leaf node
-			while(parts.length){
-				if(obj.children.hasOwnProperty(parts[0])){
-					obj = obj.children[parts.shift()]; 
-				} else {
-					return null; 
-				}
-			} 
-			return obj; 
-		};
-		this.findTrunkByPath = function(path){
-			function findChild(list){
-				return list.find(function(child){
-					if(child.href === path)
-						return true;
-					else if(child.children_list && child.children_list.length)
-						return findChild(child.children_list);
-					return false;
-				});
-			}
-			return findChild(data.children_list);
-		};
-		this.findNodeByPath = function(path){
-			return this.findLeaf(path); 
-		}; 
-		this.findNodeByHref = function(href, node){
+		function getAllNodes(node){
 			var list = []; 
 			function flatten(tree){
 				list.push(tree); 
-				tree.children_list.map(function(ch){ 
+				tree.children.map(function(ch){ 
 					if(!ch.href) return; 
 					if(ch._visited) alert("ERROR: loops in menu structure are not allowed! node "+ch.href+" already visited!"); 
 					ch._visited = true; 
@@ -74,47 +48,96 @@
 			}
 			flatten(node || data); 
 			list.map(function(ch){ ch._visited = false; }); // reset the flag for next time 
-			return list.find(function(ch){ return ch.href == href; }); 
-		}
-		this.insertLeaf = function(path, item){
-			var parts = item.path.split("/"); 
-			var obj = data; 
-			// find the right leaf node
-			while(parts.length > 1){
-				if(obj.children.hasOwnProperty(parts[0])){
-					obj = obj.children[parts.shift()]; 
-				} else {
-					// do not add items whos parents do not exist!
-					// we can thus hide full hierarchy by simply hiding an item
-					return ;
-				}
-			} 
-			// make sure that inserted item has empty child lists
-			if(!item.children) {
-				item.children = {}; 
-				item.children_list = []; 
+			return list;
+		};
+		this.findNodeByHref = function(href, node){
+			var list = getAllNodes(node);
+			return list.find(function(ch){ return ch.href === href; });
+		};
+		this.findNodeByPath = function(path, node){
+			var list = getAllNodes(node);
+			return list.find(function(ch){ return ch.path === path; });
+		};
+		function deleteNodeByPath(path){
+			var parts = path.split("/");
+			if(parts.length > 3){ alsert("ERROR: cant delete item with more than 3 lvls"); return;}
+			var obj = data;
+			while(parts.length > 1){ // try to find the parrent of the path
+				var node = obj.children && obj.children.find(function(n){
+					return n.path.split("/").pop() === parts[0];
+				});
+				if(!node) return; // the node doesn't exist
+				obj = node;
+				parts.shift();
 			}
-			if(!obj.children.hasOwnProperty(parts[0])){
-				obj.children[parts[0]] = item; 
-				obj.children_list.push(item); 
-			} else {
-				var o = obj.children[parts[0]]; 
-				item.children = o.children; 
-				item.children_list = o.children_list; 
-				obj.children[parts[0]] = item; 
-				item = o; 
-			}
-			obj.children_list = Object.keys(obj.children).map(function (key) {
-				return obj.children[key]; 
-			});
-			return item; 
+			obj.children = obj.children.filter(function(ch){ return ch.path !== path;});
 		};
 		this.register = function(item){
-			if(!item.path) return; 
-			item = this.insertLeaf(item.path, item); 
-			
-			return data; 
-		}; 
+			if(!item.path) return;
+			var parts = item.path.split("/"); 
+			if(parts.length > 3) { alert("ERROR: menu cant have more than 3 lvls"); return;}
+			var obj = data; 
+			while(parts.length > 1){
+				var node = obj.children.find(function(n){
+					return n.path.split("/").pop() === parts[0];
+				});
+				if(!node){
+					var n_path = obj.path ? obj.path + "/" + parts[0] : parts[0];
+					var new_obj = {
+						children: [],
+						path: n_path, // this will create a string containing the missing path
+						page: "",
+						index: item.index || 99,
+						modes: [],
+						text: "menu-"+n_path.replace(/\//g, "-")+"-title"
+					};
+					obj.children.push(new_obj);
+					obj = new_obj;
+				}else{
+					obj = node;
+				}
+				parts.shift();
+			}
+			if(!obj.children) obj.children = [];
+			var index = obj.children.findIndex(function(ch){
+				return ch.path === item.path;
+			});
+			if(index !== -1){
+				obj.children[i] = item; //replace existing page
+			}else{
+				obj.children.push(item);
+			}
+		};
+		this.removeInvalidNodes = function(){
+			var to_delete = [];
+			filterMenu(data);
+			console.log("to delete: " + JSON.stringify(to_delete));
+			if(to_delete.length){
+				to_delete.map(function(del){ deleteNodeByPath(del);});
+			}
+			function filterMenu(node){
+				if(!node) node = data;
+				if(!node.children || !node.children.length) return; //no sub-nodes
+				node.children.map(function(ch){
+					if(ch.page){ 								// valid node check sub-nodes
+						filterMenu(ch);
+					}else if(hasValidChild(ch)){ 				// valid node check sub-nodes
+						filterMenu(ch);
+					}else{ 										// invalid child REMOVE
+						to_delete.push(ch.path);
+					}
+				});
+			}
+			function hasValidChild(node){
+				if(!node.children || !node.children.length) return false;
+				var valid = node.children.find(function(subch){
+					if(subch.path) return true;
+					return hasValidChild(subch);
+				});
+				if(valid) return true;
+				return false;
+			};
+		};
 	}
 	JUCI.navigation = new JUCINavigation(); 
 	

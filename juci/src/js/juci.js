@@ -35,12 +35,12 @@
 		document.body.appendChild(css);
 	}
 
-	JUCIMain.prototype.page = function(name, template, redirect){
+	JUCIMain.prototype.page = function(name, template){
+		if(!name) return;
 		var page = {
 			template: template,
 			url: name
 		};
-		if(redirect) page.redirect = redirect;
 		this.pages[name] = page;
 	}
 	
@@ -103,6 +103,8 @@
 				if(UBUS.$session && UBUS.$session.acls && UBUS.$session.acls["access-group"]){
 					acls = UBUS.$session.acls["access-group"];
 				}
+				console.log("juci: loading menu from server..");
+				JUCI.navigation.clear();
 				async.eachSeries($uci.juci["@menu"], function(menu, done){
 					// only include menu items that are marked as accessible based on our rights and the box capabilities (others will simply be broken because of restricted access)
 					if(menu.acls.value.length && menu.acls.value.find(function(x){
@@ -150,21 +152,24 @@
 						addMenuItem(menu);
 						done();
 					}
-				}, function(){next();});
+				}, function(){
+					$juci.navigation.removeInvalidNodes();
+					//$navigation.sort();
+					next();
+				});
 				function addMenuItem(menu){
-					var redirect = menu.redirect.value;
-					var page = menu.page.value;
-					if(page == "") page = undefined;
-					if(redirect == "") redirect = undefined;
+					if(!menu.path || !menu.path.value) return;
+					if(!menu.index || !menu.index.value ||
+							menu.index.value > 99 || menu.index.value < 1) menu.index.value = 99;
 					var obj = {
 						path: menu.path.value,
-						href: page,
-						redirect: redirect,
-						modes: menu.modes.value || [ ],
+						page: menu.page.value || "",
+						index: menu.index.value,
+						modes: menu.modes.value || [],
 						text: "menu-"+(menu.page.value || menu.path.value.replace(/\//g, "-"))+"-title"
-					};
+					}
 					$juci.navigation.register(obj);
-					JUCI.page(page, "pages/"+page+".html", redirect);
+					JUCI.page(menu.page.value || "", "pages/"+(menu.page.value || "default")+".html");
 				}
 			},
 			function(next){
@@ -205,7 +210,7 @@
 					url: "/"+page.url,
 					views: {
 						"content": {
-							templateUrl: (page.redirect)?"pages/default.html":page.template
+							templateUrl: page.template
 						}
 					},
 					// this function will run upon load of every page in the gui
@@ -294,6 +299,7 @@
 		"acls":				{ dvalue: [], type: Array },
 		"modes": 			{ dvalue: [], type: Array },
 		"require":			{ dvalue: [], type: Array },
+		"index":			{ dvalue: 99, type: Number },
 	});
 	UCI.juci.$registerSectionType("widget", {
 		"name":		{ dvalue: [], type: Array },
