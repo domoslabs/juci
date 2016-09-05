@@ -573,7 +573,7 @@ msgstr ""
 msgid "IPv4 prefix length"
 msgstr ""
 
-msgid "If uncchecked, no default rout is configured"
+msgid "If unchecked, no default route is configured"
 msgstr ""
 
 msgid "If unchecked, the advertised DNS server addresses are ignored"
