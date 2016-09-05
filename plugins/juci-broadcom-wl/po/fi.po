@@ -639,6 +639,9 @@ msgstr "Client Mode"
 msgid "wireless-client-mode-title"
 msgstr "Langaton toistin"
 
+msgid "menu-wifi-general-title"
+msgstr "WiFi"
+
 msgid "menu-wireless-devices-title"
 msgstr "Wifi radiot"
 

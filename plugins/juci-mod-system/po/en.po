@@ -425,7 +425,7 @@ msgstr "System"
 msgid "menu-settings-uci-title"
 msgstr "UCI Settings"
 
-msgid "menu-system-title"
+msgid "menu-settings-title"
 msgstr "System"
 
 msgid "menu-settings-password-title"

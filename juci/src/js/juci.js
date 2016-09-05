@@ -154,7 +154,7 @@
 					}
 				}, function(){
 					$juci.navigation.removeInvalidNodes();
-					//$navigation.sort();
+					$juci.navigation.sortNodes();
 					next();
 				});
 				function addMenuItem(menu){

@@ -25,58 +25,34 @@
 	function JUCINavigation(){
 		var data = {
 			children: []
-		}; 
-		var self = this; 
+		};
+		var self = this;
 		this.clear = function(){
 			data.children = [];
 		};
 		this.tree = function(path){
 			if(!path)
-				return data; 
-			return this.findLeaf(path); 
+				return data;
+			return findNodeByPath(path);
 		};
-		function getAllNodes(node){
-			var list = []; 
-			function flatten(tree){
-				list.push(tree); 
-				tree.children.map(function(ch){ 
-					if(!ch.href) return; 
-					if(ch._visited) alert("ERROR: loops in menu structure are not allowed! node "+ch.href+" already visited!"); 
-					ch._visited = true; 
-					flatten(ch); 
-				}); 
-			}
-			flatten(node || data); 
-			list.map(function(ch){ ch._visited = false; }); // reset the flag for next time 
-			return list;
-		};
-		this.findNodeByHref = function(href, node){
+		this.findNodeByPage = function(page, node){
 			var list = getAllNodes(node);
-			return list.find(function(ch){ return ch.href === href; });
+			return list.find(function(ch){ return ch.page === page; });
 		};
-		this.findNodeByPath = function(path, node){
-			var list = getAllNodes(node);
-			return list.find(function(ch){ return ch.path === path; });
-		};
-		function deleteNodeByPath(path){
-			var parts = path.split("/");
-			if(parts.length > 3){ alsert("ERROR: cant delete item with more than 3 lvls"); return;}
-			var obj = data;
-			while(parts.length > 1){ // try to find the parrent of the path
-				var node = obj.children && obj.children.find(function(n){
-					return n.path.split("/").pop() === parts[0];
-				});
-				if(!node) return; // the node doesn't exist
-				obj = node;
-				parts.shift();
+		this.getHrefByNode = function(node){
+			function findHref(n){
+				if(!n) return "";
+				if(n.page) return n.page;
+				if(!n.children || !n.children.length){console.log("Error in menu pleace run $navigation.removeInvalidNodes"); return "";}
+				return findHref(n.children[0]);
 			}
-			obj.children = obj.children.filter(function(ch){ return ch.path !== path;});
+			return findHref(node);
 		};
 		this.register = function(item){
 			if(!item.path) return;
-			var parts = item.path.split("/"); 
+			var parts = item.path.split("/");
 			if(parts.length > 3) { alert("ERROR: menu cant have more than 3 lvls"); return;}
-			var obj = data; 
+			var obj = data;
 			while(parts.length > 1){
 				var node = obj.children.find(function(n){
 					return n.path.split("/").pop() === parts[0];
@@ -111,37 +87,83 @@
 		this.removeInvalidNodes = function(){
 			var to_delete = [];
 			filterMenu(data);
-			console.log("to delete: " + JSON.stringify(to_delete));
 			if(to_delete.length){
 				to_delete.map(function(del){ deleteNodeByPath(del);});
 			}
-			function filterMenu(node){
-				if(!node) node = data;
-				if(!node.children || !node.children.length) return; //no sub-nodes
-				node.children.map(function(ch){
-					if(ch.page){ 								// valid node check sub-nodes
-						filterMenu(ch);
-					}else if(hasValidChild(ch)){ 				// valid node check sub-nodes
-						filterMenu(ch);
-					}else{ 										// invalid child REMOVE
-						to_delete.push(ch.path);
-					}
+		};
+		this.sortNodes = function(){
+			function sortCh(ch){
+				if(!ch.children || !ch.children.length) return;
+				ch.children.sort(function(a, b){
+					return a.index - b.index;
+				});
+				ch.children.map(function(subch){
+					sortCh(subch);
 				});
 			}
-			function hasValidChild(node){
-				if(!node.children || !node.children.length) return false;
-				var valid = node.children.find(function(subch){
-					if(subch.path) return true;
-					return hasValidChild(subch);
+			sortCh(data);
+		};
+
+		//HELPER FUNCTIONS
+		function hasValidChild(node){
+			if(!node.children || !node.children.length) return false;
+			var valid = node.children.find(function(subch){
+				if(subch.path) return true;
+				return hasValidChild(subch);
+			});
+			if(valid) return true;
+			return false;
+		};
+		function filterMenu(node){
+			if(!node) node = data;
+			if(!node.children || !node.children.length) return; //no sub-nodes
+			node.children.map(function(ch){
+				if(ch.page){ 								// valid node check sub-nodes
+					filterMenu(ch);
+				}else if(hasValidChild(ch)){ 				// valid node check sub-nodes
+					filterMenu(ch);
+				}else{ 										// invalid child REMOVE
+					to_delete.push(ch.path);
+				}
+			});
+		}
+		function getAllNodes(node){
+			var list = [];
+			function flatten(tree){
+				list.push(tree);
+				if(!tree.children || !tree.children.length) return;
+				tree.children.map(function(ch){
+					if(ch._visited) alert("ERROR: loops in menu structure are not allowed! node "+ch.href+" already visited!");
+					ch._visited = true;
+					flatten(ch);
 				});
-				if(valid) return true;
-				return false;
-			};
+			}
+			flatten(node || data);
+			list.map(function(ch){ delete ch._visited; }); // reset the flag for next time
+			return list;
+		};
+		function findNodeByPath(path, node){
+			var list = getAllNodes(node);
+			return list.find(function(ch){ return ch.path === path; });
+		};
+		function deleteNodeByPath(path){
+			var parts = path.split("/");
+			if(parts.length > 3){ alsert("ERROR: cant delete item with more than 3 lvls"); return;}
+			var obj = data;
+			while(parts.length > 1){ // try to find the parrent of the path
+				var node = obj.children && obj.children.find(function(n){
+					return n.path.split("/").pop() === parts[0];
+				});
+				if(!node) return; // the node doesn't exist
+				obj = node;
+				parts.shift();
+			}
+			obj.children = obj.children.filter(function(ch){ return ch.path !== path;});
 		};
 	}
-	JUCI.navigation = new JUCINavigation(); 
-	
+	JUCI.navigation = new JUCINavigation();
+
 	JUCI.app.factory('$navigation', function navigationProvider(){
-		return JUCI.navigation; 
-	}); 
-})(JUCI); 
+		return JUCI.navigation;
+	});
+})(JUCI);

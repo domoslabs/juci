@@ -625,7 +625,7 @@ msgstr ""
 msgid "menu-wireless-clients-title"
 msgstr "Klienter"
 
-msgid "menu-wireless-title"
+msgid "menu-wifi-title"
 msgstr "WiFi"
 
 msgid "menu-wireless-status-title"
@@ -652,7 +652,7 @@ msgstr "Uppkopplingar"
 msgid "menu-wireless-interfaces-title"
 msgstr "Uppkopplingar"
 
-msgid "menu-wireless-general-title"
+msgid "menu-wifi-general-title"
 msgstr "Inställningar"
 
 

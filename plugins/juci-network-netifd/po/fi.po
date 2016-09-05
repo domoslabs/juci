@@ -1265,6 +1265,9 @@ msgstr "Verkkoyhteydet"
 msgid "internet-network-title"
 msgstr "Verkkoyhteydet"
 
+msgid "menu-internet-title"
+msgstr "Verkko"
+
 msgid "menu-internet-routes-title"
 msgstr "Reitit"
 

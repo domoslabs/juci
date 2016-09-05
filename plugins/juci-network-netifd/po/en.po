@@ -1261,7 +1261,7 @@ msgstr "NAT"
 msgid "status-network-nat-title"
 msgstr ""
 
-msgid "menu-network-title"
+msgid "menu-internet-title"
 msgstr "Network"
 
 # /home/reidar/juci/plugins/juci-network-netifd/src/pages/network.html

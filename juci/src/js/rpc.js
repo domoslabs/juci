@@ -343,7 +343,7 @@
 			var deferred = $.Deferred();
 			if(DEBUG_MODE)console.log("Init WS -> "+host);
 			if(String(host).match("localhost"))
-				host = "ws://192.168.1.1";
+				host = "ws://192.168.2.1";
 			else
 				host = String(host).replace(/^http/, 'ws');
 			if(DEBUG_MODE)console.log("connecting to " + host);

@@ -288,7 +288,7 @@ msgstr "Systemstatus"
 msgid "menu-settings-uci-title"
 msgstr "UCI"
 
-msgid "menu-system-title"
+msgid "menu-settings-title"
 msgstr "System"
 
 msgid "menu-settings-management-buttons-title"

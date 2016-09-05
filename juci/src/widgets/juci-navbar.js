@@ -21,11 +21,11 @@
 JUCI.app
 .directive("juciNavbar", function($location, $rootScope, $navigation){
 	return {
-		restrict: 'E', 
-		templateUrl: "/widgets/juci-navbar.html", 
+		restrict: 'E',
+		templateUrl: "/widgets/juci-navbar.html",
 		controller: "NavigationCtrl",
 		replace: true
-	}; 
+	};
 })
 .controller("NavigationCtrl", function($scope, $location, $localStorage, $navigation, $rootScope, $config, $rpc, $events, $rootScope, $wiki){
 	$scope.tree = $navigation.tree();
@@ -33,29 +33,17 @@ JUCI.app
 	$scope.mode = $localStorage.getItem("mode") || "expert";
 	
 	$scope.getHref = function(item){
-		if(!item) return "";
-		if(!item.redirect) return item.href;
-		if(item.redirect === "first"){
-			if(!item.children_list) return "/404";
-			var child =  item.children_list.find(function(child){
-				if(child.modes && child.modes.length){
-					return child.modes.indexOf($scope.mode) !== -1;
-				}
-				return true;
-			});
-			return $scope.getHref(child);
-		}
-		return item.redirect;
+		return $navigation.getHrefByNode(item);
 	}
 	$scope.hasChildren = function(menu){
-		return menu.children_list > 0; 
+		return menu.children.length > 0;
 	}
 	$scope.itemVisible = function(item){
-		if(!item.modes || !item.modes.length) return true; 
+		if(!item.modes || !item.modes.length) return true;
 		else if(item.modes && item.modes.indexOf($config.local.mode) == -1) {
-			return false; 
-		} 
-		else return true; 
+			return false;
+		}
+		else return true;
 	};
 	
 	$scope.onLogout = function(){
@@ -64,14 +52,16 @@ JUCI.app
 		});
 	}
 
-	$scope.isActive = function (path) { 
-		var item = $navigation.findTrunkByPath($location.path().replace("/", ""));
-		if(!item) return path === "overview";
-		return item.path === path;
+	$scope.isActive = function (path) {
+		var item = $navigation.findNodeByPage($location.path().replace(/\//g, ""));
+		if(!item) return;
+		if(path) return item.path.split("/").filter(function(p){return p})[0] === path;
 	};
 
-	$events.subscribe("logread.msg", function(ev){
+	/* $scope.showLogButton = false; //
+	 *
+	 * $events.subscribe("logread.msg", function(ev){
 		$scope.log_events.push(ev);
-		setTimeout(function(){ $scope.$apply(); }, 0); 
-	}); 
-}); 
+		setTimeout(function(){ $scope.$apply(); }, 0);
+	}); */
+});

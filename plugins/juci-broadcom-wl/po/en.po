@@ -588,7 +588,7 @@ msgstr ""
 msgid "Enter the WPS-PIN provided by the other device here."
 msgstr ""
 
-msgid "menu-wireless-title"
+msgid "menu-wifi-title"
 msgstr "WiFi"
 
 msgid "menu-wireless-status-title"
@@ -618,7 +618,7 @@ msgstr "Wireless"
 msgid "menu-wireless-status-scan-title"
 msgstr "WiFi Scan"
 
-msgid "menu-wireless-general-title"
+msgid "menu-wifi-general-title"
 msgstr "General"
 
 #~ msgid "wifi.clients.info"
