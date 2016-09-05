@@ -555,7 +555,7 @@ msgstr "IPv6 tildelad prefixlängd"
 msgid "If uncchecked, no default rout is configured"
 msgstr ""
 
-msgid "help If unchecked, the advertised DNS server addresses are ignored"
+msgid "If unchecked, the advertised DNS server addresses are ignored"
 msgstr ""
 
 msgid "Additional DHCP options to request from the server"

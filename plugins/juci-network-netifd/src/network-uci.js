@@ -85,7 +85,7 @@ UCI.network.$registerSectionType("interface", {
 	"iface6rd":				{ dvalue: "", type: String },
 	"broadcast": 			{ dvalue: '', type: Boolean }, 
 	"hostname": 			{ dvalue: "", type: String }, 
-	"peerdns": 				{ dvalue: '', type: Boolean }, 
+	"peerdns": 				{ dvalue: true, type: Boolean }, 
 	//ipv6 settings
 	"tunlink":				{ dvalue: "", type: String },
 	"ip6prefixlen":			{ dvalue: "", type: String, validator: UCI.validators.IP6PrefixLengthValidator },

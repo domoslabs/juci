@@ -582,7 +582,7 @@ msgstr "IPv6 Assigned Prefix Length"
 msgid "If uncchecked, no default rout is configured"
 msgstr "Jos ei valittu, niin oletusreittiä ei konfiguroida"
 
-msgid "help If unchecked, the advertised DNS server addresses are ignored"
+msgid "If unchecked, the advertised DNS server addresses are ignored"
 msgstr ""
 
 msgid "Additional DHCP options to request from the server"
