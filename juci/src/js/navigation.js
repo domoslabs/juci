@@ -86,7 +86,7 @@
 		};
 		this.removeInvalidNodes = function(){
 			var to_delete = [];
-			filterMenu(data);
+			filterMenu(data, to_delete);
 			if(to_delete.length){
 				to_delete.map(function(del){ deleteNodeByPath(del);});
 			}
@@ -114,7 +114,7 @@
 			if(valid) return true;
 			return false;
 		};
-		function filterMenu(node){
+		function filterMenu(node, to_delete){
 			if(!node) node = data;
 			if(!node.children || !node.children.length) return; //no sub-nodes
 			node.children.map(function(ch){
