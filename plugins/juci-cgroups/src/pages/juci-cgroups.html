@@ -1,7 +1,22 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="cgroupsCtrl">
 		<h2>Cgroups</h2>
-		texteexteteaasxet
+
+		<juci-config-line title="{{'Enable Cgroups'|translate}}">
+			<switch class="green" ng-model="cgroups.cgroups.enabled.value" />
+		</juci-config-line>
+
+		<juci-config-line title="{{ 'Default Group' | translate }}">
+			<input class="form-control" type="text" ng-model="cgroups.cgroups.defgroup.value"/>
+		</juci-config-line>
+
+		<juci-config-section>
+			<juci-list-editor ng-items="cgroup" item-editor="edit-cgroup" get-item-title="getName($item)" on-create="create()" on-delete="" ></juci-list-editor>
+		</juci-config-section>
+
+		<juci-config-section>
+			<juci-list-editor ng-items="procmap" item-editor="edit-procmap" get-item-title="getName($item)" on-create="create()" on-delete="delete($item)" ></juci-list-editor>
+		</juci-config-section>
 	<div>
 </juci-layout-with-sidebar>
 
