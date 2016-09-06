@@ -19,10 +19,20 @@
  */
 
 JUCI.app
-.controller("DDNSPage", function ($scope, $uci) {
+.controller("DDNSPage", function ($scope, $uci, $tr, gettext) {
 	$scope.data = {}; 
 	$uci.$sync(["ddns"]).done(function () {
 		$scope.ddns_list = $uci.ddns["@service"]; 
+		$scope.ddns_list && $scope.ddns_list.length && $scope.ddns_list.map(function(ddns){
+			ddns.$statusList = [
+				["service_name", $tr(gettext("Provider"))],
+				["domain", $tr(gettext("Domain name"))],
+				["username", $tr(gettext("Username"))]
+			].map(function(pair){
+				if(!ddns[pair[0]] || !ddns[pair[0]].value) return null;
+				return { label: pair[1], value: ddns[pair[0]].value };
+			}).filter(function(f){ return f !== null; });
+		});
 		$scope.$apply(); 
 	}); 
 

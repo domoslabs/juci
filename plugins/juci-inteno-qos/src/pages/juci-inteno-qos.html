@@ -2,31 +2,26 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="intenoQosCtrl">
 		<tabset>
-	
 			<tab heading="{{'Interface'|translate}}">
 				<juci-config-section>
 					<juci-list-editor ng-items="ifaces" item-editor="qos-iface-edit" get-item-title="getIfaceTitle($item)" on-create="onAddIface()" on-delete="onDeleteIface($item)" ></juci-list-editor>
 				</juci-config-section>
 			</tab>
-
 			<tab heading="{{'Class'|translate}}">
 				<juci-config-section>
 					<juci-list-editor ng-items="classes" item-editor="qos-classes-edit" get-item-title="getClassTitle($item)" on-create="onAddClass()" on-delete="onDeleteIface($item)" ></juci-list-editor>
 				</juci-config-section>
 			</tab>
-
 			<tab heading="{{'Classgroup'|translate}}">
 				<juci-config-section>
 					<juci-list-editor ng-items="classgroups" item-editor="qos-classgroups-edit" get-item-title="getClassgroupTitle($item)" on-create="onAddClassgroup()" on-delete="onDeleteIface($item)" ></juci-list-editor>
 				</juci-config-section>
 			</tab>
-
 			<tab heading="{{'Classify'|translate}}">
 				<juci-config-section>
 					<juci-list-editor ng-items="qos" item-editor="qos-classify-edit" sortable="true" on-item-moved="onItemMoved($item, $new_index, $prev_index)" get-item-title="getRuleTitle($item)" on-create="onAddRule()" on-delete="onDeleteRule($item)" ></juci-list-editor>
 				</juci-config-section>
 			</tab>
-
 		</tabset>
 	</div>
 </juci-layout-with-sidebar>

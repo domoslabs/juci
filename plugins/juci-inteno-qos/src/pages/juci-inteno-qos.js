@@ -24,6 +24,16 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 		$scope.ifaces = $uci.qos["@interface"];
 		$scope.classes = $uci.qos["@class"];
 		$scope.classgroups = $uci.qos["@classgroup"];
+		$scope.ifaces && $scope.ifaces.length && $scope.ifaces.map(function(iface){
+			iface.$statusList = [
+				["enabled", $tr(gettext("Enabled"))],
+				["download", $tr(gettext("Download Speed"))],
+				["upload", $tr(gettext("Upload Speed"))]
+			].map(function(pair){
+				if(!iface[pair[0]] || iface[pair[0]].value === "") return null;
+				return { label: pair[1], value: iface[pair[0]].value };
+			}).filter(function(f){ return f !== null; });
+		});
 		getNetworks();
 	});
 	function getNetworks(){
@@ -116,31 +126,6 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 			$scope.$apply(); 
 		}); 
 	};
-
-	/*$scope.onAddIface = function(){
-		if(!$scope.interfaces || $scope.interfaces.length < 1) return;
-		var model = {
-			interfaces: $scope.interfaces,
-			name: $scope.interfaces[0].value
-		}
-		$juciDialog.show("add-bw-interface-edit", {
-			title: $tr(gettext("Add Bandwidth Limitation")),
-			model: model,
-			on_apply: function(){
-				if(!model.name){
-					model.error = true;
-					return false;
-				}
-				$uci.qos.$create({
-					".type": "interface",
-					".name": model.name
-				}).done(function(){
-					getNetworks();
-				});
-				return true;
-			}
-		});
-	};*/
 
 	$scope.onDeleteIface = function(item){
 		if(!item) return;

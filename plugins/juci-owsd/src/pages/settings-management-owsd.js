@@ -3,7 +3,16 @@
 JUCI.app
 .controller("owsdPageCtrl", function($scope, $uci, $tr, gettext, $juciDialog){
 	$uci.$sync("owsd").done(function(){
-		$scope.allListen = $uci.owsd["@owsd-listen"];
+		$scope.allListen = $uci.owsd["@owsd-listen"] || [];
+		$scope.allListen.map(function(listen){
+			listen.$statusList = [
+				{ label: $tr(gettext("Interface")), value: String(listen.interface.value).toUpperCase() },
+				{ label: $tr(gettext("Port")), value: listen.port.value },
+				{ label: $tr(gettext("IPv6")), value: listen.ipv6only.value ? $tr(gettext("IPv6 Only")): listen.ipv6.value ? $tr(gettext("Enabled")): $tr(gettext("Disabled")) },
+			];
+			if(listen.origin.value && listen.origin.value.length)
+				listen.$statusList.push({ label: $tr(gettext("List of allowed origins")), value: listen.origin.value });
+		});
 		$scope.$apply();
 	}).fail(function(e){console.log(e);});
 	$scope.getOwsdListenTitle = function(item){

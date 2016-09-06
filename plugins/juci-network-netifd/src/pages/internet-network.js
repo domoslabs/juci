@@ -216,10 +216,10 @@ JUCI.app
 		}).always(function(){next();});
 	});
 	var onConnect = function(iface){
-		$rpc.$call("network.interface[iface['.name']]", "up");
+		$rpc.$call("network.interface." + iface['.name'], "up");
 	}
 	var onDisconnect = function(iface){
-		$rpc.$call("network.interface[iface['.name']]", "down");
+		$rpc.$call("network.interface." + iface['.name'], "down");
 	}
 
 	function updateStatus(){
