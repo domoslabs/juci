@@ -1,0 +1,10 @@
+{
+	"juci-cgrops": {
+		"description": "JUCI Cgroups Module",
+		"read": {
+			"ubus": {
+				"/juci/rtgraphs": [ "run"/*"get"*/ ]
+			}
+		} 
+	}
+}

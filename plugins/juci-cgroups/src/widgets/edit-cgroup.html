@@ -1,0 +1,28 @@
+<div>
+	<juci-config-line title="{{'Port Range'|translate}}"> <!--error="rule.portrange.error">-->
+		<div class="input-group">
+				<input type="number" min="0" class="form-control" ng-model="data.portrange.from" placeholder="From" style="max-width: 120px !important;"/>
+				<input type="number" min="0" class="form-control" ng-model="data.portrange.to" placeholder="To" style="max-width: 120px !important; float: right"/>
+		</div>
+	</juci-config-line>
+<!--	
+	<juci-config-line title="{{'DHCP Options'|translate}}">
+		<div class="input-group">
+				<input class="form-control" type="number" ng-model="data.dhcp.field1" placeholder="{{'ID'|translate}}" style="max-width: 80px !important;"/>
+				<input class="form-control" ng-model="data.dhcp.field2" placeholder="{{'Option'|translate}}" style="max-width: 120px !important"/>
+				<button class="btn btn-default pull-right" ng-click="addDHCPOption()"><i class="fa fa-plus"></i></button>
+		</div>
+		<juci-config-line>
+			<div class="row" ng-repeat="d in data.dhcp_options track by $index" style="margin-bottom: 5px">
+				<div class="input-group pull-right">
+					<div class="row">
+						<div class="well-sm" style="min-width: 80px; float:left; padding:5px; border:1px solid #e3e3e3; color:#858585">{{d.slice(0,d.indexOf(','))}}</div>
+						<div class="well-sm" style="min-width: 120px; float:left; padding:5px; border:1px solid #e3e3e3; color:#858585">{{d.slice(d.indexOf(',')+1)}}</div>
+						<button class="btn btn-default" style="margin-right:15px; margin-left:10px; float:left" ng-click="deleteDHCPOption(d)"><i class="fa fa-trash-o"></i></button>
+					</div>
+				</div>
+			</div>
+		</juci-config-line>
+	</juci-config-line>
+-->
+</div>
