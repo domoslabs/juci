@@ -21,7 +21,7 @@
 			</juci-config-lines>
 		</juci-config-section>
 		<modal title="{{'Save Configuration to Computer'|translate}}" data-backdrop="static" ng-show="showModal" on-accept="onAcceptModal()" on-dismiss="onDismissModal()" dismiss-label="Cancel" accept-label="Continue">
-			<juci-config-line title="{{'Encrypt backup'|translate}}">
+			<juci-config-line title="{{'Password protection'|translate}}">
 				<switch class="green" ng-model="data.encryptBackup" />
 			</juci-config-line>
 			<form ng-submit="onAcceptModal()" name="backupForm" autocomplete="off" ng-show="data.encryptBackup">
