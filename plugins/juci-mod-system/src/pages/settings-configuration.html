@@ -21,7 +21,10 @@
 			</juci-config-lines>
 		</juci-config-section>
 		<modal title="{{'Save Configuration to Computer'|translate}}" data-backdrop="static" ng-show="showModal" on-accept="onAcceptModal()" on-dismiss="onDismissModal()" dismiss-label="Cancel" accept-label="Continue">
-			<form ng-submit="onAcceptModal()" name="backupForm" autocomplete="off">
+			<juci-config-line title="{{'Encrypt backup'|translate}}">
+				<switch class="green" ng-model="data.encryptBackup" />
+			</juci-config-line>
+			<form ng-submit="onAcceptModal()" name="backupForm" autocomplete="off" ng-show="data.encryptBackup">
 				<input type="submit" ng-hide="true" />
 				<div class="form-group" ng-show="features.comment">
 					<label translate>Please add a comment describing this configuration</label>

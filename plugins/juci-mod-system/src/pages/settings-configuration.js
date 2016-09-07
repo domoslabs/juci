@@ -1,6 +1,4 @@
-/*
- * Copyright (C) 2015 Inteno Broadband Technology AB. All rights reserved.
- *
+/* * Copyright (C) 2015 Inteno Broadband Technology AB. All rights reserved.  *
  * Author: Martin K. Schröder <mkschreder.uk@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -20,10 +18,12 @@
 
 JUCI.app
 .controller("SettingsConfigurationCtrl", function($scope, $rpc, $tr, gettext, $juciDialog, $file, $config){
+	$scope.data = {};
 	$scope.sessionID = $rpc.$sid();
 	$scope.resetPossible = 0;
 	$scope.resetPossible = 1;
 	$scope.passwordError = false;
+	$scope.data.encryptBackup = false;
 
 	$rpc.$call("juci.system.conf", "run", {"method":"features"}).done(function(features){
 		$scope.features = features;
@@ -117,4 +117,20 @@ JUCI.app
 		}
 
 	},true);
+	$scope.$watch("data",function(data){
+		if(!data || !data.pass || !data.pass_repeat){
+			return;
+		}
+		if(data.pass.match(/[\W_]/)){
+			$scope.passwordError = true;
+		}else {
+			$scope.passwordError = false;
+		}
+	},true);
+	$scope.$watch("data.encryptBackup",function(data){
+		if(!data.encryptBackup){
+			$scope.data.pass = "";
+			$scope.data.pass_repeat = "";
+		}
+	});
 });
