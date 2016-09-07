@@ -20,8 +20,8 @@ JUCI.app
 			if(!iface.$info) return;
 			iface.$statusList = [
 				{ label:$tr(gettext("SSID")), value:(iface.$info.ssid || iface.ssid.value)},
-				{ label:$tr(gettext("BSSID")), value:(iface.$info.bssid || $t(gettext("unknown")))},
-				{ label:$tr(gettext("Encryption")), value:(iface.$info.encryption || $t(gettext("unknown")))},
+				{ label:$tr(gettext("BSSID")), value:(iface.$info.bssid || $tr(gettext("unknown")))},
+				{ label:$tr(gettext("Encryption")), value:(iface.$info.encryption || $tr(gettext("unknown")))},
 				{ label:$tr(gettext("Mode")), value: String(iface.mode.value || "").toUpperCase()},
 				{ label:$tr(gettext("Device")), value: String(iface.device.value || "").toUpperCase()}
 			];

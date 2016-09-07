@@ -143,7 +143,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 				.always(function(){next();});
 			},
 			function(){
-				if(er.length)console.log(er);// we still want to continue deferred.reject(er);
+				//if(er.length) we still want to continue deferred.reject(er);
 				deferred.resolve(ifs);
 			});
 		});
