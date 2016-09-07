@@ -2,6 +2,9 @@
 	"juci-mod-system": {
 		"description": "JUCI system module",
 		"read": {
+			"owsd": [
+				"defaultreset"
+			],
 			"ubus": {
 				"file": [
 					"write",

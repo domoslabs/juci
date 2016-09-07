@@ -17,14 +17,14 @@
  */
 
 JUCI.app
-.controller("SettingsConfigurationCtrl", function($scope, $rpc, $tr, gettext, $juciDialog, $file, $config){
-	$scope.data = {};
+.controller("SettingsConfigurationCtrl", function($scope, $rpc, $tr, gettext, $juciDialog, $file, $config, $events){
+	$scope.data = {encryptBackup:false};
 	$scope.sessionID = $rpc.$sid();
 	$scope.resetPossible = 0;
 	$scope.resetPossible = 1;
 	$scope.passwordError = false;
-	$scope.data.encryptBackup = false;
 
+	$events.subscribe("defaultreset", function(e){ window.location = "/reboot.html"; });
 	$rpc.$call("juci.system.conf", "run", {"method":"features"}).done(function(features){
 		$scope.features = features;
 		$scope.$apply();
@@ -32,10 +32,7 @@ JUCI.app
 
 	$scope.onReset = function(){
 		if(confirm(gettext("This will reset your configuration to factory defaults. Do you want to continue?"))){
-			$rpc.$call("juci.system", "run", {"method":"defaultreset"}).done(function(result){
-				console.log("Performing reset: "+JSON.stringify(result));
-				window.location = "/reboot.html";
-			});
+			$rpc.$call("juci.system", "run", {"method":"defaultreset"});
 		}
 	}
 	$scope.onSaveConfig = function(){
@@ -127,8 +124,8 @@ JUCI.app
 			$scope.passwordError = false;
 		}
 	},true);
-	$scope.$watch("data.encryptBackup",function(data){
-		if(!data.encryptBackup){
+	$scope.$watch("data.encryptBackup",function(eb){
+		if(eb){
 			$scope.data.pass = "";
 			$scope.data.pass_repeat = "";
 		}

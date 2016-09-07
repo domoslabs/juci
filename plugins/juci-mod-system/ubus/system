@@ -47,6 +47,7 @@ end
 
 function system_defaultreset()
 	print(json.encode({})); 
+	juci.shell("ubus send \"defaultreset\" 2>/dev/null");
 	juci.shell("/sbin/defaultreset 2> /dev/null"); 
 end
 
