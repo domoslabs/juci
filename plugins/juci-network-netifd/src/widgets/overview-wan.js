@@ -117,7 +117,7 @@ JUCI.app
 				}).fail(function(e){console.log(e);}).always(function(){next();});
 			}
 		], function(){
-			$scope.data = {ip:[], defaultroute:[], contypes:[], dslUp:[], dslDown:[], dns:[], up:false, linkspeed:""};
+			$scope.data = {ip:[], defaultroute:[], contypes:[], dslUp:"", dslDown:"", dns:[], up:false, linkspeed:""};
 			$scope.uptime = 0;
 			wans.map(function(w){
 				if(w.up) $scope.data.up = true;
@@ -141,8 +141,8 @@ JUCI.app
 					$rpc.$call("router", "dslstats").done(function(data){
 						if(!data || !data.dslstats || !data.dslstats.bearers || data.dslstats.bearers.length < 1) return;
 						data.dslstats.bearers.map(function(b){
-							if(b.rate_down) $scope.data.dslDown.push(parseInt(String(b.rate_down))/1000);
-							if(b.rate_up) $scope.data.dslUp.push(parseInt(String(b.rate_up))/1000);
+							if(b.rate_down) $scope.data.dslDown = parseInt(String(b.rate_down))/1000;
+							if(b.rate_up) $scope.data.dslUp = parseInt(String(b.rate_up))/1000;
 						});
 						$scope.$apply();
 					});

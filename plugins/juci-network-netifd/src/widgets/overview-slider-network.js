@@ -333,7 +333,7 @@ JUCI.app
 								dev.hosts.map(function(host){
 									if(!host.connected || host.repeated) return;
 									function getHostTitle(host){
-										var title = host.hostname || String(host.ipaddr).toUpperCase() || String(host.macaddr).toUpperCase() + '<br />';
+										var title = (host.hostname || String(host.ipaddr).toUpperCase() || String(host.macaddr).toUpperCase()) + '<br />';
 										[
 											["ipaddr", $tr(gettext("IP Address")), ""],
 											["macaddr", $tr(gettext("MAC Address")), ""],

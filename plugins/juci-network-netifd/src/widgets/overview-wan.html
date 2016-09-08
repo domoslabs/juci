@@ -22,11 +22,11 @@
 				<td ><strong translate>Connection</strong></td>
 				<td><span ng-repeat="i in data.contypes track by $index">{{i}}<br/></span></td>
 			</tr>
-			<tr ng-show="data.dslDown.length || data.dslUp.length">
+			<tr ng-show="data.dslDown || data.dslUp">
 				<td><strong translate>DSL Rate(s)</strong></td>
 				<td>
-					<span ng-repeat="down in data.dslDown track by $index">Down: <div style="float:right;">{{down}} Mbit/s</div></span><br />
-					<span ng-repeat="up in data.dslUp track by $index">Up: <div style="float:right;">{{up}} Mbit/s</div></span><br />
+					<span ng-show="data.dslDown">Down: <div style="float:right;">{{down}} Mbit/s</div></span><br />
+					<span ng-show="data.Up">Up: <div style="float:right;">{{up}} Mbit/s</div></span><br />
 				</td>
 			</tr>
 			<tr ng-show="data.linkspeed">
