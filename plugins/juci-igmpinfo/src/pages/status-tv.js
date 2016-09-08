@@ -19,11 +19,11 @@
  */
 
 JUCI.app
-.controller("StatusTVPageCtrl", function($scope, $rpc, gettext){
+.controller("StatusTVPageCtrl", function($scope, $rpc, $tr, gettext){
 	JUCI.interval.repeat("igmpstatusrefresh",5000,function(next){
 		$rpc.$call("router", "igmptable").done(function(result){
 			if(!result.table) {
-				$scope.$emit("error", gettext("Unable to retreive igmptable from device!"));
+				$scope.$emit("error", $tr(gettext("Unable to retreive igmptable from device!")));
 				return;
 			}
 			$scope.igmptable = result.table;

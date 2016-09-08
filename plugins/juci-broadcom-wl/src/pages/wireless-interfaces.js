@@ -64,8 +64,8 @@ JUCI.app
 	}
 
 	$scope.onDeleteInterface = function(conn){
-		if(!conn) alert(gettext("Please select a connection in the list!"));
-		if(confirm(gettext("Are you sure you want to delete this wireless interface?"))){
+		if(!conn) alert($tr(gettext("Please select a connection in the list!")));
+		if(confirm($tr(gettext("Are you sure you want to delete this wireless interface?")))){
 			conn.$delete().done(function(){
 				$scope.$apply();
 			});

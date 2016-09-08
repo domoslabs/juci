@@ -19,13 +19,13 @@
  */
 
 JUCI.app
-.controller("bridgeDevicePicker", function($scope, $modalInstance, devices, gettext){
-	$scope.devices = devices; 
-	$scope.data = {}; 
+.controller("bridgeDevicePicker", function($scope, $modalInstance, devices, $tr, gettext){
+	$scope.devices = devices;
+	$scope.data = {};
 	$scope.ok = function () {
 		if(!$scope.data.device) {
-			alert(gettext("You need to select a device to add!")); 
-			return; 
+			alert($tr(gettext("You need to select a device to add!")));
+			return;
 		}
 		$modalInstance.close($scope.data.device);
 	};

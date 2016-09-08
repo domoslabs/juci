@@ -58,8 +58,6 @@ msgstr ""
 msgid "menu-settings-management-owsd-title"
 msgstr "OWSD"
 
-#~ msgid "network.interface.type.none.tab.title"
-#~ msgstr "Standard"
 
 #~ msgid "settings.network.info"
 #~ msgstr ""

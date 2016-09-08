@@ -18,7 +18,6 @@
  * 02110-1301 USA
  */
 
-gettext("network.interface.type.none.tab.title");
 
 JUCI.app
 .directive("networkConnectionTypeNoneEdit", function(){
@@ -33,7 +32,6 @@ JUCI.app
 })
 .controller("networkConnectionTypeNoneEdit", function($scope, $ethernet, $modal, $tr, gettext, $networkHelper){
 	// expose tab title
-	gettext("network.interface.type.none.tab.title");
 
 	$ethernet.getAdapters().done(function(devs){
 		$scope.baseDevices = devs.filter(function(dev){

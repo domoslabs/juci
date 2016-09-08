@@ -72,7 +72,7 @@ JUCI.app
 				$scope.error = 0;
 				$scope.$apply();
 			}).fail(function(data){
-				$scope.error = gettext("Was unable to set password. Please make sure you have entered correct current password!");
+				$scope.error = $tr(gettext("Was unable to set password. Please make sure you have entered correct current password!"));
 				$scope.$apply();
 			});
 		}

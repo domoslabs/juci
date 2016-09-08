@@ -44,10 +44,10 @@ JUCI.app
 		}); 
 	}); 
 	//make these available for translation
-	gettext("11a");
-	gettext("11ac");
-	gettext("11b");
-	gettext("11bg");
-	gettext("11g");
-	gettext("11n");
+	gettext("11a"); // $tr anslated above
+	gettext("11ac"); // $tr anslated above
+	gettext("11b"); // $tr anslated above
+	gettext("11bg"); // $tr anslated above
+	gettext("11g"); // $tr anslated above
+	gettext("11n"); // $tr anslated above
 }); 

@@ -19,10 +19,10 @@
  */
 
 JUCI.app
-.controller("wirelessSchedulePage", function($scope, $uci, gettext){
+.controller("wirelessSchedulePage", function($scope, $uci, $tr, gettext){
 	$scope.statusItems = [
-		{ label: gettext("Enabled"), value: true },
-		{ label: gettext("Disabled"), value: false }
+		{ label: $tr(gettext("Enabled")), value: true },
+		{ label: $tr(gettext("Disabled")), value: false }
 	]; 
 	$scope.timeSpan = { }; 
 	

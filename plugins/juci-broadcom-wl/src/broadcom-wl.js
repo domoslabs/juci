@@ -1,4 +1,3 @@
-/*global gettext:false*/
 /*
  * Copyright (C) 2015 Inteno Broadband Technology AB. All rights reserved.
  *
@@ -112,9 +111,9 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 					var radio = radios[dev[".name"]];
 					if(radio){
 						dev.$info = radio;
-						dev[".frequency"] = radio.frequency || ((dev.band.value === 'a') ? gettext("5GHz") : gettext("2.4GHz"));
+						dev[".frequency"] = radio.frequency || ((dev.band.value === 'a') ? $tr(gettext("5GHz")) : $tr(gettext("2.4GHz")));
 					}else{
-						dev[".frequency"] = (dev.band.value === 'a') ? gettext("5GHz") : gettext("2.4GHz");
+						dev[".frequency"] = (dev.band.value === 'a') ? $tr(gettext("5GHz")) : $tr(gettext("2.4GHz"));
 					}
 					return dev;
 				});

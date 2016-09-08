@@ -23,76 +23,76 @@ JUCI.app
 	return {
 		scope: {
 			rule: "=ngModel"
-		}, 
-		controller: "firewallRuleEdit", 
+		},
+		controller: "firewallRuleEdit",
 		templateUrl: "/widgets/firewall-rule-edit.html"
-	}; 
+	};
 })
 .controller("firewallRuleEdit", function($scope, $firewall, gettext, $tr, $network, networkHostPicker, $uci){
 	$scope.data = {};
 	
 	$scope.protocolChoices = [
-		{ label: "UDP", value: "udp"}, 
-		{ label: "TCP", value: "tcp"}, 
-		{ label: "ICMP", value: "icmp"}, 
+		{ label: "UDP", value: "udp"},
+		{ label: "TCP", value: "tcp"},
+		{ label: "ICMP", value: "icmp"},
 		{ label: "TCP + UDP", value: "tcpudp" },
 		{ label: "ESP", value: "esp" }
-	]; 
+	];
 	
 	$scope.familyChoices = [
 		{ label: "Any", value: "any" },
-		{ label: "IPv4", value: "ipv4"}, 
+		{ label: "IPv4", value: "ipv4"},
 		{ label: "IPv6", value: "ipv6"}
-	]; 
+	];
 	$scope.targetChoices = [
-		{ label: gettext("ACCEPT"), value: "ACCEPT" }, 
-		{ label: gettext("REJECT"), value: "REJECT" }, 
-		{ label: gettext("FORWARD"), value: "FORWARD" },
-		{ label: gettext("DROP"), value: "DROP" }
-	]; 
+		{ label: $tr(gettext("ACCEPT")), value: "ACCEPT" },
+		{ label: $tr(gettext("REJECT")), value: "REJECT" },
+		{ label: $tr(gettext("FORWARD")), value: "FORWARD" },
+		{ label: $tr(gettext("DROP")), value: "DROP" }
+	];
 	
 	$firewall.getZones().done(function(zones){
-		$scope.allZones = []; 
-		$scope.allZones.push({ label: $tr(gettext("Device")), value: "" }); 
-		$scope.allZones.push({ label: $tr(gettext("Any")), value: "*" }); 
+		$scope.allZones = [];
+		$scope.allZones.push({ label: $tr(gettext("Device")), value: "" });
+		$scope.allZones.push({ label: $tr(gettext("Any")), value: "*" });
 		zones.map(function(x){
-			$scope.allZones.push({ label: String(x.name.value).toUpperCase(), value: x.name.value }); 
-		}); 
-	}); 
+			$scope.allZones.push({ label: String(x.name.value).toUpperCase(), value: x.name.value });
+		});
+	});
 	
 	$scope.onSelectSrcHost = function(){
-		if(!$scope.rule) return; 
+		if(!$scope.rule) return;
 		networkHostPicker.show({ net: $scope.rule.src.value }).done(function(client){
 			if($scope.data.src_ips.find(function(ip){
 				return ip.text == client.ipaddr;
 			}) != undefined) return;
 			if($scope.testIp({text:client.ipaddr})){
 				$scope.data.src_ips.push({text:client.ipaddr});
-				$scope.rule.src_mac.value = client.macaddr; 
+				$scope.rule.src_mac.value = client.macaddr;
 			}
-		}); 
+		});
 	}
 	
 	$scope.onSelectDestHost = function(){
-		if(!$scope.rule) return; 
+		if(!$scope.rule) return;
 		networkHostPicker.show({ net: $scope.rule.dest.value }).done(function(client){
 			if($scope.data.dest_ips.find(function(ip){
 				return ip.text == client.ipaddr;
 			}) != undefined) return;
 			if($scope.testIp({text:client.ipaddr})){
-				$scope.data.dest_ips.push({text:client.ipaddr}); 
-				$scope.rule.dest_mac.value = client.macaddr; 
+				$scope.data.dest_ips.push({text:client.ipaddr});
+				$scope.rule.dest_mac.value = client.macaddr;
 			}
-		}); 
+		});
 	}
 	
 	$scope.$watch("rule", function(rule){
-		if(!rule || !rule.constructor || !rule.constructor || rule.constructor.name !== "UCISection") return; 
+		if(!rule || !rule.constructor || !rule.constructor || rule.constructor.name !== "UCISection") return;
 		$scope.data.src_macs = rule.src_mac.value.map(function(x){ return {text:x}; });
 		$scope.data.dest_macs = rule.dest_mac.value.map(function(x){ return {text:x}; });
 		$scope.data.dest_ips = rule.dest_ip.value.map(function(x){ return {text:x}; });
 		$scope.data.src_ips = rule.src_ip.value.map(function(x){ return {text:x}; });
-	}); 
+	});
 	$scope.$watch("data.dest_ips", function(ips){
 		if(!$scope.rule || !ips) return;
 		$scope.rule.dest_ip.value = ips.map(function(x){ return x.text;});
@@ -139,4 +139,4 @@ JUCI.app
 		if(target === "dst") $scope.dstMacErr = null;
 		return true;
 	};
-}); 
+});

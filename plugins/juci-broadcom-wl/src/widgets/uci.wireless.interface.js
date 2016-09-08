@@ -92,7 +92,7 @@ JUCI.app
 	$scope.$watch("interface.closed.value", function(value, oldvalue){
 		if(!$scope.interface) return; 
 		if(value && value != oldvalue){
-			if($scope.interface.wps_pbc.value && !confirm(gettext("If you disable SSID broadcasting, WPS function will be disabled as well. You will need to enable it manually later. Are you sure you want to continue?"))){
+			if($scope.interface.wps_pbc.value && !confirm($tr(gettext("If you disable SSID broadcasting, WPS function will be disabled as well. You will need to enable it manually later. Are you sure you want to continue?")))){
 				setTimeout(function(){
 					$scope.interface.closed.value = oldvalue; 
 					$scope.$apply(); 
@@ -122,7 +122,7 @@ JUCI.app
 				$scope.interface.key.value = "";
 			}
 			case "wep-shared": {
-				if($scope.interface.wps_pbc.value && !confirm(gettext("WPS will be disabled when using WEP encryption. Are you sure you want to continue?"))){
+				if($scope.interface.wps_pbc.value && !confirm($tr(gettext("WPS will be disabled when using WEP encryption. Are you sure you want to continue?")))){
 					setTimeout(function(){
 						$scope.interface.encryption.value = oldvalue; 
 						$scope.$apply(); 

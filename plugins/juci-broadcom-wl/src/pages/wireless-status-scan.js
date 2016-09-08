@@ -17,7 +17,7 @@
  */
 
 JUCI.app
-.controller("wirelessStatusScanPage", function($scope, $uci, $wireless, gettext, $rpc){
+.controller("wirelessStatusScanPage", function($scope, $uci, $wireless, $rpc){
 	$scope.order = function(pred){
 		$scope.predicate = pred; 
 		$scope.reverse = !$scope.reverse;

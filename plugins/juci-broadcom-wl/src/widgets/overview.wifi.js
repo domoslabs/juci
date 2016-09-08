@@ -85,7 +85,7 @@ JUCI.app
 		$rpc.$call("wps", "status").done(function(result){
 			$scope.wps.progress = result.code;
 			$scope.wps.showModal = (result.code === 1 || result.code === 8);
-			$scope.wps.text_status = wps_status_strings[result.code]||gettext("Unknown");
+			$scope.wps.text_status = wps_status_strings[result.code]||$tr(gettext("Unknown"));
 			$scope.$apply();	
 		});
 	}update_wps();
