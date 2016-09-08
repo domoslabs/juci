@@ -32,7 +32,7 @@
 		<div class="col-sm-3 col-xs-12" ng-hide="hideButtons" >
 			<div class="hidden-xs btn-group-vertical" style="width: 100%;" >
 				<button class="btn btn-lg btn-default" ng-click="onListAddItem()" ng-class="{disabled: !editable || !items}" translate>Add</button>
-				<button class="btn btn-lg btn-default" ng-click="onListRemoveItem(item)" ng-class="{disabled: hide || !editable || !items}" translate>Delete</button>
+				<button class="btn btn-lg btn-default" ng-click="onListRemoveItem(item)" style="margin-bottom:10px;" ng-class="{disabled: hide || !editable || !items}" translate>Delete</button>
 			</div>
 			<div class="btn-group visible-xs-block" style="width: 100%;padding-left:20px;" >
 				<button class="btn btn-lg btn-default" style="padding:10px;" ng-click="onListAddItem()" ng-class="{disabled: !editable || !items}" translate>Add</button>
