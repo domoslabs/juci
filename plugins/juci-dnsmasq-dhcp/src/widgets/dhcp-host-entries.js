@@ -28,21 +28,27 @@ JUCI.app.directive("dhcpHostEntries", function(){
 }).controller("dhcpHostEntriesCtrl", function($scope, $uci, $tr, gettext, lanIpFactory){
 	$uci.$sync("dhcp").done(function(){
 		$scope.hosts = $uci.dhcp["@domain"];
+		$scope.hosts.map(function(host){
+			updatenet(host);
+		});
 		$scope.$apply();
 	});
 	$scope.ipv4 = "";
 	$scope.ipv6 = "";
-	
-	lanIpFactory.getIp().done(function(res){
-		$scope.ipv4 = res.ipv4;
-		$scope.ipv6 = res.ipv6;
-	});
+	function updatenet(host){
+		lanIpFactory.getIp(host.network.value || "lan").done(function(res){
+			host.$net_ipv4 = res.ipv4;
+			host.$net_ipv6 = res.ipv6;
+			$scope.$apply();
+		});
+	}
 	
 	$scope.getItemTitle = function(item){
-		return $tr(gettext("Hostname(s) for ")) + ((item.ip.value == "") ? ((item.family.value == "ipv4") ? $scope.ipv4 : $scope.ipv6) : item.ip.value);
+		return $tr(gettext("Hostname(s) for ")) + ((item.ip.value == "") ? ((item.family.value == "ipv4") ? item.$net_ipv4 : item.$net_ipv6) : item.ip.value);
 	};
 	$scope.onAddDomain = function(){
-		$uci.dhcp.$create({ ".type":"domain", "family":"ipv4"}).done(function(){
+		$uci.dhcp.$create({ ".type":"domain", "family":"ipv4"}).done(function(host){
+			updatenet(host);
 			$scope.$apply();
 		});
 	};
