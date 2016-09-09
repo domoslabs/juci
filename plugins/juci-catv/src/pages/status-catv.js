@@ -3,9 +3,10 @@
 JUCI.app
 .controller("statusCatvCtrl", function($rpc, $scope, $tr, gettext){
 	$rpc.$call("catv", "get-all").done(function(data){
+		$scope.hasFilter = false;
 		$scope.values = Object.keys(data).map(function(key){
 			if(key === "Vendor part number"){
-				$scope.hasFilter = (String(data[key]).trim().match(/^OHR-[0-1]001$/))?false:true;
+				$scope.hasFilter = data["Vendor part number"] && String(data["Vendor part number"]).match(/^OHR-[0-1]001\s*$/) === null;
 				var name = $scope.hasFilter ? ((String(data[key]).trim().match(/OHR-1001F/)) ? $tr(gettext("CATV-332")):$tr(gettext("CATV-3xx"))) : $tr(gettext("CATV-302"));
 				return { key:$tr(gettext("Inteno model")), value: $scope.hasFilter ? $tr(gettext("CATV-332")): $tr(gettext("CATV-302")) };
 			}
