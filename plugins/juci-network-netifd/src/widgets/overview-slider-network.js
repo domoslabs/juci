@@ -96,6 +96,7 @@ JUCI.app
 	};
 	var hasInternet;
 	function getIcon(type, dev){
+		if(!dev) return;
 		switch(type){
 			case "wan":
 				return hasInternet ? "img/Internet_Green.png": "img/Internet_Red.png";
@@ -260,6 +261,7 @@ JUCI.app
 				}
 				var up = false;
 				async.eachSeries(wan_nets, function(wan, callback){
+					if(!wan){ callback(); return; }
 					if(wan.up) up = true;
 					var title;
 					if(!wan.device){
