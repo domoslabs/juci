@@ -1,12 +1,13 @@
 JUCI.app
 .factory("$juciInputModal", function($modal, $network, $tr, gettext, $modal, $juciDialog){
 	return {
-		show: function(titleIn, inputTitleIn, variableIn, applyFunctionIn){
+		//TODO: (title,{{inputTitle:"",variable:""}, ...},applyfunction)
+		show: function(title,inputTitle,variable,applyFunction){
 			var def = $.Deferred(); 
 			$juciDialog.show("juci-input-modal", {
-				title: titleIn,
-				model: {"variable":variableIn, "inputTitle":inputTitleIn},
-				on_apply: applyFunctionIn
+				title: title,
+				model: {"variable":variable, "title":inputTitle},
+				on_apply: applyFunction
 			})
 			.done(function(){def.resolve();})
 			.fail(function(){def.reject();});
@@ -17,12 +18,8 @@ JUCI.app
 .directive("juciInputModal", function(){
 	return {
 		scope: {
-			juciInputModalData: "=ngModel"
+			data: "=ngModel"
 		},
 		templateUrl: "/widgets/juci-input-modal.html"
 	};
-})
-.controller("juciInputModalCtrl", function($scope, $uci){
-	// kolla om model.modelIn.validator finns
-	// 	annars gör en default - $uci.validators.defaultValidator
 });

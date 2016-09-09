@@ -1,8 +1,21 @@
-<div>
-	<juci-config-line title="{{'Port Range'|translate}}"> <!--error="rule.portrange.error">-->
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title" style="font-size: 1.5em; padding-top: 0.4em; font-weight: bold; font-family: 'inteno';">
+			{{instance['.name']|translate}}
+		</h3>
+	</div>
+	<juci-config-line title="" error="data.error">
 		<div class="input-group">
-				<input type="number" min="0" class="form-control" ng-model="data.portrange.from" placeholder="From" style="max-width: 120px !important;"/>
-				<input type="number" min="0" class="form-control" ng-model="data.portrange.to" placeholder="To" style="max-width: 120px !important; float: right"/>
+			<input class="form-control" type="text" style="max-width: 200px !important" ng-model="data.newSetting" placeholder="{{'newstuff'|translate}}"/>
+			<button class="btn btn-default" ng-click="add()"><i class="fa fa-plus"></i></button>
 		</div>
 	</juci-config-line>
+
+	<juci-config-line ng-repeat="proc in instance.procmap.value track by $index">
+		<div class="input-group">
+			<input class="form-control" type="text" style="max-width: 200px !important" ng-model="proc"/>
+			<button class="btn btn-default" ng-click="del($index)"><i class="fa fa-trash-o"></i></button>
+		</div>
+	</juci-config-line>
+	<div style="margin-bottom: 20px !important"></div>
 </div>

@@ -6,17 +6,23 @@
 			<switch class="green" ng-model="cgroups.cgroups.enabled.value" />
 		</juci-config-line>
 
-		<juci-config-line title="{{ 'Default Group' | translate }}">
-			<input class="form-control" type="text" ng-model="cgroups.cgroups.defgroup.value"/>
-		</juci-config-line>
+		<tabset>
+			<tab heading="Cgroups">
+				<juci-config-line title="{{ 'Default Group' | translate }}">
+					<input class="form-control" type="text" ng-model="cgroups.cgroups.defgroup.value"/>
+				</juci-config-line>
 
-		<juci-config-section>
-			<juci-list-editor ng-items="cgroup" item-editor="edit-cgroup" get-item-title="getName($item)" on-create="create()" on-delete="" ></juci-list-editor>
-		</juci-config-section>
+				<juci-config-section>
+					<juci-list-editor ng-items="cgroup" item-editor="edit-cgroup" get-item-title="getName($item)" on-create="onAddCgroup()" on-delete="" ></juci-list-editor>
+				</juci-config-section>
+			</tab>
 
-		<juci-config-section>
-			<juci-list-editor ng-items="procmap" item-editor="edit-procmap" get-item-title="getName($item)" on-create="create()" on-delete="delete($item)" ></juci-list-editor>
-		</juci-config-section>
+			<tab heading="Procmaps">
+				<juci-config-section>
+					<juci-list-editor ng-items="procmap" item-editor="edit-procmap" get-item-title="getName($item)" on-create="onAddCgroup()" on-delete="delete($item)" ></juci-list-editor>
+				</juci-config-section>
+			</tab>
+		</tabset>
 	<div>
 </juci-layout-with-sidebar>
 
