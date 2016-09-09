@@ -1,5 +1,6 @@
 JUCI.app
 .controller("PhoneDectPage", function($uci, $scope, $rpc, gettext, $tr, $events){
+	var sleep = 0; //TODO: REMOVE WHEN DECT BACKEND IS FIXED
 	$uci.$sync("dect").done(function(){
 		$scope.dect = $uci.dect.dect;
 		$scope.$apply();
@@ -14,10 +15,13 @@ JUCI.app
 	var numDevices = 0;
 
 	function updateDectStatus() {
-		$rpc.$call("dect", "status").done(function(result){
-			$scope.status = result;
-			$scope.$apply();
-		});
+		setTimeout(function(){ //TODO: REMOVE WHEN DECT BACKEND IS FIXED
+			sleep = 0; //TODO: REMOVE WHEN DECT BACKEND IS FIXED
+			$rpc.$call("dect", "status").done(function(result){
+				$scope.status = result;
+				$scope.$apply();
+			});
+		}, sleep); //TODO: REMOVE WHEN DECT BACKEND IS FIXED
 		$rpc.$call("dect", "handset" ,{"list":""}).done(function(result){
 			if(result.handsets && result.handsets.length !== numDevices){
 				numDevices = result.handsets.length;
@@ -36,7 +40,7 @@ JUCI.app
 
 	$scope.onCancelDECT = function(){
 		$rpc.$call("dect", "state", {"registration":"off"}).done(function(){
-			updateDectStatus();
+			sleep = 2000; //TODO: REMOVE WHEN DECT BACKEND IS FIXED
 		}).fail(function(e){console.log(e);});
 	};
 
