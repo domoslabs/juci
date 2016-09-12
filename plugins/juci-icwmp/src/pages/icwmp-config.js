@@ -19,12 +19,12 @@
  */
 
 JUCI.app
-.controller("icwmpConfigPage", function($scope, $uci, $tr, gettext, $network){
+.controller("icwmpConfigPage", function($scope, $uci, $tr, gettext, $firewall){
 	$uci.$sync(["cwmp"]).done(function(){
 		$scope.acs = $uci.cwmp.acs;
 		$scope.cpe = $uci.cwmp.cpe;
 	});
-	$network.getWanNetworks().done(function(networks){
+	$firewall.getZoneNetworks("wan").done(function(networks){
 		$scope.wan_interfaces = networks.map(function(n){
 			return { label: String(n[".name"]).toUpperCase(), value: n[".name"] };
 		});
