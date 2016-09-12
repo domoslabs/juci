@@ -338,6 +338,7 @@ JUCI.app
 										var title = (host.hostname || String(host.ipaddr).toUpperCase() || String(host.macaddr).toUpperCase()) + '<br />';
 										[
 											["ipaddr", $tr(gettext("IP Address")), ""],
+											["ip6addr", $tr(gettext("IPv6 Address")), ""],
 											["macaddr", $tr(gettext("MAC Address")), ""],
 											["rssi", $tr(gettext("RSSI")), " dBm"],
 											["snr", $tr(gettext("SNR")), ""],
