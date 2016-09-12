@@ -50,11 +50,10 @@
 		<modal title="Add / Edit MAC Filter Scheduling" ng-show="rule" on-accept="onAcceptEdit()" on-dismiss="onCancelEdit()" dismiss-label="Cancel" accept-label="Save">
 			<juci-config-info>{{'Select when Internet access will be restricted to the specified client(s)'|translate}}</juci-config-info>
 			<juci-schedule-edit ng-model="rule"></juci-schedule-edit>
-			<juci-config-lines>
-				<juci-config-line title="MAC List">
-					<firewall-maclist-edit ng-model="rule.macList"/>
-				</juci-config-line>
-			</juci-config-line>
+			<div class="row">
+				<label style="font-size:1.2em;" class="col-xs-12 col-sm-6">{{'MAC List'|translate}}</label>
+				<div class="clol-xs-12 col-sm-6"><firewall-maclist-edit ng-model="rule.macList"/></div>
+			</div>
 			<juci-errors ng-model="errors"/>
 		</modal>
 	</div>

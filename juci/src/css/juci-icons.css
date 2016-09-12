@@ -94,7 +94,7 @@ i[class^="juci-"], i[class*=" juci-"] {
 .juci-bridge:before {
     content: "\002c";
 }
-.juci-wifi-dongle:before {
+.juci-usb-dongle:before {
     content: "\002d";
 }
 .juci-adsl:before {
