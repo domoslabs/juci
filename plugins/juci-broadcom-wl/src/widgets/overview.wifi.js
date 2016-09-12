@@ -117,6 +117,7 @@ JUCI.app
 		var def = $.Deferred();
 		$rpc.$call("router", "radios").done(function(radios){
 			$wireless.getInterfaces().done(function(interfaces){
+				$scope.showWps = interfaces.find(function(iface){ return iface.wps_pbc.value;}) ? true:false;
 				$scope.wifs = interfaces.map(function(iface){
 					if(!iface.device.value in radios) return null;
 					iface.$radio = radios[iface.device.value];

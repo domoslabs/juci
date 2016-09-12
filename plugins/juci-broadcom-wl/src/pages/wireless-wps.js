@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("wirelessWPSPage", function($scope, $config, $uci, $rpc, gettext, $tr, $events){
+.controller("wirelessWPSPage", function($scope, $config, $wireless, $rpc, gettext, $tr, $events){
 	$scope.showExpert = $config.local.mode == "expert";
 	var wps_status_strings = {
 		"-1": $tr(gettext("Disabled")),
@@ -32,6 +32,14 @@ JUCI.app
 		8: $tr(gettext("Switching to repeater mode")),
 		9: $tr(gettext("Overlap"))
 	};
+
+	$scope.updateWps = function(){
+		if(!$scope.wifiIfaces || !$scope.wifiIfaces.length){
+			$scope.showWps = false;
+		}
+		//setTimeout is needed because ng-change is run before value has changed
+		setTimeout(function(){$scope.showWps = $scope.wifiIfaces.find(function(iface){ return iface.wps_pbc.value; }) ? true:false;$scope.$apply();}, 0);
+	}
 	
 	$scope.data = {
 		userPIN: "",
@@ -40,18 +48,13 @@ JUCI.app
 	$scope.progress = 0;
 	
 	$scope.wpsUnlocked = function(interface){
-		return ["wpa", "mixed-wpa"].indexOf(interface.encryption.value) == -1 && interface.closed.value != true;
+		return ["none", "psk2", "mixed-psk"].indexOf(interface.encryption.value) !== -1 && interface.closed.value === false;
 	}
 	
-	$uci.$sync(["wireless"]).done(function(){
-		$scope.wireless = $uci.wireless;
-		$scope.getFrequensy = function(dev){
-			if($scope.wireless[dev] && $scope.wireless[dev].band){
-				if($scope.wireless[dev].band.value == "b") return "2.4GHz";
-				if($scope.wireless[dev].band.value == "a") return "5GHz";
-			}
-			return "";
-		};
+	$wireless.getInterfaces().done(function(ifaces){
+		console.log(ifaces);
+		$scope.wifiIfaces = ifaces;
+		$scope.updateWps();
 		$scope.$apply();
 	}).fail(function(err){
 		console.log("failed to sync config: "+err);
