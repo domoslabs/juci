@@ -136,7 +136,19 @@ JUCI.app
 				else if(w.device.match(/atm/)) type = $tr(gettext("ADSL"));
 				else if(w.device.match(/ptm/)) type = $tr(gettext("VDSL"));
 				else if(w.device.match(/wwan/)) type = $tr(gettext("3G/4G"));
-				$scope.data.contypes.push(type);
+				if(w.device && w.device.match("eth[0-9].[0-9]")){
+					$rpc.$call("router", "linkspeed", {"interface":w.device.substring(0,4)}).done(function(data){
+						if(data && data.linkspeed)
+							$scope.data.linkspeed = data.linkspeed;
+						if(data && data.linktype)
+							type = data.linktype;
+						$scope.data.contypes.push(type);
+						$scope.$apply();
+					}).fail(function(e){console.log(e);});
+				}
+				else{
+					$scope.data.contypes.push(type);
+				}
 				if(w.device && w.device.match(/[ap]tm/)){
 					$rpc.$call("router", "dslstats").done(function(data){
 						if(!data || !data.dslstats || !data.dslstats.bearers || data.dslstats.bearers.length < 1) return;
@@ -146,12 +158,6 @@ JUCI.app
 						});
 						$scope.$apply();
 					});
-				}
-				if(w.device && w.device.match("eth[0-9].[0-9]")){
-					$rpc.$call("router", "linkspeed", {"interface":w.device.substring(0,4)}).done(function(data){
-						if(data && data.linkspeed)
-							$scope.data.linkspeed = data.linkspeed;
-					}).fail(function(e){console.log(e);});
 				}
 				if(w["dns-server"] && w["dns-server"].length)
 					$scope.data.dns = $scope.data.dns.concat(w["dns-server"]);

@@ -14,7 +14,7 @@
 					</div>
 					<div class="content" ng-hide="!hide">
 						<div class="col-xs-12 col-sm-9">
-							<div class="row" ng-repeat="status in i.$statusList track by $index">
+							<div class="row" ng-repeat="status in i.$statusList track by $index" style="word-wrap:break-word">
 								<label class="col-xs-12 col-sm-6">{{status.label}}</label>
 								<div class="col-xs-12 col-sm-6">{{status.value}}</div>
 							</div>
