@@ -222,6 +222,7 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"band": 		{ dvalue: "b", type: String, allow: [ "a", "b" ] },
 		"bandwidth": 	{ dvalue: 80, type: String, allow: [ "20", "40", "80" ] },
 		"channel":		{ dvalue: "auto", type: String, allow: [ "auto", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 36, 40, 44, 48 ] },
+		"obss_coex":	{ dvalue: true, type: Boolean },
 		"scantimer":	{ dvalue: 0, type: Number },
 		"wmm":			{ dvalue: true, type: Boolean },
 		"wmm_noack":	{ dvalue: false, type: Boolean },
