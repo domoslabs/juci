@@ -52,6 +52,35 @@
 [ng\:cloak], [ng-cloak], .ng-cloak {
 	display: none !important;
 }
+.software-upgrade-button {
+	-webkit-animation: glowing 1500ms infinite;
+	-moz-animation: glowing 1500ms infinite;
+	-o-animation: glowing 1500ms infinite;
+	animation: glowing 1500ms infinite;
+}
+@-webkit-keyframes glowing {
+  0% { background-color: #ff007d; -webkit-box-shadow: 0 0 3px #ff007d; }
+  50% { background-color: #FF69B4; -webkit-box-shadow: 0 0 40px #FF69B4; }
+  100% { background-color: #ff007d; -webkit-box-shadow: 0 0 3px #ff007d; }
+}
+
+@-moz-keyframes glowing {
+  0% { background-color: #ff007d; -moz-box-shadow: 0 0 3px #ff007d; }
+  50% { background-color: #FF69B4; -moz-box-shadow: 0 0 40px #FF69B4; }
+  100% { background-color: #ff007d; -moz-box-shadow: 0 0 3px #ff007d; }
+}
+
+@-o-keyframes glowing {
+  0% { background-color: #ff007d; box-shadow: 0 0 3px #ff007d; }
+  50% { background-color: #FF69B4; box-shadow: 0 0 40px #FF69B4; }
+  100% { background-color: #ff007d; box-shadow: 0 0 3px #ff007d; }
+}
+
+@keyframes glowing {
+  0% { background-color: #ff007d; box-shadow: 0 0 3px #ff007d; }
+  50% { background-color: #FF69B4; box-shadow: 0 0 40px #FF69B4; }
+  100% { background-color: #ff007d; box-shadow: 0 0 3px #ff007d; }
+}
 
 @font-face {
 	font-family: "eurostyle";
