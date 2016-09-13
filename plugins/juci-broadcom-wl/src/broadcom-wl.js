@@ -293,13 +293,11 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 			} break;
 			//case "psk":
 			case "psk2":
-			case "mixed-psk": {
-				var WPAValidator = new UCI.validators.WPAKeyValidator();
+			case "mixed-psk":
 				if((!section.key.value) && section.mode.value === "ap"){
-					var error = WPAValidator.validate(section.key);
-					if(error !== null) eList.push(JUCI.$tr(gettext("Wireless interface ")) + (section.ssid.value || JUCI.$tr(gettext("no SSID"))) + JUCI.$tr(gettext(". WPA key must be 8-63 printable ASCII characters long!")));
+					eList.push(JUCI.$tr(gettext("Wireless interface ")) + (section.ssid.value || JUCI.$tr(gettext("no SSID"))) + JUCI.$tr(gettext(". WPA key must be 8-63 printable ASCII characters long!")));
 				}
-			} break;
+				break;
 			case "wpa-mixed":
 			case "wpa2":
 			default:
