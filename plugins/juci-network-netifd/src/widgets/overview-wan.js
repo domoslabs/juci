@@ -142,12 +142,14 @@ JUCI.app
 							$scope.data.linkspeed = data.linkspeed;
 						if(data && data.linktype)
 							type = data.linktype;
-						$scope.data.contypes.push(type);
+						if($scope.data.contypes.indexOf(type) === -1)
+							$scope.data.contypes.push(type);
 						$scope.$apply();
 					}).fail(function(e){console.log(e);});
 				}
 				else{
-					$scope.data.contypes.push(type);
+					if($scope.data.contypes.indexOf(type) === -1)
+						$scope.data.contypes.push(type);
 				}
 				if(w.device && w.device.match(/[ap]tm/)){
 					$rpc.$call("router", "dslstats").done(function(data){
