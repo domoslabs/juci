@@ -22,7 +22,6 @@ JUCI.app
 
 	$scope.add = function(){
 		if(!$scope.instance || !$scope.instance.option){ return; }
-
 		if($scope.instance.option.value === ""){
 			$scope.instance.option.value = [$scope.data.newSetting];
 			return;
