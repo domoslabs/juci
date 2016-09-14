@@ -3,11 +3,7 @@
 
 JUCI.app
 .controller("wirelessInterfacesPage", function($scope, $uci, $wireless, $tr, gettext, prompt, $modal){
-	$wireless.getInterfaces().done(function(interfaces){
-		$scope.interfaces = interfaces;
-		update();
-		$scope.$apply();
-	});
+	JUCI.interval.repeat("update-wireless-interfaces", 5000, function(next){update(); next();});
 
 	$scope.getItemTitle = function(item){
 		if(!item.ifname.value) return item.ssid.value;
@@ -15,17 +11,20 @@ JUCI.app
 	}
 
 	function update(){
-		if(!$scope.interfaces) return
-		$scope.interfaces.map(function(iface){
-			if(!iface.$info) return;
-			iface.$statusList = [
-				{ label:$tr(gettext("SSID")), value:(iface.$info.ssid || iface.ssid.value)},
-				{ label:$tr(gettext("BSSID")), value:(iface.$info.bssid || $tr(gettext("unknown")))},
-				{ label:$tr(gettext("Encryption")), value:(iface.$info.encryption || $tr(gettext("unknown")))},
-				{ label:$tr(gettext("Mode")), value: String(iface.mode.value || "").toUpperCase()},
-				{ label:$tr(gettext("Device")), value: String(iface.device.value || "").toUpperCase()}
-			];
-		});
+		$wireless.getInterfaces().done(function(interfaces){
+			$scope.interfaces = interfaces;
+			$scope.interfaces.map(function(iface){
+				if(!iface.$info) return;
+				iface.$statusList = [
+					{ label:$tr(gettext("SSID")), value:(iface.$info.ssid || iface.ssid.value)},
+					{ label:$tr(gettext("BSSID")), value:(iface.$info.bssid || $tr(gettext("unknown")))},
+					{ label:$tr(gettext("Encryption")), value:(iface.$info.encryption || $tr(gettext("unknown")))},
+					{ label:$tr(gettext("Mode")), value: String(iface.mode.value || "").toUpperCase()},
+					{ label:$tr(gettext("Device")), value: String(iface.device.value || "").toUpperCase()}
+				];
+			});
+			$scope.$apply();
+		}).fail(function(er){console.log(er);});
 	}
 
 	$scope.onCreateInterface = function(){
