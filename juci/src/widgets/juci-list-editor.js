@@ -46,7 +46,7 @@ JUCI.app
 })
 .controller("juciListEditor", function($scope){
 	$scope.hide = true;
-	$scope.dynamicHtml = "<"+$scope.editor+" ng-model='item'/>";
+	if($scope.editor) $scope.dynamicHtml = "<"+$scope.editor+" ng-model='item'/>";
 	$scope.onListAddItem = function(){
 		$scope.onCreate();
 	}
