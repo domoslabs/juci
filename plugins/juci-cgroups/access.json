@@ -4,7 +4,13 @@
 		"read": {
 			"uci": [
 				"cgroups"
-			]
+			],
+			"ubus": {
+				"cgroups": [
+					"knobs",
+					"procs"
+				]
+			}
 		},
 		"write": {
 			"uci": [

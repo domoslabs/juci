@@ -10,11 +10,16 @@ JUCI.app
 		require: "^ngModel"
 	};
 })
-.controller("editCgroupCtrl", function($scope, $uci){
-	$scope.data = {newSetting:"", validSetting: false, error: null};
+.controller("editCgroupCtrl", function($scope, $uci, $juciInputModal){
+	$scope.data = {newKnob:"", newValue:"", error:"No valid new setting given."};
+	$rpc.$call("cgroups", "knobs").done(function(data){
+		$scope.knobsForJuciSelect = data.knobs.split(" ").map(function(x){
+			return {label:x, value:x};
+		});
+	}).fail(function(e){ console.log("'ubus call cgroups knobs' failed: "+e); });
 
-	function verifyOption(opt){
-		if(opt.match("^[a-zA-Z0-9_.]+=[a-zA-Z0-9]+$") === null){ // memory.move_charge_at_immigrate=1
+	function verifySetting(setting){
+		if(setting.match("^[a-zA-Z0-9_.]+=[a-zA-Z0-9]+$") === null){ // memory.move_charge_at_immigrate=1
 			return false;
 		}
 		return true;
@@ -22,15 +27,20 @@ JUCI.app
 
 	$scope.add = function(){
 		if(!$scope.instance || !$scope.instance.option){ return; }
+
+		var newSetting = $scope.data.newKnob + "=" + $scope.data.newValue;
+		if(!verifySetting(newSetting)){ return; }
+
 		if($scope.instance.option.value === ""){
-			$scope.instance.option.value = [$scope.data.newSetting];
+			$scope.instance.option.value = [newSetting];
 			return;
 		}
 
-		var tmpList = $scope.instance.option.value.concat([$scope.data.newSetting]);
+		var tmpList = $scope.instance.option.value.concat([newSetting]);
 		$scope.instance.option.value = tmpList;
 
-		$scope.data.newSetting = "";
+		$scope.data.newKnob = "";
+		$scope.data.newValue = "";
 	};
 
 	$scope.del = function(index){
@@ -40,11 +50,4 @@ JUCI.app
 		tmpList.splice(index,1);
 		$scope.instance.option.value = tmpList;
 	}
-
-	$scope.$watch("data.newSetting", function(opt){
-		if(!$scope.data.newSetting) return;
-
-		if(verifyOption(opt)){ $scope.data.error = null; }
-		else{ $scope.data.error = "Valid format: file.name=value"; }
-	}, false);
 });

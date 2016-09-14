@@ -5,18 +5,33 @@
 		</h3>
 	</div>
 
-	<button class="btn btn-lg btn-default" ng-click="" style="margin: 20px">Add subgroup</button>
-
-	<juci-config-line title="" error="data.error">
-		<div class="input-group">
-			<input class="form-control" type="text" style="max-width: 200px !important" ng-model="data.newSetting" placeholder="{{'newstuff'|translate}}"/>
+	<div class="row">
+		<div class="col-sm-4" style="background-color: red"></div>
+		<div class="col-sm-4" style="background-color: blue">
+			<juci-select style="min-width: 258px !important" ng-items="knobsForJuciSelect" ng-model="data.newKnob" placeholder="Variable"/>
+		</div>
+		<div class="col-sm-2" style="background-color: red">
+			<input class="form-control" type="text" style="min-width: 128px" ng-model="data.newValue" placeholder="{{'Value'|translate}}"/>
+		</div>
+		<div class="col-sm-2" style="background-color: blue">
 			<button class="btn btn-default" ng-click="add()"><i class="fa fa-plus"></i></button>
 		</div>
+	</div>
+<!--
+	<juci-config-line title="" error="data.error">
+		<div class="input-group">
+			<input class="form-control" type="text" style="max-width: 196px !important" ng-model="data.newSetting" placeholder="{{'newstuff'|translate}}"/>
+			<button class="btn btn-default" ng-click="add()"><i class="fa fa-plus"></i></button>
+		</div>
+		<juci-config-line title="{{ 'Knob' | translate }}">
+			<juci-select ng-items="knobsForJuciSelect" ng-model="" />
+		</juci-config-line>
 	</juci-config-line>
+-->
 
 	<juci-config-line ng-repeat="opt in instance.option.value track by $index">
 		<div class="input-group">
-			<input class="form-control" type="text" style="max-width: 200px !important" ng-model="opt"/>
+			<input class="form-control" type="text" style="max-width: 196px !important" ng-model="opt"/>
 			<button class="btn btn-default" ng-click="del($index)"><i class="fa fa-trash-o"></i></button>
 		</div>
 	</juci-config-line>
