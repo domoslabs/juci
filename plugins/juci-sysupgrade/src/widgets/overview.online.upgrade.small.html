@@ -6,7 +6,7 @@
 			<p style="text-align: center;color:black;" ng-show="!error">{{message}}</p>
 			<p class="alert alert-danger" style="text-align: center;" ng-show="error">{{error}}</p>
 			<i style="color:black;" class="fa fa-spinner fa-spin fa-4x" ng-show="!error"></i>
-			<button style="float:right;" class="btn btn-default" ng-click="showUpgradeStatus = false" ng-show="error">{{'Close'|translate}}</button>
+			<button style="float:right;" class="btn btn-default" ng-click="onClose()" ng-show="error">{{'Close'|translate}}</button>
 		</center>
 	</modal>
 </div>

@@ -127,13 +127,8 @@ JUCI.app
 			$scope.showUpgradeStatus = 1;
 			$scope.message = $tr(gettext("Downloading and verifying image..."));
 			$scope.progress = $tr(gettext("Uploading"));
-			$scope.$KEEP = keep;
-			$scope.$PATH = $scope.uploadFilename;
 			console.log("testing image: "+ $scope.uploadFilename);
-			$rpc.$call("juci.system.upgrade", "run", {"method":"test","args":JSON.stringify({"path":$scope.onlineUpgrade})}).fail(function(e){
-				$scope.errror = e;
-				$scope.$apply();
-			});
+			$rpc.$call("juci.system.upgrade", "run", {"method":"start","args":JSON.stringify({"path":$scope.onlineUpgrade, "keep":(keep)?1:0})});
 		});
 	}
 	
@@ -142,13 +137,8 @@ JUCI.app
 			$scope.showUpgradeStatus = 1;
 			$scope.message = $tr(gettext("Verifying image..."));
 			$scope.progress = $tr(gettext("Verifying"));
-			$scope.$KEEP = keep;
-			$scope.$PATH = $scope.usbUpgrade;
 			console.log("testing image: "+$scope.usbUpgrade);
-			$rpc.$call("juci.system.upgrade", "run", {"method":"test","args":JSON.stringify({"path":$scope.usbUpgrade})}).fail(function(){
-				$scope.showUpgradeStatus = 0;
-				$scope.$apply();
-			});
+			$rpc.$call("juci.system.upgrade", "run", {"method":"start","args":JSON.stringify({"path":$scope.usbUpgrade, "keep":(keep)?1:0})});
 		});
 	}
 	$scope.onStartUpgrade = function(){
@@ -174,8 +164,7 @@ JUCI.app
 		}).done(function(){
 			$scope.progress_byte = $scope.progress_total;
 			$scope.$apply();
-			$scope.$KEEP = keep;
-			$rpc.$call("juci.system.upgrade", "run", {"method":"start","args":JSON.stringify({"path":$scope.uploadFilename})});
+			$rpc.$call("juci.system.upgrade", "run", {"method":"start","args":JSON.stringify({"path":$scope.uploadFilename, "keep":(keep)?1:0})});
 		}).fail(function(e){
 			$scope.error =  $tr(gettext("The server returned an error"))+" ("+JSON.stringify(e)+")";
 			$scope.$apply();

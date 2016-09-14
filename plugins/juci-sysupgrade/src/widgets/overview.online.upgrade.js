@@ -39,37 +39,22 @@ JUCI.app
 			],
 			content: modalText,
 			on_button: function(btn, inst){
-				switch(btn.value){
-					case "keep":
-						$scope.upgrade.keep = true;
-						inst.close();
-						$scope.showUpgradeStatus = true;
-						$scope.message = $tr(gettext("Your box is upgrading"));
-						$rpc.$call("juci.system.upgrade", "run", {"method":"test","args":JSON.stringify({"path":$scope.upgrade.path})}).fail(function(e){
-							$scope.errror = e;
-							$scope.$apply();
-						});
-						setTimeout(function(){$scope.error = $tr(gettext("Something went wrong! Try again later"));}, 50000);
-						break;
-					case "nokeep":
-						$scope.upgrade.keep = false;
-						inst.close();
-						$scope.showUpgradeStatus = true;
-						$scope.message = $tr(gettext("Your box is upgrading"));
-						$rpc.$call("juci.system.upgrade", "run", {"method":"test","args":JSON.stringify({"path":$scope.upgrade.path})}).fail(function(e){
-							$scope.errror = e;
-							$scope.$apply();
-						});
-						setTimeout(function(){$scope.error = $tr(gettext("Something went wrong! Try again later"));}, 50000);
-						break;
-					default:
-						inst.close();
+				if(btn.value === "cancel"){
+					inst.close();
+					return;
 				}
+				$scope.showUpgradeStatus = true;
+				$scope.message = $tr(gettext("Your box is upgrading"));
+				$rpc.$call("juci.system.upgrade", "run", {"method":"start","args":JSON.stringify({"path":$scope.upgrade.path, "keep":(btn.value === "keep")?1:0})});
+				setTimeout(function(){$scope.error = $tr(gettext("Something went wrong! Try again later"));}, 50000);
+				inst.close();
 			}
 		});
 	}
-	$events.subscribe("sysupgrade-test", function(result){
-		if(result.data && result.data.error && result.data.stdout) {
+	$scope.onClose = function(){$scope.showUpgradeStatus = false;};
+	$events.subscribe("sysupgrade", function(result){
+		if(!result || !result.data || !result.data.status) return;
+		if(result.data && result.data.status && result.data.status == "failed") {
 			$scope.showUpgradeStatus = 0;
 			$scope.$apply();
 			$juciDialog.show(null, {
@@ -78,13 +63,10 @@ JUCI.app
 				on_button: function(btn, inst){
 					inst.dismiss("ok");
 				},
-				content: ($tr(gettext("Error: ")) + result.data.stdout)
+				content: ($tr(gettext("Error: ")) + result.data.test)
 			});
 			return;
 		}
-		$scope.message = $tr(gettext("Upgrading"));
-		$scope.$apply();
-		$rpc.$call("juci.system.upgrade", "run", {"method":"start","args":JSON.stringify({"path": $scope.upgrade.path, "keep": (($scope.upgrade.keep)?1:0)})});
-		setTimeout(function(){ window.location = "/reboot.html";}, 3000);
+		window.location = "/reboot.html";
 	});
 });
