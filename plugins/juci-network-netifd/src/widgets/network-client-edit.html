@@ -5,7 +5,7 @@
 			<table class="table table-hover">
 				<tr>
 					<td>{{'Hostname'| translate}}</td>
-					<td ng-show="!client">{{model.client.hostname || ""}}<button ng-class="disabled" class="btn btn-default pull-right" style="margin-right:15px;" ng-click="edit_hostname()"><i class="juci juci-edit"></i></button></td>
+					<td ng-show="!client">{{model.client.hostname || ""}}<button ng-class="{'disabled': disabled}" class="btn btn-default pull-right" style="margin-right:15px;" ng-click="edit_hostname()"><i class="juci juci-edit"></i></button></td>
 					<td ng-show="client"><input type="text" class="form-control" ng-model="client.name.value" placeholder="{{model.client.hostname || ''}}"></input></td>
 				</tr>
 				<tr ng-repeat="value in values track by $index">
