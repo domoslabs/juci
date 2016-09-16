@@ -32,12 +32,19 @@ JUCI.app
 }).controller("networkClientEdit", function($scope, $uci, $tr, gettext){	
 	$scope.$watch("model", function(value){
 		if(!value || !value.client || !value.client.macaddr) return;
+		var networkList = [];
 		$uci.$sync("dhcp").done(function(){
 			$scope.staticLeses = $uci.dhcp["@host"];
 			$scope.client = $scope.staticLeses.filter(function(l){
 				return l.mac.value === value.client.macaddr;
 			})[0];
 			$scope.$apply();
+		});
+		$rpc.$call("router", "networks").done(function(data){
+			networkList = Object.keys(data).map(function(key){ data[key]["name"] = key; return data[key];})
+			.filter(function(net){ return net["is_lan"] && net.ipaddr && net.netmask;});
+			$scope.$apply();
+			console.log(networkList);
 		});
 		$scope.edit_hostname = function(){
 			$scope.disabled = true;
@@ -49,6 +56,38 @@ JUCI.app
 				$scope.$apply();
 			});
 		}
+		$scope.$watch("client.ip.value", function(){
+			var cl = $scope.client.ip;
+			if(!cl) return;
+			if(!cl.value || cl.error !== null || !networkList){
+				$scope.inNetwork = "";
+				return;
+			}
+			net = networkList.find(function(net){
+				var net_ip_parts = String(net.ipaddr).split(".").map(function(p){return parseInt(p);}).filter(function(p){ return isNaN(p) === false;});
+				var net_mk_parts = String(net.netmask).split(".").map(function(p){return parseInt(p);}).filter(function(p){ return isNaN(p) === false;});
+				var cli_ip_parts = String(cl.value).split(".").map(function(p){return parseInt(p);}).filter(function(p){ return isNaN(p) === false;});
+				if(net_ip_parts.length !== 4 || net_mk_parts.length !== 4 || cli_ip_parts.length !== 4) return false;
+				var net_ip_bin = net_ip_parts.map(function(p){ var s = p.toString(2); while(s.length < 8){ s = "0" + s;}; return s;}).join("");
+				var net_mk_bin = net_mk_parts.map(function(p){ var s = p.toString(2); while(s.length < 8){ s = "0" + s;}; return s;}).join("");
+				var cli_ip_bin = cli_ip_parts.map(function(p){ var s = p.toString(2); while(s.length < 8){ s = "0" + s;}; return s;}).join("");
+				console.log("net_ip_bin: " + net_ip_bin);
+				console.log("net_mk_bin: " + net_mk_bin);
+				console.log("cli_ip_bin: " + cli_ip_bin);
+				for(var i = 0; i < 24; i++){
+					if((net_ip_bin[i] & net_mk_bin[i]) !==  + (net_mk_bin[i] & cli_ip_bin[i]))
+						return false;
+				}
+				return true;
+			});
+			if(net){
+				$scope.inNetwork = String(net.name).toUpperCase();
+				$scope.cssClass="warning";
+				return;
+			}
+			$scope.inNetwork = $tr(gettext("Not in any configured network"));
+			$scope.cssClass="danger";
+		}, false);
 		$scope.onAddStaticLease = function(){
 			$uci.$sync("dhcp").done(function(){
 				$uci.dhcp.$create({

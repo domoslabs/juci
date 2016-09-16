@@ -81,7 +81,7 @@ UCI.dhcp.$registerSectionType("host", {
 	"dhcp":		{ dvalue: "", type: String },
 	"network":	{ dvalue: "lan", type: String }, 
 	"mac":		{ dvalue: "", type: String, required: true, validator: UCI.validators.MACAddressValidator },
-	"ip":		{ dvalue: "", type: String, validator: UCI.validators.IPAddressValidator },
+	"ip":		{ dvalue: "", type: String, validator: UCI.validators.IP4AddressValidator },
 	"duid": 	{ dvalue: "", type: String }, 
 	"hostid": 	{ dvalue: "", type: String }
 }); 

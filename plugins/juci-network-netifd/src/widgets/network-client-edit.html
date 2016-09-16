@@ -37,8 +37,11 @@
 						<juci-config-line title="{{'Device Name'|translate}}">
 							<input type="text" class="form-control" ng-model="client.name.value" />
 						</juci-config-line>
-						<juci-config-line title="{{'IP Address'|translate}}">
-							<input type="text" class="form-control" ng-model="client.ip.value" />
+						<juci-config-line title="{{'IP Address'|translate}}" error="client.ip.error">
+							<div class="row">
+								<juci-input-ipv4-address class="col-xs-12" ng-model="client.ip.value"></juci-input-ipv4-address><br/>
+								<div class="col-xs-12"><div class="alert alert-{{cssClass || 'warning'}}" style="margin-left:15px;font-size:0.8em" ng-show="inNetwork">{{'In network:'|translate}} {{inNetwork}}</div></div>
+							</div>
 						</juci-config-line>
 						<juci-config-line title="{{'DUID (IPv6)'|translate}}">
 							<input type="text" class="form-control" ng-model="client.duid.value" />

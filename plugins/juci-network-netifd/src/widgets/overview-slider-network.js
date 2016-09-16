@@ -377,7 +377,7 @@ JUCI.app
 								});
 							}
 						});
-					}).fail(function(e){console.log(e);}).always(function(){callback();});
+					}).always(function(){callback();});
 				}, function(){
 					self.def.resolve(nodes, edges)
 					self.def = undefined;
