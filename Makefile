@@ -105,10 +105,6 @@ ifeq ($(DESTDIR),)
 	DESTDIR:=/
 endif
 
-ifeq ($(CONFIG_PACKAGE_juci-igmpinfo),y)
-	UBUS_MODS += backend/igmpinfo
-endif 
-
 ifeq ($(CONFIG_PACKAGE_juci-ubus-core),y)
 	UBUS_MODS += backend/juci-core
 endif
