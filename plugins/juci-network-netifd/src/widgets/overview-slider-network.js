@@ -165,7 +165,7 @@ JUCI.app
 			function(next){
 				$rpc.$call("network.interface", "dump").done(function(data){
 					if(!data || !data.interface){console.log("error getting interfaces"); next();return}
-					all_nets = data.interface;
+					lan_nets = all_nets = data.interface;
 				}).always(function(){next();});
 			},
 			function(next){
@@ -181,16 +181,6 @@ JUCI.app
 						});
 					});
 				}).fail(function(e){console.log(e);}).always(function(){next();});
-			},
-			function(next){
-				$firewall.getLanZones().done(function(lan_zones){
-					lan_nets = all_nets.filter(function(net){
-						if(net.is_alias || !net.defaultroute)return false;
-						return lan_zones.find(function(z){
-							return z.network && z.network.value && z.network.value.find(function(n){ return n === net.interface;});
-						});
-					});
-				}).always(function(){next();});
 			}, function(next){
 				$rpc.$call("led.internet", "status").done(function(data){
 					hasInternet = data.state && data.state === "ok";
@@ -300,11 +290,15 @@ JUCI.app
 					if(!item || !item.interface){ callback(); return;}
 					$rpc.$call("router", "ports", { "network": item.interface }).done(function(data){
 						var num_cli = 0;
+						var num_ports = 0;
 						Object.keys(data).map(function(dev){
+							num_ports++;
 							if(data[dev].hosts && data[dev].hosts.length){
 								data[dev].hosts.map(function(host){ if(host.connected) num_cli ++;});
 							}
 						});
+
+						if(num_ports === 0) return;
 						var node = {
 							id: count++,
 							label: myString(String(item.interface).toUpperCase()),
