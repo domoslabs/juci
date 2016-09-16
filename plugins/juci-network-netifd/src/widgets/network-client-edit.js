@@ -44,7 +44,6 @@ JUCI.app
 			networkList = Object.keys(data).map(function(key){ data[key]["name"] = key; return data[key];})
 			.filter(function(net){ return net["is_lan"] && net.ipaddr && net.netmask;});
 			$scope.$apply();
-			console.log(networkList);
 		});
 		$scope.edit_hostname = function(){
 			$scope.disabled = true;
@@ -57,8 +56,8 @@ JUCI.app
 			});
 		}
 		$scope.$watch("client.ip.value", function(){
+			if(!$scope.client) return;
 			var cl = $scope.client.ip;
-			if(!cl) return;
 			if(!cl.value || cl.error !== null || !networkList){
 				$scope.inNetwork = "";
 				return;
@@ -71,9 +70,6 @@ JUCI.app
 				var net_ip_bin = net_ip_parts.map(function(p){ var s = p.toString(2); while(s.length < 8){ s = "0" + s;}; return s;}).join("");
 				var net_mk_bin = net_mk_parts.map(function(p){ var s = p.toString(2); while(s.length < 8){ s = "0" + s;}; return s;}).join("");
 				var cli_ip_bin = cli_ip_parts.map(function(p){ var s = p.toString(2); while(s.length < 8){ s = "0" + s;}; return s;}).join("");
-				console.log("net_ip_bin: " + net_ip_bin);
-				console.log("net_mk_bin: " + net_mk_bin);
-				console.log("cli_ip_bin: " + cli_ip_bin);
 				for(var i = 0; i < 24; i++){
 					if((net_ip_bin[i] & net_mk_bin[i]) !==  + (net_mk_bin[i] & cli_ip_bin[i]))
 						return false;
@@ -81,7 +77,7 @@ JUCI.app
 				return true;
 			});
 			if(net){
-				$scope.inNetwork = String(net.name).toUpperCase();
+				$scope.inNetwork = net.name;
 				$scope.cssClass="warning";
 				return;
 			}

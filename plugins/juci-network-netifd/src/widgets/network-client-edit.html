@@ -40,7 +40,7 @@
 						<juci-config-line title="{{'IP Address'|translate}}" error="client.ip.error">
 							<div class="row">
 								<juci-input-ipv4-address class="col-xs-12" ng-model="client.ip.value"></juci-input-ipv4-address><br/>
-								<div class="col-xs-12"><div class="alert alert-{{cssClass || 'warning'}}" style="margin-left:15px;font-size:0.8em" ng-show="inNetwork">{{'In network:'|translate}} {{inNetwork}}</div></div>
+								<div class="col-xs-12"><div class="alert alert-{{cssClass || 'warning'}}" style="margin-left:15px;font-size:0.8em" ng-show="inNetwork">{{'IP in network'|translate}}: {{inNetwork | uppercase}} {{'Clients current network'|translate}}: {{model.client.network || ('Unknown'|translate) | uppercase}}</div></div>
 							</div>
 						</juci-config-line>
 						<juci-config-line title="{{'DUID (IPv6)'|translate}}">
