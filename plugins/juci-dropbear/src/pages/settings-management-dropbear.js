@@ -29,6 +29,9 @@ JUCI.app
 		$scope.service = service;
 		$scope.$apply();
 	});
+	function firstLetterCapital(string){
+		return String(string).charAt(0).toUpperCase() + String(string).slice(1);
+	}
 
 	$uci.$sync("dropbear").done(function(){
 		$scope.dropbear = []; 
@@ -36,9 +39,9 @@ JUCI.app
 			$scope.dropbear = $uci.dropbear["@dropbear"];
 			$scope.dropbear.map(function(db){
 				db.$statusList = [
-					{ label: $tr(gettext("Password Authentication")), value: db.PasswordAuth.value },
-					{ label: $tr(gettext("Enable Root Password Authentication")), value: db.RootPasswordAuth.value },
-					{ label: $tr(gettext("Enable Root Login")), value: db.RootLogin.value }
+					{ label: $tr(gettext("Password Authentication")), value: firstLetterCapital(db.PasswordAuth.value) },
+					{ label: $tr(gettext("Enable Root Password Authentication")), value: firstLetterCapital(db.RootPasswordAuth.value) },
+					{ label: $tr(gettext("Enable Root Login")), value: firstLetterCapital(db.RootLogin.value) }
 				];
 			});
 			$scope.$apply();

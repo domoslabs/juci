@@ -3,6 +3,11 @@
 		<tab heading="{{'Status'|translate}}">
 			<h2>{{'Client Status'|translate}}</h2>
 			<table class="table table-hover">
+				<tr>
+					<td>{{'Hostname'| translate}}</td>
+					<td ng-show="!client">{{model.client.hostname || ""}}<button ng-class="disabled" class="btn btn-default pull-right" style="margin-right:15px;" ng-click="edit_hostname()"><i class="juci juci-edit"></i></button></td>
+					<td ng-show="client"><input type="text" class="form-control" ng-model="client.name.value" placeholder="{{model.client.hostname || ''}}"></input></td>
+				</tr>
 				<tr ng-repeat="value in values track by $index">
 					<td>{{value.label}}</td>
 					<td>{{value.value}}</td>
@@ -23,23 +28,23 @@
 		<tab heading="{{'Static Leases'| translate}}">
 			<juci-config-section>
 				<juci-config-lines>
-					<div ng-hide="csh">
+					<div ng-hide="client">
 						<juci-config-line title="{{'No Static Lease configured for this client'|translate}}">
 							<button class="btn btn-default" ng-click="onAddStaticLease()"><i class="fa fa-plus"></i></button>
 						</juci-config-line>
 					</div>
-					<div ng-show="csh">
+					<div ng-show="client">
 						<juci-config-line title="{{'Device Name'|translate}}">
-							<input type="text" class="form-control" ng-model="csh.name.value" />
+							<input type="text" class="form-control" ng-model="client.name.value" />
 						</juci-config-line>
 						<juci-config-line title="{{'IP Address'|translate}}">
-							<input type="text" class="form-control" ng-model="csh.ip.value" />
+							<input type="text" class="form-control" ng-model="client.ip.value" />
 						</juci-config-line>
 						<juci-config-line title="{{'DUID (IPv6)'|translate}}">
-							<input type="text" class="form-control" ng-model="csh.duid.value" />
+							<input type="text" class="form-control" ng-model="client.duid.value" />
 						</juci-config-line>
 						<juci-config-line title="{{'Host ID (IPv6)'|translate}}">
-							<input type="text" class="form-control" ng-model="csh.hostid.value" />
+							<input type="text" class="form-control" ng-model="client.hostid.value" />
 						</juci-config-line>
 						<juci-config-line>
 							<button class="btn btn-default" ng-click="onDeleteStaticLease()"><i class="fa fa-minus"></i></button>

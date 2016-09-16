@@ -31,15 +31,24 @@ JUCI.app
 	};  
 }).controller("networkClientEdit", function($scope, $uci, $tr, gettext){	
 	$scope.$watch("model", function(value){
-		console.log(value);
-		if(!value || !value.client) return;
+		if(!value || !value.client || !value.client.macaddr) return;
 		$uci.$sync("dhcp").done(function(){
 			$scope.staticLeses = $uci.dhcp["@host"];
-			$scope.csh = $scope.staticLeses.filter(function(l){
-				return l.mac.value === value.client.macaddr && l.network.value === value.client.network;
+			$scope.client = $scope.staticLeses.filter(function(l){
+				return l.mac.value === value.client.macaddr;
 			})[0];
 			$scope.$apply();
 		});
+		$scope.edit_hostname = function(){
+			$scope.disabled = true;
+			$uci.dhcp.$create({
+				".type":"host",
+				"mac": value.client.macaddr
+			}).done(function(cl){
+				$scope.client = cl;
+				$scope.$apply();
+			});
+		}
 		$scope.onAddStaticLease = function(){
 			$uci.$sync("dhcp").done(function(){
 				$uci.dhcp.$create({
@@ -49,20 +58,20 @@ JUCI.app
 					network: $scope.model.client.network,
 					name: $scope.model.client.hostname
 				}).done(function(value){
-					$scope.csh = value;
+					$scope.client = value;
 				});
 			});
 		}
 		$scope.onDeleteStaticLease = function(){
-			if(!$scope.csh || !$scope.csh.$delete) return;
-			$scope.csh.$delete().done(function(){
-				$scope.csh = null;
+			if(!$scope.client || !$scope.client.$delete) return;
+			$scope.disabled = false;
+			$scope.client.$delete().done(function(){
+				$scope.client = null;
 				$scope.$apply();
 			});
 		}
 		$scope.values = Object.keys(value.client).map(function(x){
 			var val = value.client[x];
-			if(x === "hostname") return { label: $tr(gettext("Hostname")), value: val };
 			if(x === "ipaddr") return { label: $tr(gettext("IP Address")), value: val };
 			if(x === "ip6addr") return { label: $tr(gettext("IPv6 Address")), value: val };
 			if(x === "duid") return { label: $tr(gettext("DUID")), value: val };
