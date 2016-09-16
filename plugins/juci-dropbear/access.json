@@ -3,11 +3,10 @@
 		"description": "JUCI dropbear module",
 		"read": {
             "ubus": {
-				"/juci/dropbear": [
-					"run"
-					/*"add_public_key",*/
-					/*"get_public_keys",*/
-					/*"remove_public_key"*/
+				"router": [
+					"add_ssh_key",
+					"get_ssh_keys",
+					"del_ssh_key"
                 ]
             },
 			"uci": [

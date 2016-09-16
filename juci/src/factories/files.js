@@ -24,8 +24,10 @@ JUCI.app.factory("$file", function($rpc, $tr, gettext){
 		uploadFile: function(filename, file, onProgress){
 			var fileChunkSize = 500000;
 			var def = $.Deferred();
-			if(!filename || filename.match("/") || !(file instanceof File)) return def.reject("invalid options");
-			var path = "/tmp/" + filename;
+			if(!filename || !(file instanceof File)) return def.reject("invalid options");
+			var path;
+			if(filename.substr(0,5) === "/tmp/") path = filename;
+			else path = "/tmp/" + filename;
 			var callId = 0;
 			var fileUploadState = {
 				file: file,
@@ -76,7 +78,14 @@ JUCI.app.factory("$file", function($rpc, $tr, gettext){
 			$rpc.$call("file", "read", {path:"/tmp/"+fileName, base64:true}).done(function(result){
 				def.resolve(saveByteArray(result.data, name, filetype, link));
 			}).fail(function(e){ def.reject(e);});
-			return def;
+			return def.promise();
 		},
+		uploadString: function(filename, string){
+			var def = $.Deferred();
+			if(!filename || !string) return def.reject("you must give filename and string");
+			if(filename.substr(0,5) !== "/tmp/") filename = "/tmp/" + filename;
+			$rpc.$call("file", "write", {"path":filename, "data":string}).done(function(ret){def.resolve(ret);}).fail(function(e){def.reject(e);});
+			return def.promise();
+		}
 	}
 });

@@ -18,9 +18,10 @@ JUCI.app
 				],
 				on_button: function(btn, inst){
 					inst.close();
-					setTimeout(function(){
-						def.resolve(btn.value);
-					}, 0);
+					if(btn.value === "ok")
+						def.resolve(true);
+					else
+						def.reject(false);
 				}
 			});
 			return def;

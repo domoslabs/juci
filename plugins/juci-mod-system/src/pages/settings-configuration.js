@@ -50,7 +50,7 @@ JUCI.app
 		var upfile = document.getElementById("upload");
 		if(!upfile.name || upfile.size < 1) return;
 		$file.uploadFile("backup.tar.gz", upfile.files[0]).done(function(){
-			onUploadComplete("done");
+			onUploadComplete(upfile.name);
 		}).fail(function(e){console.log(e);});
 	}
 	function onUploadComplete(result){

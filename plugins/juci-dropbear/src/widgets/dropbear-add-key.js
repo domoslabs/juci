@@ -19,41 +19,26 @@
  */
 
 JUCI.app
-.factory("dropbearAddKey", function($modal){
+.directive("dropbearAddKey", function($modal){
 	return {
-		show: function(){
-			var def = $.Deferred(); 
-			var modalInstance = $modal.open({
-				animation: true,
-				templateUrl: 'widgets/dropbear-add-key.html',
-				controller: 'dropbearAddKeyModel',
-				resolve: {
-					
-				}
-			});
-
-			modalInstance.result.then(function (data) {
-				setTimeout(function(){ // do this because the callback is called during $apply() cycle
-					def.resolve(data); 
-				}, 0); 
-			}, function () {
-				
-			});
-			return def.promise(); 
-		}
-	}; 
+		templateUrl: 'widgets/dropbear-add-key.html',
+		controller: 'dropbearAddKeyModel',
+		scope: {
+			model: "=ngModel"
+		},
+		replace: true,
+		require: "^ngModel"
+	};
 })
-.controller("dropbearAddKeyModel", function($scope, $modalInstance, $tr, gettext){
-	$scope.data = {}; 
-	$scope.ok = function () {
-		if(!$scope.data.key) {
-			alert($tr(gettext("You need to insert the public key data!"))); 
-			return; 
-		}
-		$modalInstance.close($scope.data);
+.controller("dropbearAddKeyModel", function($scope){
+	$scope.fileChanged = function(){
+		$scope.model.file = document.getElementById("keyFileSelector");
+		$scope.model.key = "";
+		$scope.model.error = "";
+		$scope.$apply();
 	};
-
-	$scope.cancel = function () {
-		$modalInstance.dismiss('cancel');
-	};
+	$scope.$watch("model.key", function(m){
+		if(!m) return;
+		if($scope.model.error) $scope.model.error = "";
+	}, false);
 })

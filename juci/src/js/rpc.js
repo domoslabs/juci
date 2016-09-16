@@ -381,7 +381,7 @@
 							}
 						}
 						if(DEBUG_MODE)console.log("RPC succeeded "+ JSON.stringify(call_result) +", but returned error: "+_errstr(call_result[0]));
-						query_deferred.deferred.reject(_errstr(call_result[0]));
+						query_deferred.deferred.reject({"reason":_errstr(call_result[0]), "data":(call_result.length > 1) ? call_result[1]:{}});
 						return;
 					}
 
