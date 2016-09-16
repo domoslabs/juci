@@ -1,13 +1,22 @@
 JUCI.app.controller("cgroupsCtrl", function($scope, $uci, $juciInputModal, $tr){
+	$scope.data = {newProc:"", newValue:""};
 	$uci.$sync("cgroups").done(function(data){
 		$scope.cgroups = $uci.cgroups;
 		$scope.cgroup = $scope.cgroups["@cgroup"];
-		$scope.procmap = $scope.cgroups.procmap;
+		$scope.procmaps = $scope.cgroups.procmap.procmap;
 		$scope.cgroupsForJuciSelect = $scope.cgroup.map(function(x){ 
 			var name = x[".name"];
 			if(name !== "_root_"){ name = name.replace(/_/g,"/"); }
 			return { label: name, value: name };
 		});
+		function getDotName(obj){ return obj[".name"]; }
+		function hasUnderscore(str){ return str.indexOf("_")!==-1; }
+		function underscore2Slash(str){ return str.replace(/_/g,"/"); }
+		$scope.cgroupsForSelect = $scope.cgroup.map(getDotName).filter(hasUnderscore).map(underscore2Slash);
+
+		$rpc.$call("cgroups", "procs").done(function(data){
+			$scope.procsForSelect = data.procs;
+		}).fail(function(e){ console.log("'ubus call cgroups procs' failed: "+e); });
 
 		$scope.cgroup.forEach(function(grp,ind){
 			grp.$buttons = [ { label: $tr(gettext("Add subgroup")), on_click: onAddSubgroup }, ];
@@ -62,5 +71,33 @@ JUCI.app.controller("cgroupsCtrl", function($scope, $uci, $juciInputModal, $tr){
 	$scope.getName = function(item){
 		if(!item) return "";
 		return String(item[".name"]);
+	}
+
+	function verifyProcmap(proc){
+		if(proc.match("^[a-zA-Z0-9_.]+=[a-zA-Z0-9/._]+$") === null){ // minidlna=3prt/normal
+			return false;
+		}
+		return true;
+	}
+
+	$scope.addProcmap = function(){
+		var newSetting = $scope.data.newProc + "=" + $scope.data.newValue;
+
+		//if($scope.instance.procmap.value === ""){
+		//	$scope.instance.procmap.value = [newSetting];
+		//	return;
+		//}
+
+		var tmpList = $scope.procmaps.value.concat([newSetting]);
+		$scope.procmaps.value = tmpList;
+
+		$scope.data.newProc = "";
+		$scope.data.newValue = "";
+	};
+
+	$scope.delProcmap = function(index){
+		var tmpList = $scope.procmaps.value.concat();
+		tmpList.splice(index,1);
+		$scope.procmaps.value = tmpList;
 	}
 });

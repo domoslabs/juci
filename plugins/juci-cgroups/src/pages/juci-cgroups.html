@@ -18,9 +18,29 @@
 			</tab>
 
 			<tab heading="Procmaps">
-				<edit-procmap ng-model="procmap">
+				<div class="panel panel-default">
+					<div class="row" style="margin-top:20px">
+						<div class="col-sm-6" style="font-size: 1.2em">Set new procmap</div>
+						<div class="col-sm-6" style="display: flex">
+							<select ng-options="x for x in procsForSelect" ng-model="data.newProc" style="min-width:100px; background-color:white; border-color:#CCCCCC">
+								<option value="" disabled selected style="display: none; color: red;">Process</option>'
+							</select>
+							<select ng-options="x for x in cgroupsForSelect" ng-model="data.newValue" style="min-width:100px; background-color:white; border-color:#CCCCCC">
+								<option value="" disabled selected style="display: none; color: red;">Cgroup</option>'
+							</select>
+							<button class="btn btn-default" ng-click="addProcmap()"><i class="fa fa-plus"></i></button>
+						</div>
+					</div>
+
+					<juci-config-line ng-repeat="proc in procmaps.value track by $index">
+						<div class="input-group">
+							<input class="form-control" type="text" style="max-width: 196px !important" ng-model="proc" ng-disabled="true"/>
+							<button class="btn btn-default" ng-click="delProcmap($index)"><i class="fa fa-trash-o"></i></button>
+						</div>
+					</juci-config-line>
+					<div style="margin-bottom: 20px !important"></div>
+				</div>
 			</tab>
 		</tabset>
 	<div>
 </juci-layout-with-sidebar>
-

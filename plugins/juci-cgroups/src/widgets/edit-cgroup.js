@@ -12,10 +12,9 @@ JUCI.app
 })
 .controller("editCgroupCtrl", function($scope, $uci, $juciInputModal){
 	$scope.data = {newKnob:"", newValue:"", error:"No valid new setting given."};
+
 	$rpc.$call("cgroups", "knobs").done(function(data){
-		$scope.knobsForJuciSelect = data.knobs.split(" ").map(function(x){
-			return {label:x, value:x};
-		});
+		$scope.knobsForSelect = data.knobs;
 	}).fail(function(e){ console.log("'ubus call cgroups knobs' failed: "+e); });
 
 	function verifySetting(setting){

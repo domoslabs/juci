@@ -5,35 +5,22 @@
 		</h3>
 	</div>
 
-	<div class="row">
-		<div class="col-sm-4" style="background-color: red"></div>
-		<div class="col-sm-4" style="background-color: blue">
-			<juci-select style="min-width: 258px !important" ng-items="knobsForJuciSelect" ng-model="data.newKnob" placeholder="Variable"/>
-		</div>
-		<div class="col-sm-2" style="background-color: red">
-			<input class="form-control" type="text" style="min-width: 128px" ng-model="data.newValue" placeholder="{{'Value'|translate}}"/>
-		</div>
-		<div class="col-sm-2" style="background-color: blue">
+	<div class="row" style="margin-top:20px">
+		<div class="col-sm-6" style="font-size: 1.2em">Set new variable</div>
+		<div class="col-sm-6" style="display: flex">
+			<select ng-options="x for x in knobsForSelect" ng-model="data.newKnob" style="min-width:100px; background-color:white; border-color:#CCCCCC">
+				<option value="" disabled selected style="display: none; color: red;">Variable</option>'
+			</select>
+			<input class="form-control" type="text" style="width: 100px" ng-model="data.newValue" placeholder="{{'Value'|translate}}"/>
 			<button class="btn btn-default" ng-click="add()"><i class="fa fa-plus"></i></button>
 		</div>
 	</div>
-<!--
-	<juci-config-line title="" error="data.error">
-		<div class="input-group">
-			<input class="form-control" type="text" style="max-width: 196px !important" ng-model="data.newSetting" placeholder="{{'newstuff'|translate}}"/>
-			<button class="btn btn-default" ng-click="add()"><i class="fa fa-plus"></i></button>
-		</div>
-		<juci-config-line title="{{ 'Knob' | translate }}">
-			<juci-select ng-items="knobsForJuciSelect" ng-model="" />
-		</juci-config-line>
-	</juci-config-line>
--->
 
-	<juci-config-line ng-repeat="opt in instance.option.value track by $index">
-		<div class="input-group">
-			<input class="form-control" type="text" style="max-width: 196px !important" ng-model="opt"/>
+	<div class="row" style="margin-top:20px" ng-repeat="opt in instance.option.value track by $index">
+		<div class="col-sm-6" style="font-size: 1.2em"></div>
+		<div class="col-sm-6" style="display: flex">
+			<input class="form-control" type="text" ng-model="opt" ng-disabled="true" style="min-width:100px; background-color:white; border-color:#CCCCCC"/>
 			<button class="btn btn-default" ng-click="del($index)"><i class="fa fa-trash-o"></i></button>
 		</div>
-	</juci-config-line>
-	<div style="margin-bottom: 20px !important"></div>
+	</div>
 </div>
