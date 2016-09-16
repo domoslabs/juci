@@ -25,8 +25,8 @@
 			<tr ng-show="data.dslDown || data.dslUp">
 				<td><strong translate>DSL Rate(s)</strong></td>
 				<td>
-					<span ng-show="data.dslDown">Down: <div style="float:right;">{{down}} Mbit/s</div></span><br />
-					<span ng-show="data.Up">Up: <div style="float:right;">{{up}} Mbit/s</div></span><br />
+					<span ng-show="data.dslDown">Down: <div class="pull-right">{{data.dslDown}} Mbit/s</div><br/></span>
+					<span ng-show="data.dslUp">Up: <div class="pull-right">{{data.dslUp}} Mbit/s</div><br/></span>
 				</td>
 			</tr>
 			<tr ng-show="data.linkspeed">
