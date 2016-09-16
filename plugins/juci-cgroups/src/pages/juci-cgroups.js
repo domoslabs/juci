@@ -81,13 +81,9 @@ JUCI.app.controller("cgroupsCtrl", function($scope, $uci, $juciInputModal, $tr){
 	}
 
 	$scope.addProcmap = function(){
+		if($scope.data.newKnob==="" || $scope.data.newValue===""){ return; }
+
 		var newSetting = $scope.data.newProc + "=" + $scope.data.newValue;
-
-		//if($scope.instance.procmap.value === ""){
-		//	$scope.instance.procmap.value = [newSetting];
-		//	return;
-		//}
-
 		var tmpList = $scope.procmaps.value.concat([newSetting]);
 		$scope.procmaps.value = tmpList;
 

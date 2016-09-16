@@ -22,11 +22,13 @@
 					<div class="row" style="margin-top:20px">
 						<div class="col-sm-6" style="font-size: 1.2em">Set new procmap</div>
 						<div class="col-sm-6" style="display: flex">
-							<select ng-options="x for x in procsForSelect" ng-model="data.newProc" style="min-width:100px; background-color:white; border-color:#CCCCCC">
-								<option value="" disabled selected style="display: none; color: red;">Process</option>'
+							<select ng-model="data.newProc" style="min-width:100px; background-color:white; border-color:#CCCCCC; color:{{!(data.newProc) ? '#999999' : '#555555'}}">
+								<option value="" disabled selected style="display: none">Process</option>'
+								<option ng-repeat="proc in procsForSelect track by $index" style="color:#555555">{{proc}}</option>
 							</select>
-							<select ng-options="x for x in cgroupsForSelect" ng-model="data.newValue" style="min-width:100px; background-color:white; border-color:#CCCCCC">
-								<option value="" disabled selected style="display: none; color: red;">Cgroup</option>'
+							<select ng-model="data.newValue" style="min-width:100px; background-color:white; border-color:#CCCCCC; color:{{!(data.newValue) ? '#999999' : '#555555'}}">
+								<option value="" disabled selected style="display: none">Cgroup</option>'
+								<option ng-repeat="cgroup in cgroupsForSelect track by $index" style="color:#555555">{{cgroup}}</option>
 							</select>
 							<button class="btn btn-default" ng-click="addProcmap()"><i class="fa fa-plus"></i></button>
 						</div>

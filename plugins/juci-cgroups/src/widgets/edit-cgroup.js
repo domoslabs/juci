@@ -11,24 +11,33 @@ JUCI.app
 	};
 })
 .controller("editCgroupCtrl", function($scope, $uci, $juciInputModal){
-	$scope.data = {newKnob:"", newValue:"", error:"No valid new setting given."};
+	$scope.data = {newKnob:"", newValue:"", error:false, errormsg:"Value can only be numbers and characters a-z, A-Z."};
 
 	$rpc.$call("cgroups", "knobs").done(function(data){
 		$scope.knobsForSelect = data.knobs;
 	}).fail(function(e){ console.log("'ubus call cgroups knobs' failed: "+e); });
 
-	function verifySetting(setting){
-		if(setting.match("^[a-zA-Z0-9_.]+=[a-zA-Z0-9]+$") === null){ // memory.move_charge_at_immigrate=1
-			return false;
+	function verifyValue(value){
+		if(value.match("^[a-zA-Z0-9]+$")){ // memory.move_charge_at_immigrate=1
+			$scope.data.error = false;
+			return true;
 		}
-		return true;
+		$scope.data.error = true;
+		return false;
 	}
+	//function verifySetting(setting){
+	//	if(setting.match("^[a-zA-Z0-9_.]+=[a-zA-Z0-9]+$") === null){ // memory.move_charge_at_immigrate=1
+	//		return false;
+	//	}
+	//	return true;
+	//}
+
 
 	$scope.add = function(){
 		if(!$scope.instance || !$scope.instance.option){ return; }
 
 		var newSetting = $scope.data.newKnob + "=" + $scope.data.newValue;
-		if(!verifySetting(newSetting)){ return; }
+		if(!verifyValue($scope.data.newValue)){ return; }
 
 		if($scope.instance.option.value === ""){
 			$scope.instance.option.value = [newSetting];
@@ -49,4 +58,8 @@ JUCI.app
 		tmpList.splice(index,1);
 		$scope.instance.option.value = tmpList;
 	}
+	$scope.$watch("data.newValue", function(value){
+		if(!value){ $scope.data.error=false; return; }
+		verifyValue(value);
+	},false);
 });
