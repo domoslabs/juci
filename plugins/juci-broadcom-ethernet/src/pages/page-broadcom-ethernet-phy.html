@@ -13,9 +13,6 @@
 			<juci-config-line title="{{'Uplink port'|translate}}">
 				<juci-select ng-items="data.ports" ng-model="data.wan_port"></juci-select>
 			</juci-config-line>
-			<juci-config-line title="{{'This device will be used in a bridge'|translate}}" ng-show="config">
-				<switch class="green" ng-model="config.bridge.value"></switch>
-			</juci-config-line>
 		</juci-config-section>
 	</div>
 </juci-layout-with-sidebar>
