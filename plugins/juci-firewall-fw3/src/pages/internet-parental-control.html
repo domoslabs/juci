@@ -29,8 +29,7 @@
 						<td>{{r.stop_time.value}}</td>
 						<td>
 							<div ng-repeat="mac in r.src_mac.value track by $index">
-								<div class="col-xs-2"><i class="fa fa-desktop"></i></div>
-								<div class="col-xs-10" >{{mac}}</div>
+								{{getHostname(mac) || mac}}
 							</div>
 						</td>
 						<td style="width: 1%">
