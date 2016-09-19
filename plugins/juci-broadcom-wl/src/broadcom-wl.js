@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA
  */
-	
+
 JUCI.app.run(function($network, $uci, $wireless){
 	$network.subsystem(function(){
 		return {
@@ -25,8 +25,8 @@ JUCI.app.run(function($network, $uci, $wireless){
 				var def = $.Deferred();
 				$wireless.getConnectedClients().done(function(wclients){
 					clients.map(function(cl){
-						var wcl = wclients.find(function(wc){ return String(wc.macaddr).toLowerCase() == String(cl.macaddr).toLowerCase(); });
-						if(wcl) { 	
+						var wcl = wclients.find(function(wc){ return String(wc.macaddr).toLowerCase() === String(cl.macaddr).toLowerCase(); });
+						if(wcl) {
 							cl._display_widget = "wireless-client-lan-display-widget";
 							cl._wireless = wcl;
 						}
@@ -43,10 +43,10 @@ JUCI.app.run(function($network, $uci, $wireless){
 
 JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 	function Wireless(){
-		this.scheduleStatusText = $tr(gettext("off")); 
-		this.wpsStatusText = $tr(gettext("off")); 
+		this.scheduleStatusText = $tr(gettext("off"));
+		this.wpsStatusText = $tr(gettext("off"));
 	}
-	
+
 	Wireless.prototype.annotateAdapters = function(adapters){
 		var def = $.Deferred();
 		var self = this;
@@ -148,7 +148,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 		});
 		return deferred.promise();
 	}
-	
+
 	Wireless.prototype.getDefaults = function(){
 		var deferred = $.Deferred();
 		$rpc.$call("juci.wireless", "run", {"method":"defaults"}).done(function(result){
@@ -156,14 +156,14 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 				deferred.reject();
 				return;
 			}
-			
+
 			deferred.resolve(result);
 		}).fail(function(){
 			deferred.reject();
 		});
 		return deferred.promise();
 	}
-	
+
 	Wireless.prototype.scan = function(opts){
 		var deferred = $.Deferred();
 		$rpc.$call("juci.broadcom.wireless.lua", "run", {"method":"scan", "args":JSON.stringify(opts)}).always(function(){
@@ -171,7 +171,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 		});
 		return deferred.promise();
 	}
-	
+
 	Wireless.prototype.getScanResults = function(opts){
 		var deferred = $.Deferred();
 		$rpc.$call("juci.broadcom.wireless.lua", "run", {"method":"scanresults", "args":JSON.stringify(opts)}).done(function(result){
@@ -179,7 +179,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 		});
 		return deferred.promise();
 	}
-	
+
 	return new Wireless();
 });
 
@@ -212,7 +212,7 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"time":		{ dvalue: "", type: String, validator: UCI.validators.TimespanValidator }
 	}, function validator(section){
 		if(section.days.value.length == 0){
-			return JUCI.$tr(gettext("Wifi Schedule: please pick at least one day to schedule on")); 
+			return JUCI.$tr(gettext("Wifi Schedule: please pick at least one day to schedule on"));
 		}
 		return null;
 	});
@@ -254,7 +254,7 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"encryption":		{ dvalue: "none", type: String },
 		"cipher":			{ dvalue: "auto", type: String },
 		"key":				{ dvalue: "", type: String, validator: UCI.validators.WPAKeyValidator("#%&'()*,/:;<=>?|[]\"\\") },
-		"key_index": 		{ dvalue: 1, type: Number }, 
+		"key_index": 		{ dvalue: 1, type: Number },
 		"key1":				{ dvalue: "", type: String, validator: UCI.validators.WEPKeyValidator },
 		"key2":				{ dvalue: "", type: String, validator: UCI.validators.WEPKeyValidator },
 		"key3":				{ dvalue: "", type: String, validator: UCI.validators.WEPKeyValidator },
@@ -275,7 +275,7 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		if(section.disabled.value !== false){ return null; }
 		var eList = [];
 // validate ssid
-		if(section.ssid.value.length >= 32) 
+		if(section.ssid.value.length >= 32)
 			eList.push(JUCI.$tr(gettext("Invalid SSID: ")) + (section.ssid.value || JUCI.$tr(gettext("no SSID"))) + JUCI.$tr(gettext(". SSID can not be more than 32 characters long!")));
 // validate keys
 		switch(section.encryption.value){
