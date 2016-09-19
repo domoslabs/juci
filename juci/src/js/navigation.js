@@ -94,9 +94,14 @@
 		this.sortNodes = function(){
 			function sortCh(ch){
 				if(!ch.children || !ch.children.length) return;
-				ch.children.sort(function(a, b){
+				var index = 0;
+				ch.children.map(function(ch){ ch["__index__"] = index++;});
+				ch.children = ch.children.sort(function(a, b){
+					if(!a.index || !b.index || a.index === b.index)
+						return a["__index__"] - b["__index__"];
 					return a.index - b.index;
 				});
+				ch.children.map(function(ch){ delete ch["__index__"];});
 				ch.children.map(function(subch){
 					sortCh(subch);
 				});
