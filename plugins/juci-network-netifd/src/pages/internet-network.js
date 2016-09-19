@@ -19,7 +19,8 @@
  */
 
 JUCI.app
-.controller("InternetNetworkPage", function($firewall, $scope, $uci, $rpc, $network, $ethernet, $tr, gettext, $juciDialog, $juciConfirm, $juciAlert){
+.controller("InternetNetworkPage", function($firewall, $scope, $uci, $rpc, $network, $ethernet, $tr, gettext, $juciDialog, $juciConfirm, $juciAlert, $localStorage){
+	console.log($localStorage.getItem("rpc_host"));
 	$scope.data = {}; 
 	
 	$ethernet.getAdapters().done(function(devices){

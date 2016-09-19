@@ -35,9 +35,7 @@
 	
 	var default_calls = [
 		"session.list",
-		"session.login",
-		"local.features",
-		"local.set_rpc_host"
+		"session.login"
 	];
 	
 	// type = "sonrpc mehod parameter (i.e. call, list, ...

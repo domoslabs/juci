@@ -601,10 +601,7 @@
 			var self = this;
 			if(self[".config"]) return self[".config"].$deleteSection(self);
 			var def = $.Deferred();
-			setTimeout(function(){
-				def.reject();
-			}, 0);
-			return def.promise();
+			return def.reject();
 		}
 		
 		UCISection.prototype.$reset = function(){
@@ -859,6 +856,8 @@
 			conf_type[name] = descriptor;
 			this["@"+name] = [];
 			if(validator !== undefined && validator instanceof Function) conf_type[name][".validator"] = validator;
+			conf_type[name]["_access_r"] = { dvalue:[], type: Array };
+			conf_type[name]["_access_w"] = { dvalue:[], type: Array };
 			//console.log("Registered new section type "+config+"."+name);
 		}
 		
