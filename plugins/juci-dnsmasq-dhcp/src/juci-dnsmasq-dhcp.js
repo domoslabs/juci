@@ -77,7 +77,7 @@ UCI.dhcp.$registerSectionType("domain", {
 	"network":	{ dvalue: "", type: String}
 });
 UCI.dhcp.$registerSectionType("host", {
-	"name":		{ dvalue: "", type: String },
+	"name":		{ dvalue: "", type: String, validator: UCI.validators.HostnameValidator },
 	"dhcp":		{ dvalue: "", type: String },
 	"network":	{ dvalue: "lan", type: String }, 
 	"mac":		{ dvalue: "", type: String, required: true, validator: UCI.validators.MACAddressValidator },

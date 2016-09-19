@@ -40,7 +40,7 @@ JUCI.app
 		replace: true
 	}
 })
-.controller("widgetNetworkExpanded", function($scope, $uci, $tr, gettext, $events){
+.controller("widgetNetworkExpanded", function($scope, $uci, $tr, gettext, $events, $network){
 	$scope.window = window;
 	$scope.order = {};
 	$scope.getStyle = function(colName, rowName){
@@ -66,11 +66,10 @@ JUCI.app
 			$scope.order[colname].column = col;
 		}
 		var update = function(){
-			$rpc.$call("router", "clients").done(function(res){
+			$network.getConnectedClients().done(function(clients){
 				$scope.clients = {};
 				$scope.columns = [];
-				Object.keys(res).map(function(r){
-					var client = res[r];
+				clients.map(function(client){
 					if(!client.connected) return;
 					if(client["tx_rate"]) client.tratem = Math.floor(parseInt(client["tx_rate"]) / 100) / 10;
 					if(client["rx_rate"]) client.rratem = Math.floor(parseInt(client["rx_rate"]) / 100) / 10;

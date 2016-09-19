@@ -5,8 +5,8 @@
 			<table class="table table-hover">
 				<tr>
 					<td>{{'Hostname'| translate}}</td>
-					<td ng-show="!client">{{model.client.hostname || ("Unknown"|translate)}}<button ng-class="{'disabled': disabled}" class="btn btn-default pull-right" style="margin-right:15px;" ng-click="edit_hostname()"><i class="juci juci-edit"></i></button></td>
-					<td ng-show="client"><input type="text" class="form-control" ng-model="client.name.value" placeholder="{{model.client.hostname || ''}}"></input></td>
+					<td ng-show="!client">{{model.client.hostname || ("Unknown"|translate)}}<button ng-class="{'disabled': disabled}" class="btn btn-default pull-right" style="margin-right:15px;" ng-click="edit_hostname()"><i class="juci juci-edit"></i></button><br/ ></td>
+					<td ng-show="client"><input type="text" class="form-control" ng-model="client.name.value" placeholder="{{model.client.hostname || ''}}"></input><div ng-show="client.name.error !== null"><br /><div class="alert alert-danger">{{client.name.error}}</div></div></td>
 				</tr>
 				<tr ng-repeat="value in values track by $index">
 					<td>{{value.label}}</td>
@@ -22,9 +22,6 @@
 				</table>
 			</juci-expandable>
 		</tab>
-		<tab heading="{{'Port Forwarding'|translate}}">
-			<firewall-client-port-mapping ng-model="model.client"></firewall-client-port-mapping>
-		</tab>
 		<tab heading="{{'Static Leases'| translate}}">
 			<juci-config-section>
 				<juci-config-lines>
@@ -34,13 +31,13 @@
 						</juci-config-line>
 					</div>
 					<div ng-show="client">
-						<juci-config-line title="{{'Device Name'|translate}}">
+						<juci-config-line title="{{'Device Name'|translate}}" error="client.name.error">
 							<input type="text" class="form-control" ng-model="client.name.value" />
 						</juci-config-line>
 						<juci-config-line title="{{'IP Address'|translate}}" error="client.ip.error">
 							<div class="row">
 								<juci-input-ipv4-address class="col-xs-12" ng-model="client.ip.value"></juci-input-ipv4-address><br/>
-								<div class="col-xs-12"><div class="alert alert-{{cssClass || 'warning'}}" style="margin-left:15px;font-size:0.8em" ng-show="inNetwork">{{'IP in network'|translate}}: {{inNetwork | uppercase}} {{'Clients current network'|translate}}: {{model.client.network || ('Unknown'|translate) | uppercase}}</div></div>
+								<div class="col-xs-12 alert alert-{{cssClass || 'warning'}}" style="margin-left:15px;font-size:0.8em" ng-show="inNetwork">{{'IP in network'|translate}}: {{inNetwork | uppercase}} {{'Clients current network'|translate}}: {{model.client.network || ('Unknown'|translate) | uppercase}}</div>
 							</div>
 						</juci-config-line>
 						<juci-config-line title="{{'DUID (IPv6)'|translate}}">
@@ -52,7 +49,15 @@
 						<juci-config-line>
 							<button class="btn btn-default" ng-click="onDeleteStaticLease()"><i class="fa fa-minus"></i></button>
 						</juci-config-line>
+					</div>
 				</juci-config-lines>
 			</juci-config-section>
 		</tab>
+		<tab heading="{{'Port Forwarding'|translate}}">
+			<firewall-client-port-mapping ng-model="model.client"></firewall-client-port-mapping>
+		</tab>
+		<tab heading="{{'Parental Control'|translate}}">
+			<firewall-parental-control ng-model="model.client"></firewall-parental-control>
+		</tab>
+	</tabset
 </div>

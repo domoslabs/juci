@@ -56,11 +56,7 @@ JUCI.app
 			});
 		} updateRules();
 		$scope.onCreateAccessRule = function(){
-			/*$uci.firewall.$create({
-				".type": "rule",
-				"parental": true,
-				"name": $tr(gettext("Parental Rule"))
-			}).done(function(rule){*/
+			$scope.errors = [];
 			$scope.rule = {
 				days: [],
 				macList: [],
@@ -71,6 +67,7 @@ JUCI.app
 		}
 
 		$scope.onEditAccessRule = function(rule){
+			$scope.errors = [];
 			$scope.rule = {
 				days: rule.weekdays.value.split(" ").filter(function(x){ return x !== "";}),
 				macList: rule.src_mac.value.map(function(x){ return { mac: x }; }),

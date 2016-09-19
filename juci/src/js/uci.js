@@ -382,6 +382,17 @@
 		}
 	};
 
+	function HostnameValidator(){
+		this.validate = function(field){
+			if(!field.value) return;
+			if(field.value.length > 256)
+				return JUCI.$tr(gettext("Hostname can not be longer than 256 characters"));
+			if(!field.value.match(/^[0-9a-z\-_]+$/i))
+				return JUCI.$tr(gettext("Hostname can only contain numbers, letters, hyphens and underscores"));
+			return null;
+		}
+	};
+
 
 	
 	var section_types = {};
@@ -1285,7 +1296,8 @@
 		IP4MulticastAddressValidator: IP4MulticastAddressValidator,
 		IP4CIDRValidator: IP4CIDRValidator,
 		IP4UnicastAddressValidator: IP4UnicastAddressValidator,
-		QOSMarkValidator: QOSMarkValidator
+		QOSMarkValidator: QOSMarkValidator,
+		HostnameValidator: HostnameValidator
 	};
 	/*if(exports.JUCI){
 		var JUCI = exports.JUCI;
