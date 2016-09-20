@@ -171,7 +171,6 @@ JUCI.app
 			return;
 		}
 		$juciConfirm.show($tr(gettext("Are you sure you want to delete this connection?"))).done(function(result){
-			if(result != "ok")return;
 			conn.$delete().done(function(){
 				var keep = [];
 				$firewall.getZones().done(function(zones){

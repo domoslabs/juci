@@ -59,18 +59,18 @@ JUCI.app
 	$scope.onChangeProtocol = function(value, oldvalue){
 		if(value == oldvalue) return;
 		$juciConfirm.show($tr(gettext("Are you sure you want to switch? Your settings will be lost!<br />The only way to get it back is to reload the page")))
-		.done(function(data){
-			if(data == "cancel"){
-				$scope.interface.proto.value = oldvalue;
+		.done(function(){
+			var exc = [];
+			if(exceptions[value]){
+				exc = exceptions[value].concat(standard_exc);
 			}
-			if(data == "ok"){
-				var exc = [];
-				if(exceptions[value]){
-					exc = exceptions[value].concat(standard_exc);
-				}
-				$scope.interface.$reset_defaults(exc);
-				$scope.interface.proto.value = value;
-			}
+			$scope.interface.$reset_defaults(exc);
+			$scope.interface.proto.value = value;
+			setProto($scope.interface.proto.value);
+			$scope.$apply();
+		}).fail(function(){
+			$scope.interface.proto.value = oldvalue;
+		}).always(function(){
 			setProto($scope.interface.proto.value);
 			$scope.$apply();
 		});

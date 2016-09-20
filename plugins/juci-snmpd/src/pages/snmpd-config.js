@@ -106,9 +106,7 @@ JUCI.app
 	};
 	$scope.onDeleteSection = function(system){
 		$juciConfirm.show($tr(gettext("Are you sure you want to delete System?"))).done(function(res){
-			if(res){
-				system.$delete().done(function(){$scope.$apply();});
-			}
+			system.$delete().done(function(){$scope.$apply();});
 		});
 	};
 }); 
