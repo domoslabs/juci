@@ -226,10 +226,12 @@ JUCI.app
 		if(!$scope.networks) return;
 		$scope.networks.map(function(net){
 			if(!net.$info) return;
-			net.$buttons = [
-				{ label: $tr(gettext("Connect")), on_click: onConnect },
-				{ label: $tr(gettext("Disconnect")), on_click: onDisconnect }
-			]
+			if(net.$can_edit()){
+				net.$buttons = [
+					{ label: $tr(gettext("Connect")), on_click: onConnect },
+					{ label: $tr(gettext("Disconnect")), on_click: onDisconnect }
+				]
+			}
 			net.$statusList = [
 				{ label: $tr(gettext("Status")), value: (net.$info.pending) ? $tr(gettext("PENDING")) : ((net.$info.up) ? $tr(gettext("UP")) : $tr(gettext("DOWN")))},
 				{ label: $tr(gettext("Device")), value: net.$info.l3_device},
