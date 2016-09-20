@@ -21,7 +21,7 @@
 (function(scope){
 	var DEBUG_MODE = 0;
 	var retries = 3;
-	var RPC_HOST = ""; //(($config.rpc.host)?$config.rpc.host:"")
+	var RPC_USER = scope.localStorage.getItem("user") || "";
 	var RPC_DEFAULT_SESSION_ID = "00000000000000000000000000000000";
 	var RPC_SESSION_ID = scope.localStorage.getItem("sid")||RPC_DEFAULT_SESSION_ID;
 	var RPC_CACHE = {};
@@ -106,6 +106,9 @@
 			}
 			else return RPC_SESSION_ID;
 		},
+		$user: function(){
+			return RPC_USER;
+		},
 		$isLoggedIn: function(){
 			return RPC_SESSION_ID !== RPC_DEFAULT_SESSION_ID;
 		},
@@ -152,8 +155,10 @@
 				"username": opts.username,
 				"password": opts.password
 			}).done(function(result){
+				RPC_USER = opts.username;
 				RPC_SESSION_ID = result.ubus_rpc_session;
 				scope.localStorage.setItem("sid", RPC_SESSION_ID);
+				scope.localStorage.setItem("user", RPC_USER);
 				self.$session = result;
 				//JUCI.localStorage.setItem("sid", self.sid);
 				//if(result && result.acls && result.acls.ubus) setupUbusRPC(result.acls.ubus);
@@ -173,8 +178,10 @@
 			}
 
 			METHODS.session.destroy().done(function(){
+				RPC_USER = "";
 				RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID; // reset sid to 000..
 				scope.localStorage.setItem("sid", RPC_SESSION_ID);
+				scope.localStorage.setItem("user", RPC_USER);
 				deferred.resolve();
 			}).fail(function(){
 				deferred.reject();
@@ -263,9 +270,6 @@
 		},
 		$init: function(host){
 			var self = this;
-			if(host) {
-				if(host.host) RPC_HOST = host.host;
-			}
 			if(DEBUG_MODE)console.log("Init UBUS ->");
 			var deferred = $.Deferred();
 			default_calls.map(function(x){ self.$register(x); });

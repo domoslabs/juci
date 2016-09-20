@@ -456,19 +456,19 @@
 				else return this.uvalue;
 			},
 			set value(val){
-				if(val === null) val = "";//return;
+				if(val === null) val = "";
 				// set dirty if not same
 				var self = this;
 				if(val instanceof Array){
 					self.is_dirty = !val.equals(self.uvalue);
 				} else {
-					self.is_dirty = val != self.ovalue;
+					self.is_dirty = val !== self.ovalue;
 				}
 				if(self.ovalue instanceof Array && !(val instanceof Array)) return;
 				if(val instanceof Array && self.ovalue instanceof Array){
 					self.is_dirty = false;
-					if(val.length != self.ovalue.length) self.is_dirty = true;
-					val.forEach(function(x, i){ if(self.ovalue[0] != x) self.is_dirty = true; });
+					if(val.length !== self.ovalue.length) self.is_dirty = true;
+					val.forEach(function(x, i){ if(self.ovalue[0] !== x) self.is_dirty = true; });
 				}
 
 				// properly handle booleans
@@ -489,12 +489,12 @@
 			get error(){
 				// make sure we ignore errors if value is default and was not changed by user
 				if(this.value === "" && this.schema.required) return JUCI.$tr(gettext("Field is required"));
-				if(this.uvalue == this.schema.dvalue || this.uvalue == this.ovalue) return null;
-				if(this.validator) return this.validator.validate(this);
+				if(this.uvalue === this.schema.dvalue || this.uvalue === this.ovalue) return null;
+				if(this.validator && this.validator.validate instanceof Function) return this.validator.validate(this);
 				return null;
 			},
 			get valid(){
-				if(this.validator) return this.validator.validate(this) == null;
+				if(this.validator && this.validator.validate instanceof Function) return this.validator.validate(this) === null;
 				return true;
 			},
 			set dirty(value){
@@ -534,9 +534,7 @@
 				var field = self[k];
 				if(!field) { field = self[k] = new UCI.Field("", type[k]); }
 				var value = type[k].dvalue;
-				if(!(k in data)) {
-					//console.log("Field "+k+" missing in data!");
-				} else {
+				if(k in data) {
 					switch(type[k].type){
 						case Number:
 							var n = Number(data[k]);
@@ -548,15 +546,10 @@
 							else value = data[k];
 							if(!value) value = [];
 							break;
-						//case Boolean:
-							//if(data[k] === 'true" || data[k] === "1" || data[k] === "on") value = true;
-							//else if(data[k] === "false" || data[k] === "0" || data[k] == "off") value = false;
-						//	break;
 						default:
 							value = data[k];
 					}
 				}
-				//if(k === "hostname") console.log("field "+k+" from "+field.value+" to "+value);
 				field.$update(value, opts.keep_user_changes);
 			});
 		}
@@ -623,6 +616,13 @@
 				if(self[k].$reset_defaults)
 					self[k].$reset_defaults();
 			});
+		}
+
+		UCISection.prototype.$can_edit = function(user){
+			if(!user || typeof user !== "string") user = $rpc.$user;
+			var self = this;
+			if(!self["_access_r"].value.length) return true;
+			return self["_access_r"].value.find(function(priv){ return priv === user; }) !== undefined;
 		}
 		
 		UCISection.prototype.$begin_edit = function(){
