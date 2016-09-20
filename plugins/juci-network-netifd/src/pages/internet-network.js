@@ -24,38 +24,36 @@ JUCI.app
 
 	$ethernet.getAdapters().done(function(devices){
 		$network.getNetworks().done(function(nets){
-			$scope.networks = nets.filter(function(x){ 
-				return x.ifname.value != "lo" 
-			}).map(function(net){ 
-				net.addedDevices = []; 
-				var addedDevices = net.ifname.value.split(" "); 
+			$scope.networks = nets;
+			$scope.networks.map(function(net){
+				net.addedDevices = [];
+				var addedDevices = net.ifname.value.split(" ");
 				//net.$type_editor = "<network-connection-proto-"+net.type.value+"-edit/>";
 				net.addableDevices = devices
-					.filter(function(dev){ 
-						var already_added = addedDevices.find(function(x){ 
-							return x == dev.id; 
-						}); 
+					.filter(function(dev){
+						var already_added = addedDevices.find(function(x){
+							return x == dev.id;
+						});
 						if(!already_added){
-							return true; 
+							return true;
 						} else {
-							net.addedDevices.push( { label: dev.name, value: dev.id }); 
-							return false; 
+							net.addedDevices.push( { label: dev.name, value: dev.id });
+							return false;
 						}
 					})
-					.map(function(dev){ 
-						return { label: dev.name, value: dev.id }; 
-					}); 
-				return net; 
-			}); 
+					.map(function(dev){
+						return { label: dev.name, value: dev.id };
+					});
+			});
 			updateStatus();
-			$scope.$apply(); 
-		}); 
-	}); 
-	
+			$scope.$apply();
+		});
+	});
+
 	$scope.onGetItemTitle = function(i){
 		return String(i[".name"]).toUpperCase();
 	}
-	
+
 	function evalName(name){
 		if(!name) return null;
 		if(name == "") return $tr(gettext("Interface Name is needed"));
@@ -183,20 +181,20 @@ JUCI.app
 					$scope.$apply();
 				});
 				$scope.networks = $scope.networks.filter(function(net){
-					return net[".name"] != conn[".name"]; 
-				}); 
-				$scope.$apply(); 
-			}); 
+					return net[".name"] != conn[".name"];
+				});
+				$scope.$apply();
+			});
 		});
 	}
-	
+
 	$scope.onAddDevice = function(net, dev){
-		if(!dev) return; 
-		var devs = {}; 
-		net.ifname.value.split(" ").map(function(name){ devs[name] = name; }); 
-		devs[dev] = dev; 
-		net.ifname.value = Object.keys(devs).join(" "); 
-		net.addedDevices = Object.keys(devs).map(function(x){ return { label: x, value: x }; }); 
+		if(!dev) return;
+		var devs = {};
+		net.ifname.value.split(" ").map(function(name){ devs[name] = name; });
+		devs[dev] = dev;
+		net.ifname.value = Object.keys(devs).join(" ");
+		net.addedDevices = Object.keys(devs).map(function(x){ return { label: x, value: x }; });
 	}
 	JUCI.interval.repeat("update-connection-information", 5000, function(next){
 		if(!$scope.networks){
@@ -250,9 +248,9 @@ JUCI.app
 	}
 
 	$scope.onRemoveDevice = function(net, name){
-		console.log("removing device "+name+" from "+net.ifname.value); 
-		var items = net.ifname.value.split(" ").filter(function(x){ return x != name; }); 
-		net.addedDevices = items.map(function(x){ return {label: x, value: x}; }); 
-		net.ifname.value = items.join(" "); 
+		console.log("removing device "+name+" from "+net.ifname.value);
+		var items = net.ifname.value.split(" ").filter(function(x){ return x != name; });
+		net.addedDevices = items.map(function(x){ return {label: x, value: x}; });
+		net.ifname.value = items.join(" ");
 	}
-}); 
+});

@@ -84,14 +84,14 @@
 			async.series([
 				function(next){
 					$uci.$sync("network").done(function(){
-						$uci.network["@interface"].map(function(i){
+						networks = $uci.network["@interface"].map(function(i){
 							i.ifname.value = i.ifname.value.split(" ").filter(function(name){
-								return name && name != "";
+								return name && name !== "";
 							}).join(" ");
 							if(i[".name"] == "loopback") return;
 							if(filter.no_aliases && i[".name"].indexOf("@") == 0 || i.type.value == "alias") return;
-							networks.push(i);
-						});
+							return i;
+						}).filter(function(net){ return net; });
 					}).always(function(){
 						next();
 					});
@@ -105,11 +105,10 @@
 					});
 				}
 			], function(){
-				networks = networks.map(function(x){
+				networks.map(function(x){
 					// set $info to the information gathered from network.interface.dump() or undefined
 					if(info && info.find)
 						x.$info = info.find(function(y){ return x[".name"] == y.interface; });
-					return x;
 				});
 				deferred.resolve(networks);
 			});

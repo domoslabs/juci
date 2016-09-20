@@ -619,7 +619,7 @@
 		}
 
 		UCISection.prototype.$can_edit = function(user){
-			if(!user || typeof user !== "string") user = $rpc.$user;
+			if(!user || typeof user !== "string") user = $rpc.$user();
 			var self = this;
 			if(!self["_access_r"].value.length) return true;
 			return self["_access_r"].value.find(function(priv){ return priv === user; }) !== undefined;
@@ -690,6 +690,7 @@
 			self[".name"] = name;
 			self["@all"] = [];
 			if(!name in section_types) throw new Error("Missing type definition for config "+name);
+			self.deleted_sections = [];
 			
 			// set up slots for all known types of objects so we can reference them in widgets
 			Object.keys(section_types[name]||{}).map(function(type){
@@ -733,6 +734,8 @@
 				}
 			}
 			if(section[".name"]) delete self[section[".name"]];
+			if(!section[".new"])
+				self.deleted_sections.push(section);
 		}
 		
 		UCIConfig.prototype.$getErrors = function(){
@@ -885,10 +888,34 @@
 		// creates a new object that will have values set to values
 		UCIConfig.prototype.create = function(item, offline){
 			console.error("UCI.section.create is deprecated. Use $create() instead!");
-			return this.$create(item, offline);
+			return this.$create(item);
 		}
 
-		UCIConfig.prototype.$create = function(item, offline){
+/*
+		UCIConfig.prototype.$undelete = function(section_name){
+			var self = this;
+			if(!section_name) return "no section_name";
+			var section = self.deleted_sections.find(function(sec){ return sec && sec[".name"] === section_name; });
+			if(!section) return "no section with that name";
+			self.deleted_sections = self.deleted_sections.filter(function(sec){ return sec[".name"] !== section_name; });
+			var type = section_types[self[".name"]][section[".type"]];
+			if(!type) return "no type for section";
+			var values = { ".type": section[".type"], ".name": section_name };
+			Object.keys(type).map(function(key){
+				if(key === ".validator") return;
+				if(section[key] && section[key].value !== undefined)
+					values[key] = section[key].value
+			});
+			var deferred = $.Deferred();
+			self.$create(values, true).done(function(item){
+				deferred.resolve(item);
+			}).fail(function(e){
+				deferred.reject(e);
+			});
+			return deferred.promise();
+		}
+*/
+		UCIConfig.prototype.$create = function(item, is_old){
 			var self = this;
 			if(!(".type" in item)) throw new Error("Missing '.type' parameter!");
 			var type = section_types[self[".name"]][item[".type"]];
@@ -924,7 +951,7 @@
 				item[".name"] = state.section;
 				self[".need_commit"] = true;
 				var section = _insertSection(self, item);
-				section[".new"] = true;
+				if(!is_old) section[".new"] = true;
 				deferred.resolve(section);
 			}).fail(function(){
 				deferred.reject();
@@ -965,6 +992,13 @@
 			var self = this;
 			var reqlist = [];
 			self["@all"].map(function(section){
+				if(section[".new"]){
+					reqlist.push({
+						"config": self[".name"],
+						"section": section[".name"],
+						"new":true
+					});
+				}
 				var changed = section.$getChangedValues();
 				//console.log(JSON.stringify(changed) +": "+Object.keys(changed).length);
 				if(Object.keys(changed).length){
@@ -1022,9 +1056,13 @@
 		Object.keys(self).map(function(x){
 			if(!self[x] || self[x].constructor != UCI.Config) return;
 			if(self[x][".need_commit"]){
-				changes.push({
-					type: "config",
-					config: self[x][".name"]
+				self[x].deleted_sections.map(function(section){
+					changes.push({
+						config:self[x][".name"],
+						section: section[".name"],
+						type: "section",
+						state: "deleted section"
+					});
 				});
 			}
 			/*Object.keys(self[x]).map(function(k){
@@ -1036,6 +1074,15 @@
 				});
 			});*/
 			self[x].$getWriteRequests().map(function(ch){
+				if(ch["new"]){
+					changes.push({
+						type: "section",
+						config: self[x][".name"],
+						section: self[x][ch.section][".name"],
+						state: "new section"
+					});
+					return changes;
+				}
 				Object.keys(ch.values).map(function(opt){
 					var o = self[x][ch.section][opt];
 					if(o.is_dirty){
@@ -1180,6 +1227,7 @@
 		var writes = [];
 		var add_requests = [];
 		var errors = [];
+		self.deleted_sections = [];
 		
 		async.series([
 			function(next){ // send all changes to the server
