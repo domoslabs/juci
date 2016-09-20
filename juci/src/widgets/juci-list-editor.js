@@ -54,6 +54,7 @@ JUCI.app
 		$scope.hide = true;
 	}
 	$scope.onListEditItem = function(i){
+		if(!$scope.canEdit(i)) return;
 		$scope.item = i;
 		$scope.hide = false;
 		$scope.onEditStart({"$item": i});
@@ -92,5 +93,11 @@ JUCI.app
 		arr.splice(idx, 1);
 		arr.splice(idx + 1, 0, i);
 		$scope.onItemMoved({ $item: i, $prev_index: idx, $index: idx + 1});
+	}
+
+	$scope.canEdit = function(section){
+		if(!section || !section.constructor || section.constructor.name !== "UCISection") return true;
+		if(!section.$can_edit || !section.$can_edit instanceof Function) return true;
+		return section.$can_edit();
 	}
 });
