@@ -21,7 +21,8 @@
 JUCI.app
 .controller("InternetFirewallRulesPage", function($scope, $uci, $firewall, $tr, gettext){
 	$firewall.getRules().done(function(rules){
-		$scope.rules = rules.map(function(rule){
+		$scope.rules = rules;
+		$scope.rules.map(function(rule){
 			var values = [];
 			if(rule.src_ip.value && rule.src_ip.value.length === 1) values.push({ label: $tr(gettext("Source IP")), value: rule.src_ip.value[0] });
 			if(rule.src_ip.value && rule.src_ip.value.length > 1) values.push({ label: $tr(gettext("Source IP")), value: rule.src_ip.value[0] + "..." });
@@ -30,7 +31,6 @@ JUCI.app
 			if(rule.src_port.value) values.push({ label: $tr(gettext("Source Port(s)")), value: rule.src_port.value });
 			if(rule.dest_port.value) values.push({ label: $tr(gettext("Destination Port(s)")), value: rule.dest_port.value });
 			rule.$statusList = values;
-			return rule;
 		});
 		$scope.$apply(); 
 	}); 
@@ -48,7 +48,6 @@ JUCI.app
 			"name": "new_rule",
 			"hidden": true
 		}).done(function(rule){
-			$scope.rules.push(rule);
 			$scope.$apply(); 
 		}); 
 	}
