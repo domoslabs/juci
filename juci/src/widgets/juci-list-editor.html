@@ -41,7 +41,7 @@
 		</div>
 	</div>
 	<hr class="visible-xs-block" style="color:grey;" />
-	<div ng-hide="hide || !dynamicHtml" style="border:1px solid #ddd;border-radius:5px;padding:10px 15px;">
+	<div id="editor" ng-hide="hide || !dynamicHtml" style="border:1px solid #ddd;border-radius:5px;padding:10px 15px;">
 		<button class="btn btn-default" ng-show="editor" style="margin-bottom: 5px;" ng-click="hideEditor()">{{'Hide Editor'|translate}}</button>
 		<div ng-show="item" dynamic="dynamicHtml"><div/>
 	</div>

@@ -44,7 +44,7 @@ JUCI.app
 		}
 	};
 })
-.controller("juciListEditor", function($scope){
+.controller("juciListEditor", function($scope, $location, $anchorScroll){
 	$scope.hide = true;
 	if($scope.editor) $scope.dynamicHtml = "<"+$scope.editor+" ng-model='item'/>";
 	$scope.onListAddItem = function(){
@@ -58,6 +58,9 @@ JUCI.app
 		$scope.item = i;
 		$scope.hide = false;
 		$scope.onEditStart({"$item": i});
+		$location.hash('editor');
+		// call $anchorScroll()
+		$anchorScroll();
 	}
 	$scope.onListRemoveItem = function(i){
 		$scope.onDelete({"$item": i});
