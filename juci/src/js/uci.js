@@ -462,7 +462,7 @@
 				if(val instanceof Array){
 					self.is_dirty = !val.equals(self.uvalue);
 				} else {
-					self.is_dirty = val !== self.ovalue;
+					self.is_dirty = val != self.ovalue; // nedds to be != due to boolean values
 				}
 				if(self.ovalue instanceof Array && !(val instanceof Array)) return;
 				if(val instanceof Array && self.ovalue instanceof Array){
