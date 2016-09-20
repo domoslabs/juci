@@ -19,7 +19,7 @@
 					<td ng-show="item.ovalue">{{item.ovalue|maxlength:30}}</td>
 					<td ng-show="item.uvalue">{{item.uvalue|maxlength:30}}</td>
 					<td ng-show="item.state">{{item.state}}</td>
-					<td colspan="2" ng-show="item.state === 'deleted section'">{{'Press Cancel to get back deleted section'|translate}}</td>
+					<td colspan="2" ng-show="item.state === 'deleted section'">{{'Press Cancel and reload page to get back deleted section'|translate}}</td>
 					<td><span ng-show="item.type === 'option'" ng-click="onRevertOption($index)" style="cursor:pointer;"><i class="fa fa-trash"></i></span></td>
 				</tr>
 			</tbody>
