@@ -20,7 +20,7 @@
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-3">
-							<button class="btn btn-default" style="width:100%;margin-bottom:5px;" ng-show="editable !== false && editor" ng-class="{'disabled': !canEdit(i)}" ng-click="onListEditItem(i)">{{'Edit'|translate}}</button>
+							<button class="btn btn-default" style="width:100%;margin-bottom:5px;" ng-show="editable !== false && editor" ng-class="{'disabled': !canEdit(i)}" ng-click="onEditAndMove(i)">{{'Edit'|translate}}</button>
 							<button ng-repeat="button in i.$buttons track by $index" style="width:100%;margin-bottom:5px;" style="margin:5px;" class="btn btn-{{buttons.type || 'default'}}" ng-click="button.on_click(i)">	
 								{{button.label}}
 							</button>

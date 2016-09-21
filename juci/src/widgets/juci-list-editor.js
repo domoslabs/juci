@@ -53,14 +53,17 @@ JUCI.app
 	$scope.hideEditor = function(){
 		$scope.hide = true;
 	}
+	$scope.onEditAndMove = function(i){
+		$location.hash('editor');
+		// call $anchorScroll()
+		$anchorScroll();
+		$scope.onListEditItem(i);
+	}
 	$scope.onListEditItem = function(i){
 		if(!$scope.canEdit(i)) return;
 		$scope.item = i;
 		$scope.hide = false;
 		$scope.onEditStart({"$item": i});
-		$location.hash('editor');
-		// call $anchorScroll()
-		$anchorScroll();
 	}
 	$scope.onListRemoveItem = function(i){
 		$scope.onDelete({"$item": i});
