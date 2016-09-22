@@ -21,8 +21,6 @@ UCI.$registerConfig("cgroups");
 UCI.cgroups.$registerSectionType("cgroups", {
 	"enabled":	{ dvalue:'1', type: Number },
 	"defgroup":	{ dvalue:'iopsys/normal', type: String }
-	//"srchost":	{ dvalue: '', type: String, validator: UCI.validators.IPAddressValidator },
-	//"portrange":	{ dvalue: '', type: String, validator: UCI.validators.PortOrRangeValidator("-") },
 });
 
 UCI.cgroups.$registerSectionType("cgroup", {
