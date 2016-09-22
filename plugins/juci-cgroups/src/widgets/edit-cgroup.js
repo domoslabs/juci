@@ -12,9 +12,12 @@ JUCI.app
 })
 .controller("editCgroupCtrl", function($scope, $uci, $juciInputModal){
 	$scope.data = {newKnob:"", newValue:"", error:false, errormsg:"Value can only be numbers and characters a-z, A-Z."};
+	$scope.knobsForSelect = [];
+	$scope.knobsForSelectDefault = [];
 
 	$rpc.$call("cgroups", "knobs").done(function(data){
-		$scope.knobsForSelect = data.knobs;
+		function removeReleaseAgent(str){ return str==="release_agent" ? false:true; }
+		$scope.knobsForSelectDefault = data.knobs.filter(removeReleaseAgent);
 	}).fail(function(e){ console.log("'ubus call cgroups knobs' failed: "+e); });
 
 	function verifyValue(value){
@@ -25,19 +28,22 @@ JUCI.app
 		$scope.data.error = true;
 		return false;
 	}
-	//function verifySetting(setting){
-	//	if(setting.match("^[a-zA-Z0-9_.]+=[a-zA-Z0-9]+$") === null){ // memory.move_charge_at_immigrate=1
-	//		return false;
-	//	}
-	//	return true;
-	//}
 
+	function alreadyAdded(knob){ 
+		if(!$scope.instance.option.value){ return false; }
+
+		function knobInStr(str){ return str.indexOf(knob)!==-1; }
+		if($scope.instance.option.value.find(knobInStr)){ return true; }
+		return false;
+	}
 
 	$scope.add = function(){
 		if(!$scope.instance || !$scope.instance.option){ return; }
 
-		var newSetting = $scope.data.newKnob + "=" + $scope.data.newValue;
+		var newKnob = $scope.data.newKnob;
+		if(alreadyAdded(newKnob)){ alert("Variable "+newKnob+" already set."); return; }
 		if(!verifyValue($scope.data.newValue)){ return; }
+		var newSetting = newKnob + "=" + $scope.data.newValue;
 
 		if($scope.instance.option.value === ""){
 			$scope.instance.option.value = [newSetting];
@@ -58,8 +64,25 @@ JUCI.app
 		tmpList.splice(index,1);
 		$scope.instance.option.value = tmpList;
 	}
+
 	$scope.$watch("data.newValue", function(value){
 		if(!value){ $scope.data.error=false; return; }
 		verifyValue(value);
-	},false);
+	});
+
+	$scope.$watch("instance", function(instance){
+		if(!instance){return;}
+		var name = instance[".name"];
+		if(name === "_root_"){
+			name = "";
+		}
+		else{
+			name = name.replace(/_/g,"/");
+		}
+		$rpc.$call("cgroups", "knobs", {'cgroup':name}).done(function(data){
+			if(data.knobs.length!==0){ $scope.knobsForSelect = data.knobs; }
+			else{ $scope.knobsForSelect = $scope.knobsForSelectDefault; }
+			$scope.$apply();
+		}).fail(function(e){ console.log("'ubus call cgroups knobs' failed: "+e); });
+	});
 });
