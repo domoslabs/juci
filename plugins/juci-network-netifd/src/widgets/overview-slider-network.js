@@ -403,6 +403,7 @@ JUCI.app
 		});
 	}
 
+	$scope.done = false;
 	updateData(false).done(function(nodes, edges){ // false indicating not full
 		// create a network
 		var containerFA = document.getElementById('mynetworkSmall');
@@ -423,6 +424,7 @@ JUCI.app
 				$scope.$apply();
 			}).always(function(){next();});
 		});
+		$scope.done = true;
 		var network = new vis.Network(containerFA, dataFA, optionsFA);
 		$events.subscribe("client", function(){
 			updateData().done(function(nodes, edges){
