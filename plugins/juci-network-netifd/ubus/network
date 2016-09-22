@@ -2,80 +2,119 @@
 
 . /usr/share/libubox/jshn.sh
 
-network_clients(){
-	# we have moved this one to lua implementation
-	/usr/lib/ubus/juci/network.lua clients
-}
-
-network_load(){
-	json_init 
-	json_add_int "active_connections" $(cat /proc/sys/net/netfilter/nf_conntrack_count)
-	json_add_int "max_connections" $(cat /proc/sys/net/netfilter/nf_conntrack_max)
-	json_dump
-}
-
-# TODO: this currently depends on kmod-ipt-conntrack. Need to make this generic!
-network_nat_table(){
-	/usr/lib/ubus/juci/network.lua nat_table
-}
-
-network_bridges() {
-	$(brctl show | awk -F'\t' '{ # broadcom is stupid (why not write cli utitlities so they are cli friendly?)
-		if(FNR==1) continue; 
-		if($1 != "") { 
-			if(BRNAME != "") { 
-				print BRNAME "=" INTERFACES; 
-			} 
-			BRNAME=$1; 
-			INTERFACES=$6; 
-		} else { 
-			INTERFACES=INTERFACES "," $8; 
-		}
-	} 
-	END { 
-		print BRNAME "=" INTERFACES; 
-	}'); 
-}
-
-network_nameservers(){
-	json_init 
-	json_add_array "nameservers"; 
-	for ns in `awk '/nameserver/{print $2}' /var/resolv.conf.auto`; do
-		json_add_string "" $ns; 
-	done
-	json_close_array
-	json_dump
-}
-
-network_protocols() {
-	/usr/lib/ubus/juci/network.lua protocols
-}
-
-network_services() {
-	/usr/lib/ubus/juci/network.lua services
-}
-
-case $1 in 
-	.methods) 
-		echo "clients,load,nameservers,nat_table,protocols,services"; 
-		exit 0
-		;;
-	clients) 
-		network_clients
-		;;
-	load)
-		network_load
-		;;
-	nat_table)
-		network_nat_table
-		;;
-	nameservers)
-		network_nameservers
-		;;
-	protocols)
-		network_protocols
-		;;
-	services)
-		network_services
-		;;
+case "$1" in
+	list)
+		echo '{ "arp" : {}, "ipv4routes" : {}, "ipv6routes" : {}, "ipv6neigh" : {}, "load" : {}, "nameservers" : {}, "nat_table" : {}, "protocols" : {}, "services" : {} }'
+	;;
+	call)
+		case "$2" in
+			arp)
+				local arpfile=/tmp/arptable
+				cat /proc/net/arp | tail -n +2 | tr '*' '-' > $arpfile
+				json_init
+				json_add_array "clients"
+				while read -r line
+				do
+					json_add_object ""
+					json_add_string ipaddr "$(echo $line | awk '{print$1}')"
+					json_add_string hw "$(echo $line | awk '{print$2}')"
+					json_add_string flags "$(echo $line | awk '{print$3}')"
+					json_add_string macaddr "$(echo $line | awk '{print$4}')"
+					json_add_string mask "$(echo $line | awk '{print$5}' | tr '-' '*')"
+					json_add_string device "$(echo $line | awk '{print$6}')"
+					json_select ..
+				done < $arpfile
+				#rm -f $arpfile
+				json_dump
+			;;
+			ipv4routes)
+				local routesfile=/tmp/ipv4routes
+				route -n | tail -n +3 > $routesfile
+				json_init
+				json_add_array "routes"
+				while read -r line
+				do
+					json_add_object ""
+					json_add_string destination "$(echo $line | awk '{print$1}')"
+					json_add_string gateway "$(echo $line | awk '{print$2}')"
+					json_add_string mask "$(echo $line | awk '{print$3}')"
+					json_add_string flags "$(echo $line | awk '{print$4}')"
+					json_add_string metric "$(echo $line | awk '{print$5}')"
+					json_add_string ref "$(echo $line | awk '{print$6}')"
+					json_add_string use "$(echo $line | awk '{print$7}')"
+					json_add_string iface "$(echo $line | awk '{print$8}')"
+					json_select ..
+				done < $routesfile
+				rm -f $routesfile
+				json_dump
+			;;
+			ipv6routes)
+				local routes6file=/tmp/ipv6routes
+				route -A inet6 | tail -n +3 > $routes6file
+				json_init
+				json_add_array "routes"
+				while read -r line
+				do
+					json_add_object ""
+					json_add_string destination "$(echo $line | awk '{print$1}')"
+					json_add_string next_hop "$(echo $line | awk '{print$2}')"
+					json_add_string flags "$(echo $line | awk '{print$3}')"
+					json_add_string metric "$(echo $line | awk '{print$4}')"
+					json_add_string ref "$(echo $line | awk '{print$5}')"
+					json_add_string use "$(echo $line | awk '{print$6}')"
+					json_add_string iface "$(echo $line | awk '{print$7}')"
+					json_select ..
+				done < $routes6file
+				rm -f $routes6file
+				json_dump
+			;;
+			ipv6neigh)
+				local neigh6file=/tmp/ipv6neigh
+				ip -6 neigh > $neigh6file
+				json_init
+				json_add_array "neighbors"
+				while read -r line
+				do
+					json_add_object ""
+					json_add_string ip6addr "$(echo $line | awk '{print$1}')"
+					json_add_string device "$(echo $line | awk '{print$3}')"
+					json_add_string macaddr "$(echo $line | awk '{print$5}')"
+					router=$(echo $line | awk '{print$6}' | grep -q router && echo 1 || echo 0)
+					json_add_boolean router $router
+					if [ $router -eq 1 ]; then
+						json_add_string ip6status "$(echo $line | awk '{print$7}')"
+					else
+						json_add_string ip6status "$(echo $line | awk '{print$6}')"
+					fi
+					json_select ..
+				done < $neigh6file
+				rm -f $neigh6file
+				json_dump				
+			;;
+			load)
+				json_init 
+				json_add_int "active_connections" $(cat /proc/sys/net/netfilter/nf_conntrack_count)
+				json_add_int "max_connections" $(cat /proc/sys/net/netfilter/nf_conntrack_max)
+				json_dump
+			;;
+			nameservers)
+				json_init 
+				json_add_array "nameservers"; 
+				for ns in `awk '/nameserver/{print $2}' /var/resolv.conf.auto`; do
+					json_add_string "" $ns; 
+				done
+				json_close_array
+				json_dump
+			;;
+			nat_table)
+				/usr/lib/ubus/juci/network.lua nat_table
+			;;
+			protocols)
+				/usr/lib/ubus/juci/network.lua protocols
+			;;
+			services)
+				/usr/lib/ubus/juci/network.lua services
+			;;
+		esac
+	;;
 esac
