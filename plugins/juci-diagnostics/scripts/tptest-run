@@ -1,25 +1,32 @@
 #!/bin/sh
+
+. /usr/share/libubox/jshn.sh
+
 local SUCCESS=0
 
-local send=$1
-local receive=$2
+local args="$1"
 local sent="none"
 local received="none"
-local lable="success"
+local label="success"
 
-if [ "$send" != "done" ]; then
-	sent=$(tptest $send | awk '/Throughput/{print($2)}')
-fi
-if [ "$receive" != "done" ]; then
-	received=$(tptest $receive | awk '/Throughput/{print($2)}')
-fi
-if [ "$receive" == "" || "$sent" == "" ]; then
+json_load "$args"
+json_get_var testmode testmode "up_down"
+json_get_var packetsize packetsize 50000
+json_get_var address address
+json_get_var port port
+
+case "$testmode" in
+	*up*) sent=$(tptest -n 1 -m tcp-send 60 $packetsize -v 2 $address $port | awk '/Throughput/{print($2)}') ;;
+esac
+
+case "$testmode" in
+	*down*) received=$(tptest -n 1 -m tcp-receive 60 $packetsize -v 2 $address $port | awk '/Throughput/{print($2)}') ;;
+esac
+
+if [ -z "$received" -o -z "$sent" ]; then
 	SUCCESS=-1;
-	lable="wrong address";
-elif [ "$receive" == "0" || "$sent" == "0" ]; then
-	SUCCESS=-2;
-	lable="wrong port";
+	label="wrong address:port combination";
 fi
-ubus send juci.utils.speedtest "{\"status\":$SUCCESS, \"upstream\":\"$sent\",\"downstream\":\"$received\",\"lable\":\"$lable\"}"
 
+ubus send juci.utils.speedtest "{\"status\":$SUCCESS, \"upstream\":\"$sent\",\"downstream\":\"$received\",\"label\":\"$label\"}"
 

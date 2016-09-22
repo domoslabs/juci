@@ -1,0 +1,74 @@
+#!/bin/sh
+
+. /usr/share/libubox/jshn.sh
+
+service_list() {
+	ubus call service list
+}
+
+handle_service() {
+	local action=$1
+	local service=$2
+
+	json_init
+	if [ -f /etc/init.d/$service ]; then
+		/etc/init.d/$service $action >/dev/null 2>&1 &
+		json_add_string success "$name $action"
+	else
+		json_add_string error "Invalid service!"
+	fi
+	json_dump
+}
+
+service_status() {
+	ubus call service list
+}
+
+case "$1" in
+	list)
+		echo '{ "list" : {}, "start" : {"name":"str"}, "stop" : {"name":"str"}, "enable" : {"name":"str"}, "disable" : {"name":"str"}, "reload" : {"name":"str"}, "restart" : {"name":"str"}, "status" : {"name":"str"} }'
+	;;
+	call)
+		case "$2" in
+			list)
+				local enabled=0
+				local running=0
+				local start=0
+
+				json_init
+				json_add_array "services"
+				for serv in $(ls /etc/init.d/); do
+					running=$(ubus -t 1 call service list "{'name':'$serv'}" | grep running | grep -q true && echo 1 || echo 0)
+					ls /etc/rc.d/S*$serv >/dev/null 2>&1 && enabled=1 || enabled=0
+					start=$(ls /etc/rc.d/S*$serv 2>/dev/null | awk -F"$serv" '{print$1}' | cut -d'S' -f2)
+					json_add_object ""
+					json_add_string name $serv
+					json_add_boolean enabled $enabled
+					json_add_boolean running $running
+					json_add_int start $start
+					json_select ..
+				done
+				json_dump
+			;;
+			start|stop|enable|disable|reload|restart)
+				read input
+				json_load "$input"
+				json_get_var name name
+				[ -n "$name" ] && handle_service $2 $name
+			;;
+			status)
+				local running=0
+
+				read input
+				json_load "$input"
+				json_get_var name name
+
+				running=$(ubus -t 1 call service list "{'name':'$name'}" | grep running | grep -q true && echo 1 || echo 0)
+				json_init
+				json_add_boolean running $running
+				json_dump
+			;;
+		esac
+	;;
+esac
+

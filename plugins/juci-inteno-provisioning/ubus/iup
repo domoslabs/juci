@@ -1,0 +1,29 @@
+#!/bin/sh
+
+. /usr/share/libubox/jshn.sh
+
+case "$1" in
+	list)
+		echo '{ "backup" : {"filename":"str"} }'
+	;;
+	call)
+		case "$2" in
+			backup)
+				read input
+
+				json_load "$input"
+				json_get_var filename filename
+
+				if [ -n "$filename" ]; then
+					filename="/tmp/$filename"
+				else
+					filename="/tmp/iup-backup.tmp"
+				fi
+				
+				json_init
+				json_add_string stdout "$(sysupgrade -u $filename)"
+				json_dump
+			;;
+		esac
+	;;
+esac

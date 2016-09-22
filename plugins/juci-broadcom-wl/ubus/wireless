@@ -2,213 +2,77 @@
 
 . /usr/share/libubox/jshn.sh
 
-get_wireless_devices(){
-	echo `ip link | awk 'BEGIN { FS=": "; } /^[[:digit:]]{1,2}/ { if(match($2, /wl/)) print $2 }'`
-}
+case "$1" in
+	list)
+		echo '{ "scan" : {"radio":"str"}, "scanresults" : {"radio":"str"}, "set_credentials" : {"ssid":"str", "encryption":"str", "key":"str"} }'
+	;;
+	call)
+		case "$2" in
+			scan)
+				read input;
 
-# wireless info dump. Expected output of wlctl: 
-# SSID: "MyAP"
-# Mode: Managed	RSSI: 0 dBm	SNR: 0 dB	noise: -80 dBm	Channel: 1
-# BSSID: 00:22:07:1E:7F:E9	Capability: ESS ShortSlot RRM 
-# Supported Rates: [ 6(b) 24 54 ]
-# HT Capable:
-# 	Chanspec: 2.4GHz channel 1 20MHz (0x1001)
-# 	Primary channel: 1
-# 	HT Capabilities: 
-# 	Supported MCS : [ 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 ]
+				json_load "$input"
+				json_get_var radio radio
 
-wireless_devices(){
-	WLDEVICES=`get_wireless_devices`
-	json_init
+				[ -n "$radio" ] || return 1
 
-	json_add_array "devices"; 
-	for wdev in $WLDEVICES; do 
-		DATA=$(wlctl -i $wdev assoc | awk 'BEGIN { 
-			FS="[ \t]"; 
-		} 
-		{
-			for(c = 0; c < NF; c++){
-				if($c == "SSID:"){
-					gsub(/"/, "", $(c+1)); 
-					print "string|ssid=" $(c+1);
-				}
-				if($c == "Mode:") print "string|mode=" $(c+1); 
-				if($c == "RSSI:") print "int|rssi=" $(c+1);
-				if($c == "SNR:") print "int|snr=" $(c+1);
-				if($c == "noise:") print "int|noise=" $(c+1);
-				if($c == "Channel:") print "int|channel=" $(c+1);
-				if($c == "BSSID:") print "string|bssid=" $(c+1);  
-				if($c == "Rates:") {
-					printf "string|rates="; 
-					c+=2; 
-					while($c != "]" && c < NF) {
-						printf $(c); 
-						c++; 
-						if($c != "]") printf ","
-					} 
-					printf "\n"; 
-				}
-				if($c == "Chanspec:") print "string|frequency=" $(c+1);  
-				if($c == "channel") print "int|channel=" $(c+1); 
-				if($c == "channel:") print "int|primary_channel=" $(c+1) ;   
-				if($c == "MCS") {
-					printf "string|supported_channels="; 
-					c+=3; 
-					while($c != "]" && c < NF) {
-						if($c != "[" && $c != "]") printf $(c); 
-						if($c != "[" && $(c+1) != "]" && (c+1) != NF) printf ","
-						c++; 
-					} 
-					printf "\n"; 
-				}
-			}
-		}');
-		
-		json_add_object
-		json_add_string "device" "$wdev"; 
-		RATE=$(wlctl -i $wdev rate);
-		json_add_string "rate" "$RATE";
-		for field in $DATA; do 
-			type=${field%%|*}
-			nv=${field##*|}
-			if [ "$type" == "string" ]; then json_add_string ${nv%=*} ${nv#*=}; fi
-			if [ "$type" == "int" ]; then json_add_int ${nv%=*} ${nv#*=}; fi
-		done
-		json_close_object 
-	done; 
-	json_close_array
-	json_dump
-}
+				json_init
+				json_add_boolean success $(wlctl -i $radio scan 2>&1 | grep -q Rejected && echo 0 || echo 1)
+				json_dump
+			;;
+			scanresults)
+				read input;
 
-wireless_clients(){
-	WLDEVICES=`get_wireless_devices`
-	
-	json_init
-	json_add_array "clients"
-	for wdev in $WLDEVICES; do
-		CLIENTS=$(wlctl -i $wdev assoclist | cut -d' ' -f2); 
-		BAND=$(wlctl -i $wdev band); 
-		if [ "$BAND" == "b" ]; then BAND="2.4GHz"; else BAND="5GHz"; fi
-		for cl in $CLIENTS; do
-			local RSSI=$(wlctl -i "$wdev" rssi "$cl"); 
-			local NOISE=$(wlctl -i "$wdev" noise); 
-			local FLAGS="AUTHED"; 
-			ARP=`cat /proc/net/arp | grep -i "$cl" | awk '/[[:digit:]]/ { print "ipaddr=" $1; }'`; 
-			if [ "$ARP" == "" ]; then FLAGS="$FLAGS,NOIP"; else FLAGS="$FLAGS,UP"; fi
-			json_add_object 
-			json_add_string "macaddr" "$cl"
-			json_add_string "device" "$wdev"
-			json_add_string "band" "$BAND"
-			json_add_string "flags" "$FLAGS"
-			json_add_int "rssi" "$RSSI"
-			json_add_int "noise" "$NOISE"
-			json_add_string "hostname" $(grep -i "$cl" /var/dhcp.leases | awk '{print $4;}'); 
-			for arp in $ARP; do 
-				json_add_string ${arp%=*} ${arp#*=};
-			done
-			json_close_object
-		done
-	done
-	json_close_array
-	json_dump
-}
+				json_load "$input"
+				json_get_var radio radio
 
-wireless_radios(){
-	RADIOS=`grep wifi-device /etc/config/wireless | awk -F\' '{print $2}'`
-	
-	json_init
-	for radio in $RADIOS; do
-		if [ "$(wlctl -i $radio apsta 2>/dev/null)" == "1" ]; then continue; fi
-		json_add_object "$radio"
-		json_add_string "device" $radio
-		FREQ=$(wlctl -i $radio assoc | awk -F' ' '/Chanspec/ { print $2; }'); 
-		if [ "$FREQ" == "2.4GHz" ]; then
-			json_add_array "hwmodes";
-			json_add_string "" "auto"; 
-			json_add_string "" "11b"; 
-			json_add_string "" "11g"; 
-			json_add_string "" "11bg"; 
-			json_add_string "" "11n";
-			json_close_array
-			json_add_array "bwcaps"; 
-			json_add_int "" 20
-			json_add_int "" 40
-			json_close_array
-		elif [ "$FREQ" == "5GHz" ]; then
-			json_add_array "hwmodes";
-			# get deviceid of the device and then lookup if the device ac mode is supported (manually set in db) 
-			devid=$(wlctl -i $radio revinfo | awk '/deviceid/{print substr($2,3);}'); 
-			if [ $(db -q get hw.$devid.is_ac) == "1" ]; then
-				json_add_string "" "11ac"; 
-			fi
-			json_add_string "" "auto"; 
-			json_add_string "" "11a"; 
-			json_add_string "" "11n";
-			json_close_array
-			json_add_array "bwcaps"; 
-			json_add_int "" 20
-			json_add_int "" 40
-			json_add_int "" 80
-			json_close_array
-		fi
-		json_add_array "channels";
-		json_add_string "" "auto"
-		for chan in $(wlctl -i $radio channels); do
-			json_add_int "" "$chan"
-		done
-		json_close_array
-		# the Mode line will contain channel 
-		CHAN=$(wlctl -i $radio assoc|grep "Primary channel"|awk '{print $NF}');
-		json_add_string "current_channel" $CHAN
-		RATE=$(wlctl -i $radio rate);
-		json_add_string "rate" "$RATE";
-		json_add_string "frequency" "$FREQ"
-		json_add_boolean "isup" "$(wlctl -i $radio isup)";
-		json_close_object
-	done
-	json_dump
-}
+				[ -n "$radio" ] || return 1
 
-wireless_defaults(){
-	json_init
-	json_add_object "keys"; 
-	json_add_string "wpa" $(db get hw.board.wpaKey)
-	json_close_object
-	json_dump
-}
+				scanfile=/tmp/"$radio"_scan_results
 
-wireless_scan(){
-	/usr/lib/ubus/juci/broadcom.wireless.lua scan $1
-}
+				wlctl -i $radio scanresults_summary | tr '\t' ' ' > $scanfile
 
-wireless_scanresults(){
-	/usr/lib/ubus/juci/broadcom.wireless.lua scanresults $1
-}
+				json_init
+				json_add_array "access_points"
+				while read -r line
+				do
+					json_add_object ""
+					json_add_string bssid "$(echo $line | awk '{print$2}')"
+					json_add_string rssi "$(echo $line | awk '{print$4}')"
+					json_add_string frequency "$(echo $line | awk '{print$7}')"
+					json_add_string channel "$(echo $line | awk '{print$9}')"
+					json_add_string hwmodes "$(echo $line | awk '{print$11}')"
+					json_add_string ssid "$(echo $line | awk '{print$13}')"
+					json_select ..
+				done < $scanfile
+				rm -f $scanfile
+				json_dump
+			;;
+			set_credentials)
+				read input;
 
-case $1 in 
-	.methods) 
-		echo "devices,clients,radios,defaults,scan,scanresults"; 
-		exit 0
-		;;
-	info) 
-		wireless_info
-		;;
-	devices) 
-		wireless_devices
-		;;
-	defaults) 
-		wireless_defaults
-		;;
-	clients)
-		wireless_clients
-		;;
-	radios)
-		wireless_radios
-		;;
-	scan)
-		wireless_scan "$2"
-		;;
-	scanresults)
-		wireless_scanresults "$2"
-		;;
+				json_load "$input"
+				json_get_var ssid ssid
+				json_get_var key key
+				json_get_var encryption encryption
+
+				json_init
+
+				if [ -z "$ssid" -o -z "$encryption" ]; then
+					json_add_string "encryption" "$encryption"
+					json_add_string "ssid" "$ssid"
+					json_add_string "error" "ssid and encryption needed"
+					json_dump
+				elif [ "$encryption" != "none" -a -z "$key" ]; then
+					json_add_string "error" "key needed if encryption is not 'none'"
+					json_dump
+				else
+					wifi import "$input" >/dev/null 2>&1 &
+					json_add_string "code" "success"
+				fi
+
+				json_dump
+			;;
+		esac
+	;;
 esac

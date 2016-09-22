@@ -1,15 +1,18 @@
-#!/usr/bin/lua
+#!/bin/sh
 
-local juci = require("juci.core");
-local json = require("juci.json");
+. /usr/share/libubox/jshn.sh
 
-local function excluded_ports() 
-	-- Excluded ports is read from a tmp file that is not created by default. This is a patch feature added to dmz firewall script. Please update your script if you want to use it. 
-	local result = juci.readfile("/tmp/fw_used_ports");
-	print(json.encode({result = (result or "")}));
-end
-
-juci.ubus({
-	["excluded_ports"] = excluded_ports
-}, arg);
-
+case "$1" in
+	list)
+		echo '{ "excluded_ports" : {} }'
+	;;
+	call)
+		case "$2" in
+			excluded_ports)
+				json_init
+				json_add_string result "$(cat /tmp/fw_used_ports 2>/dev/null)"
+				json_dump
+			;;
+		esac
+	;;
+esac

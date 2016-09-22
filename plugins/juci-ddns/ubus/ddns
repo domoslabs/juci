@@ -1,18 +1,21 @@
-#!/usr/bin/lua
+#!/bin/sh
 
-local juci = require("juci.core"); 
-local json = require("juci.json"); 
+. /usr/share/libubox/jshn.sh
 
-function ddns_list_providers()
-	local list = juci.shell("cat /usr/lib/ddns/services | awk '/\".*\"/{ gsub(\"\\\"\",\"\",$1); print($1);}'"); 
-	local line; 
-	local result = { providers = {} }; 
-	for line in list:gmatch("%S+") do
-		table.insert(result.providers, line); 
-	end
-	print(json.encode(result)); 
-end
-
-juci.ubus({
-	providers = ddns_list_providers
-}, arg); 
+case "$1" in
+	list)
+		echo '{ "providers" : {} }'
+	;;
+	call)
+		case "$2" in
+			providers)
+				json_init
+				json_add_array "providers"
+				for service in $(cat /usr/lib/ddns/services | awk '{print$1}' | tr -d '"'); do
+					json_add_string "" "$service"
+				done
+				json_dump
+			;;
+		esac
+	;;
+esac

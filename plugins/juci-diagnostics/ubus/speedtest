@@ -1,45 +1,26 @@
-#!/usr/bin/lua
+#!/bin/sh
 
--- Author: Reidar Cederqvist <reidar.cederqvist@gmail.com>
+. /usr/share/libubox/jshn.sh
 
-local juci = require("juci/core");
-local json = require("juci/json");
-
-function speedtest_run(msg)
-	local testmode, packagesize, address, port = msg.testmode, msg.packagesize, msg.address, msg.port;
-	local status = 0;
-	local label = "success";
-	local up, down;
-	if (not packagesize or not address or not port) then
-		print(json.encode({message = "no empty values pleace"}));
-		return; 
-	end;
-	if(type(packagesize) ~= "number")then 
-		print(json.encode({message = "packagesize must be a number"}));
-		return; 
-	end;
-	if not testmode == "up" and not testmode == "down" and not testmode == "up_down" then
-		print(json.encode({message = "allowed testmodes are: up, down and up_down"}));
-		return;
-	end
-	if address:match("\\") or port:match("\\") then 
-		print(json.encode({message = "no backspace allowed"}));
-		return;
-	end
-	print(json.encode({message = "success"}));
-	if testmode == "up" then 
-		local string = "-n 1 -m tcp-send 60 "..packagesize.." -v 2 "..address.." "..port.."";
-		os.execute("/usr/bin/tptest-run \""..string.."\" \"done\" &");
-	elseif testmode == "down" then 
-		local string = "-n 1 -m tcp-receive 60 "..packagesize.." -v 2 "..address.." "..port.."";
-		os.execute("/usr/bin/tptest-run \"done\" \""..string.."\" &");
-	elseif testmode == "up_down" then 
-		local string1 = "-n 1 -m tcp-send 60 "..packagesize.." -v 2 "..address.." "..port.."";
-		local string2 = "-n 1 -m tcp-receive 60 "..packagesize.." -v 2 "..address.." "..port.."";
-		os.execute("/usr/bin/tptest-run \""..string1.."\" \""..string2.."\" &");
-	end
-end
-
-juci.ubus({
-	["run"] = speedtest_run
-}, arg);
+case "$1" in
+	list)
+		echo '{ "run" : {"testmode":"str","packetsize":32,"address":"str","port":32} }'
+	;;
+	call)
+		case "$2" in
+			run)
+				if pidof tptest-run >/dev/null; then
+					json_init
+					json_add_string "error" "there is already a speedtest going on"
+					json_dump
+				else
+					read input
+					tptest-run "$input" >/dev/null 2>&1 &
+					json_init
+					json_add_string "success" "speedtest is started"
+					json_dump
+				fi
+			;;
+		esac
+	;;
+esac
