@@ -160,8 +160,6 @@
 				scope.localStorage.setItem("sid", RPC_SESSION_ID);
 				scope.localStorage.setItem("user", RPC_USER);
 				self.$session = result;
-				//JUCI.localStorage.setItem("sid", self.sid);
-				//if(result && result.acls && result.acls.ubus) setupUbusRPC(result.acls.ubus);
 				deferred.resolve(self.sid);
 			}).fail(function(result){
 				deferred.reject(result);

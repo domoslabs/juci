@@ -23,11 +23,6 @@
 			<label for="inputPassword" class="sr-only" translate>Password</label>
 			<input ng-change="errors = []" ng-disabled="!is_connected" ng-model="form.password" type="password" id="inputPassword" class="form-control" placeholder="{{'Password'|translate}}" required autofocus>
 		</div>
-		<!--<div class="checkbox">
-			<label>
-				<input ng-model="form.remember" type="checkbox" value="remember-me" translate> Remember me
-			</label>
-		</div>-->
 		<div class="form-group">
 			<button ng-disabled="!is_connected || logging_in" ng-click="doLogin()" class="btn btn-lg btn-primary btn-block" type="submit">
 				<i class="fa fa-spinner fa-spin" ng-show="logging_in"></i> <span ng-show="!logging_in" translate>Sign in</span>
