@@ -77,7 +77,7 @@ UCI.layer2_interface_vlan.$registerSectionType("vlan_interface", {
 	"bridge":		{ dvalue: false, type: Boolean },
 	"baseifname":	{ dvalue: '', type: String }, 
 	"vlan8021q":	{ dvalue: '', type: Number }, 
-	"vlan8021p":	{ dvalue: '', type: Number }
+	"vlan8021p":	{ dvalue: 0, type: Number }
 }, function(section){
 	var errors = [];
 	if(!section.vlan8021p || isNaN(section.vlan8021p.value) || section.vlan8021p.value <  0 || section.vlan8021p.value > 7)

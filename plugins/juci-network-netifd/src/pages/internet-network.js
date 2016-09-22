@@ -110,7 +110,7 @@ JUCI.app
 					model.iface = iface;
 					model.errors = [];
 					cb();
-				}).fail(function(e){console.log(e);alert($tr(gettxt("Error while creating Interface")) + " " + JSON.stringify(e))});
+				}).fail(function(e){console.log(e);alert($tr(gettext("Error while creating Interface")) + " " + JSON.stringify(e))});
 			},
 			function(cb){
 				$juciDialog.show("network-connection-create-settings", {
