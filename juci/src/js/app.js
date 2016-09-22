@@ -144,12 +144,8 @@ angular.element(document).ready(function() {
 		JUCI.$init().done(function(){
 			angular.bootstrap(document, ["juci"]);
 		}).fail(function(e){
-			if(starting + 1000 > Date.now()){
-				setTimeout(function(){init();},50);
-			}else{
-				console.log(e);
-				window.location = "/initfail.html";
-			}
+			console.log(e);
+			window.location = "/initfail.html";
 		});
 	})();
 });

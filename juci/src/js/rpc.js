@@ -142,6 +142,7 @@
 			return deferred.promise();
 		},
 		$login: function(opts){
+			RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID;
 			var self = this;
 			var deferred  = $.Deferred();
 			
