@@ -25,7 +25,6 @@
 	JUCIConfig.prototype.$init = function(){
 		var deferred = $.Deferred(); 
 		var self = this; 
-		console.log("init: config"); 
 			
 		// $config.local points to local storage
 		self.local = localStorage; 
@@ -46,7 +45,6 @@
 				// load systemwide settings from juci config
 				UCI.$sync("juci").done(function(){
 					if(UCI.juci){
-						console.log("Using settings from config/juci on router"); 
 						self.settings = UCI.juci; 
 						deferred.resolve(); 
 					} else {

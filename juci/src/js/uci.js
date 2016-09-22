@@ -675,7 +675,6 @@
 			
 			Object.keys(type).map(function(k){
 				if(self[k] && self[k].dirty){
-					//console.log("Adding dirty field: "+k);
 					changed[k] = self[k].uvalue;
 				}
 			});
@@ -700,7 +699,6 @@
 		}
 		
 		function _insertSection(self, item){
-			//console.log("Adding local section: "+self[".name"]+"."+item[".name"]);
 			var section = new UCI.Section(self);
 			section.$update(item);
 			var type = "@"+item[".type"];
@@ -718,7 +716,6 @@
 		function _unlinkSection(self, section){
 			// NOTE: can not use filter() because we must edit the list in place
 			// in order to play well with controls that reference the list!
-			console.log("Unlinking local section: "+self[".name"]+"."+section[".name"]+" of type "+section[".type"]);
 			var all = self["@all"];
 			for(var i = 0; i < all.length; i++){
 				if(all[i][".name"] === section[".name"]) {
@@ -803,7 +800,6 @@
 				// prevent deletion of automatically created type sections with default value which are created by registerSectionType..
 				if(self[x].constructor == UCI.Section && self[x][".type"] != self[x][".name"]) to_delete[x] = self[x];
 			});
-			//console.log("To delete: "+Object.keys(to_delete));
 		
 			$rpc.$call("uci", "revert", {
 				config: self[".name"]//,
@@ -825,7 +821,6 @@
 					async.eachSeries(Object.keys(to_delete), function(x, next){
 						if(!to_delete[x]) { next(); return; }
 						var section = to_delete[x];
-						//console.log("Would delete section "+section[".name"]+" of type "+section[".type"]);
 						_unlinkSection(self, section);
 						next();
 					}, function(){
@@ -861,7 +856,6 @@
 			if(validator !== undefined && validator instanceof Function) conf_type[name][".validator"] = validator;
 			conf_type[name]["_access_r"] = { dvalue:[], type: Array };
 			conf_type[name]["_access_w"] = { dvalue:[], type: Array };
-			//console.log("Registered new section type "+config+"."+name);
 		}
 		
 		UCIConfig.prototype.$deleteSection = function(section){
@@ -869,7 +863,6 @@
 			var deferred = $.Deferred();
 				
 			//self[".need_commit"] = true;
-			console.log("Removing section "+JSON.stringify(section[".name"]));
 			$rpc.$call("uci", "delete", {
 				"config": self[".name"],
 				"section": section[".name"]
@@ -940,7 +933,6 @@
 				return deferred.promise();
 			}
 			
-			console.log("Adding: "+JSON.stringify(item)+" to "+self[".name"]+": "+JSON.stringify(values));
 			$rpc.$call("uci", "add", {
 				"config": self[".name"],
 				"type": item[".type"],
@@ -1000,7 +992,6 @@
 					});
 				}
 				var changed = section.$getChangedValues();
-				//console.log(JSON.stringify(changed) +": "+Object.keys(changed).length);
 				if(Object.keys(changed).length){
 					reqlist.push({
 						"config": self[".name"],
@@ -1017,7 +1008,6 @@
 	
 	UCI.prototype.$init = function(){
 		var deferred = $.Deferred();
-		console.log("Init UCI");
 		var self = this;
 		
 		$rpc.$call("uci", "configs").done(function(response){
@@ -1032,15 +1022,17 @@
 					self[k] = new UCI.Config(self, k);
 				}
 			});
+			self.initDone = true;
 			deferred.resolve();
-		}).fail(function(){
-			deferred.reject();
+		}).fail(function(e){
+			deferred.reject(e);
 		});
 		return deferred.promise();
 	}
 	
 	// returns true if there are uci changes
 	UCI.prototype.$hasChanges = function(){
+		if(!this.initDone) return;
 		var self = this;
 		return !!Object.keys(self).find(function(x){
 			if(self[x].constructor != UCI.Config) return false;
@@ -1051,6 +1043,7 @@
 	}
 	
 	UCI.prototype.$getChanges = function(){
+		if(!this.initDone) return;
 		var changes = [];
 		var self = this;
 		Object.keys(self).map(function(x){
@@ -1103,6 +1096,7 @@
 
 	// marks all configs for reload on next sync of the config
 	UCI.prototype.$clearCache = function(){
+		if(!this.initDone) return;
 		var self = this;
 		Object.keys(self).map(function(x){
 			if(self[x].constructor != UCI.Config) return;
@@ -1116,6 +1110,7 @@
 	}
 	
 	UCI.prototype.$eachConfig = function(cb){
+		if(!this.initDone) return;
 		var self = this;
 		Object.keys(self).filter(function(x){
 			return self[x].constructor == UCI.Config;
@@ -1126,6 +1121,7 @@
 	
 	UCI.prototype.$sync = function(configs){
 		var deferred = $.Deferred();
+		if(!this.initDone) return deferred.reject();
 		var self = this;
 		
 		async.series([
@@ -1151,13 +1147,11 @@
 					} /*else if(self[cf].$lastSync){
 						var SYNC_TIMEOUT = 10000; // probably make this configurable
 						if(((new Date()).getTime() - self[cf].$lastSync.getTime()) > SYNC_TIMEOUT){
-							console.log("Using cached version of "+cf);
 							next();
 							return;
 						}
 					}*/
 					self[cf].$sync().done(function(){
-						//console.log("Synched config "+cf);
 						//self[cf].$lastSync = new Date();
 						next();
 					}).fail(function(){
@@ -1178,15 +1172,11 @@
 		return deferred.promise();
 	}
 	
-	/*
-	UCI.prototype.sync = function(opts){
-		console.error("$uci.sync() is deprecated and will be replaced with $uci.$sync() in future version to avoid config collisions. Please do not use it!");
-		return this.$sync(opts);
-	}*/
 
 	UCI.prototype.$revert = function(){
 		var revert_list = [];
 		var deferred = $.Deferred();
+		if(!this.initDone) return deferred.reject();
 		var errors = [];
 		var self = this;
 		
@@ -1212,17 +1202,13 @@
 	}
 	
 	UCI.prototype.$rollback = function(){
+		if(!this.initDone) return;
 		return $rpc.$call("uci", "rollback");
-	}
-	
-	UCI.prototype.$apply = function(){
-		console.error("Apply method is deprecated and will be removed. Use $save() instead.");
-		return this.$save();
-		//return $rpc.$call("uci", "apply", {rollback: 0, timeout: 5000});
 	}
 	
 	UCI.prototype.$save = function(){
 		var deferred = $.Deferred();
+		if(!this.initDone) return deferred.reject();
 		var self = this;
 		var writes = [];
 		var add_requests = [];
@@ -1313,11 +1299,6 @@
 		return deferred.promise();
 	}
 	
-	UCI.prototype.save = function(){
-		console.error("$uci.save() is deprecated. This method will be replaced with $uci.$save() in future versions to avoid config collisions. Please update your code.");
-		return this.$save();
-	}
-
 	scope.UCI = new UCI();
 	scope.UCI.validators = {
 		ASCIIValidator: ASCIIValidator,

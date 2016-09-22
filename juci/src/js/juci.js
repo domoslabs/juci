@@ -57,13 +57,13 @@
 			function(next){
 				$rpc.$init().done(function(){
 					if(!$rpc.$has("juci", "system") || !$rpc.$has("uci")){
-						deferred.reject();
+						deferred.reject("missing juci.system");
 						return;
 					}
 					next();
-				}).fail(function(){
-					console.error("UBUS failed to initialize: this means that no rpc calls will be available. You may get errors if other parts of the application assume a valid RPC connection!");
-					deferred.reject();
+				}).fail(function(e){
+					console.error("UBUS failed to initialize: this means that no rpc calls will be available. You may get errors if other parts of the application assume a valid RPC connection! " + JSON.stringify(e));
+					deferred.reject(e);
 					return;
 				});
 			},
@@ -72,27 +72,25 @@
 				if(sid_in){
 					$rpc.$sid(String(sid_in).substring(4).replace(/"/g, ""));
 				}
+				//make sure that the sid is still active otherwise goto login
 				$rpc.$authenticate().done(function(){
 					next();
-				}).fail(function(){
-					console.log("Failed to verify session.");
-					next();
+				}).fail(function(e){
+					deferred.resolve("not logged in");
 				});
 			},
 			function(next){
 				$uci.$init().done(function(){
 					next();
-				}).fail(function(){
-					console.error("UCI failed to initialize!");
-					deferred.reject();
+				}).fail(function(e){
+					deferred.reject("UCI failed to initialize! er: " + JSON.stringify(e));
 				});
 			},
 			function(next){
 				$juci.config.$init().done(function(){
 					next();
-				}).fail(function(){
-					console.error("CONFIG failed to initialize!");
-					next();
+				}).fail(function(e){
+					deferred.reject("CONFIG failed to initialize! " + JSON.stringify(e));
 				});
 			},
 			function(next){
@@ -102,7 +100,6 @@
 				if(UBUS.$session && UBUS.$session.acls && UBUS.$session.acls["access-group"]){
 					acls = UBUS.$session.acls["access-group"];
 				}
-				console.log("juci: loading menu from server..");
 				async.eachSeries($uci.juci["@menu"], function(menu, done){
 					// only include menu items that are marked as accessible based on our rights and the box capabilities (others will simply be broken because of restricted access)
 					if(menu.acls.value.length && menu.acls.value.find(function(x){
@@ -311,30 +308,6 @@
 		"default_language":		{ dvalue: "en", type: String }, // language used when user first visits the page
 		"languages":			{ dvalue: [], type: Array } // list of languages available (use name of po file without .po extension and in lower case: se, en etc..)
 	});
-	// register default localization localization section so that we don't need to worry about it not existing
-	JUCI.app.run(function($uci){
-		$uci.$sync("juci").done(function(){
-			if(!$uci.juci.juci){
-				$uci.juci.$create({
-					".type":"juci",
-					".name":"juci"
-				});
-			}
-			if(!$uci.juci.login){
-				$uci.juci.$create({
-					".type":"login",
-					".name":"login"
-				});
-			}
-			if(!$uci.juci.localization){
-				$uci.juci.$create({
-					".type":"localization",
-					".name":"localization"
-				});
-			}
-		});
-	 });
-
 })(typeof exports === 'undefined'? this : exports);
 
 /*---Just some code for browsers that does not support RequestAnimationFrame ---*/

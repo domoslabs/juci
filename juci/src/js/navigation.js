@@ -34,7 +34,6 @@
 			return this.findLeaf(path); 
 		};
 		this.findLeaf = function(path){
-			//console.log("FIND LEAF: "+path); 
 			var parts = path.split("/"); 
 			var obj = data; 
 			// find the right leaf node

@@ -39,7 +39,6 @@ require.config({
 });
 
 JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $urlRouterProvider, $controllerProvider, $templateCacheProvider, $provide) {
-	console.log("CONF"); 
 	//$locationProvider.otherwise({ redirectTo: "/" });
 	$locationProvider.hashPrefix('!');
 	$locationProvider.html5Mode(false); 
@@ -64,17 +63,14 @@ JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $
 	var _put = $templateCache.put; 
 	$templateCache.get = function(name){
 		name = name.replace(/\/\//g, "/").replace(/^\//, ""); 
-		//console.log("Get template '"+name+"'"); 
 		return _get.call($templateCache, name); 
 	}
 	$templateCache.put = function(name, value){
 		name = name.replace(/\/\//g, "/").replace(/^\//, ""); 
-		//console.log("Put template '"+name+"'"); 
 		return _put.call($templateCache, name, value); 
 	}
 })
 .run(function($rootScope, $state, gettextCatalog, $rpc, $config, $location, $navigation, $templateCache, $languages){
-	console.log("juci: angular init"); 
 	
 	// TODO: maybe use some other way to gather errors than root scope? 
 	$rootScope.errors = []; 
@@ -86,7 +82,6 @@ JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $
 	}
 	$rootScope.$on("error", function(ev, data){
 		$rootScope.errors.push({message: data}); 
-		//console.log("ERROR: "+ev.name+": "+JSON.stringify(Object.keys(ev.currentScope))); 
 	}); 
 	$rootScope.$on("errors", function(ev, errors){
 		if(errors && (errors instanceof Array)){
@@ -99,11 +94,8 @@ JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $
 		$rootScope.errors.splice(0, $rootScope.errors.length); 
 	}); 
 
-	if($config.settings && $config.settings.juci) gettextCatalog.debug = $config.settings.juci.default_language.value;
-	if($config.settings && $config.settings.juci) gettextCatalog.debug = $config.settings.juci.language_debug.value;
-	var home = ($config.settings && $config.settings.juci)?$config.settings.juci.homepage.value: "";
-	
 	var path = $location.path().replace(/\//g, ""); 
+	var home = $config.settings && $config.settings.juci && $config.settings.juci.homepage.value;
 	// load the right page from the start
 	if($rpc.$isLoggedIn()){
 		$juci.redirect(path|| home || "overview"); 

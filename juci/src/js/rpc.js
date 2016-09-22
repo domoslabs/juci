@@ -117,15 +117,14 @@
 			var deferred  = $.Deferred();
 			
 			if(!METHODS.session){
-				console.log("ubus session object is missing");
-				return deferred.reject();
+				return deferred.reject("ubus session object is missing");
 			}
 
 			METHODS.session.list().done(function(result){
         		if(!("username" in (result.data||{}))) {
 					RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID; // reset sid to 000..
 					scope.localStorage.setItem("sid", RPC_SESSION_ID);
-					deferred.reject();
+					deferred.reject("no active sessions");
 				} else {
 					self.$session = result;
 					if(!("data" in self.$session)) self.$session.data = {};
@@ -138,7 +137,7 @@
 					retries = 3;
 				}
 				retries --;	
-				deferred.reject();
+				deferred.reject(result || "no result");
 			});
 			return deferred.promise();
 		},
@@ -190,7 +189,6 @@
 			EVENT_HANDLER = func;
 		},
 		$register: function(object, method){
-			// console.log("registering: "+object+", method: "+method);
 			if(!object || !method) return;
 			var self = this;
 			function _find(path, method, obj){
@@ -285,11 +283,11 @@
 						});
 					});
 					deferred.resolve();
-				}).fail(function(){
-					deferred.reject();
+				}).fail(function(e){
+					deferred.reject(e);
 				});
 			}).fail(function(emsg) {
-				console.log("ws failed " + emsg);
+				if(DEBUG_MODE)console.log("ws failed " + emsg);
 				deferred.reject(emsg);
 			});
 			return deferred.promise();
@@ -385,7 +383,6 @@
 						return;
 					}
 
-					//console.log("SID: "+sid + " :: "+ JSON.stringify(response_obj));
 					query_deferred.time = Date.now();
 					// valid rpc response is either [code,{result}]
 					// if code == 0 it means success. We already check for errors above)
@@ -396,13 +393,13 @@
 					}
 
 					var msg = "Warning: non-array result in JSONRPC response";
-					console.log(msg);
 					query_deferred.deferred.reject(msg);
 					return;
 				}
 			};
 
 			ws.onerror = function(result){
+				console.log("error result: " + JSON.stringify(result));
 				if(DEBUG_MODE)console.error("RPC error "+JSON.stringif(result));
 				if(result && result.error){
 					RPC_CACHE[key].deferred.reject(result.error);
@@ -410,11 +407,10 @@
 			}
 			ws.onclose = function(e) {
 				if(!e.isTrusted){
-					console.log("reloading page");
+					if(DEBUG_MODE)console.log("reloading page");
 					window.location.reload();
 				}
-				console.log(JSON.stringify(e));
-				console.log( "Close(" + e.reason + ")");
+				if(DEBUG_MODE)console.log(JSON.stringify(e));
 			};
 
 			return deferred.promise();

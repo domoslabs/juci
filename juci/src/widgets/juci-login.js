@@ -30,14 +30,12 @@ JUCI.app
 		controllerAs: "ctrl"
 	};
 })
-.controller("LoginControl", function($scope, $config, $state,
-	$window, $rpc, $localStorage, $tr, gettext){
+.controller("LoginControl", function($scope, $config, $state, $rpc, $localStorage, $tr, gettext){
 	$scope.form = {
 		"username": "",
 		"password": ""
 	};
-	$scope.showlogin = ($config.settings && $config.settings.login)? $config.settings.login.showusername.value:true;
-	$scope.form.username = ($config.settings && $config.settings.login)? $config.settings.login.defaultuser.value: "user";
+	$scope.form.username = "user";
 	$scope.connecting = true;
 
 	$scope.errors = [];
@@ -53,6 +51,7 @@ JUCI.app
 			done();
 		});
 	});
+
 	$scope.doLogin = function(){
 		$scope.errors = [];
 		$scope.logging_in = true;
@@ -60,7 +59,7 @@ JUCI.app
 			"username": $scope.form.username,
 			"password": $scope.form.password
 		}).done(function success(res){
-			$window.location.href="/";
+			window.location.href="/";
 		}).fail(function fail(res){
 			console.log(res);
 			$scope.errors.push($tr(gettext("Please enter correct username and password!")));
@@ -68,6 +67,7 @@ JUCI.app
 			$scope.$apply();
 		});
 	}
+
 	$scope.doLogout = function(){
 		var deferred = $.Deferred();
 		$rpc.$logout().done(function(){
