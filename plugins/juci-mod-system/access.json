@@ -64,8 +64,7 @@
 			"juci-io": [ "upload" ], 
 			"passwd": [ "self" ],
 			"ubus": {
-				"/juci/system.service": [
-					"run"
+				"juci.service": [
 					"start",
 					"stop",
 					"enable",
