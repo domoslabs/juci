@@ -6,9 +6,6 @@
 				"backup"
 			],
 			"ubus": {
-				"event": [
-					"list"
-				],
 				"router": [
 					"logs"
 				]
