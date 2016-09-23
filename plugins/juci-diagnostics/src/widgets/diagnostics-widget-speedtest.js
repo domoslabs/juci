@@ -62,7 +62,7 @@ JUCI.app
 		$rpc.$call("juci.speedtest", "run", {
 			"testmode": $scope.data.test_type,
 			"port": port,
-			"packet": $scope.data.packagesize * 1000000,
+			"packetsize": $scope.data.packagesize * 1000000,
 			"address": address
 		}).done(function(response){
 			if(response && response.message=="success"){

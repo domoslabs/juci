@@ -10,26 +10,22 @@
 					"write",
 					"read"
 				],
+				"session": [
+					"list"
+				],
 				"juci.system": [
 					"defaultreset", 
 					"reboot",
 					"listusers",
-					"zonelist", 
+					"zonelist"
 				], 
-				"session": [
-					"list"
-				],
 				"juci.sysupgrade": [
-					"run"
 					"check", 
 					"test", 
-					"start"
-				], 
-
-				"juci.sysupgrade": [
+					"start",
 					"restore-backup", 
 					"features"
-				], 
+				],
 				"juci.service": [
 					"list",
 					"start",
