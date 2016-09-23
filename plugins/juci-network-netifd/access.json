@@ -3,27 +3,21 @@
 		"description": "JUCI Network Configuration module",
 		"read": {
 			"ubus": {
-				"/juci/network": [
-					"run"
-					/*"clients", 
+				"juci.network": [
 					"load", 
 					"nat_table", 
 					"nameservers",
 					"services",
-					"protocols"*/
-				], 
-				"/juci/modems": [
-					"run"
-					/*"list",
-					"list4g"*/
-				],
-				"/juci/network.status": [ 
-					"run"
-					/*"arp", 
+					"protocols",
+					"arp", 
 					"ipv4routes", 
 					"ipv6routes",
-					"ipv6neigh"*/
+					"ipv6neigh"
 				], 
+				"juci.modems": [
+					"list",
+					"list4g"
+				],
 				"network.interface": [
 					"dump"
 				], 

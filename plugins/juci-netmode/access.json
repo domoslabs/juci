@@ -3,13 +3,8 @@
 		"description": "JUCI Netmode support module for iopsys",
 		"read": {
 			"ubus": {
-				"/juci/repeater": [
-					"run"
-					/*set*/
-				],
-				"/juci/netmode": [
-					"run"
-					/*"select"*/
+				"juci.wireless": [
+					"set_credentials"
 				]
 			}, 
 			"uci": [

@@ -6,12 +6,10 @@
 				"file": [
 					"write"
 				],
-				"/juci/system.upgrade": [
-					"run"
-					/*"check", */
-					/*"test", */
-					/*"start", */
-					/*"clean"*/
+				"juci.sysupgrade": [
+					"check", 
+					"test", 
+					"start"
 				]
 			}, 
 			"uci": [ "system" ],
@@ -23,12 +21,10 @@
 				"file": [
 					"write"
 				],
-				"/juci/system.upgrade": [
-					"run"
-					/*"check", */
-					/*"test", */
-					/*"start", */
-					/*"clean"*/
+				"juci.sysupgrade": [
+					"check", 
+					"test", 
+					"start"
 				]
 			}
 		}

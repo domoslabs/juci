@@ -7,9 +7,8 @@
 				"ddns"
 			], 
 			"ubus": {
-				"/juci/ddns": [ 
-					"run"
-					/*"providers"*/
+				"juci.ddns": [ 
+					"providers"
 				]
 			}
 		},

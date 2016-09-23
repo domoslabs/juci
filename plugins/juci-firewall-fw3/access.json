@@ -6,14 +6,9 @@
 				"network.interface": [
 					"status"
 				],
-				"/juci/firewall": [
-					"run"
-					/*"excluded_ports"*/
+				"juci.firewall": [
+					"excluded_ports"
 				],
-				"/juci/system.time": [
-					"run"
-					/*"timediff"*/
-				]
 			}, 
 			"uci": [
 				"firewall"

@@ -9,14 +9,12 @@
 				"asterisk.call_log": [
 					"list"
 				],
-				"/juci/voice_client": [
-					"run"
-					/*"get_trusted_ca",*/
-					/*"set_trusted_ca"*/
+				"juci.voice_client": [
+					"get_trusted_ca",
+					"set_trusted_ca"
 				],
-				"/juci/system": [
-					"run"
-					/*"reboot"*/
+				"juci.system": [
+					"reboot"
 				]
 			}, 
 			"uci": [

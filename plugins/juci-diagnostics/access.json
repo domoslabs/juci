@@ -3,13 +3,12 @@
 		"description": "JUCI Diagnostics module",
 		"read": {
 			"ubus": {
-				"/juci/speedtest": [
+				"juci.speedtest": [
 					"run"
 				],
-				"/juci/diagnostics": [
-					"run"
-					/*"ping", */
-					/*"traceroute"*/
+				"juci.diagnostics": [
+					"ping",
+					"traceroute"
 				]
 			},
 			"uci": [

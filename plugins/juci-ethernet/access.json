@@ -6,10 +6,6 @@
 				"network.device": [
 					"status"
 				]
-				/*"/juci/ethernet": [
-					"run"
-					"adapters"
-				]*/
 			}
 		}
 	}

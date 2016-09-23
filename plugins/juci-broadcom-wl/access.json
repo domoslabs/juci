@@ -14,19 +14,11 @@
 					"status",
 					"stop"
 				], 
-				"/juci/wireless": [
-					"run"
-					/*"defaults", */
-					/*"radios", */
-					/*"devices", */
-					/*"clients", */
-					/*"scan", */
-					/*"scanresults"*/
-				],
-				"/juci/broadcom.wireless.lua": [
-					"run"
-					/*"scan", */
-					/*"scanresults"*/
+				"juci.wireless": [
+					"defaults",
+					"scan", 
+					"scanresults",
+					"set_credentials"
 				],
 				"router": [
 					"wl",

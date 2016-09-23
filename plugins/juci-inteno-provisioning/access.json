@@ -3,8 +3,8 @@
 		"description": "JUCI inteno provisioning module",
 		"read": {
 			"ubus": {
-				"/juci/provisioning.iup": [
-					"run"
+				"juci.iup": [
+					"backup"
 				],
 				"file": [
 					"read"
