@@ -25,12 +25,12 @@ JUCI.app
 			$scope.services = result.services; 
 			$scope.services.map(function(service){
 				service.reload = false;
-				if(!service.start_priority){
-					service.start_priority = 9999;
+				if(!service.start){
+					service.start = 9999;
 				}
 			}); 
 			$scope.services.sort(function(a,b){
-				return a.start_priority - b.start_priority;
+				return a.start - b.start;
 			});
 			$scope.$apply();
 			done(); 

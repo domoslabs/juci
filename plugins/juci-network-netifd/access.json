@@ -4,34 +4,32 @@
 		"read": {
 			"ubus": {
 				"juci.network": [
-					"load", 
-					"nat_table", 
+					"load",
+					"nat_table",
 					"nameservers",
 					"services",
 					"protocols",
-					"arp", 
-					"ipv4routes", 
+					"arp",
+					"ipv4routes",
 					"ipv6routes",
 					"ipv6neigh"
-				], 
+				],
 				"juci.modems": [
-					"list",
-					"list4g"
+					"list"
 				],
 				"network.interface": [
 					"dump"
-				], 
+				],
 				"network.interface.*": [
 					"up",
 					"down"
-				], 
+				],
 				"router": [
 					"networks",
 					"usb",
 					"linkspeed",
 					"ports",
 					"dslstats",
-					"boardinfo", 
 					"radios",
 					"clients",
 					"clients6"
@@ -42,19 +40,19 @@
 				"led.internet":[
 					"status"
 				]
-			}, 
+			},
 			"uci": [
-				"layer2_interface_ethernet", 
+				"layer2_interface_ethernet",
 				"network"
 			],
 			"owsd": [
 				"client",
 				"network.interface"
 			]
-		}, 
+		},
 		"write": {
 			"uci": [
-				"layer2_interface_ethernet", 
+				"layer2_interface_ethernet",
 				"network"
 			]
 		}

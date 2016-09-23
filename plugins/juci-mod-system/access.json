@@ -20,10 +20,11 @@
 					"zonelist"
 				], 
 				"juci.sysupgrade": [
-					"check", 
-					"test", 
+					"check",
+					"test",
 					"start",
-					"restore-backup", 
+					"create-backup",
+					"restore-backup",
 					"features"
 				],
 				"juci.service": [

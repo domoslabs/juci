@@ -15,12 +15,12 @@
 					"stop"
 				], 
 				"juci.wireless": [
-					"defaults",
 					"scan", 
 					"scanresults",
 					"set_credentials"
 				],
 				"router": [
+					"info",
 					"wl",
 					"stas",
 					"clients6",

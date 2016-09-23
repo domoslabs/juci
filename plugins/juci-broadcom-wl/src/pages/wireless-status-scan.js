@@ -41,10 +41,10 @@ JUCI.app
 			if($scope.radioToScan.value == null)return;
 			$scope.scanning = 1; 
 			console.log("Scanning on "+$scope.radioToScan.value); 
-			$wireless.scan({device: $scope.radioToScan.value}).done(function(){
+			$wireless.scan({radio: $scope.radioToScan.value}).done(function(){
 				setTimeout(function(){
 					console.log("Getting scan results for "+$scope.radioToScan.value); 
-					$wireless.getScanResults({device: $scope.radioToScan.value }).done(function(aps){
+					$wireless.getScanResults({radio: $scope.radioToScan.value }).done(function(aps){
 						$scope.access_points = aps;
 						$scope.scanning = 0; 
 						$scope.$apply(); 

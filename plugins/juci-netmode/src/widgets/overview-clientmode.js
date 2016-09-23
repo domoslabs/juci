@@ -93,12 +93,12 @@ JUCI.app
 			alert("no wet interface detected");
 			return;
 		}
-		$wireless.scan({device:wetIface.device.value}).done(function(){
+		$wireless.scan({radio:wetIface.device.value}).done(function(){
 			$scope.showModal = true;
 			$scope.modalTitle = $tr(gettext("Scanning for APs"));
 			$scope.$apply();
 			setTimeout(function(){
-				$wireless.getScanResults({device:wetIface.device.value}).done(function(result){
+				$wireless.getScanResults({radio:wetIface.device.value}).done(function(result){
 					$scope.showManual.value = false;
 					$scope.showModal = false;
 					$scope.availableAps = result.map(function(ap){
