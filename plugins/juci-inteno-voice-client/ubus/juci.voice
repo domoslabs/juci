@@ -1,0 +1,32 @@
+#!/bin/sh
+
+. /usr/share/libubox/jshn.sh
+
+CAPATH="/etc/asterisk/ssl/ca.pem"
+
+case "$1" in
+	list)
+		echo '{ "get_trusted_ca" : {}, "set_trusted_ca" : {"data":"str"} }'
+	;;
+	call)
+		case "$2" in
+			get_trusted_ca)
+				json_init
+				[ -f $CAPATH ] && json_add_string result "$(cat $CAPATH 2>/dev/null)"
+				json_dump
+			;;
+			set_trusted_ca)
+				read input;
+
+				json_load "$input"
+				json_get_var data data
+
+				json_init
+				if [ -n "$data" ]; then
+					json_add_boolean success $(echo "$data" > $CAPATH 2>/dev/null && {sync; echo 1} || echo 0)
+				fi
+				json_dump	
+			;;
+		esac
+	;;
+esac
