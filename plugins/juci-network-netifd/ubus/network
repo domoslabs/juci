@@ -24,7 +24,7 @@ case "$1" in
 					json_add_string device "$(echo $line | awk '{print$6}')"
 					json_select ..
 				done < $arpfile
-				#rm -f $arpfile
+				rm -f $arpfile
 				json_dump
 			;;
 			ipv4routes)
@@ -107,13 +107,53 @@ case "$1" in
 				json_dump
 			;;
 			nat_table)
-				/usr/lib/ubus/juci/network.lua nat_table
+				local nattable=/tmp/nattable
+				cat /proc/net/ip_conntrack | grep tcp > $nattable
+				json_init
+				json_add_array "table"
+				while read -r line
+				do
+					json_add_object ""
+					json_add_string proto "$(echo $line | awk '{print$1}')"
+					json_add_string state "$(echo $line | awk '{print$4}')"
+					json_add_string local_ip "$(echo $line | awk '{print$9}')"
+					json_add_string remote_ip "$(echo $line | awk '{print$10}')"
+					json_add_string local_port "$(echo $line | awk '{print$11}')"
+					json_add_string remote_port "$(echo $line | awk '{print$12}')"
+					json_select ..
+				done < $nattable
+				rm -f $nattable
+				json_dump
 			;;
 			protocols)
-				/usr/lib/ubus/juci/network.lua protocols
+				json_init
+				json_add_array "protocols"
+				for p in $(grep -roh 'proto_\(.*\)_init' /lib/netifd/proto/ | sed -e 's|proto_\(.*\)_init|\1|g'); do
+					json_add_string "" $p
+				done
+				json_dump
 			;;
 			services)
-				/usr/lib/ubus/juci/network.lua services
+				local netstatlist=/tmp/netstatlist
+				netstat -plan | grep -w LISTEN | tr -d '*' > $netstatlist
+				json_init
+				json_add_array "list"
+				while read -r line
+				do
+					json_add_object ""
+					json_add_string proto "$(echo $line | awk '{print$1}')"
+					lip="$(echo $line | awk '{print$4}')"
+					lport="$(echo $line | awk '{print$4}' | awk -F':' '{print$NF}')"
+					lip=${lip%:$lport}
+					json_add_string listen_ip $lip
+					json_add_string listen_port $lport
+					json_add_string state "$(echo $line | awk '{print$6}')"
+					json_add_string pid "$(echo $line | awk '{print$7}' | cut -d'/' -f1)"
+					json_add_string name "$(echo $line | awk '{print$7}' | cut -d'/' -f2)"
+					json_select ..
+				done < $netstatlist
+				rm -f $netstatlist
+				json_dump
 			;;
 		esac
 	;;
