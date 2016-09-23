@@ -1,17 +1,10 @@
 #!/bin/sh
 
-#juci.system.conf
-#	features
-#	restore
-#juci.system.upgrade
-#	check
-#	start
-
 . /usr/share/libubox/jshn.sh
 
 case "$1" in
 	list)
-		echo '{ "clean":{}, "test":{"path":"str"}, "start":{"path":"str","keep":32}, "check":{"type":"str"}, "create-backup":{"pass":"str"}, "restore-backup":{"pass":"str"}, "features":{} }'
+		echo '{ "test":{"path":"str"}, "start":{"path":"str","keep":32}, "check":{"type":"str"}, "create-backup":{"pass":"str"}, "restore-backup":{"pass":"str"}, "features":{} }'
 	;;
 	call)
 		case "$2" in
@@ -100,14 +93,22 @@ case "$1" in
 				json_get_var path path "/tmp/firmware.bin"
 
 				[ "$keep" == "1" ] && keep="" || keep="-n"
-				sysupgrade $keep $path
+				sysupgrade $keep $path >/dev/null 2>&1 &
+
+				json_init
+				json_add_string "sysupgrade" "upgrade"
+				json_dump
 			;;
 			test)
 				read input
 				json_load "$input"
 				json_get_var path path "/tmp/firmware.bin"
 
-				sysupgrade --test $path
+				sysupgrade --test $path >/dev/null 2>&1 &
+
+				json_init
+				json_add_string "sysupgrade" "test"
+				json_dump
 			;;
 		esac
 	;;
