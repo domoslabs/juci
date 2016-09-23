@@ -45,7 +45,7 @@ case "$1" in
 
 				json_init
 				json_add_array "folders"
-				for line in $(find $path -maxdepth 1 -type d | sed 's/^\/mnt//g' 2>/dev/null | sed 's|$|/|g' | tr ' ' '!'); do
+				for line in $(find "$(dirname "$path")" -name "$(basename "$path")" -maxdepth 1 -type d | sed 's/^\/mnt//g' 2>/dev/null | sed 's|$|/|g' | tr ' ' '!'); do
 					json_add_string "" "$(echo $line | tr '!' ' ')"
 				done
 				json_close_array
