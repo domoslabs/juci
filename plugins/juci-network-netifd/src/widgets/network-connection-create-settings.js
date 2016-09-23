@@ -51,7 +51,7 @@ JUCI.app
 			});
 		}
 		$scope.allProtocolTypes = $network.getProtocolTypes();
-		$rpc.$call("juci.network", "run", {"method":"protocols"}).done(function(data){
+		$rpc.$call("juci.network", "protocols", {}).done(function(data){
 			$scope.allProtocols = $scope.allProtocolTypes.filter(function(x){
 				if(x.value == "static" || x.value == "none") return false; //should never be there
 				return data.protocols.find(function(p){ return p == x.value }) != undefined;

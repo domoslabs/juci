@@ -14,7 +14,7 @@ JUCI.app
 		name: "",
 		name_full: ""
 	}
-	$rpc.$call("juci.system.upgrade", "run", {"method":"check","args":JSON.stringify({type: "online"})}).done(function(response){
+	$rpc.$call("juci.sysupgrade", "check", {JSON.stringify({type: "online"})}).done(function(response){
 		if(response.online) {
 			var split = response.online.split("/");
 			$scope.upgrade.path = response.online;
@@ -45,7 +45,7 @@ JUCI.app
 				}
 				$scope.showUpgradeStatus = true;
 				$scope.message = $tr(gettext("Your box is upgrading"));
-				$rpc.$call("juci.system.upgrade", "run", {"method":"start","args":JSON.stringify({"path":$scope.upgrade.path, "keep":(btn.value === "keep")?1:0})});
+				$rpc.$call("juci.sysupgrade", "start", {JSON.stringify({"path":$scope.upgrade.path, "keep":(btn.value === "keep")?1:0})});
 				setTimeout(function(){$scope.error = $tr(gettext("Something went wrong! Try again later"));}, 50000);
 				inst.close();
 			}

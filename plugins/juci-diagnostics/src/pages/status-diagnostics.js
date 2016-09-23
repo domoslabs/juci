@@ -26,7 +26,7 @@ JUCI.app
 		$scope.$apply(); 
 	}); 
 	$scope.onTraceTest = function(){
-		$rpc.$call("juci.diagnostics", "run", {"method":"traceroute","args":JSON.stringify({ host: $scope.data.traceHost })}).done(function(result){
+		$rpc.$call("juci.diagnostics", "traceroute", {JSON.stringify({ host: $scope.data.traceHost })}).done(function(result){
 			if(result.stderr) $scope.data.traceError = result.stderr; 
 			$scope.data.traceResults = result.stdout; 
 			$scope.$apply(); 
@@ -39,7 +39,7 @@ JUCI.app
 	$scope.onPingTest = function(){
 		$scope.data.pingResults = "..."; 
 		$scope.data.error = "";
-		$rpc.$call("juci.diagnostics", "run", {"method":"ping","args":JSON.stringify({ host: $scope.data.pingHost })}).done(function(result){
+		$rpc.$call("juci.diagnostics", "ping", {JSON.stringify({ host: $scope.data.pingHost })}).done(function(result){
 			if(result.stderr) $scope.data.pingError = result.stderr; 
 			$scope.data.pingResults = result.stdout; 
 			$scope.$apply(); 

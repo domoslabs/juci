@@ -57,7 +57,7 @@ JUCI.app
 		
 		JUCI.interval.repeat("graph-update-"+Math.random(), 2000, function(done){
 			var start_time = 0; 
-			$rpc.$call("juci.rtgraphs", "run", {"method":"get","args":JSON.stringify({ethdevice: $scope.ifname})}).done(function(result){
+			$rpc.$call("juci.rtgraphs", "get", {JSON.stringify({ethdevice: $scope.ifname})}).done(function(result){
 				if(!result.graph || !result.graph.length) return; 
 				if(!start_time) start_time = result.graph[0][0]; 
 				//dataset.remove(dataset.getIds()); 

@@ -26,7 +26,7 @@ JUCI.app
 	$scope.edit = null;
 
 	$scope.$watch("client", function(){
-		$rpc.$call("juci.firewall", "run", {"method":"excluded_ports"}).done(function(res){
+		$rpc.$call("juci.firewall", "excluded_ports", {}).done(function(res){
 			$scope.excluded_ports = res.result || "";
 			reload();
 		}).fail(function(e){

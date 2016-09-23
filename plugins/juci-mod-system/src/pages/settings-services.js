@@ -21,7 +21,7 @@
 JUCI.app
 .controller("ServicesStatusPage", function($scope, $rpc){
 	JUCI.interval.repeat("juci-services-page", 5000, function(done){
-		$rpc.$call("juci.system.service", "run", {"method":"list"}).done(function(result){
+		$rpc.$call("juci.service", "list", {}).done(function(result){
 			$scope.services = result.services; 
 			$scope.services.map(function(service){
 				service.reload = false;
@@ -39,12 +39,12 @@ JUCI.app
 
 	$scope.onServiceEnable = function(service){
 		if(service.enabled){
-			$rpc.$call("juci.system.service", "run", {"method":"disable", "args":JSON.stringify(service)}).done(function(){
+			$rpc.$call("juci.service", "disable", {JSON.stringify(service)}).done(function(){
 				console.log("service: " + service.name + " is disabled");
 				$scope.$apply();
 			});	
 		} else {
-			$rpc.$call("juci.system.service", "run", {"method":"enable", "args":JSON.stringify(service)}).done(function(){
+			$rpc.$call("juci.service", "enable", {JSON.stringify(service)}).done(function(){
 				console.log("service: " + service.name + " is enabled");
 				$scope.$apply();
 			});
@@ -53,7 +53,7 @@ JUCI.app
 	
 	$scope.onServiceReload = function(service){
 		service.reload = true;
-		$rpc.$call("juci.system.service", "run", {"method":"reload", "args":JSON.stringify(service)}).done(function(){
+		$rpc.$call("juci.service", "reload", {JSON.stringify(service)}).done(function(){
 			console.log("service: " + service.name + " is reloded");
 			service.reload = false;
 			$scope.$apply();
@@ -62,13 +62,13 @@ JUCI.app
 
 	$scope.onServiceToggle = function(service){
 		if(service.running){
-			$rpc.$call("juci.system.service", "run", {"method":"stop", "args":JSON.stringify(service)}).done(function(){
+			$rpc.$call("juci.service", "stop", {JSON.stringify(service)}).done(function(){
 				service.running = true;
 				console.log("service: " + service.name + " is stoped");
 				$scope.$apply();
 			});	
 		} else {
-			$rpc.$call("juci.system.service", "run", {"method":"start", "args":JSON.stringify(service)}).done(function(){
+			$rpc.$call("juci.service", "start", {JSON.stringify(service)}).done(function(){
 				service.running = false;
 				console.log("service: " + service.name + " is started");
 				$scope.$apply();

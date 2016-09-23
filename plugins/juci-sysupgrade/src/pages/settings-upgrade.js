@@ -90,7 +90,7 @@ JUCI.app
 	$scope.onCheckUSB = function(){
 		$scope.usbUpgradeAvailable = false;
 		$scope.usbCheckInProgress = 1;
-		$rpc.$call("juci.system.upgrade", "run", {"method":"check","args":JSON.stringify({type: "usb"})}).done(function(response){
+		$rpc.$call("juci.sysupgrade", "check", {JSON.stringify({type: "usb"})}).done(function(response){
 			if(response.usb) {
 				$scope.usbUpgrade = response.usb;
 				$scope.usbUpgradeStatus = $tr(gettext("New Software Available!"));
@@ -108,7 +108,7 @@ JUCI.app
 	$scope.onCheckOnline = function(){
 		$scope.onlineUpgradeAvailable = false;
 		$scope.onlineCheckInProgress = 1;
-		$rpc.$call("juci.system.upgrade", "run", {"method":"check","args":JSON.stringify({type: "online"})}).done(function(response){
+		$rpc.$call("juci.sysupgrade", "check", {JSON.stringify({type: "online"})}).done(function(response){
 			if(response.online) {
 				$scope.onlineUpgrade = response.online;
 				$scope.onlineUpgradeStatus = $tr(gettext("New Software Available!"));
@@ -128,7 +128,7 @@ JUCI.app
 			$scope.message = $tr(gettext("Downloading and verifying image..."));
 			$scope.progress = $tr(gettext("Uploading"));
 			console.log("testing image: "+ $scope.uploadFilename);
-			$rpc.$call("juci.system.upgrade", "run", {"method":"start","args":JSON.stringify({"path":$scope.onlineUpgrade, "keep":(keep)?1:0})});
+			$rpc.$call("juci.sysupgrade", "start", {JSON.stringify({"path":$scope.onlineUpgrade, "keep":(keep)?1:0})});
 		});
 	}
 	
@@ -138,7 +138,7 @@ JUCI.app
 			$scope.message = $tr(gettext("Verifying image..."));
 			$scope.progress = $tr(gettext("Verifying"));
 			console.log("testing image: "+$scope.usbUpgrade);
-			$rpc.$call("juci.system.upgrade", "run", {"method":"start","args":JSON.stringify({"path":$scope.usbUpgrade, "keep":(keep)?1:0})});
+			$rpc.$call("juci.sysupgrade", "start", {JSON.stringify({"path":$scope.usbUpgrade, "keep":(keep)?1:0})});
 		});
 	}
 	$scope.onStartUpgrade = function(){
@@ -164,7 +164,7 @@ JUCI.app
 		}).done(function(){
 			$scope.progress_byte = $scope.progress_total;
 			$scope.$apply();
-			$rpc.$call("juci.system.upgrade", "run", {"method":"start","args":JSON.stringify({"path":$scope.uploadFilename, "keep":(keep)?1:0})});
+			$rpc.$call("juci.sysupgrade", "start", {JSON.stringify({"path":$scope.uploadFilename, "keep":(keep)?1:0})});
 		}).fail(function(e){
 			$scope.error =  $tr(gettext("The server returned an error"))+" ("+JSON.stringify(e)+")";
 			$scope.$apply();

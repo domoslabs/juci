@@ -21,7 +21,7 @@
 JUCI.app
 .controller("UPNPMainPage", function($scope, $uci, $systemService, $network, $firewall, $upnp, $tr, gettext, $rpc){
 	JUCI.interval.repeat("upnp-status-refresh", 5000, function(done){
-		$rpc.$call("juci.upnpd", "run", {"method":"ports"}).done(function(result){ 
+		$rpc.$call("juci.upnpd", "ports", {}).done(function(result){ 
 			$scope.upnpOpenPorts = result.ports; 
 			$scope.$apply();
 		}).always(function(){done();});

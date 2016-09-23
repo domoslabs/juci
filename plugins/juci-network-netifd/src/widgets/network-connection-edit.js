@@ -27,7 +27,7 @@ JUCI.app
 	}
 	
 	$scope.allProtocolTypes = $network.getProtocolTypes();
-	$rpc.$call("juci.network", "run", {"method":"protocols"}).done(function(data){
+	$rpc.$call("juci.network", "protocols", {}).done(function(data){
 		$scope.protocolTypes = $scope.allProtocolTypes.filter(function(x){
 			if(x.value == "static" || x.value == "none") return true; //should allways be there
 			return data.protocols.find(function(p){ return p == x.value }) != undefined;

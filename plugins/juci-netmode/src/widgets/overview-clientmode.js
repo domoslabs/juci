@@ -76,7 +76,7 @@ JUCI.app
 		$rpc.$call("wps", "pbc_client");
 	}
 	function setValues(ssid, key, encr){
-		$rpc.$call("juci.repeater", "run", {"method":"set","args": JSON.stringify({
+		$rpc.$call("juci.wireless", "set_credentials", {JSON.stringify({
 			ssid:ssid,
 			key:key,
 			encryption:encr

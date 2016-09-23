@@ -25,14 +25,14 @@ JUCI.app
 	$scope.passwordError = false;
 
 	$events.subscribe("defaultreset", function(e){ window.location = "/reboot.html"; });
-	$rpc.$call("juci.system.conf", "run", {"method":"features"}).done(function(features){
+	$rpc.$call("juci.sysupgrade", "features", {}).done(function(features){
 		$scope.features = features;
 		$scope.$apply();
 	});
 
 	$scope.onReset = function(){
 		if(confirm($tr(gettext("This will reset your configuration to factory defaults. Do you want to continue?")))){
-			$rpc.$call("juci.system", "run", {"method":"defaultreset"});
+			$rpc.$call("juci.system", "defaultreset", {});
 		}
 	}
 	$scope.onSaveConfig = function(){
@@ -55,7 +55,7 @@ JUCI.app
 	}
 	function onUploadComplete(result){
 		console.log("Uploaded: "+JSON.stringify(result));
-		$rpc.$call("juci.system.conf", "run", {"method":"restore","args":JSON.stringify({
+		$rpc.$call("juci.sysupgrade", "restore-backup", {JSON.stringify({
 			pass: $scope.data.pass
 		})}).done(function(result){
 			if(result.error){
@@ -64,7 +64,7 @@ JUCI.app
 				$scope.showUploadModal = 0;
 				$scope.$apply();
 				if(confirm($tr(gettext("Configuration has been restored. You need to reboot the device for settings to take effect! Do you want to reboot now?")))){
-					$rpc.$call("juci.system", "run", {"method":"reboot"});
+					$rpc.$call("juci.system", "reboot", {});
 					setTimeout(function(){window.location = "/reboot.html";}, 0);
 				}
 			}
@@ -86,9 +86,8 @@ JUCI.app
 		}
 		$scope.showModal = 0;
 		$scope.showStatus = 1;
-		$rpc.$call("juci.system", "run", {
-			"method":"create_backup",
-			"args": ($scope.data.pass ? JSON.stringify({password: $scope.data.pass}) : undefined)
+		$rpc.$call("juci.system", "create-backup", {
+			($scope.data.pass ? JSON.stringify({password: $scope.data.pass}) : undefined)
 		}).done(function(){
 			$file.downloadFile("backup.tar.gz", "application/gzip", "backup-" + $config.filename + ".tar.gz").fail(function(e){
 				alert($tr(gettext("Was not able to download backup. Please check access!")));

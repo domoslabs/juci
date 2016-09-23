@@ -143,7 +143,7 @@
 
 		NetworkBackend.prototype.getNameServers = function(){
 			var deferred = $.Deferred();
-			$rpc.$call("juci.network", "run", {"method":"nameservers"}).done(function(result){
+			$rpc.$call("juci.network", "nameservers", {}).done(function(result){
 				if(result && result.nameservers) deferred.resolve(result.nameservers);
 				else deferred.reject();
 			});
@@ -154,7 +154,7 @@
 		NetworkBackend.prototype.getNetworkLoad = function(){
 			var def = $.Deferred();
 
-			$rpc.$call("juci.network", "run", {"method":"load"}).done(function(res){
+			$rpc.$call("juci.network", "load", {}).done(function(res){
 				def.resolve(res);
 			});
 
@@ -164,7 +164,7 @@
 		NetworkBackend.prototype.getNatTable = function(){
 			var def = $.Deferred();
 
-			$rpc.$call("juci.network", "run", {"method":"nat_table"}).done(function(result){
+			$rpc.$call("juci.network", "nat_table", {}).done(function(result){
 				if(result && result.table){
 					def.resolve(result.table);
 				} else {
@@ -225,7 +225,7 @@
 
 		NetworkBackend.prototype.getServices = function(){
 			var def = $.Deferred();
-			$rpc.$call("juci.network", "run", {"method":"services"}).done(function(result){
+			$rpc.$call("juci.network", "services", {}).done(function(result){
 				if(result && result.list) def.resolve(result.list);
 				else def.reject();
 			});

@@ -151,7 +151,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 
 	Wireless.prototype.getDefaults = function(){
 		var deferred = $.Deferred();
-		$rpc.$call("juci.wireless", "run", {"method":"defaults"}).done(function(result){
+		$rpc.$call("router", "info", {}).done(function(result){
 			if(!result) {
 				deferred.reject();
 				return;
@@ -166,7 +166,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 
 	Wireless.prototype.scan = function(opts){
 		var deferred = $.Deferred();
-		$rpc.$call("juci.broadcom.wireless.lua", "run", {"method":"scan", "args":JSON.stringify(opts)}).always(function(){
+		$rpc.$call("juci.wireless", "scan", {JSON.stringify(opts)}).always(function(){
 			deferred.resolve();
 		});
 		return deferred.promise();
@@ -174,7 +174,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 
 	Wireless.prototype.getScanResults = function(opts){
 		var deferred = $.Deferred();
-		$rpc.$call("juci.broadcom.wireless.lua", "run", {"method":"scanresults", "args":JSON.stringify(opts)}).done(function(result){
+		$rpc.$call("juci.wireless", "scanresults", {JSON.stringify(opts)}).done(function(result){
 			deferred.resolve(result.access_points);
 		});
 		return deferred.promise();

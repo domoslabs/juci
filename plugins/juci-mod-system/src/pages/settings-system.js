@@ -35,7 +35,7 @@ JUCI.app
 			}).always(function(){next();}); 
 		}, 
 		function(next){
-			$rpc.$call("juci.system.time", "run", {"method":"zonelist"}).done(function(result){
+			$rpc.$call("juci.system", "zonelist", {}).done(function(result){
 				if(result && result.zones){
 					$scope.timezones = result.zones; 
 					$scope.allTimeZones = Object.keys(result.zones).sort().map(function(k){
