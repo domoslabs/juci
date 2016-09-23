@@ -52,7 +52,7 @@ JUCI.app
 		});
 	};
 	$scope.onExportFile = function() {
-		$rpc.$call("juci.iup", "backup", {JSON.stringify({"filename":"iup-backup"})}).done(function(){
+		$rpc.$call("juci.iup", "backup", {"filename":"iup-backup"}).done(function(){
 			$file.downloadFile("iup-backup", "application/gzip", "provisioning-" + $config.filename + ".tar.gz").fail(function(e){
 				alert("error: " + JSON.stringify(e));
 			});

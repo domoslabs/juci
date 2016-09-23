@@ -59,12 +59,12 @@ JUCI.app
 		var port = server.port.value;
 		var address = server.server.value;
 		$scope.data.state="running";
-		$rpc.$call("juci.speedtest", "run", {JSON.stringify({
+		$rpc.$call("juci.speedtest", "run", {
 			"testmode": $scope.data.test_type,
 			"port": port,
 			"packet": $scope.data.packagesize * 1000000,
 			"address": address
-		})}).done(function(response){
+		}).done(function(response){
 			if(response && response.message=="success"){
 				$scope.data.state="running";
 			}else{

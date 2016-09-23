@@ -76,11 +76,11 @@ JUCI.app
 		$rpc.$call("wps", "pbc_client");
 	}
 	function setValues(ssid, key, encr){
-		$rpc.$call("juci.wireless", "set_credentials", {JSON.stringify({
-			ssid:ssid,
-			key:key,
-			encryption:encr
-		})}).done(function(ret){
+		$rpc.$call("juci.wireless", "set_credentials", {
+			"ssid":ssid,
+			"key":key,
+			"encryption":encr
+		}).done(function(ret){
 			$scope.showModal = true;
 			$scope.modalTitle = $tr(gettext("Attempting to Pair"));
 			setTimeout(function(){ if($scope.showModal) $scope.showModal = false; window.location.reload(true);}, 30000);

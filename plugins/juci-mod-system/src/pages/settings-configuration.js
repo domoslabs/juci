@@ -55,9 +55,9 @@ JUCI.app
 	}
 	function onUploadComplete(result){
 		console.log("Uploaded: "+JSON.stringify(result));
-		$rpc.$call("juci.sysupgrade", "restore-backup", {JSON.stringify({
-			pass: $scope.data.pass
-		})}).done(function(result){
+		$rpc.$call("juci.sysupgrade", "restore-backup", {
+			"pass": $scope.data.pass
+		}).done(function(result){
 			if(result.error){
 				alert(result.error);
 			} else {
@@ -86,9 +86,9 @@ JUCI.app
 		}
 		$scope.showModal = 0;
 		$scope.showStatus = 1;
-		$rpc.$call("juci.system", "create-backup", {
-			($scope.data.pass ? JSON.stringify({password: $scope.data.pass}) : undefined)
-		}).done(function(){
+		$rpc.$call("juci.system", "create-backup", 
+			($scope.data.pass ? {"password": $scope.data.pass} : undefined)
+		).done(function(){
 			$file.downloadFile("backup.tar.gz", "application/gzip", "backup-" + $config.filename + ".tar.gz").fail(function(e){
 				alert($tr(gettext("Was not able to download backup. Please check access!")));
 				console.log(e);
