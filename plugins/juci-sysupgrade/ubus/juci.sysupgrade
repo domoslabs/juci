@@ -73,17 +73,17 @@ case "$1" in
 				json_load "$input"
 				json_get_var type type
 
-
 				json_init
 				case "$type" in
 					online)
-						json_add_string online "$(sysupgrade --online 2>/dev/null)"
+						online="$(sysupgrade --online 2>/dev/null)"
+						[ -n "$online" ] && json_add_string online "$online"
 					;;
 					usb)
-						json_add_string usb "$(sysupgrade --usb 2>/dev/null)"
+						usb="$(sysupgrade --usb 2>/dev/null)"
+						[ -n "$usb" ] && json_add_string online "$usb"
 					;;
 				esac
-
 				json_dump
 			;;
 			start)
