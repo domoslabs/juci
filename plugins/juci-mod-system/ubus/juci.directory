@@ -21,15 +21,17 @@ case "$1" in
 	call)
 		case "$2" in
 			folder_tree)
-				read input
-				json_load "$input"
-				json_get_var path path "mnt"
+				#read input
+				#json_load "$input"
+				#json_get_var path path
+
+				# for now we allow to display
+				# /mnt folder tree only
+				path="mnt"
 
 				json_init
-
 				json_add_object "$path"
 				find_children "/$path"
-
 				json_dump
 			;;
 			autocomplete)
@@ -37,10 +39,11 @@ case "$1" in
 				json_load "$input"
 				json_get_var path path
 
+				# for now we allow to display
+				# /mnt subdirectories only
 				case $path in
 					..) path="" ;;
 				esac
-
 				path="/mnt/$path*"
 
 				json_init
