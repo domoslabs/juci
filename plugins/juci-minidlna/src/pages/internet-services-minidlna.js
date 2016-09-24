@@ -58,13 +58,9 @@ JUCI.app
 		});
 	});
 
-	$rpc.$call("juci.minidlna", "run", {"method":"status"}).done(function(data){
+	$rpc.$call("juci.minidlna", "status", {}).done(function(data){
+		$scope.is_running = data.running ? "active" : "inactive";
 		$scope.count = data.count;
-		$scope.$apply();
-	});
-	
-	$rpc.$call("juci.system.service", "run", {"method":"status", "args":"{\"name\":\"minidlna\"}"}).done(function(result){
-		$scope.is_running = result.running ? "active" : "inactive";
 		$scope.$apply();
 	});
 
