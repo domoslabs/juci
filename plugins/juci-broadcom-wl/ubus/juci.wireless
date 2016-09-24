@@ -28,22 +28,35 @@ case "$1" in
 
 				[ -n "$radio" ] || return 1
 
-				scanfile=/tmp/"$radio"_scan_results
+				local started=0
+				local scanfile=/tmp/"$radio"_scan_results
 
-				wlctl -i $radio scanresults_summary | tr '\t' ' ' > $scanfile
+				wlctl -i $radio scanresults | grep "SSID\|BSSID\|Mode\|AKM" | tr '\t' ' ' > $scanfile
 
 				json_init
 				json_add_array "access_points"
 				while read -r line
 				do
-					json_add_object ""
-					json_add_string bssid "$(echo $line | awk '{print$2}')"
-					json_add_string rssi "$(echo $line | awk '{print$4}')"
-					json_add_string frequency "$(echo $line | awk '{print$7}')"
-					json_add_string channel "$(echo $line | awk '{print$9}')"
-					json_add_string hwmodes "$(echo $line | awk '{print$11}')"
-					json_add_string ssid "$(echo $line | awk '{print$13}')"
-					json_select ..
+					case "$line" in
+						SSID:*)
+							[ $started -eq 1 ] && json_select .. || started=1
+							json_add_object ""
+							json_add_string ssid "$(echo $line | awk '{print$2}' | tr -d '\"')"
+						;;
+						Mode:*)
+							json_add_int rssi "$(echo $line | awk '{print$4}')"
+							json_add_int noise "$(echo $line | awk '{print$10}')"
+							channel=$(echo $line | awk '{print$NF}')
+							json_add_int channel $channel
+							json_add_string frequency "$([ $channel -ge 36 ] && echo 5GHz || echo 2.4GHz)"
+						;;
+						BSSID:*)
+							json_add_string bssid "$(echo $line | awk '{print$2}')"
+						;;
+						AKM*)
+							json_add_string cipher "$(echo $line | awk '{print$3}')"
+						;;
+					esac
 				done < $scanfile
 				rm -f $scanfile
 				json_dump
