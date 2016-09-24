@@ -11,13 +11,15 @@ case "$1" in
 			run)
 				if pidof tptest-run >/dev/null; then
 					json_init
-					json_add_string "error" "there is already a speedtest going on"
+					json_add_string "state" "error"
+					json_add_string "message" "there is already a speedtest going on"
 					json_dump
 				else
 					read input
 					tptest-run "$input" >/dev/null 2>&1 &
 					json_init
-					json_add_string "success" "speedtest is started"
+					json_add_string "state" "running"
+					json_add_string "message" "success"
 					json_dump
 				fi
 			;;
