@@ -87,7 +87,7 @@ JUCI.app
 		$scope.showModal = 0;
 		$scope.showStatus = 1;
 		$rpc.$call("juci.sysupgrade", "create-backup",
-			($scope.data.pass ? {"password": $scope.data.pass} : undefined)
+			($scope.data.pass ? {"pass": $scope.data.pass} : undefined)
 		).done(function(){
 			$file.downloadFile("backup.tar.gz", "application/gzip", "backup-" + $config.filename + ".tar.gz").fail(function(e){
 				alert($tr(gettext("Was not able to download backup. Please check access!")));
