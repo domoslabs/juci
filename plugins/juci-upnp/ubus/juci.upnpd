@@ -1,9 +1,5 @@
 #!/bin/sh
 
-#root@Inteno:/# iptables --line-numbers -t nat -xnvL MINIUPNPD | tail -n +3
-#1           0        0 DNAT       udp  --  *      *       0.0.0.0/0            0.0.0.0/0            udp dpt:15418 to:192.168.1.241:15418
-#2           0        0 DNAT       tcp  --  *      *       0.0.0.0/0            0.0.0.0/0            tcp dpt:15418 to:192.168.1.241:15418
-
 . /usr/share/libubox/jshn.sh
 
 case "$1" in
@@ -22,6 +18,7 @@ case "$1" in
 				do
 					json_add_object ""
 					json_add_string num "$(echo $line | awk '{print$1}')"
+					json_add_string packets "$(echo $line | awk '{print$2}')"
 					json_add_string bytes "$(echo $line | awk '{print$3}')"
 					json_add_string target "$(echo $line | awk '{print$4}')"
 					json_add_string proto "$(echo $line | awk '{print$5}')"
