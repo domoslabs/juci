@@ -201,7 +201,7 @@
 			var self = this;
 
 			METHODS.session.destroy().done(function(){
-				self.$clearSesion.done(function(){
+				self.$clearSession().done(function(){
 					deferred.resolve();
 				}).fail(function(msg){
 					deferred.reject(msg);
