@@ -166,7 +166,8 @@ JUCI.app
 				$rpc.$call("network.interface", "dump").done(function(data){
 					if(!data || !data.interface){console.log("error getting interfaces"); next();return}
 					lan_nets = all_nets = data.interface;
-				}).always(function(){next();});
+					next();
+				}).fail(function(e){next(e);});
 			},
 			function(next){
 				$rpc.$call("router", "networks").done(function(data){
@@ -180,11 +181,13 @@ JUCI.app
 							return false;
 						});
 					});
-				}).fail(function(e){console.log(e);}).always(function(){next();});
+					next();
+				}).fail(function(e){next(e);});
 			}, function(next){
 				$rpc.$call("led.internet", "status").done(function(data){
 					hasInternet = data.state && data.state === "ok";
-				}).fail(function(e){console.log(e);}).always(function(){next();});
+					next();
+				}).fail(function(e){next(e);});
 			}, function(next){
 				$firewall.getWanZones().done(function(wan_zones){
 					wan_nets = all_nets.filter(function(net){
@@ -193,62 +196,15 @@ JUCI.app
 							return z.network && z.network.value && z.network.value.find(function(n){ return n === net.interface;});
 						});
 					});
-				}).always(function(){next();});
+					next();
+				}).fail(function(e){next(e);});
 			}, function(next){
 				$rpc.$call("router", "radios").done(function(data){
 					radios = data;
-				}).always(function(){next();});
-			}, function(next){
-				function getWanTitle(type, wan, data){
-					if(!wan) return "";
-					var t= wan.interface + '<br />' + $tr(gettext('Connection Type')) + ': ';
-					switch(type){
-						case "eth":
-							t+= $tr(gettext("Ethernet")) + '<br />';
-							t+= $tr(gettext("Link speed")) + ": " + data.linkspeed + "<br />"
-							break;
-						case "dsl":
-							t+= $tr(gettext("DSL")) + '<br />';
-							t+= $tr(gettext("Mode")) + ': ' + data.dslstats.mode + '<br />';
-							t+= $tr(gettext("Bit Rate")) + '<br />';
-							t+= $tr(gettext("Downstream")) + ': ' + parseInt(data.dslstats.bearers[0].rate_down)/1000 + ' Mbit/s<br />';
-							t+= $tr(gettext("Upstream")) + ': ' + parseInt(data.dslstats.bearers[0].rate_up)/1000 + ' Mbit/s<br />';
-							break;
-						case "vwan":
-							t+= $tr(gettext("3G/4G")) + '<br />';
-							break;
-						case "bridge":
-							break;
-							t+= $tr(gettext("Bridge")) + '<br />';
-						default:
-							t+= $tr(gettext("Unknown")) + '<br />';
-					}
-					if(wan["ipv4-address"] && wan["ipv4-address"].length){
-						wan["ipv4-address"].map(function(ip){
-							t += $tr(gettext("IPv4 address")) + ': ' + ip.address;
-						});
-					}
-					if(wan["ipv6-address"] && wan["ipv6-address"].length){
-						wan["ipv6-address"].map(function(ip){
-							t += $tr(gettext("IPv6 address")) + ': ' + ip.address;
-						});
-					}
-					return t;
-				}
-				function addNode(wan, title){
-					if(!full) return;
-					if(!title) return;
-					var node = {
-						id: count++,
-						label: myString((wan.interface).toUpperCase()),
-						title: title,
-						image: getIcon("wan", wan),
-						ize: 20,
-						shape: "image",
-					}
-					nodes.push(node);
-					edges.push( { from: node.id, to: ".root", width: 3 });
-				}
+					next();
+				}).fail(function(e){next(e);});
+			}], function(err){
+				if(err){ console.log(err); def.reject(); return;}
 				var up = false;
 				async.eachSeries(wan_nets, function(wan, callback){
 					if(!wan){ callback(); return; }
@@ -284,8 +240,7 @@ JUCI.app
 					}
 				}, function(){
 					nodes.find(function(node){ return node.id === ".root";}).image = up ? "/img/Box_Green.png" : "/img/Box_Red.png";
-					next();});
-			}], function(next){
+				});
 				async.eachSeries(lan_nets, function(item, callback){
 					if(!item || !item.interface){ callback(); return;}
 					$rpc.$call("router", "ports", { "network": item.interface }).done(function(data){
@@ -385,6 +340,20 @@ JUCI.app
 			}
 		);
 		return self.def
+		function addNode(wan, title){
+			if(!full) return;
+			if(!title) return;
+			var node = {
+				id: count++,
+				label: myString((wan.interface).toUpperCase()),
+				title: title,
+				image: getIcon("wan", wan),
+				ize: 20,
+				shape: "image",
+			}
+			nodes.push(node);
+			edges.push( { from: node.id, to: ".root", width: 3 });
+		}
 	}
 
 	$scope.showBigOverview = function(){
@@ -439,4 +408,41 @@ JUCI.app
 			});
 		});
 	});
+
+	function getWanTitle(type, wan, data){
+		if(!wan) return "";
+		var t= wan.interface + '<br />' + $tr(gettext('Connection Type')) + ': ';
+		switch(type){
+			case "eth":
+				t+= $tr(gettext("Ethernet")) + '<br />';
+				t+= $tr(gettext("Link speed")) + ": " + data.linkspeed + "<br />"
+				break;
+			case "dsl":
+				t+= $tr(gettext("DSL")) + '<br />';
+				t+= $tr(gettext("Mode")) + ': ' + data.dslstats.mode + '<br />';
+				t+= $tr(gettext("Bit Rate")) + '<br />';
+				t+= $tr(gettext("Downstream")) + ': ' + parseInt(data.dslstats.bearers[0].rate_down)/1000 + ' Mbit/s<br />';
+				t+= $tr(gettext("Upstream")) + ': ' + parseInt(data.dslstats.bearers[0].rate_up)/1000 + ' Mbit/s<br />';
+				break;
+			case "vwan":
+				t+= $tr(gettext("3G/4G")) + '<br />';
+				break;
+			case "bridge":
+				break;
+				t+= $tr(gettext("Bridge")) + '<br />';
+			default:
+				t+= $tr(gettext("Unknown")) + '<br />';
+		}
+		if(wan["ipv4-address"] && wan["ipv4-address"].length){
+			wan["ipv4-address"].map(function(ip){
+				t += $tr(gettext("IPv4 address")) + ': ' + ip.address;
+			});
+		}
+		if(wan["ipv6-address"] && wan["ipv6-address"].length){
+			wan["ipv6-address"].map(function(ip){
+				t += $tr(gettext("IPv6 address")) + ': ' + ip.address;
+			});
+		}
+		return t;
+	}
 });

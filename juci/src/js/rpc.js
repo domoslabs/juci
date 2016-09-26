@@ -45,6 +45,7 @@
 	// {jsonrpc..., method: type, [ RPC_SESSION_D , namespace, method, { ... data ...  } }
 	function rpc_request(type, object, method, data){
 		if(DEBUG_MODE > 1)console.log("UBUS " + type + " " + object + " " + method);
+		if(ws === null) return $.Deferred().reject();
 
 		// remove completed requests from cache
 		var retain = {};
@@ -433,6 +434,7 @@
 				}
 			}
 			ws.onclose = function(e) {
+				ws = null;
 				if(!e.isTrusted){
 					if(DEBUG_MODE)console.log("reloading page");
 				}

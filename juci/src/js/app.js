@@ -95,24 +95,20 @@ JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $
 	});
 
 	var path = $location.path().replace(/\//g, "");
-	var home = $config.settings && $config.settings.juci && $config.settings.juci.homepage.value;
 	// load the right page from the start
 	if($rpc.$isLoggedIn()){
+		var home = $config.settings && $config.settings.juci && $config.settings.juci.homepage.value;
 		$juci.redirect(path|| home || "overview");
 	} else {
 		$juci.redirect("login");
 	}
 
 	// setup automatic session "pinging" and redirect to login page if the user session can not be accessed
-	if($rpc.$isLoggedIn()){
-		setInterval(function(){
-			$rpc.$authenticate().fail(function(){
-				// TODO: this also redirects to login without notice if box reboots, or rpcd crashes.
-				// Determine whether this behavior can be improved because it can be annoying (of course the most annoying part is that rpcd crashes in the first place..)
-				$juci.redirect("login");
-			});
-		}, 10000);
-	}
+	setInterval(function(){
+		$rpc.$authenticate().fail(function(){
+			$juci.redirect("login");
+		});
+	}, 10000);
 })
 .directive('ngOnload', [function(){
 	return {
