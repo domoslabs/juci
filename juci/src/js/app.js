@@ -31,7 +31,7 @@ $.jsonRPC.setup({
   namespace: 'juci'
 });
 
-window.$ = $; 
+window.$ = $;
 
 require.config({
     baseUrl: '/',
@@ -41,77 +41,79 @@ require.config({
 JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $urlRouterProvider, $controllerProvider, $templateCacheProvider, $provide) {
 	//$locationProvider.otherwise({ redirectTo: "/" });
 	$locationProvider.hashPrefix('!');
-	$locationProvider.html5Mode(false); 
-	
-	$juci.controller = $controllerProvider.register; 
-	$juci.directive = $compileProvider.directive; 
-	$juci.state = $stateProvider.state; 
-	$juci.decorator = function(name, func){
-		return $provide.decorator(name, func); 
-	}
-	$juci.$config = angular.module("juci").config; 
-	$juci.$stateProvider = $stateProvider; 
+	$locationProvider.html5Mode(false);
 
-	$juci.$urlRouterProvider = $urlRouterProvider; 
-	$juci.redirect = function(page){
-		window.location.href = "#!/"+page; 
+	$juci.controller = $controllerProvider.register;
+	$juci.directive = $compileProvider.directive;
+	$juci.state = $stateProvider.state;
+	$juci.decorator = function(name, func){
+		return $provide.decorator(name, func);
 	}
-	$urlRouterProvider.otherwise("404"); 
+	$juci.$config = angular.module("juci").config;
+	$juci.$stateProvider = $stateProvider;
+
+	$juci.$urlRouterProvider = $urlRouterProvider;
+	$juci.redirect = function(page){
+		window.location.href = "#!/"+page;
+	}
+	$urlRouterProvider.otherwise("404");
 })
 .run(function($templateCache){
-	var _get = $templateCache.get; 
-	var _put = $templateCache.put; 
+	var _get = $templateCache.get;
+	var _put = $templateCache.put;
 	$templateCache.get = function(name){
-		name = name.replace(/\/\//g, "/").replace(/^\//, ""); 
-		return _get.call($templateCache, name); 
+		name = name.replace(/\/\//g, "/").replace(/^\//, "");
+		return _get.call($templateCache, name);
 	}
 	$templateCache.put = function(name, value){
-		name = name.replace(/\/\//g, "/").replace(/^\//, ""); 
-		return _put.call($templateCache, name, value); 
+		name = name.replace(/\/\//g, "/").replace(/^\//, "");
+		return _put.call($templateCache, name, value);
 	}
 })
 .run(function($rootScope, $state, gettextCatalog, $rpc, $config, $location, $navigation, $templateCache, $languages){
-	
-	// TODO: maybe use some other way to gather errors than root scope? 
-	$rootScope.errors = []; 
-	
+
+	// TODO: maybe use some other way to gather errors than root scope?
+	$rootScope.errors = [];
+
 	// register a global error handler so we can show all errors
 	window.onerror = function(err){
 		$rootScope.errors.push({ message: err+":\n\n"+(err.stack||"") });
-		alert(err);  
+		alert(err);
 	}
 	$rootScope.$on("error", function(ev, data){
-		$rootScope.errors.push({message: data}); 
-	}); 
+		$rootScope.errors.push({message: data});
+	});
 	$rootScope.$on("errors", function(ev, errors){
 		if(errors && (errors instanceof Array)){
-			$rootScope.errors.concat(errors.map(function(x){ return { message: x }; })); 
+			$rootScope.errors.concat(errors.map(function(x){ return { message: x }; }));
 		} else {
-			$rootScope.errors.length = 0; 
+			$rootScope.errors.length = 0;
 		}
-	}); 
+	});
 	$rootScope.$on("errors_begin", function(ev){
-		$rootScope.errors.splice(0, $rootScope.errors.length); 
-	}); 
+		$rootScope.errors.splice(0, $rootScope.errors.length);
+	});
 
-	var path = $location.path().replace(/\//g, ""); 
+	var path = $location.path().replace(/\//g, "");
 	var home = $config.settings && $config.settings.juci && $config.settings.juci.homepage.value;
 	// load the right page from the start
 	if($rpc.$isLoggedIn()){
-		$juci.redirect(path|| home || "overview"); 
+		$juci.redirect(path|| home || "overview");
 	} else {
 		$juci.redirect("login");
 	}
-	
+
 	// setup automatic session "pinging" and redirect to login page if the user session can not be accessed
-	setInterval(function(){
-		$rpc.$authenticate().fail(function(){
-			// TODO: this also redirects to login without notice if box reboots, or rpcd crashes. 
-			// Determine whether this behavior can be improved because it can be annoying (of course the most annoying part is that rpcd crashes in the first place..) 
-			$juci.redirect("login");
-		});
-	}, 10000); 
-}) 
+	if($rpc.$isLoggedIn()){
+		setInterval(function(){
+			$rpc.$authenticate().fail(function(){
+				// TODO: this also redirects to login without notice if box reboots, or rpcd crashes.
+				// Determine whether this behavior can be improved because it can be annoying (of course the most annoying part is that rpcd crashes in the first place..)
+				$juci.redirect("login");
+			});
+		}, 10000);
+	}
+})
 .directive('ngOnload', [function(){
 	return {
 		scope: {
@@ -122,7 +124,7 @@ JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $
 						return scope.callBack();
 				})
 		}
-}}]); 
+}}]);
 
 // make autofocus directive work as expected
 JUCI.app.directive('autofocus', ['$timeout', function($timeout) {
@@ -136,7 +138,7 @@ JUCI.app.directive('autofocus', ['$timeout', function($timeout) {
   }
 }]);
 
-// This ensures that we have control over the initialization order (base system first, then angular). 
+// This ensures that we have control over the initialization order (base system first, then angular).
 angular.element(document).ready(function() {
 	//the init process will try for 1 sec to initialize and if it fails it will go to init fale page
 	starting = Date.now();

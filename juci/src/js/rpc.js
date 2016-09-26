@@ -20,7 +20,6 @@
 
 (function(scope){
 	var DEBUG_MODE = 0;
-	var retries = 3;
 	var RPC_USER = scope.localStorage.getItem("user") || "";
 	var RPC_DEFAULT_SESSION_ID = "00000000000000000000000000000000";
 	var RPC_SESSION_ID = scope.localStorage.getItem("sid")||RPC_DEFAULT_SESSION_ID;
@@ -46,19 +45,6 @@
 	// {jsonrpc..., method: type, [ RPC_SESSION_D , namespace, method, { ... data ...  } }
 	function rpc_request(type, object, method, data){
 		if(DEBUG_MODE > 1)console.log("UBUS " + type + " " + object + " " + method);
-		var sid = "";
-		
-		// check if the request has been made only recently with same parameters
-		var key = object+method+JSON.stringify(data);
-		if(!RPC_CACHE[key]){
-			RPC_CACHE[key] = {};
-		}
-		// if this request with same parameters is already in progress then just return the existing promise
-		if(RPC_CACHE[key].deferred && RPC_CACHE[key].deferred.state() === "pending"){
-			return RPC_CACHE[key].deferred.promise();
-		} else {
-			RPC_CACHE[key].deferred = $.Deferred();
-		}
 
 		// remove completed requests from cache
 		var retain = {};
@@ -68,6 +54,18 @@
 			}
 		});
 		RPC_CACHE = retain;
+
+		// check if the request has been made only recently with same parameters
+		var key = type+" "+object+" "+method+" "+JSON.stringify(data);
+		if(!RPC_CACHE[key]){
+			RPC_CACHE[key] = {};
+		}
+		// if this request with same parameters is already in progress then just return the existing promise
+		if(RPC_CACHE[key].deferred && RPC_CACHE[key].deferred.state() === "pending"){
+			return RPC_CACHE[key].deferred.promise();
+		} else {
+			RPC_CACHE[key].deferred = $.Deferred();
+		}
 
 		var jsonrpc_obj = {
 			jsonrpc: "2.0",
@@ -117,52 +115,84 @@
 			var deferred  = $.Deferred();
 			
 			if(!METHODS.session){
-				return deferred.reject("ubus session object is missing");
+				self.$clearSession().always(function(){
+					deferred.reject("ubus session object is missing");
+				});
+				return deferred.promise();
 			}
 
 			METHODS.session.list().done(function(result){
         		if(!("username" in (result.data||{}))) {
-					RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID; // reset sid to 000..
-					scope.localStorage.setItem("sid", RPC_SESSION_ID);
-					deferred.reject("no active sessions");
+					self.$clearSession().always(function(){
+						deferred.reject("no active sessions");
+					});
 				} else {
 					self.$session = result;
 					if(!("data" in self.$session)) self.$session.data = {};
 					deferred.resolve(result);
 				}
 			}).fail(function err(result){
-				if(retries === 0){
-					RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID;
-					if(DEBUG_MODE) console.error("Session access call failed: you will be logged out!");
-					retries = 3;
-				}
-				retries --;	
-				deferred.reject(result || "no result");
+				self.$clearSession().always(function(msg){
+					deferred.reject(msg || "no result");
+				});
 			});
 			return deferred.promise();
 		},
 		$login: function(opts){
-			RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID;
 			var self = this;
-			var deferred  = $.Deferred();
-			
-			if(!METHODS.session) {
-				setTimeout(function(){ deferred.reject(); }, 0);
-				return deferred.promise();
-			}
+			var deferred = $.Deferred();
+			self.$clearSession().done(function(){
 
-			METHODS.session.login({
-				"username": opts.username,
-				"password": opts.password
-			}).done(function(result){
-				RPC_USER = opts.username;
-				RPC_SESSION_ID = result.ubus_rpc_session;
-				scope.localStorage.setItem("sid", RPC_SESSION_ID);
-				scope.localStorage.setItem("user", RPC_USER);
-				self.$session = result;
-				deferred.resolve(self.sid);
-			}).fail(function(result){
-				deferred.reject(result);
+				if(!METHODS.session) {
+					setTimeout(function(){ deferred.reject(); }, 0);
+					return deferred.promise();
+				}
+
+				METHODS.session.login({
+					"username": opts.username,
+					"password": opts.password
+				}).done(function(result){
+					RPC_USER = opts.username;
+					RPC_SESSION_ID = result.ubus_rpc_session;
+					scope.localStorage.setItem("sid", RPC_SESSION_ID);
+					scope.localStorage.setItem("user", RPC_USER);
+					self.$session = result;
+					deferred.resolve(self.sid);
+				}).fail(function(result){
+					deferred.reject(result);
+				});
+			}).fail(function(msg){
+				deferred.reject(msg);
+			});
+			return deferred.promise();
+		},
+		$clearSession: function(){
+			if(DEBUG_MODE) console.log("clearing session");
+			var deferred = $.Deferred();
+			var self = this;
+			if(!self.$isLoggedIn())
+				return deferred.resolve();
+			Object.keys(RPC_QUERY_IDS).map(function(key){
+				if(RPC_QUERY_IDS[key] && RPC_QUERY_IDS[key].deferred && RPC_QUERY_IDS[key].deferred.state() === "pending"){
+					RPC_QUERY_IDS[key].deferred.reject();
+				}
+			});
+			RPC_CACHE = {};
+			RPC_QUERY_IDS = {};
+			RPC_USER = "";
+			RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID;
+			scope.localStorage.setItem("user", RPC_USER);
+			scope.localStorage.setItem("sid", RPC_SESSION_ID);
+
+			ws.close();
+
+			self.$init_websocket(window.location.origin).done(function(ws_result) {
+				ws = ws_result;
+				deferred.resolve();
+			}).fail(function(emsg) {
+				ws = null;
+				if(DEBUG_MODE)console.log("ws failed " + emsg);
+				deferred.reject(emsg);
 			});
 			return deferred.promise();
 		},
@@ -170,17 +200,12 @@
 			var deferred = $.Deferred();
 			var self = this;
 
-			if(!METHODS.session) {
-				setTimeout(function(){ deferred.reject(); }, 0);
-				return deferred.promise(); ;
-			}
-
 			METHODS.session.destroy().done(function(){
-				RPC_USER = "";
-				RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID; // reset sid to 000..
-				scope.localStorage.setItem("sid", RPC_SESSION_ID);
-				scope.localStorage.setItem("user", RPC_USER);
-				deferred.resolve();
+				self.$clearSesion.done(function(){
+					deferred.resolve();
+				}).fail(function(msg){
+					deferred.reject(msg);
+				});
 			}).fail(function(){
 				deferred.reject();
 			});
@@ -229,6 +254,7 @@
 			return rpc_request("list", "*");
 		},
 		$isConnected: function(){
+			if(DEBUG_MODE) console.log("isConnected called");
 			// we do a simple list request. If it fails then we assume we do not have a proper connection to the router
 			var self = this;
 			var deferred = $.Deferred();
@@ -409,7 +435,6 @@
 			ws.onclose = function(e) {
 				if(!e.isTrusted){
 					if(DEBUG_MODE)console.log("reloading page");
-					window.location.reload();
 				}
 				if(DEBUG_MODE)console.log(JSON.stringify(e));
 			};
