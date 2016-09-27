@@ -70,11 +70,11 @@
 			function(next){
 				var sid_in = decodeURIComponent(window.location.hash).match(/sid=[^&]+/);
 				if(sid_in){
+					window.location.hash = "";
 					var sid = String(sid_in).substring(4).replace(/"/g, "").length;
 					if(sid === 32)
 						$rpc.$sid(String(sid_in).substring(4).replace(/"/g, ""));
 				}
-				window.location.hash = "";
 				//try to login. if it works continue init process otherwise go to login
 				$rpc.$authenticate().done(function(){
 					next();
