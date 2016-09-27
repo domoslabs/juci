@@ -70,7 +70,7 @@ JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $
 		return _put.call($templateCache, name, value);
 	}
 })
-.run(function($rootScope, $state, gettextCatalog, $rpc, $config, $location, $navigation, $templateCache, $languages){
+.run(function($rootScope, $state, gettextCatalog, $rpc, $config, $location, $templateCache, $languages){
 
 	// TODO: maybe use some other way to gather errors than root scope?
 	$rootScope.errors = [];
