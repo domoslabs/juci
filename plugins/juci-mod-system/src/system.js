@@ -64,7 +64,9 @@ UCI.buttons.$registerSectionType("button", {
 });
 
 UCI.$registerConfig("passwords");
-UCI.passwords.$registerSectionType("usertype", {});
+UCI.passwords.$registerSectionType("usertype", {
+	"reset":	{ dvalue: 0, type: Number}
+});
 UCI.$registerConfig("leds");
 UCI.leds.$registerSectionType("led", {
 	"enable":	{ dvalue: true, type: Boolean }
