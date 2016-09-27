@@ -1,12 +1,3 @@
-1. login issues since new rpcd
-	a) via ubus CLI we need new _owsd_listen parameter
-		-> shoould be possible to login without this argument if user is unrestricted
-2. login issues via web
-	-> owsd does not allow SID change over lifetime of one web sockert connection,
-	works in firefox
-	-> Reidar will change login flow
-3. debug logging in owsd
-	-> Denis will go over log / debug levels and add configurable debug level, enable debug
-4. iOs issue! with sockets!!!!!!!!
-	-> ???
-
+1. debug logging in owsd to debug JUCI issues that come up
+	-> going over log / debug levels and add configurable debug level, enable debug to syslog
+2. iOs issue! with pipelining and/or mulitple requests in one connections, coming in too fast
