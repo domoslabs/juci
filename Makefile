@@ -76,7 +76,7 @@ $(2)/po/template.pot: $(JAVASCRIPT_$(1)) $(TEMPLATES_$(1))
 	@echo "" > $$@
 	$(Q)if [ "" != "$$^" ]; then ./scripts/extract-strings $$^ > $$@; msguniq $$@ > $$@.tmp; mv $$@.tmp $$@; fi
 	@echo "" >> $$@
-	@for file in `find $(2)/src/pages/ -name "*.html"`; do PAGE=$$$${file%%.*}; echo -e "# $$$$file \nmsgid \"menu-$$$$(basename $$$$PAGE)-title\"\nmsgstr \"\"\n" >> $$@; done
+	@for file in `find $(2)/src/pages/ -name "*.html"`; do PAGE=$$$${file%%.*}; echo -e "# $$$$file \nmsgid \"menu-$$$$(basename $$$$PAGE)-title\"\nmsgstr \"\"\n" >> $$@; echo -e "# $$$$file \nmsgid \"$$$$(basename $$$$PAGE)-title\"\nmsgstr \"\"\n" >> $$@; done
 $(CODE_DIR)/$(CODE_LOAD)-$(1).js: $(TMP_DIR)/$(CODE_LOAD)-$(1).js $(TMP_DIR)/$(STYLE_LOAD)-$(1).css.js $(TMP_DIR)/$(TPL_LOAD)-$(1).tpl.js  
 	cat $$^ > $$@
 $(1)-install: $(2)/po/template.pot $(CODE_DIR)/$(CODE_LOAD)-$(1).js

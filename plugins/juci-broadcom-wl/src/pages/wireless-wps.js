@@ -52,7 +52,6 @@ JUCI.app
 	}
 	
 	$wireless.getInterfaces().done(function(ifaces){
-		console.log(ifaces);
 		$scope.wifiIfaces = ifaces;
 		$scope.updateWps();
 		$scope.$apply();

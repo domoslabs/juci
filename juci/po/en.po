@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 msgid "OK"
 msgstr ""
@@ -47,13 +47,11 @@ msgstr ""
 msgid "RPC error #"
 msgstr ""
 
-msgid "You have been logged out due to inactivity"
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "please enter time in form hh:mm"
 msgstr ""
 
 msgid "please specify both hour and minute value for time separated by ':'"
-msgstr ""
-
-msgid "please enter valid time in form hh:mm"
 msgstr ""
 
 msgid "Please specify both start time and end time for schedule!"
@@ -65,16 +63,62 @@ msgstr ""
 msgid "Please pick days between mon-sun"
 msgstr ""
 
-msgid ""
-"A port is between 1 and 65535 and start port must be lower than stop port"
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "Port has to be a number between 1 and 65535. Use '"
 msgstr ""
 
-msgid "A port is between 1 and 65535"
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "' to define a range."
 msgstr ""
 
+# /home/reidar/juci/juci//src/js/uci.js
 msgid ""
-"A port can only be a number between 1 and 65535 or a range on the form "
-"number-number"
+"Ports has to be between 1 and 65535 and start port must be lower than end "
+"port"
+msgstr ""
+
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "Port range has to be on the form number"
+msgstr ""
+
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "number"
+msgstr ""
+
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "Port has to be a number between 1 and 65535"
+msgstr ""
+
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "WEP encryption key must be 10-26 hexadecimal characters!"
+msgstr ""
+
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "WPA encryption key must be 8-63 printable ASCII characters!"
+msgstr ""
+
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "WPA encryption key cannot contain the following characters:"
+msgstr ""
+
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "Only printable ASCII characters allowed."
+msgstr ""
+
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "Invalid mark format: it must be between (!)0x0000 - (!)0xFFFF"
+msgstr ""
+
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "End value has to be larger than start value."
+msgstr ""
+
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "Size has to be larger than 0."
+msgstr ""
+
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "Invalid range."
 msgstr ""
 
 msgid "Number value is not within valid range"
@@ -107,49 +151,40 @@ msgstr ""
 msgid "Address must be a valid IPv6 CIDR Validator (IPv6-address/Mask)"
 msgstr ""
 
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "IPv6 Prefix Hint must be a hexadecimal number between 1-FFFF"
+msgstr ""
+
 msgid "Value must be a valid MAC-48 address"
 msgstr ""
 
 msgid "value must be a valid MAC-48 address"
 msgstr ""
 
-msgid "application.name"
-msgstr "JUCI"
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "Hostname can not be longer than 256 characters"
+msgstr ""
+
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "Hostname can only contain numbers, letters, hyphens and underscores"
+msgstr ""
+
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "Field is required"
+msgstr ""
+
+# /home/reidar/juci/juci//src/js/uci.js
+msgid "is required"
+msgstr ""
 
 msgid ""
 "You have unsaved changes. Do you want to save them before leaving this page?"
 msgstr ""
 
-msgid "Unapplied Changes"
-msgstr ""
-
+# /home/reidar/juci/juci//src/factories/files.js
 msgid ""
-"Are you sure you want to reload settings from the router? All your current "
-"changes will be lost!"
-msgstr ""
-
-msgid "$juciConfirm needs a content-string"
-msgstr ""
-
-msgid "Cancel"
-msgstr ""
-
-msgid "Close"
-msgstr ""
-
-msgid "Apply"
-msgstr ""
-
-msgid "Aaddress must be a valid IPv6 address"
-msgstr ""
-
-msgid "Please enter correct username and password!"
-msgstr ""
-
-msgid "Basic Mode"
-msgstr ""
-
-msgid "Expert Mode"
+"your browser does not support this kind of download, please refer to latest "
+"Chrome, Firefox, Opera or Edge etc."
 msgstr ""
 
 msgid "Individual Days"
@@ -185,43 +220,42 @@ msgstr ""
 msgid "Sunday"
 msgstr ""
 
+msgid "Please enter correct username and password!"
+msgstr ""
+
+msgid "Apply"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
 msgid "-- Select One --"
 msgstr ""
 
-msgid "Config"
+msgid "$juciConfirm needs a content-string"
 msgstr ""
 
-msgid "Section"
+msgid "Close"
 msgstr ""
 
-msgid "Option"
+msgid "Unapplied Changes"
 msgstr ""
 
-msgid "Old value"
+msgid ""
+"Are you sure you want to reload settings from the router? All your current "
+"changes will be lost!"
 msgstr ""
 
-msgid "New value"
+msgid "Aaddress must be a valid IPv6 address"
 msgstr ""
 
-msgid "Start port"
+msgid "Basic Mode"
 msgstr ""
 
-msgid "End port"
+msgid "Expert Mode"
 msgstr ""
 
-msgid "Port (1-65535)"
-msgstr ""
-
-msgid "from"
-msgstr ""
-
-msgid "to"
-msgstr "To"
-
-msgid "Add"
-msgstr ""
-
-msgid "Delete"
+msgid "Select Theme"
 msgstr ""
 
 msgid "Username"
@@ -245,22 +279,38 @@ msgstr ""
 msgid "Connecting..."
 msgstr ""
 
-msgid "Host"
-msgstr ""
-
 msgid "Sign in"
 msgstr ""
 
 msgid "Signing in..."
 msgstr ""
 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/juci//src/widgets/juci-navbar.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/juci//src/widgets/juci-footer.html
+msgid "Logout"
+msgstr ""
+
+# /home/reidar/juci/juci//src/widgets/juci-navbar.html
+msgid "You have "
+msgstr ""
+
+# /home/reidar/juci/juci//src/widgets/juci-navbar.html
+msgid " new events"
+msgstr ""
+
+msgid "Toggle navigation"
+msgstr ""
+
+# /home/reidar/juci/juci//src/widgets/juci-navbar.html
+msgid "No new events to show"
+msgstr ""
+
 msgid "Switch between basic and expert mode"
 msgstr ""
 
 msgid "Select Mode"
-msgstr ""
-
-msgid "Toggle navigation"
 msgstr ""
 
 msgid "Time Frame"
@@ -275,24 +325,107 @@ msgstr ""
 msgid "Time"
 msgstr ""
 
-msgid "Select Theme"
+msgid "from"
+msgstr ""
+
+msgid "to"
+msgstr "To"
+
+msgid "Start port"
+msgstr ""
+
+msgid "End port"
+msgstr ""
+
+msgid "Port (1-65535)"
+msgstr ""
+
+# /home/reidar/juci/juci//src/widgets/juci-footer.html
+msgid "No WAN IP"
+msgstr ""
+
+# /home/reidar/juci/juci//src/widgets/juci-changes-edit.html
+msgid "Press Cancel and reload page to get back deleted section"
+msgstr ""
+
+msgid "Config"
+msgstr ""
+
+msgid "Section"
+msgstr ""
+
+msgid "Option"
+msgstr ""
+
+msgid "Old value"
+msgstr ""
+
+msgid "New value"
+msgstr ""
+
+# /home/reidar/juci/juci//src/widgets/juci-list-editor.html
+msgid "Edit"
+msgstr ""
+
+# /home/reidar/juci/juci//src/widgets/juci-list-editor.html
+msgid "Hide Editor"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+# /home/reidar/juci/juci//src/pages/status-about.html
+msgid "About"
 msgstr ""
 
 msgid "The page you were trying to access was not found!"
 msgstr ""
 
-msgid "menu-default-title"
-msgstr "JUCI"
+msgid "menu-404-title"
+msgstr "404 Not Found"
+
+# /home/reidar/juci/juci//src/pages/404.html
+msgid "404-title"
+msgstr "Page not found"
 
 msgid "menu-login-title"
 msgstr "Login"
 
-msgid "menu-overview-title"
-msgstr "Overview"
-
-msgid "menu-404-title"
-msgstr "404 Not Found"
+# /home/reidar/juci/juci//src/pages/login.html
+msgid "login-title"
+msgstr "Login"
 
 msgid "menu-bootstrap-title"
 msgstr "Bootstrap"
 
+# /home/reidar/juci/juci//src/pages/bootstrap.html
+msgid "bootstrap-title"
+msgstr "Bootstrap"
+
+# /home/reidar/juci/juci//src/pages/status-about.html
+msgid "menu-status-about-title"
+msgstr "About"
+
+# /home/reidar/juci/juci//src/pages/status-about.html
+msgid "status-about-title"
+msgstr "About"
+
+msgid "menu-overview-title"
+msgstr "Overview"
+
+# /home/reidar/juci/juci//src/pages/overview.html
+msgid "overview-title"
+msgstr "Overview"
+
+msgid "menu-default-title"
+msgstr "Overview"
+
+# /home/reidar/juci/juci//src/pages/default.html
+msgid "default-title"
+msgstr "JUCI"
+
+#~ msgid "application.name"
+#~ msgstr "JUCI"
