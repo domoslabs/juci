@@ -101,6 +101,7 @@ JUCI.app.run(function($uci){
 			[$tr(gettext("Kernel Version")), board.kernel || sys.system.kernel || $tr(gettext("N/A"))],
 			[$tr(gettext("Filesystem")), sys.system.filesystem || $tr(gettext("N/A"))],
 			[$tr(gettext("BRCM Version")), sys.system.brcmver || $tr(gettext("N/A"))],
+			[$tr(gettext("CFE Version")), sys.system.cfever || $tr(gettext("N/A"))],
 			[$tr(gettext("Local Time")), Date(sys.system.localtime)],
 			[$tr(gettext("Uptime")), sys.system.uptime],
 			[$tr(gettext("CPU")), (sys.system.cpu_per || 0)+"%"],
