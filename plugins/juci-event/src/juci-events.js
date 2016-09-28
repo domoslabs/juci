@@ -37,6 +37,12 @@
 		}
 		this.callbacks[type].push(callback); 
 	}
+	EventManager.prototype.resubscribe = function(){
+		var self = this;
+		Object.keys(self.callbacks).map(function(type){
+			$rpc.$registerEvent(type);
+		});
+	}
 	JUCI.events = new EventManager();
 	
 	JUCI.app.run(function($rpc){

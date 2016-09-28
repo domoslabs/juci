@@ -36,21 +36,8 @@ JUCI.app
 		"password": ""
 	};
 	$scope.form.username = "user";
-	$scope.connecting = true;
 
 	$scope.errors = [];
-
-	JUCI.interval.repeat("login-connection-check", 5000, function(done){
-		$rpc.$isConnected().done(function(){
-			$scope.is_connected = true;
-		}).fail(function(){
-			$scope.is_connected = false;
-		}).always(function(){
-			$scope.connecting = false;
-			$scope.$apply();
-			done();
-		});
-	});
 
 	$scope.doLogin = function(){
 		$scope.errors = [];

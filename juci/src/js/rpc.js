@@ -43,6 +43,15 @@
 	// data = ubus parameters
 	//
 	// {jsonrpc..., method: type, [ RPC_SESSION_D , namespace, method, { ... data ...  } }
+	function rejectCalls(){
+		Object.keys(RPC_QUERY_IDS).map(function(key){
+			if(RPC_QUERY_IDS[key] && RPC_QUERY_IDS[key].deferred && RPC_QUERY_IDS[key].deferred.state() === "pending"){
+				RPC_QUERY_IDS[key].deferred.reject();
+			}
+		});
+		RPC_CACHE = {};
+		RPC_QUERY_IDS = {};
+	}
 	function rpc_request(type, object, method, data){
 		if(DEBUG_MODE > 1)console.log("UBUS " + type + " " + object + " " + method);
 		if(ws === null) return $.Deferred().reject();
@@ -92,9 +101,12 @@
 			return val;
 		}
 
-		ws.send(JSON.stringify(jsonrpc_obj,formatter));
-
-		return RPC_CACHE[key].deferred.promise();
+		if(ws && ws.readyState === 1){
+			ws.send(JSON.stringify(jsonrpc_obj,formatter));
+			return RPC_CACHE[key].deferred.promise();
+		}else{
+			return RPC_QUERY_IDS[jsonrpc_obj.id].deferred.reject();
+		}
 	}
 	
 	var rpc = {
@@ -173,13 +185,7 @@
 			var self = this;
 			if(!self.$isLoggedIn())
 				return deferred.resolve();
-			Object.keys(RPC_QUERY_IDS).map(function(key){
-				if(RPC_QUERY_IDS[key] && RPC_QUERY_IDS[key].deferred && RPC_QUERY_IDS[key].deferred.state() === "pending"){
-					RPC_QUERY_IDS[key].deferred.reject();
-				}
-			});
-			RPC_CACHE = {};
-			RPC_QUERY_IDS = {};
+			rejectCalls();
 			RPC_USER = "";
 			RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID;
 			scope.localStorage.setItem("user", RPC_USER);
@@ -187,7 +193,7 @@
 
 			ws.close();
 
-			self.$init_websocket(window.location.origin).done(function(ws_result) {
+			self.$init_websocket().done(function(ws_result) {
 				ws = ws_result;
 				deferred.resolve();
 			}).fail(function(emsg) {
@@ -266,6 +272,19 @@
 			});
 			return deferred.promise();
 		},
+		$reconnect: function(){
+			var self = this;
+			var def = $.Deferred();
+			if(ws && ws.readyState === 1) return def.reject();
+			self.$init_websocket().done(function(res){
+				ws = res;
+				def.resolve();
+			}).fail(function(res){
+				ws = null;
+				def.reject();
+			});
+			return def.promise();
+		},
 		$has: function(obj, method){
 			var path = obj.replace(/^\//, '').replace(/\//, '.').split(".");
 			if(method) path.push(method);
@@ -301,7 +320,7 @@
 			if (!window.location.origin) {
 				window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
 			}
-			self.$init_websocket(window.location.origin).done(function(ws_result) {
+			self.$init_websocket().done(function(ws_result) {
 				ws = ws_result;
 				self.$list().done(function(result){
 					//alert(JSON.stringify(result));
@@ -320,7 +339,8 @@
 			});
 			return deferred.promise();
 		},
-		$init_websocket: function(host){
+		$init_websocket: function(){
+			var host = window.location.origin;
 			var self = this;
 			var deferred = $.Deferred();
 			if(DEBUG_MODE)console.log("Init WS -> "+host);
@@ -429,16 +449,13 @@
 			ws.onerror = function(result){
 				console.log("error result: " + JSON.stringify(result));
 				if(DEBUG_MODE)console.error("RPC error "+JSON.stringif(result));
-				if(result && result.error){
-					RPC_CACHE[key].deferred.reject(result.error);
+				if(deferred.state() === "pending"){
+					deferred.reject();
 				}
 			}
-			ws.onclose = function(e) {
+			ws.onclose = function(Event) {
 				ws = null;
-				if(!e.isTrusted){
-					if(DEBUG_MODE)console.log("reloading page");
-				}
-				if(DEBUG_MODE)console.log(JSON.stringify(e));
+				rejectCalls();
 			};
 
 			return deferred.promise();
