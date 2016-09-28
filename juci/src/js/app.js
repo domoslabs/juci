@@ -38,8 +38,7 @@ require.config({
     urlArgs: 'v=1.0'
 });
 
-JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $urlRouterProvider, $controllerProvider, $templateCacheProvider, $provide) {
-	//$locationProvider.otherwise({ redirectTo: "/" });
+JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $urlRouterProvider, $controllerProvider, $provide) {
 	$locationProvider.hashPrefix('!');
 	$locationProvider.html5Mode(false);
 
