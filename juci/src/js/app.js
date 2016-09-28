@@ -105,7 +105,8 @@ JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $
 	// if you are connected this will test if you are logged in or redirect you to login page
 	var modal;
 	var connected = true;
-	JUCI.interval.repeat("check-connection", 1000, function(next){
+	var i = 1;
+	JUCI.interval.repeat("check-connection", 2000, function(next){
 		$rpc.$isConnected().fail(function(){
 			connected = false;
 			modal = $modal.open({
@@ -130,7 +131,8 @@ JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $
 			}
 			setTimeout(function(){ reconnect(); }, 1000);
 		}).done(function(){
-			if($rpc.$isLoggedIn()){
+			if($rpc.$isLoggedIn() && ++i > 2){
+				i = 0;
 				$rpc.$authenticate().fail(function(){
 					$juci.redirect("login");
 				});
