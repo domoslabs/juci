@@ -5,4 +5,10 @@
 		{{client.ipaddr}}<br ng-show="client.ip6addr"/>
 		{{client.ip6addr}}
 	</div>
+	<div ng-show="client.connected"> <!--We don't know if disconnected clients are wired or not-->
+		<div class="col-xs-2">
+			<i class="juci juci-ethernet juci-2x text-success"></i>
+		</div>
+		<div ng-show="client.linkspeed_short" class="lan-client-status-text">{{client.linkspeed_short}}</div>
+	</div>
 </div>

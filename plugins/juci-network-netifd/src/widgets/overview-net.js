@@ -128,25 +128,26 @@ JUCI.app
 	var lanNets = [];
 	var lanClients = [];
 	function refresh(){
-		async.series([function(next){
+		async.series([
+		function(next){
 			$firewall.getZoneNetworks("lan").done(function(nets){
 				lanNets = nets;
 				next()
 			})
-		}
-		, function(next){
+		},
+		function(next){
 			$uci.$sync("dhcp").always(function(){
 				next()
 			})
-		}
-		, function(next){
+		},
+		function(next){
 			$firewall.getZoneClients("lan").done(function(clients){
 				lanClients = clients
 			}).always(function(){
 				next()
 			})
-		}
-		], function(){
+		}],
+		function(){
 			var dnss = $uci.dhcp["@dhcp"];
 			lanNets.map(function(net){
 				net["_uci_dhcp"] = dnss.find(function(dns){
@@ -159,6 +160,9 @@ JUCI.app
 			$scope.lanNetworks.map(function(net){
 				net["_clients"] = [];
 				lanClients.map(function(client){
+					var speed = String(client.linkspeed).match(/[0-1]* M/);
+					var duplex = String(client.linkspeed).match(/H/) ? "HD" : "FD";
+					if(speed && duplex) client["linkspeed_short"] = String(speed).replace(/ /g, "") + " " + duplex;
 					if(client.network === net[".name"]){
 						net["_clients"].push(client);
 					}
@@ -194,9 +198,9 @@ JUCI.app
 				if(btn.value == "cancel") {
 					model.lan.$reset();
 					model.dhcp.$reset();
-					inst.dismiss("cancel"); 
+					inst.dismiss("cancel");
 				}
-				if(btn.value == "save") { 
+				if(btn.value == "save") {
 					inst.close();
 				}
 			},
