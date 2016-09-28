@@ -164,10 +164,10 @@ JUCI.app
 		async.series([
 			function(next){
 				$rpc.$call("network.interface", "dump").done(function(data){
-					if(!data || !data.interface){console.log("error getting interfaces"); next();return}
+					if(!data || !data.interface){next("no Interfaces");return}
 					lan_nets = all_nets = data.interface;
 					next();
-				}).fail(function(e){next(e);});
+				}).fail(function(e){next({"error":e});});
 			},
 			function(next){
 				$rpc.$call("router", "networks").done(function(data){
@@ -182,12 +182,12 @@ JUCI.app
 						});
 					});
 					next();
-				}).fail(function(e){next(e);});
+				}).fail(function(e){next({"Error":e});});
 			}, function(next){
 				$rpc.$call("led.internet", "status").done(function(data){
 					hasInternet = data.state && data.state === "ok";
 					next();
-				}).fail(function(e){next(e);});
+				}).fail(function(e){next({ "Error":e });});
 			}, function(next){
 				$firewall.getWanZones().done(function(wan_zones){
 					wan_nets = all_nets.filter(function(net){
@@ -197,14 +197,14 @@ JUCI.app
 						});
 					});
 					next();
-				}).fail(function(e){next(e);});
+				}).fail(function(e){next({ "Error":e });});
 			}, function(next){
 				$rpc.$call("router", "radios").done(function(data){
 					radios = data;
 					next();
-				}).fail(function(e){next(e);});
+				}).fail(function(e){next({ "Error": e });});
 			}], function(err){
-				if(err){ console.log(err); def.reject(); return;}
+				if(err){ def.reject(); return;}
 				var up = false;
 				async.eachSeries(wan_nets, function(wan, callback){
 					if(!wan){ callback(); return; }
