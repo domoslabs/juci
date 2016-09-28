@@ -1,7 +1,10 @@
 <div>
 	<juci-config-lines>
-		<juci-config-line title="{{'Port speed'|translate}}">
+		<juci-config-line title="{{'Port speed'|translate}}" ng-hide="port.is_fiber">
 			<juci-select ng-model="port.speed.value" ng-items="speeds"/>
+		</juci-config-line>
+		<juci-config-line title="{{'Port speed'|translate}}" ng-show="port.is_fiber">
+			<juci-select ng-model="port.speed.value" ng-items="sfpspeeds"/>
 		</juci-config-line>
 		<juci-config-line ng-show="canSetPause" title="{{'Pause frames'|translate}}">
 			<switch ng-model="port.pause.value"/>

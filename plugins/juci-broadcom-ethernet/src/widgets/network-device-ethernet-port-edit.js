@@ -43,4 +43,10 @@ JUCI.app
 		{ label: $tr(gettext("Only 10Mb, half duplex")), 					value: "10HD" },
 		{ label: $tr(gettext("Disabled")), 									value: "disabled" }
 	];
+	$scope.sfpspeeds = [
+		{ label: $tr(gettext("Full auto-negotiation")), 		value: "auto" },
+		{ label: $tr(gettext("Only 1000Mb")), 					value: "1000FD" },
+		{ label: $tr(gettext("Only 100Mb")),			 		value: "100FD" },
+		{ label: $tr(gettext("Disabled")), 						value: "disabled" }
+	];
 });
