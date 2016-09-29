@@ -28,9 +28,10 @@ JUCI.app
 		templateUrl: "/widgets/firewall-rule-edit.html"
 	};
 })
-.controller("firewallRuleEdit", function($scope, $firewall, gettext, $tr, $network, networkHostPicker, $uci){
+.controller("firewallRuleEdit", function($rootScope, $scope, $firewall, gettext, $tr, $network, networkHostPicker, $uci){
 	$scope.data = {};
-	
+	$scope.canHideFirewallRule = $rootScope.has_capability("can-hide-firewall-rules");
+
 	$scope.protocolChoices = [
 		{ label: "UDP", value: "udp"},
 		{ label: "TCP", value: "tcp"},
@@ -38,7 +39,7 @@ JUCI.app
 		{ label: "TCP + UDP", value: "tcpudp" },
 		{ label: "ESP", value: "esp" }
 	];
-	
+
 	$scope.familyChoices = [
 		{ label: "Any", value: "any" },
 		{ label: "IPv4", value: "ipv4"},
@@ -50,7 +51,7 @@ JUCI.app
 		{ label: $tr(gettext("FORWARD")), value: "FORWARD" },
 		{ label: $tr(gettext("DROP")), value: "DROP" }
 	];
-	
+
 	$firewall.getZones().done(function(zones){
 		$scope.allZones = [];
 		$scope.allZones.push({ label: $tr(gettext("Device")), value: "" });
@@ -59,7 +60,7 @@ JUCI.app
 			$scope.allZones.push({ label: String(x.name.value).toUpperCase(), value: x.name.value });
 		});
 	});
-	
+
 	$scope.onSelectSrcHost = function(){
 		if(!$scope.rule) return;
 		networkHostPicker.show({ net: $scope.rule.src.value }).done(function(client){
@@ -72,7 +73,7 @@ JUCI.app
 			}
 		});
 	}
-	
+
 	$scope.onSelectDestHost = function(){
 		if(!$scope.rule) return;
 		networkHostPicker.show({ net: $scope.rule.dest.value }).done(function(client){
@@ -85,13 +86,35 @@ JUCI.app
 			}
 		});
 	}
-	
+
 	$scope.$watch("rule", function(rule){
 		if(!rule || !rule.constructor || !rule.constructor || rule.constructor.name !== "UCISection") return;
 		$scope.data.src_macs = rule.src_mac.value.map(function(x){ return {text:x}; });
 		$scope.data.dest_macs = rule.dest_mac.value.map(function(x){ return {text:x}; });
 		$scope.data.dest_ips = rule.dest_ip.value.map(function(x){ return {text:x}; });
 		$scope.data.src_ips = rule.src_ip.value.map(function(x){ return {text:x}; });
+
+		$uci.$sync("passwords").done(function(){
+			$scope.users = {out:[]};
+			$scope.$apply();
+			$scope.reloadUsers = function(){
+				var all = false;
+				var sel = true;
+				if(rule["_access_r"].value.length === 0) all = true;
+				$scope.users.allUsers = $uci.passwords["@usertype"].map(function(x){
+					if(!all) sel = (rule["_access_r"].value.find(function(usr){
+						return usr === x[".name"];
+					}) !== undefined);
+					return { label: x[".name"], value: x[".name"], selected: sel};
+				});
+			}
+			$scope.reloadUsers();
+			$scope.$watch("users.out", function(out){
+				if(!out) return;
+				rule["_access_r"].value = out.map(function(usr){ return usr.value; });
+			}, false);
+			$scope.$apply();
+		});
 	});
 	$scope.$watch("data.dest_ips", function(ips){
 		if(!$scope.rule || !ips) return;
