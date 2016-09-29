@@ -19,8 +19,8 @@
  */
 
 JUCI.app
-.controller("SettingsSystemGeneral", function($scope, $rpc, $uci, $tr, gettext){
-	var time;
+.controller("SettingsSystemGeneral", function($scope, $rpc, $uci, $tr, gettext, $config){
+	var date;
 	async.series([
 		function(next){
 			$uci.$sync("system").done(function(){
@@ -48,11 +48,17 @@ JUCI.app
 		},
 		function(next){
 			$rpc.$call("router", "info").done(function(res){
-				time = res.system.localtime;
-				$scope.localtime = Date(time);
+				date = new Date(res.system.localtime * 1000);
 			}).always(function(){next();});
 		}
 	], function(){
+		JUCI.interval.repeat("system_update_time", 1000, function(done){
+			if(!date){ done(); return;}
+			date.setSeconds(date.getSeconds() + 1);
+			$scope.localtime = date.toLocaleString();
+			$scope.$apply();
+			done();
+		});
 		$scope.loaded = true; 
 		$scope.$apply(); 
 	}); 
@@ -62,13 +68,5 @@ JUCI.app
 		$scope.system.timezone.value = $scope.timezones[value]; 
 	}); 
 
-	JUCI.interval.repeat("system_update_time", 1000, function(done){
-		if(time && typeof time === "number"){
-			time += 1;
-			$scope.localtime = Date(time);
-			$scope.$apply();
-		}
-		done();
-	});
 });
 
