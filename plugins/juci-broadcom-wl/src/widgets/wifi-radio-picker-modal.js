@@ -17,7 +17,7 @@
  */
 
 JUCI.app
-.controller("WifiRadioPickerModal", function($scope, $modalInstance, $wireless, interfaces, $tr, gettext){
+.controller("WiFiRadioPickerModal", function($scope, $modalInstance, $wireless, interfaces, $tr, gettext){
 	$scope.data = {}; 
 	$scope.interfaces = interfaces; 
 	
@@ -42,7 +42,7 @@ JUCI.app
 	}); 
   $scope.ok = function () {
 		$scope.errors = []; 
-		if(($scope.interfaces.find(function(x){ return x.ssid.value == $scope.data.ssid && x.device.value == $scope.data.radio; }) && !confirm(gettext("Are you sure you want to create a new SSID with the same name and on the same radio? This may result in undefined behaviour!")))){
+		if(($scope.interfaces.find(function(x){ return x.ssid.value == $scope.data.ssid && x.device.value == $scope.data.radio; }) && !confirm($tr(gettext("Are you sure you want to create a new SSID with the same name and on the same radio? This may result in undefined behaviour!"))))){
 			return;
 		} 
 		if(!$scope.data.radio){

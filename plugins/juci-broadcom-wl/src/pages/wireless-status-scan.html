@@ -6,7 +6,7 @@
 			<div class="col-md-6"  ng-repeat="radio in wlRadios track by $index">
 				<h2>{{'Radio'|translate}} {{radio.frequency}}</h2>
 				<table class="table table-condensed">
-					<tr><th translate>Channel</th><td>{{radio.current_channel}}</td></tr>
+					<tr><th translate>Channel</th><td>{{radio.channel}}</td></tr>
 					<tr><th translate>Radio Rate</th><td>{{radio.rate}}</td></tr>
 				</table>
 			</div>
@@ -22,7 +22,7 @@
 				</button>
 			</juci-config-line>
 		</juci-config-lines>
-		<div ng-show="dfs_enabled" class="alert alert-info" translate>You will not be able to scan 5Ghz band because your 5Ghz wifi radio is operating at a DFS channel</div> 
+		<div ng-show="dfs_enabled" class="alert alert-info" translate>You will not be able to scan 5Ghz band because your 5Ghz wireless radio is operating at a DFS channel</div>
 		<wireless-aps-graph ng-model="access_points"></wireless-aps-graph>
 		<br>
 		<table class="table" ng-show="access_points">
@@ -33,7 +33,7 @@
 				<th><a href="" ng-click="order('rssi')" translate>RSSI</a></th>
 				<th><a href="" ng-click="order('noise')" translate>Noise</a></th>
 				<th><a href="" ng-click="order('cipher')" translate>Cipher</a></th>
-				<th><a href="" ng-click="order('wps_version')" translate>WPS</a></th>
+				<!--<th><a href="" ng-click="order('wps_version')" translate>WPS</a></th>-->
 			</thead>
 			<tr ng-repeat="ap in access_points track by $index | orderBy:predicate:reverse">
 				<td>{{ap.ssid}}</td>
@@ -42,7 +42,7 @@
 				<td>{{ap.rssi}}</td>
 				<td>{{ap.noise}}</td>
 				<td>{{ap.cipher}}</td>
-				<td>{{ap.wps_version}}</td>
+				<!--<td>{{ap.wps_version}}</td>-->
 			</tr>
 		</table>
 	</div>

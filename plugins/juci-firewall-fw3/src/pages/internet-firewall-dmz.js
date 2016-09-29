@@ -31,7 +31,7 @@ JUCI.app
 		$uci.firewall.dmz.ip6addr.value = value.ip6addr; 
 	}); 
 	// Excluded ports is read from a tmp file that is not created by default. This is a patch feature added to dmz firewall script. Please update your script if you want to use it. 
-	$rpc.juci.firewall && $rpc.juci.firewall.run({"method":"excluded_ports"}).done(function(data){
+	$rpc.$call("juci.firewall", "run", {"method":"excluded_ports"}).done(function(data){
 		if(data.result && data.result.length){
 			$scope.nonforwardedPorts = data.result;
 			$scope.$apply();

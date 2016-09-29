@@ -26,7 +26,7 @@ UCI.validators.IP6PrefixLengthValidator = function(){
 			valid_values.push(String(i));
 		}
 		if(field.value == "" || valid_values.find(function(x){ return x == field.value}) != undefined) return null;
-		return gettext("valid values are: 'no' and 48-64");
+		return JUCI.$tr(gettext("valid values are: 'no' and 48-64"));
 	}
 };
 
@@ -36,7 +36,7 @@ UCI.validators.MACListValidator = function(){
 			var errors = []; 
 			field.value.map(function(value){
 				if(!value.match(/^(?:[A-Fa-f0-9]{2}[:-]){5}(?:[A-Fa-f0-9]{2})$/))
-					errors.push(gettext("value must be a valid MAC-48 address")+": "+value); 
+					errors.push(JUCI.$tr(gettext("value must be a valid MAC-48 address"))+": "+value); 
 			}); 
 			if(errors.length) return errors.join(", "); 
 		}
@@ -49,7 +49,7 @@ UCI.validators.REQPrefixValidator = function(){
 		if(field.value == "auto" || field.value == "no") return null; // ok string values
 		var number = parseInt(field.value);
 		if(number < 65 && number > -1) return null;
-		return gettext("Valid values are: auto, no, 0-64");
+		return JUCI.$tr(gettext("Valid values are: auto, no, 0-64"));
 	}
 };
 
@@ -67,8 +67,8 @@ UCI.network.$registerSectionType("interface", {
 	"ip6gw": 				{ dvalue: '', type: String, validator: UCI.validators.IP6AddressValidator },
 	"ip6prefix":			{ dvalue: '', type: String, validator: UCI.validators.IP6AddressValidator }, 
 	"ip6gateway":			{ dvalue: '', type: String, validator: UCI.validators.IP6AddressValidator },  
-	"ip6assign":			{ dvalue: '', type: Number }, 
-	"ip6hint": 				{ dvalue: '', type: String, validator: UCI.validators.IP6AddressValidator },
+	"ip6assign":			{ dvalue: '', type: Number, validator: UCI.validators.NumberLimitValidator(48, 64) },
+	"ip6hint": 				{ dvalue: '', type: String, validator: UCI.validators.IP6HintValidator },
 	"clientid": 			{ dvalue: "", type: String },
 	"type":					{ dvalue: '', type: String }, 
 	"defaultroute":			{ dvalue: true, type: Boolean },	
@@ -85,7 +85,7 @@ UCI.network.$registerSectionType("interface", {
 	"iface6rd":				{ dvalue: "", type: String },
 	"broadcast": 			{ dvalue: '', type: Boolean }, 
 	"hostname": 			{ dvalue: "", type: String }, 
-	"peerdns": 				{ dvalue: '', type: Boolean }, 
+	"peerdns": 				{ dvalue: true, type: Boolean }, 
 	//ipv6 settings
 	"tunlink":				{ dvalue: "", type: String },
 	"ip6prefixlen":			{ dvalue: "", type: String, validator: UCI.validators.IP6PrefixLengthValidator },
@@ -113,94 +113,103 @@ UCI.network.$registerSectionType("interface", {
 	"apn": 					{ dvalue: "", type: String }, 
 	"pincode": 				{ dvalue: "", type: String },
 	"comdev":				{ dvalue: "", type: String },
-	"ttl":					{ dvalue: "", type: Number }
+	"ttl":					{ dvalue: "", type: Number },
+	// wwan settings
+	"modes":				{ dvalue: "", type: String },
+	"delay":				{ dvalue: 0, type: Number }
 }, function(section){
+	var name = JUCI.$tr(gettext("Network interface ")) + (section[".name"] || section.name || JUCI.$tr(gettext("Unnamed interface")));
+	var noPhysical = name + JUCI.$tr(gettext(" has protocol: ")) + section.proto.value + JUCI.$tr(gettext(" it needs a physical interface"));
 	if(!section.proto || !section.proto.value || section.proto.value == "") 
-		return gettext("Network interface ") + (section[".name"] || section.name || gettext("Unnamed interface")) + gettext(" MUST have  a protocol set");
+		return name + JUCI.$tr(gettext(" MUST have  a protocol set"));
 	var errors = [];
 	switch (section.proto.value){
 		case "none":
 			if(section.type.value != "bridge")
-				errors.push(gettext("Unmanaged networks need to be setup as a bridge"));
+				errors.push(name + JUCI.$tr(gettext("is an unmanaged network and need to be setup as a bridge")));
 			if(section.ifname.value == "")
-				errors.push(gettext("Unmanaged networks need at least one device in bridge"));
+				errors.push(name + JUCI.$tr(gettext("is an unmanaged networks and need to have at least one device in bridge")));
 			break;
 		case "static":
 			if(section.ipaddr.value && section.netmask.value){
 				var ip = section.ipaddr.value.split("."); 
-				if(ip[ip.length - 1] == "0") errors.push("IP address can not be a range address (can not end with 0s)!"); 	
-				if(ip[0] == "0") errors.push("IP address can not start with a '0'!"); 	
+				if(ip[ip.length - 1] == "0") errors.push(name + JUCI.$tr(gettext(" has an invalid IP address. It can not be a range address (can not end with 0s)!")));
+				if(ip[0] == "0") errors.push(name + JUCI.$tr(gettext(" has an invalid IP address it can not start with a '0'!")));
 			}
 			if((section.ipaddr.value == "" || section.netmask.value == "") && section.ip6addr.value == "")
-				errors.push(gettext("Either ipv4 or ipv6 address is needed"));
-			if(section.ifname.value == "")
-				errors.push(gettext("Physical interface unspecified"));
+				errors.push(name + JUCI.$tr(gettext(" needs either ipv4 or ipv6 address")));
 			break;
 		case "dhcp":
 			if(section.ifname.value == "")
-				errors.push(gettext("DHCP interface needs physical interface"));
+				errors.push(noPhysical);
 			break;
 		case "dhcpv6":
 			if(section.ifname.value == "")
-				errors.push(gettext("DHCPv6 interface needs physical interface"));
+				errors.push(noPhysical);
 			break;
 		case "ppp":
 			if(section.device.value == "")
-				errors.push(gettext("Modem device needed for PPP interface"));
+				errors.push(noPhysical);
 			break;
 		case "pppoe":
 			if(section.ifname.value == "")
-				errors.push(gettext("PPPoE interface needs physical interface"));
+				errors.push(noPhysical);
 			break;
 		case "pppoa":
 			if(section.ifname.value == "")
-				errors.push(gettext("PPPoE interface needs physical interface"));
+				errors.push(noPhysical);
 			break;
 		case "3g":
 			if(section.device.value == "")
-				errors.push(gettext("Modem device needed for 3G interface"));
+				errors.push(name + JUCI.$tr(gettext(" has protocol 3G and needs a Modem device")));
 			if(section.service.value != "umts" && section.service.value != "umts_only" && section.service.value != "gprs_only" && section.service.value != "evdo")
-				errors.push(gettext("Service type needed for 3G interface"));
+				errors.push(name + JUCI.$tr(gettext(" has protocol 3G and needs a Service type")));
 			if(section.apn.value == "")
-				errors.push(gettext("APN needed for 3G interface"));
+				errors.push(name + JUCI.$tr(gettext(" has protocol 3G and needs APN")));
 			break;
 		case "4g":
 			if(section.modem.value == "")
-				errors.push(gettext("Device needed for 4G interface"));
+				errors.push(name + JUCI.$tr(gettext(" has protocol 4G and it needs a Device")));
 			break;
 		case "pptp":
 			if(section.server.value == "")
-				errors.push(gettext("VPN Server needed for Point-to-Point tunnel"));
+				errors.push(name + JUCI.$tr(gettext(" has protocol Point-to-Point tunnel and needs a VPN Server")));
 			break;
 		case "6in4":
 			if(section.peeraddr.value == "")
-				errors.push(gettext("Remote IPv4 address needed for 6in4 interface"));
+				errors.push(name + JUCI.$tr(gettext(" has protocol 6in4 and need a Remote IPv4 address")));
 			if(section.ip6addr.value == "")
-				errors.push(gettext("Local IPv6 address needed for 6in4 interface"));
+				errors.push(name + JUCI.$tr(gettext(" has protocol 6in4 and need Local IPv6 address")));
 			break;
 		case "6to4":
 			//no required values for 6to4 interface
 			break;
 		case "6rd":
 			if(section.peeraddr.value == "")
-				errors.push(gettext("Remote IPv4 address needed for IPv6 rapid deployment interface"));
+				errors.push(name + JUCI.$tr(gettext(" has protocol IPv6 rapid deployment and it needs a Remote IPv4 address")));
 			if(section.ip6prefix.value == "")
-				errors.push(gettext("IPv6 prefix needed for IPv6 rapid deployment interface"));
+				errors.push(name + JUCI.$tr(gettext(" has protocol IPv6 rapid deployment and it needs an IPv6 prefix")));
 			if(section.ip6prefixlen.value == "")
-				errors.push(gettext("IPv6 prefix length needed for IPv6 rapid deployment interface"));
+				errors.push(name + JUCI.$tr(gettext(" has protocol IPv6 rapid deployment and it needs a IPv6 prefix length")));
 			break;
 		case "dslite":
 			if(section.peeraddr.value == "")
-				errors.push(gettext("DS-Lite AFTR address needed for DS lite interface"));
+				errors.push(name + JUCI.$tr(gettext(" has protocol DS lite and it needs a DS-Lite AFTR address")));
 			break;
 		case "l2tp":
 			if(section.server.value == "")
-				errors.push(gettext("L2TP server needed for PPP over L2TP"));
+				errors.push(name + JUCI.$tr(gettext(" has protcol PPP over L2TP and it needs a L2TP server")));
 			if(section.username.value != "" && section.password.value == "")
-				errors.push(gettext("Password needed when username is set"));
+				errors.push(JUCI.$tr(gettext("Username is set but not password on ")) + name);
+			break;
+		case "wwan":
+			if(section.ifname.value == "")
+				errors.push(name + JUCI.$tr(gettext("has protocol wwan and it needs a modem")));
+			if(section.pincode.value !== "" && parseInt(section.pincode.value) && (parseInt(section.pincode.value) > 9999 || parseInt(section.pincode.value) < 0))
+				errors.push(name + JUCI.$tr(gettext(" has protocol wwan and has invalid pincode [0000-9999] or empty")));
 			break;
 		default: 
-			return gettext("Unsupported protocol: ") + section.proto.value;
+			errors.push(JUCI.$tr(gettext("Unsupported protocol: ")) + section.proto.value);
 	}
 	if(errors.length > 0) return errors
 	return null;
@@ -216,10 +225,10 @@ UCI.network.$registerSectionType("route", {
 }, function(section){
 	if(!section) return;
 	var errors = [];
-	if(section.interface.value == "") errors.push(gettext("IPv4 Routes needs an interface"));
-	if(section.target.value == "") errors.push(gettext("IPv4 Routes needs a Target"));
-	//if(section.netmask.value == "") errors.push(gettext("IPv4 Routes needs a Netmask"));
-	if(section.gateway.value == "") errors.push(gettext("IPv4 Routes needs a Gateway"));
+	if(section.interface.value == "") errors.push(JUCI.$tr(gettext("IPv4 Routes needs an interface")));
+	if(section.target.value == "") errors.push(JUCI.$tr(gettext("IPv4 Routes needs a Target")));
+	//if(section.netmask.value == "") errors.push(JUCI.$tr(gettext("IPv4 Routes needs a Netmask")));
+	//if(section.gateway.value == "") errors.push(JUCI.$tr(gettext("IPv4 Routes needs a Gateway")));
 	if(errors.length > 0) return errors;
 	return null;
 });
@@ -233,9 +242,9 @@ UCI.network.$registerSectionType("route6", {
 }, function(section){
 	if(!section) return;
 	var errors = [];
-	if(section.interface.value == "") errors.push(gettext("IPv6 Routes needs an interface"));
-	if(section.target.value == "") errors.push(gettext("IPv6 Routes needs a Target"));
-	if(section.gateway.value == "") errors.push(gettext("IPv6 Routes needs a Gateway"));
+	if(section.interface.value == "") errors.push(JUCI.$tr(gettext("IPv6 Routes needs an interface")));
+	if(section.target.value == "") errors.push(JUCI.$tr(gettext("IPv6 Routes needs a Target")));
+	//if(section.gateway.value == "") errors.push(JUCI.$tr(gettext("IPv6 Routes needs a Gateway")));
 	if(errors.length > 0) return errors;
 	return null;
 }); 

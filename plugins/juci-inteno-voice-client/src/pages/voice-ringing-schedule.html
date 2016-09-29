@@ -7,7 +7,7 @@
 				<juci-config-line title="{{'Ringing Schedule'|translate}}">
 					<switch name="enabled" ng-model="settings.enabled.value" class="green"></switch>
 				</juci-config-line>
-				<juci-config-line title="{{'During this time ringing is'|translate}} "  ng-show="settings.enabled.value">
+				<juci-config-line title="{{'During the times below ringing is'|translate}} "  ng-show="settings.enabled.value">
 					<juci-select ng-model="settings.status.value" ng-items="enabledDisabledItems" placeholder="{{'Select Schedule Mode'|translate}}"></juci-select>
 				</juci-config-line>
 			</juci-config-lines>
@@ -15,7 +15,7 @@
 				<thead>
 					<th translate>Day</th>
 					<th translate>Time</th>
-					<th translate>Number</th>
+					<th translate><!--Number--></th>
 					<th translate>Status</th>
 					<!--<th translate>Status</th>-->
 					<th></th>
@@ -25,7 +25,7 @@
 					<tr ng-repeat="item in schedules track by $index">
 							<td>{{ item.days.value.join(",") }}</td>
 							<td>{{ item.time.value }}</td>
-							<td>{{ getAccountName(item) }}</td>
+							<td><!--{{ getAccountName(item) }}--></td>
 							<td>{{ ((settings.status.value)?"Enabled":"Disabled") | translate}}</td>
 							<!--<td>{{ item.enabled.value }}</td>-->
 							<td style="width: 1%"><button class="btn btn-default" ng-click="onEditSchedule(item)"><i class="fa fa-pencil" style="{{editColor}}"></i></button></td>
@@ -38,13 +38,13 @@
 				</tbody>
 			</table>
 		</juci-config-section>
-		<modal title="{{'Add a new Ringing Schedule'|translate}}" ng-show="schedule" on-accept="onAcceptSchedule()" 
+		<modal title="{{'Add/Edit Ringing Schedule'|translate}}" ng-show="schedule" on-accept="onAcceptSchedule()"
 			on-dismiss="onDismissSchedule()" dismiss-label="Cancel" accept-label="Save">
-			<juci-config-lines>
-				<juci-config-line title="{{'Phone Number'|translate}}">
-					<juci-select ng-model="schedule.sip_service_provider" ng-items="allSipAccounts" placeholder="{{'Pick Phone Number'|translate}}"/>
-				</juci-config-line>
-			</juci-config-line>
+<!--			<juci-config-lines>-->
+<!--				<juci-config-line title="{{'Phone Number'|translate}}">-->
+<!--					<juci-select ng-model="schedule.sip_service_provider" ng-items="allSipAccounts" placeholder="{{'Select Phone Number'|translate}}"/>-->
+<!--				</juci-config-line>-->
+<!--			</juci-config-line>-->
 			<juci-schedule-edit ng-model="schedule" ></juci-schedule-edit>
 			<div class="alert alert-danger" ng-show="errors && errors.length"><ul><li ng-repeat="e in errors track by $index">{{e|translate}}</li></ul></div>
 		</modal>

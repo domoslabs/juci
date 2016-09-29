@@ -1,3 +1,5 @@
+<body onload="updateDectStatus()">
+
 <juci-layout-with-sidebar>
 	<div ng-controller="PhoneDectPage">
 		<h2 translate>DECT Radio</h2>
@@ -7,35 +9,40 @@
 				<juci-select ng-items="dectModes" ng-model="dect.radio.value"></juci-select>
 			</juci-config-line>
 			<juci-config-line title="{{'Radio Status' | translate }}">
-				<label><b>{{status.radio.registration}}</b></label>
+				<label><b>{{status.radio|uppercase}}</b></label>
 			</juci-config-line>
 			<juci-config-line title="{{'Pair DECT Device (3 min)' | translate }}">
 				<button class="btn btn-default" ng-click="onStartPairing()" translate>Pair</button>
 			</juci-config-line>
-			<modal title="{{'Attempting to Pair'|translate}}" ng-show="status.radio.state == 'ENABLED' && !dismissed" dismiss-label="Cancel" on-dismiss="onCancelDECT()">
-				<div style="text-align: center;">        
-					<div ng-show="progress != 0" >           
+			<modal title="{{'Attempting to Pair'|translate}}" data-keyboard="false" data-backdrop="static" ng-show="(status.registration == 'pending active' || status.registration == 'active')" dismiss-label="Cancel" on-dismiss="onCancelDECT()">
+				<div style="text-align: center;">
+					<div ng-show="progress != 0" >
 						<i class="fa fa-spinner fa-spin fa-3x"></i>
 					</div>
-					<p>{{'Trying to Pair' | translate}}</p>         
+					<p>{{'Trying to Pair' | translate}}</p>
 				</div>
 			</modal>
 		</juci-config-lines>
 		<div>
 			<table class="table">
 				<thead style="text-align: center;">
-					<th style="width:1%" translate>Number</th>
-					<th class="hidden-xs" translate>RFPI</th>
-					<th translate>State</th>
-					<th style="width:20%" translate>Status</th>
-					<th class="hidden-xs" style="width:1%" translate>Action</th>
+					<th style="width:1%" translate>ID</th>
+					<th translate>IPUI</th>
+					<th translate>Codecs</th>
+					<th class="hidden-xs" style="width:1%"></th>
+					<th class="hidden-xs" style="width:1%"></th>
 				</thead>
-				<tr ng-repeat="hs in status.handsets track by $index">
+				<tr ng-repeat="hs in handset.handsets track by $index">
 					<td>{{hs.id}}</td>
-					<td class="hidden-xs">{{toHexaDecimal(hs.address)}}</td>
-					<td>{{hs.online|uppercase}}</td>
-					<td>{{hs.status|uppercase}}</td>
-					<td class="hidden-xs"><button class="btn btn-default" ng-click="onPingHandset(hs)" translate>Ping</button></td>
+					<td>{{toHexString(hs.ipui)}}</td>
+					<td>{{hs.codecs.toString()}}</td>
+					<td class="hidden-xs">
+						<button ng-click="onPingHandset(hs)" class="btn btn-default">
+							<span ng-show="!pinging[hs.id]">Ping</span>
+							<span ng-show="pinging[hs.id]"><i class="fa fa-spinner fa-spin"></i> <span translate>Pinging...</span></span>
+						</button>
+					</td>
+					<td class="hidden-xs"><button class="btn btn-default" ng-click="onUnpairHandset(hs)" translate>Unpair</button></td>
 				</tr>
 			</table>
 		</div>

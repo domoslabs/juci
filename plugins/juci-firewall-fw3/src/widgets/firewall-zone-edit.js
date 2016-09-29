@@ -23,18 +23,18 @@ JUCI.app
 	return {
 		scope: {
 			zone: "=ngModel"
-		}, 
-		controller: "firewallZoneEdit", 
+		},
+		controller: "firewallZoneEdit",
 		templateUrl: "/widgets/firewall-zone-edit.html"
-	}; 
+	};
 })
 .controller("firewallZoneEdit", function($scope, $firewall, $network, networkConnectionPicker, $uci, $tr, gettext){
 	$scope.policys = [
-		{ label: gettext("ACCEPT"), value: "ACCEPT" }, 
-		{ label: gettext("REJECT"), value: "REJECT" }, 
-		{ label: gettext("DROP"), value: "DROP" },
-		{ label: gettext("FORWARD"), value: "FORWARD" }
-	]; 
+		{ label: $tr(gettext("ACCEPT")), value: "ACCEPT" },
+		{ label: $tr(gettext("REJECT")), value: "REJECT" },
+		{ label: $tr(gettext("DROP")), value: "DROP" },
+		{ label: $tr(gettext("FORWARD")), value: "FORWARD" }
+	];
 	
 	function zoneValidator(){
 		this.validate = function(opt){
@@ -47,7 +47,7 @@ JUCI.app
 
 	$scope.$watch("zone", function(zone){
 		$scope.zones = {source:[], dest:[]}
-		if(!zone) return; 
+		if(!zone) return;
 		zone.name.validator = new zoneValidator();
 		$firewall.getZones().done(function(zones){
 			var others = zones.filter(function(z){ return z.name.value != zone.name.value }).map(function(z){ return { name:z.name.value }; });
@@ -80,7 +80,7 @@ JUCI.app
 				$scope.$apply();
 			});
 		});
-	}); 
+	});
 	
 	$scope.getItemTitle = function(net){
 		return net;
@@ -88,19 +88,19 @@ JUCI.app
 	
 	
 	$scope.onAddNetwork = function(){
-		if(!$scope.zone) return; 
+		if(!$scope.zone) return;
 		networkConnectionPicker.show({ exclude: $scope.zone.network.value }).done(function(network){
 			$scope.zone.network.value = $scope.zone.network.value.concat([network[".name"]]);;
-		}); 
+		});
 	}
 	
 	$scope.onRemoveNetwork = function(conn){
-		if(!$scope.zone) return; 
-		if(!conn) alert(gettext("Please select a connection in the list!")); 
-		if(confirm(gettext("Are you sure you want to remove this network from this zone?"))){
+		if(!$scope.zone) return;
+		if(!conn) alert($tr(gettext("Please select a connection in the list!")));
+		if(confirm($tr(gettext("Are you sure you want to remove this network from this zone?")))){
 			$scope.zone.network.value = $scope.zone.network.value.filter(function(name){
-				return name != conn; 
-			}); 
+				return name != conn;
+			});
 		}
 	}
 	

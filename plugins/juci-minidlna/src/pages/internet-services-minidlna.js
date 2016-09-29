@@ -58,12 +58,12 @@ JUCI.app
 		});
 	});
 
-	$rpc.juci.minidlna.run({"method":"status"}).done(function(data){
+	$rpc.$call("juci.minidlna", "run", {"method":"status"}).done(function(data){
 		$scope.count = data.count;
 		$scope.$apply();
 	});
 	
-	$rpc.juci.system.service.run({"method":"status", "args":"{\"name\":\"minidlna\"}"}).done(function(result){
+	$rpc.$call("juci.system.service", "run", {"method":"status", "args":"{\"name\":\"minidlna\"}"}).done(function(result){
 		$scope.is_running = result.running ? "active" : "inactive";
 		$scope.$apply();
 	});
@@ -140,7 +140,7 @@ JUCI.app
 	var tag_promise = null;
 	$scope.loadTags = function(text){
 		if(!tag_promise) tag_promise = new Promise(function(resolve, reject){
-			$rpc.juci.minidlna.run({"method":"autocomplete", "args":"{\"path\":\""+text+"\"}"}).done(function(data){
+			$rpc.$call("juci.minidlna", "run", {"method":"autocomplete", "args":"{\"path\":\""+text+"\"}"}).done(function(data){
 				tag_promise = null;
 				if(data.folders) resolve(data.folders);
 				else reject(data);

@@ -61,13 +61,12 @@ JUCI.app.run(function($uci){
 
 	JUCI.interval.repeat("status_system_page_refresh", 5000, function(resume){
 		async.parallel([
-			function (cb){$rpc.router.info().done(function(res){sys = res; cb();}).fail(function(){cb();});},
+			function (cb){$rpc.$call("router", "info").done(function(res){sys = res; cb();}).fail(function(){cb();});},
 			function (cb){$network.getNetworkLoad().done(function(load){ netLoad = load; cb(); }).fail(function(){cb();});},
 			function (cb){
-				if(!$rpc.system.board) cb(); 
-				else $rpc.system.board().done(function(res){board = res; cb();}).fail(function(){cb();});
+				$rpc.$call("system", "board").done(function(res){board = res; cb();}).fail(function(){cb();});
 			},
-			function (cb){$rpc.router.filesystem().done(function(res){
+			function (cb){$rpc.$call("router", "filesystem").done(function(res){
 				filesystems = res.filesystem; 
 				cb();
 			}).fail(function(){cb();});}
@@ -96,6 +95,8 @@ JUCI.app.run(function($uci){
 		$scope.systemStatusTbl.rows = [
 			[$tr(gettext("Hostname")), board.hostname || $tr(gettext("N/A"))],
 			[$tr(gettext("Model")), $config.board.system.hardware || $tr(gettext("N/A"))],
+			[$tr(gettext("Serial No")), sys.system.serialno || $tr(gettext("N/A"))],
+			[$tr(gettext("MAC Address")), sys.system.basemac || $tr(gettext("N/A"))],
 			[$tr(gettext("Firmware Version")), $config.board.system.firmware || $tr(gettext("N/A"))],
 			[$tr(gettext("Kernel Version")), board.kernel || sys.system.kernel || $tr(gettext("N/A"))],
 			[$tr(gettext("Filesystem")), sys.system.filesystem || $tr(gettext("N/A"))],

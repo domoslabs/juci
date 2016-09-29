@@ -23,6 +23,13 @@ JUCI.app
 
 	$firewall.getZones().done(function(zones){
 		$scope.zones = zones; 
+		if(!$scope.zones || !$scope.zones.length) return;
+		$scope.zones.map(function(zone){
+			zone.$statusList = [["input",$tr(gettext("Input Policy"))], ["output", $tr(gettext("Output Policy"))], ["forward", $tr(gettext("Forward Policy"))]].map(function(pair){
+				if(!zone[pair[0]] || !zone[pair[0]].value) return null;
+				return { label: pair[1], value: zone[pair[0]].value };
+			}).filter(function(f){ return f !== null;});
+		});
 		$scope.$apply(); 
 	}); 
 	

@@ -32,10 +32,10 @@ msgstr "Namn"
 msgid "IP Retreival Method"
 msgstr "IP Uppslagningsmetod"
 
-msgid "Pick Connection"
+msgid "Select Connection"
 msgstr "Välj uppkoppling"
 
-msgid "Pick Interface"
+msgid "Select Interface"
 msgstr "Välj enhet"
 
 msgid "Enter website to poll for ip address"

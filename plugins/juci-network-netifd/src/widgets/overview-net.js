@@ -24,35 +24,129 @@ JUCI.app
 		templateUrl: "widgets/overview-net.html",
 		controller: "overviewWidgetNetwork",
 		replace: true
-	};
+	}
 })
 .directive("overviewStatusWidget10Network", function(){
 	return {
 		templateUrl: "widgets/overview-net-small.html",
 		controller: "overviewWidgetNetwork",
 		replace: true
-	};
+	}
 })
-.controller("overviewWidgetNetwork", function($scope, $firewall, $tr, gettext, $juciDialog, $uci, $rpc, $events){
+.directive("widgetNetworkExpanded", function(){
+	return {
+		templateUrl: "widgets/overview-net-expanded.html",
+		controller: "widgetNetworkExpanded",
+		replace: true
+	}
+})
+.controller("widgetNetworkExpanded", function($scope, $uci, $tr, gettext, $events){
+	$scope.window = window;
+	$scope.order = {};
+	$scope.getStyle = function(colName, rowName){
+		if(!$scope.order || !$scope.order[colName]) return "";
+		return "background-color:" + ($scope.order[colName].column === rowName ? "#ddd" : "white");
+	}
+	$scope.iconName = function(colName){
+		if(!$scope.order || !$scope.order[colName]) return "";
+		return "fa fa-caret-" + ($scope.order[colName].reverse ? "down" : "up");
+	}
+	$scope.showIcon = function(colName, rowName){
+		return $scope.order[colName] && $scope.order[colName].column === rowName;
+	}
+	$scope.style = "overflow:hidden;max-width:0;text-overflow:ellipsis;white-space:nowrap;";
+	$uci.$sync("ports").done(function(){
+		$scope.ports = {};
+		$uci.ports["@ethport"].map(function(port){
+			$scope.ports[port.ifname.value] = port.name.value
+		});
+		$scope.setOrder = function(col, colname){
+			if(!$scope.order[colname]) return;
+			if($scope.order[colname].column === col) $scope.order[colname].reverse = !$scope.order[colname].reverse;
+			$scope.order[colname].column = col;
+		}
+		var update = function(){
+			$rpc.$call("router", "clients").done(function(res){
+				$scope.clients = {};
+				$scope.columns = [];
+				Object.keys(res).map(function(r){
+					var client = res[r];
+					if(!client.connected) return;
+					if(client["tx_rate"]) client.tratem = Math.floor(parseInt(client["tx_rate"]) / 100) / 10;
+					if(client["rx_rate"]) client.rratem = Math.floor(parseInt(client["rx_rate"]) / 100) / 10;
+					var colname = client.frequency ? client.frequency : $tr(gettext("Ethernet"));
+					if(!$scope.clients.hasOwnProperty(colname)){
+						$scope.clients[colname] = [client];
+						$scope.columns.push(colname)
+					}else{
+						$scope.clients[colname].push(client)
+					}
+				});
+				$scope.columns.map(function(col){
+					$scope.order[col] = {
+						column: "hostname",
+						reverse: false
+					}
+				});
+				$scope.$apply()
+			}).fail(function(e){
+				console.log(e);
+			})
+		}
+		update();
+		$events.subscribe("client", function(res){
+			if (res && res.data && res.data.action){
+				update()
+			}
+		});
+		JUCI.interval.repeat("update-big-clients-widget", 5000, function(next){
+			update();
+			next()
+		})
+	}).fail(function(e){
+		console.log(e)
+	})
+})
+.controller("overviewWidgetNetwork", function($scope, $firewall, $tr, gettext, $juciDialog, $uci, $events){
+	$scope.openExpand = function(){
+		if (window.innerWidth < 770)
+			return;
+		$juciDialog.show("widget-network-expanded", {
+			title: $tr(gettext("Detailed client overview")),
+			buttons: [{
+				label: $tr(gettext("Close"))
+			}],
+			on_button: function(btn, inst){
+				inst.close()
+			},
+			big: true
+		})
+	}
+	;
 	$scope.defaultHostName = $tr(gettext("Unknown"));
 	$scope.model = {};
 	$scope.lanNetworks = [];
 	var lanNets = [];
 	var lanClients = [];
 	function refresh(){
-		async.series([
-			function(next){
-				$firewall.getZoneNetworks("lan").done(function(nets){
-					lanNets = nets;
-					next();
-				});
-			}, function(next){
-				$uci.$sync("dhcp").always(function(){next();});
-			}, function(next){
-				$firewall.getZoneClients("lan").done(function(clients){
-					lanClients = clients;
-				}).always(function(){next();});
-			}
+		async.series([function(next){
+			$firewall.getZoneNetworks("lan").done(function(nets){
+				lanNets = nets;
+				next()
+			})
+		}
+		, function(next){
+			$uci.$sync("dhcp").always(function(){
+				next()
+			})
+		}
+		, function(next){
+			$firewall.getZoneClients("lan").done(function(clients){
+				lanClients = clients
+			}).always(function(){
+				next()
+			})
+		}
 		], function(){
 			var dnss = $uci.dhcp["@dhcp"];
 			lanNets.map(function(net){
@@ -82,7 +176,7 @@ JUCI.app
 			refresh();
 		}
 	});
-	JUCI.interval.repeat("update-lan-overview-widget-slow", 60000, function(done){ refresh(); done();});
+	JUCI.interval.repeat("update-lan-overview-widget-slow", 5000, function(done){ refresh(); done();});
 
 	$scope.onEditLan = function(lan){
 		if(!lan || lan["_dhcp_enabled"] == undefined) return;

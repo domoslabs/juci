@@ -32,7 +32,7 @@ JUCI.app.factory("$ethernet", function($rpc){
 	Ethernet.prototype.getAdapters = function(){
 		var def = $.Deferred(); 
 		var self = this; 
-		$rpc.network.device.status().done(function(result){
+		$rpc.$call("network.device", "status").done(function(result){
 			var res = Object.keys(result).map(function(name){ result[name].device = name; return result[name]; });
 			if(res) {
 				// pipe all adapters though all subsystems and annotate them

@@ -307,22 +307,22 @@ msgstr "Trådlösa nätverk"
 msgid "Radio On/Off"
 msgstr "Radio På/Av"
 
-msgid "Wifi Mode"
+msgid "WiFi Mode"
 msgstr "WiFi typ"
 
-msgid "Pick Hardware Mode"
+msgid "Select Hardware Mode"
 msgstr "Välj hårdvaruläge"
 
 msgid "Bandwidth"
 msgstr "Bandbredd"
 
-msgid "Pick Bandwidth"
+msgid "Select Bandwidth"
 msgstr "Välj bandbredd"
 
 msgid "Channel"
 msgstr "Kanal"
 
-msgid "Pick Channel"
+msgid "Select Channel"
 msgstr "Välj kanal"
 
 msgid "RIFS"
@@ -421,10 +421,10 @@ msgstr "Datornamn"
 msgid "MAC"
 msgstr "MAC"
 
-msgid "Pick Wireless Radio"
+msgid "Select Wireless Radio"
 msgstr "Välj WiFi radio"
 
-msgid "Pick SSID"
+msgid "Select SSID"
 msgstr "Välj SSID"
 
 msgid "New SSID"
@@ -483,8 +483,8 @@ msgstr "Generella Inställningar"
 msgid "wifi.general.info"
 msgstr "Generell information "
 
-msgid "Wifi Network"
-msgstr "Wifi Nätverk"
+msgid "WiFi Network"
+msgstr "WiFi Nätverk"
 
 msgid "Scheduled"
 msgstr "Schemalagd"

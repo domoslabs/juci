@@ -33,20 +33,30 @@ JUCI.app
 		JUCI.interval.repeat("dhcp-leases", 5000, function(done){refresh();done();});
 	});
 	function refresh(){
-		lanNets.map(function(net){
-			$rpc.router.leases({network:net[".name"]}).done(function(res){
-				$scope.ipv4leases = Object.keys(res).map(function(k){return res[k];});
-				$scope.$apply();
-			});
+		$rpc.$call("router", "leases", {family:4}).done(function(res){
+			$scope.ipv4leases = Object.keys(res).map(function(k){return res[k];});
+			$scope.$apply();
+		});
+
+		$rpc.$call("router", "leases", {family:6}).done(function(res){
+			$scope.ipv6leases = Object.keys(res).map(function(k){return res[k];});
+			$scope.$apply();
 		});
 	}refresh();
 			
 	JUCI.interval.repeat("leases-update-time", 1000, function(done){
 		if(!$scope.ipv4leases) { done();return;}
 		$scope.ipv4leases.map(function(lease){
-			if(lease.leaseno > Date.now()) lease.leaseno += 1;
-			if(lease.leaseno === Date.now()) refresh();
+			if(lease.leasetime > Date.now()) lease.leasetime += 1;
+			if(lease.leasetime === Date.now()) refresh();
 		});
+
+		if(!$scope.ipv6leases) { done();return;}
+		$scope.ipv6leases.map(function(lease){
+			if(lease.leasetime > Date.now()) lease.leasetime += 1;
+			if(lease.leasetime === Date.now()) refresh();
+		});
+
 		$scope.$apply();
 		done();
 	});

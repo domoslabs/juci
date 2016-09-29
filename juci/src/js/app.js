@@ -73,7 +73,7 @@ JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $
 		return _put.call($templateCache, name, value); 
 	}
 })
-.run(function($rootScope, $state, gettextCatalog, $tr, gettext, $rpc, $config, $location, $navigation, $templateCache, $languages){
+.run(function($rootScope, $state, gettextCatalog, $rpc, $config, $location, $navigation, $templateCache, $languages){
 	console.log("juci: angular init"); 
 	
 	// TODO: maybe use some other way to gather errors than root scope? 
@@ -120,14 +120,6 @@ JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $
 		});
 	}, 10000); 
 }) 
-// TODO: figure out how to avoid forward declarations of things we intend to override.
-//.directive("juciFooter", function(){ return {} })
-//.directive("juciLayoutNaked", function(){ return {} })
-//.directive("juciLayoutSingleColumn", function(){ return {} })
-//.directive("juciLayoutWithSidebar", function(){ return {} })
-//.directive("juciNav", function(){ return {} })
-//.directive("juciNavbar", function(){ return {} })
-//.directive("juciTopBar", function(){ return {} })
 .directive('ngOnload', [function(){
 	return {
 		scope: {
@@ -159,10 +151,11 @@ angular.element(document).ready(function() {
 	(function init(){
 		JUCI.$init().done(function(){
 			angular.bootstrap(document, ["juci"]);
-		}).fail(function(){
+		}).fail(function(e){
 			if(starting + 1000 > Date.now()){
 				setTimeout(function(){init();},50);
 			}else{
+				console.log(e);
 				window.location = "/initfail.html";
 			}
 		});

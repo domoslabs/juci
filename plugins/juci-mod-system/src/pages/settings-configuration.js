@@ -1,6 +1,4 @@
-/*
- * Copyright (C) 2015 Inteno Broadband Technology AB. All rights reserved.
- *
+/* * Copyright (C) 2015 Inteno Broadband Technology AB. All rights reserved.  *
  * Author: Martin K. Schröder <mkschreder.uk@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -19,95 +17,91 @@
  */
 
 JUCI.app
-.controller("SettingsConfigurationCtrl", function($scope, $rpc, $tr, gettext){
-	$scope.sessionID = $rpc.$sid(); 
-	$scope.resetPossible = 0; 
-	$scope.resetPossible = 1; 
+.controller("SettingsConfigurationCtrl", function($scope, $rpc, $tr, gettext, $juciDialog, $file, $config, $events){
+	$scope.data = {encryptBackup:false};
+	$scope.sessionID = $rpc.$sid();
+	$scope.resetPossible = 0;
+	$scope.resetPossible = 1;
 	$scope.passwordError = false;
 
-	$rpc.juci.system.conf.run({"method":"features"}).done(function(features){
-		$scope.features = features; 
+	$events.subscribe("defaultreset", function(e){ window.location = "/reboot.html"; });
+	$rpc.$call("juci.system.conf", "run", {"method":"features"}).done(function(features){
+		$scope.features = features;
 		$scope.$apply();
-	}); 
+	});
 
 	$scope.onReset = function(){
-		if(confirm(gettext("This will reset your configuration to factory defaults. Do you want to continue?"))){
-			$rpc.juci.system.run({"method":"defaultreset"}).done(function(result){
-				console.log("Performing reset: "+JSON.stringify(result)); 
-				window.location = "/reboot.html";  
-			}); 
+		if(confirm($tr(gettext("This will reset your configuration to factory defaults. Do you want to continue?")))){
+			$rpc.$call("juci.system", "run", {"method":"defaultreset"});
 		}
 	}
 	$scope.onSaveConfig = function(){
-		$scope.showModal = 1; 
+		$scope.showModal = 1;
 	}
 
 	$scope.onRestoreConfig = function(){
-		$scope.showUploadModal = 1; 
+		$scope.showUploadModal = 1;
 	}
 	$scope.onCancelRestore = function(){
-		$scope.showUploadModal = 0; 
+		$scope.showUploadModal = 0;
 	}
-	$scope.data = {}; 
-	/*setInterval(function checkUpload(){
-		var iframe = $("#postiframe").load(function(){; 
-		var json = iframe.contents().text();
-		try {
-			if(json.length && JSON.parse(json)) {
-				$scope.onUploadComplete(JSON.parse(json)); 
-			} 
-		} catch(e){}
-		iframe.each(function(e){$(e).contents().html("<html>");}); ; 
-	}, 500); */
+	$scope.data = {pass:"",pass_repeat:""};
 	$scope.onUploadConfig = function(){
-		$("#postiframe").bind("load", function(){
-			var json = $(this).contents().text(); 
-			try {
-				$scope.onUploadComplete(JSON.parse(json));
-			} catch(e){
-				console.log(e);
-			}
-			$(this).unbind("load"); 
-		}); 
-		$("form[name='restoreForm']").submit();
+		var upfile = document.getElementById("upload");
+		if(!upfile.name || upfile.size < 1) return;
+		$file.uploadFile("backup.tar.gz", upfile.files[0]).done(function(){
+			onUploadComplete("done");
+		}).fail(function(e){console.log(e);});
 	}
-	$scope.onUploadComplete = function(result){
-		console.log("Uploaded: "+JSON.stringify(result)); 
-		$rpc.juci.system.conf.run({"method":"restore","args":JSON.stringify({
+	function onUploadComplete(result){
+		console.log("Uploaded: "+JSON.stringify(result));
+		$rpc.$call("juci.system.conf", "run", {"method":"restore","args":JSON.stringify({
 			pass: $scope.data.pass
 		})}).done(function(result){
 			if(result.error){
-				alert(result.error); 
+				alert(result.error);
 			} else {
-				$scope.showUploadModal = 0; 
-				$scope.$apply(); 
+				$scope.showUploadModal = 0;
+				$scope.$apply();
 				if(confirm($tr(gettext("Configuration has been restored. You need to reboot the device for settings to take effect! Do you want to reboot now?")))){
-					$rpc.juci.system.run({"method":"reboot"}); 
+					$rpc.$call("juci.system", "run", {"method":"reboot"});
 					setTimeout(function(){window.location = "/reboot.html";}, 0);
 				}
 			}
 		}).fail(function(err){
-			console.error("Filed: "+JSON.stringify(err)); 
+			console.error("Filed: "+JSON.stringify(err));
 		}).always(function(){
-			$scope.data = {}; 
-			$scope.$apply(); 
-		}); 
+			$scope.data = {pass:"",pass_repeat:""};
+			$scope.$apply();
+		});
 	}
 	$scope.onAcceptModal = function(){
-		if($scope.passwordError){ return; }
-		if($scope.data.pass != $scope.data.pass_repeat) {
-			alert($tr(gettext("Passwords do not match!"))); 
-			return; 
+		if($scope.passwordError) return;
+		if($scope.data.pass !== $scope.data.pass_repeat) {
+			alert($tr(gettext("Passwords do not match!")));
+			return;
 		}
-		if($scope.data.pass == ""){
-			if(!confirm($tr(gettext("Are you sure you want to save backup without password?")))) return; 
+		if($scope.data.pass === ""){
+			if(!confirm($tr(gettext("Are you sure you want to save backup without password?")))) return;
 		}
-		$("form[name='backupForm']").submit();
-		$scope.data = {}; 
-		$scope.showModal = 0; 
+		$scope.showModal = 0;
+		$scope.showStatus = 1;
+		$rpc.$call("juci.system", "run", {
+			"method":"create_backup",
+			"args": ($scope.data.pass ? JSON.stringify({password: $scope.data.pass}) : undefined)
+		}).done(function(){
+			$file.downloadFile("backup.tar.gz", "application/gzip", "backup-" + $config.filename + ".tar.gz").fail(function(e){
+				alert($tr(gettext("Was not able to download backup. Please check access!")));
+				console.log(e);
+			}).always(function(){
+				$scope.data = {pass:"",pass_repeat:""};
+				$scope.showStatus = false;
+				$scope.$apply();
+			});
+		}).fail(function(error){	$scope.data = {pass:"",pass_repeat:""}; alert("error" + JSON.stringify(error)); });
 	}
 	$scope.onDismissModal = function(){
-		$scope.showModal = 0; 
+		$scope.showModal = 0;
 	}
 	$scope.$watch("data",function(data){
 		if(!data || !data.pass || !data.pass_repeat){
@@ -120,4 +114,20 @@ JUCI.app
 		}
 
 	},true);
-}); 
+	$scope.$watch("data",function(data){
+		if(!data || !data.pass || !data.pass_repeat){
+			return;
+		}
+		if(data.pass.match(/[\W_]/)){
+			$scope.passwordError = true;
+		}else {
+			$scope.passwordError = false;
+		}
+	},true);
+	$scope.$watch("data.encryptBackup",function(eb){
+		if(eb){
+			$scope.data.pass = "";
+			$scope.data.pass_repeat = "";
+		}
+	});
+});

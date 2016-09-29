@@ -46,6 +46,7 @@ JUCI.app
 				backdrop: "static", 
 				keyboard: false,
 				size: opts.size,
+				windowClass: (opts.big)?"big-modal-window":"",
 				templateUrl: opts.templateUrl || 'widgets/juci-dialog.html',
 				controller: opts.controller || 'juciDialog',
 				resolve: {

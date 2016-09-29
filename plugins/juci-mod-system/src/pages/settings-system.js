@@ -30,12 +30,12 @@ JUCI.app
 			}); 
 		}, 
 		function(next){
-			$rpc.system.board().done(function(values){
+			$rpc.$call("system", "board").done(function(values){
 				$scope.boardinfo = values; 
 			}).always(function(){next();}); 
 		}, 
 		function(next){
-			$rpc.juci.system.time.run({"method":"zonelist"}).done(function(result){
+			$rpc.$call("juci.system.time", "run", {"method":"zonelist"}).done(function(result){
 				if(result && result.zones){
 					$scope.timezones = result.zones; 
 					$scope.allTimeZones = Object.keys(result.zones).sort().map(function(k){
@@ -47,11 +47,10 @@ JUCI.app
 			}); 
 		},
 		function(next){
-			if($rpc.router) $rpc.router.info().done(function(res){
+			$rpc.$call("router", "info").done(function(res){
 				time = res.system.localtime;
 				$scope.localtime = Date(time);
 			}).always(function(){next();});
-			else next();
 		}
 	], function(){
 		$scope.loaded = true; 

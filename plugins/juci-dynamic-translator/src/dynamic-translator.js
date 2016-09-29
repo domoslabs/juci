@@ -21,7 +21,7 @@
 JUCI.app.factory("dynamicTranslator", function($rootScope, gettextCatalog){
 	var strings = []; 
 	$rootScope.$on("$locationChangeSuccess", function(){
-		console.log("removing string cache of "+strings.length+" strings."); 
+		//console.log("removing string cache of "+strings.length+" strings."); 
 		// reset strings on page
 	}); 
 

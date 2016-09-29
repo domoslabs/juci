@@ -25,8 +25,12 @@ JUCI.app
 		$scope.showExpert = $config.local.mode == "expert";
 		$scope.selected_lines = $scope.model.call_lines.value.split(" ").map(function(x){
 			var name = String(x);
-			var number = name.split("/").pop();
-			return name.toLowerCase().substring(0, x.length-2) + number;
+			if(name.match(/^[0-9]$/)){
+				return "brcm"+ name;
+			}else{
+				var number = name.split("/").pop();
+				return name.toLowerCase().substring(0, x.length-2) + number;
+			}
 		});
 		$scope.lines = $uci.voice_client["@brcm_line"].map(function(x){
 			return {

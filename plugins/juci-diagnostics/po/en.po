@@ -143,9 +143,7 @@ msgstr ""
 
 msgid "status.diagnostics.trace.info"
 msgstr ""
-"Please choose the connection type and location where you would like to save "
-"the tracing. The tracing will then begin automatically in a separate popup "
-"window."
+"Please enter the IP address of the host to trace."
 
 msgid "Host to trace"
 msgstr ""

@@ -25,11 +25,11 @@ JUCI.app
 		scope: {
 			interface: "=ngModel"
 		}, 
-		controller: "WifiInterfaceController", 
+		controller: "WiFiInterfaceController", 
 		replace: true, 
 		require: "^ngModel"
 	};  
-}).controller("WifiInterfaceController", function($scope, $uci, $tr, gettext, $wireless, $network){
+}).controller("WiFiInterfaceController", function($scope, $uci, $tr, gettext, $wireless, $network){
 	$scope.errors = []; 
 	$scope.showPassword = true; 
 	$wireless.getDefaults().done(function(res){
@@ -56,12 +56,12 @@ JUCI.app
 	$scope.mixed_psk_ciphers = [
 		{label: $tr(gettext("Auto")), value: "auto"},
 		{label: $tr(gettext("CCMP (AES)")), value: "ccmp"},
-		{label: $tr(gettext("TKIP/CCMP (AES)")), value: "ccmp"}
+		{label: $tr(gettext("TKIP/CCMP (AES)")), value: "tkip+ccmp"}
 	];  
 	
 	$scope.cryptoChoices = [
 		{ label: $tr(gettext("None")), value: "none" },
-		{ label: $tr(gettext("WEP")), value: "wep" },
+		{ label: $tr(gettext("WEP")), value: "wep-open" },
 		{ label: $tr(gettext("WPA2 Personal (PSK)")), value: "psk2" },
 //		{ label: $tr(gettext("WPA Personal (PSK)")), value: "psk" }, //not supported
 		{ label: $tr(gettext("WPA/WPA2 Personal (PSK) Mixed Mode")), value: "mixed-psk" },
@@ -92,7 +92,7 @@ JUCI.app
 	$scope.$watch("interface.closed.value", function(value, oldvalue){
 		if(!$scope.interface) return; 
 		if(value && value != oldvalue){
-			if($scope.interface.wps_pbc.value && !confirm(gettext("If you disable SSID broadcasting, WPS function will be disabled as well. You will need to enable it manually later. Are you sure you want to continue?"))){
+			if($scope.interface.wps_pbc.value && !confirm($tr(gettext("If you disable SSID broadcasting, WPS function will be disabled as well. You will need to enable it manually later. Are you sure you want to continue?")))){
 				setTimeout(function(){
 					$scope.interface.closed.value = oldvalue; 
 					$scope.$apply(); 
@@ -117,9 +117,12 @@ JUCI.app
 				}
 				break; 
 			}
-			case "wep": 
+			case "wep":
+			case "wep-open": {
+				$scope.interface.key.value = "";
+			}
 			case "wep-shared": {
-				if($scope.interface.wps_pbc.value && !confirm(gettext("WPS will be disabled when using WEP encryption. Are you sure you want to continue?"))){
+				if($scope.interface.wps_pbc.value && !confirm($tr(gettext("WPS will be disabled when using WEP encryption. Are you sure you want to continue?")))){
 					setTimeout(function(){
 						$scope.interface.encryption.value = oldvalue; 
 						$scope.$apply(); 
@@ -131,12 +134,12 @@ JUCI.app
 			}
 			case "mixed-psk": {
 				if(!$scope.mixed_psk_ciphers.find(function(i){ return i.value == $scope.interface.cipher.value}))
-					$scope.interface.cipher.value = "ccmp"; 
+					$scope.interface.cipher.value = "tkip+ccmp";
 				break; 
 			}
 			case "psk2": {
 				if(!$scope.psk2_ciphers.find(function(i){ return i.value == $scope.interface.cipher.value}))
-					$scope.interface.cipher.value = "ccmp"; 
+					$scope.interface.cipher.value = "ccmp";
 				break; 
 			}
 		}

@@ -32,7 +32,7 @@ JUCI.app
 				$uci.$sync("boardpanel").done(function(){ next(); }); 
 			}, 
 			function(next){
-				$rpc.network.interface.dump().done(function(result){
+				$rpc.$call("network.interface", "dump").done(function(result){
 					_interfaces = result.interface.filter(function(x){
 						return x.interface != "loopback"; // filter out loopback. Is there any use case where we would want it? 
 					}).map(function(x){

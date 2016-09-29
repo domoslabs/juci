@@ -1,0 +1,21 @@
+<div>
+	<juci-config-section>
+		<juci-config-lines>
+			<!--<juci-config-line title="{{'Add connection to zone'|translate}}">
+				<juci-select ng-items="allZones" ng-model="selectedZone" on-change="onZoneChanged($value)"></juci-select>
+			</juci-config-line>-->
+			<juci-config-line title="{{'APN'|translate}}">
+				<input type="text" class="form-control" ng-model="model.con.apn.value" placehoder="{{'APN'|translate}}" />
+			</juci-config-line>
+			<juci-config-line title="{{'PIN-Code'|translate}}">
+				<input type="text" class="form-control" ng-model="model.con.pincode.value" placehoder="{{'PIN-Code'|translate}}" />
+			</juci-config-line>
+			<juci-config-line title="{{'Username'|translate}}">
+				<input type="text" class="form-control" ng-model="model.con.username.value" placehoder="{{'Username'|translate}}" />
+			</juci-config-line>
+			<juci-config-line title="{{'Password'|translate}}">
+				<input type="text" class="form-control" ng-model="model.con.password.value" placehoder="{{'Password'|translate}}" />
+			</juci-config-line>
+		</juci-config-lines>
+	</juci-config-section>
+</div>

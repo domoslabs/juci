@@ -339,7 +339,7 @@ msgstr ""
 msgid "Network device"
 msgstr ""
 
-msgid "Pick network device"
+msgid "Select network device"
 msgstr ""
 
 msgid "Name"
@@ -402,7 +402,7 @@ msgstr ""
 msgid "DHCP"
 msgstr ""
 
-msgid "Pick Network"
+msgid "Select Network"
 msgstr ""
 
 msgid "Enable IPv6 negotiation on the PPP link"
@@ -573,10 +573,10 @@ msgstr ""
 msgid "IPv4 prefix length"
 msgstr ""
 
-msgid "If uncchecked, no default rout is configured"
+msgid "If unchecked, no default route is configured"
 msgstr ""
 
-msgid "help If unchecked, the advertised DNS server addresses are ignored"
+msgid "If unchecked, the advertised DNS server addresses are ignored"
 msgstr ""
 
 msgid "Additional DHCP options to request from the server"
@@ -726,7 +726,7 @@ msgstr ""
 msgid "Select Connected Host"
 msgstr ""
 
-msgid "Pick a host"
+msgid "Select a host"
 msgstr ""
 
 msgid "Aquired DNS servers"

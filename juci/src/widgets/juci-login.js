@@ -23,97 +23,95 @@ JUCI.app
 	return {
 		// accepted parameters for this tag
 		scope: {
-		}, 
-		templateUrl: "/widgets/juci-login.html", 
-		replace: true, 
+		},
+		templateUrl: "/widgets/juci-login.html",
+		replace: true,
 		controller: "LoginControl",
 		controllerAs: "ctrl"
-	}; 
+	};
 })
-.controller("LoginControl", function($scope, $config, $state, 
-	$window, $rpc, $localStorage, gettext){
-	$scope.form = { 
-		"username": "", 
-		"password": "", 
-		"remember": 0, 
-		"host": "" 
-	}; 
+.controller("LoginControl", function($scope, $config, $state,
+	$window, $rpc, $localStorage, $tr, gettext){
+	$scope.form = {
+		"username": "",
+		"password": "",
+		"remember": 0,
+		"host": ""
+	};
 	$scope.showlogin = ($config.settings && $config.settings.login)? $config.settings.login.showusername.value:true;
 	$scope.form.username = ($config.settings && $config.settings.login)? $config.settings.login.defaultuser.value: "user";
-	$scope.connecting = true; 
+	$scope.connecting = true;
 
-	$scope.errors = []; 
-	$scope.showHost = 0; 
-	if($rpc.local){
-		$rpc.local.features().done(function(features){
-			if(features.list) features.list.map(function(x){
-				if(x.indexOf("rpcforward") == 0) {
-					$scope.showHost = 1; 
-					$scope.form.host = $localStorage.getItem("rpc_host")||""; 
-				}
-			}); 
-			$scope.$apply(); 
-		}); 
-	}
+	$scope.errors = [];
+	$scope.showHost = 0;
+	$rpc.$call("local", "features").done(function(features){
+		if(features.list) features.list.map(function(x){
+			if(x.indexOf("rpcforward") == 0) {
+				$scope.showHost = 1;
+				$scope.form.host = $localStorage.getItem("rpc_host")||"";
+			}
+		});
+		$scope.$apply();
+	});
 
 	JUCI.interval.repeat("login-connection-check", 5000, function(done){
 		$rpc.$isConnected().done(function(){
-			$scope.is_connected = true; 
+			$scope.is_connected = true;
 		}).fail(function(){
-			$scope.is_connected = false; 
+			$scope.is_connected = false;
 		}).always(function(){
-			$scope.connecting = false; 
-			$scope.$apply(); 
-			done(); 
-		}); 
-	}); 
+			$scope.connecting = false;
+			$scope.$apply();
+			done();
+		});
+	});
 	$scope.doLogin = function(){
-		var deferred = $.Deferred(); 
-		$scope.errors = []; 
-		$scope.logging_in = true; 
+		var deferred = $.Deferred();
+		$scope.errors = [];
+		$scope.logging_in = true;
 		async.series([
 			function(next){
 				if($scope.form.host.length > 0){
-					$rpc.local.set_rpc_host({"rpc_host": $scope.form.host})
+					$rpc.$call("local", "set_rpc_host", {"rpc_host": $scope.form.host})
 					.done(function(){
-						$localStorage.setItem("rpc_host", $scope.form.host); 
+						$localStorage.setItem("rpc_host", $scope.form.host);
 					})
-					.always(function(){next();}); 
+					.always(function(){next();});
 				} else {
-					next(); 
+					next();
 				}
-			}, 
+			},
 			function(next){
 				$rpc.$login({
-					"username": $scope.form.username, 
-					"password": $scope.form.password, 
+					"username": $scope.form.username,
+					"password": $scope.form.password,
 					"remember": $scope.form.remember
 				}).done(function success(res){
-					$window.location.href="/"; 
-					deferred.resolve(); 
+					$window.location.href="/";
+					deferred.resolve();
 				}).fail(function fail(res){
-					$scope.errors.push(gettext("Please enter correct username and password!"));
-					$scope.logging_in = false; 
-					$scope.$apply(); 
-					deferred.reject(); 
-				}); 
+					$scope.errors.push($tr(gettext("Please enter correct username and password!")));
+					$scope.logging_in = false;
+					$scope.$apply();
+					deferred.reject();
+				});
 			}
-		]); 
-		return deferred.promise(); 
+		]);
+		return deferred.promise();
 	}
 	$scope.doLogout = function(){
-		var deferred = $.Deferred(); 
+		var deferred = $.Deferred();
 		$rpc.$logout().done(function(){
-			console.log("Logged out!"); 
+			console.log("Logged out!");
 			//$state.go("home", {}, {reload: true});
-			JUCI.redirect("overview"); //$window.location.href="/"; 
-			deferred.resolve(); 
+			JUCI.redirect("overview"); //$window.location.href="/";
+			deferred.resolve();
 		}).fail(function(){
 			console.error("Error logging out!");
-			deferred.reject(); 
-		});  
-		return deferred.promise(); 
+			deferred.reject();
+		});
+		return deferred.promise();
 	}
 	
-}); 
+});
 		

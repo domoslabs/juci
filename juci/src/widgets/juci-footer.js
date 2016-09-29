@@ -25,7 +25,7 @@ JUCI.app
 		controller: "juciFooter"
 	}; 
 })
-.controller("juciFooter", function($localStorage, $scope, $rpc, $firewall, $languages, gettextCatalog, gettext, $tr, $config){
+.controller("juciFooter", function($localStorage, $scope, $rpc, $firewall, $languages, gettextCatalog, $config){
 	$scope.languages = $languages.getLanguages();
 	if(!$scope.languages){
 		gettextCatalog.setCurrentLanguage("en") //if config is missing or broken set default language to english
@@ -55,7 +55,7 @@ JUCI.app
 		$scope.wanifs = networks.map(function(x){ return x.$info; }); 
 		$scope.$apply(); 
 	}); 
-	$rpc.system.board().done(function(res){
+	$rpc.$call("system", "board").done(function(res){
 		board = res;
 		$scope.firmware = board.release.distribution + " " + board.release.version + " " + board.release.revision; 
 		$scope.$apply(); 

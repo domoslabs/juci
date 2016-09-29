@@ -22,6 +22,7 @@ define Plugin/juci
 	STYLES-y+=src/css/juci-icons.css
 	STYLES-y+=src/css/nga.min.css
 	STYLES-y+=src/css/app.css
+	STYLES-y+=src/css/modal.css
 	
 	JAVASCRIPT-y:=
 	JAVASCRIPT-y+=src/lib/js/async.js
@@ -61,6 +62,7 @@ define Plugin/juci
 	JAVASCRIPT-y+=src/js/tr.js
 	JAVASCRIPT-y+=src/js/theme.js
 	JAVASCRIPT-y+=src/js/timeout.js
+	JAVASCRIPT-y+=src/factories/*.js
 	JAVASCRIPT-y+=src/widgets/*.js
 	JAVASCRIPT-y+=src/pages/*.js
 endef
@@ -69,7 +71,6 @@ define Plugin/juci/install
 	$(INSTALL_DIR) $(1)/www/
 	$(INSTALL_DIR) $(1)/etc/config/
 	$(INSTALL_DIR) $(1)/etc/init.d/
-	$(CP) $(PLUGIN_DIR)/juci.default.config $(1)/etc/config/juci
 	$(CP) $(PLUGIN_DIR)/src/img/ $(1)/www/
 	$(CP) $(PLUGIN_DIR)/src/fonts/ $(1)/www/
 	$(INSTALL_DIR) $(1)/usr/share/lua/juci/

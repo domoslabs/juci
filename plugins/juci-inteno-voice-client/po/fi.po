@@ -290,7 +290,7 @@ msgstr "Sisänumero"
 msgid "Outgoing Calls Number"
 msgstr "Lähtevät numerot"
 
-msgid "Pick Outgoing Number"
+msgid "Select Outgoing Number"
 msgstr "Valitse lähtevä numero"
 
 msgid "Call Waiting"
@@ -687,7 +687,7 @@ msgstr "Puheluloki"
 msgid "Show calls for"
 msgstr "Näytä puhelut"
 
-msgid "Pick phone"
+msgid "Select phone"
 msgstr "Valitse puhelin"
 
 msgid "Date"
@@ -765,7 +765,7 @@ msgstr "Lisää uusi soittoajastus"
 msgid "Phone Number"
 msgstr "Puhelinnumero"
 
-msgid "Pick Phone Number"
+msgid "Select Phone Number"
 msgstr "Valitse puhelinnumero"
 
 msgid "Day"

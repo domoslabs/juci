@@ -9,10 +9,10 @@
 		<juci-config-line title="{{'IP Retreival Method'|translate}}">
 			<juci-select ng-model="ddns.ip_source.value" ng-items="allSourceTypes"></juci-select>
 		</juci-config-line>
-		<juci-config-line title="{{'Pick Connection'|translate}}" ng-show="ddns.ip_source.value == 'network'">
+		<juci-config-line title="{{'Select Connection'|translate}}" ng-show="ddns.ip_source.value == 'network'">
 			<juci-select ng-model="ddns.ip_network.value" ng-items="allSourceNetworks"></juci-select>
 		</juci-config-line>
-		<juci-config-line title="{{'Pick Interface'|translate}}" ng-show="ddns.ip_source.value == 'interface'">
+		<juci-config-line title="{{'Select Interface'|translate}}" ng-show="ddns.ip_source.value == 'interface'">
 			<juci-select ng-model="ddns.interface.value" ng-items="allSourceDevices"></input>
 		</juci-config-line>
 		<juci-config-line title="{{'Enter website to poll for ip address'|translate}}" ng-show="ddns.ip_source.value == 'web'">

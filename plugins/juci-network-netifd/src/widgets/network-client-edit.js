@@ -31,6 +31,7 @@ JUCI.app
 	};  
 }).controller("networkClientEdit", function($scope, $uci, $tr, gettext){	
 	$scope.$watch("model", function(value){
+		console.log(value);
 		if(!value || !value.client) return;
 		$uci.$sync("dhcp").done(function(){
 			$scope.staticLeses = $uci.dhcp["@host"];
@@ -63,10 +64,13 @@ JUCI.app
 			var val = value.client[x];
 			if(x === "hostname") return { label: $tr(gettext("Hostname")), value: val };
 			if(x === "ipaddr") return { label: $tr(gettext("IP Address")), value: val };
+			if(x === "ip6addr") return { label: $tr(gettext("IPv6 Address")), value: val };
+			if(x === "duid") return { label: $tr(gettext("DUID")), value: val };
 			if(x === "macaddr") return { label: $tr(gettext("MAC Address")), value: String(val).toUpperCase() };
 			if(x === "dhcp") return { label: $tr(gettext("DHCP")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
 			if(x === "connected") return { label: $tr(gettext("Connected")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
-			if(x === "wireless") $scope.wireless = true;
+			if(x === "wireless") $scope.wireless = val;
+			if(!($scope.wireless) && x === "linkspeed") return { label: $tr(gettext("Link Speed")), value: val };
 			return null;
 		}).filter(function(x){ return x !== null;});
 		if($scope.wireless){

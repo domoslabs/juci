@@ -61,9 +61,9 @@ JUCI.app
 		var item = $scope.schedule.uci_item; 
 		var view = $scope.schedule; 
 		$scope.errors = item.$getErrors();
-		if(!view.sip_service_provider){
-			$scope.errors.push($tr(gettext("No Phone number selected")));
-		}
+//		if(!view.sip_service_provider){
+//			$scope.errors.push($tr(gettext("No Phone number selected")));
+//		}
 		if(!view.days || view.days.length === 0){
 			$scope.errors.push($tr(gettext("No Day selected")));
 		}

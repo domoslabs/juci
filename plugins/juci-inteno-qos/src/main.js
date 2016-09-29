@@ -20,15 +20,24 @@
 UCI.$registerConfig("qos");
 UCI.qos.$registerSectionType("classify", {
 	"target":	{ dvalue:'Normal', type: String },
+	"proto":	{ dvalue: '', type: String },
+	"srcports":	{ dvalue: '', type: String },
+	"dstports":	{ dvalue: '', type: String },
 	"ports":	{ dvalue: '', type: String },
-	"comment":	{ dvalue: '', type: String },
 	"dscp":		{ dvalue: '', type: String },
 	"srchost":	{ dvalue: '', type: String, validator: UCI.validators.IPAddressValidator },
 	"dsthost":	{ dvalue: '', type: String, validator: UCI.validators.IPAddressValidator },
-	"proto":	{ dvalue: '', type: String }
+	"portrange":	{ dvalue: '', type: String, validator: UCI.validators.PortOrRangeValidator("-") },
+	"pktsize":	{ dvalue: '', type: Number },
+	"tcpflags":	{ dvalue: '', type: String },
+	"mark":		{ dvalue: '', type: String, validator: UCI.validators.QOSMarkValidator },
+	"connbytes":	{ dvalue: '', type: String },
+	"tos":		{ dvalue: '', type: String },
+	"direction":	{ dvalue: '', type: String },
+	"comment":	{ dvalue: '', type: String }
 });
 UCI.qos.$registerSectionType("classgroup", {
-	"classes":	{ dvalue: 'Priority Express Normal Bulk', type: String },
+	"classes":	{ dvalue: ['Priority', 'Express', 'Normal', 'Bulk'], type: Array},
 	"default": 	{ dvalue: 'Normal', type: String }
 });
 UCI.qos.$registerSectionType("interface", {
@@ -38,20 +47,41 @@ UCI.qos.$registerSectionType("interface", {
 	"overhead":		{ dvalue: false, type: Boolean },
 	"upload":		{ dvalue: '', type: Number }
 });
+UCI.qos.$registerSectionType("class", {
+	"priority":		{ dvalue: 1, type: Number},
+	"maxsize":		{ dvalue: 1000, type: Number},
+	"packetsize":		{ dvalue: 1500, type: Number},
+	"packetdelay":		{ dvalue: 0, type: Number },
+	"avgrate":		{ dvalue: 0, type: Number},
+	"limitrate":		{ dvalue: 100, type: Number},
+});
 
-JUCI.app.factory("intenoQos", function($uci){
+JUCI.app.factory("intenoQos", function($uci, gettext, $tr){
 	function Qos(){ }
 	Qos.prototype.getDefaultTargets = function(){
 		var def = $.Deferred(); 
 		$uci.$sync(["qos"]).done(function(){
 			var targets = []; 
 			if($uci.qos.Default){
-				targets = $uci.qos.Default.classes.value.split(" ").map(function(x){
+				targets = $uci.qos.Default.classes.value;
+				/*targets = $uci.qos.Default.classes.value.split(" ").map(function(x){
 					//if(x == "Bulk") return { label: $tr(gettext("Low")), value: x };
 					return x; 
-				});
+				});*/
 			}
 			def.resolve(targets); 
+		}).fail(function(){ def.reject(); });
+		return def.promise(); 
+	} 
+
+	Qos.prototype.getClassNames = function(){
+		var def = $.Deferred(); 
+		$uci.$sync(["qos"]).done(function(){
+			var classes = []; 
+			if($uci.qos["@class"]){
+				classNames = $uci.qos["@class"].map(function(c){ return c['.name']; });
+			}
+			def.resolve(classNames); 
 		}).fail(function(){ def.reject(); });
 		return def.promise(); 
 	} 

@@ -290,7 +290,7 @@ msgstr "Intern nummer"
 msgid "Outgoing Calls Number"
 msgstr "Utgående nummer"
 
-msgid "Pick Outgoing Number"
+msgid "Select Outgoing Number"
 msgstr "Välj utgående tel. nummer"
 
 msgid "Call Waiting"
@@ -695,7 +695,7 @@ msgstr "Inställningar för samtalslogg"
 msgid "Show calls for"
 msgstr "Visa samtal för"
 
-msgid "Pick phone"
+msgid "Select phone"
 msgstr "Välj telefon"
 
 msgid "Date"
@@ -773,7 +773,7 @@ msgstr "Lägg till nytt schema"
 msgid "Phone Number"
 msgstr "Telefonnummer"
 
-msgid "Pick Phone Number"
+msgid "Select Phone Number"
 msgstr "Välj telefonnummer"
 
 msgid "Day"

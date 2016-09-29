@@ -95,7 +95,7 @@ msgstr ""
 msgid "Weighted Fair Queuing"
 msgstr ""
 
-msgid "Pick Device"
+msgid "Select Device"
 msgstr ""
 
 msgid "Select base DSL device"

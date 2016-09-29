@@ -2,6 +2,14 @@
 	"juci-inteno-provisioning": {
 		"description": "JUCI inteno provisioning module",
 		"read": {
+			"ubus": {
+				"/juci/provisioning.iup": [
+					"run"
+				],
+				"file": [
+					"read"
+				]
+			},
 			"uci": [
 				"provisioning"
 			],

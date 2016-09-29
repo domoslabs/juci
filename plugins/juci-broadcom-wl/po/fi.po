@@ -213,27 +213,27 @@ msgid "Attempting to Pair"
 msgstr "Yritetään parittaa laitetta"
 
 msgid "Wireless"
-msgstr "Wifi"
+msgstr "WiFi"
 
 msgid "Radio On/Off"
 msgstr "Radio Päälle/Pois"
 
-msgid "Wifi Mode"
+msgid "WiFi Mode"
 msgstr "WiFi tila"
 
-msgid "Pick Hardware Mode"
+msgid "Select Hardware Mode"
 msgstr "Valitse laitteistotila"
 
 msgid "Channel"
 msgstr "Kanava"
 
-msgid "Pick Channel"
+msgid "Select Channel"
 msgstr "Kanava"
 
 msgid "Bandwidth"
 msgstr "Kaistanleveys"
 
-msgid "Pick Bandwidth"
+msgid "Select Bandwidth"
 msgstr "Kaistanleveys"
 
 msgid "RIFS"
@@ -294,7 +294,7 @@ msgid "Cipher"
 msgstr "Salausavain"
 
 msgid "WiFi Key (Password)"
-msgstr "Wifi salsana"
+msgstr "WiFi salsana"
 
 msgid "Reset to default password"
 msgstr "Palauta oletussalasana"
@@ -338,10 +338,10 @@ msgstr "Tarkista MAC-osoite!"
 msgid "MAC"
 msgstr "MAC"
 
-msgid "Pick Wireless Radio"
+msgid "Select Wireless Radio"
 msgstr "Valitse Langaton Radio"
 
-msgid "Pick SSID"
+msgid "Select SSID"
 msgstr "Valitse SSID"
 
 msgid "New SSID"
@@ -354,7 +354,7 @@ msgid "New Wireless Interface"
 msgstr "Uusi langaton liitäntä"
 
 msgid "WiFi Client Mode"
-msgstr "Wifi-tila"
+msgstr "WiFi-tila"
 
 msgid "wifi.client.info"
 msgstr "Lähellä olevat langattomat laitteet"
@@ -375,7 +375,7 @@ msgid "wifi.clients.info"
 msgstr " "
 
 msgid "Wireless Radios"
-msgstr "Wifi radiot"
+msgstr "WiFi radiot"
 
 msgid "wifi.radios.info"
 msgstr ""
@@ -393,15 +393,15 @@ msgstr ""
 "Voit hallinoida jopa 32:a langatonta laitetta."
 
 msgid "General WiFi Settings"
-msgstr "Yleiset Wifi asetukset"
+msgstr "Yleiset WiFi asetukset"
 
 msgid "wifi.general.info"
 msgstr ""
 "Laitteesi tukee koko alan WiFi standardeja mahdollistaen helpon yhteyden "
 "langattomille laitteillesi."
 
-msgid "Wifi Network"
-msgstr "Wifi Verkko"
+msgid "WiFi Network"
+msgstr "WiFi Verkko"
 
 msgid "Scheduled"
 msgstr "Ajastettu"
@@ -483,7 +483,7 @@ msgstr ""
 "5GHz taajuutta ei voi skannata silloin, kun 5GHz radio käyttää DFS kanavia"
 
 msgid "WPS Settings"
-msgstr "Yleiset Wifi asetukset"
+msgstr "Yleiset WiFi asetukset"
 
 msgid "wifi.wps.info"
 msgstr ""
@@ -635,7 +635,7 @@ msgstr "Laitteet"
 #~ msgstr "Salaus"
 
 #~ msgid "wifi-iface.key"
-#~ msgstr "Wifi salsana"
+#~ msgstr "WiFi salsana"
 
 #~ msgid "wifi-iface.key1"
 #~ msgstr "WiFi avain #1"

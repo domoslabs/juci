@@ -24,10 +24,10 @@ JUCI.app
 	// to make it possible to send sid to cgi-bin!!
 	if($rpc.$sid) $scope.sid = $rpc.$sid();
 	JUCI.interval.repeat("event-log-page", 5000, function(next){
-		if(!$rpc.router) return;
-		$rpc.router.logs().done(function(data){
+		$rpc.$call("router", "logs").done(function(data){
 			if(!data || !data.logs) return;
 			AllLogs = data.logs;
+			AllLogs.reverse();
 			$scope.update();
 			$scope.$apply();
 		}).always(function(){next();});
@@ -35,6 +35,15 @@ JUCI.app
 	var log = {
 		autoRefresh : true
 	};
+	$scope.order = 'time';
+	$scope.reverse = true;
+	$scope.setOrder = function(order){
+		if($scope.order === order){
+			$scope.reverse = !$scope.reverse;
+		}else{
+			$scope.order = order;
+		}
+	}
 	$scope.data = { limit: 20, filter: "", type: "" };
 	$scope.logs = [];
 	$scope.filters = [];
@@ -51,6 +60,21 @@ JUCI.app
 			if($scope.filters[i].name == filter) return i;
 		}
 		return -1;
+	}
+	$scope.downloadLogs = function(){
+		var a = document.createElement("a");
+		document.body.appendChild(a);
+		a.style = "display: none";
+		var string = "JUCI Logs";
+		AllLogs.map(function(log){
+			string += "\n" + JSON.stringify(log);
+		});
+		var blob = new Blob([string],{type:"application/json"});
+		url = window.URL.createObjectURL(blob);
+		a.href = url;
+		a.download = "juci-logs.txt";
+		a.click();
+		window.URL.revokeObjectURL(url);
 	}
 	$scope.update = function(update){
 		if(!AllLogs) return;

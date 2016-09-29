@@ -2,7 +2,7 @@
 
 JUCI.app
 .controller("broadcomXdslCtrl", function($scope, $uci, $rpc){
-	$rpc.router.info().done(function(data){
+	$rpc.$call("router", "info").done(function(data){
 		$scope.hasVdsl = data.specs.vdsl;
 		$uci.$sync("layer2_interface").done(function(){
 			$scope.cap = $uci.layer2_interface.capabilities;

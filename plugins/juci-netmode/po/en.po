@@ -20,8 +20,8 @@ msgid ""
 "netmode. Do you want to continue?"
 msgstr ""
 
-msgid "Pick Preset"
-msgstr "Pick Preset"
+msgid "Select Preset"
+msgstr "Select Preset"
 
 msgid "Profile"
 msgstr ""

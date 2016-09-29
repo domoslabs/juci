@@ -36,7 +36,7 @@ JUCI.app
 	JUCI.interval.repeat("wifi-status-page",5000,function(next){
 		async.series([
 			function(next){
-				$rpc.router.radios().done(function(rds){
+				$rpc.$call("router", "radios").done(function(rds){
 					$scope.radios = Object.keys(rds).map(function(r){
 						var radio = rds[r];
 						radio[".name"] = r;
@@ -57,6 +57,7 @@ JUCI.app
 				$wireless.getConnectedClients().done(function(cls){
 					$scope.clients = cls;
 					cls.map( function(c){
+						if(!c.scbstats || !c.rssi_per_antenna){ return; }
 						c["rows"] = [
 							[$tr(gettext("IP-Address")),c.ipaddr],
 							[$tr(gettext("MAC-Address")), String(c.macaddr).toUpperCase()],
@@ -64,7 +65,7 @@ JUCI.app
 							[$tr(gettext("Idle")), c.idle],
 							[$tr(gettext("In Network")), c.in_network],
 							[$tr(gettext("RSSI")), c.rssi+" dBm"],
-							[$tr(gettext("SNR")), c.snr+ " dBm"],
+							[$tr(gettext("SNR")), c.snr+ " dB"],
 							["Number of Antennas", c.rssi_per_antenna.length],
 							["TX Rate", parseInt(c.scbstats.rate_of_last_tx_pkt/1000 +0.5) + " Mbps"],
 							["RX Rate", parseInt(c.scbstats.rate_of_last_rx_pkt/1000 +0.5) + " Mbps"],

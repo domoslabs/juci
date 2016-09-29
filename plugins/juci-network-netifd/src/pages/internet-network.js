@@ -25,10 +25,8 @@ JUCI.app
 	$ethernet.getAdapters().done(function(devices){
 		$network.getNetworks().done(function(nets){
 			$scope.networks = nets.filter(function(x){ 
-				if(x.defaultroute.value) $scope.data.wan_network = x; 
 				return x.ifname.value != "lo" 
-			}); 
-			$scope.networks = $scope.networks.map(function(net){ 
+			}).map(function(net){ 
 				net.addedDevices = []; 
 				var addedDevices = net.ifname.value.split(" "); 
 				//net.$type_editor = "<network-connection-proto-"+net.type.value+"-edit/>";
@@ -49,87 +47,123 @@ JUCI.app
 					}); 
 				return net; 
 			}); 
+			updateStatus();
 			$scope.$apply(); 
 		}); 
 	}); 
 	
 	$scope.onGetItemTitle = function(i){
-		return i[".name"]; 
+		return String(i[".name"]).toUpperCase();
 	}
 	
 	function evalName(name){
-		if(!name) return;
+		if(!name) return null;
 		if(name == "") return $tr(gettext("Interface Name is needed"));
 		if(!name.match(/^[a-zA-Z0-9]+$/)) return $tr(gettext("Interface names can only contain letters and numbers"));
 		if(name.length > 12) return $tr(gettext("Interface name may only be 12 characters long"));
+		return null;
 	}
 
 	$scope.onAddConnection = function(){
 		var model = {
+			name: "",
+			type: "",
 			errors: []
 		};
-		$juciDialog.show("network-connection-create", {
-			title: "Create New Network Interface",
-			buttons: [
-				{ label: $tr(gettext("OK")), value: "ok", primary: true },
-				{ label: $tr(gettext("Cancel")), value: "cancel" }
-			],
-			model: model,
-			on_button: function(btn, inst){
-				if(btn.value == "cancel"){
-					inst.dismiss();
-				}
-				if(btn.value == "ok"){
-					model.errors = [];
-					if(!model.name)
-						model.errors.push($tr(gettext("The new interface needs a name")));
-					var er;
-					if((er = evalName(model.name)) != null)
-						model.errors.push(er);
-					if(model.type == undefined)
-						model.errors.push($tr(gettext("The new interface needs an interface type")));
-					if(!model.protocol == undefined)
-						model.errors.push($tr(gettext("Pleace choose protocol for connection")));
-					if(model.errors.length > 0) return;
-					if(model.protocol === "dhcp"){
-						var vendorid = getVendorID() || "";
-						var hostname = getHostname() || "";
-					}
-					$uci.network.$create({
-						".type": "interface",
-						".name": model.name, 
-						"type": model.type,
-						"proto": model.protocol,
-						"vendorid": vendorid,
-						"hostname": hostname,
-						"is_lan": (model.protocol === "static") ? true : false
-					}).done(function(interface){
-						if(model.zone){
-							$firewall.getZones().done(function(zones){
-								zones.map(function(zone){
-									if(zone.name.value === model.zone){
-										zone.network.value = zone.network.value.concat([model.name]);
-									}
-								});
-								$scope.$apply();
-							});
+		async.series([
+			function(cb){
+				$juciDialog.show("network-connection-create", {
+					title: $tr(gettext("Create New Network Interface")),
+					buttons: [
+						{ label: $tr(gettext("OK")), value: "ok", primary: true },
+						{ label: $tr(gettext("Cancel")), value: "cancel" }
+					],
+					model: model,
+					on_button: function(btn, inst){
+						model.errors = [];
+						if(btn.value === "cancel"){
+							inst.close();
+							return;
 						}
-						$scope.networks.push(interface); 
-						$scope.$apply(); 
-					}); 
-					inst.close();
-				}
+						if(!model.name){
+							model.errors.push($tr(gettext("The new interface needs a name")));
+						}else{
+							var er = evalName(model.name);
+							if(er !== null)
+								model.errors.push(er);
+						}
+						if(model.type == "")
+							model.errors.push($tr(gettext("Please select the interface type")));
+						if(model.errors.length)
+							return;
+						inst.close();
+						console.log("testing");
+						cb();
+					}
+				});
+			},
+			function(cb){
+				$uci.network.$create({
+					".type": "interface",
+					".name": model.name,
+					"is_lan": (model.type === "downlink")?true:false,
+					"proto": (model.type === "downlink")?"static":(model.type === "uplink")?"":"none",
+				}).done(function(iface){
+					model.iface = iface;
+					model.errors = [];
+					cb();
+				}).fail(function(e){console.log(e);alert($tr(gettxt("Error while creating Interface")) + " " + JSON.stringify(e))});
+			},
+			function(cb){
+				$juciDialog.show("network-connection-create-settings", {
+					title: $tr(gettext("Finalize Settings")),
+					buttons: [
+						{ label: $tr(gettext("OK")), value: "ok", primary: true },
+						{ label: $tr(gettext("Cancel")), value: "cancel" }
+					],
+					model: model,
+					on_button: function(btn, inst){
+						if(btn.value === "cancel"){
+							if(model.iface.$delete) model.iface.$delete().done();
+							inst.close();
+							return;
+						}
+						model.errors = [];
+						if(model.iface.proto.value === "")
+							model.errors.push($tr(gettext("Please select Protocol")));
+						if(model.errors.length)
+							return;
+						inst.close();
+						cb();
+					}
+				});
 			}
+		], function(){
+			if(model.zone){
+				$firewall.getZones().done(function(zones){
+					zones.map(function(zone){
+						if(zone.name.value === model.zone){
+							zone.network.value = zone.network.value.concat([model.name]);
+						}
+					});
+					$scope.$apply();
+				});
+			}
+			$scope.networks.push(model.iface);
 		});
-	}
+	};
 
 	function getVendorID(){
 		if(!$scope.networks || $scope.networks.length < 1) return "";
-		return $scope.networks.find(function(net){ return net.vendorid.value !== ""; }).vendorid.value;
+		var net = $scope.networks.find(function(net){ return net.vendorid.value !== ""; })
+		if(net && net.vendorid) return net.vendorid.value;
+		return "";
 	}
 	function getHostname(){
 		if(!$scope.networks || $scope.networks.length < 1) return "";
-		return $scope.networks.find(function(net){ return net.hostname.value !== ""; }).hostname.value;
+		var net = $scope.networks.find(function(net){ return net.hostname.value !== ""; });
+		if(net && net.hostname) return net.hostname.value;
+		return "";
 	}
 	$scope.onDeleteConnection = function(conn){
 		if(!conn){
@@ -165,12 +199,59 @@ JUCI.app
 		net.ifname.value = Object.keys(devs).join(" "); 
 		net.addedDevices = Object.keys(devs).map(function(x){ return { label: x, value: x }; }); 
 	}
-	
+	JUCI.interval.repeat("update-connection-information", 5000, function(next){
+		if(!$scope.networks){
+			next();
+			return;
+		}
+		$network.getNetworks().done(function(nets){
+			$scope.networks.map(function(net){
+				var tmp = nets.find(function(n){ return n[".name"] === net[".name"]; });
+				if(tmp && tmp.$info){
+					net.$info = tmp.$info;
+				}
+			});
+			updateStatus();
+			$scope.$apply();
+		}).always(function(){next();});
+	});
+	var onConnect = function(iface){
+		$rpc.$call("network.interface." + iface['.name'], "up");
+	}
+	var onDisconnect = function(iface){
+		$rpc.$call("network.interface." + iface['.name'], "down");
+	}
+
+	function updateStatus(){
+		if(!$scope.networks) return;
+		$scope.networks.map(function(net){
+			if(!net.$info) return;
+			net.$buttons = [
+				{ label: $tr(gettext("Connect")), on_click: onConnect },
+				{ label: $tr(gettext("Disconnect")), on_click: onDisconnect }
+			]
+			net.$statusList = [
+				{ label: $tr(gettext("Status")), value: (net.$info.pending) ? $tr(gettext("PENDING")) : ((net.$info.up) ? $tr(gettext("UP")) : $tr(gettext("DOWN")))},
+				{ label: $tr(gettext("Device")), value: net.$info.l3_device},
+				{ label: $tr(gettext("Protocol:")), value: net.$info.proto}
+			]
+			if(net.$info && net.$info['ipv4-address'] && net.$info['ipv4-address'].length){
+				net.$info['ipv4-address'].map(function(ipv4){
+					net.$statusList.push({ label: $tr(gettext("IPv4-Address")), value: ipv4.address + "/" + ipv4.mask});
+				});
+			}
+			if(net.$info && net.$info['ipv6-address'] && net.$info['ipv6-address'].length){
+				net.$info['ipv6-address'].map(function(ipv6){
+					net.$statusList.push({ label: $tr(gettext("IPv6-Address")), value: ipv6.address + "/" + ipv6.mask});
+				});
+			}
+		});
+	}
+
 	$scope.onRemoveDevice = function(net, name){
 		console.log("removing device "+name+" from "+net.ifname.value); 
 		var items = net.ifname.value.split(" ").filter(function(x){ return x != name; }); 
 		net.addedDevices = items.map(function(x){ return {label: x, value: x}; }); 
 		net.ifname.value = items.join(" "); 
 	}
-	
 }); 

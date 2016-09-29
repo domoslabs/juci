@@ -4,22 +4,25 @@
 			<juci-config-line title="{{'Direction'|translate}}">
 				<juci-select ng-model="data.test_type" ng-items="testType"/>
 			</juci-config-line>
-			<juci-config-line title="{{'Package Size'|translate}}">
+			<juci-config-line title="{{'Bytes to transfer'|translate}}">
 				<div class="input-group">
 					<input type="number" step="5" class="form-control" ng-model="data.packagesize" />
-					<span class="input-group-addon">Mb</span>
+					<span class="input-group-addon">Mbyte</span>
 				</div>
 			</juci-config-line>
 			<juci-config-line title="{{'Speedtest Server' | translate}}">
 				<juci-select ng-model="data.server" ng-items="allTestServers"/>
 			</juci-config-line>
 			<juci-config-line>
-				<button class="btn btn-default" ng-click="onRemoveAddress()">
-					<i class="fa fa-minus"></i>
-				</button>
-				<button class="btn btn-default" ng-click="onAddAddress()">
-					<i class="fa fa-plus"></i>
-				</button>
+				<div class="row">
+					<div class="col-xs-7 text-center" style="font-size: x-small">Remove/Add server</div>
+					<button class="col-xs-2 btn btn-default" ng-click="onRemoveAddress()" >
+						<i class="fa fa-minus"></i>
+					</button>
+					<button class="col-xs-2 btn btn-default" ng-click="onAddAddress()" style="float: right; margin-right: 15px;">
+						<i class="fa fa-plus"></i>
+					</button>
+				</div>
 			</juci-config-line>
 			<juci-config-line>
 				<button class="btn btn-default" ng-click="runTest()">

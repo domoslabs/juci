@@ -29,64 +29,48 @@ JUCI.app
 	}; 
 }).controller("uciWirelessInterfaceMacfilterEditController", function($scope, $uci, $wireless){
 	$scope.maclist = []; 
-	
-	// watch for model change
 	$scope.$watch("interface", function(i){
-		$scope.maclist = []; 
-		console.log("Syncing interface.."); 
 		if(i.maclist && i.maclist.value){
-			i.maclist.value.map(function(mac){
-				var added = { hostname: "", macaddr: mac}; 
-				$uci.hosts["@all"].map(function(host){
-					console.log("testing host "+host.hostname.value); 
-					if(host.macaddr.value == mac){
-						added = { hostname: host.hostname.value, macaddr: mac}; 
-					}
-				}); 
-				added.maclist = i.maclist; 
-				$scope.maclist.push(added); 
+			i.maclist.value.map(function(addr){
+				$scope.maclist.push({macaddr:addr});
 			});
-			//$scope.$apply();  
 		}
-	}); 
-	
-	// watch maclist for changes by the user
-	$scope.rebuildMacList = function(){
-		if($scope.interface){
-			var newlist = $scope.maclist.map(function(x){
-				var found = false; 
-				console.log("Looking for mac "+x.macaddr); 
-				$uci.hosts["@host"].map(function(host){
-					if(host.macaddr.value == x.macaddr) {
-						console.log("Setting hostname "+x.hostname+" on "+x.macaddr); 
-						host.hostname.value = x.hostname; 
-						found = true; 
-					}
-				}); 
-				if(!found){
-					$uci.hosts.$create({ 
-						".type": "host", 
-						hostname: x.hostname, 
-						macaddr: x.macaddr
-					}).done(function(host){
-						console.log("Added new host to database: "+host.macaddr.value); 
-					}); 
-				}
-				return x.macaddr || "";  
-			}); 
-			$scope.interface.maclist.value = newlist;  
+	});
+
+	$scope.$watch("maclist", function(maclist){
+		if(maclist.length == 0){ return; }
+
+		var validMACs = $scope.maclist.filter(isValidMACAddress);
+		maclist.map(function(mac){ mac.error = null; }); //TODO: BUGG? Should be validMACs instead of maclist?
+		validMACs.map(function(mac){ mac.error = "Valid MAC Address"; });
+
+		if(isUnAddedMAC(validMACs)){
+			addrs = validMACs.map(function(mac){ return mac.macaddr; });
+			$scope.interface.maclist.value = addrs;
 		}
-	}; 
-	
-	$wireless.getConnectedClients().done(function(clients){
-		$scope.client_list = clients.map(function(x){ 
-			return {
-				checked: false, 
-				client: { hostname: x.hostname, macaddr: x.macaddr }
+	},true);
+
+	function isUnAddedMAC(lst){
+		for(var i=0; i<lst.length; i++){
+			if($scope.interface.maclist.value.indexOf(lst[i].macaddr) == -1){
+				return true;
 			}
-		});
-		$scope.$apply(); 
-	}); 
+		}
+		return false;
+	}
+
+	function isValidMACAddress(mac){
+		if(mac.macaddr.match(/([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}/) === null){ return false; }
+		if(mac.macaddr.length>17){ return false; }
+		return true;
+	}
+
+	function isInMaclist(mac){
+		for(var i=0; i<$scope.maclist.length; i++){
+			if($scope.maclist[i].macaddr == mac.macaddr){ return true; }
+		}
+		return false;
+	}
 	
 	$scope.onDeleteHost = function(host){
 		$scope.maclist = ($scope.maclist||[]).filter(function(x) { 
@@ -99,27 +83,32 @@ JUCI.app
 	}
 	
 	$scope.onAddClients = function(){
-		// reset all checkboxes 
-		if($scope.client_list){
-			$scope.client_list.map(function(x){ x.checked = false; }); 
-		}
+		$wireless.getConnectedClients().done(function(clients){
+			$scope.client_list = clients.map(function(x){ 
+				return {
+					checked: $scope.interface.maclist.value.indexOf(x.macaddr)==-1 ? false:true,
+					client: { hostname: x.hostname, macaddr: x.macaddr }
+				}
+			});
+			$scope.$apply(); 
+		}); 
 		$scope.showModal = 1; 
 	}
 	
 	$scope.onAddNewClient = function(){
-		$scope.maclist.push({ hostname: "", macaddr: "" }); 
+		$scope.maclist.push({ macaddr: "" }); 
 	}
 	
 	$scope.onAcceptModal = function(){
 		if($scope.client_list && $scope.maclist) {
 			$scope.client_list.map(function(x){
-				if(x.checked) {
-					if($scope.maclist.filter(function(a) { return a.macaddr == x.client.macaddr; }).length == 0){
-						$scope.maclist.push({ hostname: x.client.hostname, macaddr: x.client.macaddr }); 
-						$scope.rebuildMacList(); 
-					} else {
-						console.log("MAC address "+x.client.macaddr+" is already in the list!"); 
+				if(x.checked){ 
+					if(isInMaclist(x.client) == false){
+						$scope.maclist.push(x.client);
 					}
+				}
+				else{
+					$scope.onDeleteHost(x.client);
 				}
 			}); 
 		}

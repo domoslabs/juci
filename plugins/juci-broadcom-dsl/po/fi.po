@@ -95,7 +95,7 @@ msgstr "Määritelty prioriteettijärjestys"
 msgid "Weighted Fair Queuing"
 msgstr "Painotettu Fair Queuing"
 
-msgid "Pick Device"
+msgid "Select Device"
 msgstr "Fyysinen liitäntä"
 
 msgid "Select base DSL device"

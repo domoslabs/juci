@@ -20,7 +20,6 @@ JUCI.app
 .controller("wirelessGeneralPage", function($scope, $uci){
 	$uci.$sync("wireless").done(function(){
 		$scope.status = $uci.wireless.status; 
-		//$scope.router = $router; 
 		$scope.$apply(); 
 	}); 
 }); 

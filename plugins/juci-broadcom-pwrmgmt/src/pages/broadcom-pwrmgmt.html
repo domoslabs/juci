@@ -1,12 +1,12 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="broadcomPowerMgmtConfigPage">
 		<juci-config-section>
-			<juci-config-heading translate>Power Management Settings</juci-config-heading>
+			<juci-config-heading>{{'Power Management Settings'|translate}}</juci-config-heading>
 			<juci-config-lines>
 				<juci-config-line title="{{'CPU Speed'|translate}}">
 					<juci-select ng-items="cpu_speeds" ng-model="pwr.cpuspeed.value"></juci-select>
 				</juci-config-line>
-				<juci-config-line title="{{'CPU r4k Wait'|translate}}" help="{{'keeps CPU in sleep state without spinning' | translate}}">
+				<juci-config-line title="{{'CPU r4k Wait'|translate}}" help="{{'Keeps CPU in sleep state without spinning' | translate}}">
 					<switch ng-model="pwr.cpur4kwait.value" class="green" />
 				</juci-config-line>
 <!--				<juci-config-line ng-show="pwr.cpur4kwait.value" title="{{'DRAM Self-Refresh'|translate}}">-->

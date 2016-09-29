@@ -71,7 +71,7 @@ JUCI.app
 			return deferred.promise(); 
 		}, 
 		status: function(){
-			return $rpc.juci.broadcom.dsl.run({"method":"status"}); 
+			return $rpc.$call("juci.broadcom.dsl", "run", {"method":"status"}); 
 		}
 	}; 
 }).run(function($ethernet, $network, $uci, $broadcomDsl){
@@ -83,24 +83,26 @@ UCI.$registerConfig("layer2_interface_adsl");
 UCI.layer2_interface_adsl.$registerSectionType("atm_bridge", {
 	"unit":			{ dvalue: "", type: String }, 
 	"ifname":		{ dvalue: "", type: String }, 
-	"baseifname":	{ dvalue: "", type: String }, 
-	"vci":			{ dvalue: "", type: String }, 
-	"vpi":			{ dvalue: "", type: String }, 
+	"baseifname":		{ dvalue: "", type: String },
+	"vci":			{ dvalue: "", type: String, validator: UCI.validators.NumberLimitValidator(32,65535) }, 
+	"vpi":			{ dvalue: "", type: String, validator: UCI.validators.NumberLimitValidator(0,255) }, 
 	"atmtype":		{ dvalue: "", type: String }, 
-	"pcr":			{ dvalue: "", type: String }, 
-	"scr":			{ dvalue: "", type: String }, 
-	"mbs":			{ dvalue: "", type: String }, 
+	"pcr":			{ dvalue: "", type: String, validator: UCI.validators.NumberLimitValidator(0,4294967296) }, 
+	"scr":			{ dvalue: "", type: String, validator: UCI.validators.NumberLimitValidator(0,4294967296) }, 
+	"mbs":			{ dvalue: "", type: String, validator: UCI.validators.NumberLimitValidator(0,4294967296) }, 
 	"name":			{ dvalue: "", type: String }, 
-	"link_type":	{ dvalue: "", type: String }, 
+	"link_type":		{ dvalue: "", type: String },
 	"bridge":		{ dvalue: false, type: Boolean },
-	"encapseoa":	{ dvalue: "", type: String }
+	"encapseoa":		{ dvalue: "", type: String },
+	"encapspppoa":		{ dvalue: "", type: String },
+	"encapsipoa":		{ dvalue: "", type: String }
 });
 
 UCI.$registerConfig("layer2_interface_vdsl"); 
 UCI.layer2_interface_vdsl.$registerSectionType("vdsl_interface", {
 	"unit":			{ dvalue: "", type: String }, 
 	"ifname":		{ dvalue: "", type: String }, 
-	"baseifname":	{ dvalue: "", type: String }, 
+	"baseifname":		{ dvalue: "", type: String },
 	"name":			{ dvalue: "", type: String }, 
 	"dslat":		{ dvalue: "", type: String }, 
 	"ptmprio":		{ dvalue: "", type: String }, 

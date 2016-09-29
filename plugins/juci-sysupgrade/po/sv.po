@@ -75,7 +75,7 @@ msgstr "fs_image (RAW Rootfs Mjukvara)"
 msgid "You need to select a network!"
 msgstr "Du måste välja ett nätverk!"
 
-msgid "Pick image to upgrade"
+msgid "Select image to upgrade"
 msgstr "Välj firmware för uppladdning"
 
 msgid "New software is available"
@@ -128,7 +128,7 @@ msgstr ""
 "Det är möjligt att uppdatera firmware från fil en sparad uppdatering. Den "
 "senaste versionen kan hittas på www.dsl-easybox.de."
 
-msgid "Pick firmware file to upload"
+msgid "Select firmware file to upload"
 msgstr "Välj firmware för uppladdning"
 
 msgid "Start upgrade"

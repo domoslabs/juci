@@ -29,6 +29,7 @@
 					/*"scanresults"*/
 				],
 				"router": [
+					"wl",
 					"stas",
 					"clients6",
 					"radios"
@@ -38,6 +39,10 @@
 				"hosts", 
 				"wireless",
 				"boardpanel"
+			],
+			"owsd": [
+				"wps",
+				"wifi-repeater-success"
 			]
 		}
 	}, 

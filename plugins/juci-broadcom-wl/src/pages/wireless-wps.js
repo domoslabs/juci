@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("wirelessWPSPage", function($scope, $config, $uci, $rpc, $router, gettext, $tr, $events){
+.controller("wirelessWPSPage", function($scope, $config, $wireless, $rpc, gettext, $tr, $events){
 	$scope.showExpert = $config.local.mode == "expert";
 	var wps_status_strings = {
 		"-1": $tr(gettext("Disabled")),
@@ -31,46 +31,47 @@ JUCI.app
 		7: $tr(gettext("Done!")),
 		8: $tr(gettext("Switching to repeater mode")),
 		9: $tr(gettext("Overlap"))
-	}; 
-	
-	$scope.router = $router;
+	};
+
+	$scope.updateWps = function(){
+		if(!$scope.wifiIfaces || !$scope.wifiIfaces.length){
+			$scope.showWps = false;
+		}
+		//setTimeout is needed because ng-change is run before value has changed
+		setTimeout(function(){$scope.showWps = $scope.wifiIfaces.find(function(iface){ return iface.wps_pbc.value; }) ? true:false;$scope.$apply();}, 0);
+	}
 	
 	$scope.data = {
 		userPIN: "",
 		valid_wps_pin: ""
 	}
-	$scope.progress = 0; 
+	$scope.progress = 0;
 	
 	$scope.wpsUnlocked = function(interface){
-		return ["wpa", "mixed-wpa"].indexOf(interface.encryption.value) == -1 && interface.closed.value != true; 
+		return ["none", "psk2", "mixed-psk"].indexOf(interface.encryption.value) !== -1 && interface.closed.value === false;
 	}
 	
-	$uci.$sync(["wireless"]).done(function(){
-		$scope.wireless = $uci.wireless; 
-		$scope.getFrequensy = function(dev){
-			if($scope.wireless[dev] && $scope.wireless[dev].band){
-				if($scope.wireless[dev].band.value == "b") return "2.4GHz";
-				if($scope.wireless[dev].band.value == "a") return "5GHz";
-			}
-			return "";
-		};
-		$scope.$apply(); 
+	$wireless.getInterfaces().done(function(ifaces){
+		console.log(ifaces);
+		$scope.wifiIfaces = ifaces;
+		$scope.updateWps();
+		$scope.$apply();
 	}).fail(function(err){
-		console.log("failed to sync config: "+err); 
-	}); 
+		console.log("failed to sync config: "+err);
+	});
 	
 	$events.subscribe("wps", function(){refresh();});
 	function refresh() {
-		$rpc.wps.status().done(function(result){
-			$scope.progress = result.code; 
-			$scope.text_status = wps_status_strings[result.code]||gettext("Unknown"); 
+		$rpc.$call("wps", "status").done(function(result){
+			$scope.progress = result.code;
+			$scope.text_status = wps_status_strings[result.code]||$tr(gettext("Unknown"));
 			$scope.$apply();	
-		}); 
-	}refresh(); 
+		});
+	}refresh();
 	
-	$rpc.wps.showpin().done(function(data){
-		$scope.generatedPIN = data.pin; 
-	}); 
+	$rpc.$call("wps", "showpin").done(function(data){
+		$scope.generatedPIN = data.pin;
+	});
 		
 	var longPress = false;
 	var timeout;
@@ -80,10 +81,10 @@ JUCI.app
 	}
 	$scope.mouseUp = function() {
 		if(!longPress){
-			if($rpc.wps && $rpc.wps.pbc) $rpc.wps.pbc();
+			$rpc.$call("wps", "pbc");
 			clearTimeout(timeout);
 		}else{
-			if($rpc.wps && $rpc.wps.pbc_client) $rpc.wps.pbc_client();
+			$rpc.$call("wps", "pbc_client");
 			$scope.progress = 8;
 			$scope.text_status = wps_status_strings[8];
 			longPress = false;
@@ -92,14 +93,14 @@ JUCI.app
 	}
 	$scope.onPairUserPIN = function(){
 		var pin = $scope.data.userPIN.replace("-", "").replace(" ", "").match(/\d+/g).join("");
-		$rpc.wps.checkpin({pin:pin }).done(function(value){
+		$rpc.$call("wps", "checkpin", {pin:pin }).done(function(value){
 			if(!value) return;
 			if(!value.valid){
 				console.log("invalid wps pin");
 				alert($tr(gettext("Invalid WPS PIN")));
 				return;
 			}
-			$rpc.wps.stapin({ pin: pin });
+			$rpc.$call("wps", "stapin", { pin: pin });
 		});
 	}
 	
@@ -115,16 +116,16 @@ JUCI.app
 	};
 		
 	$scope.onGeneratePIN = function(){
-		$rpc.wps.genpin().done(function(data){
+		$rpc.$call("wps", "genpin").done(function(data){
 			if(!data || data.pin == "") return;
-			$rpc.wps.setpin({pin: data.pin}).done(function(){
-				$scope.generatedPIN = data.pin; 
-				$scope.$apply(); 
-			}); 
-		}); 
+			$rpc.$call("wps", "setpin", {pin: data.pin}).done(function(){
+				$scope.generatedPIN = data.pin;
+				$scope.$apply();
+			});
+		});
 	}
 	
 	$scope.onCancelWPS = function(){
-		$rpc.wps.stop(); 
-	} 
-}); 
+		$rpc.$call("wps", "stop");
+	}
+});

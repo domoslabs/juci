@@ -32,11 +32,11 @@ msgstr ""
 msgid "IP Retreival Method"
 msgstr ""
 
-msgid "Pick Connection"
+msgid "Select Connection"
 msgstr ""
 
-msgid "Pick Interface"
-msgstr "Pick Interface"
+msgid "Select Interface"
+msgstr "Select Interface"
 
 msgid "Enter website to poll for ip address"
 msgstr ""

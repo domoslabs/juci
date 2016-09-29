@@ -48,7 +48,7 @@
 					<switch class="green" ng-model="mcpd.igmp_proxy_enable.value"/>
 				</juci-config-line>
 				<juci-config-line title="{{'Ignore SSM Range'|translate}}" help="{{'Check box to ignore SSM RFC to enable regular multicast on SSM-Range'|translate}}">
-					<switch class="green" ng-model="mcpd.igmp_ssm_range_ignore" />
+					<switch class="green" ng-model="mcpd.igmp_ssm_range_ignore.value" />
 				</juci-config-line>
 				<juci-config-line title="{{ 'IGMP snooping mode' | translate }}">
 					<juci-select ng-items="snooping_mode" ng-model="mcpd.igmp_snooping_enable.value"></juci-select>

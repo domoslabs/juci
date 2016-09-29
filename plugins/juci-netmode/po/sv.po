@@ -21,7 +21,7 @@ msgstr ""
 "Detta kommer att återställa dina inställningar till tillverkarens "
 "konfiguration. Vill du fortsätta? "
 
-msgid "Pick Preset"
+msgid "Select Preset"
 msgstr "Välj inställningspaket"
 
 msgid "Reset Configuration"

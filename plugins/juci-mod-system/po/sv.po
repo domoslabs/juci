@@ -137,7 +137,7 @@ msgstr "Nytt lösenord"
 msgid "Re-type password"
 msgstr "Skriv lösenord igen"
 
-msgid "Pick configuration backup to upload"
+msgid "Select configuration backup to upload"
 msgstr "Välj konfigurationsbackup för uppladdning"
 
 msgid "Backup file password"

@@ -22,6 +22,18 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 	$uci.$sync(["qos"]).done(function(){
 		$scope.qos = $uci.qos["@classify"];
 		$scope.ifaces = $uci.qos["@interface"];
+		$scope.classes = $uci.qos["@class"];
+		$scope.classgroups = $uci.qos["@classgroup"];
+		$scope.ifaces && $scope.ifaces.length && $scope.ifaces.map(function(iface){
+			iface.$statusList = [
+				["enabled", $tr(gettext("Enabled"))],
+				["download", $tr(gettext("Download Speed"))],
+				["upload", $tr(gettext("Upload Speed"))]
+			].map(function(pair){
+				if(!iface[pair[0]] || iface[pair[0]].value === "") return null;
+				return { label: pair[1], value: iface[pair[0]].value };
+			}).filter(function(f){ return f !== null; });
+		});
 		getNetworks();
 	});
 	function getNetworks(){
@@ -37,37 +49,82 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 		$scope.$apply(); 
 	}); 
 
+	$scope.onAddClass = function(){
+		var newClassName = { name : "" };
+
+		$juciDialog.show("new-class-modal", {
+			title: $tr(gettext("New Class")),
+			model: newClassName,
+			on_apply: function(btn, dlg){
+				if(newClassName.name.match(/[\W]/) === null) { // If name contains no invalid character
+					$uci.qos.$create(
+						{
+						".type": "class",
+						".name": newClassName.name
+						}
+					).done(function(){ $scope.$apply(); });
+					return true;
+				}
+				else { alert("Class name may only contain characters, numbers and underscore."); }
+			},
+		}).done(function(){
+		}).fail(function(){
+		});
+	}
+
+	$scope.onAddClassgroup = function(){
+		var newClassgroupName = { name : "" };
+
+		$juciDialog.show("new-classgroup-modal", {
+			title: $tr(gettext("New Classgroup")),
+			model: newClassgroupName,
+			on_apply: function(btn, dlg){
+				if(newClassgroupName.name.match(/[\W]/) === null) { // If name contains no invalid character
+					$uci.qos.$create(
+						{
+						".type": "classgroup",
+						".name": newClassgroupName.name
+						}
+					).done(function(){ $scope.$apply(); });
+					return true;
+				}
+				else { alert("Classgroup name may only contain characters, numbers and underscore."); }
+			},
+		}).done(function(){
+		}).fail(function(){
+		});
+	}
+
+	$scope.onAddIface = function(){
+		var newIfaceName = { name : "" };
+
+		$juciDialog.show("add-bw-interface-edit", {
+			title: $tr(gettext("New Interface")),
+			model: newIfaceName,
+			on_apply: function(btn, dlg){
+				if(newIfaceName.name.match(/[\W]/) === null) { // If name contains no invalid character
+					$uci.qos.$create(
+						{
+						".type": "interface",
+						".name": newIfaceName.name
+						}
+					).done(function(){ $scope.$apply(); });
+					return true;
+				}
+				else { alert("Interface name may only contain characters, numbers and underscore."); }
+			},
+		}).done(function(){
+		}).fail(function(){
+		});
+	}
+
+
 	$scope.onAddRule = function(){
 		$uci.qos.$create({
 			".type": "classify"
 		}).done(function(){
 			$scope.$apply(); 
 		}); 
-	};
-
-	$scope.onAddIface = function(){
-		if(!$scope.interfaces || $scope.interfaces.length < 1) return;
-		var model = {
-			interfaces: $scope.interfaces,
-			name: $scope.interfaces[0].value
-		}
-		$juciDialog.show("add-bw-interface-edit", {
-			title: $tr(gettext("Add Bandwidth Limitation")),
-			model: model,
-			on_apply: function(){
-				if(!model.name){
-					model.error = true;
-					return false;
-				}
-				$uci.qos.$create({
-					".type": "interface",
-					".name": model.name
-				}).done(function(){
-					getNetworks();
-				});
-				return true;
-			}
-		});
 	};
 
 	$scope.onDeleteIface = function(item){
@@ -77,6 +134,10 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 		});
 	};
 
+	$scope.getClassTitle = function(item){
+		if(!item) return "";
+		return String(item[".name"]);
+	}
 	$scope.getRuleTitle = function(item){
 		var str = (item.target.value+" "+(item.srchost.value?("(src host: "+item.srchost.value+") "):"")+
 					(item.dsthost.value?("(dst host: "+item.dsthost.value+") "):"")+
@@ -89,6 +150,10 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 		if(!item) return "";
 		return String(item[".name"]).toUpperCase();
 	};
+	$scope.getClassgroupTitle = function(item){
+		if(!item) return "";
+		return String(item[".name"]);
+	}
 
 	$scope.onDeleteRule = function(item){
 		if(!item) return; 

@@ -19,91 +19,91 @@
  */
 
 !function(){
-	// add control dependency 
+	// add control dependency
 	JUCI.app.requires.push("dropdown-multi-select");
 
 	JUCI.app.factory("$network", function($rpc, $uci, $ethernet, $tr, gettext){
-		var sync_hosts = $uci.$sync("hosts"); 
+		var sync_hosts = $uci.$sync("hosts");
 		function _refreshClients(self){
-			var deferred = $.Deferred(); 
-			if(!$rpc.router) return deferred.reject();
-			$rpc.router.clients().done(function(res){
+			var deferred = $.Deferred();
+			$rpc.$call("router", "clients").done(function(res){
 				sync_hosts.done(function(){
 					if(res){
-						self.clients = Object.keys(res).map(function(x){return res[x];}).map(function(cl){
+						var clients = Object.keys(res).map(function(x){return res[x];}).map(function(cl){
 							// update clients with some extra information from hosts database
-							var key = cl.macaddr.replace(/:/g, "_"); 
+							var key = cl.macaddr.replace(/:/g, "_");
 							if($uci.hosts[key]) {
-								var host = $uci.hosts[key]; 
-								console.log("Found host for "+key); 
-								cl.manufacturer = host.manufacturer.value; 
-								if(host.name) cl.name = host.name.value; 
+								var host = $uci.hosts[key];
+								console.log("Found host for "+key);
+								cl.manufacturer = host.manufacturer.value;
+								if(host.name) cl.name = host.name.value;
 							}
-							return cl; 
-						}); 
-						deferred.resolve(self.clients);  
+							return cl;
+						});
+						deferred.resolve(clients);
 					} else {
-						deferred.reject(); 
+						deferred.reject();
 					}
-				}); 
+				});
 			}).fail(function(){ deferred.reject(); });
-			return deferred.promise(); 
+			return deferred.promise();
 		}
 		
 		function NetworkBackend() {
-			this.clients = []; 
-			this._subsystems = []; 
-			this._devices = null; 
+			this.clients = [];
+			this._subsystems = [];
+			this._devices = null;
 		}
 		
 		NetworkBackend.prototype.subsystem = function(proc){
-			if(!proc || !(proc instanceof Function)) throw new Error("Subsystem argument must be a function returning a subsystem object!"); 
-			var subsys = proc(); 
-			if(!subsys.annotateClients) throw new Error("Subsystem must implement annotateClients()"); 
-			this._subsystems.push(subsys); 
+			if(!proc || !(proc instanceof Function)) throw new Error("Subsystem argument must be a function returning a subsystem object!");
+			var subsys = proc();
+			if(!subsys.annotateClients) throw new Error("Subsystem must implement annotateClients()");
+			this._subsystems.push(subsys);
 		}
 		
 		NetworkBackend.prototype.getDevice = function(){
-			alert("$network.getDevice has been removed. No alternative. "); 
-		}; 
+			alert("$network.getDevice has been removed. No alternative. ");
+		};
 		
 		NetworkBackend.prototype.getDevices = function(){
-			alert("$network.getDevices has been removed. Use $ethernet.getDevices instead!"); 
+			alert("$network.getDevices has been removed. Use $ethernet.getDevices instead!");
 		}
 		NetworkBackend.prototype.getProtocolTypes = function(){
 			return [
-				{ label: $tr(gettext("Unmanaged")),								value: "none",		physical: true },
-				{ label: $tr(gettext("Static Address")), 						value: "static",	physical: true }, 
-				{ label: $tr(gettext("DHCP v4")), 								value: "dhcp",		physical: true }, 
-				{ label: $tr(gettext("DHCP v6")), 								value: "dhcpv6",	physical: true }, 
-				{ label: $tr(gettext("PPP")), 									value: "ppp",		physical: false }, 
-				{ label: $tr(gettext("PPP over Ethernet")), 					value: "pppoe", 	physical: true }, 
-				{ label: $tr(gettext("PPP over ATM")), 							value: "pppoa", 	physical: true }, 
-				{ label: $tr(gettext("3G (ppp over GPRS/EvDO/CDMA or UTMS)")), 	value: "3g", 		physical: false }, 
-				{ label: $tr(gettext("4G (LTE/HSPA+)")), 						value: "4g", 		physical: false }, 
-				//{ label: $tr(gettext("QMI (USB modem)")), 						value: "qmi", 		physical: true }, 
-				//{ label: $tr(gettext("NCM (USB modem)")), 						value: "ncm", 		physical: true }, 
-				//{ label: $tr(gettext("HNET (self-managing home network)")), 	value: "hnet", 		physical: true }, 
-				{ label: $tr(gettext("Point-to-Point Tunnel")), 				value: "pptp", 		physical: false }, 
-				{ label: $tr(gettext("IPv6 tunnel in IPv4 (6in4)")), 			value: "6in4", 		physical: false }, 
-				{ label: $tr(gettext("IPv6 tunnel in IPv4 (6to4)")), 			value: "6to4", 		physical: false }, 
-				//{ label: $tr(gettext("Automatic IPv6 Connectivity Client")),	value: "aiccu", 	physical: false }, 
-				{ label: $tr(gettext("IPv6 rapid deployment")), 				value: "6rd", 		physical: false }, 
-				{ label: $tr(gettext("Dual-Stack Lite")), 						value: "dslite", 	physical: false }, 
-				{ label: $tr(gettext("PPP over L2TP")), 						value: "l2tp", 		physical: false }//, 
-				//{ label: $tr(gettext("Relayd Pseudo Bridge")),					value: "relay", 	physical: true }, 
-				//{ label: $tr(gettext("GRE Tunnel over IPv4")), 					value: "gre", 		physical: true }, 
-				//{ label: $tr(gettext("Ethernet GRE over IPv4")), 				value: "gretap", 	physical: true }, 
-				//{ label: $tr(gettext("GRE Tunnel over IPv6")), 					value: "grev6", 	physical: true }, 
-				//{ label: $tr(gettext("Ethernet GRE over IPv6")), 				value: "grev6tap", 	physical: true },
-			]; 
+				{ label: $tr(gettext("Unmanaged")),								value: "none",		physical: ["bridge"] },
+				{ label: $tr(gettext("Static Address")), 						value: "static",	physical: ["", "bridge", "anywan"] },
+				{ label: $tr(gettext("DHCP v4")), 								value: "dhcp",		physical: ["", "bridge", "anywan"] },
+				{ label: $tr(gettext("DHCP v6")), 								value: "dhcpv6",	physical: ["", "bridge", "anywan"] },
+				{ label: $tr(gettext("PPP")), 									value: "ppp",		physical: [] },
+				{ label: $tr(gettext("PPP over Ethernet")), 					value: "pppoe", 	physical: [""] },
+				{ label: $tr(gettext("PPP over ATM")), 							value: "pppoa", 	physical: [""] },
+				{ label: $tr(gettext("3G (ppp over GPRS/EvDO/CDMA or UTMS)")), 	value: "3g", 		physical: [] },
+				{ label: $tr(gettext("4G (LTE/HSPA+)")), 						value: "4g", 		physical: [] },
+				{ label: $tr(gettext("WWAN (LTE/HSPA+)")), 						value: "wwan", 		physical: [] },
+				//{ label: $tr(gettext("QMI (USB modem)")), 						value: "qmi", 		physical: [""] },
+				//{ label: $tr(gettext("NCM (USB modem)")), 						value: "ncm", 		physical: [""] },
+				//{ label: $tr(gettext("HNET (self-managing home network)")), 	value: "hnet", 		physical: [""] },
+				{ label: $tr(gettext("Point-to-Point Tunnel")), 				value: "pptp", 		physical: [] },
+				{ label: $tr(gettext("IPv6 tunnel in IPv4 (6in4)")), 			value: "6in4", 		physical: [] },
+				{ label: $tr(gettext("IPv6 tunnel in IPv4 (6to4)")), 			value: "6to4", 		physical: [] },
+				//{ label: $tr(gettext("Automatic IPv6 Connectivity Client")),	value: "aiccu", 	physical: [] },
+				{ label: $tr(gettext("IPv6 rapid deployment")), 				value: "6rd", 		physical: [] },
+				{ label: $tr(gettext("Dual-Stack Lite")), 						value: "dslite", 	physical: [] },
+				{ label: $tr(gettext("PPP over L2TP")), 						value: "l2tp", 		physical: [] }//,
+				//{ label: $tr(gettext("Relayd Pseudo Bridge")),					value: "relay", 	physical: [?] },
+				//{ label: $tr(gettext("GRE Tunnel over IPv4")), 					value: "gre", 		physical: [?] },
+				//{ label: $tr(gettext("Ethernet GRE over IPv4")), 				value: "gretap", 	physical: [?] },
+				//{ label: $tr(gettext("GRE Tunnel over IPv6")), 					value: "grev6", 	physical: [?] },
+				//{ label: $tr(gettext("Ethernet GRE over IPv6")), 				value: "grev6tap", 	physical: [?] },
+			];
 		};
 		
-		// should be renamed to getInterfaces for NETWORK (!) interfaces. 
+		// should be renamed to getInterfaces for NETWORK (!) interfaces.
 		NetworkBackend.prototype.getNetworks = function(opts){
-			var deferred = $.Deferred(); 
-			var networks = []; 
-			if(!opts) opts = {}; 
+			var deferred = $.Deferred();
+			var networks = [];
+			if(!opts) opts = {};
 			var filter = opts.filter || {};
 			var info = {};
 			async.series([
@@ -111,23 +111,23 @@
 					$uci.$sync("network").done(function(){
 						$uci.network["@interface"].map(function(i){
 							i.ifname.value = i.ifname.value.split(" ").filter(function(name){
-								return name && name != ""; 
-							}).join(" "); 
-							if(i[".name"] == "loopback") return; 
-							if(filter.no_aliases && i[".name"].indexOf("@") == 0 || i.type.value == "alias") return; 
-							networks.push(i); 
-						}); 
+								return name && name != "";
+							}).join(" ");
+							if(i[".name"] == "loopback") return;
+							if(filter.no_aliases && i[".name"].indexOf("@") == 0 || i.type.value == "alias") return;
+							networks.push(i);
+						});
 					}).always(function(){
-						next(); 
-					}); 
+						next();
+					});
 				}, function(next){
-					$rpc.network.interface.dump().done(function(result){
+					$rpc.$call("network.interface", "dump").done(function(result){
 						if(result && result.interface) {
 							info = result.interface;
 						}
 					}).always(function(){
 						next();
-					}); 
+					});
 				}
 			], function(){
 				networks = networks.map(function(x){
@@ -136,131 +136,131 @@
 						x.$info = info.find(function(y){ return x[".name"] == y.interface; });
 					return x;
 				});
-				deferred.resolve(networks); 
-			}); 
+				deferred.resolve(networks);
+			});
 			
-			return deferred.promise(); 
+			return deferred.promise();
 		}
 		
 		NetworkBackend.prototype.getConnectedClients = function(){
-			var deferred = $.Deferred(); 
-			var self = this; 
+			var deferred = $.Deferred();
+			var self = this;
 			
 			_refreshClients(self).done(function(clients){
 				async.each(self._subsystems, function(sys, next){
 					if(sys.annotateClients) {
-						sys.annotateClients(clients).always(function(){ next(); }); 
+						sys.annotateClients(clients).always(function(){ next(); });
 					} else {
-						next(); 
+						next();
 					}
 				}, function(){
 					clients.map(function(cl){
-						if(!cl._display_widget) cl._display_widget = "network-client-lan-display-widget"; 
-					}); 
-					deferred.resolve(clients); 
+						if(!cl._display_widget) cl._display_widget = "network-client-lan-display-widget";
+					});
+					deferred.resolve(clients);
 				});
 			}).fail(function(){
-				deferred.reject(); 
-			});  
+				deferred.reject();
+			});
 			
-			return deferred.promise(); 
+			return deferred.promise();
 		}
 		
 		NetworkBackend.prototype.getNameServers = function(){
-			var deferred = $.Deferred(); 
-			$rpc.juci.network.run({"method":"nameservers"}).done(function(result){
-				if(result && result.nameservers) deferred.resolve(result.nameservers); 
-				else deferred.reject(); 
-			}); 
+			var deferred = $.Deferred();
+			$rpc.$call("juci.network", "run", {"method":"nameservers"}).done(function(result){
+				if(result && result.nameservers) deferred.resolve(result.nameservers);
+				else deferred.reject();
+			});
 			
-			return deferred.promise(); 
+			return deferred.promise();
 		}
 		
 		NetworkBackend.prototype.getNetworkLoad = function(){
-			var def = $.Deferred(); 
+			var def = $.Deferred();
 			
-			$rpc.juci.network.run({"method":"load"}).done(function(res){
-				def.resolve(res); 
+			$rpc.$call("juci.network", "run", {"method":"load"}).done(function(res){
+				def.resolve(res);
 			});
 			
-			return def.promise(); 
+			return def.promise();
 		}
 		
 		NetworkBackend.prototype.getNatTable = function(){
-			var def = $.Deferred(); 
+			var def = $.Deferred();
 			
-			$rpc.juci.network.run({"method":"nat_table"}).done(function(result){
+			$rpc.$call("juci.network", "run", {"method":"nat_table"}).done(function(result){
 				if(result && result.table){
-					def.resolve(result.table); 
+					def.resolve(result.table);
 				} else {
-					def.reject(); 
+					def.reject();
 				}
-			}); 
-			return def.promise(); 
+			});
+			return def.promise();
 		}
 		
 		NetworkBackend.prototype.getLanNetworks = function(){
-			var deferred = $.Deferred(); 
+			var deferred = $.Deferred();
 			this.getNetworks().done(function(nets){
-				deferred.resolve(nets.filter(function(x){ return x.is_lan.value == 1; })); 
-			}); 
-			return deferred.promise(); 
+				deferred.resolve(nets.filter(function(x){ return x.is_lan.value == 1; }));
+			});
+			return deferred.promise();
 		}
 		
 		NetworkBackend.prototype.getWanNetworks = function(){
-			var deferred = $.Deferred(); 
-			console.log("$network.getWanNetworks() is deprecated. You should list firewall zone wan to get whole list"); 
+			var deferred = $.Deferred();
+			console.log("$network.getWanNetworks() is deprecated. You should list firewall zone wan to get whole list");
 			this.getNetworks().done(function(nets){
-				deferred.resolve(nets.filter(function(x){ return !x.is_lan.value; })); 
-			}); 
-			return deferred.promise(); 
+				deferred.resolve(nets.filter(function(x){ return !x.is_lan.value; }));
+			});
+			return deferred.promise();
 		}
 		
 		// returns list of config sections belong to devices that are configured as default routes along with their runtime info in $info field
 		NetworkBackend.prototype.getDefaultRouteNetworks = function(){
-			var def = $.Deferred(); 
+			var def = $.Deferred();
 	
 			$uci.$sync("network").done(function(){
-				$rpc.network.interface.dump().done(function(result){
+				$rpc.$call("network.interface", "dump").done(function(result){
 					if(result && result.interface) {
-						var wanifs = []; 
+						var wanifs = [];
 						result.interface.map(function(i){
 							if(i.route && i.route.length && i.route.find(function(r){ return r.target == "0.0.0.0" || r.target == "::"; })){
-								// lookup the config section for this device 
-								var conf = $uci.network["@interface"].find(function(x){ return x[".name"] == i.interface; }); 
+								// lookup the config section for this device
+								var conf = $uci.network["@interface"].find(function(x){ return x[".name"] == i.interface; });
 								if(conf) {	
-									conf.$info = i; 
-									wanifs.push(conf); 
+									conf.$info = i;
+									wanifs.push(conf);
 								}
 							}
-						}); 
-						def.resolve(wanifs); 
+						});
+						def.resolve(wanifs);
 					} else {
-						def.reject(); 
+						def.reject();
 					}
 				}).fail(function(){
-					def.reject(); 
-				}); 
+					def.reject();
+				});
 			}).fail(function(){
-				def.reject(); 
-			}); 
+				def.reject();
+			});
 
-			return def.promise(); 
+			return def.promise();
 		}	
 
 		NetworkBackend.prototype.getServices = function(){
-			var def = $.Deferred(); 
-			$rpc.juci.network.run({"method":"services"}).done(function(result){
-				if(result && result.list) def.resolve(result.list); 
-				else def.reject(); 
-			}); 
-			return def.promise(); 
+			var def = $.Deferred();
+			$rpc.$call("juci.network", "run", {"method":"services"}).done(function(result){
+				if(result && result.list) def.resolve(result.list);
+				else def.reject();
+			});
+			return def.promise();
 		}
 		
-		return new NetworkBackend(); 
-	}); 
+		return new NetworkBackend();
+	});
 
-}(); 
+}();
 
 JUCI.app.factory("$networkHelper", function($uci, $tr, gettext, $network){
 	return {
@@ -287,7 +287,7 @@ JUCI.app.factory("$networkHelper", function($uci, $tr, gettext, $network){
 			if(interface.type.value == "") type = "Standalone Connection";
 			if(interface.type.value == "anywan") type = "Any-wan";
 			if(device.match(/^wl.+/) || interface.type.value == "bridge"){
-				$network.getNetworks().done(function(nets){ 
+				$network.getNetworks().done(function(nets){
 					var filtered = nets.filter(function(net){ return net[".name"] != interface[".name"];});
 					var keep_device = false;
 					if(!device.match(/^wl.+/)) filtered = filtered.filter(function(net){ return net.type.value == "bridge" });

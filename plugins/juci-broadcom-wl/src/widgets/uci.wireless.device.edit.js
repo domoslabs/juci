@@ -23,15 +23,15 @@ JUCI.app
 		scope: {
 			device: "=ngModel"
 		}, 
-		controller: "WifiDeviceEditController", 
+		controller: "WiFiDeviceEditController", 
 		replace: true, 
 		require: "^ngModel"
 	};  
-}).controller("WifiDeviceEditController", function($scope, $config, $rpc, $tr, gettext){
+}).controller("WiFiDeviceEditController", function($scope, $config, $rpc, $tr, gettext){
 	$scope.showExpert = $config.local.mode == "expert";
 	$scope.$watch("device", function(device){
 		if(!device) return; 
-		$rpc.router.radios().done(function(result){
+		$rpc.$call("router", "radios").done(function(result){
 			if(device[".name"] in result){
 				
 				
@@ -43,11 +43,11 @@ JUCI.app
 			$scope.$apply(); 
 		}); 
 	}); 
-	//make these avalible for translation
-	gettext("11a");
-	gettext("11ac");
-	gettext("11b");
-	gettext("11bg");
-	gettext("11g");
-	gettext("11n");
+	//make these available for translation
+	gettext("11a"); // $tr anslated above
+	gettext("11ac"); // $tr anslated above
+	gettext("11b"); // $tr anslated above
+	gettext("11bg"); // $tr anslated above
+	gettext("11g"); // $tr anslated above
+	gettext("11n"); // $tr anslated above
 }); 

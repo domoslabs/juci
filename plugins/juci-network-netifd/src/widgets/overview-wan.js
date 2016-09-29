@@ -21,15 +21,15 @@
 JUCI.app
 .directive("overviewWidget11WAN", function(){
 	return {
-		templateUrl: "widgets/overview-wan.html", 
-		controller: "overviewWidgetWAN", 
+		templateUrl: "widgets/overview-wan.html",
+		controller: "overviewWidgetWAN",
 		replace: true
 	};
 })
 .directive("overviewStatusWidget11WAN", function(){
 	return {
-		templateUrl: "widgets/overview-wan-small.html", 
-		controller: "overviewWidgetWAN", 
+		templateUrl: "widgets/overview-wan-small.html",
+		controller: "overviewWidgetSmallWan",
 		replace: true
 	};
 })
@@ -46,93 +46,136 @@ JUCI.app
 		return (sec+ 's');
     };
 })
-.controller("overviewWidgetWAN", function($scope, $uci, $rpc, $firewall, $network, $juciDialog, $tr, gettext, $events){
-	$scope.showDnsSettings = function(){
-		if(!$scope.wan_ifs) return;
-		$firewall.getZoneNetworks("wan").done(function(nets){
-			var dhcp_nets = nets.filter(function(iface){
-				return iface.proto.value == "dhcp";
-			});
-			var model = {
-				aquired: $scope.wan_ifs,
-				settings: dhcp_nets
-			};
-			$juciDialog.show("network-wan-dns-settings-edit", {
-				title: $tr(gettext("Edit DNS servers")),
-				buttons: [
-					{ label: $tr(gettext("Save")), value: "save", primary: true },
-					{ label: $tr(gettext("Cancel")), value: "cancel" }
-				],
-				on_button: function(btn, inst){
-					if(btn.value == "cancel"){
-						dhcp_nets.map(function(x){
-							if(x.$reset) x.$reset();
+.controller("overviewWidgetSmallWan", function($scope, $firewall, $rpc, $events){
+	function refresh(){
+		var wans,wan_zones;
+		async.series([
+			function(next){
+				$firewall.getWanZones().done(function(wans){
+					wan_zones = wans;
+				}).always(function(){next()});
+			},
+			function(next){
+				$rpc.$call("network.interface", "dump").done(function(data){
+					wans = data.interface.filter(function(iface){
+						return wan_zones.find(function(w){
+							return w.network.value.find(function(n){ return n === iface.interface;});
 						});
-						inst.dismiss("cancel");
-					}
-					if(btn.value == "save"){
-						inst.close();
-					}
-				},
-				size: "md",
-				model: model
+					});
+				}).fail(function(e){console.log(e);}).always(function(){next();});
+			},
+			function(next){
+				$rpc.$call("router", "networks").done(function(data){
+					wans = wans.filter(function(w){
+						var wan = data[w.interface];
+						return wan && wan.defaultroute && wan.ifname && wan.ifname.match(/^[^@].*/);
+					});
+				}).fail(function(e){console.log(e);}).always(function(){next();});
+			}
+		], function(){
+			$scope.up = false;
+			wans.map(function(w){
+				if(w.up) $scope.up = true;
 			});
+			$scope.$apply();
 		});
-	};
-	$scope.statusClass = "text-success"; 
+	}refresh();
+	$events.subscribe("network.interface", function(res){
+		refresh();
+	});
+})
+.controller("overviewWidgetWAN", function($scope, $rpc, $tr, gettext, $events, $firewall){
 	JUCI.interval.repeat("update_wan_uptime", 1000, function(next){
-		if(!$scope.wan_ifs || $scope.wan_ifs.length === 0){ next(); return; }
-		$scope.wan_ifs.map(function(i){
-			if(!i.uptime) return;
-			i.uptime = i.uptime + 1;
-		});
+		if(!$scope.uptime || $scope.uptime === 0){ next(); return; }
+		$scope.uptime ++;
 		$scope.$apply();
 		next();
 	});
 	function refresh(){
-		$network.getNetworks().done(function(networks){
-			var bridgedNets = networks.filter(function(net){ return net.proto.value == "dhcp" && net.type.value == "bridge" && net.defaultroute.value});
-			$firewall.getZoneNetworks("wan").done(function(wan_iface){
-				var default_route_ifs = wan_iface.filter(function(x){ 
-					if(bridgedNets.find(function(bn){ return bn[".name"] == x[".name"]; })) return false;
-					return x.$info && x.$info.route && x.$info.route.length && 
-						(x.$info.route.find(function(r){ return r.target == "0.0.0.0" || r.target == "::"; }));
-				}); 
-				var con_types = {}; 
-				var all_gateways = {}; 
-				var wan_ifs = default_route_ifs.concat(bridgedNets).filter(function(i){
-					return (i.$info.up && i.$info.device && i.$info.route)
-				});
-				wan_ifs.map(function(wan_if){return wan_if.$info;}).map(function(i){
-					var con_type = "ETH"; 
-					if(i.device.match(/atm/)) con_type = "ADSL"; 
-					else if(i.device && i.l3_device.match(/ptm/)) con_type = "VDSL"; 
-					else if(i.device && i.l3_device.match(/wwan/)) con_type = "3G/4G"; 
-					con_types[con_type] = con_type; 
-					if(con_type && con_type.match(/^[AV]DSL$/)){
-						if($rpc.router && $rpc.router.dslstats){
-							$rpc.router.dslstats().done(function(data){
-								if(!data || !data.dslstats || !data.dslstats.bearers || data.dslstats.bearers.length < 1) return;
-								$scope.dslDown = [];
-								data.dslstats.bearers.map(function(b){
-									if(b.rate_down) $scope.dslDown.push(b.rate_down);
-								});
-								$scope.$apply();
-							});
-						}
-					}
-					i.route.map(function(r){
-						if(r.nexthop != "0.0.0.0" && r.nexthop != "::") // ignore dummy routes. Note that current gateways should actually be determined by pinging them, but showing all of them is sufficient for now. 
-							all_gateways[r.nexthop] = true; 
-					}); 
-				}); 
-				$scope.connection_types = Object.keys(con_types); 
-				$scope.all_gateways = Object.keys(all_gateways); 
-				$scope.wan_ifs = wan_ifs.map(function(iface){ return iface.$info; }) || []; 
-				$scope.$apply(); 
-			}); 
-		}); 
-	}refresh(); 
+		var wans,wan_zones;
+		async.series([
+			function(next){
+				$firewall.getWanZones().done(function(wans){
+					wan_zones = wans;
+				}).always(function(){next()});
+			},
+			function(next){
+				$rpc.$call("network.interface", "dump").done(function(data){
+					wans = data.interface.filter(function(iface){
+						return wan_zones.find(function(w){
+							return w.network.value.find(function(n){ return n === iface.interface;});
+						});
+					});
+				}).fail(function(e){console.log(e);}).always(function(){next();});
+			},
+			function(next){
+				$rpc.$call("router", "networks").done(function(data){
+					wans = wans.filter(function(w){
+						var wan = data[w.interface];
+						return wan && wan.defaultroute;
+					});
+				}).fail(function(e){console.log(e);}).always(function(){next();});
+			}
+		], function(){
+			$scope.data = {ip:[], defaultroute:[], contypes:[], dslUp:"", dslDown:"", dns:[], up:false, linkspeed:""};
+			$scope.uptime = 0;
+			wans.map(function(w){
+				if(w.up) $scope.data.up = true;
+				else return;
+				if(w["ipv4-address"] && w["ipv4-address"].length)
+					w["ipv4-address"].map(function(ip){ if(ip && ip.address) $scope.data.ip.push(ip.address);});
+				if(w["ipv6-address"] && w["ipv6-address"].length)
+					w["ipv6-address"].map(function(ip){ if(ip && ip.address) $scope.data.ip.push(ip.address);});
+				if(w.route && w.route.length){
+					w.route.filter(function(r){
+						return (r.target === "0.0.0.0" || r.target === "::") && r.nexthop;
+					}).map(function(r){ $scope.data.defaultroute.push(r.nexthop); });
+				}
+				var type = $tr(gettext("Ethernet"));
+				if(!w.device) type = $tr(gettext("Unknown"));
+				else if(w.device.match(/atm/)) type = $tr(gettext("ADSL"));
+				else if(w.device.match(/ptm/)) type = $tr(gettext("VDSL"));
+				else if(w.device.match(/wwan/)) type = $tr(gettext("3G/4G"));
+				if(w.device && w.device.match("eth[0-9].[0-9]")){
+					$rpc.$call("router", "linkspeed", {"interface":w.device.substring(0,4)}).done(function(data){
+						if(data && data.linkspeed)
+							$scope.data.linkspeed = data.linkspeed;
+						if(data && data.linktype)
+							type = data.linktype;
+						if($scope.data.contypes.indexOf(type) === -1)
+							$scope.data.contypes.push(type);
+						$scope.$apply();
+					}).fail(function(e){console.log(e);});
+				}
+				else{
+					if($scope.data.contypes.indexOf(type) === -1)
+						$scope.data.contypes.push(type);
+				}
+				if(w.device && w.device.match(/[ap]tm/)){
+					$rpc.$call("router", "dslstats").done(function(data){
+						if(!data || !data.dslstats || !data.dslstats.bearers || data.dslstats.bearers.length < 1) return;
+						data.dslstats.bearers.map(function(b){
+							if(b.rate_down) $scope.data.dslDown = parseInt(String(b.rate_down))/1000;
+							if(b.rate_up) $scope.data.dslUp = parseInt(String(b.rate_up))/1000;
+						});
+						$scope.$apply();
+					});
+				}
+				if(w["dns-server"] && w["dns-server"].length)
+					$scope.data.dns = $scope.data.dns.concat(w["dns-server"]);
+				if(w.uptime && typeof w.uptime === "number" && $scope.uptime < w.uptime)
+					$scope.uptime = w.uptime;
+			});
+			Object.keys($scope.data).map(function(k){
+				if($scope.data[k] instanceof Array){
+					$scope.data[k] = $scope.data[k].filter(function(elem, index, self) {
+						return index == self.indexOf(elem);
+					});
+				}
+			});
+			$scope.$apply();
+		});
+	}refresh();
 	$events.subscribe("network.interface", function(res){
 		refresh();
 	});

@@ -12,7 +12,7 @@ JUCI.app
 		require: "^ngModel"
 	};
 })
-.controller("networkConnectionDnsConfig", function($scope, $uci, $network, $rpc, $log, gettext, $tr){
+.controller("networkConnectionDnsConfig", function($scope, $uci, $network, $log, gettext, $tr){
 	$scope.data = [];
 	$scope.$watch("interface", function(){
 		if(!$scope.interface || !$scope.interface.dns) return;

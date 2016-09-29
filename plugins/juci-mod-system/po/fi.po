@@ -125,7 +125,7 @@ msgstr "Uusi salasana"
 msgid "Re-type password"
 msgstr "Anna salasana uudelleen"
 
-msgid "Pick configuration backup to upload"
+msgid "Select configuration backup to upload"
 msgstr "Valitse ladattava varmuuskopio"
 
 msgid "Backup file password"

@@ -7,9 +7,11 @@
 				<switch ng-model="config.enabled.value" class="green"/>
 			</juci-config-line>
 		</juci-config-lines>
-		<div class="alert alert-info" translate>The miniDLNA service is {{ is_running || 'unknown' }}, serving {{ (count.audio != undefined) ? count.audio :  'unknown' }} audio, 
+		<div ng-show="config.enabled.value" class="alert alert-info" translate>
+					The miniDLNA service is {{ is_running || 'unknown' }}, serving {{ (count.audio != undefined) ? count.audio :  'unknown' }} audio,
 					{{ (count.video != undefined) ? count.video : 'unknown' }} video and 
-					{{ (count.image != undefined) ?  count.image : 'unknown' }} image files.</div>
+					{{ (count.image != undefined) ?  count.image : 'unknown' }} image files.
+		</div>
 		<tabset>
 			<tab heading="{{ 'General' | translate }}">
 				<juci-config-lines>

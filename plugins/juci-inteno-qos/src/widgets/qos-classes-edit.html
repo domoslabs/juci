@@ -1,0 +1,40 @@
+<div>
+	<juci-config-lines>
+		<juci-config-line title="{{'Priority'|translate}}">
+			<div class="input-group">
+				<input type="number" min="1" class="form-control" ng-model="instance.priority.value" />
+				<span class="input-group-addon">%</span>
+			</div>
+		</juci-config-line>
+		<juci-config-line title="{{'Average Rate'|translate}}">
+			<div class="input-group">
+				<input type="number" min="1" class="form-control" ng-model="instance.avgrate.value" />
+				<span class="input-group-addon">%</span>
+			</div>
+		</juci-config-line>
+		<juci-config-line title="{{'Limit Rate'|translate}}">
+			<div class="input-group">
+				<input type="number" min="1" class="form-control" ng-model="instance.limitrate.value" />
+				<span class="input-group-addon">%</span>
+			</div>
+		</juci-config-line>
+		<juci-config-line title="{{'Packet Size'|translate}}">
+			<div class="input-group">
+				<input type="number" min="1" class="form-control" ng-model="instance.packetsize.value" />
+				<span class="input-group-addon">bytes</span>
+			</div>
+		</juci-config-line>
+		<juci-config-line title="{{'Packet Delay'|translate}}">
+			<div class="input-group">
+				<input type="number" min="1" class="form-control" ng-model="instance.packetdelay.value" />
+				<span class="input-group-addon">ms</span>
+			</div>
+		</juci-config-line>
+		<juci-config-line title="{{'Max Size'|translate}}">
+			<div class="input-group">
+				<input type="number" min="1" class="form-control" ng-model="instance.maxsize.value" />
+				<span class="input-group-addon">bytes</span>
+			</div>
+		</juci-config-line>
+	</juci-config-lines>
+</div>

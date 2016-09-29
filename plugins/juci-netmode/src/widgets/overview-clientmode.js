@@ -18,14 +18,14 @@ JUCI.app
 		error: "",
 		key: ""
 	}
-	$scope.avalibleAps = [];
+	$scope.availableAps = [];
 	$scope.showManual = {
 		value: true,
 		toggle: function(){ this.value = !this.value;}
 	}
 	$scope.showAutomaticPassword = function(){
-		if($scope.avalibleAps.length < 1) return false;
-		var sel = $scope.avalibleAps.find(function(ap){
+		if($scope.availableAps.length < 1) return false;
+		var sel = $scope.availableAps.find(function(ap){
 			return ap.value === $scope.automatic.bssid;
 		});
 		if(sel && sel.encryption !== "") return true;
@@ -49,7 +49,7 @@ JUCI.app
 				$scope.automatic.error = $tr(gettext("Pleace select an AP"));
 				return;
 			}
-			var sel = $scope.avalibleAps.find(function(ap){
+			var sel = $scope.availableAps.find(function(ap){
 				return ap.value === $scope.automatic.bssid;
 			});
 			if(!sel) return;
@@ -71,14 +71,12 @@ JUCI.app
 		if(tmp && tmp.askcred.value) return true;
 		return false;
 	}
-	$scope.wps = ($rpc.wps && $rpc.wps.pbc_client);
+	$scope.wps = $rpc.$has("wps", "pbc_client");
 	$scope.onPairWps = function(){
-		if($rpc.wps){
-			$rpc.wps.pbc_client();
-		}
+		$rpc.$call("wps", "pbc_client");
 	}
 	function setValues(ssid, key, encr){
-		$rpc.juci.repeater.run({"method":"set","args": JSON.stringify({
+		$rpc.$call("juci.repeater", "run", {"method":"set","args": JSON.stringify({
 			ssid:ssid,
 			key:key,
 			encryption:encr
@@ -103,7 +101,7 @@ JUCI.app
 				$wireless.getScanResults({device:wetIface.device.value}).done(function(result){
 					$scope.showManual.value = false;
 					$scope.showModal = false;
-					$scope.avalibleAps = result.map(function(ap){
+					$scope.availableAps = result.map(function(ap){
 						var encrypt = "";
 						if(ap.cipher && !ap.cipher.match(/PSK/)) return null;
 						if(ap.cipher) encrypt = "psk2";

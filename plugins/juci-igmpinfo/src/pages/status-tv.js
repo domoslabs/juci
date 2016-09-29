@@ -19,15 +19,15 @@
  */
 
 JUCI.app
-.controller("StatusTVPageCtrl", function($scope, $rpc, gettext){
-	if($rpc.juci.iptv){
-		$rpc.router.igmptable().done(function(result){
+.controller("StatusTVPageCtrl", function($scope, $rpc, $tr, gettext){
+	JUCI.interval.repeat("igmpstatusrefresh",5000,function(next){
+		$rpc.$call("router", "igmptable").done(function(result){
 			if(!result.table) {
-				$scope.$emit("error", gettext("Unable to retreive igmptable from device!")); 
-				return; 
-			} 
-			$scope.igmptable = result.table; 
-			$scope.$apply(); 
-		}); 
-	}
-}); 
+				$scope.$emit("error", $tr(gettext("Unable to retreive igmptable from device!")));
+				return;
+			}
+			$scope.igmptable = result.table;
+			$scope.$apply();
+		}).always(function(){next()});
+	});
+});

@@ -28,6 +28,19 @@ JUCI.app
 		$scope.allInterfaces.push({ label: "Load Balancer (Best Compatibility)", value: "balancer" });
 		$scope.allInterfaces.push({ label: "Fast Balancer (Best Distribution)", value: "fastbalancer" });
 		$scope.trafic_rules = $uci.multiwan["@mwanfw"];
+		var method = {'ping':$tr(gettext('Ping')), 'stats': $tr(gettext('Statistics'))};
+		var failover = {
+			'disable':$tr(gettext("Disable")),
+			'balancer': $tr(gettext("Load Balancer (Compability)")),
+			'fastbalancer': $tr(gettext("Fast Balancer (Distribution)"))
+		};
+		$scope.multiwan && $scope.multiwan["@interface"] && $scope.multiwan["@interface"].length && $scope.multiwan["@interface"].map(function(mw){
+			mw.$statusList = [
+				{ label: $tr(gettext("Method")), value: (method[mw.health_method.value] || $tr(gettext("Unknown"))) },
+				{ label: $tr(gettext("Interval")), value: mw.health_interval.value + " " + $tr(gettext("sec")) },
+				{ label: $tr(gettext("Failover to")), value: (failover[mw.failover_to.value] || String(mw.failover_to.value).toUpperCase()) }
+			];
+		});
 		$scope.$apply(); 
 	}); 
 	$scope.onGetItemTitle = function(item){ return item[".name"]; }; 
@@ -47,7 +60,7 @@ JUCI.app
 						inst.close();
 					},
 					title: $tr(gettext("Error")),
-					content: $tr(gettext("No avalible networks to add!"))
+					content: $tr(gettext("No available networks to add!"))
 				});
 			}else {
 				var model = {

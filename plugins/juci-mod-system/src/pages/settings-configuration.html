@@ -20,10 +20,12 @@
 				</juci-config-line>
 			</juci-config-lines>
 		</juci-config-section>
-		<modal title="{{'Save Configuration to Computer'|translate}}" ng-show="showModal" on-accept="onAcceptModal()" on-dismiss="onDismissModal()" dismiss-label="Cancel" accept-label="Continue">
-			<form name="backupForm" action="/cgi-bin/juci-backup" autocomplete="off">
-				<input type="hidden" name="sid" value="{{sessionID}}"/>
-				<!--<input type="hidden" name="password" />-->
+		<modal title="{{'Save Configuration to Computer'|translate}}" data-backdrop="static" ng-show="showModal" on-accept="onAcceptModal()" on-dismiss="onDismissModal()" dismiss-label="Cancel" accept-label="Continue">
+			<juci-config-line title="{{'Password protection'|translate}}">
+				<switch class="green" ng-model="data.encryptBackup" />
+			</juci-config-line>
+			<form ng-submit="onAcceptModal()" name="backupForm" autocomplete="off" ng-show="data.encryptBackup">
+				<input type="submit" ng-hide="true" />
 				<div class="form-group" ng-show="features.comment">
 					<label translate>Please add a comment describing this configuration</label>
 					<textarea class="form-control" placeholder="{{'Comments'|translate}}..." name="comment"/>
@@ -42,23 +44,21 @@
 					translate>Encryption password may only contain letters a-z, A-Z and numbers 0-9.</div>
 			</form>
 		</modal>
-		<modal title="Load New Configuration" ng-show="showUploadModal" on-accept="onUploadConfig()" on-dismiss="onCancelRestore()" dismiss-label="Cancel" accept-label="Continue">
-			<iframe name="postiframe" id="postiframe" style="display: none;" ></iframe>
-			<form target="postiframe" name="restoreForm" id="restoreForm" action="/cgi-bin/juci-upload" method="post" enctype="multipart/form-data" autocomplete="off">
-				<input type="hidden" name="sessionid" value="{{sessionID}}" />
-				<input type="hidden" name="filename" value="/tmp/backup.tar.gz" />
+		<modal title="{{'Downloading Backup'|translate}}" ng-show="showStatus" data-backdrop="static" data-keyboard="false">
+			<h2 style="text-align:center;"><i class="fa fa-spinner fa-spin fa-2x"></i></h2>
+		</modal>
+		<modal title="Load New Configuration" data-backdrop="static" ng-show="showUploadModal" on-accept="onUploadConfig()" on-dismiss="onCancelRestore()" dismiss-label="Cancel" accept-label="Continue">
+			<form autocomplete="off" ng-submit="onUploadConfig()">
+				<input type="submit" ng-hide="true">
 				<juci-config-lines>
 					<juci-config-line title="{{'Pick configuration backup to upload'|translate}}">
-						<input type="file" class="btn btn-default btn-file" name="filedata" />
+						<input type="file" id="upload" class="btn btn-default btn-file" name="filedata" />
 					</juci-config-line>
 					<juci-config-line title="{{'Backup file password'|translate}}">
 						<input type="password" class="form-control" name="pass" ng-disabled="!features.encryption" ng-model="data.pass" placeholder="{{'Password (if encrypted)'|translate}}"/>
 					</juci-config-line>
 					<div class="alert alert-danger" ng-show="!features.encryption" 
 						translate>Uploading encrypted backups is not supported (requires openssl cli utility installed on the router!)</div>
-					<!--<juci-config-line title="{{'Start upgrade'|translate}}">
-						<input type="submit" class="btn btn-lg btn-default" value="{{'Upgrade'|translate}}"/>
-					</juci-config-line>-->
 				</juci-config-lines>
 			</form>
 		</modal>

@@ -15,7 +15,7 @@
 	<div ng-hide="editable" class="btn-group" style="white-space: nowrap;">
 		<button class="btn btn-default dropdown-toggle button-label" 
 			style="background-color: #fff !important; border-bottom-right-radius: 0px; border-top-right-radius: 0px; display: inline-block; float:none; " 
-			data-toggle="dropdown">{{(selected.label || placeholder )}}
+			data-toggle="dropdown">{{(selected.label || placeholder | limitTo: 16:0)}}
 		</button><button 
 			class="btn btn-default dropdown-toggle button-arrow" 
 			style="background-color: #fff !important; display: inline-block; float:none;" 

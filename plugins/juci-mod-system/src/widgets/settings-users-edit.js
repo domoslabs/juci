@@ -24,7 +24,7 @@ JUCI.app
 		if(!user) return;
 		async.series([
 			function(next){
-				$rpc.session.list().done(function(data){
+				$rpc.$call("session", "list").done(function(data){
 					$scope.allAccessGroups = Object.keys(data.acls["access-group"]);
 				}).always(function(){next();});
 			},

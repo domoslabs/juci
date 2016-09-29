@@ -1,0 +1,113 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+# /home/reidar/juci/plugins/juci-owsd/src/pages/settings-management-owsd.js
+msgid "Add OWSD Listen interface"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-owsd/src/pages/settings-management-owsd.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-owsd/src/widgets/owsd-listen-edit.js
+msgid "Add"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-owsd/src/widgets/owsd-listen-edit.js
+msgid "Add OWSD Origin"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Interface"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-owsd/src/widgets/owsd-listen-edit.html
+msgid "Port"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-owsd/src/widgets/owsd-listen-edit.html
+msgid "IPv6"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-owsd/src/widgets/owsd-listen-edit.html
+msgid "Only IPv6"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-owsd/src/pages/settings-management-owsd.html
+msgid "OWSD"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-owsd/src/pages/settings-management-owsd.html
+msgid "Chage settings for the owsd web-server deamon"
+msgstr ""
+
+msgid "menu-settings-management-owsd-title"
+msgstr "OWSD"
+
+
+#~ msgid "settings.network.info"
+#~ msgstr ""
+#~ "This page allows to configure IP addresses used in your home network. In "
+#~ "case DHCP is used, your router automatically assignes an IP address to "
+#~ "devices connected to the network. Using static DHCP it is possible to "
+#~ "always assign the same IP address to specific devices."
+
+#~ msgid "internet.lan.routes.info"
+#~ msgstr ""
+#~ "Static routes are useful if you have several networks accessible from "
+#~ "your router and you want to correctly route packets between them. "
+
+#~ msgid "internet.services.info"
+#~ msgstr "Here you can configure network services. "
+
+#~ msgid "status.status.info"
+#~ msgstr ""
+#~ "This page provides an overview of main parameters of your router. This "
+#~ "can help you to optimize your router or identify potential problems."
+
+#~ msgid "status.nat.connections.info"
+#~ msgstr "This page shows the active connection for each device."
+
+#~ msgid "status.nat.info"
+#~ msgstr "This page shows the active connection for each device."
+
+#~ msgid "status.network.routes.info"
+#~ msgstr "Static routes configuration"
+
+#~ msgid "menu-internet-network-title"
+#~ msgstr "Connections"
+
+#~ msgid "menu-netifd-status-clients-title"
+#~ msgstr "Clients"
+
+#~ msgid "menu-network-title"
+#~ msgstr "Network"
+
+#~ msgid "menu-status-network-routes-title"
+#~ msgstr "Routing Tables"
+
+#~ msgid "menu-internet-routes-title"
+#~ msgstr "Static Routes"
+
+#~ msgid "menu-netifd-vlan-config-title"
+#~ msgstr "VLAN / Switch"
+
+#~ msgid "menu-status-network-nat-title"
+#~ msgstr "NAT"
+
+#~ msgid "menu-internet-services-title"
+#~ msgstr "Services"

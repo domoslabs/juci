@@ -42,7 +42,7 @@ msgid "wireless.2g.info"
 msgstr " "
 
 msgid "2.4Ghz Wireless"
-msgstr "Wifi"
+msgstr "WiFi"
 
 msgid "Radio Configuration"
 msgstr "Konfiguraatio"
@@ -54,7 +54,7 @@ msgid "wireless.5g.info"
 msgstr " "
 
 msgid "5Ghz Wireless"
-msgstr "Wifi"
+msgstr "WiFi"
 
 msgid "lan.config.info"
 msgstr " "

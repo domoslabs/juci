@@ -1,7 +1,7 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="ManagementButtonsCtrl">
 		<juci-config-heading>{{'Configure Buttons'|translate}}</juci-config-heading>
-		<juci-cofnig-info>{{'settings.management.buttons.info'|translate}}</juci-config-info>
+		<juci-config-info>{{'settings.management.buttons.info'|translate}}</juci-config-info>
 		<juci-config-section>
 			<juci-config-lines>
 				<juci-config-line ng-repeat="button in buttons track by $index" title="{{button['.name']}}">

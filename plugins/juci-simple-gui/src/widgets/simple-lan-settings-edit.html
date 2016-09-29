@@ -13,7 +13,7 @@
 			<switch class="green" ng-model="model.dhcpEnabled" />
 		</juci-config-line>
 		<div ng-show="model.dhcpEnabled">
-			<dhcp-basic-settings-edit ng-model="model.dhcp" ng-connection="model.lan"></dhcp-basic-settings-edit>
+			<dhcp-basic-settings-edit hide-advanced="true" hide-ipv6="true" ng-model="model.dhcp" ng-connection="model.lan"></dhcp-basic-settings-edit>
 			<dhcp-static-hosts-edit ng-model="model.dhcp"></dhcp-static-hosts-edit>
 		</div>
 	</juci-config-lines>

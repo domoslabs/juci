@@ -14,7 +14,8 @@
 			}, 
 			"uci": [
 				"netmode"
-			]
+			],
+			"owsd": [ "wifi-repeater-success" ]
 		}, 
 		"write": {
 			"uci": [

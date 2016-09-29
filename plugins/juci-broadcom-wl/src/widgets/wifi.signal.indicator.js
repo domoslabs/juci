@@ -28,25 +28,15 @@ JUCI.app
 		require: "^ngModel"
 	};  
 }).controller("wifiSignalIndicator", function($scope){
-	$scope.bars = [false, false, false, false]; 
+	$scope.icon = "";
+	$scope.color= "";
 	$scope.$watch("value", function(value){
-		var q = value/5; 
-		$scope.bars[0] = $scope.bars[1] = $scope.bars[2] = $scope.bars[3] = false; 
-		if(q > 1) $scope.bars[0] = true; 
-		if(q > 2) $scope.bars[1] = true; 
-		if(q > 3) $scope.bars[2] = true; 
-		if(q > 4) $scope.bars[3] = true; 
+		if(!value) return;
+		if(String(value).match(/^-[0-9]{1,2}$/)){
+			var v = parseInt(String(value).substring(1,3));
+			if(v < 65){ $scope.icon = "juci juci-wifi-high"; $scope.color = "#5cb85c"; }
+			else if(v < 82){ $scope.icon = "juci juci-wifi-mid"; $scope.color = "#F1C100"; }
+			else{ $scope.icon = "juci juci-wifi-low"; $scope.color = "#d9534f"; }
+		}
 	}); 
-	$scope.barStyle = function(idx, active){
-		var height = 5 + ((idx) * 5); 
-		var top = 20 - height; 
-		return {
-			"position": "absolute", 
-			"width": "6px", 
-			"height": ""+height+"px", 
-			"background-color": (active)?"#5CB85C":"#d5d5d5",
-			"top": ""+top+"px", 
-			"left": ""+(idx * 8)+"px"
-		}; 
-	}
 }); 

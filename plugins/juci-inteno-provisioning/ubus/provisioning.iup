@@ -1,0 +1,19 @@
+#!/usr/bin/lua
+
+local juci = require("juci/core"); 
+
+function create_backup(params)
+	local fname = "/tmp/iup-backup.tmp";
+	local res = {}; 
+	if params["filename"] then
+		res["stdout"] = juci.shell("sysupgrade -u /tmp/%s", params["filename"]);
+	else
+		res["stdout"] = juci.shell("sysupgrade -u "..fname);
+	end
+	print(json.encode(res)); 
+end
+
+juci.ubus({
+	["backup"] = create_backup 
+}, arg); 
+

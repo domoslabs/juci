@@ -17,14 +17,14 @@
  */
 
 JUCI.app
-.controller("wirelessStatusScanPage", function($scope, $uci, $wireless, gettext, $rpc){
+.controller("wirelessStatusScanPage", function($scope, $uci, $wireless, $rpc){
 	$scope.order = function(pred){
 		$scope.predicate = pred; 
 		$scope.reverse = !$scope.reverse;
 	}
 	$scope.radioToScan = {};
 	$uci.$sync("wireless").done(function(){
-		$rpc.router.radios().done(function(data){
+		$rpc.$call("router", "radios").done(function(data){
 			$scope.wlRadios = Object.keys(data).map(function(x){ data[x].device = x; return data[x]; });
 			$scope.scanableRadios = $scope.wlRadios.filter(function(radio){
 				return parseInt(radio.channel) < 52;
@@ -35,7 +35,7 @@ JUCI.app
 			if($scope.scanableRadios.length > 0){
 				$scope.radioToScan.value = $scope.scanableRadios[0].value;
 			}
-			$scope.$apply(); 
+			$scope.$apply();
 		});
 		$scope.doScan = function(){
 			if($scope.radioToScan.value == null)return;

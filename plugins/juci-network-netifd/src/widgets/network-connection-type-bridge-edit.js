@@ -31,7 +31,6 @@ JUCI.app
 })
 .controller("networkConnectionTypeBridgeEdit", function($scope, $ethernet, $modal, $tr, gettext, $uci, $networkHelper){
 	$scope.getItemTitle = function(dev){
-	
 		return dev.name + " ("+dev.device+")"; 
 	}
 	function updateDevices(net){
@@ -40,7 +39,7 @@ JUCI.app
 			var filtered = adapters.filter(function(ad){ return ad.type !== "eth-bridge";});
 			var wan = filtered.find(function(dev){ return dev.device.match(/^eth[\d]+\.[\d]+$/); });
 			if(wan){
-				filtered = filtered.filter(function(dev){return wan.device.split(".")[0] != dev.device; });
+				filtered = filtered.filter(function(dev){return wan.device.split(".")[0] !== dev.device; });
 			}
 			if(net.is_lan.value){
 				filtered = filtered.filter(function(dev){return !dev.device.match(/^[ape]t[hm]\d\..+$/) });
@@ -55,7 +54,7 @@ JUCI.app
 					delete aptmap[x]; 
 					return { name: a.name, device: a.device, adapter: a }; 
 				}); 
-			net.$addableDevices = Object.keys(aptmap).map(function(k){ return aptmap[k]; }); 
+			net.$addableBridgeDevices = Object.keys(aptmap).map(function(k){ return aptmap[k]; }); 
 			$scope.$apply(); 
 		}); 
 	}
@@ -74,7 +73,7 @@ JUCI.app
 			controller: 'bridgeDevicePicker',
 			resolve: {
 				devices: function () {
-					return $scope.connection.$addableDevices.map(function(x){
+					return $scope.connection.$addableBridgeDevices.map(function(x){
 						return { label: x.name + " (" + x.device + ")", value: x.device };
 					}); 
 				}

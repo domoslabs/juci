@@ -26,10 +26,20 @@ JUCI.app
 			{ label: $tr(gettext("IPoA")), value: "IPoA" }
 		]; 
 		
-		$scope.encapModes = [
-			{ label: $tr(gettext("LLC/SNAP-Bridging")), value: "llcsnap_eth" }, 
+		$scope.encapseoaModes = [
+			{ label: $tr(gettext("LLC/SNAP-Bridging")), value: "llcsnap_eth" },
 			{ label: $tr(gettext("VC/MUX")), value: "vcmux_eth" }
 		]; 
+
+		$scope.encapspppoaModes = [
+			{ label: $tr(gettext("LLC/ENCAPSULATION")), value: "llcencaps_ppp" },
+			{ label: $tr(gettext("VC/MUX")), value: "vcmux_pppoa" }
+		];
+
+		$scope.encapsipoaModes = [
+			{ label: $tr(gettext("LLC/SNAP-ROUTING")), value: "llcsnap_rtip" },
+			{ label: $tr(gettext("VC/MUX")), value: "vcmux_ipoa" }
+		];
 		
 		$scope.serviceTypes = [
 			{ label: $tr(gettext("UBR Without PCR")), value: "ubr" }, 

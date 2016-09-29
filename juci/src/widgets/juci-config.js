@@ -78,7 +78,7 @@ JUCI.app
 	$scope.$watch("error", function(er){
 		if(er !== null && er !== undefined){
 			console.log(er);
-			$scope.er = $tr(er);
+			$scope.er = er;
 			$scope.errorClass = "field-error";
 		}else{
 			$scope.er = false;
@@ -134,9 +134,10 @@ JUCI.app
 			$uci.$save().done(function(){
 				$scope.numUnsavedChanges(); 
 				console.log("Saved uci configuration!"); 
-				$scope.$apply(); 
+				//$scope.$apply(); 
+				location.reload();
 			}).fail(function(errors){
-				$scope.errors = errors.map(function(e){return $tr(e);}); 
+				$scope.errors = errors.map(function(e){return e;}); 
 				$scope.$emit("errors", errors); 
 				console.error("Could not save uci configuration!"); 
 			}).always(function(){

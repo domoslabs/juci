@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.directive("juciSelect", function($parse, gettext){
+.directive("juciSelect", function($parse){
 	return {
 		restrict: 'E', 
 		scope: {
@@ -29,6 +29,7 @@ JUCI.app
 			checkbox: "@",
 			enabled: "=",
 			onChange: "&", 
+			onClick: "&", 
 			placeholder: "@"
 		}, 
 		require: ["^ngModel", "?placeholder"], 

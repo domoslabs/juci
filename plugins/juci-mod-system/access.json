@@ -2,7 +2,14 @@
 	"juci-mod-system": {
 		"description": "JUCI system module",
 		"read": {
+			"owsd": [
+				"defaultreset"
+			],
 			"ubus": {
+				"file": [
+					"write",
+					"read"
+				],
 				"/juci/system": [
 					"run"
 					/*"defaultreset", */
@@ -66,7 +73,8 @@
 			"uci": [
 				"system",
 				"buttons",
-				"leds"
+				"leds",
+				"passwords"
 			],
 			"juci-io": [
 				"backup"

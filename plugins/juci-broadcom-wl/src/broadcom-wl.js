@@ -1,4 +1,3 @@
-/*global gettext:false*/
 /*
  * Copyright (C) 2015 Inteno Broadband Technology AB. All rights reserved.
  *
@@ -23,68 +22,68 @@ JUCI.app.run(function($network, $uci, $wireless){
 	$network.subsystem(function(){
 		return {
 			annotateClients: function(clients){
-				var def = $.Deferred(); 
+				var def = $.Deferred();
 				$wireless.getConnectedClients().done(function(wclients){
 					clients.map(function(cl){
-						var wcl = wclients.find(function(wc){ return String(wc.macaddr).toLowerCase() == String(cl.macaddr).toLowerCase(); }); 
+						var wcl = wclients.find(function(wc){ return String(wc.macaddr).toLowerCase() == String(cl.macaddr).toLowerCase(); });
 						if(wcl) { 	
-							cl._display_widget = "wireless-client-lan-display-widget"; 
-							cl._wireless = wcl; 
-						} 
-					}); 
-					def.resolve(); 
+							cl._display_widget = "wireless-client-lan-display-widget";
+							cl._wireless = wcl;
+						}
+					});
+					def.resolve();
 				}).fail(function(){
-					def.reject(); 
-				}); 
-				return def.promise(); 
+					def.reject();
+				});
+				return def.promise();
 			}
 		}
-	}); 
-}); 
+	});
+});
 
-JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
+JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 	function Wireless(){
-		this.scheduleStatusText = gettext("off"); 
-		this.wpsStatusText = gettext("off"); 
+		this.scheduleStatusText = $tr(gettext("off")); 
+		this.wpsStatusText = $tr(gettext("off")); 
 	}
 	
 	Wireless.prototype.annotateAdapters = function(adapters){
-		var def = $.Deferred(); 
-		var self = this; 
+		var def = $.Deferred();
+		var self = this;
 		self.getInterfaces().done(function(list){
-			var devices = {}; 
-			list.map(function(x){ devices[x.ifname.value] = x; }); 
+			var devices = {};
+			list.map(function(x){ devices[x.ifname.value] = x; });
 			adapters.map(function(dev){
 				if(dev.device in devices){
-					dev.name = devices[dev.device].ssid.value; 
-					dev.type = "wireless"; 
-					delete devices[dev.device]; 
+					dev.name = devices[dev.device].ssid.value;
+					dev.type = "wireless";
+					delete devices[dev.device];
 				}
 			});
-			// add any devices that are not in the list of adapters (ones that are down for instance) 
+			// add any devices that are not in the list of adapters (ones that are down for instance)
 			Object.keys(devices).map(function(k){
-				var device = devices[k]; 
+				var device = devices[k];
 				adapters.push({
-					name: device.ssid.value, 
-					device: device.ifname.value, 
+					name: device.ssid.value,
+					device: device.ifname.value,
 					type: "wireless"
-				}); 
-			}); 
+				});
+			});
 			// set type for devices whose names start with wl
 			adapters.forEach(function(dev){
-				if(dev.device && dev.device.indexOf("wl") == 0) dev.type = "wireless"; 
+				if(dev.device && dev.device.indexOf("wl") == 0) dev.type = "wireless";
 			});
-			def.resolve(); 
+			def.resolve();
 		}).fail(function(){
 			def.reject();
-		}); 
-		return def.promise(); 
+		});
+		return def.promise();
 	}
 
 	Wireless.prototype.getConnectedClients = function(){
-		var def = $.Deferred(); 
-		$rpc.router.stas().done(function(clients){
-			$rpc.router.clients6().done(function(cl6){
+		var def = $.Deferred();
+		$rpc.$call("router", "stas").done(function(clients){
+			$rpc.$call("router", "clients6").done(function(cl6){
 				var wlclients = Object.keys(clients).map(function(c){return clients[c];}).map(function(client){
 					Object.keys(cl6).map(function(c6){return cl6[c6];}).map(function(client6){
 						if(client.macaddr === client6.macaddr){
@@ -100,119 +99,130 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext){
 		}).fail(function(){
 			def.reject();
 		});
-		return def.promise(); 
+		return def.promise();
 	}
 
 	// returns radio devices
 	Wireless.prototype.getDevices = function(){
-		var deferred = $.Deferred(); 
+		var deferred = $.Deferred();
 		$uci.$sync("wireless").done(function(){
-			$uci.wireless["@wifi-device"].map(function(x){
-				// TODO: this should be a uci "displayname" or something
-				// TODO: actually this should be based on wireless ubus call field
-				if(x.band.value == "a") x[".frequency"] = gettext("5GHz"); 
-				else if(x.band.value == "b") x[".frequency"] = gettext("2.4GHz"); 
-			}); 
-			deferred.resolve($uci.wireless["@wifi-device"]); 
-		}); 
-		return deferred.promise(); 
+			$rpc.$call("router", "radios").done(function(radios){
+				var devices = $uci.wireless["@wifi-device"].map(function(dev){
+					var radio = radios[dev[".name"]];
+					if(radio){
+						dev.$info = radio;
+						dev[".frequency"] = radio.frequency || ((dev.band.value === 'a') ? $tr(gettext("5GHz")) : $tr(gettext("2.4GHz")));
+					}else{
+						dev[".frequency"] = (dev.band.value === 'a') ? $tr(gettext("5GHz")) : $tr(gettext("2.4GHz"));
+					}
+					return dev;
+				});
+				deferred.resolve(devices);
+			}).fail(function(){
+				deferred.reject("ubus call router radios was not found");
+			});
+		}).fail(function(){
+			deferred.reject("could not read uci wireless config");
+		});
+		return deferred.promise();
 	}
 
 	//! returns virtual interfaces that are configured
 	Wireless.prototype.getInterfaces = function(){
-		var deferred = $.Deferred(); 
+		var deferred = $.Deferred();
 		var self = this;
 		$uci.$sync("wireless").done(function(){
 			var ifs = $uci.wireless["@wifi-iface"];
-			self.getDevices().done(function(devices){
-				ifs.map(function(iface){
-					var dev = devices.find(function(dev){
-						return dev[".name"] === iface.device.value;
-					});
-					if(!dev) return;
-					iface[".frequency"] = (dev.band.value === "a") ? "5GHz" : "2.4GHz";
-				});
+			var er = [];
+			async.eachSeries(ifs, function(iface, next){
+				$rpc.$call("router", "wl", {"vif": iface.ifname.value}).done(function(data){
+					iface[".frequency"] = ((data.frequency && data.frequency === 5)?'5GHz':'2.4GHz');
+					iface.$info = data;
+				}).fail(function(e){ er.push(e);})
+				.always(function(){next();});
+			},
+			function(){
+				//if(er.length) we still want to continue deferred.reject(er);
 				deferred.resolve(ifs);
-			});			 
-		}); 
-		return deferred.promise(); 
+			});
+		});
+		return deferred.promise();
 	}
 	
 	Wireless.prototype.getDefaults = function(){
-		var deferred = $.Deferred(); 
-		$rpc.juci.wireless.run({"method":"defaults"}).done(function(result){
+		var deferred = $.Deferred();
+		$rpc.$call("juci.wireless", "run", {"method":"defaults"}).done(function(result){
 			if(!result) {
-				deferred.reject(); 
-				return; 
+				deferred.reject();
+				return;
 			}
 			
-			deferred.resolve(result); 
+			deferred.resolve(result);
 		}).fail(function(){
-			deferred.reject(); 
-		});  
-		return deferred.promise(); 
+			deferred.reject();
+		});
+		return deferred.promise();
 	}
 	
 	Wireless.prototype.scan = function(opts){
-		var deferred = $.Deferred(); 
-		$rpc.juci.broadcom.wireless.lua.run({"method":"scan", "args":JSON.stringify(opts)}).always(function(){
-			deferred.resolve(); 
-		});  
-		return deferred.promise(); 
+		var deferred = $.Deferred();
+		$rpc.$call("juci.broadcom.wireless.lua", "run", {"method":"scan", "args":JSON.stringify(opts)}).always(function(){
+			deferred.resolve();
+		});
+		return deferred.promise();
 	}
 	
 	Wireless.prototype.getScanResults = function(opts){
-		var deferred = $.Deferred(); 
-		$rpc.juci.broadcom.wireless.lua.run({"method":"scanresults", "args":JSON.stringify(opts)}).done(function(result){
-			deferred.resolve(result.access_points); 
-		}); 
-		return deferred.promise(); 
+		var deferred = $.Deferred();
+		$rpc.$call("juci.broadcom.wireless.lua", "run", {"method":"scanresults", "args":JSON.stringify(opts)}).done(function(result){
+			deferred.resolve(result.access_points);
+		});
+		return deferred.promise();
 	}
 	
-	return new Wireless(); 
-}); 
+	return new Wireless();
+});
 
 JUCI.app.run(function($ethernet, $wireless, $uci){
-	$ethernet.addSubsystem($wireless); 
-	// make sure we create status section if it does not exist. 
+	$ethernet.addSubsystem($wireless);
+	// make sure we create status section if it does not exist.
 	$uci.$sync("wireless").done(function(){
 		if(!$uci.wireless.status) {
 			$uci.wireless.$create({
-				".type": "wifi-status", 
+				".type": "wifi-status",
 				".name": "status"
 			}).done(function(){
 				$uci.$save();
-			});  
-		} 
-		$uci.$save(); 
-	}); 
-}); 
+			});
+		}
+		$uci.$save();
+	});
+});
 
 (function(){
-	UCI.$registerConfig("wireless"); 
+	UCI.$registerConfig("wireless");
 	UCI.wireless.$registerSectionType("wifi-status", {
-		"wlan":		{ dvalue: true, type: Boolean }, 
+		"wlan":		{ dvalue: true, type: Boolean },
 		"wps":		{ dvalue: true, type: Boolean },
 		"schedule":	{ dvalue: false, type: Boolean },
 		"sched_status":	{ dvalue: false, type: Boolean }
-	}); 
+	});
 	UCI.wireless.$registerSectionType("wifi-schedule", {
-		"days":		{ dvalue: [], type: Array, 
-			allow: ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], 
-			alidator: UCI.validators.WeekDayListValidator},
+		"days":		{ dvalue: [], type: Array, allow: ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], validator: UCI.validators.WeekDayListValidator},
 		"time":		{ dvalue: "", type: String, validator: UCI.validators.TimespanValidator }
 	}, function validator(section){
 		if(section.days.value.length == 0){
-			return gettext("please pick at least one day to schedule on"); 
+			return JUCI.$tr(gettext("Wifi Schedule: please pick at least one day to schedule on")); 
 		}
-		return null; 
-	}); 
+		return null;
+	});
 	UCI.wireless.$registerSectionType("wifi-device", {
 		"type": 		{ dvalue: "", type: String },
 		"country": 		{ dvalue: "EU/13", type: String},
 		"band": 		{ dvalue: "b", type: String, allow: [ "a", "b" ] },
 		"bandwidth": 	{ dvalue: 80, type: String, allow: [ "20", "40", "80" ] },
 		"channel":		{ dvalue: "auto", type: String, allow: [ "auto", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 36, 40, 44, 48 ] },
+		"obss_coex":	{ dvalue: true, type: Boolean },
 		"scantimer":	{ dvalue: 0, type: Number },
 		"wmm":			{ dvalue: true, type: Boolean },
 		"wmm_noack":	{ dvalue: false, type: Boolean },
@@ -229,29 +239,29 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"rifs":			{ dvalue: false, type: Boolean },
 		"rifs_advert":	{ dvalue: true, type: Boolean },
 		"maxassoc":		{ dvalue: 32, type: Number },
-		"dfsc":			{ dvalue: true, type: Boolean }, // ? 
+		"dfsc":			{ dvalue: true, type: Boolean }, // ?
 		"hwmode":		{ dvalue: "auto", type: String },
 		"disabled":		{ dvalue: false, type: Boolean },
 		"frameburst": 	{ dvalue: false, type: Boolean },
 		"beamforming": 	{ dvalue: true, type: Boolean }
-	}); 
+	});
 	UCI.wireless.$registerSectionType("wifi-iface", {
 		"device": 			{ dvalue: "", type: String },
-		"ifname": 			{ dvalue: "", type: String }, // name of the created device 
+		"ifname": 			{ dvalue: "", type: String }, // name of the created device
 		"network":			{ dvalue: "", type: String },
 		"mode":				{ dvalue: "ap", type: String },
 		"ssid":				{ dvalue: "", type: String },
 		"encryption":		{ dvalue: "none", type: String },
 		"cipher":			{ dvalue: "auto", type: String },
-		"key":				{ dvalue: "", type: String },
+		"key":				{ dvalue: "", type: String, validator: UCI.validators.WPAKeyValidator("#%&'()*,/:;<=>?|[]\"\\") },
 		"key_index": 		{ dvalue: 1, type: Number }, 
-		"key1":				{ dvalue: "", type: String },
-		"key2":				{ dvalue: "", type: String },
-		"key3":				{ dvalue: "", type: String },
-		"key4":				{ dvalue: "", type: String },
-		"radius_server":	{ dvalue: "", type: String },
-		"radius_port":		{ dvalue: "", type: String },
-		"radius_secret":	{ dvalue: "", type: String },
+		"key1":				{ dvalue: "", type: String, validator: UCI.validators.WEPKeyValidator },
+		"key2":				{ dvalue: "", type: String, validator: UCI.validators.WEPKeyValidator },
+		"key3":				{ dvalue: "", type: String, validator: UCI.validators.WEPKeyValidator },
+		"key4":				{ dvalue: "", type: String, validator: UCI.validators.WEPKeyValidator },
+		"radius_server":	{ dvalue: "", type: String, validator: UCI.validators.ASCIIValidator },
+		"radius_port":		{ dvalue: "", type: String, validator: UCI.validators.PortValidator },
+		"radius_secret":	{ dvalue: "", type: String, validator: UCI.validators.ASCIIValidator },
 		"gtk_rekey":		{ dvalue: 3600, type: Number },
 		"net_reauth":		{ dvalue: 36000, type: Number },
 		"wps_pbc":			{ dvalue: false, type: Boolean },
@@ -259,32 +269,41 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"bss_max":			{ dvalue: 32, type: Number },
 		"closed":			{ dvalue: false, type: Boolean },
 		"disabled":			{ dvalue: false, type: Boolean },
-		"macmode":			{ dvalue: 1, type: Number },
-		"macfilter":		{ dvalue: false, type: Boolean },
+		"macfilter":			{ dvalue: 0, type: Number },
 		"maclist":			{ dvalue: [], type: Array } // match_each: /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/ }
 	}, function validator(section){
-		if(section.disabled) return null;
-		// validate ssid
+		if(section.disabled.value !== false){ return null; }
+		var eList = [];
+// validate ssid
 		if(section.ssid.value.length >= 32) 
-			return gettext("SSID string can be at most 32 characters long!"); 
-		// validate keys
+			eList.push(JUCI.$tr(gettext("Invalid SSID: ")) + (section.ssid.value || JUCI.$tr(gettext("no SSID"))) + JUCI.$tr(gettext(". SSID can not be more than 32 characters long!")));
+// validate keys
 		switch(section.encryption.value){
+			case "wep-open":
 			case "wep": {
-				for(var id = 1; id <= 4; id++){
-					var key = section["key"+id]; 
-					if(key && key.value != "" && !key.value.match(/[a-f0-9A-F]{10,26}/)) 
-						return gettext("WEP encryption key #"+id+" must be 10-26 hexadecimal characters!"); 
+				var WEPValidator = new UCI.validators.WEPKeyValidator();
+				var err = null;
+				for(var i = 1; i <= 4; i++){
+					err = WEPValidator.validate(section["key"+i]);
+					if(err !== null) eList.push(JUCI.$tr(gettext("Wireless interface ")) + (section.ssid.value || JUCI.$tr(gettext("no SSID"))) + JUCI.$tr(gettext(" has invalid key #")) + i + JUCI.$tr(gettext(" error: ")) + err);
+				}
+				if(section["key"+section.key_index.value].value === ""){
+					eList.push(JUCI.$tr(gettext("Wireless interface ")) + (section.ssid.value || JUCI.$tr(gettext("no SSID"))) + JUCI.$tr(gettext(" must have key #")) + section.key_index.value + JUCI.$tr(gettext(" set!")));
 				}
 			} break;
-			case "psk": 
-			case "psk2": 
-			case "mixed-psk": {
-				if(!section.key.value || !(section.key.value.length >= 8 && section.key.value.length < 64))
-					return gettext("WPA key must be 8-63 characters long!"); 
-			} break; 
-			default: 
-				break; 
+			//case "psk":
+			case "psk2":
+			case "mixed-psk":
+				if((!section.key.value) && section.mode.value === "ap"){
+					eList.push(JUCI.$tr(gettext("Wireless interface ")) + (section.ssid.value || JUCI.$tr(gettext("no SSID"))) + JUCI.$tr(gettext(". WPA key must be 8-63 printable ASCII characters long!")));
+				}
+				break;
+			case "wpa-mixed":
+			case "wpa2":
+			default:
+				break;
 		}
-		return null; 
-	}); 	
-})(); 
+		if(eList && eList.length > 0) return eList;
+		return null;
+	});
+})();

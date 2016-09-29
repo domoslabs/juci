@@ -95,7 +95,7 @@ msgstr "Sträng Prioritet"
 msgid "Weighted Fair Queuing"
 msgstr "Viktbaserad kö"
 
-msgid "Pick Device"
+msgid "Select Device"
 msgstr "Välj enhet"
 
 msgid "Select base DSL device"

@@ -20,20 +20,6 @@
 
 JUCI.app
 .directive("juciNavbar", function($location, $rootScope, $navigation){
-	function activate(){
-		var active_node = $navigation.findNodeByHref($location.path().replace(/\//g, "")); 
-		if(!active_node) return; 
-		var top_node = $navigation.findNodeByPath(active_node.path.split("/")[0]); 
-		if(!top_node) return; 	
-		setTimeout(function(){
-			$("ul.nav li a").parent().removeClass("open"); 
-			$("ul.nav li a[href='#!"+top_node.href+"']").addClass("open"); 
-			$("ul.nav li a[href='#!"+top_node.href+"']").parent().addClass("open"); 
-		}, 0); 
-	}; activate(); 
-	$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-		activate(); 
-	});
 	return {
 		restrict: 'E', 
 		templateUrl: "/widgets/juci-navbar.html", 
@@ -44,10 +30,25 @@ JUCI.app
 .controller("NavigationCtrl", function($scope, $location, $localStorage, $navigation, $rootScope, $config, $rpc, $events){
 	$scope.tree = $navigation.tree(); 
 	$scope.log_events = []; 
-	//$scope.showLogButton = ($localStorage.getItem("mode") == "expert")?true:false;
+	$scope.mode = $localStorage.getItem("mode") || "expert";
 	
 	$scope.homepage = $config.settings.juci.homepage.value; 
 
+	$scope.getHref = function(item){
+		if(!item) return "";
+		if(!item.redirect) return item.href;
+		if(item.redirect === "first"){
+			if(!item.children_list) return "/404";
+			var child =  item.children_list.find(function(child){
+				if(child.modes && child.modes.length){
+					return child.modes.indexOf($scope.mode) !== -1;
+				}
+				return true;
+			});
+			return $scope.getHref(child);
+		}
+		return item.redirect;
+	}
 	$scope.hasChildren = function(menu){
 		return menu.children_list > 0; 
 	}
@@ -65,29 +66,14 @@ JUCI.app
 		});
 	}
 
-	$scope.isActive = function (viewLocation) { 
-		return viewLocation === $location.path();
+	$scope.isActive = function (path) { 
+		var item = $navigation.findTrunkByPath($location.path().replace("/", ""));
+		if(!item) return path === "overview";
+		return item.path === path;
 	};
 
 	$events.subscribe("logread.msg", function(ev){
-		$scope.log_events.push(ev); 
+		$scope.log_events.push(ev);
 		setTimeout(function(){ $scope.$apply(); }, 0); 
 	}); 
-	/*
-	$(function(){
-		var themes = $config.themes; 
-		$config.theme = localStorage.getItem("theme") || "default"; 
-		//var bootstrap = $('<link href="'+themes[$config.theme]+'/css/bootstrap.min.css" rel="stylesheet" />');
-		var theme = $('<link href="'+themes[$config.theme]+'/css/theme.css" rel="stylesheet" />');
-		//bootstrap.appendTo('head');
-		theme.appendTo('head'); 
-		$('.theme-link').click(function(){
-			var themename = $(this).attr('data-theme');
-			var themeurl = themes[themename];
-			$config.theme = themename;
-			localStorage.setItem("theme", themename);
-			//bootstrap.attr('href',themeurl+"/css/bootstrap.min.css");
-			theme.attr('href',themeurl+"/css/theme.css");
-		});
-	});*/
 }); 

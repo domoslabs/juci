@@ -21,12 +21,10 @@
 JUCI.app
 .controller("UPNPMainPage", function($scope, $uci, $systemService, $network, $firewall, $upnp, $tr, gettext, $rpc){
 	JUCI.interval.repeat("upnp-status-refresh", 5000, function(done){
-		if($rpc.juci && $rpc.juci.upnpd) $rpc.juci.upnpd.run({"method":"ports"}).done(function(result){ 
+		$rpc.$call("juci.upnpd", "run", {"method":"ports"}).done(function(result){ 
 			$scope.upnpOpenPorts = result.ports; 
 			$scope.$apply();
-			done(); 
-		});
-		else done();
+		}).always(function(){done();});
 	}); 
 	$scope.networks = [];
 	$systemService.find("miniupnpd").done(function(service){

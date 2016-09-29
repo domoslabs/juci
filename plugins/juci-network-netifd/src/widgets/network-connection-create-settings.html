@@ -1,0 +1,22 @@
+<div>
+	<juci-config-lines>
+		<juci-config-line title="{{'Protocol'|translate}}" ng-hide="model.iface.proto.value === 'static' || model.iface.proto.value === 'none'">
+			<juci-select ng-model="model.iface.proto.value" ng-items="allProtocols"></juci-select>
+		</juci-config-line>
+		<juci-config-line ng-show="showType()" title="{{'Interface Type'|translate}}">
+			<juci-select ng-model="model.iface.type.value" ng-items="interfaceTypes" ></juci-select>
+		</juci-config-line>
+		<div ng-show="model.iface.proto.value !== '' && interfaceTypes.length">
+			<hr />
+			<h3>{{'Physical device'|translate}}</h3>
+			<network-connection-type-none-edit ng-model="model.iface" ng-show="model.iface.type.value === ''"></network-connection-type-none-edit>
+			<network-connection-type-bridge-edit ng-model="model.iface" ng-show="model.iface.type.value === 'bridge'"></network-connection-type-bridge-edit>
+			<network-connection-type-anywan-edit ng-model="model.iface" ng-show="model.iface.type.value === 'anywan'"></network-connection-type-anywan-edit>
+			<hr />
+		</div>
+		<juci-config-line ng-show="AllZones.length" title="{{'Add network to a firewall zone'|translate}}" help="{{'If you select a zone the network will be added to that firewall zone when it is created'|translate}}">
+			<juci-select ng-model="model.zone" ng-items="AllZones" placeholder="{{'Do not add to firewall zone'|translate}}"></juci-select>
+		</juci-config-line>
+	</juci-config-lines>
+	<div class="alert alert-danger" ng-repeat="error in model.errors track by $index" ng-show="model.errors.length > 0">{{error}}</div>
+</div>

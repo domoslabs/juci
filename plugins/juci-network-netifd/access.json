@@ -27,16 +27,35 @@
 				"network.interface": [
 					"dump"
 				], 
+				"network.interface.*": [
+					"up",
+					"down"
+				], 
 				"router": [
+					"networks",
+					"usb",
+					"linkspeed",
+					"ports",
 					"dslstats",
 					"boardinfo", 
+					"radios",
 					"clients",
 					"clients6"
+				],
+				"file": [
+					"read"
+				],
+				"led.internet":[
+					"status"
 				]
 			}, 
 			"uci": [
 				"layer2_interface_ethernet", 
 				"network"
+			],
+			"owsd": [
+				"client",
+				"network.interface"
 			]
 		}, 
 		"write": {

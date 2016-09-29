@@ -22,8 +22,8 @@ JUCI.app
 .factory("networkHostPicker", function($modal, $network){
 	return {
 		show: function(opts){
-			var def = $.Deferred(); 
-			if(!opts) opts = {}; 
+			var def = $.Deferred();
+			if(!opts) opts = {};
 			$network.getConnectedClients().done(function(clients){
 				var modalInstance = $modal.open({
 					animation: true,
@@ -32,31 +32,31 @@ JUCI.app
 					resolve: {
 						hosts: function () {
 							return clients.map(function(cl){
-								return { label: cl.ipaddr, value: cl }; 
-							}); 
+								return { label: cl.ipaddr, value: cl };
+							});
 						}
 					}
 				});
 
 				modalInstance.result.then(function (data) {
 					setTimeout(function(){ // do this because the callback is called during $apply() cycle
-						def.resolve(data); 
-					}, 0); 
+						def.resolve(data);
+					}, 0);
 				}, function () {
 					console.log('Modal dismissed at: ' + new Date());
 				});
-			}); 
-			return def.promise(); 
+			});
+			return def.promise();
 		}
-	}; 
+	};
 })
-.controller("networkHostPickerModal", function($scope, $modalInstance, $wireless, hosts, gettext){
-	$scope.hosts = hosts; 
-	$scope.data = {}; 
+.controller("networkHostPickerModal", function($scope, $modalInstance, $wireless, hosts, $tr, gettext){
+	$scope.hosts = hosts;
+	$scope.data = {};
   $scope.ok = function () {
 		if(!$scope.data.selected) {
-			alert(gettext("You need to select a host!")); 
-			return; 
+			alert($tr(gettext("You need to select a host!")));
+			return;
 		}
 		$modalInstance.close($scope.data.selected);
   };

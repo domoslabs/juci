@@ -25,7 +25,7 @@ JUCI.app
 		scope: {
 			value: "=", 
 			total: "=", 
-			units: "="
+			units: "&"
 		}, 
 		templateUrl: "/widgets/juci-progress.html", 
 		replace: true, 

@@ -25,7 +25,7 @@
 				<td><div class="form-group {{route.netmask.error ? 'has-error': ''}}">
 					<input type="text" class="form-control" ng-model="route.netmask.value" placeholder="{{'Netmask'|translate}}"/>
 				</div></td>
-				<td><div class="form-group {{getError(route.gateway) ? '': 'has-error'}}">
+				<td><div class="form-group {{route.gateway.error ? 'has-error': ''}}">
 					<input type="text" class="form-control" ng-model="route.gateway.value" placeholder="{{'Default Gateway'|translate}}"/>
 				</div></td>
 				<td><input type="number" min="0" max="4294967295" class="form-control" ng-model="route.metric.value" placeholder="{{'0'|translate}}"/></td>
@@ -54,7 +54,7 @@
 				<td><div class="form-group {{getError(route.target) ? '': 'has-error'}}">
 					<input type="text" class="form-control" ng-model="route.target.value" placeholder="{{'IPv6 Address'|translate}}"/>
 				</div></td>
-				<td><div class="form-group {{getError(route.gateway) ? '': 'has-error'}}">
+				<td><div class="form-group {{route.gateway.error ? 'has-error': ''}}">
 					<input type="text" class="form-control" ng-model="route.gateway.value" placeholder="{{'IPv6 Gateway'|translate}}"/>
 				</div></td>
 				<td><input type="number" class="form-control" ng-model="route.metric.value" placeholder="{{'0'|translate}}"/></td>

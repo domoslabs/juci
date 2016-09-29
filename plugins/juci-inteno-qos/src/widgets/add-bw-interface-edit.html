@@ -1,6 +1,7 @@
 <div>
-	<h3>{{'Select which interface you want to put the Bandwidth Limitation on'|translate}}</h3>
-	<juci-config-line title="{{'Interface'|translate}}" help="{{'Interface to apply the restrictions on'|translate}}">
-		<juci-select ng-items="model.interfaces" ng-model="model.name"></juci-select>
-	</juci-config-line>
+	<juci-config-lines>
+		<juci-config-line title="{{'Interface name'|translate}}">
+			<juci-select ng-model="newIface.name" ng-items="nonLANInterfaces" placeholder="-- Select interface --">
+		</juci-config-line>
+	</juci-config-lines>
 </div>
