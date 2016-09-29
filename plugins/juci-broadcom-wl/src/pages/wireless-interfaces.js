@@ -3,6 +3,7 @@
 
 JUCI.app
 .controller("wirelessInterfacesPage", function($scope, $uci, $wireless, $tr, gettext, prompt, $modal){
+	var devices;
 	JUCI.interval.repeat("update-wireless-interfaces", 5000, function(next){update(); next();});
 
 	$scope.getItemTitle = function(item){
@@ -11,6 +12,10 @@ JUCI.app
 	}
 
 	function update(){
+		$wireless.getDevices().done(function(devs){
+			devices = devs;
+			$scope.$apply();
+		});
 		$wireless.getInterfaces().done(function(interfaces){
 			$scope.interfaces = interfaces;
 			$scope.interfaces.map(function(iface){
@@ -28,10 +33,11 @@ JUCI.app
 	}
 
 	$scope.onCreateInterface = function(){
+		if(!devices){ alert($tr(gettext("Couldn't load wireless radios from config"))); return; }
 		var numb = {};
+		devices.map(function(dev){ numb[dev[".name"]] = 0; });
 		$scope.interfaces.map(function(iface){
-			if(numb[iface.device.value]) numb[iface.device.value] ++;
-			else numb[iface.device.value] = 1;
+			if(numb[iface.device.value] !== undefined) numb[iface.device.value] ++;
 		});
 		if(Object.keys(numb).filter(function(freq){ return numb[freq] < 4; }).length == 0){
 			alert($tr(gettext("No more Wireless Interface spaces left. There can't be more than 4 Interfaces on each radio")));

@@ -29,7 +29,7 @@ JUCI.app
 	$wireless.getInterfaces().done(function(interfaces){
 		$wireless.getDevices().done(function(devices){
 			var fullRadios = devices.filter(function(dev){ 
-				var radiotyppe = interfaces.filter(function(intf){ return intf[".frequency"] == dev[".frequency"]; });
+				var radiotyppe = interfaces.filter(function(intf){ return intf.device.value == dev[".name"]; });
 				if(radiotyppe.length > 3) return true;
 				return false
 			}).map(function(x){ return x[".frequency"]; });
