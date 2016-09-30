@@ -27,9 +27,9 @@ JUCI.app
 		replace: true
 	}; 
 })
-.controller("NavigationCtrl", function($scope, $location, $localStorage, $navigation, $rootScope, $config, $rpc, $events){
-	$scope.tree = $navigation.tree(); 
-	$scope.log_events = []; 
+.controller("NavigationCtrl", function($scope, $location, $localStorage, $navigation, $rootScope, $config, $rpc, $events, $rootScope, $wiki){
+	$scope.tree = $navigation.tree();
+	$scope.log_events = [];
 	$scope.mode = $localStorage.getItem("mode") || "expert";
 	
 	$scope.homepage = $config.settings.juci.homepage.value; 
