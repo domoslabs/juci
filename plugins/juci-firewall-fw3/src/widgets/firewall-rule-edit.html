@@ -3,7 +3,7 @@
 		<juci-config-line title="{{'Enable'|translate}}">
 			<switch class="green" ng-model="rule.enabled.value" />
 		</juci-config-line>
-		<juci-config-line ng-show="canHideFirewallRule" title="{{'Show to users'|translate}}">
+		<juci-config-line ng-show="canHideFirewallRule" title="{{'Expose to'|translate}}">
 			<dropdown-multi-select input-model="users.allUsers" output-model="users.out" button-label="label"
 				item-label="label" on-open="reloadUsers()" tick-property="selected" />
 		</juci-config-line>

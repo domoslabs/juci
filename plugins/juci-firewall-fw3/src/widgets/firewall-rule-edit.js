@@ -87,35 +87,44 @@ JUCI.app
 		});
 	}
 
-	$scope.$watch("rule", function(rule){
-		if(!rule || !rule.constructor || !rule.constructor || rule.constructor.name !== "UCISection") return;
-		$scope.data.src_macs = rule.src_mac.value.map(function(x){ return {text:x}; });
-		$scope.data.dest_macs = rule.dest_mac.value.map(function(x){ return {text:x}; });
-		$scope.data.dest_ips = rule.dest_ip.value.map(function(x){ return {text:x}; });
-		$scope.data.src_ips = rule.src_ip.value.map(function(x){ return {text:x}; });
-
-		$uci.$sync("passwords").done(function(){
-			$scope.users = {out:[]};
-			$scope.$apply();
-			$scope.reloadUsers = function(){
-				var all = false;
-				var sel = true;
-				if(rule["_access_r"].value.length === 0) all = true;
-				$scope.users.allUsers = $uci.passwords["@usertype"].map(function(x){
-					if(!all) sel = (rule["_access_r"].value.find(function(usr){
-						return usr === x[".name"];
-					}) !== undefined);
-					return { label: x[".name"], value: x[".name"], selected: sel};
-				});
-			}
+	$uci.$sync("passwords").done(function(){
+		$scope.$watch("rule", function(rule){
+			if(!rule || !rule.constructor || !rule.constructor || rule.constructor.name !== "UCISection") return;
+			$scope.data.src_macs = rule.src_mac.value.map(function(x){ return {text:x}; });
+			$scope.data.dest_macs = rule.dest_mac.value.map(function(x){ return {text:x}; });
+			$scope.data.dest_ips = rule.dest_ip.value.map(function(x){ return {text:x}; });
+			$scope.data.src_ips = rule.src_ip.value.map(function(x){ return {text:x}; });
 			$scope.reloadUsers();
-			$scope.$watch("users.out", function(out){
-				if(!out) return;
-				rule["_access_r"].value = out.map(function(usr){ return usr.value; });
-			}, false);
-			$scope.$apply();
 		});
+		$scope.users = {out:[]};
+		$scope.reloadUsers = function(){
+			var rule = $scope.rule;
+			if(!rule) return;
+			var all = false;
+			var sel = true;
+			if(rule["_access_r"].value.length === 0) all = true;
+			$scope.users.allUsers = ($uci.passwords["@usertype"] || []).map(function(x){
+				if(!all) sel = (rule["_access_r"].value.find(function(usr){
+					return usr === x[".name"];
+				}) !== undefined);
+				return { label: x[".name"], value: x[".name"], selected: sel};
+			}).filter(function(x){ return x.value !== $rpc.$user(); });
+		}
+
+		$scope.$watch("users.out", function(out){
+			var rule = $scope.rule;
+			if(!out || !$scope.users.allUsers || !rule) return;
+			if(out.length === $scope.users.allUsers.length){
+				rule["_access_r"].value = [];
+			}else if(out.length === 0){
+				rule["_access_r"].value = [$rpc.$user()];
+			}else{
+				rule["_access_r"].value = out.map(function(usr){ return usr.value; }).concat([$rpc.$user()]);
+			}
+		}, false);
+		$scope.$apply();
 	});
+
 	$scope.$watch("data.dest_ips", function(ips){
 		if(!$scope.rule || !ips) return;
 		$scope.rule.dest_ip.value = ips.map(function(x){ return x.text;});
