@@ -2,11 +2,29 @@
 	<juci-overview-widget title="{{'LAN'|translate}}" icon="juci juci-network" href="#!/internet-ethernet" show-edit="true" on-expand="openExpand()">
 		<h4 style="text-align: center;" translate ng-show="lanNetworks.length == 0">No Lan networks</h4>
 		<div ng-repeat="network in lanNetworks track by $index">
-			<div class="row lan-overview-network">
-				<div class="col-xs-2" style="margin-top:10px"><i class="juci juci-network fa-lg"></i></div>
-				<div class="col-xs-5" style="padding:10px;">{{network.ipaddr.value}}<i class="fa fa-spinner fa-spin" ng-show="!network.ipaddr"></i></div>
-				<div class="col-xs-3" style="padding:10px;">{{network[".name"].toUpperCase()}}</div>
-				<div class="col-xs-2" style="padding:10px;" ng-show="network.ipaddr"><i class="juci juci-edit juci-lg" style="float:right; cursor:pointer;" ng-click="onEditLan(network)"></i></div>
+			<div class="lan-overview-network">
+				<div class="row" ng-show="network.$info && network.$info['ipv4-address'] && network.$info['ipv4-address'].length">
+					<div class="col-xs-2" style="margin-top:10px"><i class="juci juci-network fa-lg"></i></div>
+					<div class="" ng-repeat="address in network.$info['ipv4-address'] track by $index">
+						<div class="col-xs-5" style="padding:10px;">{{address.address}}<i class="fa fa-spinner fa-spin" ng-show="!network.ipaddr"></i></div>
+					</div>
+					<div class="col-xs-3" style="padding:10px;">{{network[".name"].toUpperCase()}}</div>
+					<div class="col-xs-2" style="padding:10px;" ng-show="network.ipaddr"><i class="juci juci-edit juci-lg" style="float:right; cursor:pointer;" ng-click="onEditLan(network)"></i></div>
+				</div>
+				<div class="row" ng-show="network.$info && network.$info['ipv6-address'] && network.$info['ipv6-address'].length">
+					<div class="col-xs-2"></div>
+					<div ng-repeat="address in network.$info['ipv6-address'] track by $index" title="{{address.address}}">
+						<div class="col-xs-5" style="padding:10px;">{{address.address}}</div>
+					</div>
+					<div class="col-xs-5"></div>
+				</div>
+				<div class="row" ng-show="network.$info && !(network.$info['ipv6-address'] && network.$info['ipv6-address'].length) && network.$info['ipv6-prefix-assignment'] && network.$info['ipv6-prefix-assignment'].length">
+					<div class="col-xs-2"></div>
+					<div ng-repeat="address in network.$info['ipv6-prefix-assignment'] track by $index" title="{{address.address}}">
+						<div class="col-xs-5" style="padding:10px;">{{address.address}}</div>
+					</div>
+					<div class="col-xs-5"></div>
+				</div>
 			</div>
 			<div class="row" style="padding:10px;" ng-show="!network._clients"><i class="fa fa-spinner fa-spin"></i></div>
 			<div class="row" ng-show="network._clients && network._clients.length == 0" translate style="text-align: center">No Clients in {{network[".name"].toUpperCase()}} network</div>
