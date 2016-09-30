@@ -272,8 +272,7 @@ JUCI.app
 							var dev_node = {
 								id: count++,
 								label: myString(String(dev.name ? String(dev.name).toUpperCase() : dev.ssid)),
-								title: (dev.name)? String(dev.name).toUpperCase() + '<br />' + $tr(gettext("Link speed")) + ': ' + dev.linkspeed :
-													dev.ssid + ' @ ' + ((radios[device.substring(0,3)])? radios[device.substring(0,3)].frequency : $tr(gettext('unknown'))),
+								title: getPortTitle(dev, device, radios),
 								size: 30,
 								image: device.match("eth")?getIcon("eth",dev):getIcon("wl", dev),
 								shape: "image"
@@ -409,6 +408,20 @@ JUCI.app
 		});
 	});
 
+	function getPortTitle(dev, device, radios){
+		var wired = (dev && dev.name);
+		var title;
+		if(wired)
+			title = String(dev.name).toUpperCase() + '<br />' + $tr(gettext("Link speed")) + ': ' + dev.linkspeed;
+		else
+			title = dev.ssid + ' @ ' + ((radios[device.substring(0,3)])? radios[device.substring(0,3)].frequency : $tr(gettext('unknown')));
+		if(!dev.statistics) return;
+		if(dev.statistics.tx_bytes !== undefined) title = title + "<br />" + $tr(gettext("TX bytes:")) + " " + dev.statistics.tx_bytes;
+		if(dev.statistics.rx_bytes !== undefined) title = title + "<br />" + $tr(gettext("RX bytes:")) + " " + dev.statistics.rx_bytes;
+		if(dev.statistics.tx_errors) title = title + "<br />" + $tr(gettext("TX errors:")) + " " + dev.statistics.tx_errors;
+		if(dev.statistics.rx_errors) title = title + "<br />" + $tr(gettext("RX errors:")) + " " + dev.statistics.rx_errors;
+		return title;
+	}
 	function getWanTitle(type, wan, data){
 		if(!wan) return "";
 		var t= wan.interface + '<br />' + $tr(gettext('Connection Type')) + ': ';
