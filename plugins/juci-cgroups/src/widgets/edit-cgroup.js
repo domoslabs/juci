@@ -15,7 +15,7 @@ JUCI.app
 	$scope.knobsForSelect = [];
 	$scope.knobsForSelectDefault = [];
 
-	$rpc.$call("cgroups", "knobs").done(function(data){
+	$rpc.$call("juci.cgroups", "knobs").done(function(data){
 		function removeReleaseAgent(str){ return str==="release_agent" ? false:true; }
 		$scope.knobsForSelectDefault = data.knobs.filter(removeReleaseAgent);
 	}).fail(function(e){ console.log("'ubus call cgroups knobs' failed: "+e); });
@@ -79,7 +79,7 @@ JUCI.app
 		else{
 			name = name.replace(/_/g,"/");
 		}
-		$rpc.$call("cgroups", "knobs", {'cgroup':name}).done(function(data){
+		$rpc.$call("juci.cgroups", "knobs", {'cgroup':name}).done(function(data){
 			if(data.knobs.length!==0){ $scope.knobsForSelect = data.knobs; }
 			else{ $scope.knobsForSelect = $scope.knobsForSelectDefault; }
 			$scope.$apply();

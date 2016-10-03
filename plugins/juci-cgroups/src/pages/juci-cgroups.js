@@ -14,7 +14,7 @@ JUCI.app.controller("cgroupsCtrl", function($scope, $uci, $juciInputModal, $tr){
 		function underscore2Slash(str){ return str.replace(/_/g,"/"); }
 		$scope.cgroupsForSelect = $scope.cgroup.map(getDotName).filter(hasUnderscore).map(underscore2Slash);
 
-		$rpc.$call("cgroups", "procs").done(function(data){
+		$rpc.$call("juci.cgroups", "procs").done(function(data){
 			$scope.procsForSelect = data.procs;
 		}).fail(function(e){ console.log("'ubus call cgroups procs' failed: "+e); });
 

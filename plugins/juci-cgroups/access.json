@@ -6,7 +6,7 @@
 				"cgroups"
 			],
 			"ubus": {
-				"cgroups": [
+				"juci.cgroups": [
 					"knobs",
 					"procs"
 				]
