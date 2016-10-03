@@ -302,4 +302,4 @@ msgid "menu-dhcp-status-title"
 msgstr "DHCP Status"
 
 msgid "menu-dhcp-settings-title"
-msgstr "DHCP"
+msgstr "DHCP/DNS"
