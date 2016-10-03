@@ -1,0 +1,48 @@
+<juci-layout-with-sidebar>
+	<div ng-controller="cgroupsCtrl">
+		<h2>Cgroups</h2>
+
+		<juci-config-line title="{{'Enable Cgroups'|translate}}">
+			<switch class="green" ng-model="cgroups.cgroups.enabled.value" />
+		</juci-config-line>
+
+		<tabset>
+			<tab heading="Cgroups">
+				<juci-config-line title="{{ 'Default Group' | translate }}">
+					<juci-select ng-items="cgroupsForJuciSelect" ng-model="cgroups.cgroups.defgroup.value" />
+				</juci-config-line>
+
+				<juci-config-section>
+					<juci-list-editor ng-items="cgroup" item-editor="edit-cgroup" get-item-title="getName($item)" on-create="onAddCgroup()" on-delete="onDelete($item)" ></juci-list-editor>
+				</juci-config-section>
+			</tab>
+
+			<tab heading="Procmaps">
+				<div class="panel panel-default">
+					<div class="row" style="margin-top:20px">
+						<div class="col-sm-6" style="font-size: 1.2em">Set new procmap</div>
+						<div class="col-sm-6" style="display: flex">
+							<select ng-model="data.newProc" style="min-width:100px; background-color:white; border-color:#CCCCCC; color:{{!(data.newProc) ? '#999999' : '#555555'}}">
+								<option value="" disabled selected style="display: none">Process</option>'
+								<option ng-repeat="proc in procsForSelect track by $index" style="color:#555555">{{proc}}</option>
+							</select>
+							<select ng-model="data.newValue" style="min-width:100px; background-color:white; border-color:#CCCCCC; color:{{!(data.newValue) ? '#999999' : '#555555'}}">
+								<option value="" disabled selected style="display: none">Cgroup</option>'
+								<option ng-repeat="cgroup in cgroupsForSelect track by $index" style="color:#555555">{{cgroup}}</option>
+							</select>
+							<button class="btn btn-default" ng-click="addProcmap()"><i class="fa fa-plus"></i></button>
+						</div>
+					</div>
+
+					<juci-config-line ng-repeat="proc in procmaps.value track by $index">
+						<div class="input-group">
+							<input class="form-control" type="text" style="max-width: 196px !important" ng-model="proc" ng-disabled="true"/>
+							<button class="btn btn-default" ng-click="delProcmap($index)"><i class="fa fa-trash-o"></i></button>
+						</div>
+					</juci-config-line>
+					<div style="margin-bottom: 20px !important"></div>
+				</div>
+			</tab>
+		</tabset>
+	<div>
+</juci-layout-with-sidebar>

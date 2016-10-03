@@ -1,0 +1,21 @@
+{
+	"juci-cgroups": {
+		"description": "JUCI Cgroups Module",
+		"read": {
+			"uci": [
+				"cgroups"
+			],
+			"ubus": {
+				"juci.cgroups": [
+					"knobs",
+					"procs"
+				]
+			}
+		},
+		"write": {
+			"uci": [
+				"cgroups"
+			]
+		} 
+	}
+}
