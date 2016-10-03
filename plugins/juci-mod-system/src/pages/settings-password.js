@@ -63,6 +63,10 @@ JUCI.app
 		$scope.showModal = 1;
 	}
 
+	$scope.onResetPasswordClick = function(){
+		$uci.passwords[$scope.modal.username].reset.value = 1;
+	}
+
 	$scope.onAcceptModal = function(){
 		$scope.error = "";
 		if($scope.modal.password != $scope.modal.password2) alert($tr(gettext("Passwords do not match!")));
