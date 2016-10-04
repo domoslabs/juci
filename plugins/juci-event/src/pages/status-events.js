@@ -70,11 +70,12 @@ JUCI.app
 			string += "\n" + JSON.stringify(log);
 		});
 		var blob = new Blob([string],{type:"application/json"});
-		url = window.URL.createObjectURL(blob);
+		var url = window.URL.createObjectURL(blob);
 		a.href = url;
 		a.download = "juci-logs.txt";
 		a.click();
-		window.URL.revokeObjectURL(url);
+		//window.URL.revokeObjectURL(url); //This is run too fast, so download not possible in firefox.
+		// The URL will automatically be revoked once the page is unloaded.
 	}
 	$scope.update = function(update){
 		if(!AllLogs) return;
