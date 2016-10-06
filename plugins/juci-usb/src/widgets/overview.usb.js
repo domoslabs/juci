@@ -33,7 +33,8 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("overviewWidget20USBCtrl", function($scope, $uci, $usb, $events, $juciDialog, $tr, gettext, $firewall){
+.controller("overviewWidget20USBCtrl", function($scope, $uci, $config, $usb, $events, $juciDialog, $tr, gettext, $firewall){
+	$scope.href = $config.getWidgetLink("overviewWidget20USB")
 	$events.subscribe("hotplug.usb", function(res){
 		if(res.data && res.data.action && (res.data.action == "add" || res.data.action == "remove")){
 			update();

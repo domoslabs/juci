@@ -1,6 +1,7 @@
 <div class="overview-small">
 	<div class="icon"><i class="juci juci-world juci-lg"></i></div>
-	<div class="name"><a href="#!/internet-ethernet" style="color:white;">{{'WAN'|translate}}</a></div>
+	<div class="name" ng-show="href"><a href="{{href}}" style="color:white;">{{'WAN'|translate}}</a></div>
+	<div class="name" ng-hide="href"><div style="color:white;">{{'WAN'|translate}}</div></div>
 	<div class="content">
 		<div ng-show="up" class="label label-success" translate>ONLINE</div>
 		<div ng-show="!up" class="label label-danger" translate>OFFLINE</div>

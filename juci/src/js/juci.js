@@ -295,6 +295,12 @@
 		"modes": 			{ dvalue: [], type: Array },
 		"require":			{ dvalue: [], type: Array },
 	});
+	UCI.juci.$registerSectionType("widget", {
+		"name":		{ dvalue: [], type: Array },
+		"link":		{ dvalue: "", type: String },
+		"require":	{ dvalue: [], type: Array },
+		"modes":	{ dvalue: [], type: Array }
+	});
 	UCI.juci.$registerSectionType("wiki", {
 		"server":	{ dvalue: "http://docs.intenogroup.com", type: String },
 		"version":	{ dvalue: "v39", type: String },

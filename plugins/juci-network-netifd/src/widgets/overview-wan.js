@@ -46,7 +46,8 @@ JUCI.app
 		return (sec+ 's');
     };
 })
-.controller("overviewWidgetSmallWan", function($scope, $firewall, $rpc, $events){
+.controller("overviewWidgetSmallWan", function($scope, $firewall, $rpc, $events, $config){
+	$scope.href = $config.getWidgetLink("overviewWidget11WAN");
 	function refresh(){
 		var wans,wan_zones;
 		async.series([
@@ -84,7 +85,8 @@ JUCI.app
 		refresh();
 	});
 })
-.controller("overviewWidgetWAN", function($scope, $rpc, $tr, gettext, $events, $firewall){
+.controller("overviewWidgetWAN", function($scope, $rpc, $tr, gettext, $events, $firewall, $config){
+	$scope.href = $config.getWidgetLink("overviewWidget11WAN");
 	JUCI.interval.repeat("update_wan_uptime", 1000, function(next){
 		if(!$scope.uptime || $scope.uptime === 0){ next(); return; }
 		$scope.uptime ++;

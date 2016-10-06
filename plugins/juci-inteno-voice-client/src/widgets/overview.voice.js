@@ -14,14 +14,11 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("overviewWidgetVoice", function($scope, $rpc, $uci, $tr, gettext){
+.controller("overviewWidgetVoice", function($scope, $rpc, $uci, $tr, gettext, $config){
+	$scope.href = $config.getWidgetLink("overviewStatusWidget40Voice");
 	$scope.sipAccounts = [];
 	$scope.phoneSchedStatus = $tr(gettext("off"));
 	$scope.str_unknown = $tr(gettext("Unknown"));
-	if(!$rpc.$has("asterisk", "status")){
-		$scope.showVioceWidget = true;
-		return;
-	}
 
 	JUCI.interval.repeat("load-phone-small-widget", 5000, function(done){
 		async.series([
@@ -32,7 +29,6 @@ JUCI.app
 					if($uci.voice_client && $uci.voice_client["@sip_service_provider"]){
 						$scope.sipAccounts = $uci.voice_client["@sip_service_provider"];
 					}
-					$scope.showVoiceWidget = true;
 				}).always(function(){ next(); });
 			},
 			function(next){

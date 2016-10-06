@@ -31,14 +31,16 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("overviewStatusWidgetWiFi", function($scope, $rpc){
+.controller("overviewStatusWidgetWiFi", function($scope, $rpc, $config){
+	$scope.href = $config.getWidgetLink("overviewStatusWidget00WiFi");
 	$scope.wifiRadios = [];
 	$rpc.$call("router", "radios").done(function(data){
 		$scope.wifiRadios = Object.keys(data).map(function(radio){ return data[radio]; });
 		$scope.$apply();
 	});
 })
-.controller("overviewWidgetWiFi", function($scope, $rpc, $uci, $tr, gettext, $juciDialog, $events, $wireless){
+.controller("overviewWidgetWiFi", function($scope, $rpc, $uci, $tr, gettext, $juciDialog, $events, $wireless, $config){
+	$scope.href = $config.getWidgetLink("overviewWidget00WiFi");
 	var longPress = false;
 	var timeout;
 	$scope.wpsColor = "black"

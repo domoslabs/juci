@@ -6,7 +6,8 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("overviewWidgetEthernet", function($scope, $ethernet, $events){
+.controller("overviewWidgetEthernet", function($scope, $ethernet, $events, $config){
+	$scope.href = $config.getWidgetLink("overviewStatusWidget01Ethernet");
 	$scope.ethPorts = [];
 	function refresh(){
 		$ethernet.getAdapters().done(function(adapters){

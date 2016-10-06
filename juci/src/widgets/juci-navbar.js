@@ -32,8 +32,6 @@ JUCI.app
 	$scope.log_events = [];
 	$scope.mode = $localStorage.getItem("mode") || "expert";
 	
-	$scope.homepage = $config.settings.juci.homepage.value; 
-
 	$scope.getHref = function(item){
 		if(!item) return "";
 		if(!item.redirect) return item.href;

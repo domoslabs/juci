@@ -1,5 +1,5 @@
 <div>
-	<juci-overview-widget title="{{'LAN'|translate}}" icon="juci juci-network" href="#!/internet-ethernet" show-edit="true" on-expand="openExpand()">
+	<juci-overview-widget title="{{'LAN'|translate}}" icon="juci juci-network" href="{{href}}" show-edit="true" on-expand="openExpand()">
 		<h4 style="text-align: center;" translate ng-show="lanNetworks.length == 0">No Lan networks</h4>
 		<div ng-repeat="network in lanNetworks track by $index">
 			<div class="lan-overview-network">

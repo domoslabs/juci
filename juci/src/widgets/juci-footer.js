@@ -26,6 +26,7 @@ JUCI.app
 	}; 
 })
 .controller("juciFooter", function($localStorage, $scope, $rpc, $firewall, $languages, gettextCatalog, $config, $wiki, $location){
+	if(!$config || !$config.settings || !$config.settings.localization) return;
 	$scope.languages = $languages.getLanguages();
 	if(!$scope.languages){
 		gettextCatalog.setCurrentLanguage("en") //if config is missing or broken set default language to english

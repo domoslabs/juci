@@ -46,8 +46,17 @@
 				UCI.$sync("juci").done(function(){
 					if(UCI.juci){
 						self.settings = UCI.juci; 
+						self.getWidgetLink = function(widget_name){
+							var wid = self.settings["@widget"].find(function(widget){
+								return widget.name.value.find(function(name){ return name === widget_name });
+							});
+							if(wid && wid.link && wid.link.value)
+								return wid.link.value;
+							return "";
+						}
 						deferred.resolve(); 
 					} else {
+						self.getWidgetLink = function(widget_name){ return "";}
 						console.warning("Could not load juci config from router. It should exist by default. Please check that you have permissions to access it"); 
 						deferred.reject(); 
 					}

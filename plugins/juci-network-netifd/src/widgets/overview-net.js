@@ -106,7 +106,8 @@ JUCI.app
 		console.log(e)
 	})
 })
-.controller("overviewWidgetNetwork", function($scope, $firewall, $tr, gettext, $juciDialog, $uci, $events){
+.controller("overviewWidgetNetwork", function($scope, $firewall, $tr, gettext, $juciDialog, $uci, $events, $config){
+	$scope.href = $config.getWidgetLink("overviewWidget10Network")
 	$scope.openExpand = function(){
 		if (window.innerWidth < 770)
 			return;
