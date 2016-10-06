@@ -621,8 +621,8 @@
 		UCISection.prototype.$can_edit = function(user){
 			if(!user || typeof user !== "string") user = $rpc.$user();
 			var self = this;
-			if(!self["_access_r"].value.length) return true;
-			return self["_access_r"].value.find(function(priv){ return priv === user; }) !== undefined;
+			if(!self["_access_w"].value.length) return true;
+			return self["_access_w"].value.find(function(priv){ return priv === user; }) !== undefined;
 		}
 		
 		UCISection.prototype.$begin_edit = function(){
