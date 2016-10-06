@@ -227,8 +227,16 @@ div.logo {
 }
 
 .overview-banner {
-	background: url("../img/overview_header.jpg") repeat scroll top center !important;
-	background-color: "#fafffa";
+	@media screen and (min-width: 600px) {
+		background-image: url("../img/DNA_right_header.png"), url("../img/DNA_left_header.png") !important;
+		background-position: right top, left bottom !important;
+	}
+	@media screen and (max-width: 599px){
+		background-image: url("../img/DNA_right_header.png") !important;
+		background-position: right top !important;
+	}
+	background-repeat: no-repeat !important;
+	background-color: #fafffa !important;
 	height: 400px;
 	margin-bottom: 30px;
 }
