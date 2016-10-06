@@ -1,6 +1,7 @@
 #!/bin/sh
 
 . /usr/share/libubox/jshn.sh
+#. /lib/functions.sh for future reference
 
 populate_timezones() {
 cat >> /tmp/timezones <<EOF
@@ -411,7 +412,7 @@ EOF
 
 case "$1" in
 	list)
-		echo '{ "defaultreset" : {}, "reboot" : {}, "zonelist" : {} }'
+		echo '{ "defaultreset" : {}, "reboot" : {}, "zonelist" : {}, }' #"users" : {} }' for future reference
 	;;
 	call)
 		case "$2" in
@@ -432,6 +433,18 @@ case "$1" in
 				[ -f /tmp/timezones ] || populate_timezones
 				[ -f /tmp/timezones ] && cat /tmp/timezones
 			;;
+			#users) for future reference
+			#	add_user(){
+			#		local username
+			#		config_get username "$1" username
+			#		json_add_string "" "$username"
+			#	}
+			#	json_init
+			#	json_add_array "users"
+			#	config_load rpcd
+			#	config_foreach add_user login
+			#	json_dump
+			#;;
 		esac
 	;;
 esac
