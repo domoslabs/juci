@@ -135,6 +135,9 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 			var ifs = $uci.wireless["@wifi-iface"];
 			var er = [];
 			async.eachSeries(ifs, function(iface, next){
+				if(iface.ifname.value === "" && $uci.wireless.$getWriteRequests().length === 0){
+					$uci.wireless.$mark_for_reload(); //sometime ifname is not adde fast enough
+				}
 				$rpc.$call("router", "wl", {"vif": iface.ifname.value}).done(function(data){
 					iface[".frequency"] = ((data.frequency && data.frequency === 5)?'5GHz':'2.4GHz');
 					iface.$info = data;
