@@ -215,7 +215,7 @@ JUCI.app
 						addNode(wan, title);
 						callback();
 					}else if(wan.device.match("eth[0-9]")){
-						$rpc.$call("router.port", "info", { "port": wan.device.match("eth[0-9]")[0] }).done(function(data){
+						$rpc.$call("router.port", "status", { "port": wan.device.match("eth[0-9]")[0] }).done(function(data){
 							title = getWanTitle("eth", wan, data);
 							addNode(wan, title);
 						}).fail(function(e){console.log(e);}).always(function(){callback();});

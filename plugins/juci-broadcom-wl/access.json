@@ -3,7 +3,7 @@
 		"description": "Broadcom wireless plugin",
 		"read": {
 			"ubus": {
-				"wps": [
+				"router.wps": [
 					"genpin",
 					"pbc",
 					"pbc_client",
@@ -19,11 +19,15 @@
 					"scanresults",
 					"set_credentials"
 				],
-				"router": [
-					"info",
-					"wl",
+				"router.system": [
+					"info"
+				],
+				"router.network": [
+					"clients"
+				],
+				"router.wireless": [
+					"status",
 					"stas",
-					"clients6",
 					"radios"
 				]
 			}, 

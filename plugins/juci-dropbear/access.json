@@ -3,7 +3,7 @@
 		"description": "JUCI dropbear module",
 		"read": {
 			"ubus": {
-				"router": [
+				"router.dropbear": [
 					"add_ssh_key",
 					"get_ssh_keys",
 					"del_ssh_key"

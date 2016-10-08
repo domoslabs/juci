@@ -139,7 +139,7 @@ JUCI.app
 				else if(w.device.match(/ptm/)) type = $tr(gettext("VDSL"));
 				else if(w.device.match(/wwan/)) type = $tr(gettext("3G/4G"));
 				if(w.device && w.device.match("eth[0-9].[0-9]")){
-					$rpc.$call("router.port", "info", {"port":w.device.substring(0,4)}).done(function(data){
+					$rpc.$call("router.port", "status", {"port":w.device.substring(0,4)}).done(function(data){
 						if(data && data.speed)
 							$scope.data.linkspeed = data.speed;
 						if(data && data.type)

@@ -6,7 +6,7 @@
 				"backup"
 			],
 			"ubus": {
-				"router": [
+				"router.system": [
 					"logs"
 				]
 			}

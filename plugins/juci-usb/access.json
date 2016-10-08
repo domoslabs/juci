@@ -3,8 +3,8 @@
 		"description": "JUCI USB Module",
 		"read": {
 			"ubus": {
-				"router":[
-					"usb"
+				"router.usb":[
+					"status"
 				]
 			},
 			"owsd": [

@@ -3,8 +3,8 @@
 		"description": "Broadcom dsl plugin",
 		"read": {
 			"ubus": {
-				"router": [
-					"dslstats"
+				"router.dsl": [
+					"stats"
 				]
 			}, 
 			"uci": [

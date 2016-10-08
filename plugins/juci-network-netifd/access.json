@@ -24,15 +24,22 @@
 					"up",
 					"down"
 				],
-				"router": [
-					"networks",
-					"usb",
-					"linkspeed",
+				"router.network": [
+					"dump",
 					"ports",
-					"dslstats",
-					"radios",
-					"clients",
-					"clients6"
+					"clients"
+				],
+				"router.usb": [
+					"status"
+				],
+				"router.wireless": [
+					"radios"
+				],
+				"router.port": [
+					"status"
+				],
+				"router.dsl": [
+					"stats"
 				],
 				"file": [
 					"read"

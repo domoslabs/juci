@@ -6,7 +6,7 @@
 				"dhcp"
 			],
 			"ubus": {
-				"router": [
+				"router.network": [
 					"leases"
 				]
 			}

@@ -36,10 +36,10 @@
 					"disable",
 					"reload"
 				],
-				"router": [
+				"router.system": [
 					"info",
 					"password_set",
-					"filesystem",
+					"fs",
 					"processes"
 				],
 				"system": [
