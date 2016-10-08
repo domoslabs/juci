@@ -49,10 +49,10 @@ JUCI.app
 	}
 	$scope.mouseUp = function() {
 		if(!longPress){
-			$rpc.$call("wps", "pbc");
+			$rpc.$call("router.wps", "pbc");
 			clearTimeout(timeout);
 		}else{
-			$rpc.$call("wps", "pbc_client");
+			$rpc.$call("router.wps", "pbc_client");
 			$scope.wps.progress = 8;
 			$scope.wps.text_status = wps_status_strings[8];
 			longPress = false;
@@ -84,7 +84,7 @@ JUCI.app
 	}
 
 	function update_wps(){
-		$rpc.$call("wps", "status").done(function(result){
+		$rpc.$call("router.wps", "status").done(function(result){
 			$scope.wps.progress = result.code;
 			$scope.wps.showModal = (result.code === 1 || result.code === 8);
 			$scope.wps.text_status = wps_status_strings[result.code]||$tr(gettext("Unknown"));
@@ -133,7 +133,7 @@ JUCI.app
 		}).fail(function(){ def.reject(); });
 		return def;
 	}
-	$rpc.$call("wps", "showpin").done(function(result){
+	$rpc.$call("router.wps", "showpin").done(function(result){
 		$scope.wps.pin = result.pin;
 		$scope.$apply();
 	});
@@ -154,6 +154,6 @@ JUCI.app
 		});
 	});
 	$scope.onCancelWPS = function(){
-		$rpc.$call("wps", "stop");
+		$rpc.$call("router.wps", "stop");
 	}
 });

@@ -61,14 +61,14 @@ JUCI.app
 	
 	$events.subscribe("wps", function(){refresh();});
 	function refresh() {
-		$rpc.$call("wps", "status").done(function(result){
+		$rpc.$call("router.wps", "status").done(function(result){
 			$scope.progress = result.code;
 			$scope.text_status = wps_status_strings[result.code]||$tr(gettext("Unknown"));
 			$scope.$apply();	
 		});
 	}refresh();
 	
-	$rpc.$call("wps", "showpin").done(function(data){
+	$rpc.$call("router.wps", "showpin").done(function(data){
 		$scope.generatedPIN = data.pin;
 	});
 		
@@ -80,10 +80,10 @@ JUCI.app
 	}
 	$scope.mouseUp = function() {
 		if(!longPress){
-			$rpc.$call("wps", "pbc");
+			$rpc.$call("router.wps", "pbc");
 			clearTimeout(timeout);
 		}else{
-			$rpc.$call("wps", "pbc_client");
+			$rpc.$call("router.wps", "pbc_client");
 			$scope.progress = 8;
 			$scope.text_status = wps_status_strings[8];
 			longPress = false;
@@ -92,14 +92,14 @@ JUCI.app
 	}
 	$scope.onPairUserPIN = function(){
 		var pin = $scope.data.userPIN.replace("-", "").replace(" ", "").match(/\d+/g).join("");
-		$rpc.$call("wps", "checkpin", {pin:pin }).done(function(value){
+		$rpc.$call("router.wps", "checkpin", {pin:pin }).done(function(value){
 			if(!value) return;
 			if(!value.valid){
 				console.log("invalid wps pin");
 				alert($tr(gettext("Invalid WPS PIN")));
 				return;
 			}
-			$rpc.$call("wps", "stapin", { pin: pin });
+			$rpc.$call("router.wps", "stapin", { pin: pin });
 		});
 	}
 	
@@ -115,9 +115,9 @@ JUCI.app
 	};
 		
 	$scope.onGeneratePIN = function(){
-		$rpc.$call("wps", "genpin").done(function(data){
+		$rpc.$call("router.wps", "genpin").done(function(data){
 			if(!data || data.pin == "") return;
-			$rpc.$call("wps", "setpin", {pin: data.pin}).done(function(){
+			$rpc.$call("router.wps", "setpin", {pin: data.pin}).done(function(){
 				$scope.generatedPIN = data.pin;
 				$scope.$apply();
 			});
@@ -125,6 +125,6 @@ JUCI.app
 	}
 	
 	$scope.onCancelWPS = function(){
-		$rpc.$call("wps", "stop");
+		$rpc.$call("router.wps", "stop");
 	}
 });

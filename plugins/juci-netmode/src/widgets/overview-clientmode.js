@@ -73,7 +73,7 @@ JUCI.app
 	}
 	$scope.wps = $rpc.$has("wps", "pbc_client");
 	$scope.onPairWps = function(){
-		$rpc.$call("wps", "pbc_client");
+		$rpc.$call("router.wps", "pbc_client");
 	}
 	function setValues(ssid, key, encr){
 		$rpc.$call("juci.wireless", "set_credentials", {
