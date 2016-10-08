@@ -83,7 +83,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 	Wireless.prototype.getConnectedClients = function(){
 		var def = $.Deferred();
 		$rpc.$call("router.wireless", "stas").done(function(clients){
-			$rpc.$call("router.wireless", "clients", {"family":6}).done(function(cl6){
+			$rpc.$call("router.network", "clients", {"family":6}).done(function(cl6){
 				var wlclients = Object.keys(clients).map(function(c){return clients[c];}).map(function(client){
 					Object.keys(cl6).map(function(c6){return cl6[c6];}).map(function(client6){
 						if(client.macaddr === client6.macaddr){
