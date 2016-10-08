@@ -170,7 +170,7 @@ JUCI.app
 				}).fail(function(e){next({"error":e});});
 			},
 			function(next){
-				$rpc.$call("router", "networks").done(function(data){
+				$rpc.$call("router.network", "dump").done(function(data){
 					Object.keys(data).map(function(k){
 						all_nets.find(function(n){
 							if(n.interface === k){
@@ -199,7 +199,7 @@ JUCI.app
 					next();
 				}).fail(function(e){next({ "Error":e });});
 			}, function(next){
-				$rpc.$call("router", "radios").done(function(data){
+				$rpc.$call("router.wireless", "radios").done(function(data){
 					radios = data;
 					next();
 				}).fail(function(e){next({ "Error": e });});
@@ -215,18 +215,18 @@ JUCI.app
 						addNode(wan, title);
 						callback();
 					}else if(wan.device.match("eth[0-9]")){
-						$rpc.$call("router", "linkspeed", { "interface": wan.device.match("eth[0-9]")[0] }).done(function(data){
+						$rpc.$call("router.port", "info", { "port": wan.device.match("eth[0-9]")[0] }).done(function(data){
 							title = getWanTitle("eth", wan, data);
 							addNode(wan, title);
 						}).fail(function(e){console.log(e);}).always(function(){callback();});
 					}else if(wan.device.match(/[ap]tm/)){
-						$rpc.$call("router", "dslstats").done(function(data){
+						$rpc.$call("router.dsl", "stats").done(function(data){
 							if(!data || !data.dslstats || !data.dslstats.bearers || !data.dslstats.bearers.length){ callback(); return;}
 							title = getWanTitle("dsl", wan, data);
 							addNode(wan, title);
 						}).fail(function(e){console.log(e);}).always(function(){callback();});
-					}else if(wan.device.match("vwan")){
-						title = getWanTitle("vwan", wan);
+					}else if(wan.device.match("wwan")){
+						title = getWanTitle("wwan", wan);
 						addNode(wan, title);
 						callback();
 					}else if(wan.device.match("br-wan")){
@@ -243,7 +243,7 @@ JUCI.app
 				});
 				async.eachSeries(lan_nets, function(item, callback){
 					if(!item || !item.interface){ callback(); return;}
-					$rpc.$call("router", "ports", { "network": item.interface }).done(function(data){
+					$rpc.$call("router.network", "ports", { "network": item.interface }).done(function(data){
 						var num_cli = 0;
 						var num_ports = 0;
 						Object.keys(data).map(function(dev){
@@ -428,7 +428,7 @@ JUCI.app
 		switch(type){
 			case "eth":
 				t+= $tr(gettext("Ethernet")) + '<br />';
-				t+= $tr(gettext("Link speed")) + ": " + data.linkspeed + "<br />"
+				t+= $tr(gettext("Link speed")) + ": " + data.speed + "<br />"
 				break;
 			case "dsl":
 				t+= $tr(gettext("DSL")) + '<br />';

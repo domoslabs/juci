@@ -81,7 +81,7 @@ JUCI.app
 		}
 	}
 	function refresh(){
-		$rpc.$call("router", "get_ssh_keys").done(function(result){
+		$rpc.$call("router.dropbear", "get_ssh_keys").done(function(result){
 			$scope.keyList = result.keys || [];
 			$scope.keyList.map(function(key){
 				key.$statusList = [
@@ -101,7 +101,7 @@ JUCI.app
 		if(!item) return;
 		$juciConfirm.show($tr(gettext("Are you SURE you want to delete this key? You can not revert this"))).done(function(){
 			$file.uploadString(filename, (item.type + " " + item.key + (item.comment ? " " + item.comment: ""))).done(function(ret){
-				$rpc.$call("router", "del_ssh_key", {"path":filename}).done(function(ret){
+				$rpc.$call("router.dropbear", "del_ssh_key", {"path":filename}).done(function(ret){
 					refresh();
 				}).fail(function(er){
 					alert(JSON.stringify("reason: " + er.reason + "\ndata: " + JSON.stringify(er.data )));
@@ -111,7 +111,7 @@ JUCI.app
 	}
 
 	function add_ssh_key(model, inst){
-		$rpc.$call("router", "add_ssh_key", {"path":filename}).done(function(ret){
+		$rpc.$call("router.dropbear", "add_ssh_key", {"path":filename}).done(function(ret){
 			refresh();
 			inst.close();
 		}).fail(function(er){

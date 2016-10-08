@@ -66,7 +66,7 @@ JUCI.app
 				}).fail(function(e){console.log(e);}).always(function(){next();});
 			},
 			function(next){
-				$rpc.$call("router", "networks").done(function(data){
+				$rpc.$call("router.network", "dump").done(function(data){
 					wans = wans.filter(function(w){
 						var wan = data[w.interface];
 						return wan && wan.defaultroute && wan.ifname && wan.ifname.match(/^[^@].*/);
@@ -111,7 +111,7 @@ JUCI.app
 				}).fail(function(e){console.log(e);}).always(function(){next();});
 			},
 			function(next){
-				$rpc.$call("router", "networks").done(function(data){
+				$rpc.$call("router.network", "dump").done(function(data){
 					wans = wans.filter(function(w){
 						var wan = data[w.interface];
 						return wan && wan.defaultroute;
@@ -139,11 +139,11 @@ JUCI.app
 				else if(w.device.match(/ptm/)) type = $tr(gettext("VDSL"));
 				else if(w.device.match(/wwan/)) type = $tr(gettext("3G/4G"));
 				if(w.device && w.device.match("eth[0-9].[0-9]")){
-					$rpc.$call("router", "linkspeed", {"interface":w.device.substring(0,4)}).done(function(data){
-						if(data && data.linkspeed)
-							$scope.data.linkspeed = data.linkspeed;
-						if(data && data.linktype)
-							type = data.linktype;
+					$rpc.$call("router.port", "info", {"port":w.device.substring(0,4)}).done(function(data){
+						if(data && data.speed)
+							$scope.data.linkspeed = data.speed;
+						if(data && data.type)
+							type = data.type;
 						if($scope.data.contypes.indexOf(type) === -1)
 							$scope.data.contypes.push(type);
 						$scope.$apply();
@@ -154,7 +154,7 @@ JUCI.app
 						$scope.data.contypes.push(type);
 				}
 				if(w.device && w.device.match(/[ap]tm/)){
-					$rpc.$call("router", "dslstats").done(function(data){
+					$rpc.$call("router.dsl", "stats").done(function(data){
 						if(!data || !data.dslstats || !data.dslstats.bearers || data.dslstats.bearers.length < 1) return;
 						data.dslstats.bearers.map(function(b){
 							if(b.rate_down) $scope.data.dslDown = parseInt(String(b.rate_down))/1000;

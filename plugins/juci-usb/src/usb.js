@@ -26,7 +26,7 @@ JUCI.app
 	
 	USB.prototype.getDevices = function(){
 		var def = $.Deferred(); 
-		$rpc.$call("router", "usb").done(function(res){
+		$rpc.$call("router.usb", "status").done(function(res){
 			var usbs = Object.keys(res).map(function(usb){
 				return res[usb];
 			});

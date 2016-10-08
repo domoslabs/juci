@@ -34,7 +34,7 @@ JUCI.app
 .controller("overviewStatusWidgetWiFi", function($scope, $rpc, $config){
 	$scope.href = $config.getWidgetLink("overviewStatusWidget00WiFi");
 	$scope.wifiRadios = [];
-	$rpc.$call("router", "radios").done(function(data){
+	$rpc.$call("router.wireless", "radios").done(function(data){
 		$scope.wifiRadios = Object.keys(data).map(function(radio){ return data[radio]; });
 		$scope.$apply();
 	});
@@ -117,7 +117,7 @@ JUCI.app
 	}
 	function update_wifi(){
 		var def = $.Deferred();
-		$rpc.$call("router", "radios").done(function(radios){
+		$rpc.$call("router.wireless", "radios").done(function(radios){
 			$wireless.getInterfaces().done(function(interfaces){
 				$scope.showWps = interfaces.find(function(iface){ return iface.wps_pbc.value;}) ? true:false;
 				$scope.wifs = interfaces.map(function(iface){

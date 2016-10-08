@@ -40,7 +40,7 @@ JUCI.app
 			})[0];
 			$scope.$apply();
 		});
-		$rpc.$call("router", "networks").done(function(data){
+		$rpc.$call("router.network", "dump").done(function(data){
 			networkList = Object.keys(data).map(function(key){ data[key]["name"] = key; return data[key];})
 			.filter(function(net){ return net["is_lan"] && net.ipaddr && net.netmask;});
 			$scope.$apply();

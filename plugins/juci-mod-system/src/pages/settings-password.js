@@ -71,7 +71,7 @@ JUCI.app
 		$scope.error = "";
 		if($scope.modal.password != $scope.modal.password2) alert($tr(gettext("Passwords do not match!")));
 		else {
-			$rpc.$call("router", "password_set", {user: username, password: $scope.modal.password, curpass: $scope.modal.old_password}).done(function(data){
+			$rpc.$call("router.system", "password_set", {user: username, password: $scope.modal.password, curpass: $scope.modal.old_password}).done(function(data){
 				$scope.showModal = 0;
 				$scope.error = 0;
 				$scope.$apply();

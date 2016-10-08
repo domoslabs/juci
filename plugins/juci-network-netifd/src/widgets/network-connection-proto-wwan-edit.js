@@ -29,7 +29,7 @@ JUCI.app
 		replace: true
 	};
 }).controller("networkConnectionProtoWwanEditCtrl", function($scope, $tr, gettext, $rpc){
-	$rpc.$call("router", "usb").done(function(ret){
+	$rpc.$call("router.usb", "status").done(function(ret){
 		$scope.devices = Object.keys(ret).map(function(r){ return ret[r];}).filter(function(dev){return dev.netdevice;}).map(function(dev){ return { label: dev.description || $tr(gettext("Unknown")), value: dev.netdevice }; });
 		$scope.$apply();
 	}).fail(function(e){console.log(e);});

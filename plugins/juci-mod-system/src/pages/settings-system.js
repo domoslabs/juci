@@ -47,7 +47,7 @@ JUCI.app
 			}); 
 		},
 		function(next){
-			$rpc.$call("router", "info").done(function(res){
+			$rpc.$call("router.system", "info").done(function(res){
 				date = new Date(res.system.localtime * 1000);
 			}).always(function(){next();});
 		}

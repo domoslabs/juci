@@ -82,8 +82,8 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 
 	Wireless.prototype.getConnectedClients = function(){
 		var def = $.Deferred();
-		$rpc.$call("router", "stas").done(function(clients){
-			$rpc.$call("router", "clients6").done(function(cl6){
+		$rpc.$call("router.wireless", "stas").done(function(clients){
+			$rpc.$call("router.wireless", "clients", {"family":6}).done(function(cl6){
 				var wlclients = Object.keys(clients).map(function(c){return clients[c];}).map(function(client){
 					Object.keys(cl6).map(function(c6){return cl6[c6];}).map(function(client6){
 						if(client.macaddr === client6.macaddr){
@@ -106,7 +106,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 	Wireless.prototype.getDevices = function(){
 		var deferred = $.Deferred();
 		$uci.$sync("wireless").done(function(){
-			$rpc.$call("router", "radios").done(function(radios){
+			$rpc.$call("router.wireless", "radios").done(function(radios){
 				var devices = $uci.wireless["@wifi-device"].map(function(dev){
 					var radio = radios[dev[".name"]];
 					if(radio){
@@ -119,7 +119,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 				});
 				deferred.resolve(devices);
 			}).fail(function(){
-				deferred.reject("ubus call router radios was not found");
+				deferred.reject("ubus call router.wireless radios was not found");
 			});
 		}).fail(function(){
 			deferred.reject("could not read uci wireless config");
@@ -138,7 +138,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 				if(iface.ifname.value === "" && $uci.wireless.$getWriteRequests().length === 0){
 					$uci.wireless.$mark_for_reload(); //sometime ifname is not adde fast enough
 				}
-				$rpc.$call("router", "wl", {"vif": iface.ifname.value}).done(function(data){
+				$rpc.$call("router.wireless", "status", {"vif": iface.ifname.value}).done(function(data){
 					iface[".frequency"] = ((data.frequency && data.frequency === 5)?'5GHz':'2.4GHz');
 					iface.$info = data;
 				}).fail(function(e){ er.push(e);})
@@ -154,7 +154,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 
 	Wireless.prototype.getDefaults = function(){
 		var deferred = $.Deferred();
-		$rpc.$call("router", "info", {}).done(function(result){
+		$rpc.$call("router.system", "info", {}).done(function(result){
 			if(!result) {
 				deferred.reject();
 				return;

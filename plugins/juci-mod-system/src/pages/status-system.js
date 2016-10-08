@@ -61,12 +61,12 @@ JUCI.app.run(function($uci){
 
 	JUCI.interval.repeat("status_system_page_refresh", 5000, function(resume){
 		async.parallel([
-			function (cb){$rpc.$call("router", "info").done(function(res){sys = res; cb();}).fail(function(){cb();});},
+			function (cb){$rpc.$call("router.system", "info").done(function(res){sys = res; cb();}).fail(function(){cb();});},
 			function (cb){$network.getNetworkLoad().done(function(load){ netLoad = load; cb(); }).fail(function(){cb();});},
 			function (cb){
 				$rpc.$call("system", "board").done(function(res){board = res; cb();}).fail(function(){cb();});
 			},
-			function (cb){$rpc.$call("router", "filesystem").done(function(res){
+			function (cb){$rpc.$call("router.system", "fs").done(function(res){
 				filesystems = res.filesystem; 
 				cb();
 			}).fail(function(){cb();});}

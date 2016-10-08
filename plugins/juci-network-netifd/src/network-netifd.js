@@ -120,7 +120,7 @@
 			var deferred = $.Deferred();
 			var self = this;
 
-			$rpc.$call("router", "clients").done(function(cls){
+			$rpc.$call("router.network", "clients").done(function(cls){
 				var clients = Object.keys(cls).map(function(key){ return cls[key]; });
 				async.each(self._subsystems, function(sys, next){
 					if(sys.annotateClients) {

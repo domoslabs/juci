@@ -24,7 +24,7 @@ JUCI.app
 	// to make it possible to send sid to cgi-bin!!
 	if($rpc.$sid) $scope.sid = $rpc.$sid();
 	JUCI.interval.repeat("event-log-page", 5000, function(next){
-		$rpc.$call("router", "logs").done(function(data){
+		$rpc.$call("router.system", "logs").done(function(data){
 			if(!data || !data.logs) return;
 			AllLogs = data.logs;
 			AllLogs.reverse();
