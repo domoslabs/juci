@@ -9,87 +9,19 @@ case "$1" in
 	call)
 		case "$2" in
 			arp)
-				local arpfile=/tmp/arptable
-				cat /proc/net/arp | tail -n +2 | tr '*' '-' > $arpfile
-				json_init
-				json_add_array "clients"
-				while read -r line
-				do
-					json_add_object ""
-					json_add_string ipaddr "$(echo $line | awk '{print$1}')"
-					json_add_string hw "$(echo $line | awk '{print$2}')"
-					json_add_string flags "$(echo $line | awk '{print$3}')"
-					json_add_string macaddr "$(echo $line | awk '{print$4}')"
-					json_add_string mask "$(echo $line | awk '{print$5}' | tr '-' '*')"
-					json_add_string device "$(echo $line | awk '{print$6}')"
-					json_select ..
-				done < $arpfile
-				rm -f $arpfile
-				json_dump
+				ubus call router.net arp
+			;;
+			nat_table)
+				ubus call router.net ip_conntrack
 			;;
 			ipv4routes)
-				local routesfile=/tmp/ipv4routes
-				route -n | tail -n +3 > $routesfile
-				json_init
-				json_add_array "routes"
-				while read -r line
-				do
-					json_add_object ""
-					json_add_string destination "$(echo $line | awk '{print$1}')"
-					json_add_string gateway "$(echo $line | awk '{print$2}')"
-					json_add_string mask "$(echo $line | awk '{print$3}')"
-					json_add_string flags "$(echo $line | awk '{print$4}')"
-					json_add_string metric "$(echo $line | awk '{print$5}')"
-					json_add_string ref "$(echo $line | awk '{print$6}')"
-					json_add_string use "$(echo $line | awk '{print$7}')"
-					json_add_string iface "$(echo $line | awk '{print$8}')"
-					json_select ..
-				done < $routesfile
-				rm -f $routesfile
-				json_dump
+				ubus call router.net ipv4_routes
 			;;
 			ipv6routes)
-				local routes6file=/tmp/ipv6routes
-				route -A inet6 | tail -n +3 > $routes6file
-				json_init
-				json_add_array "routes"
-				while read -r line
-				do
-					json_add_object ""
-					json_add_string destination "$(echo $line | awk '{print$1}')"
-					json_add_string next_hop "$(echo $line | awk '{print$2}')"
-					json_add_string flags "$(echo $line | awk '{print$3}')"
-					json_add_string metric "$(echo $line | awk '{print$4}')"
-					json_add_string ref "$(echo $line | awk '{print$5}')"
-					json_add_string use "$(echo $line | awk '{print$6}')"
-					json_add_string iface "$(echo $line | awk '{print$7}')"
-					json_select ..
-				done < $routes6file
-				rm -f $routes6file
-				json_dump
+				ubus call router.net ipv6_routes
 			;;
 			ipv6neigh)
-				local neigh6file=/tmp/ipv6neigh
-				ip -6 neigh > $neigh6file
-				json_init
-				json_add_array "neighbors"
-				while read -r line
-				do
-					json_add_object ""
-					json_add_string ip6addr "$(echo $line | awk '{print$1}')"
-					json_add_string device "$(echo $line | awk '{print$3}')"
-					json_add_string macaddr "$(echo $line | awk '{print$5}')"
-					router=$(echo $line | awk '{print$6}' | grep -q router && echo 1 || echo 0)
-					json_add_boolean router $router
-					if [ $router -eq 1 ]; then
-						json_add_string ip6status "$(echo $line | awk '{print$7}')"
-					else
-						json_add_string ip6status "$(echo $line | awk '{print$6}')"
-					fi
-					json_select ..
-				done < $neigh6file
-				rm -f $neigh6file
-				json_dump				
+				ubus call router.net ipv6_neigh
 			;;
 			load)
 				json_init 
@@ -104,25 +36,6 @@ case "$1" in
 					json_add_string "" $ns; 
 				done
 				json_close_array
-				json_dump
-			;;
-			nat_table)
-				local nattable=/tmp/nattable
-				cat /proc/net/ip_conntrack | head -500 | grep tcp > $nattable
-				json_init
-				json_add_array "table"
-				while read -r line
-				do
-					json_add_object ""
-					json_add_string proto "$(echo $line | awk '{print$1}')"
-					json_add_string state "$(echo $line | awk '{print$4}')"
-					json_add_string local_ip "$(echo $line | awk '{print$9}' | cut -d'=' -f2)"
-					json_add_string remote_ip "$(echo $line | awk '{print$10}' | cut -d'=' -f2)"
-					json_add_string local_port "$(echo $line | awk '{print$11}' | cut -d'=' -f2)"
-					json_add_string remote_port "$(echo $line | awk '{print$12}' | cut -d'=' -f2)"
-					json_select ..
-				done < $nattable
-				rm -f $nattable
 				json_dump
 			;;
 			protocols)
