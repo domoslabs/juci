@@ -63,9 +63,6 @@ JUCI.app.run(function($uci){
 		async.parallel([
 			function (cb){$rpc.$call("router.system", "info").done(function(res){sys = res; cb();}).fail(function(){cb();});},
 			function (cb){$network.getNetworkLoad().done(function(load){ netLoad = load; cb(); }).fail(function(){cb();});},
-			function (cb){
-				$rpc.$call("system", "board").done(function(res){board = res; cb();}).fail(function(){cb();});
-			},
 			function (cb){$rpc.$call("router.system", "fs").done(function(res){
 				filesystems = res.filesystem; 
 				cb();
@@ -93,12 +90,12 @@ JUCI.app.run(function($uci){
 	}); 
 	function updateTable(){
 		$scope.systemStatusTbl.rows = [
-			[$tr(gettext("Hostname")), board.hostname || $tr(gettext("N/A"))],
-			[$tr(gettext("Model")), $config.board.system.hardware || $tr(gettext("N/A"))],
+			[$tr(gettext("Hostname")), sys.system.name || $tr(gettext("N/A"))],
+			[$tr(gettext("Model")), sys.system.hardware || $tr(gettext("N/A"))],
 			[$tr(gettext("Serial No")), sys.system.serialno || $tr(gettext("N/A"))],
 			[$tr(gettext("MAC Address")), sys.system.basemac || $tr(gettext("N/A"))],
-			[$tr(gettext("Firmware Version")), $config.board.system.firmware || $tr(gettext("N/A"))],
-			[$tr(gettext("Kernel Version")), board.kernel || sys.system.kernel || $tr(gettext("N/A"))],
+			[$tr(gettext("Firmware Version")), sys.system.firmware || $tr(gettext("N/A"))],
+			[$tr(gettext("Kernel Version")), sys.system.kernel || $tr(gettext("N/A"))],
 			[$tr(gettext("Filesystem")), sys.system.filesystem || $tr(gettext("N/A"))],
 			[$tr(gettext("BRCM Version")), sys.system.brcmver || $tr(gettext("N/A"))],
 			[$tr(gettext("CFE Version")), sys.system.cfever || $tr(gettext("N/A"))],

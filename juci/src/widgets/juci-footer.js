@@ -56,9 +56,9 @@ JUCI.app
 		$scope.wanifs = networks.map(function(x){ return x.$info; }); 
 		$scope.$apply(); 
 	}); 
-	$rpc.$call("system", "board").done(function(res){
+	$rpc.$call("router.system", "info").done(function(res){
 		board = res;
-		$scope.firmware = board.release.distribution + " " + board.release.version + " " + board.release.revision; 
+		$scope.firmware = board.system.firmware;
 		$scope.$apply(); 
 	})
-}); 
+});
