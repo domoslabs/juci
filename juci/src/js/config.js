@@ -31,7 +31,7 @@
 
 		async.series([
 			function(next){
-				UBUS.$call("router", "info").done(function(info){
+				UBUS.$call("router.system", "info").done(function(info){
 					self.board = info; 
 					if(!info.system || !info.system.firmware || !info.system.basemac) return;
 					var parts = info.system.firmware.split("_");
