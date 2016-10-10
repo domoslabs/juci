@@ -164,7 +164,7 @@
 		NetworkBackend.prototype.getNatTable = function(){
 			var def = $.Deferred();
 
-			$rpc.$call("juci.network", "nat_table", {}).done(function(result){
+			$rpc.$call("router.net", "ip_conntrack", {}).done(function(result){
 				if(result && result.table){
 					def.resolve(result.table);
 				} else {

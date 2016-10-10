@@ -5,14 +5,9 @@
 			"ubus": {
 				"juci.network": [
 					"load",
-					"nat_table",
 					"nameservers",
 					"services",
-					"protocols",
-					"arp",
-					"ipv4routes",
-					"ipv6routes",
-					"ipv6neigh"
+					"protocols"
 				],
 				"juci.modems": [
 					"list"
@@ -28,6 +23,13 @@
 					"dump",
 					"ports",
 					"clients"
+				],
+				"router.net": [
+					"arp",
+					"ip_conntrack",
+					"ipv4_routes",
+					"ipv6_routes",
+					"ipv6_neigh"
 				],
 				"router.usb": [
 					"status"
