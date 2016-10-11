@@ -229,12 +229,12 @@
 						JUCI.interval.$clearAll();
 						$events.removeAll();
 						$rpc.$authenticate().done(function(){
-							if($uci.$hasChanges()){
+							/*if($uci.$hasChanges()){
 								if(confirm($tr(gettext("You have unsaved changes. Do you want to save them before leaving this page?"))))
 									$uci.$save();
 								else
 									$uci.$clearCache();
-							}
+							}*/
 						}).fail(function(){
 							$juci.redirect("login");
 						}).always(function(){
