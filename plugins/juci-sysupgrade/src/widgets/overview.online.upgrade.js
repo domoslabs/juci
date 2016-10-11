@@ -15,6 +15,8 @@ JUCI.app
 		name_full: ""
 	}
 	$rpc.$call("juci.sysupgrade", "check", {"type": "online"}).done(function(response){
+		response.online = "http://someaddress.se/something/image.y2";
+		console.log("test " + response.online);
 		if(response.online) {
 			var split = response.online.split("/");
 			$scope.upgrade.path = response.online;
@@ -27,8 +29,6 @@ JUCI.app
 		}
 		$scope.$apply();
 	}).fail(function(e){console.log(e);});
-	var confText = '<p>'+$tr(gettext("If you click 'Yes' all settings will be saved. If you want to have a clean install click 'No'. To close this dialog click 'Cancel'"))+'</p>';
-	var modalText = confText;
 	$scope.onUpgrade = function(){
 		$juciDialog.show(null, {
 			title: $tr(gettext("Do you want to keep settings?")),
@@ -37,7 +37,7 @@ JUCI.app
 				{ label: $tr(gettext("No")), value: "nokeep" },
 				{ label: $tr(gettext("Cancel")), value: "cancel" }
 			],
-			content: modalText,
+			content: '<p>'+$tr(gettext("If you click 'Yes' all settings will be saved. If you want to have a clean install click 'No'. To close this dialog click 'Cancel'"))+'</p>',
 			on_button: function(btn, inst){
 				if(btn.value === "cancel"){
 					inst.close();

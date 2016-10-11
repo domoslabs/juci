@@ -9,14 +9,29 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
-msgid ""
-"A new system software upgrade is available. Do you want to visit upgrade "
-"page and upgrade now?"
+# /home/reidar/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
+msgid ".w (JFFS Image with CFE)"
 msgstr ""
-"Ohjelmistopäivitys on saatavilla. Haluatko avata päivityssivun ja päivittää "
-"nyt?"
+
+msgid ".y (UBIFS Image)"
+msgstr ".y (UBIFS Image)"
+
+# /home/reidar/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
+msgid ".y2 (new UBIFS Image)"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
+msgid "fs_image (JFFS Image)"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
+msgid "A missing section has been created"
+msgstr ""
+
+msgid "OK"
+msgstr "OK"
 
 msgid "Do you want to keep your configuration?"
 msgstr "Haluatko säilyttää asetukset?"
@@ -42,15 +57,12 @@ msgstr "Keskeytä"
 msgid "Image check failed"
 msgstr "Ohjelmiston tarkistus epäonnistui"
 
-msgid "OK"
-msgstr "OK"
-
 msgid "Error: "
 msgstr "Virhe:"
 
-# /home/jari/GIT/IOPSYS/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.js
-msgid "Upgrading"
-msgstr "Päivitetään"
+# /home/reidar/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid "unknown test"
+msgstr ""
 
 msgid "New Software Available!"
 msgstr "Uusi ohjelmisto saatavilla!"
@@ -82,20 +94,37 @@ msgstr "Tarkistetaan"
 msgid "The server returned an error"
 msgstr "Palvelinvirhe"
 
-msgid "Upload completed!"
-msgstr "Lähetys valmis!"
+# /home/reidar/juci/plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
+msgid ""
+"If you click 'Yes' all settings will be saved. If you want to have a clean "
+"install click 'No'. To close this dialog click 'Cancel'"
+msgstr ""
 
-msgid ".w (JFFS Image)"
-msgstr ".w (JFFS Image)"
+# /home/reidar/juci/plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
+msgid "Do you want to keep settings?"
+msgstr ""
 
-msgid ".y (UBIFS Image)"
-msgstr ".y (UBIFS Image)"
+# /home/reidar/juci/plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
+msgid "Cancel"
+msgstr ""
 
-msgid "fs_image (RAW Rootfs Image)"
-msgstr "fs_image (RAW Rootfs Image)"
+# /home/reidar/juci/plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
+msgid "Your box is upgrading"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
+msgid "Something went wrong! Try again later"
+msgstr ""
 
 msgid "You need to select a network!"
 msgstr "Valitse verkko!"
+
+# /home/reidar/juci/plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.small.html
+msgid "New software available"
+msgstr ""
+
+msgid "Close"
+msgstr "Sulje"
 
 msgid "Select image to upgrade"
 msgstr "Valitse päivitystiedosto"
@@ -144,7 +173,8 @@ msgstr "Manuaalinen ohjelmistopäivitys"
 msgid "settings.upgrade.manual.info"
 msgstr " "
 
-msgid "Select firmware file to upload"
+# /home/reidar/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "Pick firmware file to upload"
 msgstr "Valitse ladattava ohjelmisto"
 
 msgid "Start upgrade"
@@ -153,20 +183,14 @@ msgstr "Aloita päivitys"
 msgid "Upgrade"
 msgstr "Päivitä"
 
-msgid "Online upgrade is disabled"
-msgstr "Online päivitys poissa käytöstä"
-
-msgid "USB upgrade is disabled"
-msgstr "USB päivitys poissa käytöstä"
-
-msgid "Close"
-msgstr "Sulje"
-
 msgid "Upgrade Options"
 msgstr "Tarkista päivitykset"
 
 msgid "settings.upgrade.options.info"
 msgstr "Valinnat"
+
+msgid "Firmware image extension"
+msgstr "Firmware image extension"
 
 msgid "URL for file with latest image filename"
 msgstr "Uusimman ohjelmiston URL"
@@ -180,17 +204,51 @@ msgstr "Päivitysosoitteen polku"
 msgid "HTTP Directory"
 msgstr "HTTP kansio"
 
-msgid "Firmware image extension"
-msgstr "Firmware image extension"
-
 msgid "Online Upgrade"
 msgstr "Online päivitys"
-
-msgid "USB Upgrade"
-msgstr "USB päivitys"
 
 msgid "menu-settings-upgrade-title"
 msgstr "Ohjelmistopäivitys"
 
+# /home/reidar/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "settings-upgrade-title"
+msgstr ""
+
 msgid "menu-settings-upgrade-options-title"
 msgstr "Valinnat"
+
+# /home/reidar/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
+msgid "settings-upgrade-options-title"
+msgstr ""
+
+#~ msgid ""
+#~ "A new system software upgrade is available. Do you want to visit upgrade "
+#~ "page and upgrade now?"
+#~ msgstr ""
+#~ "Ohjelmistopäivitys on saatavilla. Haluatko avata päivityssivun ja "
+#~ "päivittää nyt?"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+#~ msgid "Upgrading"
+#~ msgstr "Päivitetään"
+
+#~ msgid "Upload completed!"
+#~ msgstr "Lähetys valmis!"
+
+#~ msgid ".w (JFFS Image)"
+#~ msgstr ".w (JFFS Image)"
+
+#~ msgid "fs_image (RAW Rootfs Image)"
+#~ msgstr "fs_image (RAW Rootfs Image)"
+
+#~ msgid "Select firmware file to upload"
+#~ msgstr "Valitse ladattava ohjelmisto"
+
+#~ msgid "Online upgrade is disabled"
+#~ msgstr "Online päivitys poissa käytöstä"
+
+#~ msgid "USB upgrade is disabled"
+#~ msgstr "USB päivitys poissa käytöstä"
+
+#~ msgid "USB Upgrade"
+#~ msgstr "USB päivitys"
