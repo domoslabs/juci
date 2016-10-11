@@ -1033,13 +1033,7 @@
 	// returns true if there are uci changes
 	UCI.prototype.$hasChanges = function(){
 		if(!this.initDone) return;
-		var self = this;
-		return !!Object.keys(self).find(function(x){
-			if(self[x].constructor != UCI.Config) return false;
-			if(self[x][".need_commit"]) return true;
-			if(self[x].$getWriteRequests().length) return true;
-			return false;
-		});
+		return this.$getChanges.length != 0;
 	}
 	
 	UCI.prototype.$getChanges = function(){
