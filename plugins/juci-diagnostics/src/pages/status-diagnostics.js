@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("StatusDiagnostics", function($scope, $rpc, $network){
+.controller("StatusDiagnostics", function($scope, $rpc, $network, $tr, gettext){
 	$scope.data = {}; 
 	$network.getNetworks().done(function(nets){
 		$scope.data.allInterfaces = nets.map(function(x){ return { label: x[".name"], value: x[".name"] }; }); 
@@ -48,5 +48,10 @@ JUCI.app
 			$scope.data.pingError = JSON.stringify(error); 
 			$scope.$apply(); 
 		}); 
+	}
+	$scope.validate = function(type){
+		if(!$scope.data || !$scope.data[type]) return null;
+		if(String($scope.data[type]).match(/[^A-z0-9}\.\-]/)) return $tr(gettext("Not a valid domain or ip address"));
+		return null;
 	}
 }); 
