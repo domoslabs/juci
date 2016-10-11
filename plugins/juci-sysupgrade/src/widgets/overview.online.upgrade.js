@@ -15,7 +15,6 @@ JUCI.app
 		name_full: ""
 	}
 	$rpc.$call("juci.sysupgrade", "check", {"type": "online"}).done(function(response){
-		response.online = "http://someaddress.se/something/image.y2";
 		console.log("test " + response.online);
 		if(response.online) {
 			var split = response.online.split("/");
