@@ -77,7 +77,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"am":{
 			"name":"Amharic",
-			"nativeName":"አማርኛ"
+			"nativeName":"Amharic"
 		},
 		"ar":{
 			"name":"Arabic",
@@ -93,7 +93,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"as":{
 			"name":"Assamese",
-			"nativeName":"অসমীয়া"
+			"nativeName":"Assameset"
 		},
 		"av":{
 			"name":"Avaric",
@@ -129,11 +129,11 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"bn":{
 			"name":"Bengali",
-			"nativeName":"বাংলা"
+			"nativeName":"Bengali"
 		},
 		"bh":{
 			"name":"Bihari",
-			"nativeName":"भोजपुरी"
+			"nativeName":"Biharit"
 		},
 		"bi":{
 			"name":"Bislama",
@@ -153,7 +153,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"my":{
 			"name":"Burmese",
-			"nativeName":"ဗမာစာ"
+			"nativeName":"Burmese"
 		},
 		"ca":{
 			"name":"Catalan; Valencian",
@@ -173,7 +173,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"zh":{
 			"name":"Chinese",
-			"nativeName":"中文 (Zhōngwén), 汉语, 漢語"
+			"nativeName":"Chinese (Zhōngwén)"
 		},
 		"cv":{
 			"name":"Chuvash",
@@ -205,7 +205,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"dv":{
 			"name":"Divehi; Dhivehi; Maldivian;",
-			"nativeName":"ދިވެހި"
+			"nativeName":"Divehi; Dhivehi; Maldivian;"
 		},
 		"nl":{
 			"name":"Dutch",
@@ -269,7 +269,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"gu":{
 			"name":"Gujarati",
-			"nativeName":"ગુજરાતી"
+			"nativeName":"Gujarati"
 		},
 		"ht":{
 			"name":"Haitian; Haitian Creole",
@@ -289,7 +289,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"hi":{
 			"name":"Hindi",
-			"nativeName":"हिन्दी, हिंदी"
+			"nativeName":"Hindi"
 		},
 		"ho":{
 			"name":"Hiri Motu",
@@ -341,7 +341,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"ja":{
 			"name":"Japanese",
-			"nativeName":"日本語 (にほんご／にっぽんご)"
+			"nativeName":"Japanese"
 		},
 		"jv":{
 			"name":"Javanese",
@@ -353,7 +353,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"kn":{
 			"name":"Kannada",
-			"nativeName":"ಕನ್ನಡ"
+			"nativeName":"Kannada"
 		},
 		"kr":{
 			"name":"Kanuri",
@@ -361,7 +361,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"ks":{
 			"name":"Kashmiri",
-			"nativeName":"कश्मीरी, كشميري‎"
+			"nativeName":"Kashmiri كشميري"
 		},
 		"kk":{
 			"name":"Kazakh",
@@ -369,7 +369,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"km":{
 			"name":"Khmer",
-			"nativeName":"ភាសាខ្មែរ"
+			"nativeName":"Khmer"
 		},
 		"ki":{
 			"name":"Kikuyu, Gikuyu",
@@ -393,11 +393,11 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"ko":{
 			"name":"Korean",
-			"nativeName":"한국어 (韓國語), 조선말 (朝鮮語)"
+			"nativeName":"Korean"
 		},
 		"ku":{
 			"name":"Kurdish",
-			"nativeName":"Kurdî, كوردی‎"
+			"nativeName":"Kurdî, كوردی"
 		},
 		"kj":{
 			"name":"Kwanyama, Kuanyama",
@@ -457,7 +457,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"ml":{
 			"name":"Malayalam",
-			"nativeName":"മലയാളം"
+			"nativeName":"Malayalam"
 		},
 		"mt":{
 			"name":"Maltese",
@@ -469,7 +469,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"mr":{
 			"name":"Marathi (Marāṭhī)",
-			"nativeName":"मराठी"
+			"nativeName":"Marathi (Marāṭhī)"
 		},
 		"mh":{
 			"name":"Marshallese",
@@ -497,7 +497,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"ne":{
 			"name":"Nepali",
-			"nativeName":"नेपाली"
+			"nativeName":"Nepali"
 		},
 		"ng":{
 			"name":"Ndonga",
@@ -513,7 +513,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"ii":{
 			"name":"Nuosu",
-			"nativeName":"ꆈꌠ꒿ Nuosuhxop"
+			"nativeName":"Nuosu Nuosuhxop"
 		},
 		"nr":{
 			"name":"South Ndebele",
@@ -537,7 +537,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"or":{
 			"name":"Oriya",
-			"nativeName":"ଓଡ଼ିଆ"
+			"nativeName":"Oriya"
 		},
 		"os":{
 			"name":"Ossetian, Ossetic",
@@ -545,11 +545,11 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"pa":{
 			"name":"Panjabi, Punjabi",
-			"nativeName":"ਪੰਜਾਬੀ, پنجابی‎"
+			"nativeName":"Panjabi, Punjab پنجابی"
 		},
 		"pi":{
 			"name":"Pāli",
-			"nativeName":"पाऴि"
+			"nativeName":"Pāli"
 		},
 		"fa":{
 			"name":"Persian",
@@ -589,7 +589,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"sa":{
 			"name":"Sanskrit (Saṁskṛta)",
-			"nativeName":"संस्कृतम्"
+			"nativeName":"Sanskrit (Saṁskṛta)"
 		},
 		"sc":{
 			"name":"Sardinian",
@@ -597,7 +597,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"sd":{
 			"name":"Sindhi",
-			"nativeName":"सिन्धी, سنڌي، سندھی‎"
+			"nativeName":"Sindhi سنڌي، سندھی"
 		},
 		"se":{
 			"name":"Northern Sami",
@@ -625,7 +625,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"si":{
 			"name":"Sinhala, Sinhalese",
-			"nativeName":"සිංහල"
+			"nativeName":"Sinhala, Sinhalese"
 		},
 		"sk":{
 			"name":"Slovak",
@@ -673,27 +673,27 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"ta":{
 			"name":"Tamil",
-			"nativeName":"தமிழ்"
+			"nativeName":"Tamil"
 		},
 		"te":{
 			"name":"Telugu",
-			"nativeName":"తెలుగు"
+			"nativeName":"Telugu"
 		},
 		"tg":{
 			"name":"Tajik",
-			"nativeName":"тоҷикӣ, toğikī, تاجیکی‎"
+			"nativeName":"тоҷикӣ, toğikī, تاجیکی"
 		},
 		"th":{
 			"name":"Thai",
-			"nativeName":"ไทย"
+			"nativeName":"Thai"
 		},
 		"ti":{
 			"name":"Tigrinya",
-			"nativeName":"ትግርኛ"
+			"nativeName":"Tigrinya"
 		},
 		"bo":{
 			"name":"Tibetan Standard, Tibetan, Central",
-			"nativeName":"བོད་ཡིག"
+			"nativeName":"Tibetan Standard, Tibetan, Central"
 		},
 		"tk":{
 			"name":"Turkmen",
@@ -701,7 +701,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"tl":{
 			"name":"Tagalog",
-			"nativeName":"Wikang Tagalog, ᜏᜒᜃᜅ᜔ ᜆᜄᜎᜓᜄ᜔"
+			"nativeName":"Wikang Tagalog, Tagalog"
 		},
 		"tn":{
 			"name":"Tswana",
@@ -721,7 +721,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"tt":{
 			"name":"Tatar",
-			"nativeName":"татарча, tatarça, تاتارچا‎"
+			"nativeName":"татарча, tatarça, تاتارچا"
 		},
 		"tw":{
 			"name":"Twi",
@@ -733,7 +733,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"ug":{
 			"name":"Uighur, Uyghur",
-			"nativeName":"Uyƣurqə, ئۇيغۇرچە‎"
+			"nativeName":"Uyƣurqə, ئۇيغۇرچە"
 		},
 		"uk":{
 			"name":"Ukrainian",
@@ -745,7 +745,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"uz":{
 			"name":"Uzbek",
-			"nativeName":"zbek, Ўзбек, أۇزبېك‎"
+			"nativeName":"zbek, Ўзбек, أۇزبېك"
 		},
 		"ve":{
 			"name":"Venda",
