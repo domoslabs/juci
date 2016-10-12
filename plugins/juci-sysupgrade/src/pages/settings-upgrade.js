@@ -89,7 +89,7 @@ JUCI.app
 	
 	$scope.onCheckUSB = function(){
 		$scope.usbUpgradeAvailable = false;
-		$scope.usbCheckInProgress = 1;
+		$scope.usbCheckInProgress = true;
 		$rpc.$call("juci.sysupgrade", "check", {"type": "usb"}).done(function(response){
 			if(response.usb) {
 				$scope.usbUpgrade = response.usb;
@@ -100,14 +100,18 @@ JUCI.app
 				$scope.usbUpgrade = "";
 			}
 			if(response.stderr) $scope.$emit("error", $tr(gettext("USB upgrade check failed"))+": "+response.stderr);
-			$scope.usbCheckInProgress = 0;
+			$scope.usbCheckInProgress = false;
+			$scope.$apply();
+		}).fail(function(e){
+			console.log(e);
+			$scope.usbCheckInProgress = false;
 			$scope.$apply();
 		});
-	}
+	};
 
-	$scope.onCheckOnline = function(){
+	($scope.onCheckOnline = function(){
 		$scope.onlineUpgradeAvailable = false;
-		$scope.onlineCheckInProgress = 1;
+		$scope.onlineCheckInProgress = true;
 		$rpc.$call("juci.sysupgrade", "check", {"type": "online"}).done(function(response){
 			if(response.online) {
 				$scope.onlineUpgrade = response.online;
@@ -118,10 +122,14 @@ JUCI.app
 				$scope.onlineUpgradeStatus = $tr(gettext("No upgrade has been found!"));
 			}
 			if(response.stderr) $scope.$emit("error", $tr(gettext("Online upgrade check failed"))+": "+response.stderr);
-			$scope.onlineCheckInProgress = 0;
+			$scope.onlineCheckInProgress = false;
 			$scope.$apply();
-		}).fail(function(e){console.log(e);});
-	}
+		}).fail(function(e){
+			console.log(e);
+			$scope.onlineCheckInProgress = false;
+			$scope.$apply();
+		});
+	})();
 	$scope.onUpgradeOnline = function(){
 		confirmKeep().done(function(keep){
 			$scope.showUpgradeStatus = 1;
@@ -151,8 +159,6 @@ JUCI.app
 		$scope.upfile = document.getElementById("imageFileSelector");
 		$scope.$apply();
 	}
-	$scope.onCheckUSB();
-	$scope.onCheckOnline();
 	
 	function startUpload(keep){
 		var upfile = $scope.upfile;
