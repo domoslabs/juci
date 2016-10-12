@@ -83,10 +83,6 @@ For example, you could append this to your .config and then do make defconfig:
 
 - BUILD!
 
-Menus can be configured in /etc/config/juci. As a start you can use
-juci.config.example and copy it to your router /etc/config/juci. Then you can
-modify it to get the menus you want.  A better menu system is on the todo
-list..
 
 If you go to your router ip you should see the login screen. By default admin
 user is used to login but if you don't have password set for admin user you

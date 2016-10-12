@@ -189,7 +189,7 @@ JUCI.app
 			dhcp: lan["_uci_dhcp"],
 			dhcpEnabled: lan["_dhcp_enabled"]
 		};
-		$juciDialog.show("simple-lan-settings-edit", {
+		$juciDialog.show("lan-connection-settings-edit", {
 			title: $tr(gettext("Edit LAN Settings")),
 			buttons: [
 				{ label: $tr(gettext("Save")), value: "save", primary: true },

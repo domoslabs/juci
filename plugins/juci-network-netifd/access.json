@@ -52,7 +52,8 @@
 			},
 			"uci": [
 				"layer2_interface_ethernet",
-				"network"
+				"network",
+				"dhcp"
 			],
 			"owsd": [
 				"client",

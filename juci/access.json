@@ -3,9 +3,6 @@
 		"description": "These extend default unauthenticated acl with some extra things for juci",
 		"read": {
 			"ubus": {
-				"juci.ui": [
-					"themes"
-				], 
 				"uci": [ 
 					"get",
 					"state",
@@ -30,9 +27,6 @@
 		"description": "Core functions for JUCI (TODO: remove)",
 		"read": {
 			"ubus": {
-				"juci.ui": [
-					"*"
-				],
 				"session": [
 					"access",
 					"destroy"

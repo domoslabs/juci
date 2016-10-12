@@ -19,11 +19,6 @@ if [ "$(which node)" == "" ]; then
 	perr "!!! if you have issues then do ln -s /usr/bin/nodejs /usr/bin/node"; 
 fi
 
-if [ "$(which grunt)" == "" ]; then 
-	perr "!!! grunt command line program is missing. Please install it using npm install -g grunt-cli"
-	ERR=1; 
-fi 
-
 if [ "$(which uglifyjs)" == "" ]; then 
 	perr "!!! uglify-js is missing. Please install it using npm install -g uglify-js"
 	ERR=1

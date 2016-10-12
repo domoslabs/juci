@@ -26,11 +26,6 @@ String.prototype.toCamel = function(){
 	return this.replace(/(\-[a-z])/g, function($1){return $1.toUpperCase().replace('-','');});
 };
 
-$.jsonRPC.setup({
-  endPoint: '/ubus',
-  namespace: 'juci'
-});
-
 window.$ = $;
 
 require.config({

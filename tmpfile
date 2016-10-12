@@ -1,0 +1,125 @@
+On branch devel
+Your branch is up-to-date with 'origin/devel'.
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   CODING-STANDARD
+	deleted:    IopsysGUIicon2016v2.sfd
+	modified:   Makefile
+	deleted:    Makefile.basic
+	modified:   README.md
+	modified:   TODO.txt
+	deleted:    backend/juci-core/Makefile
+	deleted:    backend/juci-core/io/main.c
+	deleted:    backend/juci-core/io/multipart_parser.c
+	deleted:    backend/juci-core/io/multipart_parser.h
+	deleted:    backend/juci-core/plugin/juci.c
+	deleted:    examples/rpc_using_curl.sh
+	deleted:    examples/uv-async-from-thread.lua
+	deleted:    examples/uv-async-threading-example.lua
+	deleted:    http-server.lua
+	deleted:    index.html
+	deleted:    juci-local-server.config.example
+	deleted:    juci-update
+	deleted:    juci.config.example
+	modified:   juci/Makefile
+	modified:   juci/access.json
+	modified:   juci/docs/creating-translations.md
+	modified:   juci/docs/rpc.md
+	deleted:    juci/lua/core.lua
+	deleted:    juci/lua/ethernet.lua
+	deleted:    juci/lua/json.lua
+	deleted:    juci/lua/netstat.lua
+	deleted:    juci/lua/network.lua
+	deleted:    juci/lualibs/luv/buffer.lua
+	deleted:    juci/lualibs/luv/childprocess.lua
+	deleted:    juci/lualibs/luv/codec.lua
+	deleted:    juci/lualibs/luv/core.lua
+	deleted:    juci/lualibs/luv/dgram.lua
+	deleted:    juci/lualibs/luv/dns.lua
+	deleted:    juci/lualibs/luv/fs.lua
+	deleted:    juci/lualibs/luv/helpful.lua
+	deleted:    juci/lualibs/luv/hooks.lua
+	deleted:    juci/lualibs/luv/http-codec.lua
+	deleted:    juci/lualibs/luv/http.lua
+	deleted:    juci/lualibs/luv/https.lua
+	deleted:    juci/lualibs/luv/json.lua
+	deleted:    juci/lualibs/luv/los.lua
+	deleted:    juci/lualibs/luv/net.lua
+	deleted:    juci/lualibs/luv/path/base.lua
+	deleted:    juci/lualibs/luv/path/init.lua
+	deleted:    juci/lualibs/luv/pretty-print.lua
+	deleted:    juci/lualibs/luv/process.lua
+	deleted:    juci/lualibs/luv/promise.lua
+	deleted:    juci/lualibs/luv/querystring.lua
+	deleted:    juci/lualibs/luv/readline.lua
+	deleted:    juci/lualibs/luv/repl.lua
+	deleted:    juci/lualibs/luv/require.lua
+	deleted:    juci/lualibs/luv/stream/init.lua
+	deleted:    juci/lualibs/luv/stream/stream_core.lua
+	deleted:    juci/lualibs/luv/stream/stream_duplex.lua
+	deleted:    juci/lualibs/luv/stream/stream_observable.lua
+	deleted:    juci/lualibs/luv/stream/stream_passthrough.lua
+	deleted:    juci/lualibs/luv/stream/stream_readable.lua
+	deleted:    juci/lualibs/luv/stream/stream_transform.lua
+	deleted:    juci/lualibs/luv/stream/stream_writable.lua
+	deleted:    juci/lualibs/luv/thread.lua
+	deleted:    juci/lualibs/luv/timer.lua
+	deleted:    juci/lualibs/luv/tls/common.lua
+	deleted:    juci/lualibs/luv/tls/init.lua
+	deleted:    juci/lualibs/luv/tls/lcrypto.lua
+	deleted:    juci/lualibs/luv/tls/root_ca.dat
+	deleted:    juci/lualibs/luv/url.lua
+	deleted:    juci/lualibs/luv/utils.lua
+	deleted:    juci/src/bower.json
+	deleted:    juci/src/index.html
+	modified:   juci/src/js/app.js
+	modified:   juci/src/js/uci.js
+	deleted:    juci/src/lib/fonts/FontAwesome.otf
+	deleted:    juci/src/lib/js/jquery-jsonrpc.js
+	modified:   juci/src/widgets/juci-list-editor.html
+	modified:   juci/src/widgets/juci-list-editor.js
+	deleted:    juci_redirect.sh
+	deleted:    media/juci-logo.png
+	deleted:    media/mobile_1.png
+	deleted:    media/mobile_2.png
+	deleted:    media/mobile_3.png
+	deleted:    media/mobile_4.png
+	deleted:    media/mobile_login.png
+	deleted:    media/screenshot-lan-settings.jpg
+	modified:   package.json
+	modified:   plugins/juci-firewall-fw3/src/pages/internet-firewall-rules.js
+	deleted:    plugins/juci-iconnect/Makefile
+	deleted:    plugins/juci-iconnect/access.json
+	deleted:    plugins/juci-iconnect/src/css/iconnect.less
+	deleted:    plugins/juci-iconnect/src/iconnect.js
+	deleted:    plugins/juci-iconnect/src/img/iconnect-bg.jpg
+	deleted:    plugins/juci-iconnect/src/pages/iconnect-overview.html
+	deleted:    plugins/juci-iconnect/src/pages/iconnect-overview.js
+	modified:   plugins/juci-network-netifd/access.json
+	modified:   plugins/juci-network-netifd/src/widgets/overview-net.js
+	deleted:    plugins/juci-simple-gui/src/widgets/simple-lan-settings-edit.html
+	deleted:    plugins/juci-simple-gui/src/widgets/simple-lan-settings-edit.js
+	deleted:    rpcd.conf
+	deleted:    scripts/beautify
+	modified:   scripts/bootstrap.sh
+	deleted:    scripts/export-menu-json-to-uci
+	deleted:    scripts/initlang
+	deleted:    scripts/install-plugin
+	deleted:    scripts/json-to-lang-js
+	deleted:    scripts/listconfigpages
+	deleted:    scripts/listdeps
+	deleted:    scripts/listpages
+	deleted:    scripts/packlang
+	modified:   scripts/ubuntu-bootstrap.sh
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	plugins/juci-network-netifd/src/widgets/lan-connection-settings-edit.html
+	plugins/juci-network-netifd/src/widgets/lan-connection-settings-edit.js
+	scripts/juci-update
+	tmpfile
+
+no changes added to commit (use "git add" and/or "git commit -a")

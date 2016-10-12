@@ -76,6 +76,8 @@ JUCI.app
 		if(idx == -1 || idx == 0) return;
 		arr.splice(idx, 1);
 		arr.splice(idx - 1, 0, i);
+		$scope.moveDisabled = true;
+		setTimeout(function(){$scope.moveDisabled = false; $scope.$apply();}, 150);
 		$scope.onItemMoved({ $item: i, $prev_index: idx, $index: idx - 1});
 	}
 	$scope.getIcon = function(iconStatus){

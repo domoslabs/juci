@@ -961,7 +961,6 @@
 				setTimeout(function(){ def.reject(); }, 0);
 				return def.promise();
 			}
-			// get section order and send it to uci. This will be applied when user does $save();
 			var order = arr.map(function(x){ return x[".name"]; }).filter(function(x){ return x; });
 			$rpc.$call("uci", "order", {
 				config: self[".name"],
@@ -969,8 +968,8 @@
 			}).done(function(){
 				$rpc.$call("uci", "commit", {
 					config: self[".name"]
-				}).done(function(){
-					def.resolve();
+				}).done(function(data){
+					def.resolve(data);
 				}).fail(function(){
 					def.reject();
 				});

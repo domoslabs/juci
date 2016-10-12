@@ -53,7 +53,9 @@ JUCI.app
 	}
 	$scope.onItemMoved = function(){
 		if(!$uci.firewall) return;
-		$uci.firewall.$save_order("rule");
+		$uci.firewall.$save_order("rule").done(function(data){
+			console.log("done moving rule " + JSON.stringify(data));
+		});
 	}
 	
 	$scope.onDeleteRule = function(rule){

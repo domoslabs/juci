@@ -1,11 +1,7 @@
 DIRS-y:=juci 
-PLUGINS-y:=
+PLUGINS-y:=plugins
 
-ifneq ($(MODULE),)
-BIN:=$(MODULE)/bin
-else
 BIN:=bin
-endif
 
 BACKEND_BIN_DIR:=$(BIN)/usr/libexec/rpcd/
 CODE_DIR:=$(BIN)/www/js
@@ -88,15 +84,10 @@ $(1)-install: $(2)/po/template.pot $(CODE_DIR)/$(CODE_LOAD)-$(1).js
 	$(Q)if [ -f $(2)/access.json ]; then $(CP) $(2)/access.json $(BIN)/usr/share/rpcd/acl.d/$(1).json; fi
 endef
 
-ifneq ($(MODULE),)
-$(eval $(call BuildDir-y,$(notdir $(MODULE)),$(MODULE)))
-else
 $(eval $(call BuildDir-$(CONFIG_PACKAGE_juci),juci,$(CURDIR)/juci/))
-$(foreach th,$(wildcard plugins/*),$(eval $(call BuildDir-$(CONFIG_PACKAGE_$(notdir $(th))),$(notdir $(th)),$(CURDIR)/plugins/$(notdir $(th)))))
+$(foreach th,$(wildcard $(PLUGINS-y)/*),$(eval $(call BuildDir-$(CONFIG_PACKAGE_$(notdir $(th))),$(notdir $(th)),$(CURDIR)/$(PLUGINS-y)/$(notdir $(th)))))
 $(foreach th,$(wildcard themes/*),$(eval $(call BuildDir-$(CONFIG_PACKAGE_$(notdir $(th))),$(notdir $(th)),$(CURDIR)/themes/$(notdir $(th)))))
-endif
 
-UBUS_MODS:=
 
 export CC:=$(CC)
 export CFLAGS:=$(CFLAGS)
@@ -105,24 +96,18 @@ ifeq ($(DESTDIR),)
 	DESTDIR:=/
 endif
 
-ifeq ($(CONFIG_PACKAGE_juci-ubus-core),y)
-	UBUS_MODS += backend/juci-core
-endif
-
-.cleaned: Makefile Makefile.local Makefile.basic 
+.cleaned: Makefile Makefile.local
 	@make clean 
 	@touch .cleaned
 
 Makefile.local: ;
 
-JSLINT_FILES:=$(wildcard plugins/**/src/widgets/*.js plugins/**/src/pages/*.js)
+JSLINT_FILES:=$(wildcard $(PLUGINS-y)/**/src/widgets/*.js $(PLUGINS-y)/**/src/pages/*.js)
 
 prepare: .cleaned	
 	@echo "======= JUCI CONFIG ========="
 	@echo "TARGETS: $(TARGETS)"
-	@echo "BACKEND: $(UBUS_MODS)"
 	@echo "DIRS: $(DIRS-y)"
-	@echo "MODULE: $(MODULE)"
 	@./scripts/bootstrap.sh
 	@mkdir -p $(TMP_DIR)
 	@mkdir -p $(BIN)/www/js/
@@ -138,21 +123,21 @@ prepare: .cleaned
 node_modules: package.json
 	npm install --production
 
-release: prepare node_modules $(TARGETS) $(UBUS_MODS)
+release: prepare node_modules $(TARGETS)
 	@echo "======= JUCI RELEASE =========="
 	@./scripts/juci-compile $(BIN) 
-	@if [ "$(CONFIG_PACKAGE_juci)" = "y" ]; then ./juci-update $(BIN)/www RELEASE; fi
-	@cp juci-update $(BIN)/usr/bin/
+	@if [ "$(CONFIG_PACKAGE_juci)" = "y" ]; then ./scripts/juci-update $(BIN)/www RELEASE; fi
+	@cp scripts/juci-update $(BIN)/usr/bin/
 
-debug: prepare node_modules $(TARGETS) $(UBUS_MODS)
+debug: prepare node_modules $(TARGETS)
 	@echo "======= JUCI DEBUG =========="
 	@echo -e "\033[0;33m [GRUNT] $@ \033[m"
 	#@grunt 
 	@echo -e "\033[0;33m [UPDATE] $@ \033[m"
-	@./juci-update $(BIN)/www DEBUG
-	@cp juci-update $(BIN)/usr/bin/
+	@./scripts/juci-update $(BIN)/www DEBUG
+	@cp scripts/juci-update $(BIN)/usr/bin/
 
-DOCS_MD:= README.md $(wildcard juci/docs/*.md docs/*.md plugins/**/docs/*.md) docs/juci.md
+DOCS_MD:= README.md $(wildcard juci/docs/*.md docs/*.md $(PLUGINS-y)/**/docs/*.md) docs/juci.md
 DOCS_HTML:= $(patsubst %.md,%.html,$(DOCS_MD)) docs/juci.html
 PHONY+=docs  
 docs: $(DOCS_HTML) 
@@ -164,7 +149,7 @@ docs: $(DOCS_HTML)
 	@# remove juci generated md file 
 	@rm -f docs/juci.md
 
-docs/juci.md: $(wildcard plugins/**/docs/*.md)
+docs/juci.md: $(wildcard $(PLUGINS-y)/**/docs/*.md)
 	@# for md in $^; do sed -i "/%PLUGINS_TOC%/a [$$(head -n 1 $$md)]($$(basename $${md%.md}))" docs/juci.md; done
 	@./scripts/build_docs .
 
@@ -179,18 +164,10 @@ docs/juci.md: $(wildcard plugins/**/docs/*.md)
 
 install: 
 	$(INSTALL_DIR) $(BIN)/usr/bin/
-	@cp juci.config.example $(BIN)/usr/share/juci/
-	@cp juci-update $(BIN)/usr/bin/
+	@cp scripts/juci-update $(BIN)/usr/bin/
 	@cp -Rp $(BIN)/* $(DESTDIR)
 
-.PHONY: $(PHONY) $(UBUS_MODS) 
+.PHONY: $(PHONY)
 
-$(UBUS_MODS): 
-	@echo "Building UBUS module $@"
-	@echo "CFLAGS: $(CFLAGS)"
-	@make -i -C $@ clean
-	@make -C $@ 
-	@cp -Rp $@/build/* $(BIN)/
-	
 clean: 
 	rm -rf ./bin ./tmp

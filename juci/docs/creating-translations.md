@@ -62,16 +62,6 @@ this:
 	String.format($tr(gettext("There were {1} people in the room")), 
 		person_count); 
 
-Wheat about dynamic data in configs? 
-------------------------------------
-
-This one is harded. You still need to know the full domain of strings to be
-translated - this is unavoidable. What you would do then is put your language
-tables into a json file and compile it into a js translation file that you will
-load on top of main translation using a script provided by juci called
-`./scripts/json-to-lang-js`. You then put this file into /www/ folder and run
-`juci-update` to regenerate index.html so that it includes this file as well. 
-
 What other things are included in the database? 
 -----------------------------------------------
 

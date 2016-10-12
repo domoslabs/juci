@@ -59,6 +59,7 @@ define Plugin/juci
 	JAVASCRIPT-y+=src/js/config.js
 	JAVASCRIPT-y+=src/js/navigation.js
 	JAVASCRIPT-y+=src/js/status.js
+	JAVASCRIPT-y+=src/js/events.js
 	JAVASCRIPT-y+=src/js/tr.js
 	JAVASCRIPT-y+=src/js/theme.js
 	JAVASCRIPT-y+=src/js/timeout.js
@@ -73,9 +74,6 @@ define Plugin/juci/install
 	$(INSTALL_DIR) $(1)/etc/init.d/
 	$(CP) $(PLUGIN_DIR)/src/img/ $(1)/www/
 	$(CP) $(PLUGIN_DIR)/src/fonts/ $(1)/www/
-	$(INSTALL_DIR) $(1)/usr/share/lua/juci/
-	$(CP) $(PLUGIN_DIR)/lualibs/* $(1)/usr/share/lua/
-	$(CP) $(PLUGIN_DIR)/lua/* $(1)/usr/share/lua/juci/
 	$(CP) $(PLUGIN_DIR)/reboot.html $(1)/www/	
 	$(CP) $(PLUGIN_DIR)/initfail.html $(1)/www/	
 endef

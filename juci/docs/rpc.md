@@ -17,14 +17,14 @@ because most of juci plugins are angular objects.
 `accessing $rpc in angular`
 
 	JUCI.app.controller("yourController", function($rpc){
-		$rpc.$call("juci.ui", "menu").done(function(){
+		$rpc.$call("object", "method" {JSON data}).done(function(){
 
 		}); 
 	});
 
-`accessing in window`
+`accessing in window
 
-	$rpc.$call("juci.ui", "menu").done(function(){
+	$rpc.$call("object", "method" {JSON data}).done(function(){
 
 	}); 
 
