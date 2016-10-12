@@ -9,7 +9,39 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.9\n"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-vlan/src/main.js
+msgid "VLAN"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-vlan/src/main.js
+msgid "unknown"
+msgstr "tuntematon"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-vlan/src/main.js
+msgid "must have priority between 0 and 7"
+msgstr "prioriteetin täytyy olla väliltä 0 ja 7 "
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-vlan/src/main.js
+msgid "must have Q-tag between 1 and 4096"
+msgstr "Q-tunniste tulee olla väliltä 1 ja 4096"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-vlan/src/main.js
+msgid "must have a base-device"
+msgstr "liitäntä on oltava"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-vlan/src/pages/page-broadcom-ethernet-vlan.js
+msgid "Device"
+msgstr "Laite"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-vlan/src/pages/page-broadcom-ethernet-vlan.js
+msgid "802.1q"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-vlan/src/pages/page-broadcom-ethernet-vlan.js
+msgid "802.1p"
+msgstr ""
 
 msgid "New interface"
 msgstr "Uusi liitäntä"
@@ -36,4 +68,8 @@ msgid "VLAN Devices"
 msgstr "VLAN-laitteet"
 
 msgid "menu-page-broadcom-ethernet-vlan-title"
+msgstr "VLAN"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-vlan/src/pages/page-broadcom-ethernet-vlan.html
+msgid "page-broadcom-ethernet-vlan-title"
 msgstr "VLAN"

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.9\n"
 
 msgid "47MHz ~ 1000MHz"
 msgstr ""
@@ -20,14 +20,31 @@ msgstr ""
 msgid "47MHz ~ 431MHz"
 msgstr ""
 
+# /home/jamu/GIT/juci/plugins/juci-catv/src/pages/status-catv.js
+msgid "CATV-332"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-catv/src/pages/status-catv.js
+msgid "CATV-3xx"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-catv/src/pages/status-catv.js
+msgid "CATV-302"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-catv/src/pages/status-catv.js
+msgid "Inteno model"
+msgstr "Inteno malli"
+
 msgid "CATV Settings"
-msgstr "Kaapeli TV asetukset"
+msgstr "CATV asetukset"
 
 msgid "Enable"
 msgstr "Ota käyttöön"
 
-msgid "Enable bandwidth filtering"
-msgstr "Ota käyttöön kaistanleveyden säädin"
+# /home/jamu/GIT/juci/plugins/juci-catv/src/pages/settings-management-catv.html
+msgid "RF Enable"
+msgstr "Ota RF käyttöön"
 
 msgid "Filter"
 msgstr "Filtteri"
@@ -35,8 +52,23 @@ msgstr "Filtteri"
 msgid "CATV Status"
 msgstr "Kaapeli TV tila"
 
-msgid "menu-status-catv-title"
-msgstr "CATV Status"
+# /home/jamu/GIT/juci/plugins/juci-catv/src/pages/status-catv.html
+msgid "No status available"
+msgstr "Ei tilatietoa saatavilla."
 
 msgid "menu-settings-management-catv-title"
 msgstr "CATV"
+
+# /home/jamu/GIT/juci/plugins/juci-catv/src/pages/settings-management-catv.html
+msgid "settings-management-catv-title"
+msgstr "CATV"
+
+msgid "menu-status-catv-title"
+msgstr "CATV Status"
+
+# /home/jamu/GIT/juci/plugins/juci-catv/src/pages/status-catv.html
+msgid "status-catv-title"
+msgstr "CATV status"
+
+#~ msgid "Enable bandwidth filtering"
+#~ msgstr "Ota käyttöön kaistanleveyden säädin"

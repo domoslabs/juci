@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.9\n"
 
 msgid "off"
 msgstr "Pois päältä"
@@ -20,40 +20,111 @@ msgstr ""
 msgid "2.4GHz"
 msgstr ""
 
-msgid "please pick at least one day to schedule on"
-msgstr "valitse vähintään yksi päivä ajastettavaksi"
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid "Wifi Schedule: please pick at least one day to schedule on"
+msgstr "Wifi Aikataulu: valitse vähintään yksi päivä ajastettavaksi"
 
-msgid "SSID string can be at most 32 characters long!"
-msgstr "SSID merkkijono voi olla korkeintaan 32 merkkiä pitkä!"
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid "Invalid SSID: "
+msgstr "Virheellinen SSID:"
 
-msgid "WEP encryption key #'+id+' must be 10-26 hexadecimal characters!"
-msgstr "WEP-salausavaimen # \"  id  \" on oltava 10-26 heksadesimaalimerkkiä!"
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid "no SSID"
+msgstr "ei SSID:tä"
 
-msgid "WPA key must be 8-63 characters long!"
-msgstr "WPA-avaimen on oltava 8-63 merkkiä pitkä!"
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid ". SSID can not be more than 32 characters long!"
+msgstr ". SSID ei voi olla yli 32 merkkiä pitkä!"
 
-msgid "Hostname"
-msgstr "Isäntäkoneen nimi"
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid "Wireless interface "
+msgstr "Langaton liitäntä"
 
-# /home/jari/GIT/IOPSYS/juci/plugins/juci-broadcom-wl/src/pages/wireless-clients.js
-msgid "IPv4 Address"
-msgstr "IPv4 osoite"
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid " has invalid key #"
+msgstr "on virheellinen avain #"
 
-# /home/jari/GIT/IOPSYS/juci/plugins/juci-broadcom-wl/src/pages/wireless-clients.js
-msgid "IPv6 Address"
-msgstr "IPv6 osoite"
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid " error: "
+msgstr "virhe:"
 
-msgid "Frequency"
-msgstr "Taajuus"
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid " must have key #"
+msgstr "avain on oltava:"
 
-# /home/jari/GIT/IOPSYS/juci/plugins/juci-broadcom-wl/src/pages/wireless-clients.js
-msgid "MAC-Address"
-msgstr "MAC osoite"
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid " set!"
+msgstr "aseta!"
 
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid ". WPA key must be 8-63 printable ASCII characters long!"
+msgstr ". WPA-avain täytyy olla 8-63 ASCII merkkiä!"
+
+msgid "Bandwidth"
+msgstr "Kaistanleveys"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-devices.js
+msgid "N/A"
+msgstr "Ei saatavilla"
+
+msgid "Channel"
+msgstr "Kanava"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-devices.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.html
+msgid "Noise"
+msgstr "Kohina"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-devices.js
+msgid "dBm"
+msgstr "dBm"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-devices.js
+msgid "Rate"
+msgstr "Bittinopeus"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-devices.js
+msgid "Disable"
+msgstr "Pois käytöstä"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-devices.js
+msgid "Enable"
+msgstr "Käytössä"
+
+msgid "SSID"
+msgstr "SSID"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-interfaces.js
+msgid "BSSID"
+msgstr "BSSID"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-interfaces.js
+msgid "unknown"
+msgstr "tuntematon"
+
+msgid "Encryption"
+msgstr "Suojaustila"
+
+msgid "Mode"
+msgstr "Toimintatila"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-interfaces.js
+msgid "Device"
+msgstr "Laite"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-interfaces.js
+msgid "Couldn't load wireless radios from config"
+msgstr "Langattomia radioita ei voitu ladata konfiguraatiosta"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-interfaces.js
 msgid ""
-"No more Wireless Interface spaces left. There can't be more then 4 "
+"No more Wireless Interface spaces left. There can't be more than 4 "
 "Interfaces on each radio"
-msgstr "Ei voida lisätä enempää langattomia radioita. Max 4 SSID per radio"
+msgstr ""
+"Ei mahdollista lisätä uusia verkkoja. Voi olla korkeintaan neljä verkkoa "
+"kussakin radiossa"
 
 msgid "Please select a connection in the list!"
 msgstr "Valitse yhteys luettelosta!"
@@ -70,6 +141,57 @@ msgstr "Käytössä"
 msgid "Disabled"
 msgstr "Pois käytöstä"
 
+msgid "None"
+msgstr "Ei mitään"
+
+msgid "WEP"
+msgstr "WEP"
+
+msgid "WPA2 Personal (PSK)"
+msgstr "WPA2 Personal (PSK)"
+
+msgid "WPA Personal (PSK)"
+msgstr "WPA Personal (PSK)"
+
+msgid "WPA/WPA2 Personal (PSK) Mixed Mode"
+msgstr "WPA / WPA2 Personal (PSK) Mixed Mode"
+
+msgid "WPA2 Enterprise"
+msgstr "WPA2 Enterprise"
+
+msgid "WPA Enterprise"
+msgstr "WPA Enterprise"
+
+msgid "WPA/WPA2 Enterprise Mixed Mode"
+msgstr "WPA / WPA2 Enterprise Mixed Mode"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
+msgid "IP-Address"
+msgstr "IP-osoite"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-broadcom-wl/src/pages/wireless-clients.js
+msgid "MAC-Address"
+msgstr "MAC osoite"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
+msgid "DHCP"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
+msgid "Idle"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
+msgid "In Network"
+msgstr "Yhdistetty verkkoon"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.js
+msgid "RSSI"
+msgstr ""
+
+msgid "SNR"
+msgstr "SNR"
+
 msgid "Initializing"
 msgstr "WPS status"
 
@@ -84,6 +206,13 @@ msgstr "WPS ei onnitustunut"
 
 msgid "Timed out"
 msgstr "WPS aikakatkaisu"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
+msgid "Switching to repeater mode"
+msgstr "Otetaan toistintila käyttöön"
 
 msgid "Overlap"
 msgstr "Overlap"
@@ -110,6 +239,9 @@ msgstr "Tallenna"
 msgid "Cancel"
 msgstr "Peruuta"
 
+msgid "Auto"
+msgstr "Automaattinen"
+
 msgid "11a"
 msgstr "802.11c"
 
@@ -131,38 +263,11 @@ msgstr "802.11a"
 msgid "Key"
 msgstr "Avain"
 
-msgid "Auto"
-msgstr "Automaattinen"
-
 msgid "CCMP (AES)"
 msgstr "CCMP (AES)"
 
 msgid "TKIP/CCMP (AES)"
 msgstr "TKIP/CCMP (AES)"
-
-msgid "None"
-msgstr "Ei mitään"
-
-msgid "WEP"
-msgstr "WEP"
-
-msgid "WPA2 Personal (PSK)"
-msgstr "WPA2 Personal (PSK)"
-
-msgid "WPA Personal (PSK)"
-msgstr "WPA Personal (PSK)"
-
-msgid "WPA/WPA2 Personal (PSK) Mixed Mode"
-msgstr "WPA / WPA2 Personal (PSK) Mixed Mode"
-
-msgid "WPA2 Enterprise"
-msgstr "WPA2 Enterprise"
-
-msgid "WPA Enterprise"
-msgstr "WPA Enterprise"
-
-msgid "WPA/WPA2 Enterprise Mixed Mode"
-msgstr "WPA / WPA2 Enterprise Mixed Mode"
 
 msgid ""
 "If you disable SSID broadcasting, WPS function will be disabled as well. You "
@@ -224,14 +329,8 @@ msgstr "WiFi tila"
 msgid "Select Hardware Mode"
 msgstr "Valitse laitteistotila"
 
-msgid "Channel"
-msgstr "Kanava"
-
 msgid "Select Channel"
 msgstr "Kanava"
-
-msgid "Bandwidth"
-msgstr "Kaistanleveys"
 
 msgid "Select Bandwidth"
 msgstr "Kaistanleveys"
@@ -287,14 +386,18 @@ msgstr "WiFi verkon nimi (SSID)"
 msgid "Broadcast SSID"
 msgstr "Lähetä SSID"
 
-msgid "Encryption"
-msgstr "Suojaustila"
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
+msgid "Wireless Multicast Forwarding"
+msgstr ""
+
+msgid "Frequency"
+msgstr "Taajuus"
 
 msgid "Cipher"
 msgstr "Salausavain"
 
 msgid "WiFi Key (Password)"
-msgstr "WiFi salsana"
+msgstr "WiFi salasana"
 
 msgid "Reset to default password"
 msgstr "Palauta oletussalasana"
@@ -332,12 +435,6 @@ msgstr "Lisää kytketty laite listaan"
 msgid "Add clients to MAC filtering list"
 msgstr "Lisää isäntäkoneita MAC-suodatinlistaan"
 
-msgid "You must enter a valid MAC address!"
-msgstr "Tarkista MAC-osoite!"
-
-msgid "MAC"
-msgstr "MAC"
-
 msgid "Select Wireless Radio"
 msgstr "Valitse Langaton Radio"
 
@@ -346,9 +443,6 @@ msgstr "Valitse SSID"
 
 msgid "New SSID"
 msgstr "Uusi SSID"
-
-msgid "Mode"
-msgstr "Toimintatila"
 
 msgid "New Wireless Interface"
 msgstr "Uusi langaton liitäntä"
@@ -359,20 +453,8 @@ msgstr "WiFi-tila"
 msgid "wifi.client.info"
 msgstr "Lähellä olevat langattomat laitteet"
 
-msgid "SSID"
-msgstr "SSID"
-
-msgid "SNR"
-msgstr "SNR"
-
 msgid "Connect"
 msgstr "Yhdistä"
-
-msgid "Connected Wireless Clients"
-msgstr "Yhdistetyt Langattomat Laitteet"
-
-msgid "wifi.clients.info"
-msgstr " "
 
 msgid "Wireless Radios"
 msgstr "WiFi radiot"
@@ -391,6 +473,10 @@ msgstr ""
 "Voit lisätä langattoman verkon tietoturvaa valitsemalla mitkä laitteet "
 "saavat yhdistää verkkoon. Laitteet tunnistetaan MAC-osoitteen perusteella. "
 "Voit hallinoida jopa 32:a langatonta laitetta."
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-filtering.html
+msgid "You cannot enable MAC Filtering on a WEP protected wireless interface!"
+msgstr "MAC-suodatusta ei voi käyttää, kun käytössä on WEP salaus"
 
 msgid "General WiFi Settings"
 msgstr "Yleiset WiFi asetukset"
@@ -464,6 +550,18 @@ msgstr "WiFi tila"
 msgid "status.wifi.info"
 msgstr "WiFi"
 
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.html
+msgid "Channel:"
+msgstr "Kanava:"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status-scan.html
+msgid "WiFi Scan"
+msgstr "WiFi skannaus"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status-scan.html
+msgid "status.wifi.scan.info"
+msgstr "WiFi scan"
+
 msgid "Radio"
 msgstr "Radio"
 
@@ -476,11 +574,11 @@ msgstr "Skannaa ympäristön tukiasemat"
 msgid "Scanning..."
 msgstr "(Skannataan...)"
 
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status-scan.html
 msgid ""
-"You will not be able to scan 5Ghz band because your 5Ghz wifi radio is "
+"You will not be able to scan 5Ghz band because your 5Ghz wireless radio is "
 "operating at a DFS channel"
-msgstr ""
-"5GHz taajuutta ei voi skannata silloin, kun 5GHz radio käyttää DFS kanavia"
+msgstr "Et voi skannata 5GHz ympäristöä, koska 5GHz radio operoi DFS kanavilla"
 
 msgid "WPS Settings"
 msgstr "Yleiset WiFi asetukset"
@@ -490,26 +588,11 @@ msgstr ""
 "WPS mahdollistaa laitteiden yhdistämisen langattomaan verkkoon nappia "
 "painamalla"
 
-msgid "WPS Function"
-msgstr "WPS"
-
 msgid "Enable WPS on"
 msgstr "Aktivoi WPS"
 
-msgid "Enable WPS button on router"
-msgstr "Ota reitittimen WPS painike käyttöön"
-
-msgid ""
-"Pressing WiFi on/off button on your router for long time activates pairing "
-msgstr ""
-"Aktivoi WPS-paritus painamalla pitkään WiFi päälle / pois-painiketta "
-"reitittimestä"
-
 msgid "Pair (within 2 minutes)"
 msgstr "Parita (kahden minuutin sisällä)"
-
-msgid "WPS Using Generated PIN"
-msgstr "WPS luotua PIN-koodia käyttäen"
 
 msgid "Generated PIN"
 msgstr "Luotu PIN"
@@ -522,9 +605,6 @@ msgstr "Syötä laitteesi PIN koodi"
 
 msgid "Enter your PIN here"
 msgstr "Syötä PIN koodi tähän"
-
-msgid "Your router is now attempting to pair with other devices."
-msgstr "WPS käynnissä"
 
 msgid "WPS-PBC: Push Button on Device"
 msgstr "WPS-PBC: Paina laitteessa olevaa WPS-painiketta"
@@ -556,35 +636,149 @@ msgstr "Syötä paritettavan laitteen PIN-koodi tähän kohtaan."
 msgid "menu-wireless-client-mode-title"
 msgstr "Client Mode"
 
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-client-mode.html
+msgid "wireless-client-mode-title"
+msgstr "Langaton toistin"
+
+msgid "menu-wireless-devices-title"
+msgstr "Laitteet"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-devices.html
+msgid "wireless-devices-title"
+msgstr "Langattomat laitteet"
+
+msgid "menu-wireless-filtering-title"
+msgstr "Suodatus"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-filtering.html
+msgid "wireless-filtering-title"
+msgstr "Suodatus"
+
 msgid "menu-wireless-general-title"
 msgstr "WiFi"
 
-msgid "menu-wireless-clients-title"
-msgstr "Clients"
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-general.html
+msgid "wireless-general-title"
+msgstr ""
 
-msgid "menu-wireless-wps-title"
-msgstr "WPS"
+msgid "menu-wireless-interfaces-title"
+msgstr "Langattomat verkot"
 
-msgid "menu-wireless-filtering-title"
-msgstr "Filtteröinti"
-
-msgid "menu-wireless-status-title"
-msgstr "WiFi"
-
-msgid "menu-wireless-title"
-msgstr "WiFi"
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-interfaces.html
+msgid "wireless-interfaces-title"
+msgstr "Langattomat verkot"
 
 msgid "menu-wireless-link-to-interfaces-title"
 msgstr "WiFi"
 
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-link-to-interfaces.html
+msgid "wireless-link-to-interfaces-title"
+msgstr ""
+
 msgid "menu-wireless-schedule-title"
 msgstr "Ajastus"
 
-msgid "menu-wireless-interfaces-title"
-msgstr "Liitännät"
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-schedule.html
+msgid "wireless-schedule-title"
+msgstr "Ajastus"
 
-msgid "menu-wireless-devices-title"
-msgstr "Laitteet"
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status-scan.html
+msgid "menu-wireless-status-scan-title"
+msgstr "Skannaus"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status-scan.html
+msgid "wireless-status-scan-title"
+msgstr "Skannaus"
+
+msgid "menu-wireless-status-title"
+msgstr "WiFi tila"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.html
+msgid "wireless-status-title"
+msgstr "WiFi tila"
+
+msgid "menu-wireless-wps-title"
+msgstr "WPS"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.html
+msgid "wireless-wps-title"
+msgstr "WPS"
+
+msgid "menu-wireless-title"
+msgstr "WiFi"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless.html
+msgid "wireless-title"
+msgstr "WiFi"
+
+#~ msgid "please pick at least one day to schedule on"
+#~ msgstr "valitse vähintään yksi päivä ajastettavaksi"
+
+#~ msgid "SSID string can be at most 32 characters long!"
+#~ msgstr "SSID merkkijono voi olla korkeintaan 32 merkkiä pitkä!"
+
+#~ msgid "WEP encryption key #'+id+' must be 10-26 hexadecimal characters!"
+#~ msgstr ""
+#~ "WEP-salausavaimen # \"  id  \" on oltava 10-26 heksadesimaalimerkkiä!"
+
+#~ msgid "WPA key must be 8-63 characters long!"
+#~ msgstr "WPA-avaimen on oltava 8-63 merkkiä pitkä!"
+
+#~ msgid "Hostname"
+#~ msgstr "Isäntäkoneen nimi"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-broadcom-wl/src/pages/wireless-clients.js
+#~ msgid "IPv4 Address"
+#~ msgstr "IPv4 osoite"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-broadcom-wl/src/pages/wireless-clients.js
+#~ msgid "IPv6 Address"
+#~ msgstr "IPv6 osoite"
+
+#~ msgid ""
+#~ "No more Wireless Interface spaces left. There can't be more then 4 "
+#~ "Interfaces on each radio"
+#~ msgstr "Ei voida lisätä enempää langattomia radioita. Max 4 SSID per radio"
+
+#~ msgid "You must enter a valid MAC address!"
+#~ msgstr "Tarkista MAC-osoite!"
+
+#~ msgid "MAC"
+#~ msgstr "MAC"
+
+#~ msgid "Connected Wireless Clients"
+#~ msgstr "Yhdistetyt Langattomat Laitteet"
+
+#~ msgid "wifi.clients.info"
+#~ msgstr " "
+
+#~ msgid ""
+#~ "You will not be able to scan 5Ghz band because your 5Ghz wifi radio is "
+#~ "operating at a DFS channel"
+#~ msgstr ""
+#~ "5GHz taajuutta ei voi skannata silloin, kun 5GHz radio käyttää DFS kanavia"
+
+#~ msgid "WPS Function"
+#~ msgstr "WPS"
+
+#~ msgid "Enable WPS button on router"
+#~ msgstr "Ota reitittimen WPS painike käyttöön"
+
+#~ msgid ""
+#~ "Pressing WiFi on/off button on your router for long time activates "
+#~ "pairing "
+#~ msgstr ""
+#~ "Aktivoi WPS-paritus painamalla pitkään WiFi päälle / pois-painiketta "
+#~ "reitittimestä"
+
+#~ msgid "WPS Using Generated PIN"
+#~ msgstr "WPS luotua PIN-koodia käyttäen"
+
+#~ msgid "Your router is now attempting to pair with other devices."
+#~ msgstr "WPS käynnissä"
+
+#~ msgid "menu-wireless-clients-title"
+#~ msgstr "Clients"
 
 #~ msgid "No IP address"
 #~ msgstr "Ei IP osoitetta"

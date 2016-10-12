@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.9\n"
 
 msgid "No DSCP"
 msgstr "Ei DSCP:tä"
@@ -78,13 +78,13 @@ msgid "Choose default version from list"
 msgstr "Valitse oletusversio listasta"
 
 msgid "Query interval"
-msgstr ""
+msgstr "Kyselyn aikaväli"
 
 msgid "Query response interval"
-msgstr ""
+msgstr "Kyselyn vastaus aikaväli"
 
 msgid "Last member query interval"
-msgstr ""
+msgstr "Viimeinen jäsenen kysely aikaväli"
 
 msgid "Robustness value"
 msgstr ""
@@ -93,7 +93,7 @@ msgid "LAN to LAN multicast"
 msgstr ""
 
 msgid "Check box to enable LAN to LAN multicast"
-msgstr " "
+msgstr "Valintaruutu LAN-LAN multicast"
 
 msgid "Max groups"
 msgstr "Max ryhmät"
@@ -114,19 +114,23 @@ msgid "Enable IGMP proxy"
 msgstr "Ota IGMP välityspalvelin käyttöön"
 
 msgid "Ignore SSM Range"
-msgstr ""
+msgstr "Ohita SSM alue"
 
 msgid "Check box to ignore SSM RFC to enable regular multicast on SSM-Range"
 msgstr ""
 
 msgid "IGMP snooping mode"
-msgstr ""
+msgstr "IGMP snooping tila"
 
 msgid "IGMP snooping interfaces"
-msgstr ""
+msgstr "IGMP snooping rajapinnat"
 
 msgid "No mcpd configuration found!"
 msgstr "MCPD konfiguraatiota ei löydy"
 
 msgid "menu-broadcom-iptv-title"
+msgstr "IPTV"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "broadcom-iptv-title"
 msgstr "IPTV"

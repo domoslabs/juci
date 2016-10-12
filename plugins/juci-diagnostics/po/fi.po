@@ -9,7 +9,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.9\n"
+
+# /home/jamu/GIT/juci/plugins/juci-diagnostics/src/pages/status-diagnostics.js
+msgid "Not a valid domain or ip address"
+msgstr "Verkkotunnus tai IP-osoite ei ole kelvollinen"
 
 # /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
 msgid "Up and Down"
@@ -40,22 +44,22 @@ msgid "error deleting server"
 msgstr "virhe palvelinta poistettaessa"
 
 # /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
-msgid "Upstream:"
-msgstr "Lähetys:"
+msgid "Downstream:"
+msgstr "Lataus:"
 
-# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+# /home/jamu/GIT/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
 msgid ""
 "Mbit/s\n"
-"Downstream:"
-msgstr "Mbit/s Lataus"
+"Upstream:"
+msgstr "Mbit/s lähetys"
 
 # /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
 msgid "Mbit/s"
-msgstr ""
+msgstr "Mbit/s"
 
 # /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
-msgid "Downstream:"
-msgstr "Lataus:"
+msgid "Upstream:"
+msgstr "Lähetys:"
 
 # /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
 msgid "Wrong TP-test address and/or port"
@@ -73,9 +77,9 @@ msgstr "Osoite ja portti tarvitaan"
 msgid "Direction"
 msgstr "Suunta"
 
-# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
-msgid "Package Size"
-msgstr "Pakettikoko"
+# /home/jamu/GIT/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Bytes to transfer"
+msgstr "Siirrettävien tavujen määrä"
 
 # /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
 msgid "Speedtest Server"
@@ -148,5 +152,31 @@ msgstr "Jäljitä"
 msgid "Trace results"
 msgstr "Jäljityksen tulokset"
 
+# /home/jamu/GIT/juci/plugins/juci-diagnostics/src/pages/status-diagnostics-speedtest.html
+msgid "Speed Test"
+msgstr "TP-nopeustesti"
+
+# /home/jamu/GIT/juci/plugins/juci-diagnostics/src/pages/status-diagnostics-speedtest.html
+msgid "menu-status-diagnostics-speedtest-title"
+msgstr "TP-nopeustesti"
+
+# /home/jamu/GIT/juci/plugins/juci-diagnostics/src/pages/status-diagnostics-speedtest.html
+msgid "status-diagnostics-speedtest-title"
+msgstr "TP-nopeustesti"
+
 msgid "menu-status-diagnostics-title"
 msgstr "Diagnostiikka"
+
+# /home/jamu/GIT/juci/plugins/juci-diagnostics/src/pages/status-diagnostics.html
+msgid "status-diagnostics-title"
+msgstr "Diagnostiikka"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+#~ msgid ""
+#~ "Mbit/s\n"
+#~ "Downstream:"
+#~ msgstr "Mbit/s Lataus"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+#~ msgid "Package Size"
+#~ msgstr "Pakettikoko"

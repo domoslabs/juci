@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.9\n"
 
 msgid "1/1 Sync"
 msgstr ""
@@ -29,23 +29,31 @@ msgstr ""
 msgid "1/8 Async when entering wait, 1/1 Sync otherwise"
 msgstr ""
 
+msgid "Power Management Settings"
+msgstr "Virranhallinta-asetukset"
+
 msgid "CPU Speed"
 msgstr ""
 
 msgid "CPU r4k Wait"
 msgstr ""
 
+# /home/jamu/GIT/juci/plugins/juci-broadcom-pwrmgmt/src/pages/broadcom-pwrmgmt.html
+msgid "Keeps CPU in sleep state without spinning"
+msgstr "Pitää prosessorin lepotilassa pysäyttämättä"
+
 msgid "DRAM Self-Refresh"
 msgstr ""
 
 msgid "Ethernet Auto Power Down"
-msgstr ""
+msgstr "Ethernet automaattinen virransäästö"
 
 msgid "Energy Efficient Ethernet"
-msgstr ""
-
-msgid "Power Management Settings"
-msgstr ""
+msgstr "Energian tehokas ethernet"
 
 msgid "menu-broadcom-pwrmgmt-title"
+msgstr "Virranhallinta"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-pwrmgmt/src/pages/broadcom-pwrmgmt.html
+msgid "broadcom-pwrmgmt-title"
 msgstr "Virranhallinta"

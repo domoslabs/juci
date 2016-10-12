@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.9\n"
 
 msgid "LAN does not have IPv6 configured"
 msgstr "Lähiverkolla ei ole IPv6 konfigurointia"
@@ -43,6 +43,65 @@ msgstr "DHCP-varauksen aika"
 
 msgid "Lease Time"
 msgstr "Vuokra-aika"
+
+msgid "Advanced Settings"
+msgstr "Edistyneet asetukset"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "DHCP Options"
+msgstr "DHCP optiot"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "ID"
+msgstr "Tunnus/ID"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Option"
+msgstr "Optio"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Dynamic DHCP"
+msgstr "Dynaaminen DHCP"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Force"
+msgstr "Pakota"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "IPv4 Netmask"
+msgstr "IPv4 aliverkon peite"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "TODO"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Ignore"
+msgstr "Ohita"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "IPv6 Settings"
+msgstr "IPv6-asetukset"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "DHCPv6-Service"
+msgstr "DHCPv6-palvelu"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Router Advertisement-Service"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "NDP-Proxy"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "DHCPv6-Mode"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Master"
+msgstr ""
 
 msgid "Connection"
 msgstr "Yhteys"
@@ -128,8 +187,9 @@ msgstr "Host ID (IPv6)"
 msgid "DHCP Server"
 msgstr "DHCP-palvelin"
 
-msgid "DHCP Settings"
-msgstr "DHCP-asetukset"
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "DHCP/DNS"
+msgstr ""
 
 msgid "General Settings"
 msgstr "Yleiset asetukset"
@@ -163,9 +223,6 @@ msgstr "paikallinen DNS-tiedosto"
 
 msgid "Ignore Hosts file"
 msgstr "Ohita Hosts-tiedosto"
-
-msgid "Advanced Settings"
-msgstr "Edistyneet asetukset"
 
 msgid "Domain required"
 msgstr "Toimialueen nimi vaadittu"
@@ -308,8 +365,19 @@ msgstr "Suurin sallittu määrä samanaikaisia DNS-kyselyitä"
 msgid "Hostname Entries"
 msgstr "Isäntäkoneiden merkinnät"
 
-msgid "menu-dhcp-status-title"
-msgstr "DHCP"
-
 msgid "menu-dhcp-settings-title"
 msgstr "DHCP"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "dhcp-settings-title"
+msgstr "DHCP asetukset"
+
+msgid "menu-dhcp-status-title"
+msgstr "DHCP tila"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/pages/dhcp-status.html
+msgid "dhcp-status-title"
+msgstr "DHCP tila"
+
+#~ msgid "DHCP Settings"
+#~ msgstr "DHCP-asetukset"

@@ -13,49 +13,49 @@ msgstr ""
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.js
 msgid "Port Speed"
-msgstr ""
+msgstr "Portin nopeus"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.js
 msgid "None"
-msgstr ""
+msgstr "Ei mitään"
 
 msgid "Full auto-negotiation"
-msgstr ""
+msgstr "Täysin automaattinen neuvottelu"
 
 msgid "Max 100Mb auto-negotiation, full duplex"
-msgstr ""
+msgstr "Max 100Mb automaattinen yhteydenmuodostus, kaksisuuntainen"
 
 msgid "Max 100Mb auto-negotiation, half duplex"
-msgstr ""
+msgstr "Max 100Mb automaattinen yhteydenmuodostus, vuorosuuntainen"
 
 msgid "Max 10Mb auto-negotiation, full duplex"
-msgstr ""
+msgstr "Max 10Mb automaattinen yhteydenmuodostus, kaksisuuntainen"
 
 msgid "Max 10Mb auto-negotiation, half duplex"
-msgstr ""
+msgstr "Max 10Mb automaattinen yhteydenmuodostus, vuorosuuntainen"
 
 msgid "Only 100Mb, full duplex"
-msgstr ""
+msgstr "Vain 100Mb, kaksisuuntainen"
 
 msgid "Only 100Mb, half duplex"
-msgstr ""
+msgstr "Vain 100Mb, vuorosuuntainen"
 
 msgid "Only 10Mb, full duplex"
-msgstr ""
+msgstr "Vain 10Mb, kaksisuuntainen"
 
 msgid "Only 10Mb, half duplex"
-msgstr ""
+msgstr "Vain 10Mb, vuorosuuntainen"
 
 msgid "Disabled"
 msgstr "Pois käytöstä"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Only 1000Mb"
-msgstr ""
+msgstr "Vain 1000Mb"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Only 100Mb"
-msgstr ""
+msgstr "Vain 100Mb"
 
 msgid "Port speed"
 msgstr "Portin nopeus"
@@ -74,22 +74,22 @@ msgstr "Ethernet porttien konfigurointi"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
 msgid "Fiber Ports"
-msgstr ""
+msgstr "Kuituportit"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
 msgid "Uplink port"
-msgstr ""
+msgstr "Internetportti"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
 msgid "This is used to configure the ethernet port as internet uplink."
-msgstr ""
+msgstr "Tätä porttia käytetään Internet-porttina"
 
 msgid "menu-page-broadcom-ethernet-phy-title"
 msgstr "Ethernet"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
 msgid "page-broadcom-ethernet-phy-title"
-msgstr ""
+msgstr "Ethernet"
 
 #~ msgid "This will be the port that will be used to configure the physical ethernet port as upling port for routing out to the internet."
 #~ msgstr "Tätä porttia käytetään Internetporttina"

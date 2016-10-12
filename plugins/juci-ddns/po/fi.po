@@ -9,7 +9,16 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.9\n"
+
+msgid "Provider"
+msgstr "Palveluntarjoaja"
+
+msgid "Domain name"
+msgstr "Toimialue"
+
+msgid "Username"
+msgstr "Käyttäjänimi"
 
 msgid "Interface"
 msgstr "Fyysinen liitäntä"
@@ -47,17 +56,8 @@ msgstr "Script Path"
 msgid "Enter path to script on router"
 msgstr "Anna komentosarjalle kuvaava nimi"
 
-msgid "Provider"
-msgstr "Palveluntarjoaja"
-
 msgid "Choose DNS Provider"
 msgstr "Valitse DNS-palveluntarjoaja"
-
-msgid "Domain name"
-msgstr "Toimialue"
-
-msgid "Username"
-msgstr "Käyttäjänimi"
 
 msgid "Password"
 msgstr "Salasana"
@@ -78,4 +78,8 @@ msgstr ""
 "palveluntarjoajaltasi."
 
 msgid "menu-internet-services-ddns-title"
+msgstr "DDNS"
+
+# /home/jamu/GIT/juci/plugins/juci-ddns/src/pages/internet-services-ddns.html
+msgid "internet-services-ddns-title"
 msgstr "DDNS"
