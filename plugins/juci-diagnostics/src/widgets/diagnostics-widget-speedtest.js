@@ -11,16 +11,23 @@ JUCI.app
 })
 .controller("diagnosticsWidget90Speedtest", function($scope, $rpc, $events, $uci, utilsAddTestserverPicker, $tr, gettext){
 	$scope.data = {
-		packagesize: 50,
 		test_type: "up_down",
 		result: "",
-		state: ""
+		state: "",
+		manually: false
 	}; 
-	var min = 1; 
-	var max = 100; 
-	$scope.$watch('data.packagesize', function(new_value){
-		if(new_value < min)$scope.data.packagesize = min;
-		if(new_value > max)$scope.data.packagesize = max;
+	
+	function getDefaultPacketSize(){
+		$rpc.$call("juci.speedtest", "get_packet_size").done(function(data){
+			$scope.data.downsize = parseInt(data.packetsize_down);
+			$scope.data.upsize = parseInt(data.packetsize_up);
+			$scope.$apply();
+		}).fail(function(e){ console.log(e); });
+	}
+	getDefaultPacketSize();
+	
+	$scope.$watch('data.manually', function(new_value){
+		if(new_value === true){ getDefaultPacketSize(); }
 	}, false);
 
 	function getServers(){
@@ -35,9 +42,9 @@ JUCI.app
 	}
 
 	$scope.testType = [
-		{value:"up_down", label: $tr(gettext("Up and Down")) }, 
+		{value:"down", label: $tr(gettext("Down")) },
 		{value:"up", label: $tr(gettext("Up")) }, 
-		{value:"down", label: $tr(gettext("Down")) } 
+		{value:"up_down", label: $tr(gettext("Down and Up")) }
 	];
 
 	$uci.$sync("speedtest").done(function(){
@@ -47,6 +54,8 @@ JUCI.app
 	});
 
 	$scope.runTest = function(){
+		if($scope.data.test_type.indexOf("up") !== -1 && !$scope.data.upsize){ alert("Upstream packet size missing"); return; }
+		if($scope.data.test_type.indexOf("down") !==-1 && !$scope.data.downsize){ alert("Downstream packet size missing"); return; }
 		if(!$scope.testServers.length){
 			window.alert($tr(gettext("Server and port is mandatory")));
 			return;
@@ -59,12 +68,21 @@ JUCI.app
 		var port = server.port.value;
 		var address = server.server.value;
 		$scope.data.state="running";
-		$rpc.$call("juci.speedtest", "run", {
+		var speedtestArgs = {
+			"auto": !$scope.data.manually,
 			"testmode": $scope.data.test_type,
 			"port": port,
-			"packetsize": $scope.data.packagesize * 1000000,
 			"address": address
-		}).done(function(response){
+		};
+
+		if($scope.data.test_type.indexOf("up") !== -1){
+			speedtestArgs.packetsize_up = $scope.data.upsize * 1000000;
+		}
+		if($scope.data.test_type.indexOf("down") !== -1){
+			speedtestArgs.packetsize_down = $scope.data.downsize * 1000000;
+		}
+
+		$rpc.$call("juci.speedtest", "run", speedtestArgs).done(function(response){
 			if(response && response.message=="success"){
 				$scope.data.state="running";
 			}else{

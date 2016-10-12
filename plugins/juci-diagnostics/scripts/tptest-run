@@ -10,17 +10,29 @@ local received="none"
 local label="success"
 
 json_load "$args"
+json_get_var auto auto "1"
 json_get_var testmode testmode "up_down"
-json_get_var packetsize packetsize 50000
+json_get_var packetsize_up packetsize_up 50000
+json_get_var packetsize_down packetsize_down 50000
 json_get_var address address
 json_get_var port port
 
 case "$testmode" in
-	*up*) sent=$(tptest -n 1 -m tcp-send 60 $packetsize -v 2 $address $port | awk '/Throughput/{print($2)}') ;;
+	*up*)
+		if [ "$auto" == "1" ]; then
+			sent=$(tptest -n 1 -m tcp-send-auto -v 1 $address $port | awk '/TCP Send/{print($3)}')
+		else
+			sent=$(tptest -n 1 -m tcp-send 60 $packetsize_up -v 2 $address $port | awk '/Throughput/{print($2)}')
+		fi
 esac
 
 case "$testmode" in
-	*down*) received=$(tptest -n 1 -m tcp-receive 60 $packetsize -v 2 $address $port | awk '/Throughput/{print($2)}') ;;
+	*down*)
+		if [ "$auto" == "1" ]; then
+			received=$(tptest -n 1 -m tcp-receive-auto -v 1 $address $port | awk '/TCP Recv/{print($3)}')
+		else
+			received=$(tptest -n 1 -m tcp-receive 60 $packetsize_down -v 2 $address $port | awk '/Throughput/{print($2)}')
+		fi
 esac
 
 if [ -z "$received" -o -z "$sent" ]; then
@@ -29,4 +41,3 @@ if [ -z "$received" -o -z "$sent" ]; then
 fi
 
 ubus send juci.utils.speedtest "{\"status\":$SUCCESS, \"upstream\":\"$sent\",\"downstream\":\"$received\",\"label\":\"$label\"}"
-

@@ -4,10 +4,19 @@
 			<juci-config-line title="{{'Direction'|translate}}">
 				<juci-select ng-model="data.test_type" ng-items="testType"/>
 			</juci-config-line>
-			<juci-config-line title="{{'Bytes to transfer'|translate}}">
+			<juci-config-line title="{{'Set transfer size manually'|translate}}">
 				<div class="input-group">
-					<input type="number" step="5" class="form-control" ng-model="data.packagesize" />
-					<span class="input-group-addon">Mbyte</span>
+					<switch class="green" ng-model="data.manually" />
+				</div>
+			</juci-config-line>
+			<juci-config-line ng-show="data.manually && (data.test_type=='down' || data.test_type=='up_down')" title="{{'Downstream packet size'|translate}}">
+				<div class="input-group">
+					<input type="number" min="0" max="500" step="5" class="form-control" ng-model="data.downsize" placeholder="[Mbyte]" />
+				</div>
+			</juci-config-line>
+			<juci-config-line ng-show="data.manually && (data.test_type=='up' || data.test_type=='up_down')" title="{{'Upstream packet size'|translate}}">
+				<div class="input-group">
+					<input type="number" min="0" max="500" step="5" class="form-control" ng-model="data.upsize" placeholder="[Mbyte]" />
 				</div>
 			</juci-config-line>
 			<juci-config-line title="{{'Speedtest Server' | translate}}">
