@@ -62,6 +62,7 @@ JUCI.app.run(function($uci){
 	JUCI.interval.repeat("status_system_page_refresh", 5000, function(resume){
 		async.parallel([
 			function (cb){$rpc.$call("router.system", "info").done(function(res){sys = res; cb();}).fail(function(){cb();});},
+			function (cb){$rpc.$call("router.system", "memory_bank").done(function(res){sys.system.other_bank = res.previous_bank_firmware; cb();}).fail(function(){cb();});},
 			function (cb){$network.getNetworkLoad().done(function(load){ netLoad = load; cb(); }).fail(function(){cb();});},
 			function (cb){$rpc.$call("router.system", "fs").done(function(res){
 				filesystems = res.filesystem; 
@@ -95,6 +96,7 @@ JUCI.app.run(function($uci){
 			[$tr(gettext("Serial No")), sys.system.serialno || $tr(gettext("N/A"))],
 			[$tr(gettext("MAC Address")), sys.system.basemac || $tr(gettext("N/A"))],
 			[$tr(gettext("Firmware Version")), sys.system.firmware || $tr(gettext("N/A"))],
+			[$tr(gettext("Other Bank")), sys.system.other_bank|| $tr(gettext("N/A"))],
 			[$tr(gettext("Kernel Version")), sys.system.kernel || $tr(gettext("N/A"))],
 			[$tr(gettext("Filesystem")), sys.system.filesystem || $tr(gettext("N/A"))],
 			[$tr(gettext("BRCM Version")), sys.system.brcmver || $tr(gettext("N/A"))],

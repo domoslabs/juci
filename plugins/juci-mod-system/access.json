@@ -38,6 +38,7 @@
 				],
 				"router.system": [
 					"info",
+					"memory_bank",
 					"password_set",
 					"fs",
 					"processes"
