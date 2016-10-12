@@ -9,13 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.9\n"
 
 msgid "SIP users needs a name"
-msgstr ""
+msgstr "SIP-käyttäjät tarvitsevat nimen"
 
 msgid "SIP users needs a valid extension"
-msgstr ""
+msgstr "SIP-käyttäjät tarvitsevat kunnollisen alanumeron"
 
 msgid "Today"
 msgstr "Tänään"
@@ -26,35 +26,43 @@ msgstr "Käytössä"
 msgid "Disabled"
 msgstr "Pois käytöstä"
 
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.js
+msgid "No Phone number selected"
+msgstr "Puhelinnumeroa ei ole valittu"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.js
+msgid "No Day selected"
+msgstr "Päivää ei ole valittu"
+
 msgid "Fixed"
-msgstr ""
+msgstr "Pysyvä"
 
 msgid "Adaptive"
-msgstr "Verkkolaite"
+msgstr ""
 
 msgid "Yes"
-msgstr ""
+msgstr "Kyllä"
 
 msgid "No"
-msgstr ""
+msgstr "Ei"
 
 msgid "Australia"
-msgstr ""
+msgstr "Australia"
 
 msgid "Belgium"
-msgstr ""
+msgstr "Belgia"
 
 msgid "Brazil"
-msgstr ""
+msgstr "Brasilia"
 
 msgid "Chile"
-msgstr ""
+msgstr "Chile"
 
 msgid "China"
-msgstr ""
+msgstr "Kiina"
 
 msgid "Czech"
-msgstr ""
+msgstr "Tsekki"
 
 msgid "Denmark"
 msgstr ""
@@ -63,55 +71,55 @@ msgid "ETSI"
 msgstr ""
 
 msgid "Finland"
-msgstr ""
+msgstr "Suomi"
 
 msgid "France"
-msgstr "Peruuta"
+msgstr "Ranska"
 
 msgid "Germany"
-msgstr ""
+msgstr "Saksa"
 
 msgid "Hungary"
-msgstr ""
+msgstr "Unkari"
 
 msgid "India"
-msgstr ""
+msgstr "Intia"
 
 msgid "Italy"
-msgstr ""
+msgstr "Italia"
 
 msgid "Japan"
-msgstr ""
+msgstr "Japani"
 
 msgid "Netherlands"
-msgstr ""
+msgstr "Alankomaat"
 
 msgid "New Zealand"
-msgstr ""
+msgstr "Uusi Seelanti"
 
 msgid "North America"
-msgstr ""
+msgstr "Pohjois-Amerikka"
 
 msgid "Spain"
-msgstr ""
+msgstr "Espanja"
 
 msgid "Sweden"
-msgstr ""
+msgstr "Ruotsi"
 
 msgid "Switzerland"
-msgstr ""
+msgstr "Sveitsi"
 
 msgid "Norway"
-msgstr ""
+msgstr "Norja"
 
 msgid "Taiwan"
-msgstr ""
+msgstr "Taiwan"
 
 msgid "United Kingdoms"
-msgstr ""
+msgstr "Iso-Britannia"
 
 msgid "United Arab Emirates"
-msgstr ""
+msgstr "Yhdistyneet Arabiemiraatit"
 
 msgid "CFG TR57"
 msgstr ""
@@ -120,7 +128,7 @@ msgid "off"
 msgstr "Pois päältä"
 
 msgid "Unknown"
-msgstr ""
+msgstr "Tuntematon"
 
 msgid "on"
 msgstr "Päällä"
@@ -129,22 +137,22 @@ msgid "Off"
 msgstr "Pois päältä"
 
 msgid "Transparent"
-msgstr ""
+msgstr "Läpinäkyvä"
 
 msgid "Conservative"
-msgstr ""
+msgstr "Konservatiivinen"
 
 msgid "Aggressive"
-msgstr ""
+msgstr "Aggressiivinen"
 
 msgid "White noise"
-msgstr ""
+msgstr "Valkokohina"
 
 msgid "Hot noise"
 msgstr ""
 
 msgid "Spectrum estimate"
-msgstr ""
+msgstr "Taajuuksien arvio"
 
 msgid "TLS v1"
 msgstr ""
@@ -156,16 +164,16 @@ msgid "SSL v3"
 msgstr ""
 
 msgid "Listen on all interfaces"
-msgstr ""
+msgstr "Kaikkia liittymiä kuunnellaan"
 
 msgid "Congestion"
-msgstr "Yhteys"
+msgstr ""
 
 msgid "Info"
 msgstr ""
 
 msgid "Compatibility"
-msgstr ""
+msgstr "Yhteensopivuus"
 
 msgid "RFC 2833"
 msgstr ""
@@ -177,10 +185,10 @@ msgid "Inband"
 msgstr ""
 
 msgid "No Mailbox"
-msgstr ""
+msgstr "Ei postilaatikkoa"
 
 msgid "Select Codec"
-msgstr "Valitse Aikataulutila"
+msgstr "Valitse kodeekki"
 
 msgid "G 723.1"
 msgstr ""
@@ -212,17 +220,31 @@ msgstr ""
 msgid "TLS"
 msgstr ""
 
+msgid "Username"
+msgstr "Käyttäjä"
+
+msgid "Domain"
+msgstr "Toimialue"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider.js
+msgid "Registration Time"
+msgstr "Rekisteröintiaika"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider.js
+msgid "Binding Address"
+msgstr ""
+
 msgid "Account "
 msgstr "Tilin nimi"
 
 msgid "Direct"
-msgstr ""
+msgstr "Suora"
 
 msgid "No Account"
 msgstr "SIP tilit"
 
 msgid "Advanced Line Settings"
-msgstr ""
+msgstr "Edistyneet linja-asetukset"
 
 msgid "Locale selecton"
 msgstr ""
@@ -231,10 +253,10 @@ msgid "A restart is required for country changes to take effect"
 msgstr ""
 
 msgid "Enable Jitter Buffer"
-msgstr ""
+msgstr "Ota käyttöön jitter-puskuri"
 
 msgid "Force Jitter Buffer"
-msgstr ""
+msgstr "Pakota jitter-puskuri"
 
 msgid "Jitter Buffer implementation"
 msgstr ""
@@ -613,9 +635,6 @@ msgstr "Alanumero"
 msgid "Extension for this user"
 msgstr ""
 
-msgid "Username"
-msgstr "Käyttäjä"
-
 msgid "The User id for the account (defaultuser)"
 msgstr ""
 
@@ -657,9 +676,6 @@ msgstr "Puhelinlinjojen tila."
 msgid "Your Phone Lines"
 msgstr "Puhelinlinjasi"
 
-msgid "Domain"
-msgstr "Toimialue"
-
 msgid "Registration interval (s)"
 msgstr ""
 
@@ -699,9 +715,6 @@ msgstr "Aika"
 msgid "External Number"
 msgstr "Ulkoinen numero"
 
-msgid "Your number"
-msgstr "Puhelinnumerosi"
-
 msgid "Duration"
 msgstr "Kesto"
 
@@ -735,12 +748,11 @@ msgstr "Estä soitot näistä numeroista"
 msgid "Outgoing Calls"
 msgstr "Lähtevät puhelut"
 
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-number-blocking.html
 msgid ""
-"You can also block ranges of numbers.For example: '0160#' blocks all numbers "
-"starting with '0160'."
+"You can also block ranges of numbers. For example: '0160#' blocks all "
+"numbers starting with '0160'."
 msgstr ""
-"Voit myös estää numeroalueen. Esimerkiksi \"0160#\" estää kaikki numerot "
-"jotka ovat \"0160\"-alkuisia"
 
 msgid "Incoming Calls"
 msgstr "Saapuvat puhelut"
@@ -753,14 +765,16 @@ msgstr ""
 "Aseta puhelinaikataulut milloin puhelimen tulisi hälyttää tai ei tulisi "
 "hälyttää."
 
-msgid "During this time ringing is"
-msgstr "Tänä aika soittaminen on "
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+msgid "During the times below ringing is"
+msgstr ""
 
 msgid "Select Schedule Mode"
 msgstr "Valitse Aikataulutila"
 
-msgid "Add a new Ringing Schedule"
-msgstr "Lisää uusi soittoajastus"
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+msgid "Add/Edit Ringing Schedule"
+msgstr ""
 
 msgid "Phone Number"
 msgstr "Puhelinnumero"
@@ -770,9 +784,6 @@ msgstr "Valitse puhelinnumero"
 
 msgid "Day"
 msgstr "Päivä"
-
-msgid "Number"
-msgstr "Numero"
 
 msgid "Speed Dialing"
 msgstr "Pikavalinta"
@@ -786,41 +797,112 @@ msgstr "Poista kaikki merkinnät pikavalintaluettelosta"
 msgid "Clear"
 msgstr "Tyhjennä"
 
-msgid "menu-voice-sip-accounts-title"
-msgstr "Linjat"
-
-msgid "menu-voice-advanced-settings-lines-title"
-msgstr "Linjat"
-
-msgid "menu-voice-lines-title"
-msgstr "Linjat"
-
-msgid "menu-voice-advanced-settings-title"
-msgstr "Linjat"
-
-msgid "menu-voice-call-log-title"
-msgstr "Puheluloki"
-
 msgid "menu-status-phone-title"
 msgstr "Puhelin"
 
-msgid "menu-voice-advanced-settings-sip-title"
-msgstr "Linjat"
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/status-phone.html
+msgid "status-phone-title"
+msgstr ""
 
 msgid "menu-voice-advanced-settings-dialplan-title"
 msgstr "Pikavalinta"
 
-msgid "menu-voice-title"
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings-dialplan.html
+msgid "voice-advanced-settings-dialplan-title"
+msgstr ""
+
+msgid "menu-voice-advanced-settings-lines-title"
+msgstr "Linjat"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings-lines.html
+msgid "voice-advanced-settings-lines-title"
+msgstr ""
+
+msgid "menu-voice-advanced-settings-sip-title"
+msgstr "Linjat"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings-sip.html
+msgid "voice-advanced-settings-sip-title"
+msgstr ""
+
+msgid "menu-voice-advanced-settings-title"
+msgstr "Linjat"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings.html
+msgid "voice-advanced-settings-title"
+msgstr ""
+
+msgid "menu-voice-call-log-title"
 msgstr "Puheluloki"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-call-log.html
+msgid "voice-call-log-title"
+msgstr ""
+
+msgid "menu-voice-lines-title"
+msgstr "Linjat"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-lines.html
+msgid "voice-lines-title"
+msgstr ""
 
 msgid "menu-voice-number-blocking-title"
 msgstr "Kontrolloi puhelinlaskuasi ja estä puhelut ei-haluttuihin numeroihin."
 
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-number-blocking.html
+msgid "voice-number-blocking-title"
+msgstr ""
+
 msgid "menu-voice-ringing-schedule-title"
 msgstr "Ajastus"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+msgid "voice-ringing-schedule-title"
+msgstr ""
+
+msgid "menu-voice-sip-accounts-title"
+msgstr "Linjat"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-sip-accounts.html
+msgid "voice-sip-accounts-title"
+msgstr ""
+
+msgid "menu-voice-sip-users-title"
+msgstr "Numerot"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-sip-users.html
+msgid "voice-sip-users-title"
+msgstr ""
 
 msgid "menu-voice-speed-dialing-title"
 msgstr "Pikavalinta"
 
-msgid "menu-voice-sip-users-title"
-msgstr "Numerot"
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-speed-dialing.html
+msgid "voice-speed-dialing-title"
+msgstr ""
+
+msgid "menu-voice-title"
+msgstr "Puheluloki"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice.html
+msgid "voice-title"
+msgstr ""
+
+#~ msgid "Your number"
+#~ msgstr "Puhelinnumerosi"
+
+#~ msgid ""
+#~ "You can also block ranges of numbers.For example: '0160#' blocks all "
+#~ "numbers starting with '0160'."
+#~ msgstr ""
+#~ "Voit myös estää numeroalueen. Esimerkiksi \"0160#\" estää kaikki numerot "
+#~ "jotka ovat \"0160\"-alkuisia"
+
+#~ msgid "During this time ringing is"
+#~ msgstr "Tänä aika soittaminen on "
+
+#~ msgid "Add a new Ringing Schedule"
+#~ msgstr "Lisää uusi soittoajastus"
+
+#~ msgid "Number"
+#~ msgstr "Numero"

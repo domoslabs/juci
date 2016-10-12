@@ -9,7 +9,54 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.9\n"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Disable"
+msgstr "Pois käytöstä"
+
+msgid "Load Balancer (Compability)"
+msgstr "Kuormanjako (Yhteensopivuus)"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Fast Balancer (Distribution)"
+msgstr "Nopea jako (jakelu)"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Method"
+msgstr "Tapa"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Unknown"
+msgstr "Tuntematon"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Interval"
+msgstr "Intervalli"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "sec"
+msgstr "sek"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Failover to"
+msgstr "Käytä varayhteyttä"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "OK"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Error"
+msgstr "Virhe"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "No available networks to add!"
+msgstr "Ei lisättäviä verkkoja!"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Add new Interface"
+msgstr "Lisää uusi liitäntä"
 
 msgid "Source addr:"
 msgstr "Lähdeosoite:"
@@ -38,11 +85,17 @@ msgstr ""
 msgid "WAN6"
 msgstr ""
 
-msgid "Load Balancer (Performance)"
-msgstr "Kuormanjako (Suorituskyky)"
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.js
+msgid "Load Balancer (Best Compatibility)"
+msgstr "Kuormituksen tasaus (paras yhteensopivuus)"
 
-msgid "Load Balancer (Compability)"
-msgstr "Kuormanjako (Yhteensopivuus)"
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.js
+msgid "Fast Balancer (Best Distribution)"
+msgstr "Nopea jako (paras jakelu)"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan-interface-add.html
+msgid "Select Network Interface"
+msgstr "Valitse verkkoliitäntä"
 
 msgid "Load Balancer Distribution"
 msgstr "Kuormanjaon jakaminen"
@@ -92,8 +145,9 @@ msgstr ""
 msgid "MultiWAN Configuration"
 msgstr "MultiWAN Määritys"
 
-msgid "Basic Settings"
-msgstr "Perusasetukset"
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/pages/internet-multiwan.html
+msgid "Settings"
+msgstr "Asetukset"
 
 msgid "MultiWAN Enabled"
 msgstr "MultiWAN Käytössä"
@@ -101,8 +155,22 @@ msgstr "MultiWAN Käytössä"
 msgid "Default Route"
 msgstr "Oletusreitti"
 
-msgid "Multi-WAN Traffic Rules"
-msgstr "Multi-WAN säännöt"
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/pages/internet-multiwan.html
+msgid "Traffic Rules"
+msgstr "Liikennöintisäännöt"
 
 msgid "menu-internet-multiwan-title"
 msgstr "Multiwan"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/pages/internet-multiwan.html
+msgid "internet-multiwan-title"
+msgstr "Multiwan"
+
+#~ msgid "Load Balancer (Performance)"
+#~ msgstr "Kuormanjako (Suorituskyky)"
+
+#~ msgid "Basic Settings"
+#~ msgstr "Perusasetukset"
+
+#~ msgid "Multi-WAN Traffic Rules"
+#~ msgstr "Multi-WAN säännöt"

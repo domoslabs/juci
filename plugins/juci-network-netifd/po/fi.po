@@ -20,9 +20,6 @@ msgstr "Kiinteä IP-osoite"
 msgid "DHCP v4"
 msgstr "DHCP IPv4"
 
-msgid "menu-network-title"
-msgstr "Verkko"
-
 msgid "DHCP v6"
 msgstr "DHCPv6"
 
@@ -415,13 +412,13 @@ msgid "RX Rate"
 msgstr ""
 
 msgid "Uplink"
-msgstr ""
+msgstr "Lähetys"
 
 msgid "Downlink"
-msgstr ""
+msgstr "Lataus"
 
 msgid "Standalone"
-msgstr "Normaali"
+msgstr ""
 
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-create-settings.js
 msgid "Anywan"
@@ -598,7 +595,7 @@ msgstr "Tila"
 
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
 msgid "Bit Rate"
-msgstr ""
+msgstr "Bittinopeus"
 
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
 msgid "Downstream"
@@ -660,7 +657,7 @@ msgstr "Laitteen nimi"
 
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.html
 msgid "IP in network"
-msgstr " "
+msgstr "IP verkossa"
 
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.html
 msgid "Clients current network"
@@ -976,7 +973,7 @@ msgid "PAP/CHAP password"
 msgstr "Salasana"
 
 msgid "Enable IPv negotiation on the PPP link"
-msgstr ""
+msgstr "Ota käyttöön IPv neuvottelu PPP-linkissä"
 
 msgid "Select Modem Device"
 msgstr "Valitse modeemi"
@@ -1055,13 +1052,15 @@ msgstr "Autentikointityyppi"
 
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.html
 msgid "Modes"
-msgstr ""
+msgstr "Tilat"
 
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.html
 msgid ""
 "Allowed network modes, comma separated list of: all, lte, umts, gsm, cdma, "
 "td-scdma"
 msgstr ""
+"Sallitus verkon tilat pilkuin eroteltu luettelo: kaikki, lte, umts, gsm, "
+"cdma, td-scdma"
 
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.html
 msgid "Delay"
@@ -1303,6 +1302,9 @@ msgstr "Verkon tila"
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/status-network.html
 msgid "status-network-title"
 msgstr "Verkon tila"
+
+#~ msgid "menu-network-title"
+#~ msgstr "Verkko"
 
 #~ msgid "Unmanaged networks need to be setup as a bridge"
 #~ msgstr "Valvomattomat verkot on asetettava sillaksi"

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.9\n"
 
 msgid "Auto"
 msgstr "Automaattinen"
@@ -41,20 +41,37 @@ msgstr "Yritetään parittaa laitetta"
 msgid "Pair"
 msgstr "Parita"
 
-msgid "Number"
-msgstr "Numero"
-
-msgid "RFPI"
+# /home/jamu/GIT/juci/plugins/juci-natalie-dect/src/pages/voice-dect.html
+msgid "ID"
 msgstr ""
 
-msgid "State"
-msgstr "Tila"
+# /home/jamu/GIT/juci/plugins/juci-natalie-dect/src/pages/voice-dect.html
+msgid "IPUI"
+msgstr ""
 
-msgid "Status"
-msgstr "Tila"
+# /home/jamu/GIT/juci/plugins/juci-natalie-dect/src/pages/voice-dect.html
+msgid "Codecs"
+msgstr "Koodekit"
 
-msgid "Action"
-msgstr "Toiminto"
+# /home/jamu/GIT/juci/plugins/juci-natalie-dect/src/pages/voice-dect.html
+msgid "Pinging..."
+msgstr "Ping..."
 
 msgid "menu-voice-dect-title"
 msgstr "DECT"
+
+# /home/jamu/GIT/juci/plugins/juci-natalie-dect/src/pages/voice-dect.html
+msgid "voice-dect-title"
+msgstr "DECT"
+
+#~ msgid "Number"
+#~ msgstr "Numero"
+
+#~ msgid "State"
+#~ msgstr "Tila"
+
+#~ msgid "Status"
+#~ msgstr "Tila"
+
+#~ msgid "Action"
+#~ msgstr "Toiminto"

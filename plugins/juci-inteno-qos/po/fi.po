@@ -9,13 +9,34 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.9\n"
 
 msgid "Low"
-msgstr ""
+msgstr "Matala"
 
-msgid "Add Bandwidth Limitation"
-msgstr "Lisää kaistanrajoitussääntö"
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+msgid "Enabled"
+msgstr "Käytössä"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+msgid "Download Speed"
+msgstr "Latausnopeus"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+msgid "Upload Speed"
+msgstr "Lähetysnopeus"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+msgid "New Class"
+msgstr "Uusi luokka"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+msgid "New Classgroup"
+msgstr "Uusi luokkaryhmä"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+msgid "New Interface"
+msgstr "Uusi liitäntä"
 
 msgid "All"
 msgstr "Kaikki"
@@ -29,56 +50,198 @@ msgstr ""
 msgid "ICMP"
 msgstr ""
 
-msgid "Select which interface you want to put the Bandwidth Limitation on"
-msgstr "Valitse käytettävä yhteys"
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.js
+msgid "End value has to be larger than start value."
+msgstr "Loppuarvon on oltava suurempi kuin alkuarvo."
 
-msgid "Interface"
-msgstr "Liitäntä"
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/add-bw-interface-edit.html
+msgid "Interface name"
+msgstr "Liitännän nimi"
 
-msgid "Interface to apply the restrictions on"
-msgstr " Liitäntä johon määrityksiä käytetään"
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/new-classgroup-modal.html
+msgid "Classgroup name"
+msgstr "Luokkaryhmän nimi"
 
-msgid "Enable"
-msgstr "Ota käyttöön"
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/new-class-modal.html
+msgid "Class name"
+msgstr "Luokan nimi"
 
-msgid "Download Speed Limit"
-msgstr "Latausnopeuden rajoitus"
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid "Priority"
+msgstr "Prioriteetti"
 
-msgid "Upload Speed Limit"
-msgstr "Lähetysnopeuden rajoitus"
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid "Average Rate"
+msgstr "Keskimääräinen bittinopeus"
 
-msgid "Acceleration will be disabled when Bandwidth limitation is enabled"
-msgstr ""
-"Laitteistokiihdytys poistetaan käytöstä, kun kaistanrajoitus on käytössä"
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid "Limit Rate"
+msgstr "Rajoita bittinopeutta"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Packet Size"
+msgstr "Pakettikoko"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid "Packet Delay"
+msgstr "Pakettiviive"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid "Max Size"
+msgstr "Max koko"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classgroups-edit.html
+msgid "Classes"
+msgstr "Luokat"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classgroups-edit.html
+msgid "Add a new class"
+msgstr "Lisää uusi luokka"
 
 msgid "Target"
-msgstr "Kohde"
-
-msgid "Precedence"
-msgstr "Presedenssi"
-
-msgid "Source host"
-msgstr "Lähde"
-
-msgid "Destination host"
 msgstr "Kohde"
 
 msgid "Protocol"
 msgstr "Protokolla"
 
-msgid "Port"
-msgstr "Portti"
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Source Host"
+msgstr "Lähdeisäntä"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Destination Host"
+msgstr "Kohdeportti"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Ports"
+msgstr "Portit"
 
 msgid "Filter by port, when there are no ports no filter will be applied"
 msgstr ""
 "Porttikohtainen suodatus. Kun portteja ei ole määritelty, suodatinsääntöjä "
 "ei sovelleta"
 
-msgid "Bandwidth Limitation"
-msgstr "Internet-yhteyden rajoitus"
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Source Ports"
+msgstr "Lähdeportit"
 
-msgid "Quality of Service Settings"
-msgstr "QoS säännöt"
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Destination Ports"
+msgstr "Kohdeportit"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Port Range"
+msgstr "Porttialue"
+
+msgid "Precedence"
+msgstr "Presedenssi"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Direction"
+msgstr "Suunta"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Mark"
+msgstr "Merkki"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Connbytes"
+msgstr "Yhteystavut"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "TCP Flags"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "tos"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "dscp"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Enable QoS"
+msgstr "Ota QoS käyttöön"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Classification Group"
+msgstr "Luokitteluryhmä"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Calculate Overhead"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Limit Download Speed"
+msgstr "Rajoita latausnopeutta"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Limit Upload Speed"
+msgstr "Rajoita lähetysnopeutta"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Acceleration will be disabled when QoS is enabled"
+msgstr "Kiihdytys poistetaan käytöstä, kun QoS on käytössä"
+
+msgid "Interface"
+msgstr "Liitäntä"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
+msgid "Class"
+msgstr "Luokka"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
+msgid "Classgroup"
+msgstr "Luokkaryhmä"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
+msgid "Classify"
+msgstr "Luokitus"
 
 msgid "menu-juci-inteno-qos-title"
 msgstr "QoS"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
+msgid "juci-inteno-qos-title"
+msgstr "QoS"
+
+#~ msgid "Add Bandwidth Limitation"
+#~ msgstr "Lisää kaistanrajoitussääntö"
+
+#~ msgid "Select which interface you want to put the Bandwidth Limitation on"
+#~ msgstr "Valitse käytettävä yhteys"
+
+#~ msgid "Interface to apply the restrictions on"
+#~ msgstr " Liitäntä johon määrityksiä käytetään"
+
+#~ msgid "Enable"
+#~ msgstr "Ota käyttöön"
+
+#~ msgid "Download Speed Limit"
+#~ msgstr "Latausnopeuden rajoitus"
+
+#~ msgid "Upload Speed Limit"
+#~ msgstr "Lähetysnopeuden rajoitus"
+
+#~ msgid "Acceleration will be disabled when Bandwidth limitation is enabled"
+#~ msgstr ""
+#~ "Laitteistokiihdytys poistetaan käytöstä, kun kaistanrajoitus on käytössä"
+
+#~ msgid "Source host"
+#~ msgstr "Lähde"
+
+#~ msgid "Destination host"
+#~ msgstr "Kohde"
+
+#~ msgid "Port"
+#~ msgstr "Portti"
+
+#~ msgid "Bandwidth Limitation"
+#~ msgstr "Internet-yhteyden rajoitus"
+
+#~ msgid "Quality of Service Settings"
+#~ msgstr "QoS säännöt"
