@@ -33,7 +33,7 @@ JUCI.app
 	function getServers(){
 		$scope.allTestServers = $scope.testServers.map(function(x){
 			return {
-				label: x.server.value + "/" + x.port.value, 
+				label: x.server.value + ":" + x.port.value,
 				value: x.server.value
 			}
 		});
