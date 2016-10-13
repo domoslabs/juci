@@ -42,9 +42,9 @@ JUCI.app
 	}
 
 	$scope.testType = [
-		{value:"down", label: $tr(gettext("Down")) },
-		{value:"up", label: $tr(gettext("Up")) }, 
-		{value:"up_down", label: $tr(gettext("Down and Up")) }
+		{value:"down", label: $tr(gettext("Download")) },
+		{value:"up", label: $tr(gettext("Upload")) },
+		{value:"up_down", label: $tr(gettext("Download/Upload")) }
 	];
 
 	$uci.$sync("speedtest").done(function(){
