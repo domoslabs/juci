@@ -14,7 +14,7 @@ JUCI.app
 		test_type: "up_down",
 		result: "",
 		state: "",
-		manually: false
+		auto: true
 	}; 
 	
 	function getDefaultPacketSize(){
@@ -26,8 +26,8 @@ JUCI.app
 	}
 	getDefaultPacketSize();
 	
-	$scope.$watch('data.manually', function(new_value){
-		if(new_value === true){ getDefaultPacketSize(); }
+	$scope.$watch('data.auto', function(new_value){
+		if(new_value === false){ getDefaultPacketSize(); }
 	}, false);
 
 	function getServers(){
@@ -69,7 +69,7 @@ JUCI.app
 		var address = server.server.value;
 		$scope.data.state="running";
 		var speedtestArgs = {
-			"auto": !$scope.data.manually,
+			"auto": $scope.data.auto,
 			"testmode": $scope.data.test_type,
 			"port": port,
 			"address": address
