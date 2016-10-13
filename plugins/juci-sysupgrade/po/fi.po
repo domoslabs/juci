@@ -43,7 +43,7 @@ msgstr "Virhe:"
 
 # /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.js
 msgid "unknown test"
-msgstr ""
+msgstr "tuntematon testi"
 
 msgid "New Software Available!"
 msgstr "Uusi ohjelmisto saatavilla!"
@@ -77,18 +77,18 @@ msgstr "Palvelinvirhe"
 
 # /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
 msgid ".w (JFFS Image with CFE)"
-msgstr ""
+msgstr ".w (JFFS tiedostojärjestelmä sisältää CFE:n)"
 
 msgid ".y (UBIFS Image)"
-msgstr ".y (UBIFS Image)"
+msgstr ".y (UBIFS tiedostojärjestelmä)"
 
 # /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
 msgid ".y2 (new UBIFS Image)"
-msgstr ""
+msgstr ".y2 (uusi UBIFS tiedostojärjestelmä)"
 
 # /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
 msgid "fs_image (JFFS Image)"
-msgstr ""
+msgstr "fs_image (JFFS tiedostojärjestelmä)"
 
 # /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
 msgid "A missing section has been created"

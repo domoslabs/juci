@@ -9,13 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.9\n"
 
 msgid "Printers"
 msgstr "Tulostimet"
 
 msgid "internet-services-printer-info"
-msgstr "Tulostuspalvelin"
+msgstr "Tulostinpalvelin"
 
 msgid "Printer"
 msgstr "Tulostin"
@@ -36,4 +36,8 @@ msgid "Bidirectional mode"
 msgstr "Kaksisuuntainen"
 
 msgid "menu-internet-services-printer-title"
-msgstr "Tulostuspalvelin"
+msgstr "Tulostinpalvelin"
+
+# /home/jamu/GIT/juci/plugins/juci-printer/src/pages/internet-services-printer.html
+msgid "internet-services-printer-title"
+msgstr "Tulostinpalvelin"

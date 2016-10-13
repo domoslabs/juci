@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.9\n"
 
 msgid "HTTPD Settings"
 msgstr "HTTPD asetukset"
@@ -17,23 +17,19 @@ msgstr "HTTPD asetukset"
 msgid "uhttpd.settings.info"
 msgstr "UHTTPd"
 
-msgid "WWW-root"
-msgstr "WWW-root"
-
-msgid "WWW-root path"
-msgstr "WWW-root polku"
-
-msgid "UBUS Prefix"
-msgstr "UBUS etuliite"
-
-msgid "ex. /ubus"
-msgstr "ex. /ubus"
-
 msgid "Max Requests"
 msgstr "Max pyynnöt"
 
 msgid "Max Connections"
 msgstr "Yhteyksien enimmäismäärä"
+
+# /home/jamu/GIT/juci/plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
+msgid "Listening IP:Port"
+msgstr "Kuunneltava IP:portti"
+
+# /home/jamu/GIT/juci/plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
+msgid "Add IP:Port"
+msgstr "Lisää IP:Portti"
 
 msgid "Specify UBUS return codes to log into system log"
 msgstr "Määritä lokiin kirjoitettavat UBUS paluukoodit"
@@ -45,4 +41,20 @@ msgid "Object.Method"
 msgstr "Object.Method"
 
 msgid "menu-page-uhttpd-settings-title"
-msgstr "uhttpd"
+msgstr "UHTTP"
+
+# /home/jamu/GIT/juci/plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
+msgid "page-uhttpd-settings-title"
+msgstr "UHTTP"
+
+#~ msgid "WWW-root"
+#~ msgstr "WWW-root"
+
+#~ msgid "WWW-root path"
+#~ msgstr "WWW-root polku"
+
+#~ msgid "UBUS Prefix"
+#~ msgstr "UBUS etuliite"
+
+#~ msgid "ex. /ubus"
+#~ msgstr "ex. /ubus"

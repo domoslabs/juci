@@ -18,7 +18,7 @@ msgid "Deny"
 msgstr "Estä"
 
 msgid "UPNP Settings"
-msgstr "UPNP asetukset"
+msgstr "UPnP asetukset"
 
 msgid "internet.services.upnp.info"
 msgstr "UPnP"
@@ -114,10 +114,10 @@ msgid "UPnP lease file"
 msgstr "UPnP vuokratiedosto"
 
 msgid "UPnP ACLs"
-msgstr ""
+msgstr "UPnP ACL"
 
 msgid "UPnP Open Ports"
-msgstr "Käyttää UPnP:tä avaamaan automaattisesti tarvittavat portit reititimestäsi"
+msgstr "UPnP avatut portit"
 
 msgid "No UPnP ports currently in use"
 msgstr "Ei käytössä olevia UPnP-porttteja"

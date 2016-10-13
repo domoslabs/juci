@@ -23,18 +23,6 @@ msgstr "DHCPv6"
 msgid "PPP over Ethernet"
 msgstr "PPPoE"
 
-msgid "IPv4 Address"
-msgstr "IPv4 osoite"
-
-msgid "IPv4 Subnet Mask"
-msgstr "IPv4 aliverkon peite"
-
-msgid "IPv4 Broadcast"
-msgstr ""
-
-msgid "DHCP Server"
-msgstr "DHCP-palvelin"
-
 msgid "wireless.2g.info"
 msgstr " "
 
@@ -42,10 +30,10 @@ msgid "2.4Ghz Wireless"
 msgstr "WiFi"
 
 msgid "Radio Configuration"
-msgstr "Konfiguraatio"
+msgstr "Radio konfiguraatio"
 
 msgid "SSID Configuration"
-msgstr "Konfiguraatio"
+msgstr "SSID konfiguraatio"
 
 msgid "wireless.5g.info"
 msgstr " "
@@ -57,13 +45,13 @@ msgid "lan.config.info"
 msgstr " "
 
 msgid "LAN Configuration"
-msgstr "Konfiguraatio"
+msgstr "LAN konfiguraatio"
 
 msgid "dhcp.config.info"
 msgstr " "
 
 msgid "DHCP Configuration"
-msgstr "Konfiguraatio"
+msgstr "DHCP konfiguraatio"
 
 msgid "wan.config.info"
 msgstr " "
@@ -75,10 +63,10 @@ msgid "Configuration Method"
 msgstr "Konfiguraatiomenetelmä"
 
 msgid "Choose Configuration Option"
-msgstr "Valitse Konfiguraatiovaihtoehto"
+msgstr "Valitse konfiguraatiovaihtoehto"
 
 msgid "WAN Configuration"
-msgstr "Konfiguraatio"
+msgstr "WAN konfiguraatio"
 
 msgid "No wan interface found"
 msgstr "WAN liitäntää ei löydy"
@@ -112,28 +100,37 @@ msgstr "Puheluloki"
 
 # /home/jamu/GIT/juci/plugins/juci-simple-gui/src/pages/simple-lan-config.html
 msgid "simple-lan-config-title"
-msgstr ""
+msgstr "LAN"
 
 msgid "menu-simple-lan-dhcp-config-title"
 msgstr "Puheluloki"
 
 # /home/jamu/GIT/juci/plugins/juci-simple-gui/src/pages/simple-lan-dhcp-config.html
 msgid "simple-lan-dhcp-config-title"
-msgstr ""
+msgstr "DHCP"
 
 msgid "menu-simple-services-title"
 msgstr "Palvelut"
 
 # /home/jamu/GIT/juci/plugins/juci-simple-gui/src/pages/simple-services.html
 msgid "simple-services-title"
-msgstr ""
+msgstr "Helpot asetukset"
 
 msgid "menu-simple-wan-config-title"
 msgstr "Puheluloki"
 
 # /home/jamu/GIT/juci/plugins/juci-simple-gui/src/pages/simple-wan-config.html
 msgid "simple-wan-config-title"
-msgstr ""
+msgstr "WAN"
+
+#~ msgid "IPv4 Address"
+#~ msgstr "IPv4 osoite"
+
+#~ msgid "IPv4 Subnet Mask"
+#~ msgstr "IPv4 aliverkon peite"
+
+#~ msgid "DHCP Server"
+#~ msgstr "DHCP-palvelin"
 
 #~ msgid "IPv4 Default Gateway"
 #~ msgstr "IPv4 oletusyhdyskäytävä"

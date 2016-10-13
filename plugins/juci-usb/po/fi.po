@@ -9,13 +9,49 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.9\n"
+
+# /home/jamu/GIT/juci/plugins/juci-usb/src/widgets/overview.usb.js
+msgid "Save"
+msgstr "Tallenna"
+
+# /home/jamu/GIT/juci/plugins/juci-usb/src/widgets/overview.usb.js
+msgid "Delete"
+msgstr "Poista"
+
+# /home/jamu/GIT/juci/plugins/juci-usb/src/widgets/overview.usb.js
+msgid "Cancel"
+msgstr "Peruuta"
+
+# /home/jamu/GIT/juci/plugins/juci-usb/src/widgets/wwan-connection-edit.js
+msgid "No Zone"
+msgstr "Ei vyöhykettä"
 
 msgid "USB"
 msgstr "USB"
 
 msgid "No usb devices connected!"
 msgstr "Ei usb-laitteita!"
+
+# /home/jamu/GIT/juci/plugins/juci-usb/src/widgets/wwan-connection-edit.html
+msgid "Add connection to zone"
+msgstr "Lisää yhteys vyöhykkeesen"
+
+# /home/jamu/GIT/juci/plugins/juci-usb/src/widgets/wwan-connection-edit.html
+msgid "APN"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-usb/src/widgets/wwan-connection-edit.html
+msgid "PIN-Code"
+msgstr "PIN-koodi"
+
+# /home/jamu/GIT/juci/plugins/juci-usb/src/widgets/wwan-connection-edit.html
+msgid "Username"
+msgstr "Käyttäjätunnus"
+
+# /home/jamu/GIT/juci/plugins/juci-usb/src/widgets/wwan-connection-edit.html
+msgid "Password"
+msgstr "Salasana"
 
 msgid "USB Devices"
 msgstr "USB-laitteet"
@@ -27,13 +63,17 @@ msgid "Device ID"
 msgstr "Laite ID"
 
 msgid "Vendor ID"
-msgstr "Toimittajatunnus"
+msgstr "Valmistanjan ID"
 
 msgid "Vendor Name"
-msgstr "Toimittajan Nimi"
+msgstr "Valmistajan nimi"
 
 msgid "Device Name"
 msgstr "Laitteen nimi"
 
 msgid "menu-status-usb-title"
+msgstr "USB"
+
+# /home/jamu/GIT/juci/plugins/juci-usb/src/pages/status-usb.html
+msgid "status-usb-title"
 msgstr "USB"
