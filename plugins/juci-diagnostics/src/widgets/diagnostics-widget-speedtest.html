@@ -12,11 +12,13 @@
 			<juci-config-line ng-show="!data.auto && (data.test_type=='down' || data.test_type=='up_down')" title="{{'Download transfer size'|translate}}">
 				<div class="input-group">
 					<input type="number" min="0" max="500" step="5" class="form-control" ng-model="data.downsize" placeholder="[Mbyte]" />
+					<span class="input-group-addon">MB</span>
 				</div>
 			</juci-config-line>
 			<juci-config-line ng-show="!data.auto && (data.test_type=='up' || data.test_type=='up_down')" title="{{'Upload transfer size'|translate}}">
 				<div class="input-group">
 					<input type="number" min="0" max="500" step="5" class="form-control" ng-model="data.upsize" placeholder="[Mbyte]" />
+					<span class="input-group-addon">MB</span>
 				</div>
 			</juci-config-line>
 			<juci-config-line title="{{'Speedtest Server' | translate}}">
