@@ -632,6 +632,19 @@ msgstr "Valitse verkkolaite"
 msgid "Select network device"
 msgstr "Valitse verkkolaite"
 
+msgid "IPv4 Address"
+msgstr "IPv4-osoite"
+
+msgid "IPv4 Subnet Mask"
+msgstr "IPv4 Aliverkon peite"
+
+msgid "IPv4 Broadcast"
+msgstr "IPv4 Osoite"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/lan-connection-settings-edit.html
+msgid "DHCP Server"
+msgstr ""
+
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.html
 msgid "Client Status"
 msgstr "Asiakaslaitteen tila"
@@ -999,15 +1012,6 @@ msgstr "Palvelut"
 msgid "VPN Server"
 msgstr "DHCP-palvelin"
 
-msgid "IPv4 Address"
-msgstr "IPv4-osoite"
-
-msgid "IPv4 Subnet Mask"
-msgstr "IPv4 Aliverkon peite"
-
-msgid "IPv4 Broadcast"
-msgstr "IPv4 Osoite"
-
 msgid "IPv4 Default Gateway"
 msgstr "IPv4 Oletusyhdyskäytävä"
 
@@ -1299,12 +1303,12 @@ msgstr "Reitit"
 msgid "menu-status-network-title"
 msgstr "Verkon tila"
 
+msgid "menu-network-title"
+msgstr "Verkko"
+
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/status-network.html
 msgid "status-network-title"
 msgstr "Verkon tila"
-
-#~ msgid "menu-network-title"
-#~ msgstr "Verkko"
 
 #~ msgid "Unmanaged networks need to be setup as a bridge"
 #~ msgstr "Valvomattomat verkot on asetettava sillaksi"
