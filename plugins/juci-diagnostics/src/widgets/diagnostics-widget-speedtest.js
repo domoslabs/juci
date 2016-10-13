@@ -38,7 +38,7 @@ JUCI.app
 			}
 		});
 		if($scope.allTestServers.length)
-			$scope.data.server = $scope.allTestServers[0].value; 
+			$scope.data.server = $scope.allTestServers[0].value;
 	}
 
 	$scope.testType = [
