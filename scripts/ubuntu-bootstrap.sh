@@ -42,4 +42,6 @@ if [ -n "$needed" ]; then
 	fi
 
 	sudo chown -R $USER:$USER /home/$USER/.npm/
+else
+	echo "Youre system is up to date"
 fi
