@@ -882,7 +882,7 @@ msgid "voice-speed-dialing-title"
 msgstr ""
 
 msgid "menu-voice-title"
-msgstr "Puheluloki"
+msgstr "VOIP"
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice.html
 msgid "voice-title"
