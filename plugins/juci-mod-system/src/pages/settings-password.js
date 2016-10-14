@@ -64,7 +64,7 @@ JUCI.app
 	}
 
 	$scope.onResetPasswordClick = function(){
-		$uci.passwords[$scope.modal.username].reset.value = 1;
+		$uci.passwords[username].reset.value = 1;
 	}
 
 	$scope.onAcceptModal = function(){
