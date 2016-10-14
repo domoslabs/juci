@@ -1303,12 +1303,12 @@ msgstr "Reitit"
 msgid "menu-status-network-title"
 msgstr "Verkon tila"
 
-msgid "menu-network-title"
-msgstr "Verkko"
-
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/status-network.html
 msgid "status-network-title"
 msgstr "Verkon tila"
+
+msgid "menu-network-title"
+msgstr "Verkko"
 
 #~ msgid "Unmanaged networks need to be setup as a bridge"
 #~ msgstr "Valvomattomat verkot on asetettava sillaksi"
