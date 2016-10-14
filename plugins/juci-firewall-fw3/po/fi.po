@@ -204,7 +204,7 @@ msgstr "Virheellinen MAC osoite"
 
 # /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-parental-control.html
 msgid "Internet access will be restricted for"
-msgstr "Internetyhteys rajoitetaan"
+msgstr "Internetyhteyden rajoitus laitteelle"
 
 # /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-parental-control.html
 msgid "during following times"
