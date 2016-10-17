@@ -8,7 +8,12 @@ JUCI.app
 	}else{
 		$scope.widgets = $config.settings["@widget"].filter(function(widget){
 			if(widget.require.value.find(function(req){
-				var parts = String(req).split(".");
+				var split = req.split(":");
+				if(split[0] !== "ubus"){
+					console.log("widgets only support require ubus:object[->method]");
+					return true;
+				}
+				var parts = String(split[1]).split("->");
 				if(parts.length !== 1 && parts.length !== 2)return true;
 				if(parts.length === 1){
 					return !$rpc.$has(parts[0]);
