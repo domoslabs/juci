@@ -77,18 +77,18 @@ case "$1" in
 				case "$type" in
 					online)
 						online="$(sysupgrade --online 2>/dev/null)"
-						if [ $? -neq 0 ]; then
-							json_add_string error "$online"
-						else
+						if [ $? -eq 0 ]; then
 							json_add_string online "$online"
+						else
+							json_add_string error "$online"
 						fi
 					;;
 					usb)
 						usb="$(sysupgrade --usb 2>/dev/null)"
-						if  [ $? -neq 0 ]; then
-							json_add_string error "$online"
+						if  [ $? -eq 0 ]; then
+							json_add_string usb "$usb"
 						else
-							json_add_string online "$usb"
+							json_add_string error "$usb"
 						fi
 					;;
 				esac
