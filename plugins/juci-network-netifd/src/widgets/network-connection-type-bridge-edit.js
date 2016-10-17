@@ -36,12 +36,14 @@ JUCI.app
 	function updateDevices(net){
 		if(!net) return;
 		$ethernet.getAdapters().done(function(adapters){
-			var filtered = adapters.filter(function(ad){ return ad.type !== "eth-bridge";});
+			var filtered = adapters.filter(function(ad){ return ad.type !== "eth-bridge" && ad.device;});
 			var wan = filtered.find(function(dev){ return dev.device.match(/^eth[\d]+\.[\d]+$/); });
 			if(wan){
+				//filter out the base-device for wan
 				filtered = filtered.filter(function(dev){return wan.device.split(".")[0] !== dev.device; });
 			}
 			if(net.is_lan.value){
+				//if network is a lan network only allow ethx.x and ptmx.x and atmx.x devices
 				filtered = filtered.filter(function(dev){return !dev.device.match(/^[ape]t[hm]\d\..+$/) });
 			}
 			var aptmap = {};
@@ -86,7 +88,7 @@ JUCI.app
 				updateDevices($scope.connection);
 			});
 		}, function () {
-			console.log('Modal dismissed at: ' + new Date());
+			//console.log('Modal dismissed at: ' + new Date());
 		});
 	}
 	
