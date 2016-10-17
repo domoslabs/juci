@@ -266,7 +266,11 @@ JUCI.app
 						edges.push( { from: ".root", to: node.id, width: 3 });
 						Object.keys(data).map(function(device){
 							var dev = data[device];
-							var radio = radios[device.substring(0,3)];
+							var radio;
+							if (device.match("ra"))
+								radio = radios[device.replace(/[0-9]/g, '0')];
+							else
+								radio = radios[device.substring(0,3)];
 							dev.frequency = (radio)? radio.frequency : $tr(gettext('unknown'));
 							dev.down = radio && !radio.isup;
 							var dev_node = {
