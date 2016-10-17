@@ -1,0 +1,12 @@
+<juci-layout-with-sidebar>
+	<div ng-controller="settingsConnectivityTest">
+		<h2 translate>Connectivity Test</h2>
+		<juci-config-section>
+			<juci-config-lines>
+				<juci-config-line title="{{'Internet'|translate}}" help="{{'URL for checking internet connection' | translate}}"><!-- error="system.hostname.error">-->
+					<input type="text" class="form-control" ng-model="system.netping_addr.value" placeholder="{{'www.example.com'|translate}}"/>
+				</juci-config-line>
+			</juci-config-lines>
+		</juci-config-section>
+	</div>
+</juci-layout-with-sidebar>

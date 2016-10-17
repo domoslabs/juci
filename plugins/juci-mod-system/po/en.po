@@ -416,6 +416,9 @@ msgstr "LEDs"
 msgid "menu-settings-system-log-title"
 msgstr "Log Settings"
 
+msgid "menu-settings-connectivity-test-title"
+msgstr "Connectivity Test"
+
 msgid "menu-status-system-title"
 msgstr "System"
 
