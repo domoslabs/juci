@@ -95,7 +95,7 @@ JUCI.app
 	$scope.onDeleteBridgeDevice = function(adapter){
 		if(!adapter) alert($tr(gettext("Please select a device in the list!")));
 		if(confirm($tr(gettext("Are you sure you want to delete this device from bridge?")))){
-			if(adapter.device && adapter.device.match(/^wl.+/)){
+			if(adapter.device && (adapter.device.match(/^wl.+/) || adapter.device.match(/^ra.+/))){
 				$uci.$sync("wireless").done(function(){
 					var wliface = $uci.wireless["@wifi-iface"].find(function(iface){
 						return iface.ifname.value == adapter.device;

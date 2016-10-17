@@ -261,11 +261,11 @@ JUCI.app.factory("$networkHelper", function($uci, $tr, gettext, $network){
 			if(interface.type.value == "bridge") type = "Bridge";
 			if(interface.type.value == "") type = "Standalone Connection";
 			if(interface.type.value == "anywan") type = "Any-wan";
-			if(device.match(/^wl.+/) || interface.type.value == "bridge"){
+			if(device.match(/^wl.+/) || device.match(/^ra.+/) || interface.type.value == "bridge"){
 				$network.getNetworks().done(function(nets){
 					var filtered = nets.filter(function(net){ return net[".name"] != interface[".name"];});
 					var keep_device = false;
-					if(!device.match(/^wl.+/)) filtered = filtered.filter(function(net){ return net.type.value == "bridge" });
+					if(!device.match(/^wl.+/) && !device.match(/^ra.+/)) filtered = filtered.filter(function(net){ return net.type.value == "bridge" });
 					filtered.map(function(net){
 						net.ifname.value = net.ifname.value.split(" ").filter(function(dev){
 							if(dev == device && !confirm($tr(gettext("Are you sure you want to remove device "+dev+" from network "+net[".name"]+" and use it in this "+type)))){
@@ -281,7 +281,7 @@ JUCI.app.factory("$networkHelper", function($uci, $tr, gettext, $network){
 						}else{
 							interface.ifname.value += " " + device;
 						}
-						if(device.match(/^wl.+/)){
+						if(device.match(/^wl.+/) || device.match(/^ra.+/)){
 							$uci.$sync("wireless").done(function(){
 								var wliface = $uci.wireless["@wifi-iface"].find(function(iface){
 									return iface.ifname.value == device;

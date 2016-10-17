@@ -48,7 +48,7 @@ JUCI.app
 	$scope.onChangeDevice = function(value, oldvalue){
 		if(value == oldvalue) return false;
 		$networkHelper.addDevice($scope.interface, value).done(function(){
-			if(oldvalue.match(/^wl.+/)){
+			if(oldvalue.match(/^wl.+/) || oldvalue.match(/^ra.+/)){
 				$networkHelper.setNetwork(oldvalue, "none").done(function(){
 					$scope.$apply();
 				});
