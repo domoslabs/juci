@@ -1,0 +1,28 @@
+#!/bin/sh
+
+. /usr/share/libubox/jshn.sh
+. /lib/functions.sh
+
+
+case "$1" in
+	list)
+		echo '{ "username" : {}, "firmware": {} }'
+	;;
+	call)
+		case "$2" in
+			username)
+				local username
+				config_load juci
+				config_get username login defaultuser "user"
+				json_init
+				json_add_string username "$username"
+				json_dump
+			;;
+			firmware)
+				local firmware=$(db show | awk -F"'" '/iopVersion/ {print $2}')
+				json_init
+				json_add_string firmware "$firmware"
+				json_dump
+		esac
+esac
+
