@@ -35,7 +35,10 @@ JUCI.app
 		"username": "",
 		"password": ""
 	};
-	$scope.form.username = "user";
+	$rpc.$call("juci.unauthenticated", "username").done(function(data){
+		$scope.form.username = data.username;
+		$scope.$apply();
+	}).fail(function(e){ console.log(e); });
 
 	$scope.errors = [];
 
