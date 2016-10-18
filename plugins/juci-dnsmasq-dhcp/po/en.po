@@ -104,7 +104,7 @@ msgstr ""
 msgid "IPv6 Address ID"
 msgstr ""
 
-msgid "Add Connected Host"
+msgid "Add Host"
 msgstr ""
 
 msgid "Static DHCP"

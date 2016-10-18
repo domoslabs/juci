@@ -163,7 +163,7 @@ msgstr "IPv6 Unique ID"
 msgid "IPv6 Address ID"
 msgstr "IPv6-osoite ID"
 
-msgid "Add Connected Host"
+msgid "Add Host"
 msgstr "Lisää isäntäkone"
 
 msgid "Static DHCP"
