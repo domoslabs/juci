@@ -45,7 +45,7 @@ JUCI.app.factory("$ethernet", function($rpc){
 						next(); 
 					}
 				}, function(){ 
-					res = res.filter(function(x){ return x.device !== "lo"; });
+					res = res.filter(function(x){ return x.device && x.device !== "lo"; });
 					def.resolve(res);
 				}); 
 			} else def.reject(); 
