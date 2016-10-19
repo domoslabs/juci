@@ -13,14 +13,15 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="item in model.changes track by $index">
-					<td>{{item.config|maxlength:30}}</td>
-					<td>{{item.section|maxlength:30}}</td>
-					<td ng-show="item.option">{{item.option|maxlength:30}}</td>
-					<td ng-show="item.ovalue">{{item.ovalue|maxlength:30}}</td>
-					<td ng-show="item.uvalue">{{item.uvalue|maxlength:30}}</td>
-					<td ng-show="item.state">{{item.state}}</td>
-					<td colspan="2" ng-show="item.state === 'deleted section'">{{'Press Cancel and reload page to get back deleted section'|translate}}</td>
-					<td><span ng-show="item.type === 'option'" ng-click="onRevertOption($index)" style="cursor:pointer;"><i class="fa fa-trash"></i></span></td>
+					<td><div>{{item.config|maxlength:30}}</div></td>
+					<td><div>{{item.section|maxlength:30}}</div></td>
+					<td>
+						<div ng-show="item.option">{{item.option|maxlength:30}}</div>
+						<div ng-show="item.state">{{item.state}}</div>
+					</td>
+					<td><div ng-show="item.ovalue">{{item.ovalue|maxlength:30}}</div></td>
+					<td><div ng-show="item.uvalue">{{item.uvalue|maxlength:30}}</div></td>
+					<td><span ng-click="onRevertOption($index)" style="cursor:pointer; float:right"><i class="fa fa-trash"></i></span></td>
 				</tr>
 			</tbody>
 		</table>

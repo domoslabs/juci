@@ -15,6 +15,14 @@ JUCI.app
 })
 .controller("juciChangesEditCtrl", function($scope){
 	$scope.onRevertOption = function(item){
+		if($scope.model.changes[item].state==='deleted section'){
+			alert("Press Cancel and reload page to restore deleted section.");
+			return
+		}
+		if($scope.model.changes[item].state==='new section'){
+			alert("Press Cancel and reload page to delete new section.");
+			return
+		}
 		if(!$scope.model.reverted) $scope.model.reverted = [];
 		if($scope.model.changes[item]){
 			$scope.model.reverted.push($scope.model.changes[item]);
