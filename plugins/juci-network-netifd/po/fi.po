@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.10\n"
 
 msgid "Unmanaged"
 msgstr "Valvomaton"
@@ -284,7 +284,7 @@ msgid "Disconnect"
 msgstr "Katkaise yhteys"
 
 msgid "Status"
-msgstr "Verkon tila"
+msgstr "Tila"
 
 msgid "PENDING"
 msgstr "AVOIN"
@@ -293,7 +293,7 @@ msgid "UP"
 msgstr "KÄYTÖSSÄ"
 
 msgid "DOWN"
-msgstr "EI KÄUYTÖSSÄ"
+msgstr "Ei käytössä"
 
 msgid "Device"
 msgstr "Laite"
@@ -468,7 +468,7 @@ msgid "Try"
 msgstr "Try"
 
 msgid "Force"
-msgstr "Force"
+msgstr "Pakota"
 
 msgid "None"
 msgstr "None"
@@ -643,7 +643,7 @@ msgstr "IPv4 Osoite"
 
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/lan-connection-settings-edit.html
 msgid "DHCP Server"
-msgstr ""
+msgstr "DHCP palvelin"
 
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.html
 msgid "Client Status"
@@ -741,16 +741,16 @@ msgid "Advanced"
 msgstr "Lisäasetukset"
 
 msgid "Bring up on boot"
-msgstr "Bring-Up on Boot"
+msgstr "Automaattinen käynnistys"
 
 msgid "Use gateway metric"
 msgstr "Käytä reitittimen metric-arvoa"
 
 msgid "Override MAC address"
-msgstr "Override MAC Address"
+msgstr "Muuta MAC osoite"
 
 msgid "Override MTU"
-msgstr "Override MTU"
+msgstr "Mujuta  MTU"
 
 msgid "Method"
 msgstr "Method"
@@ -1121,7 +1121,7 @@ msgid "OFFLINE"
 msgstr "EI YHTEYTTÄ"
 
 msgid "Connections"
-msgstr "Yhteydet"
+msgstr "Verkkoyheydet"
 
 msgid "settings.network.info"
 msgstr ""
@@ -1167,7 +1167,7 @@ msgid "Target"
 msgstr "Kohde"
 
 msgid "Gateway"
-msgstr "Modeemi"
+msgstr "Yhdyskäytävä"
 
 msgid "Metric"
 msgstr ""
@@ -1307,8 +1307,8 @@ msgstr "Verkon tila"
 msgid "status-network-title"
 msgstr "Verkon tila"
 
-msgid "menu-network-title"
-msgstr "Verkko"
+#~ msgid "menu-network-title"
+#~ msgstr "Verkko"
 
 #~ msgid "Unmanaged networks need to be setup as a bridge"
 #~ msgstr "Valvomattomat verkot on asetettava sillaksi"

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.10\n"
 
 msgid "off"
 msgstr "Pois päältä"
@@ -133,7 +133,7 @@ msgid "Are you sure you want to delete this wireless interface?"
 msgstr "Haluatko varmasti poistaa tämän säännön?"
 
 msgid "Wireless Interfaces"
-msgstr "Langattomat liitännät"
+msgstr "WiFi verkot"
 
 msgid "Enabled"
 msgstr "Käytössä"
@@ -324,7 +324,7 @@ msgid "Radio On/Off"
 msgstr "Radio Päälle/Pois"
 
 msgid "WiFi Mode"
-msgstr "WiFi tila"
+msgstr "WiFi protokolla"
 
 msgid "Select Hardware Mode"
 msgstr "Valitse laitteistotila"
@@ -366,7 +366,7 @@ msgid "Maximum Assoc Clients"
 msgstr "Yhdistettävien laitteiden enimmäismäärä"
 
 msgid "Scan Timer"
-msgstr "Kartoituksen ajastin"
+msgstr "Skannauksen toistuvuus (min)"
 
 msgid "Timer Interval"
 msgstr "Intervalli"
@@ -388,7 +388,7 @@ msgstr "Lähetä SSID"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
 msgid "Wireless Multicast Forwarding"
-msgstr ""
+msgstr "WiFi Multicast"
 
 msgid "Frequency"
 msgstr "Taajuus"
@@ -519,9 +519,9 @@ msgstr "Aseta ajastus"
 
 msgid "wifi.schedule.info"
 msgstr ""
-"Ajasta langaton verkko päälle tai pois automaattisesti.\n"
-"Huom: Mikäli langaton verkko on pois päältä sekä pää-, että vieras- "
-"langattomat verkot ovat pois päältä."
+"Ajasta WiFi verkko päälle tai pois automaattisesti. \n"
+"Huom: Mikäli WiFi verkko on pois päältä sekä pää-, että vieras- WiFi verkot "
+"ovat pois päältä."
 
 msgid "Schedule Function"
 msgstr "Ajastus"
@@ -560,13 +560,13 @@ msgstr "WiFi skannaus"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status-scan.html
 msgid "status.wifi.scan.info"
-msgstr "WiFi scan"
+msgstr " "
 
 msgid "Radio"
 msgstr "Radio"
 
 msgid "Frequency to Scan"
-msgstr "Skannatattava taajuus"
+msgstr "Skannattava taajuus"
 
 msgid "Scan neighboring APs"
 msgstr "Skannaa ympäristön tukiasemat"
@@ -585,8 +585,7 @@ msgstr "Yleiset WiFi asetukset"
 
 msgid "wifi.wps.info"
 msgstr ""
-"WPS mahdollistaa laitteiden yhdistämisen langattomaan verkkoon nappia "
-"painamalla"
+"WPS mahdollistaa laitteiden yhdistämisen WiFi verkkoon nappia painamalla"
 
 msgid "Enable WPS on"
 msgstr "Aktivoi WPS"
@@ -641,18 +640,18 @@ msgid "wireless-client-mode-title"
 msgstr "Langaton toistin"
 
 msgid "menu-wireless-devices-title"
-msgstr "Laitteet"
+msgstr "Wifi radiot"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-devices.html
 msgid "wireless-devices-title"
 msgstr "Langattomat laitteet"
 
 msgid "menu-wireless-filtering-title"
-msgstr "Suodatus"
+msgstr "MAC suodatus"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-filtering.html
 msgid "wireless-filtering-title"
-msgstr "Suodatus"
+msgstr "MAC suodatus"
 
 msgid "menu-wireless-general-title"
 msgstr "WiFi"
@@ -662,11 +661,11 @@ msgid "wireless-general-title"
 msgstr ""
 
 msgid "menu-wireless-interfaces-title"
-msgstr "Langattomat verkot"
+msgstr "WiFi verkot"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-interfaces.html
 msgid "wireless-interfaces-title"
-msgstr "Langattomat verkot"
+msgstr "WiFi verkot"
 
 msgid "menu-wireless-link-to-interfaces-title"
 msgstr "WiFi"

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.10\n"
 
 msgid "All types"
 msgstr "Kaikki luokitukset"
@@ -85,7 +85,7 @@ msgid "Event Log"
 msgstr "Tapahtumaloki"
 
 msgid "status.eventlog.info"
-msgstr "Puhelinlinjojen tila."
+msgstr " "
 
 msgid "(Note: only latest"
 msgstr "(Huom: vain viimeisimmät"
@@ -117,20 +117,28 @@ msgstr "Suodata:"
 msgid "Download As Text"
 msgstr "Lataa tekstinä"
 
-msgid "Date"
-msgstr "Päivämäärä"
-
-msgid "Type"
-msgstr "Tyyppi"
-
-msgid "Source"
-msgstr "Lähde"
-
-msgid "Message"
-msgstr "Viesti"
-
 msgid "menu-event-log-config-title"
 msgstr "Tapahtumaloki"
 
+# /home/jamu/GIT/juci/plugins/juci-event/src/pages/event-log-config.html
+msgid "event-log-config-title"
+msgstr "Tapahtumaloki"
+
 msgid "menu-status-events-title"
-msgstr "Linjat"
+msgstr "Tapahtumaloki"
+
+# /home/jamu/GIT/juci/plugins/juci-event/src/pages/status-events.html
+msgid "status-events-title"
+msgstr "Tapahtumaloki"
+
+#~ msgid "Date"
+#~ msgstr "Päivämäärä"
+
+#~ msgid "Type"
+#~ msgstr "Tyyppi"
+
+#~ msgid "Source"
+#~ msgstr "Lähde"
+
+#~ msgid "Message"
+#~ msgstr "Viesti"

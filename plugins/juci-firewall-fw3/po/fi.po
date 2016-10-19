@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.10\n"
 
 msgid "Zone does not exist!"
 msgstr "Vyöhykettä ei ole!"
@@ -55,15 +55,15 @@ msgstr "Haluatko varmasti poistaa tämän säännön?"
 
 # /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-zones.js
 msgid "Input Policy"
-msgstr ""
+msgstr "Sisääntuleva käytäntö"
 
 # /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-zones.js
 msgid "Output Policy"
-msgstr ""
+msgstr "Lähtevä käytäntö"
 
 # /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-zones.js
 msgid "Forward Policy"
-msgstr ""
+msgstr "Edelleenlähetyskäytäntö"
 
 msgid "Please select a zone to delete!"
 msgstr "Valitse poistettava vyöhyke!"
@@ -128,7 +128,7 @@ msgid "FORWARD"
 msgstr "EDELLEENLÄHETYS"
 
 msgid "DROP"
-msgstr "HYLKÄÄ"
+msgstr "PUDOTA"
 
 msgid "Device"
 msgstr "Laite"
@@ -278,13 +278,13 @@ msgid "Zone members:"
 msgstr "Vyöhykkeen jäsenet:"
 
 msgid "Input"
-msgstr "Input"
+msgstr "Saapuva"
 
 msgid "Output"
-msgstr "Output"
+msgstr "Lähtevä"
 
 msgid "Forward"
-msgstr "Forward"
+msgstr "Edelleenlähetys"
 
 msgid "Rule Name"
 msgstr "Säännön Nimi"
@@ -442,7 +442,8 @@ msgstr "Palomuurivyöhykkeet"
 msgid "internet.firewall.zones.info"
 msgstr ""
 "Tässä voit asettaa palomuurivyöhykkeitä. Jokainen vyöhyke voi sisältää "
-"useita verkkoja tai liitäntöjä, jotka on asetettu aiemmin Yhteydet-sivulla."
+"useita verkkoja tai liitäntöjä, jotka on asetettu aiemmin verkkoyhteydet-"
+"sivulla."
 
 msgid "URL Blocking"
 msgstr "URL Estäminen"

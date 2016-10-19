@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.10\n"
 
 msgid "Hourly"
 msgstr "Tunneittain"
@@ -57,7 +57,7 @@ msgid "If not entered, Default onboard DES Key will be used insted"
 msgstr "Jos purkuavainta ei lisätä, käytetään laitteen DES-avainta"
 
 msgid "Defaultreset"
-msgstr "Tehdasasetukset"
+msgstr "Oletusasetukset"
 
 msgid "Software URL"
 msgstr "Ohjelmisto URL"
