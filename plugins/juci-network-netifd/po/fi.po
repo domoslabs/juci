@@ -26,9 +26,6 @@ msgstr "DHCPv6"
 msgid "PPP"
 msgstr "PPP"
 
-msgid "menu-network-title"
-msgstr "Verkko"
-
 msgid "PPP over Ethernet"
 msgstr "PPP over Ethernet"
 
@@ -1288,6 +1285,13 @@ msgstr "Yhdistetyt laitteet"
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/netifd-status-clients.html
 msgid "netifd-status-clients-title"
 msgstr "Yhdistetyt laitteet"
+
+msgid "menu-network-title"
+msgstr "Verkko"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/network.html
+msgid "network-title"
+msgstr "Verkko"
 
 msgid "menu-status-network-nat-title"
 msgstr "NAT"
