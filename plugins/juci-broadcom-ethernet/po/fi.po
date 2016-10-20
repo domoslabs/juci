@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.10\n"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.js
 msgid "Port Speed"
@@ -61,7 +61,7 @@ msgid "Port speed"
 msgstr "Portin nopeus"
 
 msgid "Pause frames"
-msgstr ""
+msgstr "Taukokehykset"
 
 msgid "Ethernet"
 msgstr "Ethernet portit"

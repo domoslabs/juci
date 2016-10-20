@@ -26,6 +26,9 @@ msgstr "DHCPv6"
 msgid "PPP"
 msgstr "PPP"
 
+msgid "menu-network-title"
+msgstr "Verkko"
+
 msgid "PPP over Ethernet"
 msgstr "PPP over Ethernet"
 
@@ -962,7 +965,7 @@ msgid "Tunnel Link"
 msgstr ""
 
 msgid "DS-Lite AFTR address"
-msgstr ""
+msgstr "DS Lite AFTR osoite"
 
 msgid "IPv6 Assign"
 msgstr "IPv6 Määritys"
@@ -1306,9 +1309,6 @@ msgstr "Verkon tila"
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/status-network.html
 msgid "status-network-title"
 msgstr "Verkon tila"
-
-#~ msgid "menu-network-title"
-#~ msgstr "Verkko"
 
 #~ msgid "Unmanaged networks need to be setup as a bridge"
 #~ msgstr "Valvomattomat verkot on asetettava sillaksi"
