@@ -3,7 +3,14 @@ JUCI.app
 	var sleep = 0; //TODO: REMOVE WHEN DECT BACKEND IS FIXED
 	$uci.$sync("dect").done(function(){
 		$scope.dect = $uci.dect.dect;
+		$scope.dectRadioFix = {"value":$scope.dect.radio.value};
 		$scope.$apply();
+	});
+	$scope.$watch("dectRadioFix.value",function(val){
+		if(!val){ return; }
+		var arg = {"config":"dect","section":"dect","values":{"radio":val}};
+		$rpc.$call("uci", "set", arg).done();
+		$rpc.$call("uci", "commit", {"config":"dect"}).done();
 	});
 
 	$events.subscribe("dect", function(event){
