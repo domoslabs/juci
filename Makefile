@@ -170,4 +170,4 @@ install:
 .PHONY: $(PHONY)
 
 clean: 
-	rm -rf ./bin ./tmp
+	rm -rf ./bin ./tmp ./node_modules
