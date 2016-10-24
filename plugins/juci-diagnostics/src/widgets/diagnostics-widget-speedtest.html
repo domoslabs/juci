@@ -1,8 +1,9 @@
 <div>
 	<juci-expandable>
+		<label class="label label-warning">{{'The test can take up to two minutes'|translate}}</label>
 		<juci-config-lines>
 			<juci-config-line title="{{'Direction'|translate}}">
-				<juci-select ng-model="data.test_type" ng-items="testType"/>
+				<juci-select ng-model="data.test_type" ng-items="testType"></juci-select>
 			</juci-config-line>
 			<juci-config-line title="{{'Automatic transfer size'|translate}}">
 				<div class="input-group">
