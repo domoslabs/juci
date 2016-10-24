@@ -3,7 +3,7 @@
 		<div style="text-align:center !important;"><h3 class="panel-title" style="font-size: 1.7em; padding-top: 0.3em; font-weight: bold; font-family: 'eurostyle';">
 			<a ng-show="href" href="{{href || ''}}"><i class="{{icon}}" style="margin-right: 10px;"></i>{{title || ("No Title"|translate) | uppercase}}</a>
 			<div ng-hide="href"><i class="{{icon}}" style="margin-right: 10px;"></i>{{title || ("No Title"|translate) | uppercase}}</div>
-			<i class="fa fa-expand fa-sm" ng-show="showEdit" ng-click="click()" style="cursor:pointer;float:right;"></i>
+			<i class="fa fa-expand fa-sm" ng-show="showEdit" ng-click="click()" style="position:absolute;right:40px;top:25px;cursor:pointer;"></i>
 		</h3></div>
 	</div>
 	<div class="panel-body" style="{{of?'overflow:visible':''}}">
