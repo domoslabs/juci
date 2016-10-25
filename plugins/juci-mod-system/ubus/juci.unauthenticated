@@ -11,9 +11,9 @@ case "$1" in
 	call)
 		case "$2" in
 			username)
-				local username
-				config_load juci
-				config_get username login defaultuser "user"
+				local username="$(uci -q get juci.login.defaultuser)"
+				#config_load juci  // this is mutch to slow
+				#config_get username login defaultuser "user"
 				json_init
 				json_add_string username "$username"
 				json_dump
