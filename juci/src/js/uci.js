@@ -731,7 +731,7 @@
 				}
 			}
 			if(section[".name"]) delete self[section[".name"]];
-			if(!section[".new"])
+			if(!section["__new__"])
 				self.deleted_sections.push(section);
 		}
 		
@@ -757,7 +757,7 @@
 			Object.keys(self).map(function(x){
 				if(self[x] && self[x].constructor == UCI.Section){
 					self[x].$reset();
-					if(self[x][".new"]) self[x].$delete();
+					if(self[x]["__new__"]) self[x].$delete();
 				}
 			});
 			self[".need_commit"] = false;
@@ -943,7 +943,7 @@
 				item[".name"] = state.section;
 				self[".need_commit"] = true;
 				var section = _insertSection(self, item);
-				if(!is_old) section[".new"] = true;
+				if(!is_old) section["__new__"] = true;
 				deferred.resolve(section);
 			}).fail(function(){
 				deferred.reject();
@@ -983,7 +983,7 @@
 			var self = this;
 			var reqlist = [];
 			self["@all"].map(function(section){
-				if(section[".new"]){
+				if(section["__new__"]){
 					reqlist.push({
 						"config": self[".name"],
 						"section": section[".name"],
@@ -1053,7 +1053,7 @@
 			}
 			/*Object.keys(self[x]).map(function(k){
 				var section = self[x][k];
-				if(section[".new"]) changes.push({
+				if(section["__new__"]) changes.push({
 					type: "add",
 					config: self[x][".name"],
 					section: section[".name"]
