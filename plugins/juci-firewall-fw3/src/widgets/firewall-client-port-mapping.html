@@ -29,10 +29,10 @@
 			<juci-config-line title="{{'Name'|translate}}">
 				<input class="form-control" type="text" ng-model="edit.name.value" />
 			</juci-config-line>
-			<juci-config-line title="{{'Excluded ports'|translate}}" help="{{'These ports may not be mapped they are protected'|translate}}">
+			<juci-config-line title="{{'Excluded ports'|translate}}" help="{{'These ports may not be mapped, they are protected'|translate}}">
 				<h3><span class="label label-info">{{excluded_ports || "N/A"}}</span></h3>
 			</juci-config-line>
-			<juci-config-line title="{{'Public port(s)'|translate}}" help="{{'A port number or a range on the form startport:endport'|translate}}" error="getValid('src_dport')">
+			<juci-config-line title="{{'Public port(s)'|translate}}" help="{{'A port number or range of the form startport:endport'|translate}}" error="getValid('src_dport')">
 				<input class="form-control" type="text" ng-model="edit.src_dport.value" />
 			</juci-config-line>
 			<juci-config-line title="{{'Private port'|translate}}" error="getValid('dest_port')">

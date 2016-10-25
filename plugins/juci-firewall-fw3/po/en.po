@@ -106,14 +106,14 @@ msgstr ""
 msgid "Excluded ports"
 msgstr ""
 
-msgid "These ports may not be mapped they are protected"
+msgid "These ports may not be mapped, they are protected"
 msgstr ""
 
 msgid "Public port"
 msgstr ""
 
 msgid ""
-"Ports can be a space separeated list or on the form <range-start>-<range-end>"
+"Ports can be a space separeated list or of the form <range-start>-<range-end>"
 msgstr ""
 
 msgid "Private port"

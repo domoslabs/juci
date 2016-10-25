@@ -163,7 +163,7 @@ msgstr "Nimi"
 msgid "Excluded ports"
 msgstr "Poissuljetut portit"
 
-msgid "These ports may not be mapped they are protected"
+msgid "These ports may not be mapped, they are protected"
 msgstr "Näitä portteja ei voi määritellä ohjattavaksi, koska ne on suojattu"
 
 # /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-client-port-mapping.html
@@ -171,7 +171,7 @@ msgid "Public port(s)"
 msgstr "Julkiset portit"
 
 # /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-client-port-mapping.html
-msgid "A port number or a range on the form startport:endport"
+msgid "A port number or range of the form startport:endport"
 msgstr "Porttinumero tai -alue muodossa alkuportti:loppuportti"
 
 msgid "Private port"
