@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("InternetFirewallRulesPage", function($scope, $uci, $firewall, $tr, gettext){
+.controller("InternetFirewallRulesPage", function($scope, $uci, $firewall, $tr, gettext, $juciConfirm){
 	$firewall.getRules().done(function(rules){
 		$scope.rules = rules;
 		$scope.rules.map(function(rule){
@@ -60,11 +60,11 @@ JUCI.app
 	
 	$scope.onDeleteRule = function(rule){
 		if(!rule) alert($tr(gettext("Please select a rule to delete!")));
-		if(confirm($tr(gettext("Are you sure you want to delete this rule?")))){
+		$juciConfirm.show($tr(gettext("Are you sure you want to delete this rule?"))).done(function(){
 			rule.$delete().done(function(){
 				$scope.$apply(); 
 			}); 
-		}
+		});
 	}
 	
 }); 

@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("PageBroadcomVdsl", function($scope, $uci, $broadcomDsl, gettext, $tr){
+.controller("PageBroadcomVdsl", function($scope, $uci, $broadcomDsl, gettext, $tr, $juciConfirm){
 	$scope.getItemTitle = function(dev){
 		if(!dev) return "Unknown";
 		return dev.name.value;
@@ -81,13 +81,13 @@ JUCI.app
 	
 	$scope.onDeleteDevice = function(dev){
 		if(!dev) alert($tr(gettext("Please select a device in the list!")));
-		if(confirm($tr(gettext("Are you sure you want to delete this device?")))){
+		$juciConfirm.show($tr(gettext("Are you sure you want to delete this device?"))).done(function(){
 			dev.$delete().done(function(){
 				$scope.vdsl_devices = $scope.vdsl_devices.filter(function(d){
 					return d != dev;
 				});
 				$scope.$apply();
 			});
-		}
+		});
 	}
 });

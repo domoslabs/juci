@@ -29,7 +29,7 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("networkConnectionTypeAnywanEdit", function($scope, $ethernet, $modal, $tr, gettext, $uci, $networkHelper){
+.controller("networkConnectionTypeAnywanEdit", function($scope, $ethernet, $modal, $tr, gettext, $uci, $networkHelper, $juciConfirm){
 	$scope.getItemTitle = function(dev){
 	
 		return dev.name + " ("+dev.device+")"; 
@@ -86,7 +86,7 @@ JUCI.app
 	
 	$scope.onDeleteBridgeDevice = function(adapter){
 		if(!adapter) alert($tr(gettext("Please select a device in the list!")));
-		if(confirm($tr(gettext("Are you sure you want to delete this device from bridge?")))){
+		$juciConfirm.show($tr(gettext("Are you sure you want to delete this device from bridge?"))).done(function(){
 			if(adapter.device && (adapter.device.match(/^wl.+/) || adapter.device.match(/^ra.+/))){
 				$uci.$sync("wireless").done(function(){
 					var wliface = $uci.wireless["@wifi-iface"].find(function(iface){
@@ -102,6 +102,6 @@ JUCI.app
 				return name != adapter.device; 
 			}).join(" "); 
 			updateDevices(); 
-		}
+		});
 	}
 }); 

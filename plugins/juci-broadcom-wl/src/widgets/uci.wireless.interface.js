@@ -21,25 +21,25 @@
 JUCI.app
 .directive("uciWirelessInterface", function(){
 	return {
-		templateUrl: "/widgets/uci.wireless.interface.html", 
+		templateUrl: "/widgets/uci.wireless.interface.html",
 		scope: {
 			interface: "=ngModel"
-		}, 
-		controller: "WiFiInterfaceController", 
-		replace: true, 
+		},
+		controller: "WiFiInterfaceController",
+		replace: true,
 		require: "^ngModel"
-	};  
-}).controller("WiFiInterfaceController", function($scope, $uci, $tr, gettext, $wireless, $network){
-	$scope.errors = []; 
-	$scope.showPassword = true; 
+	};
+}).controller("WiFiInterfaceController", function($scope, $uci, $tr, gettext, $wireless, $network, $juciConfirm){
+	$scope.errors = [];
+	$scope.showPassword = true;
 	$wireless.getDefaults().done(function(res){
 		if(res && res.keys && res.keys.wpa)$scope.default_key = res.keys.wpa;
 	});
 	
 	$scope.$on("error", function(ev, err){
-		ev.stopPropagation(); 
-		$scope.errors.push(err); 
-	}); 
+		ev.stopPropagation();
+		$scope.errors.push(err);
+	});
 
 	$scope.keyChoices = [
 		{label: $tr(gettext("Key")) + " #1", value: 1},
@@ -57,7 +57,7 @@ JUCI.app
 		{label: $tr(gettext("Auto")), value: "auto"},
 		{label: $tr(gettext("CCMP (AES)")), value: "ccmp"},
 		{label: $tr(gettext("TKIP/CCMP (AES)")), value: "tkip+ccmp"}
-	];  
+	];
 	
 	$scope.cryptoChoices = [
 		{ label: $tr(gettext("None")), value: "none" },
@@ -68,87 +68,89 @@ JUCI.app
 		{ label: $tr(gettext("WPA2 Enterprise")), value: "wpa2" },
 //		{ label: $tr(gettext("WPA Enterprise")), value: "wpa" }, //not supported
 		{ label: $tr(gettext("WPA/WPA2 Enterprise Mixed Mode")), value: "wpa-mixed" }
-	]; 
+	];
 	
 	$network.getNetworks().done(function(nets){
 		$scope.networks = nets.map(function(net){
-			return { label: String(net[".name"]).toUpperCase(), value: net[".name"] }; 
-		}); 
-		$scope.$apply(); 
-	}); 
+			return { label: String(net[".name"]).toUpperCase(), value: net[".name"] };
+		});
+		$scope.$apply();
+	});
 	
 	$wireless.getDevices().done(function(devices){
 		$scope.devices = devices.map(function(x){
-			return { label: x[".frequency"], value: x[".name"] }; 
-		}); 
-		$scope.$apply(); 
-	}); 
+			return { label: x[".frequency"], value: x[".name"] };
+		});
+		$scope.$apply();
+	});
 
 	$scope.$watch("interface", function(value){
-		if(!value) return; 
-		//$scope.title = "wifi-iface.name="+$scope.interface[".name"]; 
+		if(!value) return;
+		//$scope.title = "wifi-iface.name="+$scope.interface[".name"];
 	});
 
 	$scope.$watch("interface.closed.value", function(value, oldvalue){
-		if(!$scope.interface) return; 
+		if(!$scope.interface) return;
 		if(value && value != oldvalue){
-			if($scope.interface.wps_pbc.value && !confirm($tr(gettext("If you disable SSID broadcasting, WPS function will be disabled as well. You will need to enable it manually later. Are you sure you want to continue?")))){
+			var text = $tr(gettext("If you disable SSID broadcasting, WPS function will be disabled as well. You will need to enable it manually later. Are you sure you want to continue?"));
+			if($scope.interface.wps_pbc.value && !confirm(text)){
 				setTimeout(function(){
-					$scope.interface.closed.value = oldvalue; 
-					$scope.$apply(); 
-				},0); 
+					$scope.interface.closed.value = oldvalue;
+					$scope.$apply();
+				},0);
 			} else {
-				$scope.interface.wps_pbc.value = false; 
+				$scope.interface.wps_pbc.value = false;
 			}
 		}
-	}); 
+	});
 	
 	$scope.onEncryptionChanged = function(value, oldvalue){
-		if(!$scope.interface) return; 
+		if(!$scope.interface) return;
+		console.log(value);
 		switch(value){
 			case "none": {
 				if(oldvalue && value != oldvalue){
-					if(!confirm("WARNING: Disabling encryption on your router will severely degrade your security. Are you sure you want to disable encryption on this interface?")){
+					$juciConfirm.show("WARNING: Disabling encryption on your router will severely degrade your security. Are you sure you want to disable encryption on this interface?").fail(function(){
 						setTimeout(function(){
-							$scope.interface.encryption.value = oldvalue; 
-							$scope.$apply(); 
-						},0); 
-					}
+							$scope.interface.encryption.value = oldvalue;
+							$scope.$apply();
+						},0);
+					});
 				}
-				break; 
+				break;
 			}
-			case "wep":
 			case "wep-open": {
 				$scope.interface.key.value = "";
+				break;
 			}
 			case "wep-shared": {
 				if($scope.interface.wps_pbc.value && !confirm($tr(gettext("WPS will be disabled when using WEP encryption. Are you sure you want to continue?")))){
 					setTimeout(function(){
-						$scope.interface.encryption.value = oldvalue; 
-						$scope.$apply(); 
-					},0); 
+						$scope.interface.encryption.value = oldvalue;
+						$scope.$apply();
+					},0);
 				} else {
-					$scope.interface.wps_pbc.value = false; 
+					$scope.interface.wps_pbc.value = false;
 				}
-				break; 
+				break;
 			}
 			case "mixed-psk": {
 				if(!$scope.mixed_psk_ciphers.find(function(i){ return i.value == $scope.interface.cipher.value}))
 					$scope.interface.cipher.value = "tkip+ccmp";
-				break; 
+				break;
 			}
 			case "psk2": {
 				if(!$scope.psk2_ciphers.find(function(i){ return i.value == $scope.interface.cipher.value}))
 					$scope.interface.cipher.value = "ccmp";
-				break; 
+				break;
 			}
 		}
 	}
 
 	$scope.onPreApply = function(){
-		$scope.errors.length = 0; 
+		$scope.errors.length = 0;
 	}
 	$scope.toggleShowPassword = function(){
-		$scope.showPassword = !$scope.showPassword; 
+		$scope.showPassword = !$scope.showPassword;
 	}
-}); 
+});

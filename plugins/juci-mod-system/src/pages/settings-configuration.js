@@ -17,7 +17,7 @@
  */
 
 JUCI.app
-.controller("SettingsConfigurationCtrl", function($scope, $rpc, $tr, gettext, $juciDialog, $file, $config, $events){
+.controller("SettingsConfigurationCtrl", function($scope, $rpc, $tr, gettext, $juciDialog, $file, $config, $events, $juciConfirm){
 	$scope.data = {encryptBackup:false};
 	$scope.sessionID = $rpc.$sid();
 	$scope.resetPossible = 0;
@@ -31,9 +31,10 @@ JUCI.app
 	});
 
 	$scope.onReset = function(){
-		if(confirm($tr(gettext("This will reset your configuration to factory defaults and reboot the router. Do you want to continue?")))){
+		$juciConfirm.show($tr(gettext("This will reset your configuration to factory defaults. Do you want to continue?"))).done(function(){
 			$rpc.$call("juci.system", "defaultreset", {});
-		}
+			setTimeout(function(){window.location = "/reboot.html";},0);
+		});
 	}
 	$scope.onSaveConfig = function(){
 		$scope.showModal = 1;
@@ -63,10 +64,10 @@ JUCI.app
 			} else {
 				$scope.showUploadModal = 0;
 				$scope.$apply();
-				if(confirm($tr(gettext("Configuration has been restored. You need to reboot the device for settings to take effect! Do you want to reboot now?")))){
+				$juciConfirm.show($tr(gettext("Configuration has been restored. You need to reboot the device for settings to take effect! Do you want to reboot now?"))).done(function(){
 					$rpc.$call("juci.system", "reboot", {});
 					setTimeout(function(){window.location = "/reboot.html";}, 0);
-				}
+				});
 			}
 		}).fail(function(err){
 			console.error("Filed: "+JSON.stringify(err));

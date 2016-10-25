@@ -12,7 +12,7 @@ JUCI.app
 		controller: "firewallClientPortMappingCtrl"
 	}
 })
-.controller("firewallClientPortMappingCtrl", function($scope, $uci, $firewall, $tr, gettext, $rpc){
+.controller("firewallClientPortMappingCtrl", function($scope, $uci, $firewall, $tr, gettext, $rpc, $juciConfirm){
 	$scope.ProtocolTypes = [
 		{ label: $tr(gettext("TCP + UDP")), value: "tcp udp" },
 		{ label: $tr(gettext("TCP")), value: "tcp" },
@@ -72,8 +72,7 @@ JUCI.app
 			"reflection": false,
 			"dest": lanZones[0].name.value || "lan",
 			"src": wanZones[0].name.value || "wan",
-			"dest_ip": $scope.client.ipaddr,
-			".new": true
+			"dest_ip": $scope.client.ipaddr
 		}).done(function(pm){
 			pm[".new"] = true;
 			$scope.edit = pm;
@@ -163,10 +162,10 @@ JUCI.app
 		});
 	}
 	$scope.onDeletePM = function(pm){
-		if(confirm("Are you sure you want to delete " + pm.name.value)){
+		$juciConfirm.show("Are you sure you want to delete " + pm.name.value).done(function(){
 			pm.$delete().done(function(){
 				reload();
 			});
-		}
+		});
 	};
 });

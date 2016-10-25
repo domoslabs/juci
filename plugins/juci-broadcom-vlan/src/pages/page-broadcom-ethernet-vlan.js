@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("PageBroadcomEthernetVlan", function($scope, $uci, $network, gettext, $tr){
+.controller("PageBroadcomEthernetVlan", function($scope, $uci, $network, gettext, $tr, $juciConfirm){
 	$scope.getItemTitle = function(dev){
 		if(!dev) return "Unknown";
 		return dev.name.value;
@@ -52,10 +52,10 @@ JUCI.app
 	
 	$scope.onDeleteDevice = function(dev){
 		if(!dev) alert($tr(gettext("Please select a device in the list!")));
-		if(confirm($tr(gettext("Are you sure you want to delete this device?")))){
+		$juciConfirm.show($tr(gettext("Are you sure you want to delete this device?"))).done(function(){
 			dev.$delete().done(function(){
 				$scope.$apply();
 			});
-		}
+		});
 	}
 });
