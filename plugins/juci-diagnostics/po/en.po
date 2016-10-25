@@ -127,7 +127,7 @@ msgid "Ping Test"
 msgstr ""
 
 msgid "status.diagnostics.ping.info"
-msgstr "Please enter a valid hostname or IP address to execute the Ping test."
+msgstr "Please enter a hostname or IP address to ping."
 
 msgid "Host to ping"
 msgstr ""
@@ -142,8 +142,7 @@ msgid "Tracing Tool"
 msgstr ""
 
 msgid "status.diagnostics.trace.info"
-msgstr ""
-"Please enter the IP address of the host to trace."
+msgstr "Please enter a hostname or IP address to trace."
 
 msgid "Host to trace"
 msgstr ""
