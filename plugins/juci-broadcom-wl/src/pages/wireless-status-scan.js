@@ -19,53 +19,50 @@
 JUCI.app
 .controller("wirelessStatusScanPage", function($scope, $uci, $wireless, $rpc){
 	$scope.order = function(pred){
-		$scope.predicate = pred; 
+		$scope.predicate = pred;
 		$scope.reverse = !$scope.reverse;
 	}
-	$scope.radioToScan = {};
 	$uci.$sync("wireless").done(function(){
 		$rpc.$call("router.wireless", "radios").done(function(data){
 			$scope.wlRadios = data;
-			$scope.wlRadiosList = Object.keys(data).map(function(x){ data[x].device = x; return data[x]; });
-			$scope.scanableRadios = $scope.wlRadiosList.filter(function(radio){
-				return parseInt(radio.channel) < 52;
-			}).map(function(radio){
-				return { label: radio.frequency, value: radio.device };
-			});
-			$scope.dfs_enabled = ($scope.wlRadiosList.length != $scope.scanableRadios.length);
+			$scope.scanableRadios = Object.keys(data).map(function(x){
+				if(parseInt(data[x].channel) >= 52){
+					$scope.dfs_enabled = true;
+					return;
+				}
+				return { label: data[x].frequency, value: x };
+			}).filter(function(x){return x;});
 			if($scope.scanableRadios.length > 0){
-				$scope.radioToScan.value = $scope.scanableRadios[0].value;
+				$scope.radioToScan = $scope.scanableRadios[0].value;
 			}
 			$scope.$apply();
 		});
 		$scope.doScan = function(){
-			if($scope.radioToScan.value == null)return;
+			if($scope.radioToScan == null)return;
 			async.series([
 				function(next){
 					$rpc.$call("router.wireless", "radios").done(function(data){
-						$scope.radioIsUp = data[$scope.radioToScan.value].isup;
-						$scope.freq = data[$scope.radioToScan.value].frequency;
+						$scope.radioIsUp = data[$scope.radioToScan].isup;
+						$scope.freq = data[$scope.radioToScan].frequency;
 						$scope.$apply();
 						next();
 					});
 				},
 				function(){
 					if(!$scope.radioIsUp){ alert("Please enable radio on "+$scope.freq+" interface to scan it"); return; }
-					$scope.scanning = 1; 
+					$scope.scanning = 1;
 					$scope.$apply();
-					console.log("Scanning on "+$scope.radioToScan.value); 
-					$wireless.scan({radio: $scope.radioToScan.value}).done(function(){
+					$wireless.scan({radio: $scope.radioToScan}).done(function(){
 						setTimeout(function(){
-							console.log("Getting scan results for "+$scope.radioToScan.value); 
-							$wireless.getScanResults({radio: $scope.radioToScan.value }).done(function(aps){
+							$wireless.getScanResults({radio: $scope.radioToScan}).done(function(aps){
 								$scope.access_points = aps;
-								$scope.scanning = 0; 
-								$scope.$apply(); 
-							}); 
-						}, 5000); 
-					}); 
+								$scope.scanning = 0;
+								$scope.$apply();
+							});
+						}, 5000);
+					});
 				}
 			]);
-		} 
-	}); 
-}); 
+		}
+	});
+});
