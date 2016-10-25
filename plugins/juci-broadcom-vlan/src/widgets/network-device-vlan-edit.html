@@ -6,10 +6,10 @@
 		<juci-config-line title="{{'Base Device'|translate}}">
 			<juci-select ng-model="data.base_device" ng-items="baseDevices" placeholder="{{'Select base device'|translate}}"/>
 		</juci-config-line>
-		<juci-config-line title="{{'802.1q'}}">
+		<juci-config-line title="{{'802.1q'}}" help="VLAN id">
 			<input type="number" min="1" max="4096" class="form-control" ng-model="device.vlan8021q.value"/>
 		</juci-config-line>
-		<juci-config-line title="{{'802.1p'}}">
+		<juci-config-line title="{{'802.1p'}}" help="VLAN priority">
 			<input type="number" min="0" max="7" class="form-control" ng-model="device.vlan8021p.value"/>
 		</juci-config-line>
 	</juci-config-lines>
