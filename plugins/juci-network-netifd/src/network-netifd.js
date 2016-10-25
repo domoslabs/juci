@@ -268,7 +268,10 @@ JUCI.app.factory("$networkHelper", function($uci, $tr, gettext, $network){
 					if(!device.match(/^wl.+/) && !device.match(/^ra.+/)) filtered = filtered.filter(function(net){ return net.type.value == "bridge" });
 					filtered.map(function(net){
 						net.ifname.value = net.ifname.value.split(" ").filter(function(dev){
-							if(dev == device && !confirm($tr(gettext("Are you sure you want to remove device "+dev+" from network "+net[".name"]+" and use it in this "+type)))){
+							var text = $tr(gettext("Are you sure you want to remove device")) + " " +
+										dev + " " + $tr(gettext("from network")) + " " + net[".name"] +
+										" " + $tr(gettext("and use it in this")) + " " + type;
+							if(dev == device && !confirm(text)){
 								keep_device = true;
 								return true;
 							}else if(dev == device) return false;
