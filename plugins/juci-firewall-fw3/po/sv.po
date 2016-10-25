@@ -392,8 +392,8 @@ msgstr "Start-tid"
 msgid "Stop Time"
 msgstr "Stopp tid"
 
-msgid "MAC Addresses"
-msgstr "MAC-adresser"
+msgid "Host Names"
+msgstr "Värddatornamn"
 
 msgid "menu-internet-firewall-forwarding-title"
 msgstr "Paketforwarding"

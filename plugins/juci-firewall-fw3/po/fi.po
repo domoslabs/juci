@@ -479,7 +479,7 @@ msgstr "Lisää URL estolistalle"
 msgid "Internet Access Scheduling"
 msgstr "Internetyhteyden ajoitus"
 
-msgid "MAC Addresses"
+msgid "Host Names"
 msgstr "MAC-osoitteet"
 
 msgid "menu-internet-firewall-dmz-title"

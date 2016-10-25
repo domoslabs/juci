@@ -383,7 +383,7 @@ msgstr ""
 msgid "Stop Time"
 msgstr ""
 
-msgid "MAC Addresses"
+msgid "Host Names"
 msgstr ""
 
 msgid "menu-internet-firewall-forwarding-title"
