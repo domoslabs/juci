@@ -3,11 +3,13 @@
 		<juci-config-heading>{{ 'WiFi Scan' | translate }}</juci-config-heading>
 		<juci-config-info>{{ 'status.wifi.scan.info' | translate }}</juci-config-info>
 		<div class="row">
-			<div class="col-md-6"  ng-repeat="radio in wlRadios track by $index">
+			<div class="col-md-6"  ng-repeat="radio in wlRadios track by $index" style="opacity:{{radio.isup?'1':'0.5'}}">
 				<h2>{{'Radio'|translate}} {{radio.frequency}}</h2>
 				<table class="table table-condensed">
-					<tr><th translate>Channel</th><td>{{radio.channel}}</td></tr>
-					<tr><th translate>Radio Rate</th><td>{{radio.rate}}</td></tr>
+					<tr><th colspan="2" ng-show="radio.isup">{{'Enabled'|translate}}</tr>
+					<tr><th colspan="2" ng-hide="radio.isup">{{'Disabled'|translate}}</tr>
+					<tr><th>{{'Channel'|translate}}</th><td>{{radio.channel}}</td></tr>
+					<tr><th>{{'Radio Rate'|translate}}</th><td>{{radio.rate}}</td></tr>
 				</table>
 			</div>
 		</div>
@@ -16,7 +18,7 @@
 				<juci-select ng-items="scanableRadios" ng-model="radioToScan"></juci-select>
 			</juci-config-line>
 			<juci-config-line title="{{'Scan neighboring APs'|translate}}">
-				<button ng-disabled="scanning" ng-click="doScan()" class="btn btn-default">
+				<button ng-disabled="scanning || !scanableRadios.length || !radioToScan" ng-click="doScan()" class="btn btn-default">
 					<span ng-show="!scanning">Scan</span>
 					<span ng-show="scanning"><i class="fa fa-spinner fa-spin"></i> <span translate>Scanning...</span></span>
 				</button>

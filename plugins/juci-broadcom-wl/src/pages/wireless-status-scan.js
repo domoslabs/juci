@@ -23,46 +23,46 @@ JUCI.app
 		$scope.reverse = !$scope.reverse;
 	}
 	$uci.$sync("wireless").done(function(){
-		$rpc.$call("router.wireless", "radios").done(function(data){
-			$scope.wlRadios = data;
-			$scope.scanableRadios = Object.keys(data).map(function(x){
-				if(parseInt(data[x].channel) >= 52){
-					$scope.dfs_enabled = true;
-					return;
+		$scope.radioToScan = null;
+		function update(){
+			$rpc.$call("router.wireless", "radios").done(function(data){
+				$scope.wlRadios = data;
+				$scope.scanableRadios = Object.keys(data).map(function(x){
+					if(parseInt(data[x].channel) >= 52){
+						$scope.dfs_enabled = true;
+						return;
+					}
+					if(!data[x].isup) return;
+					return { label: data[x].frequency, value: x };
+				}).filter(function(x){return x;});
+				if($scope.radioToScan === null && $scope.scanableRadios.length > 0){
+					$scope.radioToScan = $scope.scanableRadios[0].value;
 				}
-				return { label: data[x].frequency, value: x };
-			}).filter(function(x){return x;});
-			if($scope.scanableRadios.length > 0){
-				$scope.radioToScan = $scope.scanableRadios[0].value;
-			}
-			$scope.$apply();
-		});
+				if(!$scope.scanableRadios.find(function(r){ return r.value === $scope.radioToScan;})){
+					$scope.radioToScan = null;
+				}
+				$scope.$apply();
+			});
+		}
+		JUCI.interval.repeat("update-wlradio-data-scan", 5000, function(next){update() ;next();});
 		$scope.doScan = function(){
 			if($scope.radioToScan == null)return;
-			async.series([
-				function(next){
-					$rpc.$call("router.wireless", "radios").done(function(data){
-						$scope.radioIsUp = data[$scope.radioToScan].isup;
-						$scope.freq = data[$scope.radioToScan].frequency;
+			var radio = $scope.wlRadios[$scope.radioToScan];
+			if(!radio) return;
+			if(!radio.isup){
+				alert("Please enable radio on "+radio.frequency+" interface to scan it");
+				return;
+			}
+			$scope.scanning = 1;
+			$wireless.scan({radio: $scope.radioToScan}).done(function(){
+				setTimeout(function(){
+					$wireless.getScanResults({radio: $scope.radioToScan}).done(function(aps){
+						$scope.access_points = aps;
+						$scope.scanning = 0;
 						$scope.$apply();
-						next();
 					});
-				},
-				function(){
-					if(!$scope.radioIsUp){ alert("Please enable radio on "+$scope.freq+" interface to scan it"); return; }
-					$scope.scanning = 1;
-					$scope.$apply();
-					$wireless.scan({radio: $scope.radioToScan}).done(function(){
-						setTimeout(function(){
-							$wireless.getScanResults({radio: $scope.radioToScan}).done(function(aps){
-								$scope.access_points = aps;
-								$scope.scanning = 0;
-								$scope.$apply();
-							});
-						}, 5000);
-					});
-				}
-			]);
+				}, 5000);
+			});
 		}
 	});
 });
