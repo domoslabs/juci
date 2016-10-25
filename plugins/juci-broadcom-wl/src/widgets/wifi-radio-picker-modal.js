@@ -38,6 +38,10 @@ JUCI.app
 			}).map(function(x){
 				return { label: x[".frequency"] + " (" + x[".name"] + ")", value: x[".name"] };
 			});
+			if($scope.allRadios.length){
+				$scope.data.radio = $scope.allRadios[0].value;
+			}
+			$scope.$apply();
 		});
 	}); 
   $scope.ok = function () {

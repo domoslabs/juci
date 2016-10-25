@@ -2,7 +2,7 @@
 //! Edit by: Reidar Cederqvist <reidar.cederqvist@gmail.com>
 
 JUCI.app
-.controller("wirelessInterfacesPage", function($scope, $uci, $wireless, $tr, gettext, prompt, $modal){
+.controller("wirelessInterfacesPage", function($scope, $uci, $wireless, $tr, gettext, prompt, $modal, $juciConfirm){
 	var devices;
 	JUCI.interval.repeat("update-wireless-interfaces", 5000, function(next){update(); next();});
 
@@ -70,11 +70,11 @@ JUCI.app
 
 	$scope.onDeleteInterface = function(conn){
 		if(!conn) alert($tr(gettext("Please select a connection in the list!")));
-		if(confirm($tr(gettext("Are you sure you want to delete this wireless interface?")))){
+		$juciConfirm.show($tr(gettext("Are you sure you want to delete this wireless interface?"))).done(function(){
 			conn.$delete().done(function(){
 				$scope.$apply();
 			});
-		}
+		});
 	}
 
 });
