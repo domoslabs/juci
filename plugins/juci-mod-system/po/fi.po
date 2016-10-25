@@ -12,7 +12,7 @@ msgstr ""
 "X-Generator: Poedit 1.8.10\n"
 
 msgid ""
-"This will reset your configuration to factory defaults. Do you want to "
+"This will reset your configuration to factory defaults and reboot the router. Do you want to "
 "continue?"
 msgstr "Tämä palauttaa ohjelmiston oletusasetukset. Haluatko jatkaa?"
 
@@ -181,7 +181,7 @@ msgstr ""
 "Voit tallentaa varmuuskopion tietokoneellesi. Suosittelemme pitämään aina "
 "varmuuskopion tietokoneella viimeisimmästä konfiguraatiosta."
 
-msgid "Save settings to computer with password protection"
+msgid "Save settings to computer"
 msgstr "Tallenna salasanalla suojattu asetusten varmuuskopio tietokoneelle"
 
 msgid "Save"

@@ -12,11 +12,11 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 
 msgid ""
-"This will reset your configuration to factory defaults. Do you want to "
+"This will reset your configuration to factory defaults and reboot the router. Do you want to "
 "continue?"
 msgstr ""
 "Detta kommer att återställa dina inställningar till tillverkarens "
-"konfiguration"
+"konfiguration och starta om routern"
 
 msgid ""
 "Configuration has been restored. You need to reboot the device for settings "
@@ -104,7 +104,7 @@ msgstr ""
 "konfiguration till en dator. Vi rekommenderar att alltid spara dina senaste "
 "ändrade inställningar till en dator."
 
-msgid "Save settings to computer with password protection"
+msgid "Save settings to computer"
 msgstr "Spara konfigurationen till fil"
 
 msgid "Save"

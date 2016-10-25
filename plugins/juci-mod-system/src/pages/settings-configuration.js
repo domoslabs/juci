@@ -31,7 +31,7 @@ JUCI.app
 	});
 
 	$scope.onReset = function(){
-		if(confirm($tr(gettext("This will reset your configuration to factory defaults. Do you want to continue?")))){
+		if(confirm($tr(gettext("This will reset your configuration to factory defaults and reboot the router. Do you want to continue?")))){
 			$rpc.$call("juci.system", "defaultreset", {});
 		}
 	}
