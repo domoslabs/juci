@@ -70,13 +70,13 @@ $(TMP_DIR)/$(TPL_LOAD)-$(PLUGIN).tpl.js: $(TEMPLATES_$(PLUGIN))
 	$(Q)if [ "" != "$$^" ]; then ./scripts/juci-build-tpl-cache $$^ $$@; fi
 $(PLUGIN_DIR)/po/template.pot: $(JAVASCRIPT_$(PLUGIN)) $(TEMPLATES_$(PLUGIN))
 	@echo -e "\033[0;33m[POT]\t$(PLUGIN) -> $$@\033[m"
-	@mkdir -p "$$(dir $$@)"
+	$(Q)$(INSTALL_DIR) "$$(dir $$@)"
 	@echo "" > $$@
 	$(Q)if [ "" != "$$^" ]; then ./scripts/extract-strings $$^ > $$@; msguniq $$@ > $$@.tmp; mv $$@.tmp $$@; fi
 	@echo "" >> $$@
 	@for file in `find $(PLUGIN_DIR)/src/pages/ -name "*.html"`; do PAGE=$$$${file%%.*}; echo -e "# $$$$file \nmsgid \"menu-$$$$(basename $$$$PAGE)-title\"\nmsgstr \"\"\n" >> $$@; done
 $(CODE_DIR)/$(CODE_LOAD)-$(PLUGIN).js: $(TMP_DIR)/$(CODE_LOAD)-$(PLUGIN).js $(TMP_DIR)/$(STYLE_LOAD)-$(PLUGIN).css.js $(TMP_DIR)/$(TPL_LOAD)-$(PLUGIN).tpl.js
-	@mkdir -p "$$(dir $$@)"
+	$(Q)$(INSTALL_DIR) "$$(dir $$@)"
 	$(Q)cat $$^ > $$@
 $(PLUGIN)-install: $(PLUGIN_DIR)/po/template.pot $(CODE_DIR)/$(CODE_LOAD)-$(PLUGIN).js
 	$(call Plugin/$(PLUGIN)/install,$(BIN))
@@ -118,16 +118,16 @@ prepare: .cleaned
 	@echo "TARGETS: $(TARGETS)"
 	@echo "DIRS: $(DIRS-y)"
 	@./scripts/bootstrap.sh
-	@mkdir -p $(TMP_DIR)
-	@mkdir -p $(BIN)/www/js/
-	@mkdir -p $(BIN)/www/themes/
-	@mkdir -p $(BIN)/www/css/
-	@mkdir -p $(BIN)/sbin/
-	@mkdir -p $(BIN)/usr/share/juci/
-	@mkdir -p $(BIN)/usr/share/lua/
-	@mkdir -p $(BIN)/usr/share/rpcd/menu.d/
-	@mkdir -p $(BIN)/usr/share/rpcd/acl.d/
-	@mkdir -p $(BACKEND_BIN_DIR)
+	$(Q)$(INSTALL_DIR) $(TMP_DIR)
+	$(Q)$(INSTALL_DIR) $(BIN)/www/js/
+	$(Q)$(INSTALL_DIR) $(BIN)/www/themes/
+	$(Q)$(INSTALL_DIR) $(BIN)/www/css/
+	$(Q)$(INSTALL_DIR) $(BIN)/sbin/
+	$(Q)$(INSTALL_DIR) $(BIN)/usr/share/juci/
+	$(Q)$(INSTALL_DIR) $(BIN)/usr/share/lua/
+	$(Q)$(INSTALL_DIR) $(BIN)/usr/share/rpcd/menu.d/
+	$(Q)$(INSTALL_DIR) $(BIN)/usr/share/rpcd/acl.d/
+	$(Q)$(INSTALL_DIR) $(BACKEND_BIN_DIR)
 	
 node_modules: package.json
 	npm install --production
@@ -150,8 +150,8 @@ DOCS_HTML:= $(patsubst %.md,%.html,$(DOCS_MD)) docs/juci.html
 PHONY+=docs  
 docs: $(DOCS_HTML) 
 	@echo -e "\033[0;33m [DOCS] $@ $^ \033[m"
-	@mkdir -p manual/js
-	@mkdir -p manual/css
+	$(Q)$(INSTALL_DIR) manual/js
+	$(Q)$(INSTALL_DIR) manual/css
 	@cp juci/src/lib/js/bootstrap.min.js manual/js/
 	@cp juci/src/lib/css/bootstrap.min.css manual/css/
 	@# remove juci generated md file 
@@ -163,7 +163,7 @@ docs/juci.md: $(wildcard $(PLUGINS-y)/**/docs/*.md)
 
 %.html: %.md 
 	@echo -e "\033[0;33m[DOC]: $^\033[m"
-	@mkdir -p manual
+	$(Q)$(INSTALL_DIR) manual
 	@ronn --pipe -f $^ > docs/.tmp.ronn
 	@cp docs/page.html.tpl docs/.tmp
 	@sed -i -e '/%CONTENT%/r docs/.tmp.ronn' -e 's///' docs/.tmp
