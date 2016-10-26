@@ -26,6 +26,8 @@ JUCI.app
 		$scope.$apply(); 
 	}); 
 	$scope.onTraceTest = function(){
+		$scope.data.traceResults = "...";
+		$scope.data.error = "";
 		$rpc.$call("juci.diagnostics", "traceroute", { "host": $scope.data.traceHost }).done(function(result){
 			if(result.stderr) $scope.data.traceError = result.stderr; 
 			$scope.data.traceResults = result.stdout; 
