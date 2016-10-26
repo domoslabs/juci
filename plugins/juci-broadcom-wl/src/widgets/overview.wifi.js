@@ -95,8 +95,12 @@ JUCI.app
 	$events.subscribe("wifi-repeater-success", function(){$uci.wireless.$mark_for_reload();update_wifi();});
 
 	$scope.onEditSSID = function(iface){
+		var ssid = iface.ssid.value || "";
+		var freq = iface[".frequency"] || "";
+		freq = freq=="" ? "" : "("+freq+")";
+		var maybeText = freq+ssid=="" ? "" : "'"+ssid+" "+freq+"'";
 		$juciDialog.show("uci-wireless-interface", {
-			title: $tr(gettext("Edit wireless interface")),
+			title: $tr(gettext("Edit wireless interface"))+" "+maybeText,
 			buttons: [
 				{ label: $tr(gettext("Save")), value: "save", primary: true },
 				{ label: $tr(gettext("Cancel")), value: "cancel" }
