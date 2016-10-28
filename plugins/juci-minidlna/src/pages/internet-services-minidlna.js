@@ -58,11 +58,22 @@ JUCI.app
 		});
 	});
 
-	$rpc.$call("juci.minidlna", "status", {}).done(function(data){
-		$scope.is_running = data.running ? "active" : "inactive";
-		$scope.count = data.count;
-		$scope.$apply();
-	});
+	setTimeout(function(){ // give the service time to reload
+		JUCI.interval.repeat("update-minidlna-status", 5000, function(next){
+			$rpc.$call("juci.minidlna", "status", {}).done(function(data){
+				console.log(data);
+				if(data.error){
+					$scope.error = data.error;
+					$scope.$apply();
+				}else{
+					$scope.error = null;
+					$scope.is_running = data.running ? "active" : "inactive";
+					$scope.count = data.count;
+					$scope.$apply();
+				}
+			}).always(function(){next();});
+		});
+	}, 500);
 
 	$scope.root_dir = [
 		{ label: $tr(gettext("Standard Container")),	value: "." },
