@@ -31,7 +31,8 @@
 					<juci-config-line title="{{'Root Container'|translate}}">
 						<juci-select ng-items="root_dir" ng-model="config.root_container.value"></juci-select>
 					</juci-config-line>
-					<juci-config-line title="{{'Media Directories'|translate}}" no-pull>
+					<juci-config-line title="{{'Media Directories'|translate}}"></juci-config-line>
+					<div class="col-sm-12 col-xs-12">
 						<div class="input-group">
 							<span class="input-group-addon">/mnt</span>
 							<tags-input ng-model="tagslistData" display-property="text"
@@ -41,7 +42,7 @@
 							</tags-input>
 						</div><br/>
 						<button class="btn btn-default pull-right" ng-click="onAddFolder()"><i class="fa fa-plus"></i></button>
-					</juci-config-line>
+					</div>
 					<juci-config-line title="{{'Album-Art Names'|translate}}" help="{{ 'This is a list of file names to check for when searching for album art.' | translate }}">
 						<tags-input ng-model="album_art" display-property="text" min-length="5"
 							add-on-space="true" add-on-blur="false" on-tag-added="onChangeAAName($tag)"
