@@ -61,7 +61,6 @@ JUCI.app
 	setTimeout(function(){ // give the service time to reload
 		JUCI.interval.repeat("update-minidlna-status", 5000, function(next){
 			$rpc.$call("juci.minidlna", "status", {}).done(function(data){
-				console.log(data);
 				if(data.error){
 					$scope.error = data.error;
 					$scope.$apply();
