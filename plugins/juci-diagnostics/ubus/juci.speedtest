@@ -62,7 +62,7 @@ get_iface () {
 
 case "$1" in
 	list)
-		echo '{ "run" : {"testmode":"str","packetsize_up":32,"packetsize_down":32,"address":"str","port":32}, "get_packet_size" : {} }'
+		echo '{ "run" : {"testmode":"str","packetsize_up":32,"packetsize_down":32,"address":"str","port":32}, "get_packet_size" : {}, "is_running": {} }'
 	;;
 	call)
 		case "$2" in
@@ -80,6 +80,17 @@ case "$1" in
 					json_add_string "message" "success"
 					json_dump
 				fi
+			;;
+			is_running)
+				json_init
+				if pidof tptest-run >/dev/null; then
+					json_add_string "message" "running"
+					json_add_boolean "running" 1
+				else
+					json_add_string "message" "not running"
+					json_add_boolean "running" 0
+				fi
+				json_dump
 			;;
 			get_packet_size)
 				get_iface

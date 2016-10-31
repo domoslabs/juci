@@ -16,7 +16,14 @@ JUCI.app
 		state: "",
 		auto: true
 	}; 
-	
+
+	$rpc.$call("juci.speedtest", "is_running").done(function(res){
+		if(res.running){
+			$scope.data.state = "running";
+			$scope.$apply();
+		}
+	});
+
 	function getDefaultPacketSize(){
 		$rpc.$call("juci.speedtest", "get_packet_size").done(function(data){
 			$scope.data.downsize = parseInt(data.packetsize_down);
@@ -25,7 +32,7 @@ JUCI.app
 		}).fail(function(e){ console.log(e); });
 	}
 	getDefaultPacketSize();
-	
+
 	$scope.$watch('data.auto', function(new_value){
 		if(new_value === false){ getDefaultPacketSize(); }
 	}, false);
@@ -97,7 +104,7 @@ JUCI.app
 			}
 		}, 15000);
 	};
-	
+
 	$scope.onRemoveAddress = function(){
 		var server = $scope.testServers.find(function(x){
 			return $scope.data.server == x.server.value

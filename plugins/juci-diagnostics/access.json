@@ -5,7 +5,8 @@
 			"ubus": {
 				"juci.speedtest": [
 					"run",
-					"get_packet_size"
+					"get_packet_size",
+					"is_running"
 				],
 				"juci.diagnostics": [
 					"ping",
