@@ -9,6 +9,9 @@
 				"juci.directory": [
 					"folder_tree",
 					"autocomplete"
+				],
+				"juci.system": [
+					"passwd_entries"
 				]
 			}
 		}, 

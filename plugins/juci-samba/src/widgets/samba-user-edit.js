@@ -25,6 +25,32 @@ JUCI.app
 			user: "=ngModel"
 		}, 
 		templateUrl: "/widgets/samba-user-edit.html", 
+		controller: "sambaUserEdit",
 		replace: true
 	};
+})
+.controller("sambaUserEdit", function($scope, $rpc){
+	var passwd_entries = [];
+
+	$rpc.$call("juci.system","passwd_entries").done(function(passwd_entriesIn){
+		passwd_entries = passwd_entriesIn.entries;
+	});
+
+	$scope.$watch("user", function(user){
+		if (!$scope.user || !$scope.user.user){ return; }
+
+		var validUsername = function(){ //TODO: TRANSLATE
+			this.validate = function(x){
+				if (passwd_entries.indexOf(user.user.value) !== -1) {
+					var errormsg = "Samba username '"+user.user.value+"' taken or not allowed.";
+					return errormsg;
+				}
+				else {
+					return null;
+				}
+			}
+		}
+		user.user.validator = new validUsername();
+
+	},false);
 }); 

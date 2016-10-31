@@ -412,7 +412,7 @@ EOF
 
 case "$1" in
 	list)
-		echo '{ "defaultreset" : {}, "reboot" : {}, "zonelist" : {}, }' #"users" : {} }' for future reference
+		echo '{ "defaultreset" : {}, "reboot" : {}, "zonelist" : {}, "passwd_entries" : {} }' #"users" : {} }' for future reference
 	;;
 	call)
 		case "$2" in
@@ -432,6 +432,14 @@ case "$1" in
 			zonelist)
 				[ -f /tmp/timezones ] || populate_timezones
 				[ -f /tmp/timezones ] && cat /tmp/timezones
+			;;
+			passwd_entries)
+				json_init
+				json_add_array entries
+				for entry in $(awk -F ':' '{print $1}' /etc/passwd); do
+					json_add_string entries $entry
+				done
+				json_dump
 			;;
 			#users) for future reference
 			#	add_user(){
