@@ -145,7 +145,7 @@
 					deferred.resolve(result);
 				}
 			}).fail(function err(result){
-				deferred.reject(msg || "no result");
+				deferred.reject(result || "no result");
 			});
 			return deferred.promise();
 		},
