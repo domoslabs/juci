@@ -115,12 +115,10 @@ JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $
 			function reconnect(){
 				if(i < 10) i += 2;
 				$rpc.$reconnect().done(function(){
-					console.log("success");
 					$events.resubscribe();
 					modal.close();
 					next();
 				}).fail(function(){
-					console.log("failed");
 					setTimeout(function(){ reconnect();}, 1000*i);
 				});
 			}
@@ -129,6 +127,7 @@ JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $
 			if($rpc.$isLoggedIn() && ++i > 2){
 				i = 0;
 				$rpc.$authenticate().fail(function(){
+					console.log("logging you out from app.js");
 					$juci.redirect("login");
 				});
 			}

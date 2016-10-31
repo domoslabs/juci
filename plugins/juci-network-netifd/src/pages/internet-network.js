@@ -95,7 +95,6 @@ JUCI.app
 						if(model.errors.length)
 							return;
 						inst.close();
-						console.log("testing");
 						cb();
 					}
 				});

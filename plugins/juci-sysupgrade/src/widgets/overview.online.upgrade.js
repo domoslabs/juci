@@ -15,7 +15,6 @@ JUCI.app
 		name_full: ""
 	}
 	$rpc.$call("juci.sysupgrade", "check", {"type": "online"}).done(function(response){
-		console.log("test " + response.online);
 		if(response.online) {
 			var split = response.online.split("/");
 			$scope.upgrade.path = response.online;

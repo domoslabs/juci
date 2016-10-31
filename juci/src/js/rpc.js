@@ -145,9 +145,7 @@
 					deferred.resolve(result);
 				}
 			}).fail(function err(result){
-				self.$clearSession().always(function(msg){
-					deferred.reject(msg || "no result");
-				});
+				deferred.reject(msg || "no result");
 			});
 			return deferred.promise();
 		},
