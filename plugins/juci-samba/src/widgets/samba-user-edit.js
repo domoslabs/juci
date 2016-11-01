@@ -45,9 +45,16 @@ JUCI.app
 					var errormsg = "Samba username '"+user.user.value+"' taken or not allowed.";
 					return errormsg;
 				}
-				else {
-					return null;
+				if (!user.user.value.match(/^[0-9a-zA-Z_.-]+$/)){ // POSIX.1-2008: 3.437 User Name
+					var errormsg = "Samba username may only contain numbers, english letters, underscore, dot and hyphen.";
+					return errormsg;
 				}
+				if (user.user.value.match(/^[-]+[0-9a-zA-Z_.-]*$/)){ // POSIX.1-2008: 3.437 User Name
+					var errormsg = "Samba username may not start with a hyphen.";
+					return errormsg;
+				}
+
+				return null;
 			}
 		}
 		user.user.validator = new validUsername();
