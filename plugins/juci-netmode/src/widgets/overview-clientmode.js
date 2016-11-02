@@ -71,7 +71,7 @@ JUCI.app
 		if(tmp && tmp.askcred.value) return true;
 		return false;
 	}
-	$scope.wps = $rpc.$has("wps", "pbc_client");
+	$scope.wps = $rpc.$has("router.wps", "pbc_client");
 	$scope.onPairWps = function(){
 		$rpc.$call("router.wps", "pbc_client");
 	}
