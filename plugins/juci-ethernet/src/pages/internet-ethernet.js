@@ -35,22 +35,18 @@ JUCI.app
 			if(a.device.match(/^br.*/)) a._icon = "juci juci-bridge";
 			if(a.device.match(/^ptm.*/)) a._icon = "juci juci-vdsl";
 			if(a.device.match(/^atm.*/)) a._icon = "juci juci-adsl";
-			if(a.statistics.tx_bytes>1000000){
-				a.statistics.tx_bytes = a.statistics.tx_bytes/1000000;
-				a.statistics.tx_bytes = Math.round(a.statistics.tx_bytes*10)/10 + " MB";
-			}
-			else if(a.statistics.tx_bytes>1000){
-				a.statistics.tx_bytes = a.statistics.tx_bytes/1000;
-				a.statistics.tx_bytes = Math.round(a.statistics.tx_bytes*10)/10 + " kB";
-			}
-			if(a.statistics.rx_bytes>1000000){
-				a.statistics.rx_bytes = a.statistics.rx_bytes/1000000;
-				a.statistics.rx_bytes = Math.round(a.statistics.rx_bytes*10)/10 + " MB";
-			}
-			else if(a.statistics.rx_bytes>1000){
-				a.statistics.rx_bytes = a.statistics.rx_bytes/1000;
-				a.statistics.rx_bytes = Math.round(a.statistics.rx_bytes*10)/10 + " kB";
-			}
+			if(!a.statistics || !a.statistics.tx_bytes)
+				a["__tx_bytes"] = "0 B";
+			else if(a.statistics.tx_bytes > 1000000)
+				a["__tx_bytes"] = Math.round((a.statistics.tx_bytes/1000000)*10)/10 + " MB";
+			else if(a.statistics.__tx_bytes > 1000)
+				a["__tx_bytes"] = Math.round((a.statistics.tx_bytes/1000)*10)/10 + " kB";
+			if(!a.statistics || !a.statistics.rx_bytes)
+				a["__rx_bytes"] = "0 B";
+			else if(a.statistics.rx_bytes > 1000000)
+				a["__rx_bytes"] = Math.round((a.statistics.rx_bytes/1000000)*10)/10 + " MB";
+			else if(a.statistics.rx_bytes > 1000)
+				a["__rx_bytes"] = Math.round((a.statistics.rx_bytes/1000)*10)/10 + " kB";
 			return a; 
 		}); 
 		$scope.$apply(); 

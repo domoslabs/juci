@@ -18,8 +18,8 @@
 					<td>{{dev.device}}</td>
 					<td class="hidden-xs">{{dev.macaddr}}</td>
 					<td class="hidden-xs">{{dev.mtu}}</td>
-					<td class="hidden-xs" style="font-size:12px; white-space:nowrap">RX Bytes: {{dev.statistics.rx_bytes}}<br>TX Bytes: {{dev.statistics.tx_bytes}}</td>
-					<!--<td style="white-space: nowrap;"><i class="fa fa-circle" ng-class="{'text-success': dev.carrier}"></i></td>-->
+					<td class="hidden-xs" style="font-size:12px; white-space:nowrap">RX Bytes: {{dev["__rx_bytes"]}}<br>TX Bytes: {{dev["__tx_bytes"]}}</td>
+<!--<td style="white-space: nowrap;"><i class="fa fa-circle" ng-class="{'text-success': dev.carrier}"></i></td>-->
 				</tr>
 			</table>
 		</juci-config-section>
