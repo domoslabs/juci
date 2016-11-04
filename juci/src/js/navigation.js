@@ -124,9 +124,9 @@
 			if(!node.children || !node.children.length) return; //no sub-nodes
 			node.children.map(function(ch){
 				if(ch.page){ 								// valid node check sub-nodes
-					filterMenu(ch);
+					filterMenu(ch, to_delete);
 				}else if(hasValidChild(ch)){ 				// valid node check sub-nodes
-					filterMenu(ch);
+					filterMenu(ch, to_delete);
 				}else{ 										// invalid child REMOVE
 					to_delete.push(ch.path);
 				}

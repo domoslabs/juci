@@ -159,11 +159,16 @@
 				});
 				function addMenuItem(menu){
 					if(!menu.path || !menu.path.value) return;
+					var page;
+					if(menu.redirect.value && menu.page.value)
+						page = "";
+					else
+						page = menu.page.value;
 					if(!menu.index || !menu.index.value ||
 							menu.index.value > 99 || menu.index.value < 1) menu.index.value = 99;
 					var obj = {
 						path: menu.path.value,
-						page: menu.page.value || "",
+						page: page,
 						index: menu.index.value,
 						modes: menu.modes.value || [],
 						text: "menu-"+(menu.page.value || menu.path.value.replace(/\//g, "-"))+"-title"
