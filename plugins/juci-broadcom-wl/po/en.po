@@ -36,9 +36,8 @@ msgstr "inget SSID"
 msgid ". SSID can not be more than 32 characters long!"
 msgstr ""
 
-#, fuzzy
 msgid "Wireless interface "
-msgstr "Wireless"
+msgstr ""
 
 # /home/reidar/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
 msgid " has invalid key #"
@@ -632,7 +631,7 @@ msgstr ""
 
 # plugins/juci-broadcom-wl/src/pages/wireless-general.html
 msgid "menu-wireless-general-title"
-msgstr ""
+msgstr "General"
 
 msgid "menu-wireless-link-to-interfaces-title"
 msgstr "Wireless"
@@ -654,7 +653,7 @@ msgstr "Radios"
 
 # plugins/juci-broadcom-wl/src/pages/wireless.html
 msgid "menu-wireless-title"
-msgstr ""
+msgstr "WiFi"
 
 msgid "menu-wireless-schedule-title"
 msgstr "Scheduling"

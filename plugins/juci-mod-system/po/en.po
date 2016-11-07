@@ -460,7 +460,7 @@ msgstr "LEDs"
 
 # plugins/juci-mod-system/src/pages/system.html
 msgid "menu-system-title"
-msgstr ""
+msgstr "System"
 
 msgid "menu-status-system-title"
 msgstr "System"

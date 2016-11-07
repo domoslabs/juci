@@ -1346,7 +1346,7 @@ msgstr "Services"
 
 # plugins/juci-network-netifd/src/pages/network.html
 msgid "menu-network-title"
-msgstr ""
+msgstr "Network"
 
 #~ msgid "menu-internet-title"
 #~ msgstr "Network"
