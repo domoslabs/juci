@@ -70,13 +70,8 @@ endef
 
 define Plugin/juci/install
 	$(Q)$(INSTALL_DIR) $(1)/www/
-	$(Q)$(INSTALL_DIR) $(1)/etc/config/
-	$(Q)$(INSTALL_DIR) $(1)/etc/init.d/
 	$(Q)$(CP) $(PLUGIN_DIR)/src/img/ $(1)/www/
 	$(Q)$(CP) $(PLUGIN_DIR)/src/fonts/ $(1)/www/
-	$(Q)$(INSTALL_DIR) $(1)/usr/share/lua/juci/
-	$(Q)$(CP) $(PLUGIN_DIR)/lualibs/* $(1)/usr/share/lua/
-	$(Q)$(CP) $(PLUGIN_DIR)/lua/* $(1)/usr/share/lua/juci/
 	$(Q)$(CP) $(PLUGIN_DIR)/reboot.html $(1)/www/	
 	$(Q)$(CP) $(PLUGIN_DIR)/initfail.html $(1)/www/	
 endef

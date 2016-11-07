@@ -123,8 +123,7 @@ prepare: .cleaned
 	$(Q)$(INSTALL_DIR) $(BIN)/www/themes/
 	$(Q)$(INSTALL_DIR) $(BIN)/www/css/
 	$(Q)$(INSTALL_DIR) $(BIN)/sbin/
-	$(Q)$(INSTALL_DIR) $(BIN)/usr/share/juci/
-	$(Q)$(INSTALL_DIR) $(BIN)/usr/share/lua/
+	$(Q)$(INSTALL_DIR) $(BIN)/usr/bin/
 	$(Q)$(INSTALL_DIR) $(BIN)/usr/share/rpcd/menu.d/
 	$(Q)$(INSTALL_DIR) $(BIN)/usr/share/rpcd/acl.d/
 	$(Q)$(INSTALL_DIR) $(BACKEND_BIN_DIR)
@@ -135,8 +134,8 @@ node_modules: package.json
 release: prepare node_modules $(TARGETS)
 	@echo "======= JUCI RELEASE =========="
 	@./scripts/juci-compile $(BIN) 
-	@./scripts/juci-update $(BIN) RELEASE
-	@cp juci-update $(BIN)/usr/bin/
+	@./scripts/juci-update $(BIN)/www RELEASE
+	@cp scripts/juci-update $(BIN)/usr/bin/
 
 debug: prepare node_modules $(TARGETS)
 	@echo "======= JUCI DEBUG =========="
