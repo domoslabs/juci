@@ -41,7 +41,7 @@ JUCI.app
 		var self = this;
 		self.getDevices().done(function(devs){
 			var filtered = devs.filter(function(dev){
-				return dev.netdevice && String(dev.netdevice).match(/^eth/);
+				return dev.netdevice && (String(dev.netdevice).match(/^eth/) || String(dev.netdevice).match(/^usb/));
 			});
 			adapters.map(function(a){
 				var match = filtered.find(function(f){ return f.netdevice === a.device; });
