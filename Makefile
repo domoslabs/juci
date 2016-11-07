@@ -30,7 +30,7 @@ define BuildDir-y
 	$(eval CODE_LOAD:=50) # same as LOAD, LOAD is deprecated
 	$(eval TPL_LOAD:=90)
 	$(eval STYLE_LOAD:=50)
-	$(eval BACKEND_BIN_DIR:=$(BIN)/usr/lib/ubus/juci/)
+	$(eval BACKEND_BIN_DIR:=$(BIN)/usr/libexec/rpcd)
 	$(eval CODE_DIR:=$(BIN)/www/$(if $(3),$(3),js))
 	$(eval PO-y:=po/*.po)
 	$(eval JAVASCRIPT-y:=src/*.js src/pages/*.js src/widgets/*.js)
