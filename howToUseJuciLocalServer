@@ -4,7 +4,8 @@ Step 2. Checkout devel branch:
 	git checkout devel
 Step 3. Create a Makefile.local:
 	ether copy example-Makefile.local to Makefile.local (cp example-Makefile.local Makefile.local)
-	or write your own. This file should contain a list of all plugins that will be compiled when you build locally
+	or write your own. This file should contain a list of all plugins that will be compiled when you build locally.
+	Make sure that Makefile.local has local=yes in it.
 Step 4. build JUCI:
 	run "make debug"
 Stemp 5. Start local server:
