@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 msgid "off"
 msgstr ""
@@ -29,16 +29,16 @@ msgid "Invalid SSID: "
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid "no SSID"
+msgstr "inget SSID"
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
 msgid ". SSID can not be more than 32 characters long!"
 msgstr ""
 
 #, fuzzy
 msgid "Wireless interface "
 msgstr "Wireless"
-
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
-msgid "no SSID"
-msgstr "inget SSID"
 
 # /home/reidar/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
 msgid " has invalid key #"
@@ -60,6 +60,106 @@ msgstr ""
 msgid ". WPA key must be 8-63 printable ASCII characters long!"
 msgstr ""
 
+msgid "Disabled"
+msgstr ""
+
+msgid "Initializing"
+msgstr ""
+
+msgid "Processing"
+msgstr ""
+
+msgid "Done!"
+msgstr ""
+
+msgid "Failed"
+msgstr ""
+
+msgid "Timed out"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
+msgid "Switching to repeater mode"
+msgstr ""
+
+msgid "Overlap"
+msgstr ""
+
+msgid "Unknown"
+msgstr ""
+
+msgid "Invalid WPS PIN"
+msgstr ""
+
+msgid ""
+"Invalid format! WPS PIN must be ether 4 or 8 digits alternatively 8 digits "
+"with a space or dash in the middle"
+msgstr ""
+
+msgid "Wireless Interfaces"
+msgstr ""
+
+msgid "Bandwidth"
+msgstr ""
+
+# plugins/juci-broadcom-wl/src/pages/wireless-devices.js
+msgid "N/A"
+msgstr ""
+
+msgid "Channel"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.html
+msgid "Noise"
+msgstr ""
+
+# plugins/juci-broadcom-wl/src/pages/wireless-devices.js
+msgid "dBm"
+msgstr ""
+
+# plugins/juci-broadcom-wl/src/pages/wireless-devices.js
+msgid "Rate"
+msgstr ""
+
+# plugins/juci-broadcom-wl/src/pages/wireless-devices.js
+msgid "Disable"
+msgstr ""
+
+# plugins/juci-broadcom-wl/src/pages/wireless-devices.js
+msgid "Enable"
+msgstr ""
+
+msgid "Enabled"
+msgstr ""
+
+msgid "SSID"
+msgstr ""
+
+# plugins/juci-broadcom-wl/src/pages/wireless-interfaces.js
+msgid "BSSID"
+msgstr ""
+
+# plugins/juci-broadcom-wl/src/pages/wireless-interfaces.js
+msgid "unknown"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Mode"
+msgstr ""
+
+# plugins/juci-broadcom-wl/src/pages/wireless-interfaces.js
+msgid "Device"
+msgstr ""
+
+# plugins/juci-broadcom-wl/src/pages/wireless-interfaces.js
+msgid "Couldn't load wireless radios from config"
+msgstr ""
+
 # /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-interfaces.js
 msgid ""
 "No more Wireless Interface spaces left. There can't be more than 4 "
@@ -70,15 +170,6 @@ msgid "Please select a connection in the list!"
 msgstr ""
 
 msgid "Are you sure you want to delete this wireless interface?"
-msgstr ""
-
-msgid "Wireless Interfaces"
-msgstr ""
-
-msgid "Enabled"
-msgstr ""
-
-msgid "Disabled"
 msgstr ""
 
 msgid "None"
@@ -135,51 +226,6 @@ msgstr ""
 msgid "SNR"
 msgstr ""
 
-msgid "Initializing"
-msgstr ""
-
-msgid "Processing"
-msgstr ""
-
-msgid "Done!"
-msgstr ""
-
-msgid "Failed"
-msgstr ""
-
-msgid "Timed out"
-msgstr ""
-
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/overview.wifi.js
-msgid "Switching to repeater mode"
-msgstr ""
-
-msgid "Overlap"
-msgstr ""
-
-msgid "Unknown"
-msgstr ""
-
-msgid "Invalid WPS PIN"
-msgstr ""
-
-msgid ""
-"Invalid format! WPS PIN must be ether 4 or 8 digits alternatively 8 digits "
-"with a space or dash in the middle"
-msgstr ""
-
-msgid "Edit wireless interface"
-msgstr ""
-
-msgid "Save"
-msgstr ""
-
-msgid "Cancel"
-msgstr ""
-
 msgid "Auto"
 msgstr ""
 
@@ -201,6 +247,26 @@ msgstr "802.11g"
 msgid "11n"
 msgstr "802.11n"
 
+msgid "Edit wireless interface"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Access Point (AP)"
+msgstr ""
+
+msgid "Client (STA)"
+msgstr ""
+
+msgid ""
+"Are you sure you want to create a new SSID with the same name and on the "
+"same radio? This may result in undefined behaviour!"
+msgstr ""
+
 msgid "Key"
 msgstr ""
 
@@ -220,15 +286,31 @@ msgid ""
 "continue?"
 msgstr ""
 
-msgid "Access Point (AP)"
+msgid "MAC Filtering"
 msgstr ""
 
-msgid "Client (STA)"
+msgid "Access for listed devices"
 msgstr ""
 
-msgid ""
-"Are you sure you want to create a new SSID with the same name and on the "
-"same radio? This may result in undefined behaviour!"
+msgid "Currently added devices"
+msgstr ""
+
+msgid "Add currently connected hosts to the list"
+msgstr ""
+
+msgid "Add clients to MAC filtering list"
+msgstr ""
+
+msgid "Select Wireless Radio"
+msgstr ""
+
+msgid "Select SSID"
+msgstr ""
+
+msgid "New SSID"
+msgstr ""
+
+msgid "New Wireless Interface"
 msgstr ""
 
 msgid "Schedule"
@@ -252,6 +334,54 @@ msgstr ""
 msgid "Attempting to Pair"
 msgstr ""
 
+# plugins/juci-broadcom-wl/src/widgets/overview.wifi.html
+msgid "WPS pin:"
+msgstr ""
+
+# plugins/juci-broadcom-wl/src/widgets/overview.wifi.html
+msgid "{{i[0] | translate}}"
+msgstr ""
+
+msgid "WiFi Network Name (SSID)"
+msgstr ""
+
+msgid "Broadcast SSID"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
+msgid "Wireless Multicast Forwarding"
+msgstr ""
+
+msgid "Frequency"
+msgstr ""
+
+msgid "Cipher"
+msgstr ""
+
+msgid "WiFi Key (Password)"
+msgstr ""
+
+msgid "Reset to default password"
+msgstr ""
+
+msgid "Choose Key"
+msgstr ""
+
+msgid "WiFi Key"
+msgstr ""
+
+msgid "Radius Server"
+msgstr ""
+
+msgid "Radius Port"
+msgstr ""
+
+msgid "Radius Secret"
+msgstr ""
+
+msgid "Show Key Text"
+msgstr ""
+
 msgid "Wireless"
 msgstr ""
 
@@ -264,13 +394,7 @@ msgstr ""
 msgid "Select Hardware Mode"
 msgstr ""
 
-msgid "Channel"
-msgstr ""
-
 msgid "Select Channel"
-msgstr ""
-
-msgid "Bandwidth"
 msgstr ""
 
 msgid "Select Bandwidth"
@@ -321,91 +445,6 @@ msgstr ""
 msgid "Enable WMM UAPSD Power Saving"
 msgstr ""
 
-msgid "WiFi Network Name (SSID)"
-msgstr ""
-
-msgid "Broadcast SSID"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/widgets/uci.wireless.interface.html
-msgid "Wireless Multicast Forwarding"
-msgstr ""
-
-msgid "Frequency"
-msgstr ""
-
-msgid "Encryption"
-msgstr ""
-
-msgid "Cipher"
-msgstr ""
-
-msgid "WiFi Key (Password)"
-msgstr ""
-
-msgid "Reset to default password"
-msgstr ""
-
-msgid "Choose Key"
-msgstr ""
-
-msgid "WiFi Key"
-msgstr ""
-
-msgid "Radius Server"
-msgstr ""
-
-msgid "Radius Port"
-msgstr ""
-
-msgid "Radius Secret"
-msgstr ""
-
-msgid "Show Key Text"
-msgstr ""
-
-msgid "MAC Filtering"
-msgstr ""
-
-msgid "Access for listed devices"
-msgstr ""
-
-msgid "Currently added devices"
-msgstr ""
-
-msgid "Add currently connected hosts to the list"
-msgstr ""
-
-msgid "Add clients to MAC filtering list"
-msgstr ""
-
-msgid "Select Wireless Radio"
-msgstr ""
-
-msgid "Select SSID"
-msgstr ""
-
-msgid "New SSID"
-msgstr ""
-
-msgid "Mode"
-msgstr ""
-
-msgid "New Wireless Interface"
-msgstr ""
-
-msgid "WiFi Client Mode"
-msgstr ""
-
-msgid "wifi.client.info"
-msgstr "Client information"
-
-msgid "SSID"
-msgstr ""
-
-msgid "Connect"
-msgstr ""
-
 msgid "Wireless Radios"
 msgstr ""
 
@@ -416,42 +455,13 @@ msgstr ""
 "Access points are interfaces and each radio can have several interfaces on "
 "it. "
 
-msgid "MAC Filter"
+msgid "WiFi Client Mode"
 msgstr ""
 
-msgid "wifi.macfilter.info"
-msgstr ""
-"To make your wireless network more secure, you can specify which devices are "
-"allowed to connect. The devices are identified by their MAC address. You can "
-"manage up to 32 devices."
+msgid "wifi.client.info"
+msgstr "Client information"
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-filtering.html
-msgid "You cannot enable MAC Filtering on a WEP protected wireless interface!"
-msgstr ""
-
-msgid "General WiFi Settings"
-msgstr ""
-
-msgid "wifi.general.info"
-msgstr ""
-"Your router supports the industry-wide WiFi standards, enabling easy "
-"wireless connection of your devices."
-
-msgid "WiFi Network"
-msgstr ""
-
-msgid "Scheduled"
-msgstr ""
-
-msgid "Enable WiFi"
-msgstr ""
-
-msgid "Enable WiFi On/Off button"
-msgstr ""
-
-msgid ""
-"You have wifi-scheduling enabled. This means that your wifi will be "
-"automatically turned on and off based on your schedule settings"
+msgid "Connect"
 msgstr ""
 
 msgid "wifi.interfaces.info"
@@ -459,9 +469,6 @@ msgstr ""
 "Wireless interfaces are visible to the user in the form of wireless access "
 "point names. Each radio can have up to 4 SSIDs and each SSID interface can "
 "be configured as part of a network bridge or firewall group. "
-
-msgid " page"
-msgstr ""
 
 msgid "WiFi Scheduling"
 msgstr ""
@@ -502,8 +509,45 @@ msgstr "Wireless status information"
 msgid "Channel:"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.html
-msgid "Noise"
+msgid " page"
+msgstr ""
+
+msgid "General WiFi Settings"
+msgstr ""
+
+msgid "wifi.general.info"
+msgstr ""
+"Your router supports the industry-wide WiFi standards, enabling easy "
+"wireless connection of your devices."
+
+msgid "WiFi Network"
+msgstr ""
+
+msgid "Scheduled"
+msgstr ""
+
+msgid "Enable WiFi"
+msgstr ""
+
+msgid "Enable WiFi On/Off button"
+msgstr ""
+
+msgid ""
+"You have wifi-scheduling enabled. This means that your wifi will be "
+"automatically turned on and off based on your schedule settings"
+msgstr ""
+
+msgid "MAC Filter"
+msgstr ""
+
+msgid "wifi.macfilter.info"
+msgstr ""
+"To make your wireless network more secure, you can specify which devices are "
+"allowed to connect. The devices are identified by their MAC address. You can "
+"manage up to 32 devices."
+
+# /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-filtering.html
+msgid "You cannot enable MAC Filtering on a WEP protected wireless interface!"
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-broadcom-wl/src/pages/wireless-status-scan.html
@@ -514,6 +558,10 @@ msgid "status.wifi.scan.info"
 msgstr "Here you can scan for other wireless access points in your area."
 
 msgid "Radio"
+msgstr ""
+
+# plugins/juci-broadcom-wl/src/pages/wireless-status-scan.html
+msgid "Radio Rate"
 msgstr ""
 
 msgid "Frequency to Scan"
@@ -540,9 +588,6 @@ msgstr ""
 "on an encrypted channel. Below, you can choose and configure different "
 "connection methods."
 
-msgid "WPS Function"
-msgstr ""
-
 msgid "Enable WPS on"
 msgstr ""
 
@@ -559,9 +604,6 @@ msgid "Enter your device PIN"
 msgstr ""
 
 msgid "Enter your PIN here"
-msgstr ""
-
-msgid "Your router is now attempting to pair with other devices."
 msgstr ""
 
 msgid "WPS-PBC: Push Button on Device"
@@ -588,38 +630,46 @@ msgstr ""
 msgid "Enter the WPS-PIN provided by the other device here."
 msgstr ""
 
-msgid "menu-wifi-title"
-msgstr "WiFi"
-
-msgid "menu-wireless-status-title"
-msgstr "WiFi Status"
-
-msgid "menu-wireless-client-mode-title"
-msgstr "Client Mode"
-
-msgid "menu-wireless-wps-title"
-msgstr "WPS"
-
-msgid "menu-wireless-devices-title"
-msgstr "Radios"
-
-msgid "menu-wireless-filtering-title"
-msgstr "MAC Filter"
-
-msgid "menu-wireless-schedule-title"
-msgstr "Scheduling"
+# plugins/juci-broadcom-wl/src/pages/wireless-general.html
+msgid "menu-wireless-general-title"
+msgstr ""
 
 msgid "menu-wireless-link-to-interfaces-title"
 msgstr "Wireless"
 
+msgid "menu-wireless-wps-title"
+msgstr "WPS"
+
+msgid "menu-wireless-status-title"
+msgstr "WiFi Status"
+
 msgid "menu-wireless-interfaces-title"
 msgstr "Wireless"
+
+msgid "menu-wireless-filtering-title"
+msgstr "MAC Filter"
+
+msgid "menu-wireless-devices-title"
+msgstr "Radios"
+
+# plugins/juci-broadcom-wl/src/pages/wireless.html
+msgid "menu-wireless-title"
+msgstr ""
+
+msgid "menu-wireless-schedule-title"
+msgstr "Scheduling"
 
 msgid "menu-wireless-status-scan-title"
 msgstr "WiFi Scan"
 
-msgid "menu-wifi-general-title"
-msgstr "General"
+msgid "menu-wireless-client-mode-title"
+msgstr "Client Mode"
+
+#~ msgid "menu-wifi-title"
+#~ msgstr "WiFi"
+
+#~ msgid "menu-wifi-general-title"
+#~ msgstr "General"
 
 #~ msgid "wifi.clients.info"
 #~ msgstr ""
