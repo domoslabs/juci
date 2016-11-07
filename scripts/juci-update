@@ -25,14 +25,6 @@ elif [ -d /var/www ]; then
 	WWW="/var/www"
 fi
 
-if [ "$MODE" == "RELEASE" ]; then
-	echo "Compressing files"
-	for file in `find ${WWW} -type f | grep -v "\.gz" | grep -v cgi-bin`; do
-		#echo "Compressing ${file}..."; 
-		gzip -f ${file}
-	done
-fi
-
 # now update the index file to include any extra files
 INDEX=${WWW}/index.html
 #gunzip -f ${INDEX}.gz

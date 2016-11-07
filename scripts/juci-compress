@@ -2,28 +2,16 @@
 
 set -e
 
-WWW="$1"
-MODE="$2"
-MODE=${MODE:="RELEASE"}
-
-if [ "$MODE" == "RELEASE" ]; then
-	JS_WILDCARD="*.js.gz"
-	CSS_WILDCARD="*.css.gz"
-else
-	JS_WILDCARD="*.js"
-	CSS_WILDCARD="*.css"
-fi
-
 if [ -n "$1" ]; then
 	WWW="$1"
 elif [ -d /www ]; then
 	WWW="/www"
 elif [ -d /var/www ]; then
 	WWW="/var/www"
+else
+	exit 1
 fi
 
-if [ "$MODE" == "RELEASE" ]; then
-	for file in `find ${WWW} -type f | grep -v "\.gz" | grep -v cgi-bin`; do
-		gzip -f ${file}
-	done
-fi
+for file in `find ${WWW} -type f | grep -v "\.gz" | grep -v cgi-bin`; do
+	gzip -f ${file}
+done
