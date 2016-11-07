@@ -84,7 +84,6 @@ And since names are globally unique, you will only have a file with that name
 in a single place. When you then change names of your directive/controller, it
 is a good idea to also change the name of the file. 
 
-* all lua script objects should have the same filename as the object on ubus.
 
 	Well actually, ubus-scriptd will take care of that. 
 
