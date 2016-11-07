@@ -93,6 +93,7 @@ else
 ifneq ($(THEME_PATH),)
 $(foreach th,$(wildcard $(THEME_PATH)*),$(eval $(call BuildDir-y,$(notdir $(th)),$(th),themes)))
 endif
+$(foreach th,$(wildcard themes/*),$(eval $(call BuildDir-y,$(notdir $(th)),$(th),themes)))
 $(foreach pl,$(wildcard plugins/*),$(eval $(call BuildDir-y,$(notdir $(pl)),$(pl))))
 $(eval $(call BuildDir-y,juci,$(CURDIR)/juci/))
 endif
@@ -134,7 +135,8 @@ node_modules: package.json
 release: prepare node_modules $(TARGETS)
 	@echo "======= JUCI RELEASE =========="
 	@./scripts/juci-compile $(BIN) 
-	@./scripts/juci-update $(BIN)/www RELEASE
+	#@./scripts/juci-update $(BIN)/www RELEASE
+	@for folder in $$(ls bin); do ./scripts/juci-compress bin/$$folder/www RELEASE; done
 	@cp scripts/juci-update $(BIN)/usr/bin/
 
 debug: prepare node_modules $(TARGETS)
