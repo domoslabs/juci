@@ -12,7 +12,8 @@
 		<div ng-show="showWps" class="row" style="margin-bottom: 10px;">
 			<div class="col-xs-3" style="text-align: center;"><i style="color:{{wpsColor}};" class="juci juci-wps fa-lg"></i></div>
 			<div class="col-xs-6">
-				<a class="overview-list-item-text" href="#!/wireless-wps"><strong>{{'WPS'|translate}}</strong></a>
+				<a class="overview-list-item-text" ng-show="href" href="#!/wireless-wps"><strong>{{'WPS'|translate}}</strong></a>
+				<div class="overview-list-item-text" ng-show="!href"><strong>{{'WPS'|translate}}</strong></div>
 			</div>
 			<div class="col-xs-3" style="float:right;text-align:right;">
 				<button class="btn btn-default {{wifiStatus.wps.value?'':'disabled'}}" style="margin-bottom:5px;" title="{{'(within 2 minutes)'|translate}}" ng-mouseup="mouseUp()" ng-mousedown="mouseDown()">{{'Pair'|translate}}</button>
