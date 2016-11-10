@@ -91,7 +91,7 @@
 							<input type="number" class="form-control" ng-model="upnp.clean_ruleset_interval.value"/>
 						</juci-config-line>
 						<juci-config-line title="{{ 'Presentation URL' | translate }}">
-							<input type="text" class="form-control" placeholder="https://presentation.html" ng-model="upnp.presentation_url.value"/>
+							<input type="text" class="form-control" placeholder="{{intiface}}" ng-model="upnp.presentation_url.value"/>
 						</juci-config-line>
 						<juci-config-line title="{{ 'UPnP lease file' | translate }}">
 							<input type="text" class="form-control" placeholder="/var/upnp.lease" ng-model="upnp.upnp_lease_file.value"/>
