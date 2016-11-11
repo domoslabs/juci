@@ -26,6 +26,7 @@ UCI.dhcp.$registerSectionType("dnsmasq", {
 	"localise_queries":	{ dvalue: true, type: Boolean },
 	"rebind_protection":{ dvalue: false, type: Boolean },
 	"rebind_localhost":	{ dvalue: false, type: Boolean },
+	"nohosts":			{ dvalue: false, type: Boolean },
 	"dnsforwardmax":	{ dvalue: undefined, type: Number },
 	"rebind_domain":	{ dvalue: [], type: Array },
 	"ednspacket_max":	{ dvalue: undefined, type: Number },
