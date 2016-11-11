@@ -127,8 +127,10 @@ JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $
 			if($rpc.$isLoggedIn() && ++i > 2){
 				i = 0;
 				$rpc.$authenticate().fail(function(){
-					console.log("logging you out from app.js");
-					$juci.redirect("login");
+					//console.log("logging you out from app.js");
+					$rpc.$clearSession().done(function(){
+						setTimeout(function(){$juci.redirect("login");}, 0);
+					});
 				});
 			}
 			next();
@@ -163,7 +165,6 @@ JUCI.app.directive('autofocus', ['$timeout', function($timeout) {
 // This ensures that we have control over the initialization order (base system first, then angular).
 angular.element(document).ready(function() {
 	//the init process will try for 1 sec to initialize and if it fails it will go to init fale page
-	starting = Date.now();
 	(function init(){
 		JUCI.$init().done(function(){
 			angular.bootstrap(document, ["juci"]);

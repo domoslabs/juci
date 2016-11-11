@@ -79,7 +79,9 @@
 				$rpc.$authenticate().done(function(){
 					next();
 				}).fail(function(e){
-					deferred.resolve("not logged in");
+					$rpc.$clearSession().always(function(){
+						deferred.resolve("not logged in");
+					});
 				});
 			},
 			function(next){

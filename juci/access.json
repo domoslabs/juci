@@ -9,7 +9,7 @@
 					"configs"
 				],
 				"juci.unauthenticated": [
-					 "username"
+					 "*"
 				]
 			}, 
 			"uci": [ "juci" ] 
