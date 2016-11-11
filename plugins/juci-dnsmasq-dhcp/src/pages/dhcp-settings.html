@@ -24,7 +24,7 @@
 						<switch class="green" ng-model="dnsmasq.nohosts.value" />
 					</juci-config-line>
 					<juci-config-line ng-hide="dnsmasq.nohosts.value" title="{{ 'Hostname Entries file(s)' | translate }}" help="{{ 'Additional host files to read for serving DNS responses' | translate }}">
-						<tags-input ng-model="hostfiles" display-property="label" add-on-space="true"></tags-input>
+						<tags-input ng-model="hostfiles" display-property="label" add-on-space="true" placeholder="{{'Add Hostname file'|translate}}"></tags-input>
 					</juci-config-line>
 				</juci-config-lines>
 			</tab>
