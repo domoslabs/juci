@@ -17,13 +17,13 @@
 					<juci-config-line title="{{ 'Ignore resolve file' | translate }}">
 						<switch class="green" ng-model="dnsmasq.noresolv.value" />
 					</juci-config-line>
-					<juci-config-line ng-hide="dnsmasq.noresolv.value" title="{{ 'Resolve file' | translate }}" help="{{ 'local DNS file' | translate }}">
+					<juci-config-line ng-hide="dnsmasq.noresolv.value" title="{{ 'Resolve file' | translate }}" help="{{ 'Tells dnsmasq to use this file to find upstream name servers' | translate }}">
 						<input type="text" class="form-control" ng-model="dnsmasq.resolvfile.value" />
 					</juci-config-line>
 					<juci-config-line title="{{ 'Ignore Hosts file' | translate }}">
 						<switch class="green" ng-model="dnsmasq.nohosts.value" />
 					</juci-config-line>
-					<juci-config-line ng-hide="dnsmasq.nohosts.value" title="{{ 'Resolve file' | translate }}" help="{{ 'local DNS file' | translate }}">
+					<juci-config-line ng-hide="dnsmasq.nohosts.value" title="{{ 'Hostname Entries file(s)' | translate }}" help="{{ 'Additional host files to read for serving DNS responses' | translate }}">
 						<tags-input ng-model="hostfiles" display-property="label" add-on-space="true"></tags-input>
 					</juci-config-line>
 				</juci-config-lines>
