@@ -163,9 +163,8 @@ msgstr "IPv6 Unique ID"
 msgid "IPv6 Address ID"
 msgstr "IPv6-osoite ID"
 
-# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
-msgid "Add Connected Host"
-msgstr ""
+msgid "Add Host"
+msgstr "Lisää isäntäkone"
 
 msgid "Static DHCP"
 msgstr "Kiinteä DHCP"
@@ -190,7 +189,7 @@ msgstr "DHCP-palvelin"
 
 # /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
 msgid "DHCP/DNS"
-msgstr ""
+msgstr "DHCP ja DNS"
 
 msgid "General Settings"
 msgstr "Yleiset asetukset"
@@ -214,16 +213,30 @@ msgid "file where given DHCP-leases will be stored"
 msgstr "tiedosto, jonne DHCP-varaukset tallennetaan"
 
 msgid "Ignore resolve file"
-msgstr ""
+msgstr "Ohita resolve-tiedosto"
 
 msgid "Resolve file"
-msgstr ""
+msgstr "Resolve tiedosto"
 
-msgid "local DNS file"
-msgstr "paikallinen DNS-tiedosto"
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Tells dnsmasq to use this file to find upstream name servers"
+msgstr ""
+"Merkitse dnsmasq käyttämään tätä tiedostoa nimipalvelinten löytämiseen"
 
 msgid "Ignore Hosts file"
 msgstr "Ohita Hosts-tiedosto"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Hostname Entries file(s)"
+msgstr "Isäntäkoneiden nimitiedosto"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Additional host files to read for serving DNS responses"
+msgstr "Lisätiedostot DNS kyselyihin vastaamiseen"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Add Hostname file"
+msgstr "Lisää isäntäkoneiden nimitiedosto"
 
 msgid "Domain required"
 msgstr "Toimialueen nimi vaadittu"
@@ -369,19 +382,19 @@ msgstr "Isäntäkoneiden merkinnät"
 msgid "menu-dhcp-settings-title"
 msgstr "DHCP"
 
-# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-msgid "dhcp-settings-title"
-msgstr "DHCP asetukset"
-
 msgid "menu-dhcp-status-title"
 msgstr "DHCP tila"
 
-# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/pages/dhcp-status.html
-msgid "dhcp-status-title"
-msgstr "DHCP tila"
+#~ msgid "local DNS file"
+#~ msgstr "paikallinen DNS-tiedosto"
 
-#~ msgid "Add Host"
-#~ msgstr "Lisää isäntäkone"
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+#~ msgid "dhcp-settings-title"
+#~ msgstr "DHCP asetukset"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/pages/dhcp-status.html
+#~ msgid "dhcp-status-title"
+#~ msgstr "DHCP tila"
 
 #~ msgid "DHCP Settings"
 #~ msgstr "DHCP-asetukset"
