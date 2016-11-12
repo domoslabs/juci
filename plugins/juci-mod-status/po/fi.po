@@ -29,8 +29,7 @@ msgstr "Käynnistä uudelleen"
 msgid "status.restart.info"
 msgstr ""
 "Tällä sivulla voit käynnistää modeemin uudelleen. Huomioi, että puhelin, "
-"Internet ja TV palvelut ovat poissa käytöstä uudelleenkäynnistyksen "
-"aikana."
+"Internet ja TV palvelut ovat poissa käytöstä uudelleenkäynnistyksen aikana."
 
 msgid "Click here to restart your device"
 msgstr "Paina tästä käynnistääksesi laitteesi uudelleen"
@@ -38,16 +37,16 @@ msgstr "Paina tästä käynnistääksesi laitteesi uudelleen"
 msgid "menu-settings-restart-title"
 msgstr "Uudelleenkäynnistys"
 
-# /home/jamu/GIT/juci/plugins/juci-mod-status/src/pages/settings-restart.html
-msgid "settings-restart-title"
-msgstr "Uudellenkäynnistys"
-
 msgid "menu-status-title"
 msgstr "Status"
 
+# /home/jamu/GIT/juci/plugins/juci-mod-status/src/pages/settings-restart.html
+#~ msgid "settings-restart-title"
+#~ msgstr "Uudellenkäynnistys"
+
 # /home/jamu/GIT/juci/plugins/juci-mod-status/src/pages/status.html
-msgid "status-title"
-msgstr "Status"
+#~ msgid "status-title"
+#~ msgstr "Status"
 
 #~ msgid "Hostname"
 #~ msgstr "Isäntäkoneen nimi"

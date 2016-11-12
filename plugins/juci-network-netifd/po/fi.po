@@ -90,6 +90,18 @@ msgstr "Ethernet GRE over IPv6"
 msgid "no device or network given"
 msgstr "laitetta tai verkkoa ei annettu"
 
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "Are you sure you want to remove device"
+msgstr "Haluatko varmasti poistaa liitännän"
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "from network"
+msgstr "verkosta"
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "and use it in this"
+msgstr "ja käyttää sitä"
+
 msgid "valid values are: 'no' and 48-64"
 msgstr "sallitut arvot ovat: 'ei' ja 48-64"
 
@@ -418,7 +430,7 @@ msgid "Downlink"
 msgstr "Lataus"
 
 msgid "Standalone"
-msgstr ""
+msgstr "Itsenäinen"
 
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-create-settings.js
 msgid "Anywan"
@@ -479,6 +491,10 @@ msgstr "Auto"
 msgid "Disabled"
 msgstr "Pois käytöstä"
 
+# plugins/juci-network-netifd/src/widgets/network-connection-proto-none-edit.js
+msgid "Bridge devices"
+msgstr "Sillatut liitännät"
+
 msgid "Address Allocation"
 msgstr "Osoitejako"
 
@@ -505,6 +521,10 @@ msgstr "Valitse laite luettelosta!"
 
 msgid "Are you sure you want to delete this device from bridge?"
 msgstr "Haluatko varmasti poistaa tämän laitteen sillasta?"
+
+# plugins/juci-network-netifd/src/widgets/network-connection-type-none-edit.js
+msgid "(Alias)"
+msgstr ""
 
 msgid "You need to select a host!"
 msgstr "Valitse isäntäkone!"
@@ -599,11 +619,11 @@ msgstr "Bittinopeus"
 
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
 msgid "Downstream"
-msgstr ""
+msgstr "Lataus"
 
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
 msgid "Upstream"
-msgstr ""
+msgstr "Lähetys"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
@@ -754,6 +774,18 @@ msgstr "Mujuta  MTU"
 
 msgid "Method"
 msgstr "Method"
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "Device:"
+msgstr "Laite:"
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "IPv4-Address ({{$index+1}}):"
+msgstr "IPv4-osoite ({{$ index   1}}):"
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "IPv6-Address ({{$index+1}}):"
+msgstr "IPv6-osoite ({{$ index   1}}):"
 
 msgid "Select Network"
 msgstr "Valitse verkko"
@@ -917,16 +949,16 @@ msgstr ""
 "salasana mikäli päivitysavainta ei ole konfiguroitu"
 
 msgid "The IPv4 address of the relay"
-msgstr ""
+msgstr "Relay IPv4-osoite"
 
 msgid "The IPv6 prefix assigned to the provider, usually ends with ::"
-msgstr ""
+msgstr "IPv6 etuliite päättyy yleensä ::"
 
 msgid "IPv6 prefix length"
-msgstr "IPv6 Assigned Prefix Length"
+msgstr "IPv6 etuliitteen pituus"
 
 msgid "The length of the IPv6 prefix in bits"
-msgstr ""
+msgstr "IPv6 etuliitteen pituus bitteinä"
 
 msgid "IPv4 prefix length"
 msgstr "IPv6 Assigned Prefix Length"
@@ -1114,11 +1146,39 @@ msgstr "Ei asiakaslaitteita {{network['.name'].toUpperCase()}} verkossa"
 msgid "WAN"
 msgstr "Internet (WAN)"
 
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "Internet"
+msgstr ""
+
 msgid "ONLINE"
 msgstr "YHDISTETTY"
 
 msgid "OFFLINE"
 msgstr "EI YHTEYTTÄ"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "WAN IP(s)"
+msgstr "Julkiset IP-osoitteet"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "Gateway(s)"
+msgstr "Yhdyskäytävä(t)"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "Link Type"
+msgstr "Linkin tyyppi"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "DSL Rate(s)"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "DNS-Servers"
+msgstr "DNS-palvelimet"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "WAN Uptime"
+msgstr "Internet yhteys aktiivinen:"
 
 msgid "Connections"
 msgstr "Verkkoyheydet"
@@ -1183,6 +1243,9 @@ msgstr ""
 "Palvelut-sivulla voidaan konfiguroida erilaisia ohjelmia kuten Verkkojakoja "
 "ja MiniDLNA"
 
+msgid "Active Connections"
+msgstr "Aktiivisia yhteyksiä"
+
 # /home/jari/GIT/IOPSYS/juci/plugins/juci-network-netifd/src/pages/netifd-status-clients.html
 msgid "N/A"
 msgstr "Ei saatavilla"
@@ -1204,9 +1267,6 @@ msgstr "Secondary DNS"
 msgid "Line Status"
 msgstr "Linjan tila"
 
-msgid "Active Connections"
-msgstr "Aktiivisia yhteyksiä"
-
 msgid "Connections for each Device"
 msgstr "Laitteiden yhteydet"
 
@@ -1218,6 +1278,22 @@ msgstr "NAT yhteystaulu"
 
 msgid "status.nat.info"
 msgstr "NAT"
+
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+msgid "Source"
+msgstr "Lähde"
+
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+msgid "Dest."
+msgstr "Kohde"
+
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+msgid "Source Port"
+msgstr "Lähdeportti"
+
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+msgid "Dest. Port"
+msgstr "Kohdeportti"
 
 msgid "status.network.routes.info"
 msgstr "Reitit"
@@ -1261,61 +1337,61 @@ msgstr "Reititin"
 msgid "menu-internet-network-title"
 msgstr "Verkkoyhteydet"
 
-# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-network.html
-msgid "internet-network-title"
-msgstr "Verkkoyhteydet"
-
-msgid "menu-internet-title"
-msgstr "Verkko"
-
 msgid "menu-internet-routes-title"
-msgstr "Reitit"
-
-# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-routes.html
-msgid "internet-routes-title"
 msgstr "Reitit"
 
 msgid "menu-internet-services-title"
 msgstr "Palvelut"
 
-# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-services.html
-msgid "internet-services-title"
-msgstr "Palvelut"
-
 msgid "menu-netifd-status-clients-title"
-msgstr "Yhdistetyt laitteet"
-
-# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/netifd-status-clients.html
-msgid "netifd-status-clients-title"
 msgstr "Yhdistetyt laitteet"
 
 msgid "menu-network-title"
 msgstr "Verkko"
 
-# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/network.html
-msgid "network-title"
-msgstr "Verkko"
-
 msgid "menu-status-network-nat-title"
-msgstr "NAT"
-
-# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/status-network-nat.html
-msgid "status-network-nat-title"
 msgstr "NAT"
 
 msgid "menu-status-network-routes-title"
 msgstr "Reitit"
 
-# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/status-network-routes.html
-msgid "status-network-routes-title"
-msgstr "Reitit"
-
 msgid "menu-status-network-title"
 msgstr "Verkon tila"
 
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-network.html
+#~ msgid "internet-network-title"
+#~ msgstr "Verkkoyhteydet"
+
+#~ msgid "menu-internet-title"
+#~ msgstr "Verkko"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-routes.html
+#~ msgid "internet-routes-title"
+#~ msgstr "Reitit"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-services.html
+#~ msgid "internet-services-title"
+#~ msgstr "Palvelut"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/netifd-status-clients.html
+#~ msgid "netifd-status-clients-title"
+#~ msgstr "Yhdistetyt laitteet"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/network.html
+#~ msgid "network-title"
+#~ msgstr "Verkko"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/status-network-nat.html
+#~ msgid "status-network-nat-title"
+#~ msgstr "NAT"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/status-network-routes.html
+#~ msgid "status-network-routes-title"
+#~ msgstr "Reitit"
+
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/status-network.html
-msgid "status-network-title"
-msgstr "Verkon tila"
+#~ msgid "status-network-title"
+#~ msgstr "Verkon tila"
 
 #~ msgid "Unmanaged networks need to be setup as a bridge"
 #~ msgstr "Valvomattomat verkot on asetettava sillaksi"
