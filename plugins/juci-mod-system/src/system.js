@@ -34,7 +34,7 @@ UCI.system.$registerSectionType("system", {
 	"log_size":			{ dvalue: 16, type: Number },
 	"log_trailer_null":	{ dvalue: false, type: Boolean },
 	"log_type":			{ dvalue: "circular", type: String },
-	"netping_addr":		{ dvalue: "www.google.com", type: String }
+	"netping_addr":		{ dvalue: '', type: String }
 });
 
 UCI.system.$registerSectionType("timeserver", {
