@@ -31,28 +31,24 @@ INDEX=${WWW}/index.html
 mkdir -p ${WWW}/js;
 mkdir -p ${WWW}/css;
 
+time="$(date +%s)"
+
 STYLES_HTML="" #"<link href='__all.css' rel='stylesheet' type='text/css' />"
 SCRIPTS_HTML="" #"<script src='__all.js'></script>"
 for file in `find ${WWW}/css -name "$CSS_WILDCARD" | sort`; do
 	echo "Adding $file to index"
 	style=${file#${WWW}}
 	style=${style%.gz}
-	STYLES_HTML="${STYLES_HTML}<link href='${style}' rel='stylesheet' type='text/css' />"
+	STYLES_HTML="${STYLES_HTML}<link href=\"${style}?v=${time}\" rel=\"stylesheet\" type=\"text/css\" />"
 done
-
-#sed "/<!-- STYLES_BEGIN -->/,/<!-- STYLES_END -->/c<!-- STYLES_BEGIN -->${STYLES_HTML}<!-- STYLES_END -->" ${INDEX} 
-#cat ${INDEX} | tr -d '\n' | sed "s/<!-- STYLES_BEGIN -->.*<!-- STYLES_END -->/<!-- STYLES_BEGIN -->${STYLES_HTML}<!-- STYLES_END -->/" 
-#cat /www/index.html | tr -d '\n' | sed "s/<!-- STYLES_BEGIN -->.*<!-- STYLES_END -->/<!-- STYLES_BEGIN -->test<!-- STYLES_END -->/g" 
 
 for file in `find ${WWW}/js -name "$JS_WILDCARD" | sort`; do
 	echo "Adding $file to index"
 	JSFILE=${file#${WWW}}
 	JSFILE=${JSFILE%.gz}
-	SCRIPTS_HTML="${SCRIPTS_HTML}<script src=\"${JSFILE}\"></script>"
+	SCRIPTS_HTML="${SCRIPTS_HTML}<script src=\"${JSFILE}?v=${time}\"></script>"
 done
-#cat ${INDEX} | tr -d '\n' | sed "s/<!-- SCRIPTS_BEGIN -->.*<!-- SCRIPTS_END -->/<!-- SCRIPTS_BEGIN -->${SCRIPTS_HTML}<!-- SCRIPTS_END -->/" 
 
-# workaround because stupid f**ing sed is not working on busybox #@"#"!"¤¤"#!"¤!½!!!
 echo "<!doctype html>
 <html lang='en' >
 <head>
