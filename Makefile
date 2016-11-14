@@ -143,6 +143,8 @@ debug: prepare node_modules $(TARGETS)
 	@echo -e "\033[0;33m [UPDATE] $@ \033[m"
 	@./scripts/juci-update $(BIN)/www DEBUG
 	@cp scripts/juci-update $(BIN)/usr/bin/
+	@rm -rf $(BIN)/www/themes/theme.js
+	@if [ -f $(BIN)/www/themes/80-juci-theme-inteno.js ]; then ln -s 80-juci-theme-inteno.js $(BIN)/www/themes/theme.js; fi
 
 DOCS_MD:= README.md $(wildcard juci/docs/*.md docs/*.md $(PLUGINS-y)/**/docs/*.md) docs/juci.md
 DOCS_HTML:= $(patsubst %.md,%.html,$(DOCS_MD)) docs/juci.html
