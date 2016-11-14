@@ -134,8 +134,7 @@ node_modules: package.json
 
 release: prepare node_modules $(TARGETS)
 	@echo "======= JUCI RELEASE =========="
-	@./scripts/juci-compile $(BIN) 
-	@for folder in $$(ls bin); do ./scripts/juci-compress bin/$$folder/www; done
+	@./scripts/juci-compile
 	@cp scripts/juci-update $(BIN)/usr/bin/
 
 debug: prepare node_modules $(TARGETS)
