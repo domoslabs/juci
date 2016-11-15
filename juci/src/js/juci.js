@@ -173,7 +173,8 @@
 						page: page,
 						index: menu.index.value,
 						modes: menu.modes.value || [],
-						text: "menu-"+(menu.page.value || menu.path.value.replace(/\//g, "-"))+"-title"
+						text: menu.external.value ? menu.path.value : "menu-"+(menu.page.value || menu.path.value.replace(/\//g, "-"))+"-title",
+						external: menu.external.value
 					}
 					$juci.navigation.register(obj);
 					JUCI.page(menu.page.value || "", "pages/"+(menu.page.value || "default")+".html");
@@ -300,6 +301,7 @@
 	UCI.$registerConfig("juci");
 		
 	UCI.juci.$registerSectionType("menu", {
+		"external":			{ dvalue: false, type: Boolean },
 		"path": 			{ dvalue: undefined, type: String },
 		"page": 			{ dvalue: undefined, type: String },
 		"redirect":			{ dvalue: undefined, type: String },

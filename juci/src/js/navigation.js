@@ -42,7 +42,10 @@
 		this.getHrefByNode = function(node){
 			function findHref(n){
 				if(!n) return "";
-				if(n.page) return n.page;
+				if(n.page){
+					if(n.external) return n.page;
+					return "#!/"+n.page;
+				}
 				if(!n.children || !n.children.length){console.log("Error in menu pleace run $navigation.removeInvalidNodes"); return "";}
 				return findHref(n.children[0]);
 			}
