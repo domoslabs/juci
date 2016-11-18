@@ -75,6 +75,17 @@ JUCI.app
 	}, false);
 	$scope.$watch("data.model", function(value){
 		if(!$scope.share) return;
+		$scope.filesystem = "";
+		console.log(value);
+		$rpc.$call("router.usb", "status").done(function(data){
+			Object.keys(data).map(function(key){
+				var usb = data[key];
+				if(usb.mntdir && usb.mntdir === value.split("/")[1] && usb.filesystem && usb.filesystem.match("ext")){
+					$scope.filesystem = String(usb.filesystem).toUpperCase();
+					$scope.$apply();
+				}
+			});
+		}).fail(function(e){console.log(e);});
 		$scope.share.path.value = "/mnt" + value;
 	}, false);
 

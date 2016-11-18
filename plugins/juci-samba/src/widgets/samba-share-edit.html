@@ -4,6 +4,8 @@
 			<input type="text" class="form-control" ng-model="share.name.value"/>
 		</juci-config-line>
 		<juci-config-line title="{{'Path'|translate}}">
+			<p ng-show="filesystem" class="alert alert-warning">{{'This USB drive has' | translate}} {{filesystem}}
+				{{'filesystem, it only supports reading and not writing. writeble filesystems are: FAT, FAT32 and NTFS'| translate}}</p>
 			<div class="input-group">
 				<span class="input-group-addon">/mnt</span>
 				<input type="text" class="form-control" ng-model="data.model" 

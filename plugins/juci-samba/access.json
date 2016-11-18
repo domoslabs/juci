@@ -12,6 +12,9 @@
 				],
 				"juci.system": [
 					"passwd_entries"
+				],
+				"router.usb": [
+					"status"
 				]
 			}
 		}, 
