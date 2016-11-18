@@ -4,10 +4,14 @@
 
 case "$1" in
 	list)
-		echo '{ "arp" : {}, "ipv4routes" : {}, "ipv6routes" : {}, "ipv6neigh" : {}, "load" : {}, "nameservers" : {}, "nat_table" : {}, "protocols" : {}, "services" : {} }'
+		echo '{ "arp" : {}, "ipv4routes" : {}, "ipv6routes" : {}, "ipv6neigh" : {}, "load" : {}, "nameservers" : {}, "nat_table" : {}, "protocols" : {}, "services" : {}, "online" : {} }'
 	;;
 	call)
 		case "$2" in
+			online)
+				json_load "$(cat /tmp/internet_connection_status 2>/dev/null)"
+				json_dump
+			;;
 			arp)
 				ubus call router.net arp
 			;;

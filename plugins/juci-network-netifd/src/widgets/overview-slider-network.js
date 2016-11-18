@@ -184,8 +184,8 @@ JUCI.app
 					next();
 				}).fail(function(e){next({"Error":e});});
 			}, function(next){
-				$rpc.$call("led.internet", "status").done(function(data){
-					hasInternet = data.state && data.state === "ok";
+				$rpc.$call("juci.network", "online").done(function(data){
+					hasInternet = data.online;
 					next();
 				}).fail(function(e){next({ "Error":e });});
 			}, function(next){
