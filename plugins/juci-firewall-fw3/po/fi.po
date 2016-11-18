@@ -455,8 +455,13 @@ msgstr ""
 "useita verkkoja tai liitäntöjä, jotka on asetettu aiemmin verkkoyhteydet-"
 "sivulla."
 
-msgid "URL Blocking"
-msgstr "URL Estäminen"
+# plugins/juci-firewall-fw3/src/pages/internet-parental-control.html
+msgid ""
+"These rules block internet access for clients during the specified time "
+"interval"
+msgstr ""
+"Nämä säännöt estävät internet-yhteyden isäntäkoneilta määritetyn ajanjakson "
+"aikana"
 
 # /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-parental-control.html
 msgid ""
@@ -473,9 +478,6 @@ msgstr "Käytönvalvonta"
 msgid "internet.parental.control.info"
 msgstr "Tässä voidaan asettaa käytönvalvonnan asetukset."
 
-msgid "URL Blocking Function"
-msgstr "Lisää URL estolistalle"
-
 msgid "Internet Access Scheduling"
 msgstr "Internetyhteyden ajoitus"
 
@@ -485,65 +487,71 @@ msgstr "MAC-osoitteet"
 msgid "menu-internet-firewall-dmz-title"
 msgstr "DMZ"
 
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-dmz.html
-msgid "internet-firewall-dmz-title"
-msgstr "DMZ"
-
 msgid "menu-internet-firewall-forwarding-title"
-msgstr "Edelleenlähetys"
-
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-forwarding.html
-msgid "internet-firewall-forwarding-title"
 msgstr "Edelleenlähetys"
 
 msgid "menu-internet-firewall-port-mapping-title"
 msgstr "Porttiohjaus"
 
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-port-mapping.html
-msgid "internet-firewall-port-mapping-title"
-msgstr "Porttiohjaus"
-
 msgid "menu-internet-firewall-rules-title"
-msgstr "Palomuurisäännöt"
-
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-rules.html
-msgid "internet-firewall-rules-title"
 msgstr "Palomuurisäännöt"
 
 msgid "menu-internet-firewall-services-title"
 msgstr "Palvelut"
 
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-services.html
-msgid "internet-firewall-services-title"
-msgstr "Palvelut"
-
 msgid "menu-internet-firewall-urlblock-title"
-msgstr "URL esto"
-
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-urlblock.html
-msgid "internet-firewall-urlblock-title"
 msgstr "URL esto"
 
 msgid "menu-internet-firewall-zones-title"
 msgstr "Vyöhykkeet"
 
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-zones.html
-msgid "internet-firewall-zones-title"
-msgstr "Vyöhykkeet"
-
 msgid "menu-internet-firewall-title"
-msgstr "Palomuuri"
-
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall.html
-msgid "internet-firewall-title"
 msgstr "Palomuuri"
 
 msgid "menu-internet-parental-control-title"
 msgstr "Käytönvalvonta"
 
+#~ msgid "URL Blocking"
+#~ msgstr "URL Estäminen"
+
+#~ msgid "URL Blocking Function"
+#~ msgstr "Lisää URL estolistalle"
+
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-dmz.html
+#~ msgid "internet-firewall-dmz-title"
+#~ msgstr "DMZ"
+
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-forwarding.html
+#~ msgid "internet-firewall-forwarding-title"
+#~ msgstr "Edelleenlähetys"
+
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-port-mapping.html
+#~ msgid "internet-firewall-port-mapping-title"
+#~ msgstr "Porttiohjaus"
+
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-rules.html
+#~ msgid "internet-firewall-rules-title"
+#~ msgstr "Palomuurisäännöt"
+
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-services.html
+#~ msgid "internet-firewall-services-title"
+#~ msgstr "Palvelut"
+
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-urlblock.html
+#~ msgid "internet-firewall-urlblock-title"
+#~ msgstr "URL esto"
+
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-zones.html
+#~ msgid "internet-firewall-zones-title"
+#~ msgstr "Vyöhykkeet"
+
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall.html
+#~ msgid "internet-firewall-title"
+#~ msgstr "Palomuuri"
+
 # /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-parental-control.html
-msgid "internet-parental-control-title"
-msgstr "Käytönvalvonta"
+#~ msgid "internet-parental-control-title"
+#~ msgstr "Käytönvalvonta"
 
 #~ msgid "Rule has invalid Private port"
 #~ msgstr "Säännöllä on virheellinen sisäinen portti"
