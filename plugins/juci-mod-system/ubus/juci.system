@@ -107,6 +107,7 @@ cat >> /tmp/timezones <<EOF
 		"America/El Salvador" : "CST6",
 		"America/Fortaleza" : "BRT3",
 		"America/Glace Bay" : "AST4ADT,M3.2.0,M11.1.0",
+		"America/Godthab" : "PMST3PMDT,M3.2.0,M11.1.0",
 		"America/Goose Bay" : "AST4ADT,M3.2.0/0:01,M11.1.0/0:01",
 		"America/Grand Turk" : "EST5EDT,M3.2.0,M11.1.0",
 		"America/Grenada" : "AST4",
