@@ -28,6 +28,7 @@ JUCI.app
 			editor: "@itemEditor",
 			editable: "@allowEdit",
 			sortable: "@sortable",
+			editText: "@",
 			getItemTitle: "&getItemTitle",
 			onCreate: "&onCreate",
 			onDelete: "&onDelete",
