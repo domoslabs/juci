@@ -18,9 +18,9 @@ p.capitalize {
 		<juci-cofnig-info>{{'settings.management.leds.info'|translate}}</juci-config-info>
 		<juci-config-section>
 			<div class="row" ng-repeat="led in leds track by $index">
-				<div id="{{led['.name']}}" class="col-sm-1" style="padding-right:0"> <i class="fa fa-lg fa-circle" style="margin-top:15px; float:right"></i> </div>
-				<div class="col-sm-9"> <p class="uppercase" style="font-weight:700; font-size:1.2em; margin-top:10px"> {{led['.original'].label ? led['.original'].label : led['.name']}} </p> </div>
-				<div class="col-sm-2"> <switch ng-model="led.enable.value" class="green" style="margin-top:10px"/> </div>
+				<div id="{{led['.name']}}" class="col-xs-1" style="padding-right:0"> <i class="fa fa-lg fa-circle" style="margin-top:15px; float:right"></i> </div>
+				<div class="col-xs-9"> <p class="uppercase" style="font-weight:700; font-size:1.2em; margin-top:10px"> {{led['.original'].label ? led['.original'].label : led['.name']}} </p> </div>
+				<div class="col-xs-2"> <switch ng-model="led.enable.value" class="green" style="margin-top:10px"/> </div>
 			</div>
 		</juci-config-section>
 	</div>
