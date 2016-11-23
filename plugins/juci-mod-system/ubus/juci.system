@@ -413,10 +413,16 @@ EOF
 
 case "$1" in
 	list)
-		echo '{ "defaultreset" : {}, "reboot" : {}, "zonelist" : {}, "passwd_entries" : {} }' #"users" : {} }' for future reference
+		echo '{ "led_status" : {"name":"str"}, "defaultreset" : {}, "reboot" : {}, "zonelist" : {}, "passwd_entries" : {} }' #"users" : {} }' for future reference
 	;;
 	call)
 		case "$2" in
+			led_status)
+				read input
+				json_load "$input"
+				json_get_var name name ""
+				ubus call led.$name status
+			;;
 			defaultreset)
 				ubus send defaultreset 2>/dev/null
 				/sbin/defaultreset >/dev/null 2>&1 &
