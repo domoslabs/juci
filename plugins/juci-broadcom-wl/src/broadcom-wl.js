@@ -280,6 +280,8 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 // validate ssid
 		if(section.ssid.value.length >= 32)
 			eList.push(JUCI.$tr(gettext("Invalid SSID: ")) + (section.ssid.value || JUCI.$tr(gettext("no SSID"))) + JUCI.$tr(gettext(". SSID can not be more than 32 characters long!")));
+		if(section.ssid.value.length === 0)
+			eList.push(JUCI.$tr(gettext("One of the wireless interface(s) does not have SSID")));
 // validate keys
 		switch(section.encryption.value){
 			case "wep-open":
