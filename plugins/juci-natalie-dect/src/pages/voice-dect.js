@@ -6,12 +6,21 @@ JUCI.app
 		$scope.dectRadioFix = {"value":$scope.dect.radio.value};
 		$scope.$apply();
 	});
-	$scope.$watch("dectRadioFix.value",function(val){
-		if(!val){ return; }
-		var arg = {"config":"dect","section":"dect","values":{"radio":val}};
-		$rpc.$call("uci", "set", arg).done();
-		$rpc.$call("uci", "commit", {"config":"dect"}).done();
-	});
+	$scope.changeRadio = function(value){
+		$rpc.$call("uci", "set", {
+			config:"dect",
+			section:"dect",
+			values: {
+				radio:value
+			}
+		}).done(function(){
+			$rpc.$call("uci", "commit", {
+				config:"dect"
+			}).done(function(){
+				$scope.dect.$sync();
+			});
+		});
+	}
 
 	$events.subscribe("dect", function(event){
 		if(!event || !event.data)
