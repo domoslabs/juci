@@ -51,7 +51,7 @@ JUCI.app
 	return {
 		template: '<div><div class="row juci-config-line" style="margin-top: 20px; ">'+
 			'<div class="col-sm-6 col-xs-12 {{errorClass}}">'+
-				'<label style="font-size: 1.2em">{{title}}</label>'+
+				'<label style="font-size: 1.2em; word-wrap:break-word;">{{title}}</label>'+
 				'<p style="font-size: 12px">{{help}}</p>'+
 			'</div>'+
 			'<div class="col-sm-6 col-xs-12 juci-config-line-data">'+
