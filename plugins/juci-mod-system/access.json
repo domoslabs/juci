@@ -18,7 +18,8 @@
 					"defaultreset", 
 					"reboot",
 					"listusers",
-					"zonelist"
+					"zonelist",
+					"led_status"
 				], 
 				"juci.sysupgrade": [
 					"check",
