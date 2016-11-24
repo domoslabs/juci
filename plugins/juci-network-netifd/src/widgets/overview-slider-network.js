@@ -413,6 +413,13 @@ JUCI.app
 	});
 
 	function getPortTitle(dev, device, radios){
+		function fixBytes(bytes){
+			if(isNaN(bytes)) return "";
+			var i = parseInt(bytes);
+			if(i < 1000) return i + " B"
+			if(i < 1000000) return Math.round((i/1000)*10)/10 + " kB";
+			return Math.round((i/1000000)*10)/10 + " MB";
+		}
 		var wired = (dev && dev.name);
 		var title;
 		if(wired)
@@ -420,10 +427,10 @@ JUCI.app
 		else
 			title = dev.ssid + ' @ ' + ((radios[device.substring(0,3)])? radios[device.substring(0,3)].frequency : $tr(gettext('unknown')));
 		if(!dev.statistics) return;
-		if(dev.statistics.tx_bytes !== undefined) title = title + "<br />" + $tr(gettext("TX bytes:")) + " " + dev.statistics.tx_bytes;
-		if(dev.statistics.rx_bytes !== undefined) title = title + "<br />" + $tr(gettext("RX bytes:")) + " " + dev.statistics.rx_bytes;
-		if(dev.statistics.tx_errors) title = title + "<br />" + $tr(gettext("TX errors:")) + " " + dev.statistics.tx_errors;
-		if(dev.statistics.rx_errors) title = title + "<br />" + $tr(gettext("RX errors:")) + " " + dev.statistics.rx_errors;
+		if(dev.statistics.tx_bytes !== undefined) title = title + "<br />" + $tr(gettext("TX bytes:")) + " " + fixBytes(dev.statistics.tx_bytes);
+		if(dev.statistics.rx_bytes !== undefined) title = title + "<br />" + $tr(gettext("RX bytes:")) + " " + fixBytes(dev.statistics.rx_bytes);
+		if(dev.statistics.tx_errors) title = title + "<br />" + $tr(gettext("TX errors:")) + " " + fixBytes(dev.statistics.tx_errors);
+		if(dev.statistics.rx_errors) title = title + "<br />" + $tr(gettext("RX errors:")) + " " + fixBytes(dev.statistics.rx_errors);
 		return title;
 	}
 	function getWanTitle(type, wan, data){

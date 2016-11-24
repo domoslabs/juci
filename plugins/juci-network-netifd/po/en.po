@@ -412,19 +412,19 @@ msgstr ""
 
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
 msgid "TX bytes:"
-msgstr ""
+msgstr "TX Bytes:"
 
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
 msgid "RX bytes:"
-msgstr ""
+msgstr "RX Bytes:"
 
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
 msgid "TX errors:"
-msgstr ""
+msgstr "TX Errors:"
 
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
 msgid "RX errors:"
-msgstr ""
+msgstr "RX Errors:"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-wan.js
