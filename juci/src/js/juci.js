@@ -125,6 +125,11 @@
 							}
 							var type = item.split(":")[0];
 							var value = item.split(":")[1];
+							if(!value){
+								console.log("invalid require");
+								done();
+								return;
+							}
 							switch(type){
 								case "file":
 									$rpc.$call("file", "stat", {"path":value || ""}).fail(function(){
