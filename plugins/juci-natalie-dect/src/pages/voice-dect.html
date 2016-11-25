@@ -27,22 +27,27 @@
 			<table class="table">
 				<thead style="text-align: center;">
 					<th style="width:1%" translate>ID</th>
-					<th translate>IPUI</th>
-					<th translate>Codecs</th>
-					<th class="hidden-xs" style="width:1%"></th>
-					<th class="hidden-xs" style="width:1%"></th>
+					<th class="hidden-xs" translate>IPUI</th>
+					<th class="hidden-xs" translate>Codecs</th>
+					<th translate>Hook</th>
+					<th style="width:1%" translate>Calling</th>
+					<th style="width:1%"></th>
+					<th style="width:1%"></th>
 				</thead>
 				<tr ng-repeat="hs in handset.handsets track by $index">
 					<td>{{hs.id}}</td>
-					<td>{{toHexString(hs.ipui)}}</td>
-					<td>{{hs.codecs.toString()}}</td>
-					<td class="hidden-xs">
-						<button ng-click="onPingHandset(hs)" class="btn btn-default">
-							<span ng-show="!pinging[hs.id]">Ping</span>
-							<span ng-show="pinging[hs.id]"><i class="fa fa-spinner fa-spin"></i> <span translate>Pinging...</span></span>
-						</button>
+					<td class="hidden-xs">{{toHexString(hs.ipui)}}</td>
+					<td class="hidden-xs">{{hs.codecs.toString()}}</td>
+					<td>
+						<span ng-show="hs.hook == 'onhook'"><i class="juci juci-phone-down"></i></span>
+						<span ng-show="hs.hook == 'offhook'"><i class="juci juci-phone text-success"></i></span>
 					</td>
-					<td class="hidden-xs"><button class="btn btn-default" ng-click="onUnpairHandset(hs)" translate>Unpair</button></td>
+					<th><span ng-show="hs.hook == 'offhook' && hscall[hs.id]">{{hscall[hs.id] || 'Unknown number'|translate}}</span></th>
+					<td>
+						<button ng-click="onPingHandset(hs)" class="btn btn-default" ng-show="hs.hook == 'onhook'">Ping</button>
+						<button ng-click="onPingHandset(hs)" class="btn btn-default" ng-show="hs.hook == 'offhook'">Hang up</button>
+					</td>
+					<td><button class="btn btn-default" ng-click="onUnpairHandset(hs)" translate>Unpair</button></td>
 				</tr>
 			</table>
 		</div>

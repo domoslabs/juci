@@ -208,6 +208,9 @@ i[class^="juci-"], i[class*=" juci-"] {
 .juci-phone:before {
 	content: "\004b";
 }
+.juci-phone-down:before {
+	content: "\004c";
+}
 /* ##### \0050 to \005f ###### */
 .juci-folder:before {
 	content: "\0050";
