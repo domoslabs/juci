@@ -32,12 +32,12 @@ JUCI.app
 	function paintLeds(){
 		ledNames.forEach(
 			function(nameIn){
-				if($scope.ledStatus[nameIn]==="off"){ document.getElementById(nameIn).style.color="lightgrey"; }
+				if($scope.ledEnabled[nameIn]===false){ document.getElementById(nameIn).style.color="lightgrey"; }
+				else if($scope.ledStatus[nameIn]==="off"){ document.getElementById(nameIn).style.color="lightgrey"; }
 				else if($scope.ledStatus[nameIn]==="ok"){ document.getElementById(nameIn).style.color="#64BD63"; }
 				else if($scope.ledStatus[nameIn]==="eok"){ document.getElementById(nameIn).style.color="#409AB3"; }
-				if($scope.ledEnabled[nameIn]===false){ document.getElementById(nameIn).style.color="lightgrey"; }
+				else if($scope.ledStatus[nameIn]==="error"){ document.getElementById(nameIn).style.color="#E52B38"; }
 			}
 		);
 	}
 });
-
