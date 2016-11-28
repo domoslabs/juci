@@ -306,28 +306,28 @@ msgstr ""
 msgid "Log Settings"
 msgstr ""
 
-msgid "Backup Settings"
+msgid "Backup Configuration"
 msgstr ""
 
 msgid "settings.config.info"
 msgstr "Save/Load settings or perform factory reset"
 
-msgid "Save settings to computer"
+msgid "Save configuration"
 msgstr ""
 
 msgid "Save"
 msgstr ""
 
-msgid "Restore settings from a configuration saved on a computer"
+msgid "Restore configuration"
 msgstr ""
 
 msgid "Load"
 msgstr ""
 
-msgid "Factory Settings"
+msgid "Factory Reset"
 msgstr ""
 
-msgid "Reset restores the factory default settings of your gateway"
+msgid "Factory reset to default configuration"
 msgstr ""
 
 msgid "Reset"

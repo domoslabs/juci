@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.10\n"
 
-msgid "Backup settings"
+msgid "Backup Settings"
 msgstr "Varmuuskopiasetukset"
 
 msgid "Select the services/settings to backup"

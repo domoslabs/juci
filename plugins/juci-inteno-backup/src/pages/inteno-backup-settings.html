@@ -2,7 +2,7 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="IntenoBackupSettingsCtrl">
 		<juci-config-section>
-			<h2 translate>Backup settings</h2>
+			<h2 translate>Backup Settings</h2>
 			<p translate>Select the services/settings to backup</p>
 			<juci-config-lines>
 				<juci-config-line ng-repeat="service in services track by $index" title="{{ service['.name'] }}" help="{{ service.desc.value }}">

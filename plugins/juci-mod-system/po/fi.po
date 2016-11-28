@@ -171,7 +171,7 @@ msgstr "Puskuroitu"
 msgid "Swap"
 msgstr "Swap"
 
-msgid "Backup Settings"
+msgid "Backup Configuration"
 msgstr "Asetusten varmuuskopio/palautus"
 
 msgid "settings.config.info"
@@ -181,22 +181,22 @@ msgstr ""
 "Voit tallentaa varmuuskopion tietokoneellesi. Suosittelemme pitämään aina "
 "varmuuskopion tietokoneella viimeisimmästä konfiguraatiosta."
 
-msgid "Save settings to computer"
+msgid "Save configuration"
 msgstr "Tallenna salasanalla suojattu asetusten varmuuskopio tietokoneelle"
 
 msgid "Save"
 msgstr "Tallenna"
 
-msgid "Restore settings from a configuration saved on a computer"
+msgid "Restore configuration"
 msgstr "Palauta asetukset tietokoneelle tallennetusta varmuuskopiosta"
 
 msgid "Load"
 msgstr "Lataa"
 
-msgid "Factory Settings"
+msgid "Factory Reset"
 msgstr "Oletusasetukset"
 
-msgid "Reset restores the factory default settings of your gateway"
+msgid "Factory reset to default configuration"
 msgstr "Palauta oletusasetuksiin palauttaa modeemin tehdasasetuksille"
 
 msgid "Reset"
