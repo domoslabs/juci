@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.10\n"
 
 msgid "Low"
 msgstr "Matala"
@@ -187,6 +187,10 @@ msgstr "Rajoita lähetysnopeutta"
 msgid "Acceleration will be disabled when QoS is enabled"
 msgstr "Kiihdytys poistetaan käytöstä, kun QoS on käytössä"
 
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
+msgid "Quality of service"
+msgstr "QoS"
+
 msgid "Interface"
 msgstr "Liitäntä"
 
@@ -206,8 +210,8 @@ msgid "menu-juci-inteno-qos-title"
 msgstr "QoS"
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
-msgid "juci-inteno-qos-title"
-msgstr "QoS"
+#~ msgid "juci-inteno-qos-title"
+#~ msgstr "QoS"
 
 #~ msgid "Add Bandwidth Limitation"
 #~ msgstr "Lisää kaistanrajoitussääntö"

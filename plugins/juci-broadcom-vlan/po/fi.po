@@ -9,11 +9,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.10\n"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-vlan/src/main.js
 msgid "VLAN"
-msgstr ""
+msgstr "VLAN"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-vlan/src/main.js
 msgid "unknown"
@@ -61,6 +61,10 @@ msgstr "Fyysinen liitäntä"
 msgid "Select base device"
 msgstr "Valitse fyysinen liitäntä"
 
+# plugins/juci-broadcom-vlan/src/pages/page-broadcom-ethernet-vlan.html
+msgid "VLAN settings"
+msgstr "VLAN asetukset"
+
 msgid "internet.ethernet.vlan.info"
 msgstr "Tässä voit konfiguroida VLAN liitännät"
 
@@ -71,5 +75,5 @@ msgid "menu-page-broadcom-ethernet-vlan-title"
 msgstr "VLAN"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-vlan/src/pages/page-broadcom-ethernet-vlan.html
-msgid "page-broadcom-ethernet-vlan-title"
-msgstr "VLAN"
+#~ msgid "page-broadcom-ethernet-vlan-title"
+#~ msgstr "VLAN"

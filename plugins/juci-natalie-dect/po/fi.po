@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.10\n"
 
 msgid "Auto"
 msgstr "Automaattinen"
@@ -53,16 +53,28 @@ msgstr ""
 msgid "Codecs"
 msgstr "Koodekit"
 
-# /home/jamu/GIT/juci/plugins/juci-natalie-dect/src/pages/voice-dect.html
-msgid "Pinging..."
-msgstr "Ping..."
+# plugins/juci-natalie-dect/src/pages/voice-dect.html
+msgid "Hook"
+msgstr ""
+
+# plugins/juci-natalie-dect/src/pages/voice-dect.html
+msgid "Calling"
+msgstr ""
+
+# plugins/juci-natalie-dect/src/pages/voice-dect.html
+msgid "Unpair"
+msgstr "Poista paritus"
 
 msgid "menu-voice-dect-title"
 msgstr "DECT"
 
 # /home/jamu/GIT/juci/plugins/juci-natalie-dect/src/pages/voice-dect.html
-msgid "voice-dect-title"
-msgstr "DECT"
+#~ msgid "Pinging..."
+#~ msgstr "Ping..."
+
+# /home/jamu/GIT/juci/plugins/juci-natalie-dect/src/pages/voice-dect.html
+#~ msgid "voice-dect-title"
+#~ msgstr "DECT"
 
 #~ msgid "Number"
 #~ msgstr "Numero"

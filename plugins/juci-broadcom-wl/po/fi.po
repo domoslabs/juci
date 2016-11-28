@@ -36,6 +36,10 @@ msgstr "ei SSID:tä"
 msgid ". SSID can not be more than 32 characters long!"
 msgstr ". SSID ei voi olla yli 32 merkkiä pitkä!"
 
+# plugins/juci-broadcom-wl/src/broadcom-wl.js
+msgid "One of the wireless interface(s) does not have SSID"
+msgstr "Yhdellä tai useammalla langattomalla liitännällä ei ole SSID:tä"
+
 # /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/broadcom-wl.js
 msgid "Wireless interface "
 msgstr "Langaton liitäntä"
@@ -317,6 +321,14 @@ msgstr "Parita"
 msgid "Attempting to Pair"
 msgstr "Yritetään parittaa laitetta"
 
+# plugins/juci-broadcom-wl/src/widgets/overview.wifi.html
+msgid "WPS pin:"
+msgstr ""
+
+# plugins/juci-broadcom-wl/src/widgets/overview.wifi.html
+msgid "{{i[0] | translate}}"
+msgstr ""
+
 msgid "Wireless"
 msgstr "WiFi"
 
@@ -565,6 +577,10 @@ msgstr " "
 msgid "Radio"
 msgstr "Radio"
 
+# plugins/juci-broadcom-wl/src/pages/wireless-status-scan.html
+msgid "Radio Rate"
+msgstr ""
+
 msgid "Frequency to Scan"
 msgstr "Skannattava taajuus"
 
@@ -635,83 +651,75 @@ msgstr "Syötä paritettavan laitteen PIN-koodi tähän kohtaan."
 msgid "menu-wireless-client-mode-title"
 msgstr "Client Mode"
 
-# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-client-mode.html
-msgid "wireless-client-mode-title"
-msgstr "Langaton toistin"
-
-msgid "menu-wifi-general-title"
-msgstr "WiFi"
-
 msgid "menu-wireless-devices-title"
 msgstr "Wifi radiot"
 
-# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-devices.html
-msgid "wireless-devices-title"
-msgstr "Langattomat laitteet"
-
 msgid "menu-wireless-filtering-title"
-msgstr "MAC suodatus"
-
-# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-filtering.html
-msgid "wireless-filtering-title"
 msgstr "MAC suodatus"
 
 msgid "menu-wireless-general-title"
 msgstr "WiFi"
 
-# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-general.html
-msgid "wireless-general-title"
-msgstr ""
-
 msgid "menu-wireless-interfaces-title"
-msgstr "WiFi verkot"
-
-# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-interfaces.html
-msgid "wireless-interfaces-title"
 msgstr "WiFi verkot"
 
 msgid "menu-wireless-link-to-interfaces-title"
 msgstr "WiFi"
 
-# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-link-to-interfaces.html
-msgid "wireless-link-to-interfaces-title"
-msgstr ""
-
 msgid "menu-wireless-schedule-title"
-msgstr "Ajastus"
-
-# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-schedule.html
-msgid "wireless-schedule-title"
 msgstr "Ajastus"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status-scan.html
 msgid "menu-wireless-status-scan-title"
 msgstr "Skannaus"
 
-# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status-scan.html
-msgid "wireless-status-scan-title"
-msgstr "Skannaus"
-
 msgid "menu-wireless-status-title"
-msgstr "WiFi tila"
-
-# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.html
-msgid "wireless-status-title"
 msgstr "WiFi tila"
 
 msgid "menu-wireless-wps-title"
 msgstr "WPS"
 
-# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.html
-msgid "wireless-wps-title"
-msgstr "WPS"
-
 msgid "menu-wireless-title"
 msgstr "WiFi"
 
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-client-mode.html
+#~ msgid "wireless-client-mode-title"
+#~ msgstr "Langaton toistin"
+
+#~ msgid "menu-wifi-general-title"
+#~ msgstr "WiFi"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-devices.html
+#~ msgid "wireless-devices-title"
+#~ msgstr "Langattomat laitteet"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-filtering.html
+#~ msgid "wireless-filtering-title"
+#~ msgstr "MAC suodatus"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-interfaces.html
+#~ msgid "wireless-interfaces-title"
+#~ msgstr "WiFi verkot"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-schedule.html
+#~ msgid "wireless-schedule-title"
+#~ msgstr "Ajastus"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status-scan.html
+#~ msgid "wireless-status-scan-title"
+#~ msgstr "Skannaus"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-status.html
+#~ msgid "wireless-status-title"
+#~ msgstr "WiFi tila"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless-wps.html
+#~ msgid "wireless-wps-title"
+#~ msgstr "WPS"
+
 # /home/jamu/GIT/juci/plugins/juci-broadcom-wl/src/pages/wireless.html
-msgid "wireless-title"
-msgstr "WiFi"
+#~ msgid "wireless-title"
+#~ msgstr "WiFi"
 
 #~ msgid "please pick at least one day to schedule on"
 #~ msgstr "valitse vähintään yksi päivä ajastettavaksi"

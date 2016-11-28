@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.10\n"
 
 msgid "Password Authentication"
 msgstr "Salasanan tunnistus"
@@ -137,6 +137,10 @@ msgstr "Dropbear SSH"
 msgid "settings.dropbear.instance"
 msgstr "Konfiguroi SSH-pääsy modeemiin."
 
+# plugins/juci-dropbear/src/pages/settings-management-dropbear.html
+msgid "Show full key"
+msgstr "Näytä koko avain"
+
 msgid "Accepted SSH keys"
 msgstr "Sallitut SSH-avaimet"
 
@@ -144,8 +148,8 @@ msgid "menu-settings-management-dropbear-title"
 msgstr "SSH"
 
 # /home/jamu/GIT/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.html
-msgid "settings-management-dropbear-title"
-msgstr "SSH"
+#~ msgid "settings-management-dropbear-title"
+#~ msgstr "SSH"
 
 #~ msgid "Key ending with"
 #~ msgstr "Avain joka loppuu"
