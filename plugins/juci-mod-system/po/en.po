@@ -469,7 +469,7 @@ msgid "menu-settings-users-title"
 msgstr "Menu Access"
 
 msgid "menu-settings-configuration-title"
-msgstr "Restore/Backup"
+msgstr "Backup/Restore"
 
 msgid "menu-settings-hardware-title"
 msgstr "Hardware"
