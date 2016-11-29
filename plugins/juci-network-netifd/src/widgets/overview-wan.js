@@ -134,10 +134,13 @@ JUCI.app
 					}).map(function(r){ $scope.data.defaultroute.push(r.nexthop); });
 				}
 				var type = $tr(gettext("Ethernet"));
-				if(!w.device) type = $tr(gettext("Unknown"));
+				if(!w.device && w.l3_device)
+					w.device = w.l3_device
+				if(!w.device)
+					type = $tr(gettext("Unknown"));
 				else if(w.device.match(/atm/)) type = $tr(gettext("ADSL"));
 				else if(w.device.match(/ptm/)) type = $tr(gettext("VDSL"));
-				else if(w.device.match(/wwan/)) type = $tr(gettext("3G/4G"));
+				else if(w.device.match(/wwan/)) type = $tr(gettext("WWAN"));
 				if(w.device && w.device.match("eth[0-9].[0-9]")){
 					$rpc.$call("router.port", "status", {"port":w.device.substring(0,4)}).done(function(data){
 						if(data && data.speed)
