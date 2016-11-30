@@ -74,7 +74,7 @@ JUCI.app
 			$rpc.$call("dect", "call", {"terminal": hs.id, "release": (hs.id-1) }).done(function(result){
 			}).fail(function(e){ console.log(e); });
 		} else {
-			$rpc.$call("dect", "call", {"terminal": hs.id, "add": (hs.id-1) }).done(function(result){
+			$rpc.$call("dect", "call", {"terminal": hs.id, "add": (hs.id-1), "cid": $tr(gettext("Ping")) }).done(function(result){
 			}).fail(function(e){ console.log(e); });
 		}
 	}
