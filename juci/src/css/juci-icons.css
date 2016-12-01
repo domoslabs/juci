@@ -1,8 +1,9 @@
 @font-face {
-    font-family: 'juci-icons';
-    src: url('../fonts/juci-icons.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'juci-icons';
+	src: url('../fonts/juci-icons.ttf') format('truetype'),
+		url('../fonts/juci-icons.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
 i[class^="juci-"], i[class*=" juci-"] {
@@ -92,10 +93,10 @@ i[class^="juci-"], i[class*=" juci-"] {
 
 /* ##### \0020 to \002f ###### */
 .juci-bridge:before {
-    content: "\002c";
+	content: "\002c";
 }
 .juci-usb-dongle:before {
-    content: "\002d";
+	content: "\002d";
 }
 .juci-adsl:before {
 	content: "\0021";
@@ -113,7 +114,7 @@ i[class^="juci-"], i[class*=" juci-"] {
 	content: "\0025";
 }
 .juci-ethernet:before {
-    content: "\0026";
+	content: "\0026";
 }
 .juci-bluethooth:before {
 	content: "\0027";
@@ -234,10 +235,10 @@ i[class^="juci-"], i[class*=" juci-"] {
 	content: "\0056";
 }
 .juci-edit:before {
-    content: "\0057";
+	content: "\0057";
 }
 .juci-list:before {
-    content: "\0058";
+	content: "\0058";
 }
 .juci-calendar:before {
 	content: "\0059";
