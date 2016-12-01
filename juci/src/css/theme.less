@@ -172,7 +172,6 @@ a, a:focus, a:hover {
 .overview-banner {
 	background: url("../img/overview_header.jpg") repeat scroll top center !important;
 	background-color: "#fafffa";
-	height: 400px;
 	margin-bottom: 30px;
 }
 .overview-box {
@@ -200,11 +199,15 @@ a, a:focus, a:hover {
 		line-height: 110px;
 	}
 }
-.overview-status-box {
-	background-color: rgba(0, 0, 0, 0.8);
-	color: white;
-	border-radius: 7px;
+.overview-status-entries {
 	line-height: 35px;
+	border-radius: 7px;
+	background-color: rgba(0,0,0,0.8);
+	padding:15px;
+	color:white;
+}
+.overview-status-box {
+	margin-bottom: 15px;
 }
 .top-navbar {
 	color: #111 !important;
@@ -321,8 +324,6 @@ div.error {
 	bottom: 15px;
 }
 .overview-small {
-	margin-left: -15px;
-	margin-right: -15px;
 	.label {
 		margin-left: 1px;
 		margin-righh: 1px;

@@ -4,8 +4,8 @@
 		<div class="overview-banner">
 			<div class="container">
 				<div class="row" style="padding-top: 20px;">
-					<div class="col-sm-6 col-md-6 col-lg-7">
-						<carousel class="visible-sm visible-md visible-lg">
+					<div class="col-sm-6 col-md-6 col-lg-7 col-xs-12 overview-status-box">
+						<carousel>
 							<slide ng-repeat="widget in overviewSliderWidgets" >
 								<div style="height: 360px" >
 									<div dynamic="widget"/>
@@ -14,8 +14,10 @@
 						</carousel>
 					</div>
 					<div class="col-lg-5 col-md-6 col-sm-6 col-xs-12 overview-status-box">
-						<div class="row" ng-repeat="widget in overviewStatusWidgets" style="padding-left: 10px; padding-right: 10px">
-							<div dynamic="widget"/>
+						<div class="overview-status-entries">
+							<div class="row" ng-repeat="widget in overviewStatusWidgets">
+								<div dynamic="widget"/>
+							</div>
 						</div>
 					</div>
 					<div class="col-xs-1"/>
