@@ -72,6 +72,7 @@ define Plugin/juci/install
 	$(Q)$(INSTALL_DIR) $(1)/www/
 	$(Q)$(CP) $(PLUGIN_DIR)/src/img/ $(1)/www/
 	$(Q)$(CP) $(PLUGIN_DIR)/src/fonts/ $(1)/www/
+	$(Q)$(CP) $(PLUGIN_DIR)/src/lib/fonts/ $(1)/www/
 	$(Q)$(CP) $(PLUGIN_DIR)/reboot.html $(1)/www/	
 	$(Q)$(CP) $(PLUGIN_DIR)/initfail.html $(1)/www/	
 endef
