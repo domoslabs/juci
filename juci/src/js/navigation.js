@@ -78,12 +78,15 @@
 				parts.shift();
 			}
 			if(!obj.children) obj.children = [];
-			var index = obj.children.findIndex(function(ch){
-				return ch.path === item.path;
+			var exists = false;
+			obj.children = obj.children.map(function(ch) {
+				if(ch.path === item.path){
+					exists = true;
+					return item;
+				}
+				return ch;
 			});
-			if(index !== -1){
-				obj.children[i] = item; //replace existing page
-			}else{
+			if(!exists){
 				obj.children.push(item);
 			}
 		};
