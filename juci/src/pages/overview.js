@@ -49,16 +49,16 @@ JUCI.app
 		}).filter(function(x){return x;}).sort();
 	});
 
-	$scope.is_two_wide = (window.innerWidth > 92 && window.innerWidth < 1199);
+	var is_to_wide = (window.innerWidth > 92 && window.innerWidth < 1199);
 	window.addEventListener("resize", function(){
-		var is_two_w = (window.innerWidth > 92 && window.innerWidth < 1199);
-		if(is_two_w !== $scope.is_two_wide){
-			$scope.overviewWidgetRows = chunk($scope.overviewWidgets, is_two_w ? 2 : 3);
-			$scope.is_two_wide = is_two_w;
+		var is_to_w = (window.innerWidth > 92 && window.innerWidth < 1199);
+		if(is_to_w !== is_to_wide){
+			$scope.overviewWidgetRows = chunk($scope.overviewWidgets, is_to_w ? 2 : 3);
+			is_to_wide = is_to_w;
 			$scope.$apply();
 		}
 	});
-	$scope.overviewWidgetRows = chunk($scope.overviewWidgets, $scope.is_two_wide ? 2: 3);
+	$scope.overviewWidgetRows = chunk($scope.overviewWidgets, is_to_wide ? 2: 3);
 });
 
 JUCI.page("overview", "pages/overview.html");
