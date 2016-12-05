@@ -1,0 +1,32 @@
+<juci-layout-no-menu>
+	<div ng-controller="netmodeWizardPageCtrl">
+		<div ng-show="config.state == 'start'">
+			<h3 translate>Netmode Wizard</h3>
+			<br /><br />
+			<juci-config-section>
+				<juci-config-lines>
+					<juci-config-line title="{{'Select Netmode'|translate}}">
+						<juci-select ng-items="netmodes" ng-model="config.netmode"></juci-select>
+					</juci-config-line>
+				</juci-config-lines>
+			</juci-config-section>
+			<button ng-show="isRepeater()" class="btn btn-primary pull-right" ng-click="onNetmodeSelected()">{{'Next'|translate}}</button>
+			<button ng-show="!isRepeater()" class="btn btn-primary pull-right" ng-click="onNetmodeSelected()">{{'Done'|translate}}</button>
+		</div>
+		<div ng-show="config.state == 'repeater'">
+			<h3 translate>Setup RangeExtender</h3>
+			<juci-config-help>Scan for available networks on 2.4 GHz or 5 GHz, select your networks and enter password (network key)</juci-config-help>
+			<juci-config-section>
+				<juci-config-lines>
+					<juci-config-line title="{{'Select your up-link frequency'}}">
+						<juci-select ng-items="config.frequencies" ng-model="config.frequency"></juci-select>
+					</juci-config-line>
+					<juci-config-line title="{{'Select your up-link'|translate}}">
+						<juci-select ng-show="config[config.frequency].length" ng-items="config[config.frequency]" ng-model="config.ssid"></juci-select>
+						<div ng-show="!config[config.frequency].length"><i class="fa fa-spinner fa-spin"></i></div>
+					</juci-config-line>
+				</juci-config-lines>
+			</juci-config-section>
+		</div>
+	</div>
+</juci-layout-no-menu>

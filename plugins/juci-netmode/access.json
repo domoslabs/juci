@@ -8,7 +8,8 @@
 				]
 			}, 
 			"uci": [
-				"netmode"
+				"netmode",
+				"wireless"
 			],
 			"owsd": [ "wifi-repeater-success" ]
 		}, 
