@@ -80,7 +80,7 @@ case "$1" in
 				json_get_var radio radio
 
 				[ -n "$radio" ] || return 1
-
+				wlctl -i $radio scanabort 2>&1
 				json_init
 				if [ -f /usr/sbin/wlctl ]; then
 					json_add_boolean success $(wlctl -i $radio scan 2>&1 | grep -q Rejected && echo 0 || echo 1)

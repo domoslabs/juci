@@ -1,32 +1,47 @@
 <juci-layout-no-menu>
 	<div ng-controller="netmodeWizardPageCtrl">
 		<div ng-show="config.state == 'start'">
-			<h3 translate>Netmode Wizard</h3>
+			<h3 translate>Operation Mode Wizard</h3>
 			<br /><br />
 			<juci-config-section>
 				<juci-config-lines>
-					<juci-config-line title="{{'Select Netmode'|translate}}">
+					<juci-config-line title="{{'Select router operation mode'|translate}}">
 						<juci-select ng-items="netmodes" ng-model="config.netmode"></juci-select>
+						<label class="label label-warning" ng-show="needsReboot()">{{'This operation mode needs a reboot'|translate}}</label>
 					</juci-config-line>
 				</juci-config-lines>
 			</juci-config-section>
-			<button ng-show="isRepeater()" class="btn btn-primary pull-right" ng-click="onNetmodeSelected()">{{'Next'|translate}}</button>
-			<button ng-show="!isRepeater()" class="btn btn-primary pull-right" ng-click="onNetmodeSelected()">{{'Done'|translate}}</button>
+			<button ng-class="{'disabled': !config.netmode}" class="btn btn-primary pull-right" ng-click="onNetmodeSelected()">{{'Next'|translate}}</button>
 		</div>
 		<div ng-show="config.state == 'repeater'">
 			<h3 translate>Setup RangeExtender</h3>
-			<juci-config-help>Scan for available networks on 2.4 GHz or 5 GHz, select your networks and enter password (network key)</juci-config-help>
+			<juci-config-help>Scan for available networks on 2.4 GHz or 5 GHz, select your network and enter its password.</juci-config-help>
 			<juci-config-section>
 				<juci-config-lines>
-					<juci-config-line title="{{'Select your up-link frequency'}}">
-						<juci-select ng-items="config.frequencies" ng-model="config.frequency"></juci-select>
+					<juci-config-line title="{{'Select Network'|translate}}">
+						<div class="row" ng-show="access_points">
+							<button class="col-xs-4 btn btn-default" ng-click="reloadSSID()"><i class="fa fa-refresh"></i></button>
+							<juci-select class="col-xs-8" ng-items="access_points" ng-model="config.selected_network" on-change="updateSSID($value)"></juci-select>
+						</div>
+							<div ng-show="!access_points">{{'Scanning'|translate}}<i class="fa fa-spinner fa-spin"></i></div>
 					</juci-config-line>
-					<juci-config-line title="{{'Select your up-link'|translate}}">
-						<juci-select ng-show="config[config.frequency].length" ng-items="config[config.frequency]" ng-model="config.ssid"></juci-select>
-						<div ng-show="!config[config.frequency].length"><i class="fa fa-spinner fa-spin"></i></div>
+					<juci-config-line title="{{'SSID'| translate}}">
+						<input type="text" ng-model="config.ssid" ng-change="showKey()" class="form-control" />
 					</juci-config-line>
+					<juci-config-line ng-show="config.showkey" title="{{'Secret'| translate}}">
+						<input type="text" ng-model="config.key" class="form-control" />
+					</juci-config-line>
+					<label ng-show="config.error" class="label label-danger">{{config.error}}</label>
 				</juci-config-lines>
 			</juci-config-section>
+			<button ng-show="config.ssid" class="btn btn-primary pull-right" ng-click="onFinishWifiRepeaterNetmode()">{{'Next'|translate}}</button>
+			<button class="btn btn-primary pull-right" style="margin-right: 5px;" ng-click="onGoingBack('start')">{{'Back'|translate}}</button>
+		</div>
+		<div ng-show="config.state == 'done'">
+			<h3 translate>Wizard completed</h3>
+			<juci-config-line title="{{'Continue to homepage'|translate}}">
+				<button class="btn btn-primary pull-right" ng-click="onfinish()">{{'Continue'|translate}}</button>
+			</juci-config-line>
 		</div>
 	</div>
 </juci-layout-no-menu>
