@@ -10,9 +10,9 @@ case "$1" in
 		case "$2" in
 			status)
 				running=$(pidof minidlna >/dev/null && echo 1 || echo 0)
-				rm /tmp/minidlna.status
+				rm -f /tmp/minidlna.status
 				local port=$(uci get minidlna.config.port)
-				if wget -q -s localhost:$port; then
+				if wget -q localhost:$port; then
 					info="$(cat /tmp/minidlna.status 2>/dev/null)"
 					image=$(echo $info | awk -F[\ ,:] '{print$6}')
 					audio=$(echo $info | awk -F[\ ,:] '{print$2}')
