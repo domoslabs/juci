@@ -1,9 +1,9 @@
 <nav class="juci-nav" >
 	<ul class="left-menu">
-		<li ng-repeat="item in tree.children" ng-show="itemVisible(item)">
+		<li ng-repeat="item in tree.children" ng-show="itemVisible(item)" ng-hide="item.hidden">
 			<a ng-class="[isItemActive(item)?'open':'', showSubMenuItems?'collapsed':'']" ng-href="{{getHref(item)}}">{{item.text | translate}}</a>
 			<ul class="left-sub-menu" ng-show="showSubMenuItems">
-				<li ng-repeat="item2 in item.children" ng-show="itemVisible(item2)">
+				<li ng-repeat="item2 in item.children" ng-show="itemVisible(item2)" ng-hide="item.hidden">
 					<a ng-class="isItemActive(item2)?'open':''" href="{{getHref(item2)}}">{{item2.text | translate}}</a>
 				</li>
 			</ul>

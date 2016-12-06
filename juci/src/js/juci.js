@@ -176,6 +176,7 @@
 					var obj = {
 						path: menu.path.value,
 						page: page,
+						hidden: menu.hidden.value,
 						index: menu.index.value,
 						modes: menu.modes.value || [],
 						text: menu.external.value ? menu.path.value : "menu-"+(menu.page.value || menu.path.value.replace(/\//g, "-"))+"-title",
@@ -306,14 +307,15 @@
 	UCI.$registerConfig("juci");
 		
 	UCI.juci.$registerSectionType("menu", {
-		"external":			{ dvalue: false, type: Boolean },
-		"path": 			{ dvalue: undefined, type: String },
-		"page": 			{ dvalue: undefined, type: String },
-		"redirect":			{ dvalue: undefined, type: String },
-		"acls":				{ dvalue: [], type: Array },
-		"modes": 			{ dvalue: [], type: Array },
-		"require":			{ dvalue: [], type: Array },
-		"index":			{ dvalue: 99, type: Number },
+		"hidden":		{ dvalue: false, type: Boolean },
+		"external":		{ dvalue: false, type: Boolean },
+		"path": 		{ dvalue: undefined, type: String },
+		"page": 		{ dvalue: undefined, type: String },
+		"redirect":		{ dvalue: undefined, type: String },
+		"acls":			{ dvalue: [], type: Array },
+		"modes": 		{ dvalue: [], type: Array },
+		"require":		{ dvalue: [], type: Array },
+		"index":		{ dvalue: 99, type: Number },
 	});
 	UCI.juci.$registerSectionType("widget", {
 		"name":		{ dvalue: [], type: Array },
