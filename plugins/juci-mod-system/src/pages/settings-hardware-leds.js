@@ -32,6 +32,9 @@ JUCI.app
 	function paintLeds(){
 		ledNames.forEach(
 			function(nameIn){
+				var htmlCode = document.getElementById(nameIn);
+				if(!htmlCode){ return; }
+
 				if($scope.ledEnabled[nameIn]===false){ document.getElementById(nameIn).style.color="lightgrey"; }
 				else if($scope.ledStatus[nameIn]==="off"){ document.getElementById(nameIn).style.color="lightgrey"; }
 				else if($scope.ledStatus[nameIn]==="ok"){ document.getElementById(nameIn).style.color="#64BD63"; }
