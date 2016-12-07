@@ -35,11 +35,11 @@ JUCI.app
 				var htmlCode = document.getElementById(nameIn);
 				if(!htmlCode){ return; }
 
-				if($scope.ledEnabled[nameIn]===false){ document.getElementById(nameIn).style.color="lightgrey"; }
-				else if($scope.ledStatus[nameIn]==="off"){ document.getElementById(nameIn).style.color="lightgrey"; }
-				else if($scope.ledStatus[nameIn]==="ok"){ document.getElementById(nameIn).style.color="#64BD63"; }
-				else if($scope.ledStatus[nameIn]==="eok"){ document.getElementById(nameIn).style.color="#409AB3"; }
-				else if($scope.ledStatus[nameIn]==="error"){ document.getElementById(nameIn).style.color="#E52B38"; }
+				if($scope.ledEnabled[nameIn]===false){ htmlCode.style.color="lightgrey"; }
+				else if($scope.ledStatus[nameIn]==="off"){ htmlCode.style.color="lightgrey"; }
+				else if($scope.ledStatus[nameIn]==="ok"){ htmlCode.style.color="#64BD63"; }
+				else if($scope.ledStatus[nameIn]==="eok"){ htmlCode.style.color="#409AB3"; }
+				else if($scope.ledStatus[nameIn]==="error"){ htmlCode.style.color="#E52B38"; }
 			}
 		);
 	}
