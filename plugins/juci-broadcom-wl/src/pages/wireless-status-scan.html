@@ -15,7 +15,7 @@
 		</div>
 		<juci-config-lines>
 			<juci-config-line title="{{'Frequency to Scan'|translate}}">
-				<juci-select ng-items="scanableRadios" ng-model="radioToScan"></juci-select>
+				<juci-select ng-items="scanableRadios" ng-model="radioToScan.value"></juci-select>
 			</juci-config-line>
 			<juci-config-line title="{{'Scan neighboring APs'|translate}}">
 				<button ng-disabled="scanning || !scanableRadios.length || !radioToScan" ng-click="doScan()" class="btn btn-default">

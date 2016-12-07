@@ -22,8 +22,8 @@ JUCI.app
 		$scope.predicate = pred;
 		$scope.reverse = !$scope.reverse;
 	}
+	$scope.radioToScan = {value:null};
 	$uci.$sync("wireless").done(function(){
-		$scope.radioToScan = null;
 		function update(){
 			$rpc.$call("router.wireless", "radios").done(function(data){
 				$scope.wlRadios = data;
@@ -35,28 +35,28 @@ JUCI.app
 					if(!data[x].isup) return;
 					return { label: data[x].frequency, value: x };
 				}).filter(function(x){return x;});
-				if($scope.radioToScan === null && $scope.scanableRadios.length > 0){
-					$scope.radioToScan = $scope.scanableRadios[0].value;
+				if($scope.radioToScan.value === null && $scope.scanableRadios.length > 0){
+					$scope.radioToScan.value = $scope.scanableRadios[0].value;
 				}
-				if(!$scope.scanableRadios.find(function(r){ return r.value === $scope.radioToScan;})){
-					$scope.radioToScan = null;
+				if(!$scope.scanableRadios.find(function(r){ return r.value === $scope.radioToScan.value;})){
+					$scope.radioToScan.value = null;
 				}
 				$scope.$apply();
 			});
 		}
 		JUCI.interval.repeat("update-wlradio-data-scan", 5000, function(next){update() ;next();});
 		$scope.doScan = function(){
-			if($scope.radioToScan == null)return;
-			var radio = $scope.wlRadios[$scope.radioToScan];
+			if($scope.radioToScan.value == null)return;
+			var radio = $scope.wlRadios[$scope.radioToScan.value];
 			if(!radio) return;
 			if(!radio.isup){
 				alert("Please enable radio on "+radio.frequency+" interface to scan it");
 				return;
 			}
 			$scope.scanning = 1;
-			$wireless.scan({radio: $scope.radioToScan}).done(function(){
+			$wireless.scan({radio: $scope.radioToScan.value}).done(function(){
 				setTimeout(function(){
-					$wireless.getScanResults({radio: $scope.radioToScan}).done(function(aps){
+					$wireless.getScanResults({radio: $scope.radioToScan.value}).done(function(aps){
 						$scope.access_points = aps;
 						$scope.scanning = 0;
 						$scope.$apply();
