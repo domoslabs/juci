@@ -402,7 +402,7 @@ msgid "Internet"
 msgstr ""
 
 # plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "URL for checking internet connection"
+msgid "URL for checking Internet connection"
 msgstr ""
 
 # plugins/juci-mod-system/src/pages/settings-connectivity-test.html
