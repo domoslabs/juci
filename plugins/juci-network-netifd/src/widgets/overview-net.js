@@ -82,9 +82,11 @@ JUCI.app
 					}
 				});
 				$scope.columns.map(function(col){
-					$scope.order[col] = {
-						column: "hostname",
-						reverse: false
+					if(!$scope.order[col]){
+						$scope.order[col] = {
+							column: "hostname",
+							reverse: false
+						}
 					}
 				});
 				$scope.$apply()
