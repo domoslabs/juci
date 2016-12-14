@@ -1,0 +1,24 @@
+<div>
+	<juci-config-seciton>
+		<juci-config-lines>
+			<juci-config-line title="{{'Interface'|translate}}" error="route.interface.error">
+					<juci-select ng-model="route.interface.value" ng-items="allNetworks"></juci-select>
+			</juci-config-line>
+			<juci-config-line title="{{'Target'|translate}}" error="route.target.error">
+					<juci-input-ipv4-address ng-model="route.target.value">
+			</juci-config-line>
+			<juci-config-line title="{{'Netmask'|translate}}" error="route.netmask.error">
+					<juci-input-ipv4-address ng-model="route.netmask.value">
+			</juci-config-line>
+			<juci-config-line title="{{'Gateway'|translate}}" error="route.gateway.error">
+					<juci-input-ipv4-address ng-model="route.gateway.value">
+			</juci-config-line>
+			<juci-config-line title="{{'Metric'|translate}}" error="route.metric.error">
+				<input type="number" min="0" max="4294967295" class="form-control" ng-model="route.metric.value" placeholder="{{'0'|translate}}"/>
+			</juci-config-line>
+			<juci-config-line title="{{'MTU'|translate}}" error="route.mtu.error">
+				<input type="number" min="0" max="4294967295" class="form-control" ng-model="route.mtu.value" placeholder="{{'Iface MTU'|translate}}"/>
+			</juci-config-line>
+		</juci-config-lines>
+	</juci-config-section>
+</div>

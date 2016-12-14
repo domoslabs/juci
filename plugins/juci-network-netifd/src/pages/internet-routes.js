@@ -19,45 +19,46 @@
  */
 
 JUCI.app
-.controller("InternetLANRoutesPage", function($scope, $uci, $network){
-	$network.getNetworks().done(function(lans){
-		$scope.routes = $uci.network["@route"]; 
-		$scope.routes6 = $uci.network["@route6"]; 
-		$scope.allNetworks = lans.filter(function(net){
-			return net[".name"] != "loopback"; 
-		}).map(function(net){
-			return { label: net[".name"], value: net[".name"] }; 
-		}); 
-		$scope.$apply(); 
-	}); 
+.controller("InternetLANRoutesPage", function($scope, $uci, $network, $tr, gettext){
 
+	$uci.$sync("network").done(function(){
+		$scope.routes = $uci.network["@route"];
+		$scope.routes6 = $uci.network["@route6"];
+		$scope.$apply();
+	});
+	$scope.getItemTitle = function(item){
+		if(item)
+			return $tr(gettext("Route to")) + " " + (item.target ? item.target.value : $tr(gettext("Unknown")));
+	}
 	$scope.getError = function(option){
 		if(option.value == "") return false;
 		if(option.error == null) return true;
 		return false;
 	};
 	
-	$scope.onAddRoute = function(){
+	$scope.onCreateRoute = function(){
 		$uci.network.$create({
 			".type": "route"
 		}).done(function(){
-			$scope.$apply(); 
-		}); 
+			$scope.$apply();
+		});
 	}
 
 	$scope.onDeleteRoute = function(route){
-		if(!route) return; 
-		route.$delete().done(function(){
-			$scope.$apply(); 
-		}); 
+		if(!route) return;
+		if(confirm($tr(gettext("Are you sure you want to delete route")))){
+			route.$delete().done(function(){
+				$scope.$apply();
+			});
+		}
 	}
 	
-	$scope.onAddRoute6 = function(){
+	$scope.onCreateRoute6 = function(){
 		$uci.network.$create({
 			".type": "route6"
 		}).done(function(){
-			$scope.$apply(); 
-		}); 
+			$scope.$apply();
+		});
 	}
 
-}); 
+});
