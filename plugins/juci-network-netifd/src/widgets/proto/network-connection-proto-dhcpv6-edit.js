@@ -30,7 +30,7 @@ JUCI.app
 })
 .directive("networkConnectionProtoDhcpv6PhysicalEdit", function(){
 	return {
-		templateUrl: "/widgets/proto/network-connection-standard-physical.html",
+		templateUrl: "/widgets/network-connection-standard-physical.html",
 		scope: {
 			interface: "=ngModel",
 			protos: "="

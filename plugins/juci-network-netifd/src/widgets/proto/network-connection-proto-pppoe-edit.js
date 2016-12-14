@@ -32,7 +32,7 @@ JUCI.app
 }).
 directive("networkConnectionProtoPppoePhysicalEdit", function(){
 	return {
-		templateUrl: "/widgets/proto/network-connection-standalone-physical.html",
+		templateUrl: "/widgets/network-connection-standalone-physical.html",
 		scope: {
 			interface: "=ngModel"
 		},
