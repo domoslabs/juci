@@ -35,24 +35,16 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 		$scope.netmode.setup.curmode.value = $scope.config.netmode;
 		$scope.juci.juci.homepage.value = "overview";
 		$uci.$save().done(function(){
-			$rpc.$call("juci.wireless", "set_credentials", {ssid: $scope.config.ssid, key:$scope.config.key, encryption: ap? ap.encryption : "none" }).done(function(){
-				var nm = $scope.netmodes.find(function(nm){ return nm.value === $scope.config.netmode; });
-				if(nm && nm.reboot) window.location = "/reboot.html";
-				$scope.config.state = "done";
-				$scope.$apply();
-			}).fail(function(e){
-				console.log("failed to call juci.wireless set_credentials error: " + JSON.stringify(e));
-				$scope.config.error = $tr(gettext("Couldn't set credentials"));
-				$scope.$apply();
-			});
+			$rpc.$call("juci.wireless", "set_credentials", {ssid: $scope.config.ssid, key:$scope.config.key, encryption: ap? ap.encryption : "none" });
+			var nm = $scope.netmodes.find(function(nm){ return nm.value === $scope.config.netmode; });
+			if(nm && nm.reboot) window.location = "/reboot.html";
+			$scope.config.state = "done";
+			$scope.$apply();
 		}).fail(function(e){
 			console.log("failed to save configs error: " + JSON.stringify(e));
 			$scope.config.error = $tr(gettext("Couldn't save config!"));
 			$scope.$apply();
 		});
-	 }
-	$scope.onfinish = function(){
-		window.location = "#!/overview";
 	}
 
 	$scope.showKey = function(){
