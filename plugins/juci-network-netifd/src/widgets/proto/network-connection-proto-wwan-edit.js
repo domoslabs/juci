@@ -24,7 +24,7 @@ JUCI.app
 		scope: {
 			interface: "=ngModel"
 		}, 
-		templateUrl: "/widgets/network-connection-proto-wwan-edit.html", 
+		templateUrl: "/widgets/proto/network-connection-proto-wwan-edit.html", 
 		controller: "networkConnectionProtoWwanEditCtrl",
 		replace: true
 	};

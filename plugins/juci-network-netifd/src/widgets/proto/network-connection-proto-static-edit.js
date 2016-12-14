@@ -3,7 +3,7 @@
 JUCI.app
 .directive("networkConnectionProtoStaticEdit", function(){
 	return {
-		templateUrl: "/widgets/network-connection-proto-static-edit.html", 
+		templateUrl: "/widgets/proto/network-connection-proto-static-edit.html", 
 		scope: {
 			interface: "=ngModel"
 		}, 

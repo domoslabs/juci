@@ -3,7 +3,7 @@
 JUCI.app
 .directive("networkConnectionProtoL2tpEdit", function(){
 	return {
-		templateUrl: "/widgets/network-connection-proto-l2tp-edit.html",
+		templateUrl: "/widgets/proto/network-connection-proto-l2tp-edit.html",
 		scope: {
 			interface: "=ngModel"
 		},
@@ -18,7 +18,7 @@ JUCI.app
 })
 .directive("networkConnectionProtoL2tpAdvancedEdit", function(){
 	return {
-		templateUrl: "/widgets/network-connection-proto-l2tp-advanced-edit.html",
+		templateUrl: "/widgets/proto/network-connection-proto-l2tp-advanced-edit.html",
 		scope: {
 			interface: "=ngModel"
 		},

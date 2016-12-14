@@ -3,7 +3,7 @@
 JUCI.app
 .directive("networkConnectionProtoDsliteEdit", function(){
 	return {
-		templateUrl: "/widgets/network-connection-proto-dslite-edit.html",
+		templateUrl: "/widgets/proto/network-connection-proto-dslite-edit.html",
 		scope: {
 			interface: "=ngModel"
 		},
@@ -13,7 +13,7 @@ JUCI.app
 })
 .directive("networkConnectionProtoDsliteAdvancedEdit", function(){
 	return { 
-		templateUrl: "/widgets/network-connection-proto-dslite-advanced-edit.html",
+		templateUrl: "/widgets/proto/network-connection-proto-dslite-advanced-edit.html",
 		scope: {
 			interface: "=ngModel"
 		},

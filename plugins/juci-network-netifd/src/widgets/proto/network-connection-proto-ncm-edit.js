@@ -24,7 +24,7 @@ JUCI.app
 		scope: {
 			interface: "=ngModel"
 		}, 
-		templateUrl: "/widgets/network-connection-proto-Ncm-edit.html", 
+		templateUrl: "/widgets/proto/network-connection-proto-Ncm-edit.html", 
 		replace: true
 	};
 }); 

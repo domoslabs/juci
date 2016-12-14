@@ -3,7 +3,7 @@
 JUCI.app
 .directive("networkConnectionProtoPppoaEdit", function(){
 	return {
-		templateUrl: "/widgets/network-connection-proto-pppoa-edit.html", 
+		templateUrl: "/widgets/proto/network-connection-proto-pppoa-edit.html", 
 		scope: {
 			interface: "=ngModel"
 		}, 
@@ -13,7 +13,7 @@ JUCI.app
 })
 .directive("networkConnectionProtoPppoaPhysicalEdit", function(){
 	return {
-		templateUrl: "/widgets/network-connection-standalone-physical.html",
+		templateUrl: "/widgets/proto/network-connection-standalone-physical.html",
 		scope: {
 			interface: "=ngModel"
 		},
@@ -23,7 +23,7 @@ JUCI.app
 })
 .directive("networkConnectionProtoPppoaAdvancedEdit", function(){
 	return {
-		templateUrl: "/widgets/network-connection-proto-pppoa-advanced-edit.html",
+		templateUrl: "/widgets/proto/network-connection-proto-pppoa-advanced-edit.html",
 		scope: {
 			interface: "=ngModel"
 		},

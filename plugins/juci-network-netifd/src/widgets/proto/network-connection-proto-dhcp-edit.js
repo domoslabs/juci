@@ -3,7 +3,7 @@
 JUCI.app
 .directive("networkConnectionProtoDhcpEdit", function(){
 	return {
-		templateUrl: "/widgets/network-connection-proto-dhcp-edit.html", 
+		templateUrl: "/widgets/proto/network-connection-proto-dhcp-edit.html", 
 		scope: {
 			interface: "=ngModel"
 		}, 
@@ -13,7 +13,7 @@ JUCI.app
 })
 .directive("networkConnectionProtoDhcpPhysicalEdit", function(){
 	return {
-		templateUrl: "/widgets/network-connection-standard-physical.html",
+		templateUrl: "/widgets/proto/network-connection-standard-physical.html",
 		scope: {
 			interface: "=ngModel",
 			protos: "="
@@ -23,7 +23,7 @@ JUCI.app
 	};
 }).directive("networkConnectionProtoDhcpAdvancedEdit", function(){
 	return {
-		templateUrl: "/widgets/network-connection-proto-dhcp-advanced-edit.html",
+		templateUrl: "/widgets/proto/network-connection-proto-dhcp-advanced-edit.html",
 		scope: {
 			interface: "=ngModel"
 		},

@@ -19,12 +19,13 @@
  */
 
 JUCI.app
-.directive("networkConnectionProtoQmiEdit", function(){
+.directive("networkConnectionProtoHnetEdit", function(){
 	return {
+		templateUrl: "/widgets/proto/network-connection-proto-dhcp-edit.html", 
 		scope: {
 			interface: "=ngModel"
 		}, 
-		templateUrl: "/widgets/network-connection-proto-Qmi-edit.html", 
-		replace: true
+		replace: true, 
+		require: "^ngModel"
 	};
 }); 

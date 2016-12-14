@@ -24,7 +24,7 @@ JUCI.app
 		scope: {
 			interface: "=ngModel"
 		}, 
-		templateUrl: "/widgets/network-connection-proto-3g-edit.html", 
+		templateUrl: "/widgets/proto/network-connection-proto-3g-edit.html", 
 		controller: "networkConnectionProto3gEdit", 
 		replace: true
 	};  
@@ -47,7 +47,7 @@ JUCI.app
 })
 .directive("networkConnectionProto3gAdvancedEdit", function(){
 	return {
-		templateUrl: "/widgets/network-connection-proto-3g-advanced-edit.html",
+		templateUrl: "/widgets/proto/network-connection-proto-3g-advanced-edit.html",
 		scope: {
 			interface: "=ngModel"
 		},
