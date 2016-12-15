@@ -37,16 +37,12 @@ JUCI.app
 		if(!net) return;
 		$ethernet.getAdapters().done(function(adapters){
 			var filtered = adapters.filter(function(ad){ return ad.type !== "eth-bridge" && ad.device;});
-			var wan = filtered.find(function(dev){ return dev.device.match(/^eth[\d]+\.[\d]+$/); });
-			if(wan){
-				//filter out the base-device for wan
-				filtered = filtered.filter(function(dev){return wan.device.split(".")[0] !== dev.device; });
-			}
-			if(net.is_lan.value){
-				//if network is a lan network only allow ethx.x and ptmx.x and atmx.x devices
-				filtered = filtered.filter(function(dev){return !dev.device.match(/^[ape]t[hm]\d\..+$/) });
-			}
 			var aptmap = {};
+			if(net.is_lan && net.is_lan.value){
+				filtered = filtered.filter(function(dev){
+					return dev.direction !== "Up";
+				});
+			}
 			filtered.map(function(apt){ aptmap[apt.device] = apt; });
 			net.$addedDevices = ((net.ifname.value != "")?net.ifname.value.split(" "):[])
 				.filter(function(x){return x && x != "" && aptmap[x]; })

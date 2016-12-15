@@ -276,7 +276,7 @@ JUCI.app
 							var dev_node = {
 								id: count++,
 								label: myString(String(dev.name ? String(dev.name).toUpperCase() : dev.ssid)),
-								title: getPortTitle(dev, device, radios),
+								title: getPortTitle(dev, device, radio),
 								size: 30,
 								image: device.match("eth")?getIcon("eth",dev):getIcon("wl", dev),
 								shape: "image"
@@ -412,7 +412,7 @@ JUCI.app
 		});
 	});
 
-	function getPortTitle(dev, device, radios){
+	function getPortTitle(dev, device, radio){
 		function fixBytes(bytes){
 			if(isNaN(bytes)) return "";
 			var i = parseInt(bytes);
@@ -425,7 +425,7 @@ JUCI.app
 		if(wired)
 			title = String(dev.name).toUpperCase() + '<br />' + $tr(gettext("Link speed")) + ': ' + dev.linkspeed;
 		else
-			title = dev.ssid + ' @ ' + ((radios[device.substring(0,3)])? radios[device.substring(0,3)].frequency : $tr(gettext('unknown')));
+			title = dev.ssid + ' @ ' + (radio.frequency ? radio.frequency : $tr(gettext('unknown')));
 		if(!dev.statistics) return;
 		if(dev.statistics.tx_bytes !== undefined) title = title + "<br />" + $tr(gettext("TX bytes:")) + " " + fixBytes(dev.statistics.tx_bytes);
 		if(dev.statistics.rx_bytes !== undefined) title = title + "<br />" + $tr(gettext("RX bytes:")) + " " + fixBytes(dev.statistics.rx_bytes);

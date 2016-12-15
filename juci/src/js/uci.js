@@ -1148,7 +1148,7 @@
 						//self[cf].$lastSync = new Date();
 						next();
 					}).fail(function(){
-						console.error("Could not sync config "+cf);
+						//console.error("Could not sync config "+cf);
 						next(); // continue because we want to sync as many as we can!
 						//next("Could not sync config "+cf);
 					});

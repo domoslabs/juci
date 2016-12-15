@@ -1,6 +1,6 @@
 local=true
 CONFIG_PACKAGE_juci=y
-CONFIG_PACKAGE_juci-broadcom-dsl=y
+##CONFIG_PACKAGE_juci-broadcom-dsl=y
 CONFIG_PACKAGE_juci-broadcom-ethernet=y
 CONFIG_PACKAGE_juci-broadcom-iptv=y
 CONFIG_PACKAGE_juci-broadcom-pwrmgmt=y

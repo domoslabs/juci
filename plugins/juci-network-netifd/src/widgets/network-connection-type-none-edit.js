@@ -38,10 +38,6 @@ JUCI.app
 			}).map(function(dev){
 				return { label: dev.name + " (" + dev.device + ")", value: dev.device };
 			});
-			var wan = $scope.baseDevices.find(function(dev){ return dev.value.match(/^eth[\d]+\.[\d]+$/); });
-			if(wan){
-				$scope.baseDevices = $scope.baseDevices.filter(function(dev){return wan.value.split(".")[0] != dev.value; });
-			}
 			// Add all other interfaces as aliases
 			$network.getNetworks().done(function(nets){
 				nets.map(function(net){

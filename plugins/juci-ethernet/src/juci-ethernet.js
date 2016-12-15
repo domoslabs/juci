@@ -20,38 +20,52 @@
 
 JUCI.app.factory("$ethernet", function($rpc){
 	function Ethernet() {
-		this._adapters = []; 
-		this._subsystems = []; 
+		this._adapters = [];
+		this._subsystems = [];
 	}
 
 	Ethernet.prototype.addSubsystem = function(subsys){
-		if(subsys) 
-			this._subsystems.push(subsys); 
-	} 
+		if(subsys)
+			this._subsystems.push(subsys);
+	}
 	
 	Ethernet.prototype.getAdapters = function(){
-		var def = $.Deferred(); 
-		var self = this; 
+		var def = $.Deferred();
+		var self = this;
 		$rpc.$call("network.device", "status").done(function(result){
-			var res = Object.keys(result).map(function(name){ result[name].device = name; return result[name]; });
-			if(res) {
-				// pipe all adapters though all subsystems and annotate them
-				async.each(self._subsystems, function(sys, next){
-					if(sys.annotateAdapters && sys.annotateAdapters instanceof Function){
-						sys.annotateAdapters(res).always(function(){
-							next(); 
+			$rpc.$call("router.port", "status").done(function(ports){
+				var res = Object.keys(result).map(function(name){
+					var port = Object.keys(ports).find(function(p){
+						return p == name;
+					});
+					if(port){
+						Object.keys(ports[port]).map(function(k){
+							result[name][k] = ports[port][k];
 						});
-					} else {
-						next(); 
-					}
-				}, function(){ 
-					res = res.filter(function(x){ return x.device && x.device !== "lo"; });
-					def.resolve(res);
-				}); 
-			} else def.reject(); 
+					}else if(result[name].type !== "Bridge")
+						return null;
+					result[name].device = name;
+					return result[name];
+				}).filter(function(x){return x !== null;});
+				if(res) {
+					// pipe all adapters though all subsystems and annotate them
+					async.each(self._subsystems, function(sys, next){
+						if(sys.annotateAdapters && sys.annotateAdapters instanceof Function){
+							sys.annotateAdapters(res).always(function(){
+								next();
+							});
+						} else {
+							next();
+						}
+					}, function(){
+						res = res.filter(function(x){ return x.device && x.device !== "lo"; });
+						def.resolve(res);
+					});
+				} else def.reject();
+			}).fail(function(e){console.log("error calling router.port status" + JSON.stringify(e));def.reject();});
 		}).fail(function(){ def.reject(); }); 	
-		return def.promise(); 
+		return def.promise();
 	}
 
-	return new Ethernet(); 
-}); 
+	return new Ethernet();
+});
