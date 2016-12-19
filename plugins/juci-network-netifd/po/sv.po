@@ -762,7 +762,7 @@ msgstr ""
 msgid "0"
 msgstr "0"
 
-msgid "Iface MTU"
+msgid "IP MTU"
 msgstr "Aktiverad"
 
 msgid "IPv6 Routes"

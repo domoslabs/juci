@@ -1211,7 +1211,7 @@ msgstr "Oletusreitti"
 msgid "0"
 msgstr ""
 
-msgid "Iface MTU"
+msgid "IP MTU"
 msgstr "Liitännän Tyyppi"
 
 msgid "IPv6 Routes"

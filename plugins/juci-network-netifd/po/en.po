@@ -1192,7 +1192,7 @@ msgstr ""
 msgid "0"
 msgstr ""
 
-msgid "Iface MTU"
+msgid "IP MTU"
 msgstr ""
 
 msgid "IPv6 Routes"
