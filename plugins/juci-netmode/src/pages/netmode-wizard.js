@@ -3,6 +3,7 @@
 
 JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, $tr, gettext, $wireless){
 	$scope.config = {
+		as_extender: true,
 		state:"start",
 		netmode:"",
 		frequency: 5,
@@ -15,14 +16,7 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 			{ label: $tr(gettext("2.4 GHz")), value: 2 }
 		]
 	};
-		
-	$scope.isRepeater = function(){
-		if(!$scope.netmodes) return false;
-		return $scope.netmodes.find(function(nm){
-			if(!nm.radio) return false;
-			return nm.value === $scope.config.netmode;
-		});
-	}
+
 	$scope.onFinishWifiRepeaterNetmode = function(){
 		if(!$scope.access_points) $scope.access_points = [];
 		var ap = $scope.access_points.find(function(ap){
@@ -126,10 +120,25 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 			});
 		}
 	}
+	function getNetmode(ex){
+		var found;
+		if(ex === undefined) return;
+		if(ex) {
+			if($scope.netmode && $scope.netmode.setup && $scope.netmode.setup.curmode
+					&& $scope.netmodes_rep && $scope.netmodes_rep.length)
+				found = $scope.netmodes_rep.find(function(nm){ return nm.value === $scope.netmode.setup.curmode.value; });
+			$scope.config.netmode = (found) ? found.value : ($scope.netmodes_rep.length ? $scope.netmodes_rep[0].value : "");
+		} else {
+			if($scope.netmode && $scope.netmode.setup && $scope.netmode.setup.curmode
+					&& $scope.netmodes_ap && $scope.netmodes_ap.length)
+				found = $scope.netmodes_ap.find(function(nm){ return nm.value === $scope.netmode.setup.curmode.value; });
+			$scope.config.netmode = (found) ? found.value : ($scope.netmodes_ap.length ? $scope.netmodes_ap[0].value : "");
+		}
+	}
+
 	$uci.$sync(["netmode", "wireless", "juci"]).done(function(){
 		$scope.juci = $uci.juci;
 		$scope.netmode = $uci.netmode;
-		$scope.config.netmode = ($scope.netmode && $scope.netmode.setup && $scope.netmode.setup.curmode) ? $scope.netmode.setup.curmode.value : "";
 		var lang = $languages.getLanguage();
 		$scope.netmodes = $uci.netmode["@netmode"].map(function(nm){
 			return {
@@ -141,6 +150,12 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 				reboot: nm.reboot.value
 			}
 		});
+		$scope.netmodes_ap = $scope.netmodes.filter(function(nm){ return !nm.band; });
+		$scope.netmodes_rep = $scope.netmodes.filter(function(nm){ return nm.band; });
+		$scope.config.netmode = $scope.netmodes_rep.length ? $scope.netmodes_rep[0].value : "";
+		$scope.$watch("config.as_extender", function(ex){
+			getNetmode(ex);
+		}, false);
 		$scope.netmodes = $scope.netmodes.map(function(nm){
 			if(!nm.band) return nm;
 			var radio = $uci.wireless["@wifi-device"].find(function(dev){

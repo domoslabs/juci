@@ -1,12 +1,23 @@
 <juci-layout-no-menu>
 	<div ng-controller="netmodeWizardPageCtrl">
 		<div ng-show="config.state == 'start'">
-			<h3 translate>Operation Mode Wizard</h3>
+			<h3 translate>Setup of your WiFi range extender</h3>
 			<br /><br />
 			<juci-config-section>
 				<juci-config-lines>
-					<juci-config-line title="{{'Select router operation mode'|translate}}">
-						<juci-select ng-items="netmodes" ng-model="config.netmode"></juci-select>
+					<juci-config-line ng-show="netmodes_ap.length && netmodes_rep.length" title="{{'Use as WiFi range extender'| translate}}">
+						<switch class="green pull-right" ng-model="config.as_extender" />
+						<p style="text-align:center;float:right; padding-right:5px;" ng-show="config.as_extender">{{'WiFi range Extender mode'|translate}}</p>
+						<p style="text-align:center;float:right; padding-right:5px;" ng-show="!config.as_extender">{{'AP mode'|translate}}</p>
+					</juci-config-line>
+					<juci-config-line ng-show="netmodes_ap.length && !config.as_extender" title="{{'Select AP mode'|translate}}">
+						<juci-select ng-show="netmodes_ap.length > 1" ng-items="netmodes_ap" ng-model="config.netmode"></juci-select>
+						<label class="label label-success" ng-show="netmodes_ap.length == 1">{{netmodes_ap[0].label}}</label>
+						<label class="label label-warning" ng-show="needsReboot()">{{'This operation mode needs a reboot'|translate}}</label>
+					</juci-config-line>
+					<juci-config-line ng-show="netmodes_rep.length && config.as_extender" title="{{'Select WiFi extender mode'|translate}}">
+						<juci-select ng-show="netmodes_rep.length > 1" ng-items="netmodes_rep" ng-model="config.netmode"></juci-select>
+						<label class="label label-success" ng-show="netmodes_rep.length == 1">{{netmodes_rep[0].label}}</label>
 						<label class="label label-warning" ng-show="needsReboot()">{{'This operation mode needs a reboot'|translate}}</label>
 					</juci-config-line>
 				</juci-config-lines>
@@ -14,8 +25,8 @@
 			<button ng-class="{'disabled': !config.netmode}" class="btn btn-primary pull-right" ng-click="onNetmodeSelected()">{{'Next'|translate}}</button>
 		</div>
 		<div ng-show="config.state == 'repeater'">
-			<h3 translate>Setup RangeExtender</h3>
-			<juci-config-help>Scan for available networks on 2.4 GHz or 5 GHz, select your network and enter its password.</juci-config-help>
+			<h3 translate>Setup your range extender</h3>
+			<juci-config-help>Select the network you want to extend/repeat and enter its password (network key). If the network you want to extend/repeat is not in the list you can try to scan again. If your existing WiFi network can't be found or is hidden, manually enter the SSID and the password (network key)</juci-config-help>
 			<juci-config-section>
 				<juci-config-lines>
 					<juci-config-line title="{{'Select Network'|translate}}">
@@ -28,7 +39,7 @@
 					<juci-config-line title="{{'SSID'| translate}}">
 						<input type="text" ng-model="config.ssid" ng-change="showKey()" class="form-control" />
 					</juci-config-line>
-					<juci-config-line ng-show="config.showkey" title="{{'Secret'| translate}}">
+					<juci-config-line ng-show="config.showkey" title="{{'Password (network key)'| translate}}">
 						<input type="text" ng-model="config.key" class="form-control" />
 					</juci-config-line>
 					<label ng-show="config.error" class="label label-danger">{{config.error}}</label>
@@ -38,8 +49,8 @@
 			<button class="btn btn-primary pull-right" style="margin-right: 5px;" ng-click="onGoingBack('start')">{{'Back'|translate}}</button>
 		</div>
 		<div ng-show="config.state == 'done'">
-			<h3 translate>Wizard completed</h3>
-			<p>{{'Continue to homepage'|translate}}</p>
+			<h3 translate>WiFi range extender setup completed</h3>
+			<p translate>Your range extender setup is now completed. You will likely loose connection to your box.</p>
 		</div>
 	</div>
 </juci-layout-no-menu>
