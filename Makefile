@@ -19,8 +19,6 @@ all: release
 
 define Plugin/Default
 	CODE_LOAD:=
-	STYLE_LOAD:=
-	TPL_LOAD:=
 	JAVASCRIPT-y:=
 	TEMPLATES-y:=
 	STYLES-y:=
@@ -29,8 +27,6 @@ endef
 define BuildDir-y 
 	$(eval BIN:=$(if $(local),bin,bin/$(1)))
 	$(eval $(call Plugin/Default))
-	$(eval TPL_LOAD:=90)
-	$(eval STYLE_LOAD:=50)
 	$(eval BACKEND_BIN_DIR:=$(BIN)/usr/libexec/rpcd)
 	$(eval CODE_DIR:=$(BIN)/www/$(if $(3),$(3),js))
 	$(eval PO-y:=po/*.po)
@@ -55,17 +51,17 @@ $(TMP_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js: $(JAVASCRIPT_$(PLUGIN)
 	@echo "" > $$@
 	$(Q)if [ "" != "$(JAVASCRIPT_$(PLUGIN))" ]; then for file in $(JAVASCRIPT_$(PLUGIN)); do cat $$$$file >> $$@; echo "" >> $$@; done; fi
 	$(Q)if [ "" != "$(PO_$(PLUGIN))" ]; then ./scripts/po2js $(PO_$(PLUGIN)) >> $$@; echo "" >> $$@; fi
-$(TMP_DIR)/$(STYLE_LOAD)-$(PLUGIN).css: $(STYLES_$(PLUGIN)) $(TMP_DIR)/$(PLUGIN)-compiled-styles.css
+$(TMP_DIR)/$(PLUGIN).css: $(STYLES_$(PLUGIN)) $(TMP_DIR)/$(PLUGIN)-compiled-styles.css
 	@echo -e "\033[0;33m[CSS]\t$(PLUGIN) -> $$@\033[m"
 	@echo "" > $$@
 	$(Q)if [ "" != "$$^" ]; then for file in $$^; do cat $$$$file >> $$@; echo "" >> $$@; done; fi
-$(TMP_DIR)/$(STYLE_LOAD)-$(PLUGIN).css.js: $(TMP_DIR)/$(STYLE_LOAD)-$(PLUGIN).css
+$(TMP_DIR)/$(PLUGIN).css.js: $(TMP_DIR)/$(PLUGIN).css
 	$(Q)./scripts/css-to-js $$^
 $(TMP_DIR)/$(PLUGIN)-compiled-styles.css: $(STYLES_LESS_$(PLUGIN))
 	@echo -e "\033[033m[LESS]\t$(PLUGIN) -> $$@\033[m"
 	@echo "" > $$@
 	$(Q)if [ "" != "$$^" ]; then for file in $$^; do lessc $$$$file >> $$@; echo "" >> $$@; done; fi
-$(TMP_DIR)/$(TPL_LOAD)-$(PLUGIN).tpl.js: $(TEMPLATES_$(PLUGIN))
+$(TMP_DIR)/$(PLUGIN).tpl.js: $(TEMPLATES_$(PLUGIN))
 	@echo -e "\033[0;33m[HTML]\t$(PLUGIN) -> $$@\033[m"
 	@echo "" > $$@
 	$(Q)if [ "" != "$$^" ]; then ./scripts/juci-build-tpl-cache $$^ $$@; fi
@@ -76,7 +72,7 @@ $(PLUGIN_DIR)/po/template.pot: $(JAVASCRIPT_$(PLUGIN)) $(TEMPLATES_$(PLUGIN))
 	$(Q)if [ "" != "$$^" ]; then ./scripts/extract-strings $$^ > $$@; msguniq $$@ > $$@.tmp; mv $$@.tmp $$@; fi
 	@echo "" >> $$@
 	@for file in `find $(PLUGIN_DIR)/src/pages/ -name "*.html"`; do PAGE=$$$${file%%.*}; echo -e "# $$$$file \nmsgid \"menu-$$$$(basename $$$$PAGE)-title\"\nmsgstr \"\"\n" >> $$@; done
-$(CODE_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js: $(TMP_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js $(TMP_DIR)/$(STYLE_LOAD)-$(PLUGIN).css.js $(TMP_DIR)/$(TPL_LOAD)-$(PLUGIN).tpl.js
+$(CODE_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js: $(TMP_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js $(TMP_DIR)/$(PLUGIN).css.js $(TMP_DIR)/$(PLUGIN).tpl.js
 	$(Q)$(INSTALL_DIR) "$$(dir $$@)"
 	$(Q)cat $$^ > $$@
 $(PLUGIN)-install: $(PLUGIN_DIR)/po/template.pot $(CODE_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js

@@ -30,8 +30,6 @@ Even if you don't put anything in the Makefile, just will use default settings a
 
 	define Plugin/<somename>
 		CODE_LOAD:=<num> - this specifies loading order. It is sometimes important to control load order. Default is 50. Juci core has this set to 01 to load juci before any other modules. 
-		STYLE_LOAD:=<num> - this is the same for styles
-		TPL_LOAD:=<num> - this is for templates (html). If you load your templates AFTER another module then you can basically override any template in any preceding module by simply creating file with the same name. 
 		JAVASCRIPT-y:=<javascript files> - specify your js files
 		STYLES-y:=<css> - specify styles
 		TEMPLATES-y:=<html> specify html templates

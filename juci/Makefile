@@ -1,7 +1,6 @@
 define Plugin/juci
+
 	CODE_LOAD:=01
-	STYLE_LOAD:=01
-	TPL_LOAD:=01
 
 	STYLES-y:=
 	STYLES-y+=src/css/normalize.css
