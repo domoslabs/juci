@@ -18,7 +18,9 @@ all: release
 -include Makefile.local
 
 define Plugin/Default
-	CODE_LOAD:=10
+	CODE_LOAD:=
+	STYLE_LOAD:=
+	TPL_LOAD:=
 	JAVASCRIPT-y:=
 	TEMPLATES-y:=
 	STYLES-y:=
@@ -27,7 +29,6 @@ endef
 define BuildDir-y 
 	$(eval BIN:=$(if $(local),bin,bin/$(1)))
 	$(eval $(call Plugin/Default))
-	$(eval CODE_LOAD:=50) # same as LOAD, LOAD is deprecated
 	$(eval TPL_LOAD:=90)
 	$(eval STYLE_LOAD:=50)
 	$(eval BACKEND_BIN_DIR:=$(BIN)/usr/libexec/rpcd)
@@ -49,7 +50,7 @@ define BuildDir-y
 	$(eval PO_$(PLUGIN):=$(wildcard $(addprefix $(PLUGIN_DIR)/,$(PO-y))))
 	PHONY += $(PLUGIN)-install
 	# ex. tmp/50-my-awesome-plugin.js: first_file.js second_file.js first_po_file.po ...
-$(TMP_DIR)/$(CODE_LOAD)-$(PLUGIN).js: $(JAVASCRIPT_$(PLUGIN)) $(PO_$(PLUGIN))
+$(TMP_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js: $(JAVASCRIPT_$(PLUGIN)) $(PO_$(PLUGIN))
 	@echo -e "\033[0;33m[JS]\t$(PLUGIN) -> $$@\033[m"
 	@echo "" > $$@
 	$(Q)if [ "" != "$(JAVASCRIPT_$(PLUGIN))" ]; then for file in $(JAVASCRIPT_$(PLUGIN)); do cat $$$$file >> $$@; echo "" >> $$@; done; fi
@@ -75,10 +76,10 @@ $(PLUGIN_DIR)/po/template.pot: $(JAVASCRIPT_$(PLUGIN)) $(TEMPLATES_$(PLUGIN))
 	$(Q)if [ "" != "$$^" ]; then ./scripts/extract-strings $$^ > $$@; msguniq $$@ > $$@.tmp; mv $$@.tmp $$@; fi
 	@echo "" >> $$@
 	@for file in `find $(PLUGIN_DIR)/src/pages/ -name "*.html"`; do PAGE=$$$${file%%.*}; echo -e "# $$$$file \nmsgid \"menu-$$$$(basename $$$$PAGE)-title\"\nmsgstr \"\"\n" >> $$@; done
-$(CODE_DIR)/$(CODE_LOAD)-$(PLUGIN).js: $(TMP_DIR)/$(CODE_LOAD)-$(PLUGIN).js $(TMP_DIR)/$(STYLE_LOAD)-$(PLUGIN).css.js $(TMP_DIR)/$(TPL_LOAD)-$(PLUGIN).tpl.js
+$(CODE_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js: $(TMP_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js $(TMP_DIR)/$(STYLE_LOAD)-$(PLUGIN).css.js $(TMP_DIR)/$(TPL_LOAD)-$(PLUGIN).tpl.js
 	$(Q)$(INSTALL_DIR) "$$(dir $$@)"
 	$(Q)cat $$^ > $$@
-$(PLUGIN)-install: $(PLUGIN_DIR)/po/template.pot $(CODE_DIR)/$(CODE_LOAD)-$(PLUGIN).js
+$(PLUGIN)-install: $(PLUGIN_DIR)/po/template.pot $(CODE_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js
 	$(call Plugin/$(PLUGIN)/install,$(BIN))
 	$(Q)if [ -d $(PLUGIN_DIR)/ubus ]; then mkdir -p $(BACKEND_BIN_DIR); $(CP) $(PLUGIN_DIR)/ubus/* $(BACKEND_BIN_DIR); chmod +x $(BACKEND_BIN_DIR)/*; fi
 	$(Q)if [ -f $(PLUGIN_DIR)/menu.json ]; then mkdir -p $(BIN)/usr/share/rpcd/menu.d; $(CP) $(PLUGIN_DIR)/menu.json $(BIN)/usr/share/rpcd/menu.d/$(PLUGIN).json; fi
