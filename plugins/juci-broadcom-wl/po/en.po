@@ -636,6 +636,9 @@ msgstr "General"
 msgid "menu-wireless-link-to-interfaces-title"
 msgstr "Wireless"
 
+msgid "menu-wireless-band-steering-title"
+msgstr "Band Steering"
+
 msgid "menu-wireless-wps-title"
 msgstr "WPS"
 
