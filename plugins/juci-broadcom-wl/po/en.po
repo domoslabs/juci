@@ -639,6 +639,12 @@ msgstr "Wireless"
 msgid "menu-wireless-band-steering-title"
 msgstr "Band Steering"
 
+msgid "wifi.band-steering.info"
+msgstr "Band Steering mechanism steers dual-band capable clients to 5GHz frequency in order to increase available bandwidth while freeing up resources on the 2.4GHz band for legacy clients."
+
+msgid "wifi.band-steering.dualband-warning"
+msgstr "Band Steering feature is available for dual-band APs only."
+
 msgid "menu-wireless-wps-title"
 msgstr "WPS"
 
