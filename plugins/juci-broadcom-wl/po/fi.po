@@ -459,6 +459,18 @@ msgstr "Uusi SSID"
 msgid "New Wireless Interface"
 msgstr "Uusi langaton liitäntä"
 
+# plugins/juci-broadcom-wl/src/pages/wireless-band-steering.html
+msgid "Band Steering"
+msgstr ""
+
+# plugins/juci-broadcom-wl/src/pages/wireless-band-steering.html
+msgid "wifi.band-steering.info"
+msgstr ""
+
+# plugins/juci-broadcom-wl/src/pages/wireless-band-steering.html
+msgid "wifi.band-steering.dualband-warning"
+msgstr "wifi.band-steering.dualband-varoitus"
+
 msgid "WiFi Client Mode"
 msgstr "WiFi-tila"
 
@@ -647,6 +659,10 @@ msgstr "WPS-PIN: Toinen laite tarjoaa PIN-koodin"
 
 msgid "Enter the WPS-PIN provided by the other device here."
 msgstr "Syötä paritettavan laitteen PIN-koodi tähän kohtaan."
+
+# plugins/juci-broadcom-wl/src/pages/wireless-band-steering.html
+msgid "menu-wireless-band-steering-title"
+msgstr "Band Steering"
 
 msgid "menu-wireless-client-mode-title"
 msgstr "Client Mode"
