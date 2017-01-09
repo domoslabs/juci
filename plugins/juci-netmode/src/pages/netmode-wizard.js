@@ -77,8 +77,7 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 			$scope.juci.juci.homepage.value = "overview";
 			$uci.$save().done(function(){
 				if(nm && nm.reboot && !isCurrentMode(nm)) window.location = "/reboot.html";
-				$scope.config.state = 'done';
-				$scope.$apply();
+				window.location = "";
 			}).fail(function(e){
 				console.log(e);
 				$scope.config.error = $tr(gettext("Couldn't save configuration"));
