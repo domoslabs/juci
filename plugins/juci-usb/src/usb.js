@@ -41,13 +41,14 @@ JUCI.app
 		var self = this;
 		self.getDevices().done(function(devs){
 			var filtered = devs.filter(function(dev){
-				return dev.netdevice && (String(dev.netdevice).match(/^eth/) || String(dev.netdevice).match(/^usb/));
+				return dev.netdevice;
 			});
 			adapters.map(function(a){
 				var match = filtered.find(function(f){ return f.netdevice === a.device; });
 				if(match){
 					a.name = match.description || match.product || a.name || "";
 					a.type = "eth-port";
+					a.is_usb = true;
 					match["__added__"] = true
 				}
 			});
@@ -56,6 +57,7 @@ JUCI.app
 				adapters.push({
 					name: f.description || f.product || "",
 					type: "eth-port",
+					is_usb: true,
 					device: f.netdevice
 				});
 			});
