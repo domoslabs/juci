@@ -146,11 +146,11 @@ JUCI.app
 	var tag_promise = null;
 	$scope.loadTags = function(text){
 		if(!tag_promise) tag_promise = new Promise(function(resolve, reject){
-			$rpc.$call("juci.minidlna", "run", {"method":"autocomplete", "args":"{\"path\":\""+text+"\"}"}).done(function(data){
+			$rpc.$call("juci.directory", "autocomplete", {"path":text}).done(function(data){
 				tag_promise = null;
 				if(data.folders) resolve(data.folders);
 				else reject(data);
-			})
+			}).fail(function(e){console.log(e);});
 		});
 		return tag_promise;
 	};
