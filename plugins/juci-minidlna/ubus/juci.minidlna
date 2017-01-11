@@ -12,7 +12,7 @@ case "$1" in
 				running=$(pidof minidlna >/dev/null && echo 1 || echo 0)
 				rm -f /tmp/minidlna.status
 				local port=$(uci get minidlna.config.port)
-				if wget -q localhost:$port; then
+				if wget -q -O /tmp/minidln.index localhost:$port; then
 					info="$(cat /tmp/minidlna.status 2>/dev/null)"
 					image=$(echo $info | awk -F[\ ,:] '{print$6}')
 					audio=$(echo $info | awk -F[\ ,:] '{print$2}')
