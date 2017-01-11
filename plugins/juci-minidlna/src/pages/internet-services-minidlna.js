@@ -22,30 +22,19 @@ JUCI.app
 			}else{
 				dirr = dir;
 			}
-			return (dirr.substring(0, 4) == "/mnt");
+			return (dirr === "/mnt" || dirr.substring(0, 5) == "/mnt/");
 		}).map(function(dir){
-			if(dir == "/mnt/"){
+			console.log(dir);
+			if(dir.match(/^[AVP],/)){ // ex, A,/mnt/usb/folder -> { text: A,/usb/folder, path: A,/mnt/usb/folder }
 				return {
-					text: "/",
+					text: dir.substr(0, 2) + "/" + (dir.length > 6 ? dir.substr(7) : ""),
 					path: dir
-				}
-			}else if(dir.substr(2) == "/mnt/"){
-				return {
-					text: dir.substr(0, 2) + "/",
-					path: dir
-				}
-			}
-			if(dir.substr(1, 1) == ","){
-				return {
-					text: "/" + dir.substr(0,2) + dir.substring(4),
-					path: dir
-				}
+				};
 			}
 			return {
-				text: "/" + dir.substr(4),
+				text: "/" + (dir.length > 4 ? dir.substr(5) : ""),
 				path: dir
-			}
-		
+			};
 		});
 		$network.getNetworks().done(function(data){
 			$scope.network.all = data.map(function(x){
@@ -130,9 +119,13 @@ JUCI.app
 		});
 	};
 	$scope.onTagAdded = function(tag){
+		console.log(tag);
 		$scope.tagslistData = $scope.tagslistData.map(function(k){
 			if(k.text == tag.text){
-				k.path = "/mnt"+k.text;
+				if(k.text.match(/^[AVP],/))
+					k.path = k.text.substr(0, 2) + "/mnt" + k.text.substr(2);
+				else
+					k.path = "/mnt"+k.text;
 			}
 			return k;
 		});
@@ -145,12 +138,25 @@ JUCI.app
 	};
 	var tag_promise = null;
 	$scope.loadTags = function(text){
-		if(!tag_promise) tag_promise = new Promise(function(resolve, reject){
-			$rpc.$call("juci.directory", "autocomplete", {"path":text}).done(function(data){
+		if(tag_promise == null) tag_promise = new Promise(function(resolve, reject){
+			var prefix = "";
+			if(text.match(/^[AVP],/)){
+				prefix = text.substr(0, 2);
+				text = text.substr(2);
+			}
+			$rpc.$call("router.directory", "autocomplete", {"path":"/mnt" + text}).done(function(data){
 				tag_promise = null;
-				if(data.folders) resolve(data.folders);
-				else reject(data);
-			}).fail(function(e){console.log(e);});
+				if(data.folders){
+					data.folders = data.folders.map(function(folder){
+						return prefix + folder.substring(4);
+					});
+					console.log(data.folders);
+					resolve(data.folders);
+				}else reject(data);
+			}).fail(function(e){
+				tag_promise = null;
+				reject(e);
+			});
 		});
 		return tag_promise;
 	};

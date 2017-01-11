@@ -9,7 +9,7 @@
 				"juci.minidlna": [
 					"status"
 				],
-				"juci.directory": [
+				"router.directory": [
 					"folder_tree",
 					"autocomplete"
 				]
