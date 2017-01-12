@@ -23,14 +23,16 @@ JUCI.app
 	return {
 		scope: {
 			interface: "=ngModel"
-		}, 
-		templateUrl: "/widgets/proto/network-connection-proto-wwan-edit.html", 
+		},
+		templateUrl: "/widgets/proto/network-connection-proto-wwan-edit.html",
 		controller: "networkConnectionProtoWwanEditCtrl",
 		replace: true
 	};
 }).controller("networkConnectionProtoWwanEditCtrl", function($scope, $tr, gettext, $rpc){
 	$rpc.$call("router.usb", "status").done(function(ret){
-		$scope.devices = Object.keys(ret).map(function(r){ return ret[r];}).filter(function(dev){return dev.netdevice;}).map(function(dev){ return { label: dev.description || $tr(gettext("Unknown")), value: dev.netdevice }; });
+		$scope.devices = Object.keys(ret).map(function(r){ return ret[r];}).filter(function(dev){return dev.netdevice;}).map(function(dev){
+			return { label: dev.description || $tr(gettext("Unknown")), value: dev.netdevice };
+		});
 		$scope.$apply();
 	}).fail(function(e){console.log(e);});
 	$scope.authtypes = [
@@ -39,4 +41,4 @@ JUCI.app
 		{ label: $tr(gettext("Both")), value: "both" },
 		{ label: $tr(gettext("None")), value: "" }
 	];
-}); 
+});

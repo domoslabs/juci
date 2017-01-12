@@ -6,7 +6,7 @@
 				"samba"
 			],
 			"ubus": {
-				"juci.directory": [
+				"router.directory": [
 					"folder_tree",
 					"autocomplete"
 				],
@@ -23,7 +23,7 @@
 				"samba"
 			],
 			"ubus": {
-				"juci.directory": [
+				"router.directory": [
 					"folder_tree",
 					"autocomplete"
 				]
