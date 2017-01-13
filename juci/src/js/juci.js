@@ -325,7 +325,7 @@
 	});
 	UCI.juci.$registerSectionType("wiki", {
 		"server":	{ dvalue: "http://docs.intenogroup.com", type: String },
-		"version":	{ dvalue: "v39", type: String },
+		"version":	{ dvalue: "v310", type: String },
 		"language": { dvalue: "en", type: String },
 		"visible":	{ dvalue: false, type: Boolean }
 	});
