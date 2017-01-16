@@ -256,7 +256,7 @@ msgstr "Suodata yksityiset"
 msgid "Do not forward reverse lookups for local networks"
 msgstr "Älä edelleenlähetä käänteisiä hakuja paikallisesta verkosta"
 
-msgid "Filter usless"
+msgid "Filter useless"
 msgstr "Suodata käyttämättömät"
 
 msgid "Do not forward requests that cannot be answered by public name servers"
@@ -278,7 +278,7 @@ msgid "Local server"
 msgstr "Paikallinen palvelin"
 
 msgid ""
-"Local domain specification. Names matching this domain are never forwared "
+"Local domain specification. Names matching this domain are never forwarded "
 "and resolved from DHCP or hosts files only"
 msgstr ""
 "Paikallinen toimialue-erittely. Nimet, jotka vastaavat tätä toimialuetta ei "
