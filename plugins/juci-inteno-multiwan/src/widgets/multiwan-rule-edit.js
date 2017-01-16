@@ -28,7 +28,19 @@ JUCI.app.directive("multiwanRuleEdit", function(){
 		replace: "true",
 		require: "^ngModel"
 	}
-}).controller("multiwanRuleEdit", function($scope, $tr, gettext, $network, $firewall){
+}).controller("multiwanRuleEdit", function($scope, $uci, $tr, gettext, $network, $firewall){
+
+	$uci.$sync("multiwan").done(function(){
+		$scope.multiwan = $uci.multiwan;
+		$scope.allInterfaces = $uci.multiwan["@interface"].map(function(x){
+			return { label: x[".name"], value: x[".name"] };
+		});
+		$scope.allInterfaces.push({ label: "Load Balancer (Best Compatibility)", value: "balancer" });
+		$scope.allInterfaces.push({ label: "Fast Balancer (Best Distribution)", value: "fastbalancer" });
+		$scope.wan_uplink = $scope.allInterfaces
+		$scope.$apply();
+	});
+
 	$firewall.getZoneClients("lan").always(function(clients){
 		$scope.addresses = clients.map(function(client){ 
 			var name = (!client.hostname || client.hostname == "") ? "" : " (" + client.hostname + ")";
@@ -39,13 +51,6 @@ JUCI.app.directive("multiwanRuleEdit", function(){
 		{ label: $tr(gettext("UDP")),	value: "udp" },
 		{ label: $tr(gettext("TCP")),	value: "tcp" },
 		{ label: $tr(gettext("ICMP")),	value: "icmp" }
-	];
-	$scope.wan_uplink = [
-		{ label: $tr(gettext("LAN")),	value: "lan" },
-		{ label: $tr(gettext("WAN")),	value: "wan" },
-		{ label: $tr(gettext("WAN6")),	value: "wan6" },
-		{ label: $tr(gettext("Load Balancer (Best Compatibility)")),	value: "balancer" },
-		{ label: $tr(gettext("Fast Balancer (Best Distribution)")),	value: "fastbalncer" }
 	];
 	var first = true;
 	$scope.$watch("model", function(){

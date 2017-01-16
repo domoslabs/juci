@@ -92,7 +92,7 @@ JUCI.app
 		}); 
 	}
 	$scope.onAddRule = function(){
-		$uci.multiwan.$create({ ".type": "mwanfw", "wanrule": "fastbalancer" }).done(function(){
+		$uci.multiwan.$create({ ".type": "mwanfw", "wanrule": "balancer" }).done(function(){
 			$scope.$apply();
 		});
 	};
