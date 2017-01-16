@@ -435,7 +435,7 @@ JUCI.app
 	}
 	function getWanTitle(type, wan, data){
 		if(!wan) return "";
-		var t= wan.interface + '<br />' + $tr(gettext('Connection Type')) + ': ';
+		var t= wan.interface + '<br />' + $tr(gettext('Link Type')) + ': ';
 		switch(type){
 			case "eth":
 				t+= $tr(gettext("Ethernet")) + '<br />';
