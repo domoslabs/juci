@@ -25,7 +25,7 @@
 			</juci-config-line>
 		</juci-config-lines>
 		<div ng-show="dfs_enabled" class="alert alert-info" translate>You will not be able to scan 5Ghz band because your 5Ghz wireless radio is operating at a DFS channel</div>
-		<wireless-aps-graph ng-model="access_points"></wireless-aps-graph>
+		<wireless-aps-graph ng-model="access_points" show-ssid="ssidToShow"></wireless-aps-graph>
 		<br>
 		<table class="table" ng-show="access_points">
 			<thead>
@@ -37,7 +37,7 @@
 				<th><a href="" ng-click="order('cipher')" translate>Cipher</a></th>
 				<!--<th><a href="" ng-click="order('wps_version')" translate>WPS</a></th>-->
 			</thead>
-			<tr ng-repeat="ap in access_points track by $index | orderBy:predicate:reverse">
+			<tr ng-repeat="ap in access_points track by $index | orderBy:predicate:reverse" ng-click="onSsidSelected(ap)" class="{{ap.__id__ == ssidToShow.__id__ ? 'active' : ''}}">
 				<td>{{ap.ssid}}</td>
 				<td>{{ap.frequency}}</td>
 				<td>{{ap.channel}}</td>

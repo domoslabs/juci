@@ -57,12 +57,17 @@ JUCI.app
 			$wireless.scan({radio: $scope.radioToScan.value}).done(function(){
 				setTimeout(function(){
 					$wireless.getScanResults({radio: $scope.radioToScan.value}).done(function(aps){
-						$scope.access_points = aps;
+						$scope.access_points = aps.filter(function(ap){
+							return ap.ssid;// && ap.snr > -10 && ap.snr < 110;
+						});
 						$scope.scanning = 0;
 						$scope.$apply();
 					});
-				}, 5000);
+				}, 4000);
 			});
+		}
+		$scope.onSsidSelected = function(ap){
+			$scope.ssidToShow = ap;
 		}
 	});
 });
