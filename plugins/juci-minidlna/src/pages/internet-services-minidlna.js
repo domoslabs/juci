@@ -2,7 +2,13 @@
 /*global Promise:false*/
 
 JUCI.app
-.controller("MiniDLNAConfigPage", function($network, $scope, $minidlna, $tr, gettext, $rpc, $juciDialog){
+.controller("MiniDLNAConfigPage", function($uci, $sce, $network, $scope, $minidlna, $tr, gettext, $rpc, $juciDialog){
+	$uci.$sync("minidlna").done(function(data){
+		$scope.minidlnaPort = "8200";
+		try{ $scope.minidlnaPort = $uci.minidlna["@all"][0].port.value; }catch(err){console.log(err);}
+		$scope.iframeURL = $sce.trustAsResourceUrl("http://" + window.location.hostname + ":"+$scope.minidlnaPort);
+		$scope.$apply();
+	});
 	$scope.data = [{label:"loading"}];
 	$scope.network = {
 		all : [],
@@ -24,7 +30,6 @@ JUCI.app
 			}
 			return (dirr === "/mnt" || dirr.substring(0, 5) == "/mnt/");
 		}).map(function(dir){
-			console.log(dir);
 			if(dir.match(/^[AVP],/)){ // ex, A,/mnt/usb/folder -> { text: A,/usb/folder, path: A,/mnt/usb/folder }
 				return {
 					text: dir.substr(0, 2) + "/" + (dir.length > 6 ? dir.substr(7) : ""),
@@ -47,6 +52,7 @@ JUCI.app
 		});
 	});
 
+/*
 	setTimeout(function(){ // give the service time to reload
 		JUCI.interval.repeat("update-minidlna-status", 5000, function(next){
 			$rpc.$call("juci.minidlna", "status", {}).done(function(data){
@@ -62,6 +68,7 @@ JUCI.app
 			}).always(function(){next();});
 		});
 	}, 500);
+*/
 
 	$scope.root_dir = [
 		{ label: $tr(gettext("Standard Container")),	value: "." },
@@ -119,7 +126,6 @@ JUCI.app
 		});
 	};
 	$scope.onTagAdded = function(tag){
-		console.log(tag);
 		$scope.tagslistData = $scope.tagslistData.map(function(k){
 			if(k.text == tag.text){
 				if(k.text.match(/^[AVP],/))
@@ -150,7 +156,6 @@ JUCI.app
 					data.folders = data.folders.map(function(folder){
 						return prefix + folder.substring(4);
 					});
-					console.log(data.folders);
 					resolve(data.folders);
 				}else reject(data);
 			}).fail(function(e){
@@ -160,4 +165,13 @@ JUCI.app
 		});
 		return tag_promise;
 	};
+
+	function updateIframe(){
+		if(!document.getElementById('iframe')){ return; }
+		document.getElementById('iframe').src = $scope.iframeURL;
+	}
+	JUCI.interval.repeat("updateIframe",10000,function(next){
+		updateIframe();
+		next();
+	});
 }); 
