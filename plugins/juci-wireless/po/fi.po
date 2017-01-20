@@ -1,0 +1,729 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: Inteno\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.10\n"
+
+msgid "off"
+msgstr "Pois päältä"
+
+msgid "5GHz"
+msgstr ""
+
+msgid "2.4GHz"
+msgstr ""
+
+msgid "Wifi Schedule: please pick at least one day to schedule on"
+msgstr "Wifi Aikataulu: valitse vähintään yksi päivä ajastettavaksi"
+
+msgid "Invalid SSID: "
+msgstr "Virheellinen SSID:"
+
+msgid "no SSID"
+msgstr "ei SSID:tä"
+
+msgid ". SSID can not be more than 32 characters long!"
+msgstr ". SSID ei voi olla yli 32 merkkiä pitkä!"
+
+msgid "One of the wireless interface(s) does not have SSID"
+msgstr "Yhdellä tai useammalla langattomalla liitännällä ei ole SSID:tä"
+
+msgid "Wireless interface "
+msgstr "Langaton liitäntä"
+
+msgid " has invalid key #"
+msgstr "on virheellinen avain #"
+
+msgid " error: "
+msgstr "virhe:"
+
+msgid " must have key #"
+msgstr "avain on oltava:"
+
+msgid " set!"
+msgstr "aseta!"
+
+msgid ". WPA key must be 8-63 printable ASCII characters long!"
+msgstr ". WPA-avain täytyy olla 8-63 ASCII merkkiä!"
+
+msgid "Bandwidth"
+msgstr "Kaistanleveys"
+
+msgid "N/A"
+msgstr "Ei saatavilla"
+
+msgid "Channel"
+msgstr "Kanava"
+
+msgid "Noise"
+msgstr "Kohina"
+
+msgid "dBm"
+msgstr "dBm"
+
+msgid "Rate"
+msgstr "Bittinopeus"
+
+msgid "Disable"
+msgstr "Pois käytöstä"
+
+msgid "Enable"
+msgstr "Käytössä"
+
+msgid "SSID"
+msgstr "SSID"
+
+msgid "BSSID"
+msgstr "BSSID"
+
+msgid "unknown"
+msgstr "tuntematon"
+
+msgid "Encryption"
+msgstr "Suojaustila"
+
+msgid "Mode"
+msgstr "Toimintatila"
+
+msgid "Device"
+msgstr "Laite"
+
+msgid "Couldn't load wireless radios from config"
+msgstr "Langattomia radioita ei voitu ladata konfiguraatiosta"
+
+msgid ""
+"No more Wireless Interface spaces left. There can't be more than 4 "
+"Interfaces on each radio"
+msgstr ""
+"Ei mahdollista lisätä uusia verkkoja. Voi olla korkeintaan neljä verkkoa "
+"kussakin radiossa"
+
+msgid "Please select a connection in the list!"
+msgstr "Valitse yhteys luettelosta!"
+
+msgid "Are you sure you want to delete this wireless interface?"
+msgstr "Haluatko varmasti poistaa tämän säännön?"
+
+msgid "Wireless Interfaces"
+msgstr "WiFi verkot"
+
+msgid "Enabled"
+msgstr "Käytössä"
+
+msgid "Disabled"
+msgstr "Pois käytöstä"
+
+msgid "None"
+msgstr "Ei mitään"
+
+msgid "WEP"
+msgstr "WEP"
+
+msgid "WPA2 Personal (PSK)"
+msgstr "WPA2 Personal (PSK)"
+
+msgid "WPA Personal (PSK)"
+msgstr "WPA Personal (PSK)"
+
+msgid "WPA/WPA2 Personal (PSK) Mixed Mode"
+msgstr "WPA / WPA2 Personal (PSK) Mixed Mode"
+
+msgid "WPA2 Enterprise"
+msgstr "WPA2 Enterprise"
+
+msgid "WPA Enterprise"
+msgstr "WPA Enterprise"
+
+msgid "WPA/WPA2 Enterprise Mixed Mode"
+msgstr "WPA / WPA2 Enterprise Mixed Mode"
+
+msgid "IP-Address"
+msgstr "IP-osoite"
+
+msgid "MAC-Address"
+msgstr "MAC osoite"
+
+msgid "DHCP"
+msgstr ""
+
+msgid "Idle"
+msgstr ""
+
+msgid "In Network"
+msgstr "Yhdistetty verkkoon"
+
+msgid "RSSI"
+msgstr ""
+
+msgid "SNR"
+msgstr "SNR"
+
+msgid "Initializing"
+msgstr "WPS status"
+
+msgid "Processing"
+msgstr "WPS käynnissä"
+
+msgid "Done!"
+msgstr "WPS valmis"
+
+msgid "Failed"
+msgstr "WPS ei onnitustunut"
+
+msgid "Timed out"
+msgstr "WPS aikakatkaisu"
+
+msgid "Switching to repeater mode"
+msgstr "Otetaan toistintila käyttöön"
+
+msgid "Overlap"
+msgstr "Overlap"
+
+msgid "Unknown"
+msgstr "WPS tuntematon"
+
+msgid "Invalid WPS PIN"
+msgstr "Väärä WPS PIN"
+
+msgid ""
+"Invalid format! WPS PIN must be ether 4 or 8 digits alternatively 8 digits "
+"with a space or dash in the middle"
+msgstr ""
+"Virheellinen muoto! WPS PIN täytyy olla 4 merkkiä tai 8 merkkiä eroteltuna "
+"välilyönnillä tai väliviivalla keskeltä."
+
+msgid "Edit wireless interface"
+msgstr "Muokkaa langatonta liitäntää"
+
+msgid "Save"
+msgstr "Tallenna"
+
+msgid "Cancel"
+msgstr "Peruuta"
+
+msgid "Auto"
+msgstr "Automaattinen"
+
+msgid "11a"
+msgstr "802.11c"
+
+msgid "11ac"
+msgstr "802.11ac"
+
+msgid "11b"
+msgstr "802.11b"
+
+msgid "11bg"
+msgstr "802.11n"
+
+msgid "11g"
+msgstr "802.11bg"
+
+msgid "11n"
+msgstr "802.11a"
+
+msgid "Key"
+msgstr "Avain"
+
+msgid "CCMP (AES)"
+msgstr "CCMP (AES)"
+
+msgid "TKIP/CCMP (AES)"
+msgstr "TKIP/CCMP (AES)"
+
+msgid ""
+"If you disable SSID broadcasting, WPS function will be disabled as well. You "
+"will need to enable it manually later. Are you sure you want to continue?"
+msgstr ""
+"Jos poistat SSID lähetykset, WPS-toiminto poistetaan käytöstä myös. Sinun "
+"tulee aktivoida se myöhemmin manuaalisesti. Oletko varma, että haluat jatkaa?"
+
+msgid ""
+"WPS will be disabled when using WEP encryption. Are you sure you want to "
+"continue?"
+msgstr ""
+"WPS ei ole käytössä, kun käytetään WEP-salausta. Oletko varma, että haluat "
+"jatkaa?"
+
+msgid "Access Point (AP)"
+msgstr "Access Point (AP)"
+
+msgid "Client (STA)"
+msgstr "Client (STA)"
+
+msgid ""
+"Are you sure you want to create a new SSID with the same name and on the "
+"same radio? This may result in undefined behaviour!"
+msgstr ""
+"Haluatko varmasti luoda uuden SSID:n, jolla on sama nimi samassa radiossa? "
+"Tämä voi aiheuttaa määrittelemätöntä käyttäytymistä!"
+
+msgid "Schedule"
+msgstr "Ajastus"
+
+msgid "Off"
+msgstr "Pois päältä"
+
+msgid "On"
+msgstr "Päällä"
+
+msgid "WPS"
+msgstr "WPS"
+
+msgid "(within 2 minutes)"
+msgstr "Parita (kahden minuutin sisällä)"
+
+msgid "Pair"
+msgstr "Parita"
+
+msgid "Attempting to Pair"
+msgstr "Yritetään parittaa laitetta"
+
+msgid "WPS pin:"
+msgstr ""
+
+msgid "{{i[0] | translate}}"
+msgstr ""
+
+msgid "Wireless"
+msgstr "WiFi"
+
+msgid "Radio On/Off"
+msgstr "Radio Päälle/Pois"
+
+msgid "WiFi Mode"
+msgstr "WiFi protokolla"
+
+msgid "Select Hardware Mode"
+msgstr "Valitse laitteistotila"
+
+msgid "Select Channel"
+msgstr "Kanava"
+
+msgid "Select Bandwidth"
+msgstr "Kaistanleveys"
+
+msgid "RIFS"
+msgstr "RIFS"
+
+msgid "RIFS Advertisement"
+msgstr "RIFS Advertisement"
+
+msgid "Framebursting"
+msgstr "Framebursting"
+
+msgid "Beamforming"
+msgstr "Beamforming"
+
+msgid "DFS Channels"
+msgstr "DFS kanavat"
+
+msgid "OBSS Co-Existence"
+msgstr "OBSS Co-Existence"
+
+msgid "RX Chain PowerSave Quiet Time"
+msgstr "RX Chain PowerSave Quiet Time"
+
+msgid "RX Chain PowerSave PPS"
+msgstr "RX Chain PowerSave PPS"
+
+msgid "Max. Assoc Clients"
+msgstr "Yhdistettävien laitteiden enimmäismäärä"
+
+msgid "Maximum Assoc Clients"
+msgstr "Yhdistettävien laitteiden enimmäismäärä"
+
+msgid "Scan Timer"
+msgstr "Skannauksen toistuvuus (min)"
+
+msgid "Timer Interval"
+msgstr "Intervalli"
+
+msgid "Enable WMM Multimedia Extensions"
+msgstr "Ota käyttöön WMM multimedia laajennukset"
+
+msgid "Disable WMM Ack"
+msgstr "Poista WMM Ack käytöstä"
+
+msgid "Enable WMM UAPSD Power Saving"
+msgstr "Ota käyttöön WMM UAPSD virransäästö"
+
+msgid "WiFi Network Name (SSID)"
+msgstr "WiFi verkon nimi (SSID)"
+
+msgid "Broadcast SSID"
+msgstr "Lähetä SSID"
+
+msgid "Wireless Multicast Forwarding"
+msgstr "WiFi Multicast"
+
+msgid "Frequency"
+msgstr "Taajuus"
+
+msgid "Cipher"
+msgstr "Salausavain"
+
+msgid "WiFi Key (Password)"
+msgstr "WiFi salasana"
+
+msgid "Reset to default password"
+msgstr "Palauta oletussalasana"
+
+msgid "Choose Key"
+msgstr "Valitse avain"
+
+msgid "WiFi Key"
+msgstr "WiFi avain"
+
+msgid "Radius Server"
+msgstr "Radius palvelin"
+
+msgid "Radius Port"
+msgstr "Radius portti"
+
+msgid "Radius Secret"
+msgstr "Radius salasana"
+
+msgid "Show Key Text"
+msgstr "Näytä salasana"
+
+msgid "MAC Filtering"
+msgstr "MAC suodatin"
+
+msgid "Access for listed devices"
+msgstr "Pääsy sallittu listatuille laitteille"
+
+msgid "Currently added devices"
+msgstr "Nykyiset lisätyt laitteet"
+
+msgid "Add currently connected hosts to the list"
+msgstr "Lisää kytketty laite listaan"
+
+msgid "Add clients to MAC filtering list"
+msgstr "Lisää isäntäkoneita MAC-suodatinlistaan"
+
+msgid "Select Wireless Radio"
+msgstr "Valitse Langaton Radio"
+
+msgid "Select SSID"
+msgstr "Valitse SSID"
+
+msgid "New SSID"
+msgstr "Uusi SSID"
+
+msgid "New Wireless Interface"
+msgstr "Uusi langaton liitäntä"
+
+msgid "Band Steering"
+msgstr ""
+
+msgid "wifi.band-steering.info"
+msgstr ""
+
+msgid "wifi.band-steering.dualband-warning"
+msgstr "wifi.band-steering.dualband-varoitus"
+
+msgid "WiFi Client Mode"
+msgstr "WiFi-tila"
+
+msgid "wifi.client.info"
+msgstr "Lähellä olevat langattomat laitteet"
+
+msgid "Connect"
+msgstr "Yhdistä"
+
+msgid "Wireless Radios"
+msgstr "WiFi radiot"
+
+msgid "wifi.radios.info"
+msgstr ""
+"Tällä sivulla voidaan konfiguroida laitteeseen asennettuja fyysisiä "
+"radioita. Fyysinen radio ei ole sama asia kuin tukiasema. Tukiasemat ovat "
+"liitäntöjä ja kullakin radiolla voi olla useita liitäntöjä."
+
+msgid "MAC Filter"
+msgstr "MAC Filter"
+
+msgid "wifi.macfilter.info"
+msgstr ""
+"Voit lisätä langattoman verkon tietoturvaa valitsemalla mitkä laitteet "
+"saavat yhdistää verkkoon. Laitteet tunnistetaan MAC-osoitteen perusteella. "
+"Voit hallinoida jopa 32:a langatonta laitetta."
+
+msgid "You cannot enable MAC Filtering on a WEP protected wireless interface!"
+msgstr "MAC-suodatusta ei voi käyttää, kun käytössä on WEP salaus"
+
+msgid "General WiFi Settings"
+msgstr "Yleiset WiFi asetukset"
+
+msgid "wifi.general.info"
+msgstr ""
+"Laitteesi tukee koko alan WiFi standardeja mahdollistaen helpon yhteyden "
+"langattomille laitteillesi."
+
+msgid "WiFi Network"
+msgstr "WiFi Verkko"
+
+msgid "Scheduled"
+msgstr "Ajastettu"
+
+msgid "Enable WiFi"
+msgstr "Ota WiFi käyttöön"
+
+msgid "Enable WiFi On/Off button"
+msgstr "Aktivoi WiFi Päälle/Pois -nappi"
+
+msgid ""
+"You have wifi-scheduling enabled. This means that your wifi will be "
+"automatically turned on and off based on your schedule settings"
+msgstr ""
+"WiFi ajastus on käytössä. Tämä tarkoittaa, että langaton verkko poistetaan "
+"käytöstä ja otetaan käyttöön automaattisesti asetetun aikataulun mukaan."
+
+msgid "wifi.interfaces.info"
+msgstr ""
+"Tällä sivulla voit muuttaa langattoman verkon asetuksia.\n"
+"Kummallakin taajuusalueella voi olla useampi langaton verkko ja kukin "
+"langaton verkko voidaan asettaa eri verkkoon ja palomuuriryhmään."
+
+msgid " page"
+msgstr "sivu"
+
+msgid "WiFi Scheduling"
+msgstr "Aseta ajastus"
+
+msgid "wifi.schedule.info"
+msgstr ""
+"Ajasta WiFi verkko päälle tai pois automaattisesti. \n"
+"Huom: Mikäli WiFi verkko on pois päältä sekä pää-, että vieras- WiFi verkot "
+"ovat pois päältä."
+
+msgid "Schedule Function"
+msgstr "Ajastus"
+
+msgid "Setup Scheduling"
+msgstr "Aseta ajastus"
+
+msgid "During this time the WiFi is"
+msgstr "Tänä aika WiFi on"
+
+msgid "Choose Schedule Mode"
+msgstr "Valitse ajoitustila"
+
+msgid "Day"
+msgstr "Päivä"
+
+msgid "Time"
+msgstr "Aika"
+
+msgid "Status"
+msgstr "Tila"
+
+msgid "WiFi Status"
+msgstr "WiFi tila"
+
+msgid "status.wifi.info"
+msgstr "WiFi"
+
+msgid "Channel:"
+msgstr "Kanava:"
+
+msgid "WiFi Scan"
+msgstr "WiFi skannaus"
+
+msgid "status.wifi.scan.info"
+msgstr " "
+
+msgid "Radio"
+msgstr "Radio"
+
+msgid "Radio Rate"
+msgstr ""
+
+msgid "Frequency to Scan"
+msgstr "Skannattava taajuus"
+
+msgid "Scan neighboring APs"
+msgstr "Skannaa ympäristön tukiasemat"
+
+msgid "Scanning..."
+msgstr "(Skannataan...)"
+
+msgid ""
+"You will not be able to scan 5Ghz band because your 5Ghz wireless radio is "
+"operating at a DFS channel"
+msgstr "Et voi skannata 5GHz ympäristöä, koska 5GHz radio operoi DFS kanavilla"
+
+msgid "WPS Settings"
+msgstr "Yleiset WiFi asetukset"
+
+msgid "wifi.wps.info"
+msgstr ""
+"WPS mahdollistaa laitteiden yhdistämisen WiFi verkkoon nappia painamalla"
+
+msgid "Enable WPS on"
+msgstr "Aktivoi WPS"
+
+msgid "Pair (within 2 minutes)"
+msgstr "Parita (kahden minuutin sisällä)"
+
+msgid "Generated PIN"
+msgstr "Luotu PIN"
+
+msgid "Generate New PIN"
+msgstr "Luo Uusi PIN"
+
+msgid "Enter your device PIN"
+msgstr "Syötä laitteesi PIN koodi"
+
+msgid "Enter your PIN here"
+msgstr "Syötä PIN koodi tähän"
+
+msgid "WPS-PBC: Push Button on Device"
+msgstr "WPS-PBC: Paina laitteessa olevaa WPS-painiketta"
+
+msgid ""
+"To pair your device, press Pair. Afterwards, press the corresponding button "
+"on the device you wish to connect. Your router will be open for pairing for "
+"2 minutes after you pressed Pair."
+msgstr ""
+"Parittaaksesi laitteesi paina \"Parita\". Tämän jälkeen paina vastaavaa "
+"painiketta yhdistettävässä laitteessa. WPS paritus on aktiivinen kahden "
+"minuutin ajan parituspainikkeen painamisen jälkeen."
+
+msgid "WPS-REG: Router provides PIN"
+msgstr "WPS-REG: reititin tarjoaa PIN-koodin"
+
+msgid "Enter the WPS-PIN below on the device you wish to pair."
+msgstr "Syötä alle paritettavan laitteen WPS-PIN-koodi"
+
+msgid "Generate"
+msgstr "Luonti"
+
+msgid "WPS-PIN: Another Device provides PIN"
+msgstr "WPS-PIN: Toinen laite tarjoaa PIN-koodin"
+
+msgid "Enter the WPS-PIN provided by the other device here."
+msgstr "Syötä paritettavan laitteen PIN-koodi tähän kohtaan."
+
+msgid "menu-wireless-band-steering-title"
+msgstr "Band Steering"
+
+msgid "menu-wireless-client-mode-title"
+msgstr "Client Mode"
+
+msgid "menu-wireless-devices-title"
+msgstr "Wifi radiot"
+
+msgid "menu-wireless-filtering-title"
+msgstr "MAC suodatus"
+
+msgid "menu-wireless-general-title"
+msgstr "WiFi"
+
+msgid "menu-wireless-interfaces-title"
+msgstr "WiFi verkot"
+
+msgid "menu-wireless-link-to-interfaces-title"
+msgstr "WiFi"
+
+msgid "menu-wireless-schedule-title"
+msgstr "Ajastus"
+
+msgid "menu-wireless-status-scan-title"
+msgstr "Skannaus"
+
+msgid "menu-wireless-status-title"
+msgstr "WiFi tila"
+
+msgid "menu-wireless-wps-title"
+msgstr "WPS"
+
+msgid "menu-wireless-title"
+msgstr "WiFi"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
