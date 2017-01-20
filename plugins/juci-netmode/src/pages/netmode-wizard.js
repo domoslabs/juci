@@ -1,7 +1,7 @@
 //!Author: Reidar Cederqvist <reidar.cederqvist@gmail.com>
 
 
-JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, $tr, gettext){
+JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, $tr, gettext, $wireless){
 	$scope.config = {
 		state:"start",
 		netmode:"",
@@ -104,8 +104,8 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 		var nm = $scope.netmodes.find(function(nm){return nm.value === $scope.config.netmode});
 		if(nm && nm.radio){
 			$scope.access_points = undefined;
-			$rpc.$call("juci.wireless", "scan", {radio: nm.radio}).done(function(){
-				setTimeout(function(){ $rpc.$call("juci.wireless", "scanresults", { radio: nm.radio }).done(function(result){
+			$wireless.scan({radio: nm.radio}).done(function(){
+				setTimeout(function(){ $wireless.scanresults({ radio: nm.radio }).done(function(result){
 					if(result && result.access_points){
 						$scope.access_points = result.access_points.map(function(ap){
 							return { value: ap.ssid, label: ap.ssid, encryption: ap.cipher };
@@ -119,10 +119,10 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 						$scope.$apply();
 					}
 				}).fail(function(e){
-					console.log("failed to call juci.wireless scanresults error: " + JSON.stringify(e));
+					console.log("failed to call $wireless scanresults error: " + JSON.stringify(e));
 				})}, 3000) // timeout value
 			}).fail(function(e){
-				console.log("failed to call juci.wireless scan error: " + JSON.stringify(e));
+				console.log("failed to call $wireless scan error: " + JSON.stringify(e));
 			});
 		}
 	}
