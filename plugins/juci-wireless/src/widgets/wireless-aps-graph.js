@@ -43,7 +43,7 @@ JUCI.app
 				format: function format(value) {
 					return value;
 				},
-				range: { min: -10, max: 110 },
+				range: { min: 0, max: 110 },
 				title: { text: $tr(gettext("SNR")) }
 			},
 		},
@@ -105,11 +105,15 @@ JUCI.app
 
 		var minch = 100;
 		var maxch = 0;
+		var maxsnr = -100;
 
 		value.map(function(val){
 			if(minch > val.channel) minch = val.channel;
 			if(maxch < val.channel) maxch = val.channel;
+			if(maxsnr < val.snr) maxsnr = val.snr;
 		});
+
+		options.dataAxis.left.range.max = maxsnr + 10;
 
 		options.min = (minch - 2);
 		options.max = (maxch + 2);
@@ -118,12 +122,14 @@ JUCI.app
 		dataset.remove(dataset.getIds());
 		var i = 0;
 		value.map(function(ap){
+			if(ap.snr < -10 || ap.snr > 110 || !ap.ssid || ap.channel < 0 || ap.channel > 200)
+				return;
 			ap["__id__"] = i;
 			var group = 1;
-			if(ap.rssi >= -50) group = 1;
-			else if(ap.rssi >= -75) group = 2;
+			if(ap.snr >= 30) group = 1;
+			else if(ap.snr >= 5) group = 2;
 			else group = 3;
-			dataset.add({ id:i, group: group, x: ap.channel, y: (100 + ap.rssi), label: { content: "" }});
+			dataset.add({ id:i, group: group, x: ap.channel, y: ap.snr, label: { content: "" }});
 			i++;
 		});
 	}, false);

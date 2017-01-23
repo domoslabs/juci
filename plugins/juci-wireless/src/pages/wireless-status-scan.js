@@ -19,9 +19,15 @@
 JUCI.app
 .controller("wirelessStatusScanPage", function($scope, $uci, $wireless, $rpc){
 	$scope.order = function(pred){
-		$scope.predicate = pred;
-		$scope.reverse = !$scope.reverse;
+		if($scope.predicate = pred)
+			$scope.reverse = !$scope.reverse;
+		else
+			$scope.predicate = pred;
+		console.log($scope.predicate);
+		console.log($scope.reverse);
 	}
+	$scope.reverse = false;
+	$scope.predicate = "ssid";
 	$scope.radioToScan = {value:null};
 	$uci.$sync("wireless").done(function(){
 		function update(){
@@ -60,11 +66,12 @@ JUCI.app
 						$scope.access_points = aps.filter(function(ap){
 							return ap.ssid;// && ap.snr > -10 && ap.snr < 110;
 						});
+					}).always(function(){
 						$scope.scanning = 0;
 						$scope.$apply();
-					});
+					});;
 				}, 4000);
-			});
+			})
 		}
 		$scope.onSsidSelected = function(ap){
 			$scope.ssidToShow = ap;

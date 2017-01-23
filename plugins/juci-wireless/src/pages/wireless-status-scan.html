@@ -4,12 +4,13 @@
 		<juci-config-info>{{ 'status.wifi.scan.info' | translate }}</juci-config-info>
 		<div class="row">
 			<div class="col-md-6"  ng-repeat="radio in wlRadios track by $index" style="opacity:{{radio.isup?'1':'0.5'}}">
-				<h2>{{'Radio'|translate}} {{radio.frequency}}</h2>
+				<h2><th colspan="2">{{'Radio'|translate}} {{radio.frequency}}</th></h2>
 				<table class="table table-condensed">
-					<tr><th colspan="2" ng-show="radio.isup">{{'Enabled'|translate}}</tr>
-					<tr><th colspan="2" ng-hide="radio.isup">{{'Disabled'|translate}}</tr>
-					<tr><th>{{'Channel'|translate}}</th><td>{{radio.channel}}</td></tr>
-					<tr><th>{{'Radio Rate'|translate}}</th><td>{{radio.rate}}</td></tr>
+					<thead>
+					</thead>
+					<tr><td>{{'Enabled'|translate}}</td><td>{{radio.isup ? 'true' : 'false'}}</td></tr>
+					<tr><td>{{'Channel'|translate}}</td><td>{{radio.channel}}</td></tr>
+					<tr><td>{{'Radio Rate'|translate}}</td><td>{{radio.rate}}</td></tr>
 				</table>
 			</div>
 		</div>
@@ -29,20 +30,18 @@
 		<br>
 		<table class="table" ng-show="access_points">
 			<thead>
-				<th><a href="" ng-click="order('ssid')" translate>SSID</a></th>
-				<th><a href="" ng-click="order('frequency')" translate>Frequency</a></th>
-				<th><a href="" ng-click="order('channel')" translate>Channel</a></th>
-				<th><a href="" ng-click="order('rssi')" translate>RSSI</a></th>
-				<th><a href="" ng-click="order('noise')" translate>Noise</a></th>
-				<th><a href="" ng-click="order('cipher')" translate>Cipher</a></th>
+				<th ng-class="{'active': predicate == 'ssid'}"><a style="cursor:pointer;" ng-click="order('ssid')" translate>SSID</a></th>
+				<th ng-class="{'active': predicate == 'frequency'}"><a href="" ng-click="order('frequency')" translate>Frequency</a></th>
+				<th ng-class="{'active': predicate == 'channel'}"><a href="" ng-click="order('channel')" translate>Channel</a></th>
+				<th ng-class="{'active': predicate == 'snr'}"><a href="" ng-click="order('snr')" translate>SNR</a></th>
+				<th ng-class="{'active': predicate == 'cipher'}"><a href="" ng-click="order('cipher')" translate>Cipher</a></th>
 				<!--<th><a href="" ng-click="order('wps_version')" translate>WPS</a></th>-->
 			</thead>
-			<tr ng-repeat="ap in access_points track by $index | orderBy:predicate:reverse" ng-click="onSsidSelected(ap)" class="{{ap.__id__ == ssidToShow.__id__ ? 'active' : ''}}">
+			<tr ng-repeat="ap in access_points | orderBy : predicate : reverse" ng-click="onSsidSelected(ap)" class="{{ap.__id__ == ssidToShow.__id__ ? 'active' : ''}}">
 				<td>{{ap.ssid}}</td>
 				<td>{{ap.frequency}}</td>
 				<td>{{ap.channel}}</td>
-				<td>{{ap.rssi}}</td>
-				<td>{{ap.noise}}</td>
+				<td>{{ap.snr}}</td>
 				<td>{{ap.cipher}}</td>
 				<!--<td>{{ap.wps_version}}</td>-->
 			</tr>
