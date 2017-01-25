@@ -6,9 +6,6 @@
 				"minidlna"
 			],
 			"ubus": {
-				"juci.minidlna": [
-					"status"
-				],
 				"router.directory": [
 					"folder_tree",
 					"autocomplete"
