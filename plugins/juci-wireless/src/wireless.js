@@ -213,7 +213,7 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 	UCI.wireless.$registerSectionType("bandsteering", {
 		"enabled":	{ dvalue: false, type: Boolean },
 		"policy":	{ dvalue: 0, type: Number },
-		"rssi_threshod":{ dvalue: -75, type: Number },
+		"rssi_threshold":{ dvalue: -75, type: Number },
 		"bw_util":	{ dvalue: 60, type: Number }
 	});
 	UCI.wireless.$registerSectionType("wifi-schedule", {
