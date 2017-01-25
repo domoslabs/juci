@@ -8,7 +8,7 @@ if [ "$1" == "" ]; then BIN=bin; fi
 if [ -d "$BIN/www" ]; then
 	for file in `find $BIN/www/js/ -name "*.js" 2>/dev/null`; do
 		echo "compiling js ${file}.."
-		uglifyjs ${file} > ${file}.out
+		uglifyjs ${file} -o ${file}.out -b
 		mv ${file}.out ${file}
 	done
 
@@ -24,7 +24,7 @@ if [ -d "$BIN/www" ]; then
 else
 	for file in $(find $BIN/*/www/js/ -name '*.js' 2>/dev/null); do
 		echo "compiling js ${file}.."
-		uglifyjs ${file} > ${file}.out
+		uglifyjs ${file} -o ${file}.out -b
 		mv ${file}.out ${file}
 	done
 	for file in `find $BIN/*/www/css/ -name "*.css*" 2>/dev/null`; do
