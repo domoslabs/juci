@@ -208,8 +208,13 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"wlan":		{ dvalue: true, type: Boolean },
 		"wps":		{ dvalue: true, type: Boolean },
 		"schedule":	{ dvalue: false, type: Boolean },
-		"sched_status":	{ dvalue: false, type: Boolean },
-		"bandsteering":{ dvalue: false, type: Boolean }
+		"sched_status":	{ dvalue: false, type: Boolean }
+	});
+	UCI.wireless.$registerSectionType("bandsteering", {
+		"enabled":	{ dvalue: false, type: Boolean },
+		"policy":	{ dvalue: 0, type: Number },
+		"rssi_threshod":{ dvalue: -75, type: Number },
+		"bw_util":	{ dvalue: 60, type: Number }
 	});
 	UCI.wireless.$registerSectionType("wifi-schedule", {
 		"days":		{ dvalue: [], type: Array, allow: ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], validator: UCI.validators.WeekDayListValidator},

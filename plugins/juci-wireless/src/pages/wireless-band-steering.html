@@ -6,7 +6,7 @@
 			{{ 'wifi.band-steering.dualband-warning' | translate}}
 		</juci-config-info>
 		<juci-config-line title="{{'Enable'|translate}}" ng-show="isDualBand()">
-			<switch class="green" ng-model="wireless.status.bandsteering.value" ng-disabled="isntDualBand()"/>
+			<switch class="green" ng-model="wireless.bandsteering.enabled.value" ng-disabled="isntDualBand()"/>
 		</juci-config-line>
 	</div>
 </juci-layout-with-sidebar>
