@@ -627,6 +627,9 @@ msgstr "Scheduling"
 msgid "menu-wireless-status-scan-title"
 msgstr "WiFi Scan"
 
+msgid "menu-wireless-band-steering-status-title"
+msgstr "Band Steering"
+
 msgid "menu-wireless-client-mode-title"
 msgstr "Client Mode"
 
