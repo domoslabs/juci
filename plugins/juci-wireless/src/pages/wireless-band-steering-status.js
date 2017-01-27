@@ -11,7 +11,7 @@ JUCI.app
 			$scope.$apply();
 		})
 	}
-	JUCI.interval.repeat("update",5000,function(next){
+	JUCI.interval.repeat("update",10000,function(next){
 		update();
 		next();
 	});
