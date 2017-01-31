@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.10\n"
+"X-Generator: Poedit 1.8.11\n"
 
 msgid "off"
 msgstr "Pois päältä"
@@ -310,6 +310,12 @@ msgstr "Kanava"
 msgid "Select Bandwidth"
 msgstr "Kaistanleveys"
 
+msgid "Scan Timer"
+msgstr "Skannauksen toistuvuus (min)"
+
+msgid "Timer Interval"
+msgstr "Intervalli"
+
 msgid "RIFS"
 msgstr "RIFS"
 
@@ -319,20 +325,18 @@ msgstr "RIFS Advertisement"
 msgid "Framebursting"
 msgstr "Framebursting"
 
-msgid "Beamforming"
-msgstr "Beamforming"
-
 msgid "DFS Channels"
 msgstr "DFS kanavat"
 
+msgid "Beamforming"
+msgstr "Beamforming"
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "Airtime Fairness"
+msgstr ""
+
 msgid "OBSS Co-Existence"
 msgstr "OBSS Co-Existence"
-
-msgid "RX Chain PowerSave Quiet Time"
-msgstr "RX Chain PowerSave Quiet Time"
-
-msgid "RX Chain PowerSave PPS"
-msgstr "RX Chain PowerSave PPS"
 
 msgid "Max. Assoc Clients"
 msgstr "Yhdistettävien laitteiden enimmäismäärä"
@@ -340,11 +344,11 @@ msgstr "Yhdistettävien laitteiden enimmäismäärä"
 msgid "Maximum Assoc Clients"
 msgstr "Yhdistettävien laitteiden enimmäismäärä"
 
-msgid "Scan Timer"
-msgstr "Skannauksen toistuvuus (min)"
+msgid "RX Chain PowerSave Quiet Time"
+msgstr "RX Chain PowerSave Quiet Time"
 
-msgid "Timer Interval"
-msgstr "Intervalli"
+msgid "RX Chain PowerSave PPS"
+msgstr "RX Chain PowerSave PPS"
 
 msgid "Enable WMM Multimedia Extensions"
 msgstr "Ota käyttöön WMM multimedia laajennukset"
@@ -425,19 +429,36 @@ msgid "Band Steering"
 msgstr ""
 
 msgid "wifi.band-steering.info"
-msgstr ""
+msgstr "Band steering"
 
 msgid "wifi.band-steering.dualband-warning"
 msgstr "wifi.band-steering.dualband-varoitus"
 
-msgid "WiFi Client Mode"
-msgstr "WiFi-tila"
+# plugins/juci-wireless/src/pages/wireless-band-steering.html
+msgid "Steering Policy"
+msgstr "Ohjaussääntö"
 
-msgid "wifi.client.info"
-msgstr "Lähellä olevat langattomat laitteet"
+# plugins/juci-wireless/src/pages/wireless-band-steering.html
+msgid "RSSI Threshold"
+msgstr "RSSI kynnysarvo"
 
-msgid "Connect"
-msgstr "Yhdistä"
+# plugins/juci-wireless/src/pages/wireless-band-steering.html
+msgid "Bandwidth Usage Threshold"
+msgstr "Kaistankäytön kynnysarvo"
+
+# plugins/juci-wireless/src/pages/wireless-band-steering-status.html
+msgid "Ping results"
+msgstr "Ping-tulokset"
+
+msgid "status.wifi.info"
+msgstr "WiFi"
+
+msgid "Status"
+msgstr "Tila"
+
+# plugins/juci-wireless/src/pages/wireless-band-steering-status.html
+msgid "Log"
+msgstr "Loki"
 
 msgid "Wireless Radios"
 msgstr "WiFi radiot"
@@ -523,14 +544,8 @@ msgstr "Päivä"
 msgid "Time"
 msgstr "Aika"
 
-msgid "Status"
-msgstr "Tila"
-
 msgid "WiFi Status"
 msgstr "WiFi tila"
-
-msgid "status.wifi.info"
-msgstr "WiFi"
 
 msgid "Channel:"
 msgstr "Kanava:"
@@ -613,11 +628,12 @@ msgstr "WPS-PIN: Toinen laite tarjoaa PIN-koodin"
 msgid "Enter the WPS-PIN provided by the other device here."
 msgstr "Syötä paritettavan laitteen PIN-koodi tähän kohtaan."
 
+# plugins/juci-wireless/src/pages/wireless-band-steering-status.html
+msgid "menu-wireless-band-steering-status-title"
+msgstr "Band steering"
+
 msgid "menu-wireless-band-steering-title"
 msgstr "Band Steering"
-
-msgid "menu-wireless-client-mode-title"
-msgstr "Client Mode"
 
 msgid "menu-wireless-devices-title"
 msgstr "Wifi radiot"
@@ -649,81 +665,14 @@ msgstr "WPS"
 msgid "menu-wireless-title"
 msgstr "WiFi"
 
+#~ msgid "WiFi Client Mode"
+#~ msgstr "WiFi-tila"
 
+#~ msgid "wifi.client.info"
+#~ msgstr "Lähellä olevat langattomat laitteet"
 
+#~ msgid "Connect"
+#~ msgstr "Yhdistä"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#~ msgid "menu-wireless-client-mode-title"
+#~ msgstr "Client Mode"
