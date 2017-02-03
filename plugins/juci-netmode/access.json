@@ -3,6 +3,10 @@
 		"description": "JUCI Netmode support module for iopsys",
 		"read": {
 			"ubus": {
+				"router.wireless": [
+					"scan",
+					"scanresults"
+				],
 				"juci.wireless": [
 					"set_credentials"
 				]

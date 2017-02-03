@@ -99,9 +99,9 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 			$scope.access_points = undefined;
 			$wireless.scan({radio: nm.radio}).done(function(){
 				setTimeout(function(){ $wireless.getScanResults({ radio: nm.radio }).done(function(result){
-					if(result && result.access_points){
-						$scope.access_points = result.access_points.map(function(ap){
-							return { value: ap.ssid, label: ap.ssid, encryption: ap.cipher };
+					if(result){
+						$scope.access_points = result.map(function(ap){
+							return { value: ap.ssid, label: ap.ssid, encryption: ap.encryption };
 						});
 						var index = 0;
 						$scope.access_points = $scope.access_points.sort(function(a, b){
