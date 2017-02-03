@@ -98,7 +98,7 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 		if(nm && nm.radio){
 			$scope.access_points = undefined;
 			$wireless.scan({radio: nm.radio}).done(function(){
-				setTimeout(function(){ $wireless.scanresults({ radio: nm.radio }).done(function(result){
+				setTimeout(function(){ $wireless.getScanResults({ radio: nm.radio }).done(function(result){
 					if(result && result.access_points){
 						$scope.access_points = result.access_points.map(function(ap){
 							return { value: ap.ssid, label: ap.ssid, encryption: ap.cipher };
