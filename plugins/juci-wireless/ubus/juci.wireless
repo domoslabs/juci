@@ -21,6 +21,8 @@ case "$1" in
 				json_get_var key key
 				json_get_var encryption encryption
 
+				[ -z "$encryption" -a -n "$key" ] && encryption="psk2"
+
 				json_init
 
 				if [ -z "$ssid" -o -z "$encryption" ]; then
