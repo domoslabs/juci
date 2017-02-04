@@ -5,9 +5,9 @@
 case "$1" in
 	list)
 		if [ -f /usr/sbin/bsd ]; then
-			echo '{ "set_credentials" : {"ssid":"str", "encryption":"str", "key":"str"}, "bsd_status" : {}, "bsd_log" : {} }'
+			echo '{ "set_credentials" : {"ssid":"str", "encryption":"str", "key":"str", "import":true}, "bsd_status" : {}, "bsd_log" : {} }'
 		else
-			echo '{ "set_credentials" : {"ssid":"str", "encryption":"str", "key":"str"} }'
+			echo '{ "set_credentials" : {"ssid":"str", "encryption":"str", "key":"str", "import":true} }'
 		fi
 
 	;;
@@ -20,6 +20,7 @@ case "$1" in
 				json_get_var ssid ssid
 				json_get_var key key
 				json_get_var encryption encryption
+				json_get_var import import 1
 
 				[ -z "$encryption" -a -n "$key" ] && encryption="psk2"
 
@@ -34,7 +35,11 @@ case "$1" in
 					json_add_string "error" "key needed if encryption is not 'none'"
 					json_dump
 				else
-					wifi import "$input" >/dev/null 2>&1 &
+					if [ "$import" == "1" ]; then
+						wifi import "$input" "reload" >/dev/null 2>&1 &
+					else
+						echo "$input" > /tmp/wifi_imported_credentials
+					fi
 					json_add_string "code" "success"
 				fi
 

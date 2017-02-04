@@ -79,7 +79,8 @@ JUCI.app
 		$rpc.$call("juci.wireless", "set_credentials", {
 			"ssid":ssid,
 			"key":key,
-			"encryption":encr
+			"encryption":encr,
+			"import":true
 		}).done(function(ret){
 			$scope.showModal = true;
 			$scope.modalTitle = $tr(gettext("Attempting to Pair"));

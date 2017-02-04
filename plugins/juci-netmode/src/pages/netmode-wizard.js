@@ -29,7 +29,7 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 		$scope.netmode.setup.curmode.value = $scope.config.netmode;
 		$scope.juci.juci.homepage.value = "overview";
 		$uci.$save().done(function(){
-			$rpc.$call("juci.wireless", "set_credentials", {ssid: $scope.config.ssid, key:$scope.config.key, encryption: ap? ap.encryption : "none" });
+			$rpc.$call("juci.wireless", "set_credentials", {ssid: $scope.config.ssid, key:$scope.config.key, encryption: ap? ap.encryption : "none", import : false });
 			var nm = $scope.netmodes.find(function(nm){ return nm.value === $scope.config.netmode; });
 			if(nm && nm.reboot) window.location = "/reboot.html";
 			$scope.config.state = "done";
