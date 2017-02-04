@@ -15,8 +15,6 @@
 					"stop"
 				], 
 				"juci.wireless": [
-					"scan", 
-					"scanresults",
 					"set_credentials",
 					"bsd_status",
 					"bsd_log"
@@ -28,6 +26,8 @@
 					"clients"
 				],
 				"router.wireless": [
+					"scan",
+					"scanresults",
 					"status",
 					"stas",
 					"radios"

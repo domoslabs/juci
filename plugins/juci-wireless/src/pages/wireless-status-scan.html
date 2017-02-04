@@ -34,7 +34,7 @@
 				<th ng-class="{'active': predicate == 'frequency'}"><a href="" ng-click="order('frequency')" translate>Frequency</a></th>
 				<th ng-class="{'active': predicate == 'channel'}"><a href="" ng-click="order('channel')" translate>Channel</a></th>
 				<th ng-class="{'active': predicate == 'snr'}"><a href="" ng-click="order('snr')" translate>SNR</a></th>
-				<th ng-class="{'active': predicate == 'cipher'}"><a href="" ng-click="order('cipher')" translate>Cipher</a></th>
+				<th ng-class="{'active': predicate == 'encryption'}"><a href="" ng-click="order('encryption')" translate>Encryption</a></th>
 				<!--<th><a href="" ng-click="order('wps_version')" translate>WPS</a></th>-->
 			</thead>
 			<tr ng-repeat="ap in access_points | orderBy : predicate : reverse" ng-click="onSsidSelected(ap)" class="{{ap.__id__ == ssidToShow.__id__ ? 'active' : ''}}">
@@ -42,7 +42,7 @@
 				<td>{{ap.frequency}}</td>
 				<td>{{ap.channel}}</td>
 				<td>{{ap.snr}}</td>
-				<td>{{ap.cipher}}</td>
+				<td>{{ap.encryption}}</td>
 				<!--<td>{{ap.wps_version}}</td>-->
 			</tr>
 		</table>
