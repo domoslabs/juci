@@ -4,7 +4,11 @@
 
 case "$1" in
 	list)
-		echo '{ "set_credentials" : {"ssid":"str", "encryption":"str", "key":"str"}, "bsd_status" : {}, "bsd_log" : {} }'
+		if [ -f /usr/sbin/bsd ]; then
+			echo '{ "set_credentials" : {"ssid":"str", "encryption":"str", "key":"str"}, "bsd_status" : {}, "bsd_log" : {} }'
+		else
+			echo '{ "set_credentials" : {"ssid":"str", "encryption":"str", "key":"str"} }'
+		fi
 
 	;;
 	call)
