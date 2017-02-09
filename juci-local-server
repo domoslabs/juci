@@ -3,20 +3,9 @@
 var express = require('express');
 var app = express();
 var JSON = require("JSON"); 
-var fs = require("fs"); 
-var request = require("request"); 
 var http = require("http"); 
 var bodyParser = require('body-parser')
 var config = { port: 3000 };
-
-//check if file exists and is a file
-if (fs.existsSync("juci-local-server.config")){
-	try { 
-		config = JSON.parse(fs.readFileSync("juci-local-server.config"));
-	} catch(e){
-	
-	}
-}
 
 for(var i = 0; i < process.argv.length; i++){
 	switch(process.argv[i]){
@@ -46,29 +35,6 @@ spawn('make', ["debug", "DEFAULT_THEME=y"], { customFds: [0,1,2] })
 
 
 var server = app.listen(config.port, function () {
-	var host = server.address().address;
-	var port = server.address().port;
-
-	for(var i = 0; i < process.argv.length; i++){
-		switch(process.argv[i]){
-			case "-p": {
-				var paths = process.argv[++i].split(";"); 
-				paths.map(function(k){
-					var url, path; 
-					if(k.indexOf(":") >= 0){
-						var parts = k.split(":"); 
-						path = parts[1]; 
-						url = parts[0]; 
-					} else {
-						url = k.split("/").pop(); 
-						path = k; 
-					}
-					console.log("Adding extra plugin search path: "+path+" at "+url); 
-					app.use(url, express.static(path + '/'));
-				}); 
-			} break; 
-		}
-	}
-	console.log('Local server listening on http://%s:%s', host, port);
+	console.log("Local server listening on http://localhost:" + config.port);
 });
 
