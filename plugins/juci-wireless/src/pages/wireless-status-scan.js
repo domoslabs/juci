@@ -66,12 +66,16 @@ JUCI.app
 						$scope.access_points = aps.filter(function(ap){
 							return ap.ssid;// && ap.snr > -10 && ap.snr < 110;
 						});
+					}).fail(function(e){
+						console.log(e);
 					}).always(function(){
 						$scope.scanning = 0;
 						$scope.$apply();
-					});;
+					});
 				}, 4000);
-			})
+			}).fail(function(e){
+				console.log(e);
+			});
 		}
 		$scope.onSsidSelected = function(ap){
 			$scope.ssidToShow = ap;
