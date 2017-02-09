@@ -16,7 +16,7 @@ JUCI.app
 				if(now.getDate() == date.getDate() && now.getMonth() == date.getMonth() && date.getFullYear() == now.getFullYear())
 					log.date = $tr(gettext("Today")); 
 				else 
-					log.date = date.getDate() + ":"+date.getMonth()+":"+date.getFullYear(); 
+					log.date = parts[0]; 
 				log.time = parts[1]; 
 				if(log.direction == "INCOMING") unique_phones[log.to] = true; 
 				if(log.direction == "OUTGOING") unique_phones[log.from] = true; 
