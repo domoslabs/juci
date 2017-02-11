@@ -33,7 +33,7 @@
 			<juci-config-line title="{{'Beamforming'|translate}}" ng-show="device.band.value == 'a'">
 				<switch class="green" ng-model="device.beamforming.value"/>
 			</juci-config-line>
-			<juci-config-line title="{{'Airtime Fairness'|translate}}">
+			<juci-config-line title="{{'Airtime Fairness'|translate}}" help="{{ 'ATF feature addresses the issue where low-speed data transfers impact high-speed data transfers' | translate }}">
 				<switch class="green" ng-model="device.atf.value"/>
 			</juci-config-line>
 			<!--<juci-config-line title="{{'OBSS Co-Existence'|translate}}" ng-show="device.bandwidth.value == '40' || device.bandwidth.value == '80' || device.bandwidth.value == '160' || device.bandwidth.value == '20/40'">
