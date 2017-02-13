@@ -204,7 +204,7 @@ JUCI.app
 					next();
 				}).fail(function(e){next({ "Error": e });});
 			}], function(err){
-				if(err){ def.reject(); return;}
+				if(err){ self.def.reject(); return;}
 				var up = false;
 				async.eachSeries(wan_nets, function(wan, callback){
 					if(!wan){ callback(); return; }
