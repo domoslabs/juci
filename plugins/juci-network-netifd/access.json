@@ -4,11 +4,15 @@
 		"read": {
 			"ubus": {
 				"juci.network": [
+					"ifup",
 					"load",
 					"nameservers",
 					"services",
 					"protocols",
 					"online"
+				],
+				"juci.system": [
+					"reboot"
 				],
 				"juci.modems": [
 					"list"

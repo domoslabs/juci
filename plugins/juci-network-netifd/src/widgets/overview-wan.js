@@ -49,7 +49,7 @@ JUCI.app
 .controller("overviewWidgetSmallWan", function($scope, $firewall, $rpc, $events, $config){
 	$scope.href = $config.getWidgetLink("overviewWidget11WAN");
 	function refresh(){
-		var wans,wan_zones;
+		var wan_zones;
 		async.series([
 			function(next){
 				$firewall.getWanZones().done(function(wans){
@@ -58,7 +58,7 @@ JUCI.app
 			},
 			function(next){
 				$rpc.$call("network.interface", "dump").done(function(data){
-					wans = data.interface.filter(function(iface){
+					$scope.wans = data.interface.filter(function(iface){
 						return wan_zones.find(function(w){
 							return w.network.value.find(function(n){ return n === iface.interface;});
 						});
@@ -67,7 +67,7 @@ JUCI.app
 			},
 			function(next){
 				$rpc.$call("router.network", "dump").done(function(data){
-					wans = wans.filter(function(w){
+					$scope.wans = $scope.wans.filter(function(w){
 						var wan = data[w.interface];
 						return wan && wan.defaultroute && wan.ifname && wan.ifname.match(/^[^@].*/);
 					});
@@ -75,7 +75,7 @@ JUCI.app
 			}
 		], function(){
 			$scope.up = false;
-			wans.map(function(w){
+			$scope.wans.map(function(w){
 				if(w.up) $scope.up = true;
 			});
 			$scope.$apply();
@@ -85,7 +85,7 @@ JUCI.app
 		refresh();
 	});
 })
-.controller("overviewWidgetWAN", function($scope, $rpc, $tr, gettext, $events, $firewall, $config){
+.controller("overviewWidgetWAN", function($scope, $rpc, $tr, gettext, $events, $firewall, $config, $juciDialog){
 	$scope.href = $config.getWidgetLink("overviewWidget11WAN");
 	JUCI.interval.repeat("update_wan_uptime", 1000, function(next){
 		if(!$scope.uptime || $scope.uptime === 0){ next(); return; }
@@ -93,8 +93,52 @@ JUCI.app
 		$scope.$apply();
 		next();
 	});
-	function refresh(){
-		var wans,wan_zones;
+	JUCI.interval.repeat("wan_check_internet", 10000, function(next){
+		$rpc.$call("juci.network", "online").done(function(res){
+			if(res)
+				$scope.online = res.online;
+		}).always(function(){next();});
+	});
+	$scope.fixError = function(){
+		if($scope.fixErrorRunning) return;
+		$scope.fixErrorRunning = true;
+		getNetworks().done(function(){
+			var link_error = false;
+			$scope.wans.map(function(wan){
+				if(wan && wan.errors && wan.errors.length){
+					wan.errors.find(function(e){
+						if(e && e.code == "NO_DEVICE")
+							link_error = true;
+					});
+				}
+			});
+			if(link_error){
+				$juciDialog.show(null, {
+					title: $tr(gettext("Internet Service Down - No WAN Link")),
+					size: "sm",
+					content: "<div>" + $tr(gettext("Your router do not have internet access. Please check that cables are connected on WAN.")) + "</div>",
+					buttons: [ { label: $tr(gettext("Close")), value:"close", primary: true } ],
+					on_button: function(btn, inst){
+						$scope.fixErrorRunning = false;
+						inst.close();
+					}
+				});
+			}else{
+				$juciDialog.show("overview-wan-fix", {
+					title: $tr(gettext("Internet Service Down")),
+					size: "md",
+					buttons: [ { label: $tr(gettext("Close")), value:"close", primary: true } ],
+					on_button: function(btn, inst){
+						$scope.fixErrorRunning = false;
+						inst.close();
+					},
+					model:$scope.wans
+				});
+			}
+		});
+	}
+	function getNetworks(){
+		var def  = $.Deferred();
 		async.series([
 			function(next){
 				$firewall.getWanZones().done(function(wans){
@@ -103,16 +147,29 @@ JUCI.app
 			},
 			function(next){
 				$rpc.$call("network.interface", "dump").done(function(data){
-					wans = data.interface.filter(function(iface){
+					$scope.wans = data.interface.filter(function(iface){
 						return wan_zones.find(function(w){
 							return w.network.value.find(function(n){ return n === iface.interface;});
 						});
 					});
 				}).fail(function(e){console.log(e);}).always(function(){next();});
 			},
+		], function(){
+			def.resolve();
+		});
+		return def.promise();
+	}
+
+
+	function refresh(){
+		var wan_zonrs = [];
+		async.series([
+			function(next){
+				getNetworks().always(function(){next();});
+			},
 			function(next){
 				$rpc.$call("router.network", "dump").done(function(data){
-					wans = wans.filter(function(w){
+					$scope.wans = $scope.wans.filter(function(w){
 						var wan = data[w.interface];
 						return wan && wan.defaultroute;
 					});
@@ -121,7 +178,7 @@ JUCI.app
 		], function(){
 			$scope.data = {ip:[], defaultroute:[], contypes:[], dslUp:"", dslDown:"", dns:[], up:false, linkspeed:""};
 			$scope.uptime = 0;
-			wans.map(function(w){
+			$scope.wans.map(function(w){
 				if(w.up) $scope.data.up = true;
 				else return;
 				if(w["ipv4-address"] && w["ipv4-address"].length)
@@ -179,7 +236,10 @@ JUCI.app
 				}
 			});
 			$scope.$apply();
+			if(!$scope.online || !$scope.data.up)
+				$scope.fixError();
 		});
+		return def;
 	}refresh();
 	$events.subscribe("network.interface", function(res){
 		refresh();

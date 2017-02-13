@@ -4,10 +4,19 @@
 
 case "$1" in
 	list)
-		echo '{ "arp" : {}, "ipv4routes" : {}, "ipv6routes" : {}, "ipv6neigh" : {}, "load" : {}, "nameservers" : {}, "nat_table" : {}, "protocols" : {}, "services" : {}, "online" : {} }'
+		echo '{ "ifup" : {"interface":"str"}, "arp" : {}, "ipv4routes" : {}, "ipv6routes" : {}, "ipv6neigh" : {}, "load" : {}, "nameservers" : {}, "nat_table" : {}, "protocols" : {}, "services" : {}, "online" : {} }'
 	;;
 	call)
 		case "$2" in
+			ifup)
+				local input interface
+				read input;
+				json_load "$input"
+				json_get_var interface interface
+				ifup $interface
+				json_init
+				json_dump
+			;;
 			online)
 				json_load "$(cat /tmp/internet_connection_status 2>/dev/null)"
 				json_dump

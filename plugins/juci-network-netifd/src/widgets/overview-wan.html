@@ -1,11 +1,20 @@
 <div>
 	<juci-overview-widget title="{{'WAN'|translate}}" icon="juci juci-world" href="{{href}}">
 		<table class="table table-condensed">
-			<tr>
+			<tr ng-show="data.up">
 				<td class="col-xs-6"><strong translate>Internet</strong></td>
 				<td class="col-xs-6">
-					<strong ng-show="data.up" class="text-success" translate>ONLINE</strong>
-					<strong ng-show="!data.up" class="text-danger" translate>OFFLINE</strong>
+					<strong ng-show="online" class="text-success" translate>ONLINE</strong>
+					<strong ng-show="!online" class="text-danger" translate>OFFLINE</strong>
+					<button ng-show="!online" style="margin-left:10px;" class="btn btn-danger" ng-click="fixError()">fix <i class="fa fa-exclamation"></i></button>
+				</td>
+			</tr>
+			<tr>
+				<td class="col-xs-6"><strong translate>Link</strong></td>
+				<td class="col-xs-6">
+					<strong ng-show="data.up" class="text-success" translate>UP</strong>
+					<strong ng-show="!data.up" class="text-danger" translate>DOWN</strong>
+					<button ng-show="!data.up" style="margin-left:10px;" class="btn btn-danger" ng-click="fixError()">fix <i class="fa fa-exclamation"></i></button>
 				</td>
 			</tr>
 			<tr ng-show="data.ip.length">
