@@ -6,7 +6,7 @@
 				<td class="col-xs-6">
 					<strong ng-show="online" class="text-success" translate>ONLINE</strong>
 					<strong ng-show="!online" class="text-danger" translate>OFFLINE</strong>
-					<button ng-show="!online" style="margin-left:10px;" class="btn btn-danger" ng-click="fixError()">fix <i class="fa fa-exclamation"></i></button>
+					<button ng-show="!online && !hideFixError" style="margin-left:10px;" class="btn btn-danger" ng-click="fixError()">fix <i class="fa fa-exclamation"></i></button>
 				</td>
 			</tr>
 			<tr>
@@ -14,7 +14,7 @@
 				<td class="col-xs-6">
 					<strong ng-show="data.up" class="text-success" translate>UP</strong>
 					<strong ng-show="!data.up" class="text-danger" translate>DOWN</strong>
-					<button ng-show="!data.up" style="margin-left:10px;" class="btn btn-danger" ng-click="fixError()">fix <i class="fa fa-exclamation"></i></button>
+					<button ng-show="!data.up && !hideFixError" style="margin-left:10px;" class="btn btn-danger" ng-click="fixError()">fix <i class="fa fa-exclamation"></i></button>
 				</td>
 			</tr>
 			<tr ng-show="data.ip.length">

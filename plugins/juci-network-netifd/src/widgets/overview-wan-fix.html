@@ -1,0 +1,19 @@
+<div>
+	<p ng-show="!internet || !link">
+	{{'Your router do not have internet access.'|translate}}<div ng-show="!link"> {{'Please check that cables are connected on WAN.'|translate}}</div>
+	</p>
+	<div ng-show="link && !internet">
+		<juci-config-line title="{{'Reload network'| translate}}" help="{{'Press button to restart WAN connection(s)'|translate}}">
+			<button class="btn btn-default" ng-click="reloadNetwork()">{{'Reload'|translate}}</button>
+		</juci-config-line>
+		<juci-config-line title="{{'Reboot/Restart Router'| translate}}" help="{{'Press this button to reboot/restart your router'|translate}}">
+			<button class="btn btn-default" ng-click="restartRouter()">{{'Reboot'|translate}}</button>
+		</juci-config-line>
+	</div>
+	<div class="text-success" style="font-size:2em;" ng-show="internet && link">
+		{{'Internet is up you can close this popup'| translate}}
+	</div>
+	<juci-config-line title="{{'Do not show this again'|translate}}" help="{{'warning! Only works if your browser supports html5 storage'|translate}}">
+		<input type="checkbox" ng-model="model.hideFixError" />
+	</juci-config-line>
+</div>
