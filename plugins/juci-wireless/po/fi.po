@@ -335,6 +335,14 @@ msgstr "Beamforming"
 msgid "Airtime Fairness"
 msgstr ""
 
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid ""
+"ATF feature addresses the issue where low-speed data transfers impact high-"
+"speed data transfers"
+msgstr ""
+"ATF ominaisuus ratkaisee ongelman, jossa hitaat tiedonsiirrot vaikuttavat "
+"heikentävästi nopeisiin tiedonsiirtoihin"
+
 msgid "OBSS Co-Existence"
 msgstr "OBSS Co-Existence"
 
