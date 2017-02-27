@@ -99,6 +99,19 @@ JUCI.app
 		});
 	}
 
+	function dsl_stats(type){
+		if(type.match(/[AV]DSL/)){
+			$rpc.$call("router.dsl", "stats").done(function(data){
+				if(!data || !data.dslstats || !data.dslstats.bearers || data.dslstats.bearers.length < 1) return;
+				data.dslstats.bearers.map(function(b){
+					if(b.rate_down) $scope.data.dslDown = parseInt(String(b.rate_down))/1000;
+					if(b.rate_up) $scope.data.dslUp = parseInt(String(b.rate_up))/1000;
+				});
+				$scope.$apply();
+			});
+		}
+	}
+
 	function refresh(){
 		var wan_zonrs = [];
 		var def = $.Deferred();
@@ -129,30 +142,22 @@ JUCI.app
 				else if(w.device.match(/atm/)) type = $tr(gettext("ADSL"));
 				else if(w.device.match(/ptm/)) type = $tr(gettext("VDSL"));
 				else if(w.device.match(/wwan/)) type = $tr(gettext("WWAN"));
-				if(w.device && w.device.match("eth[0-9].[0-9]")){
-					$rpc.$call("router.port", "status", {"port":w.device.substring(0,4)}).done(function(data){
+				if(w.device && w.device.match("eth[0-9].[0-9]") || w.device.match("br-")){
+					$rpc.$call("router.port", "status", {"port":w.device}).done(function(data){
 						if(data && data.speed)
 							$scope.data.linkspeed = data.speed;
 						if(data && data.type)
 							type = data.type;
 						if($scope.data.contypes.indexOf(type) === -1)
 							$scope.data.contypes.push(type);
+						dsl_stats(type);
 						$scope.$apply();
 					}).fail(function(e){console.log(e);});
 				}
 				else{
 					if($scope.data.contypes.indexOf(type) === -1)
 						$scope.data.contypes.push(type);
-				}
-				if(w.device && w.device.match(/[ap]tm/)){
-					$rpc.$call("router.dsl", "stats").done(function(data){
-						if(!data || !data.dslstats || !data.dslstats.bearers || data.dslstats.bearers.length < 1) return;
-						data.dslstats.bearers.map(function(b){
-							if(b.rate_down) $scope.data.dslDown = parseInt(String(b.rate_down))/1000;
-							if(b.rate_up) $scope.data.dslUp = parseInt(String(b.rate_up))/1000;
-						});
-						$scope.$apply();
-					});
+					dsl_stats(type);
 				}
 				if(w["dns-server"] && w["dns-server"].length)
 					$scope.data.dns = $scope.data.dns.concat(w["dns-server"]);
