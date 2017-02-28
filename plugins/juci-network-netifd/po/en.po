@@ -1330,7 +1330,7 @@ msgid "menu-status-network-nat-title"
 msgstr "NAT"
 
 msgid "menu-status-network-title"
-msgstr "Network Status"
+msgstr "Network"
 
 msgid "menu-internet-routes-title"
 msgstr "Static Routes"

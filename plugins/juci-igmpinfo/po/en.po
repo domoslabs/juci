@@ -43,4 +43,4 @@ msgid "Timeout"
 msgstr ""
 
 msgid "menu-status-tv-title"
-msgstr "IGMP Status"
+msgstr "IGMP"
