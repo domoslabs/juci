@@ -57,6 +57,10 @@ JUCI.app
 				$wireless.getConnectedClients().done(function(cls){
 					$scope.clients = cls;
 					cls.map( function(c){
+						var rssi_per_antenna = "";
+						c.rssi_per_antenna.map(function(an){
+							rssi_per_antenna += (an + " ");
+						});
 						if(!c.scbstats || !c.rssi_per_antenna){ return; }
 						c["rows"] = [
 							[$tr(gettext("IP-Address")),c.ipaddr],
@@ -64,9 +68,9 @@ JUCI.app
 							[$tr(gettext("DHCP")), c.dhcp],
 							[$tr(gettext("Idle")), c.idle],
 							[$tr(gettext("In Network")), c.in_network],
-							[$tr(gettext("RSSI")), c.rssi+" dBm"],
-							[$tr(gettext("SNR")), c.snr+ " dB"],
-							[$tr(gettext("Number of Antennas")), c.rssi_per_antenna.length],
+							[$tr(gettext("RSSI [dBm]")), c.rssi],
+							[$tr(gettext("SNR [dB]")), c.snr],
+							[$tr(gettext("Average antenna signal/RSSI [dbm]")), rssi_per_antenna],
 							[$tr(gettext("TX Rate")), parseInt(c.scbstats.rate_of_last_tx_pkt/1000 +0.5) + " Mbps"],
 							[$tr(gettext("RX Rate")), parseInt(c.scbstats.rate_of_last_rx_pkt/1000 +0.5) + " Mbps"],
 						];
