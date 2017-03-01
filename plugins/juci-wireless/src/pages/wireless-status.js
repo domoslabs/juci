@@ -71,8 +71,8 @@ JUCI.app
 							[$tr(gettext("RSSI [dBm]")), c.rssi],
 							[$tr(gettext("SNR [dB]")), c.snr],
 							[$tr(gettext("Average antenna signal/RSSI [dbm]")), rssi_per_antenna],
-							[$tr(gettext("TX Rate")), parseInt(c.scbstats.rate_of_last_tx_pkt/1000 +0.5) + " Mbps"],
-							[$tr(gettext("RX Rate")), parseInt(c.scbstats.rate_of_last_rx_pkt/1000 +0.5) + " Mbps"],
+							[$tr(gettext("TX Rate [Mbps]")), parseInt(c.scbstats.rate_of_last_tx_pkt/1000 +0.5)],
+							[$tr(gettext("RX Rate [Mbps]")), parseInt(c.scbstats.rate_of_last_rx_pkt/1000 +0.5)],
 						];
 
 
