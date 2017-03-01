@@ -276,7 +276,7 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"net_reauth":		{ dvalue: 36000, type: Number },
 		"wps_pbc":			{ dvalue: false, type: Boolean },
 		"wmf_bss_enable":	{ dvalue: false, type: Boolean },
-		"bss_max":			{ dvalue: 32, type: Number },
+		"bss_max":			{ dvalue: 32, type: Number, validator: UCI.validators.NumberLimitValidator(0, 128) },
 		"closed":			{ dvalue: false, type: Boolean },
 		"disabled":			{ dvalue: false, type: Boolean },
 		"macfilter":			{ dvalue: 0, type: Number },

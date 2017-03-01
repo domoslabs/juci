@@ -12,6 +12,9 @@
 		<juci-config-line title="{{'Wireless Multicast Forwarding'|translate}}">
 			<switch id="enabled" name="enabled" ng-model="interface.wmf_bss_enable.value" class="green"></switch>
 		</juci-config-line>
+		<juci-config-line title="{{'Maximum Associated Stations'|translate}}">
+			<input type="number" max="128" min="0" ng-model="interface.bss_max.value" class="form-control"></switch>
+		</juci-config-line>
 		<!--<juci-config-line title="{{'Frequency'|translate}}">
 			<juci-select ng-model="interface.device.value" ng-items="devices" placeholder="Choose Radio"></juci-select>
 		</juci-config-line>-->
