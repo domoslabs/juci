@@ -29,7 +29,7 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("networkConnectionTypeBridgeEdit", function($scope, $ethernet, $modal, $tr, gettext, $uci, $networkHelper, $juciConfirm){
+.controller("networkConnectionTypeBridgeEdit", function($rootScope, $scope, $ethernet, $modal, $tr, gettext, $uci, $networkHelper, $juciConfirm){
 	$scope.getItemTitle = function(dev){
 		return dev.name + " ("+dev.device+")"; 
 	}
@@ -58,11 +58,14 @@ JUCI.app
 	}
 	updateDevices($scope.connection); 
 	
-	$scope.$watch("connection", function(value){
+	// TODO: figure out why this is needed
+	if($rootScope.bridge_watcher){
+		$rootScope.bridge_watcher();
+	}
+	$rootScope.bridge_watcher = $scope.$watch("connection", function(value){
 		if(!value) return; 
 		updateDevices(value); 	
 	});
-	
 	
 	$scope.onAddBridgeDevice = function(){
 		var modalInstance = $modal.open({

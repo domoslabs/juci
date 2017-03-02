@@ -29,7 +29,7 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("networkConnectionTypeAnywanEdit", function($scope, $ethernet, $modal, $tr, gettext, $uci, $networkHelper, $juciConfirm){
+.controller("networkConnectionTypeAnywanEdit", function($rootScope, $scope, $ethernet, $modal, $tr, gettext, $uci, $networkHelper, $juciConfirm){
 	$scope.getItemTitle = function(dev){
 	
 		return dev.name + " ("+dev.device+")"; 
@@ -53,13 +53,15 @@ JUCI.app
 			$scope.$apply(); 
 		}); 
 	} 
-	
-	$scope.$watch("connection", function(value){
+
+	if($rootScope.anywan_watcher){
+		$rootScope.anywan_watcher();
+	}
+	$rootScope.anywan_watcher = $scope.$watch("connection", function(value){
 		if(!value) return; 
 		updateDevices(); 	
 	});
-	
-	
+
 	$scope.onAddBridgeDevice = function(){
 		var modalInstance = $modal.open({
 			animation: true,

@@ -29,12 +29,6 @@
 				<div dynamic="interface.$proto_editor"/>
 			</tab>
 			<tab heading="{{'Physical Settings' |translate}}" ng-show="showPhysical()">
-				<!--<juci-config-lines>
-					<juci-config-line title="{{'Interface Type'|translate}}">
-						<juci-select ng-model="interface.type.value" ng-items="allInterfaceTypes"/>
-					</juci-config-line>
-				</juci-config-lines>
-				<div dynamic="interface.$type_editor"/>-->
 				<div dynamic="interface.$proto_editor_ph" />	
 			</tab>
 			<tab heading="{{'Advanced'|translate}}">
@@ -54,14 +48,6 @@
 				</juci-config-lines>
 				<div dynamic="interface.$proto_editor_ad" /> 
 			</tab>
-			<!--<tab heading="IPv6 Settings">
-				<juci-config-lines>
-					<juci-config-line title="{{'Method'|translate}}">
-						<juci-select ng-model="interface.proto6.value" ng-items="protocolTypes" placeholder="{{'Choose Configuration Option'|translate}}"/>
-					</juci-config-line>
-				</juci-config-lines>
-				<network-connection-ip6-settings-edit ng-model="interface" ></network-connection-ip6-settings-edit>
-			</tab>-->
 			<tab heading="{{ 'DHCP' | translate}}" ng-show="interface.proto.value == 'static'">
 				<network-connection-dhcp-server-settings ng-show="interface.proto.value == 'static'" ng-connection="interface"/>
 			</tab>

@@ -30,16 +30,19 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("networkConnectionTypeNoneEdit", function($scope, $ethernet, $modal, $tr, gettext, $networkHelper, $network){
-	$scope.$watch("interface", function(){
+.controller("networkConnectionTypeNoneEdit", function($rootScope, $scope, $ethernet, $modal, $tr, gettext, $networkHelper, $network){
+	if($rootScope.none_watcher){
+		$rootScope.none_watcher();
+	}
+	$rootScope.none_watcher = $scope.$watch("interface", function(){
 		$ethernet.getAdapters().done(function(devs){
-			$scope.baseDevices = devs.filter(function(dev){
-				return dev.type !== "eth-bridge";
-			}).map(function(dev){
-				return { label: dev.name + " (" + dev.device + ")", value: dev.device };
-			});
-			// Add all other interfaces as aliases
 			$network.getNetworks().done(function(nets){
+				$scope.baseDevices = devs.filter(function(dev){
+					return dev.type !== "eth-bridge";
+				}).map(function(dev){
+					return { label: dev.name + " (" + dev.device + ")", value: dev.device };
+				});
+				// Add all other interfaces as aliases
 				nets.map(function(net){
 					if(!net.$can_edit() || net[".name"] === $scope.interface[".name"]) return;
 					$scope.baseDevices.push({ label: $tr(gettext("(Alias)")) + " " + net[".name"], value: "@" + net[".name"] });

@@ -89,13 +89,8 @@ JUCI.app
 		});
 	}load_info();
 	$events.subscribe("network.interface", function(){load_info();});
-	$scope.$watch("interface.type.value", function(){
-		if(!$scope.interface) return; 
-		$scope.interface.$type_editor = "<network-connection-type-"+($scope.interface.type.value||'none')+"-edit ng-model='interface'/>"; 
-	}); 
 	$scope.$watch("interface", function(){
 		if(!$scope.interface) return; 
 		setProto($scope.interface.proto.value);
-		$scope.interface.$type_editor = "<network-connection-type-"+($scope.interface.type.value||'none')+"-edit ng-model='interface'/>"; 
 	}, false); 
 }); 
