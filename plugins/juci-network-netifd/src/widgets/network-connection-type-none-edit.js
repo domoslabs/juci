@@ -31,10 +31,7 @@ JUCI.app
 	};
 })
 .controller("networkConnectionTypeNoneEdit", function($rootScope, $scope, $ethernet, $modal, $tr, gettext, $networkHelper, $network){
-	if($rootScope.none_watcher){
-		$rootScope.none_watcher();
-	}
-	$rootScope.none_watcher = $scope.$watch("interface", function(){
+	$scope.$watch("interface", function(){
 		$ethernet.getAdapters().done(function(devs){
 			$network.getNetworks().done(function(nets){
 				$scope.baseDevices = devs.filter(function(dev){

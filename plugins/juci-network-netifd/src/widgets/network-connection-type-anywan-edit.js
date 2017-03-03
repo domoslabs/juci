@@ -54,10 +54,7 @@ JUCI.app
 		}); 
 	} 
 
-	if($rootScope.anywan_watcher){
-		$rootScope.anywan_watcher();
-	}
-	$rootScope.anywan_watcher = $scope.$watch("connection", function(value){
+	$scope.$watch("connection", function(value){
 		if(!value) return; 
 		updateDevices(); 	
 	});

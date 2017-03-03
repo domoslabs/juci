@@ -58,11 +58,7 @@ JUCI.app
 	}
 	updateDevices($scope.connection); 
 	
-	// TODO: figure out why this is needed
-	if($rootScope.bridge_watcher){
-		$rootScope.bridge_watcher();
-	}
-	$rootScope.bridge_watcher = $scope.$watch("connection", function(value){
+	$scope.$watch("connection", function(value){
 		if(!value) return; 
 		updateDevices(value); 	
 	});

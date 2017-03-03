@@ -24,12 +24,19 @@ JUCI.app
 		restrict: 'A',
 		replace: true,
 		link: function (scope, element, attrs) {
+			var childScope;
 			scope.$watch(attrs.dynamic, function(html) {
 				if(!html)
 					return;
+				if(childScope){
+					childScope.$destroy();
+					element.empty();
+				}
 				try {
-					element.html(html);
-					$compile(element.contents())(scope);
+					childScope = scope.$new();
+					var compiledDirective = $compile(html);
+					var directiveElement = compiledDirective(childScope);
+					element.append(directiveElement);
 				} catch(e){
 					element.html(e);
 				}

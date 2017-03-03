@@ -149,7 +149,10 @@ JUCI.app
 			});
 		}
 		update_wifi().done(function(){
-			if(!$scope || !$scope.wifs || !tab_info) return;
+			if(!$scope || !$scope.wifs || !tab_info){
+				done();
+				return;
+			}
 			$scope.wifs.map(function(wif){
 				if(tab_info[wif.device.value]) wif._expanded = tab_info[wif.device.value];
 			});
