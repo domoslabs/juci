@@ -84,7 +84,7 @@ JUCI.app
 			wans: $scope.wans
 		};
 		$juciDialog.show("overview-wan-fix", {
-			title: $tr(gettext("Internet Service Down")),
+			title: $tr(gettext("Diagnose Internet Connection")),
 			size: "md",
 			buttons: [ { label: $tr(gettext("Close")), value:"close", primary: true } ],
 			on_button: function(btn, inst){
