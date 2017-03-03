@@ -36,10 +36,15 @@ JUCI.app
 					childScope = scope.$new();
 					var compiledDirective = $compile(html);
 					var directiveElement = compiledDirective(childScope);
-					element.append(directiveElement);
+					if(directiveElement.length === 0){
+						directiveElement = document.createElement("div");
+						directiveElement.innerHTML = html;
+					}
 				} catch(e){
-					element.html(e);
+					directiveElement = document.createElement("div");
+					directiveElement.innerHTML = html;
 				}
+				element.append(directiveElement);
 			});
 		}
 	};
