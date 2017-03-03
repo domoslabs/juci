@@ -42,6 +42,10 @@ JUCI.app.directive("multiwanRuleEdit", function(){
 	});
 
 	$firewall.getZoneClients("lan").always(function(clients){
+		if(!clients.length) {
+			$scope.addresses = [];
+			return;
+		}
 		$scope.addresses = clients.map(function(client){ 
 			var name = (!client.hostname || client.hostname == "") ? "" : " (" + client.hostname + ")";
 			return { label: client.ipaddr + name, value: client.ipaddr }});
