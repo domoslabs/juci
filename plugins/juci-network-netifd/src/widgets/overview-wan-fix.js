@@ -10,8 +10,17 @@ JUCI.app
 		},
 		replace: true
 	}
-}).controller("overivewWanFixCtrl", function($scope, $tr, gettext, $juciDialog, $firewall){
+}).controller("overivewWanFixCtrl", function($scope, $tr, gettext, $juciDialog, $firewall, $events){
+	$scope.$on("$destroy", function(){
+		JUCI.interval.clear("overview-wan-fix-check-internet");
+	});
 	JUCI.interval.repeat("overvew-wan-fix-check-internet", 2000, function(done){
+		refresh().always(function(){
+			done();
+		});
+	});
+	function refresh(){
+		var def = $.Deferred();
 		async.series([
 		function(next){
 			$rpc.$call("juci.network", "online").done(function(res){
@@ -24,20 +33,23 @@ JUCI.app
 				});
 			}).always(function(){next();});
 		} ], function(){
-			$scope.link = true;
-			$scope.model.wans.map(function(w){
-				var wan = w.$info;
-				if(wan && wan.errors && wan.errors.length){
-					wan.errors.find(function(e){
-						if(e && e.code == "NO_DEVICE")
-							$scope.link = false;
-					});
-				}
+			$scope.link = false;
+			async.eachSeries($scope.model.wans, function(wan, next){
+				$rpc.$call("juci.network", "has_link", {"interface":wan[".name"]}).done(function(data){
+					if(data && data.has_link)
+						$scope.link = true;
+				}).fail(function(e){
+					console.log(e);
+				}).always(function(){
+					next();
+				});
+			}, function(){
+				$scope.$apply();
+				def.resolve();
 			});
-			$scope.$apply();
-			done();
 		});
-	});
+		return def.promise();
+	}
 	$scope.reloadNetwork = function(){
 		if(!$scope.model.wans || !$scope.model.wans.length)
 			return;
@@ -67,4 +79,10 @@ JUCI.app
 			]
 		});
 	}
+	$events.subscribe("network.interface", function(res){
+		refresh();
+	});
+	$events.subscribe("hotplug.switch", function(res){
+		refresh();
+	});
 });

@@ -4,6 +4,7 @@
 		"read": {
 			"ubus": {
 				"juci.network": [
+					"has_link",
 					"ifup",
 					"load",
 					"nameservers",

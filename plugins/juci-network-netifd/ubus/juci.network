@@ -4,10 +4,59 @@
 
 case "$1" in
 	list)
-		echo '{ "ifup" : {"interface":"str"}, "arp" : {}, "ipv4routes" : {}, "ipv6routes" : {}, "ipv6neigh" : {}, "load" : {}, "nameservers" : {}, "nat_table" : {}, "protocols" : {}, "services" : {}, "online" : {} }'
+		echo '{ "has_link" : {"interface":"str"}, "ifup" : {"interface":"str"}, "arp" : {}, "ipv4routes" : {}, "ipv6routes" : {}, "ipv6neigh" : {}, "load" : {}, "nameservers" : {}, "nat_table" : {}, "protocols" : {}, "services" : {}, "online" : {} }'
 	;;
 	call)
 		case "$2" in
+			has_link)
+				local input interface ifstatus up device present ret uplink_device
+				read input;
+				json_load "$input"
+				json_get_var interface interface
+				if [ "$interface" == "" ]; then
+					json_init
+					json_add_string "error" "invalid parameters"
+					json_dump
+					exit
+				fi
+				ifstatus=$(ifstatus "$interface")
+				json_load "$ifstatus"
+				json_get_var up up
+				if [ $up -eq 1 ]; then
+					json_init
+					json_add_boolean "has_link" 1
+					json_dump
+					exit
+				elif [ $up -eq 0 ]; then
+					json_get_var device device
+					case "$device" in
+						br-*)
+							ret=$(ubus call router.port status "{\"port\":\"$device\"}")
+							json_load "$ret"
+							json_get_var uplink_device uplink_device
+							json_init
+							if [ $uplink_device != "" ]; then
+								json_add_boolean "has_link" 1
+							else
+								json_add_boolean "has_link" 0
+							fi
+							json_dump
+						;;
+						*)
+							devstatus=$(devstatus "$device")
+							json_load $devstatus
+							json_get_var present present
+							json_init
+							json_add_boolean "has_link" $present
+							json_dump
+						;;
+					esac
+				else
+					json_init
+					json_add_string "error" "invalid parameters"
+					json_dump
+				fi
+			;;
 			ifup)
 				local input interface
 				read input;

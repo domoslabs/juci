@@ -58,27 +58,24 @@ JUCI.app
 	$events.subscribe("network.interface", function(res){
 		refresh();
 	});
+	$events.subscribe("hotplug.switch", function(res){
+		refresh();
+	});
 })
 .controller("overviewWidgetWAN", function($scope, $rpc, $tr, gettext, $events, $firewall, $config, $juciDialog, $localStorage){
 	$scope.href = $config.getWidgetLink("overviewWidget11WAN");
 	$scope.hideFixError = $localStorage.getItem("hideFixError");
-	$scope.fixErrorRunning = false;
+	$scope.fixErrorOpen = false;
 	JUCI.interval.repeat("update_wan_uptime", 1000, function(next){
 		if(!$scope.uptime || $scope.uptime === 0){ next(); return; }
 		$scope.uptime ++;
 		$scope.$apply();
 		next();
 	});
-	JUCI.interval.repeat("wan_check_internet", 10000, function(next){
-		$rpc.$call("juci.network", "online").done(function(res){
-			if(res)
-				$scope.online = res.online;
-		}).always(function(){next();});
-	});
 	$scope.fixError = function(){
-		if($scope.hideFixError || $scope.fixErrorRunning)
+		if($scope.hideFixError || $scope.fixErrorOpen)
 			return;
-		$scope.fixErrorRunning = true;
+		$scope.fixErrorOpen = true;
 		var model = {
 			hideFixError: $scope.hideFixError,
 			wans: $scope.wans
@@ -92,7 +89,7 @@ JUCI.app
 					$scope.hideFixError = model.hideFixError;
 					$localStorage.setItem("hideFixError", model.hideFixError);
 				}
-				$scope.fixErrorRunning = false;
+				$scope.fixErrorOpen = false;
 				inst.close();
 			},
 			model:model
@@ -111,6 +108,19 @@ JUCI.app
 			});
 		}
 	}
+	JUCI.interval.repeat("wan_check_internet", 10000, function(next){
+		update_online().always(function(){next();});
+	});
+
+	function update_online(){
+		var def = $.Deferred();
+		$rpc.$call("juci.network", "online").done(function(res){
+			if(res)
+				$scope.online = res.online;
+			def.resolve();
+		}).fail(function(){def.reject();});
+		return def.promise();
+	}
 
 	function refresh(){
 		var wan_zonrs = [];
@@ -120,59 +130,68 @@ JUCI.app
 				return w.$info && w.defaultroute && w.defaultroute.value;
 			});
 			$scope.data = {ip:[], defaultroute:[], contypes:[], dslUp:"", dslDown:"", dns:[], up:false, linkspeed:""};
-			$scope.uptime = 0;
-			$scope.wans.map(function(wan){
-				var w = wan.$info;
-				if(w.up) $scope.data.up = true;
-				else return;
-				if(w["ipv4-address"] && w["ipv4-address"].length)
-					w["ipv4-address"].map(function(ip){ if(ip && ip.address) $scope.data.ip.push(ip.address);});
-				if(w["ipv6-address"] && w["ipv6-address"].length)
-					w["ipv6-address"].map(function(ip){ if(ip && ip.address) $scope.data.ip.push(ip.address);});
-				if(w.route && w.route.length){
-					w.route.filter(function(r){
-						return (r.target === "0.0.0.0" || r.target === "::") && r.nexthop;
-					}).map(function(r){ $scope.data.defaultroute.push(r.nexthop); });
-				}
-				var type = $tr(gettext("Ethernet"));
-				if(!w.device && w.l3_device)
-					w.device = w.l3_device
-				if(!w.device)
-					type = $tr(gettext("Unknown"));
-				else if(w.device.match(/atm/)) type = $tr(gettext("ADSL"));
-				else if(w.device.match(/ptm/)) type = $tr(gettext("VDSL"));
-				else if(w.device.match(/wwan/)) type = $tr(gettext("WWAN"));
-				if(w.device && w.device.match("eth[0-9].[0-9]") || w.device.match("br-")){
-					$rpc.$call("router.port", "status", {"port":w.device}).done(function(data){
-						if(data && data.speed)
-							$scope.data.linkspeed = data.speed;
-						if(data && data.type)
-							type = data.type;
+			async.eachSeries($scope.wans, function(wan, next){
+				$rpc.$call("juci.network", "has_link", {"interface":wan[".name"]}).done(function(data){
+					if(data && data.has_link)
+						$scope.data.up = true;
+				}).fail(function(e){
+					console.log(e);
+				}).always(function(){next();});
+			}, function(){
+				$scope.uptime = 0;
+				$scope.wans.map(function(wan){
+					var w = wan.$info;
+					if(!w.up)
+						return;
+					if(w["ipv4-address"] && w["ipv4-address"].length)
+						w["ipv4-address"].map(function(ip){ if(ip && ip.address) $scope.data.ip.push(ip.address);});
+					if(w["ipv6-address"] && w["ipv6-address"].length)
+						w["ipv6-address"].map(function(ip){ if(ip && ip.address) $scope.data.ip.push(ip.address);});
+					if(w.route && w.route.length){
+						w.route.filter(function(r){
+							return (r.target === "0.0.0.0" || r.target === "::") && r.nexthop;
+						}).map(function(r){ $scope.data.defaultroute.push(r.nexthop); });
+					}
+					var type = $tr(gettext("Ethernet"));
+					if(!w.device && w.l3_device)
+						w.device = w.l3_device
+					if(!w.device)
+						type = $tr(gettext("Unknown"));
+					else if(w.device.match(/atm/)) type = $tr(gettext("ADSL"));
+					else if(w.device.match(/ptm/)) type = $tr(gettext("VDSL"));
+					else if(w.device.match(/wwan/)) type = $tr(gettext("WWAN"));
+					if(w.device && w.device.match("eth[0-9].[0-9]") || w.device.match("br-")){
+						$rpc.$call("router.port", "status", {"port":w.device}).done(function(data){
+							if(data && data.speed)
+								$scope.data.linkspeed = data.speed;
+							if(data && data.type)
+								type = data.type;
+							if($scope.data.contypes.indexOf(type) === -1)
+								$scope.data.contypes.push(type);
+							dsl_stats(type);
+							$scope.$apply();
+						}).fail(function(e){console.log(e);});
+					}
+					else{
 						if($scope.data.contypes.indexOf(type) === -1)
 							$scope.data.contypes.push(type);
 						dsl_stats(type);
-						$scope.$apply();
-					}).fail(function(e){console.log(e);});
-				}
-				else{
-					if($scope.data.contypes.indexOf(type) === -1)
-						$scope.data.contypes.push(type);
-					dsl_stats(type);
-				}
-				if(w["dns-server"] && w["dns-server"].length)
-					$scope.data.dns = $scope.data.dns.concat(w["dns-server"]);
-				if(w.uptime && typeof w.uptime === "number" && $scope.uptime < w.uptime)
-					$scope.uptime = w.uptime;
+					}
+					if(w["dns-server"] && w["dns-server"].length)
+						$scope.data.dns = $scope.data.dns.concat(w["dns-server"]);
+					if(w.uptime && typeof w.uptime === "number" && $scope.uptime < w.uptime)
+						$scope.uptime = w.uptime;
+				});
+				Object.keys($scope.data).map(function(k){
+					if($scope.data[k] instanceof Array){
+						$scope.data[k] = $scope.data[k].filter(function(elem, index, self) {
+							return index == self.indexOf(elem);
+						});
+					}
+				});
+				$scope.$apply();
+				def.resolve();
 			});
-			Object.keys($scope.data).map(function(k){
-				if($scope.data[k] instanceof Array){
-					$scope.data[k] = $scope.data[k].filter(function(elem, index, self) {
-						return index == self.indexOf(elem);
-					});
-				}
-			});
-			$scope.$apply();
-			def.resolve();
 		});
 		return def.promise();
 	}
@@ -183,5 +202,10 @@ JUCI.app
 
 	$events.subscribe("network.interface", function(res){
 		refresh();
+		update_online();
+	});
+	$events.subscribe("hotplug.switch", function(res){
+		refresh();
+		update_online();
 	});
 });
