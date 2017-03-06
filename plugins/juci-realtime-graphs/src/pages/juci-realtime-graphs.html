@@ -1,0 +1,31 @@
+<juci-layout-with-sidebar>
+	<div ng-controller="rtgraphsCtrl">
+		<h2>Realtime Graphs</h2>
+		<tabset>
+			<tab heading="{{'Load'|translate}}">
+				<juci-realtime-graph id="'load'" ng-model="load" tick="tick" min="0" max="2"></juci-realtime-graph>
+			</tab>
+			<tab heading="{{'Traffic'|translate}}">
+				<tabset>
+					<tab ng-repeat="(key,value) in traffic" heading="{{key}}">
+						<juci-realtime-graph ng-model="value" id="{{key}}" tick="tick" ylabel="bytes"></juci-realtime-graph>
+					</tab>
+				</tabset>
+			</tab>
+			<tab heading="{{'Connections'|translate}}">
+				<juci-realtime-graph id="'connections'" ng-model="connections" tick="tick" min="0" max="40"></juci-realtime-graph>
+			</tab>
+		</tabset>
+		<!--
+		<table class="table">                                                                                      
+			<thead><th translate>Minimum</th><th translate>Average</th><th translate>Maximum</th></thead>
+			<tr ng-repeat="arp in arp_table track by $index">                                                  
+				<td>{{a}}</td>                                                                    
+				<td>{{b}}</td>                                                                   
+				<td>{{c}}</td>                                                                    
+			</tr>                                                                                              
+		</table>                                                                                                  
+		-->
+	<div>
+</juci-layout-with-sidebar>
+

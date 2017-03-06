@@ -1,0 +1,152 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: Inteno\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.5\n"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Up and Down"
+msgstr "Lähetys ja lataus"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Up"
+msgstr "Lähetys"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Down"
+msgstr "Lataus"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Server and port is mandatory"
+msgstr "Palvelin ja portti pakollinen"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Only one test can be run at a time"
+msgstr "Vain yksi testi kerrallaan"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Unknown error"
+msgstr "Tuntematon virhe"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "error deleting server"
+msgstr "virhe palvelinta poistettaessa"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Upstream:"
+msgstr "Lähetys:"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid ""
+"Mbit/s\n"
+"Downstream:"
+msgstr "Mbit/s Lataus"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Mbit/s"
+msgstr ""
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Downstream:"
+msgstr "Lataus:"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Wrong TP-test address and/or port"
+msgstr "Virheellinen TP-testiosoite ja/tai -portti"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Wrong TP-test port but correct address"
+msgstr "Virheellinen TP-testiportti, mutta oikea osoite"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.js
+msgid "Address and port needed"
+msgstr "Osoite ja portti tarvitaan"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Direction"
+msgstr "Suunta"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Package Size"
+msgstr "Pakettikoko"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Speedtest Server"
+msgstr "Speedtest Server"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Run test"
+msgstr "Suorita testi..."
+
+msgid "Test results"
+msgstr "Jäljityksen tulokset"
+
+msgid "Error"
+msgstr "Virhe"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
+msgid "Server"
+msgstr "Palvelin"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
+msgid "Port"
+msgstr "Palvelin"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
+msgid "Add test server"
+msgstr "Lisää Testipalvelin"
+
+msgid "Diagnostic Utility"
+msgstr "Diagnostiikkatyökalu"
+
+msgid "status.diagnostics.info"
+msgstr " "
+
+msgid "Automated Diagnostics"
+msgstr "Automatisoitu vianmääritys"
+
+msgid "status.diagnostics.auto.info"
+msgstr "Automaattinen diagnostiikka"
+
+msgid "Diagnose"
+msgstr "Diagnostiikka"
+
+msgid "Ping Test"
+msgstr "Ping-testi"
+
+msgid "status.diagnostics.ping.info"
+msgstr "Syötä kohteen verkkonimi tai IP-osoite suorittaaksesi Ping testi."
+
+msgid "Host to ping"
+msgstr "Isäntäkone, jota pingataan"
+
+msgid "Ping"
+msgstr "Ping"
+
+msgid "Ping results"
+msgstr "Ping-tulokset"
+
+msgid "Tracing Tool"
+msgstr "Jäljitystyökalu"
+
+msgid "status.diagnostics.trace.info"
+msgstr "Syötä kohteen verkkonimi tai IP-osoite suorittaaksesi jäljityksen"
+
+msgid "Host to trace"
+msgstr "Jäljitettävä isäntäkone"
+
+msgid "Trace"
+msgstr "Jäljitä"
+
+msgid "Trace results"
+msgstr "Jäljityksen tulokset"
+
+msgid "menu-status-diagnostics-title"
+msgstr "Diagnostiikka"
