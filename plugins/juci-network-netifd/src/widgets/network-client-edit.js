@@ -27,9 +27,36 @@ JUCI.app
 			model: "=ngModel"
 		},
 		replace: true, 
-		require: "^ngModel"
+		require: "^ngModel",
 	};  
-}).controller("networkClientEdit", function($scope, $uci, $tr, gettext){	
+}).controller("networkClientEdit", function($scope, $uci, $tr, gettext){
+	$scope.tick = 2000;
+	$scope.avgTraffic = {
+		rows: [
+			["Received Mbit/s", 0],
+			["Transmitted Mbit/s", 0],
+		]
+	};
+	$scope.$on("$destroy", function(){
+		JUCI.interval.clear("updateTraffic");
+	});
+
+	function updateTraffic(){
+		$rpc.$call("router.graph", "client_traffic").done(function(data){
+			$scope.traffic = data[$scope.model.client.hostname];
+			$scope.avgTraffic["rows"][0] = ["Received Mbit/s", ($scope.traffic["Received bytes"]/($scope.tick/1000)) *8 /1000000];
+			$scope.avgTraffic["rows"][1] = ["Transmitted Mbit/s", ($scope.traffic["Transmitted bytes"]/($scope.tick/1000)) *8 /1000000];
+			$scope.$apply();
+		}).fail(function(e){console.log(e);});
+	}
+	updateTraffic();
+	setTimeout(function(){ $scope.id = $scope.model.client.hostname; }, 3000);
+
+	JUCI.interval.repeat("updateTraffic",$scope.tick,function(next){
+		updateTraffic();
+		next();
+	});
+
 	$scope.$watch("model", function(value){
 		if(!value || !value.client || !value.client.macaddr) return;
 		var networkList = [];
