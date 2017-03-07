@@ -64,7 +64,7 @@ JUCI.app
 })
 .controller("overviewWidgetWAN", function($scope, $rpc, $tr, gettext, $events, $firewall, $config, $juciDialog, $localStorage){
 	$scope.href = $config.getWidgetLink("overviewWidget11WAN");
-	$scope.hideFixError = $localStorage.getItem("hideFixError");
+	$scope.hideFixError = $localStorage.getItem("hideFixError") == "true";
 	$scope.fixErrorOpen = false;
 	JUCI.interval.repeat("update_wan_uptime", 1000, function(next){
 		if(!$scope.uptime || $scope.uptime === 0){ next(); return; }
@@ -78,7 +78,6 @@ JUCI.app
 		$scope.fixErrorOpen = true;
 		var model = {
 			hideFixError: $scope.hideFixError,
-			wans: $scope.wans
 		};
 		$juciDialog.show("overview-wan-fix", {
 			title: $tr(gettext("Diagnose Internet Connection")),
@@ -115,8 +114,8 @@ JUCI.app
 	function update_online(){
 		var def = $.Deferred();
 		$rpc.$call("juci.network", "online").done(function(res){
-			if(res)
-				$scope.online = res.online;
+			$scope.online = res && res.online;
+			$scope.$apply();
 			def.resolve();
 		}).fail(function(){def.reject();});
 		return def.promise();
@@ -129,11 +128,10 @@ JUCI.app
 			$scope.wans = nets.filter(function(w){
 				return w.$info && w.defaultroute && w.defaultroute.value;
 			});
-			$scope.data = {ip:[], defaultroute:[], contypes:[], dslUp:"", dslDown:"", dns:[], up:false, linkspeed:""};
+			$scope.data = {ip:[], defaultroute:[], contypes:[], dslUp:"", dslDown:"", dns:[], linkspeed:""};
 			async.eachSeries($scope.wans, function(wan, next){
 				$rpc.$call("juci.network", "has_link", {"interface":wan[".name"]}).done(function(data){
-					if(data && data.has_link)
-						$scope.data.up = true;
+					$scope.data.up = data && data.has_link;
 				}).fail(function(e){
 					console.log(e);
 				}).always(function(){next();});

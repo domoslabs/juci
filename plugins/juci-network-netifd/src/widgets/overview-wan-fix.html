@@ -1,8 +1,8 @@
 <div>
-	<p ng-show="!internet || !link">
-	<font color="red">{{'Your router does not have Internet connection!'|translate}}</font><div ng-show="!link"> {{'Please check that WAN cable is connected.'|translate}}</div>
+	<p ng-show="internet == false || link == false">
+	<font color="red">{{'Your router does not have Internet connection!'|translate}}</font><div ng-show="link == false"> {{'Please check that WAN cable is connected.'|translate}}</div>
 	</p>
-	<div ng-show="link && !internet">
+	<div ng-show="link && internet == false">
 		<juci-config-line title="{{'Reload Network'| translate}}" help="{{'Click Reload button to refresh WAN connection'|translate}}">
 			<button class="btn btn-default" ng-click="reloadNetwork()">{{'Reload'|translate}}</button>
 		</juci-config-line>

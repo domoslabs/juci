@@ -33,7 +33,7 @@ JUCI.app
 				});
 			}).always(function(){next();});
 		} ], function(){
-			$scope.link = false;
+			$scope.link = undefined;
 			async.eachSeries($scope.model.wans, function(wan, next){
 				$rpc.$call("juci.network", "has_link", {"interface":wan[".name"]}).done(function(data){
 					if(data && data.has_link)
@@ -44,12 +44,14 @@ JUCI.app
 					next();
 				});
 			}, function(){
+				$scope.link = $scope.link || false;
 				$scope.$apply();
 				def.resolve();
 			});
 		});
 		return def.promise();
 	}
+	refresh();
 	$scope.reloadNetwork = function(){
 		if(!$scope.model.wans || !$scope.model.wans.length)
 			return;
