@@ -32,16 +32,16 @@ msgstr "IUP Provisiointi"
 msgid "Enabled"
 msgstr "Käytössä"
 
-msgid "Update interval start time"
+msgid "Update start time"
 msgstr "Päivityksen aloitusaika"
 
-msgid "Update interval"
+msgid "Update frequency"
 msgstr "Päivityksen intervalli"
 
 msgid "Export file"
 msgstr "Vientitiedosto"
 
-msgid "If added will override DHCP Discover Provisioning"
+msgid "Overwrite DHCP Discover Provisioning"
 msgstr "Mikäli lisätty osoitteen haku DHCP-optiolla otetaan pois käytöstä"
 
 msgid "Reboot"

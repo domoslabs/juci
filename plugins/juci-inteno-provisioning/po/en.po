@@ -35,16 +35,16 @@ msgstr ""
 msgid "Enabled"
 msgstr ""
 
-msgid "Update interval start time"
+msgid "Update start time"
 msgstr ""
 
-msgid "Update interval"
+msgid "Update frequency"
 msgstr ""
 
 msgid "Export file"
 msgstr ""
 
-msgid "If added will override DHCP Discover Provisioning"
+msgid "Overwrite DHCP Discover Provisioning"
 msgstr ""
 
 msgid "Reboot"
