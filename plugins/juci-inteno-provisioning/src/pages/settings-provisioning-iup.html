@@ -20,15 +20,15 @@
 			</juci-config-lines>
 			<h3 translate>Main Provisioning Server</h3>
 			<juci-config-lines>
-				<juci-config-line title="{{ 'Enabled' | translate }}" help="{{ 'If added will override DHCP Discover Provisioning' | translate }}">
-					<switch class="green" ng-model="prov_server.enabled.value" />
-				</juci-config-line>
-				<juci-config-line ng-show="prov_server.enabled.value" title="{{ 'Reboot' | translate }}" help="{{ 'Reboot after settings config 
+				<juci-config-line title="{{ 'Reboot' | translate }}" help="{{ 'Reboot after settings config 
 									usualy needed for network settings to work properly' | translate }}">
 					<switch class="green" ng-model="prov_server.reboot.value" />
 				</juci-config-line>
-				<juci-config-line ng-show="prov_server.enabled.value" title="{{ 'Keep user config' | translate }}" help="{{ 'Save user changes before provisioning and reapply them after' | translate }}">
+				<juci-config-line title="{{ 'Keep user config' | translate }}" help="{{ 'Save user changes before provisioning and reapply them after' | translate }}">
 					<switch class="green" ng-model="prov_server.keepuserconfig.value" />
+				</juci-config-line>
+				<juci-config-line title="{{ 'Enabled' | translate }}" help="{{ 'If added will override DHCP Discover Provisioning' | translate }}">
+					<switch class="green" ng-model="prov_server.enabled.value" />
 				</juci-config-line>
 				<juci-config-line ng-show="prov_server.enabled.value" title="{{ 'URL' | translate }}">
 					<input type="text" class="form-control" ng-model="prov_server.url.value" />
