@@ -1,0 +1,15 @@
+{
+	"juci-mwan3": {
+		"description": "JUCI mwan3 module",
+		"read": {
+			"uci": [
+				"mwan3"
+			]
+		},
+		"write": {
+			"uci": [
+				"mwan3"
+			]
+		}
+	}
+}

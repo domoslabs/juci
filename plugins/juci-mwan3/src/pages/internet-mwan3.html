@@ -1,0 +1,27 @@
+<juci-layout-with-sidebar>
+	<div ng-controller="InternetMwan3Page">
+		<h2>{{ 'MultiWAN Configuration' | translate }}</h2>
+		<tabset>
+			<tab heading="{{'Settings'|translate}}">
+				<juci-config-section>
+					<juci-list-editor ng-items="interfaces" item-editor="mwan3-interface-edit" get-item-title="$item['.name']"></juci-list-editor>
+				</juci-config-section>
+			</tab>
+			<tab heading="{{'Members'|translate}}">
+				<juci-config-section>
+					test text
+				</juci-config-section>
+			</tab>
+			<tab heading="{{'policies'|translate}}">
+				<juci-config-section>
+					test text
+				</juci-config-section>
+			</tab>
+			<tab heading="{{'rules'|translate}}">
+				<juci-config-section>
+					test text
+				</juci-config-section>
+			</tab>
+		</tabset>
+	</div>
+</juci-layout-with-sidebar>
