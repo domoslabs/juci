@@ -132,9 +132,11 @@ JUCI.app
 			async.eachSeries($scope.wans, function(wan, next){
 				$rpc.$call("juci.network", "has_link", {"interface":wan[".name"]}).done(function(data){
 					$scope.data.up = data && data.has_link;
+					next();
 				}).fail(function(e){
 					console.log(e);
-				}).always(function(){next();});
+					def.reject();
+				});
 			}, function(){
 				$scope.uptime = 0;
 				$scope.wans.map(function(wan){
@@ -168,7 +170,11 @@ JUCI.app
 								$scope.data.contypes.push(type);
 							dsl_stats(type);
 							$scope.$apply();
-						}).fail(function(e){console.log(e);});
+						}).fail(function(e){
+							console.log(e);
+							def.reject();
+							return;
+						});
 					}
 					else{
 						if($scope.data.contypes.indexOf(type) === -1)
@@ -194,8 +200,10 @@ JUCI.app
 		return def.promise();
 	}
 	refresh().done(function(){;
-		if(!$scope.online || !$scope.data.up)
-			$scope.fixError();
+		update_online().done(function(){
+			if(!$scope.online || !$scope.data.up)
+				$scope.fixError();
+		});
 	});
 
 	$events.subscribe("network.interface", function(res){
