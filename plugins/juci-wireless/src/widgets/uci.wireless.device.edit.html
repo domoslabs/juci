@@ -39,8 +39,8 @@
 			<!--<juci-config-line title="{{'OBSS Co-Existence'|translate}}" ng-show="device.bandwidth.value == '40' || device.bandwidth.value == '80' || device.bandwidth.value == '160' || device.bandwidth.value == '20/40'">
 				<switch class="green" ng-model="device['obss_coex'].value"/>
 			</juci-config-line>-->
-			<juci-config-line title="{{'Max. Assoc Clients'|translate}}">
-				<input type="text" class="form-control" ng-model="device.maxassoc.value" placeholder="{{'Maximum Assoc Clients'|translate}}"/>
+			<juci-config-line title="{{'Maximum Associated Stations'|translate}}">
+				<input type="number" max="128" min="0" ng-model="device.maxassoc.value" class="form-control"></switch>
 			</juci-config-line>
 			<juci-config-line title="{{'RX Chain PowerSave Quiet Time'|translate}}">
 				<input type="number" class="form-control" ng-model="device.rxchainps_qt.value"/>

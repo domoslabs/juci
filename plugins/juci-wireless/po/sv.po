@@ -349,8 +349,8 @@ msgstr "RX Chain PowerSave Quiet Time"
 msgid "RX Chain PowerSave PPS"
 msgstr "RX Chain PowerSave PPS"
 
-msgid "Max. Assoc Clients"
-msgstr "Maximal Klientantal"
+msgid "Maximum Number of Connected Clients"
+msgstr "Maximalt antal anslutna klienter"
 
 msgid "Maximum Assoc Clients"
 msgstr "Maximal Klientantal"

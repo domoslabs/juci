@@ -346,7 +346,7 @@ msgstr ""
 msgid "OBSS Co-Existence"
 msgstr "OBSS Co-Existence"
 
-msgid "Max. Assoc Clients"
+msgid "Maximum Number of Connected Clients"
 msgstr "Yhdistettävien laitteiden enimmäismäärä"
 
 msgid "Maximum Assoc Clients"

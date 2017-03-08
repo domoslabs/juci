@@ -387,7 +387,7 @@ msgstr ""
 msgid "RX Chain PowerSave PPS"
 msgstr ""
 
-msgid "Max. Assoc Clients"
+msgid "Maximum Number of Connected Clients"
 msgstr ""
 
 msgid "Maximum Assoc Clients"
