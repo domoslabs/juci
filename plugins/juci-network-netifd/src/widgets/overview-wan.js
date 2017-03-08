@@ -131,13 +131,15 @@ JUCI.app
 			$scope.data = {ip:[], defaultroute:[], contypes:[], dslUp:"", dslDown:"", dns:[], linkspeed:""};
 			async.eachSeries($scope.wans, function(wan, next){
 				$rpc.$call("juci.network", "has_link", {"interface":wan[".name"]}).done(function(data){
-					$scope.data.up = data && data.has_link;
+					if(data && data.has_link)
+						$scope.data.up = true;
 					next();
 				}).fail(function(e){
 					console.log(e);
 					def.reject();
 				});
 			}, function(){
+				$scope.data.up = $scope.data.up || false;
 				$scope.uptime = 0;
 				$scope.wans.map(function(wan){
 					var w = wan.$info;
