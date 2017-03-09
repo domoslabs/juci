@@ -34,8 +34,8 @@ JUCI.app
 	$scope.id = $scope.model.client.hostname;
 	$scope.avgTraffic = {
 		rows: [
-			["Received Mbit/s", "0"],
-			["Transmitted Mbit/s", "0"],
+			["Download", "0", "7"],
+			["Upload", "0", "7"],
 		]
 	};
 	$scope.$on("$destroy", function(){
@@ -64,10 +64,24 @@ JUCI.app
 			$scope.traffic["Received Mbits/s"] = 0;
 			$scope.traffic["Transmitted Mbits/s"] = 0;
 		}).always(function(){
-			$scope.avgTraffic["rows"][0] = ["Received Mbit/s", String(($scope.traffic["Received bytes"]/($scope.tick/1000)) *8 /1000000)];
-			$scope.avgTraffic["rows"][1] = ["Transmitted Mbit/s", String(($scope.traffic["Transmitted bytes"]/($scope.tick/1000)) *8 /1000000)];
+			var bits_down = $scope.traffic["Received bytes"]/($scope.tick/1000) * 8;
+			var bits_up = $scope.traffic["Transmitted bytes"]/($scope.tick/1000) * 8;
+			$scope.avgTraffic["rows"][0] = ["Download", to_kilo_mega_str(bits_down)];
+			$scope.avgTraffic["rows"][1] = ["Upload", to_kilo_mega_str(bits_up)];
 			$scope.$apply();
 		});
+	}
+
+	function to_kilo_mega_str(number) {
+		var number_out = (number / 1000).toFixed(3);
+		var unit = "kbit/s"
+
+		if (number_out > 1000) {
+			number_out = (number_out / 1000).toFixed(3);
+			unit = "Mbit/s";
+		}
+
+		return String(number_out) +" "+ unit;
 	}
 
 	JUCI.interval.repeat("updateTraffic",$scope.tick,function(next){
