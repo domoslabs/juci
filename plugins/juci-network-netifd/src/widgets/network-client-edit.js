@@ -31,10 +31,11 @@ JUCI.app
 	};  
 }).controller("networkClientEdit", function($scope, $uci, $tr, gettext){
 	$scope.tick = 2000;
+	$scope.id = $scope.model.client.hostname;
 	$scope.avgTraffic = {
 		rows: [
-			["Received Mbit/s", 0],
-			["Transmitted Mbit/s", 0],
+			["Received Mbit/s", "0"],
+			["Transmitted Mbit/s", "0"],
 		]
 	};
 	$scope.$on("$destroy", function(){
@@ -43,14 +44,31 @@ JUCI.app
 
 	function updateTraffic(){
 		$rpc.$call("router.graph", "client_traffic").done(function(data){
-			$scope.traffic = data[$scope.model.client.hostname];
-			$scope.avgTraffic["rows"][0] = ["Received Mbit/s", ($scope.traffic["Received bytes"]/($scope.tick/1000)) *8 /1000000];
-			$scope.avgTraffic["rows"][1] = ["Transmitted Mbit/s", ($scope.traffic["Transmitted bytes"]/($scope.tick/1000)) *8 /1000000];
+			console.log("A");
+			if (!data || !data[$scope.model.client.hostname]) {
+				console.log("    A1");
+				console.log(data[$scope.model.client.hostname]);
+
+				$scope.traffic = [];
+				$scope.traffic["Received Mbits/s"] = 0;
+				$scope.traffic["Transmitted Mbits/s"] = 0;
+			}
+			else {
+				console.log("    A2");
+				console.log(data);
+				$scope.traffic = data[$scope.model.client.hostname]; 
+			}
+		}).fail(function(e){
+			console.error("network-client-edit: "+e); 
+			$scope.traffic = [];
+			$scope.traffic["Received Mbits/s"] = 0;
+			$scope.traffic["Transmitted Mbits/s"] = 0;
+		}).always(function(){
+			$scope.avgTraffic["rows"][0] = ["Received Mbit/s", String(($scope.traffic["Received bytes"]/($scope.tick/1000)) *8 /1000000)];
+			$scope.avgTraffic["rows"][1] = ["Transmitted Mbit/s", String(($scope.traffic["Transmitted bytes"]/($scope.tick/1000)) *8 /1000000)];
 			$scope.$apply();
-		}).fail(function(e){console.log(e);});
+		});
 	}
-	updateTraffic();
-	setTimeout(function(){ $scope.id = $scope.model.client.hostname; }, 3000);
 
 	JUCI.interval.repeat("updateTraffic",$scope.tick,function(next){
 		updateTraffic();
