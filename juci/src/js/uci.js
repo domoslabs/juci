@@ -129,7 +129,7 @@
 					if(field.value.match(re)){ //type is port range
 						var start = parseInt(field.value.split(separator)[0]);
 						var stop = parseInt(field.value.split(separator)[1]);
-						if(start < 1 || start > 65535 || stop < 1 || stop > 65535 || start > stop || start == stop) return JUCI.$tr(gettext("Ports has to be between 1 and 65535 and start port must be lower than end port"));
+						if(start < 0 || start > 65535 || stop < 0 || stop > 65535 || start > stop || start == stop) return JUCI.$tr(gettext("Ports has to be between 1 and 65535 and start port must be lower than end port"));
 					}
 					else{
 						return JUCI.$tr(gettext("Port range has to be on the form number")) + separator + JUCI.$tr(gettext("number"));
