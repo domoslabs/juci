@@ -19,11 +19,11 @@ UCI.mwan3.$registerSectionType("policy", {
 });
 UCI.mwan3.$registerSectionType("rule", {
 	"use_policy":	{ dvalue: "", type: String },
-	"src_ip":	{ dvalue: "any", type: String },
-	"src_port":	{ dvalue: "any", type: String },
-	"proto":	{ dvalue: "all", type: String },
-	"dest_ip":	{ dvalue: "any", type: String },
-	"dest_port":	{ dvalue: "any", type: String }
+	"src_ip":	{ dvalue: "0.0.0.0/0", type: String, validator: UCI.validators.IP4CIDRValidator },
+	"src_port":	{ dvalue: "0:65535", type: String, validator:  UCI.validators.PortsOrRangeValidator() },
+	"proto":	{ dvalue: "any", type: String },
+	"dest_ip":	{ dvalue: "0.0.0.0/0", type: String, validator: UCI.validators.IP4CIDRValidator },
+	"dest_port":	{ dvalue: "0:65535", type: String, validator:  UCI.validators.PortsOrRangeValidator() }
 	//"ipset":	{ dvalue: "", type: String },
 	//"sticky":	{ dvalue: 0, type: Boolean },
 	//"timeout":	{ dvalue: 600, type: Number }

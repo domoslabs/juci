@@ -59,6 +59,102 @@ JUCI.app
 					});
 				}
 			}
+			$scope.onAddMember = function(){
+				var model = { error: null, name: "" }
+				$juciDialog.show("mwan3-member-add", {
+					title: $tr(gettext("Add New Member")),
+					on_apply(btn, inst){
+						if(model.name === ""){
+							model.error = $tr(gettext("No name entered"));
+							return;
+						}
+						$uci.mwan3.$create({
+							".type": "member",
+							".name": model.name
+						}).fail(function(e){
+							console.log(e);
+						}).always(function(){
+							inst.close();
+							$scope.$apply();
+						});
+					},
+					model: model
+				});
+			}
+			$scope.onDeleteMember = function(member){
+				if(member && member.$delete instanceof Function){
+					$juciConfirm.show($tr(gettext("Are you sure you want to delete member"))
+							+ " " + String(member[".name"]).toUpperCase()).done(function(){
+						member.$delete().done(function(){
+							$scope.$apply();
+						});
+					});
+				}
+			}
+			$scope.onAddPolicy = function(){
+				var model = { error: null, name: "" }
+				$juciDialog.show("mwan3-policy-add", {
+					title: $tr(gettext("Add New Policy")),
+					on_apply(btn, inst){
+						if(model.name === ""){
+							model.error = $tr(gettext("No name entered"));
+							return;
+						}
+						$uci.mwan3.$create({
+							".type": "policy",
+							".name": model.name
+						}).fail(function(e){
+							console.log(e);
+						}).always(function(){
+							inst.close();
+							$scope.$apply();
+						});
+					},
+					model: model
+				});
+			}
+			$scope.onDeletePolicy = function(policy){
+				if(policy && policy.$delete instanceof Function){
+					$juciConfirm.show($tr(gettext("Are you sure you want to delete policy"))
+							+ " " + String(policy[".name"]).toUpperCase()).done(function(){
+						policy.$delete().done(function(){
+							$scope.$apply();
+						});
+					});
+				}
+			}
+			$scope.onAddRule = function(){
+				var model = { error: null, name: "" }
+				$juciDialog.show("mwan3-rule-add", {
+					title: $tr(gettext("Add New Rule")),
+					on_apply(btn, inst){
+						if(model.name === ""){
+							model.error = $tr(gettext("No name entered"));
+							return;
+						}
+						$uci.mwan3.$create({
+							".type": "rule",
+							".name": model.name
+						}).fail(function(e){
+							console.log(e);
+						}).always(function(){
+							inst.close();
+							$scope.$apply();
+						});
+					},
+					model: model
+				});
+			}
+			$scope.onDeleteRule = function(rule){
+				if(rule && rule.$delete instanceof Function){
+					$juciConfirm.show($tr(gettext("Are you sure you want to delete rule"))
+							+ " " + String(rule[".name"]).toUpperCase()).done(function(){
+						rule.$delete().done(function(){
+							$scope.$apply();
+						});
+					});
+				}
+			}
 		});
 	});
 });
