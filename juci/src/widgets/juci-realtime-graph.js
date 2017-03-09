@@ -16,7 +16,7 @@ JUCI.app
 })
 .controller("juciRealtimeGraphCtrl", function($scope){
 	$scope.$watch("id",function(){ // expected to run only once, at startup
-		if(!$scope.id){return;}
+		if(!$scope.id){console.error("juci-realtime-graph: no id defined"); return;}
 
 		if(!$scope.tick){ $scope.tick = 1000; }
 		if(!$scope.min){ $scope.min = 0; } else{ $scope.min = parseInt($scope.min); }
@@ -27,6 +27,13 @@ JUCI.app
 			JUCI.interval.clear("realtimeGraphRenderStep-"+$scope.id);
 			JUCI.interval.clear("realtimeGraphAddDataPoint-"+$scope.id);
 		});
+
+		//wait until model is defined before starting
+		setTimeout(startGraph, 500); //TODO: do something better
+	},true);
+
+	function startGraph() {
+		if(!$scope.model){console.error("juci-realtime-graph: no ngModel defined"); return;};
 
 		var DELAY = $scope.tick; // delay[ms] to add new data points
 		var groups = new vis.DataSet();
@@ -113,6 +120,5 @@ JUCI.app
 			renderStep(); //removes ugly blinks when the datapoints are updated
 			next();
 		});
-
-	},true);
+	}
 }); 
