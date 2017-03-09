@@ -15,5 +15,13 @@ JUCI.app
 	$scope.$watch("interface", function(iface){
 		if(!iface)
 			return;
+		$scope.track_ip = iface.track_ip.value.map(function(track){
+			return { value: track };
+		});
+		$scope.$watch("track_ip", function(ips){
+			if(!$scope.interface || !ips)
+				return;
+			$scope.interface.track_ip.value = ips.map(function(ip){ return ip.value; });
+		}, true);
 	}, false);
 });

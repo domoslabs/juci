@@ -4,7 +4,7 @@
 		<tabset>
 			<tab heading="{{'Settings'|translate}}">
 				<juci-config-section>
-					<juci-list-editor ng-items="interfaces" item-editor="mwan3-interface-edit" get-item-title="$item['.name']"></juci-list-editor>
+					<juci-list-editor ng-items="interfaces" item-editor="mwan3-interface-edit" on-create="onAddInterface()" on-delete="onDeleteInterface($item)" get-item-title="$item['.name']"></juci-list-editor>
 				</juci-config-section>
 			</tab>
 			<tab heading="{{'Members'|translate}}">
