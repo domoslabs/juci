@@ -17,11 +17,10 @@ JUCI.app
 .controller("juciRealtimeGraphCtrl", function($scope){
 	$scope.$watch("id",function(){ // expected to run only once, at startup
 		if(!$scope.id){console.error("juci-realtime-graph: no id defined"); return;}
-
 		if(!$scope.tick){ $scope.tick = 1000; }
-		if(!$scope.min){ $scope.min = 0; } else{ $scope.min = parseInt($scope.min); }
-		if(!$scope.max){ $scope.max = 10000; } else{ $scope.max = parseInt($scope.max); }
 		if(!$scope.ylabel){ $scope.ytitle = {}; } else{ $scope.ytitle = { "text": $scope.ylabel }; }
+		$scope.min = 0;
+		$scope.max = 10000;
 
 		$scope.$on("$destroy", function(){
 			JUCI.interval.clear("realtimeGraphRenderStep-"+$scope.id);
@@ -94,7 +93,7 @@ JUCI.app
 			var interval = range.end - range.start;
 			var oldIds = dataset.getIds({
 				filter: function (item) {
-					return item.x < range.start - interval;
+					return range.end - item.x > interval*1.05; //datapoints are removed when 5% outside of window interval
 				}
 			});
 			dataset.remove(oldIds);
@@ -105,8 +104,15 @@ JUCI.app
 			var minData = dataset.min("y")["y"];
 			var minAxis = options.dataAxis.left.range.min;
 
-			if(maxData > maxAxis){ options.dataAxis.left.range.max = maxData + 1 }
-			if(minData < minAxis){ options.dataAxis.left.range.min = minData - 1 }
+			// rescale y-axis when values are too high or too low
+			var niceAxis = Math.round(maxData/0.7);
+			if (maxData > maxAxis) {
+				options.dataAxis.left.range.max = maxAxis>1000 ? Math.round(niceAxis/1000)*1000 : niceAxis;
+			}
+			else if (maxData < maxAxis/10 ) {
+				options.dataAxis.left.range.max = niceAxis;
+			}
+
 			graph2d.setOptions(options);
 
 		}
