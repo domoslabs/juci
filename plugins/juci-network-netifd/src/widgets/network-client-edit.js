@@ -34,29 +34,29 @@ JUCI.app
 	$scope.id = $scope.model.client.hostname;
 	$scope.avgTraffic = {
 		rows: [
-			["Download", "0", "7"],
-			["Upload", "0", "7"],
+			["Download", "0"],
+			["Upload", "0"],
 		]
 	};
 	$scope.$on("$destroy", function(){
 		JUCI.interval.clear("updateTraffic");
 	});
 
+	function foreach(obj, f){
+		Object.keys(obj).map(function(key, index){ obj[key] = f(obj[key]); });
+	}
+	function bytes_to_kbytes(bytes){ return bytes/1000; }
+
 	function updateTraffic(){
 		$rpc.$call("router.graph", "client_traffic").done(function(data){
-			console.log("A");
 			if (!data || !data[$scope.model.client.hostname]) {
-				console.log("    A1");
-				console.log(data[$scope.model.client.hostname]);
-
 				$scope.traffic = [];
 				$scope.traffic["Received Mbits/s"] = 0;
 				$scope.traffic["Transmitted Mbits/s"] = 0;
 			}
 			else {
-				console.log("    A2");
-				console.log(data);
-				$scope.traffic = data[$scope.model.client.hostname]; 
+				$scope.traffic = data[$scope.model.client.hostname];
+				foreach($scope.traffic, bytes_to_kbytes);
 			}
 		}).fail(function(e){
 			console.error("network-client-edit: "+e); 
@@ -73,7 +73,7 @@ JUCI.app
 	}
 
 	function to_kilo_mega_str(number) {
-		var number_out = (number / 1000).toFixed(3);
+		var number_out = number;
 		var unit = "kbit/s"
 
 		if (number_out > 1000) {
