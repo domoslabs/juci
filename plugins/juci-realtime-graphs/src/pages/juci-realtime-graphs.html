@@ -3,7 +3,7 @@
 		<h2>Realtime Graphs</h2>
 		<tabset>
 			<tab heading="{{'Load'|translate}}">
-				<juci-realtime-graph id="'load'" ng-model="load" tick="tick" min="0" max="2"></juci-realtime-graph>
+				<juci-realtime-graph id="'load'" ng-model="load" tick="tick"></juci-realtime-graph>
 			</tab>
 			<tab heading="{{'Traffic'|translate}}">
 				<tabset>
@@ -13,7 +13,7 @@
 				</tabset>
 			</tab>
 			<tab heading="{{'Connections'|translate}}">
-				<juci-realtime-graph id="'connections'" ng-model="connections" tick="tick" min="0" max="40"></juci-realtime-graph>
+				<juci-realtime-graph id="'connections'" ng-model="connections" tick="tick"></juci-realtime-graph>
 			</tab>
 		</tabset>
 		<!--
