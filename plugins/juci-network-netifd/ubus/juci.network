@@ -44,7 +44,7 @@ case "$1" in
 						;;
 						*)
 							devstatus=$(devstatus "$device")
-							json_load $devstatus
+							json_load "$devstatus"
 							json_get_var present present
 							json_init
 							json_add_boolean "has_link" $present
