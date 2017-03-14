@@ -110,7 +110,7 @@ JUCI.app
 				options.dataAxis.left.range.max = maxAxis>1000 ? Math.round(niceAxis/1000)*1000 : niceAxis;
 			}
 			else if (maxData < maxAxis/10 ) {
-				options.dataAxis.left.range.max = niceAxis;
+				options.dataAxis.left.range.max = niceAxis>0 ? niceAxis : 1;
 			}
 
 			graph2d.setOptions(options);
