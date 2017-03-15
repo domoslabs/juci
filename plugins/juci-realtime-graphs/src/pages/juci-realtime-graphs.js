@@ -1,13 +1,7 @@
 JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless){
 	$scope.data = {};
 	var mapIface = {};
-	/*
-	$scope.min_avg_max = {
-		load : { min:0, avg:0, max:0, tot:0 },
-		traffic : { min:0, avg:0, max:0, tot:0 },
-		connections : { min:0, avg:0, max:0, tot:0 }
-	};
-	*/
+
 	$uci.$sync("ports").done(function(){
 		$scope.portnames = $uci.ports["@all"];
 		for (var i in $scope.portnames){
@@ -47,7 +41,27 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless){
 		"TCP Count" : 0
 	};
 	$scope.traffic = {};
-	$scope.tick = 2000;
+	$scope.avgTraffic = {};
+	$scope.tick = 4000;
+
+	function to_kilo_mega_str(number) {
+		var number_out = number;
+		var unit = "kbit/s"
+
+		if (number_out > 1000) {
+			number_out = (number_out / 1000).toFixed(3);
+			unit = "Mbit/s";
+		}
+
+		return String(number_out) +" "+ unit;
+	}
+	function for_objs_in_obj(obj, f) {
+		Object.keys(obj).forEach(function(i){ foreach(obj[i], f); });
+	}
+	function foreach(obj, f){
+		Object.keys(obj).forEach(function(key){ obj[key]=f(obj[key]); });
+	}
+	function bits_to_kilobits(bits){ return (bits/1000).toFixed(3); }
 
 	function updateTraffic(){
 		$rpc.$call("router.graph", "iface_traffic").done(function(data){
@@ -55,10 +69,21 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless){
 			var newKey = undefined;
 			for (var key in data) {
 				newKey = mapIface[key];
-				if (!newKey){ continue; }
-				traffic[newKey] = data[key];
+				if (newKey){ traffic[newKey] = data[key]; }
 			}
+
+			for_objs_in_obj(traffic, bits_to_kilobits);
 			$scope.traffic = traffic;
+
+			// compute average transmitted/received bytes to show in table
+			for (var key in traffic){
+				var avg_kilobits_down = $scope.traffic[key]["Received bits"]/($scope.tick/1000);
+				var avg_kilobits_up = $scope.traffic[key]["Transmitted bits"]/($scope.tick/1000);
+				$scope.avgTraffic[key] = { rows:[["Download","0"],["Upload","0"]] };
+				$scope.avgTraffic[key]["rows"][0] = ["Download", to_kilo_mega_str(avg_kilobits_down)];
+				$scope.avgTraffic[key]["rows"][1] = ["Upload", to_kilo_mega_str(avg_kilobits_up)];
+			}
+
 			$scope.$apply();
 		}).fail(function(e){console.log(e);});
 	}

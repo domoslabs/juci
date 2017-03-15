@@ -8,7 +8,8 @@
 			<tab heading="{{'Traffic'|translate}}">
 				<tabset>
 					<tab ng-repeat="(key,value) in traffic" heading="{{key}}">
-						<juci-realtime-graph ng-model="value" id="{{key}}" tick="tick" ylabel="bytes"></juci-realtime-graph>
+						<juci-realtime-graph ng-model="value" id="{{key}}" tick="tick" ylabel="kbits"></juci-realtime-graph>
+						<juci-table title="Average Speeds" data="avgTraffic[key]"></juci-table>
 					</tab>
 				</tabset>
 			</tab>
