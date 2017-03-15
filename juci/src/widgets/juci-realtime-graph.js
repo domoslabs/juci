@@ -93,7 +93,7 @@ JUCI.app
 			var interval = range.end - range.start;
 			var oldIds = dataset.getIds({
 				filter: function (item) {
-					return range.end - item.x > interval*1.05; //datapoints are removed when 5% outside of window interval
+					return range.end - item.x > interval*1.10; //datapoints are removed when 10% outside of window interval
 				}
 			});
 			dataset.remove(oldIds);

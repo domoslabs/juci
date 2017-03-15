@@ -30,7 +30,7 @@ JUCI.app
 		require: "^ngModel",
 	};  
 }).controller("networkClientEdit", function($scope, $uci, $tr, gettext){
-	$scope.tick = 2000;
+	$scope.tick = 4000;
 	$scope.id = $scope.model.client.hostname;
 	$scope.avgTraffic = {
 		rows: [
@@ -43,31 +43,31 @@ JUCI.app
 	});
 
 	function foreach(obj, f){
-		Object.keys(obj).map(function(key, index){ obj[key] = f(obj[key]); });
+		Object.keys(obj).forEach(function(key){ obj[key]=f(obj[key]); });
 	}
-	function bytes_to_kbytes(bytes){ return bytes/1000; }
+	function bits_to_kilobits(bits){ return (bits/1000).toFixed(3); }
 
 	function updateTraffic(){
 		$rpc.$call("router.graph", "client_traffic").done(function(data){
 			if (!data || !data[$scope.model.client.hostname]) {
 				$scope.traffic = [];
-				$scope.traffic["Received Mbits/s"] = 0;
-				$scope.traffic["Transmitted Mbits/s"] = 0;
+				$scope.traffic["Received bits"] = 0;
+				$scope.traffic["Transmitted bits"] = 0;
 			}
 			else {
 				$scope.traffic = data[$scope.model.client.hostname];
-				foreach($scope.traffic, bytes_to_kbytes);
+				foreach($scope.traffic, bits_to_kilobits);
 			}
 		}).fail(function(e){
 			console.error("network-client-edit: "+e); 
 			$scope.traffic = [];
-			$scope.traffic["Received Mbits/s"] = 0;
-			$scope.traffic["Transmitted Mbits/s"] = 0;
+			$scope.traffic["Received bits"] = 0;
+			$scope.traffic["Transmitted bits"] = 0;
 		}).always(function(){
-			var bits_down = $scope.traffic["Received bytes"]/($scope.tick/1000) * 8;
-			var bits_up = $scope.traffic["Transmitted bytes"]/($scope.tick/1000) * 8;
-			$scope.avgTraffic["rows"][0] = ["Download", to_kilo_mega_str(bits_down)];
-			$scope.avgTraffic["rows"][1] = ["Upload", to_kilo_mega_str(bits_up)];
+			var avg_kilobits_down = $scope.traffic["Received bits"]/($scope.tick/1000);
+			var avg_kilobits_up = $scope.traffic["Transmitted bits"]/($scope.tick/1000);
+			$scope.avgTraffic["rows"][0] = ["Download", to_kilo_mega_str(avg_kilobits_down)];
+			$scope.avgTraffic["rows"][1] = ["Upload", to_kilo_mega_str(avg_kilobits_up)];
 			$scope.$apply();
 		});
 	}
