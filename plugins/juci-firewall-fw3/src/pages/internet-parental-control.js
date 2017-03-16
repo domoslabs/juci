@@ -110,6 +110,8 @@ JUCI.app
 			if(rule === "new"){
 				$uci.firewall.$create({
 					".type": "rule",
+					"src": "*",
+					"dest":"*",
 					"parental": true,
 					"name": $tr(gettext("Parental Rule"))
 				}).done(function(rule){

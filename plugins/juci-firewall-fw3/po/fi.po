@@ -133,7 +133,7 @@ msgstr "PUDOTA"
 msgid "Device"
 msgstr "Laite"
 
-msgid "Any"
+msgid "All"
 msgstr "Kaikki"
 
 # /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-rule-edit.js
