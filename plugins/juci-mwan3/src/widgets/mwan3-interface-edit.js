@@ -11,7 +11,7 @@ JUCI.app
 		require: "^ngModel",
 		replace: true
 	}
-}).controller("mwan3InterfaceEditCtrl", function($scope){
+}).controller("mwan3InterfaceEditCtrl", function($scope, $tr, gettext){
 	$scope.$watch("interface", function(iface){
 		if(!iface)
 			return;
@@ -23,5 +23,9 @@ JUCI.app
 				return;
 			$scope.interface.track_ip.value = ips.map(function(ip){ return ip.value; });
 		}, true);
+		$scope.families = [
+			{ value: "ipv4", label: $tr(gettext("IPv4")) },
+			{ value: "ipv6", label: $tr(gettext("IPv6")) }
+		];
 	}, false);
 });

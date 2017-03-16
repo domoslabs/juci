@@ -4,6 +4,7 @@ UCI.mwan3.$registerSectionType("interface", {
 	"track_ip":	{ dvalue: [], type: Array },
 	"reliability":	{ dvalue: 1, type: Number },
 	"count":	{ dvalue: 1, type: Number },
+	"family":	{ dvalue: "ipv4", type: String },
 	"timeout":	{ dvalue: 4, type: Number },
 	"interval":	{ dvalue: 10, type: Number },
 	"up":		{ dvalue: 5, type: Number },

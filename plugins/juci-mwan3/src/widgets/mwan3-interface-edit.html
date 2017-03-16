@@ -3,6 +3,9 @@
 		<juci-config-line title="{{'Enabled'|translate}}">
 			<switch class="green" ng-model="interface.enabled.value" />
 		</juci-config-line>
+		<juci-config-line title="{{'Family'|translate}}">
+			<juci-select ng-items="families" ng-model="interface.family.value" placeholder="{{'Select Family'|translate}}"></juci-select>
+		</juci-config-line>
 		<juci-config-line title="{{'Host to ping'|translate}}">
 			<tags-input ng-model="track_ip" display-property="value" min-length="5" add-on-space="true" add-on-blur="false" placeholder="{{'Add Ping Host' | translate}}">
 			</tags-input>
