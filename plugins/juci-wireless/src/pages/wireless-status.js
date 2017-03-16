@@ -57,12 +57,15 @@ JUCI.app
 				$wireless.getConnectedClients().done(function(cls){
 					$scope.clients = cls;
 					cls.map( function(c){
-						var rssi_per_antenna = "";
-						c.rssi_per_antenna.map(function(an){
-							rssi_per_antenna += (an + " ");
-						});
-						if(!c.scbstats || !c.rssi_per_antenna){ return; }
-						c["rows"] = [
+						var rssi_per_antenna;
+						if(c.rssi_per_antenna){
+							rssi_per_antenna = "";
+							c.rssi_per_antenna.map(function(an){
+								rssi_per_antenna += (an + " ");
+							});
+						}
+						c["rows"] = [];
+						[
 							[$tr(gettext("IP-Address")),c.ipaddr],
 							[$tr(gettext("MAC-Address")), String(c.macaddr).toUpperCase()],
 							[$tr(gettext("DHCP")), c.dhcp],
@@ -71,11 +74,14 @@ JUCI.app
 							[$tr(gettext("RSSI [dBm]")), c.rssi],
 							[$tr(gettext("SNR [dB]")), c.snr],
 							[$tr(gettext("Average antenna signal/RSSI [dbm]")), rssi_per_antenna],
-							[$tr(gettext("TX Rate [Mbps]")), parseInt(c.scbstats.rate_of_last_tx_pkt/1000 +0.5)],
-							[$tr(gettext("RX Rate [Mbps]")), parseInt(c.scbstats.rate_of_last_rx_pkt/1000 +0.5)],
-						];
-
-
+						].map(function(row){
+							if(row[1] !== undefined && row[1] !== "UNDEFINED")
+								c["rows"].push(row);
+						});
+						if(c.scbstats && c.scbstats.rate_of_last_tx_pkt)
+							c.rows.push([$tr(gettext("TX Rate [Mbps]")), parseInt(c.scbstats.rate_of_last_tx_pkt/1000 +0.5)]);
+						if(c.scbstats && c.scbstats.rate_of_last_rx_pkt)
+							c.rows.push([$tr(gettext("RX Rate [Mbps]")), parseInt(c.scbstats.rate_of_last_rx_pkt/1000 +0.5)]);
 
 						var flagsString = "";
 						for (var attrname in c.flags){
@@ -103,23 +109,27 @@ JUCI.app
 
 
 
-						var most_of_scbstat= [
-							[$tr(gettext("TX Total Packets")), c.scbstats.tx_total_pkts],
-							[$tr(gettext("Unicast Packets")), c.scbstats.tx_ucast_pkts],
-							[$tr(gettext("TX Unicast Packets")), c.scbstats.tx_ucast_pkts],
-							[$tr(gettext("TX Multicast/Broadcast Packets")), c.scbstats.tx_mcast_bcast_pkts],
-							[$tr(gettext("TX Failures")), c.scbstats.tx_failures],
-							[$tr(gettext("RX Data Packets")), c.scbstats.rx_data_pkts],
-							[$tr(gettext("RX Unicast Packets")), c.scbstats.rx_ucast_pkts],
-							[$tr(gettext("RX Multicast/Broadcast Packets")), c.scbstats.rx_mcast_bcast_pkts],
-							[$tr(gettext("TX Data Packets Retried")), c.scbstats.tx_data_pkts_retried],
-							[$tr(gettext("TX Total Packets Sent")), c.scbstats.tx_total_pkts_sent],
-							[$tr(gettext("TX Packets Retries")), c.scbstats.tx_pkts_retries],
-							[$tr(gettext("TX Packets Retry Exhausted")), c.scbstats.tx_pkts_retry_exhausted],
-							[$tr(gettext("RX Total Packets Retried")), c.scbstats.rx_total_pkts_retried],
-						];
-						most_of_scbstat.map(function(r){ c["rows"].push(r); });
-						
+						if(c.scbstats instanceof Object){
+							[
+								[$tr(gettext("TX Total Packets")), c.scbstats.tx_total_pkts],
+								[$tr(gettext("Unicast Packets")), c.scbstats.tx_ucast_pkts],
+								[$tr(gettext("TX Unicast Packets")), c.scbstats.tx_ucast_pkts],
+								[$tr(gettext("TX Multicast/Broadcast Packets")), c.scbstats.tx_mcast_bcast_pkts],
+								[$tr(gettext("TX Failures")), c.scbstats.tx_failures],
+								[$tr(gettext("RX Data Packets")), c.scbstats.rx_data_pkts],
+								[$tr(gettext("RX Unicast Packets")), c.scbstats.rx_ucast_pkts],
+								[$tr(gettext("RX Multicast/Broadcast Packets")), c.scbstats.rx_mcast_bcast_pkts],
+								[$tr(gettext("TX Data Packets Retried")), c.scbstats.tx_data_pkts_retried],
+								[$tr(gettext("TX Total Packets Sent")), c.scbstats.tx_total_pkts_sent],
+								[$tr(gettext("TX Packets Retries")), c.scbstats.tx_pkts_retries],
+								[$tr(gettext("TX Packets Retry Exhausted")), c.scbstats.tx_pkts_retry_exhausted],
+								[$tr(gettext("RX Total Packets Retried")), c.scbstats.rx_total_pkts_retried],
+							].filter(function(a){
+								return a[1] !== undefined;
+							}).map(function(r){
+								c.rows.push(r);
+							});
+						}
 					});
 				})
 				.always(function(){ next(); });
@@ -143,5 +153,5 @@ JUCI.app
 				next();
 			}
 		);
-	}); 
-}); 
+	});
+});
