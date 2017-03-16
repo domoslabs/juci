@@ -41,7 +41,7 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless){
 		"TCP Count" : 0
 	};
 	$scope.traffic = {};
-	$scope.avgTraffic = {};
+	$scope.tableData = {};
 	$scope.tick = 4000;
 
 	function to_kilo_mega_str(number) {
@@ -77,11 +77,11 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless){
 
 			// compute average transmitted/received bytes to show in table
 			for (var key in traffic){
-				var avg_kilobits_down = $scope.traffic[key]["Received bits"]/($scope.tick/1000);
-				var avg_kilobits_up = $scope.traffic[key]["Transmitted bits"]/($scope.tick/1000);
-				$scope.avgTraffic[key] = { rows:[["Download","0"],["Upload","0"]] };
-				$scope.avgTraffic[key]["rows"][0] = ["Download", to_kilo_mega_str(avg_kilobits_down)];
-				$scope.avgTraffic[key]["rows"][1] = ["Upload", to_kilo_mega_str(avg_kilobits_up)];
+				var avg_kilobits_down = $scope.traffic[key]["Downstream"]/($scope.tick/1000);
+				var avg_kilobits_up = $scope.traffic[key]["Upstream"]/($scope.tick/1000);
+				$scope.tableData[key] = { rows:[["Download Speed","0"],["Upload Speed","0"]] };
+				$scope.tableData[key]["rows"][0] = ["Download Speed", to_kilo_mega_str(avg_kilobits_down)];
+				$scope.tableData[key]["rows"][1] = ["Upload Speed", to_kilo_mega_str(avg_kilobits_up)];
 			}
 
 			$scope.$apply();

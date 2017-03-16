@@ -61,7 +61,7 @@
 		</tab>
 		<tab heading="{{'Throughput Graph'|translate}}" ng-show="wireless">
 			<juci-realtime-graph id="{{id}}" ng-model="traffic" tick="tick" ylabel="kbits"></juci-realtime-graph>
-			<juci-table title="Average Speeds" data="avgTraffic"></juci-table>
+			<juci-table title="Details" data="tableData"></juci-table>
 		</tab>
 	</tabset
 </div>
