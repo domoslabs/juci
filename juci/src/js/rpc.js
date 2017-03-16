@@ -155,7 +155,7 @@
 			self.$clearSession().done(function(){
 
 				if(!METHODS.session) {
-					setTimeout(function(){ deferred.reject(); }, 0);
+					setTimeout(function(){ deferred.reject("Session not found"); }, 0);
 					return deferred.promise();
 				}
 

@@ -51,9 +51,11 @@ JUCI.app
 		}).done(function success(res){
 			window.location.href="/";
 		}).fail(function fail(res){
+			$scope.logging_in = false;
+			if(res === "Session not found")
+				location.reload();
 			console.log(res);
 			$scope.errors.push($tr(gettext("Please enter correct username and password!")));
-			$scope.logging_in = false;
 			$scope.$apply();
 		});
 	}
