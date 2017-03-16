@@ -128,7 +128,9 @@ JUCI.app
 			$scope.wans = nets.filter(function(w){
 				return w.$info && w.defaultroute && w.defaultroute.value;
 			});
-			$scope.data = {ip:[], defaultroute:[], contypes:[], dslUp:"", dslDown:"", dns:[], linkspeed:""};
+			$scope.data = {ip:[], defaultroute:[], contypes:[], up: false, dslUp:"", dslDown:"", dns:[], linkspeed:""};
+			if($scope.wans.length === 0)
+				def.resolve();
 			async.eachSeries($scope.wans, function(wan, next){
 				$rpc.$call("juci.network", "has_link", {"interface":wan[".name"]}).done(function(data){
 					if(data && data.has_link)
@@ -139,7 +141,6 @@ JUCI.app
 					def.reject();
 				});
 			}, function(){
-				$scope.data.up = $scope.data.up || false;
 				$scope.uptime = 0;
 				$scope.wans.map(function(wan){
 					var w = wan.$info;
@@ -203,7 +204,7 @@ JUCI.app
 	}
 	refresh().done(function(){;
 		update_online().done(function(){
-			if(!$scope.online || !$scope.data.up)
+			if($scope.wans.length && (!$scope.online || !$scope.data.up))
 				$scope.fixError();
 		});
 	});

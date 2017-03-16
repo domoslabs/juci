@@ -1,6 +1,7 @@
 <div>
 	<juci-overview-widget title="{{'WAN'|translate}}" icon="juci juci-world" href="{{href}}">
-		<table class="table table-condensed">
+		<h4 ng-show="wans.length === 0" style="text-align:center;">{{'No WAN Network'|translate}}</h4>
+		<table ng-show="wans.length !== 0" class="table table-condensed">
 			<tr ng-show="data.up">
 				<td class="col-xs-6"><strong translate>Internet</strong></td>
 				<td class="col-xs-6">
