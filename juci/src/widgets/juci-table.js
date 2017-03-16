@@ -26,6 +26,7 @@ JUCI.app
 		link: function (scope, element, attrs) {
 			var childScope;
 			scope.$watch(attrs.dynamic, function(html) {
+				var html = String(html);
 				if(!html)
 					return;
 				if(childScope){
