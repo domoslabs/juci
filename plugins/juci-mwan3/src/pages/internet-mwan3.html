@@ -19,7 +19,7 @@
 			</tab>
 			<tab heading="{{'Rules'|translate}}">
 				<juci-config-section>
-					<juci-list-editor ng-items="rules" item-editor="mwan3-rule-edit" on-create="onAddRule()" on-delete="onDeleteRule($item)" get-item-title="$item['.name']"></juci-list-editor>
+					<juci-list-editor ng-items="rules" sortable="true" on-item-moved="onRuleMoved()" item-editor="mwan3-rule-edit" on-create="onAddRule()" on-delete="onDeleteRule($item)" get-item-title="$item['.name']"></juci-list-editor>
 				</juci-config-section>
 			</tab>
 		</tabset>

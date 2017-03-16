@@ -22,7 +22,7 @@ JUCI.app
 				};
 				$juciDialog.show("mwan3-interface-add", {
 					title: $tr(gettext("Add New Interface")),
-					on_apply(btn, inst){
+					on_apply: function(btn, inst){
 						var found = $scope.networks.find(function(net){
 							return net[".name"] === model.interface;
 						});
@@ -63,7 +63,7 @@ JUCI.app
 				var model = { error: null, name: "" }
 				$juciDialog.show("mwan3-member-add", {
 					title: $tr(gettext("Add New Member")),
-					on_apply(btn, inst){
+					on_apply: function(btn, inst){
 						if(model.name === ""){
 							model.error = $tr(gettext("No name entered"));
 							return;
@@ -95,7 +95,7 @@ JUCI.app
 				var model = { error: null, name: "" }
 				$juciDialog.show("mwan3-policy-add", {
 					title: $tr(gettext("Add New Policy")),
-					on_apply(btn, inst){
+					on_apply: function(btn, inst){
 						if(model.name === ""){
 							model.error = $tr(gettext("No name entered"));
 							return;
@@ -127,7 +127,7 @@ JUCI.app
 				var model = { error: null, name: "" }
 				$juciDialog.show("mwan3-rule-add", {
 					title: $tr(gettext("Add New Rule")),
-					on_apply(btn, inst){
+					on_apply: function(btn, inst){
 						if(model.name === ""){
 							model.error = $tr(gettext("No name entered"));
 							return;
@@ -154,6 +154,12 @@ JUCI.app
 						});
 					});
 				}
+			}
+			$scope.onRuleMoved = function(){
+				if(!$uci.mwan3) return;
+				$uci.mwan3.$save_order("rule").done(function(data){
+					console.log("done moving rule " + JSON.stringify(data));
+				});
 			}
 		});
 	});

@@ -16,8 +16,8 @@ JUCI.app
 	$scope.$watch("rule", function(rule){
 		if(!rule)
 			return;
-		$scope.data.src_ip_any = rule.src_ip.value === "0.0.0.0/0";
-		$scope.data.dest_ip_any = rule.dest_ip.value === "0.0.0.0/0";
+		$scope.data.src_ip_any = rule.src_ip.value === "";
+		$scope.data.dest_ip_any = rule.dest_ip.value === "";
 		$scope.allPolicies = $uci.mwan3["@policy"].map(function(policy){
 			return { label: policy[".name"], value: policy[".name"] };
 		});
@@ -32,9 +32,16 @@ JUCI.app
 			if(!$scope.data)
 				return;
 			if($scope.data.src_ip_any)
-				$scope.rule.src_ip.value = "0.0.0.0/0";
+				$scope.rule.src_ip.value = "";
 			if($scope.data.dest_ip_any)
-				$scope.rule.dest_ip.value = "0.0.0.0/0";
+				$scope.rule.dest_ip.value = "";
 		}, true);
+		$scope.$watch("rule.proto.value", function(proto){
+			if(!prot)
+				return;
+			if(!(proto === "tcp" || proto === "udp"))
+				$scope.rule.dest_port.value = $scope.rule.dest_port.dvalue;
+		}, false);
+
 	}, false);
 });
