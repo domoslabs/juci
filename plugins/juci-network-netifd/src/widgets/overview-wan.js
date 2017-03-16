@@ -111,7 +111,9 @@ JUCI.app
 		}
 	}
 	JUCI.interval.repeat("wan_check_internet", 10000, function(next){
-		update_online().always(function(){next();});
+		refresh().always(function(){
+			update_online().always(function(){next();});
+		});
 	});
 
 	function update_online(){
