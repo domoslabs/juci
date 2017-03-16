@@ -56,9 +56,9 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless){
 		return String(number_out) +" "+ unit;
 	}
 	function for_objs_in_obj(obj, f) {
-		Object.keys(obj).forEach(function(i){ foreach(obj[i], f); });
+		Object.keys(obj).forEach(function(i){ do_to_each(obj[i], f); });
 	}
-	function foreach(obj, f){
+	function do_to_each(obj, f){
 		Object.keys(obj).forEach(function(key){ obj[key]=f(obj[key]); });
 	}
 	function bits_to_kilobits(bits){ return (bits/1000).toFixed(3); }

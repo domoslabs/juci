@@ -79,17 +79,16 @@ JUCI.app
 			if (!data || !$scope.model.client.hostname) { return; }
 			Object.keys(data).forEach(function(key){
 				if(data[key].hostname === $scope.model.client.hostname){
-					$scope.tableData.rows[2] = ["Total Received data", to_kilo_mega_str((data[key].tx_bytes)*(8/1000))]; //8/1000= bytes->kbit
-					$scope.tableData.rows[3] = ["Total Transmitted data", to_kilo_mega_str((data[key].rx_bytes)*(8/1000))]; //8/1000= bytes->kbit
-					$scope.tableData.rows[4] = ["Total Uptime", secs_to_hms(data[key].in_network)];
+					if(data[key].tx_bytes)
+						$scope.tableData.rows[2] = ["Total Received data", to_kilo_mega_str((data[key].tx_bytes)*(8/1000))]; //8/1000= bytes->kbit
+					if(data[key].rx_bytes)
+						$scope.tableData.rows[3] = ["Total Transmitted data", to_kilo_mega_str((data[key].rx_bytes)*(8/1000))]; //8/1000= bytes->kbit
+					if(data[key].in_network)
+						$scope.tableData.rows[4] = ["Total Uptime", secs_to_hms(data[key].in_network)];
 				}
 			});
-		}).fail(function(e){
-			console.error("network-client-edit: "+e); 
-		}).always(function(){
-			console.log("DONE");
-			$scope.$apply();
-		});
+		}).fail(function(e){ console.error("network-client-edit: "+e); 
+		}).always(function(){ $scope.$apply(); });
 	}
 
 	function to_kilo_mega_str(number) {
