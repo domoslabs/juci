@@ -16,7 +16,7 @@
 					<strong ng-show="data.up == false" class="text-danger" translate>DOWN</strong>
 				</td>
 			</tr>
-			<tr ng-show="(online === false || (data && data.up === false)) && hideFixError">
+			<tr ng-show="(online === false || (data && data.up === false)) && !hideFixError">
 				<td></td>
 				<td>
 					<button style="margin-left:10px;" class="btn btn-danger pull-right" ng-click="fixError()">{{'Diagnose'|translate}} <i class="fa fa-exclamation"></i></button>
