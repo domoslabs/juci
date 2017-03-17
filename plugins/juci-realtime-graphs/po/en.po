@@ -15,5 +15,5 @@ msgstr ""
 msgid "Realtime Graphs"
 msgstr ""
 
-msgid "menu-juci-realtime-graphs-title"
+msgid "menu-realtime-graphs-title"
 msgstr "Realtime Graphs"
