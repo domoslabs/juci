@@ -15,5 +15,5 @@ msgstr ""
 msgid "Realtime Graphs"
 msgstr ""
 
-msgid "menu-realtime-graphs-title"
+msgid "menu-status-realtime-graphs-title"
 msgstr "Realtime Graphs"
