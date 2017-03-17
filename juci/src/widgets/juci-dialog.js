@@ -62,6 +62,9 @@ JUCI.app
 				}, 0); 
 			}, function () {
 					
+			}).finally(function(){
+				modalInstance.$destroy();
+
 			});
 			
 			return def.promise(); 

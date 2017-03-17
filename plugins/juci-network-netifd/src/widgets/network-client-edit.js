@@ -27,9 +27,93 @@ JUCI.app
 			model: "=ngModel"
 		},
 		replace: true, 
-		require: "^ngModel"
+		require: "^ngModel",
 	};  
-}).controller("networkClientEdit", function($scope, $uci, $tr, gettext){	
+}).controller("networkClientEdit", function($scope, $uci, $tr, gettext){
+	$scope.tick = 4000;
+	$scope.id = $scope.model.client.hostname;
+	$scope.tableData = {
+		rows: [
+			["Download Speed", "0"],
+			["Upload Speed", "0"],
+			["Total Received data", "0 kbit/s"],
+			["Total Transmitted data", "0 kbit/s"],
+		]
+	};
+	$scope.$on("$destroy", function(){
+		JUCI.interval.clear("updateTraffic");
+	});
+
+	function for_each(obj, f){
+		Object.keys(obj).forEach(function(key){ f(obj[key]); });
+	}
+	function do_to_each(obj, f){
+		Object.keys(obj).forEach(function(key){ obj[key]=f(obj[key]); });
+	}
+	function bits_to_kilobits(bits){ return (bits/1000).toFixed(3); }
+
+	function updateTraffic(){
+		$rpc.$call("router.graph", "client_traffic").done(function(data){
+			if (!data || !data[$scope.model.client.hostname]) {
+				$scope.traffic = [];
+				$scope.traffic["Downstream"] = 0;
+				$scope.traffic["Upstream"] = 0;
+			}
+			else {
+				$scope.traffic = data[$scope.model.client.hostname];
+				do_to_each($scope.traffic, bits_to_kilobits);
+			}
+		}).fail(function(e){
+			console.error("network-client-edit: "+e); 
+			$scope.traffic = [];
+			$scope.traffic["Downstream"] = 0;
+			$scope.traffic["Upstream"] = 0;
+		}).always(function(){
+			var avg_kilobits_down = $scope.traffic["Downstream"]/($scope.tick/1000);
+			var avg_kilobits_up = $scope.traffic["Upstream"]/($scope.tick/1000);
+			$scope.tableData["rows"][0] = ["Download Speed", to_kilo_mega_str(avg_kilobits_down)+"/s"];
+			$scope.tableData["rows"][1] = ["Upload Speed", to_kilo_mega_str(avg_kilobits_up)+"/s"];
+			$scope.$apply();
+		});
+		$rpc.$call("router.network", "clients").done(function(data){ // rx and tx are inverted by router.network clients
+			if (!data || !$scope.model.client.hostname) { return; }
+			Object.keys(data).forEach(function(key){
+				if(data[key].hostname === $scope.model.client.hostname){
+					if(data[key].tx_bytes)
+						$scope.tableData.rows[2] = ["Total Received data", to_kilo_mega_str((data[key].tx_bytes)*(8/1000))]; //8/1000= bytes->kbit
+					if(data[key].rx_bytes)
+						$scope.tableData.rows[3] = ["Total Transmitted data", to_kilo_mega_str((data[key].rx_bytes)*(8/1000))]; //8/1000= bytes->kbit
+					if(data[key].in_network)
+						$scope.tableData.rows[4] = ["Total Uptime", secs_to_hms(data[key].in_network)];
+				}
+			});
+		}).fail(function(e){ console.error("network-client-edit: "+e); 
+		}).always(function(){ $scope.$apply(); });
+	}
+
+	function to_kilo_mega_str(number) {
+		var number_out = number;
+		var unit = "kbit"
+
+		if (number_out > 1000) {
+			number_out = (number_out / 1000).toFixed(3);
+			unit = "Mbit";
+		}
+
+		return String(number_out) +" "+ unit;
+	}
+	function secs_to_hms(secs){ 
+		var s=secs%60;
+		var m=Math.floor(secs/60);
+		var h=Math.floor(m/60);
+		return String(h)+"h "+String(m-h*60)+"m "+String(s)+"s ";
+	}
+
+	JUCI.interval.repeat("updateTraffic",$scope.tick,function(next){
+		updateTraffic();
+		next();
+	});
+
 	$scope.$watch("model", function(value){
 		if(!value || !value.client || !value.client.macaddr) return;
 		var networkList = [];
