@@ -18,6 +18,8 @@
  * 02110-1301 USA
  */
 
+$rpc.$has("graphd","client_traffic");
+
 JUCI.app
 .directive("networkClientEdit", function(){
 	return {
@@ -96,11 +98,11 @@ JUCI.app
 		var unit = "kbit"
 
 		if (number_out > 1000) {
-			number_out = (number_out / 1000).toFixed(3);
+			number_out = (number_out / 1000);
 			unit = "Mbit";
 		}
 
-		return String(number_out) +" "+ unit;
+		return String(number_out.toFixed(3)) +" "+ unit;
 	}
 	function secs_to_hms(secs){ 
 		var s=secs%60;

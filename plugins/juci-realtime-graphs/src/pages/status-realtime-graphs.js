@@ -49,11 +49,11 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless){
 		var unit = "kbit/s"
 
 		if (number_out > 1000) {
-			number_out = (number_out / 1000).toFixed(3);
+			number_out = (number_out / 1000);
 			unit = "Mbit/s";
 		}
 
-		return String(number_out) +" "+ unit;
+		return String(number_out.toFixed(3)) +" "+ unit;
 	}
 	function for_objs_in_obj(obj, f) {
 		Object.keys(obj).forEach(function(i){ do_to_each(obj[i], f); });
