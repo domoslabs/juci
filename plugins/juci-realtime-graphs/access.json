@@ -11,8 +11,7 @@
 				],
 				"system": [
 					"info"
-				],
-				"/juci/rtgraphs": [ "run"/*"get"*/ ]
+				]
 			}
 		} 
 	}
