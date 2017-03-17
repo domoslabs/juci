@@ -18,7 +18,6 @@
  * 02110-1301 USA
  */
 
-$rpc.$has("graphd","client_traffic");
 
 JUCI.app
 .directive("networkClientEdit", function(){
@@ -32,6 +31,11 @@ JUCI.app
 		require: "^ngModel",
 	};  
 }).controller("networkClientEdit", function($scope, $uci, $tr, gettext){
+	$scope.hasGraphObject = function(){
+		console.log($rpc.$has("router.graph","client_traffic"));
+
+		return $rpc.$has("router.graph","client_traffic");
+	}
 	$scope.tick = 4000;
 	$scope.id = $scope.model.client.hostname;
 	$scope.tableData = {
