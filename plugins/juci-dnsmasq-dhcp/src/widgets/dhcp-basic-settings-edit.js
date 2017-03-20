@@ -32,9 +32,6 @@ JUCI.app
 	};  
 })
 .controller("dhcpBasicSettingsEdit", function($scope, $network, $tr, gettext){
-	$scope.data = {};
-	$scope.data.dhcp = { field1:"", field2:"" };
-	
 	$scope.dhcpLeaseTimes = [
 		{ label: "5 "+$tr(gettext("Minutes")), value: "5m"}, 
 		{ label: "30 "+$tr(gettext("Minutes")), value: "30m"}, 
@@ -53,41 +50,4 @@ JUCI.app
 		{ label: "Relay", value: "relay" }, 
 		{ label: "None", value: "" }, 
 	];
-
-	$scope.$watch("dhcp", function(){
-		if(!$scope.dhcp){ return; }
-		$scope.data.dhcp_options = $scope.dhcp.dhcp_option.value;
-	},false);
-
-	$scope.addDHCPOption = function(){
-		var f1 = $scope.data.dhcp.field1;
-		var f2 = $scope.data.dhcp.field2;
-		if(f1 && f2){
-			if(f1>255 || f1<0){
-				alert("Tag must be 0-255.");
-				return;
-			}
-			var newList = $scope.dhcp.dhcp_option.value.slice();
-			var newString = f1+","+f2;
-			if(newList.indexOf(newString) === -1){
-				newList.push(newString);
-				$scope.data.dhcp_options = newList.slice();
-				$scope.dhcp.dhcp_option.value = newList.slice();
-				$scope.data.dhcp.field1 = "";
-				$scope.data.dhcp.field2 = "";
-			}
-			else{
-				alert(newString+" Already added.");
-			}
-		}
-	};
-	$scope.deleteDHCPOption = function(d){
-		var newList = $scope.dhcp.dhcp_option.value.slice();
-		newList.splice(newList.indexOf(d),1);
-
-		$scope.data.dhcp_options = newList.slice();
-		$scope.dhcp.dhcp_option.value = newList.slice();
-	};
-
-	
 }); 
