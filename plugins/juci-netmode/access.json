@@ -20,7 +20,9 @@
 		}, 
 		"write": {
 			"uci": [
-				"netmode"
+				"netmode",
+				"wireless",
+				"juci"
 			]
 		}
 	}
