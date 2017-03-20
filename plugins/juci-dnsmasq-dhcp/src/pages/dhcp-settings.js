@@ -69,6 +69,16 @@ JUCI.app
 				}
 			});
 		}
+		$scope.onDeleteClassification = function(c){
+			if(c && c.$delete instanceof Function){
+				c.$delete().done(function(){
+					$scope.classifications = $scope.classifications.filter(function(cl){
+						return cl[".name"] !== c[".name"];
+					});
+					$scope.$apply();
+				});
+			}
+		}
 		$scope.$apply();
 	});	
 	$scope.$watch("rebind_domain", function(){
