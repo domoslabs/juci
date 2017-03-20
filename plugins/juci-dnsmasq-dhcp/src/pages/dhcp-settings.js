@@ -26,6 +26,7 @@ JUCI.app
 			return { label: x };
 		});
 		$scope.bogusnxdomain = $scope.dnsmasq.bogusnxdomain.value.map(function(host){ return { label: host }});
+		$scope.tags = $uci.dhcp["@tag"];
 		$scope.server = $scope.dnsmasq.server.value.map(function(server){ return { label: server }});
 		$scope.rebind_domain = $scope.dnsmasq.rebind_domain.value.map(function(domain){ return { label: domain }});
 		$scope.classes = {
@@ -75,6 +76,36 @@ JUCI.app
 					$scope.classifications = $scope.classifications.filter(function(cl){
 						return cl[".name"] !== c[".name"];
 					});
+					$scope.$apply();
+				});
+			}
+		}
+		$scope.onAddTag = function(){
+			var model = {name:"", error: null};
+			$juciDialog.show("dhcp-add-tag", {
+				title: $tr(gettext("Add new Tag")),
+				model: model,
+				on_apply: function(btn, inst){
+					if(!model.name){
+						model.error = $tr(gettext("Name can not be empty"));
+						return;
+					}
+					if(model.name.match(/[^a-zA-Z0-9_]/)){
+						model.error = $tr(gettext("Invalid name, it may only contain (a-z, A-Z, 0-9 and _)"));
+						return;
+					}
+					$uci.dhcp.$create({
+						".type":"tag",
+						".name":model.name
+					}).always(function(){
+						inst.close();
+					});
+				}
+			});
+		}
+		$scope.onDeleteTag = function(tag){
+			if(tag && tag.$delete instanceof Function){
+				tag.$delete().done(function(){
 					$scope.$apply();
 				});
 			}

@@ -108,6 +108,10 @@ UCI.dhcp.$registerSectionType("subscrid", {
 	"networkid": 	{ dvalue: "", type: String, required: true },
 	"dhcp_option": 	{ dvalue:  [], type: Array }
 });
+UCI.dhcp.$registerSectionType("tag", {
+	"force":	{ dvalue: false, type: Boolean },
+	"dhcp_option": 	{ dvalue:  [], type: Array }
+});
 
 JUCI.app.factory("lanIpFactory", function($firewall, $tr, gettext){
 	return {

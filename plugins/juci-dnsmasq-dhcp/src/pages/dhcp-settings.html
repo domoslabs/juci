@@ -99,6 +99,11 @@
 				      get-item-title="$item['.type'] + ': ' + $item[$item['.type']].value">
 				</juci-list-editor>
 			</tab>
+			<tab heading="{{ 'DNS Tags' | translate }}">
+				<juci-list-editor ng-items="tags" item-editor="dhcp-tag-edit" on-create="onAddTag()"
+						  on-delete="onDeleteTag($item)" get-item-title="$item['.name']">
+				</juci-list-editor>
+			</tab>
 		</tabset>
 	</div>
 </juci-layout-with-sidebar>
