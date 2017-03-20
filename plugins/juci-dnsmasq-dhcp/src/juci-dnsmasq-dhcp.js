@@ -18,7 +18,7 @@
  * 02110-1301 USA
  */
 
-UCI.$registerConfig("dhcp"); 
+UCI.$registerConfig("dhcp");
 UCI.dhcp.$registerSectionType("dnsmasq", {
 	"domainneeded":		{ dvalue: true, type: Boolean },
 	"dhcpleasemax":		{ dvalue: undefined, type: Number },
@@ -72,12 +72,42 @@ UCI.dhcp.$registerSectionType("domain", {
 UCI.dhcp.$registerSectionType("host", {
 	"name":		{ dvalue: "", type: String, validator: UCI.validators.HostnameValidator },
 	"dhcp":		{ dvalue: "", type: String },
-	"network":	{ dvalue: "lan", type: String }, 
+	"network":	{ dvalue: "lan", type: String },
 	"mac":		{ dvalue: "", type: String, required: true, validator: UCI.validators.MACAddressValidator },
 	"ip":		{ dvalue: "", type: String, validator: UCI.validators.IP4AddressValidator },
-	"duid": 	{ dvalue: "", type: String }, 
+	"duid": 	{ dvalue: "", type: String },
 	"hostid": 	{ dvalue: "", type: String }
-}); 
+});
+UCI.dhcp.$registerSectionType("vendorclass", {
+	"vendorclass":	{ dvalue: "", type: String },
+	"networkid": 	{ dvalue: "", type: String, required: true },
+	"dhcp_option": 	{ dvalue:  [], type: Array }
+});
+UCI.dhcp.$registerSectionType("mac", {
+	"mac":		{ dvalue: "", type: String },
+	"networkid": 	{ dvalue: "", type: String, required: true },
+	"dhcp_option": 	{ dvalue:  [], type: Array }
+});
+UCI.dhcp.$registerSectionType("userclass", {
+	"userclass":	{ dvalue: "", type: String },
+	"networkid": 	{ dvalue: "", type: String, required: true },
+	"dhcp_option": 	{ dvalue:  [], type: Array }
+});
+UCI.dhcp.$registerSectionType("circuitid", {
+	"circuitid":	{ dvalue: "", type: String },
+	"networkid": 	{ dvalue: "", type: String, required: true },
+	"dhcp_option": 	{ dvalue:  [], type: Array }
+});
+UCI.dhcp.$registerSectionType("remoteid", {
+	"remoteid":	{ dvalue: "", type: String },
+	"networkid": 	{ dvalue: "", type: String, required: true },
+	"dhcp_option": 	{ dvalue:  [], type: Array }
+});
+UCI.dhcp.$registerSectionType("subscrid", {
+	"subscrid":	{ dvalue: "", type: String },
+	"networkid": 	{ dvalue: "", type: String, required: true },
+	"dhcp_option": 	{ dvalue:  [], type: Array }
+});
 
 JUCI.app.factory("lanIpFactory", function($firewall, $tr, gettext){
 	return {
@@ -95,7 +125,7 @@ JUCI.app.factory("lanIpFactory", function($firewall, $tr, gettext){
 				if(networks[0].$info["ipv6-address"].length == 0 || !networks[0].$info["ipv6-address"][0].address){
 					if(networks[0].$info["ipv6-prefix-assignment"].length != 0 && networks[0].$info["ipv6-prefix-assignment"][0].address){
 						res.ipv6 = networks[0].$info["ipv6-prefix-assignment"][0].address + "1";
-					}else{ 
+					}else{
 						res.ipv6 = $tr(gettext("LAN does not have IPv6 configured"));
 					}
 				}else{

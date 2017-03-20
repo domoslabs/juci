@@ -1,0 +1,13 @@
+<div>
+	<juci-config-lines>
+		<juci-config-line title="{{classification['.type']}}">
+			<input type="text" class="form-control" ng-model="classification[classification['.type']].value" />
+		</juci-config-line>
+		<juci-config-line title="{{'Networkid'|translate}}">
+			<input type="text" class="form-control" ng-model="classification.networkid.value">
+		</juci-config-line>
+		<juci-config-line title="{{'DHCP Options'|translate}}">
+			<juci-input-dhcp-options ng-model="classification.dhcp_option.value"></juci-input-dhcp-options>
+		</juci-config-line>
+	</juci-config-lines>
+</div>

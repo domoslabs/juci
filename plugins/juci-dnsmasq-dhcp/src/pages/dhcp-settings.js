@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("dhcpSettingsPage", function($scope, $uci){
+.controller("dhcpSettingsPage", function($scope, $uci, $tr, gettext, $juciDialog){
 	$uci.$sync(["dhcp"]).done(function(){
 		$scope.dnsmasq = $uci.dhcp["@dnsmasq"][0];
 		$scope.hostfiles = $scope.dnsmasq.addnhosts.value.map(function(x){
@@ -28,6 +28,47 @@ JUCI.app
 		$scope.bogusnxdomain = $scope.dnsmasq.bogusnxdomain.value.map(function(host){ return { label: host }});
 		$scope.server = $scope.dnsmasq.server.value.map(function(server){ return { label: server }});
 		$scope.rebind_domain = $scope.dnsmasq.rebind_domain.value.map(function(domain){ return { label: domain }});
+		$scope.classes = {
+			"mac":		{ label: $tr(gettext("MAC Class")), value: "mac" },
+			"vendorclass":	{ label: $tr(gettext("Vendor ID")), value: "vendorclass" },
+			"userclass":	{ label: $tr(gettext("User Class")), value: "userclass" },
+			"circuitid":	{ label: $tr(gettext("Circuit ID")), value: "circuitid" },
+			"remoteid":	{ label: $tr(gettext("Remote ID")), value: "remoteid" },
+			"subscrid":	{ label: $tr(gettext("Subscriber ID")), value: "subscrid" }
+		}
+		$scope.classList = Object.keys($scope.classes).map(function(cl){ return  $scope.classes[cl]; });
+
+		$scope.classifications = (
+			$uci.dhcp["@vendorclass"] || []).concat(
+			$uci.dhcp["@mac"] || []).concat(
+			$uci.dhcp["@userclass"] || []).concat(
+			$uci.dhcp["@circuitid"] || []).concat(
+			$uci.dhcp["@remoteid"] || []).concat(
+			$uci.dhcp["@subscrid"] || []);
+		$scope.onAddClassification = function(){
+			var model = {
+				classifications: $scope.classList,
+				model: "vendorclass"
+			}
+			$juciDialog.show("dhcp-add-classification", {
+				title: $tr(gettext("Select type of Classification")),
+				model: model,
+				on_apply: function(btn, inst){
+					if(!$scope.classes.hasOwnProperty(model.model))
+						return false;
+					$uci.dhcp.$create({
+						".type":model.model,
+					}).done(function(res){
+						$scope.classifications.push(res);
+						$scope.$apply();
+					}).fail(function(e){
+						console.log(e);
+					}).always(function(){
+						inst.close();
+					});
+				}
+			});
+		}
 		$scope.$apply();
 	});	
 	$scope.$watch("rebind_domain", function(){

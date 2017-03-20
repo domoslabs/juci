@@ -92,6 +92,13 @@
 			<tab heading="{{ 'Hostname Entries' | translate }}">
 				<dhcp-host-entries></dhcp-host-entries>
 			</tab>
+			<tab heading="{{ 'Classifications' | translate }}">
+				<h3 translate>Create Classification sections classify DHCP clients</h3>
+				<juci-list-editor ng-items="classifications" item-editor="dhcp-classification-editor"
+				      on-create="onAddClassification()" on-delete="onDeleteClassification()"
+				      get-item-title="$item['.type'] + ': ' + $item[$item['.type']].value">
+				</juci-list-editor>
+			</tab>
 		</tabset>
 	</div>
 </juci-layout-with-sidebar>
