@@ -40,6 +40,9 @@
 								<div class="col-xs-12 alert alert-{{cssClass || 'warning'}}" style="margin-left:15px;font-size:0.8em" ng-show="inNetwork">{{'IP in network'|translate}}: {{inNetwork | uppercase}} {{'Clients current network'|translate}}: {{model.client.network || ('Unknown'|translate) | uppercase}}</div>
 							</div>
 						</juci-config-line>
+						<juci-config-line title="{{'Tag'|translate}}">
+							<juci-select ng-items="tags" ng-model="client.tag.value" placeholder="{{'No tag set'|translate}}"></juci-select>
+						</juci-config-line>
 						<juci-config-line title="{{'DUID (IPv6)'|translate}}">
 							<input type="text" class="form-control" ng-model="client.duid.value" />
 						</juci-config-line>

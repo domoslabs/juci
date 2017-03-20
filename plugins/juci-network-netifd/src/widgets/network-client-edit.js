@@ -125,8 +125,9 @@ JUCI.app
 		var networkList = [];
 		$uci.$sync("dhcp").done(function(){
 			$scope.staticLeses = $uci.dhcp["@host"];
+			$scope.tags = $uci.dhcp["@tag"].map(function(tag){ return { label: String(tag[".name"]).toUpperCase(), value: tag[".name"] }; });
 			$scope.client = $scope.staticLeses.filter(function(l){
-				return l.mac.value === value.client.macaddr;
+				return String(l.mac.value).toUpperCase() === String(value.client.macaddr).toUpperCase();
 			})[0];
 			$scope.$apply();
 		});

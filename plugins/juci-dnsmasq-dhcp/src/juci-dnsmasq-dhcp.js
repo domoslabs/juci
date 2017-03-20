@@ -76,6 +76,7 @@ UCI.dhcp.$registerSectionType("host", {
 	"mac":		{ dvalue: "", type: String, required: true, validator: UCI.validators.MACAddressValidator },
 	"ip":		{ dvalue: "", type: String, validator: UCI.validators.IP4AddressValidator },
 	"duid": 	{ dvalue: "", type: String },
+	"tag":	 	{ dvalue: "", type: String },
 	"hostid": 	{ dvalue: "", type: String }
 });
 UCI.dhcp.$registerSectionType("vendorclass", {
