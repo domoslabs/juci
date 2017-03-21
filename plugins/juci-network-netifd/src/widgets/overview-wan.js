@@ -143,14 +143,15 @@ JUCI.app
 					next();
 				}).fail(function(e){
 					console.log(e);
-					def.reject();
 				});
 			}, function(){
 				$scope.uptime = 0;
-				$scope.wans.map(function(wan){
+				async.eachSeries($scope.wans, function(wan, cb){
 					var w = wan.$info;
-					if(!w.up)
+					if(!w.up){
+						cb();
 						return;
+					}
 					if(w["ipv4-address"] && w["ipv4-address"].length)
 						w["ipv4-address"].map(function(ip){ if(ip && ip.address) $scope.data.ip.push(ip.address);});
 					if(w["ipv6-address"] && w["ipv6-address"].length)
@@ -160,6 +161,10 @@ JUCI.app
 							return (r.target === "0.0.0.0" || r.target === "::") && r.nexthop;
 						}).map(function(r){ $scope.data.defaultroute.push(r.nexthop); });
 					}
+					if(w["dns-server"] && w["dns-server"].length)
+						$scope.data.dns = $scope.data.dns.concat(w["dns-server"]);
+					if(w.uptime && typeof w.uptime === "number" && $scope.uptime < w.uptime)
+						$scope.uptime = w.uptime;
 					var type = $tr(gettext("Ethernet"));
 					if(!w.device && w.l3_device)
 						w.device = w.l3_device
@@ -177,32 +182,29 @@ JUCI.app
 							if($scope.data.contypes.indexOf(type) === -1)
 								$scope.data.contypes.push(type);
 							dsl_stats(type);
-							$scope.$apply();
+							cb();
 						}).fail(function(e){
 							console.log(e);
-							def.reject();
-							return;
+							cb();
 						});
 					}
 					else{
 						if($scope.data.contypes.indexOf(type) === -1)
 							$scope.data.contypes.push(type);
 						dsl_stats(type);
+						cb();
 					}
-					if(w["dns-server"] && w["dns-server"].length)
-						$scope.data.dns = $scope.data.dns.concat(w["dns-server"]);
-					if(w.uptime && typeof w.uptime === "number" && $scope.uptime < w.uptime)
-						$scope.uptime = w.uptime;
+				}, function(){
+					Object.keys($scope.data).map(function(k){
+						if($scope.data[k] instanceof Array){
+							$scope.data[k] = $scope.data[k].filter(function(elem, index, self) {
+								return index == self.indexOf(elem);
+							});
+						}
+					});
+					$scope.$apply();
+					def.resolve();
 				});
-				Object.keys($scope.data).map(function(k){
-					if($scope.data[k] instanceof Array){
-						$scope.data[k] = $scope.data[k].filter(function(elem, index, self) {
-							return index == self.indexOf(elem);
-						});
-					}
-				});
-				$scope.$apply();
-				def.resolve();
 			});
 		});
 		return def.promise();
