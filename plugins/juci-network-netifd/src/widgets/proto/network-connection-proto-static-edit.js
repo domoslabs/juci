@@ -3,12 +3,12 @@
 JUCI.app
 .directive("networkConnectionProtoStaticEdit", function(){
 	return {
-		templateUrl: "/widgets/proto/network-connection-proto-static-edit.html", 
+		templateUrl: "/widgets/proto/network-connection-proto-static-edit.html",
 		scope: {
 			interface: "=ngModel"
-		}, 
-		controller: "networkConnectionProtoStaticEdit", 
-		replace: true, 
+		},
+		controller: "networkConnectionProtoStaticEdit",
+		replace: true,
 		require: "^ngModel"
 	};
 })
@@ -18,7 +18,7 @@ JUCI.app
 		$scope.ip.type = ($scope.interface.ip6assign.value == "" ? "alloc" : "assign");
 		$scope.interface.dns.value = $scope.interface.dns.value.filter(function(x){ if(x == "") return false; return true});
 		$scope.dnslist = $scope.interface.dns.value.map(function(x){return { text:x }});
-	}); 
+	});
 	$scope.interface_types = [
 		{ label: $tr(gettext("Uplink")),	 value: false },
 		{ label: $tr(gettext("Downlink")), value: true }
@@ -60,9 +60,9 @@ JUCI.app
 	};
 	
 	$scope.$watchCollection("bridgedInterfaces", function(value){
-		if(!value || !$scope.interface || !(value instanceof Array)) return; 
-		$scope.interface.ifname.value = value.join(" "); 
-	}); 
+		if(!value || !$scope.interface || !(value instanceof Array)) return;
+		$scope.interface.ifname.value = value.join(" ");
+	});
 	
 })
 .directive("networkConnectionProtoStaticPhysicalEdit", function(){
@@ -71,6 +71,16 @@ JUCI.app
 		scope: {
 			interface: "=ngModel",
 			protos: "="
+		},
+		replace: true,
+		require: "^ngModel"
+	};
+})
+.directive("networkConnectionProtoStaticAdvancedEdit", function(){
+	return {
+		templateUrl: "/widgets/proto/network-connection-proto-static-advanced-edit.html",
+		scope: {
+			interface: "=ngModel"
 		},
 		replace: true,
 		require: "^ngModel"
