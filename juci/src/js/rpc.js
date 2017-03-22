@@ -20,6 +20,7 @@
 
 (function(scope){
 	var DEBUG_MODE = 0;
+	var RPC_TIMEOUT = 15 * 1000;
 	var RPC_USER = scope.localStorage.getItem("user") || "";
 	var RPC_DEFAULT_SESSION_ID = "00000000000000000000000000000000";
 	var RPC_SESSION_ID = scope.localStorage.getItem("sid")||RPC_DEFAULT_SESSION_ID;
@@ -73,9 +74,14 @@
 		// if this request with same parameters is already in progress then just return the existing promise
 		if(RPC_CACHE[key].deferred && RPC_CACHE[key].deferred.state() === "pending"){
 			return RPC_CACHE[key].deferred.promise();
-		} else {
-			RPC_CACHE[key].deferred = $.Deferred();
 		}
+		RPC_CACHE[key].deferred = $.Deferred();
+		setTimeout(function(){
+			if(RPC_CACHE[key] && RPC_CACHE[key].deferred && RPC_CACHE[key].deferred.state() === "pending"){
+				RPC_CACHE[key].deferred.reject();
+				delete RPC_CACHE[key];
+			}
+		}, RPC_TIMEOUT);
 
 		var jsonrpc_obj = {
 			jsonrpc: "2.0",
