@@ -20,7 +20,7 @@
 
 (function(scope){
 	var DEBUG_MODE = 0;
-	var RPC_TIMEOUT = 15 * 1000;
+	var RPC_TIMEOUT = 30 * 1000;
 	var RPC_USER = scope.localStorage.getItem("user") || "";
 	var RPC_DEFAULT_SESSION_ID = "00000000000000000000000000000000";
 	var RPC_SESSION_ID = scope.localStorage.getItem("sid")||RPC_DEFAULT_SESSION_ID;
