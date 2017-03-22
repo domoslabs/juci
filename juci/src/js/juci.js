@@ -239,7 +239,7 @@
 							$juci.redirect("login");
 						});
 						
-						document.title = $tr(name+"-title");
+						document.title = $tr("menu-"+name+"-title");
 
 						// scroll to top
 						$window.scrollTo(0, 0);
