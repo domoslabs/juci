@@ -134,15 +134,18 @@ JUCI.app
 				return w.$info && w.defaultroute && w.defaultroute.value;
 			});
 			$scope.data = {ip:[], defaultroute:[], contypes:[], up: false, dslUp:"", dslDown:"", dns:[], linkspeed:""};
-			if($scope.wans.length === 0)
+			if($scope.wans.length === 0){
 				def.resolve();
+				return;
+			}
 			async.eachSeries($scope.wans, function(wan, next){
 				$rpc.$call("juci.network", "has_link", {"interface":wan[".name"]}).done(function(data){
 					if(data && data.has_link)
 						$scope.data.up = true;
-					next();
 				}).fail(function(e){
 					console.log(e);
+				}).always(function(){
+					next();
 				});
 			}, function(){
 				$scope.uptime = 0;
@@ -182,9 +185,7 @@ JUCI.app
 							if($scope.data.contypes.indexOf(type) === -1)
 								$scope.data.contypes.push(type);
 							dsl_stats(type);
-							cb();
-						}).fail(function(e){
-							console.log(e);
+						}).always(function(e){
 							cb();
 						});
 					}
@@ -206,7 +207,7 @@ JUCI.app
 					def.resolve();
 				});
 			});
-		});
+		}).fail(function(){ def.reject();});
 		return def.promise();
 	}
 	refresh().done(function(){;
