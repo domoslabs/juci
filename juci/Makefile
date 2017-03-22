@@ -69,6 +69,7 @@ endef
 
 define Plugin/juci/install
 	$(Q)$(INSTALL_DIR) $(1)/www/
+	$(Q)$(CP) $(PLUGIN_DIR)/src/favicon.ico $(1)/www/
 	$(Q)$(CP) $(PLUGIN_DIR)/src/img/ $(1)/www/
 	$(Q)$(CP) $(PLUGIN_DIR)/src/fonts/ $(1)/www/
 	$(Q)$(CP) $(PLUGIN_DIR)/src/lib/fonts/ $(1)/www/
