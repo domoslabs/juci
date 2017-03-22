@@ -95,17 +95,22 @@ JUCI.app.run(function($uci){
 			[$tr(gettext("Model")), sys.system.hardware || $tr(gettext("N/A"))],
 			[$tr(gettext("Serial No")), sys.system.serialno || $tr(gettext("N/A"))],
 			[$tr(gettext("MAC Address")), sys.system.basemac || $tr(gettext("N/A"))],
+			[$tr(gettext("Filesystem")), sys.system.filesystem || $tr(gettext("N/A"))],
 			[$tr(gettext("Firmware Version")), sys.system.firmware || $tr(gettext("N/A"))],
 			[$tr(gettext("Other Bank")), other_bank|| $tr(gettext("N/A"))],
 			[$tr(gettext("Kernel Version")), sys.system.kernel || $tr(gettext("N/A"))],
-			[$tr(gettext("Filesystem")), sys.system.filesystem || $tr(gettext("N/A"))],
-			[$tr(gettext("BRCM Version")), sys.system.brcmver || $tr(gettext("N/A"))],
 			[$tr(gettext("CFE Version")), sys.system.cfever || $tr(gettext("N/A"))],
 			[$tr(gettext("Local Time")), Date(sys.system.localtime)],
 			[$tr(gettext("Uptime")), sys.system.uptime],
 			[$tr(gettext("CPU")), (sys.system.cpu_per || 0)+"%"],
 			[$tr(gettext("Active Connections")), '<juci-progress value="'+netLoad.active_connections+'" total="'+netLoad.max_connections+'"></juci-progress>']
 		];
+		if(sys.system.brcmver){
+			indexOfKernelVersion = $scope.systemStatusTbl.rows.findIndex(function(row){
+				return row[0] == $tr(gettext("Kernel Version"));
+			});
+			$scope.systemStatusTbl.rows.splice(indexOfKernelVersion + 1, 0, [$tr(gettext("BRCM Version")), sys.system.brcmver || $tr(gettext("N/A"))]);
+		}
 
 		$scope.systemMemoryTbl.rows = [
 			[$tr(gettext("Usage")), '<juci-progress value="'+Math.round(sys.memoryKB.total - sys.memoryKB.free)+'" total="'+ Math.round(sys.memoryKB.total) +'" units="kB"></juci-progress>'],
