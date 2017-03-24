@@ -1,25 +1,245 @@
 #!/bin/sh
 
 . /usr/share/libubox/jshn.sh
+. /lib/functions.sh
+
+is_num() {
+	[ "$1" == "" ] && return 1
+	[ "$(echo $1 | sed 's/[0-9]//g')" == "" ] && return 0 || return 1
+}
+
+validate_ping_traceroute() {
+	host="$1"
+	seq="$2"
+	count="$3"
+	timeout="$4"
+	[ "$host" == "" ] && return 1
+	is_num $seq || return 1
+	is_num $count || return 1
+	is_num $timeout || return 1
+	return 0
+}
+validate_arguments_tptest() {
+	host="$1"
+	testmode="$2"
+	packetsize_up="$3"
+	packetsize_down="$4"
+	port="$5"
+	auto="$6"
+	is_num $port || return 1
+	[ "$host" == "" ] && return 1
+	case $testmode in
+		up|down|up_down);;
+		*) return 1 ;;
+	esac
+	if [ "$auto" == "0" ]; then
+		case $testmode in
+			*up*)
+				is_num $packetsize_up || return 1
+				;;
+		esac
+		case $testmode in
+			*down*)
+				is_num $packetsize_down || return 1
+				;;
+		esac
+	elif [ "$auto" == "1" ]; then
+		return 0;
+	else
+		return 1
+	fi
+}
+
+run_cmd() {
+	CMND=$1
+	input=$2
+
+	read input;
+
+	json_load "$input"
+	json_get_var host host
+
+	json_init
+	json_add_string stdout "$($CMND $host)"
+	json_dump
+}
+
+ifaces="ethernet vdsl adsl"
+
+get_packet_sizes () {
+	local option="$1"
+	local packetsizes
+
+	packetsizes=$(uci -q get speedtest.@packetsize[0].$option)
+
+	if [ "$packetsizes" ]; then
+		packetsize_down=${packetsizes%/*}
+		packetsize_up=${packetsizes#*/}
+	else
+		case "$option" in
+			ethernet)
+				packetsize_up=5
+				packetsize_down=100
+				;;
+			vdsl)
+				packetsize_up=3
+				packetsize_down=50
+				;;
+			adsl)
+				packetsize_up=1
+				packetsize_down=25
+				;;
+			*)
+				packetsize_up=1
+				packetsize_down=25
+		esac
+	fi
+}
+
+get_iface () {
+	iface=$(ip route | awk '/default via/{print $5}')
+	case "$iface" in
+		eth*)
+			iface="ethernet"
+		;;
+		atm*)
+			iface="adsl"
+		;;
+		ptm*)
+			iface="vdsl"
+		;;
+		wwan*)
+			iface="vdsl"
+		;;
+		br-*)
+			iface="ethernet"
+		;;
+		*)
+			iface="ethernet"
+	esac
+}
+
+local input
 
 case "$1" in
 	list)
-		echo '{ "ping" : {"host":"str"}, "ping6" : {"host":"str"}, "traceroute" : {"host":"str"}, "traceroute6" : {"host":"str"} }'
+		echo '{ "ping" : {"host":"str", "seq":32, "count":32, "timeout":32},
+			"ping6" : {"host":"str", "seq":32, "count":32, "timeout":32},
+			"traceroute" : {"host":"str", "seq":32, "querycount":32, "timeout":32},
+			"traceroute6" : {"host":"str", "seq":32, "querycount":32, "timeout":32},
+			"tptest_start" : {"seq":32, "auto": true, "testmode":"str","packetsize_up":32,"packetsize_down":32,"port":32},
+			"tptest_packet_size" : {},
+			"tptest_running": {} }'
 	;;
 	call)
 		case "$2" in
-			ping|ping6) CMND="$2 -c 5 -W 1" ;;
-			traceroute|traceroute6) CMND="$2 -q 1 -w 1 -n" ;;
+			ping|ping6)
+				local cmd=$2
+				local host seq count timeout
+				read input
+				json_load "$input"
+				json_get_var host host
+				json_get_var seq seq 0
+				json_get_var count count 1
+				json_get_var timeout timeout 1
+				validate_ping_traceroute $host $seq $count $timeout && {
+					diagnostics -U -s $seq -C $cmd -h $host -c $count -W $timeout >/dev/null 2>&1 &
+					json_init
+					json_add_string "state" "running"
+					json_add_string "message" "success"
+					json_dump
+				} || {
+					json_init
+					json_add_string "state" "error"
+					json_add_string "message" "invalid arguments"
+					json_dump
+				}
+				;;
+			traceroute|traceroute6)
+				local cmd=$2
+				local host seq count timeout
+				read input
+				json_load "$input"
+				json_get_var host host
+				json_get_var seq seq 0
+				json_get_var count count 1
+				json_get_var timeout timeout 1
+				validate_ping_traceroute $host $seq $count $timeout && {
+					diagnostics -U -s $seq -C $cmd -h $host -q $count -w $timeout >/dev/null 2>&1 &
+					json_init
+					json_add_string "state" "running"
+					json_add_string "message" "success"
+					json_dump
+				} || {
+					json_init
+					json_add_string "state" "error"
+					json_add_string "message" "invalid arguments"
+					json_dump
+				}
+				;;
+			tptest_start)
+				local host seq testmode packetsize_up packetsize_down port auto
+				read input
+				json_load "$input"
+				json_get_var host host ""
+				json_get_var seq seq 1
+				json_get_var testmode testmode "up_down"
+				json_get_var packetsize_up packetsize_up 50000
+				json_get_var packetsize_down packetsize_down 50000
+				json_get_var port port 0
+				json_get_var auto auto 1
+				validate_arguments_tptest "$host" "$testmode" "$packetsize_up" "$packetsize_down" "$port" "$auto" && {
+					echo "ok arguments" >/dev/console
+					if [ $auto -eq 1 ]; then
+						diagnostics -U -s $seq -C tptest -a -t $testmode -h $host -p $port >/dev/null 2>&1 &
+					else
+						diagnostics -U -s $seq -C tptest -u $packetsize_up -d $packetsize_down -t $testmode -h $host -p $port >/dev/null 2>&1 &
+					fi
+					json_init
+					json_add_string "state" "running"
+					json_add_string "message" "success"
+					json_dump
+				} || {
+					json_init
+					json_add_string "state" "error"
+					json_add_string "message" "invalid arguments"
+					json_dump
+				}
+			;;
+			tptest_running)
+				json_init
+				seqs="$(ps -w | awk '/diagnostic[s].*-C tptest/ { print $10 }' | sort -u)"
+				if [ "$seqs" == "" ]; then
+					json_add_string "message" "Not running"
+					json_add_boolean "running" 0
+					json_dump
+					exit
+				else
+					json_add_string "message" "Running"
+					json_add_boolean "running" 1
+				fi
+				json_add_array "sequence numbers"
+				for s in $seqs; do
+					json_add_int "" $s
+				done
+				json_close_array
+				json_dump
+			;;
+			tptest_packet_size)
+				get_iface
+
+				for i in $ifaces; do
+					if [ $iface == "$i" ]; then
+						get_packet_sizes $iface
+						json_init
+						json_add_string "packetsize_up" "$packetsize_up"
+						json_add_string "packetsize_down" "$packetsize_down"
+						json_dump
+						return
+					fi
+				done
+			;;
 			*) return 1 ;;
 		esac
-
-		read input;
-
-		json_load "$input"
-		json_get_var host host
-	
-		json_init
-		json_add_string stdout "$($CMND $host)"
-		json_dump
 	;;
 esac

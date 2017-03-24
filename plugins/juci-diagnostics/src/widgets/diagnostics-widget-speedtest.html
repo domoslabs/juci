@@ -41,9 +41,9 @@
 				{{'Run test' | translate}}</button>
 			</juci-config-line>
 		</juci-config-lines>
-		<div class="alert alert-success" ng-show="data.state == 'result'">
+		<div class="alert alert-success" ng-show="data.result.length">
 			{{'Test results'|translate}}: <br/>
-			<pre>{{data.result}}</pre>
+			<pre ng-repeat="res in data.result track by $index">{{res}}<button class="btn btn-primary pull-right" ng-click="removeResult(res)"><i class="fa fa-close"></i></button</pre>
 		</div>
 		<div class="alert alert-success" ng-show="data.state == 'running'">
 			<h4>

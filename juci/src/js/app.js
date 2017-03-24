@@ -64,7 +64,7 @@ JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $
 		return _put.call($templateCache, name, value);
 	}
 })
-.run(function($rootScope, $state, $rpc, $config, $location, $modal, $tr, gettext, $events){
+.run(function($rootScope, $state, $rpc, $config, $location, $tr, gettext){
 
 	// TODO: maybe use some other way to gather errors than root scope?
 	$rootScope.errors = [];
@@ -96,46 +96,6 @@ JUCI.app.config(function ($stateProvider, $locationProvider, $compileProvider, $
 	} else {
 		$juci.redirect("login");
 	}
-	// setup automatic connection "pinging" and show spinner if you have lost connection
-	// if you are connected this will test if you are logged in or redirect you to login page
-	var modal;
-	var connected = true;
-	var i = 1;
-	JUCI.interval.repeat("check-connection", 2000, function(next){
-		$rpc.$isConnected().fail(function(){
-			connected = false;
-			modal = $modal.open({
-				animation:false,
-				backdrop: "static",
-				keyboard: false,
-				size: "md",
-				templateUrl: "widgets/juci-disconnected.html"
-			});
-			var i = 1;
-			function reconnect(){
-				if(i < 10) i += 2;
-				$rpc.$reconnect().done(function(){
-					$events.resubscribe();
-					modal.close();
-					next();
-				}).fail(function(){
-					setTimeout(function(){ reconnect();}, 1000*i);
-				});
-			}
-			setTimeout(function(){ reconnect(); }, 1000);
-		}).done(function(){
-			if($rpc.$isLoggedIn() && ++i > 2){
-				i = 0;
-				$rpc.$authenticate().fail(function(){
-					//console.log("logging you out from app.js");
-					$rpc.$clearSession().done(function(){
-						setTimeout(function(){$juci.redirect("login");}, 0);
-					});
-				});
-			}
-			next();
-		});
-	});
 
 })
 .directive('ngOnload', [function(){

@@ -279,7 +279,7 @@
 		$reconnect: function(){
 			var self = this;
 			var def = $.Deferred();
-			if(ws && ws.readyState === 1) return def.reject();
+			if(ws && ws.readyState === 1) ws.close();
 			self.$init_websocket().done(function(res){
 				ws = res;
 				def.resolve();
