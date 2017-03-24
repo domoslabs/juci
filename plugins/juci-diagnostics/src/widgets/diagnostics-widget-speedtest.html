@@ -37,7 +37,7 @@
 				</div>
 			</juci-config-line>
 			<juci-config-line>
-				<button class="btn btn-default" ng-click="runTest()">
+				<button ng-class="{'disabled': data.state == 'running'}" class="btn btn-default" ng-click="runTest()">
 				{{'Run test' | translate}}</button>
 			</juci-config-line>
 		</juci-config-lines>

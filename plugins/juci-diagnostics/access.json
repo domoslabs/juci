@@ -14,7 +14,13 @@
 			"uci": [
 				"speedtest"	
 			],
-			"owsd": [ "diagnostics.speedtest" ]
+			"owsd": [
+				"diagnostics.speedtest",
+				"diagnostics.ping",
+				"diagnostics.ping6",
+				"diagnostics.traceroute",
+				"diagnostics.traceroute6"
+			]
 		},
 		"write": {
 			"uci": [

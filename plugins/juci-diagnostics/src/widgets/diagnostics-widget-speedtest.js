@@ -10,13 +10,12 @@ JUCI.app
 	};
 })
 .controller("diagnosticsWidget90Speedtest", function($scope, $rpc, $events, $uci, utilsAddTestserverPicker, $tr, gettext){
-	var SEQ = 0
 	$scope.data = {
 		test_type: "up_down",
 		result: [],
 		state: "",
 		auto: true
-	}; 
+	};
 
 	function refresh(){
 		var def = $.Deferred();
@@ -25,15 +24,11 @@ JUCI.app
 				def.reject();
 				return;
 			}
-			if(res.running)
+			if(res.running){
 				$scope.data.state = "running";
-			else if($scope.data.state === "running")
+			}
+			else if($scope.data.state !== "error"){
 				$scope.data.state = "";
-			if(res["sequence numbers"] && res["sequence numbers"].length){
-				res["sequence numbers"].map(function(seq){
-					if(SEQ < seq)
-						SEQ = seq;
-				});
 			}
 			def.resolve();
 		}).fail(function(e){def.reject(e);});
@@ -82,6 +77,7 @@ JUCI.app
 	});
 
 	$scope.runTest = function(){
+		if($scope.data.state === "running") return;
 		if($scope.data.test_type.match(/up/) && !$scope.data.upsize){ alert("Upstream packet size missing"); return; }
 		if($scope.data.test_type.match(/down/) && !$scope.data.downsize){ alert("Downstream packet size missing"); return; }
 		if(!$scope.testServers.length){
@@ -97,7 +93,6 @@ JUCI.app
 			"testmode": $scope.data.test_type,
 			"port": port,
 			"host": address,
-			"seq": SEQ++
 		};
 
 		if($scope.data.test_type.match(/up/) && !$scope.data.auto){
@@ -152,10 +147,6 @@ JUCI.app
 		if(res.data && res.data.status != undefined){
 			switch(res.data.status) {
 			case 0:
-				if(res.data.seq && SEQ){
-					if(SEQ != res.data.seq)
-						return;
-				}
 				var upstream = parseInt(res.data.upstream);
 				if(upstream == "NaN") {
 					upstream = "none"
@@ -189,4 +180,4 @@ JUCI.app
 			});
 		}
 	});
-}); 
+});

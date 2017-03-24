@@ -2,28 +2,24 @@
 	<div ng-controller="StatusDiagnostics">
 		<juci-config-heading>{{ 'Diagnostic Utility' | translate }}</juci-config-heading>
 		<juci-config-info>{{ 'status.diagnostics.info' | translate }}</juci-config-info>
-		
-		<!--<juci-config-section>
-			<h3>{{'Automated Diagnostics'|translate}}</h3>
-			<p>{{'status.diagnostics.auto.info'|translate}}</p>
-			<juci-config-lines>
-				<juci-config-line title="">
-					<button class="btn btn-lg btn-default">{{'Diagnose'|translate}}</button>
-				</juci-config-line>
-			</juci-config-lines>
-		</juci-config-section>-->
 		<juci-config-section>
 			<juci-config-lines>
 				<juci-config-line title="{{'Ping Test'|translate}}" help="{{'status.diagnostics.ping.info'|translate}}" error="validate('pingHost')">
 					<div class="row">
 						<form class="form-inline form-group  pull-right">
 							<input type="text" class="form-control input-lg" placeholder="{{'Host to ping'|translate}}" ng-model="data.pingHost"></input>
-							<button type="submit" class="btn btn-lg btn-default" ng-click="onPingTest()">{{'Ping'|translate}}</button>
+							<button ng-class="{'disabled': validate('pingHost') != null}" type="submit" class="btn btn-lg btn-default" ng-click="onPingTest()">{{'Ping'|translate}}</button>
 						</form>
 					</div>
 				</juci-config-line>
 			</juci-config-lines>
-			<div class="alert alert-default" ng-show="data.pingResults">{{'Ping results'|translate}}: <br/><pre>{{data.pingResults}}</pre></div>
+			<div class="alert alert-default" ng-show="data.pingRunning">{{'Running Ping'|translate}} <i class="fa fa-spinner fa-spin"></i></div>
+			<div class="alert alert-default" ng-show="data.pingResults.length" ng-repeat="res in data.pingResults track by $index">{{'Ping results'|translate}}: <br/>
+				<pre>
+					<button class="btn btn-default pull-right" ng-click="deleteResult(res)"><i class="fa fa-close"></i></button>
+					{{res}}
+				</pre>
+			</div>
 			<div class="alert alert-danger" ng-show="data.pingError">{{'Error'|translate}}: <br/><pre>{{data.pingError}}</pre></div>
 		</juci-config-section>
 		<juci-config-section>
@@ -32,12 +28,18 @@
 					<div class="row">
 						<form class="form-inline form-group  pull-right">
 							<input type="text" class="form-control input-lg" placeholder="{{'Host to trace'|translate}}" ng-model="data.traceHost"></input>
-							<button type="submit" class="btn btn-lg btn-default" ng-click="onTraceTest()">{{'Trace'|translate}}</button>
+							<button ng-class="{'disabled': validate('traceHost') != null}" type="submit" class="btn btn-lg btn-default" ng-click="onTraceTest()">{{'Trace'|translate}}</button>
 						</form>
 					</div>
 				</juci-config-line>
 			</juci-config-lines>
-			<div class="alert alert-default" ng-show="data.traceResults">{{'Trace results'|translate}}: <br/><pre>{{data.traceResults}}</pre></div>
+			<div class="alert alert-default" ng-show="data.traceRunning">{{'Running Trace'|translate}} <i class="fa fa-spinner fa-spin"></i></div>
+			<div class="alert alert-default" ng-show="data.traceResults.length" ng-repeat="res in data.traceResults track by $index">{{'Trace results'|translate}}: <br/>
+				<pre>
+					<button class="btn btn-default pull-right" ng-click="deleteResult(res)"><i class="fa fa-close"></i></button>
+					{{res}}
+				</pre>
+			</div>
 			<div class="alert alert-danger" ng-show="data.traceError">{{'Error'|translate}}: <br/><pre>{{data.traceError}}</pre></div>
 		</juci-config-section>
 	<!--	<juci-config-section>
