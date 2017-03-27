@@ -69,7 +69,7 @@ JUCI.app
 	$events.subscribe("sysupgrade", function(result){
 		if(!result || !result.data || !result.data.status) return;
 		if(result.data && result.data.status && result.data.status == "failed") {
-			$scope.showUpgradeStatus = 0;
+			$scope.showUpgradeStatus = false;
 			$scope.$apply();
 			$juciDialog.show(null, {
 				title: $tr(gettext("Image check failed")),
@@ -132,7 +132,7 @@ JUCI.app
 	})();
 	$scope.onUpgradeOnline = function(){
 		confirmKeep().done(function(keep){
-			$scope.showUpgradeStatus = 1;
+			$scope.showUpgradeStatus = true;
 			$scope.message = $tr(gettext("Downloading and verifying image..."));
 			$scope.progress = $tr(gettext("Uploading"));
 			console.log("testing image: "+ $scope.uploadFilename);
@@ -142,7 +142,7 @@ JUCI.app
 	
 	$scope.onUpgradeUSB = function(){
 		confirmKeep().done(function(keep){
-			$scope.showUpgradeStatus = 1;
+			$scope.showUpgradeStatus = true;
 			$scope.message = $tr(gettext("Verifying image..."));
 			$scope.progress = $tr(gettext("Verifying"));
 			console.log("testing image: "+$scope.usbUpgrade);
@@ -150,6 +150,8 @@ JUCI.app
 		});
 	}
 	$scope.onStartUpgrade = function(){
+		if($scope.showUpgradeStatus)
+			return;
 		confirmKeep().done(function(keep){
 			startUpload(keep);
 		});
@@ -176,6 +178,6 @@ JUCI.app
 			$scope.$apply();
 		});
 		$scope.progress_byte = 0;
-		$scope.showUpgradeStatus = 1;
+		$scope.showUpgradeStatus = true;
 	}
 });
