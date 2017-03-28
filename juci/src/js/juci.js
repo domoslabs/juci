@@ -274,7 +274,10 @@
 								if($rpc.$isLoggedIn() && ++i > 2){
 									i = 0;
 									$rpc.$authenticate().fail(function(){
-										//console.log("logging you out from app.js");
+										if($rootScope.uploadFile || $rootScope.downloadFile){
+											console.log(($rootScope.uploadFile ? "uploading":"downloading") + " file: authentication paused");
+											return;
+										}
 										$rpc.$clearSession().done(function(){
 											setTimeout(function(){$juci.redirect("login");}, 0);
 										});
