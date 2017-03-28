@@ -1,6 +1,7 @@
 JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless){
 	$scope.data = {};
 	var mapIface = {};
+	$scope.ylabel = "Mbit/s";
 
 	$uci.$sync("ports").done(function(){
 		$scope.portnames = $uci.ports["@all"];
@@ -44,16 +45,17 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless){
 	$scope.tableData = {};
 	$scope.tick = 4000;
 
-	function to_kilo_mega_str(number) {
+	function to_kbit_or_mbit_str(number) {
 		var number_out = number;
-		var unit = "kbit/s"
+		var unit = "Mbit/s"
 
-		if (number_out > 1000) {
-			number_out = (number_out / 1000);
-			unit = "Mbit/s";
+		if (number_out < 1) {
+			number_out = (number_out * 1000);
+			unit = "kbit/s";
 		}
+		number_out = parseFloat(number_out).toFixed(3);
 
-		return String(number_out.toFixed(3)) +" "+ unit;
+		return String(number_out) +" "+ unit;
 	}
 	function for_objs_in_obj(obj, f) {
 		Object.keys(obj).forEach(function(i){ do_to_each(obj[i], f); });
@@ -61,6 +63,7 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless){
 	function do_to_each(obj, f){
 		Object.keys(obj).forEach(function(key){ obj[key]=f(obj[key]); });
 	}
+	function bits_to_megabits_per_sec(bits){ return ( (bits/1000000) / ($scope.tick/1000) ).toFixed(5); }
 	function bits_to_kilobits(bits){ return (bits/1000).toFixed(3); }
 
 	function updateTraffic(){
@@ -72,16 +75,14 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless){
 				if (newKey){ traffic[newKey] = data[key]; }
 			}
 
-			for_objs_in_obj(traffic, bits_to_kilobits);
+			for_objs_in_obj(traffic, bits_to_megabits_per_sec);
 			$scope.traffic = traffic;
 
-			// compute average transmitted/received bytes to show in table
+			// show transmitted/received bytes in table
 			for (var key in traffic){
-				var avg_kilobits_down = $scope.traffic[key]["Downstream"]/($scope.tick/1000);
-				var avg_kilobits_up = $scope.traffic[key]["Upstream"]/($scope.tick/1000);
 				$scope.tableData[key] = { rows:[["Download Speed","0"],["Upload Speed","0"]] };
-				$scope.tableData[key]["rows"][0] = ["Download Speed", to_kilo_mega_str(avg_kilobits_down)];
-				$scope.tableData[key]["rows"][1] = ["Upload Speed", to_kilo_mega_str(avg_kilobits_up)];
+				$scope.tableData[key]["rows"][0] = ["Download Speed", to_kbit_or_mbit_str($scope.traffic[key]["Downstream"])];
+				$scope.tableData[key]["rows"][1] = ["Upload Speed", to_kbit_or_mbit_str($scope.traffic[key]["Upstream"])];
 			}
 
 			$scope.$apply();
