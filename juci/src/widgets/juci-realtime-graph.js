@@ -5,9 +5,9 @@ JUCI.app
 			model: "=ngModel",
 			id: "@id",
 			tick: "=tick",
-			min: "@min",
-			max: "@max",
-			ylabel: "@ylabel",
+			min: "@min", //TODO: remove?
+			max: "@max", //TODO: remove?
+			ylabel: "=ylabel",
 		}, 
 		templateUrl: "/widgets/juci-realtime-graph.html",
 		//template: '<div id={{id}}></div>',
@@ -114,7 +114,6 @@ JUCI.app
 			}
 
 			graph2d.setOptions(options);
-
 		}
 
 		JUCI.interval.repeat("realtimeGraphRenderStep-"+$scope.id,60,function(next){
