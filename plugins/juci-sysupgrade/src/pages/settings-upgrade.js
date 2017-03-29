@@ -179,5 +179,6 @@ JUCI.app
 		});
 		$scope.progress_byte = 0;
 		$scope.showUpgradeStatus = true;
+		$scope.error = "";
 	}
 });
