@@ -76,12 +76,14 @@
 			return RPC_CACHE[key].deferred.promise();
 		}
 		RPC_CACHE[key].deferred = $.Deferred();
-		setTimeout(function(){
-			if(RPC_CACHE[key] && RPC_CACHE[key].deferred && RPC_CACHE[key].deferred.state() === "pending"){
-				RPC_CACHE[key].deferred.reject();
-				delete RPC_CACHE[key];
-			}
-		}, RPC_TIMEOUT);
+		if(object !== "file" && object !== "access"){
+			setTimeout(function(){
+				if(RPC_CACHE[key] && RPC_CACHE[key].deferred && RPC_CACHE[key].deferred.state() === "pending"){
+					RPC_CACHE[key].deferred.reject("Call timed out");
+					delete RPC_CACHE[key];
+				}
+			}, RPC_TIMEOUT);
+		}
 
 		var jsonrpc_obj = {
 			jsonrpc: "2.0",
