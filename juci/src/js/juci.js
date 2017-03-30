@@ -250,6 +250,11 @@
 						var i = 1;
 						JUCI.interval.repeat("check-connection", 2000, function(next){
 							$rpc.$isConnected().fail(function(){
+								if($rootScope.uploadFile || $rootScope.downloadFile){
+									next();
+									console.log(($rootScope.uploadFile ? "uploading" : "downloading") + " file: pausing connectivity test");
+									return;
+								}
 								connected = false;
 								modal = $modal.open({
 									animation:false,
