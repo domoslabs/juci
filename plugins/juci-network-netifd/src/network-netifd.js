@@ -134,7 +134,8 @@
 					});
 					deferred.resolve(clients);
 				});
-			}).fail(function(){
+			}).fail(function(er){
+				console.log("error: " + JSON.stringify(er));
 				deferred.reject();
 			});
 

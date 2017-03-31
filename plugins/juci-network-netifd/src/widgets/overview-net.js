@@ -135,12 +135,13 @@ JUCI.app
 		function(next){
 			$firewall.getZoneNetworks("lan").done(function(nets){
 				lanNets = nets;
-				next()
+			}).always(function(){
+				next();
 			})
 		},
 		function(next){
 			$uci.$sync("dhcp").always(function(){
-				next()
+				next();
 			})
 		},
 		function(next){
