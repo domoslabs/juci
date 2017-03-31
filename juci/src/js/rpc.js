@@ -20,14 +20,13 @@
 
 (function(scope){
 	var DEBUG_MODE = 0;
-	var RPC_TIMEOUT = 30 * 1000;
+	var RPC_TIMEOUT = 5 * 1000;
 	var RPC_USER = scope.localStorage.getItem("user") || "";
 	var RPC_DEFAULT_SESSION_ID = "00000000000000000000000000000000";
 	var RPC_SESSION_ID = scope.localStorage.getItem("sid")||RPC_DEFAULT_SESSION_ID;
 	var RPC_CACHE = {};
 	var METHODS = {};
 	var EVENT_HANDLER;
-	var RPC_QUERY_IDS = {};
 	var rpc_query_id = 1;
 	var ws;
 	
@@ -45,13 +44,13 @@
 	//
 	// {jsonrpc..., method: type, [ RPC_SESSION_D , namespace, method, { ... data ...  } }
 	function rejectCalls(){
-		Object.keys(RPC_QUERY_IDS).map(function(key){
-			if(RPC_QUERY_IDS[key] && RPC_QUERY_IDS[key].deferred && RPC_QUERY_IDS[key].deferred.state() === "pending"){
-				RPC_QUERY_IDS[key].deferred.reject();
+		Object.keys(RPC_CACHE).map(function(key){
+			if(RPC_CACHE[key] && RPC_CACHE[key].deferred && RPC_CACHE[key].deferred.state() === "pending"){
+				clearTimeout(RPC_CACHE[key].timeout);
+				RPC_CACHE[key].deferred.reject();
 			}
 		});
 		RPC_CACHE = {};
-		RPC_QUERY_IDS = {};
 	}
 	function rpc_request(type, object, method, data){
 		if(DEBUG_MODE > 1)console.log("UBUS " + type + " " + object + " " + method);
@@ -77,7 +76,7 @@
 		}
 		RPC_CACHE[key].deferred = $.Deferred();
 		if(object !== "file" && object !== "access"){
-			setTimeout(function(){
+			RPC_CACHE[key].timeout = setTimeout(function(){
 				if(RPC_CACHE[key] && RPC_CACHE[key].deferred && RPC_CACHE[key].deferred.state() === "pending"){
 					RPC_CACHE[key].deferred.reject("Call timed out");
 					delete RPC_CACHE[key];
@@ -97,7 +96,7 @@
 			id: rpc_query_id++
 		};
 
-		RPC_QUERY_IDS[jsonrpc_obj.id] = RPC_CACHE[key];
+		RPC_CACHE[key].id = jsonrpc_obj.id;
 
 		function num2str(key,val){
 			if(typeof val === "number"){ return val.toString(); }
@@ -113,7 +112,7 @@
 			ws.send(JSON.stringify(jsonrpc_obj,formatter));
 			return RPC_CACHE[key].deferred.promise();
 		}else{
-			return RPC_QUERY_IDS[jsonrpc_obj.id].deferred.reject();
+			return RPC_CACHE[key].deferred.reject();
 		}
 	}
 	
@@ -386,20 +385,22 @@
 				}
 
 				if (response_obj.id && !response_obj.method) {
-					var query_deferred = RPC_QUERY_IDS[response_obj.id];
-					if (query_deferred === undefined) {
-						console.log("Warning: result for unknown call");
-						console.log(response_obj);
+					var key = Object.keys(RPC_CACHE).find(function(key){
+						return RPC_CACHE[key].id == response_obj.id;
+					});
+					var query= RPC_CACHE[key];
+					if (query=== undefined) {
 						return;
 					}
-					delete RPC_QUERY_IDS[response_obj.id];
+					clearTimeout(RPC_CACHE[key].timeout);
+					delete RPC_CACHE[key];
 
 					if (response_obj.error) {
-						query_deferred.deferred.reject(response_event.data);
+						query.deferred.reject(response_event.data);
 						return;
 					}
 
-					handle_call_result(response_obj.result, query_deferred);
+					handle_call_result(response_obj.result, query);
 					return;
 				} else if (response_obj.method) {
 					if (response_obj.method !== "event") {
@@ -413,7 +414,7 @@
 					return;
 				}
 
-				function handle_call_result(call_result, query_deferred) {
+				function handle_call_result(call_result, query) {
 
 					if(call_result instanceof Array && call_result[0] != 0) {
 						function _errstr(error){
@@ -433,21 +434,21 @@
 							}
 						}
 						if(DEBUG_MODE)console.log("RPC succeeded "+ JSON.stringify(call_result) +", but returned error: "+_errstr(call_result[0]));
-						query_deferred.deferred.reject({"reason":_errstr(call_result[0]), "data":(call_result.length > 1) ? call_result[1]:{}});
+						query.deferred.reject({"reason":_errstr(call_result[0]), "data":(call_result.length > 1) ? call_result[1]:{}});
 						return;
 					}
 
-					query_deferred.time = Date.now();
+					query.time = Date.now();
 					// valid rpc response is either [code,{result}]
 					// if code == 0 it means success. We already check for errors above)
 					if(call_result instanceof Array) {
-						query_deferred.data = call_result[1];
-						query_deferred.deferred.resolve(call_result[1]);
+						query.data = call_result[1];
+						query.deferred.resolve(call_result[1]);
 						return;
 					}
 
 					var msg = "Warning: non-array result in JSONRPC response";
-					query_deferred.deferred.reject(msg);
+					query.deferred.reject(msg);
 					return;
 				}
 			};

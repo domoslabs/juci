@@ -252,7 +252,7 @@
 						JUCI.interval.repeat("check-connection", 2000, function(next){
 							$rpc.$isConnected().fail(function(){
 								connect_fail_counter++;
-								if(connect_fail_counter <= 3){
+								if(connect_fail_counter < 2){
 									next();
 									console.log("fail: " + connect_fail_counter);
 									return;
