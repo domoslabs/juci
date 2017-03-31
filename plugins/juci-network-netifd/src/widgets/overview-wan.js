@@ -55,7 +55,7 @@ JUCI.app
 		$rpc.$call("juci.network", "online").done(function(res){
 			$scope.up = res && res.online;
 			$scope.$apply();
-		});
+		}).fail(function(er){console.log(er);});
 	}
 	refresh();
 	$events.subscribe("network.interface", function(res){
@@ -69,6 +69,7 @@ JUCI.app
 	$scope.href = $config.getWidgetLink("overviewWidget11WAN");
 	$scope.hideFixError = $localStorage.getItem("hideFixError") == "true";
 	$scope.fixErrorOpen = false;
+	$scope.data = {ip:[], defaultroute:[], contypes:[], dslUp:"", dslDown:"", dns:[], linkspeed:""};
 	JUCI.interval.repeat("update_wan_uptime", 1000, function(next){
 		if(!$scope.uptime || $scope.uptime === 0){ next(); return; }
 		$scope.uptime ++;
@@ -104,10 +105,12 @@ JUCI.app
 				if(!data || !data.dslstats || !data.dslstats.bearers || data.dslstats.bearers.length < 1) return;
 				data.dslstats.bearers.map(function(b){
 					if(b.rate_down) $scope.data.dslDown = parseInt(String(b.rate_down))/1000;
+					else $scope.data.dslDown = "";
 					if(b.rate_up) $scope.data.dslUp = parseInt(String(b.rate_up))/1000;
+					else $scope.data.dslUp = "";
 				});
 				$scope.$apply();
-			});
+			}).fail(function(er){$scope.data.dslUp = $scope.data.dslDown = ""; console.log(er);});
 		}
 	}
 	JUCI.interval.repeat("wan_check_internet", 10000, function(next){
@@ -122,7 +125,7 @@ JUCI.app
 			$scope.online = res && res.online;
 			$scope.$apply();
 			def.resolve();
-		}).fail(function(){def.reject();});
+		}).fail(function(er){console.log(er); def.reject(er);});
 		return def.promise();
 	}
 
@@ -133,22 +136,29 @@ JUCI.app
 			$scope.wans = nets.filter(function(w){
 				return w.$info && w.defaultroute && w.defaultroute.value;
 			});
-			$scope.data = {ip:[], defaultroute:[], contypes:[], up: false, dslUp:"", dslDown:"", dns:[], linkspeed:""};
 			if($scope.wans.length === 0){
 				def.resolve();
 				return;
 			}
+			var link_up = false;
 			async.eachSeries($scope.wans, function(wan, next){
 				$rpc.$call("juci.network", "has_link", {"interface":wan[".name"]}).done(function(data){
 					if(data && data.has_link)
-						$scope.data.up = true;
+						link_up = true;
 				}).fail(function(e){
 					console.log(e);
 				}).always(function(){
 					next();
 				});
 			}, function(){
+				$scope.data.up = link_up;
 				$scope.uptime = 0;
+				var ip = [];
+				var defaultroute = [];
+				var contypes = [];
+				var dslDown = "";
+				var dns = [];
+				var linkspeed = "";
 				async.eachSeries($scope.wans, function(wan, cb){
 					var w = wan.$info;
 					if(!w.up){
@@ -156,16 +166,16 @@ JUCI.app
 						return;
 					}
 					if(w["ipv4-address"] && w["ipv4-address"].length)
-						w["ipv4-address"].map(function(ip){ if(ip && ip.address) $scope.data.ip.push(ip.address);});
+						w["ipv4-address"].map(function(p){ if(p && p.address) ip.push(p.address);});
 					if(w["ipv6-address"] && w["ipv6-address"].length)
-						w["ipv6-address"].map(function(ip){ if(ip && ip.address) $scope.data.ip.push(ip.address);});
+						w["ipv6-address"].map(function(p){ if(p && p.address) ip.push(p.address);});
 					if(w.route && w.route.length){
 						w.route.filter(function(r){
 							return (r.target === "0.0.0.0" || r.target === "::") && r.nexthop;
-						}).map(function(r){ $scope.data.defaultroute.push(r.nexthop); });
+						}).map(function(r){ defaultroute.push(r.nexthop); });
 					}
 					if(w["dns-server"] && w["dns-server"].length)
-						$scope.data.dns = $scope.data.dns.concat(w["dns-server"]);
+						dns = dns.concat(w["dns-server"]);
 					if(w.uptime && typeof w.uptime === "number" && $scope.uptime < w.uptime)
 						$scope.uptime = w.uptime;
 					var type = $tr(gettext("Ethernet"));
@@ -179,23 +189,31 @@ JUCI.app
 					if(w.device && w.device.match("eth[0-9].[0-9]") || w.device.match("br-")){
 						$rpc.$call("router.port", "status", {"port":w.device}).done(function(data){
 							if(data && data.speed)
-								$scope.data.linkspeed = data.speed;
+								linkspeed = data.speed;
 							if(data && data.type)
 								type = data.type;
-							if($scope.data.contypes.indexOf(type) === -1)
-								$scope.data.contypes.push(type);
+							if(contypes.indexOf(type) === -1)
+								contypes.push(type);
 							dsl_stats(type);
-						}).always(function(e){
+						}).fail(function(er){
+							console.log(er);
+						}).always(function(){
 							cb();
 						});
 					}
 					else{
-						if($scope.data.contypes.indexOf(type) === -1)
-							$scope.data.contypes.push(type);
+						if(contypes.indexOf(type) === -1)
+							contypes.push(type);
 						dsl_stats(type);
 						cb();
 					}
 				}, function(){
+					$scope.data.ip = ip;
+					$scope.data.defaultroute = defaultroute;
+					$scope.data.contypes = contypes;
+					$scope.data.dslDown = dslDown;
+					$scope.data.dns = dns;
+					$scope.data.linkspeed = linkspeed;
 					Object.keys($scope.data).map(function(k){
 						if($scope.data[k] instanceof Array){
 							$scope.data[k] = $scope.data[k].filter(function(elem, index, self) {
