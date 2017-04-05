@@ -247,16 +247,9 @@
 						// if you are connected this will test if you are logged in or redirect you to login page
 						var modal;
 						var connected = true;
-						var connect_fail_counter = 0;
 						var i = 1;
 						JUCI.interval.repeat("check-connection", 2000, function(next){
 							$rpc.$isConnected().fail(function(){
-								connect_fail_counter++;
-								if(connect_fail_counter < 2){
-									next();
-									console.log("fail: " + connect_fail_counter);
-									return;
-								}
 								if($rootScope.uploadFile || $rootScope.downloadFile){
 									next();
 									console.log(($rootScope.uploadFile ? "uploading" : "downloading") + " file: pausing connectivity test");
@@ -283,7 +276,6 @@
 								}
 								setTimeout(function(){ reconnect(); }, 1000);
 							}).done(function(){
-								connect_fail_counter = 0;
 								if($rpc.$isLoggedIn() && ++i > 2){
 									i = 0;
 									$rpc.$authenticate().fail(function(){
