@@ -5,9 +5,8 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 	$scope.config = {
 		as_extender: true,
 		state:"start",
-		netmode:"",
+		netmode:"routed_mtk",
 		frequency: 5,
-		showkey: true,
 		2:[],
 		5:[],
 		ssid:"",
@@ -16,6 +15,12 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 			{ label: $tr(gettext("2.4 GHz")), value: 2 }
 		]
 	};
+	$scope.data = [];
+	$scope.data.separate_ssids = false;
+	$scope.data.same_ssid = "";
+	$scope.data.same_key = "";
+	$scope.data.ssid24 = "";
+	$scope.data.ssid5 = "";
 
 	$scope.onFinishWifiRepeaterNetmode = function(){
 		if(!$scope.access_points) $scope.access_points = [];
@@ -41,11 +46,32 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 		});
 	}
 
-	$scope.showKey = function(){
-		if(!$scope.config.selected_network || !$scope.config.ssid) return;
-		if($scope.config.selected_network === $scope.config.ssid) return;
-		$scope.config.showkey = true;
+	$scope.onFinishWifiRouterNetmode = function(){
+		for (key in $scope.data.interfaces) {
+			var iface = $scope.data.interfaces[key];
+			if (iface && iface['.frequency']) {
+				if (iface['.frequency'] == "2.4GHz") {
+					var new_ssid = ($scope.data.separate_ssids) ? $scope.data.ssid24 : $scope.data.same_ssid;
+					$scope.data.interfaces[key].ssid.value = new_ssid;
+					$scope.data.interfaces[key].key.value = $scope.data.same_key;
+				}
+				else if (iface['.frequency'] == "5GHz") {
+					var new_ssid = ($scope.data.separate_ssids) ? $scope.data.ssid5 : $scope.data.same_ssid;
+					$scope.data.interfaces[key].ssid.value = new_ssid;
+					$scope.data.interfaces[key].key.value = $scope.data.same_key;
+				}
+			}
+		}
+
+		$scope.juci.juci.homepage.value = "overview";
+		$uci.$save().done(function(){
+			window.location = "";
+		}).fail(function(e){
+			console.log(e);
+			$scope.config.error = $tr(gettext("Couldn't save configuration"));
+		});
 	}
+
 	$scope.onGoingBack = function(to){
 		$scope.config.error = "";
 		$scope.config.state = to;
@@ -55,44 +81,40 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 		var ap = $scope.access_points.find(function(ap){
 			return ap.value === ssid;
 		});
-		if(ap && !ap.encryption) $scope.config.showkey = false;
 		if(ssid){
 			$scope.config.ssid = ssid;
 			$scope.config.key = "";
 		}
 	}
-	function isCurrentMode(nm){
-		return nm && $scope.netmode && $scope.netmode.setup && $scope.netmode.setup.curmode && nm.value === $scope.netmode.setup.curmode.value;
-	}
-	$scope.onNetmodeSelected = function(){
-		if(!$scope.netmodes) return false;
-		var nm = $scope.netmodes.find(function(nm){
-			return nm.value === $scope.config.netmode;
-		})
-		if(nm && nm.radio && !isCurrentMode(nm)){
-				$scope.config.state = "repeater";
-				$scope.reloadSSID();
+
+	$scope.onNext = function(){
+		if($scope.config.as_extender){
+			$scope.config.state = "repeater";
+			$scope.loadAccessPoints();
 		}else{
-			$scope.netmode.setup.curmode.value = $scope.config.netmode;
-			$scope.juci.juci.homepage.value = "overview";
-			$uci.$save().done(function(){
-				if(nm && nm.reboot && !isCurrentMode(nm)) window.location = "/reboot.html";
-				window.location = "";
-			}).fail(function(e){
-				console.log(e);
-				$scope.config.error = $tr(gettext("Couldn't save configuration"));
+			$scope.config.state = "router";
+
+			$wireless.getInterfaces().done(function(data){
+				if(data.length == 2){
+					$scope.data.interfaces = data;
+				} else{} // TODO: make sure there is only one iface per frequency
+				$scope.data.same_ssid = $scope.data.interfaces[0].ssid.value;
+				$scope.data.ssid24 = $scope.data.interfaces[0].ssid.value;
+				$scope.data.ssid5 = $scope.data.interfaces[1].ssid.value;
 				$scope.$apply();
-			});
+			}).fail(function(er){console.log(er);});
 		}
 	};
-	$scope.needsReboot = function(){
-		var nm = ($scope.netmodes || []).find(function(nm){
-			return nm.value === $scope.config.netmode;
-		});
-		if(isCurrentMode(nm)) return false;
-		return nm && nm.reboot;
-	}
-	$scope.reloadSSID = function(){
+	$scope.$watch("data.separate_ssids", function(is_separate){
+		try{
+			$scope.data.same_ssid = $scope.data.interfaces[0].ssid.value;
+			$scope.data.ssid24 = $scope.data.interfaces[0].ssid.value;
+			$scope.data.ssid5 = $scope.data.interfaces[1].ssid.value;
+			$scope.data.same_key = "";
+		}catch(e){ }
+	}, false);
+
+	$scope.loadAccessPoints = function(){
 		if(!$scope.netmodes) return;
 		var nm = $scope.netmodes.find(function(nm){return nm.value === $scope.config.netmode});
 		if(nm && nm.radio){
@@ -119,21 +141,6 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 			});
 		}
 	}
-	function getNetmode(ex){
-		var found;
-		if(ex === undefined) return;
-		if(ex) {
-			if($scope.netmode && $scope.netmode.setup && $scope.netmode.setup.curmode
-					&& $scope.netmodes_rep && $scope.netmodes_rep.length)
-				found = $scope.netmodes_rep.find(function(nm){ return nm.value === $scope.netmode.setup.curmode.value; });
-			$scope.config.netmode = (found) ? found.value : ($scope.netmodes_rep.length ? $scope.netmodes_rep[0].value : "");
-		} else {
-			if($scope.netmode && $scope.netmode.setup && $scope.netmode.setup.curmode
-					&& $scope.netmodes_ap && $scope.netmodes_ap.length)
-				found = $scope.netmodes_ap.find(function(nm){ return nm.value === $scope.netmode.setup.curmode.value; });
-			$scope.config.netmode = (found) ? found.value : ($scope.netmodes_ap.length ? $scope.netmodes_ap[0].value : "");
-		}
-	}
 
 	$uci.$sync(["netmode", "wireless", "juci"]).done(function(){
 		$scope.juci = $uci.juci;
@@ -151,10 +158,18 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 		});
 		$scope.netmodes_ap = $scope.netmodes.filter(function(nm){ return !nm.band; });
 		$scope.netmodes_rep = $scope.netmodes.filter(function(nm){ return nm.band; });
-		$scope.config.netmode = $scope.netmodes_rep.length ? $scope.netmodes_rep[0].value : "";
-		$scope.$watch("config.as_extender", function(ex){
-			getNetmode(ex);
+
+		$scope.$watch("config.as_extender", function(as_extender, old){
+			if (as_extender === old){return} //just return on initialization
+
+			if (as_extender) {
+				$scope.config.netmode = "repeater_mtk_5g_up_dual_down";
+			}
+			else {
+				$scope.config.netmode = "routed_mtk";
+			}
 		}, false);
+
 		$scope.netmodes = $scope.netmodes.map(function(nm){
 			if(!nm.band) return nm;
 			var radio = $uci.wireless["@wifi-device"].find(function(dev){
