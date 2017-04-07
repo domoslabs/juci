@@ -23,7 +23,7 @@
 				<juci-config-lines>
 					<juci-config-line title="{{'Select Network'|translate}}">
 						<div class="row" ng-show="access_points">
-							<button class="col-xs-4 btn btn-default" ng-click="loadAccessPoints()"><i class="fa fa-refresh"></i></button>
+							<button class="col-xs-4 btn btn-primary" ng-click="loadAccessPoints()">{{'Scan'|translate}}</button>
 							<juci-select class="col-xs-8" ng-items="access_points" ng-model="config.selected_network" on-change="updateSSID($value)"></juci-select>
 						</div>
 							<div ng-show="!access_points">{{'Scanning'|translate}}<i class="fa fa-spinner fa-spin"></i></div>
