@@ -5,10 +5,10 @@
 			<br /><br />
 			<juci-config-section>
 				<juci-config-lines>
-					<juci-config-line ng-show="netmodes_ap.length && netmodes_rep.length" title="{{'Select if you want your device in Router or WiFi range Extender mode'| translate}}">
+					<juci-config-line ng-show="netmodes_ap.length && netmodes_rep.length" title="{{'Select if you want your device in Router or WiFi Range Extender Mode'| translate}}">
 						<switch class="green pull-right" ng-model="config.as_extender" />
-						<p style="text-align:center;float:right; padding-right:5px;" ng-show="config.as_extender">{{'WiFi range Extender mode'|translate}}</p>
-						<p style="text-align:center;float:right; padding-right:5px;" ng-show="!config.as_extender">{{'Router mode'|translate}}</p>
+						<p style="text-align:center;float:right; padding-right:5px;" ng-show="config.as_extender">{{'WiFi Range Extender Mode'|translate}}</p>
+						<p style="text-align:center;float:right; padding-right:5px;" ng-show="!config.as_extender">{{'Router Mode'|translate}}</p>
 					</juci-config-line>
 				</juci-config-lines>
 			</juci-config-section>
@@ -79,25 +79,14 @@
 			<button class="btn btn-primary pull-right" style="margin-right: 5px;" ng-click="onGoingBack('start')">{{'Back'|translate}}</button>
 		</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		<div class="container">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8 ">
+				<img src="img/router.jpeg" ng-show="!config.as_extender" class="img-responsive center-block" style="margin-top:150px">
+				<img src="img/extender.jpeg" ng-show="config.as_extender" class="img-responsive center-block" style="margin-top:150px">
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
 
 		<div ng-show="config.state == 'done'">
 			<h3 translate>WiFi range extender setup completed</h3>
