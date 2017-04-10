@@ -107,6 +107,15 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 			}).fail(function(er){console.log(er);});
 		}
 	};
+	$scope.onSkip = function(){
+		$scope.juci.juci.homepage.value = "overview";
+		$uci.$save().done(function(){
+			window.location = "";
+		}).fail(function(e){
+			console.log(e);
+			$scope.config.error = $tr(gettext("Couldn't save configuration"));
+		});
+	}
 	$scope.$watch("data.separate_ssids", function(is_separate){
 		try{
 			$scope.data.same_ssid = $scope.data.interfaces[0].ssid.value;
