@@ -38,9 +38,12 @@ case "$1" in
 				json_init
 				json_add_array "services"
 				for serv in $(ls /etc/init.d/); do
-					running=$(ubus -t 1 call service list "{'name':'$serv'}" | grep running | grep -q true && echo 1 || echo 0)
-					ls /etc/rc.d/S*$serv >/dev/null 2>&1 && enabled=1 || enabled=0
-					start=$(ls /etc/rc.d/S*$serv 2>/dev/null | awk -F"$serv" '{print$1}' | cut -d'S' -f2)
+					ubus -q -t 1 call service list "{'name':'$serv'}" | grep -q '"running": true,' >/dev/null
+					[ $? -eq 0 ] && running=1 || running=0
+					output=$(ls /etc/rc.d/S*$serv)
+					[ $? -eq 0 ] && enabled=1 || enabled=0
+					start=${output%%S}
+					start=${start##$serv}
 					json_add_object ""
 					json_add_string name $serv
 					json_add_boolean enabled $enabled
