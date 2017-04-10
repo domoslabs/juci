@@ -90,9 +90,11 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 	$scope.onNext = function(){
 		if($scope.config.as_extender){
 			$scope.config.state = "repeater";
+			$scope.config.netmode = "repeater_mtk_5g_up_dual_down";
 			$scope.loadAccessPoints();
 		}else{
 			$scope.config.state = "router";
+			$scope.config.netmode = "routed_mtk";
 
 			$wireless.getInterfaces().done(function(data){
 				if(data.length == 2){
@@ -113,6 +115,34 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 			$scope.data.same_key = "";
 		}catch(e){ }
 	}, false);
+
+	$uci.$sync(["netmode", "wireless", "juci"]).done(function(){
+		$scope.juci = $uci.juci;
+		$scope.netmode = $uci.netmode;
+		var lang = $languages.getLanguage();
+		$scope.netmodes = $uci.netmode["@netmode"].map(function(nm){
+			return {
+				longLabel: nm[("desc_"+lang)].value || nm.desc.value || nm["desc_en"].value,
+				label: (nm[("desc_"+lang)].value || nm.desc.value || nm["desc_en"].value).substring(0,20),
+				value: nm[".name"],
+				desc:  nm[("exp_"+lang)].value || nm.exp.value || nm["exp_en"].value || "",
+				band: nm.uplink_band.value,
+				reboot: nm.reboot.value
+			}
+		});
+		$scope.netmodes_ap = $scope.netmodes.filter(function(nm){ return !nm.band; });
+		$scope.netmodes_rep = $scope.netmodes.filter(function(nm){ return nm.band; });
+
+		$scope.netmodes = $scope.netmodes.map(function(nm){
+			if(!nm.band) return nm;
+			var radio = $uci.wireless["@wifi-device"].find(function(dev){
+				return dev.band.value === nm.band;
+			});
+			if(radio && radio[".name"]) nm.radio = radio[".name"];
+			return nm;
+		});
+		$scope.$apply();
+	});
 
 	$scope.loadAccessPoints = function(){
 		if(!$scope.netmodes) return;
@@ -141,43 +171,4 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 			});
 		}
 	}
-
-	$uci.$sync(["netmode", "wireless", "juci"]).done(function(){
-		$scope.juci = $uci.juci;
-		$scope.netmode = $uci.netmode;
-		var lang = $languages.getLanguage();
-		$scope.netmodes = $uci.netmode["@netmode"].map(function(nm){
-			return {
-				longLabel: nm[("desc_"+lang)].value || nm.desc.value || nm["desc_en"].value,
-				label: (nm[("desc_"+lang)].value || nm.desc.value || nm["desc_en"].value).substring(0,20),
-				value: nm[".name"],
-				desc:  nm[("exp_"+lang)].value || nm.exp.value || nm["exp_en"].value || "",
-				band: nm.uplink_band.value,
-				reboot: nm.reboot.value
-			}
-		});
-		$scope.netmodes_ap = $scope.netmodes.filter(function(nm){ return !nm.band; });
-		$scope.netmodes_rep = $scope.netmodes.filter(function(nm){ return nm.band; });
-
-		$scope.$watch("config.as_extender", function(as_extender, old){
-			if (as_extender === old){return} //just return on initialization
-
-			if (as_extender) {
-				$scope.config.netmode = "repeater_mtk_5g_up_dual_down";
-			}
-			else {
-				$scope.config.netmode = "routed_mtk";
-			}
-		}, false);
-
-		$scope.netmodes = $scope.netmodes.map(function(nm){
-			if(!nm.band) return nm;
-			var radio = $uci.wireless["@wifi-device"].find(function(dev){
-				return dev.band.value === nm.band;
-			});
-			if(radio && radio[".name"]) nm.radio = radio[".name"];
-			return nm;
-		});
-		$scope.$apply();
-	});
 });
