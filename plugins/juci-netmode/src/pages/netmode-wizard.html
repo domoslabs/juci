@@ -31,8 +31,14 @@
 					<juci-config-line title="{{'SSID'| translate}}">
 						<input type="text" ng-model="config.ssid" class="form-control" />
 					</juci-config-line>
-					<juci-config-line title="{{'Password (network key)'| translate}}">
-						<input type="text" ng-model="config.key" class="form-control" />
+					<juci-config-line title="{{'Password'| translate}}" >
+						<input type="{{(!data.showPassword) ? 'password' : 'text'}}" ng-model="data.same_key" class="form-control" />
+					</juci-config-line>
+					<juci-config-line>
+						<div class="checkbox checkbox-info">
+							<input type="checkbox" ng-model="data.showPassword"/>
+							<label><strong>{{'Show Password'|translate}}</strong></label>
+						</div>
 					</juci-config-line>
 					<label ng-show="config.error" class="label label-danger">{{config.error}}</label>
 				</juci-config-lines>
