@@ -68,8 +68,14 @@
 					<juci-config-line title="SSID 5.0 Ghz" ng-show="data.separate_ssids">
 						<input type="text" ng-model="data.ssid5" class="form-control"/>
 					</juci-config-line>
-					<juci-config-line title="{{'Password'| translate}}">
-						<input type="text" ng-model="data.same_key" class="form-control" />
+					<juci-config-line title="{{'Password'| translate}}" >
+						<input type="{{(!data.showPassword) ? 'password' : 'text'}}" ng-model="data.same_key" class="form-control" />
+					</juci-config-line>
+					<juci-config-line>
+						<div class="checkbox checkbox-info">
+							<input type="checkbox" ng-model="data.showPassword"/>
+							<label><strong>{{'Show Password'|translate}}</strong></label>
+						</div>
 					</juci-config-line>
 
 					<label ng-show="config.error" class="label label-danger">{{config.error}}</label>

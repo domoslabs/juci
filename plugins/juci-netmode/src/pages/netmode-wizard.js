@@ -21,6 +21,7 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 	$scope.data.same_key = "";
 	$scope.data.ssid24 = "";
 	$scope.data.ssid5 = "";
+	$scope.data.showPassword = false;
 
 	$scope.onFinishWifiRepeaterNetmode = function(){
 		if(!$scope.access_points) $scope.access_points = [];
@@ -46,6 +47,28 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 		});
 	}
 
+	function concatStringsInList(list) {
+		var str_out = "";
+		function addToOutput(str){ str_out = str_out.indexOf(str)===-1 ? str_out+"\n"+str : str_out; } //dont add duplicates
+		list.forEach(addToOutput);
+		return str_out;
+	}
+	function resetRouterModeSettings() {
+		for (key in $scope.data.interfaces) {
+			var iface = $scope.data.interfaces[key];
+			if (iface && iface['.frequency']) {
+				if (iface['.frequency'] == "2.4GHz") {
+					$scope.data.interfaces[key].ssid.value = $scope.data.interfaces[key].ssid.ovalue;
+					$scope.data.interfaces[key].key.value = $scope.data.interfaces[key].key.ovalue;
+				}
+				else if (iface['.frequency'] == "5GHz") {
+					$scope.data.interfaces[key].ssid.value = $scope.data.interfaces[key].ssid.ovalue;
+					$scope.data.interfaces[key].key.value = $scope.data.interfaces[key].key.ovalue;
+				}
+			}
+		}
+		$scope.juci.juci.homepage.value = $scope.juci.juci.homepage.ovalue;
+	}
 	$scope.onFinishWifiRouterNetmode = function(){
 		for (key in $scope.data.interfaces) {
 			var iface = $scope.data.interfaces[key];
@@ -67,8 +90,9 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 		$uci.$save().done(function(){
 			window.location = "";
 		}).fail(function(e){
-			console.log(e);
-			$scope.config.error = $tr(gettext("Couldn't save configuration"));
+			$scope.config.error = concatStringsInList(e);//$tr(gettext("Couldn't save configuration"));
+			resetRouterModeSettings();
+			$scope.$apply();
 		});
 	}
 
@@ -100,6 +124,7 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 				if(data.length == 2){
 					$scope.data.interfaces = data;
 				} else{} // TODO: make sure there is only one iface per frequency
+				$scope.data.same_key = $scope.data.interfaces[0].key.value;
 				$scope.data.same_ssid = $scope.data.interfaces[0].ssid.value;
 				$scope.data.ssid24 = $scope.data.interfaces[0].ssid.value;
 				$scope.data.ssid5 = $scope.data.interfaces[1].ssid.value;
@@ -121,7 +146,7 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 			$scope.data.same_ssid = $scope.data.interfaces[0].ssid.value;
 			$scope.data.ssid24 = $scope.data.interfaces[0].ssid.value;
 			$scope.data.ssid5 = $scope.data.interfaces[1].ssid.value;
-			$scope.data.same_key = "";
+			$scope.data.same_key = $scope.data.interfaces[0].key.value;
 		}catch(e){ }
 	}, false);
 
