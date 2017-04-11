@@ -40,10 +40,10 @@ case "$1" in
 				for serv in $(ls /etc/init.d/); do
 					ubus -q -t 1 call service list "{'name':'$serv'}" | grep -q '"running": true,' >/dev/null
 					[ $? -eq 0 ] && running=1 || running=0
-					output=$(ls /etc/rc.d/S*$serv)
+					output=$(ls /etc/rc.d/S*$serv 2>/dev/null)
 					[ $? -eq 0 ] && enabled=1 || enabled=0
-					start=${output%%S}
-					start=${start##$serv}
+					start=${output##/etc/rc.d/S}
+					start=${start%%$serv}
 					json_add_object ""
 					json_add_string name $serv
 					json_add_boolean enabled $enabled
