@@ -32,7 +32,7 @@ JUCI.app
 }).filter("maxlength", function(){
 	return function(input, length){
 		length = (typeof length != "number") ? 50 : length;
-		input = input || "";
+		if(input === undefined)input = "";
 		if(String(input).length < length) return input;
 		var output = "";
 		output = String(input).slice(0, length) + "...";
