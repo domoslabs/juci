@@ -10,6 +10,7 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 		2:[],
 		5:[],
 		ssid:"",
+		key:"",
 		frequencies: [
 			{ label: $tr(gettext("5 GHz")), value: 5 },
 			{ label: $tr(gettext("2.4 GHz")), value: 2 }
@@ -22,8 +23,10 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 	$scope.data.ssid24 = "";
 	$scope.data.ssid5 = "";
 	$scope.data.showPassword = false;
+	$scope.data.wizardFinished = false;
 
 	$scope.onFinishWifiRepeaterNetmode = function(){
+		$scope.data.wizardFinished = true;
 		if(!$scope.access_points) $scope.access_points = [];
 		var ap = $scope.access_points.find(function(ap){
 			return ap.value === $scope.config.ssid;
@@ -70,6 +73,7 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 		$scope.juci.juci.homepage.value = $scope.juci.juci.homepage.ovalue;
 	}
 	$scope.onFinishWifiRouterNetmode = function(){
+		$scope.data.wizardFinished = true;
 		for (key in $scope.data.interfaces) {
 			var iface = $scope.data.interfaces[key];
 			if (iface && iface['.frequency']) {
@@ -115,15 +119,17 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 		if($scope.config.as_extender){
 			$scope.config.state = "repeater";
 			$scope.config.netmode = "repeater_mtk_5g_up_dual_down";
+			$scope.data.same_key = "";
 			$scope.loadAccessPoints();
 		}else{
+			$scope.data.showPassword = false;
 			$scope.config.state = "router";
 			$scope.config.netmode = "routed_mtk";
 
 			$wireless.getInterfaces().done(function(data){
 				if(data.length == 2){
 					$scope.data.interfaces = data;
-				} else{} // TODO: make sure there is only one iface per frequency
+				} else{} // TODO: make sure there is only one iface per frequency?
 				$scope.data.same_key = $scope.data.interfaces[0].key.value;
 				$scope.data.same_ssid = $scope.data.interfaces[0].ssid.value;
 				$scope.data.ssid24 = $scope.data.interfaces[0].ssid.value;
