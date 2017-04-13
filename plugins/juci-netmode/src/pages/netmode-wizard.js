@@ -1,7 +1,8 @@
 //!Author: Reidar Cederqvist <reidar.cederqvist@gmail.com>
 
 
-JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, $tr, gettext, $wireless){
+JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, $tr, gettext, $wireless, $file){
+	var filename = "/tmp/netmode-wizard.json";
 	$scope.config = {
 		as_extender: true,
 		state:"start",
@@ -35,14 +36,26 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 			$scope.config.error = $tr(gettext("This network is encrypted, Please enter encryption key"));
 			return;
 		}
+		var nm = $scope.netmodes.find(function(nm){ return nm.value === $scope.config.netmode; });
 		$scope.netmode.setup.curmode.value = $scope.config.netmode;
 		$scope.juci.juci.homepage.value = "overview";
 		$uci.$save().done(function(){
-			$rpc.$call("juci.wireless", "set_credentials", {ssid: $scope.config.ssid, key:$scope.config.key, encryption: ap? ap.encryption : "none", import : false });
-			var nm = $scope.netmodes.find(function(nm){ return nm.value === $scope.config.netmode; });
-			if(nm && nm.reboot) window.location = "/reboot.html";
-			$scope.config.state = "done";
-			$scope.$apply();
+			$file.uploadString(filename, JSON.stringify({
+				"wifi_ifaces": [
+					{
+						"ssid": $scope.config.ssid,
+						"key": $scope.config.key,
+						"band": (nm && nm.band) ? nm.band : "a",
+						"encryption": ap ? ap.encryption : "none"
+					}
+				]
+			})).done(function(ret){
+				$rpc.$call("repeater", "set_creds", { file: filename });
+				$scope.config.state = "done";
+				$scope.$apply();
+			}).fail(function(e){
+				console.log(e);
+			});
 		}).fail(function(e){
 			console.log("failed to save configs error: " + JSON.stringify(e));
 			$scope.config.error = $tr(gettext("Couldn't save config!"));
