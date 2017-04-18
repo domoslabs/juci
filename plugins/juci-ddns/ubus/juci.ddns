@@ -42,8 +42,8 @@ case "$1" in
 					fi
 					time_left=${time_left-0}
 					json_add_int "next_update" $time_left
-					ERRORS="$(cat $file | awk -F ':' '/[0-9]* ERROR/ {print $2}')"
-					WARNINGS="$(cat $file | awk -F ':' '/[0-9]* WARN/ {print $2}')"
+					ERRORS="$(cat $file | awk -F ':' '/[0-9]* ERROR/ {print $2}' | sort -u)"
+					WARNINGS="$(cat $file | awk -F ':' '/[0-9]* WARN/ {print $2}' | sort -u)"
 					[ "$ERRORS" ] && {
 						json_add_array "errors"
 						for er in $ERRORS; do
