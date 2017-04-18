@@ -4,7 +4,7 @@
 
 case "$1" in
 	list)
-		echo '{ "providers" : {} }'
+		echo '{ "providers" : {}, "status": { "service": "Str" } }'
 	;;
 	call)
 		case "$2" in
@@ -16,6 +16,50 @@ case "$1" in
 				done
 				json_dump
 			;;
+			status)
+				local input service running ret ERRORS WARNINGS file
+				read input
+				json_load "$input"
+				json_get_var service service
+				[ "$service" ] || exit 5
+				file="/var/log/ddns/${service}.log"
+				ps -w | grep dynami[c] | grep -w "$service" >/dev/null && running=1 || running=0
+				json_init
+				json_add_boolean "running" $running
+				IFS=$'\n'
+				if [ -f "$file" ]; then
+					local reload_time last_reload cur_time diff time_left
+					reload_time="$(awk '/Waiting [0-9]* seconds/ {i=$4} END {print i}' < $file)"
+					last_reload="$(awk -F 'at ' '/info : R/ {i=$2} END {print i}' < $file)"
+					if [ "$reload_time" -a "$last_reload" ]; then
+						last_reload=$(date -d "$last_reload" +%s)
+						cur_time="$(date +%s)"
+						if [ "$last_reload" -a "$cur_time" ]; then
+							diff=$((cur_time - last_reload))
+							time_left=$((reload_time - diff))
+							[ $time_left -lt 0 ] && time_left=0
+						fi
+					fi
+					time_left=${time_left-0}
+					json_add_int "next_update" $time_left
+					ERRORS="$(cat $file | awk -F ':' '/[0-9]* ERROR/ {print $2}')"
+					WARNINGS="$(cat $file | awk -F ':' '/[0-9]* WARN/ {print $2}')"
+					[ "$ERRORS" ] && {
+						json_add_array "errors"
+						for er in $ERRORS; do
+							json_add_string "" "${er##[ ]}"
+						done
+						json_select ..
+					}
+					[ "$WARNINGS" ] && {
+						json_add_array "warnings"
+						for er in $WARNINGS; do
+							json_add_string "" "${er##[ ]}"
+						done
+						json_select ..
+					}
+				fi
+				json_dump
 		esac
 	;;
 esac
