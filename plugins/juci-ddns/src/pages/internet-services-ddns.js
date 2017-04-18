@@ -25,7 +25,7 @@ JUCI.app
 		$scope.ddns_list = $uci.ddns["@service"]; 
 		JUCI.interval.repeat("juci-ddns-status-update", 10000, function(next){update();next();});
 	}); 
-	
+
 	function add_zero(num){
 		if(num < 10)
 			return ("0" + num);
