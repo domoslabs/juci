@@ -17,20 +17,24 @@ case "$1" in
 				json_dump
 			;;
 			status)
-				local input service running ret ERRORS WARNINGS file
+				local input service running ret file pid_line pid content
 				read input
 				json_load "$input"
 				json_get_var service service
 				[ "$service" ] || exit 5
 				file="/var/log/ddns/${service}.log"
-				ps -w | grep dynami[c] | grep -w "$service" >/dev/null && running=1 || running=0
+				pid_line=$(ps -w | grep dynami[c] | grep -w "$service")
+				[ $? -eq 0 ] && running=1 || running=0
+				pid=$(echo $pid_line | awk '{ print $1}')
+				[ -z "$pid" ] && pid=$(cat $file | awk -F "'" '/WARN : PID.*exit WITH ERROR/ {print $2}' | tail -1)
 				json_init
 				json_add_boolean "running" $running
+				content=$(cat $file | awk "/PID '$pid' /{y=1;next}y")
 				IFS=$'\n'
-				if [ -f "$file" ]; then
-					local reload_time last_reload cur_time diff time_left
-					reload_time="$(awk '/Waiting [0-9]* seconds/ {i=$4} END {print i}' < $file)"
-					last_reload="$(awk -F 'at ' '/info : R/ {i=$2} END {print i}' < $file)"
+				if [ "$content" ]; then
+					local reload_time last_reload cur_time diff time_left ERRORS WARNINGS
+					reload_time=$(echo "$content" | awk '/Waiting [0-9]* seconds/ {i=$4} END {print i}')
+					last_reload=$(echo "$content" | awk -F 'at ' '/info : [RS]/ {i=$2} END {print i}')
 					if [ "$reload_time" -a "$last_reload" ]; then
 						last_reload=$(date -d "$last_reload" +%s)
 						cur_time="$(date +%s)"
@@ -42,8 +46,8 @@ case "$1" in
 					fi
 					time_left=${time_left-0}
 					json_add_int "next_update" $time_left
-					ERRORS="$(cat $file | awk -F ':' '/[0-9]* ERROR/ {print $2}' | sort -u)"
-					WARNINGS="$(cat $file | awk -F ':' '/[0-9]* WARN/ {print $2}' | sort -u)"
+					ERRORS=$(echo "$content" | awk -F ':' '/ERROR/ {print $2}' | sort -u)
+					WARNINGS=$(echo "$content" | awk -F ':' '/WARN/ {print $2}' | sort -u)
 					[ "$ERRORS" ] && {
 						json_add_array "errors"
 						for er in $ERRORS; do
