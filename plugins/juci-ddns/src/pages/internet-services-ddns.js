@@ -39,6 +39,9 @@ JUCI.app
 			return Math.floor(sec / 60) + ":" + add_zero(sec%60);
 		return Math.floor(sec/(60*60)) + ":" + add_zero(Math.floor(sec/60)%60) + ":" + add_zero(sec%60);
 	}
+	function trim_e(er){
+		return er.replace(/PID '[0-9]*' exit/, "Exit");
+	}
 
 	function set_values(ddns){
 		ddns.$statusList = [
@@ -54,12 +57,12 @@ JUCI.app
 			return;
 		}
 		if(ddns_status.running !== undefined)
-			ddns.$statusList.push({ label: $tr(gettext("Status")), value: ddns_status.running });
+			ddns.$statusList.push({ label: $tr(gettext("Running")), value: String(ddns_status.running).toUpperCase() });
 		if(ddns_status.next_update)
 			ddns.$statusList.push({ label: $tr(gettext("Next update in")), value: sec_to_string(ddns_status.next_update) });
 		if(ddns_status.errors && ddns_status.errors instanceof Array){
 			for(i=ddns_status.errors.length; i > 0 && (ddns_status.errors.length - i) < 5; i--)
-				ddns.$statusList.push({ label: $tr(gettext("Error")), value: ddns_status.errors[i-1] });
+				ddns.$statusList.push({ label: $tr(gettext("Error")), value: trim_e(ddns_status.errors[i-1]) });
 		}
 		if(ddns_status.warnings && ddns_status.warnings instanceof Array){
 			for(i=ddns_status.warnings.length; i > 0 && (ddns_status.warnings.length - i) < 5; i--)
