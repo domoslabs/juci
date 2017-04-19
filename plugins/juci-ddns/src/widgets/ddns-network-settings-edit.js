@@ -23,33 +23,43 @@ JUCI.app
 	return {
 		scope: {
 			ddns: "=ngModel"
-		}, 
-		templateUrl: "/widgets/ddns-network-settings-edit.html", 
+		},
+		templateUrl: "/widgets/ddns-network-settings-edit.html",
 		controller: "ddnsNetworkSettingsEdit"
 	};
 })
 .controller("ddnsNetworkSettingsEdit", function($scope, $rpc, $tr, gettext, $ethernet, $network){
 	$scope.allSourceTypes = [
-		{ label: $tr(gettext("Interface")), value: "interface" }, 
-		{ label: $tr(gettext("Network")), value: "network" }, 
-		{ label: $tr(gettext("Script")), value: "script" }, 
+		{ label: $tr(gettext("Interface")), value: "interface" },
+		{ label: $tr(gettext("Network")), value: "network" },
+		{ label: $tr(gettext("Script")), value: "script" },
 		{ label: $tr(gettext("Web")), value: "web" }
-	]; 
-	$ethernet.getAdapters().done(function(adapters){
-		$scope.allSourceDevices = adapters.map(function(a){
-			return { label: a.name, value: a.device }; 
-		}); 
-		$scope.$apply(); 
-	});
-	$network.getNetworks().done(function(nets){
-		$scope.allSourceNetworks = nets.map(function(n){
-			return { label: n[".name"], value: n[".name"] }; 
-		}); 
-		$scope.$apply(); 
-	}); 
-	$rpc.$call("juci.ddns", "providers", {}).done(function(result){
-		if(!result || !result.providers) return; 
-		$scope.allServices = result.providers.map(function(p){ return { label: p, value: p }}); 
-		$scope.$apply(); 
-	});
-}); 
+	];
+	$scope.$watch("ddns", function(ddns){
+		if(!ddns) return;
+		$ethernet.getAdapters().done(function(adapters){
+			$scope.allSourceDevices = adapters.map(function(a){
+				return { label: a.name, value: a.device };
+			});
+			$scope.$apply();
+		});
+		$network.getNetworks().done(function(nets){
+			$scope.allSourceNetworks = nets.map(function(n){
+				return { label: n[".name"], value: n[".name"] };
+			});
+			$scope.$apply();
+		});
+		$rpc.$call("juci.ddns", "providers", {}).done(function(result){
+			if(!result || !result.providers) return;
+			$scope.allServices = result.providers.map(function(p){ return { label: p, value: p }});
+			var cur = $scope.allServices.find(function(service){
+				return service.value === ddns.service_name.value;
+			});
+			if(!cur && ddns.service_name.value)
+				$scope.enterDNSProvider = true;
+			else
+				$scope.enterDNSProvider = false;
+			$scope.$apply();
+		});
+	}, false);
+});
