@@ -37,7 +37,7 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 			return;
 		}
 		var nm = $scope.netmodes.find(function(nm){ return nm.value === $scope.config.netmode; });
-		$scope.netmode.setup.curmode.value = $scope.config.netmode;
+		//$scope.netmode.setup.curmode.value = $scope.config.netmode;
 		$scope.juci.juci.homepage.value = "overview";
 		$uci.$save().done(function(){
 			$file.uploadString(filename, JSON.stringify({
@@ -46,11 +46,13 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 						"ssid": $scope.config.ssid,
 						"key": $scope.config.key,
 						"band": (nm && nm.band) ? nm.band : "a",
-						"encryption": ap ? ap.encryption : "none"
+						"encryption": $scope.config.key ? "psk2" : "none"
 					}
 				]
 			})).done(function(ret){
-				$rpc.$call("repeater", "set_creds", { file: filename });
+				$rpc.$call("repeater", "set_creds", { file: filename }).fail(function(e){
+					console.log(e);
+				});
 				$scope.config.state = "done";
 				$scope.$apply();
 			}).fail(function(e){
