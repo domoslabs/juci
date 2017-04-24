@@ -1,5 +1,8 @@
 <juci-layout-no-menu>
 	<div ng-controller="netmodeWizardPageCtrl">
+
+<!-- ##################################### State start ##############################-->
+
 		<div ng-show="config.state == 'start'">
 			<h3 translate>Welcome, here you configure your WiFi range Extender</h3>
 			<br /><br />
@@ -14,10 +17,11 @@
 			</juci-config-section>
 			<button ng-class="{'disabled': !config.netmode}" class="btn btn-primary pull-right" ng-click="onNext()">{{'Next'|translate}}</button>
 		</div>
+
+<!-- ##################################### State repeater ##############################-->
+
 		<div ng-show="config.state == 'repeater'">
 			<h3 translate>Configure your range Extenders</h3>
-			<!--<juci-config-help>Select the network you want to extend/repeat and enter its password (network key). If the network you want to extend/repeat is not in the list you can try to scan again. If your existing WiFi network can't be found or is hidden, manually enter the SSID and the password (network key)</juci-config-help>
-			-->
 			<juci-config-help>Select the network SSID you want to extend/repeat and enter the password (network key). If the network SSID is not found below, scan again or manually enter the netwok name and password</juci-config-help>
 			<juci-config-section>
 				<juci-config-lines>
@@ -47,14 +51,7 @@
 			<button class="btn btn-primary pull-right" style="margin-right: 5px;" ng-click="onGoingBack('start')">{{'Back'|translate}}</button>
 		</div>
 
-
-
-
-
-
-
-
-
+<!-- ##################################### State router ##############################-->
 
 		<div ng-show="config.state == 'router'">
 			<h3 translate>Configure your WiFi settings</h3>
@@ -102,6 +99,7 @@
 			<button ng-class="{'disabled': !config.netmode}" class="btn btn-primary pull-right" ng-click="onSkip()" ng-show="data.wizardFinished">{{'Skip'|translate}}</button>
 		</div>
 
+<!-- ##################################### State done ##############################-->
 
 		<div ng-show="config.state == 'done'">
 			<h3 translate>WiFi range extender setup completed</h3>

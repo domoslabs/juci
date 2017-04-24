@@ -7,8 +7,8 @@
 					"scan",
 					"scanresults"
 				],
-				"juci.wireless": [
-					"set_credentials"
+				"repeater": [
+					"set_creds"
 				]
 			}, 
 			"uci": [
