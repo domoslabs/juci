@@ -201,7 +201,7 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 			else if(nm.value.match("_mtk_"))
 				arch = "mtk"
 		});
-		if($scope.config.as_extender)
+		if(!$scope.config.as_extender)
 			netmode_name = "routed_"+arch;
 		else if(arch === "mtk")
 			netmode_name = "repeater_mtk_5g_up_dual_down";
