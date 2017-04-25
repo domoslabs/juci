@@ -10,7 +10,6 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 		once: true,
 		show_password: false,
 		state: "start",
-		netmode:"routed",
 		interfaces: [],
 		frequency: 5,
 		ssid: "", // 2.4GHz or both
@@ -34,6 +33,8 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 		});
 		$scope.netmodes_ap = $scope.netmodes.filter(function(nm){ return !nm.band; });
 		$scope.netmodes_rep = $scope.netmodes.filter(function(nm){ return nm.band; });
+		if($scope.netmodes_rep.length === 0)
+			$scope.config.as_extender = false;
 
 		$scope.netmodes = $scope.netmodes.map(function(nm){
 			if(!nm.band) return nm;
@@ -144,12 +145,10 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 	$scope.onNext = function(){
 		if($scope.config.as_extender){
 			$scope.config.state = "repeater";
-			$scope.config.netmode = "repeater";
 			$scope.config.key = "";
 			$scope.loadAccessPoints();
 		}else{
 			$scope.config.state = "router";
-			$scope.config.netmode = "routed";
 
 			$wireless.getInterfaces().done(function(data){
 				if(!data || !data.length){
@@ -200,12 +199,12 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 			else if(nm.value.match("_mtk_"))
 				arch = "mtk"
 		});
-		if(arch === "mtk" && $scope.config.netmode === "repeater")
-			netmode_name = "repeater_mtk_5g_up_dual_down";
-		else if(arch === "brcm" && $scope.config.netmode === "repeater")
-			netmode_name = "repeater_brcm_2g_up_dual_down";
-		else
+		if($scope.config.as_extender)
 			netmode_name = "routed_"+arch;
+		else if(arch === "mtk")
+			netmode_name = "repeater_mtk_5g_up_dual_down";
+		else if(arch === "brcm")
+			netmode_name = "repeater_brcm_2g_up_dual_down";
 
 		var nm = $scope.netmodes.find(function(nm){return nm.value === netmode_name});
 		if(!nm || !nm.radio){
