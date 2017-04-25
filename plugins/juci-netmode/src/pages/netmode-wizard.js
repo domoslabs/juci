@@ -21,6 +21,7 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 	$uci.$sync(["netmode", "wireless", "juci"]).done(function(){
 		$scope.juci = $uci.juci;
 		var lang = $languages.getLanguage();
+		$scope.nm_setup = $uci.netmode.setup;
 		$scope.netmodes = $uci.netmode["@netmode"].map(function(nm){
 			return {
 				longLabel: nm[("desc_"+lang)].value || nm.desc.value || nm["desc_en"].value,
@@ -105,6 +106,7 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 		});
 
 		$scope.juci.juci.homepage.value = "overview";
+		$scope.nm_setup.repeaterready.value = 0;
 		$uci.$save().done(function(){
 			window.location = "";
 		}).fail(function(e){
