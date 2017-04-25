@@ -2,178 +2,25 @@
 
 
 JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, $tr, gettext, $wireless, $file){
+	var SCAN_RESLUT_TIMEOUT = 3000;
 	var filename = "/tmp/netmode-wizard.json";
 	$scope.config = {
 		as_extender: true,
-		state:"start",
-		netmode:"routed_mtk",
+		separate_ssids: false,
+		once: true,
+		show_password: false,
+		state: "start",
+		netmode:"routed",
+		interfaces: [],
 		frequency: 5,
-		2:[],
-		5:[],
-		ssid:"",
-		key:"",
-		frequencies: [
-			{ label: $tr(gettext("5 GHz")), value: 5 },
-			{ label: $tr(gettext("2.4 GHz")), value: 2 }
-		]
+		ssid: "", // 2.4GHz or both
+		ssid5: "",
+		key: "", // 2.4GHz or both
+		key5: "",
 	};
-	$scope.data = [];
-	$scope.data.separate_ssids = false;
-	$scope.data.same_ssid = "";
-	$scope.data.same_key = "";
-	$scope.data.ssid24 = "";
-	$scope.data.ssid5 = "";
-	$scope.data.showPassword = false;
-	$scope.data.wizardFinished = false;
-
-	$scope.onFinishWifiRepeaterNetmode = function(){
-		$scope.data.wizardFinished = true;
-		if(!$scope.access_points) $scope.access_points = [];
-		var ap = $scope.access_points.find(function(ap){
-			return ap.value === $scope.config.ssid;
-		});
-		if(ap && ap.encryption && $scope.config.key === ""){
-			$scope.config.error = $tr(gettext("This network is encrypted, Please enter encryption key"));
-			return;
-		}
-		var nm = $scope.netmodes.find(function(nm){ return nm.value === $scope.config.netmode; });
-		//$scope.netmode.setup.curmode.value = $scope.config.netmode;
-		$scope.juci.juci.homepage.value = "overview";
-		$uci.$save().done(function(){
-			$file.uploadString(filename, JSON.stringify({
-				"wifi_ifaces": [
-					{
-						"ssid": $scope.config.ssid,
-						"key": $scope.config.key,
-						"band": (nm && nm.band) ? nm.band : "a",
-						"encryption": $scope.config.key ? "psk2" : "none"
-					}
-				]
-			})).done(function(ret){
-				$rpc.$call("repeater", "set_creds", { file: filename }).fail(function(e){
-					console.log(e);
-				});
-				$scope.config.state = "done";
-				$scope.$apply();
-			}).fail(function(e){
-				console.log(e);
-			});
-		}).fail(function(e){
-			console.log("failed to save configs error: " + JSON.stringify(e));
-			$scope.config.error = $tr(gettext("Couldn't save config!"));
-			$scope.$apply();
-		});
-	}
-
-	function concatStringsInList(list) {
-		var str_out = "";
-		function addToOutput(str){ str_out = str_out.indexOf(str)===-1 ? str_out+"\n"+str : str_out; } //dont add duplicates
-		list.forEach(addToOutput);
-		return str_out;
-	}
-	function resetRouterModeSettings() {
-		for (key in $scope.data.interfaces) {
-			var iface = $scope.data.interfaces[key];
-			if (iface && iface['.frequency']) {
-				if (iface['.frequency'] == "2.4GHz") {
-					$scope.data.interfaces[key].ssid.value = $scope.data.interfaces[key].ssid.ovalue;
-					$scope.data.interfaces[key].key.value = $scope.data.interfaces[key].key.ovalue;
-				}
-				else if (iface['.frequency'] == "5GHz") {
-					$scope.data.interfaces[key].ssid.value = $scope.data.interfaces[key].ssid.ovalue;
-					$scope.data.interfaces[key].key.value = $scope.data.interfaces[key].key.ovalue;
-				}
-			}
-		}
-		$scope.juci.juci.homepage.value = $scope.juci.juci.homepage.ovalue;
-	}
-	$scope.onFinishWifiRouterNetmode = function(){
-		$scope.data.wizardFinished = true;
-		for (key in $scope.data.interfaces) {
-			var iface = $scope.data.interfaces[key];
-			if (iface && iface['.frequency']) {
-				if (iface['.frequency'] == "2.4GHz") {
-					var new_ssid = ($scope.data.separate_ssids) ? $scope.data.ssid24 : $scope.data.same_ssid;
-					$scope.data.interfaces[key].ssid.value = new_ssid;
-					$scope.data.interfaces[key].key.value = $scope.data.same_key;
-				}
-				else if (iface['.frequency'] == "5GHz") {
-					var new_ssid = ($scope.data.separate_ssids) ? $scope.data.ssid5 : $scope.data.same_ssid;
-					$scope.data.interfaces[key].ssid.value = new_ssid;
-					$scope.data.interfaces[key].key.value = $scope.data.same_key;
-				}
-			}
-		}
-
-		$scope.juci.juci.homepage.value = "overview";
-		$uci.$save().done(function(){
-			window.location = "";
-		}).fail(function(e){
-			$scope.config.error = concatStringsInList(e);//$tr(gettext("Couldn't save configuration"));
-			resetRouterModeSettings();
-			$scope.$apply();
-		});
-	}
-
-	$scope.onGoingBack = function(to){
-		$scope.config.error = "";
-		$scope.config.state = to;
-	}
-	$scope.updateSSID = function(ssid){
-		if(!$scope.access_points) return;
-		var ap = $scope.access_points.find(function(ap){
-			return ap.value === ssid;
-		});
-		if(ssid){
-			$scope.config.ssid = ssid;
-			$scope.config.key = "";
-		}
-	}
-
-	$scope.onNext = function(){
-		if($scope.config.as_extender){
-			$scope.config.state = "repeater";
-			$scope.config.netmode = "repeater_mtk_5g_up_dual_down";
-			$scope.data.same_key = "";
-			$scope.loadAccessPoints();
-		}else{
-			$scope.data.showPassword = false;
-			$scope.config.state = "router";
-			$scope.config.netmode = "routed_mtk";
-
-			$wireless.getInterfaces().done(function(data){
-				if(data.length == 2){
-					$scope.data.interfaces = data;
-				} else{} // TODO: make sure there is only one iface per frequency?
-				$scope.data.same_key = $scope.data.interfaces[0].key.value;
-				$scope.data.same_ssid = $scope.data.interfaces[0].ssid.value;
-				$scope.data.ssid24 = $scope.data.interfaces[0].ssid.value;
-				$scope.data.ssid5 = $scope.data.interfaces[1].ssid.value;
-				$scope.$apply();
-			}).fail(function(er){console.log(er);});
-		}
-	};
-	$scope.onSkip = function(){
-		$scope.juci.juci.homepage.value = "overview";
-		$uci.$save().done(function(){
-			window.location = "";
-		}).fail(function(e){
-			console.log(e);
-			$scope.config.error = $tr(gettext("Couldn't save configuration"));
-		});
-	}
-	$scope.$watch("data.separate_ssids", function(is_separate){
-		try{
-			$scope.data.same_ssid = $scope.data.interfaces[0].ssid.value;
-			$scope.data.ssid24 = $scope.data.interfaces[0].ssid.value;
-			$scope.data.ssid5 = $scope.data.interfaces[1].ssid.value;
-			$scope.data.same_key = $scope.data.interfaces[0].key.value;
-		}catch(e){ }
-	}, false);
 
 	$uci.$sync(["netmode", "wireless", "juci"]).done(function(){
 		$scope.juci = $uci.juci;
-		$scope.netmode = $uci.netmode;
 		var lang = $languages.getLanguage();
 		$scope.netmodes = $uci.netmode["@netmode"].map(function(nm){
 			return {
@@ -199,31 +46,192 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 		$scope.$apply();
 	});
 
-	$scope.loadAccessPoints = function(){
-		if(!$scope.netmodes) return;
-		var nm = $scope.netmodes.find(function(nm){return nm.value === $scope.config.netmode});
-		if(nm && nm.radio){
-			$scope.access_points = undefined;
-			$wireless.scan({radio: nm.radio}).done(function(){
-				setTimeout(function(){ $wireless.getScanResults({ radio: nm.radio }).done(function(result){
-					if(result){
-						$scope.access_points = result.map(function(ap){
-							return { value: ap.ssid, label: ap.ssid, encryption: ap.encryption };
-						});
-						var index = 0;
-						$scope.access_points = $scope.access_points.sort(function(a, b){
-							if(a.value && b.value)
-								return String(a.value).localeCompare(b.value);
-							return 1;
-						});
-						$scope.$apply();
+	$scope.onFinishWifiRepeaterNetmode = function(){
+		if(!$scope.access_points) $scope.access_points = [];
+		var ap = $scope.access_points.find(function(ap){
+			return ap.value === $scope.config.ssid;
+		});
+		if(ap && ap.encryption && $scope.config.key === ""){
+			$scope.config.error = $tr(gettext("This network is encrypted, Please enter encryption key"));
+			return;
+		}
+		$scope.juci.juci.homepage.value = "overview";
+		$uci.$save().done(function(){
+			$file.uploadString(filename, JSON.stringify({
+				"wifi_ifaces": [
+					{
+						"ssid": $scope.config.ssid,
+						"key": $scope.config.key,
+						"band": "a",
+						"encryption": $scope.config.key ? "psk2" : "none"
+					},
+					{
+						"ssid": $scope.config.ssid,
+						"key": $scope.config.key,
+						"band": "b",
+						"encryption": $scope.config.key ? "psk2" : "none"
 					}
-				}).fail(function(e){
-					console.log("failed to call $wireless scanresults error: " + JSON.stringify(e));
-				})}, 3000) // timeout value
+				]
+			})).done(function(ret){
+				$rpc.$call("repeater", "set_creds", { file: filename }).fail(function(e){
+					console.log(e);
+				});
+				$scope.config.state = "done";
+				$scope.$apply();
 			}).fail(function(e){
-				console.log("failed to call $wireless scan error: " + JSON.stringify(e));
+				console.log(e);
+			});
+		}).fail(function(e){
+			console.log("failed to save configs error: " + JSON.stringify(e));
+			$scope.config.error = $tr(gettext("Couldn't save config!"));
+			$scope.$apply();
+		});
+	}
+
+	$scope.onFinishWifiRouterNetmode = function(){
+		$scope.config.interfaces.map(function(iface){
+			if (iface && iface['.frequency']) {
+				if (iface['.frequency'] == "2.4GHz") {
+					iface.ssid.value = $scope.config.ssid;
+					iface.key.value = $scope.config.key;
+				}
+				else if (iface['.frequency'] == "5GHz") {
+					var new_ssid = ($scope.config.separate_ssids) ? $scope.config.ssid5 : $scope.config.ssid;
+					iface.ssid.value = new_ssid;
+					iface.key.value = $scope.config.key;
+				}
+			}
+		});
+
+		$scope.juci.juci.homepage.value = "overview";
+		$uci.$save().done(function(){
+			window.location = "";
+		}).fail(function(e){
+			$scope.config.error = "";
+			if(e && e instanceof Array){
+				e.map(function(er){
+					$scope.config.error = $scope.config.error === "" ?
+						er : $scope.config.error+"\n"+er;
+				});
+			}else {
+				$scope.config.error = JSON.stringify(e);
+			}
+			$scope.config.interfaces.map(function(iface){
+				iface.ssid.value = iface.ssid.ovalue;
+				iface.key.value = iface.key.ovalue;
+			});
+			$scope.juci.juci.homepage.value = $scope.juci.juci.homepage.ovalue;
+			$scope.$apply();
+		});
+	}
+
+	$scope.onGoingBack = function(to){
+		$scope.config.error = "";
+		$scope.config.state = to;
+	}
+
+	$scope.updateSSID = function(ssid){
+		if(!$scope.access_points) return;
+		var ap = $scope.access_points.find(function(ap){
+			return ap.value === ssid;
+		});
+		if(ssid){
+			$scope.config.ssid = ssid;
+			$scope.config.key = "";
+		}
+	}
+
+	$scope.onNext = function(){
+		if($scope.config.as_extender){
+			$scope.config.state = "repeater";
+			$scope.config.netmode = "repeater";
+			$scope.config.key = "";
+			$scope.loadAccessPoints();
+		}else{
+			$scope.config.state = "router";
+			$scope.config.netmode = "routed";
+
+			$wireless.getInterfaces().done(function(data){
+				if(!data || !data.length){
+					console.log("error getting interfaces");
+					return;
+				}
+				$scope.config.interfaces = data;
+				$scope.config.key = data[0].key.value;
+				$scope.config.ssid = data[0].ssid.value;
+				$scope.config.ssid5 = data[0].ssid.value;
+				$scope.$apply();
+			}).fail(function(er){console.log(er);});
+		}
+	}
+
+	$scope.onSkip = function(){
+		if($scope.config.once){
+			console.log("once");
+			window.location = "#!/overview";
+		}else{
+			console.log("not once");
+			$scope.juci.juci.homepage.value = "overview";
+			$uci.$save().done(function(){
+				window.location = "";
+			}).fail(function(e){
+				console.log(e);
+				$scope.config.error = $tr(gettext("Couldn't save configuration"));
 			});
 		}
+	}
+
+	$scope.$watch("config.separate_ssids", function(is_separate){
+		if(is_separate === undefined) return;
+		if($scope.config.interfaces && $scope.config.interfaces.length){
+			$scope.config.ssid = $scope.config.interfaces[0].ssid.value;
+			$scope.config.ssid5 = $scope.config.interfaces[1].ssid.value;
+			$scope.config.key = $scope.config.interfaces[0].key.value;
+		}
+	}, false);
+
+	$scope.loadAccessPoints = function(){
+		if(!$scope.netmodes) return;
+		var arch;
+		var netmode_name;
+		$scope.netmodes.map(function(nm){ 
+			if(nm.value.match("_brcm_"))
+				arch = "brcm";
+			else if(nm.value.match("_mtk_"))
+				arch = "mtk"
+		});
+		if(arch === "mtk" && $scope.config.netmode === "repeater")
+			netmode_name = "repeater_mtk_5g_up_dual_down";
+		else if(arch === "brcm" && $scope.config.netmode === "repeter")
+			netmode_name = "repeater_brcm_2g_up_dual_down";
+		else
+			netmode_name = "routed_"+arch;
+
+		var nm = $scope.netmodes.find(function(nm){return nm.value === netmode_name});
+		if(!nm || !nm.radio)
+			return;
+		$scope.access_points = undefined;
+		$wireless.scan({radio: nm.radio}).done(function(){
+			setTimeout(function(){
+				$wireless.getScanResults({ radio: nm.radio }).done(function(result){
+					if(!result)
+						return;
+					$scope.access_points = result.map(function(ap){
+						return { value: ap.ssid, label: ap.ssid, encryption: ap.encryption };
+					});
+					var index = 0;
+					$scope.access_points = $scope.access_points.sort(function(a, b){
+						if(a.value && b.value)
+							return String(a.value).localeCompare(b.value);
+						return 1;
+					});
+					$scope.$apply();
+				}).fail(function(e){
+					console.log("failed to call $wireless scanresults error: " + JSON.stringify(e));
+				})
+			}, SCAN_RESLUT_TIMEOUT);
+		}).fail(function(e){
+			console.log("failed to call $wireless scan error: " + JSON.stringify(e));
+		});
 	}
 });

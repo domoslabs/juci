@@ -15,7 +15,20 @@
 					</juci-config-line>
 				</juci-config-lines>
 			</juci-config-section>
-			<button ng-class="{'disabled': !config.netmode}" class="btn btn-primary pull-right" ng-click="onNext()">{{'Next'|translate}}</button>
+			<div class="checkbox checkbox-info">
+				<button class="btn btn-primary" style="margin-right: 15px;" ng-click="onSkip()">{{'Skip'|translate}}</button>
+				<input type="checkbox" ng-model="config.once" />
+				<label><strong>{{'Once'|translate}}</strong></label>
+				<button ng-class="{'disabled': !config.netmode}" class="btn btn-primary pull-right" ng-click="onNext()">{{'Next'|translate}}</button>
+			</div>
+			<div class="row">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-10 ">
+					<img src="img/router.jpeg" ng-show="!config.as_extender" class="img-responsive center-block" style="margin-top:50px">
+					<img src="img/extender.jpeg" ng-show="config.as_extender" class="img-responsive center-block" style="margin-top:50px">
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
 		</div>
 
 <!-- ##################################### State repeater ##############################-->
@@ -36,11 +49,11 @@
 						<input type="text" ng-model="config.ssid" class="form-control" />
 					</juci-config-line>
 					<juci-config-line title="{{'Password'| translate}}" >
-						<input type="{{(!data.showPassword) ? 'password' : 'text'}}" ng-model="config.key" class="form-control" />
+						<input type="{{(!config.showPassword) ? 'password' : 'text'}}" ng-model="config.key" class="form-control" />
 					</juci-config-line>
 					<juci-config-line>
 						<div class="checkbox checkbox-info">
-							<input type="checkbox" ng-model="data.showPassword"/>
+							<input type="checkbox" ng-model="config.showPassword"/>
 							<label><strong>{{'Show Password'|translate}}</strong></label>
 						</div>
 					</juci-config-line>
@@ -60,23 +73,23 @@
 			<juci-config-section>
 				<juci-config-lines>
 					<juci-config-line title="{{'Separate WiFi names'| translate}}">
-						<switch class="green pull-right" ng-model="data.separate_ssids"/>
+						<switch class="green pull-right" ng-model="config.separate_ssids"/>
 					</juci-config-line>
-					<juci-config-line title="{{'SSID'| translate}}" ng-show="!data.separate_ssids">
-						<input type="text" ng-model="data.same_ssid" class="form-control" />
+					<juci-config-line title="{{'SSID'| translate}}" ng-show="!config.separate_ssids">
+						<input type="text" ng-model="config.ssid" class="form-control" />
 					</juci-config-line>
-					<juci-config-line title="SSID 2.4 Ghz" ng-show="data.separate_ssids">
-						<input type="text" ng-model="data.ssid24" class="form-control"/>
+					<juci-config-line title="SSID 2.4 Ghz" ng-show="config.separate_ssids">
+						<input type="text" ng-model="config.ssid" class="form-control"/>
 					</juci-config-line>
-					<juci-config-line title="SSID 5.0 Ghz" ng-show="data.separate_ssids">
-						<input type="text" ng-model="data.ssid5" class="form-control"/>
+					<juci-config-line title="SSID 5.0 Ghz" ng-show="config.separate_ssids">
+						<input type="text" ng-model="config.ssid5" class="form-control"/>
 					</juci-config-line>
-					<juci-config-line title="{{'Password'| translate}}" >
-						<input type="{{(!data.showPassword) ? 'password' : 'text'}}" ng-model="data.same_key" class="form-control" />
+					<juci-config-line title="{{'Password'| translate}}">
+						<input type="{{(!config.showPassword) ? 'password' : 'text'}}" ng-model="config.key" class="form-control" />
 					</juci-config-line>
 					<juci-config-line>
 						<div class="checkbox checkbox-info">
-							<input type="checkbox" ng-model="data.showPassword"/>
+							<input type="checkbox" ng-model="config.showPassword"/>
 							<label><strong>{{'Show Password'|translate}}</strong></label>
 						</div>
 					</juci-config-line>
@@ -88,16 +101,6 @@
 			<button class="btn btn-primary pull-right" style="margin-right: 5px;" ng-click="onGoingBack('start')">{{'Back'|translate}}</button>
 		</div>
 
-		<div class="container" ng-show="!data.wizardFinished">
-			<div class="col-sm-2"></div>
-			<div class="col-sm-8 ">
-				<img src="img/router.jpeg" ng-show="!config.as_extender" class="img-responsive center-block" style="margin-top:50px">
-				<img src="img/extender.jpeg" ng-show="config.as_extender" class="img-responsive center-block" style="margin-top:50px">
-			</div>
-			<div class="col-sm-2"></div>
-
-			<button ng-class="{'disabled': !config.netmode}" class="btn btn-primary pull-right" ng-click="onSkip()" ng-show="data.wizardFinished">{{'Skip'|translate}}</button>
-		</div>
 
 <!-- ##################################### State done ##############################-->
 
@@ -105,5 +108,5 @@
 			<h3 translate>WiFi range extender setup completed</h3>
 			<p translate>Your range extender setup is now completed. You will likely loose connection to your box.</p>
 		</div>
-	</div>
+	</div>	<!-- END ng-controller div-->
 </juci-layout-no-menu>
