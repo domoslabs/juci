@@ -202,14 +202,16 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 		});
 		if(arch === "mtk" && $scope.config.netmode === "repeater")
 			netmode_name = "repeater_mtk_5g_up_dual_down";
-		else if(arch === "brcm" && $scope.config.netmode === "repeter")
+		else if(arch === "brcm" && $scope.config.netmode === "repeater")
 			netmode_name = "repeater_brcm_2g_up_dual_down";
 		else
 			netmode_name = "routed_"+arch;
 
 		var nm = $scope.netmodes.find(function(nm){return nm.value === netmode_name});
-		if(!nm || !nm.radio)
+		if(!nm || !nm.radio){
+			console.log("error: couldn't find netmode");
 			return;
+		}
 		$scope.access_points = undefined;
 		$wireless.scan({radio: nm.radio}).done(function(){
 			setTimeout(function(){

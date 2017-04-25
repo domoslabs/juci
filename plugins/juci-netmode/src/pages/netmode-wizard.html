@@ -15,11 +15,13 @@
 					</juci-config-line>
 				</juci-config-lines>
 			</juci-config-section>
-			<div class="checkbox checkbox-info">
-				<button class="btn btn-primary" style="margin-right: 15px;" ng-click="onSkip()">{{'Skip'|translate}}</button>
-				<input type="checkbox" ng-model="config.once" />
-				<label><strong>{{'Once'|translate}}</strong></label>
-				<button ng-class="{'disabled': !config.netmode}" class="btn btn-primary pull-right" ng-click="onNext()">{{'Next'|translate}}</button>
+			<div class="row">
+				<div class="col-md-1 col-xs-5"><button class="btn btn-primary" ng-click="onSkip()">{{'Skip'|translate}}</button></div>
+				<div class="checkbox checkbox-info col-md-10 col-xs-7">
+					<input type="checkbox" style="margin-left:0;" ng-model="config.once" />
+					<label><strong>{{'Once'|translate}}</strong></label>
+				</div>
+				<div class="col-md-1 col-xs-12"><button class="btn btn-primary pull-right" ng-click="onNext()">{{'Next'|translate}}</button></div>
 			</div>
 			<div class="row">
 				<div class="col-sm-2"></div>
