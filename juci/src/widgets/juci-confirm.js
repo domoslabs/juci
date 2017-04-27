@@ -28,9 +28,9 @@ JUCI.app
 		}
 	}
 })
-.factory("$juciAlert", function($juciDialog){
+.factory("$juciAlert", function($juciDialog, $tr, gettext){
 	return function(text){
-		var def = $.deferred();
+		var def = $.Deferred();
 		if(!text || typeof text != "string") return def.reject();
 		var letters = text.length;
 		var size = "sm";
