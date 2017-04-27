@@ -17,7 +17,8 @@
  */
 
 JUCI.app
-.controller("wirelessDevicesPage", function($tr, gettext, $scope, $uci, $wireless){
+.controller("wirelessDevicesPage", function($tr, gettext, $scope, $uci, $wireless, $rpc, $juciAlert){
+	var show_button = true;
 	JUCI.interval.repeat("update-radios-information", 5000, function(done){
 		$wireless.getDevices().done(function(devices){
 			$scope.devices = devices.map(function(dev){
@@ -42,5 +43,27 @@ JUCI.app
 				on_click: function(){dev.disabled.value = !dev.disabled.value; set_buttons(dev);}
 			}
 		];
+		if(show_button){
+		dev.$buttons.push({
+				label: $tr(gettext("Auto channel")),
+				on_click: function(){
+					show_button = false;
+					set_buttons(dev);
+					$rpc.$call("router.wireless", "autochannel", { "radio": dev[".name"] }).done(function(ret){
+						if(ret.code === 0 && ret.new_channel)
+							$juciAlert($tr(gettext("Auto channel scan done new channel is")) + " " + ret.new_channel);
+						else if(ret.code === 0)
+							$juciAlert($tr(gettext("Auto channel scan done")));
+						else
+							$juciAlert($tr(gettext("Auto channel scan failed")));
+					}).fail(function(e){
+						console.log(e);
+					}).always(function(){
+						show_button = true;
+						set_buttons(dev);
+					});
+				}
+			})
+		}
 	}
 });
