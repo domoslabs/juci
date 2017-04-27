@@ -1,5 +1,5 @@
 <div>
-	<div class="row juci-list-editor"> 
+	<div class="row juci-list-editor">
 		<div ng-class="{ 'col-xs-12 col-sm-9': !hideButtons, 'col-xs-12': hideButtons }">
 			<i class="fa fa-spinner fa-spin fa-2x" ng-show="!items"></i>
 			<div class="list-group">
@@ -21,7 +21,7 @@
 						</div>
 						<div class="col-xs-12 col-sm-3">
 							<button class="btn btn-default" style="width:100%;margin-bottom:5px;" ng-show="editable !== false && editor" ng-class="{'disabled': !canEdit(i)}" ng-click="onEditAndMove(i)">{{editText || 'Edit'|translate}}</button>
-							<button ng-repeat="button in i.$buttons track by $index" style="width:100%;margin-bottom:5px;" style="margin:5px;" class="btn btn-{{buttons.type || 'default'}}" ng-click="button.on_click(i)">	
+							<button ng-repeat="button in i.$buttons track by $index" style="width:100%;margin-bottom:5px;" style="margin:5px;" class="btn btn-{{button.type || 'default'}}" ng-click="button.on_click(i)">
 								{{button.label}}
 							</button>
 						</div>
