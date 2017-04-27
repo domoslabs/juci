@@ -26,15 +26,21 @@ JUCI.app
 					{ label: $tr(gettext("Channel")), value: dev.$info.channel || $tr(gettext("N/A")) },
 					{ label: $tr(gettext("Noise")), value: dev.$info.noise + $tr(gettext("dBm")) || $tr(gettext("N/A")) },
 					{ label: $tr(gettext("Rate")), value: dev.$info.rate || $tr(gettext("N/A")) },
-				]
-				dev.$buttons =  [
-					{ label: (dev.$info && dev.$info.isup) ? $tr(gettext("Disable")) : $tr(gettext("Enable")), on_click: function(){dev.disabled.value = !dev.disabled.value;} }
-				]
+				];
+				set_buttons(dev);
 				return dev;
 			});
-			$scope.$apply(); 
+			$scope.$apply();
 		}).always(function(){
 			done();
-		}); 
+		});
 	});
-}); 
+	function set_buttons(dev){
+		dev.$buttons =  [
+			{
+				label: (dev.disabled.value) ? $tr(gettext("Enable")) : $tr(gettext("Disable")),
+				on_click: function(){dev.disabled.value = !dev.disabled.value; set_buttons(dev);}
+			}
+		];
+	}
+});
