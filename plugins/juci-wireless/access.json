@@ -26,6 +26,7 @@
 					"clients"
 				],
 				"router.wireless": [
+					"autochannel",
 					"scan",
 					"scanresults",
 					"status",

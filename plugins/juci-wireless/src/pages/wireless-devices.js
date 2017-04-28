@@ -44,18 +44,22 @@ JUCI.app
 			}
 		];
 		if(show_button){
-		dev.$buttons.push({
-				label: $tr(gettext("Auto channel")),
+			if(dev.channel.value !== "auto")
+				return;
+			dev.$buttons.push({
+				label: $tr(gettext("Auto Channel Scan")),
 				on_click: function(){
 					show_button = false;
 					set_buttons(dev);
 					$rpc.$call("router.wireless", "autochannel", { "radio": dev[".name"] }).done(function(ret){
 						if(ret.code === 0 && ret.new_channel)
-							$juciAlert($tr(gettext("Auto channel scan done new channel is")) + " " + ret.new_channel);
+							$juciAlert($tr(gettext("Auto channel scan is complete. New channel is")) + " " + ret.new_channel);
 						else if(ret.code === 0)
-							$juciAlert($tr(gettext("Auto channel scan done")));
+							$juciAlert($tr(gettext("Auto channel scan is complete.")));
+						else if(dev.$info && dev.$info.channel >= 52)
+							$juciAlert($tr(gettext("Auto channel scan has failed because the radio is operating at DFS channel.")));
 						else
-							$juciAlert($tr(gettext("Auto channel scan failed")));
+							$juciAlert($tr(gettext("Auto channel scan has failed.")));
 					}).fail(function(e){
 						console.log(e);
 					}).always(function(){
