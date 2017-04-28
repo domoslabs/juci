@@ -4,13 +4,13 @@
 <!-- ##################################### State start ##############################-->
 
 		<div ng-show="config.state == 'start'">
-			<h3 translate>Welcome, here you configure your WiFi range Extender</h3>
+			<h3 translate>Welcome, here you configure your WiFi Extender/Repeater</h3>
 			<br /><br />
 			<juci-config-section>
 				<juci-config-lines>
-					<juci-config-line ng-show="netmodes_ap.length && netmodes_rep.length" title="{{'Select if you want your device in Router or WiFi Range Extender Mode'| translate}}">
+					<juci-config-line ng-show="netmodes_ap.length && netmodes_rep.length" title="{{'Select if you want your device in Router or WiFi Extender/Repeater Mode'| translate}}">
 						<switch class="green pull-right" ng-model="config.as_extender" />
-						<p style="text-align:center;float:right; padding-right:5px;" ng-show="config.as_extender">{{'WiFi Range Extender Mode'|translate}}</p>
+						<p style="text-align:center;float:right; padding-right:5px;" ng-show="config.as_extender">{{'WiFi Extender/Repeater Mode'|translate}}</p>
 						<p style="text-align:center;float:right; padding-right:5px;" ng-show="!config.as_extender">{{'Router Mode'|translate}}</p>
 					</juci-config-line>
 				</juci-config-lines>
@@ -36,7 +36,7 @@
 <!-- ##################################### State repeater ##############################-->
 
 		<div ng-show="config.state == 'repeater'">
-			<h3 translate>Configure your range Extenders</h3>
+			<h3 translate>Configure your Extender/Repeater</h3>
 			<juci-config-help>Select the network SSID you want to extend/repeat and enter the password (network key). If the network SSID is not found below, scan again or manually enter the netwok name and password</juci-config-help>
 			<juci-config-section>
 				<juci-config-lines>
@@ -107,8 +107,8 @@
 <!-- ##################################### State done ##############################-->
 
 		<div ng-show="config.state == 'done'">
-			<h3 translate>WiFi range extender setup completed</h3>
-			<p translate>Your range extender setup is now completed. You will likely loose connection to your box.</p>
+			<h3 translate>WiFi Extender/Repeater setup completed</h3>
+			<p translate>Your Extender/Repeater setup is now completed. You will likely loose connection to your box.</p>
 		</div>
 	</div>	<!-- END ng-controller div-->
 </juci-layout-no-menu>
