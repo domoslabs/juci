@@ -27,6 +27,9 @@
 		<juci-config-line title="{{'DHCPv6-Service'|translate}}">
 			<juci-select ng-model="dhcp.dhcpv6.value" ng-items="dhcpv6Values" placeholder=" "/>
 		</juci-config-line>
+		<juci-config-line title="{{'DHCPv6-Mode'|translate}}" ng-show="dhcp.dhcpv6.value === 'server'">
+			<juci-select ng-model="dhcp.management_level.value" ng-items="managementLevels" />
+		</juci-config-line>
 		<juci-config-line title="{{'Router Advertisement-Service'|translate}}">
 			<juci-select ng-model="dhcp.ra.value" ng-items="raValues" placeholder=" "/>
 		</juci-config-line>

@@ -61,7 +61,8 @@ UCI.dhcp.$registerSectionType("dhcp", {
 	"leasetime":		{ dvalue: "12h", type: String, required: true },
 	"limit":		{ dvalue: 150, type: Number },
 	"networkid":		{ dvalue: "", type: String },
-	"start":		{ dvalue: 100, type: Number }
+	"start":		{ dvalue: 100, type: Number },
+	"management_level":	{ dvalue: "", type: String }
 });
 UCI.dhcp.$registerSectionType("domain", {
 	"name":		{ dvalue: [], type: Array },

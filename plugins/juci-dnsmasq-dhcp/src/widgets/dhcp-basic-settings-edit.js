@@ -22,32 +22,37 @@ JUCI.app
 .directive("dhcpBasicSettingsEdit", function(){
 	return {
 		scope: {
-			dhcp: "=ngModel", 
+			dhcp: "=ngModel",
 			connection: "=ngConnection",
 			hideAdvanced: "@",
 			hideIpv6: "@"
-		}, 
-		templateUrl: "/widgets/dhcp-basic-settings-edit.html", 
+		},
+		templateUrl: "/widgets/dhcp-basic-settings-edit.html",
 		controller: "dhcpBasicSettingsEdit"
-	};  
+	};
 })
 .controller("dhcpBasicSettingsEdit", function($scope, $network, $tr, gettext){
 	$scope.dhcpLeaseTimes = [
-		{ label: "5 "+$tr(gettext("Minutes")), value: "5m"}, 
-		{ label: "30 "+$tr(gettext("Minutes")), value: "30m"}, 
-		{ label: "1 "+$tr(gettext("Hour")), value: "1h" }, 
-		{ label: "6 "+$tr(gettext("Hours")), value: "6h" }, 
-		{ label: "12 "+$tr(gettext("Hours")), value: "12h" }, 
+		{ label: "5 "+$tr(gettext("Minutes")), value: "5m"},
+		{ label: "30 "+$tr(gettext("Minutes")), value: "30m"},
+		{ label: "1 "+$tr(gettext("Hour")), value: "1h" },
+		{ label: "6 "+$tr(gettext("Hours")), value: "6h" },
+		{ label: "12 "+$tr(gettext("Hours")), value: "12h" },
 		{ label: "24 "+$tr(gettext("Hours")), value: "24h" }
-	];  
+	];
 	$scope.dhcpv6Values = [
-		{ label: "Server", value: "server" }, 
-		{ label: "Relay", value: "relay" }, 
-		{ label: "Disabled", value: "disabled" }, 
-	];  
+		{ label: "Server", value: "server" },
+		{ label: "Relay", value: "relay" },
+		{ label: "Disabled", value: "disabled" },
+	];
 	$scope.raValues = $scope.dhcpv6Values;
 	$scope.ndpValues = [
-		{ label: "Relay", value: "relay" }, 
-		{ label: "None", value: "" }, 
+		{ label: "Relay", value: "relay" },
+		{ label: "None", value: "" },
 	];
-}); 
+	$scope.managementLevels = [
+		{ label: "stateless", value: "" },
+		{ label: "stateless + stateful", value: "1" },
+		{ label: "stateful-only", value: "2" },
+	];
+});
