@@ -130,6 +130,18 @@ JUCI.app
 								c.rows.push(r);
 							});
 						}
+						if(c.bs_data){
+							[
+								[$tr(gettext("Air Usage")), c.bs_data.air_use, ""],
+								[$tr(gettext("Data")), c.bs_data.data_mbps, " Mbps"],
+								[$tr(gettext("Data Usage")), c.bs_data.data_use, ""],
+								[$tr(gettext("Physical")), c.bs_data.phy_mbps, " Mbps"],
+								[$tr(gettext("Retries")), c.bs_data.retries, ""],
+							].map(function(a){
+								if(a[1])
+									c.rows.push([a[0], a[1] + a[2]]);
+							});
+						}
 					});
 				})
 				.always(function(){ next(); });
