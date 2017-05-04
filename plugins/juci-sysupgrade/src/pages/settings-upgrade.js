@@ -23,6 +23,7 @@ JUCI.app
 	$scope.sessionID = $rpc.$sid();
 	$scope.uploadFilename = "/tmp/firmware.bin";
 	$scope.usbFileName = "()";
+	$scope.data = { upUrl: ""};
 	$scope.usbUpgradeAvailable = false;
 	
 	$scope.current_version = $config.board.system.firmware;
@@ -152,9 +153,21 @@ JUCI.app
 	$scope.onStartUpgrade = function(){
 		if($scope.showUpgradeStatus)
 			return;
-		confirmKeep().done(function(keep){
-			startUpload(keep);
-		});
+		if($scope.data.upUrl){
+			confirmKeep().done(function(keep){
+				$scope.showUpgradeStatus = true;
+				$scope.message = $tr(gettext("Downloading and verifying image..."));
+				$scope.progress = $tr(gettext("Uploading"));
+				console.log("testing image: "+$scope.data.upUrl);
+				$rpc.$call("juci.sysupgrade", "start", {"path":$scope.data.upUrl, "keep":(keep)?1:0});
+				$scope.data.upUrl = "";
+				$scope.$apply();
+			});
+		}else{
+			confirmKeep().done(function(keep){
+				startUpload(keep);
+			});
+		}
 	}
 
 	$scope.fileChanged = function(){
