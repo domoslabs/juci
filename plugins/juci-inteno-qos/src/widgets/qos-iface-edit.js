@@ -25,10 +25,8 @@ JUCI.app
 					&& stats.dslstats.bearers.length
 					&& stats.dslstats.bearers[0].rate_up
 					&& stats.dslstats.bearers[0].rate_down){
-				$scope.dsl.download_speed = $tr(gettext("Linkspeed")) + ": " +
-					stats.dslstats.bearers[0].rate_down + " Kbps";
-				$scope.dsl.upload_speed = $tr(gettext("Linkspeed")) + ": " +
-					stats.dslstats.bearers[0].rate_up + " Kbps";
+				$scope.dsl.download_speed = stats.dslstats.bearers[0].rate_down;
+				$scope.dsl.upload_speed = stats.dslstats.bearers[0].rate_up;
 				$scope.$apply();
 			}
 		}).fail(function(e){
