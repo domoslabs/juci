@@ -16,7 +16,7 @@
 		<juci-config-line title="{{'Limit Download Speed'|translate}}">
 			<switch class="green" ng-model="instance.showdown"/>
 		</juci-config-line>
-		<juci-config-line ng-show="instance.showdown">
+		<juci-config-line title="{{dsl.download_speed || '' }}" ng-show="instance.showdown">
 			<div class="input-group">
 				<input type="number" min=1 class="form-control" ng-model="instance.download.value"/>
 				<span class="input-group-addon">Kbps</span>
@@ -27,7 +27,7 @@
 			<switch class="green" ng-model="instance.showup"/>
 		</juci-config-line>
 
-		<juci-config-line ng-show="instance.showup">
+		<juci-config-line title="{{dsl.upload_speed || '' }}" ng-show="instance.showup">
 			<div class="input-group">
 				<input type="number" min="1" class="form-control" ng-model="instance.upload.value"/>
 				<span class="input-group-addon">Kbps</span>

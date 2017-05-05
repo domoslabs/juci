@@ -12,7 +12,29 @@ JUCI.app
 		require: "^ngModel"
 	};
 })
-.controller("qosIfaceEditCtrl", function($scope, $uci){
+.controller("qosIfaceEditCtrl", function($scope, $uci, $tr, gettext){
+	$scope.dsl = {
+		download_speed: undefined,
+		upload_speed: undefined
+	};
+
+	if($rpc.$has("router.dsl", "stats")){
+		$rpc.$call("router.dsl", "stats").done(function(stats){
+			if(stats && stats.dslstats
+					&& stats.dslstats.bearers
+					&& stats.dslstats.bearers.length
+					&& stats.dslstats.bearers[0].rate_up
+					&& stats.dslstats.bearers[0].rate_down){
+				$scope.dsl.download_speed = $tr(gettext("Linkspeed")) + ": " +
+					stats.dslstats.bearers[0].rate_down + " Kbps";
+				$scope.dsl.upload_speed = $tr(gettext("Linkspeed")) + ": " +
+					stats.dslstats.bearers[0].rate_up + " Kbps";
+				$scope.$apply();
+			}
+		}).fail(function(e){
+			console.log(e);
+		});
+	}
 
 	$uci.$sync("qos").done(function(){
 		$scope.allClassgroups = $uci.qos["@classgroup"].map(function(cg){
@@ -30,7 +52,7 @@ JUCI.app
 			$scope.instance.showup = true;
 		}
 	},false);
-	
+
 	$scope.$watch('instance.showdown',function(){
 		if($scope.instance){
 			if($scope.instance.showdown === false){
