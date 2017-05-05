@@ -78,6 +78,18 @@ JUCI.app
 							if(row[1] !== undefined && row[1] !== "UNDEFINED")
 								c["rows"].push(row);
 						});
+						if(c.bs_data){
+						[
+								[$tr(gettext("Airtime Usage")), c.bs_data.air_use],
+								[$tr(gettext("Data Rate [Mbps]")), c.bs_data.data_mbps],
+								[$tr(gettext("Data Usage")), c.bs_data.data_use],
+								[$tr(gettext("Physical Rate [Mbps]")), c.bs_data.phy_mbps],
+								[$tr(gettext("Retries")), c.bs_data.retries],
+							].map(function(a){
+								if(a[1])
+									c.rows.push(a);
+							});
+						}
 						if(c.scbstats && c.scbstats.rate_of_last_tx_pkt)
 							c.rows.push([$tr(gettext("TX Rate [Mbps]")), parseInt(c.scbstats.rate_of_last_tx_pkt/1000 +0.5)]);
 						if(c.scbstats && c.scbstats.rate_of_last_rx_pkt)
@@ -128,18 +140,6 @@ JUCI.app
 								return a[1] !== undefined;
 							}).map(function(r){
 								c.rows.push(r);
-							});
-						}
-						if(c.bs_data){
-							[
-								[$tr(gettext("Air Usage")), c.bs_data.air_use, ""],
-								[$tr(gettext("Data")), c.bs_data.data_mbps, " Mbps"],
-								[$tr(gettext("Data Usage")), c.bs_data.data_use, ""],
-								[$tr(gettext("Physical")), c.bs_data.phy_mbps, " Mbps"],
-								[$tr(gettext("Retries")), c.bs_data.retries, ""],
-							].map(function(a){
-								if(a[1])
-									c.rows.push([a[0], a[1] + a[2]]);
 							});
 						}
 					});
