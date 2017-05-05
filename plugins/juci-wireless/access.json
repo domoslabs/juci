@@ -26,6 +26,7 @@
 					"clients"
 				],
 				"router.wireless": [
+					"bs_data",
 					"autochannel",
 					"scan",
 					"scanresults",

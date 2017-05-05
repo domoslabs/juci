@@ -1,0 +1,33 @@
+<juci-layout-with-sidebar>
+	<div ng-controller="wirelessStatusBsDataPage">
+		<juci-config-heading>{{ 'Utilization' | translate }}</juci-config-heading>
+		<div ng-repeat="vif in vifs track by $index">
+			<h2 >{{vif.ssid.value}} {{vif[".frequency"]}}</h2>
+			<table ng-show="vif.bs_data.length" class="table table-bordered">
+				<thead>
+					<tr>
+						<td>{{'MAC Address'|translate}}</td>
+						<td>{{'Airtime Usage'|translate}}</td>
+						<td>{{'Data Rate'|translate}} [Mbps]</td>
+						<td>{{'Data Usage'|translate}}</td>
+						<td>{{'Physical Rate'|translate}} [Mbps]</td>
+						<td>{{'Retries'|translate}}</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="bs in vif.bs_data track by $index">
+						<td>{{bs.macaddr}}</td>
+						<td>{{bs.air_use}}</td>
+						<td>{{bs.data_mbps}}</td>
+						<td>{{bs.data_use}}</td>
+						<td>{{bs.phy_mbps}}</td>
+						<td>{{bs.retries}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<p ng-show="!vif.bs_data.length">
+				{{'No client on SSID'|translate}}
+			</p>
+		</div>
+	</div>
+</juci-layout-with-sidebar>

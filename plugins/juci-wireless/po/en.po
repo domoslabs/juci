@@ -27,9 +27,13 @@ msgid "Invalid SSID: "
 msgstr ""
 
 msgid "no SSID"
-msgstr "inget SSID"
+msgstr ""
 
 msgid ". SSID can not be more than 32 characters long!"
+msgstr ""
+
+# plugins/juci-wireless/src/wireless.js
+msgid "One of the wireless interface(s) does not have SSID"
 msgstr ""
 
 msgid "Wireless interface "
@@ -106,10 +110,31 @@ msgstr ""
 msgid "Rate"
 msgstr ""
 
+msgid "Enable"
+msgstr ""
+
 msgid "Disable"
 msgstr ""
 
-msgid "Enable"
+# plugins/juci-wireless/src/pages/wireless-devices.js
+msgid "Auto Channel Scan"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-devices.js
+msgid "Auto channel scan is complete. New channel is"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-devices.js
+msgid "Auto channel scan is complete."
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-devices.js
+msgid ""
+"Auto channel scan has failed because the radio is operating at DFS channel."
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-devices.js
+msgid "Auto channel scan has failed."
 msgstr ""
 
 msgid "Enabled"
@@ -186,10 +211,117 @@ msgstr ""
 msgid "In Network"
 msgstr ""
 
-msgid "RSSI"
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "RSSI [dBm]"
 msgstr ""
 
-msgid "SNR"
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "SNR [dB]"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "Average antenna signal/RSSI [dbm]"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status-bs-data.html
+msgid "Airtime Usage"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "Data Rate [Mbps]"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status-bs-data.html
+msgid "Data Usage"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "Physical Rate [Mbps]"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status-bs-data.html
+msgid "Retries"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "TX Rate [Mbps]"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "RX Rate [Mbps]"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "Flags"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "802.11n Capabilities"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "802.11ac Capabilities"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "TX Total Packets"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "Unicast Packets"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "TX Unicast Packets"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "TX Multicast/Broadcast Packets"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "TX Failures"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "RX Data Packets"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "RX Unicast Packets"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "RX Multicast/Broadcast Packets"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "TX Data Packets Retried"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "TX Total Packets Sent"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "TX Packets Retries"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "TX Packets Retry Exhausted"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "RX Total Packets Retried"
 msgstr ""
 
 msgid "Auto"
@@ -250,6 +382,9 @@ msgstr ""
 msgid ""
 "WPS will be disabled when using WEP encryption. Are you sure you want to "
 "continue?"
+msgstr ""
+
+msgid "SNR"
 msgstr ""
 
 msgid "MAC Filtering"
@@ -315,6 +450,9 @@ msgstr ""
 msgid "Wireless Multicast Forwarding"
 msgstr ""
 
+msgid "Maximum Number of Connected Clients"
+msgstr ""
+
 msgid "Frequency"
 msgstr ""
 
@@ -363,6 +501,12 @@ msgstr ""
 msgid "Select Bandwidth"
 msgstr ""
 
+msgid "Scan Timer"
+msgstr ""
+
+msgid "Timer Interval"
+msgstr ""
+
 msgid "RIFS"
 msgstr ""
 
@@ -372,31 +516,33 @@ msgstr ""
 msgid "Framebursting"
 msgstr ""
 
-msgid "Beamforming"
-msgstr ""
-
 msgid "DFS Channels"
 msgstr ""
 
+msgid "Beamforming"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "Airtime Fairness"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid ""
+"ATF feature addresses the issue where low-speed data transfers impact high-"
+"speed data transfers"
+msgstr ""
+
 msgid "OBSS Co-Existence"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "Maximum Associated Stations"
 msgstr ""
 
 msgid "RX Chain PowerSave Quiet Time"
 msgstr ""
 
 msgid "RX Chain PowerSave PPS"
-msgstr ""
-
-msgid "Maximum Number of Connected Clients"
-msgstr ""
-
-msgid "Maximum Assoc Clients"
-msgstr ""
-
-msgid "Scan Timer"
-msgstr ""
-
-msgid "Timer Interval"
 msgstr ""
 
 msgid "Enable WMM Multimedia Extensions"
@@ -418,13 +564,25 @@ msgstr ""
 "Access points are interfaces and each radio can have several interfaces on "
 "it. "
 
-msgid "WiFi Client Mode"
+# plugins/juci-wireless/src/pages/wireless-band-steering-status.html
+msgid "Ping results"
 msgstr ""
 
-msgid "wifi.client.info"
-msgstr "Client information"
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-band-steering-status.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-band-steering.html
+msgid "Band Steering"
+msgstr ""
 
-msgid "Connect"
+msgid "status.wifi.info"
+msgstr "Wireless status information"
+
+msgid "Status"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-band-steering-status.html
+msgid "Log"
 msgstr ""
 
 msgid "wifi.interfaces.info"
@@ -459,16 +617,31 @@ msgstr ""
 msgid "Time"
 msgstr ""
 
-msgid "Status"
-msgstr ""
-
 msgid "WiFi Status"
 msgstr ""
 
-msgid "status.wifi.info"
-msgstr "Wireless status information"
-
 msgid "Channel:"
+msgstr ""
+
+msgid "wifi.band-steering.info"
+msgstr ""
+"Band Steering mechanism steers dual-band capable clients to 5GHz frequency "
+"in order to increase available bandwidth while freeing up resources on the "
+"2.4GHz band for legacy clients."
+
+msgid "wifi.band-steering.dualband-warning"
+msgstr "Band Steering feature is available for dual-band APs only."
+
+# plugins/juci-wireless/src/pages/wireless-band-steering.html
+msgid "Steering Policy"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-band-steering.html
+msgid "RSSI Threshold"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-band-steering.html
+msgid "Bandwidth Usage Threshold"
 msgstr ""
 
 msgid " page"
@@ -509,6 +682,26 @@ msgstr ""
 "manage up to 32 devices."
 
 msgid "You cannot enable MAC Filtering on a WEP protected wireless interface!"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-bs-data.html
+msgid "Utilization"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-bs-data.html
+msgid "MAC Address"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-bs-data.html
+msgid "Data Rate"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-bs-data.html
+msgid "Physical Rate"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-bs-data.html
+msgid "No client on SSID"
 msgstr ""
 
 msgid "WiFi Scan"
@@ -591,17 +784,12 @@ msgstr ""
 msgid "menu-wireless-general-title"
 msgstr "General"
 
+# plugins/juci-wireless/src/pages/wireless-status-bs-data.html
+msgid "menu-wireless-status-bs-data-title"
+msgstr "Utilization"
+
 msgid "menu-wireless-link-to-interfaces-title"
 msgstr "Wireless"
-
-msgid "menu-wireless-band-steering-title"
-msgstr "Band Steering"
-
-msgid "wifi.band-steering.info"
-msgstr "Band Steering mechanism steers dual-band capable clients to 5GHz frequency in order to increase available bandwidth while freeing up resources on the 2.4GHz band for legacy clients."
-
-msgid "wifi.band-steering.dualband-warning"
-msgstr "Band Steering feature is available for dual-band APs only."
 
 msgid "menu-wireless-wps-title"
 msgstr "WPS"
@@ -621,15 +809,20 @@ msgstr "Radios"
 msgid "menu-wireless-title"
 msgstr "WiFi"
 
-msgid "menu-wireless-schedule-title"
-msgstr "Scheduling"
-
-msgid "menu-wireless-status-scan-title"
-msgstr "WiFi Scan"
-
 msgid "menu-wireless-band-steering-status-title"
 msgstr "Band Steering"
 
-msgid "menu-wireless-client-mode-title"
-msgstr "Client Mode"
+msgid "menu-wireless-schedule-title"
+msgstr "Scheduling"
 
+msgid "menu-wireless-band-steering-title"
+msgstr "Band Steering"
+
+msgid "menu-wireless-status-scan-title"
+msgstr "Scan"
+
+#~ msgid "wifi.client.info"
+#~ msgstr "Client information"
+
+#~ msgid "menu-wireless-client-mode-title"
+#~ msgstr "Client Mode"
