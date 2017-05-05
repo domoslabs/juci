@@ -299,7 +299,7 @@ msgid "Hostname Entries"
 msgstr ""
 
 msgid "menu-dhcp-status-title"
-msgstr "DHCP Status"
+msgstr "DHCP"
 
 msgid "menu-dhcp-settings-title"
 msgstr "DHCP/DNS"
