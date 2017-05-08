@@ -47,19 +47,19 @@ JUCI.app
 			if(dev.channel.value !== "auto")
 				return;
 			dev.$buttons.push({
-				label: $tr(gettext("Auto Channel Scan")),
+				label: $tr(gettext("Force Channel Selection")),
 				on_click: function(){
 					show_button = false;
 					set_buttons(dev);
 					$rpc.$call("router.wireless", "autochannel", { "radio": dev[".name"] }).done(function(ret){
 						if(ret.code === 0 && ret.new_channel)
-							$juciAlert($tr(gettext("Auto channel scan is complete. New channel is")) + " " + ret.new_channel);
+							$juciAlert($tr(gettext("Force Channel Selection is complete. New channel is")) + " " + ret.new_channel);
 						else if(ret.code === 0)
-							$juciAlert($tr(gettext("Auto channel scan is complete.")));
+							$juciAlert($tr(gettext("Force Channel Selection is complete.")));
 						else if(dev.$info && dev.$info.channel >= 52)
-							$juciAlert($tr(gettext("Auto channel scan has failed because the radio is operating at DFS channel.")));
+							$juciAlert($tr(gettext("Force Channel Selection has failed because the radio is operating at DFS channel.")));
 						else
-							$juciAlert($tr(gettext("Auto channel scan has failed.")));
+							$juciAlert($tr(gettext("Force Channel Selection has failed.")));
 					}).fail(function(e){
 						console.log(e);
 					}).always(function(){
