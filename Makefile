@@ -69,7 +69,7 @@ $(PLUGIN_DIR)/po/template.pot: $(JAVASCRIPT_$(PLUGIN)) $(TEMPLATES_$(PLUGIN))
 	@echo -e "\033[0;33m[POT]\t$(PLUGIN) -> $$@\033[m"
 	$(Q)$(INSTALL_DIR) "$$(dir $$@)"
 	@echo "" > $$@
-	$(Q)if [ "" != "$$^" ]; then ./scripts/extract-strings $$^ > $$@; msguniq $$@ > $$@.tmp; mv $$@.tmp $$@; fi
+	$(Q)if [ "" != "$$^" ]; then ./scripts/extract-strings $$^ > $$@; msguniq --no-wrap $$@ > $$@.tmp; mv $$@.tmp $$@; fi
 	@echo "" >> $$@
 	@for file in `find $(PLUGIN_DIR)/src/pages/ -name "*.html"`; do PAGE=$$$${file%%.*}; echo -e "# $$$$file \nmsgid \"menu-$$$$(basename $$$$PAGE)-title\"\nmsgstr \"\"\n" >> $$@; done
 $(CODE_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js: $(TMP_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js $(TMP_DIR)/$(PLUGIN).css.js $(TMP_DIR)/$(PLUGIN).tpl.js
