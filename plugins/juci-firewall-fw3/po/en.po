@@ -269,9 +269,6 @@ msgstr ""
 msgid "IPv6 Address"
 msgstr ""
 
-msgid "Select Existing Host"
-msgstr ""
-
 msgid ""
 "Firewall dmz configuration does not exist yet. Do you want to create it?"
 msgstr ""
