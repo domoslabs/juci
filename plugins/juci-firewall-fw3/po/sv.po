@@ -135,9 +135,6 @@ msgstr "Spara"
 msgid "MAC Address"
 msgstr "MAC-adress"
 
-msgid "Select Existing Host"
-msgstr "Välj befintlig enhet"
-
 msgid "Invalid MAC address"
 msgstr "Ogiltigt MAC adress"
 

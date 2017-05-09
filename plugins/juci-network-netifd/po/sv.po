@@ -402,9 +402,6 @@ msgstr ""
 msgid "Use DNS servers advertised by peer"
 msgstr ""
 
-msgid "If unchecked, the advertised DNS server addresses are ignored"
-msgstr ""
-
 msgid "LCP echo failure threshold"
 msgstr ""
 
