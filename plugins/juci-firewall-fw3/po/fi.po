@@ -133,9 +133,6 @@ msgstr "PUDOTA"
 msgid "Device"
 msgstr "Laite"
 
-msgid "All"
-msgstr "Kaikki"
-
 # /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-rule-edit.js
 msgid "IP must be ether a valid IPv4 or a valid IPv6 Address"
 msgstr "IP-osoitteen on oltava kelvollinen IPv4- tai IPv6-osoite"
