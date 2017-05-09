@@ -1,0 +1,553 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# plugins/juci-dnsmasq-dhcp/src/juci-dnsmasq-dhcp.js
+msgid "LAN does not have IPv6 configured"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "MAC Class"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Vendor ID"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "User Class"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Circuit ID"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Remote ID"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Subscriber ID"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Select type of Classification"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Add new Tag"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Name can not be empty"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Invalid name, it may only contain (a-z, A-Z, 0-9 and _)"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.js
+msgid "IPv4"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.js
+msgid "IPv6"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.js
+msgid "Minutes"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.js
+msgid "Hour"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.js
+msgid "Hours"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries.js
+msgid "Hostname(s) for "
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-add-classification.html
+msgid "Select Classifications Type"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-add-tag.html
+msgid "Tag Name"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/network-connection-dhcp-server-settings.html
+msgid "DHCP Server"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "DHCP Pool Start"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "DHCP Pool Size"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "DHCP Lease Time"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Lease Time"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Advanced Settings"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-classification-editor.html
+msgid "DHCP Options"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "ID:6 = DNS server, ID:15 = DNS domain name"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Dynamic DHCP"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Force"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "IPv4 Netmask"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "TODO"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "IPv6 Settings"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "DHCPv6-Service"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "DHCPv6-Mode"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Router Advertisement-Service"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "NDP-Proxy"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Master"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-entry-edit.html
+msgid "Connection"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-entry-edit.html
+msgid "Network"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "Hostname"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
+msgid "Add a host"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
+msgid "Family"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "IPv4 Address"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
+msgid "IPv6 Address"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-tag-edit.html
+msgid "DHCP options"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "MAC"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "IPv6 Unique ID"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "IPv6 Address ID"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "No tag set"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "Add Host"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "Static DHCP"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "Device Name"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "MAC Address"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "IP Address"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "DUID (IPv6)"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "Host ID (IPv6)"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "Tag"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "DHCPv4 leases"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "DHCPv6 leases"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "Active DHCP Leases"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "IPv4-Address"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "MAC-Address"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "Leasetime remaining"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "There are no active leases"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "IPv6-Address"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "DUID"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries.html
+msgid "Hostnames"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-classification-editor.html
+msgid "Networkid"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "DHCP/DNS"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "General Settings"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Local domain"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Local domain suffix appended to DHCP names and hosts file entries"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Log queries"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Write received DNS requests to syslog"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Leasefile"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "file where given DHCP-leases will be stored"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Ignore resolve file"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Resolve file"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Tells dnsmasq to use this file to find upstream name servers"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Ignore Hosts file"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Hostname Entries file(s)"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Additional host files to read for serving DNS responses"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Add Hostname file"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Domain required"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Do not forward DNS-Requests without DNS-Name"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Authoritative"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "This is the only DHCP in the local network"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Filter private"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Do not forward reverse lookups for local networks"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Filter useless"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Do not forward requests that cannot be answered by public name servers"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Localise queries"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid ""
+"Localise hostname depending on the requesting subnet if multiple IPs are "
+"available"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Local server"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid ""
+"Local domain specification. Names matching this domain are never forwarded "
+"and resolved from DHCP or hosts files only"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Expand hosts"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Add local domain suffix to names served from hosts files"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "No negative cache"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Do not cache negative replies, e.g. for not existing domains"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Strict order"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "DNS servers will be queried in the order of the resolvfile"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Bogus NX Domain Override"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "List of hosts that supply bogus NX domain results"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "ex. 67.215.65.132"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "DNS forwarding"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "List of DNS servers to forward requests to"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "ex. /example.org/10.1.2.3"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Rebind protection"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Discard upstream RFC1918 responses"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Allow localhost"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid ""
+"Allow upstream responses in the 127.0.0.0/8 range, e.g. for RBL services"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Domain whitelist"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "List of domains to allow RFC1918 responses for"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "ex. ihost.netflix.com"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "DNS server port"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Listening port for inbound DNS queries"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "DNS query port"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Fixed source port for outbound DNS queries"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Max DHCP leases"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Maximum allowed number of active DHCP leases"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Max. EDNS0 packet size"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Maximum allowed size of EDNS.0 UDP packets"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Max. concurrent queries"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Maximum allowed number of concurrent DNS queries"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Hostname Entries"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Classifications"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "DNS Tags"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Create Classification sections classify DHCP clients"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-status.html
+msgid "menu-dhcp-status-title"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "menu-dhcp-settings-title"
+msgstr ""

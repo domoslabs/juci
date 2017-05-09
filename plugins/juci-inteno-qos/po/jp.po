@@ -1,0 +1,230 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# plugins/juci-inteno-qos/src/main.js
+msgid "Low"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+msgid "Enabled"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+msgid "Download Speed"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+msgid "Upload Speed"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+msgid "New Class"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+msgid "New Classgroup"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+msgid "New Interface"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "All"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.js
+msgid "TCP"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.js
+msgid "UDP"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.js
+msgid "ICMP"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.js
+msgid "End value has to be larger than start value."
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Enable QoS"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Classification Group"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Calculate Overhead"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Limit Download Speed"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Limit Upload Speed"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Acceleration will be disabled when QoS is enabled"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid "Priority"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid "Average Rate"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid "Limit Rate"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Packet Size"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid "Packet Delay"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid "Max Size"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/new-class-modal.html
+msgid "Class name"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classgroups-edit.html
+msgid "Classes"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classgroups-edit.html
+msgid "Add a new class"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/new-classgroup-modal.html
+msgid "Classgroup name"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/add-bw-interface-edit.html
+msgid "Interface name"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Target"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Protocol"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Source Host"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Destination Host"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Ports"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Filter by port, when there are no ports no filter will be applied"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Source Ports"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Destination Ports"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Port Range"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Precedence"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Direction"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Mark"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Connbytes"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "TCP Flags"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "tos"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "dscp"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
+msgid "Quality of service"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
+msgid "Interface"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
+msgid "Class"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
+msgid "Classgroup"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
+msgid "Classify"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
+msgid "menu-juci-inteno-qos-title"
+msgstr ""

@@ -1,0 +1,257 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.js
+msgid "Allow"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.js
+msgid "Deny"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "UPNP Settings"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "internet.services.upnp.info"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "General Settings"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Automatically Start Service At Bootup"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Enable upnp daemon at boot time"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Start / Stop Service"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Start/stop upnp daemon (make sure you have WAN connection!)"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Enable UPNP"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Enable UPNP protocol"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Enable NAT-PMP"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Enable NAT-PMP protocol"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Enable secure mode"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Allow adding forwards only to requesting ip addresses"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Enable additional logging"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Puts extra debugging information into the system log"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Downlink"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Value in KByte/s, informational only"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Uplink"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Port"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "External Interface"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Internal Interface"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Advanced Settings"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Device UUID"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Announced serial number"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Serial Number"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Announced model number"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Model Number"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Notify interval"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Clean rules threshold"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Clean rules interval"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Presentation URL"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "UPnP lease file"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "UPnP ACLs"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "UPnP Open Ports"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "No UPnP ports currently in use"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Pkts. cnt."
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "Bytes"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "Target"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Proto."
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "Opt"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "Source"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "Dest."
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Comment"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "External ports"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Internal addresses"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Internal ports"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Action"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Sort"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Delete"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Add ACL"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "Packets cnt."
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "Proto"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "menu-upnpd-status-title"
+msgstr ""
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "menu-upnpd-settings-title"
+msgstr ""

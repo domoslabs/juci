@@ -1,0 +1,104 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.js
+msgid "Port Speed"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.js
+msgid "None"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+msgid "Full auto-negotiation"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+msgid "Max 100Mb auto-negotiation, full duplex"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+msgid "Max 100Mb auto-negotiation, half duplex"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+msgid "Max 10Mb auto-negotiation, full duplex"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+msgid "Max 10Mb auto-negotiation, half duplex"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+msgid "Only 100Mb, full duplex"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+msgid "Only 100Mb, half duplex"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+msgid "Only 10Mb, full duplex"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+msgid "Only 10Mb, half duplex"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+msgid "Disabled"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+msgid "Only 1000Mb"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+msgid "Only 100Mb"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/widgets/overview.ethernet.small.html
+msgid "Ethernet"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.html
+msgid "Port speed"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.html
+msgid "Pause frames"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
+msgid "Ethernet Ports"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
+msgid "internet.ethernet.phy.info"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
+msgid "Fiber Ports"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
+msgid "Uplink port"
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
+msgid "This is used to configure the ethernet port as internet uplink."
+msgstr ""
+
+# plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
+msgid "menu-page-broadcom-ethernet-phy-title"
+msgstr ""

@@ -1,0 +1,172 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.js
+msgid "No DSCP"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.js
+msgid "Standard (CS0)"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.js
+msgid "Low-Priority Data"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.js
+msgid "High-Throughput Data"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.js
+msgid "Operation, Administration and Maintenance"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.js
+msgid "Low-Latency Data"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.js
+msgid "Broadcast Video"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.js
+msgid "Multimedia Streamingi"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.js
+msgid "Realtime Interactive"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.js
+msgid "Multimedia Conferencing"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.js
+msgid "Signaling"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.js
+msgid "Telephony"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.js
+msgid "Network Control"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.js
+msgid "IGMP version "
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.js
+msgid "Disabled"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.js
+msgid "Standard"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.js
+msgid "Blocking"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "Differentiated Services Code Point (DSCP)"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "Will be used to mark all outgoing IGMP packets"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "Proxy interface"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "Default version"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "Choose default version from list"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "Query interval"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "Query response interval"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "Last member query interval"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "Robustness value"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "LAN to LAN multicast"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "Check box to enable LAN to LAN multicast"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "Max groups"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "Max sources"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "Max members"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "Fast leave"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "Join immediate"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "Enable IGMP proxy"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "Ignore SSM Range"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "Check box to ignore SSM RFC to enable regular multicast on SSM-Range"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "IGMP snooping mode"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "IGMP snooping interfaces"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "No mcpd configuration found!"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
+msgid "menu-broadcom-iptv-title"
+msgstr ""

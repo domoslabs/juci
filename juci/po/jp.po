@@ -1,0 +1,508 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/git/juci/juci//src/js/rpc.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/git/juci/juci//src/widgets/juci-confirm.js
+msgid "OK"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "Invalid command"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "Invalid parameters"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "Method not found"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "Object not found"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "No data"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "Access denied"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "Timed out"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "Not supported"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "Unknown error"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "Connection failed"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "RPC error #"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "please enter time in form hh:mm"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "please specify both hour and minute value for time separated by ':'"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Please specify both start time and end time for schedule!"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Schedule start time must be lower than schedule end time!"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Please pick days between mon-sun"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Port has to be a number between 1 and 65535. Use '"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "' to define a range."
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid ""
+"Ports has to be between 1 and 65535 and start port must be lower than end "
+"port"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Port range has to be on the form number"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "number"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Port has to be a number between 1 and 65535"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "WEP encryption key must be 10-26 hexadecimal characters!"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "WPA encryption key must be 8-63 printable ASCII characters!"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "WPA encryption key cannot contain the following characters:"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Only printable ASCII characters allowed."
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Invalid mark format: it must be between (!)0x0000 - (!)0xFFFF"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "End value has to be larger than start value."
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Size has to be larger than 0."
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Invalid range."
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Number value is not within valid range"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "IP Address must be a valid IPv4 address!"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Address is not a valid  Multicast address"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "IP Address is not a valid Unicast address!"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "IP Address must be on the form: IP address/netmask length"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Netmask must be a value between 0 and 24"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "IP Address must be a valid ipv4 or ipv6 address!"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Netmask must be a valid IPv4 netmask"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Address must be a valid IPv6 address"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Address must be a valid IPv6 CIDR Validator (IPv6-address/Mask)"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "IPv6 Prefix Hint must be a hexadecimal number between 1-FFFF"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Value must be a valid MAC-48 address"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "value must be a valid MAC-48 address"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Hostname can not be longer than 256 characters"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Hostname can only contain numbers, letters, hyphens and underscores"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Field is required"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "is required"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/js/juci.js
+msgid ""
+"You have unsaved changes. Do you want to save them before leaving this page?"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/factories/files.js
+msgid ""
+"your browser does not support this kind of download, please refer to latest "
+"Chrome, Firefox, Opera or Edge etc."
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Individual Days"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Every Day"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Every Workday"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "All Weekend"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Monday"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Tuesday"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Wednesday"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Thursday"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Friday"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Saturday"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Sunday"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.js
+msgid "Please enter correct username and password!"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-dialog.js
+msgid "Apply"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/git/juci/juci//src/widgets/juci-dialog.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/git/juci/juci//src/widgets/juci-confirm.js
+msgid "Cancel"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-select.js
+msgid "-- Select One --"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-input-dhcp-options.js
+msgid "Tag must be 1-254."
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-input-dhcp-options.js
+msgid "Already added."
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-confirm.js
+msgid "$juciConfirm needs a content-string"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-confirm.js
+msgid "Close"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-config.js
+msgid "Unapplied Changes"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-config.js
+msgid ""
+"Are you sure you want to reload settings from the router? All your current "
+"changes will be lost!"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-input-ipv6-address.js
+msgid "Aaddress must be a valid IPv6 address"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-mode-picker.js
+msgid "Basic Mode"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-mode-picker.js
+msgid "Expert Mode"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/theme-picker.html
+msgid "Select Theme"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-disconnected.html
+msgid "Disconnected"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-disconnected.html
+msgid "Trying to reconnect"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-input-dhcp-options.html
+msgid "ID"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/git/juci/juci//src/widgets/juci-input-dhcp-options.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/git/juci/juci//src/widgets/juci-changes-edit.html
+msgid "Option"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+msgid "Username"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+msgid "Password"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+msgid "You are logged in!"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+msgid "Log out"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+msgid "Please sign in"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+msgid "Sign in"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+msgid "Signing in..."
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/git/juci/juci//src/widgets/juci-navbar.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/git/juci/juci//src/widgets/juci-footer.html
+msgid "Logout"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-navbar.html
+msgid "You have "
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-navbar.html
+msgid " new events"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-navbar.html
+msgid "Toggle navigation"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-navbar.html
+msgid "No new events to show"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-mode-picker.html
+msgid "Switch between basic and expert mode"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-mode-picker.html
+msgid "Select Mode"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.html
+msgid "Time Frame"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.html
+msgid "Preselected Days"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.html
+msgid "Days"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.html
+msgid "Time"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.html
+msgid "from"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.html
+msgid "to"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-input-port.html
+msgid "Start port"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-input-port.html
+msgid "End port"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-input-port.html
+msgid "Port (1-65535)"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-footer.html
+msgid "Help Wiki"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-footer.html
+msgid "No WAN IP"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-changes-edit.html
+msgid "Config"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-changes-edit.html
+msgid "Section"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-changes-edit.html
+msgid "Old value"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-changes-edit.html
+msgid "New value"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-list-editor.html
+msgid "Hide Editor"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-list-editor.html
+msgid "Add"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/widgets/juci-list-editor.html
+msgid "Delete"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/pages/status-about.html
+msgid "About"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/pages/404.html
+msgid "The page you were trying to access was not found!"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/pages/404.html
+msgid "menu-404-title"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/pages/login.html
+msgid "menu-login-title"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/pages/bootstrap.html
+msgid "menu-bootstrap-title"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/pages/status-about.html
+msgid "menu-status-about-title"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/pages/overview.html
+msgid "menu-overview-title"
+msgstr ""
+
+# /home/reidar/git/juci/juci//src/pages/default.html
+msgid "menu-default-title"
+msgstr ""

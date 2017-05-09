@@ -1,0 +1,72 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# plugins/juci-catv/src/pages/status-catv.js
+msgid "CATV-332"
+msgstr ""
+
+# plugins/juci-catv/src/pages/status-catv.js
+msgid "CATV-3xx"
+msgstr ""
+
+# plugins/juci-catv/src/pages/status-catv.js
+msgid "CATV-302"
+msgstr ""
+
+# plugins/juci-catv/src/pages/status-catv.js
+msgid "Inteno model"
+msgstr ""
+
+# plugins/juci-catv/src/pages/settings-management-catv.js
+msgid "47MHz ~ 1000MHz"
+msgstr ""
+
+# plugins/juci-catv/src/pages/settings-management-catv.js
+msgid "47MHz ~ 591MHz"
+msgstr ""
+
+# plugins/juci-catv/src/pages/settings-management-catv.js
+msgid "47MHz ~ 431MHz"
+msgstr ""
+
+# plugins/juci-catv/src/pages/status-catv.html
+msgid "CATV Status"
+msgstr ""
+
+# plugins/juci-catv/src/pages/status-catv.html
+msgid "No status available"
+msgstr ""
+
+# plugins/juci-catv/src/pages/settings-management-catv.html
+msgid "CATV Settings"
+msgstr ""
+
+# plugins/juci-catv/src/pages/settings-management-catv.html
+msgid "Enable"
+msgstr ""
+
+# plugins/juci-catv/src/pages/settings-management-catv.html
+msgid "RF Enable"
+msgstr ""
+
+# plugins/juci-catv/src/pages/settings-management-catv.html
+msgid "Filter"
+msgstr ""
+
+# plugins/juci-catv/src/pages/status-catv.html
+msgid "menu-status-catv-title"
+msgstr ""
+
+# plugins/juci-catv/src/pages/settings-management-catv.html
+msgid "menu-settings-management-catv-title"
+msgstr ""

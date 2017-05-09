@@ -1,0 +1,2196 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid "valid values are: 'no' and 48-64"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid "value must be a valid MAC-48 address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid "Valid values are: auto, no, 0-64"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid "Network interface "
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid "Unnamed interface"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol: "
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid " it needs a physical interface"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid " MUST have  a protocol set"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid "is an unmanaged network and need to be setup as a bridge"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid "is an unmanaged networks and need to have at least one device in bridge"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid ""
+" has an invalid IP address. It can not be a range address (can not end with "
+"0s)!"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid " has an invalid IP address it can not start with a '0'!"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid " needs either ipv4 or ipv6 address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol 3G and needs a Modem device"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol 3G and needs a Service type"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol 3G and needs APN"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol 4G and it needs a Device"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol Point-to-Point tunnel and needs a VPN Server"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol 6in4 and need a Remote IPv4 address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol 6in4 and need Local IPv6 address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol IPv6 rapid deployment and it needs a Remote IPv4 address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol IPv6 rapid deployment and it needs an IPv6 prefix"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol IPv6 rapid deployment and it needs a IPv6 prefix length"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol DS lite and it needs a DS-Lite AFTR address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid " has protcol PPP over L2TP and it needs a L2TP server"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid "Username is set but not password on "
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid "has protocol wwan and it needs a modem"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol wwan and has invalid pincode [0000-9999] or empty"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid "Unsupported protocol: "
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid "IPv4 Routes needs an interface"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid "IPv4 Routes needs a Target"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid "IPv4 Routes needs a Netmask"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid "IPv4 Routes needs a Gateway"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid "IPv6 Routes needs an interface"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid "IPv6 Routes needs a Target"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-uci.js
+msgid "IPv6 Routes needs a Gateway"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/network-netifd.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-create.js
+msgid "Unmanaged"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "Static Address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "DHCP v4"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "DHCP v6"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "PPP"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "PPP over Ethernet"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "PPP over ATM"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "3G (ppp over GPRS/EvDO/CDMA or UTMS)"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "4G (LTE/HSPA+)"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "WWAN (LTE/HSPA+)"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "QMI (USB modem)"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "NCM (USB modem)"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "HNET (self-managing home network)"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "Point-to-Point Tunnel"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "IPv6 tunnel in IPv4 (6in4)"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "IPv6 tunnel in IPv4 (6to4)"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "Automatic IPv6 Connectivity Client"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "IPv6 rapid deployment"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "Dual-Stack Lite"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "PPP over L2TP"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "Relayd Pseudo Bridge"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "GRE Tunnel over IPv4"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "Ethernet GRE over IPv4"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "GRE Tunnel over IPv6"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "Ethernet GRE over IPv6"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "no device or network given"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "Are you sure you want to remove device"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "from network"
+msgstr ""
+
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "and use it in this"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-routes.js
+msgid "Route to"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/internet-routes.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-net.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.js
+msgid "Unknown"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-routes.js
+msgid "Are you sure you want to delete route"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/internet-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-create.js
+msgid "Interface Name is needed"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/internet-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-create.js
+msgid "Interface names can only contain letters and numbers"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/internet-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-create.js
+msgid "Interface name may only be 12 characters long"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "Create New Network Interface"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "OK"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/internet-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/internet-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-net.js
+msgid "Cancel"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "The new interface needs a name"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "Please select the interface type"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "Error while creating Interface"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "Finalize Settings"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "Please select Protocol"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "Please select a connection in the list!"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "Are you sure you want to delete this connection?"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "Connect"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "Disconnect"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/internet-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/status-network.html
+msgid "Status"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/internet-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.js
+msgid "PENDING"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/internet-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "UP"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/internet-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "DOWN"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/internet-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-qmi-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ncm-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.html
+msgid "Device"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/internet-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "Protocol:"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "IPv4-Address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "IPv6-Address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "Not in any configured network"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/status-network.html
+msgid "IP Address"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/static-route6-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/netifd-status-clients.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/status-network.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+msgid "IPv6 Address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "DUID"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/netifd-status-clients.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+msgid "MAC Address"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "DHCP"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "Connected"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "Link Speed"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "N Mode"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "VHT Mode"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "WME"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "Power Save"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "Frequency"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
+msgid "RSSI"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "SNR"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "Idle"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "In Network"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "TX Bytes"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "RX Bytes"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
+msgid "TX Rate"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-client-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
+msgid "RX Rate"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.js
+msgid "Diagnose Internet Connection"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-net.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-net.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Close"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-net.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Ethernet"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.js
+msgid "ADSL"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.js
+msgid "VDSL"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.js
+msgid "WWAN"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/bridge-device-picker.js
+msgid "You need to select a device to add!"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-net.js
+msgid "Detailed client overview"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-net.js
+msgid "Edit LAN Settings"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-net.js
+msgid "Save"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Hardware Model"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Base MAC"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Software Version"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Filesystem Type"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Unknown Working interface"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Number of Clients"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
+msgid "Linkspeed"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Network Visualization"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Link speed"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "TX bytes:"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "RX bytes:"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "TX errors:"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "RX errors:"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "DSL"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-hnet-edit.html
+msgid "Mode"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Bit Rate"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Downstream"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Upstream"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "3G/4G"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-create-settings.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.js
+msgid "Bridge"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+msgid "IPv4 address"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+msgid "IPv6 address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-picker.js
+msgid "You need to select a network!"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-dns-config.js
+msgid "All DNS-servers must be valid"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-dns-config.js
+msgid "All DNS-servers must be unique"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-create-settings.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.js
+msgid "Standalone"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-create-settings.js
+msgid "Anywan"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Reboot"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.js
+msgid "Are you sure you want to reboot?"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.js
+msgid "Yes"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.js
+msgid "No"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-type-anywan-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-type-bridge-edit.js
+msgid "Please select a device in the list!"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-type-anywan-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-type-bridge-edit.js
+msgid "Are you sure you want to delete this device from bridge?"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-create.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.js
+msgid "Uplink"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-create.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.js
+msgid "Downlink"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-type-none-edit.js
+msgid "(Alias)"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.js
+msgid "AnyWAN"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.js
+msgid "ERROR"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.js
+msgid ""
+"Are you sure you want to switch? Your settings will be lost!<br />The only "
+"way to get it back is to reload the page"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-host-picker.js
+msgid "You need to select a host!"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.js
+msgid "PAP"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.js
+msgid "CHAP"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.js
+msgid "Both"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcpv6-edit.js
+msgid "None"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-edit.js
+msgid "UMTS/GPRS"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-edit.js
+msgid "UMTS only"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-edit.js
+msgid "GPRS only"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-edit.js
+msgid "EVDO"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcpv6-edit.js
+msgid "Try"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcpv6-edit.js
+msgid "Force"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcpv6-edit.js
+msgid "Auto"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcpv6-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+msgid "Disabled"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.js
+msgid "Address Allocation"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.js
+msgid "Address Assignment"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-none-edit.js
+msgid "Bridge devices"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-wan-dns-settings-edit.html
+msgid "Acquired DNS servers"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-wan-dns-settings-edit.html
+msgid "Acquired from"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-wan-dns-settings-edit.html
+msgid "For {{interface['.name'].toUpperCase()}} interface"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-net-small.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-net-small.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-net.html
+msgid "LAN"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-dns-config.html
+msgid "Add/Remove custom DNS Servers"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-dns-config.html
+msgid "These DNS entries will be applied on the interface"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/netifd-status-clients.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-edit.html
+msgid "Hostname"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
+msgid "Port"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
+msgid "Network"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-create-settings.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+msgid "Protocol"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-create-settings.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-standard-physical.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+msgid "Interface Type"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-create-settings.html
+msgid "Physical device"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-create-settings.html
+msgid "Add network to a firewall zone"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-create-settings.html
+msgid ""
+"If you select a zone the network will be added to that firewall zone when it "
+"is created"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-create-settings.html
+msgid "Do not add to firewall zone"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/lan-connection-settings-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/netifd-status-clients.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+msgid "IPv4 Address"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/lan-connection-settings-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+msgid "IPv4 Subnet Mask"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/lan-connection-settings-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+msgid "IPv4 Broadcast"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/lan-connection-settings-edit.html
+msgid "DHCP Server"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan-small.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan-small.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "WAN"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan-small.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "ONLINE"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan-small.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "OFFLINE"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Your router does not have Internet connection!"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Please check that WAN cable is connected."
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Reload Network"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Click Reload button to refresh WAN connection"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Reload"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Reboot Router"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Click Reboot button to restart your system"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Your Internet connection is up!"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Do not show this again"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-create.html
+msgid "Interface Name"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-create.html
+msgid "Interface type"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-type-none-edit.html
+msgid "Select Base Device"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/static-route-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/static-route6-edit.html
+msgid "Interface"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/static-route-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/static-route6-edit.html
+msgid "Target"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/static-route-edit.html
+msgid "Netmask"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/static-route-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/static-route6-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/status-network.html
+msgid "Gateway"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/static-route-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/static-route6-edit.html
+msgid "Metric"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/static-route-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/static-route6-edit.html
+msgid "0"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/static-route-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/static-route6-edit.html
+msgid "MTU"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/static-route-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/static-route6-edit.html
+msgid "IP MTU"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Client Status"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Wireless Details"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Static Leases"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "No Static Lease configured for this client"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Device Name"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "IP in network"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Clients current network"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Tag"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "No tag set"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "DUID (IPv6)"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Host ID (IPv6)"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Port Forwarding"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Parental Control"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Realtime Graphs"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "General"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "Choose Configuration Option"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "Physical Settings"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "Advanced"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "Bring up on boot"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "Use gateway metric"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "Override MAC address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "Override MTU"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "Device:"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "IPv4-Address ({{$index+1}}):"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "IPv6-Address ({{$index+1}}):"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-net.html
+msgid "No Lan networks"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-net.html
+msgid "No Clients in {{network['.name'].toUpperCase()}} network"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-host-picker.html
+msgid "Select Connected Host"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-host-picker.html
+msgid "Select a host"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-picker.html
+msgid "Select Network"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/network-connection-picker.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/bridge-device-picker.html
+msgid "Select network device"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "No WAN Network"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "Diagnose"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "Internet"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "Link"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "WAN IP(s)"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "Gateway(s)"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "Link Type"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "DSL Rate(s)"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "DNS-Servers"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "WAN Uptime"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/bridge-device-picker.html
+msgid "Network device"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/static-route6-edit.html
+msgid "IPv6 Gateway"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-routes.html
+msgid "Static Routes"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-routes.html
+msgid "internet.lan.routes.info"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-routes.html
+msgid "IPv4 Routes"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-routes.html
+msgid "IPv6 Routes"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/netifd-status-clients.html
+msgid "Active Connections"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+msgid "Connections for each Device"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+msgid "status.nat.connections.info"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+msgid "NAT Connection Table"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+msgid "status.nat.info"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/internet-network.html
+msgid "Connections"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+msgid "Source"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+msgid "Dest."
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+msgid "Source Port"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+msgid "Dest. Port"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/netifd-status-clients.html
+msgid "N/A"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/netifd-status-clients.html
+msgid "Connected Clients"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-network.html
+msgid "settings.network.info"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-services.html
+msgid "Services"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-services.html
+msgid "internet.services.info"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+msgid "status.network.routes.info"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+msgid "Routing Status"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+msgid "ARP Table"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+msgid "IP address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+msgid "MAC address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+msgid "IPv4 Routing Table"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+msgid "Genmask"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+msgid "IPv6 Routing Table"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+msgid "Next Hop"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+msgid "IPv6 Neighbors Table"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+msgid "No IPv6 devices connected"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+msgid "IPv6 status"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+msgid "Router"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network.html
+msgid "status.status.info"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/pages/status-network.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+msgid "IPv6 Prefix"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network.html
+msgid "Primary DNS"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network.html
+msgid "Secondary DNS"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network.html
+msgid "Line Status"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-advanced-edit.html
+msgid "Use broadcast flag"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-advanced-edit.html
+msgid "Required for certain ISPs, e.g. Charter with DOCSIS 3"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoa-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-l2tp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcpv6-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6to4-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-advanced-edit.html
+msgid "Use default gateway"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoa-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-l2tp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6rd-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6to4-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-advanced-edit.html
+msgid "If unchecked, no default route is configured"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoa-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-l2tp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcpv6-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-advanced-edit.html
+msgid "Use DNS servers advertised by peer"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoa-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-l2tp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-advanced-edit.html
+msgid "If unchecked, the advertised DNS server addresses are ignored"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-advanced-edit.html
+msgid "Additional DHCP options to request from the server"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcpv6-advanced-edit.html
+msgid "Client ID to send when requesting DHCP"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-advanced-edit.html
+msgid "Custom client ID"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-advanced-edit.html
+msgid "Vendor Class to send when requesting DHCP"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-advanced-edit.html
+msgid "Custom Vendor class"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-edit.html
+msgid "Modem device"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-edit.html
+msgid "Service Type"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-qmi-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-qmi-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ncm-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ncm-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.html
+msgid "APN"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-qmi-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-qmi-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ncm-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ncm-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.html
+msgid "PIN-code"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-edit.html
+msgid "PAP/CHAP Username"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-qmi-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-qmi-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ncm-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ncm-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-edit.html
+msgid "Username"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-edit.html
+msgid "PAP/CHAP Password"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-qmi-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-qmi-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ncm-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ncm-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-edit.html
+msgid "Password"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoa-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-l2tp-advanced-edit.html
+msgid "Enable IPv6 negotiation on the PPP link"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoa-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-advanced-edit.html
+msgid "LCP echo failure threshold"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoa-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-advanced-edit.html
+msgid ""
+"Presume peer to be dead after given amount of LCP echo failures, use 0 to "
+"ignore failures"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoa-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-advanced-edit.html
+msgid "LCP echo interval"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoa-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-advanced-edit.html
+msgid "Inactivity timeout"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoa-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-advanced-edit.html
+msgid ""
+"Close inactive connection after the given amount of seconds, use 0 to "
+"persist connection"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoa-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-advanced-edit.html
+msgid ""
+"Send LCP echo requests at the given interval in seconds, only effective in "
+"conjunction with failure threshold"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+msgid "IPv4 Default Gateway"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-edit.html
+msgid "Create default route"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+msgid "IPv6 Assignment Length"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+msgid "Leave empty to disable"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+msgid "IPv6 Assigned Prefix Hint"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+msgid "Prefix hint"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+msgid "Static IPv6 Address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+msgid "IPv6 Default Gateway"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+msgid "Default IPv6 Gateway"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+msgid "IPv6 Address Mask"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+msgid "IPv4 Settings"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
+msgid "IPv6 Settings"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6to4-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6rd-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+msgid "Local IPv4 address"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6to4-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6rd-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dslite-edit.html
+msgid "Leave empty to use the current WAN address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-advanced-edit.html
+msgid "Modem init timeout"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-advanced-edit.html
+msgid "Maximum amount of seconds to wait for the modem to become ready"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-edit.html
+msgid "Hostname to send when requesting DHCP"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcpv6-edit.html
+msgid "Request IPv6 address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcpv6-edit.html
+msgid "Request Prefix Length"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-advanced-edit.html
+msgid "Client ID"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-advanced-edit.html
+msgid "Vendo Class"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-l2tp-edit.html
+msgid "L2TP Server"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-l2tp-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoa-edit.html
+msgid "PAP/CHAP username"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-l2tp-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoa-edit.html
+msgid "PAP/CHAP password"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6rd-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+msgid "Remote IPv4 address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6rd-edit.html
+msgid "The IPv4 address of the relay"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6rd-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6rd-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+msgid "IPv6 prefix"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6rd-edit.html
+msgid "The IPv6 prefix assigned to the provider, usually ends with ::"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6rd-edit.html
+msgid "IPv6 prefix length"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6rd-edit.html
+msgid "The length of the IPv6 prefix in bits"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6rd-edit.html
+msgid "IPv4 prefix length"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6rd-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-advanced-edit.html
+msgid "Default gateway"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6rd-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6to4-advanced-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dslite-advanced-edit.html
+msgid "Use TTL on tunnel interface"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+msgid ""
+"This is usually the address of the nearest PoP operated by the tunnel broker"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dslite-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dslite-edit.html
+msgid "Local IPv6 address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+msgid ""
+"This is the local endpoint address assigned by the tunnel broker, it usually "
+"ends with :2"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+msgid "IPv6 routed prefix"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+msgid ""
+"This is the prefix routed to you by the tunnel broker for use by clients"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+msgid "Dynamic tunnel"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+msgid "Enable HE.net dynamic endpoint update"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+msgid "Tunnel ID"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+msgid "HE.net username"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+msgid "This is the plain username for logging into the account"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+msgid "HE.net password"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
+msgid ""
+"This is either the Update Key configured for the tunnel or the account "
+"password if no update key has been configured"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-edit.html
+msgid "Hostname to include in DHCP requests"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-edit.html
+msgid "Automatically set up default route for this interface"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-edit.html
+msgid "VPN Server"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-hnet-edit.html
+msgid "IPv6 Assign"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-hnet-edit.html
+msgid "Prefix Size"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-hnet-edit.html
+msgid "IPv4 Assign"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-hnet-edit.html
+msgid "DNS Name"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-edit.html
+msgid "Select Modem Device"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcpv6-advanced-edit.html
+msgid "Custom delegated IPv6-prefix"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-advanced-edit.html
+msgid "Enable IPv negotiation on the PPP link"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dslite-edit.html
+msgid "DS-Lite AFTR address"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dslite-advanced-edit.html
+msgid "Tunnel Link"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.html
+msgid "Authentication type"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.html
+msgid "Modes"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.html
+msgid ""
+"Allowed network modes, comma separated list of: all, lte, umts, gsm, cdma, "
+"td-scdma"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.html
+msgid "Delay"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.html
+msgid "Seconds to wait before trying to interact with the modem"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-edit.html
+msgid "Access Concentrator"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-edit.html
+msgid "Leave empty to autodetect"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-edit.html
+msgid "auto"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-edit.html
+msgid "Service Name"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoa-edit.html
+msgid "username"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoa-edit.html
+msgid "password"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/netifd-status-clients.html
+msgid "menu-netifd-status-clients-title"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+msgid "menu-status-network-nat-title"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network.html
+msgid "menu-status-network-title"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-routes.html
+msgid "menu-internet-routes-title"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-network.html
+msgid "menu-internet-network-title"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/status-network-routes.html
+msgid "menu-status-network-routes-title"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-services.html
+msgid "menu-internet-services-title"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/network.html
+msgid "menu-network-title"
+msgstr ""

@@ -1,0 +1,95 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-owsd/src/pages/settings-management-owsd.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-owsd/src/widgets/owsd-listen-edit.html
+msgid "Interface"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-owsd/src/pages/settings-management-owsd.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-owsd/src/widgets/owsd-listen-edit.html
+msgid "Port"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-owsd/src/pages/settings-management-owsd.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-owsd/src/widgets/owsd-listen-edit.html
+msgid "IPv6"
+msgstr ""
+
+# plugins/juci-owsd/src/pages/settings-management-owsd.js
+msgid "IPv6 Only"
+msgstr ""
+
+# plugins/juci-owsd/src/pages/settings-management-owsd.js
+msgid "Enabled"
+msgstr ""
+
+# plugins/juci-owsd/src/pages/settings-management-owsd.js
+msgid "Disabled"
+msgstr ""
+
+# plugins/juci-owsd/src/pages/settings-management-owsd.js
+msgid "List of allowed origins"
+msgstr ""
+
+# plugins/juci-owsd/src/pages/settings-management-owsd.js
+msgid "Add OWSD Listen interface"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-owsd/src/pages/settings-management-owsd.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-owsd/src/widgets/owsd-listen-edit.js
+msgid "Add"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-owsd/src/pages/settings-management-owsd.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-owsd/src/widgets/owsd-listen-edit.js
+msgid "Cancel"
+msgstr ""
+
+# plugins/juci-owsd/src/widgets/owsd-listen-edit.js
+msgid "Add OWSD Origin"
+msgstr ""
+
+# plugins/juci-owsd/src/widgets/owsd-listen-edit.html
+msgid "Only IPv6"
+msgstr ""
+
+# plugins/juci-owsd/src/widgets/owsd-listen-edit.html
+msgid "List of allowed origins:"
+msgstr ""
+
+# plugins/juci-owsd/src/widgets/owsd-add-item.html
+msgid "Name"
+msgstr ""
+
+# plugins/juci-owsd/src/pages/settings-management-owsd.html
+msgid "OWSD"
+msgstr ""
+
+# plugins/juci-owsd/src/pages/settings-management-owsd.html
+msgid "Chage settings for the owsd web-server deamon"
+msgstr ""
+
+# plugins/juci-owsd/src/pages/settings-management-owsd.html
+msgid "menu-settings-management-owsd-title"
+msgstr ""

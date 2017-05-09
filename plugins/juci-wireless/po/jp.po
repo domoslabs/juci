@@ -1,0 +1,1128 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# plugins/juci-wireless/src/wireless.js
+msgid "off"
+msgstr ""
+
+# plugins/juci-wireless/src/wireless.js
+msgid "5GHz"
+msgstr ""
+
+# plugins/juci-wireless/src/wireless.js
+msgid "2.4GHz"
+msgstr ""
+
+# plugins/juci-wireless/src/wireless.js
+msgid "Wifi Schedule: please pick at least one day to schedule on"
+msgstr ""
+
+# plugins/juci-wireless/src/wireless.js
+msgid "Invalid SSID: "
+msgstr ""
+
+# plugins/juci-wireless/src/wireless.js
+msgid "no SSID"
+msgstr ""
+
+# plugins/juci-wireless/src/wireless.js
+msgid ". SSID can not be more than 32 characters long!"
+msgstr ""
+
+# plugins/juci-wireless/src/wireless.js
+msgid "One of the wireless interface(s) does not have SSID"
+msgstr ""
+
+# plugins/juci-wireless/src/wireless.js
+msgid "Wireless interface "
+msgstr ""
+
+# plugins/juci-wireless/src/wireless.js
+msgid " has invalid key #"
+msgstr ""
+
+# plugins/juci-wireless/src/wireless.js
+msgid " error: "
+msgstr ""
+
+# plugins/juci-wireless/src/wireless.js
+msgid " must have key #"
+msgstr ""
+
+# plugins/juci-wireless/src/wireless.js
+msgid " set!"
+msgstr ""
+
+# plugins/juci-wireless/src/wireless.js
+msgid ". WPA key must be 8-63 printable ASCII characters long!"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-schedule.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/overview.wifi.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid "Disabled"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/overview.wifi.js
+msgid "Initializing"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/overview.wifi.js
+msgid "Processing"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/overview.wifi.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/overview.wifi.js
+msgid "Done!"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/overview.wifi.js
+msgid "Failed"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/overview.wifi.js
+msgid "Timed out"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/overview.wifi.js
+msgid "Switching to repeater mode"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/overview.wifi.js
+msgid "Overlap"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-wps.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/overview.wifi.js
+msgid "Unknown"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-wps.js
+msgid "Invalid WPS PIN"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-wps.js
+msgid ""
+"Invalid format! WPS PIN must be ether 4 or 8 digits alternatively 8 digits "
+"with a space or dash in the middle"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-link-to-interfaces.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-interfaces.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-link-to-interfaces.html
+msgid "Wireless Interfaces"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-devices.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "Bandwidth"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-devices.js
+msgid "N/A"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-devices.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status-scan.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status-scan.html
+msgid "Channel"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-devices.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status.html
+msgid "Noise"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-devices.js
+msgid "dBm"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-devices.js
+msgid "Rate"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-devices.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-band-steering.html
+msgid "Enable"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-devices.js
+msgid "Disable"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-devices.js
+msgid "Force Channel Selection"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-devices.js
+msgid "Force Channel Selection is complete. New channel is"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-devices.js
+msgid "Force Channel Selection is complete."
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-devices.js
+msgid ""
+"Force Channel Selection has failed because the radio is operating at DFS "
+"channel."
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-devices.js
+msgid "Force Channel Selection has failed."
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-schedule.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status-scan.html
+msgid "Enabled"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-interfaces.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status-scan.html
+msgid "SSID"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-interfaces.js
+msgid "BSSID"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-interfaces.js
+msgid "unknown"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-interfaces.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status-scan.html
+msgid "Encryption"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-interfaces.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/wifi-radio-picker-modal.html
+msgid "Mode"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-interfaces.js
+msgid "Device"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-interfaces.js
+msgid "Couldn't load wireless radios from config"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-interfaces.js
+msgid ""
+"No more Wireless Interface spaces left. There can't be more than 4 "
+"Interfaces on each radio"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-interfaces.js
+msgid "Please select a connection in the list!"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-interfaces.js
+msgid "Are you sure you want to delete this wireless interface?"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.js
+msgid "None"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.js
+msgid "WEP"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.js
+msgid "WPA2 Personal (PSK)"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.js
+msgid "WPA Personal (PSK)"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.js
+msgid "WPA/WPA2 Personal (PSK) Mixed Mode"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.js
+msgid "WPA2 Enterprise"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.js
+msgid "WPA Enterprise"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.js
+msgid "WPA/WPA2 Enterprise Mixed Mode"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "IP-Address"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "MAC-Address"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "DHCP"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "Idle"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "In Network"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "RSSI [dBm]"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "SNR [dB]"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "Average antenna signal/RSSI [dbm]"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status-bs-data.html
+msgid "Airtime Usage"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "Data Rate [Mbps]"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status-bs-data.html
+msgid "Data Usage"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "Physical Rate [Mbps]"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status-bs-data.html
+msgid "Retries"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "TX Rate [Mbps]"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "RX Rate [Mbps]"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "Flags"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "802.11n Capabilities"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "802.11ac Capabilities"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "TX Total Packets"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "Unicast Packets"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "TX Unicast Packets"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "TX Multicast/Broadcast Packets"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "TX Failures"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "RX Data Packets"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "RX Unicast Packets"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "RX Multicast/Broadcast Packets"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "TX Data Packets Retried"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "TX Total Packets Sent"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "TX Packets Retries"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "TX Packets Retry Exhausted"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.js
+msgid "RX Total Packets Retried"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.js
+msgid "Auto"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.js
+msgid "11a"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.js
+msgid "11ac"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.js
+msgid "11b"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.js
+msgid "11bg"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.js
+msgid "11g"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.js
+msgid "11n"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/overview.wifi.js
+msgid "Edit wireless interface"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/overview.wifi.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.macfilter.edit.html
+msgid "Save"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/overview.wifi.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.macfilter.edit.html
+msgid "Cancel"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/wifi-radio-picker-modal.js
+msgid "Access Point (AP)"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/wifi-radio-picker-modal.js
+msgid "Client (STA)"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/wifi-radio-picker-modal.js
+msgid ""
+"Are you sure you want to create a new SSID with the same name and on the "
+"same radio? This may result in undefined behaviour!"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.js
+msgid "Key"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.js
+msgid "CCMP (AES)"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.js
+msgid "TKIP/CCMP (AES)"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.js
+msgid ""
+"If you disable SSID broadcasting, WPS function will be disabled as well. You "
+"will need to enable it manually later. Are you sure you want to continue?"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.js
+msgid ""
+"WPS will be disabled when using WEP encryption. Are you sure you want to "
+"continue?"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/wireless-aps-graph.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status-scan.html
+msgid "SNR"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.macfilter.edit.html
+msgid "MAC Filtering"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.macfilter.edit.html
+msgid "Access for listed devices"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.macfilter.edit.html
+msgid "Currently added devices"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.macfilter.edit.html
+msgid "Add currently connected hosts to the list"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.macfilter.edit.html
+msgid "Add clients to MAC filtering list"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/wifi-radio-picker-modal.html
+msgid "Select Wireless Radio"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/wifi-radio-picker-modal.html
+msgid "Select SSID"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/wifi-radio-picker-modal.html
+msgid "New SSID"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/wifi-radio-picker-modal.html
+msgid "New Wireless Interface"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/overview.wifi.html
+msgid "Schedule"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/overview.wifi.html
+msgid "Off"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/overview.wifi.html
+msgid "On"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/overview.wifi.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/overview.wifi.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status-scan.html
+msgid "WPS"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/overview.wifi.html
+msgid "(within 2 minutes)"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/overview.wifi.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-wps.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid "Pair"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/overview.wifi.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid "Attempting to Pair"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/overview.wifi.html
+msgid "WPS pin:"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.html
+msgid "WiFi Network Name (SSID)"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.html
+msgid "Broadcast SSID"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.html
+msgid "Wireless Multicast Forwarding"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.html
+msgid "Maximum Number of Connected Clients"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status-scan.html
+msgid "Frequency"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.html
+msgid "Cipher"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.html
+msgid "WiFi Key (Password)"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.html
+msgid "Reset to default password"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.html
+msgid "Choose Key"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.html
+msgid "WiFi Key"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.html
+msgid "Radius Server"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.html
+msgid "Radius Port"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.html
+msgid "Radius Secret"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.html
+msgid "Show Key Text"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/overview.wifi.small.html
+msgid "Wireless"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "Radio On/Off"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "WiFi Mode"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "Select Hardware Mode"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "Select Channel"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "Select Bandwidth"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "Scan Timer"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "Timer Interval"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "RIFS"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "RIFS Advertisement"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "Framebursting"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "DFS Channels"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "Beamforming"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "Airtime Fairness"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid ""
+"ATF feature addresses the issue where low-speed data transfers impact high-"
+"speed data transfers"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "OBSS Co-Existence"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "Maximum Associated Stations"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "RX Chain PowerSave Quiet Time"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "RX Chain PowerSave PPS"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "Enable WMM Multimedia Extensions"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "Disable WMM Ack"
+msgstr ""
+
+# plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
+msgid "Enable WMM UAPSD Power Saving"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-devices.html
+msgid "Wireless Radios"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-devices.html
+msgid "wifi.radios.info"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-band-steering-status.html
+msgid "Ping results"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-band-steering-status.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-band-steering.html
+msgid "Band Steering"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-band-steering-status.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-status.html
+msgid "status.wifi.info"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-band-steering-status.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-schedule.html
+msgid "Status"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-band-steering-status.html
+msgid "Log"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-interfaces.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-wireless/src/pages/wireless-link-to-interfaces.html
+msgid "wifi.interfaces.info"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-schedule.html
+msgid "WiFi Scheduling"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-schedule.html
+msgid "wifi.schedule.info"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-schedule.html
+msgid "Schedule Function"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-schedule.html
+msgid "Setup Scheduling"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-schedule.html
+msgid "During this time the WiFi is"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-schedule.html
+msgid "Choose Schedule Mode"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-schedule.html
+msgid "Day"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-schedule.html
+msgid "Time"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.html
+msgid "WiFi Status"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.html
+msgid "Channel:"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-band-steering.html
+msgid "wifi.band-steering.info"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-band-steering.html
+msgid "wifi.band-steering.dualband-warning"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-band-steering.html
+msgid "Steering Policy"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-band-steering.html
+msgid "RSSI Threshold"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-band-steering.html
+msgid "Bandwidth Usage Threshold"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-link-to-interfaces.html
+msgid " page"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-general.html
+msgid "General WiFi Settings"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-general.html
+msgid "wifi.general.info"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-general.html
+msgid "WiFi Network"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-general.html
+msgid "Scheduled"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-general.html
+msgid "Enable WiFi"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-general.html
+msgid "Enable WiFi On/Off button"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-general.html
+msgid ""
+"You have wifi-scheduling enabled. This means that your wifi will be "
+"automatically turned on and off based on your schedule settings"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-filtering.html
+msgid "MAC Filter"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-filtering.html
+msgid "wifi.macfilter.info"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-filtering.html
+msgid "You cannot enable MAC Filtering on a WEP protected wireless interface!"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-bs-data.html
+msgid "Utilization"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-bs-data.html
+msgid "MAC Address"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-bs-data.html
+msgid "Data Rate"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-bs-data.html
+msgid "Physical Rate"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-bs-data.html
+msgid "No client on SSID"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-scan.html
+msgid "WiFi Scan"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-scan.html
+msgid "status.wifi.scan.info"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-scan.html
+msgid "Radio"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-scan.html
+msgid "Radio Rate"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-scan.html
+msgid "Frequency to Scan"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-scan.html
+msgid "Scan neighboring APs"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-scan.html
+msgid "Scanning..."
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-scan.html
+msgid ""
+"You will not be able to scan 5Ghz band because your 5Ghz wireless radio is "
+"operating at a DFS channel"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid "WPS Settings"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid "wifi.wps.info"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid "Enable WPS on"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid "Pair (within 2 minutes)"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid "Generated PIN"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid "Generate New PIN"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid "Enter your device PIN"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid "Enter your PIN here"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid "WPS-PBC: Push Button on Device"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid ""
+"To pair your device, press Pair. Afterwards, press the corresponding button "
+"on the device you wish to connect. Your router will be open for pairing for "
+"2 minutes after you pressed Pair."
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid "WPS-REG: Router provides PIN"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid "Enter the WPS-PIN below on the device you wish to pair."
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid "Generate"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid "WPS-PIN: Another Device provides PIN"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid "Enter the WPS-PIN provided by the other device here."
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-general.html
+msgid "menu-wireless-general-title"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-bs-data.html
+msgid "menu-wireless-status-bs-data-title"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-link-to-interfaces.html
+msgid "menu-wireless-link-to-interfaces-title"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-wps.html
+msgid "menu-wireless-wps-title"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status.html
+msgid "menu-wireless-status-title"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-interfaces.html
+msgid "menu-wireless-interfaces-title"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-filtering.html
+msgid "menu-wireless-filtering-title"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-devices.html
+msgid "menu-wireless-devices-title"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless.html
+msgid "menu-wireless-title"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-band-steering-status.html
+msgid "menu-wireless-band-steering-status-title"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-schedule.html
+msgid "menu-wireless-schedule-title"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-band-steering.html
+msgid "menu-wireless-band-steering-title"
+msgstr ""
+
+# plugins/juci-wireless/src/pages/wireless-status-scan.html
+msgid "menu-wireless-status-scan-title"
+msgstr ""

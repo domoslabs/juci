@@ -1,0 +1,44 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# plugins/juci-ethernet/src/pages/internet-ethernet.html
+msgid "Layer-2 Devices"
+msgstr ""
+
+# plugins/juci-ethernet/src/pages/internet-ethernet.html
+msgid "internet.ethernet.info"
+msgstr ""
+
+# plugins/juci-ethernet/src/pages/internet-ethernet.html
+msgid "Type"
+msgstr ""
+
+# plugins/juci-ethernet/src/pages/internet-ethernet.html
+msgid "Name"
+msgstr ""
+
+# plugins/juci-ethernet/src/pages/internet-ethernet.html
+msgid "Adapter"
+msgstr ""
+
+# plugins/juci-ethernet/src/pages/internet-ethernet.html
+msgid "MAC"
+msgstr ""
+
+# plugins/juci-ethernet/src/pages/internet-ethernet.html
+msgid "MTU"
+msgstr ""
+
+# plugins/juci-ethernet/src/pages/internet-ethernet.html
+msgid "menu-internet-ethernet-title"
+msgstr ""

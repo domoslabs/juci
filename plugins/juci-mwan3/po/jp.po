@@ -1,0 +1,316 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Add New Interface"
+msgstr ""
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Are you sure you want to delete interface"
+msgstr ""
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Add New Member"
+msgstr ""
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "No name entered"
+msgstr ""
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Are you sure you want to delete member"
+msgstr ""
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Add New Policy"
+msgstr ""
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Are you sure you want to delete policy"
+msgstr ""
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Add New Rule"
+msgstr ""
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Are you sure you want to delete rule"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.js
+msgid "IPv4"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.js
+msgid "IPv6"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.js
+msgid "Default"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.js
+msgid "All"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.js
+msgid "TCP"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.js
+msgid "UDP"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.js
+msgid "ICMP"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+msgid "Interface"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+msgid "Number of host that Must reply for the member to be considered up"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mwan3/src/widgets/mwan3-interface-add.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mwan3/src/widgets/mwan3-interface-add.html
+msgid "Select Interface"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+msgid "metric"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+msgid ""
+"Members within one policy with a lower metric have precedence over higher "
+"metric members"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+msgid "Weight"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+msgid ""
+"Members with same metric will distribute load based on this weight value"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-policy-add.html
+msgid "Enter Policy Name"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-add.html
+msgid "Enter Rule Name"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-add.html
+msgid "Enter Member Name"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Policy to use"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid ""
+"Use this policy for traffic that matches or set to  default to use the "
+"default routing table to lookup"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Select Policy"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Any Source IP"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Source IP"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Match traffic from the specified source ip address"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Source Port"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid ""
+"Match traffic from the specified source port or port range, if relevant "
+"protocol is specified"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Protocol"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Match traffic using the given protocol"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Select Protocol"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Any Destination IP"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Destination IP"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Match traffic from the specified destination ip address"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Destination Port"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid ""
+"Match traffic from the specified destination port or port range, if relevant "
+"protocol is specified"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "IP Set"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid ""
+"Match traffic directed at the given destination ip address to an ipset set"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Sticky"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid ""
+"Allow traffic from the same source ip address within the timeout limit to "
+"use same wan interface as prior session"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Timeout"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Stickiness timeout value in seconds"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-policy-edit.html
+msgid "Selected Members"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Enabled"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Family"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Select Family"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Host to ping"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Add Ping Host"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Interface Reliability"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of host that Must reply for the interface to be considered up"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of Pings"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of pings to send to each Host"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of seconds to wait for reply from host"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Interval"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of seconds between each test"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Up"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of successful tests to consider interface as up"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Down"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of failed tests to consider interface as down"
+msgstr ""
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.html
+msgid "MultiWAN Configuration"
+msgstr ""
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.html
+msgid "Settings"
+msgstr ""
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.html
+msgid "Members"
+msgstr ""
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.html
+msgid "Policies"
+msgstr ""
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.html
+msgid "Rules"
+msgstr ""
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.html
+msgid "menu-internet-mwan3-title"
+msgstr ""

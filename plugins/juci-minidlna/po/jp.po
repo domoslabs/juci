@@ -1,0 +1,206 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.js
+msgid "Standard Container"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.js
+msgid "Browse directory"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.js
+msgid "Music"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.js
+msgid "Video"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.js
+msgid "Pictures"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.js
+msgid "Add folder to share"
+msgstr ""
+
+# plugins/juci-minidlna/src/widgets/minidlna-file-tree.js
+msgid "Loading.."
+msgstr ""
+
+# plugins/juci-minidlna/src/widgets/minidlna-file-tree.js
+msgid "All types"
+msgstr ""
+
+# plugins/juci-minidlna/src/widgets/minidlna-file-tree.js
+msgid "Video only"
+msgstr ""
+
+# plugins/juci-minidlna/src/widgets/minidlna-file-tree.js
+msgid "Audio only"
+msgstr ""
+
+# plugins/juci-minidlna/src/widgets/minidlna-file-tree.js
+msgid "Pictures only"
+msgstr ""
+
+# plugins/juci-minidlna/src/widgets/minidlna-file-tree.html
+msgid "Media type"
+msgstr ""
+
+# plugins/juci-minidlna/src/widgets/minidlna-file-tree.html
+msgid "Select folder"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Enable"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "General"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Port"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Port for HTTP (descriptions, SOAP, media transfer) traffic."
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Network"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Network interfaces to serve."
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Friendly Name"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid ""
+"Set this if you want to customize the name that shows up on your clients."
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Root Container"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Media Directories"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Album-Art Names"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "This is a list of file names to check for when searching for album art."
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "write list of album-art names"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Advanced"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Database directory"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Log directory"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Enable inotify"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid ""
+"Set this to enable inotify monitoring to automatically discover new files."
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Enable TIVO"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid ""
+"Set this to enable support for streaming .jpg and .mp3 files to a TiVo "
+"supporting HMO."
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Strict to DLNA standard"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Presentation URL"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Notify interval"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Notify interval in seconds."
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Announced serial number"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid ""
+"Serial number the miniDLNA daemon will report to clients in its XML "
+"description."
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Announced model number"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid ""
+"Model number the miniDLNA daemon will report to clients in its XML "
+"description."
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "miniSSDP socket"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Specify the path to the MiniSSDPd socket."
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "MiniDLNA"
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid ""
+"MiniDLNA is server software with the aim of being fully compliant with DLNA/"
+"UPnP-AV clients."
+msgstr ""
+
+# plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "menu-internet-services-minidlna-title"
+msgstr ""
