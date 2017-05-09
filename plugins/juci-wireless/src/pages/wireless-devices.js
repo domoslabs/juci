@@ -22,6 +22,8 @@ JUCI.app
 	JUCI.interval.repeat("update-radios-information", 5000, function(done){
 		$wireless.getDevices().done(function(devices){
 			$scope.devices = devices.map(function(dev){
+				if(!dev || !dev.$info)
+					return dev;
 				dev.$statusList = [
 					{ label: $tr(gettext("Bandwidth")), value: dev.$info.bandwidth || $tr(gettext("N/A")) },
 					{ label: $tr(gettext("Channel")), value: dev.$info.channel || $tr(gettext("N/A")) },
