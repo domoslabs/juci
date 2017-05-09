@@ -38,7 +38,7 @@
 					</th>
 				</thead>
 				<tr ng-show="wif._expanded" ng-repeat="i in [['Frequency', 'frequency'], ['Channel', 'channel'], ['Rate', 'rate'], ['Mode','mode']]">
-					<td><strong translate>{{i[0] | translate}}</strong></td>
+					<td><strong>{{i[0]}}</strong></td>
 					<td style="font-size: 0.8pn; text-align: right;">{{wif.$radio[i[1]] || wif[i[1]].value.toUpperCase() || "-"}}</td>
 				</tr>
 				<tr><td></td><td></td></tr><!-- an extra line as quick way to get a border after the last line -->
