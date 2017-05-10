@@ -5,7 +5,7 @@ JUCI.app
 	return {
 		show: function(content){
 			var def = $.Deferred();
-			if(!content || typeof content != "string") return def.reject($tr(gettext("$juciConfirm needs a content-string")));
+			if(!content || typeof content != "string") return def.reject("$juciConfirm needs a content-string");
 			var letters = content.length;
 			var size = "sm";
 			if(size > 100) size = "md";
