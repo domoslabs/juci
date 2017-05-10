@@ -176,3 +176,4 @@ install:
 
 clean: 
 	rm -rf ./bin ./tmp ./node_modules
+	rm -rf */template.pot
