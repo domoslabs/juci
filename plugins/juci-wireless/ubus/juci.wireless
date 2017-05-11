@@ -4,11 +4,7 @@
 
 case "$1" in
 	list)
-		if [ -f /usr/sbin/bsd ]; then
-			echo '{ "set_credentials" : {"ssid":"str", "encryption":"str", "key":"str", "import":true}, "bsd_status" : {}, "bsd_log" : {} }'
-		else
-			echo '{ "set_credentials" : {"ssid":"str", "encryption":"str", "key":"str", "import":true} }'
-		fi
+		echo '{ "set_credentials" : {"ssid":"str", "encryption":"str", "key":"str", "import":true} }'
 
 	;;
 	call)
@@ -43,16 +39,6 @@ case "$1" in
 					json_add_string "code" "success"
 				fi
 
-				json_dump
-			;;
-			bsd_status)
-				json_init
-				json_add_string bsd_status "$(bsd -s)"
-				json_dump
-			;;
-			bsd_log)
-				json_init
-				json_add_string bsd_log "$(bsd -l)"
 				json_dump
 			;;
 		esac

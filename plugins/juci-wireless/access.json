@@ -15,9 +15,7 @@
 					"stop"
 				], 
 				"juci.wireless": [
-					"set_credentials",
-					"bsd_status",
-					"bsd_log"
+					"set_credentials"
 				],
 				"router.system": [
 					"info"
@@ -26,6 +24,8 @@
 					"clients"
 				],
 				"router.wireless": [
+					"bsd_sta_info",
+					"bsd_records",
 					"bs_data",
 					"autochannel",
 					"scan",

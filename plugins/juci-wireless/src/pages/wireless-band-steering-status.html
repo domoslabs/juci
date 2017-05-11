@@ -1,9 +1,56 @@
 <juci-layout-with-sidebar>
-	<!--<div class="alert alert-default" ng-show="true">{{'Ping results'|translate}}: <br/><pre>{{data.pingResults}}</pre></div>-->
 	<div ng-controller="wirelessBandSteeringStatus">
-		<juci-config-heading>{{ 'Band Steering' | translate }}</juci-config-heading>
-		<!--<juci-config-info>{{ 'status.wifi.info' | translate }}</juci-config-info>-->
-		<div class="alert alert-default"><h3>{{ 'Status' | translate }}</h3><pre>{{data.bsd_status}}</pre></div>
-			<div class="alert alert-default"><h3>{{ 'Log' | translate }}</h3><pre>{{data.bsd_log}}</pre></div>
+		<juci-config-heading>
+			{{ 'Band Steering' | translate }}
+		</juci-config-heading>
+		<div class="alert alert-default">
+			<h3>{{ 'Status' | translate }}</h3>
+			<h4 ng-show="!data.bsd_status.length">{{ 'No status available'|translate}}</h4>
+			<table class="table table-bordered" ng-show="data.bsd_status.length">
+				<tr>
+					<th>{{'Station MAC'|translate}}</th>
+					<th>{{'Interface'|translate}}</th>
+					<th>{{'Timestamp'|translate}}</th>
+					<th>{{'TX Rate'|translate}}</th>
+					<th>{{'RSSI'|translate}}</th>
+					<th>{{'Bounce'|translate}}</th>
+					<th>{{'Picky'|translate}}</th>
+					<th>{{'PSTA'|translate}}</th>
+					<th>{{'Dual Band'|translate}}</th>
+				</tr>
+				<tr ng-repeat="sta in data.bsd_status track by $index">
+					<td>{{sta.sta_mac}}</td>
+					<td>{{sta.interface}} ({{sta.freq}})</td>
+					<td>{{sta.timestamp}}</td>
+					<td>{{sta.tx_rate}}</td>
+					<td>{{sta.rssi}}</td>
+					<td>{{sta.bounce|capitalize}}</td>
+					<td>{{sta.picky|capitalize}}</td>
+					<td>{{sta.psta|capitalize}}</td>
+					<td>{{sta.dualband|capitalize}}</td>
+				</tr>
+			</table>
+			<div class="alert alert-default">
+			<h3>{{ 'Log' | translate }}</h3>
+			<h4 ng-show="!data.bsd_logs.length">{{ 'No logs available'|translate}}</h4>
+			<table class="table table-bordered" ng-show="data.bsd_logs.length">
+				<tr>
+					<th>{{'Timestamp'|translate}}</th>
+					<th>{{'Station MAC'|translate}}</th>
+					<th>{{'From Channel'|translate}}</th>
+					<th>{{'To Channel'|translate}}</th>
+					<th>{{'Reason'|translate}}</th>
+					<th>{{'Description'|translate}}</th>
+				</tr>
+				<tr ng-repeat="log in data.bsd_logs track by $index">
+					<td>{{log.timestamp}}</td>
+					<td>{{log.sta_mac}}</td>
+					<td>{{log.from_ch}}</td>
+					<td>{{log.to_ch}}</td>
+					<td>{{log.reason}}</td>
+					<td>{{log.description|capitalize}}</td>
+				</tr>
+			</table>
+		</div>
 	</div>
 </juci-layout-with-sidebar>
