@@ -189,7 +189,6 @@ case "$1" in
 				json_get_var port port 0
 				json_get_var auto auto 1
 				validate_arguments_tptest "$host" "$testmode" "$packetsize_up" "$packetsize_down" "$port" "$auto" && {
-					echo "ok arguments" >/dev/console
 					if [ $auto -eq 1 ]; then
 						diagnostics -U -s $seq -C tptest -a -t $testmode -h $host -p $port >/dev/null 2>&1 &
 					else
