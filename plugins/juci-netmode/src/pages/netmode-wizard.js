@@ -75,7 +75,7 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 					}
 				]
 			})).done(function(ret){
-				$rpc.$call("repeater", "set_creds", { file: filename }).fail(function(e){
+				$rpc.$call("repeater", "set_creds", { file: filename, from_gui: "true" }).fail(function(e){
 					console.log(e);
 				});
 				$scope.config.state = "done";
@@ -219,9 +219,16 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 				$wireless.getScanResults({ radio: nm.radio }).done(function(result){
 					if(!result)
 						return;
-					$scope.access_points = result.map(function(ap){
+					var filtered = [];
+					result.forEach(function(ap){
+						var found = filtered.find(function(f_ap){return f_ap.ssid === ap.ssid;});
+						if(!found)
+							filtered.push(ap);
+					});
+					$scope.access_points = filtered.map(function(ap){
 						return { value: ap.ssid, label: ap.ssid, encryption: ap.encryption };
 					});
+
 					var index = 0;
 					$scope.access_points = $scope.access_points.sort(function(a, b){
 						if(a.value && b.value)
