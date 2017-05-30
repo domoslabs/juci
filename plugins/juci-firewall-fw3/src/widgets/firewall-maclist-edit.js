@@ -30,6 +30,11 @@ JUCI.app
 	};  
 })
 .controller("firewallMaclistEdit", function($scope, $network){ 
+	$scope.$watch("macList", function(){
+		if(!$scope.macList)
+			return;
+		$scope.selectedMAC = "";
+	});
 	$network.getConnectedClients().done(function(clients){
 		$scope.connectedHosts = clients.map(function(client){
 			return { 
