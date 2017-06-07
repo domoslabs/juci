@@ -157,7 +157,6 @@ JUCI.app
 				var ip = [];
 				var defaultroute = [];
 				var contypes = [];
-				var dslDown = "";
 				var dns = [];
 				var linkspeed = "";
 				async.eachSeries($scope.wans, function(wan, cb){
@@ -212,7 +211,6 @@ JUCI.app
 					$scope.data.ip = ip;
 					$scope.data.defaultroute = defaultroute;
 					$scope.data.contypes = contypes;
-					$scope.data.dslDown = dslDown;
 					$scope.data.dns = dns;
 					$scope.data.linkspeed = linkspeed;
 					Object.keys($scope.data).map(function(k){
