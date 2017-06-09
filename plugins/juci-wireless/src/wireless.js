@@ -216,6 +216,13 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"rssi_threshold":{ dvalue: -75, type: Number },
 		"bw_util":	{ dvalue: 60, type: Number }
 	});
+	UCI.wireless.$registerSectionType("apsteering", {
+		"enabled":	{ dvalue: false, type: Boolean },
+		"monitor_interval":	{ dvalue: 10, type: Number },
+		"rssi_threshold":{ dvalue: -80, type: Number },
+		"reassoc_timer":{ dvalue: 5, type: Number },
+		"retry_interval":	{ dvalue: 3600, type: Number }
+	});
 	UCI.wireless.$registerSectionType("wifi-schedule", {
 		"days":		{ dvalue: [], type: Array, allow: ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], validator: UCI.validators.WeekDayListValidator},
 		"time":		{ dvalue: "", type: String, validator: UCI.validators.TimespanValidator }
