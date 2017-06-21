@@ -837,7 +837,7 @@ msgstr "無線詳細"
 # plugins/juci-wireless/src/pages/wireless-devices.html
 #, fuzzy
 msgid "wifi.radios.info"
-msgstr "wifi.radios.info"
+msgstr "WiFiラジオ.インフォ"
 
 # plugins/juci-wireless/src/pages/wireless-band-steering-status.html
 msgid "Ping results"
@@ -873,7 +873,7 @@ msgstr "ログ"
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-wireless/src/pages/wireless-link-to-interfaces.html
 msgid "wifi.interfaces.info"
-msgstr "wifi.インターフェース.インフォ"
+msgstr "WiFi.インターフェース.インフォ"
 
 # plugins/juci-wireless/src/pages/wireless-schedule.html
 msgid "WiFi Scheduling"
@@ -881,7 +881,7 @@ msgstr "Wi-Fiスケジュール"
 
 # plugins/juci-wireless/src/pages/wireless-schedule.html
 msgid "wifi.schedule.info"
-msgstr "wifi.スケジュール.インフォ"
+msgstr "WiFi.スケジュール.インフォ"
 
 # plugins/juci-wireless/src/pages/wireless-schedule.html
 msgid "Schedule Function"
@@ -917,11 +917,11 @@ msgstr "チャネル："
 
 # plugins/juci-wireless/src/pages/wireless-band-steering.html
 msgid "wifi.band-steering.info"
-msgstr "wifi.バンド-セッティング.インフォ"
+msgstr "WiFi.バンド-セッティング.インフォ"
 
 # plugins/juci-wireless/src/pages/wireless-band-steering.html
 msgid "wifi.band-steering.dualband-warning"
-msgstr "wifi.バンド-ステアリング.デュアルバンド警告"
+msgstr "WiFi.バンド-ステアリング.デュアルバンド警告"
 
 # plugins/juci-wireless/src/pages/wireless-band-steering.html
 msgid "Steering Policy"
@@ -945,7 +945,7 @@ msgstr "一般Wi-Fi設定"
 
 # plugins/juci-wireless/src/pages/wireless-general.html
 msgid "wifi.general.info"
-msgstr "wifi.一般.インフォ"
+msgstr "WiFi.一般.インフォ"
 
 # plugins/juci-wireless/src/pages/wireless-general.html
 msgid "WiFi Network"
@@ -978,7 +978,7 @@ msgstr "MACフィルター"
 
 # plugins/juci-wireless/src/pages/wireless-filtering.html
 msgid "wifi.macfilter.info"
-msgstr "wifi.MACフィルタ.インフォ"
+msgstr "WiFi.MACフィルタ.インフォ"
 
 # plugins/juci-wireless/src/pages/wireless-filtering.html
 msgid "You cannot enable MAC Filtering on a WEP protected wireless interface!"
@@ -1049,7 +1049,7 @@ msgstr "WPS設定"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
 msgid "wifi.wps.info"
-msgstr "wifi.wps.インフォ"
+msgstr "WiFi.wps.インフォ"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
 msgid "Enable WPS on"
