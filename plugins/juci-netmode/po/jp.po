@@ -7,75 +7,77 @@ msgstr ""
 "Language-Team: \n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.2\n"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.js
 msgid "This network is encrypted, Please enter encryption key"
-msgstr ""
+msgstr "このネットワークは暗号化されています。暗号化キーを入力して下さい"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.js
 msgid "Couldn't save config!"
-msgstr ""
+msgstr "設定が保存できません"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.js
 msgid "Couldn't save configuration"
-msgstr ""
+msgstr "設定が保存できません"
 
 # plugins/juci-netmode/src/widgets/overview-netmode.js
 msgid "Select Profile"
-msgstr ""
+msgstr "プロファイル選択"
 
 # plugins/juci-netmode/src/widgets/overview-netmode.js
 msgid ""
 "Changing netmode will reset your configuration completely to match that "
 "netmode. Do you want to continue?"
 msgstr ""
+"netmodeを変更すると、そのnetmodeに一致する様に設定が完全にリセットされます。 "
+"続けたいですか？"
 
 # plugins/juci-netmode/src/widgets/overview-netmode.js
 msgid "No profile selected"
-msgstr ""
+msgstr "プロファイルが選択されていません"
 
 # plugins/juci-netmode/src/widgets/overview-clientmode.js
 msgid "You must give a SSID to connect"
-msgstr ""
+msgstr "接続するにはSSIDを指定する必要があります"
 
 # plugins/juci-netmode/src/widgets/overview-clientmode.js
 msgid "Pleace select an AP"
-msgstr ""
+msgstr "APを選択してください"
 
 # plugins/juci-netmode/src/widgets/overview-clientmode.js
 msgid "You must enter password for thiss SSID"
-msgstr ""
+msgstr "このSSIDのパスワードを入力する必要があります"
 
 # plugins/juci-netmode/src/widgets/overview-clientmode.js
 msgid "Attempting to Pair"
-msgstr ""
+msgstr "ペアリングしようとしています"
 
 # plugins/juci-netmode/src/widgets/overview-clientmode.js
 msgid "Scanning for APs"
-msgstr ""
+msgstr "APスキャン"
 
 # plugins/juci-netmode/src/widgets/overview-clientmode.html
 msgid "Extender/Repeater"
-msgstr ""
+msgstr "中継器"
 
 # plugins/juci-netmode/src/widgets/overview-clientmode.html
 msgid "WPS"
-msgstr ""
+msgstr "WPS"
 
 # plugins/juci-netmode/src/widgets/overview-clientmode.html
 msgid "(within 2 minutes)"
-msgstr ""
+msgstr "(2分以内)"
 
 # plugins/juci-netmode/src/widgets/overview-clientmode.html
 msgid "Pair"
-msgstr ""
+msgstr "ペア"
 
 # plugins/juci-netmode/src/widgets/overview-clientmode.html
 msgid "Manual setup"
-msgstr ""
+msgstr "手動設定"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-netmode/src/widgets/overview-clientmode.html
@@ -84,121 +86,123 @@ msgstr ""
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "SSID"
-msgstr ""
+msgstr "SSID"
 
 # plugins/juci-netmode/src/widgets/overview-clientmode.html
 msgid "Key"
-msgstr ""
+msgstr "キー"
 
 # plugins/juci-netmode/src/widgets/overview-clientmode.html
 msgid "Scan for available APs"
-msgstr ""
+msgstr "利用可能なAPをスキャンする"
 
 # plugins/juci-netmode/src/widgets/overview-clientmode.html
 msgid "Connect"
-msgstr ""
+msgstr "接続する"
 
 # plugins/juci-netmode/src/widgets/overview-clientmode.html
 msgid "Select AP"
-msgstr ""
+msgstr "AP選択"
 
 # plugins/juci-netmode/src/widgets/overview-clientmode.html
 msgid "Encryption key"
-msgstr ""
+msgstr "暗号化キー"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-netmode/src/widgets/overview-netmode-small.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-netmode/src/widgets/overview-netmode.html
 msgid "Profile"
-msgstr ""
+msgstr "プロファイル"
 
 # plugins/juci-netmode/src/widgets/netmode-picker.html
 msgid "Select Preset"
-msgstr ""
+msgstr "プリセット選択"
 
 # plugins/juci-netmode/src/widgets/overview-netmode.html
 msgid "No profiles available"
-msgstr ""
+msgstr "プロファイルがありません"
 
 # plugins/juci-netmode/src/widgets/overview-netmode.html
 msgid "Change Profile"
-msgstr ""
+msgstr "プロファイル変更"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "Select if you want your device in Router or WiFi Extender/Repeater Mode"
 msgstr ""
+"このデバイスをルーターモードまたは中継器モードのどちらで使用するか選択してく"
+"ださい。"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "WiFi Extender/Repeater Mode"
-msgstr ""
+msgstr "WiFiエクステンダ/リピータモード"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "Router Mode"
-msgstr ""
+msgstr "ルーターモード"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "Skip"
-msgstr ""
+msgstr "スキップ"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "Once"
-msgstr ""
+msgstr "一度"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "Next"
-msgstr ""
+msgstr "次"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "Select Network"
-msgstr ""
+msgstr "ネットワーク選択"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "Scan"
-msgstr ""
+msgstr "スキャン"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "Scanning"
-msgstr ""
+msgstr "走査"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "Password"
-msgstr ""
+msgstr "パスワード"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "Show Password"
-msgstr ""
+msgstr "パスワードを表示する"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "Back"
-msgstr ""
+msgstr "戻る"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "Separate WiFi names"
-msgstr ""
+msgstr "個別のWi-Fi名"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "Welcome, here you configure your WiFi Extender/Repeater"
-msgstr ""
+msgstr "ようこそ、ここであなたのWiFi Extender / Repeaterを設定します"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "Configure your Extender/Repeater"
-msgstr ""
+msgstr "中継器の設定"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "Configure your WiFi settings"
-msgstr ""
+msgstr "Wi-Fiを設定する"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "WiFi Extender/Repeater setup completed"
-msgstr ""
+msgstr "Wi-Fi中継器の設定が完了しました"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid ""
 "Your Extender/Repeater setup is now completed. You will likely loose "
 "connection to your box."
-msgstr ""
+msgstr "中継器の設定が完了しました。 一時的に接続が切れることがあります。"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "menu-netmode-wizard-title"
-msgstr ""
+msgstr "メニュー-ネットモード-ウィザード-タイトル"

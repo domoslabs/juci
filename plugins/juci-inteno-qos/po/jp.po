@@ -7,37 +7,38 @@ msgstr ""
 "Language-Team: \n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.2\n"
 
 # plugins/juci-inteno-qos/src/main.js
 msgid "Low"
-msgstr ""
+msgstr "低"
 
 # plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+#, fuzzy
 msgid "Enabled"
-msgstr ""
+msgstr "有効"
 
 # plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
 msgid "Download Speed"
-msgstr ""
+msgstr "ダウンロードスピード"
 
 # plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
 msgid "Upload Speed"
-msgstr ""
+msgstr "アップロードスピード"
 
 # plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
 msgid "New Class"
-msgstr ""
+msgstr "新クラス"
 
 # plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
 msgid "New Classgroup"
-msgstr ""
+msgstr "新クラスグループ"
 
 # plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
 msgid "New Interface"
-msgstr ""
+msgstr "新しいインターフェース"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.js
@@ -52,179 +53,180 @@ msgstr ""
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "All"
-msgstr ""
+msgstr "全て"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.js
 msgid "TCP"
-msgstr ""
+msgstr "TCP"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.js
 msgid "UDP"
-msgstr ""
+msgstr "UDP"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.js
 msgid "ICMP"
-msgstr ""
+msgstr "ICMP"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.js
 msgid "End value has to be larger than start value."
-msgstr ""
+msgstr "終了値は開始値より大きくなければなりません。"
 
 # plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
 msgid "Enable QoS"
-msgstr ""
+msgstr "QoS有効化"
 
 # plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
 msgid "Classification Group"
-msgstr ""
+msgstr "分類グループ"
 
 # plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
 msgid "Calculate Overhead"
-msgstr ""
+msgstr "オーバーヘッドを計算する"
 
 # plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
 msgid "Limit Download Speed"
-msgstr ""
+msgstr "ダウンロードスピード制限"
 
 # plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
 msgid "Limit Upload Speed"
-msgstr ""
+msgstr "アップロードスピード制限"
 
 # plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
 msgid "Acceleration will be disabled when QoS is enabled"
-msgstr ""
+msgstr "QoSが有効な場合、アクセラレーションは無効になります"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
 msgid "Priority"
-msgstr ""
+msgstr "優先度"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
 msgid "Average Rate"
-msgstr ""
+msgstr "平均レート"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
 msgid "Limit Rate"
-msgstr ""
+msgstr "レート制限"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Packet Size"
-msgstr ""
+msgstr "パケットサイズ"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
 msgid "Packet Delay"
-msgstr ""
+msgstr "パケットディレイ"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
 msgid "Max Size"
-msgstr ""
+msgstr "最大サイズ"
 
 # plugins/juci-inteno-qos/src/widgets/new-class-modal.html
 msgid "Class name"
-msgstr ""
+msgstr "クラス名"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classgroups-edit.html
 msgid "Classes"
-msgstr ""
+msgstr "クラス"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classgroups-edit.html
 msgid "Add a new class"
-msgstr ""
+msgstr "新しいクラス追加"
 
 # plugins/juci-inteno-qos/src/widgets/new-classgroup-modal.html
 msgid "Classgroup name"
-msgstr ""
+msgstr "クラスグループ名"
 
 # plugins/juci-inteno-qos/src/widgets/add-bw-interface-edit.html
 msgid "Interface name"
-msgstr ""
+msgstr "インターフェース名"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Target"
-msgstr ""
+msgstr "ターゲット"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Protocol"
-msgstr ""
+msgstr "プロトコル"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Source Host"
-msgstr ""
+msgstr "ソースホスト"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Destination Host"
-msgstr ""
+msgstr "宛先ホスト"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Ports"
-msgstr ""
+msgstr "ポート"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Filter by port, when there are no ports no filter will be applied"
-msgstr ""
+msgstr "ポート単位でフィルタリングします。ポートがない場合、フィルタは適用されません。"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Source Ports"
-msgstr ""
+msgstr "ソースポート"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Destination Ports"
-msgstr ""
+msgstr "宛先ポート"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Port Range"
-msgstr ""
+msgstr "ポート範囲"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Precedence"
-msgstr ""
+msgstr "優先順位"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Direction"
-msgstr ""
+msgstr "方向"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Mark"
-msgstr ""
+msgstr "マーク"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+#, fuzzy
 msgid "Connbytes"
-msgstr ""
+msgstr "Connbytes"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "TCP Flags"
-msgstr ""
+msgstr "TCPフラグ"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "tos"
-msgstr ""
+msgstr "ToS"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "dscp"
-msgstr ""
+msgstr "DSCP"
 
 # plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
 msgid "Quality of service"
-msgstr ""
+msgstr "サービス品質(QoS)"
 
 # plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
 msgid "Interface"
-msgstr ""
+msgstr "インターフェース"
 
 # plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
 msgid "Class"
-msgstr ""
+msgstr "クラス"
 
 # plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
 msgid "Classgroup"
-msgstr ""
+msgstr "クラスグループ"
 
 # plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
 msgid "Classify"
-msgstr ""
+msgstr "分類"
 
 # plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
 msgid "menu-juci-inteno-qos-title"
-msgstr ""
+msgstr "メニュー-JUCI-inteno-QoS-タイトル"

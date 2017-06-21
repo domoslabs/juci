@@ -7,238 +7,239 @@ msgstr ""
 "Language-Team: \n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.2\n"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid "Unknown"
-msgstr ""
+msgstr "不明"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid "Unnamed System"
-msgstr ""
+msgstr "名称未設定のシステム"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid "Agent "
-msgstr ""
+msgstr "エージェント"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid "without address"
-msgstr ""
+msgstr "アドレスなし"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid "Empty Com2sec"
-msgstr ""
+msgstr "空のCom2sec"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid "Group: "
-msgstr ""
+msgstr "グループ："
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid "Unknown Group"
-msgstr ""
+msgstr "不明なグループ"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid " Version: "
-msgstr ""
+msgstr "バージョン"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid "Unknown Version"
-msgstr ""
+msgstr "不明なバージョン"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid " SecName: "
-msgstr ""
+msgstr " SecName: "
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid "Unknown SecName"
-msgstr ""
+msgstr "不明なSecName"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid "Empty View"
-msgstr ""
+msgstr "空のビュー"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid " Read: "
-msgstr ""
+msgstr "読み取り："
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid " Write: "
-msgstr ""
+msgstr "書き込み："
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid "Persist: "
-msgstr ""
+msgstr "持続性："
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid " Priority: "
-msgstr ""
+msgstr "優先度："
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid " MIB OID: "
-msgstr ""
+msgstr "MIB OID："
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid " Program: "
-msgstr ""
+msgstr "プログラム："
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid "Are you sure you want to delete System?"
-msgstr ""
+msgstr "システムを削除してもよろしいですか？"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-snmpd/src/widgets/access-edit.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-snmpd/src/pages/snmpd-config.html
 msgid "Group"
-msgstr ""
+msgstr "グループ"
 
 # plugins/juci-snmpd/src/widgets/access-edit.html
 msgid "Context"
-msgstr ""
+msgstr "コンテキスト"
 
 # plugins/juci-snmpd/src/widgets/access-edit.html
 msgid "Version"
-msgstr ""
+msgstr "バージョン"
 
 # plugins/juci-snmpd/src/widgets/access-edit.html
 msgid "Level"
-msgstr ""
+msgstr "レベル"
 
 # plugins/juci-snmpd/src/widgets/access-edit.html
 msgid "Prefix"
-msgstr ""
+msgstr "プレフィックス"
 
 # plugins/juci-snmpd/src/widgets/access-edit.html
 msgid "Read"
-msgstr ""
+msgstr "読み取り"
 
 # plugins/juci-snmpd/src/widgets/access-edit.html
 msgid "Write"
-msgstr ""
+msgstr "書き込み"
 
 # plugins/juci-snmpd/src/widgets/access-edit.html
 msgid "Notify"
-msgstr ""
+msgstr "通知"
 
 # plugins/juci-snmpd/src/widgets/pass-edit.html
 msgid "Persist"
-msgstr ""
+msgstr "持続する"
 
 # plugins/juci-snmpd/src/widgets/pass-edit.html
 msgid "Priority"
-msgstr ""
+msgstr "優先度"
 
 # plugins/juci-snmpd/src/widgets/pass-edit.html
 msgid "MIB OID"
-msgstr ""
+msgstr "MIB OID"
 
 # plugins/juci-snmpd/src/widgets/pass-edit.html
 msgid "Program"
-msgstr ""
+msgstr "プログラム"
 
 # plugins/juci-snmpd/src/widgets/system-edit.html
 msgid "Location"
-msgstr ""
+msgstr "住所"
 
 # plugins/juci-snmpd/src/widgets/system-edit.html
 msgid "Contact"
-msgstr ""
+msgstr "連絡先"
 
 # plugins/juci-snmpd/src/widgets/system-edit.html
 msgid "Name"
-msgstr ""
+msgstr "名前"
 
 # plugins/juci-snmpd/src/widgets/system-edit.html
 msgid "Services"
-msgstr ""
+msgstr "サービス"
 
 # plugins/juci-snmpd/src/widgets/system-edit.html
 msgid "Description"
-msgstr ""
+msgstr "説明"
 
 # plugins/juci-snmpd/src/widgets/system-edit.html
 msgid "Object ID"
-msgstr ""
+msgstr "オブジェクトID"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-snmpd/src/widgets/group-edit.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-snmpd/src/widgets/com2sec-edit.html
 msgid "Community"
-msgstr ""
+msgstr "コミュニティ"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-snmpd/src/widgets/group-edit.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-snmpd/src/widgets/com2sec-edit.html
 msgid "Source"
-msgstr ""
+msgstr "送信元"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-snmpd/src/widgets/group-edit.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-snmpd/src/widgets/com2sec-edit.html
+#, fuzzy
 msgid "SecName"
-msgstr ""
+msgstr "SecName"
 
 # plugins/juci-snmpd/src/widgets/agent-edit.html
 msgid "Agent Address"
-msgstr ""
+msgstr "エージェントアドレス"
 
 # plugins/juci-snmpd/src/widgets/view-edit.html
 msgid "View Name"
-msgstr ""
+msgstr "表示名"
 
 # plugins/juci-snmpd/src/widgets/view-edit.html
 msgid "Type"
-msgstr ""
+msgstr "タイプ"
 
 # plugins/juci-snmpd/src/widgets/view-edit.html
 msgid "OID"
-msgstr ""
+msgstr "OID"
 
 # plugins/juci-snmpd/src/widgets/view-edit.html
 msgid "Mask"
-msgstr ""
+msgstr "マスク"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.html
 msgid "SNMP Configuration"
-msgstr ""
+msgstr "SNMP設定"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.html
 msgid "snmpd.config.info"
-msgstr ""
+msgstr "snmpd.設定.インフォ"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.html
 msgid "Enabled"
-msgstr ""
+msgstr "有効化"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.html
 msgid "System"
-msgstr ""
+msgstr "システム"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.html
 msgid "Agent"
-msgstr ""
+msgstr "エージェント"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.html
 msgid "Com2sec"
-msgstr ""
+msgstr "Com2sec"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.html
 msgid "View"
-msgstr ""
+msgstr "表示"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.html
 msgid "Access"
-msgstr ""
+msgstr "アクセス"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.html
 msgid "Pass"
-msgstr ""
+msgstr "パスワード"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.html
 msgid "menu-snmpd-config-title"
-msgstr ""
+msgstr "メニュー-snmpd-設定-タイトル"

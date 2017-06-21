@@ -7,50 +7,50 @@ msgstr ""
 "Language-Team: \n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.2\n"
 
 # plugins/juci-igmpinfo/src/pages/status-tv.js
 msgid "Unable to retreive igmptable from device!"
-msgstr ""
+msgstr "デバイスからigmptableを取得できません"
 
 # plugins/juci-igmpinfo/src/pages/status-tv.html
 msgid "IGMP TV Status"
-msgstr ""
+msgstr "IGMP TVステータス"
 
 # plugins/juci-igmpinfo/src/pages/status-tv.html
 msgid "status.tv.info"
-msgstr ""
+msgstr "ステータス.tv.インフォ"
 
 # plugins/juci-igmpinfo/src/pages/status-tv.html
 msgid "Connection Status"
-msgstr ""
+msgstr "接続ステータス"
 
 # plugins/juci-igmpinfo/src/pages/status-tv.html
 msgid "IGMP TV Channels"
-msgstr ""
+msgstr "IGMP TVチャネル"
 
 # plugins/juci-igmpinfo/src/pages/status-tv.html
 msgid "Group IP"
-msgstr ""
+msgstr "グループ IP"
 
 # plugins/juci-igmpinfo/src/pages/status-tv.html
 msgid "Client IP"
-msgstr ""
+msgstr "クライアントIP"
 
 # plugins/juci-igmpinfo/src/pages/status-tv.html
 msgid "LAN Port"
-msgstr ""
+msgstr "LANポート"
 
 # plugins/juci-igmpinfo/src/pages/status-tv.html
 msgid "WAN Port"
-msgstr ""
+msgstr "WAN ポート"
 
 # plugins/juci-igmpinfo/src/pages/status-tv.html
 msgid "Timeout"
-msgstr ""
+msgstr "タイムアウト"
 
 # plugins/juci-igmpinfo/src/pages/status-tv.html
 msgid "menu-status-tv-title"
-msgstr ""
+msgstr "メニュ-スターツ-TV-タイトル"

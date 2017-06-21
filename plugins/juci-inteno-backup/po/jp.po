@@ -7,18 +7,18 @@ msgstr ""
 "Language-Team: \n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.2\n"
 
 # plugins/juci-inteno-backup/src/pages/inteno-backup-settings.html
 msgid "Backup Settings"
-msgstr ""
+msgstr "バックアップ設定"
 
 # plugins/juci-inteno-backup/src/pages/inteno-backup-settings.html
 msgid "Select the services/settings to backup"
-msgstr ""
+msgstr "バックアップするサービス/設定を選択する"
 
 # plugins/juci-inteno-backup/src/pages/inteno-backup-settings.html
 msgid "menu-inteno-backup-settings-title"
-msgstr ""
+msgstr "メニュー-inteno-バックアップ-設定-タイトル"
