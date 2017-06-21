@@ -2236,7 +2236,7 @@ msgstr "パスワード"
 
 # plugins/juci-network-netifd/src/pages/netifd-status-clients.html
 msgid "menu-netifd-status-clients-title"
-msgstr "メニュー-netifg-ステータス-クライアント-タイトル"
+msgstr "メニュー-netifd-ステータス-クライアント-タイトル"
 
 # plugins/juci-network-netifd/src/pages/status-network-nat.html
 msgid "menu-status-network-nat-title"

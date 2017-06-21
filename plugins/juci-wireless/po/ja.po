@@ -1049,7 +1049,7 @@ msgstr "WPS設定"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
 msgid "wifi.wps.info"
-msgstr "WiFi.wps.インフォ"
+msgstr "WiFi.WPS.インフォ"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
 msgid "Enable WPS on"
