@@ -205,4 +205,4 @@ msgstr "中継器の設定が完了しました。 一時的に接続が切れ�
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "menu-netmode-wizard-title"
-msgstr "メニュー-ネットモード-ウィザード-タイトル"
+msgstr "ネットモード-ウィザード"

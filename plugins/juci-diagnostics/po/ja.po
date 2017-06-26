@@ -181,8 +181,8 @@ msgstr "スピードテスト"
 
 # plugins/juci-diagnostics/src/pages/status-diagnostics.html
 msgid "menu-status-diagnostics-title"
-msgstr "メニュー-ステータス-診断-タイトル"
+msgstr "ステータス-診断"
 
 # plugins/juci-diagnostics/src/pages/status-diagnostics-speedtest.html
 msgid "menu-status-diagnostics-speedtest-title"
-msgstr "メニュー-ステータス-診断-スピードテスト-タイトル"
+msgstr "ステータス-診断-スピードテスト"

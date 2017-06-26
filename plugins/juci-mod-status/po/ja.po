@@ -43,8 +43,8 @@ msgstr "ここをクリックするとデバイスをリスタートします。
 
 # plugins/juci-mod-status/src/pages/status.html
 msgid "menu-status-title"
-msgstr "メニュー-ステータス-タイトル"
+msgstr "ステータス"
 
 # plugins/juci-mod-status/src/pages/settings-restart.html
 msgid "menu-settings-restart-title"
-msgstr "メニュー-設定-リスタート-タイトル"
+msgstr "設定-リスタート"

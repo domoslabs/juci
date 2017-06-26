@@ -41,4 +41,4 @@ msgstr "MTU"
 
 # plugins/juci-ethernet/src/pages/internet-ethernet.html
 msgid "menu-internet-ethernet-title"
-msgstr "メニュー-インターネット-イーサネット-タイトル"
+msgstr "インターネット-イーサネット"

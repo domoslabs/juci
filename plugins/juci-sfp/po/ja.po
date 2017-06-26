@@ -29,4 +29,4 @@ msgstr "ROM値"
 
 # plugins/juci-sfp/src/pages/status-sfp.html
 msgid "menu-status-sfp-title"
-msgstr "メニュー-ステータス-SFP-タイトル"
+msgstr "ステータス-SFP"

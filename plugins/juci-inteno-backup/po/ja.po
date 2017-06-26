@@ -21,4 +21,4 @@ msgstr "バックアップするサービス/設定を選択する"
 
 # plugins/juci-inteno-backup/src/pages/inteno-backup-settings.html
 msgid "menu-inteno-backup-settings-title"
-msgstr "メニュー-inteno-バックアップ-設定-タイトル"
+msgstr "inteno-バックアップ-設定"

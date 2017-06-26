@@ -37,4 +37,4 @@ msgstr "最大"
 
 # plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.html
 msgid "menu-status-realtime-graphs-title"
-msgstr "メニュー-ステータス-リアルタイム-グラフ-タイトル"
+msgstr "ステータス-リアルタイム-グラフ"

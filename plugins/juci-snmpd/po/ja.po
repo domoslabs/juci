@@ -242,4 +242,4 @@ msgstr "パスワード"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.html
 msgid "menu-snmpd-config-title"
-msgstr "メニュー-snmpd-設定-タイトル"
+msgstr "snmpd-設定"

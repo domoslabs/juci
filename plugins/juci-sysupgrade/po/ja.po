@@ -268,8 +268,8 @@ msgstr "オンラインアップグレード"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "menu-settings-upgrade-title"
-msgstr "メニュー-設定-アップグレード-タイトル"
+msgstr "設定-アップグレード"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
 msgid "menu-settings-upgrade-options-title"
-msgstr "メニュー-設定-アップグレード-オプション-タイトル"
+msgstr "設定-アップグレード-オプション"

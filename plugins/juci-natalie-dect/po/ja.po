@@ -82,4 +82,4 @@ msgstr "ペアを解除する"
 
 # plugins/juci-natalie-dect/src/pages/voice-dect.html
 msgid "menu-voice-dect-title"
-msgstr "メニュー-ボイス-dect-タイトル"
+msgstr "ボイス-dect"

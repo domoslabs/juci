@@ -129,4 +129,4 @@ msgstr "CPE固有の設定を構成する"
 
 # plugins/juci-icwmp/src/pages/icwmp-config.html
 msgid "menu-icwmp-config-title"
-msgstr "メニュー-icwmp-設定-タイトル"
+msgstr "icwmp-設定"

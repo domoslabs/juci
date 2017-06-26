@@ -257,8 +257,8 @@ msgstr "プロトコル"
 
 # plugins/juci-upnp/src/pages/upnpd-status.html
 msgid "menu-upnpd-status-title"
-msgstr "メニュー-upnpd-システム-プロセス-タイトル"
+msgstr "upnpd-システム-プロセス"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "menu-upnpd-settings-title"
-msgstr "メニュー-upnpd-設定-タイトル"
+msgstr "upnpd-設定"

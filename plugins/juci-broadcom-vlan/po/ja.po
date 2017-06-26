@@ -83,4 +83,4 @@ msgstr "VLANデバイス"
 
 # plugins/juci-broadcom-vlan/src/pages/page-broadcom-ethernet-vlan.html
 msgid "menu-page-broadcom-ethernet-vlan-title"
-msgstr "メニュー-ページ-ブロードコム-イーサネット-VLAN-タイトル"
+msgstr "ページ-ブロードコム-イーサネット-VLAN"

@@ -30,4 +30,4 @@ msgstr "デフォルトグループ"
 
 # plugins/juci-cgroups/src/pages/juci-cgroups.html
 msgid "menu-juci-cgroups-title"
-msgstr "メニュー-JUCI-Cグループ-タイトル"
+msgstr "JUCI-Cグループ"

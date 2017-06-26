@@ -154,4 +154,4 @@ msgstr "認可SSHキー"
 
 # plugins/juci-dropbear/src/pages/settings-management-dropbear.html
 msgid "menu-settings-management-dropbear-title"
-msgstr "メニュー-設定-管理-dropbear-タイトル"
+msgstr "設定-管理-dropbear"

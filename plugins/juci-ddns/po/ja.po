@@ -135,4 +135,4 @@ msgstr "DDNS.設定.インフォ"
 
 # plugins/juci-ddns/src/pages/internet-services-ddns.html
 msgid "menu-internet-services-ddns-title"
-msgstr "メニュー-インターネット-サービス-DDNS-タイトル"
+msgstr "インターネット-サービス-DDNS"

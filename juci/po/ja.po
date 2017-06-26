@@ -514,24 +514,24 @@ msgstr "アクセスしようとしたページが見つかりませんでした
 
 # /home/reidar/git/juci/juci//src/pages/404.html
 msgid "menu-404-title"
-msgstr "メニュー-404-タイトル"
+msgstr "404"
 
 # /home/reidar/git/juci/juci//src/pages/login.html
 msgid "menu-login-title"
-msgstr "メニュー-ログイン-タイトル"
+msgstr "ログイン"
 
 # /home/reidar/git/juci/juci//src/pages/bootstrap.html
 msgid "menu-bootstrap-title"
-msgstr "メニュー-ブートストラップ-タイトル"
+msgstr "ブートストラップ"
 
 # /home/reidar/git/juci/juci//src/pages/status-about.html
 msgid "menu-status-about-title"
-msgstr "メニュー-ステータス-要約-タイトル"
+msgstr "ステータス-要約"
 
 # /home/reidar/git/juci/juci//src/pages/overview.html
 msgid "menu-overview-title"
-msgstr "メニュー-概要-タイトル"
+msgstr "概要"
 
 # /home/reidar/git/juci/juci//src/pages/default.html
 msgid "menu-default-title"
-msgstr "メニュー-デフォルト-タイトル"
+msgstr "デフォルト"

@@ -539,68 +539,68 @@ msgstr "uci config boardpanelがありません。"
 
 # plugins/juci-mod-system/src/pages/settings-system.html
 msgid "menu-settings-system-title"
-msgstr "メニュー-設定-システム-タイトル"
+msgstr "設定-システム"
 
 # plugins/juci-mod-system/src/pages/settings-energy.html
 msgid "menu-settings-energy-title"
-msgstr "メニュー-設定-エネルギー-タイトル"
+msgstr "設定-エネルギー"
 
 # plugins/juci-mod-system/src/pages/status-system-processes.html
 msgid "menu-status-system-processes-title"
-msgstr "メニュー-ステータス-システム-プロセス-タイトル"
+msgstr "ステータス-システム-プロセス"
 
 # plugins/juci-mod-system/src/pages/settings-services.html
 msgid "menu-settings-services-title"
-msgstr "メニュー-設定-サービス-タイトル"
+msgstr "設定-サービス"
 
 # plugins/juci-mod-system/src/pages/settings-connectivity-test.html
 msgid "menu-settings-connectivity-test-title"
-msgstr "メニュー-設定-コネクティビティー-テスト-タイトル"
+msgstr "設定-コネクティビティー-テスト"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "menu-settings-system-log-title"
-msgstr "メニュー-設定-システム-ログ-タイトル"
+msgstr "設定-システム-ログ"
 
 # plugins/juci-mod-system/src/pages/settings-password.html
 msgid "menu-settings-password-title"
-msgstr "メニュー-設定-パスワード-タイトル"
+msgstr "設定-パスワード"
 
 # plugins/juci-mod-system/src/pages/settings-hardware-leds.html
 msgid "menu-settings-hardware-leds-title"
-msgstr "メニュー-設定-ハードウェア-レッズ-タイトル"
+msgstr "設定-ハードウェア-レッズ"
 
 # plugins/juci-mod-system/src/pages/system.html
 msgid "menu-system-title"
-msgstr "メニュー-システム-タイトル"
+msgstr "システム"
 
 # plugins/juci-mod-system/src/pages/status-system.html
 msgid "menu-status-system-title"
-msgstr "メニュー-スターツ-システム-タイトル"
+msgstr "スターツ-システム"
 
 # plugins/juci-mod-system/src/pages/settings-users.html
 msgid "menu-settings-users-title"
-msgstr "メニュー-スターツ-ユーザ-タイトル"
+msgstr "スターツ-ユーザ"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "menu-settings-configuration-title"
-msgstr "メニュー-設定-コンフィギレーション-タイトル"
+msgstr "設定-コンフィギレーション"
 
 # plugins/juci-mod-system/src/pages/settings-hardware.html
 msgid "menu-settings-hardware-title"
-msgstr "メニュー-設定-ハードウェア-タイトル"
+msgstr "設定-ハードウェア"
 
 # plugins/juci-mod-system/src/pages/settings-management.html
 msgid "menu-settings-management-title"
-msgstr "メニュー-設定-管理-タイトル"
+msgstr "設定-管理"
 
 # plugins/juci-mod-system/src/pages/settings-hardware-buttons.html
 msgid "menu-settings-hardware-buttons-title"
-msgstr "メニュー-設定-ハードウェア-ボタン-タイトル"
+msgstr "設定-ハードウェア-ボタン"
 
 # plugins/juci-mod-system/src/pages/settings-uci.html
 msgid "menu-settings-uci-title"
-msgstr "メニュー-設定-uci-タイトル"
+msgstr "設定-uci"
 
 # plugins/juci-mod-system/src/pages/settings-system-timeservers.html
 msgid "menu-settings-system-timeservers-title"
-msgstr "メニュー-設定-システム-タイムサーバ-タイトル"
+msgstr "設定-システム-タイムサーバ"

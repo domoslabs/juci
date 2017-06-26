@@ -1113,52 +1113,52 @@ msgstr "お手持ちのデバイスに表示されているPINコードを入力
 
 # plugins/juci-wireless/src/pages/wireless-general.html
 msgid "menu-wireless-general-title"
-msgstr "メニュー-無線-一般-タイトル"
+msgstr "無線"
 
 # plugins/juci-wireless/src/pages/wireless-status-bs-data.html
 msgid "menu-wireless-status-bs-data-title"
-msgstr "メニュー-無線-ステータス-bs-data-タイトル"
+msgstr "無線-ステータス-bs-data"
 
 # plugins/juci-wireless/src/pages/wireless-link-to-interfaces.html
 msgid "menu-wireless-link-to-interfaces-title"
-msgstr "メニュー-無線-link-to-インターフェース-タイトル"
+msgstr "無線-link-to-インターフェース"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
 msgid "menu-wireless-wps-title"
-msgstr "メニュー-無線-wps-タイトル"
+msgstr "無線-wps"
 
 # plugins/juci-wireless/src/pages/wireless-status.html
 msgid "menu-wireless-status-title"
-msgstr "メニュー-無線-ステータス-タイトル"
+msgstr "無線-ステータス"
 
 # plugins/juci-wireless/src/pages/wireless-interfaces.html
 msgid "menu-wireless-interfaces-title"
-msgstr "メニュー-無線-インターフェース-タイトル"
+msgstr "無線-インターフェース"
 
 # plugins/juci-wireless/src/pages/wireless-filtering.html
 msgid "menu-wireless-filtering-title"
-msgstr "メニュー-無線-フィルタリング-タイトル"
+msgstr "無線-フィルタリング"
 
 # plugins/juci-wireless/src/pages/wireless-devices.html
 msgid "menu-wireless-devices-title"
-msgstr "メニュー-無線-デバイス-タイトル"
+msgstr "無線-デバイス"
 
 # plugins/juci-wireless/src/pages/wireless.html
 msgid "menu-wireless-title"
-msgstr "メニュー-無線-タイトル"
+msgstr "無線"
 
 # plugins/juci-wireless/src/pages/wireless-band-steering-status.html
 msgid "menu-wireless-band-steering-status-title"
-msgstr "メニュー-無線-バンド-ステアリング-ステータス-タイトル"
+msgstr "無線-バンド-ステアリング-ステータス"
 
 # plugins/juci-wireless/src/pages/wireless-schedule.html
 msgid "menu-wireless-schedule-title"
-msgstr "メニュー-無線-スケジュール-タイトル"
+msgstr "無線-スケジュール"
 
 # plugins/juci-wireless/src/pages/wireless-band-steering.html
 msgid "menu-wireless-band-steering-title"
-msgstr "メニュー-無線-バンド-ステアリング-タイトル"
+msgstr "無線-バンド-ステアリング"
 
 # plugins/juci-wireless/src/pages/wireless-status-scan.html
 msgid "menu-wireless-status-scan-title"
-msgstr "メニュー-無線-ステータス-スキャン-タイトル"
+msgstr "無線-ステータス-スキャン"

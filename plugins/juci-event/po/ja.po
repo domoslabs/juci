@@ -153,8 +153,8 @@ msgstr "サーバポート"
 
 # plugins/juci-event/src/pages/status-events.html
 msgid "menu-status-events-title"
-msgstr "メニュー-ステータス-イベント-タイトル"
+msgstr "ステータス-イベント"
 
 # plugins/juci-event/src/pages/event-log-config.html
 msgid "menu-event-log-config-title"
-msgstr "メニュー-イベント-ログ-設定-タイトル"
+msgstr "イベント-ログ-設定"

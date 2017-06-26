@@ -2236,32 +2236,32 @@ msgstr "パスワード"
 
 # plugins/juci-network-netifd/src/pages/netifd-status-clients.html
 msgid "menu-netifd-status-clients-title"
-msgstr "メニュー-netifd-ステータス-クライアント-タイトル"
+msgstr "netifd-ステータス-クライアント"
 
 # plugins/juci-network-netifd/src/pages/status-network-nat.html
 msgid "menu-status-network-nat-title"
-msgstr "メニュー-ステータス-ネットワーク-nat-タイトル"
+msgstr "ステータス-ネットワーク-nat"
 
 # plugins/juci-network-netifd/src/pages/status-network.html
 msgid "menu-status-network-title"
-msgstr "メニュー-ステータス-ネットワーク-タイトル"
+msgstr "ステータス-ネットワーク"
 
 # plugins/juci-network-netifd/src/pages/internet-routes.html
 msgid "menu-internet-routes-title"
-msgstr "メニュー-インターネット-ルーター-タイトル"
+msgstr "インターネット-ルーター"
 
 # plugins/juci-network-netifd/src/pages/internet-network.html
 msgid "menu-internet-network-title"
-msgstr "メニュー-インターネット-ネットワーク-タイトル"
+msgstr "インターネット-ネットワーク"
 
 # plugins/juci-network-netifd/src/pages/status-network-routes.html
 msgid "menu-status-network-routes-title"
-msgstr "メニュー-ステータス-ネットワーク-ルーター-タイトル"
+msgstr "ステータス-ネットワーク-ルーター"
 
 # plugins/juci-network-netifd/src/pages/internet-services.html
 msgid "menu-internet-services-title"
-msgstr "メニュー-インターネット-サービス-タイトル"
+msgstr "インターネット-サービス"
 
 # plugins/juci-network-netifd/src/pages/network.html
 msgid "menu-network-title"
-msgstr "メニュー-ステータス-システム-プロセス-タイトル"
+msgstr "ステータス-システム-プロセス"

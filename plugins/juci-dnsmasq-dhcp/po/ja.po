@@ -582,8 +582,8 @@ msgstr "分類セクションを作成すると、DHCPクライアントが分�
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-status.html
 msgid "menu-dhcp-status-title"
-msgstr "メニュー-DHCP-ステータス-タイトル"
+msgstr "DHCP-ステータス"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
 msgid "menu-dhcp-settings-title"
-msgstr "メニュー-DHCP-設定-タイトル"
+msgstr "DHCP-設定"
