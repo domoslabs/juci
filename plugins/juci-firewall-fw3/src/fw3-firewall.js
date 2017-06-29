@@ -282,7 +282,7 @@ UCI.firewall.$registerSectionType("rule", {
 	"dest_port":		{ dvalue: "", type: String, validator: UCI.validators.PortsOrRangeValidator() }, // can be a range
 	"proto":			{ dvalue: "all", type: String },
 	"target":			{ dvalue: "REJECT", type: String },
-	"family": 			{ dvalue: "ipv4", type: String },
+	"family": 			{ dvalue: "any", type: String },
 	"icmp_type": 		{ dvalue: [], type: Array },
 	"enabled": 			{ dvalue: true, type: Boolean },
 	"hidden": 			{ dvalue: false, type: Boolean },

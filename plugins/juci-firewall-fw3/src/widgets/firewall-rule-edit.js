@@ -41,7 +41,7 @@ JUCI.app
 	];
 
 	$scope.familyChoices = [
-		{ label: "All", value: "all" },
+		{ label: "Any", value: "any" },
 		{ label: "IPv4", value: "ipv4"},
 		{ label: "IPv6", value: "ipv6"}
 	];
