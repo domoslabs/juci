@@ -150,21 +150,19 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 			$scope.config.key = "";
 			$scope.loadAccessPoints();
 		}else{
-			$scope.onFinishWifiRouterNetmode();
+			$scope.config.state = "router";
 
-//			$scope.config.state = "router";
-
-//			$wireless.getInterfaces().done(function(data){
-//				if(!data || !data.length){
-//					console.log("error getting interfaces");
-//					return;
-//				}
-//				$scope.config.interfaces = data;
-//				$scope.config.key = data[0].key.value;
-//				$scope.config.ssid = data[0].ssid.value;
-//				$scope.config.ssid5 = data[0].ssid.value;
-//				$scope.$apply();
-//			}).fail(function(er){console.log(er);});
+			$wireless.getInterfaces().done(function(data){
+				if(!data || !data.length){
+					console.log("error getting interfaces");
+					return;
+				}
+				$scope.config.interfaces = data;
+				$scope.config.key = data[0].key.value;
+				$scope.config.ssid = data[0].ssid.value;
+				$scope.config.ssid5 = data[0].ssid.value;
+				$scope.$apply();
+			}).fail(function(er){console.log(er);});
 		}
 	}
 
