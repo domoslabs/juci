@@ -40,6 +40,8 @@ JUCI.app
 	});
 })
 .controller("overviewWidgetWiFi", function($scope, $rpc, $uci, $tr, gettext, $juciDialog, $events, $wireless, $config){
+	$scope.has_pbc = $rpc.$has("router.wps", "pbc");
+	$scope.has_showpin = $rpc.$has("router.wps", "showpin");
 	$scope.href = $config.getWidgetLink("overviewWidget00WiFi");
 	var longPress = false;
 	var timeout;
@@ -92,6 +94,7 @@ JUCI.app
 		});
 	}update_wps();
 	$events.subscribe("wps", function(e){$scope.wps.showModal = e.data.status === "active";});
+	$events.subscribe("wifi.wps", function(e){$scope.wps.showModal = e.data.status === "active";});
 	$events.subscribe("wifi-repeater-success", function(){$uci.wireless.$mark_for_reload();update_wifi();});
 
 	$scope.onEditSSID = function(iface){

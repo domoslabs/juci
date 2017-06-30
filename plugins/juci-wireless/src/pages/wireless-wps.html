@@ -13,7 +13,7 @@
 			</juci-config-lines>
 		</juci-config-section>
 		<div ng-show="showWps">
-			<juci-config-section>
+			<juci-config-section ng-show="has_pbc">
 				<h2 translate>WPS-PBC: Push Button on Device</h2>
 				<p translate>To pair your device, press Pair. Afterwards, press the corresponding button on the device you wish to connect. Your router will be open for pairing for 2 minutes after you pressed Pair.</p>
 				<juci-config-lines>
@@ -23,7 +23,7 @@
 				</juci-config-lines>
 			</juci-config-section>
 			<div ng-show="showExpert">
-				<juci-config-section>
+				<juci-config-section ng-show="has_showpin && has_setpin">
 					<h2 translate>WPS-REG: Router provides PIN</h2>
 					<p translate>Enter the WPS-PIN below on the device you wish to pair.</p>
 					<juci-config-lines>
@@ -35,7 +35,7 @@
 						</juci-config-line>
 					</juci-config-lines>
 				</juci-config-section>
-				<juci-config-section>
+				<juci-config-section ng-show="has_stapin">
 					<h2 translate>WPS-PIN: Another Device provides PIN</h2>
 					<p translate>Enter the WPS-PIN provided by the other device here.</p>
 					<juci-config-lines>
