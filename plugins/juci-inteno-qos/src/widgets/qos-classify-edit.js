@@ -34,8 +34,35 @@ JUCI.app
 	$scope.data = {
 		ports: [],
 		portrange: {from:"" , to:""},
-		connbytes: {from:"", to:""}
+		connbytes: {from:"", to:""},
+		original: {}
 	};
+	function getOriginalPortSetting(){ //Assuming only one of ports,dstports,srcports,portrange is set at startup
+		if($scope.rule.ports && $scope.rule.ports.value !== ""){
+			$scope.data.original.ports = $scope.rule.ports.value;
+			$scope.data.original.portfilter = "ports";
+			$scope.data.original.portdata = $scope.rule.ports.value.split(",").map(function(port){return {value: port }});
+		}
+		else if($scope.rule.dstports && $scope.rule.dstports.value !== ""){
+			$scope.data.original.dstports = $scope.rule.dstports.value;
+			$scope.data.original.portfilter = "dstports";
+			$scope.data.original.portdata = $scope.rule.dstports.value.split(",").map(function(port){return {value: port }});
+		}
+		else if($scope.rule.srcports && $scope.rule.srcports.value !== ""){
+			$scope.data.original.srcports = $scope.rule.srcports.value;
+			$scope.data.original.portfilter = "srcports";
+			$scope.data.original.portdata = $scope.rule.srcports.value.split(",").map(function(port){return {value: port }});
+		}
+		else if($scope.rule.portrange && $scope.rule.portrange.value !== ""){
+			$scope.data.original.portrange = $scope.rule.portrange.value;
+			$scope.data.original.portfilter = "portrange";
+			$scope.data.original.portdata = {
+				from: parseInt($scope.rule.portrange.value.split("-")[0]),
+				to: parseInt($scope.rule.portrange.value.split("-")[1])
+			}
+		}
+	}
+
 	$scope.directions = [ {value:'in',label:'In'}, {value:'out',label:'Out'}, {value:'',label:'Both'} ];
 	$scope.tcpflags = {};
 	$scope.tcpflags.all = [
@@ -45,6 +72,12 @@ JUCI.app
 		{value:'RST',label:'RST'},
 		{value:'URG',label:'URG'},
 		{value:'PSH',label:'PSH'}];
+	$scope.data.portfilters = [
+		{ label: 'Ports',	value: 'ports' },
+		{ label: 'Source',	value: 'srcports' },
+		{ label: 'Destination',	value: 'dstports' },
+		{ label: 'Port Range',	value: 'portrange' }
+	];
 	$scope.data.precedence = [
 		{ label: $tr(gettext("All")),	value: '' },
 		{ label: '0 (None) ',				value: '0 1 2 3 4' },
@@ -82,16 +115,21 @@ JUCI.app
 	});
 	$scope.$watch("rule", function(){
 		if(!$scope.rule) return;
+		getOriginalPortSetting();
 		$scope.tcpflags.selected = $scope.rule.tcpflags.value.split(",");
 		function isSelected(flag){ return $scope.tcpflags.selected.indexOf(flag) > -1; }
 		function makeSelected(obj){ obj.selected = isSelected(obj.value); }
 		$scope.tcpflags.all.forEach(makeSelected);
 
-		$scope.data.ports = $scope.rule.ports.value.split(",").map(function(port){return {value: port }});
-		if($scope.rule.srcports){
+		if($scope.rule.ports && $scope.rule.ports.value !== ""){
+			$scope.data.ports = $scope.rule.ports.value.split(",").map(function(port){return {value: port }});
+		}else{ $scope.data.ports = []; }
+
+		if($scope.rule.srcports && $scope.rule.srcports.value !== ""){
 			$scope.data.srcports = $scope.rule.srcports.value.split(",").map(function(port){return {value: port }});
 		}else{ $scope.data.srcports = []; }
-		if($scope.rule.dstports){
+
+		if($scope.rule.dstports && $scope.rule.dstports.value !== ""){
 			$scope.data.dstports = $scope.rule.dstports.value.split(",").map(function(port){return {value: port }});
 		}else{ $scope.data.dstports = []; }
 
@@ -107,6 +145,32 @@ JUCI.app
 		//if($scope.rule.pktsize && $scope.rule.pktsize.value===0){ $scope.rule.pktsize.value = ""; }
 	}, false);
 
+	//backend cannot handle multiple port filters simultaneously
+	//when port settings are changed, all except the chosen portsetting should be deleted
+	$scope.$watch("data.portfilter", function(portfilter, oldportfilter){
+		if(!$scope.rule){ return; }
+		if (portfilter === "portrange") {
+			$scope.data.portrange.from = "";
+			$scope.data.portrange.to = "";
+		}
+		else {
+			$scope.data.ports = [];
+			$scope.data.srcports = [];
+			$scope.data.dstports = [];
+		}
+		$scope.rule.ports.value = "";
+		$scope.rule.srcports.value = "";
+		$scope.rule.dstports.value = "";
+		$scope.rule.portrange.value = "";
+
+		if (portfilter === $scope.data.original.portfilter){
+			$scope.rule[portfilter].value = $scope.data.original[portfilter];
+			if (portfilter === "portrange") { //deep copy in case of portrange
+				$scope.data[portfilter] = {from:$scope.data.original.portdata.from, to:$scope.data.original.portdata.to}
+			}
+			else { $scope.data[portfilter] = $scope.data.original.portdata; }
+		}
+	}, true);
 	$scope.$watch("data.portrange", function(p){
 		if(!$scope.rule){ return; }
 		var from = $scope.data.portrange.from

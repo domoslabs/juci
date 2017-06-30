@@ -17,25 +17,37 @@
 			<juci-select ng-items="clients" ng-model="rule.dsthost.value" editable="true" placeholder="{{'All'|translate}}"></juci-select>
 		</div>
 	</juci-config-line>
-	<juci-config-line title="{{ 'Ports' | translate }}" help="{{ 'Filter by port, when there are no ports no filter will be applied' | translate }}">
-		<tags-input ng-model="data.ports" key-property="value" display-property="value" max-length="5" min-length="1" add-on-space="true" 
-					on-tag-removed="onAddPort()" on-tag-added="onAddPort()" add-on-paste="true" on-tag-adding="evalPort($tag)" placeholder="Add a port"></tags-input>
-	</juci-config-line>
-	<juci-config-line title="{{ 'Source Ports' | translate }}" help="{{ 'Filter by port, when there are no ports no filter will be applied' | translate }}">
-		<tags-input ng-model="data.srcports" key-property="value" display-property="value" max-length="5" min-length="1" add-on-space="true" 
-					on-tag-removed="onAddSrcPort()" on-tag-added="onAddSrcPort()" add-on-paste="true" on-tag-adding="evalPort($tag)" placeholder="Add a port"></tags-input>
-	</juci-config-line>
-	<juci-config-line title="{{ 'Destination Ports' | translate }}" help="{{ 'Filter by port, when there are no ports no filter will be applied' | translate }}">
-		<tags-input ng-model="data.dstports" key-property="value" display-property="value" max-length="5" min-length="1" add-on-space="true" 
-					on-tag-removed="onAddDstPort()" on-tag-added="onAddDstPort()" add-on-paste="true" on-tag-adding="evalPort($tag)" placeholder="Add a port"></tags-input>
+	<juci-config-line title="{{ 'Ports' | translate }}">
+		<juci-select ng-items="data.portfilters" ng-model="data.portfilter" placeholder="{{'Choose Filtering'|translate}}"/>
 	</juci-config-line>
 
-	<juci-config-line title="{{'Port Range'|translate}}" error="rule.portrange.error">
+
+
+
+
+	<juci-config-line ng-show="data.portfilter == 'ports'" help="{{'Source and Destinaton Ports'|translate}}">
+		<tags-input ng-model="data.ports" key-property="value" display-property="value" max-length="5" min-length="1" add-on-space="true" 
+					on-tag-removed="onAddPort()" on-tag-added="onAddPort()" add-on-paste="true" on-tag-adding="evalPort($tag)" placeholder="Add Ports"></tags-input>
+	</juci-config-line>
+	<juci-config-line ng-show="data.portfilter == 'srcports'">
+		<tags-input ng-model="data.srcports" key-property="value" display-property="value" max-length="5" min-length="1" add-on-space="true" 
+					on-tag-removed="onAddSrcPort()" on-tag-added="onAddSrcPort()" add-on-paste="true" on-tag-adding="evalPort($tag)" placeholder="Add  Source Ports"></tags-input>
+	</juci-config-line>
+	<juci-config-line ng-show="data.portfilter == 'dstports'">
+		<tags-input ng-model="data.dstports" key-property="value" display-property="value" max-length="5" min-length="1" add-on-space="true" 
+					on-tag-removed="onAddDstPort()" on-tag-added="onAddDstPort()" add-on-paste="true" on-tag-adding="evalPort($tag)" placeholder="Add Destination Port"></tags-input>
+	</juci-config-line>
+	<juci-config-line ng-show="data.portfilter == 'portrange'" help="{{'Source and Destinaton Port Range'|translate}}">
 		<div class="input-group">
 				<input type="number" min="0" class="form-control" ng-model="data.portrange.from" placeholder="From" style="max-width: 120px !important;"/>
 				<input type="number" min="0" class="form-control" ng-model="data.portrange.to" placeholder="To" style="max-width: 120px !important; float: right"/>
 		</div>
 	</juci-config-line>
+
+
+
+
+
 	<juci-config-line title="{{ 'Precedence' | translate }}">
 		<juci-select ng-items="data.precedence" ng-model="rule.dscp.value" placeholder="{{'All'|translate}}"/>
 	</juci-config-line>
