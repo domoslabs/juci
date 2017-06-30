@@ -19,7 +19,9 @@
 JUCI.app
 .controller("wirelessFilteringPage", function($scope, $wireless){
 	$wireless.getInterfaces().done(function(interfaces){
-		$scope.interfaces = interfaces;
+		$scope.interfaces = interfaces.filter(function(iface){
+			return iface.mode && iface.mode.value == "ap";
+		});
 		$scope.$apply();
 		$scope.match = function(src, match){
 			if(typeof src !== "string" || typeof match !== "string") return false;
