@@ -90,6 +90,7 @@ JUCI.app.run(function($uci){
 		});
 	}); 
 	function updateTable(){
+		if(!sys.system) sys.system = {};
 		$scope.systemStatusTbl.rows = [
 			[$tr(gettext("Hostname")), sys.system.name || $tr(gettext("N/A"))],
 			[$tr(gettext("Model")), sys.system.hardware || $tr(gettext("N/A"))],

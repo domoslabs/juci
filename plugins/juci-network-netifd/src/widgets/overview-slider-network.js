@@ -149,14 +149,16 @@ JUCI.app
 		if(self.def) return self.def.promise();
 		self.def = $.Deferred();
 		var count = 0;
+		var system = ($config.board && $config.board.system && $config.board.system.hardware) ?
+			String($config.board.system) : {};
 		
 		nodes.push({
 			id: ".root",
-			label: myString(String($config.board.system.hardware)),
-			title: $tr(gettext("Hardware Model")) + ": " + $config.board.system.hardware + "<br />" +
-					$tr(gettext("Base MAC")) + ": " + $config.board.system.basemac + "<br />" +
-					$tr(gettext("Software Version")) + ": " + $config.board.system.firmware + "<br />" +
-					$tr(gettext("Filesystem Type")) + ": " + $config.board.system.filesystem + "<br />",
+			label: myString(system.hw || $tr(gettext("N/A"))),
+			title: $tr(gettext("Hardware Model")) + ": " + system.hw || $tr(gettext("N/A")) + "<br />" +
+					$tr(gettext("Base MAC")) + ": " + system.basemac || $tr(gettext("N/A"))+ "<br />" +
+					$tr(gettext("Software Version")) + ": " + system.firmware || $tr(gettext("N/A"))+ "<br />" +
+					$tr(gettext("Filesystem Type")) + ": " + system.filesystem || $tr(gettext("N/A"))+ "<br />",
 			size: 60,
 			shape: "image",
 		});
