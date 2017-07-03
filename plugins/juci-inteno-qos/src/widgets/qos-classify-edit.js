@@ -61,6 +61,7 @@ JUCI.app
 				to: parseInt($scope.rule.portrange.value.split("-")[1])
 			}
 		}
+		$scope.data.portfilter = $scope.data.original.portfilter;
 	}
 
 	$scope.directions = [ {value:'in',label:'In'}, {value:'out',label:'Out'}, {value:'',label:'Both'} ];
