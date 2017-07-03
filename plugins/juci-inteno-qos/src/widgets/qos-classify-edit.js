@@ -146,10 +146,7 @@ JUCI.app
 		//if($scope.rule.pktsize && $scope.rule.pktsize.value===0){ $scope.rule.pktsize.value = ""; }
 	}, false);
 
-	//backend cannot handle multiple port filters simultaneously
-	//when port settings are changed, all except the chosen portsetting should be deleted
-	$scope.$watch("data.portfilter", function(portfilter, oldportfilter){
-		if(!$scope.rule){ return; }
+	function resetPortFilters(portfilter){
 		if (portfilter === "portrange") {
 			$scope.data.portrange.from = "";
 			$scope.data.portrange.to = "";
@@ -171,6 +168,13 @@ JUCI.app
 			}
 			else { $scope.data[portfilter] = $scope.data.original.portdata; }
 		}
+
+	}
+	//backend cannot handle multiple port filters simultaneously
+	//when port settings are changed, all except the chosen portsetting should be deleted
+	$scope.$watch("data.portfilter", function(portfilter){
+		if(!$scope.rule){ return; }
+		resetPortFilters(portfilter);
 	}, true);
 	$scope.$watch("data.portrange", function(p){
 		if(!$scope.rule){ return; }
@@ -179,6 +183,16 @@ JUCI.app
 		if(!from && !to){ $scope.rule.portrange.value = ""; }
 		if(from && !to){ $scope.rule.portrange.value = from.toString(); }
 		if(from && to){ $scope.rule.portrange.value = from.toString() + "-" + to.toString(); }
+	}, true);
+	$scope.$watch("rule.proto.value", function(proto){
+		if(!$scope.rule){ return; }
+		if(proto === "icmp"){
+			resetPortFilters();
+		}
+		else{
+			resetPortFilters($scope.data.original.portfilter);
+		}
+		
 	}, true);
 	$scope.$watch("data.connbytes", function(c){
 		if(!$scope.rule){ return; }
