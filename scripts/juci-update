@@ -76,3 +76,13 @@ echo "<!doctype html>
 if [ "$MODE" == "RELEASE" ]; then
 	gzip -f ${INDEX}
 fi
+
+if [ "$MODE" == "DEBUG" ]; then
+	file=`find $WWW/themes/ -type f | head -1`
+	echo "$file"
+	ls -la $file
+	if [ -f "$file" ]; then
+		echo "is a file"
+		ln -s $file $WWW/themes/theme.js
+	fi
+fi
