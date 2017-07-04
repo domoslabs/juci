@@ -79,6 +79,7 @@ JUCI.app.directive("firewallParentalControl", function(){
 			if(rule.uci_rule === "new"){
 				$uci.firewall.$create({
 					".type":"rule",
+					"name": "Parental Rule",
 					"parental":true,
 					"src_mac":[cl.macaddr],
 					"start_time":rule.time_start,
