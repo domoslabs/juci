@@ -1,9 +1,9 @@
 <div>
 	<juci-config-lines>
-		<juci-config-line title="{{'Interface'|translate}}" help="{{'Number of host that Must reply for the member to be considered up' | translate }}">
+		<juci-config-line title="{{'Interface'|translate}}">
 			<juci-select ng-model="member.interface.value" ng-items="interfaces" laceholder="{{'Select Interface'|translate}}">
 		</juci-config-line>
-		<juci-config-line title="{{'metric'|translate}}" help="{{'Members within one policy with a lower metric have precedence over higher metric members' | translate }}">
+		<juci-config-line title="{{'Metric'|translate}}" help="{{'Members within one policy with a lower metric have precedence over higher metric members' | translate }}">
 			<input type="number" min="0" class="form-control" ng-model="member.metric.value" />
 		</juci-config-line>
 		<juci-config-line title="{{'Weight'|translate}}" help="{{'Members with same metric will distribute load based on this weight value' | translate }}">

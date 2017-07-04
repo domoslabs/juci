@@ -6,11 +6,11 @@
 		<juci-config-line title="{{'Family'|translate}}">
 			<juci-select ng-items="families" ng-model="interface.family.value" placeholder="{{'Select Family'|translate}}"></juci-select>
 		</juci-config-line>
-		<juci-config-line title="{{'Host to ping'|translate}}">
+		<juci-config-line title="{{'Host(s) to ping'|translate}}">
 			<tags-input ng-model="track_ip" display-property="value" min-length="5" add-on-space="true" add-on-blur="false" placeholder="{{'Add Ping Host' | translate}}">
 			</tags-input>
 		</juci-config-line>
-		<juci-config-line title="{{'Interface Reliability'|translate}}" help="{{'Number of host that Must reply for the interface to be considered up' | translate }}">
+		<juci-config-line title="{{'Interface Reliability'|translate}}" help="{{'Number of host that must reply for the interface to be considered up' | translate }}">
 			<input type="number" min="0" class="form-control" ng-model="interface.reliability.value" />
 		</juci-config-line>
 		<juci-config-line title="{{'Number of Pings'|translate}}" help="{{'Number of pings to send to each Host' | translate }}">
