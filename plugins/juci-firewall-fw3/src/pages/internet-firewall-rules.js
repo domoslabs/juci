@@ -21,7 +21,7 @@
 JUCI.app
 .controller("InternetFirewallRulesPage", function($scope, $uci, $firewall, $tr, gettext, $juciConfirm){
 	$firewall.getRules().done(function(rules){
-		$scope.rules = rules;
+		$scope.rules = rules.filter(function(rule){ console.log(rule); return !rule.parental.value;});
 		$scope.rules.map(function(rule){
 			var values = [];
 			if(rule.src_ip.value && rule.src_ip.value.length === 1) values.push({ label: $tr(gettext("Source IP")), value: rule.src_ip.value[0] });
