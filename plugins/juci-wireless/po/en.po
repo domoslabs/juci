@@ -447,6 +447,9 @@ msgstr ""
 msgid "Broadcast SSID"
 msgstr ""
 
+msgid "AP Isolation"
+msgstr ""
+
 msgid "Wireless Multicast Forwarding"
 msgstr ""
 
