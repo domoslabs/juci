@@ -687,6 +687,10 @@ msgid "Broadcast SSID"
 msgstr "ブロードキャストSSID"
 
 # plugins/juci-wireless/src/widgets/uci.wireless.interface.html
+msgid "AP Isolation"
+msgstr "APアイソレーション"
+
+# plugins/juci-wireless/src/widgets/uci.wireless.interface.html
 msgid "Wireless Multicast Forwarding"
 msgstr "無線マルチキャストフォワーディング"
 

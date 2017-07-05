@@ -373,6 +373,9 @@ msgstr "WiFi verkon nimi (SSID)"
 msgid "Broadcast SSID"
 msgstr "Lähetä SSID"
 
+msgid "AP Isolation"
+msgstr "AP Eristäminen"
+
 msgid "Wireless Multicast Forwarding"
 msgstr "WiFi Multicast"
 
