@@ -285,6 +285,7 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"wmf_bss_enable":	{ dvalue: false, type: Boolean },
 		"bss_max":			{ dvalue: 32, type: Number, validator: UCI.validators.NumberLimitValidator(0, 128) },
 		"closed":			{ dvalue: false, type: Boolean },
+		"isolate":			{ dvalue: false, type: Boolean },
 		"disabled":			{ dvalue: false, type: Boolean },
 		"macfilter":			{ dvalue: 0, type: Number },
 		"maclist":			{ dvalue: [], type: Array } // match_each: /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/ }

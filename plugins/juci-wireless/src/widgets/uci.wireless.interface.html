@@ -9,6 +9,9 @@
 		<juci-config-line title="{{'Broadcast SSID'|translate}}">
 			<switch id="enabled" name="enabled" ng-model="interface.closed.value" on-change="onShowSSIDToggle()" class="green" inverted></switch>
 		</juci-config-line>
+		<juci-config-line title="{{'AP Isolation'|translate}}">
+			<switch id="enabled" name="enabled" ng-model="interface.isolate.value" class="green"></switch>
+		</juci-config-line>
 		<juci-config-line title="{{'Wireless Multicast Forwarding'|translate}}">
 			<switch id="enabled" name="enabled" ng-model="interface.wmf_bss_enable.value" class="green"></switch>
 		</juci-config-line>
