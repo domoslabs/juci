@@ -1,4 +1,5 @@
 <div>
+
 	<juci-config-line title="{{ 'Target' | translate }}">
 		<juci-select ng-items="targets" ng-model="rule.target.value" />
 	</juci-config-line>
@@ -20,11 +21,6 @@
 	<juci-config-line title="{{ 'Ports' | translate }}" ng-show="rule.proto.value!='icmp'">
 		<juci-select ng-items="data.portfilters" ng-model="data.portfilter" placeholder="{{'Choose Filtering'|translate}}"/>
 	</juci-config-line>
-
-
-
-
-
 	<juci-config-line ng-show="data.portfilter=='ports' && rule.proto.value!='icmp'" help="{{'Source and Destinaton Ports'|translate}}">
 		<tags-input ng-model="data.ports" key-property="value" display-property="value" max-length="5" min-length="1" add-on-space="true" 
 					on-tag-removed="onAddPort()" on-tag-added="onAddPort()" add-on-paste="true" on-tag-adding="evalPort($tag)" placeholder="Add Ports"></tags-input>
@@ -44,18 +40,17 @@
 		</div>
 	</juci-config-line>
 
-
-
-
-
 	<juci-config-line title="{{ 'Precedence' | translate }}">
 		<juci-select ng-items="data.precedence" ng-model="rule.dscp.value" placeholder="{{'All'|translate}}"/>
 	</juci-config-line>
 	<juci-config-line title="{{'Packet Size'|translate}}">
+<!--
 		<div class="input-group">
 			<input type="number" min=0 class="form-control" ng-model="rule.pktsize.value" style="max-width: 190px !important; float: right"/>
 			<span class="input-group-addon">bytes</span>
 		</div>
+-->
+		<juci-input-range ng-model="rule.pktsize.value"></juci-input-range>
 	</juci-config-line>
 	<juci-config-line title="{{'Direction'|translate}}">
 		<juci-select ng-items="directions" ng-model="rule.direction.value"></juci-select>

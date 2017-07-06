@@ -35,7 +35,7 @@ JUCI.app
 		ports: [],
 		portrange: {from:"" , to:""},
 		connbytes: {from:"", to:""},
-		original: {}
+		original: {},
 	};
 	function getOriginalPortSetting(){ //Assuming only one of ports,dstports,srcports,portrange is set at startup
 		if($scope.rule.ports && $scope.rule.ports.value !== ""){
@@ -178,8 +178,8 @@ JUCI.app
 	}, true);
 	$scope.$watch("data.portrange", function(p){
 		if(!$scope.rule){ return; }
-		var from = $scope.data.portrange.from
-		var to = $scope.data.portrange.to
+		var from = $scope.data.portrange.from;
+		var to = $scope.data.portrange.to;
 		if(!from && !to){ $scope.rule.portrange.value = ""; }
 		if(from && !to){ $scope.rule.portrange.value = from.toString(); }
 		if(from && to){ $scope.rule.portrange.value = from.toString() + "-" + to.toString(); }
