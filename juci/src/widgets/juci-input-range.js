@@ -10,12 +10,11 @@ JUCI.app
 			max: "@max",
 			delimiter: "@delimiter"
 		},
-		//require: "ngModel", 
+		require: "ngModel", 
 		controller: "juciInputRange"
 	};
 })
 .controller("juciInputRange", function($scope, $log, $parse, $attrs) {
-console.log("RUNNINT STUFF");
 	$scope.data = {
 		isRange: false,
 		from: "",
@@ -39,23 +38,22 @@ console.log("RUNNINT STUFF");
 		};
 	});
 
-	$scope.$watch("data", function(value){
+	$scope.$watch("data", function(value, oldvalue){
 		if(!$scope.data){ return; }
-		if($scope.data.isRange){ // if user opened with expand button indicating a range
+		if($scope.data.isRange){ // user opened with expand button indicating a range
 			if($scope.data.from){
 				if($scope.data.to){
 					$scope.model = String($scope.data.from) + $scope.delimiter + String($scope.data.to);
 				}
 			}
 		}
-		else{// if user closed with expand button indicating a single value 
+		else{// user closed with expand button indicating a single value 
 			if($scope.data.from){
 				$scope.model = $scope.data.from;
 			}
-//TODO: WHEN USER SETS "" SET MODEL TO ""
-			//else if($scope.data.from === ""){
-			//	$scope.model = "";
-			//}
+			else if($scope.data.from === null && oldvalue.from !== ""){ // writing empty string should clear it
+				$scope.model = "";
+			}
 		}
 	}, true);
 });
