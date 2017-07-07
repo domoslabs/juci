@@ -2248,11 +2248,11 @@ msgstr "ステータス-ネットワーク"
 
 # plugins/juci-network-netifd/src/pages/internet-routes.html
 msgid "menu-internet-routes-title"
-msgstr "インターネット-ルーター"
+msgstr "ルーター"
 
 # plugins/juci-network-netifd/src/pages/internet-network.html
 msgid "menu-internet-network-title"
-msgstr "インターネット-ネットワーク"
+msgstr "ネットワーク"
 
 # plugins/juci-network-netifd/src/pages/status-network-routes.html
 msgid "menu-status-network-routes-title"
@@ -2260,7 +2260,7 @@ msgstr "ステータス-ネットワーク-ルーター"
 
 # plugins/juci-network-netifd/src/pages/internet-services.html
 msgid "menu-internet-services-title"
-msgstr "インターネット-サービス"
+msgstr "サービス"
 
 # plugins/juci-network-netifd/src/pages/network.html
 msgid "menu-network-title"

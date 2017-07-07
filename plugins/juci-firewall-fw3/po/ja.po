@@ -662,36 +662,36 @@ msgstr "インターネット.ファイアーウォール.インフォ"
 
 # plugins/juci-firewall-fw3/src/pages/internet-parental-control.html
 msgid "menu-internet-parental-control-title"
-msgstr "インターネット-パレンタル-コントロール"
+msgstr "パレンタル-コントロール"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-port-mapping.html
 msgid "menu-internet-firewall-port-mapping-title"
-msgstr "インターネット-ファイアーウォール-ポート-マッピング"
+msgstr "ファイアーウォール-ポート-マッピング"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-forwarding.html
 msgid "menu-internet-firewall-forwarding-title"
-msgstr "インターネット-ファイアーウォール-フローウィング"
+msgstr "ファイアーウォール-フローウィング"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-zones.html
 msgid "menu-internet-firewall-zones-title"
-msgstr "インターネット-ファイアーウォール-ゾーン"
+msgstr "ファイアーウォール-ゾーン"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-services.html
 msgid "menu-internet-firewall-services-title"
-msgstr "インターネット-ファイアーウォール-サービス"
+msgstr "ファイアーウォール-サービス"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall.html
 msgid "menu-internet-firewall-title"
-msgstr "インターネット-ファイアーウォール"
+msgstr "ファイアーウォール"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-rules.html
 msgid "menu-internet-firewall-rules-title"
-msgstr "インターネット-ファイアールール"
+msgstr "ファイアールール"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-urlblock.html
 msgid "menu-internet-firewall-urlblock-title"
-msgstr "インターネット-ファイアーウォールバック"
+msgstr "ファイアーウォールバック"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-dmz.html
 msgid "menu-internet-firewall-dmz-title"
-msgstr "インターネット-ファイアーディーエムゼット"
+msgstr "ファイアーディーエムゼット"
