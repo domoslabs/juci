@@ -28,7 +28,7 @@ UCI.qos.$registerSectionType("classify", {
 	"srchost":	{ dvalue: '', type: String, validator: UCI.validators.IPAddressValidator },
 	"dsthost":	{ dvalue: '', type: String, validator: UCI.validators.IPAddressValidator },
 	"portrange":	{ dvalue: '', type: String, validator: UCI.validators.PortOrRangeValidator("-") },
-	"pktsize":	{ dvalue: '', type: Number },
+	"pktsize":	{ dvalue: '', type: String },
 	"tcpflags":	{ dvalue: '', type: String },
 	"mark":		{ dvalue: '', type: String, validator: UCI.validators.QOSMarkValidator },
 	"connbytes":	{ dvalue: '', type: String },
@@ -37,8 +37,8 @@ UCI.qos.$registerSectionType("classify", {
 	"comment":	{ dvalue: '', type: String }
 });
 UCI.qos.$registerSectionType("classgroup", {
-	"classes":	{ dvalue: ['Priority', 'Express', 'Normal', 'Bulk'], type: Array},
-	"default": 	{ dvalue: 'Normal', type: String }
+	"classes":	{ dvalue: [], type: Array},
+	"default": 	{ dvalue: '', type: String }
 });
 UCI.qos.$registerSectionType("interface", {
 	"classgroup":	{ dvalue: "Default", type: String },

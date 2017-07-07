@@ -1,10 +1,18 @@
 <div>
 	<juci-config-lines>
 		<juci-config-line title="{{'Priority'|translate}}">
-			<div class="input-group">
+			<div class="input-group" style="margin-bottom:20px">
 				<input type="number" min="1" class="form-control" ng-model="instance.priority.value" />
-				<span class="input-group-addon">%</span>
+				<span class="input-group-addon"> </span>
 			</div>
+				<div class="row" ng-repeat="p in priosums">
+					<div class="progress" style="text-align:center; background-color:#e5eef7">
+						{{p.cgrpname}}
+						<div class="progress-bar" role="progressbar" aria-valuenow="{{p.percentage}}" aria-valuemin="0" aria-valuemax="100" style="width:{{p.percentage}}%">
+						{{p.percentage}}%
+						</div>
+					</div>
+				</div>
 		</juci-config-line>
 		<juci-config-line title="{{'Average Rate'|translate}}">
 			<div class="input-group">
