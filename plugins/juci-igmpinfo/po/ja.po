@@ -53,4 +53,4 @@ msgstr "タイムアウト"
 
 # plugins/juci-igmpinfo/src/pages/status-tv.html
 msgid "menu-status-tv-title"
-msgstr "メニュ-スターツ-TV-タイトル"
+msgstr "スターツ-TV"

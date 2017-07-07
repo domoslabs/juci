@@ -327,4 +327,4 @@ msgstr "ルール"
 
 # plugins/juci-mwan3/src/pages/internet-mwan3.html
 msgid "menu-internet-mwan3-title"
-msgstr "メニュ-設定-エネルギー-タイトル"
+msgstr "設定-エネルギー"
