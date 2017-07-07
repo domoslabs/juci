@@ -96,11 +96,9 @@ msgid "Uplink port"
 msgstr "アップリンクポート"
 
 # plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
-#, fuzzy
 msgid "This is used to configure the ethernet port as internet uplink."
 msgstr "このポートはWANに設定されています。"
 
 # plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
-#, fuzzy
 msgid "menu-page-broadcom-ethernet-phy-title"
 msgstr "イーサネット"
