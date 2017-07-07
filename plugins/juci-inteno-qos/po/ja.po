@@ -229,4 +229,4 @@ msgstr "分類"
 
 # plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
 msgid "menu-juci-inteno-qos-title"
-msgstr "JUCI-inteno-QoS"
+msgstr "サービス品質"
