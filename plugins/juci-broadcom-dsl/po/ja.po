@@ -295,12 +295,12 @@ msgstr ""
 
 # plugins/juci-broadcom-dsl/src/pages/page-broadcom-dsl-status.html
 msgid "menu-page-broadcom-dsl-status-title"
-msgstr ""
+msgstr "DSL"
 
 # plugins/juci-broadcom-dsl/src/pages/page-broadcom-vdsl.html
 msgid "menu-page-broadcom-vdsl-title"
-msgstr ""
+msgstr "VDSL"
 
 # plugins/juci-broadcom-dsl/src/pages/page-broadcom-adsl.html
 msgid "menu-page-broadcom-adsl-title"
-msgstr ""
+msgstr "ADSL"

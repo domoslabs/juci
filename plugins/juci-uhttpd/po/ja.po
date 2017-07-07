@@ -49,4 +49,4 @@ msgstr "オブジェクト.メソッド"
 
 # plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
 msgid "menu-page-uhttpd-settings-title"
-msgstr "ページ-uhttpd-設定"
+msgstr "UHTTPの設定"
