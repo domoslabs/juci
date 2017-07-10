@@ -27,7 +27,10 @@
 			"ubus": {
 				"network.device": [
 					"status"
-				] 
+				],
+				"router.port": [
+					"status"
+				]
 			}, 
 			"uci": [
 				"layer2_interface_ethernet",
