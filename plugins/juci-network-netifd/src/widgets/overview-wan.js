@@ -50,6 +50,7 @@ JUCI.app
 	$scope.href = $config.getWidgetLink("overviewWidget11WAN");
 	JUCI.interval.repeat("wan_small_check_internet", 10000, function(next){
 		refresh();
+		next();
 	});
 	function refresh(){
 		$rpc.$call("juci.network", "online").done(function(res){
