@@ -1,12 +1,12 @@
 <div>
 	<juci-config-lines>
-		<juci-config-line title="{{'Priority'|translate}}">
+		<juci-config-line title="{{'Priority'|translate}}" help="{{'Sets the proportion of the bandwidth used by this class during link saturation.'|translate}}">
 			<div class="input-group" style="margin-bottom:20px">
 				<input type="number" min="1" class="form-control" ng-model="instance.priority.value" />
 				<span class="input-group-addon"> </span>
 			</div>
 				<div class="row" ng-repeat="p in priosums">
-					<div class="progress" style="text-align:center; background-color:#e5eef7">
+					<div class="progress" style="text-align:center; background-color:#e5eef7" title="{{instance.priority.value}} / {{p.total}}">
 						{{p.cgrpname}}
 						<div class="progress-bar" role="progressbar" aria-valuenow="{{p.percentage}}" aria-valuemin="0" aria-valuemax="100" style="width:{{p.percentage}}%">
 						{{p.percentage}}%
@@ -14,15 +14,15 @@
 					</div>
 				</div>
 		</juci-config-line>
-		<juci-config-line title="{{'Average Rate'|translate}}">
+		<juci-config-line title="{{'Average Rate'|translate}}" help="{{'Sets the proportion of the bandwidth used by this class on average.'|translate}}">
 			<div class="input-group">
-				<input type="number" min="1" class="form-control" ng-model="instance.avgrate.value" />
+				<input type="number" min="1" max="100" class="form-control" ng-model="instance.avgrate.value" />
 				<span class="input-group-addon">%</span>
 			</div>
 		</juci-config-line>
-		<juci-config-line title="{{'Limit Rate'|translate}}">
+		<juci-config-line title="{{'Limit Rate'|translate}}" help="{{'Sets the maximum allowed proportion of the bandwidth allowed for this class.'|translate}}">
 			<div class="input-group">
-				<input type="number" min="1" class="form-control" ng-model="instance.limitrate.value" />
+				<input type="number" min="1" max="100" class="form-control" ng-model="instance.limitrate.value" />
 				<span class="input-group-addon">%</span>
 			</div>
 		</juci-config-line>
@@ -34,7 +34,7 @@
 		</juci-config-line>
 		<juci-config-line title="{{'Packet Delay'|translate}}">
 			<div class="input-group">
-				<input type="number" min="1" class="form-control" ng-model="instance.packetdelay.value" />
+				<input type="number" min="0" class="form-control" ng-model="instance.packetdelay.value" />
 				<span class="input-group-addon">ms</span>
 			</div>
 		</juci-config-line>

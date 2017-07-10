@@ -36,7 +36,7 @@ JUCI.app
 		if(!$scope.instance){ return; }
 		$scope.priosums = $scope.classgroups.filter(grpHasClass).map(function(cgrp){
 			//return cgrp.name + " total: " + String(sum_prios(cgrp)) + "======" + String(100*value/sum_prios(cgrp)) + "%";
-			return {cgrpname:cgrp.name, percentage:(100*value/sum_prios(cgrp)).toFixed(2)};
+			return {cgrpname:cgrp.name, percentage:(100*value/sum_prios(cgrp)).toFixed(2), total:sum_prios(cgrp)};
 		});
 	}, true);
 });
