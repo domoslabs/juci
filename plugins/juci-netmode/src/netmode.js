@@ -14,6 +14,7 @@ UCI.netmode.$registerSectionType("mode", {
 	"dir":		{ dvalue: '', type: String },
 	"detail":	{ dvalue: '', type: String },
 	"repeaterready":{ dvalue: 0, type: Number },
+	"automode":	{ dvalue: false, type: Boolean },
 	"curmode":	{ dvalue: '', type: String }
 });
 UCI.netmode.$registerSectionType("netmode", {

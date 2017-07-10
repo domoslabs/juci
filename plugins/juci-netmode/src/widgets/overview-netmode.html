@@ -1,6 +1,9 @@
 <div>
 	<juci-overview-widget title="{{'Profile'|translate}}" icon="juci juci-profile" allow-overflow="true">
 		<juci-config-info>{{getExp() || ""}}</juci-config-info>
+		<juci-config-line title="{{'Auto-Mode'|translate}}" ng-show="has_capability('can-select-auto-mode')">
+			<switch id="enabled" name="enabled" ng-model="setup.automode.value" class="green"></switch>
+		</juci-config-line>
 		<div class="col-xs-12 col-sm-8" style="white-space: nowrap;">
 			<juci-select ng-show="allNetmodes.length" title="{{getFullDesc()}}"ng-model="data.selected" ng-items="allNetmodes" ></juci-select>
 			<p ng-show="!allNetmodes.length">{{'No profiles available'|translate}}</p>
