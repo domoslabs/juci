@@ -9,7 +9,7 @@ case "$1" in
 	call)
 		case "$2" in
 			has_link)
-				local input interface ifstatus up device present ret uplink_device
+				local input interface ifstatus up device present ret up
 				read input;
 				json_load "$input"
 				json_get_var interface interface
@@ -29,28 +29,17 @@ case "$1" in
 					exit
 				elif [ $up -eq 0 ]; then
 					json_get_var device device
-					case "$device" in
-						br-*)
-							ret=$(ubus call router.port status "{\"port\":\"$device\"}")
-							json_load "$ret"
-							json_get_var uplink_device uplink_device
-							json_init
-							if [ $uplink_device != "" ]; then
-								json_add_boolean "has_link" 1
-							else
-								json_add_boolean "has_link" 0
-							fi
-							json_dump
-						;;
-						*)
-							devstatus=$(devstatus "$device")
-							json_load "$devstatus"
-							json_get_var present present
-							json_init
-							json_add_boolean "has_link" $present
-							json_dump
-						;;
-					esac
+					ret=$(ubus call router.port status "{\"port\":\"$device\"}")
+					json_load "$ret" 2>/dev/null
+					up=""
+					json_get_var up up
+					json_init
+					if [ $up == "true" ]; then
+						json_add_boolean "has_link" 1
+					else
+						json_add_boolean "has_link" 0
+					fi
+					json_dump
 				else
 					json_init
 					json_add_string "error" "invalid parameters"
