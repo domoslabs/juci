@@ -150,12 +150,12 @@ JUCI.app
 		self.def = $.Deferred();
 		var count = 0;
 		var system = ($config.board && $config.board.system && $config.board.system.hardware) ?
-			String($config.board.system) : {};
+			$config.board.system : {};
 		
 		nodes.push({
 			id: ".root",
-			label: myString(system.hw || $tr(gettext("N/A"))),
-			title: $tr(gettext("Hardware Model")) + ": " + system.hw || $tr(gettext("N/A")) + "<br />" +
+			label: myString(system.hardware || $tr(gettext("N/A"))),
+			title: $tr(gettext("Hardware Model")) + ": " + system.hardware || $tr(gettext("N/A")) + "<br />" +
 					$tr(gettext("Base MAC")) + ": " + system.basemac || $tr(gettext("N/A"))+ "<br />" +
 					$tr(gettext("Software Version")) + ": " + system.firmware || $tr(gettext("N/A"))+ "<br />" +
 					$tr(gettext("Filesystem Type")) + ": " + system.filesystem || $tr(gettext("N/A"))+ "<br />",
