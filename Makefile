@@ -1,4 +1,4 @@
-DIRS-y:=juci 
+DIRS-y:=juci
 PLUGINS-y:=plugins
 
 BIN:=bin
@@ -8,8 +8,8 @@ CODE_DIR:=$(BIN)/www/js
 CSS_DIR:=$(BIN)/www/css
 TMP_DIR:=tmp
 TARGETS:=
-PHONY:=debug release clean prepare node_modules 
-CP:=cp -Rp 
+PHONY:=debug release clean prepare node_modules
+CP:=cp -Rp
 Q:=@
 INSTALL_DIR:=mkdir -p
 
@@ -22,9 +22,9 @@ define Plugin/Default
 	JAVASCRIPT-y:=
 	TEMPLATES-y:=
 	STYLES-y:=
-endef 
+endef
 
-define BuildDir-y 
+define BuildDir-y
 	$(eval BIN:=$(if $(local),bin,bin/$(1)))
 	$(eval $(call Plugin/Default))
 	$(eval BACKEND_BIN_DIR:=$(BIN)/usr/libexec/rpcd)
@@ -111,7 +111,7 @@ Makefile.local: ;
 
 JSLINT_FILES:=$(wildcard $(PLUGINS-y)/**/src/widgets/*.js $(PLUGINS-y)/**/src/pages/*.js)
 
-prepare: .cleaned	
+prepare: cleaned
 	@echo "======= JUCI CONFIG ========="
 	@echo "TARGETS: $(TARGETS)"
 	@echo "DIRS: $(DIRS-y)"
@@ -145,35 +145,35 @@ debug: prepare node_modules $(TARGETS)
 
 DOCS_MD:= README.md $(wildcard juci/docs/*.md docs/*.md $(PLUGINS-y)/**/docs/*.md) docs/juci.md
 DOCS_HTML:= $(patsubst %.md,%.html,$(DOCS_MD)) docs/juci.html
-PHONY+=docs  
-docs: $(DOCS_HTML) 
+PHONY+=docs
+docs: $(DOCS_HTML)
 	@echo -e "\033[0;33m [DOCS] $@ $^ \033[m"
 	$(Q)$(INSTALL_DIR) manual/js
 	$(Q)$(INSTALL_DIR) manual/css
 	@cp juci/src/lib/js/bootstrap.min.js manual/js/
 	@cp juci/src/lib/css/bootstrap.min.css manual/css/
-	@# remove juci generated md file 
+	@# remove juci generated md file
 	@rm -f docs/juci.md
 
 docs/juci.md: $(wildcard $(PLUGINS-y)/**/docs/*.md)
 	@# for md in $^; do sed -i "/%PLUGINS_TOC%/a [$$(head -n 1 $$md)]($$(basename $${md%.md}))" docs/juci.md; done
 	@./scripts/build_docs .
 
-%.html: %.md 
+%.html: %.md
 	@echo -e "\033[0;33m[DOC]: $^\033[m"
 	$(Q)$(INSTALL_DIR) manual
 	@ronn --pipe -f $^ > docs/.tmp.ronn
 	@cp docs/page.html.tpl docs/.tmp
 	@sed -i -e '/%CONTENT%/r docs/.tmp.ronn' -e 's///' docs/.tmp
-	@mv docs/.tmp $(addprefix manual/,$(notdir $@)) 
+	@mv docs/.tmp $(addprefix manual/,$(notdir $@))
 	@rm -f docs/.tmp.ronn
 
-install: 
+install:
 	$(INSTALL_DIR) $(BIN)/usr/bin/
 	@cp scripts/juci-update $(BIN)/usr/bin/
 
 .PHONY: $(PHONY)
 
-clean: 
+clean:
 	rm -rf ./bin ./tmp ./node_modules
 	rm -rf */template.pot
