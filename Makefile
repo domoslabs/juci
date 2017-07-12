@@ -104,6 +104,8 @@ ifeq ($(DESTDIR),)
 	DESTDIR:=/
 endif
 
+Makefile.local: ;
+
 .cleaned: Makefile Makefile.local
 	@make clean 
 	@touch .cleaned
