@@ -73,6 +73,7 @@ $(PLUGIN_DIR)/po/template.pot: $(JAVASCRIPT_$(PLUGIN)) $(TEMPLATES_$(PLUGIN))
 	@echo "" >> $$@
 	@for file in `find $(PLUGIN_DIR)/src/pages/ -name "*.html"`; do PAGE=$$$${file%%.*}; echo -e "# $$$$file \nmsgid \"menu-$$$$(basename $$$$PAGE)-title\"\nmsgstr \"\"\n" >> $$@; done
 $(CODE_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js: $(TMP_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js $(TMP_DIR)/$(PLUGIN).css.js $(TMP_DIR)/$(PLUGIN).tpl.js
+	@echo -e "\033[0;32m[INSTALLING] $(PLUGIN)\033[m"
 	$(Q)$(INSTALL_DIR) "$$(dir $$@)"
 	$(Q)cat $$^ > $$@
 $(PLUGIN)-install: $(PLUGIN_DIR)/po/template.pot $(CODE_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js
@@ -107,11 +108,9 @@ endif
 	@make clean 
 	@touch .cleaned
 
-Makefile.local: ;
-
 JSLINT_FILES:=$(wildcard $(PLUGINS-y)/**/src/widgets/*.js $(PLUGINS-y)/**/src/pages/*.js)
 
-prepare: cleaned
+prepare: .cleaned
 	@echo "======= JUCI CONFIG ========="
 	@echo "TARGETS: $(TARGETS)"
 	@echo "DIRS: $(DIRS-y)"
@@ -140,8 +139,6 @@ debug: prepare node_modules $(TARGETS)
 	@echo -e "\033[0;33m [UPDATE] $@ \033[m"
 	@./scripts/juci-update $(BIN)/www DEBUG
 	@cp scripts/juci-update $(BIN)/usr/bin/
-	@rm -rf $(BIN)/www/themes/theme.js
-	@if [ -f $(BIN)/www/themes/juci-theme-inteno.js ]; then ln -s juci-theme-inteno.js $(BIN)/www/themes/theme.js; fi
 
 DOCS_MD:= README.md $(wildcard juci/docs/*.md docs/*.md $(PLUGINS-y)/**/docs/*.md) docs/juci.md
 DOCS_HTML:= $(patsubst %.md,%.html,$(DOCS_MD)) docs/juci.html
@@ -175,5 +172,6 @@ install:
 .PHONY: $(PHONY)
 
 clean:
+	@echo "===== CLEAN ====="
 	rm -rf ./bin ./tmp ./node_modules
 	rm -rf */template.pot
