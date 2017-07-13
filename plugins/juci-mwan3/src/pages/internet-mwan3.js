@@ -1,5 +1,5 @@
 JUCI.app
-.controller("InternetMwan3Page", function($scope, $uci, $juciConfirm, $juciDialog, $tr, gettext, $firewall){
+.controller("InternetMwan3Page", function($scope, $uci, $juciConfirm, $juciDialog, $tr, gettext, $firewall, $juciAlert){
 	$uci.$sync("mwan3").done(function(){
 		$scope.interfaces = $uci.mwan3["@interface"];
 		$scope.members = $uci.mwan3["@member"];
@@ -14,8 +14,10 @@ JUCI.app
 			});
 
 			$scope.onAddInterface = function(){
-				if(!$scope.networks.length)
+				if(!$scope.networks.length){
+					$juciAlert($tr(gettext("No more network interfaces to add")));
 					return;
+				}
 				var model = {
 					networks: $scope.networks.map(function(net){ return { label: String(net[".name"]).toUpperCase(), value: net[".name"] }; }),
 					interface: ""
