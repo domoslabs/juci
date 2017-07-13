@@ -9,7 +9,7 @@
 		<juci-config-line ng-show="data.src_ip_any === false" title="{{'Source IP'|translate}}" help="{{'Match traffic from the specified source ip address'|translate}}" error="rule.src_ip.error">
 			<input type="text" class="form-control" ng-model="rule.src_ip.value" />
 		</juci-config-line>
-		<juci-config-line title="{{'Source Port'|translate}}" help="{{'Match traffic from the specified source port or port range, if relevant protocol is specified'|translate}}" error="rule.src_port.error">
+		<juci-config-line ng-hide="rule.proto.value === 'icmp'" title="{{'Source Port'|translate}}" help="{{'Match traffic from the specified source port or port range, if relevant protocol is specified'|translate}}" error="rule.src_port.error">
 			<input type="text" class="form-control" ng-model="rule.src_port.value" />
 		</juci-config-line>
 		<juci-config-line title="{{'Protocol'|translate}}" help="{{'Match traffic using the given protocol'|translate}}">
@@ -21,7 +21,7 @@
 		<juci-config-line ng-show="data.dest_ip_any === false" title="{{'Destination IP'|translate}}" help="{{'Match traffic from the specified destination ip address'|translate}}" error="rule.dest_ip.error">
 			<input type="text" class="form-control" ng-model="rule.dest_ip.value" />
 		</juci-config-line>
-		<juci-config-line ng-show="rule.proto.value === 'tcp' || rule.proto.value === 'udp'" title="{{'Destination Port'|translate}}" help="{{'Match traffic from the specified destination port or port range, if relevant protocol is specified'|translate}}" error="rule.dest_port.error">
+		<juci-config-line ng-hide="rule.proto.value === 'icmp'" title="{{'Destination Port'|translate}}" help="{{'Match traffic from the specified destination port or port range, if relevant protocol is specified'|translate}}" error="rule.dest_port.error">
 			<input type="text" class="form-control" ng-model="rule.dest_port.value" />
 		</juci-config-line>
 		<!-- Values not supported yet!!
