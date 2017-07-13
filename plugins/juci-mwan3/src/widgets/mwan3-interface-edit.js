@@ -27,5 +27,10 @@ JUCI.app
 			{ value: "ipv4", label: $tr(gettext("IPv4")) },
 			{ value: "ipv6", label: $tr(gettext("IPv6")) }
 		];
+		$scope.track_types = [
+			{ value: "ip", label: $tr(gettext("IP")) },
+			{ value: "gw", label: $tr(gettext("Gateway")) },
+			{ value: "dns", label: $tr(gettext("DNS")) }
+		];
 	}, false);
 });
