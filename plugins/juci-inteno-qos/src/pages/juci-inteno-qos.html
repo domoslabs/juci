@@ -20,7 +20,12 @@
 			</tab>
 			<tab heading="{{'Classify'|translate}}">
 				<juci-config-section>
-					<juci-list-editor ng-items="qos" item-editor="qos-classify-edit" sortable="true" on-item-moved="onItemMoved($item, $new_index, $prev_index)" get-item-title="getRuleTitle($item)" on-create="onAddRule()" on-delete="onDeleteRule($item)" ></juci-list-editor>
+					<juci-list-editor ng-items="classify" item-editor="qos-classify-edit" get-item-title="getClassifyTitle($item)" on-create="addClassify()" on-delete="onDeleteRule($item)" ></juci-list-editor>
+				</juci-config-section>
+			</tab>
+			<tab heading="{{'Reclassify'|translate}}">
+				<juci-config-section>
+					<juci-list-editor ng-items="reclassify" item-editor="qos-reclassify-edit" get-item-title="getClassifyTitle($item)" on-create="addReclassify()" on-delete="onDeleteRule($item)" ></juci-list-editor>
 				</juci-config-section>
 			</tab>
 		</tabset>

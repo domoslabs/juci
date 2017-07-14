@@ -20,7 +20,8 @@
 
 JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, intenoQos, $juciDialog, $firewall){
 	$uci.$sync(["qos"]).done(function(){
-		$scope.qos = $uci.qos["@classify"];
+		$scope.classify = $uci.qos["@classify"];
+		$scope.reclassify = $uci.qos["@reclassify"];
 		$scope.ifaces = $uci.qos["@interface"];
 		$scope.classes = $uci.qos["@class"];
 		$scope.classgroups = $uci.qos["@classgroup"];
@@ -119,9 +120,16 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 	}
 
 
-	$scope.onAddRule = function(){
+	$scope.addClassify = function(){
 		$uci.qos.$create({
 			".type": "classify"
+		}).done(function(){
+			$scope.$apply(); 
+		}); 
+	};
+	$scope.addReclassify = function(){
+		$uci.qos.$create({
+			".type": "reclassify"
 		}).done(function(){
 			$scope.$apply(); 
 		}); 
@@ -138,7 +146,7 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 		if(!item) return "";
 		return String(item[".name"]);
 	}
-	$scope.getRuleTitle = function(item){
+	$scope.getClassifyTitle = function(item){
 		var str = (item.target.value+" "+(item.srchost.value?("(src host: "+item.srchost.value+") "):"")+
 					(item.dsthost.value?("(dst host: "+item.dsthost.value+") "):"")+
 					(item.proto.value?("(protocol: "+item.proto.value.toUpperCase()+") "):"")+
@@ -161,8 +169,4 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 			$scope.$apply(); 
 		}); 
 	};
-
-	$scope.onItemMoved = function(){
-		$uci.qos.$save_order("classify"); 
-	}
 });

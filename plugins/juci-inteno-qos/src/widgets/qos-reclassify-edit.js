@@ -19,18 +19,18 @@
  */
 
 JUCI.app
-.directive("qosClassifyEdit", function(){
+.directive("qosReclassifyEdit", function(){
 	return {
-		templateUrl: "/widgets/qos-classify-edit.html",
+		templateUrl: "/widgets/qos-reclassify-edit.html",
 		scope: {
 			rule: "=ngModel"
 		},
-		controller: "qosClassifyEdit",
+		controller: "qosReclassifyEdit",
 		replace: true,
 		require: "^ngModel"
 	};
 })
-.controller("qosClassifyEdit", function($scope, $uci, $tr, gettext, $network, intenoQos){
+.controller("qosReclassifyEdit", function($scope, $uci, $tr, gettext, $network, intenoQos){
 	$scope.data = {
 		ports: [],
 		portrange: {from:"" , to:""},
@@ -65,11 +65,30 @@ JUCI.app
 	}
 
 	$scope.directions = [ {value:'in',label:'In'}, {value:'out',label:'Out'}, {value:'',label:'Both'} ];
+	$scope.tcpflags = {};
+	$scope.tcpflags.all = [
+		{value:'SYN',label:'SYN'},
+		{value:'ACK',label:'ACK'},
+		{value:'FIN',label:'FIN'},
+		{value:'RST',label:'RST'},
+		{value:'URG',label:'URG'},
+		{value:'PSH',label:'PSH'}];
 	$scope.data.portfilters = [
 		{ label: 'Ports',	value: 'ports' },
 		{ label: 'Source',	value: 'srcports' },
 		{ label: 'Destination',	value: 'dstports' },
 		{ label: 'Port Range',	value: 'portrange' }
+	];
+	$scope.data.precedence = [
+		{ label: $tr(gettext("All")),	value: '' },
+		{ label: '0 (None) ',				value: '0 1 2 3 4' },
+		{ label: '1 (CS1, AF11, AF12, AF13)',		value: '8 10 12 14' },
+		{ label: '2 (CS2, AF21, AF22, AF23)',		value: '16 18 20 22' },
+		{ label: '3 (CS3, AF31, AF32, AF33)',		value: '24 26 28 30' },
+		{ label: '4 (CS4, AF41, AF42, AF43)',		value: '32 34 36 38' },
+		{ label: '5 (CS5, Voice-admit, EF)',		value: '40 44 46' },
+		{ label: '6 (CS6)',				value: '48' },
+		{ label: '7 (CS7)',				value: '56' }
 	];
 	$scope.data.protocols = [
 		{ label: $tr(gettext("All")),		value: '' },
@@ -77,6 +96,12 @@ JUCI.app
 		{ label: $tr(gettext("UDP")),		value: 'udp' },
 		{ label: $tr(gettext("ICMP")),		value: 'icmp' }
 	];
+	
+	$scope.addSelectedTCPflags = function(){
+		function getValue(x){ return x.value; }
+		$scope.rule.tcpflags.value = $scope.tcpflags.selected.map(getValue).join();
+	};
+
 	$network.getConnectedClients().done(function(data){
 		$scope.clients = data.map(function(x){
 			return {label: x.ipaddr, value: x.ipaddr }
@@ -92,6 +117,10 @@ JUCI.app
 	$scope.$watch("rule", function(){
 		if(!$scope.rule) return;
 		getOriginalPortSetting();
+		$scope.tcpflags.selected = $scope.rule.tcpflags.value.split(",");
+		function isSelected(flag){ return $scope.tcpflags.selected.indexOf(flag) > -1; }
+		function makeSelected(obj){ obj.selected = isSelected(obj.value); }
+		$scope.tcpflags.all.forEach(makeSelected);
 
 		if($scope.rule.ports && $scope.rule.ports.value !== ""){
 			$scope.data.ports = $scope.rule.ports.value.split(",").map(function(port){return {value: port }});
@@ -113,8 +142,6 @@ JUCI.app
 			$scope.data.connbytes.from = parseInt($scope.rule.connbytes.value.split(":")[0]);
 			$scope.data.connbytes.to = parseInt($scope.rule.connbytes.value.split(":")[1]);
 		}
-
-		//if($scope.rule.pktsize && $scope.rule.pktsize.value===0){ $scope.rule.pktsize.value = ""; }
 	}, false);
 
 	function resetPortFilters(portfilter){
@@ -133,7 +160,7 @@ JUCI.app
 		$scope.rule.portrange.value = "";
 
 		if (portfilter === $scope.data.original.portfilter){
-			$scope.rule[portfilter] = $scope.data.original[portfilter];
+			$scope.rule[portfilter].value = $scope.data.original[portfilter];
 			if (portfilter === "portrange") { //deep copy in case of portrange
 				$scope.data[portfilter] = {from:$scope.data.original.portdata.from, to:$scope.data.original.portdata.to}
 			}
@@ -155,7 +182,6 @@ JUCI.app
 		if(from && !to){ $scope.rule.portrange.value = from.toString(); }
 		if(from && to){ $scope.rule.portrange.value = from.toString() + "-" + to.toString(); }
 	}, true);
-	//port filtering not applicable to icmp protocol
 	$scope.$watch("rule.proto.value", function(proto){
 		if(!$scope.rule){ return; }
 		if(proto === "icmp"){
