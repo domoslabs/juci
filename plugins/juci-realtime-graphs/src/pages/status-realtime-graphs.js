@@ -11,6 +11,8 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless){
 			var val = $scope.portnames[i][".name"];
 			mapIface[key] = val;
 		}
+		mapIface['atm0'] = 'DSL';
+		mapIface['ptm0'] = 'DSL';
 		$scope.$apply();
 	});
 	$uci.$sync("wireless").done(function(){
@@ -72,7 +74,14 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless){
 			var newKey = undefined;
 			for (var key in data) {
 				newKey = mapIface[key];
-				if (newKey){ traffic[newKey] = data[key]; }
+				if (newKey){
+					if (!traffic[newKey])
+						traffic[newKey] = data[key];
+					else {
+						traffic[newKey]["Downstream"] += data[key]["Downstream"];
+						traffic[newKey]["Upstream"] += data[key]["Upstream"];
+					}
+				}
 			}
 
 			for_objs_in_obj(traffic, bits_to_megabits_per_sec);
