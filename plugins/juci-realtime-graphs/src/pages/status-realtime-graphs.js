@@ -1,4 +1,4 @@
-JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless){
+JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless, $rpc){
 	$scope.data = {};
 	var mapIface = {};
 	$scope.ylabel = "Mbit/s";
@@ -34,6 +34,20 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless){
 			$scope.$apply();
 		});
 	});
+	$rpc.$call("router.usb", "status").done(
+		function(res) {
+			var usbs = Object.keys(res).map(
+				function(usb){
+					return res[usb];
+				}
+			);
+			usbs.forEach(function(usb) {
+					if (usb.netdevice)
+						mapIface[usb.netdevice]=usb.product;
+				}
+			);
+		}
+	);
 	$scope.load = {
 		"1 min" : 0,
 		"5 min" : 0,
