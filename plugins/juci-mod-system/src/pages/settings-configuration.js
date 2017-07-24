@@ -40,42 +40,7 @@ JUCI.app
 		$scope.showModal = 1;
 	}
 
-	$scope.onRestoreConfig = function(){
-		$scope.showUploadModal = 1;
-	}
-	$scope.onCancelRestore = function(){
-		$scope.showUploadModal = 0;
-	}
 	$scope.data = {pass:"",pass_repeat:""};
-	$scope.onUploadConfig = function(){
-		var upfile = document.getElementById("upload");
-		if(!upfile.name || upfile.size < 1) return;
-		$file.uploadFile("backup.tar.gz", upfile.files[0]).done(function(){
-			onUploadComplete(upfile.name);
-		}).fail(function(e){console.log(e);});
-	}
-	function onUploadComplete(result){
-		console.log("Uploaded: "+JSON.stringify(result));
-		$rpc.$call("juci.sysupgrade", "restore-backup", {
-			"pass": $scope.data.pass
-		}).done(function(result){
-			if(result.error){
-				alert(result.error);
-			} else {
-				$scope.showUploadModal = 0;
-				$scope.$apply();
-				$juciConfirm.show($tr(gettext("Configuration has been restored. You need to reboot the device for settings to take effect! Do you want to reboot now?"))).done(function(){
-					$rpc.$call("juci.system", "reboot", {});
-					setTimeout(function(){window.location = "/reboot.html";}, 0);
-				});
-			}
-		}).fail(function(err){
-			console.error("Filed: "+JSON.stringify(err));
-		}).always(function(){
-			$scope.data = {pass:"",pass_repeat:""};
-			$scope.$apply();
-		});
-	}
 	$scope.onAcceptModal = function(){
 		if($scope.passwordError) return;
 		if($scope.data.pass !== $scope.data.pass_repeat) {
