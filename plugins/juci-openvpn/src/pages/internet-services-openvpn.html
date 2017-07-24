@@ -1,0 +1,28 @@
+<juci-layout-with-sidebar>
+	<div ng-controller="OpenVPNController">
+		<juci-config-section>
+
+			<juci-config-heading>{{ 'OpenVPN Configuration' | translate }}</juci-config-heading>
+			<juci-config-info>{{ 'openvpn.settings.info' | translate }}</juci-config-info>
+
+			<juci-config-line title="{{'Enabled'|translate}}">
+				<switch ng-model="openvpn.enabled.value" class="green"/>
+			</juci-config-line>
+
+			<juci-config-line title="{{ 'Username' | translate}}" help="{{ 'Username help' | translate}}">
+				<input ng-model="openvpn.auth_user.value" type="username" class="form-control" placeholder="Username">
+			</juci-config-line>
+
+			<juci-config-line title="{{ 'Password' | translate}}" help="{{ 'Password help' | translate}}">
+				<input ng-model="openvpn.auth_pass.value" type="password" class="form-control" placeholder="Password">
+			</juci-config-line>
+
+			<juci-config-line title="{{ 'The .ovpn config file' | translate}}">
+			</juci-config-line>
+
+			<div style="margin-left:13px; margin-right:13px">
+			<textarea style="width:100%" rows=10 cols=50 ng-model=openvpn.config.value placeholder="Paste the .ovpn config here"/>
+			</div>
+		</juci-config-section>
+	</div>
+</juci-layout-with-sidebar>
