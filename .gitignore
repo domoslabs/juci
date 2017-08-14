@@ -36,3 +36,4 @@ tmp/
 .prepared_*
 ipkg-*
 tags
+.localserver.conf

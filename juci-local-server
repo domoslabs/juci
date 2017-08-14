@@ -2,10 +2,26 @@
 
 var express = require('express');
 var app = express();
+var fs = require("fs");
 var JSON = require("JSON");
 var http = require("http");
 var bodyParser = require('body-parser')
 var config = { port: 3000, host: "192.168.1.1" };
+
+var conf;
+try {
+	var confstring = fs.readFileSync(".localserver.conf", "utf8");
+	conf = JSON.parse(confstring)
+}catch(e){
+	console.log("no config file found with valid JSON found");
+}
+if(conf)
+	config = conf;
+
+if(!config.port || !config.host){
+	console.log("invalid conf file (.localserver.conf)");
+	help();
+}
 
 for(var i = 0; i < process.argv.length; i++){
 	switch(process.argv[i]){
@@ -18,10 +34,12 @@ for(var i = 0; i < process.argv.length; i++){
 }
 
 function help(){
+	console.log("Usage:");
 	console.log("	--port <port>");
 	console.log("		specify port to use for local server");
 	console.log("	--host <host>");
 	console.log("		specify host to use for local server");
+	console.log("config file is .localserver.conf flags will override");
 	process.exit();
 }
 
@@ -41,7 +59,8 @@ spawn('make', ["debug", "DEFAULT_THEME=y"], { stdio: [0,null,2] })
 
 
 var server = app.listen(config.port, function () {
-	console.log("Local server listening on http://localhost:" + config.port);
+	console.log("Local server listening on http://localhost:", config.port,
+			" using remote hsot:", config.host);
 });
 
 app.get('/host_ip', function(req, res) {
