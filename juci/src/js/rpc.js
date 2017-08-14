@@ -347,12 +347,27 @@
 		$init_websocket: function(){
 			var host = window.location.origin;
 			var self = this;
-			var deferred = $.Deferred();
 			if(DEBUG_MODE)console.log("Init WS -> "+host);
-			if(String(host).match("localhost"))
-				host = "ws://192.168.1.1";
-			else
-				host = String(host).replace(/^http/, 'ws');
+			if(String(host).match("localhost")){
+				var deferred = $.Deferred();
+				$.get('/host_ip', function(res) {
+					if(res)
+						host = res;
+					else
+						host = "ws://192.168.1.1";
+					self.create_socket(host).done(function(res){
+						deferred.resolve(res);
+					}).fail(function(e){
+						deferred.reject(e);
+					});
+				});
+				return deferred.promise();
+			} else {
+				return self.create_socket(String(host).replace(/^http/, 'ws'));
+			}
+		},
+		create_socket: function(host){
+			var deferred = $.Deferred();
 			if(DEBUG_MODE)console.log("connecting to " + host);
 			try {
 				var ws = new WebSocket(host, "ubus-json");
