@@ -53,17 +53,12 @@ app.use(express.static(__dirname + '/bin/www'));
 var spawn = require('child_process').spawn;
 
 spawn('make', ["debug", "DEFAULT_THEME=y"], { stdio: [0,null,2] })
-.on("exit", function(code){
-	console.log("Recompiled gui, exit code: "+code);
-});
+.on("exit", (code) => console.log("Recompiled gui, exit code: "+code));
 
 
-var server = app.listen(config.port, function () {
+var server = app.listen(config.port, () =>
 	console.log("Local server listening on http://localhost:", config.port,
-			" using remote hsot:", config.host);
-});
+			" using remote hsot:", config.host));
 
-app.get('/host_ip', function(req, res) {
-    res.send("ws://" + config.host);
-});
+app.get('/host_ip', (req, res) => res.send("ws://" + config.host));
 
