@@ -7,6 +7,9 @@
 				<juci-config-line title="{{'Save configuration'|translate}}">
 					<button class="btn btn-lg btn-default" ng-click="onSaveConfig()">{{'Save'|translate}}</button>
 				</juci-config-line>
+				<juci-config-line title="{{'Restore configuration'|translate}}">
+					<button class="btn btn-lg btn-default" ng-click="onRestoreConfig()">{{'Load'|translate}}</button>
+				</juci-config-line>
 			</juci-config-lines>
 		</juci-config-section>
 		<juci-config-section >
@@ -43,6 +46,21 @@
 		</modal>
 		<modal title="{{'Downloading Backup'|translate}}" ng-show="showStatus" data-backdrop="static" data-keyboard="false">
 			<h2 style="text-align:center;"><i class="fa fa-spinner fa-spin fa-2x"></i></h2>
+		</modal>
+		<modal title="Load New Configuration" data-backdrop="static" ng-show="showUploadModal" on-accept="onUploadConfig()" on-dismiss="onCancelRestore()" dismiss-label="Cancel" accept-label="Continue">
+			<form autocomplete="off" ng-submit="onUploadConfig()">
+				<input type="submit" ng-hide="true">
+				<juci-config-lines>
+					<juci-config-line title="{{'Pick configuration backup to upload'|translate}}">
+						<input type="file" id="upload" class="btn btn-default btn-file" name="filedata" />
+					</juci-config-line>
+					<juci-config-line title="{{'Backup file password'|translate}}">
+						<input type="password" class="form-control" name="pass" ng-disabled="!features.encryption" ng-model="data.pass" placeholder="{{'Password (if encrypted)'|translate}}"/>
+					</juci-config-line>
+					<div class="alert alert-danger" ng-show="!features.encryption" 
+						translate>Uploading encrypted backups is not supported (requires openssl cli utility installed on the router!)</div>
+				</juci-config-lines>
+			</form>
 		</modal>
 	</div>
 </juci-layout-with-sidebar>

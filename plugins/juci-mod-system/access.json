@@ -26,6 +26,7 @@
 					"test",
 					"start",
 					"create-backup",
+					"restore-backup",
 					"features"
 				],
 				"juci.service": [
