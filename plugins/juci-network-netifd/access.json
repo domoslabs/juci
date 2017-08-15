@@ -53,6 +53,7 @@
 					"stats"
 				],
 				"file": [
+					"read"
 				]
 			},
 			"uci": [

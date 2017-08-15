@@ -8,6 +8,7 @@
 			"ubus": {
 				"file": [
 					"write",
+					"read"
 				],
 				"session": [
 					"list"

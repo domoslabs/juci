@@ -7,6 +7,7 @@
 					"backup"
 				],
 				"file": [
+					"read"
 				]
 			},
 			"uci": [
