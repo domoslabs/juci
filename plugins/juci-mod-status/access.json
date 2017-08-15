@@ -3,8 +3,11 @@
 		"description": "JUCI status module",
 		"read": {
 			"ubus": {
-				"system": [
-					"info"
+				"juci.system": [
+					"reboot"
+				],
+				"session": [
+					"access"
 				]
 			}
 		}
