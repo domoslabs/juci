@@ -5,18 +5,19 @@
 local input path base64
 validate_path(){
 	local path="$1"
-	# TODO: maybe add support for symlinks that points to file inside tmp
-	if [ -L "$path" ]; then
-		echo "false"
-		return
+	realfile=$(readlink -f "$path")
+	if [ "$realfile" == "" ]; then
+		#file doesn't exist lets check the directory
+		dir=$(dirname "$path")
+		file=$(basename "$path")
+		realdir=$(readlink -f "$dir")
+		if [ "$realdir" == "" ]; then
+			echo "false"
+			return
+		fi
+		realfile="$realdir/$file"
 	fi
-	local directory="$(dirname "$1")"
-	if [ ! -d "$directory" ]; then
-		echo "false"
-		return
-	fi
-	directory="$(readlink -f "$directory")"
-	if [ "$(echo "$directory" | cut -d '/' -f2)" == "tmp" ]; then
+	if [ "$(echo "$realfile" | cut -d '/' -f2)" == "tmp" ]; then
 		echo "true"
 	else
 		echo "false"
