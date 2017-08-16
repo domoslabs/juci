@@ -10,11 +10,25 @@
 				],
 				"juci.unauthenticated": [
 					 "*"
+				],
+				"router.system": [
+					"info"
 				]
 			}, 
 			"uci": [ "juci" ] 
 		}
 	},	
+	"juci-file": {
+		"description": "Accesslist for the $file factory",
+		"read": {
+			"ubus": {
+				"juci.file": [
+					"read",
+					"write"
+				]
+			}
+		}
+	},
 	"user-admin": {
 		"description": "Capabilities assigned to administrator user",
 		"read": {
