@@ -34,13 +34,9 @@
 				"buttons",
 				"leds",
 				"passwords"
-			],
-			"juci-io": [
-				"backup"
 			]
 		},
 		"write": {
-			"juci-io": [ "upload" ], 
 			"passwd": [ "self" ],
 			"uci": [
 				"system",
