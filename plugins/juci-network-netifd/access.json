@@ -52,7 +52,7 @@
 				"router.dsl": [
 					"stats"
 				],
-				"file": [
+				"juci.file": [
 					"read"
 				]
 			},

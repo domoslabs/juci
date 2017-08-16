@@ -21,13 +21,7 @@
 		"write": {
 			"uci": [
 				"samba"
-			],
-			"ubus": {
-				"router.directory": [
-					"folder_tree",
-					"autocomplete"
-				]
-			}
+			]
 		}
 	}
 }

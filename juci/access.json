@@ -47,11 +47,6 @@
 		"read": {
 			"juci-io": {
 				"backup": [ "read" ]
-			},
-			"ubus": {
-				"juci": [ 
-					"install" 
-				]
 			}
 		},
 		"write": {

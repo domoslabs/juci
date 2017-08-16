@@ -6,37 +6,16 @@
 				"defaultreset"
 			],
 			"ubus": {
-				"file": [
-					"write",
-					"read"
-				],
 				"session": [
 					"list"
 				],
 				"juci.system": [
-					// for future references "users",
 					"defaultreset", 
 					"reboot",
 					"listusers",
 					"zonelist",
 					"led_status"
 				], 
-				"juci.sysupgrade": [
-					"check",
-					"test",
-					"start",
-					"create-backup",
-					"restore-backup",
-					"features"
-				],
-				"juci.service": [
-					"list",
-					"start",
-					"stop",
-					"enable",
-					"disable",
-					"reload"
-				],
 				"router.system": [
 					"info",
 					"memory_bank",
@@ -63,21 +42,62 @@
 		"write": {
 			"juci-io": [ "upload" ], 
 			"passwd": [ "self" ],
-			"ubus": {
-				"juci.service": [
-					"start",
-					"stop",
-					"enable",
-					"disable",
-					"reload"
-				]
-			},
 			"uci": [
 				"system",
 				"buttons",
 				"passwords",
 				"leds"
 			]
+		}
+	},
+	"juci-mod-system-file": {
+		"description": "Allow file read/write to tmp",
+		"read": {
+			"ubus": {
+				"juci.file": [
+					"read",
+					"write"
+				]
+			}
+		}
+	},
+	"juci-mod-system-backup": {
+		"description": "Allow creating and restoring backups",
+		"read": {
+			"ubus": {
+				"juci.sysupgrade": [
+					"create-backup",
+					"restore-backup",
+					"features"
+				]
+			}
+		}
+	},
+	"juci-mod-system-upgrade": {
+		"description": "Allow firmware upgrade",
+		"read": {
+			"ubus": {
+				"juci.sysupgrade": [
+					"check",
+					"test",
+					"start"
+				]
+			}
+		}
+	},
+	"juci-mod-system-service": {
+		"description": "Allow managing services",
+		"read": {
+			"ubus": {
+				"juci.service": [
+					"list",
+					"start",
+					"stop",
+					"enable",
+					"disable",
+					"reload"
+				]
+			}
 		}
 	},
 	"juci-mod-system-admin": {

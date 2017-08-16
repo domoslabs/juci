@@ -9,10 +9,6 @@
 				"asterisk.call_log": [
 					"list"
 				],
-				"juci.voice_client": [
-					"get_trusted_ca",
-					"set_trusted_ca"
-				],
 				"juci.system": [
 					"reboot"
 				]
@@ -25,6 +21,17 @@
 			"uci": [
 				"voice_client"
 			]
+		}
+	},
+	"juci-inteno-voice-client-ca": {
+		"description": "JUCI asterisk module allow handeling CA",
+		"read": {
+			"ubus": {
+				"juci.voice_client": [
+					"get_trusted_ca",
+					"set_trusted_ca"
+				]
+			}
 		}
 	}
 }

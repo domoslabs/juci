@@ -6,7 +6,7 @@
 				"juci.iup": [
 					"backup"
 				],
-				"file": [
+				"juci.file": [
 					"read"
 				]
 			},
