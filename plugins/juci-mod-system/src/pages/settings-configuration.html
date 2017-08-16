@@ -20,6 +20,14 @@
 				</juci-config-line>
 			</juci-config-lines>
 		</juci-config-section>
+		<juci-config-section >
+			<h3>{{'Factory Reset Soft'|translate}}</h3>
+			<juci-config-lines >
+				<juci-config-line title="{{'Factory reset to default configuration while keeping the following settings:'|translate}}">
+					<button class="btn btn-lg btn-default" ng-click="onResetSoft()">{{'Reset Soft'|translate}}</button>
+				</juci-config-line>
+			</juci-config-lines>
+		</juci-config-section>
 		<modal title="{{'Save Configuration to Computer'|translate}}" data-backdrop="static" ng-show="showModal" on-accept="onAcceptModal()" on-dismiss="onDismissModal()" dismiss-label="Cancel" accept-label="Continue">
 			<juci-config-line title="{{'Password protection'|translate}}">
 				<switch class="green" ng-model="data.encryptBackup" />

@@ -36,6 +36,12 @@ JUCI.app
 			setTimeout(function(){window.location = "/reboot.html";},0);
 		});
 	}
+	$scope.onResetSoft = function(){
+		$juciConfirm.show($tr(gettext("This will reset your configuration to factory defaults (except the settings selected to be saved). Do you want to continue?"))).done(function(){
+			$rpc.$call("juci.system", "defaultreset", {"soft":"true"});
+			setTimeout(function(){window.location = "/reboot.html";},0);
+		});
+	}
 	$scope.onSaveConfig = function(){
 		$scope.showModal = 1;
 	}

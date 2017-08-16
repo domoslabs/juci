@@ -424,8 +424,11 @@ case "$1" in
 				ubus call led.$name status
 			;;
 			defaultreset)
+				read input
+				json_load "$input"
+				json_get_var soft soft ""
 				ubus send defaultreset 2>/dev/null
-				/sbin/defaultreset >/dev/null 2>&1 &
+				/sbin/defaultreset ${soft:+-s} >/dev/null 2>&1 &
 				json_init
 				json_add_string "success" "defaultreset"
 				json_dump
