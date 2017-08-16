@@ -34,11 +34,14 @@
 				UBUS.$call("router.system", "info").done(function(info){
 					if(!info) return;
 					self.board = info; 
-					if(!info.system || !info.system.firmware || !info.system.basemac || info.system.hardware) return;
-					var parts = info.system.firmware.split("_");
-					if(parts.length < 2) return;
-					var customer = parts[1].split("-")[0];
-					self.filename = info.system.hardware + "-" + customer + "-" + info.system.basemac.replace(/:/g, "");
+					if(info.system && info.system.firmware && info.system.basemac && info.system.hardware){
+						var parts = info.system.firmware.split("_");
+						if(parts.length < 2) return;
+						var customer = parts[1].split("-")[0];
+						self.filename = info.system.hardware + "-" +
+								customer + "-" +
+								info.system.basemac.replace(/:/g, "");
+					}
 				}).fail(function(){
 					self.board = {};
 				}).always(function(){ next(); }); 
