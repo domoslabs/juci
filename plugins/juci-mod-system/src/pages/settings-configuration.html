@@ -14,17 +14,29 @@
 		</juci-config-section>
 		<juci-config-section >
 			<h3>{{'Factory Reset'|translate}}</h3>
-			<juci-config-lines >
+			<juci-config-lines>
 				<juci-config-line title="{{'Factory reset to default configuration'|translate}}">
-					<button class="btn btn-lg btn-default" ng-click="onReset()">{{'Reset'|translate}}</button>
 				</juci-config-line>
-			</juci-config-lines>
-		</juci-config-section>
-		<juci-config-section >
-			<h3>{{'Factory Reset Soft'|translate}}</h3>
-			<juci-config-lines >
-				<juci-config-line title="{{'Factory reset to default configuration while keeping the following settings:'|translate}}">
-					<button class="btn btn-lg btn-default" ng-click="onResetSoft()">{{'Reset Soft'|translate}}</button>
+				<juci-config-line title="{{'Soft reset'|translate}}" help="{{'Save some of the settings over the factory reset'|translate}}">
+					<div class="input-group"> <switch class="green" ng-model="soft.soft"/> </div>
+				</juci-config-line>
+				<juci-config-line ng-show="soft.soft" title="{{'Wifi settings'|translate}}">
+					<div class="input-group"> <switch class="green" ng-model="soft.wifi"/> </div>
+				</juci-config-line>
+				<juci-config-line ng-show="soft.soft" title="{{'Port redirects'|translate}}">
+					<div class="input-group"> <switch class="green" ng-model="soft.fw_redirect"/> </div>
+				</juci-config-line>
+				<juci-config-line ng-show="soft.soft" title="{{'Parental rules'|translate}}">
+					<div class="input-group"> <switch class="green" ng-model="soft.fw_parental"/> </div>
+				</juci-config-line>
+				<juci-config-line ng-show="soft.soft" title="{{'User password'|translate}}">
+					<div class="input-group"> <switch class="green" ng-model="soft.passwd_user"/> </div>
+				</juci-config-line>
+				<juci-config-line ng-show="soft.soft" title="{{'Ice config'|translate}}">
+					<div class="input-group"> <switch class="green" ng-model="soft.ice"/> </div>
+				</juci-config-line>
+				<juci-config-line>
+					<button class="btn btn-lg btn-default pull-right" ng-click="onReset()">{{'Reset'|translate}}</button>
 				</juci-config-line>
 			</juci-config-lines>
 		</juci-config-section>

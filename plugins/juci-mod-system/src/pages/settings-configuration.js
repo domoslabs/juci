@@ -30,18 +30,36 @@ JUCI.app
 		$scope.$apply();
 	});
 
+	$scope.soft = {
+		soft: false,
+		wifi: true,
+		fw_redirect: true,
+		fw_parental: true,
+		passwd_user: true,
+		ice: true
+	};
+
 	$scope.onReset = function(){
-		$juciConfirm.show($tr(gettext("This will reset your configuration to factory defaults. Do you want to continue?"))).done(function(){
-			$rpc.$call("juci.system", "defaultreset", {});
-			setTimeout(function(){window.location = "/reboot.html";},0);
-		});
-	}
-	$scope.onResetSoft = function(){
 		$juciConfirm.show($tr(gettext("This will reset your configuration to factory defaults (except the settings selected to be saved). Do you want to continue?"))).done(function(){
-			$rpc.$call("juci.system", "defaultreset", {"soft":"true"});
+			$rpc.$call("juci.system", "defaultreset", {
+				"soft":		$scope.soft.soft ?	"true" : "false",
+				"wifi":		$scope.soft.wifi ?	"true" : "false",
+				"fw_redirect":	$scope.soft.fw_redirect?"true" : "false",
+				"fw_parental":	$scope.soft.fw_parental?"true" : "false",
+				"passwd_user":	$scope.soft.passwd_user?"true" : "false",
+				"ice":		$scope.soft.ice ?	"true" : "false"
+			});
 			setTimeout(function(){window.location = "/reboot.html";},0);
 		});
 	}
+
+	$scope.$watch("soft",function(soft){
+		if ( !soft.wifi && !soft.fw_redirect && !soft.fw_parental && !soft.passwd_user && !soft.ice) {
+			soft.soft = false;
+			soft.wifi = soft.fw_redirect = soft.fw_parental = soft.passwd_user = soft.ice = true;
+		}
+	}, true);
+
 	$scope.onSaveConfig = function(){
 		$scope.showModal = 1;
 	}

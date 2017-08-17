@@ -426,9 +426,24 @@ case "$1" in
 			defaultreset)
 				read input
 				json_load "$input"
+
 				json_get_var soft soft ""
+				json_get_var wifi wifi ""
+				json_get_var fw_redirect fw_redirect ""
+				json_get_var fw_parental fw_parental ""
+				json_get_var passwd_user passwd_user ""
+				json_get_var ice ice ""
+
+				[ $soft == "true" ] || soft=""
+				[ $soft == "true" -a $wifi == "true" ] || wifi=""
+				[ $soft == "true" -a $fw_redirect == "true" ] || fw_redirect=""
+				[ $soft == "true" -a $fw_parental == "true" ] || fw_parental=""
+				[ $soft == "true" -a $passwd_user == "true" ] || passwd_user=""
+				[ $soft == "true" -a $ice == "true" ] || ice=""
+
 				ubus send defaultreset 2>/dev/null
-				/sbin/defaultreset ${soft:+-s} >/dev/null 2>&1 &
+				/sbin/defaultreset ${soft:+-s} ${wifi:+wifi} ${fw_redirect:+fw_redirect} ${fw_parental:+fw_parental} ${passwd_user:+passwd_user} ${ice:+ice} >/dev/null 2>&1 &
+
 				json_init
 				json_add_string "success" "defaultreset"
 				json_dump
