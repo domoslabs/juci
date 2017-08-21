@@ -1,0 +1,15 @@
+{
+	"juci-omcproxy":{
+		"description": "Omcproxy acces list",
+		"read": {
+			"uci": [
+				"omcproxy"
+			]
+		},
+		"write": {
+			"uci": [
+				"omcproxy"
+			]
+		}
+	}
+}
