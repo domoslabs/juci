@@ -428,11 +428,11 @@ JUCI.app
 			title = String(dev.name).toUpperCase() + '<br />' + $tr(gettext("Link speed")) + ': ' + dev.linkspeed;
 		else
 			title = dev.ssid + ' @ ' + (radio.frequency ? radio.frequency : $tr(gettext('unknown')));
-		if(!dev.statistics) return;
-		if(dev.statistics.tx_bytes !== undefined) title = title + "<br />" + $tr(gettext("TX bytes:")) + " " + fixBytes(dev.statistics.tx_bytes);
-		if(dev.statistics.rx_bytes !== undefined) title = title + "<br />" + $tr(gettext("RX bytes:")) + " " + fixBytes(dev.statistics.rx_bytes);
-		if(dev.statistics.tx_errors) title = title + "<br />" + $tr(gettext("TX errors:")) + " " + fixBytes(dev.statistics.tx_errors);
-		if(dev.statistics.rx_errors) title = title + "<br />" + $tr(gettext("RX errors:")) + " " + fixBytes(dev.statistics.rx_errors);
+		// if(!dev.statistics) return;
+		// if(dev.statistics.tx_bytes !== undefined) title = title + "<br />" + $tr(gettext("TX bytes:")) + " " + fixBytes(dev.statistics.tx_bytes);
+		// if(dev.statistics.rx_bytes !== undefined) title = title + "<br />" + $tr(gettext("RX bytes:")) + " " + fixBytes(dev.statistics.rx_bytes);
+		// if(dev.statistics.tx_errors) title = title + "<br />" + $tr(gettext("TX errors:")) + " " + fixBytes(dev.statistics.tx_errors);
+		// if(dev.statistics.rx_errors) title = title + "<br />" + $tr(gettext("RX errors:")) + " " + fixBytes(dev.statistics.rx_errors);
 		return title;
 	}
 	function getWanTitle(type, wan, data){
