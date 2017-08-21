@@ -63,34 +63,7 @@ JUCI.app
 		$scope.showConfirmation = 0; 
 		$scope.progress = 0; 
 		$rpc.$call("juci.system", "reboot", {}).done(function(){
-			var rpc = true; 
-			$scope.message = "Waiting for reboot..."; 
-			$scope.$apply(); 
-			setInterval(function(){
-				$scope.progress++; 
-				$scope.$apply(); 
-				if(!rpc){
-					rpc = true; 
-					$rpc.$call("session", "access").done(function(){
-						// it will not succeed anymore because box is rebooting
-					}).fail(function(result){
-						if(result.code && result.code == -32002) { // access denied error. We will get it when it boots up again. 
-							$scope.showConfirmation = 0; 
-							$scope.$apply(); 
-							window.location.reload(); 
-						}
-					}).always(function(){
-						rpc = false; 
-					}); 
-				}
-			}, 1000); 
-			
-			waitUntilDown().done(function(){
-				$scope.message = "Host is rebooting..."; 
-				$scope.$apply(); 
-				rpc = false; 
-			}); 
-			console.log("Restarting the system..."); 
+			window.location = "/reboot.html"
 		});
 	}
 	$scope.onCancelRestart = function(){
