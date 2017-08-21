@@ -37,3 +37,4 @@ tmp/
 ipkg-*
 tags
 .localserver.conf
+package-lock.json
