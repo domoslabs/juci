@@ -93,8 +93,8 @@ JUCI.app
 			$scope.$apply();	
 		});
 	}update_wps();
-	$events.subscribe("wps", function(e){updatewps()});
-	$events.subscribe("wifi.wps", function(e){updatewps()});
+	$events.subscribe("wps", function(e){update_wps()});
+	$events.subscribe("wifi.wps", function(e){update_wps()});
 	$events.subscribe("wifi-repeater-success", function(){$uci.wireless.$mark_for_reload();update_wifi();});
 
 	$scope.onEditSSID = function(iface){
