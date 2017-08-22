@@ -3,8 +3,8 @@
 		"description": "JUCI Sysupgrade Interface module",
 		"read": {
 			"ubus": {
-				"juci.file": [
-					"write"
+				"file": [
+					"write_tmp"
 				],
 				"juci.sysupgrade": [
 					"check", 

@@ -22,9 +22,9 @@
 		"description": "Accesslist for the $file factory",
 		"read": {
 			"ubus": {
-				"juci.file": [
-					"read",
-					"write"
+				"file": [
+					"read_tmp",
+					"write_tmp"
 				]
 			}
 		}

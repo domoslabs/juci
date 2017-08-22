@@ -6,8 +6,8 @@
 				"juci.iup": [
 					"backup"
 				],
-				"juci.file": [
-					"read"
+				"file": [
+					"read_tmp"
 				]
 			},
 			"uci": [

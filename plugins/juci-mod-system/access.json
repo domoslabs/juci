@@ -50,9 +50,9 @@
 		"description": "Allow file read/write to tmp",
 		"read": {
 			"ubus": {
-				"juci.file": [
-					"read",
-					"write"
+				"file": [
+					"read_tmp",
+					"write_tmp"
 				]
 			}
 		}
