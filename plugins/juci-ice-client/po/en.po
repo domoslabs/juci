@@ -1,0 +1,7 @@
+msgid ""
+msgstr ""
+"Language: en\n"
+
+msgid "menu-ice-client-configuration-title"
+msgstr "ICE"
+
