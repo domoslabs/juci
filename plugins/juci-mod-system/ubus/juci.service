@@ -38,7 +38,7 @@ case "$1" in
 				json_init
 				json_add_array "services"
 				for serv in $(ls /etc/init.d/); do
-					ubus -q -t 1 call service list "{'name':'$serv'}" | grep -q '"running": true,' >/dev/null
+					ubus -q 1 call service list "{'name':'$serv'}" | grep -q '"running": true,' >/dev/null
 					[ $? -eq 0 ] && running=1 || running=0
 					output=$(ls /etc/rc.d/S*$serv 2>/dev/null)
 					[ $? -eq 0 ] && enabled=1 || enabled=0
