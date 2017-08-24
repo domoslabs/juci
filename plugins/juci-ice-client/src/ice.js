@@ -1,5 +1,4 @@
 UCI.$registerConfig("ice");
-
 UCI.ice.$registerSectionType("ice", {
 	"enabled":          { dvalue: 1, type: Boolean },
 

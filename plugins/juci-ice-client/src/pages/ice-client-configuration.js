@@ -1,12 +1,8 @@
-/*global Promise:false*/
-
 JUCI.app
-.controller("IceClientConfigurationPage", function($scope, $rpc, $uci){
+.controller("IceClientConfigurationPage", function($scope, $rpc, $uci, $tr, gettext){
 	$uci.$sync("ice").done(function(){
-		console.log($uci.ice);
-
-		$scope.ice=$uci.ice.ice;
-		$scope.cloud=$uci.ice.cloud;
+		$scope.ice = $uci.ice.ice;
+		$scope.cloud = $uci.ice.cloud;
 
 		$scope.$apply();
 	});
@@ -16,20 +12,20 @@ JUCI.app
 		$rpc.$call("juci.ice", "status").done(function(result){
 			switch(result.status) {
 				case 'Registered':
-					$scope.css="label label-success";
-					$scope.text=result.status;
+					$scope.css = "label label-success";
+					$scope.text = $tr(gettext("Registered"));
 				break;
 				case 'Unregistered':
-					$scope.css="label label-warning";
-					$scope.text=result.status;
+					$scope.css = "label label-warning";
+					$scope.text = $tr(gettext("Unregistered"));
 				break;
 				case 'Offline':
-					$scope.css="label label-danger";
-					$scope.text=result.status;
+					$scope.css = "label label-danger";
+					$scope.text = $tr(gettext("Offline"));
 				break;
 				default:
-					$scope.css="label label-danger";
-					$scope.text="Undefined";
+					$scope.css = "label label-danger";
+					$scope.text = $tr(gettext("Undefined"));
 				break;
 			}
 
