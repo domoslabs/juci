@@ -11,7 +11,7 @@ case "$1" in
 			status)
 				json_init
 
-				output=`netstat -lpa | grep ice`
+				output=`netstat -lpan | grep ice`
 				xmpp_client=":5223"
 				cloudAuth=`grep -c "cloudfriends_authenticated=false" /etc/iopsys/server.ini`
 
