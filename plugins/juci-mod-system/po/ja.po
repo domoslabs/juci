@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.1\n"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.js
 #, fuzzy
@@ -60,7 +60,7 @@ msgstr "N/A"
 
 # plugins/juci-mod-system/src/pages/status-system.js
 msgid "Model"
-msgstr "モデル"
+msgstr "モデル名"
 
 # plugins/juci-mod-system/src/pages/status-system.js
 msgid "Serial No"
@@ -79,9 +79,8 @@ msgid "Firmware Version"
 msgstr "ファームウェアバージョン"
 
 # plugins/juci-mod-system/src/pages/status-system.js
-#, fuzzy
 msgid "Other Bank"
-msgstr "Other Bank"
+msgstr "ファームウェア(別領域)"
 
 # plugins/juci-mod-system/src/pages/status-system.js
 msgid "Kernel Version"
@@ -96,7 +95,7 @@ msgstr "CFEバ―ジョン"
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-mod-system/src/pages/settings-system.html
 msgid "Local Time"
-msgstr "ローカル時間"
+msgstr "ローカルタイム"
 
 # plugins/juci-mod-system/src/pages/status-system.js
 msgid "Uptime"
@@ -104,7 +103,7 @@ msgstr "起動時間"
 
 # plugins/juci-mod-system/src/pages/status-system.js
 msgid "CPU"
-msgstr "CPU"
+msgstr "CPU使用率"
 
 # plugins/juci-mod-system/src/pages/status-system.js
 #, fuzzy
@@ -121,11 +120,11 @@ msgstr "使用率"
 
 # plugins/juci-mod-system/src/pages/status-system.js
 msgid "Shared"
-msgstr "共有"
+msgstr "共有メモリ"
 
 # plugins/juci-mod-system/src/pages/status-system.js
 msgid "Buffered"
-msgstr "緩衝"
+msgstr "バッファ"
 
 # plugins/juci-mod-system/src/pages/status-system.js
 msgid "Swap"
@@ -141,57 +140,55 @@ msgstr ""
 
 # plugins/juci-mod-system/src/pages/settings-system-log.js
 msgid "Emergency"
-msgstr "緊急"
+msgstr "Emergency"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.js
 msgid "Alert"
-msgstr "アラート"
+msgstr "Alert"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.js
 msgid "Critical"
-msgstr "クリティカル"
+msgstr "Critical"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.js
 msgid "Error"
-msgstr "エラー"
+msgstr "Error"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.js
 msgid "Warning"
-msgstr "警告"
+msgstr "Warning"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.js
 msgid "Notice"
-msgstr "通知"
+msgstr "Notice"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.js
 msgid "Info"
-msgstr "情報"
+msgstr "Info"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.js
 msgid "Debug"
-msgstr "デバッグ"
+msgstr "Debug"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.js
-#, fuzzy
 msgid "Everything"
-msgstr "任意"
+msgstr "Everything"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.js
 msgid "High verbosity"
-msgstr "高冗長性"
+msgstr "High verbosity"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.js
 msgid "Low verbosity"
-msgstr "低冗長性"
+msgstr "Low verbosity"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.js
-#, fuzzy
 msgid "Executions and Errors"
-msgstr "実行とエラー"
+msgstr "Executions and Errors"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.js
 msgid "Only Errors"
-msgstr "エラーのみ"
+msgstr "Only Errors"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.js
 msgid "UDP"
@@ -202,13 +199,12 @@ msgid "TCP"
 msgstr "TCP"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.js
-#, fuzzy
 msgid "Circular"
-msgstr "円形"
+msgstr "Circular"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.js
 msgid "File"
-msgstr "ファイル"
+msgstr "File"
 
 # plugins/juci-mod-system/src/pages/settings-system.html
 msgid "settings.system.general"
@@ -234,7 +230,7 @@ msgstr "読み込み中"
 
 # plugins/juci-mod-system/src/pages/settings-services.html
 msgid "Services"
-msgstr "サービス"
+msgstr "その他 サービス"
 
 # plugins/juci-mod-system/src/pages/settings-services.html
 msgid "Priority"
@@ -274,7 +270,7 @@ msgstr "ボタン設定"
 
 # plugins/juci-mod-system/src/pages/settings-hardware-buttons.html
 msgid "settings.management.buttons.info"
-msgstr "設定.管理.ボタン.インフォ"
+msgstr ""
 
 # plugins/juci-mod-system/src/pages/settings-hardware-leds.html
 msgid "Configure LEDs"
@@ -282,7 +278,7 @@ msgstr "LED設定"
 
 # plugins/juci-mod-system/src/pages/settings-hardware-leds.html
 msgid "settings.management.leds.info"
-msgstr "設定.管理.LED.インフォ"
+msgstr ""
 
 # plugins/juci-mod-system/src/pages/status-system-processes.html
 msgid "Total number of processes: "
@@ -294,7 +290,7 @@ msgstr "合計CPU使用率："
 
 # plugins/juci-mod-system/src/pages/status-system-processes.html
 msgid "status.system.processes.info"
-msgstr "スターツ.システム.プロセス.インフォ"
+msgstr ""
 
 # plugins/juci-mod-system/src/pages/status-system-processes.html
 msgid "Processes"
@@ -332,36 +328,35 @@ msgstr "バッファサイズ"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "Log File"
-msgstr "ゴルファイル"
+msgstr "ログ保存場所"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "Log IP"
-msgstr "ログIP"
+msgstr "リモートサーバアドレス"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "Log Port"
-msgstr "ログポート"
+msgstr "リモートサーバポート"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.html
-#, fuzzy
 msgid "Log Prefix"
-msgstr "ログ接頭辞"
+msgstr "プレフィックス"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "Log Protocol"
-msgstr "ログプロトコル"
+msgstr "プロトコル"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "Log Remote"
-msgstr "ログリモート"
+msgstr "シスログ オン"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "Log Size"
-msgstr "ログサイズ"
+msgstr "ログ容量"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "Trailing null"
-msgstr "末尾のヌル"
+msgstr "ヌルで改行"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "Use trailing null insted of newline when using TCP"
@@ -369,7 +364,7 @@ msgstr "TCPを使用する場合は、改行の代わりに末尾のヌルを使
 
 # plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "Log Type"
-msgstr "ログタイプ"
+msgstr "ログ生成"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "Log Settings"
@@ -377,23 +372,23 @@ msgstr "ログ設定"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "Backup Configuration"
-msgstr "設定バックアップ"
+msgstr "設定バックアップ/リストア"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "settings.config.info"
-msgstr "設定.コンフィグ.インフォ"
+msgstr ""
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "Save configuration"
-msgstr "設定保存"
+msgstr "バックアップ"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "Save"
-msgstr "保存"
+msgstr "実行"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "Restore configuration"
-msgstr "設定復旧"
+msgstr "リストア"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "Load"
@@ -458,11 +453,11 @@ msgstr "アカウントのパスワード変更"
 
 # plugins/juci-mod-system/src/pages/settings-password.html
 msgid "settings.password.info"
-msgstr "設定.パスワード.情報"
+msgstr ""
 
 # plugins/juci-mod-system/src/pages/settings-password.html
 msgid "Change password for user"
-msgstr "ユーザのパスワード変更"
+msgstr "アカウント"
 
 # plugins/juci-mod-system/src/pages/settings-password.html
 msgid "Change Password"
@@ -474,7 +469,7 @@ msgstr "パスワードリセット"
 
 # plugins/juci-mod-system/src/pages/status-system.html
 msgid "System Status"
-msgstr "システム状態"
+msgstr "機器ステータス"
 
 # plugins/juci-mod-system/src/pages/status-system.html
 msgid "Memory"
@@ -494,7 +489,7 @@ msgstr "システム.管理.情報"
 
 # plugins/juci-mod-system/src/pages/settings-connectivity-test.html
 msgid "Internet"
-msgstr "インターネット"
+msgstr "URL"
 
 # plugins/juci-mod-system/src/pages/settings-connectivity-test.html
 msgid "URL for checking Internet connection"
@@ -506,7 +501,7 @@ msgstr "www.example.com"
 
 # plugins/juci-mod-system/src/pages/settings-connectivity-test.html
 msgid "Connectivity Test"
-msgstr "接続性テスト"
+msgstr "接続テスト"
 
 # plugins/juci-mod-system/src/pages/settings-energy.html
 #, fuzzy
@@ -539,35 +534,35 @@ msgstr "uci config boardpanelがありません。"
 
 # plugins/juci-mod-system/src/pages/settings-system.html
 msgid "menu-settings-system-title"
-msgstr "設定-システム"
+msgstr "システム"
 
 # plugins/juci-mod-system/src/pages/settings-energy.html
 msgid "menu-settings-energy-title"
-msgstr "設定-エネルギー"
+msgstr "エネルギー"
 
 # plugins/juci-mod-system/src/pages/status-system-processes.html
 msgid "menu-status-system-processes-title"
-msgstr "ステータス-システム-プロセス"
+msgstr "ネットワーク"
 
 # plugins/juci-mod-system/src/pages/settings-services.html
 msgid "menu-settings-services-title"
-msgstr "設定-サービス"
+msgstr "サービス"
 
 # plugins/juci-mod-system/src/pages/settings-connectivity-test.html
 msgid "menu-settings-connectivity-test-title"
-msgstr "設定-コネクティビティー-テスト"
+msgstr "接続テスト"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "menu-settings-system-log-title"
-msgstr "設定-システム-ログ"
+msgstr "ログ設定"
 
 # plugins/juci-mod-system/src/pages/settings-password.html
 msgid "menu-settings-password-title"
-msgstr "設定-パスワード"
+msgstr "パスワード"
 
 # plugins/juci-mod-system/src/pages/settings-hardware-leds.html
 msgid "menu-settings-hardware-leds-title"
-msgstr "設定-ハードウェア-レッズ"
+msgstr "LED"
 
 # plugins/juci-mod-system/src/pages/system.html
 msgid "menu-system-title"
@@ -575,32 +570,32 @@ msgstr "システム"
 
 # plugins/juci-mod-system/src/pages/status-system.html
 msgid "menu-status-system-title"
-msgstr "スターツ-システム"
+msgstr "システム"
 
 # plugins/juci-mod-system/src/pages/settings-users.html
 msgid "menu-settings-users-title"
-msgstr "スターツ-ユーザ"
+msgstr "ユーザー"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "menu-settings-configuration-title"
-msgstr "設定-コンフィギレーション"
+msgstr "コンフィグ"
 
 # plugins/juci-mod-system/src/pages/settings-hardware.html
 msgid "menu-settings-hardware-title"
-msgstr "設定-ハードウェア"
+msgstr "ハードウェア"
 
 # plugins/juci-mod-system/src/pages/settings-management.html
 msgid "menu-settings-management-title"
-msgstr "設定-管理"
+msgstr "管理"
 
 # plugins/juci-mod-system/src/pages/settings-hardware-buttons.html
 msgid "menu-settings-hardware-buttons-title"
-msgstr "設定-ハードウェア-ボタン"
+msgstr "ボタン設定"
 
 # plugins/juci-mod-system/src/pages/settings-uci.html
 msgid "menu-settings-uci-title"
-msgstr "設定-uci"
+msgstr "uci"
 
 # plugins/juci-mod-system/src/pages/settings-system-timeservers.html
 msgid "menu-settings-system-timeservers-title"
-msgstr "設定-システム-タイムサーバ"
+msgstr "NTP"

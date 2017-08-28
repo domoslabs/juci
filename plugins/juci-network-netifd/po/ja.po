@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.1\n"
 
 # plugins/juci-network-netifd/src/network-uci.js
 msgid "valid values are: 'no' and 48-64"
@@ -177,7 +177,7 @@ msgstr "管理外"
 
 # plugins/juci-network-netifd/src/network-netifd.js
 msgid "Static Address"
-msgstr "静的アドレス"
+msgstr "Static"
 
 # plugins/juci-network-netifd/src/network-netifd.js
 msgid "DHCP v4"
@@ -226,7 +226,7 @@ msgstr "HNET (self-managing home network)"
 
 # plugins/juci-network-netifd/src/network-netifd.js
 msgid "Point-to-Point Tunnel"
-msgstr "Point-to-Pointトンネル"
+msgstr "Point-to-Point Tunnel"
 
 # plugins/juci-network-netifd/src/network-netifd.js
 msgid "IPv6 tunnel in IPv4 (6in4)"
@@ -246,7 +246,7 @@ msgstr "IPv6 rapid deployment (6rd)"
 
 # plugins/juci-network-netifd/src/network-netifd.js
 msgid "Dual-Stack Lite"
-msgstr "デュアルスタックLite"
+msgstr "Dual-Stack Lite"
 
 # plugins/juci-network-netifd/src/network-netifd.js
 msgid "PPP over L2TP"
@@ -403,7 +403,7 @@ msgstr "ステータス"
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/network-connection-edit.js
 msgid "PENDING"
-msgstr "保留"
+msgstr "待機中"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/pages/internet-network.js
@@ -642,7 +642,7 @@ msgstr "追加するためにはデバイスを選択してください。"
 
 # plugins/juci-network-netifd/src/widgets/overview-net.js
 msgid "Detailed client overview"
-msgstr "詳細なクライアントの概要"
+msgstr "クライアントの詳細"
 
 # plugins/juci-network-netifd/src/widgets/overview-net.js
 msgid "Edit LAN Settings"
@@ -685,7 +685,7 @@ msgstr "リンクスピード"
 
 # plugins/juci-network-netifd/src/widgets/overview-slider-network.js
 msgid "Network Visualization"
-msgstr "ネットワーク可視化"
+msgstr "ネットワーク"
 
 # plugins/juci-network-netifd/src/widgets/overview-slider-network.js
 msgid "Link speed"
@@ -741,7 +741,7 @@ msgstr "3G/4G"
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/network-connection-edit.js
 msgid "Bridge"
-msgstr "ブリッジ"
+msgstr "Bridge"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/overview-slider-network.js
@@ -776,7 +776,7 @@ msgstr "すべてのDNSサーバーは一意である必要があります。"
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/network-connection-edit.js
 msgid "Standalone"
-msgstr "スタンドアロン"
+msgstr "Standalone"
 
 # plugins/juci-network-netifd/src/widgets/network-connection-create-settings.js
 #, fuzzy
@@ -1240,7 +1240,7 @@ msgstr "設定オプションを選択"
 
 # plugins/juci-network-netifd/src/widgets/network-connection-edit.html
 msgid "Physical Settings"
-msgstr "物理設定"
+msgstr "物理"
 
 # plugins/juci-network-netifd/src/widgets/network-connection-edit.html
 #, fuzzy
@@ -1248,23 +1248,20 @@ msgid "Advanced"
 msgstr "拡張"
 
 # plugins/juci-network-netifd/src/widgets/network-connection-edit.html
-#, fuzzy
 msgid "Bring up on boot"
-msgstr "起動時に起動する"
+msgstr "起動時 オン"
 
 # plugins/juci-network-netifd/src/widgets/network-connection-edit.html
 msgid "Use gateway metric"
-msgstr "デフォルトゲートウェイのメトリックを使用"
+msgstr "メトリック値"
 
 # plugins/juci-network-netifd/src/widgets/network-connection-edit.html
-#, fuzzy
 msgid "Override MAC address"
-msgstr "MACアドレス上書き"
+msgstr "MACアドレス手動設定"
 
 # plugins/juci-network-netifd/src/widgets/network-connection-edit.html
-#, fuzzy
 msgid "Override MTU"
-msgstr "MTU上書き"
+msgstr "MTU手動設定"
 
 # plugins/juci-network-netifd/src/widgets/network-connection-edit.html
 msgid "Device:"
@@ -1346,7 +1343,7 @@ msgstr "DNSサーバ"
 
 # plugins/juci-network-netifd/src/widgets/overview-wan.html
 msgid "WAN Uptime"
-msgstr "WAN接続時間"
+msgstr "WANアップタイム"
 
 # plugins/juci-network-netifd/src/widgets/bridge-device-picker.html
 msgid "Network device"
@@ -1362,7 +1359,7 @@ msgstr "静的ルート"
 
 # plugins/juci-network-netifd/src/pages/internet-routes.html
 msgid "internet.lan.routes.info"
-msgstr "インターネット.lan.ルート.インフォ"
+msgstr ""
 
 # plugins/juci-network-netifd/src/pages/internet-routes.html
 msgid "IPv4 Routes"
@@ -1385,7 +1382,7 @@ msgstr "各デバイスの接続"
 
 # plugins/juci-network-netifd/src/pages/status-network-nat.html
 msgid "status.nat.connections.info"
-msgstr "ステータス.nat.接続.インフォ"
+msgstr ""
 
 # plugins/juci-network-netifd/src/pages/status-network-nat.html
 msgid "NAT Connection Table"
@@ -1393,7 +1390,7 @@ msgstr "NAT接続テーブル"
 
 # plugins/juci-network-netifd/src/pages/status-network-nat.html
 msgid "status.nat.info"
-msgstr "ステータス.nat.インフォ"
+msgstr ""
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/pages/status-network-nat.html
@@ -1424,11 +1421,11 @@ msgstr "N/A"
 
 # plugins/juci-network-netifd/src/pages/netifd-status-clients.html
 msgid "Connected Clients"
-msgstr "接続されたクライアント"
+msgstr "接続デバイス"
 
 # plugins/juci-network-netifd/src/pages/internet-network.html
 msgid "settings.network.info"
-msgstr "設定.ネットワーク.インフォ"
+msgstr ""
 
 # plugins/juci-network-netifd/src/pages/internet-services.html
 msgid "Services"
@@ -1436,15 +1433,15 @@ msgstr "サービス"
 
 # plugins/juci-network-netifd/src/pages/internet-services.html
 msgid "internet.services.info"
-msgstr "インターネット.サービス.インフォ"
+msgstr ""
 
 # plugins/juci-network-netifd/src/pages/status-network-routes.html
 msgid "status.network.routes.info"
-msgstr "ステータス.ネットワーク.ルート.インフォ"
+msgstr ""
 
 # plugins/juci-network-netifd/src/pages/status-network-routes.html
 msgid "Routing Status"
-msgstr "ルーティングステータス"
+msgstr "テーブル情報"
 
 # plugins/juci-network-netifd/src/pages/status-network-routes.html
 msgid "ARP Table"
@@ -1477,7 +1474,7 @@ msgstr "次のホップ"
 
 # plugins/juci-network-netifd/src/pages/status-network-routes.html
 msgid "IPv6 Neighbors Table"
-msgstr "IPv6近隣テーブル"
+msgstr "IPv6 Neighbors Table"
 
 # plugins/juci-network-netifd/src/pages/status-network-routes.html
 msgid "No IPv6 devices connected"
@@ -1493,7 +1490,7 @@ msgstr "ルーター"
 
 # plugins/juci-network-netifd/src/pages/status-network.html
 msgid "status.status.info"
-msgstr "ステータス.ステータス.インフォ"
+msgstr ""
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/pages/status-network.html
@@ -1519,7 +1516,7 @@ msgstr "ラインステータス"
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-advanced-edit.html
 msgid "Use broadcast flag"
-msgstr "ブロードキャストフラグ使用"
+msgstr "ブロードキャストフラグを使用"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-advanced-edit.html
@@ -1900,7 +1897,7 @@ msgstr "デフォルトルート作成"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
 msgid "IPv6 Assignment Length"
-msgstr "IPv6割り当て長"
+msgstr "IPv6アドレスブロック"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
 msgid "Leave empty to disable"
@@ -1908,7 +1905,7 @@ msgstr "空白のままだと無効になります"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
 msgid "IPv6 Assigned Prefix Hint"
-msgstr "IPv6割り当てプレフィックスヒント"
+msgstr "IPv6プレフィックス"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.html
 msgid "Prefix hint"
@@ -2236,15 +2233,15 @@ msgstr "パスワード"
 
 # plugins/juci-network-netifd/src/pages/netifd-status-clients.html
 msgid "menu-netifd-status-clients-title"
-msgstr "netifd-ステータス-クライアント"
+msgstr "クライアント"
 
 # plugins/juci-network-netifd/src/pages/status-network-nat.html
 msgid "menu-status-network-nat-title"
-msgstr "ステータス-ネットワーク-nat"
+msgstr "ネットワーク"
 
 # plugins/juci-network-netifd/src/pages/status-network.html
 msgid "menu-status-network-title"
-msgstr "ステータス-ネットワーク"
+msgstr "ネットワーク"
 
 # plugins/juci-network-netifd/src/pages/internet-routes.html
 msgid "menu-internet-routes-title"
@@ -2256,7 +2253,7 @@ msgstr "ネットワーク"
 
 # plugins/juci-network-netifd/src/pages/status-network-routes.html
 msgid "menu-status-network-routes-title"
-msgstr "ステータス-ネットワーク-ルーター"
+msgstr "ルーティング"
 
 # plugins/juci-network-netifd/src/pages/internet-services.html
 msgid "menu-internet-services-title"
@@ -2264,4 +2261,4 @@ msgstr "サービス"
 
 # plugins/juci-network-netifd/src/pages/network.html
 msgid "menu-network-title"
-msgstr "ステータス-システム-プロセス"
+msgstr "ネットワーク"

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.1\n"
 
 # plugins/juci-firewall-fw3/src/fw3-firewall.js
 msgid "Zone does not exist!"
@@ -73,11 +73,11 @@ msgstr "このインスタンスを削除してもよろしいですか？"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-zones.js
 msgid "Input Policy"
-msgstr "入力ポリシー"
+msgstr "インプットポリシー"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-zones.js
 msgid "Output Policy"
-msgstr "出力ポリシー"
+msgstr "アウトプットポリシー"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-zones.js
 msgid "Forward Policy"
@@ -107,28 +107,28 @@ msgstr ""
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-firewall-fw3/src/widgets/firewall-rule-edit.js
 msgid "ACCEPT"
-msgstr "受諾"
+msgstr "ACCEPT"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-firewall-fw3/src/widgets/firewall-zone-edit.js
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-firewall-fw3/src/widgets/firewall-rule-edit.js
 msgid "REJECT"
-msgstr "拒否"
+msgstr "REJECT"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-firewall-fw3/src/widgets/firewall-zone-edit.js
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-firewall-fw3/src/widgets/firewall-rule-edit.js
 msgid "DROP"
-msgstr "ドロップ"
+msgstr "DROP"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-firewall-fw3/src/widgets/firewall-zone-edit.js
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-firewall-fw3/src/widgets/firewall-rule-edit.js
 msgid "FORWARD"
-msgstr "フォワード"
+msgstr "FORWARD"
 
 # plugins/juci-firewall-fw3/src/widgets/firewall-zone-edit.js
 msgid "Firewall Zones can't have the same name"
@@ -487,7 +487,7 @@ msgstr "ファイアウォールゾーン"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-zones.html
 msgid "internet.firewall.zones.info"
-msgstr "インターネット.ファイヤーウォール.ゾーン.インフォ"
+msgstr ""
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-dmz.html
 msgid "DMZ / Exposed Host"
@@ -495,7 +495,7 @@ msgstr "DMZ・公開ホスト"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-dmz.html
 msgid "internet.exposed_host.info"
-msgstr "インターネット.エクスポード.ホスト.インフォ"
+msgstr ""
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-dmz.html
 msgid ""
@@ -584,11 +584,11 @@ msgstr "URLフィルタリング"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-urlblock.html
 msgid "internet.firewall.urlfilter.info"
-msgstr "インターネット.ファイアーウォール.ウォルフィルタ.インフォ"
+msgstr ""
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-urlblock.html
 msgid "Add URL's to URL blocking list"
-msgstr "URLをURL遮断リストに追加する"
+msgstr "URLフィルタリングの追加"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-services.html
 msgid "Allow WAN Access To Running Services"
@@ -596,7 +596,7 @@ msgstr "実行中のサービスへのWANアクセスを許可する"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-services.html
 msgid "internet.wan.services.info"
-msgstr "インターネット.ワン.サービス.インフォ"
+msgstr ""
 
 # plugins/juci-firewall-fw3/src/pages/internet-parental-control.html
 msgid ""
@@ -622,7 +622,7 @@ msgstr "ペアレンタルコントロール"
 
 # plugins/juci-firewall-fw3/src/pages/internet-parental-control.html
 msgid "internet.parental.control.info"
-msgstr "インターネット.パレンタル.コントロール.インフォ"
+msgstr ""
 
 # plugins/juci-firewall-fw3/src/pages/internet-parental-control.html
 msgid "Internet Access Scheduling"
@@ -638,7 +638,7 @@ msgstr "ファイアウォールルール"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-rules.html
 msgid "internet.firewall.rules.info"
-msgstr "インターネット.ファイアーウォール.ルール.インフォ"
+msgstr ""
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-forwarding.html
 msgid "Packet Forwarding"
@@ -646,11 +646,11 @@ msgstr "パケットフォワーディング"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-forwarding.html
 msgid "internet.firewall.forwarding.info"
-msgstr "インターネット.ファイアーウォール.フォワーディング.インフォ"
+msgstr ""
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall.html
 msgid "Enable firewall"
-msgstr "ファイアーウォール有効化"
+msgstr "ファイアーウォール オン"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall.html
 msgid "Firewall settings"
@@ -658,27 +658,27 @@ msgstr "ファイアーウォール設定"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall.html
 msgid "internet.firewall.info"
-msgstr "インターネット.ファイアーウォール.インフォ"
+msgstr ""
 
 # plugins/juci-firewall-fw3/src/pages/internet-parental-control.html
 msgid "menu-internet-parental-control-title"
-msgstr "パレンタル-コントロール"
+msgstr "ペアレンタルコントロール"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-port-mapping.html
 msgid "menu-internet-firewall-port-mapping-title"
-msgstr "ファイアーウォール-ポート-マッピング"
+msgstr "ポートフォワーディング"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-forwarding.html
 msgid "menu-internet-firewall-forwarding-title"
-msgstr "ファイアーウォール-フローウィング"
+msgstr "フォワーディング"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-zones.html
 msgid "menu-internet-firewall-zones-title"
-msgstr "ファイアーウォール-ゾーン"
+msgstr "ゾーン設定"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-services.html
 msgid "menu-internet-firewall-services-title"
-msgstr "ファイアーウォール-サービス"
+msgstr "サービス"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall.html
 msgid "menu-internet-firewall-title"
@@ -686,12 +686,12 @@ msgstr "ファイアーウォール"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-rules.html
 msgid "menu-internet-firewall-rules-title"
-msgstr "ファイアールール"
+msgstr "ルール"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-urlblock.html
 msgid "menu-internet-firewall-urlblock-title"
-msgstr "ファイアーウォールバック"
+msgstr "URLフィルタリング"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-dmz.html
 msgid "menu-internet-firewall-dmz-title"
-msgstr "ファイアーディーエムゼット"
+msgstr "DMZ"

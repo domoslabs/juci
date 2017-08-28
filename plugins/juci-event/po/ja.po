@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.1\n"
 
 # plugins/juci-event/src/pages/status-events.js
 msgid "All types"
@@ -17,31 +17,31 @@ msgstr "全てのタイプ"
 
 # plugins/juci-event/src/pages/status-events.js
 msgid "Emergency"
-msgstr "緊急"
+msgstr "Emergency"
 
 # plugins/juci-event/src/pages/status-events.js
 msgid "Alert"
-msgstr "アラート"
+msgstr "Alert"
 
 # plugins/juci-event/src/pages/status-events.js
 msgid "Critical"
-msgstr "クリティカル"
+msgstr "Critical"
 
 # plugins/juci-event/src/pages/status-events.js
 msgid "Warning"
-msgstr "警告"
+msgstr "Warning"
 
 # plugins/juci-event/src/pages/status-events.js
 msgid "Notice"
-msgstr "通知"
+msgstr "Notice"
 
 # plugins/juci-event/src/pages/status-events.js
 msgid "Informational"
-msgstr "情報提供"
+msgstr "Informational"
 
 # plugins/juci-event/src/pages/status-events.js
 msgid "Debug"
-msgstr "デバッグ"
+msgstr "Debug"
 
 # plugins/juci-event/src/pages/status-events.html
 msgid "Event Log"
@@ -49,7 +49,7 @@ msgstr "イベントログ"
 
 # plugins/juci-event/src/pages/status-events.html
 msgid "status.eventlog.info"
-msgstr "ステータス.イベントログ.インフォ"
+msgstr ""
 
 # plugins/juci-event/src/pages/status-events.html
 msgid "(Note: only latest"
@@ -69,11 +69,11 @@ msgstr "全てのログをダウンロード"
 
 # plugins/juci-event/src/pages/status-events.html
 msgid "Limit log list"
-msgstr "ログリストを制限する"
+msgstr "ログ表示数"
 
 # plugins/juci-event/src/pages/status-events.html
 msgid "Filter log messages by Source"
-msgstr "ログメッセージをソースでフィルタリングする"
+msgstr "フィルタリング"
 
 # plugins/juci-event/src/pages/status-events.html
 msgid "Enter search string"
@@ -81,7 +81,7 @@ msgstr "検索文字列を入力"
 
 # plugins/juci-event/src/pages/status-events.html
 msgid "Filter by type:"
-msgstr "タイプでフィルタリングする："
+msgstr "フィルタタイプ指定："
 
 # plugins/juci-event/src/pages/status-events.html
 msgid "Filter by:"
@@ -153,8 +153,8 @@ msgstr "サーバポート"
 
 # plugins/juci-event/src/pages/status-events.html
 msgid "menu-status-events-title"
-msgstr "ステータス-イベント"
+msgstr "イベントログ"
 
 # plugins/juci-event/src/pages/event-log-config.html
 msgid "menu-event-log-config-title"
-msgstr "イベント-ログ-設定"
+msgstr "設定"

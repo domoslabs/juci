@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.1\n"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
 msgid ".w (JFFS Image with CFE)"
@@ -180,7 +180,7 @@ msgstr "ファームウェアアップグレード"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "settings.upgrade.info"
-msgstr "設定.アップグレード.インフォ"
+msgstr ""
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "Current Firmware Version"
@@ -188,11 +188,11 @@ msgstr "現在のファームウェアバージョン"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "Online Update"
-msgstr "オンラインアップデート"
+msgstr "オートアップグレード"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "settings.upgrade.online.info"
-msgstr "設定.アップグレード.オンライン.インフォ"
+msgstr ""
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "Check for Upgrade"
@@ -208,15 +208,15 @@ msgstr "USBファームウェアアップグレード"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "settings.upgrade.usb.info"
-msgstr "設定.アップグレード.usb.インフォ"
+msgstr ""
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "Manual Firmware Upgrade"
-msgstr "手動ファームウェアアップグレード"
+msgstr "マニュアルアップグレード"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "settings.upgrade.manual.info"
-msgstr "セッティング.アップグレード.手動.インフォ"
+msgstr ""
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "Pick firmware file to upload"
@@ -224,7 +224,7 @@ msgstr "アップロードするファームウェアファイルを選択して
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "Enter URL"
-msgstr "URL入力"
+msgstr "URL"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "Start upgrade"
@@ -240,11 +240,11 @@ msgstr "アップグレードオプション"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
 msgid "settings.upgrade.options.info"
-msgstr "設定.アップグレード.オプション.インフォ"
+msgstr ""
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
 msgid "Firmware image extension"
-msgstr "ファームウェアイメージファイル拡張"
+msgstr "ファイル拡張子の選択"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
 msgid "URL for file with latest image filename"
@@ -268,8 +268,8 @@ msgstr "オンラインアップグレード"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "menu-settings-upgrade-title"
-msgstr "設定-アップグレード"
+msgstr "アップグレード"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
 msgid "menu-settings-upgrade-options-title"
-msgstr "設定-アップグレード-オプション"
+msgstr "オプション"

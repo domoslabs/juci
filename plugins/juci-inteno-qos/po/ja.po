@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.1\n"
 
 # plugins/juci-inteno-qos/src/main.js
 msgid "Low"
@@ -73,15 +73,15 @@ msgstr "終了値は開始値より大きくなければなりません。"
 
 # plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
 msgid "Enable QoS"
-msgstr "QoS有効化"
+msgstr "QOS オン"
 
 # plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
 msgid "Classification Group"
-msgstr "分類グループ"
+msgstr "クラスグループ"
 
 # plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
 msgid "Calculate Overhead"
-msgstr "オーバーヘッドを計算する"
+msgstr "オーバーヘッド計算"
 
 # plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
 msgid "Limit Download Speed"
@@ -152,7 +152,7 @@ msgstr "プロトコル"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Source Host"
-msgstr "ソースホスト"
+msgstr "送信元ホスト"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Destination Host"
@@ -180,20 +180,19 @@ msgstr "ポート範囲"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Precedence"
-msgstr "優先順位"
+msgstr "優先度"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Direction"
-msgstr "方向"
+msgstr "フィルタリング設定方向"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Mark"
-msgstr "マーク"
+msgstr "QOSマーキング"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
-#, fuzzy
 msgid "Connbytes"
-msgstr "Connbytes"
+msgstr "フィルタリング開始サイズ"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "TCP Flags"
@@ -225,8 +224,8 @@ msgstr "クラスグループ"
 
 # plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
 msgid "Classify"
-msgstr "分類"
+msgstr "パラメータ"
 
 # plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
 msgid "menu-juci-inteno-qos-title"
-msgstr "サービス品質"
+msgstr "QOS"

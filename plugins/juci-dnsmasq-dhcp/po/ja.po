@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.1\n"
 
 # plugins/juci-dnsmasq-dhcp/src/juci-dnsmasq-dhcp.js
 #, fuzzy
@@ -97,16 +97,15 @@ msgstr "DHCPサーバ"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
 msgid "DHCP Pool Start"
-msgstr "DHCPプール開始アドレス"
+msgstr "DHCPプールスタートアドレス"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
 msgid "DHCP Pool Size"
 msgstr "DHCPプールサイズ"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
-#, fuzzy
 msgid "DHCP Lease Time"
-msgstr "DHCPリースネーム"
+msgstr "DHCPリースタイム"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
 msgid "Lease Time"
@@ -132,12 +131,11 @@ msgstr "ID:6 = DNSサーバ、ID:15 = DNSドメイン名"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
 msgid "Dynamic DHCP"
-msgstr "動的DHCP"
+msgstr "ダイナミックDHCP"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
-#, fuzzy
 msgid "Force"
-msgstr "強制"
+msgstr "オーバーライド"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
 msgid "IPv4 Netmask"
@@ -161,9 +159,8 @@ msgid "DHCPv6-Mode"
 msgstr "DHCPv6モード"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
-#, fuzzy
 msgid "Router Advertisement-Service"
-msgstr "ルーター広告 - サービス"
+msgstr "RA（ルータアドバタイズメント)"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
 msgid "NDP-Proxy"
@@ -238,7 +235,7 @@ msgstr "ホスト追加"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
 msgid "Static DHCP"
-msgstr "静的DHCP"
+msgstr "Static DHCP"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
 msgid "Device Name"
@@ -273,9 +270,8 @@ msgid "DHCPv6 leases"
 msgstr "DHCPv6リース"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
-#, fuzzy
 msgid "Active DHCP Leases"
-msgstr "アクティブなDHCPリース"
+msgstr "DHCPリース情報"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
 msgid "IPv4-Address"
@@ -582,8 +578,8 @@ msgstr "分類セクションを作成すると、DHCPクライアントが分�
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-status.html
 msgid "menu-dhcp-status-title"
-msgstr "DHCP-ステータス"
+msgstr "DHCP"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
 msgid "menu-dhcp-settings-title"
-msgstr "DHCP-設定"
+msgstr "設定"

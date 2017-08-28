@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.1\n"
 
 # plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
 msgid "HTTPD Settings"
@@ -17,7 +17,7 @@ msgstr "httpd設定"
 
 # plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
 msgid "uhttpd.settings.info"
-msgstr "uhttpd.設定.インフォ"
+msgstr ""
 
 # plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
 msgid "Max Requests"
@@ -49,4 +49,4 @@ msgstr "オブジェクト.メソッド"
 
 # plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
 msgid "menu-page-uhttpd-settings-title"
-msgstr "UHTTPの設定"
+msgstr "UHTTP"
