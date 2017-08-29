@@ -67,6 +67,8 @@ JUCI.app
 		$scope.onEditStart({"$item": i});
 	}
 	$scope.onListRemoveItem = function(i){
+		if($scope.hide || !$scope.editable || !$scope.items)
+			return;
 		$scope.onDelete({"$item": i});
 		$scope.hide = true;
 	}
