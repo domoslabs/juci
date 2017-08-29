@@ -119,14 +119,14 @@
 						var ok = true;
 						async.eachSeries(menu.require.value, function(item, n){
 							if(!item || !item.split(":").length || item.split(":").length !== 2){
-								addMenuItem("invalid require: " + item);
+								console.error("invalid require: " + item);
 								done();
 								return;
 							}
 							var type = item.split(":")[0];
 							var value = item.split(":")[1];
 							if(!value){
-								console.log("invalid require");
+								console.error("invalid require");
 								done();
 								return;
 							}
@@ -138,10 +138,10 @@
 									break;
 								case "ubus":
 									var split = value.split("->").filter(function(item){return item !== ""});
-									if(split.length === 1)
-										ok = $rpc.$has(split[0]);
-									else if(split.length === 2)
-										ok = $rpc.$has(split[0], split[1]);
+									if(split.length === 1 && !$rpc.$has(split[0]))
+										ok = false;
+									else if(split.length === 2 && !$rpc.$has(split[0], split[1]))
+										ok = false;
 									else
 										console.log("invalid require ubus with value: " + value);
 									n();
