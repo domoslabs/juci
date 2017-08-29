@@ -341,7 +341,7 @@ JUCI.app.factory('$languages', function($config, gettextCatalog, $localStorage) 
 		},
 		"ja":{
 			"name":"Japanese",
-			"nativeName":"Japanese"
+			"nativeName":"日本語"
 		},
 		"jv":{
 			"name":"Javanese",
