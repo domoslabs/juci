@@ -138,10 +138,14 @@
 									break;
 								case "ubus":
 									var split = value.split("->").filter(function(item){return item !== ""});
-									if(split.length === 1 && !$rpc.$has(split[0]))
-										ok = false;
-									else if(split.length === 2 && !$rpc.$has(split[0], split[1]))
-										ok = false;
+									if(split.length === 1){
+										if(!$rpc.$has(split[0]))
+											ok = false;
+									}
+									else if(split.length === 2){
+										if(!$rpc.$has(split[0], split[1]))
+											ok = false;
+									}
 									else
 										console.log("invalid require ubus with value: " + value);
 									n();
