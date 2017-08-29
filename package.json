@@ -5,9 +5,9 @@
   "license": "GPL-2.0",
   "dependencies": {
     "JSON": "*",
-	"gettext-parser": "*",
-	"express":"*",
-	"body-parser":"*"
+    "gettext-parser": "*",
+    "express": "*",
+    "body-parser": "*"
   },
   "engines": {
     "node": "0.10.x",
