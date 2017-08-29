@@ -11,7 +11,7 @@ JUCI.app
 				var split = req.split(":");
 				if(split[0] !== "ubus"){
 					console.log("widgets only support require ubus:object[->method]");
-					return true;
+					return false;
 				}
 				var parts = String(split[1]).split("->");
 				if(parts.length !== 1 && parts.length !== 2)return true;
