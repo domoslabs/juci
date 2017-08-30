@@ -101,68 +101,14 @@
 			function(next){
 				// get the menu navigation
 				// retrieve session acls map
-				var acls = {};
-				if(UBUS.$session && UBUS.$session.acls && UBUS.$session.acls["access-group"]){
-					acls = UBUS.$session.acls["access-group"];
-				}
 				console.log("juci: loading menu from server..");
 				JUCI.navigation.clear();
-				async.eachSeries($uci.juci["@menu"], function(menu, done){
-					// only include menu items that are marked as accessible based on our rights and the box capabilities (others will simply be broken because of restricted access)
-					if(menu.acls.value.length && menu.acls.value.find(function(x){
-						return !acls[x];
-					})){
-						done();
-						return;
-					}
-					if(menu.require.value.length){
-						var ok = true;
-						async.eachSeries(menu.require.value, function(item, n){
-							if(!item || !item.split(":").length || item.split(":").length !== 2){
-								console.error("invalid require: " + item);
-								done();
-								return;
-							}
-							var type = item.split(":")[0];
-							var value = item.split(":")[1];
-							if(!value){
-								console.error("invalid require");
-								done();
-								return;
-							}
-							switch(type){
-								case "file":
-									$rpc.$call("file", "stat", {"path":value || ""}).fail(function(){
-										ok = false;
-									}).always(function(){n();});
-									break;
-								case "ubus":
-									var split = value.split("->").filter(function(item){return item !== ""});
-									if(split.length === 1){
-										if(!$rpc.$has(split[0]))
-											ok = false;
-									}
-									else if(split.length === 2){
-										if(!$rpc.$has(split[0], split[1]))
-											ok = false;
-									}
-									else
-										console.log("invalid require ubus with value: " + value);
-									n();
-									break;
-								default:
-									console.log("error: list require " + type + ':' + value + " is not supported");
-									n();
-							}
-						}, function(){
-							if(ok)
-								addMenuItem(menu)
-								done();
-						});
-					}else{
-						addMenuItem(menu);
-						done();
-					}
+				async.eachSeries($uci.juci["@menu"], function(menu, n){
+					$rpc.$has_access(menu).done(function(ret){
+						if(ret === true){
+							addMenuItem(menu);
+						}
+					}).always(function(){n();});
 				}, function(){
 					$juci.navigation.removeInvalidNodes();
 					$juci.navigation.sortNodes();
@@ -373,6 +319,7 @@
 		"name":		{ dvalue: [], type: Array },
 		"link":		{ dvalue: "", type: String },
 		"require":	{ dvalue: [], type: Array },
+		"acls":		{ dvalue: [], type: Array },
 		"modes":	{ dvalue: [], type: Array }
 	});
 	UCI.juci.$registerSectionType("wiki", {

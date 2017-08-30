@@ -344,6 +344,63 @@
 			});
 			return deferred.promise();
 		},
+		$has_access: function(section){
+			// retrieve session acls map
+			var acls = {};
+			var self = this;
+			var def = $.Deferred();
+
+			if(! section.acls || !section.acls.value || !section.acls.value instanceof Array ||
+				!section.require.value || !section.require.value instanceof Array)
+				return def.reject("invalid section type, it lacks acl or require option");
+
+			if(self.$session && self.$session.acls && self.$session.acls["access-group"]){
+				acls = self.$session.acls["access-group"];
+			}
+			// only include sections that are marked as accessible based on our rights and the box capabilities (others will simply be broken because of restricted access)
+			var unmetAccessList = section.acls.value.find(function(x){
+				return !acls[x];
+			});
+			if(unmetAccessList)
+				return def.resolve(false);
+			var ok = true;
+			async.eachSeries(section.require.value, function(item, n){
+				if(!item || !item instanceof String || !item.split(":").length || item.split(":").length !== 2){
+					def.reject("invalid require: ", item);
+				}
+				var type = item.split(":")[0];
+				var value = item.split(":")[1];
+				if(!value){
+					def.reject("invalid require");
+				}
+				switch(type){
+					case "file":
+						$rpc.$call("file", "stat", {"path":value || ""}).fail(function(){
+							ok = false;
+						}).always(function(){n();});
+						break;
+					case "ubus":
+						var split = value.split("->").filter(function(item){return item !== ""});
+						if(split.length === 1){
+							if(!$rpc.$has(split[0]))
+								ok = false;
+						}
+						else if(split.length === 2){
+							if(!$rpc.$has(split[0], split[1]))
+								ok = false;
+						}
+						else
+							def.reject("invalid require ubus with value: " + value);
+						n();
+						break;
+					default:
+						def.reject("error: list require " + type + ':' + value + " is not supported");
+				}
+			}, function(){
+				def.resolve(ok);
+			});
+			return def.promise();
+		},
 		$init_websocket: function(){
 			var host = window.location.origin;
 			var self = this;
