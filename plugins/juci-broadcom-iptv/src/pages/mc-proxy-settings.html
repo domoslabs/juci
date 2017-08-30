@@ -1,0 +1,15 @@
+<juci-layout-with-sidebar>
+	<div ng-controller="mcProxySettingsPageCtrl">
+		<juci-config-section>
+			<juci-config-heading>{{ 'Multicast Settings' | translate }}</juci-config-heading>
+			<!--<juci-config-info>{{ 'status.tv.info' | translate }}</juci-config-info>-->
+			<!--<h3>{{'Connection Status'|translate}}</h3>-->
+			<juci-config-line title="{{'Enable IGMP' | translate }}">
+				<switch class="green" ng-model="mcpd.igmp_proxy_enable.value" />
+			</juci-config-line>
+			<juci-config-line title="{{'Enable MLD' | translate }}">
+				<switch class="green" ng-model="mcpd.mld_proxy_enable.value" />
+			</juci-config-line>
+		</juci-config-section>
+	</div>
+</juci-layout-with-sidebar>
