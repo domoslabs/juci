@@ -9,16 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
-
-msgid "New device"
-msgstr ""
-
-msgid "Please select a device in the list!"
-msgstr ""
-
-msgid "Are you sure you want to delete this device?"
-msgstr ""
+"X-Generator: Poedit 1.8.7.1\n"
 
 msgid "DSL Status Information"
 msgstr ""
@@ -41,37 +32,34 @@ msgstr ""
 msgid "Cell Statistics"
 msgstr ""
 
-msgid "You need to select a device!"
+msgid "Device"
 msgstr ""
 
-msgid "EoA"
+msgid "VPI"
 msgstr ""
 
-msgid "PPPoA"
+msgid "VCI"
 msgstr ""
 
-msgid "IPoA"
+# plugins/juci-broadcom-dsl/src/pages/page-broadcom-adsl.js
+msgid "Link type"
 msgstr ""
 
-msgid "LLC/SNAP-Bridging"
+msgid "New device"
 msgstr ""
 
-msgid "VC/MUX"
+msgid "Please select a device in the list!"
 msgstr ""
 
-msgid "UBR Without PCR"
+msgid "Are you sure you want to delete this device?"
 msgstr ""
 
-msgid "UBR With PCR"
+# plugins/juci-broadcom-dsl/src/pages/page-broadcom-gfast-status.js
+msgid "Status"
 msgstr ""
 
-msgid "CBR"
-msgstr ""
-
-msgid "Non-Realtime VBR"
-msgstr ""
-
-msgid "Realtime VBR"
+# plugins/juci-broadcom-dsl/src/pages/page-broadcom-gfast-status.js
+msgid "Mode"
 msgstr ""
 
 msgid "Latency Path 1"
@@ -95,46 +83,8 @@ msgstr ""
 msgid "Weighted Fair Queuing"
 msgstr ""
 
-msgid "Select Device"
-msgstr ""
-
-msgid "Select base DSL device"
-msgstr ""
-
-msgid "Device"
-msgstr ""
-
-msgid "Name"
-msgstr ""
-
-msgid "VPI"
-msgstr ""
-
-msgid "VCI"
-msgstr ""
-
-msgid "Service Type"
-msgstr ""
-
-msgid "PCR"
-msgstr ""
-
-msgid "SCR"
-msgstr ""
-
-msgid "MBS"
-msgstr ""
-
-msgid "Select DSL Link Type"
-msgstr ""
-
-msgid "Encapsulation Mode"
-msgstr ""
-
-msgid "Device Name"
-msgstr ""
-
-msgid "DSL Latency Path"
+# plugins/juci-broadcom-dsl/src/pages/page-broadcom-vdsl.js
+msgid "Latency Path"
 msgstr ""
 
 msgid "PTM Priority"
@@ -143,10 +93,104 @@ msgstr ""
 msgid "IP QoS Scheduler Algorithm"
 msgstr ""
 
-msgid "internet.ethernet.adsl.info"
-msgstr "This page allows you to configure ADSL devices. "
+msgid "You need to select a device!"
+msgstr ""
 
-msgid "ADSL Devices"
+msgid "EoA"
+msgstr ""
+
+msgid "PPPoA"
+msgstr ""
+
+msgid "IPoA"
+msgstr ""
+
+msgid "LLC/SNAP-Bridging"
+msgstr ""
+
+msgid "VC/MUX"
+msgstr ""
+
+# plugins/juci-broadcom-dsl/src/widgets/network-device-adsl-edit.js
+msgid "LLC/ENCAPSULATION"
+msgstr ""
+
+# plugins/juci-broadcom-dsl/src/widgets/network-device-adsl-edit.js
+msgid "LLC/SNAP-ROUTING"
+msgstr ""
+
+msgid "UBR Without PCR"
+msgstr ""
+
+msgid "UBR With PCR"
+msgstr ""
+
+msgid "CBR"
+msgstr ""
+
+msgid "Non-Realtime VBR"
+msgstr ""
+
+msgid "Realtime VBR"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+# plugins/juci-broadcom-dsl/src/widgets/network-device-adsl-edit.html
+msgid "ATM Virtual Path Identifier"
+msgstr ""
+
+# plugins/juci-broadcom-dsl/src/widgets/network-device-adsl-edit.html
+msgid "ATM Virtual Channel Identifier"
+msgstr ""
+
+# plugins/juci-broadcom-dsl/src/widgets/network-device-adsl-edit.html
+msgid "DSL Link Type"
+msgstr ""
+
+# plugins/juci-broadcom-dsl/src/widgets/network-device-adsl-edit.html
+msgid "EoA is for PPPoE, IPoE and Bridge"
+msgstr ""
+
+msgid "Encapsulation Mode"
+msgstr ""
+
+msgid "Service Type"
+msgstr ""
+
+# plugins/juci-broadcom-dsl/src/widgets/network-device-adsl-edit.html
+msgid "Peak Cell Rate"
+msgstr ""
+
+# plugins/juci-broadcom-dsl/src/widgets/network-device-adsl-edit.html
+msgid "Sustainable Cell Rate"
+msgstr ""
+
+# plugins/juci-broadcom-dsl/src/widgets/network-device-adsl-edit.html
+msgid "Maximum Burst Size"
+msgstr ""
+
+msgid "Device Name"
+msgstr ""
+
+msgid "DSL Latency Path"
+msgstr ""
+
+msgid "Select Device"
+msgstr ""
+
+msgid "Select base DSL device"
+msgstr ""
+
+# plugins/juci-broadcom-dsl/src/pages/page-broadcom-gfast-status.html
+msgid "No G.Fast info available."
+msgstr ""
+
+msgid "internet.ethernet.vdsl.info"
+msgstr "This section allows you to configure VDSL interfaces. "
+
+msgid "VDSL Devices"
 msgstr ""
 
 msgid "DSL Status"
@@ -158,17 +202,21 @@ msgstr "This status page shows technical parameters of your DSL connection."
 msgid "No DSL info available."
 msgstr ""
 
-msgid "internet.ethernet.vdsl.info"
-msgstr "This section allows you to configure VDSL interfaces. "
+msgid "internet.ethernet.adsl.info"
+msgstr "This page allows you to configure ADSL devices. "
 
-msgid "VDSL Devices"
+msgid "ADSL Devices"
 msgstr ""
 
-msgid "menu-page-broadcom-adsl-title"
-msgstr "ADSL"
+# plugins/juci-broadcom-dsl/src/pages/page-broadcom-gfast-status.html
+msgid "menu-page-broadcom-gfast-status-title"
+msgstr "G.Fast"
 
 msgid "menu-page-broadcom-dsl-status-title"
 msgstr "DSL"
+
+msgid "menu-page-broadcom-adsl-title"
+msgstr "ADSL"
 
 msgid "menu-page-broadcom-vdsl-title"
 msgstr "VDSL"
