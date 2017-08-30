@@ -5,7 +5,7 @@ JUCI.app
 	$scope.data = {};
 	$scope.getItemTitle = function(item) {
 		if(!item) return "error";
-		return item[".name"];
+		return item.name.value || item[".name"];
 	}
 	$uci.$sync(["ports", "layer2_interface_ethernet"]).done(function(){
 		$scope.ports = $uci.ports["@ethport"] || [];
