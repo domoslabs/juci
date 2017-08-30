@@ -375,18 +375,18 @@
 				}
 				switch(type){
 					case "file":
-						$rpc.$call("file", "stat", {"path":value || ""}).fail(function(){
+						self.$call("file", "stat", {"path":value || ""}).fail(function(){
 							ok = false;
 						}).always(function(){n();});
 						break;
 					case "ubus":
 						var split = value.split("->").filter(function(item){return item !== ""});
 						if(split.length === 1){
-							if(!$rpc.$has(split[0]))
+							if(!self.$has(split[0]))
 								ok = false;
 						}
 						else if(split.length === 2){
-							if(!$rpc.$has(split[0], split[1]))
+							if(!self.$has(split[0], split[1]))
 								ok = false;
 						}
 						else
