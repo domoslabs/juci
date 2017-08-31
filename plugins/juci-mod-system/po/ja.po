@@ -378,8 +378,8 @@ msgid "Save some of the settings over the factory reset"
 msgstr "工場出荷時のリセットよりもいくつかの設定を保存する"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "Wifi settings"
-msgstr "Wi-Fi設定"
+msgid "WiFi settings"
+msgstr "WiFiの設定"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "Port redirects"
@@ -394,7 +394,7 @@ msgid "User password"
 msgstr "ユーザーのパスワード"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "Ice config"
+msgid "ICE config"
 msgstr "ICE設定"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
