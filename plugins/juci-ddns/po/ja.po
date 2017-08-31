@@ -49,7 +49,6 @@ msgid "Running"
 msgstr "ステータス"
 
 # plugins/juci-ddns/src/pages/internet-services-ddns.js
-#, fuzzy
 msgid "Next update in"
 msgstr "次回のアップデート"
 

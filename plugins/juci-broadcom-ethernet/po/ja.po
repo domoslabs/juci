@@ -21,7 +21,7 @@ msgstr "なし"
 
 # plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Full auto-negotiation"
-msgstr "Full auto-negotiation"
+msgstr "オートネゴシエーション"
 
 # plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Max 100Mb auto-negotiation, full duplex"
@@ -57,7 +57,7 @@ msgstr "半二重10M"
 
 # plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Disabled"
-msgstr "無効化"
+msgstr "無効"
 
 # plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Only 1000Mb"
@@ -97,7 +97,7 @@ msgstr "アップリンクポート"
 
 # plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
 msgid "This is used to configure the ethernet port as internet uplink."
-msgstr "このポートはWANに設定されています。"
+msgstr "このポートはUp Linkに設定されています"
 
 # plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
 msgid "menu-page-broadcom-ethernet-phy-title"

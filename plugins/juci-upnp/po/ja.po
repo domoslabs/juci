@@ -49,7 +49,7 @@ msgstr "UPnPデーモンの起動・停止（WAN接続があることを確認�
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Enable UPNP"
-msgstr "UPnPオン"
+msgstr "UPnP オン"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Enable UPNP protocol"
@@ -57,7 +57,7 @@ msgstr "UPnPプロトコル有効化"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Enable NAT-PMP"
-msgstr "NAT-PMPオン"
+msgstr "NAT-PMP オン"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Enable NAT-PMP protocol"
@@ -65,10 +65,9 @@ msgstr "NAT-PMPプロトコルを有効にする"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Enable secure mode"
-msgstr "セキュアモード　オン"
+msgstr "セキュアモード オン"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
-#, fuzzy
 msgid "Allow adding forwards only to requesting ip addresses"
 msgstr "要求するIPアドレスにのみ追加転送を許可する"
 
@@ -114,7 +113,7 @@ msgstr "デバイスUUID"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Announced serial number"
-msgstr "アナウンス情報 S/N"
+msgstr "アナウンス情報 Serial Number"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Serial Number"
@@ -122,7 +121,7 @@ msgstr "シリアルナンバー"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Announced model number"
-msgstr "アナウンス情報 S/N"
+msgstr "アナウンス情報 Model Number"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Model Number"
@@ -138,7 +137,7 @@ msgstr "ルール消去しきい値"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Clean rules interval"
-msgstr "ルールクリーン間隔"
+msgstr "ルール消去間隔"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Presentation URL"
@@ -167,9 +166,8 @@ msgid "No UPnP ports currently in use"
 msgstr "現在使用中のUPnPポートはありません"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
-#, fuzzy
 msgid "Pkts. cnt."
-msgstr "パケットカウンター"
+msgstr "Pkts. cnt."
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-upnp/src/pages/upnpd-settings.html
@@ -186,7 +184,6 @@ msgid "Target"
 msgstr "ターゲット"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
-#, fuzzy
 msgid "Proto."
 msgstr "プロトコル"
 
@@ -194,7 +191,6 @@ msgstr "プロトコル"
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-upnp/src/pages/upnpd-status.html
-#, fuzzy
 msgid "Opt"
 msgstr "Opt"
 
@@ -229,7 +225,6 @@ msgid "Internal ports"
 msgstr "内部ポート"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
-#, fuzzy
 msgid "Action"
 msgstr "アクション"
 
@@ -250,7 +245,6 @@ msgid "Packets cnt."
 msgstr "パケットカウント"
 
 # plugins/juci-upnp/src/pages/upnpd-status.html
-#, fuzzy
 msgid "Proto"
 msgstr "プロトコル"
 

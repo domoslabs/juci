@@ -60,7 +60,6 @@ msgid "ID"
 msgstr "ID"
 
 # plugins/juci-natalie-dect/src/pages/voice-dect.html
-#, fuzzy
 msgid "IPUI"
 msgstr "IPUI"
 

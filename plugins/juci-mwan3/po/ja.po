@@ -80,7 +80,6 @@ msgid "Interface"
 msgstr "インターフェース"
 
 # plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
-#, fuzzy
 msgid "Number of host that Must reply for the member to be considered up"
 msgstr "アップしたとみなすためにメンバーに返信するホストの数"
 
@@ -131,7 +130,6 @@ msgid "Policy to use"
 msgstr "使用ポリシー"
 
 # plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
-#, fuzzy
 msgid ""
 "Use this policy for traffic that matches or set to  default to use the "
 "default routing table to lookup"
@@ -252,7 +250,6 @@ msgid "Select Family"
 msgstr "ファミリー選択"
 
 # plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
-#, fuzzy
 msgid "Host to ping"
 msgstr "ホストにPINGする"
 
@@ -265,7 +262,6 @@ msgid "Interface Reliability"
 msgstr "インターフェースの信頼性"
 
 # plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
-#, fuzzy
 msgid "Number of host that Must reply for the interface to be considered up"
 msgstr "アップしたとみなすためにインターフェースに返信するホストの数"
 

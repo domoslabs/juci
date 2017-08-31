@@ -105,7 +105,7 @@ msgstr "ログの重大度レベル"
 
 # plugins/juci-icwmp/src/pages/icwmp-config.html
 msgid "Log to console"
-msgstr "コンソールにログする"
+msgstr "コンソールに記録する"
 
 # plugins/juci-icwmp/src/pages/icwmp-config.html
 msgid "Log to file"

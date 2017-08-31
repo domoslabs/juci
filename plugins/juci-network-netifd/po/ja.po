@@ -29,7 +29,7 @@ msgstr "ネットワークインターフェース"
 
 # plugins/juci-network-netifd/src/network-uci.js
 msgid "Unnamed interface"
-msgstr "無名インターフェイス"
+msgstr "名前無しインターフェイス"
 
 # plugins/juci-network-netifd/src/network-uci.js
 msgid " has protocol: "
@@ -44,17 +44,14 @@ msgid " MUST have  a protocol set"
 msgstr "プロトコルは必ず指定する必要があります。"
 
 # plugins/juci-network-netifd/src/network-uci.js
-#, fuzzy
 msgid "is an unmanaged network and need to be setup as a bridge"
 msgstr "は管理外ネットワークとブリッジのセットアップに必要です"
 
 # plugins/juci-network-netifd/src/network-uci.js
-#, fuzzy
 msgid "is an unmanaged networks and need to have at least one device in bridge"
 msgstr "は管理外ネットワークとブリッジの最新デバイスに必要です"
 
 # plugins/juci-network-netifd/src/network-uci.js
-#, fuzzy
 msgid ""
 " has an invalid IP address. It can not be a range address (can not end with "
 "0s)!"
@@ -63,7 +60,6 @@ msgstr ""
 "ん)。"
 
 # plugins/juci-network-netifd/src/network-uci.js
-#, fuzzy
 msgid " has an invalid IP address it can not start with a '0'!"
 msgstr "は不正なIPアドレスです。0から始まることはできません。"
 
@@ -72,22 +68,18 @@ msgid " needs either ipv4 or ipv6 address"
 msgstr "IPv4またはIPv6いずれかのアドレスが必要です。"
 
 # plugins/juci-network-netifd/src/network-uci.js
-#, fuzzy
 msgid " has protocol 3G and needs a Modem device"
 msgstr "は3Gプロトコルとモデムデバイスが必要です。"
 
 # plugins/juci-network-netifd/src/network-uci.js
-#, fuzzy
 msgid " has protocol 3G and needs a Service type"
 msgstr "は3Gプロトコルとサービスタイプが必要です。"
 
 # plugins/juci-network-netifd/src/network-uci.js
-#, fuzzy
 msgid " has protocol 3G and needs APN"
 msgstr "は3GプロトコルとAPNが必要です。"
 
 # plugins/juci-network-netifd/src/network-uci.js
-#, fuzzy
 msgid " has protocol 4G and it needs a Device"
 msgstr "は4Gプロトコルとデバイスが必要です。"
 
@@ -171,7 +163,6 @@ msgstr "IPv6ルートにはゲートウェイが必要です"
 # plugins/juci-network-netifd/src/network-netifd.js
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/network-connection-create.js
-#, fuzzy
 msgid "Unmanaged"
 msgstr "管理外"
 
@@ -181,11 +172,11 @@ msgstr "Static"
 
 # plugins/juci-network-netifd/src/network-netifd.js
 msgid "DHCP v4"
-msgstr "DHCPv4"
+msgstr "DHCP v4"
 
 # plugins/juci-network-netifd/src/network-netifd.js
 msgid "DHCP v6"
-msgstr "DHCPv5"
+msgstr "DHCP v6"
 
 # plugins/juci-network-netifd/src/network-netifd.js
 msgid "PPP"
@@ -220,7 +211,6 @@ msgid "NCM (USB modem)"
 msgstr "NCM (USBモデム)"
 
 # plugins/juci-network-netifd/src/network-netifd.js
-#, fuzzy
 msgid "HNET (self-managing home network)"
 msgstr "HNET (self-managing home network)"
 
@@ -253,7 +243,6 @@ msgid "PPP over L2TP"
 msgstr "PPP over L2TP"
 
 # plugins/juci-network-netifd/src/network-netifd.js
-#, fuzzy
 msgid "Relayd Pseudo Bridge"
 msgstr "Relayd Pseudo Bridge"
 
@@ -286,13 +275,12 @@ msgid "from network"
 msgstr "ネットワークから"
 
 # plugins/juci-network-netifd/src/network-netifd.js
-#, fuzzy
 msgid "and use it in this"
 msgstr "現在使用中のUPnPポートはありません"
 
 # plugins/juci-network-netifd/src/pages/internet-routes.js
 msgid "Route to"
-msgstr "にルート"
+msgstr "Route to"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/pages/internet-routes.js
@@ -779,7 +767,6 @@ msgid "Standalone"
 msgstr "Standalone"
 
 # plugins/juci-network-netifd/src/widgets/network-connection-create-settings.js
-#, fuzzy
 msgid "Anywan"
 msgstr "Anywan"
 
@@ -791,7 +778,6 @@ msgid "Reboot"
 msgstr "再起動"
 
 # plugins/juci-network-netifd/src/widgets/overview-wan-fix.js
-#, fuzzy
 msgid "Are you sure you want to reboot?"
 msgstr "本当に再起動しますか？"
 
@@ -832,12 +818,10 @@ msgid "Downlink"
 msgstr "ダウンリンク"
 
 # plugins/juci-network-netifd/src/widgets/network-connection-type-none-edit.js
-#, fuzzy
 msgid "(Alias)"
 msgstr "(Alias)"
 
 # plugins/juci-network-netifd/src/widgets/network-connection-edit.js
-#, fuzzy
 msgid "AnyWAN"
 msgstr "AnyWAN"
 
@@ -846,7 +830,6 @@ msgid "ERROR"
 msgstr "エラー"
 
 # plugins/juci-network-netifd/src/widgets/network-connection-edit.js
-#, fuzzy
 msgid ""
 "Are you sure you want to switch? Your settings will be lost!<br />The only "
 "way to get it back is to reload the page"
@@ -913,12 +896,10 @@ msgid "Disabled"
 msgstr "無効"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.js
-#, fuzzy
 msgid "Address Allocation"
 msgstr "アドレスの割当"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-static-edit.js
-#, fuzzy
 msgid "Address Assignment"
 msgstr "アドレス割当"
 
@@ -948,7 +929,6 @@ msgid "LAN"
 msgstr "LAN"
 
 # plugins/juci-network-netifd/src/widgets/network-connection-dns-config.html
-#, fuzzy
 msgid "Add/Remove custom DNS Servers"
 msgstr "DNSサーバ 追加・削除・編集"
 
@@ -1002,12 +982,10 @@ msgid "Physical device"
 msgstr "物理デバイス"
 
 # plugins/juci-network-netifd/src/widgets/network-connection-create-settings.html
-#, fuzzy
 msgid "Add network to a firewall zone"
 msgstr "ファイヤーウォール領域に追加しない"
 
 # plugins/juci-network-netifd/src/widgets/network-connection-create-settings.html
-#, fuzzy
 msgid ""
 "If you select a zone the network will be added to that firewall zone when it "
 "is created"
@@ -1243,7 +1221,6 @@ msgid "Physical Settings"
 msgstr "物理"
 
 # plugins/juci-network-netifd/src/widgets/network-connection-edit.html
-#, fuzzy
 msgid "Advanced"
 msgstr "拡張"
 
@@ -1280,7 +1257,6 @@ msgid "No Lan networks"
 msgstr "LANネットワークなし"
 
 # plugins/juci-network-netifd/src/widgets/overview-net.html
-#, fuzzy
 msgid "No Clients in {{network['.name'].toUpperCase()}} network"
 msgstr ""
 "クライアントは {{network['.name'].toUpperCase()}} のネットワークにありませ"
@@ -1460,7 +1436,6 @@ msgid "IPv4 Routing Table"
 msgstr "IPv4ルーティングテーブル"
 
 # plugins/juci-network-netifd/src/pages/status-network-routes.html
-#, fuzzy
 msgid "Genmask"
 msgstr "Genmask"
 
@@ -1522,7 +1497,6 @@ msgstr "ブロードキャストフラグを使用"
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-advanced-edit.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-advanced-edit.html
-#, fuzzy
 msgid "Required for certain ISPs, e.g. Charter with DOCSIS 3"
 msgstr "特定のISPに必要です。(例：DOCSIS 3の認証)"
 
@@ -1590,7 +1564,6 @@ msgstr "チェックしない場合デフォルトルートは設定されませ
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-advanced-edit.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-advanced-edit.html
-#, fuzzy
 msgid "Use DNS servers advertised by peer"
 msgstr "ピアによってアドバタイズされたDNSサーバを使用する"
 
@@ -1612,12 +1585,10 @@ msgstr "ピアによってアドバタイズされたDNSサーバを使用する
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-advanced-edit.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-advanced-edit.html
-#, fuzzy
 msgid "If unchecked, the advertised DNS server addresses are ignored"
 msgstr "チェックを外すと、アドバタイズされたDNSサーバアドレスは無視されます"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-advanced-edit.html
-#, fuzzy
 msgid "Additional DHCP options to request from the server"
 msgstr "サーバから要請する追加のDHCPオプション"
 
@@ -1627,7 +1598,6 @@ msgstr "サーバから要請する追加のDHCPオプション"
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-advanced-edit.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcpv6-advanced-edit.html
-#, fuzzy
 msgid "Client ID to send when requesting DHCP"
 msgstr "DHCPを要求するときに送信するホスト名"
 
@@ -1639,7 +1609,6 @@ msgstr "任意のクライアントID"
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-advanced-edit.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-4g-advanced-edit.html
-#, fuzzy
 msgid "Vendor Class to send when requesting DHCP"
 msgstr "DHCPを要求するときに送信するホスト名"
 
@@ -1819,7 +1788,6 @@ msgstr "LCPエコー障害しきい値"
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-advanced-edit.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-advanced-edit.html
-#, fuzzy
 msgid ""
 "Presume peer to be dead after given amount of LCP echo failures, use 0 to "
 "ignore failures"
@@ -1850,9 +1818,8 @@ msgstr "LCPエコー間隔"
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-advanced-edit.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-advanced-edit.html
-#, fuzzy
 msgid "Inactivity timeout"
-msgstr "無活動タイムアウト"
+msgstr "Inactivity timeout"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-advanced-edit.html
@@ -1864,7 +1831,6 @@ msgstr "無活動タイムアウト"
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-advanced-edit.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-advanced-edit.html
-#, fuzzy
 msgid ""
 "Close inactive connection after the given amount of seconds, use 0 to "
 "persist connection"
@@ -1876,7 +1842,6 @@ msgstr "指定秒数の後に非アクティブな接続を閉じます(0の場�
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-3g-advanced-edit.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-advanced-edit.html
-#, fuzzy
 msgid ""
 "Send LCP echo requests at the given interval in seconds, only effective in "
 "conjunction with failure threshold"
@@ -2022,7 +1987,6 @@ msgid "IPv6 prefix"
 msgstr "IPv6プレフィックス"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6rd-edit.html
-#, fuzzy
 msgid "The IPv6 prefix assigned to the provider, usually ends with ::"
 msgstr "通常、プロバイダに割り当てられたIPv6プレフィックスは::で終わります。"
 
@@ -2057,7 +2021,6 @@ msgid "Use TTL on tunnel interface"
 msgstr "トンネルインターフェースでTTLを使用する"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
-#, fuzzy
 msgid ""
 "This is usually the address of the nearest PoP operated by the tunnel broker"
 msgstr ""
@@ -2075,7 +2038,6 @@ msgid "Local IPv6 address"
 msgstr "ローカルIPv6アドレス"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
-#, fuzzy
 msgid ""
 "This is the local endpoint address assigned by the tunnel broker, it usually "
 "ends with :2"
@@ -2088,7 +2050,6 @@ msgid "IPv6 routed prefix"
 msgstr "IPv6ルーティングプレフィックス"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
-#, fuzzy
 msgid ""
 "This is the prefix routed to you by the tunnel broker for use by clients"
 msgstr ""
@@ -2100,7 +2061,6 @@ msgid "Dynamic tunnel"
 msgstr "ダイナミックトンネル"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
-#, fuzzy
 msgid "Enable HE.net dynamic endpoint update"
 msgstr "HE.net動的エンドポイント更新を有効にする"
 
@@ -2113,7 +2073,6 @@ msgid "HE.net username"
 msgstr "HE.net ユーザ名"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-6in4-edit.html
-#, fuzzy
 msgid "This is the plain username for logging into the account"
 msgstr "これはアカウントにログインするためのユーザ名です"
 
@@ -2126,12 +2085,12 @@ msgid ""
 "This is either the Update Key configured for the tunnel or the account "
 "password if no update key has been configured"
 msgstr ""
-"これは、更新キーが設定されていない場合は、トンネル用に設定された更新キーまた"
-"はアカウントパスワードです。"
+"更新キーが設定されていない場合は、トンネル用に設定された更新キーまたはアカウ"
+"ントパスワードです。"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-edit.html
 msgid "Hostname to include in DHCP requests"
-msgstr "DHCP要請に含めるホスト名"
+msgstr "DHCPリクエストに含めるホスト名"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-edit.html
 msgid "Automatically set up default route for this interface"
@@ -2162,12 +2121,10 @@ msgid "Select Modem Device"
 msgstr "モデムデバイス選択"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcpv6-advanced-edit.html
-#, fuzzy
 msgid "Custom delegated IPv6-prefix"
-msgstr "カスタム委任IPv6プレフィックス"
+msgstr "Custom delegated IPv6-prefix"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-ppp-advanced-edit.html
-#, fuzzy
 msgid "Enable IPv negotiation on the PPP link"
 msgstr "PPPリンク上でIPv6ネゴシエーションを有効にする"
 
@@ -2188,7 +2145,6 @@ msgid "Modes"
 msgstr "モード"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.html
-#, fuzzy
 msgid ""
 "Allowed network modes, comma separated list of: all, lte, umts, gsm, cdma, "
 "td-scdma"
@@ -2197,12 +2153,10 @@ msgstr ""
 "scdma"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.html
-#, fuzzy
 msgid "Delay"
 msgstr "ディレイ"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-wwan-edit.html
-#, fuzzy
 msgid "Seconds to wait before trying to interact with the modem"
 msgstr "モデム通信前待機時間(秒)"
 
@@ -2211,9 +2165,8 @@ msgid "Access Concentrator"
 msgstr "アクセスコンセントレータ"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-edit.html
-#, fuzzy
 msgid "Leave empty to autodetect"
-msgstr "自動検出には空のままにする"
+msgstr "自動検出時は空のままにする"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pppoe-edit.html
 msgid "auto"

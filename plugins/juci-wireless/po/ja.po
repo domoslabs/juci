@@ -48,7 +48,6 @@ msgid "Wireless interface "
 msgstr "無線インターフェース"
 
 # plugins/juci-wireless/src/wireless.js
-#, fuzzy
 msgid " has invalid key #"
 msgstr "は無効なキーです。"
 
@@ -57,12 +56,10 @@ msgid " error: "
 msgstr "エラー："
 
 # plugins/juci-wireless/src/wireless.js
-#, fuzzy
 msgid " must have key #"
 msgstr "キーは必須です。"
 
 # plugins/juci-wireless/src/wireless.js
-#, fuzzy
 msgid " set!"
 msgstr "指定されました"
 
@@ -160,7 +157,7 @@ msgstr ""
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-wireless/src/pages/wireless-link-to-interfaces.html
 msgid "Wireless Interfaces"
-msgstr "無線インターフェース"
+msgstr "WiFi インターフェース"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-wireless/src/pages/wireless-devices.js
@@ -170,7 +167,6 @@ msgid "Bandwidth"
 msgstr "帯域幅"
 
 # plugins/juci-wireless/src/pages/wireless-devices.js
-#, fuzzy
 msgid "N/A"
 msgstr "N/A"
 
@@ -240,7 +236,7 @@ msgstr "強制チャネル選択に失敗しました。"
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-wireless/src/pages/wireless-status-scan.html
 msgid "Enabled"
-msgstr "インターフェース　オン"
+msgstr "Enabled"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-wireless/src/pages/wireless-interfaces.js
@@ -391,7 +387,6 @@ msgstr "平均アンテナ信号/ RSSI [dBm]"
 # plugins/juci-wireless/src/pages/wireless-status.js
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-wireless/src/pages/wireless-status-bs-data.html
-#, fuzzy
 msgid "Airtime Usage"
 msgstr "使用率"
 
@@ -414,7 +409,6 @@ msgstr "物理レート [Mbps]"
 # plugins/juci-wireless/src/pages/wireless-status.js
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-wireless/src/pages/wireless-status-bs-data.html
-#, fuzzy
 msgid "Retries"
 msgstr "リトライ数"
 
@@ -552,7 +546,6 @@ msgid "Client (STA)"
 msgstr "クライアント(STA)"
 
 # plugins/juci-wireless/src/widgets/wifi-radio-picker-modal.js
-#, fuzzy
 msgid ""
 "Are you sure you want to create a new SSID with the same name and on the "
 "same radio? This may result in undefined behaviour!"
@@ -614,7 +607,6 @@ msgid "Add clients to MAC filtering list"
 msgstr "MACフィルタリングリストにクライアントを追加する"
 
 # plugins/juci-wireless/src/widgets/wifi-radio-picker-modal.html
-#, fuzzy
 msgid "Select Wireless Radio"
 msgstr "無線選択"
 
@@ -652,7 +644,6 @@ msgid "WPS"
 msgstr "WPS"
 
 # plugins/juci-wireless/src/widgets/overview.wifi.html
-#, fuzzy
 msgid "(within 2 minutes)"
 msgstr "(約2分かかります)"
 
@@ -669,7 +660,6 @@ msgstr "ペア"
 # plugins/juci-wireless/src/widgets/overview.wifi.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-wireless/src/pages/wireless-wps.html
-#, fuzzy
 msgid "Attempting to Pair"
 msgstr "ペアリングしようとしています"
 
@@ -777,7 +767,6 @@ msgid "RIFS"
 msgstr "RIFS"
 
 # plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
-#, fuzzy
 msgid "RIFS Advertisement"
 msgstr "RIFS公示(通知)"
 
@@ -804,7 +793,6 @@ msgid ""
 msgstr "ATF機能は、低速データ転送が高速データ転送に影響する問題を解決します"
 
 # plugins/juci-wireless/src/widgets/uci.wireless.device.edit.html
-#, fuzzy
 msgid "OBSS Co-Existence"
 msgstr "OBSS共存"
 
@@ -833,9 +821,8 @@ msgid "Enable WMM UAPSD Power Saving"
 msgstr "WMM UAPSDパワーセーブを有効にする"
 
 # plugins/juci-wireless/src/pages/wireless-devices.html
-#, fuzzy
 msgid "Wireless Radios"
-msgstr "無線詳細"
+msgstr "WiFi デバイス"
 
 # plugins/juci-wireless/src/pages/wireless-devices.html
 msgid "wifi.radios.info"
@@ -954,7 +941,6 @@ msgid "WiFi Network"
 msgstr "Wi-Fiネットワーク"
 
 # plugins/juci-wireless/src/pages/wireless-general.html
-#, fuzzy
 msgid "Scheduled"
 msgstr "スケジュール済み"
 
@@ -1057,7 +1043,6 @@ msgid "Enable WPS on"
 msgstr "WPS オン"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
-#, fuzzy
 msgid "Pair (within 2 minutes)"
 msgstr "ペアリング(約2分かかります)"
 
@@ -1078,7 +1063,6 @@ msgid "Enter your PIN here"
 msgstr "PINコードを入力して下さい"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
-#, fuzzy
 msgid "WPS-PBC: Push Button on Device"
 msgstr "WPS-PBC: 本機のWPSボタンを押して下さい"
 
@@ -1114,7 +1098,7 @@ msgstr "お手持ちのデバイスに表示されているPINコードを入力
 
 # plugins/juci-wireless/src/pages/wireless-general.html
 msgid "menu-wireless-general-title"
-msgstr "WIFI"
+msgstr "WiFi"
 
 # plugins/juci-wireless/src/pages/wireless-status-bs-data.html
 msgid "menu-wireless-status-bs-data-title"
@@ -1130,7 +1114,7 @@ msgstr "WPS"
 
 # plugins/juci-wireless/src/pages/wireless-status.html
 msgid "menu-wireless-status-title"
-msgstr "無線"
+msgstr "WiFi"
 
 # plugins/juci-wireless/src/pages/wireless-interfaces.html
 msgid "menu-wireless-interfaces-title"
@@ -1138,7 +1122,7 @@ msgstr "インターフェース"
 
 # plugins/juci-wireless/src/pages/wireless-filtering.html
 msgid "menu-wireless-filtering-title"
-msgstr "MACフィルタリング"
+msgstr "MACフィルター"
 
 # plugins/juci-wireless/src/pages/wireless-devices.html
 msgid "menu-wireless-devices-title"
@@ -1146,7 +1130,7 @@ msgstr "デバイス"
 
 # plugins/juci-wireless/src/pages/wireless.html
 msgid "menu-wireless-title"
-msgstr "無線"
+msgstr "WiFi"
 
 # plugins/juci-wireless/src/pages/wireless-band-steering-status.html
 msgid "menu-wireless-band-steering-status-title"

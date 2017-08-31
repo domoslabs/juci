@@ -12,7 +12,6 @@ msgstr ""
 "X-Generator: Poedit 2.0.1\n"
 
 # plugins/juci-dnsmasq-dhcp/src/juci-dnsmasq-dhcp.js
-#, fuzzy
 msgid "LAN does not have IPv6 configured"
 msgstr "LANにIPv6が設定されていません。"
 
@@ -41,7 +40,6 @@ msgid "Subscriber ID"
 msgstr "サブスクライバーID"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
-#, fuzzy
 msgid "Select type of Classification"
 msgstr "分類タイプ選択"
 
@@ -50,9 +48,8 @@ msgid "Add new Tag"
 msgstr "新しいタグを追加"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
-#, fuzzy
 msgid "Name can not be empty"
-msgstr "名前を空白にすることはできません。"
+msgstr "名前を空白にすることはできません"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
 msgid "Invalid name, it may only contain (a-z, A-Z, 0-9 and _)"
@@ -83,7 +80,6 @@ msgid "Hostname(s) for "
 msgstr "ホスト名"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-add-classification.html
-#, fuzzy
 msgid "Select Classifications Type"
 msgstr "分類タイプ選択"
 
@@ -142,7 +138,6 @@ msgid "IPv4 Netmask"
 msgstr "IPv4ネットマスク"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
-#, fuzzy
 msgid "TODO"
 msgstr "予定"
 
@@ -225,7 +220,6 @@ msgid "IPv6 Address ID"
 msgstr "IPv6アドレスID"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
-#, fuzzy
 msgid "No tag set"
 msgstr "タグが設定さていません"
 
@@ -282,12 +276,10 @@ msgid "MAC-Address"
 msgstr "MACアドレス"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
-#, fuzzy
 msgid "Leasetime remaining"
 msgstr "残りリースタイム"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
-#, fuzzy
 msgid "There are no active leases"
 msgstr "アクティブなリースはありません"
 
@@ -320,18 +312,15 @@ msgid "Local domain"
 msgstr "ローカルドメイン"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-#, fuzzy
 msgid "Local domain suffix appended to DHCP names and hosts file entries"
 msgstr ""
 "DHCP名とホストファイルエントリに追加されたローカルドメインサフィックス"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-#, fuzzy
 msgid "Log queries"
 msgstr "ログクエリ"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-#, fuzzy
 msgid "Write received DNS requests to syslog"
 msgstr "受信したDNS要請をsyslogに書き込みます"
 
@@ -352,19 +341,16 @@ msgid "Resolve file"
 msgstr "解決したファイル"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-#, fuzzy
 msgid "Tells dnsmasq to use this file to find upstream name servers"
 msgstr ""
 "Dnsマスカレードにこのファイルを使用してアップストリームネームサーバを検索す"
 "る様に指示する。"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-#, fuzzy
 msgid "Ignore Hosts file"
 msgstr "Hostsファイルを無視する"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-#, fuzzy
 msgid "Hostname Entries file(s)"
 msgstr "ホスト名エントリファイル"
 
@@ -401,7 +387,6 @@ msgid "Do not forward reverse lookups for local networks"
 msgstr "ローカルネットワークの逆引きを転送しない"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-#, fuzzy
 msgid "Filter useless"
 msgstr "役に立たないフィルタ"
 
@@ -422,7 +407,6 @@ msgstr ""
 "イズする"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-#, fuzzy
 msgid "Local server"
 msgstr "ローカルサーバ"
 
@@ -452,22 +436,18 @@ msgid "Do not cache negative replies, e.g. for not existing domains"
 msgstr "ネガティブ応答をキャッシュしない 例：既存ではないドメイン"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-#, fuzzy
 msgid "Strict order"
 msgstr "厳密な順序"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-#, fuzzy
 msgid "DNS servers will be queried in the order of the resolvfile"
 msgstr "DNSサーバはresolvfileの順に照会される。"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-#, fuzzy
 msgid "Bogus NX Domain Override"
 msgstr "偽のNXDドメインオーバーライド"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-#, fuzzy
 msgid "List of hosts that supply bogus NX domain results"
 msgstr "偽のNXドメインの結果を提供するホストのリスト"
 
@@ -488,7 +468,6 @@ msgid "ex. /example.org/10.1.2.3"
 msgstr "例：/example.org/10.1.2.3"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-#, fuzzy
 msgid "Rebind protection"
 msgstr "リバインドプロテクション"
 
@@ -550,17 +529,14 @@ msgid "Maximum allowed size of EDNS.0 UDP packets"
 msgstr "EDNS.0 UDPパケットの最大許容サイズ"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-#, fuzzy
 msgid "Max. concurrent queries"
 msgstr "最大同時クエリ"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-#, fuzzy
 msgid "Maximum allowed number of concurrent DNS queries"
 msgstr "同時に許可される同時DNSクエリ数"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-#, fuzzy
 msgid "Hostname Entries"
 msgstr "ホスト名エントリ"
 

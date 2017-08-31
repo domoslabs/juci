@@ -16,7 +16,6 @@ msgid "Low"
 msgstr "低"
 
 # plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
-#, fuzzy
 msgid "Enabled"
 msgstr "有効"
 

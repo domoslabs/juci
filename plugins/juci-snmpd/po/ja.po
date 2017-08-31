@@ -21,7 +21,7 @@ msgstr "名称未設定のシステム"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid "Agent "
-msgstr "エージェント"
+msgstr "エージェント "
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid "without address"
@@ -33,7 +33,7 @@ msgstr "空のCom2sec"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid "Group: "
-msgstr "グループ："
+msgstr "Group: "
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid "Unknown Group"
@@ -41,7 +41,7 @@ msgstr "不明なグループ"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid " Version: "
-msgstr "バージョン"
+msgstr " Version: "
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid "Unknown Version"
@@ -77,7 +77,7 @@ msgstr " Priority: "
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid " MIB OID: "
-msgstr "MIB OID："
+msgstr " MIB OID: "
 
 # plugins/juci-snmpd/src/pages/snmpd-config.js
 msgid " Program: "
@@ -167,21 +167,21 @@ msgstr "オブジェクトID"
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-snmpd/src/widgets/com2sec-edit.html
 msgid "Community"
-msgstr "コミュニティ"
+msgstr "Community"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-snmpd/src/widgets/group-edit.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-snmpd/src/widgets/com2sec-edit.html
 msgid "Source"
-msgstr "送信元"
+msgstr "Source"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-snmpd/src/widgets/group-edit.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-snmpd/src/widgets/com2sec-edit.html
 msgid "SecName"
-msgstr "セキュリティ名"
+msgstr "SecName"
 
 # plugins/juci-snmpd/src/widgets/agent-edit.html
 msgid "Agent Address"

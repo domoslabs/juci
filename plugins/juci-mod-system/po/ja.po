@@ -12,14 +12,12 @@ msgstr ""
 "X-Generator: Poedit 2.0.1\n"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.js
-#, fuzzy
 msgid ""
 "This will reset your configuration to factory defaults. Do you want to "
 "continue?"
 msgstr "設定が工場出荷状態にリセットされます。続けますか？"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.js
-#, fuzzy
 msgid ""
 "Configuration has been restored. You need to reboot the device for settings "
 "to take effect! Do you want to reboot now?"
@@ -31,19 +29,16 @@ msgstr ""
 # plugins/juci-mod-system/src/pages/settings-configuration.js
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-mod-system/src/pages/settings-password.js
-#, fuzzy
 msgid "Passwords do not match!"
 msgstr "パスワードが一致しません。"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.js
-#, fuzzy
 msgid "Are you sure you want to save backup without password?"
 msgstr "パスワードを設定せずにバックアップを保存しますか？"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.js
-#, fuzzy
 msgid "Was not able to download backup. Please check access!"
-msgstr "バックアップをダウンロードできませんでした。 接続をご確認下さい。"
+msgstr "バックアップをダウンロードできませんでした。 接続をご確認下さい!"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-mod-system/src/pages/status-system.js
@@ -106,7 +101,6 @@ msgid "CPU"
 msgstr "CPU使用率"
 
 # plugins/juci-mod-system/src/pages/status-system.js
-#, fuzzy
 msgid "Active Connections"
 msgstr "アクティブな接続"
 
@@ -131,12 +125,11 @@ msgid "Swap"
 msgstr "スワップ"
 
 # plugins/juci-mod-system/src/pages/settings-password.js
-#, fuzzy
 msgid ""
 "Was unable to set password. Please make sure you have entered correct "
 "current password!"
 msgstr ""
-"パスワードを設定できませんでした。 現在の正しいパスワードを入力して下さい。"
+"パスワードを設定できませんでした。 現在の正しいパスワードを入力して下さい"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.js
 msgid "Emergency"
@@ -215,14 +208,12 @@ msgid "Timezone"
 msgstr "タイムゾーン"
 
 # plugins/juci-mod-system/src/pages/settings-system.html
-#, fuzzy
 msgid "General System Settings"
-msgstr "一般システム設定"
+msgstr "システム設定"
 
 # plugins/juci-mod-system/src/pages/settings-users.html
-#, fuzzy
 msgid "Manage Router Users Rights"
-msgstr "ルーターのユーザー権限を管理します。"
+msgstr "ルーターのユーザー権限を管理します"
 
 # plugins/juci-mod-system/src/pages/settings-uci.html
 msgid "Loading"
@@ -282,11 +273,11 @@ msgstr ""
 
 # plugins/juci-mod-system/src/pages/status-system-processes.html
 msgid "Total number of processes: "
-msgstr "プロセスの総数："
+msgstr "プロセスの総数:"
 
 # plugins/juci-mod-system/src/pages/status-system-processes.html
 msgid "Total CPU usage: "
-msgstr "合計CPU使用率："
+msgstr "合計CPU使用率:"
 
 # plugins/juci-mod-system/src/pages/status-system-processes.html
 msgid "status.system.processes.info"
@@ -298,7 +289,7 @@ msgstr "プロセス"
 
 # plugins/juci-mod-system/src/pages/status-system-processes.html
 msgid "System processes and CPU usage."
-msgstr "システムプロセス及びCPU使用率。"
+msgstr "システムプロセス及びCPU使用率"
 
 # plugins/juci-mod-system/src/pages/status-system-processes.html
 msgid "Running Processes"
@@ -364,7 +355,7 @@ msgstr "TCPを使用する場合は、改行の代わりに末尾のヌルを使
 
 # plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "Log Type"
-msgstr "ログ生成"
+msgstr "ログ形式"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "Log Settings"
@@ -407,7 +398,6 @@ msgid "Reset"
 msgstr "リセット"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
-#, fuzzy
 msgid "Save Configuration to Computer"
 msgstr "設定はコンピュータに保存されました"
 
@@ -433,7 +423,7 @@ msgstr "バックアップダウンロード中"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "Pick configuration backup to upload"
-msgstr "アップロードする設定バックアップを選択"
+msgstr "アップロードするバックアップファイルを選択"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "Backup file password"
@@ -445,7 +435,7 @@ msgstr "パスワード(暗号化している場合)"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "Please add a comment describing this configuration"
-msgstr "この設定を説明するコメントを追加して下さい"
+msgstr "コメントを記載して下さい"
 
 # plugins/juci-mod-system/src/pages/settings-password.html
 msgid "Change Account Passwords"
@@ -504,7 +494,6 @@ msgid "Connectivity Test"
 msgstr "接続テスト"
 
 # plugins/juci-mod-system/src/pages/settings-energy.html
-#, fuzzy
 msgid "Energy Settings"
 msgstr "エネルギー設定"
 
@@ -530,7 +519,7 @@ msgstr "電源LEDの明るさ"
 
 # plugins/juci-mod-system/src/pages/settings-energy.html
 msgid "Missing uci config boardpanel."
-msgstr "uci config boardpanelがありません。"
+msgstr "uci config boardpanelがありません"
 
 # plugins/juci-mod-system/src/pages/settings-system.html
 msgid "menu-settings-system-title"

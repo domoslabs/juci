@@ -60,14 +60,12 @@ msgid "Name"
 msgstr "VLAN名"
 
 # plugins/juci-broadcom-vlan/src/widgets/network-device-vlan-edit.html
-#, fuzzy
 msgid "Base Device"
-msgstr "参照デバイス"
+msgstr "Base Device"
 
 # plugins/juci-broadcom-vlan/src/widgets/network-device-vlan-edit.html
-#, fuzzy
 msgid "Select base device"
-msgstr "参照デバイス選択"
+msgstr "Select base device"
 
 # plugins/juci-broadcom-vlan/src/pages/page-broadcom-ethernet-vlan.html
 msgid "VLAN settings"

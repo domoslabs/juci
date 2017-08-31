@@ -17,7 +17,7 @@ msgstr "ゾーンは存在しません"
 
 # plugins/juci-firewall-fw3/src/fw3-firewall.js
 msgid "Source port can not be empty!"
-msgstr "アウトバウンドDNSクエリの固定送信元ポート"
+msgstr "ソースポートが空欄です!"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-firewall-fw3/src/pages/internet-parental-control.js
@@ -173,7 +173,7 @@ msgstr "ルールには除外されたパブリックポートがない"
 
 # plugins/juci-firewall-fw3/src/widgets/firewall-client-port-mapping.js
 msgid "Port mapping rule needs a name"
-msgstr "ポートマピングルールには名前が必要です。"
+msgstr "ポートマッピングルールには名前が必要です。"
 
 # plugins/juci-firewall-fw3/src/widgets/firewall-client-port-mapping.js
 msgid "Fixe Errors before saving"
@@ -475,7 +475,7 @@ msgstr "MACアドレス"
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-dmz.html
 msgid "Select Existing Host"
-msgstr "既存ホスト選択"
+msgstr "ホスト選択"
 
 # plugins/juci-firewall-fw3/src/widgets/firewall-maclist-edit.html
 msgid "Invalid MAC address"
