@@ -155,10 +155,10 @@ JUCI.app
 		nodes.push({
 			id: ".root",
 			label: myString(system.hardware || $tr(gettext("N/A"))),
-			title: $tr(gettext("Hardware Model")) + ": " + system.hardware || $tr(gettext("N/A")) + "<br />" +
-					$tr(gettext("Base MAC")) + ": " + system.basemac || $tr(gettext("N/A"))+ "<br />" +
-					$tr(gettext("Software Version")) + ": " + system.firmware || $tr(gettext("N/A"))+ "<br />" +
-					$tr(gettext("Filesystem Type")) + ": " + system.filesystem || $tr(gettext("N/A"))+ "<br />",
+			title: $tr(gettext("Hardware Model")) + ": " + (system.hardware || $tr(gettext("N/A"))) + "<br />" +
+					$tr(gettext("Base MAC")) + ": " + (system.basemac || $tr(gettext("N/A"))) + "<br />" +
+					$tr(gettext("Software Version")) + ": " + (system.firmware || $tr(gettext("N/A"))) + "<br />" +
+					$tr(gettext("Filesystem Type")) + ": " + (system.filesystem || $tr(gettext("N/A"))) + "<br />",
 			size: 60,
 			shape: "image",
 		});
