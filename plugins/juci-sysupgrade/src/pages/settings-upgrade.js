@@ -26,7 +26,7 @@ JUCI.app
 	$scope.data = { upUrl: ""};
 	$scope.usbUpgradeAvailable = false;
 	
-	$scope.current_version = $config.board.system.firmware;
+	$scope.current_version = $config.get("board.system.firmware");
 	
 	$uci.$sync("system").done(function(){
 		$scope.system = $uci.system;

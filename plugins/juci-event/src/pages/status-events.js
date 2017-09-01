@@ -47,7 +47,7 @@ JUCI.app
 	$scope.data = { limit: 20, filter: "", type: "" };
 	$scope.logs = [];
 	$scope.filters = [];
-	if($config.settings && $config.settings.juci_event){
+	if($config.get("settings.juci_event")){
 		$config.settings.juci_event.filter.value.map(function(x){
 			var filter = x.split(".")[0];
 			var id = x.split(".")[1];

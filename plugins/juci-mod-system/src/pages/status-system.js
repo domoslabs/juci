@@ -19,10 +19,10 @@
  */
 
 UCI.juci.$registerSectionType("pagesystemstatus", {
-	"show_meminfo": 	{ dvalue: true, type: Boolean }, 
+	"show_meminfo": 	{ dvalue: true, type: Boolean },
 	"show_diskinfo": 	{ dvalue: true, type: Boolean },
 	"show_loadavg":		{ dvalue: false, type: Boolean }
-}); 
+});
 
 JUCI.app.run(function($uci){
 	$uci.$sync("juci").done(function(){
@@ -35,20 +35,20 @@ JUCI.app.run(function($uci){
 	});
 })
 .controller("StatusSystemPage", function ($scope, $rootScope, $uci, $rpc, gettext, $tr, $config, $network) {
-	$scope.showExpert = $config.local.mode == "expert";
+	$scope.showExpert = $config.get("local.mode") == "expert";
 
 	$scope.systemStatusTbl = {
 		rows: [["", ""]]
-	}; 
+	};
 	$scope.systemMemoryTbl = {
 		rows: [["", ""]]
-	}; 
+	};
 	$scope.systemStorageTbl = {
 		rows: [["", ""]]
-	}; 
-	var sys = {};  
-	var board = { release: {} }; 
-	var filesystems = []; 
+	};
+	var sys = {};
+	var board = { release: {} };
+	var filesystems = [];
 	var netLoad = {};
 	JUCI.interval.repeat("update_status_system_page_clock", 1000, function(resume){
 		if(sys && sys.system && sys.system.localtime){
@@ -65,13 +65,13 @@ JUCI.app.run(function($uci){
 			function (cb){$rpc.$call("router.system", "memory_bank").done(function(res){other_bank = res.previous_bank_firmware; cb();}).fail(function(){cb();});},
 			function (cb){$network.getNetworkLoad().done(function(load){ netLoad = load; cb(); }).fail(function(){cb();});},
 			function (cb){$rpc.$call("router.system", "fs").done(function(res){
-				filesystems = res.filesystem; 
+				filesystems = res.filesystem;
 				cb();
 			}).fail(function(){cb();});}
 		], function(){
 			function timeFormat(secs){
 				secs = Math.round(secs);
-				var days = Math.floor(secs / (60 * 60 * 24)); 
+				var days = Math.floor(secs / (60 * 60 * 24));
 				var hours = Math.floor(secs / (60 * 60));
 
 				var divisor_for_minutes = secs % (60 * 60);
@@ -86,9 +86,9 @@ JUCI.app.run(function($uci){
 			}
 			updateTable();
 			$scope.$apply();
-			resume(); 
+			resume();
 		});
-	}); 
+	});
 	function updateTable(){
 		if(!sys.system) sys.system = {};
 		$scope.systemStatusTbl.rows = [
@@ -120,15 +120,15 @@ JUCI.app.run(function($uci){
 			[$tr(gettext("Swap")), '<juci-progress value="0" total="0" units="kB"></juci-progress>']
 		];
 
-		if($config.settings && $config.settings.pagesystemstatus && $config.settings.pagesystemstatus.show_diskinfo.value){ 
-			$scope.show_diskinfo = true; 
-			$scope.systemStorageTbl.rows = []; 
+		if($config.get("settings.pagesystemstatus.show_diskinfo.value")){
+			$scope.show_diskinfo = true;
+			$scope.systemStorageTbl.rows = [];
 			filesystems.map(function(disk){
 				if(disk.name.split(":").length === 2) return;
-				$scope.systemStorageTbl.rows.push([disk.name+" ("+disk.mounted_on+")", '<juci-progress value="'+Math.round(disk.used)+'" total="'+ Math.round(disk.available + disk.used) +'" units="kB"></juci-progress>']); 
-			}); 
+				$scope.systemStorageTbl.rows.push([disk.name+" ("+disk.mounted_on+")", '<juci-progress value="'+Math.round(disk.used)+'" total="'+ Math.round(disk.available + disk.used) +'" units="kB"></juci-progress>']);
+			});
 		}
 	}
 
-}); 
+});
 

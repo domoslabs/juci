@@ -24,7 +24,7 @@ JUCI.app
 	$scope.has_showpin = $rpc.$has("router.wps", "showpin");
 	$scope.has_pbc = $rpc.$has("router.wps", "pbc");
 	$scope.has_stapin = $rpc.$has("router.wps", "stapin");
-	$scope.showExpert = $config.local.mode == "expert";
+	$scope.showExpert = $config.get("local.mode") == "expert";
 	var wps_status_strings = {
 		"-1": $tr(gettext("Disabled")),
 		0: $tr(gettext("Initializing")),

@@ -149,8 +149,7 @@ JUCI.app
 		if(self.def) return self.def.promise();
 		self.def = $.Deferred();
 		var count = 0;
-		var system = ($config.board && $config.board.system && $config.board.system.hardware) ?
-			$config.board.system : {};
+		var system = $config.get("board.system") || {};
 		
 		nodes.push({
 			id: ".root",

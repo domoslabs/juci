@@ -28,7 +28,7 @@ JUCI.app
 		require: "^ngModel"
 	};  
 }).controller("WiFiDeviceEditController", function($scope, $config, $rpc, $tr, gettext){
-	$scope.showExpert = $config.local.mode == "expert";
+	$scope.showExpert = $config.get("local.mode") == "expert";
 	$scope.$watch("device", function(device){
 		if(!device) return; 
 		$rpc.$call("router.wireless", "radios").done(function(result){
