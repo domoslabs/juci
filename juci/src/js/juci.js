@@ -178,7 +178,7 @@
 						}
 					},
 					// this function will run upon load of every page in the gui
-					onEnter: function($uci, $window, $rootScope, $tr, $modal, $events){
+					onEnter: function($uci, $window, $rootScope, $modal, $events, $tr, $juciDialog, $config, $password){
 						
 						$rootScope.errors.splice(0, $rootScope.errors.length);
 						
@@ -193,6 +193,29 @@
 
 						// scroll to top
 						$window.scrollTo(0, 0);
+						// check if the user needs to change password
+						var force_passwd_change = $config.get("settings.juci.force_passwd_change.value");
+						try {
+							var username = $rpc.$session.data.username;
+							var model = {
+								cur_pass: "",
+								new_pass: "",
+								rep_pass: "",
+								error: []
+							};
+							if(force_passwd_change){
+								$rpc.$call("juci.core", "default_password", {"username":username}).done(function(res){
+									if(!res || res.changed)
+										return;
+
+									$password.change(false)
+								}).fail(function(e){
+									console.error("ubus call juci.core default_password '{\"username\":\""+username+"\"}' failed", e);
+								});
+							}
+						}catch(e){
+							// we dont care why it failed wi just continue
+						}
 						// setup automatic connection "pinging" and show spinner if you have lost connection
 						// if you are connected this will test if you are logged in or redirect you to login page
 						var modal;
@@ -332,7 +355,8 @@
 	UCI.juci.$registerSectionType("juci", {
 		"homepage": 		{ dvalue: "overview", type: String },
 		"language_debug":	{ dvalue: false, type: String },
-		"default_language": { dvalue: "en", type: String }
+		"force_passwd_change":	{ dvalue: false, type: Boolean },
+		"default_language":	{ dvalue: "en", type: String }
 	});
 
 	UCI.juci.$registerSectionType("login", {

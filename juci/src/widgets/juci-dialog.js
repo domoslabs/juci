@@ -71,7 +71,7 @@ JUCI.app
 		} 
 	}; 
 })
-.controller("juciDialog", function($scope, $modalInstance, $wireless, dialogOptions, gettext){
+.controller("juciDialog", function($scope, $modalInstance, dialogOptions, gettext){
 	var opts = dialogOptions; 
 	$scope.opts = dialogOptions; 
 	$scope.data = {}; 
