@@ -1,7 +1,7 @@
 JUCI.app.
 factory("$password", function($modal){
 	return {
-		change: function(closable){
+		change: function(closable, user){
 			var def = $.Deferred();
 			var modalInstance = $modal.open({
 				animation: false,
@@ -10,7 +10,8 @@ factory("$password", function($modal){
 				templateUrl: "widgets/juci-password-change.html",
 				controller: "juciPasswordChangeCtrl",
 				resolve: {
-					closable: function(){return closable;}
+					closable: function(){return closable;},
+					user: function(){return user}
 				}
 			});
 			modalInstance.result.then(function (data) {
@@ -28,15 +29,7 @@ factory("$password", function($modal){
 		}
 	};
 })
-.controller("juciPasswordChangeCtrl", function($scope, $modalInstance, closable, $rpc, gettext, $tr){
-	var username;
-	try {
-		username = $rpc.$session.data.username;
-	}catch(e){
-		console.error("couldn't get username from $rpc", e);
-		$modalInstance.close();
-		return;
-	}
+.controller("juciPasswordChangeCtrl", function($scope, $modalInstance, closable, $rpc, gettext, $tr, user){
 	$scope.closable = closable;
 	$scope.errors = [];
 	$scope.new_pass = "";
@@ -59,7 +52,7 @@ factory("$password", function($modal){
 		if($scope.errors.length !== 0)
 			return;
 		$rpc.$call("router.system", "password_set", {
-			user: username,
+			user: user,
 			password: $scope.new_pass,
 			curpass: $scope.cur_pass
 		}).done(function(data){

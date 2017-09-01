@@ -208,7 +208,7 @@
 									if(!res || res.changed)
 										return;
 
-									$password.change(false)
+									$password.change(false, username)
 								}).fail(function(e){
 									console.error("ubus call juci.core default_password '{\"username\":\""+username+"\"}' failed", e);
 								});
