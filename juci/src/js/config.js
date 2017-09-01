@@ -22,6 +22,11 @@
 		this.filename = "";
 	}
 
+	JUCIConfig.prototype.get = function(str){
+		try {return eval("this." + str);}
+		catch(e) {return undefined;}
+	}
+
 	JUCIConfig.prototype.$init = function(){
 		var deferred = $.Deferred(); 
 		var self = this; 

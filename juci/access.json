@@ -43,6 +43,9 @@
 		"description": "Core functions for JUCI (TODO: remove)",
 		"read": {
 			"ubus": {
+				"juci.core": [
+					"default_password"
+				],
 				"session": [
 					"access",
 					"destroy"
