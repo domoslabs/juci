@@ -213,15 +213,15 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 	UCI.wireless.$registerSectionType("bandsteering", {
 		"enabled":	{ dvalue: false, type: Boolean },
 		"policy":	{ dvalue: 0, type: Number },
-		"rssi_threshold":{ dvalue: -75, type: Number },
+		"rssi_threshold":{ dvalue: -75 },
 		"bw_util":	{ dvalue: 60, type: Number }
 	});
 	UCI.wireless.$registerSectionType("apsteering", {
 		"enabled":	{ dvalue: false, type: Boolean },
 		"monitor_interval":	{ dvalue: 10, type: Number },
-		"rssi_threshold":{ dvalue: -80, type: Number },
-		"reassoc_timer":{ dvalue: 5, type: Number },
-		"retry_interval":	{ dvalue: 3600, type: Number }
+		"rssi_threshold":{ dvalue: -80, type: Number, type: Number, validator: UCI.validators.NumberLimitValidator(-100, 0) },
+		"reassoc_timer":{ dvalue: 5, type: Number, type: Number, validator: UCI.validators.NumberLimitValidator(1, undefined) },
+		"retry_interval":	{ dvalue: 3600, type: Number, validator: UCI.validators.NumberLimitValidator(60, undefined) }
 	});
 	UCI.wireless.$registerSectionType("wifi-schedule", {
 		"days":		{ dvalue: [], type: Array, allow: ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], validator: UCI.validators.WeekDayListValidator},

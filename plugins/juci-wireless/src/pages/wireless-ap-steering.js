@@ -5,4 +5,4 @@ JUCI.app
 		$scope.enabled = $scope.apsteering.enabled.value;
 		$scope.$apply();
 	});
-}); 
+});

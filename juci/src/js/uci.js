@@ -253,10 +253,26 @@
 	}
 
 	function NumberLimitValidator(min, max){
+		if(min === undefined || min === null){
+			return function(){
+				this.validate = function(field){
+					if(field.value <= max) return null;
+					return JUCI.$tr(gettext("Number value is not within valid range")) + " (<= "+max+")";
+				}
+			}
+		}
+		else if(max === undefined || max === null){
+			return function(){
+				this.validate = function(field){
+					if(field.value >= min) return null;
+					return JUCI.$tr(gettext("Number value is not within valid range")) + " (>= "+min+")";
+				}
+			}
+		}
 		return function(){
 			this.validate = function(field){
 				if(field.value >= min && field.value <= max) return null;
-				return JUCI.$tr(gettext("Number value is not within valid range")) + " ("+min+"-"+max+")";
+				return JUCI.$tr(gettext("Number value is not within valid range")) + " ("+min+" - "+max+")";
 			}
 		}
 	}
