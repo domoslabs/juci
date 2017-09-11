@@ -9,12 +9,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.10\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
+# plugins/juci-mod-system/src/pages/settings-configuration.js
 msgid ""
-"This will reset your configuration to factory defaults and reboot the router. Do you want to "
-"continue?"
-msgstr "Tämä palauttaa ohjelmiston oletusasetukset. Haluatko jatkaa?"
+"This will reset your configuration to factory defaults (except the settings "
+"selected to be saved). Do you want to continue?"
+msgstr ""
+"Laite palautetaan tehdasasetuksille lukuunottamatta niitä asetuksia, jotka "
+"on valittu pidettäväksi. Haluatko jatkaa?"
 
 msgid ""
 "Configuration has been restored. You need to reboot the device for settings "
@@ -33,81 +36,6 @@ msgstr "Haluatko varmasti poistaa tämän vyöhykkeen?"
 msgid "Was not able to download backup. Please check access!"
 msgstr "Varmuuskopiota ei voi ladata. Tarkista yhteys!"
 
-msgid ""
-"Was unable to set password. Please make sure you have entered correct "
-"current password!"
-msgstr ""
-"Salasanan asettaminen epäonnistui. Tarkista, että nykyinen salasana on "
-"oikein!"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
-msgid "Emergency"
-msgstr ""
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
-msgid "Alert"
-msgstr ""
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
-msgid "Critical"
-msgstr ""
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
-msgid "Error"
-msgstr ""
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
-msgid "Warning"
-msgstr ""
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
-msgid "Notice"
-msgstr ""
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
-msgid "Info"
-msgstr ""
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
-msgid "Debug"
-msgstr ""
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
-msgid "Everything"
-msgstr "Kaikki"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
-msgid "High verbosity"
-msgstr ""
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
-msgid "Low verbosity"
-msgstr ""
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
-msgid "Executions and Errors"
-msgstr ""
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
-msgid "Only Errors"
-msgstr "Vain virheet"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
-msgid "UDP"
-msgstr ""
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
-msgid "TCP"
-msgstr ""
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
-msgid "Circular"
-msgstr ""
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
-msgid "File"
-msgstr "Tiedosto"
-
 msgid "Hostname"
 msgstr "Isäntäkoneen nimi"
 
@@ -125,6 +53,9 @@ msgstr "Sarjanumero"
 msgid "MAC Address"
 msgstr "MAC-osoite"
 
+msgid "Filesystem"
+msgstr "Tiedostojärjestelmä"
+
 msgid "Firmware Version"
 msgstr "Ohjelmistoversio"
 
@@ -134,13 +65,6 @@ msgstr "Toissijainen ohjelmisto"
 
 msgid "Kernel Version"
 msgstr "Ytimen versio"
-
-msgid "Filesystem"
-msgstr "Tiedostojärjestelmä"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/status-system.js
-msgid "BRCM Version"
-msgstr "BRCM versio"
 
 # /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/status-system.js
 msgid "CFE Version"
@@ -159,6 +83,10 @@ msgstr "CPU"
 msgid "Active Connections"
 msgstr "Aktiiviset yhteydet"
 
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/status-system.js
+msgid "BRCM Version"
+msgstr "BRCM versio"
+
 msgid "Usage"
 msgstr "Käyttö"
 
@@ -171,141 +99,88 @@ msgstr "Puskuroitu"
 msgid "Swap"
 msgstr "Swap"
 
-msgid "Backup Configuration"
-msgstr "Asetusten varmuuskopio/palautus"
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Emergency"
+msgstr "Hätätila"
 
-msgid "settings.config.info"
-msgstr ""
-"Tallenna asetukset, palauta asetukset varmuuskopiosta tai palauta "
-"ohjelmiston oletusasetukset.\n"
-"Voit tallentaa varmuuskopion tietokoneellesi. Suosittelemme pitämään aina "
-"varmuuskopion tietokoneella viimeisimmästä konfiguraatiosta."
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Alert"
+msgstr "Varoitus"
 
-msgid "Save configuration"
-msgstr "Tallenna salasanalla suojattu asetusten varmuuskopio tietokoneelle"
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Critical"
+msgstr "Kriittinen"
 
-msgid "Save"
-msgstr "Tallenna"
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Error"
+msgstr "Virhe"
 
-msgid "Restore configuration"
-msgstr "Palauta asetukset tietokoneelle tallennetusta varmuuskopiosta"
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Warning"
+msgstr "Varoitus"
 
-msgid "Load"
-msgstr "Lataa"
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Notice"
+msgstr "Ilmoitus"
 
-msgid "Factory Reset"
-msgstr "Oletusasetukset"
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Info"
+msgstr "Info"
 
-msgid "Factory reset to default configuration"
-msgstr "Palauta oletusasetuksiin palauttaa modeemin tehdasasetuksille"
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Debug"
+msgstr "Debug"
 
-msgid "Reset"
-msgstr "Palauta oletusasetuksiin"
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Everything"
+msgstr "Kaikki"
 
-msgid "Save Configuration to Computer"
-msgstr "Konfiguraatiomenetelmä"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "Password protection"
-msgstr "Salasanasuojattu"
-
-msgid "Comments"
-msgstr "Kommentit"
-
-msgid "New Password"
-msgstr "Uusi salasana"
-
-msgid "Re-type password"
-msgstr "Anna salasana uudelleen"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "Downloading Backup"
-msgstr "Varmuuskopiota ladataan"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "Pick configuration backup to upload"
-msgstr "Valitse ladattava varmuuskopio"
-
-msgid "Backup file password"
-msgstr "Varmuuskopiotiedoston salasana"
-
-msgid "Password (if encrypted)"
-msgstr "Salasana (jos salattu)"
-
-msgid "Please add a comment describing this configuration"
-msgstr "Lisää kommentti tästä konfiguraatiosta"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "Internet"
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "High verbosity"
 msgstr ""
 
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "URL for checking Internet connection"
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Low verbosity"
 msgstr ""
 
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "www.example.com"
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Executions and Errors"
+msgstr "Suoritukset ja virheet"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Only Errors"
+msgstr "Vain virheet"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "UDP"
 msgstr ""
 
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "Connectivity Test"
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "TCP"
 msgstr ""
 
-msgid "Energy Settings"
-msgstr "Virranhallinta"
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "Circular"
+msgstr "Kierto"
 
-msgid "settings.energy.info"
-msgstr "Vähennä virrankulusta poistamalla käyttämättömiä toimintoja käytöstä."
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.js
+msgid "File"
+msgstr "Tiedosto"
 
-msgid "USB Port"
-msgstr "USB-portti"
-
-msgid "Status-LED"
-msgstr "Status-LED"
-
-msgid "Power-LED"
-msgstr "Power-LED"
-
-msgid "Power-LED Brightness"
-msgstr "Power-LED:n kirkkaus"
-
-msgid "Missing uci config boardpanel."
-msgstr "Missing uci config boardpanel."
-
-msgid "Configure Buttons"
-msgstr "Konfiguraatio"
-
-msgid "settings.management.buttons.info"
-msgstr "Hallinta"
-
-msgid "Configure LEDs"
-msgstr "Määritä LED-asetukset"
-
-msgid "settings.management.leds.info"
-msgstr "Voit sammuttaa laitteen LED-valoja liukusäätimestä"
-
-msgid "Management"
-msgstr "Hallinta"
-
-msgid "system.management.info"
+msgid "settings.system.general"
 msgstr " "
 
-msgid "Change Account Passwords"
-msgstr "Vaihda salasana"
+msgid "Timezone"
+msgstr "Aikavyöhyke"
 
-msgid "settings.password.info"
-msgstr ""
-"Aseta modeemin uusi salasana rajoittaaksesi modeemin hallintaan pääsyä."
+msgid "General System Settings"
+msgstr "Yleiset järjestelmäasetukset"
 
-msgid "Change password for user"
-msgstr "Vaihda salasana"
+msgid "Manage Router Users Rights"
+msgstr "Hallinnoi reitittimen käyttäjien oikeuksia"
 
-msgid "Change Password"
-msgstr "Vaihda salasana"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-password.html
-msgid "Reset  Password"
-msgstr "Palauta salasana"
+msgid "Loading"
+msgstr "Lataan..."
 
 msgid "Services"
 msgstr "Fyysinen liitäntä"
@@ -322,14 +197,31 @@ msgstr "Ota käyttöön"
 msgid "Action"
 msgstr "Toiminto"
 
-msgid "settings.system.general"
-msgstr " "
+msgid "Time servers (NTP)"
+msgstr "NTP-palvelimet"
 
-msgid "Timezone"
-msgstr "Aikavyöhyke"
+msgid "URL"
+msgstr "URL"
 
-msgid "General System Settings"
-msgstr "Yleiset järjestelmäasetukset"
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-timeservers.html
+msgid "Server mode"
+msgstr "Palvelintila"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-timeservers.html
+msgid "Time Servers"
+msgstr "Aikapalvelimet"
+
+msgid "Configure Buttons"
+msgstr "Konfiguraatio"
+
+msgid "settings.management.buttons.info"
+msgstr "Hallinta"
+
+msgid "Configure LEDs"
+msgstr "Määritä LED-asetukset"
+
+msgid "settings.management.leds.info"
+msgstr "Voit sammuttaa laitteen LED-valoja liukusäätimestä"
 
 # /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "System Log Level"
@@ -350,7 +242,7 @@ msgstr ""
 
 # /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "Buffersize"
-msgstr ""
+msgstr "Bufferin koko"
 
 # /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "Log File"
@@ -396,25 +288,114 @@ msgstr "Lokin tyyppi"
 msgid "Log Settings"
 msgstr "Lokiasetukset"
 
-msgid "Time servers (NTP)"
-msgstr "NTP-palvelimet"
+msgid "Backup Configuration"
+msgstr "Asetusten varmuuskopio/palautus"
 
-msgid "URL"
-msgstr "URL"
+msgid "settings.config.info"
+msgstr ""
+"Tallenna asetukset, palauta asetukset varmuuskopiosta tai palauta "
+"ohjelmiston oletusasetukset.\n"
+"Voit tallentaa varmuuskopion tietokoneellesi. Suosittelemme pitämään aina "
+"varmuuskopion tietokoneella viimeisimmästä konfiguraatiosta."
 
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-timeservers.html
-msgid "Server mode"
-msgstr "Palvelintila"
+msgid "Save configuration"
+msgstr "Tallenna salasanalla suojattu asetusten varmuuskopio tietokoneelle"
 
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-timeservers.html
-msgid "Time Servers"
-msgstr "Aikapalvelimet"
+msgid "Save"
+msgstr "Tallenna"
 
-msgid "Loading"
-msgstr "Lataan..."
+msgid "Restore configuration"
+msgstr "Palauta asetukset tietokoneelle tallennetusta varmuuskopiosta"
 
-msgid "Manage Router Users Rights"
-msgstr "Hallinnoi reitittimen käyttäjien oikeuksia"
+msgid "Load"
+msgstr "Lataa"
+
+msgid "Factory Reset"
+msgstr "Oletusasetukset"
+
+msgid "Factory reset to default configuration"
+msgstr "Palauta oletusasetuksiin palauttaa modeemin tehdasasetuksille"
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Soft reset"
+msgstr "Kevyt nollaus"
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Save some of the settings over the factory reset"
+msgstr "Tallenna tietyt asetukset, vaikka tehdasasetukset palautettaisiin"
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "WiFi settings"
+msgstr "WiFi asetukset"
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Port redirects"
+msgstr "Porttiohjaukset"
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Parental rules"
+msgstr "Käytönvalvonnan säännöt"
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "User password"
+msgstr "Käyttäjän salasana"
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "ICE config"
+msgstr "ICE konfiguraatio"
+
+msgid "Reset"
+msgstr "Palauta oletusasetuksiin"
+
+msgid "Save Configuration to Computer"
+msgstr "Konfiguraatiomenetelmä"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Password protection"
+msgstr "Salasanasuojattu"
+
+msgid "Comments"
+msgstr "Kommentit"
+
+msgid "New Password"
+msgstr "Uusi salasana"
+
+msgid "Re-type password"
+msgstr "Anna salasana uudelleen"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Downloading Backup"
+msgstr "Varmuuskopiota ladataan"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Pick configuration backup to upload"
+msgstr "Valitse ladattava varmuuskopio"
+
+msgid "Backup file password"
+msgstr "Varmuuskopiotiedoston salasana"
+
+msgid "Password (if encrypted)"
+msgstr "Salasana (jos salattu)"
+
+msgid "Please add a comment describing this configuration"
+msgstr "Lisää kommentti tästä konfiguraatiosta"
+
+msgid "Change Account Passwords"
+msgstr "Vaihda salasana"
+
+msgid "settings.password.info"
+msgstr ""
+"Aseta modeemin uusi salasana rajoittaaksesi modeemin hallintaan pääsyä."
+
+msgid "Change password for user"
+msgstr "Vaihda salasana"
+
+msgid "Change Password"
+msgstr "Vaihda salasana"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-password.html
+msgid "Reset  Password"
+msgstr "Palauta salasana"
 
 msgid "System Status"
 msgstr "Järjestelmän tila"
@@ -424,6 +405,12 @@ msgstr "Muisti"
 
 msgid "Storage"
 msgstr "Tallennustila"
+
+msgid "Management"
+msgstr "Hallinta"
+
+msgid "system.management.info"
+msgstr " "
 
 msgid "Total number of processes: "
 msgstr "Käynnissä olevat prosessit:"
@@ -443,127 +430,172 @@ msgstr "Järjestelmän prosessit ja suorittimen käyttöaste"
 msgid "Running Processes"
 msgstr "Käynnissä olevat prosessit"
 
-msgid "menu-settings-configuration-title"
-msgstr "Asetusten varmuuskopio/palautus"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "settings-configuration-title"
-msgstr "Asetusten varmuuskopio/palautus"
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
+msgid "Internet"
+msgstr "Internet"
 
 # /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "menu-settings-connectivity-test-title"
-msgstr ""
+msgid "URL for checking Internet connection"
+msgstr "Internetyhteyden tarkistuksen kohdeosoite"
 
 # /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "settings-connectivity-test-title"
-msgstr ""
+msgid "www.example.com"
+msgstr "www.esimerkki.fi"
 
-msgid "menu-settings-energy-title"
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
+msgid "Connectivity Test"
+msgstr "Yhteden testaus"
+
+msgid "Energy Settings"
 msgstr "Virranhallinta"
 
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-energy.html
-msgid "settings-energy-title"
-msgstr "Virranhallinta"
+msgid "settings.energy.info"
+msgstr "Vähennä virrankulusta poistamalla käyttämättömiä toimintoja käytöstä."
 
-msgid "menu-settings-hardware-buttons-title"
-msgstr "Painikkeet"
+msgid "USB Port"
+msgstr "USB-portti"
 
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-hardware-buttons.html
-msgid "settings-hardware-buttons-title"
-msgstr "Laitteiston painikkeet"
+msgid "Status-LED"
+msgstr "Status-LED"
+
+msgid "Power-LED"
+msgstr "Power-LED"
+
+msgid "Power-LED Brightness"
+msgstr "Power-LED:n kirkkaus"
+
+msgid "Missing uci config boardpanel."
+msgstr "Missing uci config boardpanel."
+
+msgid "menu-settings-system-title"
+msgstr "Järjestelmä"
 
 msgid "menu-settings-hardware-leds-title"
-msgstr "LED"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-hardware-leds.html
-msgid "settings-hardware-leds-title"
 msgstr "LED"
 
 msgid "menu-settings-hardware-title"
 msgstr "Laitteiston painikkeet ja valot"
 
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-hardware.html
-msgid "settings-hardware-title"
-msgstr "Laitteiston painikkeet ja valot"
-
-msgid "menu-settings-management-title"
-msgstr "Hallinta"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-management.html
-msgid "settings-management-title"
-msgstr "Hallinta"
+msgid "menu-settings-configuration-title"
+msgstr "Asetusten varmuuskopio/palautus"
 
 msgid "menu-settings-password-title"
 msgstr "Salasanat"
 
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-password.html
-msgid "settings-password-title"
-msgstr "Salasanat"
+msgid "menu-status-system-title"
+msgstr "Järjestelmä"
 
-msgid "menu-settings-services-title"
-msgstr "Palvelut"
+msgid "menu-status-system-processes-title"
+msgstr "Prosessit"
 
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-services.html
-msgid "settings-services-title"
-msgstr "Palvelut"
+msgid "menu-settings-uci-title"
+msgstr "UCI"
+
+msgid "menu-settings-energy-title"
+msgstr "Virranhallinta"
+
+msgid "menu-system-title"
+msgstr "Järjestelmä"
+
+msgid "menu-settings-management-title"
+msgstr "Hallinta"
+
+msgid "menu-settings-hardware-buttons-title"
+msgstr "Painikkeet"
 
 # /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "menu-settings-system-log-title"
-msgstr "Loki"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
-msgid "settings-system-log-title"
 msgstr "Loki"
 
 # /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-timeservers.html
 msgid "menu-settings-system-timeservers-title"
 msgstr "Aikapalvelimet"
 
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-timeservers.html
-msgid "settings-system-timeservers-title"
-msgstr "Aikapalvelimet"
-
-msgid "menu-settings-system-title"
-msgstr "Järjestelmä"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system.html
-msgid "settings-system-title"
-msgstr "Järjestelmä"
-
-msgid "menu-settings-uci-title"
-msgstr "UCI"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-uci.html
-msgid "settings-uci-title"
-msgstr "UCI"
+msgid "menu-settings-services-title"
+msgstr "Palvelut"
 
 msgid "menu-settings-users-title"
 msgstr "Käyttäjät"
 
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-users.html
-msgid "settings-users-title"
-msgstr "Käyttäjät"
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
+msgid "menu-settings-connectivity-test-title"
+msgstr "Yhteystesti"
 
-msgid "menu-status-system-processes-title"
-msgstr "Prosessit"
+#~ msgid ""
+#~ "This will reset your configuration to factory defaults and reboot the "
+#~ "router. Do you want to continue?"
+#~ msgstr "Tämä palauttaa ohjelmiston oletusasetukset. Haluatko jatkaa?"
+
+#~ msgid ""
+#~ "Was unable to set password. Please make sure you have entered correct "
+#~ "current password!"
+#~ msgstr ""
+#~ "Salasanan asettaminen epäonnistui. Tarkista, että nykyinen salasana on "
+#~ "oikein!"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
+#~ msgid "settings-configuration-title"
+#~ msgstr "Asetusten varmuuskopio/palautus"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-energy.html
+#~ msgid "settings-energy-title"
+#~ msgstr "Virranhallinta"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-hardware-buttons.html
+#~ msgid "settings-hardware-buttons-title"
+#~ msgstr "Laitteiston painikkeet"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-hardware-leds.html
+#~ msgid "settings-hardware-leds-title"
+#~ msgstr "LED"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-hardware.html
+#~ msgid "settings-hardware-title"
+#~ msgstr "Laitteiston painikkeet ja valot"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-management.html
+#~ msgid "settings-management-title"
+#~ msgstr "Hallinta"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-password.html
+#~ msgid "settings-password-title"
+#~ msgstr "Salasanat"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-services.html
+#~ msgid "settings-services-title"
+#~ msgstr "Palvelut"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+#~ msgid "settings-system-log-title"
+#~ msgstr "Loki"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-timeservers.html
+#~ msgid "settings-system-timeservers-title"
+#~ msgstr "Aikapalvelimet"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system.html
+#~ msgid "settings-system-title"
+#~ msgstr "Järjestelmä"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-uci.html
+#~ msgid "settings-uci-title"
+#~ msgstr "UCI"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-users.html
+#~ msgid "settings-users-title"
+#~ msgstr "Käyttäjät"
 
 # /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/status-system-processes.html
-msgid "status-system-processes-title"
-msgstr "Prosessit"
-
-msgid "menu-status-system-title"
-msgstr "Järjestelmä"
+#~ msgid "status-system-processes-title"
+#~ msgstr "Prosessit"
 
 # /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/status-system.html
-msgid "status-system-title"
-msgstr "Järjestelmä"
-
-msgid "menu-system-title"
-msgstr "Järjestelmä"
+#~ msgid "status-system-title"
+#~ msgstr "Järjestelmä"
 
 # /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/system.html
-msgid "system-title"
-msgstr "Järjestelmä"
+#~ msgid "system-title"
+#~ msgstr "Järjestelmä"
 
 #~ msgid "Select configuration backup to upload"
 #~ msgstr "Valitse ladattava varmuuskopio"
