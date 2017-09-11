@@ -176,4 +176,4 @@ install:
 clean:
 	@echo "===== CLEAN ====="
 	rm -rf ./bin ./tmp ./node_modules
-	rm -rf */template.pot
+	@find . -name template.pot -exec rm {} \;
