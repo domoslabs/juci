@@ -9,16 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 msgid "SIP users needs a name"
 msgstr "SIP-käyttäjät tarvitsevat nimen"
 
 msgid "SIP users needs a valid extension"
 msgstr "SIP-käyttäjät tarvitsevat kunnollisen alanumeron"
-
-msgid "Today"
-msgstr "Tänään"
 
 msgid "Enabled"
 msgstr "Käytössä"
@@ -33,6 +30,60 @@ msgstr "Puhelinnumeroa ei ole valittu"
 # /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.js
 msgid "No Day selected"
 msgstr "Päivää ei ole valittu"
+
+msgid "Today"
+msgstr "Tänään"
+
+msgid "No Mailbox"
+msgstr "Ei postilaatikkoa"
+
+msgid "No Account"
+msgstr "SIP tilit"
+
+msgid "Select Codec"
+msgstr "Valitse kodeekki"
+
+msgid "G 723.1"
+msgstr ""
+
+msgid "GSM"
+msgstr ""
+
+msgid "G.711MuLaw"
+msgstr ""
+
+msgid "G. 726"
+msgstr ""
+
+msgid "iLBC"
+msgstr ""
+
+msgid "G. 729a"
+msgstr ""
+
+msgid "G.711ALaw"
+msgstr ""
+
+msgid "Off"
+msgstr "Pois päältä"
+
+msgid "Transparent"
+msgstr "Läpinäkyvä"
+
+msgid "Conservative"
+msgstr "Konservatiivinen"
+
+msgid "Aggressive"
+msgstr "Aggressiivinen"
+
+msgid "White noise"
+msgstr "Valkokohina"
+
+msgid "Hot noise"
+msgstr ""
+
+msgid "Spectrum estimate"
+msgstr "Taajuuksien arvio"
 
 msgid "Fixed"
 msgstr "Pysyvä"
@@ -124,36 +175,6 @@ msgstr "Yhdistyneet Arabiemiraatit"
 msgid "CFG TR57"
 msgstr ""
 
-msgid "off"
-msgstr "Pois päältä"
-
-msgid "Unknown"
-msgstr "Tuntematon"
-
-msgid "on"
-msgstr "Päällä"
-
-msgid "Off"
-msgstr "Pois päältä"
-
-msgid "Transparent"
-msgstr "Läpinäkyvä"
-
-msgid "Conservative"
-msgstr "Konservatiivinen"
-
-msgid "Aggressive"
-msgstr "Aggressiivinen"
-
-msgid "White noise"
-msgstr "Valkokohina"
-
-msgid "Hot noise"
-msgstr ""
-
-msgid "Spectrum estimate"
-msgstr "Taajuuksien arvio"
-
 msgid "TLS v1"
 msgstr ""
 
@@ -184,33 +205,6 @@ msgstr ""
 msgid "Inband"
 msgstr ""
 
-msgid "No Mailbox"
-msgstr "Ei postilaatikkoa"
-
-msgid "Select Codec"
-msgstr "Valitse kodeekki"
-
-msgid "G 723.1"
-msgstr ""
-
-msgid "GSM"
-msgstr ""
-
-msgid "G.711MuLaw"
-msgstr ""
-
-msgid "G. 726"
-msgstr ""
-
-msgid "iLBC"
-msgstr ""
-
-msgid "G. 729a"
-msgstr ""
-
-msgid "G.711ALaw"
-msgstr ""
-
 msgid "UDP"
 msgstr ""
 
@@ -219,6 +213,15 @@ msgstr ""
 
 msgid "TLS"
 msgstr ""
+
+msgid "off"
+msgstr "Pois päältä"
+
+msgid "Unknown"
+msgstr "Tuntematon"
+
+msgid "on"
+msgstr "Päällä"
 
 msgid "Username"
 msgstr "Käyttäjä"
@@ -239,9 +242,6 @@ msgstr "Tilin nimi"
 
 msgid "Direct"
 msgstr "Suora"
-
-msgid "No Account"
-msgstr "SIP tilit"
 
 msgid "Advanced Line Settings"
 msgstr "Edistyneet linja-asetukset"
@@ -270,80 +270,14 @@ msgstr ""
 msgid "Inter-digit timeout [ms]"
 msgstr ""
 
-msgid "Custom Dialplan"
-msgstr ""
-
-msgid "Enable incomming dialplan"
-msgstr ""
-
-msgid "Enable outgoing dialplan"
-msgstr ""
-
-msgid "Enable custom hangup"
-msgstr ""
-
-msgid "All ports Extension"
-msgstr "Alanumero"
-
-msgid "Test Audio Extension"
-msgstr "Alanumero"
-
-msgid "Test Echo Extension"
-msgstr "Alanumero"
+msgid "SIP Users"
+msgstr "SIP-käyttäjä"
 
 msgid "Voice"
 msgstr "Puhelinlinjat"
 
 msgid "Schedule"
 msgstr "Ajastus"
-
-msgid "ONLINE"
-msgstr "POIS PÄÄLTÄ"
-
-msgid "OFFLINE"
-msgstr "POIS PÄÄLTÄ"
-
-msgid "Name"
-msgstr "Nimi"
-
-msgid "Internal Number"
-msgstr "Sisänumero"
-
-msgid "Outgoing Calls Number"
-msgstr "Lähtevät numerot"
-
-msgid "Select Outgoing Number"
-msgstr "Valitse lähtevä numero"
-
-msgid "Call Waiting"
-msgstr "Koputus"
-
-msgid "Call ID Restriction"
-msgstr "Puhelun Tunnuksen Rajoitus"
-
-msgid "Voice Activity Detection"
-msgstr ""
-
-msgid "Comfort Noice Generation"
-msgstr ""
-
-msgid "Echo cancellation"
-msgstr ""
-
-msgid "Transmit gain"
-msgstr ""
-
-msgid "Receive gain"
-msgstr ""
-
-msgid "Voice Lines"
-msgstr "Puhelinlinjat"
-
-msgid "phone.lines.info"
-msgstr "Puhelinlinjojen konfigurointi"
-
-msgid "Phone Lines"
-msgstr "Puhelinlinjat"
 
 msgid "Advanced SIP Settings"
 msgstr ""
@@ -498,6 +432,15 @@ msgstr ""
 msgid "Don't forget to press save to save your changes"
 msgstr ""
 
+msgid "Phone Lines"
+msgstr "Puhelinlinjat"
+
+msgid "phone.lines.info"
+msgstr "Puhelinlinjojen konfigurointi"
+
+msgid "SIP Accounts"
+msgstr "SIP tilit"
+
 msgid "Account Name"
 msgstr "Tilin nimi"
 
@@ -626,8 +569,8 @@ msgstr ""
 msgid "Mailbox"
 msgstr ""
 
-msgid "SIP Accounts"
-msgstr "SIP tilit"
+msgid "Name"
+msgstr "Nimi"
 
 msgid "Extension"
 msgstr "Alanumero"
@@ -656,11 +599,92 @@ msgstr ""
 msgid "Check that user is reachable"
 msgstr ""
 
-msgid "SIP Users"
-msgstr "SIP-käyttäjä"
+msgid "Voice Lines"
+msgstr "Puhelinlinjat"
+
+msgid "Internal Number"
+msgstr "Sisänumero"
+
+msgid "Outgoing Calls Number"
+msgstr "Lähtevät numerot"
+
+msgid "Select Outgoing Number"
+msgstr "Valitse lähtevä numero"
+
+msgid "Call Waiting"
+msgstr "Koputus"
+
+msgid "Call ID Restriction"
+msgstr "Puhelun Tunnuksen Rajoitus"
+
+msgid "Voice Activity Detection"
+msgstr ""
+
+msgid "Comfort Noice Generation"
+msgstr ""
+
+msgid "Echo cancellation"
+msgstr ""
+
+msgid "Transmit gain"
+msgstr ""
+
+msgid "Receive gain"
+msgstr ""
+
+msgid "ONLINE"
+msgstr "POIS PÄÄLTÄ"
+
+msgid "OFFLINE"
+msgstr "POIS PÄÄLTÄ"
+
+msgid "Custom Dialplan"
+msgstr ""
+
+msgid "Enable incomming dialplan"
+msgstr ""
+
+msgid "Enable outgoing dialplan"
+msgstr ""
+
+msgid "Enable custom hangup"
+msgstr ""
+
+msgid "All ports Extension"
+msgstr "Alanumero"
+
+msgid "Test Audio Extension"
+msgstr "Alanumero"
+
+msgid "Test Echo Extension"
+msgstr "Alanumero"
+
+msgid "Call Log"
+msgstr "Puheluloki"
+
+msgid "phone.call_log.info"
+msgstr "Puheluloki"
+
+msgid "Show calls for"
+msgstr "Näytä puhelut"
+
+msgid "Select phone"
+msgstr "Valitse puhelin"
+
+msgid "Date"
+msgstr "Päivämäärä"
+
+msgid "Time"
+msgstr "Aika"
+
+msgid "External Number"
+msgstr "Ulkoinen numero"
+
+msgid "Duration"
+msgstr "Kesto"
 
 msgid "Voice Status"
-msgstr "Puheen tila"
+msgstr "Puheliittymän tila"
 
 msgid "status.voice.info"
 msgstr ""
@@ -694,29 +718,33 @@ msgstr "Puhepalvelu ei ole saatavilla!"
 msgid "Custom Dialplan Settings"
 msgstr ""
 
-msgid "Call Log"
-msgstr "Puheluloki"
+msgid "Ringing Schedule"
+msgstr "Aikataulu"
 
-msgid "phone.call_log.info"
-msgstr "Puheluloki"
+msgid "phone.schedule.info"
+msgstr ""
+"Aseta puhelinaikataulut milloin puhelimen tulisi hälyttää tai ei tulisi "
+"hälyttää."
 
-msgid "Show calls for"
-msgstr "Näytä puhelut"
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+msgid "During the times below ringing is"
+msgstr ""
 
-msgid "Select phone"
-msgstr "Valitse puhelin"
+msgid "Select Schedule Mode"
+msgstr "Valitse Aikataulutila"
 
-msgid "Date"
-msgstr "Päivämäärä"
+# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+msgid "Add/Edit Ringing Schedule"
+msgstr ""
 
-msgid "Time"
-msgstr "Aika"
+msgid "Phone Number"
+msgstr "Puhelinnumero"
 
-msgid "External Number"
-msgstr "Ulkoinen numero"
+msgid "Select Phone Number"
+msgstr "Valitse puhelinnumero"
 
-msgid "Duration"
-msgstr "Kesto"
+msgid "Day"
+msgstr "Päivä"
 
 msgid "Phone"
 msgstr "Puhelin"
@@ -757,34 +785,6 @@ msgstr ""
 msgid "Incoming Calls"
 msgstr "Saapuvat puhelut"
 
-msgid "Ringing Schedule"
-msgstr "Aikataulu"
-
-msgid "phone.schedule.info"
-msgstr ""
-"Aseta puhelinaikataulut milloin puhelimen tulisi hälyttää tai ei tulisi "
-"hälyttää."
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
-msgid "During the times below ringing is"
-msgstr ""
-
-msgid "Select Schedule Mode"
-msgstr "Valitse Aikataulutila"
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
-msgid "Add/Edit Ringing Schedule"
-msgstr ""
-
-msgid "Phone Number"
-msgstr "Puhelinnumero"
-
-msgid "Select Phone Number"
-msgstr "Valitse puhelinnumero"
-
-msgid "Day"
-msgstr "Päivä"
-
 msgid "Speed Dialing"
 msgstr "Pikavalinta"
 
@@ -797,96 +797,44 @@ msgstr "Poista kaikki merkinnät pikavalintaluettelosta"
 msgid "Clear"
 msgstr "Tyhjennä"
 
-msgid "menu-status-phone-title"
-msgstr "Puhelin"
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/status-phone.html
-msgid "status-phone-title"
-msgstr ""
-
-msgid "menu-voice-advanced-settings-dialplan-title"
-msgstr "Pikavalinta"
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings-dialplan.html
-msgid "voice-advanced-settings-dialplan-title"
-msgstr ""
-
-msgid "menu-voice-advanced-settings-lines-title"
-msgstr "Linjat"
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings-lines.html
-msgid "voice-advanced-settings-lines-title"
-msgstr ""
-
-msgid "menu-voice-advanced-settings-sip-title"
-msgstr "Linjat"
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings-sip.html
-msgid "voice-advanced-settings-sip-title"
-msgstr ""
-
-msgid "menu-voice-advanced-settings-title"
-msgstr "Linjat"
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings.html
-msgid "voice-advanced-settings-title"
-msgstr ""
-
-msgid "menu-voice-call-log-title"
-msgstr "Puheluloki"
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-call-log.html
-msgid "voice-call-log-title"
-msgstr ""
-
-msgid "menu-voice-lines-title"
-msgstr "Linjat"
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-lines.html
-msgid "voice-lines-title"
-msgstr ""
-
-msgid "menu-voice-number-blocking-title"
-msgstr "Kontrolloi puhelinlaskuasi ja estä puhelut ei-haluttuihin numeroihin."
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-number-blocking.html
-msgid "voice-number-blocking-title"
-msgstr ""
-
-msgid "menu-voice-ringing-schedule-title"
-msgstr "Ajastus"
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
-msgid "voice-ringing-schedule-title"
-msgstr ""
-
 msgid "menu-voice-sip-accounts-title"
 msgstr "Linjat"
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-sip-accounts.html
-msgid "voice-sip-accounts-title"
-msgstr ""
-
-msgid "menu-voice-sip-users-title"
-msgstr "Numerot"
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-sip-users.html
-msgid "voice-sip-users-title"
-msgstr ""
-
-msgid "menu-voice-speed-dialing-title"
-msgstr "Pikavalinta"
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-speed-dialing.html
-msgid "voice-speed-dialing-title"
-msgstr ""
 
 msgid "menu-voice-title"
 msgstr "VOIP"
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice.html
-msgid "voice-title"
-msgstr ""
+msgid "menu-voice-call-log-title"
+msgstr "Puheluloki"
+
+msgid "menu-status-phone-title"
+msgstr "Puhelin"
+
+msgid "menu-voice-advanced-settings-dialplan-title"
+msgstr "Pikavalinta"
+
+msgid "menu-voice-lines-title"
+msgstr "Linjat"
+
+msgid "menu-voice-advanced-settings-title"
+msgstr "Linjat"
+
+msgid "menu-voice-speed-dialing-title"
+msgstr "Pikavalinta"
+
+msgid "menu-voice-advanced-settings-lines-title"
+msgstr "Linjat"
+
+msgid "menu-voice-sip-users-title"
+msgstr "Numerot"
+
+msgid "menu-voice-number-blocking-title"
+msgstr "Numeron esto"
+
+msgid "menu-voice-advanced-settings-sip-title"
+msgstr "Linjat"
+
+msgid "menu-voice-ringing-schedule-title"
+msgstr "Ajastus"
 
 #~ msgid "Your number"
 #~ msgstr "Puhelinnumerosi"
