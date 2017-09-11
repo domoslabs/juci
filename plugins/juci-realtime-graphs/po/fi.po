@@ -24,6 +24,10 @@ msgid "Connections"
 msgstr "Yhteydet"
 
 # plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.html
+msgid "Realtime Graphs"
+msgstr "Reaaliaikainen käyttögrafiikka"
+
+# plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.html
 msgid "Minimum"
 msgstr "Minimi"
 
