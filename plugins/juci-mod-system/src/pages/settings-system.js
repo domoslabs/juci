@@ -55,7 +55,14 @@ JUCI.app
 		JUCI.interval.repeat("system_update_time", 1000, function(done){
 			if(!date){ done(); return;}
 			date.setSeconds(date.getSeconds() + 1);
-			$scope.localtime = date.toLocaleString();
+			var year = date.getFullYear();
+			var month = "0" + date.getMonth();
+			var day = "0" + date.getDate();
+			var seconds = date.getSeconds();
+			var minutes = date.getMinutes();
+			var hour = date.getHours();
+			$scope.localtime = year + "-" + month.slice(-2) + "-" + day.slice(-2) + ", " +
+				hour + ":" + minutes + ":" + seconds;
 			$scope.$apply();
 			done();
 		});
