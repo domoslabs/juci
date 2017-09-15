@@ -56,7 +56,7 @@ JUCI.app
 			if(!date){ done(); return;}
 			date.setSeconds(date.getSeconds() + 1);
 			var year = date.getFullYear();
-			var month = "0" + date.getMonth();
+			var month = "0" + (date.getMonth() + 1); // starts at 0
 			var day = "0" + date.getDate();
 			var seconds = date.getSeconds();
 			var minutes = date.getMinutes();
