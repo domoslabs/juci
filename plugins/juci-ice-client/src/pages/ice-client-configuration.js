@@ -1,14 +1,30 @@
 JUCI.app
 .controller("IceClientConfigurationPage", function($scope, $rpc, $uci, $tr, gettext){
 	$uci.$sync("ice").done(function(){
-		$scope.ice = $uci.ice.ice;
-		$scope.cloud = $uci.ice.cloud;
-
+		if(!$uci.ice.ice){
+			$uci.ice.$create({
+				".name": "ice",
+				".type": "ice"
+			}).done(function(section){
+				$scope.ice = section;
+				$scope.$apply();
+			});
+		}else
+			$scope.ice = $uci.ice.ice;
+		if(!$uci.ice.cloud){
+			$uci.ice.$create({
+				".name": "cloud",
+				".type": "cloud"
+			}).done(function(section){
+				$scope.cloud = section;
+				$scope.$apply();
+			});
+		}else
+			$scope.cloud = $uci.ice.cloud;
 		$scope.$apply();
 	});
 
 	JUCI.interval.repeat("ice",5000,function(next){
-
 		$rpc.$call("juci.ice", "status").done(function(result){
 			switch(result.status) {
 				case 'Registered':
@@ -28,12 +44,10 @@ JUCI.app
 					$scope.text = $tr(gettext("Undefined"));
 				break;
 			}
-
 			$scope.$apply();
 		}).fail(function(e){
 			console.error("error: "+ JSON.stringify(e));
 		}).always(function(){next()});
 	});
-
 });
 
