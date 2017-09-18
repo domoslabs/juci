@@ -190,7 +190,7 @@ JUCI.app
 					ip: $scope.model.client.ipaddr,
 					mac: $scope.model.client.macaddr,
 					network: $scope.model.client.network,
-					name: $scope.model.client.hostname
+					name: $scope.model.client.hostname === "*" ? "":$scope.model.client.hostname
 				}).done(function(value){
 					$scope.client = value;
 				});
