@@ -213,8 +213,8 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 	UCI.wireless.$registerSectionType("bandsteering", {
 		"enabled":	{ dvalue: false, type: Boolean },
 		"policy":	{ dvalue: 0, type: Number },
-		"rssi_threshold":{ dvalue: -75 },
-		"bw_util":	{ dvalue: 60, type: Number }
+		"rssi_threshold":{ dvalue: -75, type: Number, validator: UCI.validators.NumberLimitValidator(-100, 0) },
+		"bw_util":	{ dvalue: 60, type: Number, validator: UCI.validators.NumberLimitValidator(0, 100) }
 	});
 	UCI.wireless.$registerSectionType("apsteering", {
 		"enabled":	{ dvalue: false, type: Boolean },
