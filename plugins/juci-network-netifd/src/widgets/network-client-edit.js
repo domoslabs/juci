@@ -140,6 +140,8 @@ JUCI.app
 		$rpc.$call("router.network", "dump").done(function(data){
 			networkList = Object.keys(data).map(function(key){ data[key]["name"] = key; return data[key];})
 			.filter(function(net){ return net["is_lan"] && net.ipaddr && net.netmask;});
+
+			$scope.$watch("client.ip.value", evalIp, false);
 			$scope.$apply();
 		});
 		$scope.edit_hostname = function(){
@@ -152,7 +154,7 @@ JUCI.app
 				$scope.$apply();
 			});
 		}
-		$scope.$watch("client.ip.value", function(){
+		function evalIp(){
 			if(!$scope.client) return;
 			var cl = $scope.client.ip;
 			if(!cl.value || cl.error !== null || !networkList){
@@ -180,7 +182,7 @@ JUCI.app
 			}
 			$scope.inNetwork = $tr(gettext("Not in any configured network"));
 			$scope.cssClass="danger";
-		}, false);
+		}
 		$scope.onAddStaticLease = function(){
 			$uci.$sync("dhcp").done(function(){
 				$uci.dhcp.$create({
