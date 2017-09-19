@@ -1,7 +1,7 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="IceClientConfigurationPage">
 		<h2 translate>ICE</h2>
-		<p translate>Connect your gateway to the cloud.</p>
+		<p translate>Configuration for ICE client</p>
 
 		<juci-config-section>
 			<juci-config-lines>
@@ -12,7 +12,7 @@
 		</juci-config-section>
 		<juci-config-section ng-show="ice.enabled.value">
 			<juci-config-lines>
-				<h2 translate>Cloud</h2>
+				<h2 translate>Portal</h2>
 				<juci-config-line title="{{ 'Status' | translate }}" >
 					<span class="{{css}}">{{text}}</span>
 				</juci-config-line>
@@ -22,7 +22,7 @@
 				</juci-config-line>
 
 				<div ng-show="ice.enabled.value">
-					<juci-config-line title="{{ 'Cloud URL' | translate }}">
+					<juci-config-line title="{{ 'URL' | translate }}">
 						<input type="text" class="form-control" ng-model="cloud.server.value" value={{cloud.server.value}}/>
 					</juci-config-line>
 				</div>
