@@ -23,7 +23,7 @@ JUCI.app
 	$scope.$watch("model", function(){
 		if(!$scope.model) return;
 		$scope.showExpert = $config.get("local.mode") == "expert";
-		scope.selected_lines = $scope.model.call_lines.value.split(" ").map(function(x){
+		$scope.selected_lines = $scope.model.call_lines.value.split(" ").map(function(x){
 			var name = String(x);
 			if(name.match(/^[0-9]$/)){
 				return "brcm"+ name;
