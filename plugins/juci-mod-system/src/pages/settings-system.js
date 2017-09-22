@@ -58,11 +58,11 @@ JUCI.app
 			var year = date.getFullYear();
 			var month = "0" + (date.getMonth() + 1); // starts at 0
 			var day = "0" + date.getDate();
-			var seconds = date.getSeconds();
-			var minutes = date.getMinutes();
-			var hour = date.getHours();
+			var seconds = "0" + date.getSeconds();
+			var minutes = "0" + date.getMinutes();
+			var hour =  "0" + date.getHours();
 			$scope.localtime = year + "-" + month.slice(-2) + "-" + day.slice(-2) + ", " +
-				hour + ":" + minutes + ":" + seconds;
+				hour.slice(-2) + ":" + minutes.slice(-2) + ":" + seconds.slice(-2);
 			$scope.$apply();
 			done();
 		});
