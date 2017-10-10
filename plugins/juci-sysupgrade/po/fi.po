@@ -9,7 +9,29 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 2.0.4\n"
+
+# /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
+msgid ".w (JFFS Image with CFE)"
+msgstr ".w (JFFS tiedostojärjestelmä sisältää CFE:n)"
+
+msgid ".y (UBIFS Image)"
+msgstr ".y (UBIFS tiedostojärjestelmä)"
+
+# /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
+msgid ".y2 (new UBIFS Image)"
+msgstr ".y2 (uusi UBIFS tiedostojärjestelmä)"
+
+# /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
+msgid "fs_image (JFFS Image)"
+msgstr "fs_image (JFFS tiedostojärjestelmä)"
+
+# /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
+msgid "A missing section has been created"
+msgstr "Puuttuva osio on luotu"
+
+msgid "OK"
+msgstr "OK"
 
 msgid "Do you want to keep your configuration?"
 msgstr "Haluatko säilyttää asetukset?"
@@ -34,9 +56,6 @@ msgstr "Keskeytä"
 
 msgid "Image check failed"
 msgstr "Ohjelmiston tarkistus epäonnistui"
-
-msgid "OK"
-msgstr "OK"
 
 msgid "Error: "
 msgstr "Virhe:"
@@ -75,24 +94,13 @@ msgstr "Tarkistetaan"
 msgid "The server returned an error"
 msgstr "Palvelinvirhe"
 
-# /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
-msgid ".w (JFFS Image with CFE)"
-msgstr ".w (JFFS tiedostojärjestelmä sisältää CFE:n)"
+# /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
+msgid "Do you want to keep settings?"
+msgstr "Haluatko pitää asetukset?"
 
-msgid ".y (UBIFS Image)"
-msgstr ".y (UBIFS tiedostojärjestelmä)"
-
-# /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
-msgid ".y2 (new UBIFS Image)"
-msgstr ".y2 (uusi UBIFS tiedostojärjestelmä)"
-
-# /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
-msgid "fs_image (JFFS Image)"
-msgstr "fs_image (JFFS tiedostojärjestelmä)"
-
-# /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
-msgid "A missing section has been created"
-msgstr "Puuttuva osio on luotu"
+# /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
+msgid "Cancel"
+msgstr "Peruuta"
 
 # /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
 msgid ""
@@ -102,14 +110,6 @@ msgstr ""
 "Jos painat \"Kyllä\", niin asetukset säilytetään ohjelmiston päivityksen "
 "yhteydessä. Mikäli valitset \"Ei\", käyttöön otetaan uuden ohjelmiston "
 "oletusasetukset. Paina \"Peruuta\" peruuttaaksesi päivityksen"
-
-# /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
-msgid "Do you want to keep settings?"
-msgstr "Haluatko pitää asetukset?"
-
-# /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
-msgid "Cancel"
-msgstr "Peruuta"
 
 # /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
 msgid "Your box is upgrading"
@@ -180,6 +180,10 @@ msgstr " "
 msgid "Pick firmware file to upload"
 msgstr "Valitse ladattava ohjelmisto"
 
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "Enter URL"
+msgstr "Anna osoite"
+
 msgid "Start upgrade"
 msgstr "Aloita päivitys"
 
@@ -210,19 +214,19 @@ msgstr "HTTP kansio"
 msgid "Online Upgrade"
 msgstr "Online päivitys"
 
+msgid "menu-settings-upgrade-title"
+msgstr "Ohjelmistopäivitys"
+
 msgid "menu-settings-upgrade-options-title"
 msgstr "Valinnat"
 
 # /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
-msgid "settings-upgrade-options-title"
-msgstr "Ohjelmistopäivityksen asetukset"
-
-msgid "menu-settings-upgrade-title"
-msgstr "Ohjelmistopäivitys"
+#~ msgid "settings-upgrade-options-title"
+#~ msgstr "Ohjelmistopäivityksen asetukset"
 
 # /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade.html
-msgid "settings-upgrade-title"
-msgstr "Ohjelmistopäivitys"
+#~ msgid "settings-upgrade-title"
+#~ msgstr "Ohjelmistopäivitys"
 
 #~ msgid ""
 #~ "A new system software upgrade is available. Do you want to visit upgrade "

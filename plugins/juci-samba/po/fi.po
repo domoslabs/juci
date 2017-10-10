@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 2.0.4\n"
 
 msgid "Path"
 msgstr "Polku"
@@ -36,14 +36,26 @@ msgstr "Ladataan.."
 msgid "Add folder to share"
 msgstr "Lisää jaettava kansio"
 
-msgid "Select folder"
-msgstr "Valitse kansio"
-
 msgid "Name"
 msgstr "Nimi"
 
+# plugins/juci-samba/src/widgets/samba-share-edit.html
+msgid "This USB drive has"
+msgstr "Tässä USB-levyssä on "
+
+# plugins/juci-samba/src/widgets/samba-share-edit.html
+msgid ""
+"filesystem, it only supports reading and not writing. writeble filesystems "
+"are: FAT, FAT32 and NTFS"
+msgstr ""
+"tiedostojärjestelmä, joka tukee vain lukua, ei kirjoitusta. "
+"Tiedostojärjestelmät, jotka tukevat kirjoitusta ovat: FAT, FAT32 ja NTFS"
+
 msgid "Read only?"
 msgstr "Vain luku?"
+
+msgid "Select folder"
+msgstr "Valitse kansio"
 
 msgid "Username"
 msgstr "Käyttäjänimi"
@@ -88,5 +100,5 @@ msgid "menu-internet-services-samba-title"
 msgstr "Samba"
 
 # /home/jamu/GIT/juci/plugins/juci-samba/src/pages/internet-services-samba.html
-msgid "internet-services-samba-title"
-msgstr "Samba"
+#~ msgid "internet-services-samba-title"
+#~ msgstr "Samba"

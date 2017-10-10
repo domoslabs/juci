@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.10\n"
+"X-Generator: Poedit 2.0.4\n"
 
 msgid "Low"
 msgstr "Matala"
@@ -54,29 +54,63 @@ msgstr ""
 msgid "End value has to be larger than start value."
 msgstr "Loppuarvon on oltava suurempi kuin alkuarvo."
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/add-bw-interface-edit.html
-msgid "Interface name"
-msgstr "Liitännän nimi"
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Enable QoS"
+msgstr "Ota QoS käyttöön"
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/new-classgroup-modal.html
-msgid "Classgroup name"
-msgstr "Luokkaryhmän nimi"
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Classification Group"
+msgstr "Luokitteluryhmä"
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/new-class-modal.html
-msgid "Class name"
-msgstr "Luokan nimi"
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Calculate Overhead"
+msgstr ""
+
+# plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid ""
+"Put an upper limit to the bandwidth that is slightly lower than the actual "
+"capacity. Do this to make sure QoS is activated before the hardware is "
+"saturated."
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Limit Download Speed"
+msgstr "Rajoita latausnopeutta"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Limit Upload Speed"
+msgstr "Rajoita lähetysnopeutta"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Acceleration will be disabled when QoS is enabled"
+msgstr "Kiihdytys poistetaan käytöstä, kun QoS on käytössä"
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
 msgid "Priority"
 msgstr "Prioriteetti"
 
+# plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid ""
+"Sets the proportion of the bandwidth used by this class during link "
+"saturation."
+msgstr ""
+
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
 msgid "Average Rate"
 msgstr "Keskimääräinen bittinopeus"
 
+# plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid "Sets the proportion of the bandwidth used by this class on average."
+msgstr ""
+
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
 msgid "Limit Rate"
 msgstr "Rajoita bittinopeutta"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid ""
+"Sets the maximum allowed proportion of the bandwidth allowed for this class."
+msgstr ""
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
@@ -85,21 +119,28 @@ msgstr "Rajoita bittinopeutta"
 msgid "Packet Size"
 msgstr "Pakettikoko"
 
+# plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid ""
+"Affects the burst speed. For short durations of time classes use extra "
+"bandwidth to make up for periods of low speed. Larger packet size allows for "
+"higher burst speeds at longer durations."
+msgstr ""
+
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
 msgid "Packet Delay"
 msgstr "Pakettiviive"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid "Sets a delay before packets are sent."
+msgstr ""
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
 msgid "Max Size"
 msgstr "Max koko"
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classgroups-edit.html
-msgid "Classes"
-msgstr "Luokat"
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classgroups-edit.html
-msgid "Add a new class"
-msgstr "Lisää uusi luokka"
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/new-class-modal.html
+msgid "Class name"
+msgstr "Luokan nimi"
 
 msgid "Target"
 msgstr "Kohde"
@@ -119,37 +160,39 @@ msgstr "Kohdeportti"
 msgid "Ports"
 msgstr "Portit"
 
-msgid "Filter by port, when there are no ports no filter will be applied"
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-qos/src/widgets/qos-reclassify-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Choose Filtering"
 msgstr ""
-"Porttikohtainen suodatus. Kun portteja ei ole määritelty, suodatinsääntöjä "
-"ei sovelleta"
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
-msgid "Source Ports"
-msgstr "Lähdeportit"
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
-msgid "Destination Ports"
+#, fuzzy
+#| msgid "Destination Ports"
+msgid "Source and Destinaton Ports"
 msgstr "Kohdeportit"
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
-msgid "Port Range"
-msgstr "Porttialue"
-
-msgid "Precedence"
-msgstr "Presedenssi"
+#, fuzzy
+#| msgid "Destination Ports"
+msgid "Source and Destinaton Port Range"
+msgstr "Kohdeportit"
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Direction"
 msgstr "Suunta"
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
-msgid "Mark"
-msgstr "Merkki"
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Connbytes"
 msgstr "Yhteystavut"
+
+msgid "Precedence"
+msgstr "Presedenssi"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Mark"
+msgstr "Merkki"
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "TCP Flags"
@@ -163,29 +206,21 @@ msgstr ""
 msgid "dscp"
 msgstr ""
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
-msgid "Enable QoS"
-msgstr "Ota QoS käyttöön"
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/new-classgroup-modal.html
+msgid "Classgroup name"
+msgstr "Luokkaryhmän nimi"
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
-msgid "Classification Group"
-msgstr "Luokitteluryhmä"
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classgroups-edit.html
+msgid "Classes"
+msgstr "Luokat"
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
-msgid "Calculate Overhead"
-msgstr ""
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classgroups-edit.html
+msgid "Add a new class"
+msgstr "Lisää uusi luokka"
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
-msgid "Limit Download Speed"
-msgstr "Rajoita latausnopeutta"
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
-msgid "Limit Upload Speed"
-msgstr "Rajoita lähetysnopeutta"
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
-msgid "Acceleration will be disabled when QoS is enabled"
-msgstr "Kiihdytys poistetaan käytöstä, kun QoS on käytössä"
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/add-bw-interface-edit.html
+msgid "Interface name"
+msgstr "Liitännän nimi"
 
 # plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
 msgid "Quality of service"
@@ -206,8 +241,27 @@ msgstr "Luokkaryhmä"
 msgid "Classify"
 msgstr "Luokitus"
 
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
+#, fuzzy
+#| msgid "Classify"
+msgid "Reclassify"
+msgstr "Luokitus"
+
 msgid "menu-juci-inteno-qos-title"
 msgstr "QoS"
+
+#~ msgid "Filter by port, when there are no ports no filter will be applied"
+#~ msgstr ""
+#~ "Porttikohtainen suodatus. Kun portteja ei ole määritelty, "
+#~ "suodatinsääntöjä ei sovelleta"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+#~ msgid "Source Ports"
+#~ msgstr "Lähdeportit"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+#~ msgid "Port Range"
+#~ msgstr "Porttialue"
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
 #~ msgid "juci-inteno-qos-title"

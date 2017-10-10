@@ -1,0 +1,61 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.4\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: fi\n"
+
+# plugins/juci-omcproxy/src/widgets/omc-proxy-edit.html
+msgid "Uplink"
+msgstr ""
+
+# plugins/juci-omcproxy/src/widgets/omc-proxy-edit.html
+msgid "Downlink"
+msgstr ""
+
+# plugins/juci-omcproxy/src/widgets/omc-proxy-edit.html
+msgid "Scope"
+msgstr ""
+
+# plugins/juci-omcproxy/src/pages/juci-omcproxy.js
+msgid "N/A"
+msgstr ""
+
+# plugins/juci-omcproxy/src/widgets/omc-proxy-edit.js
+msgid "Global"
+msgstr "Globaali"
+
+# plugins/juci-omcproxy/src/widgets/omc-proxy-edit.js
+msgid "Organization"
+msgstr "Organisaatio"
+
+# plugins/juci-omcproxy/src/widgets/omc-proxy-edit.js
+msgid "Site"
+msgstr ""
+
+# plugins/juci-omcproxy/src/widgets/omc-proxy-edit.js
+msgid "Admin"
+msgstr ""
+
+# plugins/juci-omcproxy/src/widgets/omc-proxy-edit.js
+msgid "Realm"
+msgstr "Alue"
+
+# plugins/juci-omcproxy/src/pages/juci-omcproxy.html
+msgid "OMC Proxy"
+msgstr "OMC proksi"
+
+# plugins/juci-omcproxy/src/pages/juci-omcproxy.html
+msgid "Chage settings for the OMC proxy"
+msgstr "Muuta OMC proksiasetuksia"
+
+# plugins/juci-omcproxy/src/pages/juci-omcproxy.html
+msgid "menu-juci-omcproxy-title"
+msgstr "OmcProksi"

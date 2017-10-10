@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.4\n"
 
 msgid "SIP users needs a name"
 msgstr "SIP-käyttäjät tarvitsevat nimen"
@@ -175,6 +175,15 @@ msgstr "Yhdistyneet Arabiemiraatit"
 msgid "CFG TR57"
 msgstr ""
 
+msgid "off"
+msgstr "Pois päältä"
+
+msgid "Unknown"
+msgstr "Tuntematon"
+
+msgid "on"
+msgstr "Päällä"
+
 msgid "TLS v1"
 msgstr ""
 
@@ -214,15 +223,6 @@ msgstr ""
 msgid "TLS"
 msgstr ""
 
-msgid "off"
-msgstr "Pois päältä"
-
-msgid "Unknown"
-msgstr "Tuntematon"
-
-msgid "on"
-msgstr "Päällä"
-
 msgid "Username"
 msgstr "Käyttäjä"
 
@@ -250,7 +250,7 @@ msgid "Locale selecton"
 msgstr ""
 
 msgid "A restart is required for country changes to take effect"
-msgstr ""
+msgstr "Uudellenkäynnistys tarvitaan sen jälkeen, kun maa-asetus on vaihdettu"
 
 msgid "Enable Jitter Buffer"
 msgstr "Ota käyttöön jitter-puskuri"
@@ -270,14 +270,59 @@ msgstr ""
 msgid "Inter-digit timeout [ms]"
 msgstr ""
 
-msgid "SIP Users"
-msgstr "SIP-käyttäjä"
-
 msgid "Voice"
 msgstr "Puhelinlinjat"
 
 msgid "Schedule"
 msgstr "Ajastus"
+
+msgid "Name"
+msgstr "Nimi"
+
+msgid "Display name used in Caller Id"
+msgstr ""
+
+msgid "Extension"
+msgstr "Alanumero"
+
+msgid "Extension for this user"
+msgstr "Tämän käyttäjän alanumero"
+
+msgid "The User id for the account (defaultuser)"
+msgstr ""
+
+msgid "Password"
+msgstr "SIP salasana"
+
+msgid ""
+"When your password is saved, it disappears from this field and is not "
+"displayed for your protection. The previously saved password will be changed "
+"only when you enter a value different from the saved one."
+msgstr ""
+
+msgid "wifi-iface.show_password"
+msgstr ""
+
+msgid "Call out using SIP provider"
+msgstr ""
+
+msgid "Mailbox"
+msgstr ""
+
+msgid "Preferred codecs"
+msgstr ""
+
+msgid "Host"
+msgstr "SIP-palvelin"
+
+msgid "Host for this user (leave empty for dynamic)"
+msgstr ""
+
+msgid "Qualify"
+msgstr ""
+
+msgid "Check that user is reachable"
+msgstr ""
 
 msgid "Advanced SIP Settings"
 msgstr ""
@@ -474,20 +519,8 @@ msgstr "Autentikoitu käyttäjä"
 msgid "SIP Password"
 msgstr "SIP salasana"
 
-msgid ""
-"When your password is saved, it disappears from this field and is not "
-"displayed for your protection. The previously saved password will be changed "
-"only when you enter a value different from the saved one."
-msgstr ""
-
-msgid "wifi-iface.show_password"
-msgstr ""
-
 msgid "Display Name"
 msgstr "DNS Nimi"
-
-msgid "Display name used in Caller Id"
-msgstr ""
 
 msgid "SIP Server/Registrar"
 msgstr "SIP-palvelin"
@@ -518,9 +551,6 @@ msgstr "SIP Välityspalvelin"
 
 msgid "Incoming Phone Lines"
 msgstr "VOIP-linjat"
-
-msgid "Preferred codecs"
-msgstr ""
 
 msgid "GSM packetization"
 msgstr ""
@@ -566,38 +596,8 @@ msgid ""
 "force some settings to enable inband fax."
 msgstr ""
 
-msgid "Mailbox"
-msgstr ""
-
-msgid "Name"
-msgstr "Nimi"
-
-msgid "Extension"
-msgstr "Alanumero"
-
-msgid "Extension for this user"
-msgstr ""
-
-msgid "The User id for the account (defaultuser)"
-msgstr ""
-
-msgid "Password"
-msgstr "SIP salasana"
-
-msgid "Call out using SIP provider"
-msgstr ""
-
-msgid "Host"
-msgstr "SIP-palvelin"
-
-msgid "Host for this user (leave empty for dynamic)"
-msgstr ""
-
-msgid "Qualify"
-msgstr ""
-
-msgid "Check that user is reachable"
-msgstr ""
+msgid "SIP Users"
+msgstr "SIP-käyttäjä"
 
 msgid "Voice Lines"
 msgstr "Puhelinlinjat"
@@ -797,41 +797,41 @@ msgstr "Poista kaikki merkinnät pikavalintaluettelosta"
 msgid "Clear"
 msgstr "Tyhjennä"
 
-msgid "menu-voice-sip-accounts-title"
-msgstr "Linjat"
-
-msgid "menu-voice-title"
-msgstr "VOIP"
-
-msgid "menu-voice-call-log-title"
-msgstr "Puheluloki"
+msgid "menu-voice-sip-users-title"
+msgstr "Numerot"
 
 msgid "menu-status-phone-title"
 msgstr "Puhelin"
 
-msgid "menu-voice-advanced-settings-dialplan-title"
-msgstr "Pikavalinta"
-
-msgid "menu-voice-lines-title"
-msgstr "Linjat"
-
-msgid "menu-voice-advanced-settings-title"
+msgid "menu-voice-advanced-settings-lines-title"
 msgstr "Linjat"
 
 msgid "menu-voice-speed-dialing-title"
 msgstr "Pikavalinta"
 
-msgid "menu-voice-advanced-settings-lines-title"
+msgid "menu-voice-call-log-title"
+msgstr "Puheluloki"
+
+msgid "menu-voice-lines-title"
 msgstr "Linjat"
 
-msgid "menu-voice-sip-users-title"
-msgstr "Numerot"
-
-msgid "menu-voice-number-blocking-title"
-msgstr "Numeron esto"
+msgid "menu-voice-advanced-settings-dialplan-title"
+msgstr "Pikavalinta"
 
 msgid "menu-voice-advanced-settings-sip-title"
 msgstr "Linjat"
+
+msgid "menu-voice-title"
+msgstr "VOIP"
+
+msgid "menu-voice-sip-accounts-title"
+msgstr "Linjat"
+
+msgid "menu-voice-advanced-settings-title"
+msgstr "Linjat"
+
+msgid "menu-voice-number-blocking-title"
+msgstr "Numeron esto"
 
 msgid "menu-voice-ringing-schedule-title"
 msgstr "Ajastus"

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 2.0.4\n"
 
 msgid "Interface"
 msgstr "Liitäntä"
@@ -61,10 +61,6 @@ msgstr "Peruuta"
 msgid "Add OWSD Origin"
 msgstr "Lisää OWSD lähde"
 
-# /home/jamu/GIT/juci/plugins/juci-owsd/src/widgets/owsd-add-item.html
-msgid "Name"
-msgstr "Nimi"
-
 # /home/jamu/GIT/juci/plugins/juci-owsd/src/widgets/owsd-listen-edit.html
 msgid "Only IPv6"
 msgstr "Ainoastaan IPv6"
@@ -72,6 +68,10 @@ msgstr "Ainoastaan IPv6"
 # /home/jamu/GIT/juci/plugins/juci-owsd/src/widgets/owsd-listen-edit.html
 msgid "List of allowed origins:"
 msgstr "Sallitut lähteet:"
+
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/widgets/owsd-add-item.html
+msgid "Name"
+msgstr "Nimi"
 
 # /home/jamu/GIT/juci/plugins/juci-owsd/src/pages/settings-management-owsd.html
 msgid "OWSD"
@@ -86,8 +86,8 @@ msgid "menu-settings-management-owsd-title"
 msgstr "OWSD"
 
 # /home/jamu/GIT/juci/plugins/juci-owsd/src/pages/settings-management-owsd.html
-msgid "settings-management-owsd-title"
-msgstr "OWSD"
+#~ msgid "settings-management-owsd-title"
+#~ msgstr "OWSD"
 
 #~ msgid "Password Authentication"
 #~ msgstr "Salasanan tunnistus"

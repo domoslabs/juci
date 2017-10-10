@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.10\n"
+"X-Generator: Poedit 2.0.4\n"
 
 msgid "Password Authentication"
 msgstr "Salasanan tunnistus"
@@ -64,13 +64,6 @@ msgstr "Lisää uusi SSH avain"
 msgid "You must enter a key or pick a key-file"
 msgstr "Kirjoita avain tai valitse avaintiedosto"
 
-msgid "Paste your key here:"
-msgstr "Liitä avaimesi tähän:"
-
-# /home/jamu/GIT/juci/plugins/juci-dropbear/src/widgets/dropbear-add-key.html
-msgid "Or pick a file"
-msgstr "Tai valitse tiedosto"
-
 msgid "Banner File"
 msgstr "Banner tiedosto"
 
@@ -107,31 +100,16 @@ msgstr "Yhteyksien elossapito"
 msgid "Idle Timeout"
 msgstr "Aikakatkaisu"
 
-msgid "Dropbear SSH"
-msgstr "Dropbear SSH"
+msgid "Paste your key here:"
+msgstr "Liitä avaimesi tähän:"
 
-msgid "General settings"
-msgstr "Yleiset asetukset"
+# /home/jamu/GIT/juci/plugins/juci-dropbear/src/widgets/dropbear-add-key.html
+msgid "Or pick a file"
+msgstr "Tai valitse tiedosto"
 
-msgid "Start/Stop Service"
-msgstr "Käynnistä/Pysäytä"
-
-msgid "Start or stop service"
-msgstr "Käynnistä tai pysäytä palvelu"
-
-msgid "Enabled"
-msgstr "Käytössä"
-
-msgid "Enable/Disable starting SSH service during boot"
-msgstr "Ota käyttöön / poista käytöstä SSH-palvelu käynnistyksen aikana"
-
-msgid "Verbose logging"
-msgstr "Kattava lokitus"
-
-msgid "Set to 1 to enable verbose output by the start script"
-msgstr "Asetettu 1, joka ottaa käyttöön kattavan lokituksen"
-
-msgid "Dropbear Instances"
+#, fuzzy
+#| msgid "Dropbear Instances"
+msgid "Dropbear SSH Instances"
 msgstr "Dropbear SSH"
 
 msgid "settings.dropbear.instance"
@@ -146,6 +124,30 @@ msgstr "Sallitut SSH-avaimet"
 
 msgid "menu-settings-management-dropbear-title"
 msgstr "SSH"
+
+#~ msgid "Dropbear SSH"
+#~ msgstr "Dropbear SSH"
+
+#~ msgid "General settings"
+#~ msgstr "Yleiset asetukset"
+
+#~ msgid "Start/Stop Service"
+#~ msgstr "Käynnistä/Pysäytä"
+
+#~ msgid "Start or stop service"
+#~ msgstr "Käynnistä tai pysäytä palvelu"
+
+#~ msgid "Enabled"
+#~ msgstr "Käytössä"
+
+#~ msgid "Enable/Disable starting SSH service during boot"
+#~ msgstr "Ota käyttöön / poista käytöstä SSH-palvelu käynnistyksen aikana"
+
+#~ msgid "Verbose logging"
+#~ msgstr "Kattava lokitus"
+
+#~ msgid "Set to 1 to enable verbose output by the start script"
+#~ msgstr "Asetettu 1, joka ottaa käyttöön kattavan lokituksen"
 
 # /home/jamu/GIT/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.html
 #~ msgid "settings-management-dropbear-title"

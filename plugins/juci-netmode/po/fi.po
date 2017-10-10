@@ -9,7 +9,33 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 2.0.4\n"
+
+# plugins/juci-netmode/src/pages/netmode-wizard.js
+msgid "This network is encrypted, Please enter encryption key"
+msgstr "Tämä verkko on salattu. Anna salausavain"
+
+# plugins/juci-netmode/src/pages/netmode-wizard.js
+msgid "Couldn't save config!"
+msgstr "Asetuksia ei voitu tallentaa"
+
+# plugins/juci-netmode/src/pages/netmode-wizard.js
+msgid "Couldn't save configuration"
+msgstr "Asetuksia ei voitu tallentaa"
+
+msgid "Select Profile"
+msgstr "Valitse profiili"
+
+msgid ""
+"Changing netmode will reset your configuration completely to match that "
+"netmode. Do you want to continue?"
+msgstr ""
+"Profiilin vaihto asettaa laitteen täysin valitun profiilin mukaiseksi. "
+"Haluatko jatkaa?"
+
+# /home/jamu/GIT/juci/plugins/juci-netmode/src/widgets/overview-netmode.js
+msgid "No profile selected"
+msgstr "Profiilia ei ole valittu"
 
 # /home/jamu/GIT/juci/plugins/juci-netmode/src/widgets/overview-clientmode.js
 msgid "You must give a SSID to connect"
@@ -31,30 +57,13 @@ msgstr "Yritetään parittaa laitetta"
 msgid "Scanning for APs"
 msgstr "Skannataan tukiasemia"
 
-msgid "Select Profile"
-msgstr "Valitse profiili"
-
-msgid ""
-"Changing netmode will reset your configuration completely to match that "
-"netmode. Do you want to continue?"
-msgstr ""
-"Profiilin vaihto asettaa laitteen täysin valitun profiilin mukaiseksi. "
-"Haluatko jatkaa?"
-
-# /home/jamu/GIT/juci/plugins/juci-netmode/src/widgets/overview-netmode.js
-msgid "No profile selected"
-msgstr "Profiilia ei ole valittu"
-
-msgid "Select Preset"
-msgstr "Valitse profiili"
-
 # /home/jamu/GIT/juci/plugins/juci-netmode/src/widgets/overview-clientmode.html
 msgid "Extender/Repeater"
 msgstr "Toistin/Langaton toistin"
 
 # /home/jamu/GIT/juci/plugins/juci-netmode/src/widgets/overview-clientmode.html
 msgid "WPS"
-msgstr ""
+msgstr "WPS"
 
 # /home/jamu/GIT/juci/plugins/juci-netmode/src/widgets/overview-clientmode.html
 msgid "(within 2 minutes)"
@@ -70,7 +79,7 @@ msgstr "Käsin asetus"
 
 # /home/jamu/GIT/juci/plugins/juci-netmode/src/widgets/overview-clientmode.html
 msgid "SSID"
-msgstr ""
+msgstr "SSID (verkon nimi)"
 
 # /home/jamu/GIT/juci/plugins/juci-netmode/src/widgets/overview-clientmode.html
 msgid "Key"
@@ -95,8 +104,95 @@ msgstr "Salausavain"
 msgid "Profile"
 msgstr "Profiili"
 
+msgid "Select Preset"
+msgstr "Valitse profiili"
+
+# plugins/juci-netmode/src/widgets/overview-netmode.html
+msgid "Auto-Mode"
+msgstr "Automaattitila"
+
 msgid "No profiles available"
 msgstr "Ei profiileja"
 
 msgid "Change Profile"
 msgstr "Vaihda profiili"
+
+# plugins/juci-netmode/src/pages/netmode-wizard.html
+msgid "Select if you want your device in Router or WiFi Extender/Repeater Mode"
+msgstr ""
+"Valitse mikäli haluat käyttää laitettasi reitittävnä tai verkon toistimena"
+
+# /home/jamu/GIT/juci/plugins/juci-netmode/src/widgets/overview-clientmode.html
+msgid "WiFi Extender/Repeater Mode"
+msgstr "Toistin/Langaton toistin"
+
+# plugins/juci-netmode/src/pages/netmode-wizard.html
+msgid "Router Mode"
+msgstr "Reitittävä tila"
+
+# plugins/juci-netmode/src/pages/netmode-wizard.html
+msgid "Skip"
+msgstr "Ohita"
+
+# plugins/juci-netmode/src/pages/netmode-wizard.html
+msgid "Once"
+msgstr "Kerran"
+
+# plugins/juci-netmode/src/pages/netmode-wizard.html
+msgid "Next"
+msgstr "Seuraava"
+
+msgid "Select Network"
+msgstr "Valitse profiili"
+
+# plugins/juci-netmode/src/pages/netmode-wizard.html
+msgid "Scan"
+msgstr "Skannaa"
+
+# /home/jamu/GIT/juci/plugins/juci-netmode/src/widgets/overview-clientmode.js
+msgid "Scanning"
+msgstr "Skannataan tukiasemia"
+
+# plugins/juci-netmode/src/pages/netmode-wizard.html
+msgid "Password"
+msgstr "Salasana"
+
+# plugins/juci-netmode/src/pages/netmode-wizard.html
+msgid "Show Password"
+msgstr "Näytä salasana"
+
+# plugins/juci-netmode/src/pages/netmode-wizard.html
+msgid "Back"
+msgstr "Takaisin"
+
+# plugins/juci-netmode/src/pages/netmode-wizard.html
+msgid "Separate WiFi names"
+msgstr "Erottele WiFi-nimet"
+
+# plugins/juci-netmode/src/pages/netmode-wizard.html
+msgid "Welcome, here you configure your WiFi Extender/Repeater"
+msgstr "Tervetuloa. Tässä voit konfiguroida toistimen/langattoman toistimen"
+
+# /home/jamu/GIT/juci/plugins/juci-netmode/src/widgets/overview-clientmode.html
+msgid "Configure your Extender/Repeater"
+msgstr "Määrittele toistin/Langaton toistin"
+
+# plugins/juci-netmode/src/pages/netmode-wizard.html
+msgid "Configure your WiFi settings"
+msgstr "Määrittele WiFi-asetukset"
+
+# /home/jamu/GIT/juci/plugins/juci-netmode/src/widgets/overview-clientmode.html
+msgid "WiFi Extender/Repeater setup completed"
+msgstr "Toistin/Langaton toistin määrittely valmis"
+
+# plugins/juci-netmode/src/pages/netmode-wizard.html
+msgid ""
+"Your Extender/Repeater setup is now completed. You will likely loose "
+"connection to your box."
+msgstr ""
+"Toistimen/langattoman toistimen konfigurointi on nyt valmis. Menetät "
+"yhteyden laitteeseesi"
+
+# plugins/juci-netmode/src/pages/netmode-wizard.html
+msgid "menu-netmode-wizard-title"
+msgstr "Profiilin määrittely"

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.10\n"
+"X-Generator: Poedit 2.0.4\n"
 
 msgid "Zone does not exist!"
 msgstr "Vyöhykettä ei ole!"
@@ -17,13 +17,47 @@ msgstr "Vyöhykettä ei ole!"
 msgid "Source port can not be empty!"
 msgstr "Lähdeportti ei voi olla tyhjä!"
 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-parental-control.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-parental-control.js
+msgid "No day selected!"
+msgstr "Päivää ei ole valittu"
+
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-parental-control.js
+msgid "No target host selected!"
+msgstr "Kohdelaitetta ei ole valittu!"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-parental-control.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-parental-control.js
+msgid "No start and/or end time selected!"
+msgstr "Alku- ja/tai loppuaikaa ei ole valittu"
+
+msgid "Parental Rule"
+msgstr "Käytönvalvonnan sääntö"
+
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-zones.js
+msgid "Input Policy"
+msgstr "Sisääntuleva käytäntö"
+
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-zones.js
+msgid "Output Policy"
+msgstr "Lähtevä käytäntö"
+
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-zones.js
+msgid "Forward Policy"
+msgstr "Edelleenlähetyskäytäntö"
+
+msgid "Please select a zone to delete!"
+msgstr "Valitse poistettava vyöhyke!"
+
+msgid "Are you sure you want to delete this zone?"
+msgstr "Haluatko varmasti poistaa tämän vyöhykkeen?"
+
 msgid "Failed to create dmz configuration!"
 msgstr "DMZ-konfigurointi ei onnistunut!"
-
-msgid ""
-"A port forwarding rule with the same name already exists! Please specify a "
-"different name!"
-msgstr "Samanniminen porttiohjaussääntö on jo olemassa! Syötä uusi nimi!"
 
 # /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-rules.js
 msgid "Source IP"
@@ -53,53 +87,40 @@ msgstr "Valitse poistettava sääntö!"
 msgid "Are you sure you want to delete this rule?"
 msgstr "Haluatko varmasti poistaa tämän säännön?"
 
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-zones.js
-msgid "Input Policy"
-msgstr "Sisääntuleva käytäntö"
+msgid ""
+"A port forwarding rule with the same name already exists! Please specify a "
+"different name!"
+msgstr "Samanniminen porttiohjaussääntö on jo olemassa! Syötä uusi nimi!"
 
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-zones.js
-msgid "Output Policy"
-msgstr "Lähtevä käytäntö"
-
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-zones.js
-msgid "Forward Policy"
-msgstr "Edelleenlähetyskäytäntö"
-
-msgid "Please select a zone to delete!"
-msgstr "Valitse poistettava vyöhyke!"
-
-msgid "Are you sure you want to delete this zone?"
-msgstr "Haluatko varmasti poistaa tämän vyöhykkeen?"
-
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-parental-control.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-parental-control.js
-msgid "No day selected!"
-msgstr "Päivää ei ole valittu"
-
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-parental-control.js
-msgid "No target host selected!"
-msgstr "Kohdelaitetta ei ole valittu!"
-
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-parental-control.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-parental-control.js
-msgid "No start and/or end time selected!"
-msgstr "Alku- ja/tai loppuaikaa ei ole valittu"
-
-msgid "Parental Rule"
-msgstr "Käytönvalvonnan sääntö"
-
-msgid "TCP + UDP"
-msgstr "TCP +  UDP"
+msgid "UDP"
+msgstr "UDP"
 
 msgid "TCP"
 msgstr "TCP"
 
-msgid "UDP"
-msgstr "UDP"
+msgid "TCP + UDP"
+msgstr "TCP +  UDP"
+
+msgid "ACCEPT"
+msgstr "HYVÄKSY"
+
+msgid "REJECT"
+msgstr "HYLKÄÄ"
+
+msgid "DROP"
+msgstr "PUDOTA"
+
+msgid "FORWARD"
+msgstr "EDELLEENLÄHETYS"
+
+msgid "Firewall Zones can't have the same name"
+msgstr "Palomuurivyöhykkeet eivät voi olla saman nimisiä"
+
+msgid "Please select a connection in the list!"
+msgstr "Valitse yhteys luettelosta!"
+
+msgid "Are you sure you want to remove this network from this zone?"
+msgstr "Haluatko varmasti poistaa tämän verkon tältä vyöhykkeeltä?"
 
 msgid "All"
 msgstr "Kaikki"
@@ -118,86 +139,46 @@ msgstr "Korjaa virheet ennen tallentamista"
 msgid "Rule can not have empty Public port"
 msgstr "Säännöllä ei voi olla tyhjää julkista porttia"
 
-msgid "ACCEPT"
-msgstr "HYVÄKSY"
-
-msgid "REJECT"
-msgstr "HYLKÄÄ"
-
-msgid "FORWARD"
-msgstr "EDELLEENLÄHETYS"
-
-msgid "DROP"
-msgstr "PUDOTA"
-
 msgid "Device"
 msgstr "Laite"
+
+# plugins/juci-firewall-fw3/src/widgets/firewall-rule-edit.js
+msgid "Any"
+msgstr "Mikä tahansa"
 
 # /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-rule-edit.js
 msgid "IP must be ether a valid IPv4 or a valid IPv6 Address"
 msgstr "IP-osoitteen on oltava kelvollinen IPv4- tai IPv6-osoite"
 
-msgid "Firewall Zones can't have the same name"
-msgstr "Palomuurivyöhykkeet eivät voi olla saman nimisiä"
-
-msgid "Please select a connection in the list!"
-msgstr "Valitse yhteys luettelosta!"
-
-msgid "Are you sure you want to remove this network from this zone?"
-msgstr "Haluatko varmasti poistaa tämän verkon tältä vyöhykkeeltä?"
-
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-client-port-mapping.html
-msgid "Configure Port Forwarding"
-msgstr "Määritä porttiohjaus"
-
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-client-port-mapping.html
-msgid "Edit port forwardings for"
-msgstr "Muokkaa porttiohjausta"
-
 msgid "Name"
 msgstr "Nimi"
 
-msgid "Excluded ports"
-msgstr "Poissuljetut portit"
+msgid "Default Policy"
+msgstr "Oletussääntö"
 
-msgid "These ports may not be mapped, they are protected"
-msgstr "Näitä portteja ei voi määritellä ohjattavaksi, koska ne on suojattu"
+msgid "Masquerading"
+msgstr "NAT"
 
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-client-port-mapping.html
-msgid "Public port(s)"
-msgstr "Julkiset portit"
+msgid "MSS clamping"
+msgstr ""
 
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-client-port-mapping.html
-msgid "A port number or range of the form startport:endport"
-msgstr "Porttinumero tai -alue muodossa alkuportti:loppuportti"
+msgid "Allow forward to destination zones:"
+msgstr "Salli edelleenlähetys kohdevyöhykkeille:"
 
-msgid "Private port"
-msgstr "Yksityinen portti"
+msgid "Allow forward from source zones:"
+msgstr "Salli edelleenlähetys lähdevyöhykkeiltä:"
 
-msgid "Protocol"
-msgstr "Protokolla"
+msgid "Zone members:"
+msgstr "Vyöhykkeen jäsenet:"
 
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-client-port-mapping.html
-msgid "Current Port Forwardings"
-msgstr "Nykyiset porttiohjaukset"
+msgid "Input"
+msgstr "Saapuva"
 
-msgid "Public port"
-msgstr "Julkinen Portti"
+msgid "Output"
+msgstr "Lähtevä"
 
-msgid "Cancel"
-msgstr "Peruuta"
-
-msgid "Save"
-msgstr "Tallenna"
-
-msgid "MAC Address"
-msgstr "MAC Osoite"
-
-msgid "Select Existing Host"
-msgstr "Valitse olemassa oleva isäntäkone"
-
-msgid "Invalid MAC address"
-msgstr "Virheellinen MAC osoite"
+msgid "Forward"
+msgstr "Edelleenlähetys"
 
 # /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-parental-control.html
 msgid "Internet access will be restricted for"
@@ -216,8 +197,95 @@ msgstr "Aloitusaika"
 msgid "Stop Time"
 msgstr "Lopetusaika"
 
+msgid "Select protocol"
+msgstr "Valitse protokolla"
+
+msgid "Local IP Address"
+msgstr "Paikallinen IP osoite"
+
+msgid "Protocol"
+msgstr "Protokolla"
+
+msgid "Type"
+msgstr "Palvelutyyppi"
+
+msgid "Public port"
+msgstr "Julkinen Portti"
+
+msgid "Public port range"
+msgstr "Julkinen porttialue"
+
+msgid "Private port"
+msgstr "Yksityinen portti"
+
+msgid "Private port range"
+msgstr "Yksityinen porttialue"
+
+msgid "Rule Name"
+msgstr "Säännön Nimi"
+
+msgid "Select Zone"
+msgstr "Valitse vyöhyke"
+
+msgid "Destination Zone"
+msgstr "Kohdevyöhyke"
+
+msgid "Source IP Address"
+msgstr "Lähdeosoite"
+
+msgid "Select connected device"
+msgstr "Valitse yhdistetty laite"
+
 msgid "Enable"
 msgstr "Ota käyttöön"
+
+msgid "Source Zone"
+msgstr "Alue"
+
+msgid "Dst. Device"
+msgstr "Kohdelaite"
+
+msgid "Dst. IP Address"
+msgstr "Kohdeosoite"
+
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/uci.firewall.nat.rule.edit.html
+msgid "NAT Loopback"
+msgstr "NAT uudelleenohjaus"
+
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-client-port-mapping.html
+msgid "Configure Port Forwarding"
+msgstr "Määritä porttiohjaus"
+
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-client-port-mapping.html
+msgid "Edit port forwardings for"
+msgstr "Muokkaa porttiohjausta"
+
+msgid "Excluded ports"
+msgstr "Poissuljetut portit"
+
+msgid "These ports may not be mapped, they are protected"
+msgstr "Näitä portteja ei voi määritellä ohjattavaksi, koska ne on suojattu"
+
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-client-port-mapping.html
+msgid "Public port(s)"
+msgstr "Julkiset portit"
+
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-client-port-mapping.html
+msgid "A port number or range of the form startport:endport"
+msgstr "Porttinumero tai -alue muodossa alkuportti:loppuportti"
+
+# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-client-port-mapping.html
+msgid "Current Port Forwardings"
+msgstr "Nykyiset porttiohjaukset"
+
+msgid "Cancel"
+msgstr "Peruuta"
+
+msgid "Save"
+msgstr "Tallenna"
+
+msgid "URL"
+msgstr "URL"
 
 # /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/firewall-rule-edit.html
 msgid "Expose to"
@@ -247,84 +315,29 @@ msgstr "Lähde"
 msgid "Destination"
 msgstr "Kohde"
 
-msgid "URL"
-msgstr "URL"
-
 msgid "Enable WAN forwarding for this service"
 msgstr "Salli WAN pääsy tähän palveluun"
 
 msgid "Configure firewall rule for this service"
 msgstr "Määritä palomuurisääntö tälle palvelulle"
 
-msgid "Default Policy"
-msgstr "Oletussääntö"
+msgid "MAC Address"
+msgstr "MAC Osoite"
 
-msgid "Masquerading"
-msgstr "NAT"
+msgid "Select Existing Host"
+msgstr "Valitse olemassa oleva isäntäkone"
 
-msgid "MSS clamping"
+msgid "Invalid MAC address"
+msgstr "Virheellinen MAC osoite"
+
+msgid "Firewall Zones"
+msgstr "Palomuurivyöhykkeet"
+
+msgid "internet.firewall.zones.info"
 msgstr ""
-
-msgid "Allow forward to destination zones:"
-msgstr "Salli edelleenlähetys kohdevyöhykkeille:"
-
-msgid "Allow forward from source zones:"
-msgstr "Salli edelleenlähetys lähdevyöhykkeiltä:"
-
-msgid "Zone members:"
-msgstr "Vyöhykkeen jäsenet:"
-
-msgid "Input"
-msgstr "Saapuva"
-
-msgid "Output"
-msgstr "Lähtevä"
-
-msgid "Forward"
-msgstr "Edelleenlähetys"
-
-msgid "Rule Name"
-msgstr "Säännön Nimi"
-
-msgid "Select Zone"
-msgstr "Valitse vyöhyke"
-
-msgid "Destination Zone"
-msgstr "Kohdevyöhyke"
-
-msgid "Source IP Address"
-msgstr "Lähdeosoite"
-
-msgid "Select connected device"
-msgstr "Valitse yhdistetty laite"
-
-msgid "Source Zone"
-msgstr "Alue"
-
-msgid "Dst. Device"
-msgstr "Kohdelaite"
-
-msgid "Dst. IP Address"
-msgstr "Kohdeosoite"
-
-# /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/widgets/uci.firewall.nat.rule.edit.html
-msgid "NAT Loopback"
-msgstr ""
-
-msgid "Select protocol"
-msgstr "Valitse protokolla"
-
-msgid "Local IP Address"
-msgstr "Paikallinen IP osoite"
-
-msgid "Type"
-msgstr "Palvelutyyppi"
-
-msgid "Public port range"
-msgstr "Julkinen porttialue"
-
-msgid "Private port range"
-msgstr "Yksityinen porttialue"
+"Tässä voit asettaa palomuurivyöhykkeitä. Jokainen vyöhyke voi sisältää "
+"useita verkkoja tai liitäntöjä, jotka on asetettu aiemmin verkkoyhteydet-"
+"sivulla."
 
 msgid "DMZ / Exposed Host"
 msgstr "DMZ / Exposed Host"
@@ -372,22 +385,6 @@ msgstr ""
 "kannattaa määrittää tälle IP-osoitteelle staattinen IP-osoite DHCP poolista "
 "(katso Asetukset/Verkko)."
 
-msgid "Packet Forwarding"
-msgstr "Palomuuri Edelleenlähetys"
-
-msgid "internet.firewall.forwarding.info"
-msgstr "Valitse liikenteen salliminen vyöhykkeiden välillä"
-
-msgid "Enable firewall"
-msgstr "Ota palomuuri käyttöön"
-
-msgid "Firewall settings"
-msgstr "Palomuuriasetukset"
-
-msgid "internet.firewall.info"
-msgstr ""
-"Palomuurilla voidaan suodattaa liikennettä ja konfiguroida porttiohjauksia"
-
 msgid "to"
 msgstr " "
 
@@ -419,18 +416,6 @@ msgstr "Julkiset portit"
 msgid "Private Port(s)"
 msgstr "Sisäiset portit"
 
-msgid "Firewall Rules"
-msgstr "Palomuurivyöhykkeet"
-
-msgid "internet.firewall.rules.info"
-msgstr "Palomuurisäännöillä voidaan määritellä tarkempia suodatussääntöjä."
-
-msgid "Allow WAN Access To Running Services"
-msgstr "Salli WAN-pääsy käynnissä oleviin palveluihin"
-
-msgid "internet.wan.services.info"
-msgstr "Palvelut"
-
 msgid "URL Filtering"
 msgstr "URL"
 
@@ -443,14 +428,11 @@ msgstr ""
 msgid "Add URL's to URL blocking list"
 msgstr "Lisää URL estolistalle"
 
-msgid "Firewall Zones"
-msgstr "Palomuurivyöhykkeet"
+msgid "Allow WAN Access To Running Services"
+msgstr "Salli WAN-pääsy käynnissä oleviin palveluihin"
 
-msgid "internet.firewall.zones.info"
-msgstr ""
-"Tässä voit asettaa palomuurivyöhykkeitä. Jokainen vyöhyke voi sisältää "
-"useita verkkoja tai liitäntöjä, jotka on asetettu aiemmin verkkoyhteydet-"
-"sivulla."
+msgid "internet.wan.services.info"
+msgstr "Palvelut"
 
 # plugins/juci-firewall-fw3/src/pages/internet-parental-control.html
 msgid ""
@@ -481,32 +463,54 @@ msgstr "Internetyhteyden ajoitus"
 msgid "Host Names"
 msgstr "MAC-osoitteet"
 
+msgid "Firewall Rules"
+msgstr "Palomuurivyöhykkeet"
+
+msgid "internet.firewall.rules.info"
+msgstr "Palomuurisäännöillä voidaan määritellä tarkempia suodatussääntöjä."
+
+msgid "Packet Forwarding"
+msgstr "Palomuuri Edelleenlähetys"
+
+msgid "internet.firewall.forwarding.info"
+msgstr "Valitse liikenteen salliminen vyöhykkeiden välillä"
+
+msgid "Enable firewall"
+msgstr "Ota palomuuri käyttöön"
+
+msgid "Firewall settings"
+msgstr "Palomuuriasetukset"
+
+msgid "internet.firewall.info"
+msgstr ""
+"Palomuurilla voidaan suodattaa liikennettä ja konfiguroida porttiohjauksia"
+
+msgid "menu-internet-firewall-services-title"
+msgstr "Palvelut"
+
 msgid "menu-internet-firewall-dmz-title"
 msgstr "DMZ"
 
 msgid "menu-internet-firewall-forwarding-title"
 msgstr "Edelleenlähetys"
 
-msgid "menu-internet-firewall-port-mapping-title"
-msgstr "Porttiohjaus"
+msgid "menu-internet-parental-control-title"
+msgstr "Käytönvalvonta"
 
 msgid "menu-internet-firewall-rules-title"
 msgstr "Palomuurisäännöt"
 
-msgid "menu-internet-firewall-services-title"
-msgstr "Palvelut"
-
-msgid "menu-internet-firewall-urlblock-title"
-msgstr "URL esto"
+msgid "menu-internet-firewall-title"
+msgstr "Palomuuri"
 
 msgid "menu-internet-firewall-zones-title"
 msgstr "Vyöhykkeet"
 
-msgid "menu-internet-firewall-title"
-msgstr "Palomuuri"
+msgid "menu-internet-firewall-port-mapping-title"
+msgstr "Porttiohjaus"
 
-msgid "menu-internet-parental-control-title"
-msgstr "Käytönvalvonta"
+msgid "menu-internet-firewall-urlblock-title"
+msgstr "URL esto"
 
 #~ msgid "URL Blocking"
 #~ msgstr "URL Estäminen"
