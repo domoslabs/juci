@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 2.0.4\n"
 
 msgid "1/1 Sync"
 msgstr ""
@@ -55,5 +55,5 @@ msgid "menu-broadcom-pwrmgmt-title"
 msgstr "Virranhallinta"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-pwrmgmt/src/pages/broadcom-pwrmgmt.html
-msgid "broadcom-pwrmgmt-title"
-msgstr "Virranhallinta"
+#~ msgid "broadcom-pwrmgmt-title"
+#~ msgstr "Virranhallinta"

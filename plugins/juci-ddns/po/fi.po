@@ -9,7 +9,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 2.0.4\n"
+
+# plugins/juci-ddns/src/pages/internet-services-ddns.js
+msgid "Second"
+msgstr "Sekuntti"
+
+# plugins/juci-ddns/src/pages/internet-services-ddns.js
+msgid "Seconds"
+msgstr "Sekuntia"
 
 msgid "Provider"
 msgstr "Palveluntarjoaja"
@@ -19,6 +27,22 @@ msgstr "Toimialue"
 
 msgid "Username"
 msgstr "Käyttäjänimi"
+
+# plugins/juci-ddns/src/pages/internet-services-ddns.js
+msgid "Running"
+msgstr "Käynnissä"
+
+# plugins/juci-ddns/src/pages/internet-services-ddns.js
+msgid "Next update in"
+msgstr "Seuraava päivitys"
+
+# plugins/juci-ddns/src/pages/internet-services-ddns.js
+msgid "Error"
+msgstr "Virhe"
+
+# plugins/juci-ddns/src/pages/internet-services-ddns.js
+msgid "Warning"
+msgstr "Varoitus"
 
 msgid "Interface"
 msgstr "Fyysinen liitäntä"
@@ -81,5 +105,5 @@ msgid "menu-internet-services-ddns-title"
 msgstr "DDNS"
 
 # /home/jamu/GIT/juci/plugins/juci-ddns/src/pages/internet-services-ddns.html
-msgid "internet-services-ddns-title"
-msgstr "DDNS"
+#~ msgid "internet-services-ddns-title"
+#~ msgstr "DDNS"
