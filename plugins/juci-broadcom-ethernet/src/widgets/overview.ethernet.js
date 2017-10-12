@@ -12,12 +12,12 @@ JUCI.app
 	JUCI.interval.repeat("update-ethernet-overview-widget", 10000, function(done){refresh(); done();});
 	function refresh(){
 		$ethernet.getAdapters().done(function(adapters){
-			$scope.ethPorts = adapters.filter(function(a){ return a.type == "eth-port"; }).sort(function(a, b){
+			var ports  = adapters.filter(function(a){ return a.type == "eth-port"; }).sort(function(a, b){
 				if(a.name === "WAN") return 1;
 				if(b.name === "WAN") return -1;
 				return parseInt(a.name.slice(-1)) - parseInt(b.name.slice(-1));
 			});
-			async.eachSeries($scope.ethPorts, function(port, next){
+			async.eachSeries(ports, function(port, next){
 				if(!port.device){
 					port.up = false;
 					next();
@@ -35,10 +35,11 @@ JUCI.app
 			}, function(err){
 				if(err)
 					console.log(err);
+				$scope.ethPorts = ports;
 				$scope.$apply();
 			});
 		});
-	}refresh();
+	}
 	$events.subscribe("hotplug.switch", function(){refresh();});
 	$scope.getState = function(port){
 		if(port.is_up) return "success";
