@@ -23,7 +23,6 @@
 JUCI.app
 .controller("PagePhoneSpeedDialing", function($scope, $uci){
 	$scope.speed_dials = []; 
-	$scope.speed_dialing = true; 
 	
 	$scope.$watch("speed_dials", function(){
 		var dials = {}; 
