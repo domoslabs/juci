@@ -404,7 +404,7 @@ msgstr ""
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "WiFi settings"
-msgstr "Wifi Settings"
+msgstr "WiFi Settings"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "Port redirects"
