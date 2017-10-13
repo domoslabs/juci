@@ -10,6 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.js
 msgid ""
@@ -163,10 +164,77 @@ msgstr ""
 msgid "File"
 msgstr ""
 
-msgid ""
-"Was unable to set password. Please make sure you have entered correct "
-"current password!"
+msgid "settings.system.general"
+msgstr "General system settings."
+
+msgid "Timezone"
 msgstr ""
+
+msgid "General System Settings"
+msgstr ""
+
+# plugins/juci-mod-system/src/pages/settings-connectivity-test.html
+msgid "Internet"
+msgstr ""
+
+# plugins/juci-mod-system/src/pages/settings-connectivity-test.html
+msgid "URL for checking Internet connection"
+msgstr ""
+
+# plugins/juci-mod-system/src/pages/settings-connectivity-test.html
+msgid "www.example.com"
+msgstr ""
+
+# plugins/juci-mod-system/src/pages/settings-connectivity-test.html
+msgid "Connectivity Test"
+msgstr ""
+
+msgid "Manage Router Users Rights"
+msgstr ""
+
+msgid "Loading"
+msgstr ""
+
+msgid "Services"
+msgstr ""
+
+msgid "Priority"
+msgstr ""
+
+msgid "Service"
+msgstr ""
+
+msgid "Enable"
+msgstr ""
+
+msgid "Action"
+msgstr ""
+
+msgid "Time servers (NTP)"
+msgstr ""
+
+msgid "URL"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-timeservers.html
+msgid "Server mode"
+msgstr ""
+
+# plugins/juci-mod-system/src/pages/settings-system-timeservers.html
+msgid "Time Servers"
+msgstr ""
+
+msgid "Configure Buttons"
+msgstr ""
+
+msgid "settings.management.buttons.info"
+msgstr "Enable/disable the buttons on your router"
+
+msgid "Configure LEDs"
+msgstr ""
+
+msgid "settings.management.leds.info"
+msgstr "Enable/disable the LEDs on your router"
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "System Log Level"
@@ -232,150 +300,6 @@ msgstr ""
 msgid "Log Settings"
 msgstr ""
 
-msgid "Manage Router Users Rights"
-msgstr ""
-
-msgid "Loading"
-msgstr ""
-
-msgid "Services"
-msgstr ""
-
-msgid "Priority"
-msgstr ""
-
-msgid "Service"
-msgstr ""
-
-msgid "Enable"
-msgstr ""
-
-msgid "Action"
-msgstr ""
-
-msgid "Time servers (NTP)"
-msgstr ""
-
-msgid "URL"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-timeservers.html
-msgid "Server mode"
-msgstr ""
-
-# plugins/juci-mod-system/src/pages/settings-system-timeservers.html
-msgid "Time Servers"
-msgstr ""
-
-msgid "settings.system.general"
-msgstr "General system settings."
-
-msgid "Timezone"
-msgstr ""
-
-msgid "General System Settings"
-msgstr ""
-
-msgid "Configure Buttons"
-msgstr ""
-
-msgid "settings.management.buttons.info"
-msgstr "Enable/disable the buttons on your router"
-
-msgid "Configure LEDs"
-msgstr ""
-
-msgid "settings.management.leds.info"
-msgstr "Enable/disable the LEDs on your router"
-
-msgid "Backup Configuration"
-msgstr ""
-
-msgid "settings.config.info"
-msgstr "Save/Load settings or perform factory reset"
-
-msgid "Save configuration"
-msgstr ""
-
-msgid "Save"
-msgstr ""
-
-msgid "Restore configuration"
-msgstr ""
-
-msgid "Load"
-msgstr ""
-
-msgid "Factory Reset"
-msgstr ""
-
-msgid "Factory reset to default configuration"
-msgstr ""
-
-# plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "Soft reset"
-msgstr ""
-
-# plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "Save some of the settings over the factory reset"
-msgstr ""
-
-# plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "WiFi settings"
-msgstr ""
-
-# plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "Port redirects"
-msgstr ""
-
-# plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "Parental rules"
-msgstr ""
-
-# plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "User password"
-msgstr ""
-
-# plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "ICE config"
-msgstr ""
-
-msgid "Reset"
-msgstr ""
-
-msgid "Save Configuration to Computer"
-msgstr ""
-
-# plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "Password protection"
-msgstr ""
-
-msgid "Comments"
-msgstr ""
-
-msgid "New Password"
-msgstr ""
-
-msgid "Re-type password"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "Downloading Backup"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "Pick configuration backup to upload"
-msgstr ""
-
-msgid "Backup file password"
-msgstr ""
-
-msgid "Password (if encrypted)"
-msgstr ""
-
-msgid "Please add a comment describing this configuration"
-msgstr ""
-
 msgid "System Status"
 msgstr ""
 
@@ -425,22 +349,6 @@ msgstr ""
 msgid "Running Processes"
 msgstr ""
 
-# plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "Internet"
-msgstr ""
-
-# plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "URL for checking Internet connection"
-msgstr ""
-
-# plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "www.example.com"
-msgstr ""
-
-# plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "Connectivity Test"
-msgstr ""
-
 msgid "Energy Settings"
 msgstr ""
 
@@ -462,36 +370,102 @@ msgstr ""
 msgid "Missing uci config boardpanel."
 msgstr ""
 
+msgid "Backup Configuration"
+msgstr ""
+
+msgid "settings.config.info"
+msgstr "Save/Load settings or perform factory reset"
+
+msgid "Save configuration"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Restore configuration"
+msgstr ""
+
+msgid "Load"
+msgstr ""
+
+msgid "Factory Reset"
+msgstr ""
+
+msgid "Factory reset to default configuration"
+msgstr ""
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Soft reset"
+msgstr ""
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Save some of the settings over the factory reset"
+msgstr ""
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "WiFi settings"
+msgstr "Wifi Settings"
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Port redirects"
+msgstr "Firewall Port Forwardings"
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Parental rules"
+msgstr "Parental Rules"
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "User password"
+msgstr "User Password"
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "ICE config"
+msgstr "ICE Configuration"
+
+msgid "Reset"
+msgstr ""
+
+msgid "Save Configuration to Computer"
+msgstr ""
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Password protection"
+msgstr ""
+
+msgid "Comments"
+msgstr ""
+
+msgid "New Password"
+msgstr ""
+
+msgid "Re-type password"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Downloading Backup"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Pick configuration backup to upload"
+msgstr ""
+
+msgid "Backup file password"
+msgstr ""
+
+msgid "Password (if encrypted)"
+msgstr ""
+
+msgid "Please add a comment describing this configuration"
+msgstr ""
+
 msgid "menu-settings-hardware-leds-title"
 msgstr "LEDs"
 
-msgid "menu-settings-uci-title"
-msgstr "UCI Settings"
-
-# plugins/juci-mod-system/src/pages/system.html
-msgid "menu-system-title"
-msgstr "System"
-
-msgid "menu-settings-connectivity-test-title"
-msgstr "Connectivity Test"
-
-msgid "menu-settings-system-log-title"
-msgstr "Log Settings"
-
-msgid "menu-settings-system-timeservers-title"
-msgstr "Time Servers"
-
-msgid "menu-settings-hardware-title"
-msgstr "Hardware"
+msgid "menu-settings-system-title"
+msgstr "System Settings"
 
 msgid "menu-settings-management-title"
 msgstr "Management"
-
-msgid "menu-status-system-processes-title"
-msgstr "Processes"
-
-msgid "menu-settings-system-title"
-msgstr "System Settings"
 
 msgid "menu-settings-services-title"
 msgstr "Services"
@@ -499,20 +473,42 @@ msgstr "Services"
 msgid "menu-settings-hardware-buttons-title"
 msgstr "Buttons"
 
-msgid "menu-settings-password-title"
-msgstr "Passwords"
+# plugins/juci-mod-system/src/pages/system.html
+msgid "menu-system-title"
+msgstr "System"
 
-msgid "menu-settings-configuration-title"
-msgstr "Backup/Restore"
+msgid "menu-settings-system-timeservers-title"
+msgstr "Time Servers"
 
 msgid "menu-settings-users-title"
 msgstr "Menu Access"
 
-msgid "menu-status-system-title"
-msgstr "System"
+msgid "menu-settings-password-title"
+msgstr "Passwords"
+
+msgid "menu-status-system-processes-title"
+msgstr "Processes"
+
+msgid "menu-settings-uci-title"
+msgstr "UCI Settings"
 
 msgid "menu-settings-energy-title"
 msgstr "Energy Settings"
+
+msgid "menu-settings-system-log-title"
+msgstr "Log Settings"
+
+msgid "menu-settings-configuration-title"
+msgstr "Backup/Restore"
+
+msgid "menu-settings-connectivity-test-title"
+msgstr "Connectivity Test"
+
+msgid "menu-settings-hardware-title"
+msgstr "Hardware"
+
+msgid "menu-status-system-title"
+msgstr "System"
 
 #~ msgid "menu-settings-title"
 #~ msgstr "System"
