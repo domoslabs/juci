@@ -343,7 +343,7 @@ msgid "Soft reset"
 msgstr "Kevyt nollaus"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "Save some of the settings over the factory reset"
+msgid "Save some settings over the factory reset"
 msgstr "Tallenna tietyt asetukset, vaikka tehdasasetukset palautettaisiin"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html

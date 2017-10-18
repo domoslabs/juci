@@ -374,7 +374,7 @@ msgid "Soft reset"
 msgstr "ソフトリセット"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "Save some of the settings over the factory reset"
+msgid "Save some settings over the factory reset"
 msgstr "工場出荷時のリセットよりもいくつかの設定を保存する"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html

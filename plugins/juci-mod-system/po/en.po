@@ -399,7 +399,7 @@ msgid "Soft reset"
 msgstr ""
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "Save some of the settings over the factory reset"
+msgid "Save some settings over the factory reset"
 msgstr ""
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
