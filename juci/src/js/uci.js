@@ -325,6 +325,26 @@
 		};
 	};
 
+	function IPAddressAndIPCIDRValidator(){
+		this.validatorIP = new IPAddressValidator();
+		this.validatorCIDR4 = new IP4CIDRValidator();
+		this.validatorCIDR6 = new IP6CIDRValidator();
+
+		this.validate = function(field){
+
+			var v1=this.validatorIP.validate(field);
+			var v2=this.validatorCIDR4.validate(field);
+			var v3=this.validatorCIDR6.validate(field);
+
+			console.log(v1,v2,v3);
+
+			if(v1==null || v2==null || v3==null)
+				return null;
+
+			return JUCI.$tr(gettext("Not an IP address or IP address with CIDR notation"));
+		};
+	};
+
 	function IPAddressValidator(){
 		this.validate = function(field){
 			var ipv4 = new IP4AddressValidator();
@@ -1334,7 +1354,8 @@
 		IP4CIDRValidator: IP4CIDRValidator,
 		IP4UnicastAddressValidator: IP4UnicastAddressValidator,
 		QOSMarkValidator: QOSMarkValidator,
-		HostnameValidator: HostnameValidator
+		HostnameValidator: HostnameValidator,
+		IPAddressAndIPCIDRValidator: IPAddressAndIPCIDRValidator
 	};
 	/*if(exports.JUCI){
 		var JUCI = exports.JUCI;
