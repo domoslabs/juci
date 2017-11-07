@@ -10,9 +10,6 @@
 				],
 				"juci.unauthenticated": [
 					 "*"
-				],
-				"router.system": [
-					"info"
 				]
 			}, 
 			"uci": [ "juci" ] 
