@@ -422,7 +422,7 @@ msgstr "URL"
 
 # plugins/juci-firewall-fw3/src/widgets/firewall-rule-edit.html
 msgid "Expose to"
-msgstr "に公開"
+msgstr "公開先"
 
 # plugins/juci-firewall-fw3/src/widgets/firewall-rule-edit.html
 msgid "Zone"
@@ -491,7 +491,7 @@ msgstr ""
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-dmz.html
 msgid "DMZ / Exposed Host"
-msgstr "DMZ・公開ホスト"
+msgstr "DMZ / 公開ホスト"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-dmz.html
 msgid "internet.exposed_host.info"
@@ -539,8 +539,8 @@ msgid ""
 "(see Settings/Network)."
 msgstr ""
 "インターネットに公開するローカルIPアドレスを選択します。 さらに、このIPアドレ"
-"スをデバイスの静的DHCPアドレスとして設定する必要があります（「設定/ネットワー"
-"ク」を参照）。"
+"スをデバイスの静的DHCPアドレスとして設定する必要があります（「ネットワーク」"
+"を参照）。"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-port-mapping.html
 msgid "to"
@@ -650,11 +650,11 @@ msgstr ""
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall.html
 msgid "Enable firewall"
-msgstr "ファイアーウォール オン"
+msgstr "ファイアウォール オン"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall.html
 msgid "Firewall settings"
-msgstr "ファイアーウォール設定"
+msgstr "ファイアウォール設定"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall.html
 msgid "internet.firewall.info"
@@ -682,7 +682,7 @@ msgstr "サービス"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall.html
 msgid "menu-internet-firewall-title"
-msgstr "ファイアーウォール"
+msgstr "ファイアウォール"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-rules.html
 msgid "menu-internet-firewall-rules-title"

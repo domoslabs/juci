@@ -167,30 +167,6 @@ msgstr ""
 msgid "No mcpd configuration found!"
 msgstr ""
 
-# plugins/juci-broadcom-iptv/src/pages/mc-proxy-settings.html
-msgid "Multicast Settings"
-msgstr "マルチキャストプロキシ設定"
-
-# plugins/juci-broadcom-iptv/src/pages/mc-proxy-settings.html
-msgid "status.tv.info"
-msgstr ""
-
-# plugins/juci-broadcom-iptv/src/pages/mc-proxy-settings.html
-msgid "Connection Status"
-msgstr ""
-
-# plugins/juci-broadcom-iptv/src/pages/mc-proxy-settings.html
-msgid "Enable IGMP"
-msgstr "IGMPプロキシを有効にする"
-
-# plugins/juci-broadcom-iptv/src/pages/mc-proxy-settings.html
-msgid "Enable MLD"
-msgstr "MLDプロキシを有効にする"
-
-# plugins/juci-broadcom-iptv/src/pages/mc-proxy-settings.html
-msgid "menu-mc-proxy-settings-title"
-msgstr "マルチキャストプロキシ"
-
 # plugins/juci-broadcom-iptv/src/pages/broadcom-iptv.html
 msgid "menu-broadcom-iptv-title"
 msgstr ""

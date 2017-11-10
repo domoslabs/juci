@@ -251,7 +251,7 @@ msgstr "ファミリー選択"
 
 # plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
 msgid "Host to ping"
-msgstr "ホストにPINGする"
+msgstr "PING対象"
 
 # plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
 msgid "Add Ping Host"

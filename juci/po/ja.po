@@ -237,7 +237,7 @@ msgid ""
 "your browser does not support this kind of download, please refer to latest "
 "Chrome, Firefox, Opera or Edge etc."
 msgstr ""
-"あなたのブラウザはこの種のダウンロードをサポートしていません。最新のChrome、"
+"あなたのブラウザはこのダウンロードをサポートしていません。最新のChrome、"
 "Firefox、Opera、Edgeなどを参照してください。"
 
 # /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
@@ -329,9 +329,7 @@ msgstr "未適用の変更"
 msgid ""
 "Are you sure you want to reload settings from the router? All your current "
 "changes will be lost!"
-msgstr ""
-"ルータから設定を再ロードしても宜しいですか？ 全てのあなたの現在の変更は失わ"
-"れます！"
+msgstr "未適用の設定変更を削除しますか？変更予定の設定は全て削除されます。"
 
 # /home/reidar/git/juci/juci//src/widgets/juci-input-ipv6-address.js
 #, fuzzy

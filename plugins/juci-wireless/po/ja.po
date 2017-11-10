@@ -201,7 +201,7 @@ msgstr "レート"
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-wireless/src/pages/wireless-band-steering.html
 msgid "Enable"
-msgstr "バンドステアリング　オン"
+msgstr "有効"
 
 # plugins/juci-wireless/src/pages/wireless-devices.js
 msgid "Disable"
@@ -971,7 +971,7 @@ msgstr ""
 # plugins/juci-wireless/src/pages/wireless-filtering.html
 msgid "You cannot enable MAC Filtering on a WEP protected wireless interface!"
 msgstr ""
-"WEP保護されたワイヤレスインターフェイスでMACフィルタリングを有効にすることは"
+"WEP保護されたワイヤレスインターフェースでMACフィルタリングを有効にすることは"
 "できません。"
 
 # plugins/juci-wireless/src/pages/wireless-status-bs-data.html
@@ -1044,7 +1044,7 @@ msgstr "WPS オン"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
 msgid "Pair (within 2 minutes)"
-msgstr "ペアリング(約2分かかります)"
+msgstr "ペアリング(２分間有効)"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
 msgid "Generated PIN"
@@ -1056,7 +1056,7 @@ msgstr "新しいPINコード作成"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
 msgid "Enter your device PIN"
-msgstr "PINコードを入力して下さい"
+msgstr "デバイスのPINコードを入力して下さい"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
 msgid "Enter your PIN here"
@@ -1064,7 +1064,7 @@ msgstr "PINコードを入力して下さい"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
 msgid "WPS-PBC: Push Button on Device"
-msgstr "WPS-PBC: 本機のWPSボタンを押して下さい"
+msgstr "WPS-PBC: WPS Push Button Connect"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
 msgid ""
@@ -1073,12 +1073,12 @@ msgid ""
 "2 minutes after you pressed Pair."
 msgstr ""
 "デバイスをペアリングするには、ペアを押します。 その後、接続するデバイスの対応"
-"するボタンを押します。 Pairを押した後、ルータは2分間ペアリングが可能になりま"
+"するボタンを押します。 ペアを押した後、ルータは2分間ペアリングが可能になりま"
 "す。"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
 msgid "WPS-REG: Router provides PIN"
-msgstr "WPS-REG：ルータはPINを提供します"
+msgstr "WPS-REG：WPS Registration"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
 msgid "Enter the WPS-PIN below on the device you wish to pair."
@@ -1086,11 +1086,11 @@ msgstr "ペアリングにしたいデバイスに下記のWPS-PINを入力し�
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
 msgid "Generate"
-msgstr "作成"
+msgstr "生成"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
 msgid "WPS-PIN: Another Device provides PIN"
-msgstr "WPS-PIN：別のデバイスに表示されるPIN"
+msgstr "WPS-PIN：Personal Identification Number"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
 msgid "Enter the WPS-PIN provided by the other device here."

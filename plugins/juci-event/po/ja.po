@@ -89,7 +89,7 @@ msgstr "フィルタ："
 
 # plugins/juci-event/src/pages/status-events.html
 msgid "Download As Text"
-msgstr "テキストとしてダウンロード"
+msgstr "ダウンロード (Text)"
 
 # plugins/juci-event/src/pages/event-log-config.html
 msgid "Log Settings"

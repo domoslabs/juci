@@ -17,7 +17,7 @@ msgstr "許可"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.js
 msgid "Deny"
-msgstr "否定"
+msgstr "拒否"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "UPNP Settings"
@@ -81,7 +81,7 @@ msgstr "追加のデバッグ情報をシステムログに記録する"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Downlink"
-msgstr "ダウンリンク"
+msgstr "ダウンリンク速度"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Value in KByte/s, informational only"
@@ -89,7 +89,7 @@ msgstr "KByte/s値、通知のみ"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Uplink"
-msgstr "アップリンク"
+msgstr "アップリンク速度"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "Port"

@@ -90,7 +90,7 @@ msgstr "IP検索方法"
 
 # plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
 msgid "Select Connection"
-msgstr "接続選択"
+msgstr "Connection選択"
 
 # plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
 msgid "Select Interface"

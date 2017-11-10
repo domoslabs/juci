@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.1\n"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.js
 msgid "This network is encrypted, Please enter encryption key"
@@ -118,10 +118,6 @@ msgstr "動作モード"
 # plugins/juci-netmode/src/widgets/netmode-picker.html
 msgid "Select Preset"
 msgstr "プリセット選択"
-
-# plugins/juci-netmode/src/widgets/overview-netmode.html
-msgid "Auto-Mode"
-msgstr "自動モード"
 
 # plugins/juci-netmode/src/widgets/overview-netmode.html
 msgid "No profiles available"

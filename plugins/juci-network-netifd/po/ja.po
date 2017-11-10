@@ -29,7 +29,7 @@ msgstr "ネットワークインターフェース"
 
 # plugins/juci-network-netifd/src/network-uci.js
 msgid "Unnamed interface"
-msgstr "名前無しインターフェイス"
+msgstr "名前無しインターフェース"
 
 # plugins/juci-network-netifd/src/network-uci.js
 msgid " has protocol: "
@@ -311,7 +311,7 @@ msgstr "インターフェース名が必要です。"
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/network-connection-create.js
 msgid "Interface names can only contain letters and numbers"
-msgstr "インターフェイス名には文字と数字のみ使用できます。"
+msgstr "インターフェース名には文字と数字のみ使用できます。"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/pages/internet-network.js
@@ -658,7 +658,7 @@ msgstr "ファイルシステムタイプ"
 
 # plugins/juci-network-netifd/src/widgets/overview-slider-network.js
 msgid "Unknown Working interface"
-msgstr "不明な作業インターフェイス"
+msgstr "不明な作業インターフェース"
 
 # plugins/juci-network-netifd/src/widgets/overview-slider-network.js
 msgid "Number of Clients"
@@ -934,7 +934,7 @@ msgstr "DNSサーバ 追加・削除・編集"
 
 # plugins/juci-network-netifd/src/widgets/network-connection-dns-config.html
 msgid "These DNS entries will be applied on the interface"
-msgstr "これらのDNSエントリは、インターフェイスに適用されます"
+msgstr "これらのDNSエントリは、インターフェースに適用されます"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
@@ -1331,7 +1331,7 @@ msgstr "IPv6ゲートウェイ"
 
 # plugins/juci-network-netifd/src/pages/internet-routes.html
 msgid "Static Routes"
-msgstr "静的ルート"
+msgstr "スタティックルート"
 
 # plugins/juci-network-netifd/src/pages/internet-routes.html
 msgid "internet.lan.routes.info"
@@ -2094,7 +2094,7 @@ msgstr "DHCPリクエストに含めるホスト名"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-edit.html
 msgid "Automatically set up default route for this interface"
-msgstr "このインターフェイスのデフォルトルートを自動的に設定する"
+msgstr "このインターフェースのデフォルトルートを自動的に設定する"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-pptp-edit.html
 msgid "VPN Server"
