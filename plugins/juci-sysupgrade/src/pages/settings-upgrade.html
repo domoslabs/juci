@@ -24,7 +24,7 @@
 			<h2>{{'USB Firmware Upgrade'|translate}}</h2>
 			<p>{{'settings.upgrade.usb.info'|translate}}</p>
 			<juci-config-lines>
-				<juci-config-line title="{{usbUpgradeStatus}}" ng-show="usbUpgradeAvailable">
+				<juci-config-line style="color:#5cb85c;" title="{{usbUpgradeStatus}}" ng-show="usbUpgradeAvailable">
 					<button class="btn btn-lg btn-default" ng-click="onUpgradeUSB()">{{'Install Upgrade'|translate}}</button>
 				</juci-config-line>
 				<juci-config-line title="{{usbUpgrade}}" ng-hide="usbUpgradeAvailable">

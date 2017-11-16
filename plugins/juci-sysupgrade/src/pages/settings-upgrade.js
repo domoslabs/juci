@@ -87,14 +87,16 @@ JUCI.app
 	$scope.onDismissModal = function(){
 		$scope.showUpgradeStatus = false;
 	};
-	
+
 	$scope.onCheckUSB = function(){
+		var ufwpath;
 		$scope.usbUpgradeAvailable = false;
 		$scope.usbCheckInProgress = true;
 		$rpc.$call("juci.sysupgrade", "check", {"type": "usb"}).done(function(response){
 			if(response.usb) {
 				$scope.usbUpgrade = response.usb;
-				$scope.usbUpgradeStatus = $tr(gettext("New Software Available!"));
+				ufwpath = response.usb.split("/");
+				$scope.usbUpgradeStatus = $tr(gettext(ufwpath[ufwpath.length-1]));
 				$scope.usbUpgradeAvailable = true;
 			} else {
 				$scope.usbUpgradeStatus = $tr(gettext("No upgrade has been found!"));
