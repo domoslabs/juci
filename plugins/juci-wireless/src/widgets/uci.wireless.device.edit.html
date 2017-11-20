@@ -15,6 +15,14 @@
 			<juci-select ng-model="device.bandwidth.value" ng-items="allBandwidths" placeholder="{{'Select Bandwidth'|translate}}"/>
 		</juci-config-line>
 		<div ng-show="showExpert">
+
+			<juci-config-line title="{{'Transmit Power'|translate}}">
+			<div class="input-group">
+ 				<span class="input-group-addon">%</span>
+				<input type="number" max="100" min="1" class="form-control" ng-model="device.txpower.value"/>
+			</div>
+			</juci-config-line>
+
 			<juci-config-line title="{{'Scan Timer'|translate}}" ng-show="device.channel.value == 'auto'">
 				<input type="number" max="1440" min="0" class="form-control" ng-model="device.scantimer.value" placeholder="{{'Timer Interval'|translate}}"/>
 			</juci-config-line>
