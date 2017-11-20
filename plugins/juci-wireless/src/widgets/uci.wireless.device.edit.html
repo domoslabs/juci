@@ -16,13 +16,6 @@
 		</juci-config-line>
 		<div ng-show="showExpert">
 
-			<juci-config-line title="{{'Transmit Power'|translate}}">
-			<div class="input-group">
- 				<span class="input-group-addon">%</span>
-				<input type="number" max="100" min="1" class="form-control" ng-model="device.txpower.value"/>
-			</div>
-			</juci-config-line>
-
 			<juci-config-line title="{{'Scan Timer'|translate}}" ng-show="device.channel.value == 'auto'">
 				<input type="number" max="1440" min="0" class="form-control" ng-model="device.scantimer.value" placeholder="{{'Timer Interval'|translate}}"/>
 			</juci-config-line>
@@ -43,6 +36,12 @@
 			</juci-config-line>
 			<juci-config-line title="{{'Airtime Fairness'|translate}}" help="{{ 'ATF feature addresses the issue where low-speed data transfers impact high-speed data transfers' | translate }}">
 				<switch class="green" ng-model="device.atf.value"/>
+			</juci-config-line>
+			<juci-config-line title="{{'Transmit Power'|translate}}">
+			<div class="input-group"  style="float: right; width: 85%;">
+				<input type="number" max="100" min="1" class="form-control" ng-model="device.txpower.value"/>
+ 				<span class="input-group-addon">%</span>
+			</div>
 			</juci-config-line>
 			<!--<juci-config-line title="{{'OBSS Co-Existence'|translate}}" ng-show="device.bandwidth.value == '40' || device.bandwidth.value == '80' || device.bandwidth.value == '160' || device.bandwidth.value == '20/40'">
 				<switch class="green" ng-model="device['obss_coex'].value"/>
