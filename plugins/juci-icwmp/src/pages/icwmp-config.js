@@ -19,10 +19,11 @@
  */
 
 JUCI.app
-.controller("icwmpConfigPage", function($scope, $uci, $tr, gettext, $firewall){
+.controller("icwmpConfigPage", function($scope, $rpc, $uci, $tr, gettext, $firewall){
 	$uci.$sync(["cwmp"]).done(function(){
 		$scope.acs = $uci.cwmp.acs;
 		$scope.cpe = $uci.cwmp.cpe;
+		$scope.$apply();
 	});
 	$firewall.getZoneNetworks("wan").done(function(networks){
 		$scope.wan_interfaces = networks.map(function(n){
@@ -44,4 +45,11 @@ JUCI.app
 		{ label: $tr(gettext("Info")),		value: 'INFO' },
 		{ label: $tr(gettext("Debug")),		value: 'DEBUG' }
 	];
+
+	$scope.onTR069ObjectAvailable=$rpc.$has("tr069");
+
+	function contactACS() {
+		$rpc.$call("tr069", "inform '{\"event\":\"connection requested\"}'");
+	}
 });
+
