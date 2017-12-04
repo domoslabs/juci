@@ -101,6 +101,7 @@ JUCI.app.run(function($uci){
 			[$tr(gettext("Other Bank")), other_bank|| $tr(gettext("N/A"))],
 			[$tr(gettext("Kernel Version")), sys.system.kernel || $tr(gettext("N/A"))],
 			[$tr(gettext("CFE Version")), sys.system.cfever || $tr(gettext("N/A"))],
+			[$tr(gettext("Hardware Version")), sys.system.hardware_version || $tr(gettext("N/A"))],
 			[$tr(gettext("Local Time")), Date(sys.system.localtime)],
 			[$tr(gettext("Uptime")), sys.system.uptime],
 			[$tr(gettext("CPU")), (sys.system.cpu_per || 0)+"%"],
