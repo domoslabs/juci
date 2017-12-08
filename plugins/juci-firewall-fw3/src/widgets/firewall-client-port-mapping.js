@@ -49,7 +49,7 @@ JUCI.app
 		},function(next){
 			$uci.$sync("firewall").done(function(){
 				$scope.portMaps = $uci.firewall["@redirect"].filter(function(pm){
-					if(!pm || !pm.enabled.value || pm.target.value != "DNAT") return false;
+					if(!pm || pm.target.value != "DNAT") return false;
 					if(lanZones.find(function(zone){
 						return zone.name.value === pm.dest.value;
 					}) === undefined) return false;
