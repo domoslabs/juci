@@ -13,7 +13,7 @@ msgstr ""
 
 # plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.html
 msgid "Load"
-msgstr "負荷"
+msgstr "ロード"
 
 # plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.html
 msgid "Traffic"

@@ -399,7 +399,7 @@ msgstr "リセット"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "Save Configuration to Computer"
-msgstr "設定はコンピュータに保存されました"
+msgstr "設定の保存"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "Password protection"

@@ -2198,7 +2198,7 @@ msgstr "ネットワーク"
 
 # plugins/juci-network-netifd/src/pages/internet-routes.html
 msgid "menu-internet-routes-title"
-msgstr "ルーター"
+msgstr "スタティックルート"
 
 # plugins/juci-network-netifd/src/pages/internet-network.html
 msgid "menu-internet-network-title"

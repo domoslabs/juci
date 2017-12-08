@@ -410,7 +410,7 @@ msgstr "物理レート [Mbps]"
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-wireless/src/pages/wireless-status-bs-data.html
 msgid "Retries"
-msgstr "リトライ数"
+msgstr "リトライ"
 
 # plugins/juci-wireless/src/pages/wireless-status.js
 msgid "TX Rate [Mbps]"

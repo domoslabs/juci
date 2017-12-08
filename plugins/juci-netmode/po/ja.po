@@ -125,7 +125,7 @@ msgstr "プロファイルがありません"
 
 # plugins/juci-netmode/src/widgets/overview-netmode.html
 msgid "Change Profile"
-msgstr "プロファイル変更"
+msgstr "モード変更"
 
 # plugins/juci-netmode/src/pages/netmode-wizard.html
 msgid "Select if you want your device in Router or WiFi Extender/Repeater Mode"
