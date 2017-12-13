@@ -16,8 +16,7 @@ JUCI.app
 	$scope.ProtocolTypes = [
 		{ label: $tr(gettext("TCP + UDP")), value: "tcp udp" },
 		{ label: $tr(gettext("TCP")), value: "tcp" },
-		{ label: $tr(gettext("UDP")), value: "udp" },
-		{ label: $tr(gettext("All")), value: "all" }
+		{ label: $tr(gettext("UDP")), value: "udp" }
 	];
 
 	var opts = ["src_dport", "dest_port", "name", "proto"];
