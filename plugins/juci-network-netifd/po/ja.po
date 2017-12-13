@@ -1401,7 +1401,7 @@ msgstr "接続デバイス"
 
 # plugins/juci-network-netifd/src/pages/internet-network.html
 msgid "settings.network.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-network-netifd/src/pages/internet-services.html
 msgid "Services"
