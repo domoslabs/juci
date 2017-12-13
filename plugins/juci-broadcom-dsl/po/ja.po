@@ -87,10 +87,14 @@ msgstr ""
 msgid "Are you sure you want to delete this device?"
 msgstr ""
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-broadcom-dsl/src/pages/page-broadcom-vdsl.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-broadcom-dsl/src/widgets/network-device-vdsl-edit.js
+# plugins/juci-broadcom-dsl/src/pages/page-broadcom-gfast-status.js
+msgid "Status"
+msgstr ""
+
+# plugins/juci-broadcom-dsl/src/pages/page-broadcom-gfast-status.js
+msgid "Mode"
+msgstr ""
+
 msgid "Latency Path 1"
 msgstr ""
 
@@ -265,11 +269,13 @@ msgstr ""
 msgid "Select base DSL device"
 msgstr ""
 
-# plugins/juci-broadcom-dsl/src/pages/page-broadcom-vdsl.html
+# plugins/juci-broadcom-dsl/src/pages/page-broadcom-gfast-status.html
+msgid "No G.Fast info available."
+msgstr ""
+
 msgid "internet.ethernet.vdsl.info"
 msgstr ""
 
-# plugins/juci-broadcom-dsl/src/pages/page-broadcom-vdsl.html
 msgid "VDSL Devices"
 msgstr ""
 
@@ -293,14 +299,15 @@ msgstr ""
 msgid "ADSL Devices"
 msgstr ""
 
-# plugins/juci-broadcom-dsl/src/pages/page-broadcom-dsl-status.html
+# plugins/juci-broadcom-dsl/src/pages/page-broadcom-gfast-status.html
+msgid "menu-page-broadcom-gfast-status-title"
+msgstr "G.Fast"
+
 msgid "menu-page-broadcom-dsl-status-title"
 msgstr "DSL"
 
-# plugins/juci-broadcom-dsl/src/pages/page-broadcom-vdsl.html
-msgid "menu-page-broadcom-vdsl-title"
-msgstr "VDSL"
-
-# plugins/juci-broadcom-dsl/src/pages/page-broadcom-adsl.html
 msgid "menu-page-broadcom-adsl-title"
 msgstr "ADSL"
+
+msgid "menu-page-broadcom-vdsl-title"
+msgstr "VDSL"
