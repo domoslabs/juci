@@ -394,6 +394,34 @@ msgid "Factory reset to default configuration"
 msgstr "工場出荷時のデフォルト設定へのリセット"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Soft reset"
+msgstr ""
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Save some settings over the factory reset"
+msgstr ""
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "WiFi settings"
+msgstr "WiFi Settings"
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Port redirects"
+msgstr "Firewall Port Forwardings"
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Parental rules"
+msgstr "Parental Rules"
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "User password"
+msgstr "User Password"
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "ICE config"
+msgstr "ICE Configuration"
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "Reset"
 msgstr "リセット"
 
