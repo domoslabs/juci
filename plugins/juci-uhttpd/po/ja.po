@@ -17,7 +17,7 @@ msgstr "httpd設定"
 
 # plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
 msgid "uhttpd.settings.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
 msgid "Max Requests"

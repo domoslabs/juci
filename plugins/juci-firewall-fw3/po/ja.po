@@ -487,7 +487,7 @@ msgstr "ファイアウォールゾーン"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-zones.html
 msgid "internet.firewall.zones.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-dmz.html
 msgid "DMZ / Exposed Host"
@@ -495,7 +495,7 @@ msgstr "DMZ / 公開ホスト"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-dmz.html
 msgid "internet.exposed_host.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-dmz.html
 msgid ""

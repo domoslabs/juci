@@ -21,7 +21,7 @@ msgstr "IGMP TVステータス"
 
 # plugins/juci-igmpinfo/src/pages/status-tv.html
 msgid "status.tv.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-igmpinfo/src/pages/status-tv.html
 msgid "Connection Status"

@@ -209,7 +209,7 @@ msgstr "SNMP設定"
 
 # plugins/juci-snmpd/src/pages/snmpd-config.html
 msgid "snmpd.config.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-snmpd/src/pages/snmpd-config.html
 msgid "Enabled"

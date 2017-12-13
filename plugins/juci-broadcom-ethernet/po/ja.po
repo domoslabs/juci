@@ -85,7 +85,7 @@ msgstr "イーサネットポート"
 
 # plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
 msgid "internet.ethernet.phy.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
 msgid "Fiber Ports"

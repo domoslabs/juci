@@ -180,7 +180,7 @@ msgstr "ファームウェアアップグレード"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "settings.upgrade.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "Current Firmware Version"
@@ -192,7 +192,7 @@ msgstr "オートアップグレード"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "settings.upgrade.online.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "Check for Upgrade"
@@ -208,7 +208,7 @@ msgstr "USBファームウェアアップグレード"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "settings.upgrade.usb.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "Manual Firmware Upgrade"
@@ -216,7 +216,7 @@ msgstr "マニュアルアップグレード"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "settings.upgrade.manual.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.html
 msgid "Pick firmware file to upload"
@@ -240,7 +240,7 @@ msgstr "アップグレードオプション"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
 msgid "settings.upgrade.options.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
 msgid "Firmware image extension"

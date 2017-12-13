@@ -826,7 +826,7 @@ msgstr "WiFi デバイス"
 
 # plugins/juci-wireless/src/pages/wireless-devices.html
 msgid "wifi.radios.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-wireless/src/pages/wireless-band-steering-status.html
 msgid "Ping results"
@@ -844,7 +844,7 @@ msgstr "バンドステアリング"
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-wireless/src/pages/wireless-status.html
 msgid "status.wifi.info"
-msgstr ""
+msgstr " "
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-wireless/src/pages/wireless-band-steering-status.html
@@ -862,7 +862,7 @@ msgstr "ログ"
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-wireless/src/pages/wireless-link-to-interfaces.html
 msgid "wifi.interfaces.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-wireless/src/pages/wireless-schedule.html
 msgid "WiFi Scheduling"
@@ -870,7 +870,7 @@ msgstr "Wi-Fiスケジュール"
 
 # plugins/juci-wireless/src/pages/wireless-schedule.html
 msgid "wifi.schedule.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-wireless/src/pages/wireless-schedule.html
 msgid "Schedule Function"
@@ -906,7 +906,7 @@ msgstr "チャネル："
 
 # plugins/juci-wireless/src/pages/wireless-band-steering.html
 msgid "wifi.band-steering.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-wireless/src/pages/wireless-band-steering.html
 msgid "wifi.band-steering.dualband-warning"
@@ -934,7 +934,7 @@ msgstr "一般Wi-Fi設定"
 
 # plugins/juci-wireless/src/pages/wireless-general.html
 msgid "wifi.general.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-wireless/src/pages/wireless-general.html
 msgid "WiFi Network"
@@ -966,7 +966,7 @@ msgstr "MACフィルター"
 
 # plugins/juci-wireless/src/pages/wireless-filtering.html
 msgid "wifi.macfilter.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-wireless/src/pages/wireless-filtering.html
 msgid "You cannot enable MAC Filtering on a WEP protected wireless interface!"
@@ -1000,7 +1000,7 @@ msgstr "Wi-Fi スキャン"
 
 # plugins/juci-wireless/src/pages/wireless-status-scan.html
 msgid "status.wifi.scan.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-wireless/src/pages/wireless-status-scan.html
 msgid "Radio"
@@ -1036,7 +1036,7 @@ msgstr "WPS設定"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
 msgid "wifi.wps.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
 msgid "Enable WPS on"
