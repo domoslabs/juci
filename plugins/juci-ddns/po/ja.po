@@ -130,7 +130,7 @@ msgstr "DDNS(Dynamic DNS)"
 
 # plugins/juci-ddns/src/pages/internet-services-ddns.html
 msgid "ddns.config.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-ddns/src/pages/internet-services-ddns.html
 msgid "menu-internet-services-ddns-title"

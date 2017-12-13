@@ -1335,7 +1335,7 @@ msgstr "スタティックルート"
 
 # plugins/juci-network-netifd/src/pages/internet-routes.html
 msgid "internet.lan.routes.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-network-netifd/src/pages/internet-routes.html
 msgid "IPv4 Routes"
@@ -1358,7 +1358,7 @@ msgstr "各デバイスの接続"
 
 # plugins/juci-network-netifd/src/pages/status-network-nat.html
 msgid "status.nat.connections.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-network-netifd/src/pages/status-network-nat.html
 msgid "NAT Connection Table"
@@ -1366,7 +1366,7 @@ msgstr "NAT接続テーブル"
 
 # plugins/juci-network-netifd/src/pages/status-network-nat.html
 msgid "status.nat.info"
-msgstr ""
+msgstr " "
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/pages/status-network-nat.html
@@ -1409,11 +1409,11 @@ msgstr "サービス"
 
 # plugins/juci-network-netifd/src/pages/internet-services.html
 msgid "internet.services.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-network-netifd/src/pages/status-network-routes.html
 msgid "status.network.routes.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-network-netifd/src/pages/status-network-routes.html
 msgid "Routing Status"
@@ -1465,7 +1465,7 @@ msgstr "ルーター"
 
 # plugins/juci-network-netifd/src/pages/status-network.html
 msgid "status.status.info"
-msgstr ""
+msgstr " "
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/pages/status-network.html

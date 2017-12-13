@@ -125,7 +125,7 @@ msgstr "診断ツール"
 
 # plugins/juci-diagnostics/src/pages/status-diagnostics.html
 msgid "status.diagnostics.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-diagnostics/src/pages/status-diagnostics.html
 msgid "Ping Test"
@@ -133,7 +133,7 @@ msgstr "Ping Test"
 
 # plugins/juci-diagnostics/src/pages/status-diagnostics.html
 msgid "status.diagnostics.ping.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-diagnostics/src/pages/status-diagnostics.html
 msgid "Host to ping"
@@ -157,7 +157,7 @@ msgstr "Tracing Tool"
 
 # plugins/juci-diagnostics/src/pages/status-diagnostics.html
 msgid "status.diagnostics.trace.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-diagnostics/src/pages/status-diagnostics.html
 msgid "Host to trace"

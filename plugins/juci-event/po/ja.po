@@ -49,7 +49,7 @@ msgstr "イベントログ"
 
 # plugins/juci-event/src/pages/status-events.html
 msgid "status.eventlog.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-event/src/pages/status-events.html
 msgid "(Note: only latest"

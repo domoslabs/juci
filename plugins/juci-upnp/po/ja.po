@@ -25,7 +25,7 @@ msgstr "UPnP設定"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "internet.services.upnp.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "General Settings"

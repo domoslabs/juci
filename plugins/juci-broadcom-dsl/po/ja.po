@@ -274,7 +274,7 @@ msgid "No G.Fast info available."
 msgstr ""
 
 msgid "internet.ethernet.vdsl.info"
-msgstr ""
+msgstr " "
 
 msgid "VDSL Devices"
 msgstr ""
@@ -285,7 +285,7 @@ msgstr ""
 
 # plugins/juci-broadcom-dsl/src/pages/page-broadcom-dsl-status.html
 msgid "dsl.status.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-broadcom-dsl/src/pages/page-broadcom-dsl-status.html
 msgid "No DSL info available."
@@ -293,7 +293,7 @@ msgstr ""
 
 # plugins/juci-broadcom-dsl/src/pages/page-broadcom-adsl.html
 msgid "internet.ethernet.adsl.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-broadcom-dsl/src/pages/page-broadcom-adsl.html
 msgid "ADSL Devices"

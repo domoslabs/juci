@@ -33,7 +33,7 @@ msgstr "再起動"
 
 # plugins/juci-mod-status/src/pages/settings-restart.html
 msgid "status.restart.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-mod-status/src/pages/settings-restart.html
 msgid "Click here to restart your device"

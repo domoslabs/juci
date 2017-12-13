@@ -29,7 +29,7 @@ msgstr "PING"
 
 # plugins/juci-natalie-dect/src/pages/voice-dect.html
 msgid "phone.dect.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-natalie-dect/src/pages/voice-dect.html
 msgid "DECT Radio"

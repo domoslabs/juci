@@ -173,7 +173,7 @@ msgstr "Multicast Proxy Settings"
 
 # plugins/juci-broadcom-iptv/src/pages/mc-proxy-settings.html
 msgid "status.tv.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-broadcom-iptv/src/pages/mc-proxy-settings.html
 msgid "Connection Status"

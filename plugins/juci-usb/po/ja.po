@@ -66,7 +66,7 @@ msgstr ""
 
 # plugins/juci-usb/src/pages/status-usb.html
 msgid "usb.devices.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-usb/src/pages/status-usb.html
 msgid "Device ID"
