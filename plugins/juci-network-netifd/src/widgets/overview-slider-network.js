@@ -330,7 +330,7 @@ JUCI.app
 												label: myString(String(asc.hostname || String(host.ipaddr).toUpperCase() || String(host.macaddr).toUpperCase())),
 												title: getHostTitle(asc),
 												size: 30,
-												image: getIcon("asc", {wireless:true, rssi:asc.rssi}), // get the icon from the repeaters values!!
+												image: getIcon("asc", (asc.rssi)?{wireless:true, rssi:asc.rssi}:host), // get the icon from the repeaters values!!
 												shape: "image"
 											}
 
