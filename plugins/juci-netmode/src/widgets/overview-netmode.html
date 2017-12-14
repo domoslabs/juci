@@ -4,11 +4,11 @@
 		<juci-config-line title="{{'Auto-Mode'|translate}}" ng-show="has_capability('can-select-auto-mode')">
 			<switch id="enabled" name="enabled" ng-model="setup.automode.value" class="green"></switch>
 		</juci-config-line>
-		<div class="col-xs-12 col-sm-8" style="white-space: nowrap;">
+		<div style="float: left; margin: 5px;">
 			<juci-select ng-show="allNetmodes.length" title="{{getFullDesc()}}"ng-model="data.selected" ng-items="allNetmodes" ></juci-select>
 			<p ng-show="!allNetmodes.length">{{'No profiles available'|translate}}</p>
 		</div>
-		<div class="col-xs-12 col-sm-4">
+		<div style="float: left; margin: 5px;">
 			<button class="btn btn-success pull-right {{disabled()?'disabled':'active'}}" ng-click="onChangeModeConfirm()" translate>Change Profile</button>
 		</div>
 	</juci-overview-widget>

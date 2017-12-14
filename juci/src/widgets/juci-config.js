@@ -73,6 +73,32 @@ JUCI.app
 		}
 	};  
 })
+.directive("juciConfigLineNoWrap", function(){
+	return {
+		template: '<div><div class="row juci-config-line" style="margin-top: 20px; ">'+
+			'<div class="{{errorClass}}" style="float: left;">'+
+				'<label style="font-size: 1.2em; word-wrap:break-word;">{{title}}</label>'+
+				'<p style="font-size: 12px">{{help}}</p>'+
+			'</div>'+
+			'<div class="juci-config-line-data" style="float: right;">'+
+				'<div class="{{pullClass}}" ng-transclude></div>'+
+			'</div></div>'+
+			'<div class="alert alert-danger" style="font-size: 0.8em" ng-show="er">{{er}}</div>'+
+			'<hr class="visible-xs" style="color:grey" />'+
+			'</div>', 
+		replace: true, 
+		scope: {
+			title: "@", 
+			help: "@", 
+			error: "="
+		}, 
+		controller: "juciConfigLineController",
+		transclude: true, 
+		link: function (scope, element, attrs) {
+			if(!("noPull" in attrs)) scope.pullClass = "pull-right";
+		}
+	};  
+})
 .controller("juciConfigLineController", function($scope, $tr){
 	$scope.errorClass = "";
 	$scope.$watch("error", function(er){
