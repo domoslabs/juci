@@ -1,36 +1,56 @@
 JUCI.app
 .controller("PhoneDectPage", function($uci, $scope, $rpc, gettext, $tr, $events){
-	var sleep = 0; //TODO: REMOVE WHEN DECT BACKEND IS FIXED
 	$uci.$sync("dect").done(function(){
 		$scope.dect = $uci.dect.dect;
+		$scope.dectRadioFix = {"value":$scope.dect.radio.value};
 		$scope.$apply();
 	});
+	$scope.changeRadio = function(value){
+		$rpc.$call("uci", "set", {
+			config:"dect",
+			section:"dect",
+			values: {
+				radio:value
+			}
+		}).done(function(){
+			$rpc.$call("uci", "commit", {
+				config:"dect"
+			}).done(function(){
+				$scope.dect.$sync();
+			});
+		});
+	}
+	$scope.hscall = {};
 
 	$events.subscribe("dect", function(event){
 		if(!event || !event.data)
 			return;
-		updateDectStatus();
+		if(event.data.registration)
+			updateDectStatus();
+		else if(event.data.handset)
+			updateDectHandsets();
+		else if(event.data.terminal && event.data.dialed){
+			$scope.hscall[parseInt(event.data.terminal) + 1] = event.data.dialed;
+			$scope.$apply();
+		}
 	});
 
-	var numDevices = 0;
-
 	function updateDectStatus() {
-		setTimeout(function(){ //TODO: REMOVE WHEN DECT BACKEND IS FIXED
-			sleep = 0; //TODO: REMOVE WHEN DECT BACKEND IS FIXED
-			$rpc.$call("dect", "status").done(function(result){
-				$scope.status = result;
-				$scope.$apply();
-			});
-		}, sleep); //TODO: REMOVE WHEN DECT BACKEND IS FIXED
-		$rpc.$call("dect", "handset" ,{"list":""}).done(function(result){
-			if(result.handsets && result.handsets.length !== numDevices){
-				numDevices = result.handsets.length;
-				$scope.dismissed = true;
-			}
-			$scope.handset = result;
+		$rpc.$call("dect", "status").done(function(result){
+			$scope.status = result;
 			$scope.$apply();
 		});
 	}updateDectStatus();
+	function updateDectHandsets() {
+		$rpc.$call("dect", "handset" ,{"list":""}).done(function(result){
+			result.handsets.map(function(hs){
+				if(hs.hook === "onhook")
+					$scope.hscall[hs.id] = "";
+			});
+			$scope.handset = result;
+			$scope.$apply();
+		});
+	}updateDectHandsets();
 
 	$scope.dectModes = [
 		{ label: $tr(gettext("Auto")),	value: "auto" },
@@ -40,7 +60,6 @@ JUCI.app
 
 	$scope.onCancelDECT = function(){
 		$rpc.$call("dect", "state", {"registration":"off"}).done(function(){
-			sleep = 2000; //TODO: REMOVE WHEN DECT BACKEND IS FIXED
 		}).fail(function(e){console.log(e);});
 	};
 
@@ -50,18 +69,12 @@ JUCI.app
 		}).fail(function(e){console.log(e);});
 	}
 
-	$scope.pinging = [ 0, 0, 0, 0, 0, 0, 0, 0 ];
-	function alternatePinging(hs){ $scope.pinging[hs.id]==1 ? $scope.pinging[hs.id]=0 : $scope.pinging[hs.id]=1; };
-
 	$scope.onPingHandset = function(hs){
-		alternatePinging(hs);
-		if (!$scope.pinging[hs.id]) {
+		if (hs.hook === "offhook") {
 			$rpc.$call("dect", "call", {"terminal": hs.id, "release": (hs.id-1) }).done(function(result){
-				//if (result.errstr && result.errstr != "Success") $scope.pinging[hs.id] = 1;
 			}).fail(function(e){ console.log(e); });
 		} else {
-			$rpc.$call("dect", "call", {"terminal": hs.id, "add": (hs.id-1) }).done(function(result){
-				//if (result.errstr && result.errstr != "Success") $scope.pinging[hs.id] = 0;
+			$rpc.$call("dect", "call", {"terminal": hs.id, "add": (hs.id-1), "cid": $tr(gettext("Ping")) }).done(function(result){
 			}).fail(function(e){ console.log(e); });
 		}
 	}
@@ -71,8 +84,11 @@ JUCI.app
 	}
 
 	$scope.toHexString = function(byteArray){
-		return byteArray.map(function(byte) {
-			return ('0' + byte).slice(-2);
-		}).join('')
+		return byteArray.map(function(b){
+			var a = b.toString(16).toUpperCase();
+			if(a.length === 1)
+				a = "0" + a;
+			return a;
+		}).join(" ");
 	}
 });

@@ -28,11 +28,13 @@
 				<input type="text" class="form-control" ng-model="host.duid.value" placeholder="{{'IPv6 Unique ID'|translate}}"/>
 			</div>
 			<div class="col-sm-4 form-group">
-				<label translate>Host ID (IPv6)</label>	
+				<label translate>Host ID (IPv6)</label>
 				<input type="text" class="form-control" ng-model="host.hostid.value" placeholder="{{'IPv6 Address ID'|translate}}"/>
 			</div>
-			<div class="col-sm-3 form-group"></div>
-			<div class="col-sm-1"></div>
+			<div class="col-sm-4 form-group">
+				<label translate>Tag</label>
+				<juci-select ng-items="allTags" ng-model="host.tag.value" placeholder="{{'No tag set'|translate}}"></juci-select>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12 visible-xs">
@@ -43,7 +45,7 @@
 	<div class="row">
 		<div class="col-sm-7"></div>
 		<div class="col-sm-4 form-group" style="text-align: right;">
-			<juci-select ng-model="existingHost" ng-items="dhcp.connectedHosts" on-change="onExistingChanged()" placeholder="{{'Add Connected Host'|translate}}"/>
+			<juci-select ng-model="existingHost" ng-items="dhcp.connectedHosts" on-change="onExistingChanged()" placeholder="{{'Add Host'|translate}}"/>
 		</div>
 		<div class="col-sm-1 form-group" >
 			<button class="btn btn-default pull-right" ng-click="onAddStaticDHCP()"><i class="fa fa-plus"></i></button>

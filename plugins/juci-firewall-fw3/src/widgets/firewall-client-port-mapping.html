@@ -2,7 +2,7 @@
 	<juci-config-section>
 		<juci-config-heading>{{'Configure Port Forwarding'|translate}}</juci-config-heading>
 		<juci-config-info>{{'Edit port forwardings for'|translate}} {{client.hostname || client.ipaddr}}</juci-config-info>
-		<h3 translate>Current Port Forwardings</h3>
+		<h3 translate>Port Forwarding</h3>
 		<div style="max-height: 150px; overflow:auto;">
 			<table class="table table-hover">
 				<tr>
@@ -10,6 +10,7 @@
 					<th translate>Public port</th>
 					<th translate>Private port</th>
 					<th translate>Protocol</th>
+					<th translate>Enabled</th>
 					<th></th>
 				</tr>
 				<tr ng-repeat="pm in portMaps track by $index">
@@ -17,6 +18,7 @@
 					<td>{{pm.src_dport.value}}</td>
 					<td>{{pm.dest_port.value || pm.src_dport.value}}</td>
 					<td>{{pm.proto.value}}</td>
+					<td><switch ng-model="pm.enabled.value" class="green"></switch></td>
 					<td>
 						<button ng-click="onEditPM(pm)" class="btn btn-default {{edit?'disabled':''}}"><i class="juci juci-edit juci-lg"></i></button>
 						<button ng-click="onDeletePM(pm)" class="btn btn-default"><i class="fa fa-trash fa-lg"></i></button>
@@ -29,10 +31,10 @@
 			<juci-config-line title="{{'Name'|translate}}">
 				<input class="form-control" type="text" ng-model="edit.name.value" />
 			</juci-config-line>
-			<juci-config-line title="{{'Excluded ports'|translate}}" help="{{'These ports may not be mapped they are protected'|translate}}">
+			<juci-config-line title="{{'Excluded ports'|translate}}" help="{{'These ports may not be mapped, they are protected'|translate}}">
 				<h3><span class="label label-info">{{excluded_ports || "N/A"}}</span></h3>
 			</juci-config-line>
-			<juci-config-line title="{{'Public port(s)'|translate}}" help="{{'A port number or a range on the form startport:endport'|translate}}" error="getValid('src_dport')">
+			<juci-config-line title="{{'Public port(s)'|translate}}" help="{{'A port number or range of the form startport:endport'|translate}}" error="getValid('src_dport')">
 				<input class="form-control" type="text" ng-model="edit.src_dport.value" />
 			</juci-config-line>
 			<juci-config-line title="{{'Private port'|translate}}" error="getValid('dest_port')">

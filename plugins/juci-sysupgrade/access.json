@@ -4,33 +4,19 @@
 		"read": {
 			"ubus": {
 				"file": [
-					"write"
+					"write_tmp"
 				],
-				"/juci/system.upgrade": [
-					"run"
-					/*"check", */
-					/*"test", */
-					/*"start", */
-					/*"clean"*/
+				"juci.sysupgrade": [
+					"check", 
+					"test", 
+					"start"
 				]
 			}, 
 			"uci": [ "system" ],
 			"owsd": [ "sysupgrade"]
 		}, 
 		"write": {
-			"uci": [ "system" ],
-			"ubus": {
-				"file": [
-					"write"
-				],
-				"/juci/system.upgrade": [
-					"run"
-					/*"check", */
-					/*"test", */
-					/*"start", */
-					/*"clean"*/
-				]
-			}
+			"uci": [ "system" ]
 		}
 	}
 }

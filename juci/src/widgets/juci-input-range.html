@@ -1,0 +1,10 @@
+<div>	
+	<div class="input-group">
+		<button ng-click="expandSizeRange()" class="btn btn-sm btn-default" style="width:26px; height:34px; float:right;">
+			<i class="fa fa-caret-left" ng-show="data.isRange"></i>
+			<i class="fa fa-caret-right" ng-show="!data.isRange"></i>
+		</button>
+		<input type="number" ng-model="data.to" class="form-control" placeholder="To" style="max-width: 120px !important; float:right;" ng-show="data.isRange"/>
+		<input type="number" ng-model="data.from" class="form-control" placeholder="From" style="max-width: 120px !important; float:right;"/>
+	</div>
+</div>

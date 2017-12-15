@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title" style="font-size: 1.5em; padding-top: 0.4em; font-weight: bold; font-family: 'inteno';">
+			{{instance['.name']|translate}}
+		</h3>
+	</div>
+
+	<div class="row" style="margin-top:20px; margin-bottom:20px">
+		<div class="col-sm-6 {{(data.error) ? 'field-error':''}}" style="font-size: 1.2em">Set new variable</div>
+		<div class="col-sm-6" style="display: flex">
+			<select ng-model="data.newKnob" style="min-width:100px; background-color:white; border-color:#CCCCCC; color:{{!(data.newKnob) ? '#999999' : '#555555'}}">
+				<option value="" disabled selected style="display: none">Variable</option>'
+				<option ng-repeat="knob in knobsForSelect" style="color:#555555">{{knob}}</option>
+			</select>
+			<input class="form-control" type="text" style="width: 100px" ng-model="data.newValue" placeholder="{{'Value'|translate}}"/>
+			<button class="btn btn-default" ng-click="add()"><i class="fa fa-plus"></i></button>
+		</div>
+	</div>
+	<div class="alert alert-danger" style="font-size: 0.8em" ng-show="data.error">{{data.errormsg}}</div>
+
+	<div class="row" style="margin-bottom:20px" ng-repeat="opt in instance.option.value track by $index">
+		<div class="col-sm-6" style="font-size: 1.2em"></div>
+		<div class="col-sm-6" style="display: flex">
+			<input class="form-control" type="text" ng-model="opt" ng-disabled="true" style="min-width:100px; border-color:#CCCCCC"/>
+			<button class="btn btn-default" ng-click="del($index)"><i class="fa fa-trash-o"></i></button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,183 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Disable"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Load Balancer (Compability)"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Fast Balancer (Distribution)"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Method"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Unknown"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Interval"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "sec"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Failover to"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "OK"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Error"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "No available networks to add!"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Add new Interface"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Source addr:"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.html
+msgid "All"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
+msgid "Destination addr:"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.js
+msgid "UDP"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.js
+msgid "TCP"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.js
+msgid "ICMP"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.html
+msgid "Source Address"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.html
+msgid "Leave empty for all"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.html
+msgid "Destination Address"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.html
+msgid "Protocol"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.html
+msgid "Ports"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.html
+msgid "WAN Uplink"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan-interface-add.html
+msgid "Select Network Interface"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan.interface.edit.html
+msgid "Load Balancer Distribution"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan.interface.edit.html
+msgid "Health Monitor Method"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan.interface.edit.html
+msgid "Health Monitor Interval"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan.interface.edit.html
+msgid "Health Monitor ICMP Host(s)"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan.interface.edit.html
+msgid "Health Monitor ICMP Timeout"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan.interface.edit.html
+msgid "Attempts Before WAN Failover"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan.interface.edit.html
+msgid "Attempts Before WAN Recovery"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan.interface.edit.html
+msgid "Failover Traffic Destination"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/widgets/multiwan.interface.edit.html
+msgid "DNS Server(s)"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.html
+msgid "MultiWAN Configuration"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.html
+msgid "Settings"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.html
+msgid "MultiWAN Enabled"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.html
+msgid "Default Route"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.html
+msgid "Traffic Rules"
+msgstr ""
+
+# plugins/juci-inteno-multiwan/src/pages/internet-multiwan.html
+msgid "menu-internet-multiwan-title"
+msgstr ""

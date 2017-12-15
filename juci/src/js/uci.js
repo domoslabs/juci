@@ -129,7 +129,7 @@
 					if(field.value.match(re)){ //type is port range
 						var start = parseInt(field.value.split(separator)[0]);
 						var stop = parseInt(field.value.split(separator)[1]);
-						if(start < 1 || start > 65535 || stop < 1 || stop > 65535 || start > stop || start == stop) return JUCI.$tr(gettext("Ports has to be between 1 and 65535 and start port must be lower than end port"));
+						if(start < 0 || start > 65535 || stop < 0 || stop > 65535 || start > stop || start == stop) return JUCI.$tr(gettext("Ports has to be between 1 and 65535 and start port must be lower than end port"));
 					}
 					else{
 						return JUCI.$tr(gettext("Port range has to be on the form number")) + separator + JUCI.$tr(gettext("number"));
@@ -253,10 +253,26 @@
 	}
 
 	function NumberLimitValidator(min, max){
+		if(min === undefined || min === null){
+			return function(){
+				this.validate = function(field){
+					if(field.value <= max) return null;
+					return JUCI.$tr(gettext("Number value is not within valid range")) + " (<= "+max+")";
+				}
+			}
+		}
+		else if(max === undefined || max === null){
+			return function(){
+				this.validate = function(field){
+					if(field.value >= min) return null;
+					return JUCI.$tr(gettext("Number value is not within valid range")) + " (>= "+min+")";
+				}
+			}
+		}
 		return function(){
 			this.validate = function(field){
 				if(field.value >= min && field.value <= max) return null;
-				return JUCI.$tr(gettext("Number value is not within valid range")) + " ("+min+"-"+max+")";
+				return JUCI.$tr(gettext("Number value is not within valid range")) + " ("+min+" - "+max+")";
 			}
 		}
 	}
@@ -306,6 +322,26 @@
 			var mask = field.value.split("/")[1];
 			if(!mask.match(/^0/) && mask.match(/^[\d]+$/) && parseInt(mask) < 33) return null
 			return JUCI.$tr(gettext("Netmask must be a value between 0 and 24"));
+		};
+	};
+
+	function IPAddressAndIPCIDRValidator(){
+		this.validatorIP = new IPAddressValidator();
+		this.validatorCIDR4 = new IP4CIDRValidator();
+		this.validatorCIDR6 = new IP6CIDRValidator();
+
+		this.validate = function(field){
+
+			var v1=this.validatorIP.validate(field);
+			var v2=this.validatorCIDR4.validate(field);
+			var v3=this.validatorCIDR6.validate(field);
+
+			console.log(v1,v2,v3);
+
+			if(v1==null || v2==null || v3==null)
+				return null;
+
+			return JUCI.$tr(gettext("Not an IP address or IP address with CIDR notation"));
 		};
 	};
 
@@ -382,6 +418,17 @@
 		}
 	};
 
+	function HostnameValidator(){
+		this.validate = function(field){
+			if(!field.value) return;
+			if(field.value.length > 256)
+				return JUCI.$tr(gettext("Hostname can not be longer than 256 characters"));
+			if(!field.value.match(/^[0-9a-z\-_]+$/i))
+				return JUCI.$tr(gettext("Hostname can only contain numbers, letters, hyphens and underscores"));
+			return null;
+		}
+	};
+
 
 	
 	var section_types = {};
@@ -445,19 +492,19 @@
 				else return this.uvalue;
 			},
 			set value(val){
-				if(val === null) val = "";//return;
+				if(val === null) val = "";
 				// set dirty if not same
 				var self = this;
 				if(val instanceof Array){
 					self.is_dirty = !val.equals(self.uvalue);
 				} else {
-					self.is_dirty = val != self.ovalue;
+					self.is_dirty = val != self.ovalue; // nedds to be != due to boolean values
 				}
 				if(self.ovalue instanceof Array && !(val instanceof Array)) return;
 				if(val instanceof Array && self.ovalue instanceof Array){
 					self.is_dirty = false;
-					if(val.length != self.ovalue.length) self.is_dirty = true;
-					val.forEach(function(x, i){ if(self.ovalue[0] != x) self.is_dirty = true; });
+					if(val.length !== self.ovalue.length) self.is_dirty = true;
+					val.forEach(function(x, i){ if(self.ovalue[0] !== x) self.is_dirty = true; });
 				}
 
 				// properly handle booleans
@@ -478,12 +525,12 @@
 			get error(){
 				// make sure we ignore errors if value is default and was not changed by user
 				if(this.value === "" && this.schema.required) return JUCI.$tr(gettext("Field is required"));
-				if(this.uvalue == this.schema.dvalue || this.uvalue == this.ovalue) return null;
-				if(this.validator) return this.validator.validate(this);
+				if(this.uvalue === this.schema.dvalue || this.uvalue === this.ovalue) return null;
+				if(this.validator && this.validator.validate instanceof Function) return this.validator.validate(this);
 				return null;
 			},
 			get valid(){
-				if(this.validator) return this.validator.validate(this) == null;
+				if(this.validator && this.validator.validate instanceof Function) return this.validator.validate(this) === null;
 				return true;
 			},
 			set dirty(value){
@@ -523,9 +570,7 @@
 				var field = self[k];
 				if(!field) { field = self[k] = new UCI.Field("", type[k]); }
 				var value = type[k].dvalue;
-				if(!(k in data)) {
-					//console.log("Field "+k+" missing in data!");
-				} else {
+				if(k in data) {
 					switch(type[k].type){
 						case Number:
 							var n = Number(data[k]);
@@ -537,15 +582,10 @@
 							else value = data[k];
 							if(!value) value = [];
 							break;
-						//case Boolean:
-							//if(data[k] === 'true" || data[k] === "1" || data[k] === "on") value = true;
-							//else if(data[k] === "false" || data[k] === "0" || data[k] == "off") value = false;
-						//	break;
 						default:
 							value = data[k];
 					}
 				}
-				//if(k === "hostname") console.log("field "+k+" from "+field.value+" to "+value);
 				field.$update(value, opts.keep_user_changes);
 			});
 		}
@@ -590,10 +630,7 @@
 			var self = this;
 			if(self[".config"]) return self[".config"].$deleteSection(self);
 			var def = $.Deferred();
-			setTimeout(function(){
-				def.reject();
-			}, 0);
-			return def.promise();
+			return def.reject();
 		}
 		
 		UCISection.prototype.$reset = function(){
@@ -615,6 +652,13 @@
 				if(self[k].$reset_defaults)
 					self[k].$reset_defaults();
 			});
+		}
+
+		UCISection.prototype.$can_edit = function(user){
+			if(!user || typeof user !== "string") user = $rpc.$user();
+			var self = this;
+			if(!self["_access_w"].value.length) return true;
+			return self["_access_w"].value.find(function(priv){ return priv === user; }) !== undefined;
 		}
 		
 		UCISection.prototype.$begin_edit = function(){
@@ -667,7 +711,6 @@
 			
 			Object.keys(type).map(function(k){
 				if(self[k] && self[k].dirty){
-					//console.log("Adding dirty field: "+k);
 					changed[k] = self[k].uvalue;
 				}
 			});
@@ -682,6 +725,7 @@
 			self[".name"] = name;
 			self["@all"] = [];
 			if(!name in section_types) throw new Error("Missing type definition for config "+name);
+			self.deleted_sections = [];
 			
 			// set up slots for all known types of objects so we can reference them in widgets
 			Object.keys(section_types[name]||{}).map(function(type){
@@ -691,7 +735,6 @@
 		}
 		
 		function _insertSection(self, item){
-			//console.log("Adding local section: "+self[".name"]+"."+item[".name"]);
 			var section = new UCI.Section(self);
 			section.$update(item);
 			var type = "@"+item[".type"];
@@ -709,7 +752,6 @@
 		function _unlinkSection(self, section){
 			// NOTE: can not use filter() because we must edit the list in place
 			// in order to play well with controls that reference the list!
-			console.log("Unlinking local section: "+self[".name"]+"."+section[".name"]+" of type "+section[".type"]);
 			var all = self["@all"];
 			for(var i = 0; i < all.length; i++){
 				if(all[i][".name"] === section[".name"]) {
@@ -725,6 +767,8 @@
 				}
 			}
 			if(section[".name"]) delete self[section[".name"]];
+			if(!section["__new__"])
+				self.deleted_sections.push(section);
 		}
 		
 		UCIConfig.prototype.$getErrors = function(){
@@ -749,7 +793,7 @@
 			Object.keys(self).map(function(x){
 				if(self[x] && self[x].constructor == UCI.Section){
 					self[x].$reset();
-					if(self[x][".new"]) self[x].$delete();
+					if(self[x]["__new__"]) self[x].$delete();
 				}
 			});
 			self[".need_commit"] = false;
@@ -792,7 +836,6 @@
 				// prevent deletion of automatically created type sections with default value which are created by registerSectionType..
 				if(self[x].constructor == UCI.Section && self[x][".type"] != self[x][".name"]) to_delete[x] = self[x];
 			});
-			//console.log("To delete: "+Object.keys(to_delete));
 		
 			$rpc.$call("uci", "revert", {
 				config: self[".name"]//,
@@ -814,7 +857,6 @@
 					async.eachSeries(Object.keys(to_delete), function(x, next){
 						if(!to_delete[x]) { next(); return; }
 						var section = to_delete[x];
-						//console.log("Would delete section "+section[".name"]+" of type "+section[".type"]);
 						_unlinkSection(self, section);
 						next();
 					}, function(){
@@ -848,7 +890,8 @@
 			conf_type[name] = descriptor;
 			this["@"+name] = [];
 			if(validator !== undefined && validator instanceof Function) conf_type[name][".validator"] = validator;
-			//console.log("Registered new section type "+config+"."+name);
+			conf_type[name]["_access_r"] = { dvalue:[], type: Array };
+			conf_type[name]["_access_w"] = { dvalue:[], type: Array };
 		}
 		
 		UCIConfig.prototype.$deleteSection = function(section){
@@ -856,7 +899,6 @@
 			var deferred = $.Deferred();
 				
 			//self[".need_commit"] = true;
-			console.log("Removing section "+JSON.stringify(section[".name"]));
 			$rpc.$call("uci", "delete", {
 				"config": self[".name"],
 				"section": section[".name"]
@@ -875,10 +917,34 @@
 		// creates a new object that will have values set to values
 		UCIConfig.prototype.create = function(item, offline){
 			console.error("UCI.section.create is deprecated. Use $create() instead!");
-			return this.$create(item, offline);
+			return this.$create(item);
 		}
 
-		UCIConfig.prototype.$create = function(item, offline){
+/*
+		UCIConfig.prototype.$undelete = function(section_name){
+			var self = this;
+			if(!section_name) return "no section_name";
+			var section = self.deleted_sections.find(function(sec){ return sec && sec[".name"] === section_name; });
+			if(!section) return "no section with that name";
+			self.deleted_sections = self.deleted_sections.filter(function(sec){ return sec[".name"] !== section_name; });
+			var type = section_types[self[".name"]][section[".type"]];
+			if(!type) return "no type for section";
+			var values = { ".type": section[".type"], ".name": section_name };
+			Object.keys(type).map(function(key){
+				if(key === ".validator") return;
+				if(section[key] && section[key].value !== undefined)
+					values[key] = section[key].value
+			});
+			var deferred = $.Deferred();
+			self.$create(values, true).done(function(item){
+				deferred.resolve(item);
+			}).fail(function(e){
+				deferred.reject(e);
+			});
+			return deferred.promise();
+		}
+*/
+		UCIConfig.prototype.$create = function(item, is_old){
 			var self = this;
 			if(!(".type" in item)) throw new Error("Missing '.type' parameter!");
 			var type = section_types[self[".name"]][item[".type"]];
@@ -903,7 +969,6 @@
 				return deferred.promise();
 			}
 			
-			console.log("Adding: "+JSON.stringify(item)+" to "+self[".name"]+": "+JSON.stringify(values));
 			$rpc.$call("uci", "add", {
 				"config": self[".name"],
 				"type": item[".type"],
@@ -914,7 +979,7 @@
 				item[".name"] = state.section;
 				self[".need_commit"] = true;
 				var section = _insertSection(self, item);
-				section[".new"] = true;
+				if(!is_old) section["__new__"] = true;
 				deferred.resolve(section);
 			}).fail(function(){
 				deferred.reject();
@@ -932,7 +997,6 @@
 				setTimeout(function(){ def.reject(); }, 0);
 				return def.promise();
 			}
-			// get section order and send it to uci. This will be applied when user does $save();
 			var order = arr.map(function(x){ return x[".name"]; }).filter(function(x){ return x; });
 			$rpc.$call("uci", "order", {
 				config: self[".name"],
@@ -940,8 +1004,8 @@
 			}).done(function(){
 				$rpc.$call("uci", "commit", {
 					config: self[".name"]
-				}).done(function(){
-					def.resolve();
+				}).done(function(data){
+					def.resolve(data);
 				}).fail(function(){
 					def.reject();
 				});
@@ -955,8 +1019,14 @@
 			var self = this;
 			var reqlist = [];
 			self["@all"].map(function(section){
+				if(section["__new__"]){
+					reqlist.push({
+						"config": self[".name"],
+						"section": section[".name"],
+						"new":true
+					});
+				}
 				var changed = section.$getChangedValues();
-				//console.log(JSON.stringify(changed) +": "+Object.keys(changed).length);
 				if(Object.keys(changed).length){
 					reqlist.push({
 						"config": self[".name"],
@@ -973,7 +1043,6 @@
 	
 	UCI.prototype.$init = function(){
 		var deferred = $.Deferred();
-		console.log("Init UCI");
 		var self = this;
 		
 		$rpc.$call("uci", "configs").done(function(response){
@@ -988,44 +1057,54 @@
 					self[k] = new UCI.Config(self, k);
 				}
 			});
+			self.initDone = true;
 			deferred.resolve();
-		}).fail(function(){
-			deferred.reject();
+		}).fail(function(e){
+			deferred.reject(e);
 		});
 		return deferred.promise();
 	}
 	
 	// returns true if there are uci changes
 	UCI.prototype.$hasChanges = function(){
-		var self = this;
-		return !!Object.keys(self).find(function(x){
-			if(self[x].constructor != UCI.Config) return false;
-			if(self[x][".need_commit"]) return true;
-			if(self[x].$getWriteRequests().length) return true;
-			return false;
-		});
+		if(!this.initDone) return;
+		return this.$getChanges.length != 0;
 	}
 	
 	UCI.prototype.$getChanges = function(){
+		if(!this.initDone) return;
 		var changes = [];
 		var self = this;
 		Object.keys(self).map(function(x){
 			if(!self[x] || self[x].constructor != UCI.Config) return;
 			if(self[x][".need_commit"]){
-				changes.push({
-					type: "config",
-					config: self[x][".name"]
+				self[x].deleted_sections.map(function(section){
+					changes.push({
+						config:self[x][".name"],
+						section: section[".name"],
+						type: "section",
+						state: "deleted section"
+					});
 				});
 			}
 			/*Object.keys(self[x]).map(function(k){
 				var section = self[x][k];
-				if(section[".new"]) changes.push({
+				if(section["__new__"]) changes.push({
 					type: "add",
 					config: self[x][".name"],
 					section: section[".name"]
 				});
 			});*/
 			self[x].$getWriteRequests().map(function(ch){
+				if(ch["new"]){
+					changes.push({
+						type: "section",
+						config: self[x][".name"],
+						section: self[x][ch.section][".name"],
+						state: "new section"
+					});
+					return changes;
+				}
 				Object.keys(ch.values).map(function(opt){
 					var o = self[x][ch.section][opt];
 					if(o.is_dirty){
@@ -1046,6 +1125,7 @@
 
 	// marks all configs for reload on next sync of the config
 	UCI.prototype.$clearCache = function(){
+		if(!this.initDone) return;
 		var self = this;
 		Object.keys(self).map(function(x){
 			if(self[x].constructor != UCI.Config) return;
@@ -1059,6 +1139,7 @@
 	}
 	
 	UCI.prototype.$eachConfig = function(cb){
+		if(!this.initDone) return;
 		var self = this;
 		Object.keys(self).filter(function(x){
 			return self[x].constructor == UCI.Config;
@@ -1069,6 +1150,7 @@
 	
 	UCI.prototype.$sync = function(configs){
 		var deferred = $.Deferred();
+		if(!this.initDone) return deferred.reject();
 		var self = this;
 		
 		async.series([
@@ -1094,17 +1176,15 @@
 					} /*else if(self[cf].$lastSync){
 						var SYNC_TIMEOUT = 10000; // probably make this configurable
 						if(((new Date()).getTime() - self[cf].$lastSync.getTime()) > SYNC_TIMEOUT){
-							console.log("Using cached version of "+cf);
 							next();
 							return;
 						}
 					}*/
 					self[cf].$sync().done(function(){
-						//console.log("Synched config "+cf);
 						//self[cf].$lastSync = new Date();
 						next();
 					}).fail(function(){
-						console.error("Could not sync config "+cf);
+						//console.error("Could not sync config "+cf);
 						next(); // continue because we want to sync as many as we can!
 						//next("Could not sync config "+cf);
 					});
@@ -1121,15 +1201,11 @@
 		return deferred.promise();
 	}
 	
-	/*
-	UCI.prototype.sync = function(opts){
-		console.error("$uci.sync() is deprecated and will be replaced with $uci.$sync() in future version to avoid config collisions. Please do not use it!");
-		return this.$sync(opts);
-	}*/
 
 	UCI.prototype.$revert = function(){
 		var revert_list = [];
 		var deferred = $.Deferred();
+		if(!this.initDone) return deferred.reject();
 		var errors = [];
 		var self = this;
 		
@@ -1155,21 +1231,18 @@
 	}
 	
 	UCI.prototype.$rollback = function(){
+		if(!this.initDone) return;
 		return $rpc.$call("uci", "rollback");
-	}
-	
-	UCI.prototype.$apply = function(){
-		console.error("Apply method is deprecated and will be removed. Use $save() instead.");
-		return this.$save();
-		//return $rpc.$call("uci", "apply", {rollback: 0, timeout: 5000});
 	}
 	
 	UCI.prototype.$save = function(){
 		var deferred = $.Deferred();
+		if(!this.initDone) return deferred.reject();
 		var self = this;
 		var writes = [];
 		var add_requests = [];
 		var errors = [];
+		self.deleted_sections = [];
 		
 		async.series([
 			function(next){ // send all changes to the server
@@ -1255,11 +1328,6 @@
 		return deferred.promise();
 	}
 	
-	UCI.prototype.save = function(){
-		console.error("$uci.save() is deprecated. This method will be replaced with $uci.$save() in future versions to avoid config collisions. Please update your code.");
-		return this.$save();
-	}
-
 	scope.UCI = new UCI();
 	scope.UCI.validators = {
 		ASCIIValidator: ASCIIValidator,
@@ -1285,7 +1353,9 @@
 		IP4MulticastAddressValidator: IP4MulticastAddressValidator,
 		IP4CIDRValidator: IP4CIDRValidator,
 		IP4UnicastAddressValidator: IP4UnicastAddressValidator,
-		QOSMarkValidator: QOSMarkValidator
+		QOSMarkValidator: QOSMarkValidator,
+		HostnameValidator: HostnameValidator,
+		IPAddressAndIPCIDRValidator: IPAddressAndIPCIDRValidator
 	};
 	/*if(exports.JUCI){
 		var JUCI = exports.JUCI;

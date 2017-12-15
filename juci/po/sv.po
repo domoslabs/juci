@@ -120,7 +120,7 @@ msgid "Unapplied Changes"
 msgstr "Oapplicerade ändringar"
 
 msgid "Are you sure you want to reload settings from the router? All your current changes will be lost!"
-msgstr "Är du säker på att du vill ta bort denna enhet från nätverket och använda den i en brygga? "
+msgstr "Är du säker på att du vill ladda om inställningarna från routern? Alla ändringar kommer  att försvinna!"
 
 msgid "$juciConfirm needs a content-string"
 msgstr "$juciConfirm behöver en innehålls-sträng"

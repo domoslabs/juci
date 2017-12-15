@@ -14,7 +14,7 @@ JUCI.app
 		name: "",
 		name_full: ""
 	}
-	$rpc.$call("juci.system.upgrade", "run", {"method":"check","args":JSON.stringify({type: "online"})}).done(function(response){
+	$rpc.$call("juci.sysupgrade", "check", {"type": "online"}).done(function(response){
 		if(response.online) {
 			var split = response.online.split("/");
 			$scope.upgrade.path = response.online;
@@ -27,8 +27,6 @@ JUCI.app
 		}
 		$scope.$apply();
 	}).fail(function(e){console.log(e);});
-	var confText = '<p>'+$tr(gettext("If you click 'Yes' all settings will be saved. If you want to have a clean install click 'No'. To close this dialog click 'Cancel'"))+'</p>';
-	var modalText = confText;
 	$scope.onUpgrade = function(){
 		$juciDialog.show(null, {
 			title: $tr(gettext("Do you want to keep settings?")),
@@ -37,7 +35,7 @@ JUCI.app
 				{ label: $tr(gettext("No")), value: "nokeep" },
 				{ label: $tr(gettext("Cancel")), value: "cancel" }
 			],
-			content: modalText,
+			content: '<p>'+$tr(gettext("If you click 'Yes' all settings will be saved. If you want to have a clean install click 'No'. To close this dialog click 'Cancel'"))+'</p>',
 			on_button: function(btn, inst){
 				if(btn.value === "cancel"){
 					inst.close();
@@ -45,7 +43,7 @@ JUCI.app
 				}
 				$scope.showUpgradeStatus = true;
 				$scope.message = $tr(gettext("Your box is upgrading"));
-				$rpc.$call("juci.system.upgrade", "run", {"method":"start","args":JSON.stringify({"path":$scope.upgrade.path, "keep":(btn.value === "keep")?1:0})});
+				$rpc.$call("juci.sysupgrade", "start", {"path":$scope.upgrade.path, "keep":(btn.value === "keep")?1:0});
 				setTimeout(function(){$scope.error = $tr(gettext("Something went wrong! Try again later"));}, 50000);
 				inst.close();
 			}

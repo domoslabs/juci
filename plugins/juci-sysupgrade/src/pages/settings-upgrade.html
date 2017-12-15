@@ -9,12 +9,12 @@
 				</juci-config-line>
 			</juci-config-lines>
 		</juci-config-section>
-		<juci-config-section ng-show="onlineUpgradeAvailable">
+		<juci-config-section>
 			<h2>{{'Online Update'|translate}}</h2>
 			<p>{{'settings.upgrade.online.info'|translate}}</p>
 			<juci-config-lines>
-				<juci-config-line title="{{onlineUpgradeStatus}}">
-					<button ng-hide="onlineUpgradeAvailable" class="btn btn-lg btn-default" ng-click="onOnlineCheck()">
+				<juci-config-line title="{{onlineUpgrade}}">
+					<button ng-hide="onlineUpgradeAvailable" ng-class="{'disabled':onlineCheckInProgress}" class="btn btn-lg btn-default" ng-click="onOnlineCheck()">
 						<i class="fa fa-spinner fa-spin" ng-show="onlineCheckInProgress"></i>{{'Check for Upgrade'|translate}}</button>
 					<button ng-show="onlineUpgradeAvailable" class="btn btn-lg btn-default" ng-click="onUpgradeOnline()">{{'Install Upgrade'|translate}}</button>
 				</juci-config-line>
@@ -24,11 +24,11 @@
 			<h2>{{'USB Firmware Upgrade'|translate}}</h2>
 			<p>{{'settings.upgrade.usb.info'|translate}}</p>
 			<juci-config-lines>
-				<juci-config-line title="{{usbUpgradeStatus}}" ng-show="usbUpgradeAvailable">
+				<juci-config-line style="color:#5cb85c;" title="{{usbUpgradeStatus}}" ng-show="usbUpgradeAvailable">
 					<button class="btn btn-lg btn-default" ng-click="onUpgradeUSB()">{{'Install Upgrade'|translate}}</button>
 				</juci-config-line>
 				<juci-config-line title="{{usbUpgrade}}" ng-hide="usbUpgradeAvailable">
-					<button class="btn btn-lg btn-default" ng-click="onCheckUSB()"><i class="fa fa-spinner fa-spin" ng-show="usbCheckInProgress"></i>{{'Check for Upgrade'|translate}}</button>
+					<button class="btn btn-lg btn-default" ng-class="{'disabled':usbCheckInProgress}" ng-click="onCheckUSB()"><i class="fa fa-spinner fa-spin" ng-show="usbCheckInProgress"></i>{{'Check for Upgrade'|translate}}</button>
 				</juci-config-line>
 			</juci-config-lines>
 		</juci-config-section>
@@ -40,8 +40,11 @@
 					<juci-config-line title="{{'Pick firmware file to upload'|translate}}">
 						<input type="file" onchange="angular.element(this).scope().fileChanged()" class="btn btn-default btn-file" id="imageFileSelector"  name="filedata" />
 					</juci-config-line>
+					<juci-config-line title="{{'Enter URL'|translate}}">
+						<input type="text" class="form-control" ng-model="data.upUrl" />
+					</juci-config-line>
 					<juci-config-line title="{{'Start upgrade'|translate}}">
-						<button ng-click="onStartUpgrade()" class="btn btn-lg btn-default {{ upfile.files && upfile.files[0] && upfile.files[0].name ? '': 'disabled'}}">{{'Upgrade'|translate}}</button>
+						<button ng-click="onStartUpgrade()" class="btn btn-lg btn-default {{ (upfile.files && upfile.files[0] && upfile.files[0].name) || data.upUrl ? '': 'disabled'}}">{{'Upgrade'|translate}}</button>
 					</juci-config-line>
 				</juci-config-lines>
 			</form>

@@ -1,0 +1,1255 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# plugins/juci-inteno-voice-client/src/inteno-voice-client.js
+msgid "SIP users needs a name"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/inteno-voice-client.js
+msgid "SIP users needs a valid extension"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "Enabled"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.js
+msgid "Disabled"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.js
+msgid "No Phone number selected"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.js
+msgid "No Day selected"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-call-log.js
+msgid "Today"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
+msgid "No Mailbox"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.js
+msgid "No Account"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
+msgid "Select Codec"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
+msgid "G 723.1"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
+msgid "GSM"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
+msgid "G.711MuLaw"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
+msgid "G. 726"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
+msgid "iLBC"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
+msgid "G. 729a"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
+msgid "G.711ALaw"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-list-editor.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-list-editor.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.js
+msgid "Off"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-list-editor.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.js
+msgid "Transparent"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-list-editor.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.js
+msgid "Conservative"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-list-editor.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.js
+msgid "Aggressive"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-list-editor.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.js
+msgid "White noise"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-list-editor.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.js
+msgid "Hot noise"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-list-editor.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.js
+msgid "Spectrum estimate"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.js
+msgid "Fixed"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.js
+msgid "Adaptive"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.js
+msgid "Yes"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.js
+msgid "No"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "Australia"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "Belgium"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "Brazil"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "Chile"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "China"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "Czech"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "Denmark"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "ETSI"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "Finland"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "France"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "Germany"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "Hungary"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "India"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "Italy"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "Japan"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "Netherlands"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "New Zealand"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "North America"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "Spain"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "Sweden"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "Switzerland"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "Norway"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "Taiwan"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "United Kingdoms"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "United Arab Emirates"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/language-factory.js
+msgid "CFG TR57"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/overview.voice.js
+msgid "off"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/overview.voice.js
+msgid "Unknown"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/overview.voice.js
+msgid "on"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.js
+msgid "TLS v1"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.js
+msgid "SSL v2"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.js
+msgid "SSL v3"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.js
+msgid "Listen on all interfaces"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.js
+msgid "Congestion"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.js
+msgid "Info"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.js
+msgid "Compatibility"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.js
+msgid "RFC 2833"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.js
+msgid "SIP INFO"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.js
+msgid "Inband"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
+msgid "UDP"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
+msgid "TCP"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.js
+msgid "TLS"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
+msgid "Username"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/pages/status-phone.html
+msgid "Domain"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider.js
+msgid "Registration Time"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider.js
+msgid "Binding Address"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider.js
+msgid "Account "
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider.js
+msgid "Direct"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings.html
+msgid "Advanced Line Settings"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
+msgid "Locale selecton"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
+msgid "A restart is required for country changes to take effect"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
+msgid "Enable Jitter Buffer"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
+msgid "Force Jitter Buffer"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
+msgid "Jitter Buffer implementation"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
+msgid "Maximum Jitter Buffer size [ms]"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
+msgid "Enable Packet Loss Concealment"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/brcm-advanced.html
+msgid "Inter-digit timeout [ms]"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/overview.voice.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/overview.voice.small.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/overview.voice.small.html
+msgid "Voice"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/overview.voice.html
+msgid "Schedule"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/pages/status-phone.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/pages/status-phone.html
+msgid "Name"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "Display name used in Caller Id"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
+msgid "Extension"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
+msgid "Extension for this user"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
+msgid "The User id for the account (defaultuser)"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
+msgid "Password"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid ""
+"When your password is saved, it disappears from this field and is not "
+"displayed for your protection. The previously saved password will be changed "
+"only when you enter a value different from the saved one."
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "wifi-iface.show_password"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
+msgid "Call out using SIP provider"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "Mailbox"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "Preferred codecs"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
+msgid "Host"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
+msgid "Host for this user (leave empty for dynamic)"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
+msgid "Qualify"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-users-edit.html
+msgid "Check that user is reachable"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings.html
+msgid "Advanced SIP Settings"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Sip Proxy servers"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Allow incomming calls from the specified proxies"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Add SIP Proxy"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Bind Interface"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "WAN Interface to bind to (listen on)"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Bindport"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "UDP Port to bind to (listen on)"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "User Agent"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Allow the SIP header User-Agent to be customized"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "RTP Port Range"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "DTMF Mode"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Register Interval"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Time in seconds between registration attempts"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Realm"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid ""
+"Realm for digest authentication, set this to your host name or domain name"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Localnet"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Network addresses that are considered inside of the NATted network"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Add Localnet"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Register Timeout"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Time before giving up a registration attempt"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Register Attempts"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid ""
+"Number of registration attempts before giving up (Set to 0 or empty to try "
+"forever)"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Register Back-off Attempts"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid ""
+"Number of registration attempts before entering back-off state (Set to 0 or "
+"empty to disable)"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Register Back-off Timeout"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Time before giving up a registration attempt in back-off state"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Remote Hold"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Send hold events to proxy (Let network handle music on hold)"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "SRV Lookup"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Enable DNS SRV lookup"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "DNS Manager"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Enable Asterisk DNS manager"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "DNS Manager Refresh Interval"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Refresh intervall"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Line suffix in contact header"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid ""
+"Add a suffix indicating which lines are called to the sip contact header"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "SIP DiffServ"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Differentiated services/TOS for SIP data. Recommended value: cs3"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Audio DiffServ"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Differentiated services/TOS for Audio data. Recommended value: ef"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Congestion tone"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Tone to play on congestion"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "STUN server"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Leave empty to disable the STUN monitor"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "TLS/SSL Version"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Cipher string"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Trusted CA"
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-advanced.html
+msgid "Don't forget to press save to save your changes"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-list-editor.html
+msgid "Phone Lines"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-list-editor.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.html
+msgid "phone.lines.info"
+msgstr " "
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "Account Name"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "Incoming calls to"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "SIP domain name"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "Domain name"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "SIP Username"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid " The User id for the account, may be a phone number"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/pages/status-phone.html
+msgid "User"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "SIP Authentication Name"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "Used in combination with password to register against SIP server"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "Auth User"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "SIP Password"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "Display Name"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "SIP Server/Registrar"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "Optional"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "SIP Server"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "SIP Server/Registrar Port"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "SIP Server Port"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "SIP Outbound Proxy"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "SIP Proxy"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "SIP Outbound Proxy Port"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "SIP Proxy Port"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "Incoming Phone Lines"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "GSM packetization"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "G.723.1 packetization"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "G.711MuLaw packetization"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "G. 726 packetization"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "iLBC packetization"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "G. 729a packetization"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "G.711ALaw packetization"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "Autoframing"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "Negotiate packetization at call establishment"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "SIP Transport"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "Encryption"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "Use Secure Real-time Transport Protocol (SRTP)"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid "Use as Fax"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider-edit.html
+msgid ""
+"Indicate that this SIP account will be used for a fax machine. This will "
+"force some settings to enable inband fax."
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-service-provider.html
+msgid "SIP Accounts"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/sip-users.html
+msgid "SIP Users"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/pages/status-phone.html
+msgid "Voice Lines"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/pages/voice-call-log.html
+msgid "Internal Number"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.html
+msgid "Outgoing Calls Number"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.html
+msgid "Select Outgoing Number"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.html
+msgid "Call Waiting"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.html
+msgid "Call ID Restriction"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.html
+msgid "Voice Activity Detection"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.html
+msgid "Comfort Noice Generation"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.html
+msgid "Echo cancellation"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.html
+msgid "Transmit gain"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/widgets/phone-lines-edit.html
+msgid "Receive gain"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/overview.voice.small.html
+msgid "ONLINE"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/overview.voice.small.html
+msgid "OFFLINE"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/custom-dialplan.html
+msgid "Custom Dialplan"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/custom-dialplan.html
+msgid "Enable incomming dialplan"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/custom-dialplan.html
+msgid "Enable outgoing dialplan"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/custom-dialplan.html
+msgid "Enable custom hangup"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/custom-dialplan.html
+msgid "All ports Extension"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/custom-dialplan.html
+msgid "Test Audio Extension"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/widgets/custom-dialplan.html
+msgid "Test Echo Extension"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-call-log.html
+msgid "Call Log"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-call-log.html
+msgid "phone.call_log.info"
+msgstr " "
+
+# plugins/juci-inteno-voice-client/src/pages/voice-call-log.html
+msgid "Show calls for"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-call-log.html
+msgid "Select phone"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-call-log.html
+msgid "Date"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/pages/voice-call-log.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+msgid "Time"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-call-log.html
+msgid "External Number"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-call-log.html
+msgid "Duration"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/status-phone.html
+msgid "Voice Status"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/status-phone.html
+msgid "status.voice.info"
+msgstr " "
+
+# plugins/juci-inteno-voice-client/src/pages/status-phone.html
+msgid "Your Phone Numbers"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/status-phone.html
+msgid "status.voice_lines.info"
+msgstr " "
+
+# plugins/juci-inteno-voice-client/src/pages/status-phone.html
+msgid "Your Phone Lines"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/status-phone.html
+msgid "Registration interval (s)"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/status-phone.html
+msgid "Last registration"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/pages/status-phone.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+msgid "Status"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/status-phone.html
+msgid "State"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/status-phone.html
+msgid "Voice service is not available!"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings.html
+msgid "Custom Dialplan Settings"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+msgid "Ringing Schedule"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+msgid "phone.schedule.info"
+msgstr " "
+
+# plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+msgid "During the times below ringing is"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+msgid "Select Schedule Mode"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+msgid "Add/Edit Ringing Schedule"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+msgid "Phone Number"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+msgid "Select Phone Number"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+msgid "Day"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice.html
+msgid "Phone"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-number-blocking.html
+msgid "Number Blocking"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-number-blocking.html
+msgid "phone.number_blocking.info"
+msgstr " "
+
+# plugins/juci-inteno-voice-client/src/pages/voice-number-blocking.html
+msgid "Outgoing Number Blocking"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-number-blocking.html
+msgid "Phone Extension"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-number-blocking.html
+msgid "Block connections to all foreign numbers"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-number-blocking.html
+msgid "Block connections to all special rate numbers"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-number-blocking.html
+msgid "Incoming Number Blocking"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-number-blocking.html
+msgid "Do not allow connections from these numbers"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-number-blocking.html
+msgid "Outgoing Calls"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-number-blocking.html
+msgid ""
+"You can also block ranges of numbers. For example: '0160#' blocks all "
+"numbers starting with '0160'."
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-number-blocking.html
+msgid "Incoming Calls"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-speed-dialing.html
+msgid "Speed Dialing"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-speed-dialing.html
+msgid "phone.speed_dialing.info"
+msgstr " "
+
+# plugins/juci-inteno-voice-client/src/pages/voice-speed-dialing.html
+msgid "Remove all entries from speed dial list"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-speed-dialing.html
+msgid "Clear"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/status-phone.html
+msgid "menu-status-phone-title"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-call-log.html
+msgid "menu-voice-call-log-title"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-sip-accounts.html
+msgid "menu-voice-sip-accounts-title"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-lines.html
+msgid "menu-voice-lines-title"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings.html
+msgid "menu-voice-advanced-settings-title"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-number-blocking.html
+msgid "menu-voice-number-blocking-title"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice.html
+msgid "menu-voice-title"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings-lines.html
+msgid "menu-voice-advanced-settings-lines-title"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings-sip.html
+msgid "menu-voice-advanced-settings-sip-title"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-sip-users.html
+msgid "menu-voice-sip-users-title"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+msgid "menu-voice-ringing-schedule-title"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-speed-dialing.html
+msgid "menu-voice-speed-dialing-title"
+msgstr ""
+
+# plugins/juci-inteno-voice-client/src/pages/voice-advanced-settings-dialplan.html
+msgid "menu-voice-advanced-settings-dialplan-title"
+msgstr ""

@@ -218,7 +218,7 @@ UCI.network.$registerSectionType("interface", {
 UCI.network.$registerSectionType("route", {
 	"interface": 			{ dvalue: "", type: String }, 
 	"target": 				{ dvalue: "", type: String, validator: UCI.validators.IP4AddressValidator }, 
-	"netmask": 				{ dvalue: "", type: String, validator: UCI.validators.IP4AddressValidator }, 
+	"netmask": 				{ dvalue: "", type: String, validator: UCI.validators.IP4NetmaskValidator }, 
 	"gateway": 				{ dvalue: "", type: String, validator: UCI.validators.IP4AddressValidator },
 	"metric": 				{ dvalue: 0, type: Number },
 	"mtu": 					{ dvalue: "", type: Number }

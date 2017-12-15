@@ -16,18 +16,21 @@
 				<button class="btn btn-default col-lg-2" ng-click="showManual.toggle()" ng-show="!showManual.value"><i class="fa fa-arrow-down"></i></button>
 			</div>
 			<juci-config-lines ng-show="showManual.value">
-				<juci-config-line title="{{'SSID'|translate}}" error="manual.error">
+				<juci-config-line-no-wrap title="{{'SSID'|translate}}" error="manual.error">
 					<input type="text" ng-model="manual.ssid" class="form-control" />
-				</juci-config-line>
-				<juci-config-line title="{{'Key'|translate}}">
+				</juci-config-line-no-wrap>
+				<juci-config-line-no-wrap title="{{'Key'|translate}}">
 					<input type="text" ng-model="manual.key" class="form-control" />
-				</juci-config-line>
-				<div class="row">
-					<div class="col-lg-6" style="text-align:center;"><button class="btn btn-default" ng-click="onScanAp()" ng-show="showManual.value">{{'Scan for available APs'|translate}}</button></div>
-					<div class="col-lg-6" style="text-align:center;"><button class="btn btn-default {{onManualConnect?'':'disabled'}}" ng-click="onManualConnect()">{{'Connect'|translate}}</button></div>
+				</juci-config-line-no-wrap>
+				<div style="margin: 5px;">
+					<div style="float: left; margin: 5px;"><button class="btn btn-default" ng-click="onScanAp()" ng-show="showManual.value">{{'Scan for available APs'|translate}}</button></div>
+					<div style="float: left; margin: 5px;"><button class="btn btn-default {{onManualConnect?'':'disabled'}}" ng-click="onManualConnect()">{{'Connect'|translate}}</button></div>
 				</div>
 			</juci-config-lines>
+<br/>
+<br/>
 		</juci-config-section>
+
 		<span ng-show="!showManual.value" class="label label-danger" ng-show="automatic.error">{{automatic.error}}</span>
 		<div ng-show="!showManual.value" class="row">
 			<label style="font-size:1.2em;" class="col-md-5">

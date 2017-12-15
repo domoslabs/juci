@@ -5,7 +5,7 @@ JUCI.app
 	return {
 		show: function(content){
 			var def = $.Deferred();
-			if(!content || typeof content != "string") return def.reject($tr(gettext("$juciConfirm needs a content-string")));
+			if(!content || typeof content != "string") return def.reject("$juciConfirm needs a content-string");
 			var letters = content.length;
 			var size = "sm";
 			if(size > 100) size = "md";
@@ -18,18 +18,19 @@ JUCI.app
 				],
 				on_button: function(btn, inst){
 					inst.close();
-					setTimeout(function(){
-						def.resolve(btn.value);
-					}, 0);
+					if(btn.value === "ok")
+						def.resolve(true);
+					else
+						def.reject(false);
 				}
 			});
 			return def;
 		}
 	}
 })
-.factory("$juciAlert", function($juciDialog){
+.factory("$juciAlert", function($juciDialog, $tr, gettext){
 	return function(text){
-		var def = $.deferred();
+		var def = $.Deferred();
 		if(!text || typeof text != "string") return def.reject();
 		var letters = text.length;
 		var size = "sm";

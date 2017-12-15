@@ -185,7 +185,7 @@ msgstr "Filtrera privat"
 msgid "Do not forward reverse lookups for local networks"
 msgstr "Vidarebefodra inte bakvända uppslag för lokala nätverk"
 
-msgid "Filter usless"
+msgid "Filter useless"
 msgstr "Filtrera värdelösa"
 
 msgid "Do not forward requests that cannot be answered by public name servers"
@@ -207,7 +207,7 @@ msgid "Local server"
 msgstr "Lokal server"
 
 msgid ""
-"Local domain specification. Names matching this domain are never forwared "
+"Local domain specification. Names matching this domain are never forwarded "
 "and resolved from DHCP or hosts files only"
 msgstr ""
 "Lokal domän specifikation. Namn som matchar detta domän kommer aldrig att "

@@ -3,9 +3,8 @@
 		"description": "JUCI UPNPD module",
 		"read": {
 			"ubus": {	
-				"/juci/upnpd": [
-					"run"
-					/*"ports"*/
+				"juci.upnpd": [
+					"ports"
 				]
 			}, 
 			"uci": [

@@ -135,9 +135,6 @@ msgstr "Spara"
 msgid "MAC Address"
 msgstr "MAC-adress"
 
-msgid "Select Existing Host"
-msgstr "Välj befintlig enhet"
-
 msgid "Invalid MAC address"
 msgstr "Ogiltigt MAC adress"
 
@@ -392,8 +389,8 @@ msgstr "Start-tid"
 msgid "Stop Time"
 msgstr "Stopp tid"
 
-msgid "MAC Addresses"
-msgstr "MAC-adresser"
+msgid "Host Names"
+msgstr "Värddatornamn"
 
 msgid "menu-internet-firewall-forwarding-title"
 msgstr "Paketforwarding"

@@ -22,7 +22,8 @@ JUCI.app
 .controller("ServiceSambaPage", function($scope, $tr, gettext, $uci, $samba, $firewall){
 	$scope.data = {
 		networks: [],
-		output: []
+		output: [],
+		passwd_entries: []
 	};
 	$firewall.getZoneNetworks("lan").done(function(nets){
 		$scope.data.networks = nets.map(function(net){
@@ -103,5 +104,4 @@ JUCI.app
 			$scope.$apply();
 		});
 	}
-
 });

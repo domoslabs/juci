@@ -84,7 +84,9 @@ UCI.voice_client.$registerSectionType("sip_service_provider",  {
 	"ptime_g729":			{ dvalue: 20, type: Number }, 
 	"ptime_alaw":			{ dvalue: 20, type: Number }, 
 	"host":					{ dvalue: "", type: String },  
+	"port":				{ dvalue: 5060, type: Number },
 	"outboundproxy":		{ dvalue: "", type: String },
+	"outboundproxyport":		{ dvalue: 5060, type: Number },
 	"secret":				{ dvalue: "", type: String },
 	"encryption":			{ dvalue: false, type: Boolean }
 }); 

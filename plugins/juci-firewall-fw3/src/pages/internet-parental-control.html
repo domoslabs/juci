@@ -3,22 +3,16 @@
 		<h2 translate>Parental Control</h2>
 		<p translate>internet.parental.control.info</p>
 		<juci-config-section>
-		<!--	<h2 translate>URL Blocking Function</h2>
-			<juci-config-lines>
-				<juci-config-line title="{{'URL Blocking'|translate}}">
-					<switch ng-model="firewall.urlblock.enabled.value" class="green"></switch>
-				</juci-config-line>
-			</juci-config-lines>
-			<firewall-urlfilter-editor ng-show="firewall.urlblock.enabled.value"/>-->
 		</juci-config-section>
 		<juci-config-section>
 			<h2 translate>Internet Access Scheduling</h2>
+			<juci-config-info>{{'These rules block internet access for clients during the specified time interval'| translate}}</juci-config-info>
 			<table class="table">
 				<thead>
 					<th translate>Weekdays</th>
 					<th translate>Start Time</th>
 					<th translate>Stop Time</th>
-					<th translate>MAC Addresses</th>
+					<th translate>Host Names</th>
 					<th></th>
 					<th></th>
 				</thead>
@@ -29,8 +23,7 @@
 						<td>{{r.stop_time.value}}</td>
 						<td>
 							<div ng-repeat="mac in r.src_mac.value track by $index">
-								<div class="col-xs-2"><i class="fa fa-desktop"></i></div>
-								<div class="col-xs-10" >{{mac}}</div>
+								{{getHostname(mac) || mac}}
 							</div>
 						</td>
 						<td style="width: 1%">

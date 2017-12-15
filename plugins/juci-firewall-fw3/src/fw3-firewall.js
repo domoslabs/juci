@@ -245,7 +245,7 @@ UCI.firewall.$registerSectionType("redirect", {
 	"src":				{ dvalue: "", type: String },
 	"dest":				{ dvalue: "", type: String },
 	"target": 			{ dvalue: "", type: String },
-	"src_ip":			{ dvalue: "", type: String, validator: UCI.validators.IPAddressValidator },
+	"src_ip":			{ dvalue: "", type: String, validator: UCI.validators.IPAddressAndIPCIDRValidator },
 	"src_dport":			{ dvalue: "", type: String, validator: UCI.validators.PortOrRangeValidator() },
 	"proto":			{ dvalue: "tcp", type: String },
 	"dest_ip":			{ dvalue: "", type: String, validator: UCI.validators.IPAddressValidator },
@@ -280,9 +280,9 @@ UCI.firewall.$registerSectionType("rule", {
 	"dest_ip":			{ dvalue: [], type: Array }, // needs to be extended type of ip address/mask
 	"dest_mac":			{ dvalue: [], type: Array, validator: UCI.validators.MACListValidator },
 	"dest_port":		{ dvalue: "", type: String, validator: UCI.validators.PortsOrRangeValidator() }, // can be a range
-	"proto":			{ dvalue: "any", type: String },
+	"proto":			{ dvalue: "all", type: String },
 	"target":			{ dvalue: "REJECT", type: String },
-	"family": 			{ dvalue: "ipv4", type: String },
+	"family": 			{ dvalue: "any", type: String },
 	"icmp_type": 		{ dvalue: [], type: Array },
 	"enabled": 			{ dvalue: true, type: Boolean },
 	"hidden": 			{ dvalue: false, type: Boolean },

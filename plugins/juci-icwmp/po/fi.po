@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.0.4\n"
 
 msgid "Enabled"
 msgstr "Käytössä"
@@ -39,7 +39,7 @@ msgid "Info"
 msgstr "Info"
 
 msgid "Debug"
-msgstr ""
+msgstr "Vianjäljitys"
 
 msgid "TR69 Settings"
 msgstr "TR69 asetukset"
@@ -51,7 +51,7 @@ msgid "ACS Password"
 msgstr "ACS salasana"
 
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 msgid "Periodic Inform Enable"
 msgstr "Ota käyttöön säännöllinen ilmoitus"
@@ -63,16 +63,16 @@ msgid "Periodic Inform Time"
 msgstr "Säännöllisen ilmoituksen aika"
 
 msgid "DHCP Discovery"
-msgstr ""
+msgstr "Osoite DHCP-optiolla"
 
 msgid "WAN Interface"
 msgstr "WAN liitäntä"
 
 msgid "Connection Request User Name"
-msgstr ""
+msgstr "ACS käyttäjänimi"
 
 msgid "Connection Request Password"
-msgstr ""
+msgstr "ACS salasana"
 
 msgid "Port"
 msgstr "Portti"
@@ -99,4 +99,8 @@ msgid "Configure CPE specific settings"
 msgstr "Konfiguroi päätelaitteen asetukset"
 
 msgid "menu-icwmp-config-title"
-msgstr "ICWMP"
+msgstr "TR-069"
+
+# /home/jamu/GIT/juci/plugins/juci-icwmp/src/pages/icwmp-config.html
+#~ msgid "icwmp-config-title"
+#~ msgstr "TR-069"

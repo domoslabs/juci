@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.0.4\n"
 
 msgid "Reboot"
 msgstr "Uudelleenkäynnistys"
@@ -23,68 +23,75 @@ msgstr "Kyllä"
 msgid "No"
 msgstr "Ei"
 
-msgid "Hostname"
-msgstr "Isäntäkoneen nimi"
-
-msgid "IPv4-Address"
-msgstr "IPv4-osoite"
-
-msgid "MAC-Address"
-msgstr "MAC Osoite"
-
-msgid "Leasetime remaining"
-msgstr "Leasetime - jäljellä oleva aika"
-
-msgid "No active leases"
-msgstr "Ei aktiivisia leaseja"
-
-msgid "MAC address"
-msgstr "MAC-osoite"
-
-msgid "Signal"
-msgstr "Signaali"
-
-msgid "Noise"
-msgstr "Kohina"
-
-msgid "RX Rate"
-msgstr "RX Nopeus"
-
-msgid "TX Rate"
-msgstr "TX Nopeus"
-
-msgid "Active Connections"
-msgstr "Aktiivisia yhteyksiä"
-
-msgid "No active stations"
-msgstr "Ei aktiivisia tukiasemia"
-
 msgid "Restart"
 msgstr "Käynnistä uudelleen"
 
 msgid "status.restart.info"
 msgstr ""
-"Tällä sivulla voit yhdistää Internetiin uudelleen ja käynnistää modeemin "
-"uudelleen. Huomioi, että puhelin, Internet ja TV palvelut ovat poissa "
-"käytöstä prosessin aikana."
+"Tällä sivulla voit käynnistää modeemin uudelleen. Huomioi, että puhelin, "
+"Internet ja TV palvelut ovat poissa käytöstä uudelleenkäynnistyksen aikana."
 
 msgid "Click here to restart your device"
 msgstr "Paina tästä käynnistääksesi laitteesi uudelleen"
 
-msgid "Connections"
-msgstr "Yhteydet"
-
-msgid "DHCP Leases"
-msgstr "DHCP-varaukset"
-
-msgid "Active Stations"
-msgstr "Aktiivisia tukiasemia"
+msgid "menu-settings-restart-title"
+msgstr "Uudelleenkäynnistys"
 
 msgid "menu-status-title"
 msgstr "Status"
 
-msgid "menu-settings-restart-title"
-msgstr "Uudelleenkäynnistys"
+# /home/jamu/GIT/juci/plugins/juci-mod-status/src/pages/settings-restart.html
+#~ msgid "settings-restart-title"
+#~ msgstr "Uudellenkäynnistys"
 
-msgid "menu-status-status-network-title"
-msgstr "Verkko"
+# /home/jamu/GIT/juci/plugins/juci-mod-status/src/pages/status.html
+#~ msgid "status-title"
+#~ msgstr "Status"
+
+#~ msgid "Hostname"
+#~ msgstr "Isäntäkoneen nimi"
+
+#~ msgid "IPv4-Address"
+#~ msgstr "IPv4-osoite"
+
+#~ msgid "MAC-Address"
+#~ msgstr "MAC Osoite"
+
+#~ msgid "Leasetime remaining"
+#~ msgstr "Leasetime - jäljellä oleva aika"
+
+#~ msgid "No active leases"
+#~ msgstr "Ei aktiivisia leaseja"
+
+#~ msgid "MAC address"
+#~ msgstr "MAC-osoite"
+
+#~ msgid "Signal"
+#~ msgstr "Signaali"
+
+#~ msgid "Noise"
+#~ msgstr "Kohina"
+
+#~ msgid "RX Rate"
+#~ msgstr "RX Nopeus"
+
+#~ msgid "TX Rate"
+#~ msgstr "TX Nopeus"
+
+#~ msgid "Active Connections"
+#~ msgstr "Aktiivisia yhteyksiä"
+
+#~ msgid "No active stations"
+#~ msgstr "Ei aktiivisia tukiasemia"
+
+#~ msgid "Connections"
+#~ msgstr "Yhteydet"
+
+#~ msgid "DHCP Leases"
+#~ msgstr "DHCP-varaukset"
+
+#~ msgid "Active Stations"
+#~ msgstr "Aktiivisia tukiasemia"
+
+#~ msgid "menu-status-status-network-title"
+#~ msgstr "Verkko"

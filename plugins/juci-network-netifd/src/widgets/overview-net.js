@@ -40,7 +40,7 @@ JUCI.app
 		replace: true
 	}
 })
-.controller("widgetNetworkExpanded", function($scope, $uci, $tr, gettext, $events){
+.controller("widgetNetworkExpanded", function($scope, $uci, $tr, gettext, $events, $network){
 	$scope.window = window;
 	$scope.order = {};
 	$scope.getStyle = function(colName, rowName){
@@ -66,11 +66,10 @@ JUCI.app
 			$scope.order[colname].column = col;
 		}
 		var update = function(){
-			$rpc.$call("router", "clients").done(function(res){
+			$network.getConnectedClients().done(function(clients){
 				$scope.clients = {};
 				$scope.columns = [];
-				Object.keys(res).map(function(r){
-					var client = res[r];
+				clients.map(function(client){
 					if(!client.connected) return;
 					if(client["tx_rate"]) client.tratem = Math.floor(parseInt(client["tx_rate"]) / 100) / 10;
 					if(client["rx_rate"]) client.rratem = Math.floor(parseInt(client["rx_rate"]) / 100) / 10;
@@ -83,9 +82,11 @@ JUCI.app
 					}
 				});
 				$scope.columns.map(function(col){
-					$scope.order[col] = {
-						column: "hostname",
-						reverse: false
+					if(!$scope.order[col]){
+						$scope.order[col] = {
+							column: "hostname",
+							reverse: false
+						}
 					}
 				});
 				$scope.$apply()
@@ -107,7 +108,8 @@ JUCI.app
 		console.log(e)
 	})
 })
-.controller("overviewWidgetNetwork", function($scope, $firewall, $tr, gettext, $juciDialog, $uci, $events){
+.controller("overviewWidgetNetwork", function($scope, $firewall, $tr, gettext, $juciDialog, $uci, $events, $config){
+	$scope.href = $config.getWidgetLink("overviewWidget10Network")
 	$scope.openExpand = function(){
 		if (window.innerWidth < 770)
 			return;
@@ -129,25 +131,27 @@ JUCI.app
 	var lanNets = [];
 	var lanClients = [];
 	function refresh(){
-		async.series([function(next){
+		async.series([
+		function(next){
 			$firewall.getZoneNetworks("lan").done(function(nets){
 				lanNets = nets;
-				next()
+			}).always(function(){
+				next();
 			})
-		}
-		, function(next){
+		},
+		function(next){
 			$uci.$sync("dhcp").always(function(){
-				next()
+				next();
 			})
-		}
-		, function(next){
+		},
+		function(next){
 			$firewall.getZoneClients("lan").done(function(clients){
 				lanClients = clients
 			}).always(function(){
 				next()
 			})
-		}
-		], function(){
+		}],
+		function(){
 			var dnss = $uci.dhcp["@dhcp"];
 			lanNets.map(function(net){
 				net["_uci_dhcp"] = dnss.find(function(dns){
@@ -160,6 +164,9 @@ JUCI.app
 			$scope.lanNetworks.map(function(net){
 				net["_clients"] = [];
 				lanClients.map(function(client){
+					var speed = String(client.linkspeed).match(/[0-1]* M/);
+					var duplex = String(client.linkspeed).match(/H/) ? "HD" : "FD";
+					if(speed && duplex) client["linkspeed_short"] = String(speed).replace(/ /g, "") + " " + duplex;
 					if(client.network === net[".name"]){
 						net["_clients"].push(client);
 					}
@@ -185,7 +192,7 @@ JUCI.app
 			dhcp: lan["_uci_dhcp"],
 			dhcpEnabled: lan["_dhcp_enabled"]
 		};
-		$juciDialog.show("simple-lan-settings-edit", {
+		$juciDialog.show("lan-connection-settings-edit", {
 			title: $tr(gettext("Edit LAN Settings")),
 			buttons: [
 				{ label: $tr(gettext("Save")), value: "save", primary: true },
@@ -195,9 +202,9 @@ JUCI.app
 				if(btn.value == "cancel") {
 					model.lan.$reset();
 					model.dhcp.$reset();
-					inst.dismiss("cancel"); 
+					inst.dismiss("cancel");
 				}
-				if(btn.value == "save") { 
+				if(btn.value == "save") {
 					inst.close();
 				}
 			},

@@ -106,14 +106,14 @@ msgstr ""
 msgid "Excluded ports"
 msgstr ""
 
-msgid "These ports may not be mapped they are protected"
+msgid "These ports may not be mapped, they are protected"
 msgstr ""
 
 msgid "Public port"
 msgstr ""
 
 msgid ""
-"Ports can be a space separeated list or on the form <range-start>-<range-end>"
+"Ports can be a space separeated list or of the form <range-start>-<range-end>"
 msgstr ""
 
 msgid "Private port"
@@ -269,9 +269,6 @@ msgstr ""
 msgid "IPv6 Address"
 msgstr ""
 
-msgid "Select Existing Host"
-msgstr ""
-
 msgid ""
 "Firewall dmz configuration does not exist yet. Do you want to create it?"
 msgstr ""
@@ -383,7 +380,7 @@ msgstr ""
 msgid "Stop Time"
 msgstr ""
 
-msgid "MAC Addresses"
+msgid "Host Names"
 msgstr ""
 
 msgid "menu-internet-firewall-forwarding-title"

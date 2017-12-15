@@ -29,22 +29,20 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("networkConnectionTypeBridgeEdit", function($scope, $ethernet, $modal, $tr, gettext, $uci, $networkHelper){
+.controller("networkConnectionTypeBridgeEdit", function($rootScope, $scope, $ethernet, $modal, $tr, gettext, $uci, $networkHelper, $juciConfirm){
 	$scope.getItemTitle = function(dev){
 		return dev.name + " ("+dev.device+")"; 
 	}
 	function updateDevices(net){
 		if(!net) return;
 		$ethernet.getAdapters().done(function(adapters){
-			var filtered = adapters.filter(function(ad){ return ad.type !== "eth-bridge";});
-			var wan = filtered.find(function(dev){ return dev.device.match(/^eth[\d]+\.[\d]+$/); });
-			if(wan){
-				filtered = filtered.filter(function(dev){return wan.device.split(".")[0] !== dev.device; });
-			}
-			if(net.is_lan.value){
-				filtered = filtered.filter(function(dev){return !dev.device.match(/^[ape]t[hm]\d\..+$/) });
-			}
+			var filtered = adapters.filter(function(ad){ return ad.type !== "eth-bridge" && ad.device;});
 			var aptmap = {};
+			if(net.is_lan && net.is_lan.value){
+				filtered = filtered.filter(function(dev){
+					return dev.direction !== "Up";
+				});
+			}
 			filtered.map(function(apt){ aptmap[apt.device] = apt; });
 			net.$addedDevices = ((net.ifname.value != "")?net.ifname.value.split(" "):[])
 				.filter(function(x){return x && x != "" && aptmap[x]; })
@@ -64,7 +62,6 @@ JUCI.app
 		if(!value) return; 
 		updateDevices(value); 	
 	});
-	
 	
 	$scope.onAddBridgeDevice = function(){
 		var modalInstance = $modal.open({
@@ -86,14 +83,14 @@ JUCI.app
 				updateDevices($scope.connection);
 			});
 		}, function () {
-			console.log('Modal dismissed at: ' + new Date());
+			//console.log('Modal dismissed at: ' + new Date());
 		});
 	}
 	
 	$scope.onDeleteBridgeDevice = function(adapter){
 		if(!adapter) alert($tr(gettext("Please select a device in the list!")));
-		if(confirm($tr(gettext("Are you sure you want to delete this device from bridge?")))){
-			if(adapter.device && adapter.device.match(/^wl.+/)){
+		$juciConfirm.show($tr(gettext("Are you sure you want to delete this device from bridge?"))).done(function(){
+			if(adapter.device && (adapter.device.match(/^wl.+/) || adapter.device.match(/^ra.+/))){
 				$uci.$sync("wireless").done(function(){
 					var wliface = $uci.wireless["@wifi-iface"].find(function(iface){
 						return iface.ifname.value == adapter.device;
@@ -108,6 +105,6 @@ JUCI.app
 				return name != adapter.device; 
 			}).join(" "); 
 			updateDevices($scope.connection); 
-		}
+		});
 	}
 }); 

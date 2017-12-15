@@ -9,13 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.0.4\n"
 
 msgid "Standard Container"
 msgstr "Juurikansio"
 
 msgid "Browse directory"
-msgstr ""
+msgstr "Selaa hakemistoa"
 
 msgid "Music"
 msgstr "Musiikki"
@@ -53,8 +53,9 @@ msgstr "Valitse kansio"
 msgid "Enable"
 msgstr "Ota käyttöön"
 
-msgid "General Settings"
-msgstr "MiniDLNA Asetukset"
+# /home/jamu/GIT/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "General"
+msgstr "Yleiset asetukset"
 
 msgid "Port"
 msgstr "Portti"
@@ -90,8 +91,9 @@ msgstr "Tämä on tiedostonimilista jonka mukaan etsitään kansiokuvia"
 msgid "write list of album-art names"
 msgstr "Albumin Kansikuvanimet"
 
-msgid "Advanced settings"
-msgstr "Lisäasetukset"
+# /home/jamu/GIT/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+msgid "Advanced"
+msgstr "Edistyneet asetukset"
 
 msgid "Database directory"
 msgstr "Tietokantakansio"
@@ -121,10 +123,10 @@ msgid "Presentation URL"
 msgstr "DLNA osoite"
 
 msgid "Notify interval"
-msgstr ""
+msgstr "Ilmoitusintervalli"
 
 msgid "Notify interval in seconds."
-msgstr ""
+msgstr "Ilmoitusintervalli sekunteina"
 
 msgid "Announced serial number"
 msgstr "Imoitettava sarjanumero"
@@ -160,3 +162,13 @@ msgstr ""
 
 msgid "menu-internet-services-minidlna-title"
 msgstr "MiniDLNA"
+
+# /home/jamu/GIT/juci/plugins/juci-minidlna/src/pages/internet-services-minidlna.html
+#~ msgid "internet-services-minidlna-title"
+#~ msgstr "MiniDLNA"
+
+#~ msgid "General Settings"
+#~ msgstr "MiniDLNA Asetukset"
+
+#~ msgid "Advanced settings"
+#~ msgstr "Lisäasetukset"

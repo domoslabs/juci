@@ -4,5 +4,7 @@
 			<juci-select ng-model="interface.type.value" ng-items="protos"/>
 		</juci-config-line>
 	</juci-config-lines>
-	<div dynamic="interface.$type_editor"/>
+	<div ng-show="interface.type.value === 'none' || interface.type.value == ''"><network-connection-type-none-edit ng-model="interface"/></div>
+	<div ng-show="interface.type.value === 'anywan'"><network-connection-type-anywan-edit ng-model="interface"/></div>
+	<div ng-show="interface.type.value === 'bridge'"><network-connection-type-bridge-edit ng-model="interface"/></div>
 </div>

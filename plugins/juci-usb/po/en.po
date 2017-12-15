@@ -36,4 +36,4 @@ msgid "Device Name"
 msgstr "Device Name"
 
 msgid "menu-status-usb-title"
-msgstr "USB Status"
+msgstr "USB"

@@ -24,7 +24,6 @@
 		this.themes = {}; 
 		this.loadTheme = function(theme_id){
 			if(theme_id == "default") theme_id = "inteno"; 
-			console.log("Loading theme "+theme_id); 
 			var deferred = $.Deferred(); 
 			var self = this; 
 			var themes = this.themes; 
@@ -37,7 +36,6 @@
 					themes[theme_id] = data; 
 					if(data.scripts){
 						async.eachSeries(data.scripts, function(script, next){
-							console.log("Loading "+theme_root + "/"+script); 
 							if(!JUCI_COMPILED){
 								require([theme_root + "/"+script], function(module){
 									next(); 
@@ -69,7 +67,6 @@
 				$("head link[data-theme-css]").remove(); 
 				if(theme.styles){
 					theme.styles.map(function(x){
-						console.log("Adding "+theme_root+'/' + x); 
 						var style = $('<link href="'+theme_root+'/' + x + '" rel="stylesheet" data-theme-css/>');
 						style.appendTo('head'); 
 					}); 

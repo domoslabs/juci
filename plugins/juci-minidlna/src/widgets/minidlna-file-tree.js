@@ -44,7 +44,7 @@ JUCI.app
 	$scope.on_select = function(branch){
 		$scope.model.selected = branch; 
 	}
-	$rpc.$call("juci.minidlna", "run", {"method":"folder_tree"}).done(function(data){
+	$rpc.$call("router.directory", "folder_tree").done(function(data){
 		function to_tree_format(obj){
 			return Object.keys(obj).map(function(folder){
 				if(obj[folder]["children"]){

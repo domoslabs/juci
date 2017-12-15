@@ -24,7 +24,7 @@ JUCI.app
 	// to make it possible to send sid to cgi-bin!!
 	if($rpc.$sid) $scope.sid = $rpc.$sid();
 	JUCI.interval.repeat("event-log-page", 5000, function(next){
-		$rpc.$call("router", "logs").done(function(data){
+		$rpc.$call("router.system", "logs").done(function(data){
 			if(!data || !data.logs) return;
 			AllLogs = data.logs;
 			AllLogs.reverse();
@@ -47,7 +47,7 @@ JUCI.app
 	$scope.data = { limit: 20, filter: "", type: "" };
 	$scope.logs = [];
 	$scope.filters = [];
-	if($config.settings && $config.settings.juci_event){
+	if($config.get("settings.juci_event")){
 		$config.settings.juci_event.filter.value.map(function(x){
 			var filter = x.split(".")[0];
 			var id = x.split(".")[1];
@@ -70,11 +70,12 @@ JUCI.app
 			string += "\n" + JSON.stringify(log);
 		});
 		var blob = new Blob([string],{type:"application/json"});
-		url = window.URL.createObjectURL(blob);
+		var url = window.URL.createObjectURL(blob);
 		a.href = url;
 		a.download = "juci-logs.txt";
 		a.click();
-		window.URL.revokeObjectURL(url);
+		//window.URL.revokeObjectURL(url); //This is run too fast, so download not possible in firefox.
+		// The URL will automatically be revoked once the page is unloaded.
 	}
 	$scope.update = function(update){
 		if(!AllLogs) return;

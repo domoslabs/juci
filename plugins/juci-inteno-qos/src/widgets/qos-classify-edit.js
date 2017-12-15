@@ -34,27 +34,42 @@ JUCI.app
 	$scope.data = {
 		ports: [],
 		portrange: {from:"" , to:""},
-		connbytes: {from:"", to:""}
+		connbytes: {from:"", to:""},
+		original: {},
 	};
+	function getOriginalPortSetting(){ //Assuming only one of ports,dstports,srcports,portrange is set at startup
+		if($scope.rule.ports && $scope.rule.ports.value !== ""){
+			$scope.data.original.ports = $scope.rule.ports.value;
+			$scope.data.original.portfilter = "ports";
+			$scope.data.original.portdata = $scope.rule.ports.value.split(",").map(function(port){return {value: port }});
+		}
+		else if($scope.rule.dstports && $scope.rule.dstports.value !== ""){
+			$scope.data.original.dstports = $scope.rule.dstports.value;
+			$scope.data.original.portfilter = "dstports";
+			$scope.data.original.portdata = $scope.rule.dstports.value.split(",").map(function(port){return {value: port }});
+		}
+		else if($scope.rule.srcports && $scope.rule.srcports.value !== ""){
+			$scope.data.original.srcports = $scope.rule.srcports.value;
+			$scope.data.original.portfilter = "srcports";
+			$scope.data.original.portdata = $scope.rule.srcports.value.split(",").map(function(port){return {value: port }});
+		}
+		else if($scope.rule.portrange && $scope.rule.portrange.value !== ""){
+			$scope.data.original.portrange = $scope.rule.portrange.value;
+			$scope.data.original.portfilter = "portrange";
+			$scope.data.original.portdata = {
+				from: parseInt($scope.rule.portrange.value.split("-")[0]),
+				to: parseInt($scope.rule.portrange.value.split("-")[1])
+			}
+		}
+		$scope.data.portfilter = $scope.data.original.portfilter;
+	}
+
 	$scope.directions = [ {value:'in',label:'In'}, {value:'out',label:'Out'}, {value:'',label:'Both'} ];
-	$scope.tcpflags = {};
-	$scope.tcpflags.all = [
-		{value:'SYN',label:'SYN'},
-		{value:'ACK',label:'ACK'},
-		{value:'FIN',label:'FIN'},
-		{value:'RST',label:'RST'},
-		{value:'URG',label:'URG'},
-		{value:'PSH',label:'PSH'}];
-	$scope.data.precedence = [
-		{ label: $tr(gettext("All")),	value: '' },
-		{ label: '0 (None) ',				value: '0 1 2 3 4' },
-		{ label: '1 (CS1, AF11, AF12, AF13)',		value: '8 10 12 14' },
-		{ label: '2 (CS2, AF21, AF22, AF23)',		value: '16 18 20 22' },
-		{ label: '3 (CS3, AF31, AF32, AF33)',		value: '24 26 28 30' },
-		{ label: '4 (CS4, AF41, AF42, AF43)',		value: '32 34 36 38' },
-		{ label: '5 (CS5, Voice-admit, EF)',		value: '40 44 46' },
-		{ label: '6 (CS6)',				value: '48' },
-		{ label: '7 (CS7)',				value: '56' }
+	$scope.data.portfilters = [
+		{ label: 'Ports',	value: 'ports' },
+		{ label: 'Source',	value: 'srcports' },
+		{ label: 'Destination',	value: 'dstports' },
+		{ label: 'Port Range',	value: 'portrange' }
 	];
 	$scope.data.protocols = [
 		{ label: $tr(gettext("All")),		value: '' },
@@ -62,12 +77,6 @@ JUCI.app
 		{ label: $tr(gettext("UDP")),		value: 'udp' },
 		{ label: $tr(gettext("ICMP")),		value: 'icmp' }
 	];
-	
-	$scope.addSelectedTCPflags = function(){
-		function getValue(x){ return x.value; }
-		$scope.rule.tcpflags.value = $scope.tcpflags.selected.map(getValue).join();
-	};
-
 	$network.getConnectedClients().done(function(data){
 		$scope.clients = data.map(function(x){
 			return {label: x.ipaddr, value: x.ipaddr }
@@ -82,16 +91,17 @@ JUCI.app
 	});
 	$scope.$watch("rule", function(){
 		if(!$scope.rule) return;
-		$scope.tcpflags.selected = $scope.rule.tcpflags.value.split(",");
-		function isSelected(flag){ return $scope.tcpflags.selected.indexOf(flag) > -1; }
-		function makeSelected(obj){ obj.selected = isSelected(obj.value); }
-		$scope.tcpflags.all.forEach(makeSelected);
+		getOriginalPortSetting();
 
-		$scope.data.ports = $scope.rule.ports.value.split(",").map(function(port){return {value: port }});
-		if($scope.rule.srcports){
+		if($scope.rule.ports && $scope.rule.ports.value !== ""){
+			$scope.data.ports = $scope.rule.ports.value.split(",").map(function(port){return {value: port }});
+		}else{ $scope.data.ports = []; }
+
+		if($scope.rule.srcports && $scope.rule.srcports.value !== ""){
 			$scope.data.srcports = $scope.rule.srcports.value.split(",").map(function(port){return {value: port }});
 		}else{ $scope.data.srcports = []; }
-		if($scope.rule.dstports){
+
+		if($scope.rule.dstports && $scope.rule.dstports.value !== ""){
 			$scope.data.dstports = $scope.rule.dstports.value.split(",").map(function(port){return {value: port }});
 		}else{ $scope.data.dstports = []; }
 
@@ -107,13 +117,54 @@ JUCI.app
 		//if($scope.rule.pktsize && $scope.rule.pktsize.value===0){ $scope.rule.pktsize.value = ""; }
 	}, false);
 
+	function resetPortFilters(portfilter){
+		if (portfilter === "portrange") {
+			$scope.data.portrange.from = "";
+			$scope.data.portrange.to = "";
+		}
+		else {
+			$scope.data.ports = [];
+			$scope.data.srcports = [];
+			$scope.data.dstports = [];
+		}
+		$scope.rule.ports.value = "";
+		$scope.rule.srcports.value = "";
+		$scope.rule.dstports.value = "";
+		$scope.rule.portrange.value = "";
+
+		if (portfilter === $scope.data.original.portfilter){
+			$scope.rule[portfilter] = $scope.data.original[portfilter];
+			if (portfilter === "portrange") { //deep copy in case of portrange
+				$scope.data[portfilter] = {from:$scope.data.original.portdata.from, to:$scope.data.original.portdata.to}
+			}
+			else { $scope.data[portfilter] = $scope.data.original.portdata; }
+		}
+
+	}
+	//backend cannot handle multiple port filters simultaneously
+	//when port settings are changed, all except the chosen portsetting should be deleted
+	$scope.$watch("data.portfilter", function(portfilter){
+		if(!$scope.rule){ return; }
+		resetPortFilters(portfilter);
+	}, true);
 	$scope.$watch("data.portrange", function(p){
 		if(!$scope.rule){ return; }
-		var from = $scope.data.portrange.from
-		var to = $scope.data.portrange.to
+		var from = $scope.data.portrange.from;
+		var to = $scope.data.portrange.to;
 		if(!from && !to){ $scope.rule.portrange.value = ""; }
 		if(from && !to){ $scope.rule.portrange.value = from.toString(); }
 		if(from && to){ $scope.rule.portrange.value = from.toString() + "-" + to.toString(); }
+	}, true);
+	//port filtering not applicable to icmp protocol
+	$scope.$watch("rule.proto.value", function(proto){
+		if(!$scope.rule){ return; }
+		if(proto === "icmp"){
+			resetPortFilters();
+		}
+		else{
+			resetPortFilters($scope.data.original.portfilter);
+		}
+		
 	}, true);
 	$scope.$watch("data.connbytes", function(c){
 		if(!$scope.rule){ return; }

@@ -3,7 +3,15 @@
 		"description": "JUCI Realtime Graphs Module",
 		"read": {
 			"ubus": {
-				"/juci/rtgraphs": [ "run"/*"get"*/ ]
+				"router.graph": [
+					"iface_traffic",
+					"client_traffic",
+					"load",
+					"connections"
+				],
+				"system": [
+					"info"
+				]
 			}
 		} 
 	}

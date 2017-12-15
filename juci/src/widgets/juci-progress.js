@@ -36,7 +36,7 @@ JUCI.app
 		}
 	}; 
 })
-.controller("juciProgressControl", function($scope, $navigation){
+.controller("juciProgressControl", function($scope){
 	function update(){
 		if($scope.value && Number($scope.value) != 0)
 			$scope.width = Math.round((Number($scope.value||0) / Number($scope.total||0)) * 100); 

@@ -1,0 +1,46 @@
+#!/bin/sh
+
+. /usr/share/libubox/jshn.sh
+
+case "$1" in
+	list)
+		echo '{ "set_credentials" : {"ssid":"str", "encryption":"str", "key":"str", "import":true} }'
+
+	;;
+	call)
+		case "$2" in
+			set_credentials)
+				read input;
+
+				json_load "$input"
+				json_get_var ssid ssid
+				json_get_var key key
+				json_get_var encryption encryption
+				json_get_var import import 1
+
+				[ -z "$encryption" -a -n "$key" ] && encryption="psk2"
+
+				json_init
+
+				if [ -z "$ssid" -o -z "$encryption" ]; then
+					json_add_string "encryption" "$encryption"
+					json_add_string "ssid" "$ssid"
+					json_add_string "error" "ssid and encryption needed"
+					json_dump
+				elif [ "$encryption" != "none" -a -z "$key" ]; then
+					json_add_string "error" "key needed if encryption is not 'none'"
+					json_dump
+				else
+					if [ "$import" == "1" ]; then
+						wifi import "$input" "reload" >/dev/null 2>&1 &
+					else
+						echo "$input" > /tmp/wifi_imported_credentials
+					fi
+					json_add_string "code" "success"
+				fi
+
+				json_dump
+			;;
+		esac
+	;;
+esac

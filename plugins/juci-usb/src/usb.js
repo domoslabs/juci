@@ -26,7 +26,7 @@ JUCI.app
 	
 	USB.prototype.getDevices = function(){
 		var def = $.Deferred(); 
-		$rpc.$call("router", "usb").done(function(res){
+		$rpc.$call("router.usb", "status").done(function(res){
 			var usbs = Object.keys(res).map(function(usb){
 				return res[usb];
 			});
@@ -35,6 +35,39 @@ JUCI.app
 		});
 		return def.promise();
 	}
+
+	USB.prototype.annotateAdapters = function(adapters){
+		var def = $.Deferred();
+		var self = this;
+		self.getDevices().done(function(devs){
+			var filtered = devs.filter(function(dev){
+				return dev.netdevice;
+			});
+			adapters.map(function(a){
+				var match = filtered.find(function(f){ return f.netdevice === a.device; });
+				if(match){
+					a.name = match.description || match.product || a.name || "";
+					a.type = "eth-port";
+					a.is_usb = true;
+					match["__added__"] = true
+				}
+			});
+			filtered.map(function(f){
+				if(f["__added__"])return;
+				adapters.push({
+					name: f.description || f.product || "",
+					type: "eth-port",
+					is_usb: true,
+					device: f.netdevice
+				});
+			});
+			def.resolve();
+		}).fail(function(e){
+			console.log(e);
+			return def.reject();
+		});
+		return def.promise();
+	};
 	
 	return new USB(); 
 }).run(function($events){	
@@ -43,3 +76,6 @@ JUCI.app
 	});
 });  
 
+JUCI.app.run(function($usb, $ethernet){
+	$ethernet.addSubsystem($usb);
+});

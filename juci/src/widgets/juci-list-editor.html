@@ -1,5 +1,5 @@
 <div>
-	<div class="row juci-list-editor"> 
+	<div class="row juci-list-editor">
 		<div ng-class="{ 'col-xs-12 col-sm-9': !hideButtons, 'col-xs-12': hideButtons }">
 			<i class="fa fa-spinner fa-spin fa-2x" ng-show="!items"></i>
 			<div class="list-group">
@@ -9,10 +9,10 @@
 						<i ng-show="showIcon && !sortable" class="{{getIcon(iconStatus({$item:i}))}}" style="float:right;position:absolute;top:10px;right:10px;"></i>
 					</div>
 					<div ng-show="sortable" style="position:absolute;top:10px;right:20px;float:right;" class="btn-group-horizontal btn-group-sm">
-					    <button type="button" ng-click="onMoveUp(i)" class="btn btn-default"><i class="fa fa-angle-up"></i></button>
-						<button type="button" ng-click="onMoveDown(i)" class="btn btn-default"><i class="fa fa-angle-down"></i></button>
+						<button type="button" ng-click="onMoveUp(i)" ng-class="{'disabled':moveDisabled}" class="btn btn-default"><i class="fa fa-angle-up"></i></button>
+						<button type="button" ng-click="onMoveDown(i)" ng-class="{'disabled':moveDisabled}" class="btn btn-default"><i class="fa fa-angle-down"></i></button>
 					</div>
-					<div class="content" ng-hide="!hide">
+					<div class="content" ng-hide="!hide && dynamicHtml">
 						<div class="col-xs-12 col-sm-9">
 							<div class="row" ng-repeat="status in i.$statusList track by $index" style="word-wrap:break-word">
 								<label class="col-xs-12 col-sm-6">{{status.label}}</label>
@@ -20,8 +20,8 @@
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-3">
-							<button class="btn btn-default" style="width:100%;margin-bottom:5px;" ng-show="editable !== false && editor" ng-click="onListEditItem(i)">{{'Edit'|translate}}</button>
-							<button ng-repeat="button in i.$buttons track by $index" style="width:100%;margin-bottom:5px;" style="margin:5px;" class="btn btn-{{buttons.type || 'default'}}" ng-click="button.on_click(i)">	
+							<button class="btn btn-default" style="width:100%;margin-bottom:5px;" ng-show="editable !== false && editor" ng-class="{'disabled': !canEdit(i)}" ng-click="onEditAndMove(i)">{{editText || 'Edit'|translate}}</button>
+							<button ng-repeat="button in i.$buttons track by $index" style="width:100%;margin-bottom:5px;" style="margin:5px;" class="btn btn-{{button.type || 'default'}}" ng-click="button.on_click(i)">
 								{{button.label}}
 							</button>
 						</div>
@@ -41,7 +41,7 @@
 		</div>
 	</div>
 	<hr class="visible-xs-block" style="color:grey;" />
-	<div ng-hide="hide" style="border:1px solid #ddd;border-radius:5px;padding:10px 15px;">
+	<div id="editor" ng-hide="hide || !dynamicHtml" style="border:1px solid #ddd;border-radius:5px;padding:10px 15px;">
 		<button class="btn btn-default" ng-show="editor" style="margin-bottom: 5px;" ng-click="hideEditor()">{{'Hide Editor'|translate}}</button>
 		<div ng-show="item" dynamic="dynamicHtml"><div/>
 	</div>

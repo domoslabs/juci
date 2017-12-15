@@ -1,0 +1,137 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+
+# plugins/juci-ddns/src/pages/internet-services-ddns.js
+msgid "Second"
+msgstr "秒"
+
+# plugins/juci-ddns/src/pages/internet-services-ddns.js
+msgid "Seconds"
+msgstr "秒"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-ddns/src/pages/internet-services-ddns.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
+msgid "Provider"
+msgstr "プロバイダー"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-ddns/src/pages/internet-services-ddns.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
+msgid "Domain name"
+msgstr "ドメイン名"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-ddns/src/pages/internet-services-ddns.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
+msgid "Username"
+msgstr "ユーザ名"
+
+# plugins/juci-ddns/src/pages/internet-services-ddns.js
+msgid "Running"
+msgstr "ステータス"
+
+# plugins/juci-ddns/src/pages/internet-services-ddns.js
+msgid "Next update in"
+msgstr "次回のアップデート"
+
+# plugins/juci-ddns/src/pages/internet-services-ddns.js
+msgid "Error"
+msgstr "エラー"
+
+# plugins/juci-ddns/src/pages/internet-services-ddns.js
+msgid "Warning"
+msgstr "注意"
+
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.js
+msgid "Interface"
+msgstr "インターフェース"
+
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.js
+msgid "Network"
+msgstr "ネットワーク"
+
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.js
+msgid "Script"
+msgstr "スクリプト"
+
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.js
+msgid "Web"
+msgstr "ウェブ"
+
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
+msgid "Enabled"
+msgstr "DDNS オン"
+
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
+msgid "Label"
+msgstr "ラベル"
+
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
+msgid "IP Retreival Method"
+msgstr "IP検索方法"
+
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
+msgid "Select Connection"
+msgstr "Connection選択"
+
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
+msgid "Select Interface"
+msgstr "インターフェース選択"
+
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
+msgid "Enter website to poll for ip address"
+msgstr "IPアドレスをポーリングするWebサイトを入力"
+
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
+msgid "Script Path"
+msgstr "スクリプトパス"
+
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
+msgid "Enter path to script on router"
+msgstr "ルータ上のスクリプトへのパスを入力して下さい"
+
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
+msgid "Choose DNS Provider"
+msgstr "DNSプロバイダー選択"
+
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
+msgid "Password"
+msgstr "パスワード"
+
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
+msgid "Use HTTPS"
+msgstr "HTTPSを使用する"
+
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
+msgid "Enter DDNS Provider"
+msgstr "DDNSプロバイダーを入力して下さい"
+
+# plugins/juci-ddns/src/pages/internet-services-ddns.html
+msgid "DDNS (Dynamic DNS)"
+msgstr "DDNS(Dynamic DNS)"
+
+# plugins/juci-ddns/src/pages/internet-services-ddns.html
+msgid "ddns.config.info"
+msgstr " "
+
+# plugins/juci-ddns/src/pages/internet-services-ddns.html
+msgid "menu-internet-services-ddns-title"
+msgstr "DDNS"

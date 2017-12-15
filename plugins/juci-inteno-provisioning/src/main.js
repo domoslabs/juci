@@ -9,6 +9,7 @@ UCI.provisioning.$registerSectionType("general", {
 UCI.provisioning.$registerSectionType("server", {
 	"reboot":		{ dvalue: 'off', type: Boolean },
 	"enabled":		{ dvalue: 'off', type: Boolean },
+	"keepuserconfig":	{ dvalue: 'off', type: Boolean },
 	"url":			{ dvalue: '', type: String },
 	"deckey":		{ dvalue: '', type: String }
 });

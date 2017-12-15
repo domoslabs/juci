@@ -1,0 +1,123 @@
+#!/bin/sh
+
+. /usr/share/libubox/jshn.sh
+
+case "$1" in
+	list)
+		echo '{ "test":{"path":"str"}, "start":{"path":"str","keep":32}, "check":{"type":"str"}, "create-backup":{"pass":"str"}, "restore-backup":{"pass":"str"}, "features":{} }'
+	;;
+	call)
+		case "$2" in
+			features)
+				json_init
+				json_add_boolean comment 0
+				if [ -n "$(openssl version 2>/dev/null)" ]; then
+					json_add_boolean encryption 1
+				else
+					json_add_boolean encryption 0
+				fi
+				json_dump
+			;;
+			create-backup)
+				local output=""
+
+				read input
+				json_load "$input"
+				json_get_var pass pass ""
+
+				if [ -n "$pass" ]; then
+					output="$(sysupgrade --create-backup /tmp/backup.tar.gz -p $pass)"
+				else
+					output="$(sysupgrade --create-backup /tmp/backup.tar.gz)"
+				fi
+
+				json_init
+				json_add_string output "$output"
+				json_dump				
+			;;
+			restore-backup)
+				local error=""
+				local stdout=""
+
+				read input
+				json_load "$input"
+				json_get_var pass pass ""
+
+				if [ -n "$pass" ]; then
+					decrypt="$(openssl des3 -d -in /tmp/backup.tar.gz -out /tmp/backup.tar.gz.dec -pass pass:$pass 2>/dev/null && echo OK)"
+					if [ "$decrypt" == "OK" ]; then
+						mv /tmp/backup.tar.gz.dec /tmp/backup.tar.gz
+						stdout="$(sysupgrade --restore-backup /tmp/backup.tar.gz)"
+					else
+						error="Invalid Password!"
+					fi
+				else
+					result="$(sysupgrade --restore-backup /tmp/backup.tar.gz)"
+					if [ "result" == "" ]; then
+						stdout="$result"
+					else
+						error="$result"
+					fi
+				fi
+
+				json_init
+				if [ -n "$stdout" ]; then
+					json_add_string stdout "$stdout"
+				else
+					json_add_string error "$error"
+				fi
+				json_dump
+			;;
+			check)
+				read input
+				json_load "$input"
+				json_get_var type type
+
+				json_init
+				case "$type" in
+					online)
+						online="$(sysupgrade --online 2>/dev/null)"
+						if [ $? -eq 0 ]; then
+							json_add_string online "$online"
+						else
+							json_add_string error "$online"
+						fi
+					;;
+					usb)
+						usb="$(sysupgrade --usb 2>/dev/null)"
+						if  [ $? -eq 0 ]; then
+							json_add_string usb "$usb"
+						else
+							json_add_string error "$usb"
+						fi
+					;;
+				esac
+				json_dump
+			;;
+			start)
+				read input
+				json_load "$input"
+				json_get_var keep keep 1
+				json_get_var path path "/tmp/firmware.bin"
+
+				[ "$keep" == "1" ] && keep="" || keep="-n"
+				sysupgrade $keep $path >/dev/null 2>&1 &
+
+				json_init
+				json_add_string "sysupgrade" "upgrade"
+				json_dump
+			;;
+			test)
+				read input
+				json_load "$input"
+				json_get_var path path "/tmp/firmware.bin"
+
+				sysupgrade --test $path >/dev/null 2>&1 &
+
+				json_init
+				json_add_string "sysupgrade" "test"
+				json_dump
+			;;
+		esac
+	;;
+esac

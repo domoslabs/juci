@@ -1,4 +1,5 @@
-@theme-success-color: #F1C100;
+@theme-success-color: #5cb85c;
+@theme-primary-color: #F1C100;
 @theme-heading-color: #66989C;
 @theme-link-color: #34485d;
 @theme-detail-color: #E62f39;
@@ -66,18 +67,22 @@ ul.left-menu li a.open, .nav-tabs &>li &>a {
 
 .btn-primary, .btn-primary.active, .btn-primary.focus, .btn-primary:active, .btn-primary:focus, .btn-primary:hover, .open &>.dropdown-toggle.btn-primary, .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
 	color: #FFF;
-	background-color: @theme-success-color;
-	border-color: @theme-success-color;
+	background-color: @theme-primary-color;
+	border-color: @theme-primary-color;
 }
 .btn-primary.disabled, .btn-primary.disabled.active, .btn-primary.disabled.focus, .btn-primary.disabled:active, .btn-primary.disabled:focus, .btn-primary.disabled:hover, .btn-primary[disabled], .btn-primary.active[disabled], .btn-primary.focus[disabled], .btn-primary[disabled]:active, .btn-primary[disabled]:focus, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary, fieldset[disabled] .btn-primary.active, fieldset[disabled] .btn-primary.focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:hover {
-	background-color: lighten(@theme-success-color, 10%);
-	border-color: lighten(@theme-success-color, 10%);
+	background-color: lighten(@theme-primary-color, 10%);
+	border-color: lighten(@theme-primary-color, 10%);
 }
 .label-danger{
 	background-color: @theme-error-color;
 }
 .text-danger{
 	color: @theme-error-color;
+}
+
+.text-success{
+	color: @theme-success-color;
 }
 
 .juci-nav {
@@ -148,8 +153,8 @@ a, a:focus, a:hover {
 	color: @theme-link-color;
 }
 .nav-tabs &>li.active &>a, .nav-tabs &>li.active &>a:focus, .nav-tabs &>li.active &>a:hover {
-	background-color: @theme-success-color;
-	border-color: @theme-success-color !important;
+	background-color: @theme-primary-color;
+	border-color: @theme-primary-color !important;
 	color: white !important;
 	font-weight: bold;
 }
@@ -167,7 +172,6 @@ a, a:focus, a:hover {
 .overview-banner {
 	background: url("../img/overview_header.jpg") repeat scroll top center !important;
 	background-color: "#fafffa";
-	height: 400px;
 	margin-bottom: 30px;
 }
 .overview-box {
@@ -195,11 +199,15 @@ a, a:focus, a:hover {
 		line-height: 110px;
 	}
 }
-.overview-status-box {
-	background-color: rgba(0, 0, 0, 0.8);
-	color: white;
-	border-radius: 7px;
+.overview-status-entries {
 	line-height: 35px;
+	border-radius: 7px;
+	background-color: rgba(0,0,0,0.8);
+	padding:15px;
+	color:white;
+}
+.overview-status-box {
+	margin-bottom: 15px;
 }
 .top-navbar {
 	color: #111 !important;
@@ -316,8 +324,6 @@ div.error {
 	bottom: 15px;
 }
 .overview-small {
-	margin-left: -15px;
-	margin-right: -15px;
 	.label {
 		margin-left: 1px;
 		margin-righh: 1px;
@@ -338,5 +344,12 @@ div.error {
 		width: 55%;
 		float:right;
 		overflow:hidden;
+	}
+}
+.disconnected-modal {
+	padding:20px;
+	text-align:center;
+	i{
+		color: @theme-error-color;
 	}
 }

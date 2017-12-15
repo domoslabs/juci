@@ -8,5 +8,5 @@ JUCI.app
 		});
 	});
 	$scope.allPorts = [];1
-	for(var i = 0; i < 10; i++){ $scope.allPorts.push({ label: "910" + i, value: 9100 + i })}
+	for(var i = 0; i < 10; i++){ $scope.allPorts.push({ label: "910" + i, value: i })}
 });

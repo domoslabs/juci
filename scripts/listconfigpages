@@ -1,3 +1,0 @@
-#!/bin/sh 
-
-grep page $1 | awk '{print $3}' | sed 's/"//g' | sort | uniq

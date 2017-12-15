@@ -1,0 +1,358 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.4\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: fi\n"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "No more network interfaces to add"
+msgstr "Verkkoyhteyksiä ei ole saatavilla enempää"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Add New Interface"
+msgstr "Lisää uusi verkkoliitäntä"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Are you sure you want to delete interface"
+msgstr "Haluatko varmasti poistaa tämän?"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Add New Member"
+msgstr "Lisää uusi jäsen"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "No name entered"
+msgstr "Ei syötettyä nimeä"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Are you sure you want to delete member"
+msgstr "Haluatko varmasti poistaa tämän jäsenen?"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Add New Policy"
+msgstr "Lisää uusi käytäntö"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Are you sure you want to delete policy"
+msgstr "Haluatko varmasti poistaa käytännön?"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Add New Rule"
+msgstr "Lisää uusi sääntö"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Are you sure you want to delete rule"
+msgstr "Haluatko varmasti poistaa tämän säännön?"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.js
+msgid "IPv4"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.js
+msgid "IPv6"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.js
+msgid "IP"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.js
+msgid "Gateway"
+msgstr "Yhdyskäytävä"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.js
+msgid "DNS"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.js
+msgid "Default"
+msgstr "Oletus"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.js
+msgid "All"
+msgstr "Kaikki"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.js
+msgid "TCP"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.js
+msgid "UDP"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.js
+msgid "ICMP"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Enabled"
+msgstr "Käytössä"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Family"
+msgstr "Perhe"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Select Family"
+msgstr "Valitse perhe"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Tracking Type"
+msgstr "Seurantatyyppi"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid ""
+"Set to DNS or Gateway to use that for tracking. Set to IP to enter IP "
+"manually"
+msgstr ""
+"Aseta DNS tai yhdyskäytävä seurantaa varten. Valitse IP käyttääksesi "
+"vapaavalintaista IP-osoitetta"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Host(s) to ping"
+msgstr "Kohteet"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Add Ping Host(s)"
+msgstr "Lisää kohde"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Interface Reliability"
+msgstr "Liitännän luotettavuus"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of hosts that must reply for the interface to be considered up"
+msgstr ""
+"Kohteiden määrä joiden tulee vastata, jotta liitännän voidaan olettaa olevan "
+"toiminnassa"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of Pings"
+msgstr "Ping määrä"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of pings to send to each Host"
+msgstr "Lähetettävien pingien määrä per kohde"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Timeout"
+msgstr "Aikakatkaisu"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of seconds to wait for reply from host"
+msgstr "Kuinka kauan odotetaan vastausta kohteelta (sekunteina)"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Interval"
+msgstr "Intervalli"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of seconds between each test"
+msgstr "Aika jokaisen testin välillä sekunteina"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Up"
+msgstr "Ylhäällä"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of successful tests to consider interface as up"
+msgstr ""
+"Onnistuneiden testien määrä kunnes voidaan olettaa, että liitäntä on ylhäällä"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Down"
+msgstr "Alhaalla"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of failed tests to consider interface as down"
+msgstr ""
+"Epännistuneiden testien määrä kunnes voidaan olettaa, että liitäntä on "
+"alhaalla"
+
+# plugins/juci-mwan3/src/widgets/mwan3-policy-add.html
+msgid "Enter Policy Name"
+msgstr "Syötä käytännön nimi"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-add.html
+msgid "Enter Rule Name"
+msgstr "Syötä säännön nimi"
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-add.html
+msgid "Enter Member Name"
+msgstr "Lisää jäsenen nimi"
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+msgid "Interface"
+msgstr "Liitäntä"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mwan3/src/widgets/mwan3-interface-add.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mwan3/src/widgets/mwan3-interface-add.html
+msgid "Select Interface"
+msgstr "Valitse liitäntä"
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+msgid "Metric"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+msgid ""
+"Members within one policy with a lower metric have precedence over higher "
+"metric members"
+msgstr ""
+"Jäsenet joilla on alempi metric-arvo ovat etusijalla verrattuna korkeamman "
+"metric-arvon jäseniin"
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+msgid "Weight"
+msgstr "Painoarvo"
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+msgid ""
+"Members with same metric will distribute load based on this weight value"
+msgstr ""
+"Samalla metriikalla olevat jäsenet jakavat kuorman tämän arvon perusteella"
+
+# plugins/juci-mwan3/src/widgets/mwan3-policy-edit.html
+msgid "Selected Members"
+msgstr "Valitse jäsenet"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Policy to use"
+msgstr "Käytettävä käytäntö"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid ""
+"Use this policy for traffic that matches or set to  default to use the "
+"default routing table to lookup"
+msgstr ""
+"Valitse käytäntö johon tätä sääntöä sovelletaan tai valitse oletus "
+"käyttääksei oletusreititystaulua"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Select Policy"
+msgstr "Valitse käytäntö"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Any Source IP"
+msgstr "Mikä tahansa lähde-IP"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Source IP"
+msgstr "Lähde-IP"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Match traffic from the specified source ip address"
+msgstr "Kohdista liikenne tietystä lähde IP-osoitteesta"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Source Port"
+msgstr "Lähdeportti"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid ""
+"Match traffic from the specified source port or port range, if relevant "
+"protocol is specified"
+msgstr ""
+"Kohdista liikenne määritellystä lähdeportista tai -porttialueesta mikäli "
+"olennainen protokolla on määritelty"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Protocol"
+msgstr "Protokolla"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Match traffic using the given protocol"
+msgstr "Kohdista liikenne käyttämällä annettua protokollaa"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Select Protocol"
+msgstr "Valitse protokolla"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Any Destination IP"
+msgstr "Mikä tahansa kohde-IP"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Destination IP"
+msgstr "Kohde-IP"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Match traffic from the specified destination ip address"
+msgstr "Kohdista liikenne määritellystä kohde IP-osoitteesta"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Destination Port"
+msgstr "Kohdeportti"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid ""
+"Match traffic from the specified destination port or port range, if relevant "
+"protocol is specified"
+msgstr ""
+"Kohdista liikenne määritellystä kohdeportista tai -porttialueesta mikäli "
+"olennainen protokolla on määritelty"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "IP Set"
+msgstr "IP-joukko"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid ""
+"Match traffic directed at the given destination ip address to an ipset set"
+msgstr ""
+"Kohdista liikenne joka on ohjattu annetusta kohde IP-osoitteesta IP joukkoon"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Sticky"
+msgstr "Kiinteä"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid ""
+"Allow traffic from the same source ip address within the timeout limit to "
+"use same wan interface as prior session"
+msgstr ""
+"Salli liikenne samasta lähde IP-osoitteesta määritellyn aikakatkaisuarvon "
+"sisällä käyttääksesi samaa internet-liitäntää kuin aiempi sessio"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Stickiness timeout value in seconds"
+msgstr "Aikakatkaisun arvo sekunteina"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.html
+msgid "MultiWAN Configuration"
+msgstr "MultiWAN konfiguraatio"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.html
+msgid "Settings"
+msgstr "Asetukset"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.html
+msgid "Members"
+msgstr "Jäsenet"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.html
+msgid "Policies"
+msgstr "Käytännöt"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.html
+msgid "Rules"
+msgstr "Säännöt"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.html
+msgid "menu-internet-mwan3-title"
+msgstr "MultiWAN"

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.10\n"
 
 msgid "OK"
 msgstr "OK"
@@ -47,14 +47,12 @@ msgstr "Yhteys epäonnistui"
 msgid "RPC error #"
 msgstr "RPC virhe #"
 
-msgid "You have been logged out due to inactivity"
-msgstr "Sinut on kirjattu ulos"
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "please enter time in form hh:mm"
+msgstr "anna aika muodossa hh: mm"
 
 msgid "please specify both hour and minute value for time separated by ':'"
 msgstr "määritä sekä tunnit, että minuutit eroteltuna ':'"
-
-msgid "please enter valid time in form hh:mm"
-msgstr "kirjoita kelvollinen aika muodossa tt: mm"
 
 msgid "Please specify both start time and end time for schedule!"
 msgstr "Määritä sekä alkamisaika, että päättymisaika aikatauluun!"
@@ -65,18 +63,65 @@ msgstr "Aloitusaika täytyy olla pienempi kuin päättymisaika!"
 msgid "Please pick days between mon-sun"
 msgstr "Valitse päivä ma-su väliltä"
 
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "Port has to be a number between 1 and 65535. Use '"
+msgstr "Portin on oltava luku väliltä 1-65535. Käytä \""
+
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "' to define a range."
+msgstr "\"määrittääksesi alueen"
+
+# /home/jamu/GIT/juci/juci//src/js/uci.js
 msgid ""
-"A port is between 1 and 65535 and start port must be lower than stop port"
+"Ports has to be between 1 and 65535 and start port must be lower than end "
+"port"
 msgstr ""
-"Portti väliltä 1-65535 ja alkuportin on oltava pienempi kuin loppuportti"
+"Porttien on oltava väliltä 1-65535 ja alkuportin on oltava pienempi kuin "
+"loppuportti"
 
-msgid "A port is between 1 and 65535"
-msgstr "Portti väliltä 1-65535"
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "Port range has to be on the form number"
+msgstr "Porttialueen tulee olla numeerinen arvo"
 
-msgid ""
-"A port can only be a number between 1 and 65535 or a range on the form "
-"number-number"
-msgstr "Portti voi olla vain väliltä 1-65535 ja sen on oltava numeerinen"
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "number"
+msgstr "numero"
+
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "Port has to be a number between 1 and 65535"
+msgstr "Portin on oltava luku väliltä 1-65535"
+
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "WEP encryption key must be 10-26 hexadecimal characters!"
+msgstr "WEP-salausavain on oltava 10-26 heksadesimaalimerkkiä!"
+
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "WPA encryption key must be 8-63 printable ASCII characters!"
+msgstr "WPA-avain täytyy olla 8-63 ASCII merkkiä!"
+
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "WPA encryption key cannot contain the following characters:"
+msgstr "WPA-salausavain ei voi sisältää seuraavia merkkejä:"
+
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "Only printable ASCII characters allowed."
+msgstr "Vain tulostettavat ASCII merkit ovat sallittuja"
+
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "Invalid mark format: it must be between (!)0x0000 - (!)0xFFFF"
+msgstr "Virheellinen muoto: sen on oltava väliltä (!) 0x0000 - (!) 0xFFFF"
+
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "End value has to be larger than start value."
+msgstr "Loppuarvon on oltava suurempi kuin alkuarvo."
+
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "Size has to be larger than 0."
+msgstr "Koon on oltava suurempi kuin 0."
+
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "Invalid range."
+msgstr "Virheellinen alue."
 
 msgid "Number value is not within valid range"
 msgstr "Numeroarvo ei ole sallittujen rajojen sisällä"
@@ -108,14 +153,33 @@ msgstr "Osoitteen tulee olla kelvollinen IPv6 osoite"
 msgid "Address must be a valid IPv6 CIDR Validator (IPv6-address/Mask)"
 msgstr "Osoitteen on oltava kelvollinen IPv6-osoite/peite"
 
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "IPv6 Prefix Hint must be a hexadecimal number between 1-FFFF"
+msgstr "IPv6-etuliitteen vihjeen on oltava heksadesimaali luku välillä 1-FFFF"
+
 msgid "Value must be a valid MAC-48 address"
 msgstr "Arvon on oltava oikea MAC-48 osoite"
 
 msgid "value must be a valid MAC-48 address"
 msgstr "arvon on oltava kelvollinen MAC-48-osoite"
 
-msgid "application.name"
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "Hostname can not be longer than 256 characters"
+msgstr "Isäntäkoneen nimi voi olla enintään 256 merkkiä"
+
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "Hostname can only contain numbers, letters, hyphens and underscores"
 msgstr ""
+"Isäntäkoneen nimi voi sisältää vain numeroita, kirjaimia, yhdysmerkkejä ja "
+"alaviivoja"
+
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "Field is required"
+msgstr "Pakollinen kenttä"
+
+# /home/jamu/GIT/juci/juci//src/js/uci.js
+msgid "is required"
+msgstr "vaaditaan"
 
 msgid ""
 "You have unsaved changes. Do you want to save them before leaving this page?"
@@ -123,15 +187,21 @@ msgstr ""
 "Tallentamattomia asetuksia. Haluatko tallentaa asetukset ennen kuin siirryt "
 "tältä sivulta?"
 
+# /home/jamu/GIT/juci/juci//src/factories/files.js
+msgid ""
+"your browser does not support this kind of download, please refer to latest "
+"Chrome, Firefox, Opera or Edge etc."
+msgstr ""
+"selaimesi ei tue tällaista latausta, tutustu uusin Chrome, Firefox, Opera "
+"tai Edge -selaimiin jne."
+
 msgid "Unapplied Changes"
 msgstr "Tallentamattomia asetuksia"
 
 msgid ""
 "Are you sure you want to reload settings from the router? All your current "
 "changes will be lost!"
-msgstr ""
-"Haluatko varmasti ottaa tehdasasetukset käyttöön? Kaikki nykyiset asetukset "
-"hävitetään!"
+msgstr "Haluatko varmasti peruuttaa?  Kaikki nykyiset muutokset hylätään!"
 
 msgid "$juciConfirm needs a content-string"
 msgstr ""
@@ -208,6 +278,29 @@ msgstr "Vanha arvo"
 msgid "New value"
 msgstr "Uusi arvo"
 
+# /home/jamu/GIT/juci/juci//src/widgets/juci-disconnected.html
+msgid "Disconnected"
+msgstr "Yhteys katkaistu"
+
+# /home/jamu/GIT/juci/juci//src/widgets/juci-disconnected.html
+msgid "Trying to reconnect"
+msgstr "Yritetään yhdistää uudelleen"
+
+# /home/jamu/GIT/juci/juci//src/widgets/juci-footer.html
+msgid "Help Wiki"
+msgstr "Verkkomanuaali"
+
+# /home/jamu/GIT/juci/juci//src/widgets/juci-footer.html
+msgid "No WAN IP"
+msgstr "Ei WAN IP-osoitetta"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/juci//src/widgets/juci-footer.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/juci//src/widgets/juci-navbar.html
+msgid "Logout"
+msgstr "Kirjaudu ulos"
+
 msgid "Start port"
 msgstr "Aloitusportti"
 
@@ -217,11 +310,13 @@ msgstr "Viimeinen portti"
 msgid "Port (1-65535)"
 msgstr "Portti (1-65535)"
 
-msgid "from"
-msgstr "alkaen"
+# /home/jamu/GIT/juci/juci//src/widgets/juci-list-editor.html
+msgid "Edit"
+msgstr "Muokkaa"
 
-msgid "to"
-msgstr "asti"
+# /home/jamu/GIT/juci/juci//src/widgets/juci-list-editor.html
+msgid "Hide Editor"
+msgstr "Piilota muokkain"
 
 msgid "Add"
 msgstr "Lisää"
@@ -244,15 +339,6 @@ msgstr "Kirjaudu ulos"
 msgid "Please sign in"
 msgstr "Kirjaudu sisään"
 
-msgid "You do not have an RPC connection to the router!"
-msgstr "Reitittimeen ei ole RPC yhteyttä"
-
-msgid "Connecting..."
-msgstr "Yhdistetään"
-
-msgid "Host"
-msgstr "Isäntäkone"
-
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
 
@@ -265,8 +351,20 @@ msgstr "Vaihda perusasetuksien ja edistyneiden asetuksien välillä"
 msgid "Select Mode"
 msgstr "Valitse tila"
 
+# /home/jamu/GIT/juci/juci//src/widgets/juci-navbar.html
+msgid "You have "
+msgstr "Sinulla on"
+
+# /home/jamu/GIT/juci/juci//src/widgets/juci-navbar.html
+msgid " new events"
+msgstr "uusia tapahtumia"
+
 msgid "Toggle navigation"
 msgstr "Vaihda navigaatiota"
+
+# /home/jamu/GIT/juci/juci//src/widgets/juci-navbar.html
+msgid "No new events to show"
+msgstr "Ei uusia tapahtumia"
 
 msgid "Time Frame"
 msgstr "Aikakehys"
@@ -280,23 +378,89 @@ msgstr "Päivät"
 msgid "Time"
 msgstr "Aika"
 
+msgid "from"
+msgstr "alkaen"
+
+msgid "to"
+msgstr "asti"
+
 msgid "Select Theme"
 msgstr "Valitse teema"
 
 msgid "The page you were trying to access was not found!"
 msgstr "Virhe404 - Sivu, jota yrität katsoa, ei löytynyt."
 
+# /home/jamu/GIT/juci/juci//src/pages/status-about.html
+msgid "About"
+msgstr "Tietoja"
+
 msgid "menu-404-title"
+msgstr "404"
+
+# /home/jamu/GIT/juci/juci//src/pages/404.html
+msgid "404-title"
 msgstr "404"
 
 msgid "menu-bootstrap-title"
 msgstr "JUCI"
 
+# /home/jamu/GIT/juci/juci//src/pages/bootstrap.html
+msgid "bootstrap-title"
+msgstr ""
+
 msgid "menu-default-title"
-msgstr "Default"
+msgstr "Oletus"
+
+# /home/jamu/GIT/juci/juci//src/pages/default.html
+msgid "default-title"
+msgstr "Oletus"
 
 msgid "menu-login-title"
 msgstr "Kirjaudu sisään"
 
+# /home/jamu/GIT/juci/juci//src/pages/login.html
+msgid "login-title"
+msgstr "Kirjaudu sisään"
+
 msgid "menu-overview-title"
 msgstr "Yleisnäkymä"
+
+# /home/jamu/GIT/juci/juci//src/pages/overview.html
+msgid "overview-title"
+msgstr "Yleisnäkymä"
+
+# /home/jamu/GIT/juci/juci//src/pages/status-about.html
+msgid "menu-status-about-title"
+msgstr "Tietoja"
+
+# /home/jamu/GIT/juci/juci//src/pages/status-about.html
+msgid "status-about-title"
+msgstr "Tietoja"
+
+#~ msgid "You have been logged out due to inactivity"
+#~ msgstr "Sinut on kirjattu ulos"
+
+#~ msgid "please enter valid time in form hh:mm"
+#~ msgstr "kirjoita kelvollinen aika muodossa tt: mm"
+
+#~ msgid ""
+#~ "A port is between 1 and 65535 and start port must be lower than stop port"
+#~ msgstr ""
+#~ "Portti väliltä 1-65535 ja alkuportin on oltava pienempi kuin loppuportti"
+
+#~ msgid "A port is between 1 and 65535"
+#~ msgstr "Portti väliltä 1-65535"
+
+#~ msgid ""
+#~ "A port can only be a number between 1 and 65535 or a range on the form "
+#~ "number-number"
+#~ msgstr "Portti voi olla vain väliltä 1-65535 ja sen on oltava numeerinen"
+
+#~ msgid "You do not have an RPC connection to the router!"
+#~ msgstr "Reitittimeen ei ole RPC yhteyttä"
+
+#~ msgid "Connecting..."
+#~ msgstr "Yhdistetään"
+
+#~ msgid "Host"
+#~ msgstr "Isäntäkone"

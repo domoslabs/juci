@@ -24,21 +24,36 @@ UCI.qos.$registerSectionType("classify", {
 	"srcports":	{ dvalue: '', type: String },
 	"dstports":	{ dvalue: '', type: String },
 	"ports":	{ dvalue: '', type: String },
-	"dscp":		{ dvalue: '', type: String },
 	"srchost":	{ dvalue: '', type: String, validator: UCI.validators.IPAddressValidator },
 	"dsthost":	{ dvalue: '', type: String, validator: UCI.validators.IPAddressValidator },
 	"portrange":	{ dvalue: '', type: String, validator: UCI.validators.PortOrRangeValidator("-") },
-	"pktsize":	{ dvalue: '', type: Number },
+	"connbytes":	{ dvalue: '', type: String },
+	"direction":	{ dvalue: '', type: String },
+	"comment":	{ dvalue: '', type: String }
+});
+UCI.qos.$registerSectionType("reclassify", { // TODO: add limit?
+	// reclassify
+	"pktsize":	{ dvalue: '', type: String },
 	"tcpflags":	{ dvalue: '', type: String },
 	"mark":		{ dvalue: '', type: String, validator: UCI.validators.QOSMarkValidator },
-	"connbytes":	{ dvalue: '', type: String },
 	"tos":		{ dvalue: '', type: String },
+	"dscp":		{ dvalue: '', type: String },
+	// classify
+	"target":	{ dvalue:'Normal', type: String },
+	"proto":	{ dvalue: '', type: String },
+	"srcports":	{ dvalue: '', type: String },
+	"dstports":	{ dvalue: '', type: String },
+	"ports":	{ dvalue: '', type: String },
+	"srchost":	{ dvalue: '', type: String, validator: UCI.validators.IPAddressValidator },
+	"dsthost":	{ dvalue: '', type: String, validator: UCI.validators.IPAddressValidator },
+	"portrange":	{ dvalue: '', type: String, validator: UCI.validators.PortOrRangeValidator("-") },
+	"connbytes":	{ dvalue: '', type: String },
 	"direction":	{ dvalue: '', type: String },
 	"comment":	{ dvalue: '', type: String }
 });
 UCI.qos.$registerSectionType("classgroup", {
-	"classes":	{ dvalue: ['Priority', 'Express', 'Normal', 'Bulk'], type: Array},
-	"default": 	{ dvalue: 'Normal', type: String }
+	"classes":	{ dvalue: [], type: Array},
+	"default": 	{ dvalue: '', type: String }
 });
 UCI.qos.$registerSectionType("interface", {
 	"classgroup":	{ dvalue: "Default", type: String },

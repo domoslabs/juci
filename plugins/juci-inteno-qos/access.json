@@ -2,6 +2,11 @@
 	"juci-inteno-qos": {
 		"description": "JUCI Quality-of-service Configuration",
 		"read": {
+			"ubus": {
+				"router.dsl": [
+					"stats"
+				]
+			},
 			"uci": [
 				"qos"
 			]

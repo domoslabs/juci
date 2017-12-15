@@ -104,7 +104,7 @@ msgstr ""
 msgid "IPv6 Address ID"
 msgstr ""
 
-msgid "Add Connected Host"
+msgid "Add Host"
 msgstr ""
 
 msgid "Static DHCP"
@@ -185,7 +185,7 @@ msgstr ""
 msgid "Do not forward reverse lookups for local networks"
 msgstr ""
 
-msgid "Filter usless"
+msgid "Filter useless"
 msgstr ""
 
 msgid "Do not forward requests that cannot be answered by public name servers"
@@ -203,7 +203,7 @@ msgid "Local server"
 msgstr ""
 
 msgid ""
-"Local domain specification. Names matching this domain are never forwared "
+"Local domain specification. Names matching this domain are never forwarded "
 "and resolved from DHCP or hosts files only"
 msgstr ""
 
@@ -299,7 +299,7 @@ msgid "Hostname Entries"
 msgstr ""
 
 msgid "menu-dhcp-status-title"
-msgstr "DHCP Status"
+msgstr "DHCP"
 
 msgid "menu-dhcp-settings-title"
-msgstr "DHCP"
+msgstr "DHCP/DNS"

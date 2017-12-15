@@ -1,0 +1,20 @@
+{
+	"juci-ice": {
+		"description": "JUCI ice-client module",
+		"read": {
+			"uci": [
+				"ice"
+			],
+			"ubus": {
+				"juci.ice": [
+					"status"
+				]
+			}
+		},
+		"write": {
+			"uci": [
+				"ice"
+			]
+		}
+	}
+}

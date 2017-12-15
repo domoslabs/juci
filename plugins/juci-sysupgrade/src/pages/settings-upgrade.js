@@ -23,9 +23,10 @@ JUCI.app
 	$scope.sessionID = $rpc.$sid();
 	$scope.uploadFilename = "/tmp/firmware.bin";
 	$scope.usbFileName = "()";
+	$scope.data = { upUrl: ""};
 	$scope.usbUpgradeAvailable = false;
 	
-	$scope.current_version = $config.board.system.firmware;
+	$scope.current_version = $config.get("board.system.firmware");
 	
 	$uci.$sync("system").done(function(){
 		$scope.system = $uci.system;
@@ -69,7 +70,7 @@ JUCI.app
 	$events.subscribe("sysupgrade", function(result){
 		if(!result || !result.data || !result.data.status) return;
 		if(result.data && result.data.status && result.data.status == "failed") {
-			$scope.showUpgradeStatus = 0;
+			$scope.showUpgradeStatus = false;
 			$scope.$apply();
 			$juciDialog.show(null, {
 				title: $tr(gettext("Image check failed")),
@@ -86,29 +87,35 @@ JUCI.app
 	$scope.onDismissModal = function(){
 		$scope.showUpgradeStatus = false;
 	};
-	
+
 	$scope.onCheckUSB = function(){
+		var ufwpath;
 		$scope.usbUpgradeAvailable = false;
-		$scope.usbCheckInProgress = 1;
-		$rpc.$call("juci.system.upgrade", "run", {"method":"check","args":JSON.stringify({type: "usb"})}).done(function(response){
+		$scope.usbCheckInProgress = true;
+		$rpc.$call("juci.sysupgrade", "check", {"type": "usb"}).done(function(response){
 			if(response.usb) {
 				$scope.usbUpgrade = response.usb;
-				$scope.usbUpgradeStatus = $tr(gettext("New Software Available!"));
+				ufwpath = response.usb.split("/");
+				$scope.usbUpgradeStatus = $tr(gettext(ufwpath[ufwpath.length-1]));
 				$scope.usbUpgradeAvailable = true;
 			} else {
 				$scope.usbUpgradeStatus = $tr(gettext("No upgrade has been found!"));
 				$scope.usbUpgrade = "";
 			}
 			if(response.stderr) $scope.$emit("error", $tr(gettext("USB upgrade check failed"))+": "+response.stderr);
-			$scope.usbCheckInProgress = 0;
+			$scope.usbCheckInProgress = false;
+			$scope.$apply();
+		}).fail(function(e){
+			console.log(e);
+			$scope.usbCheckInProgress = false;
 			$scope.$apply();
 		});
-	}
+	};
 
-	$scope.onCheckOnline = function(){
+	($scope.onCheckOnline = function(){
 		$scope.onlineUpgradeAvailable = false;
-		$scope.onlineCheckInProgress = 1;
-		$rpc.$call("juci.system.upgrade", "run", {"method":"check","args":JSON.stringify({type: "online"})}).done(function(response){
+		$scope.onlineCheckInProgress = true;
+		$rpc.$call("juci.sysupgrade", "check", {"type": "online"}).done(function(response){
 			if(response.online) {
 				$scope.onlineUpgrade = response.online;
 				$scope.onlineUpgradeStatus = $tr(gettext("New Software Available!"));
@@ -118,41 +125,57 @@ JUCI.app
 				$scope.onlineUpgradeStatus = $tr(gettext("No upgrade has been found!"));
 			}
 			if(response.stderr) $scope.$emit("error", $tr(gettext("Online upgrade check failed"))+": "+response.stderr);
-			$scope.onlineCheckInProgress = 0;
+			$scope.onlineCheckInProgress = false;
 			$scope.$apply();
-		}).fail(function(e){console.log(e);});
-	}
+		}).fail(function(e){
+			console.log(e);
+			$scope.onlineCheckInProgress = false;
+			$scope.$apply();
+		});
+	})();
 	$scope.onUpgradeOnline = function(){
 		confirmKeep().done(function(keep){
-			$scope.showUpgradeStatus = 1;
+			$scope.showUpgradeStatus = true;
 			$scope.message = $tr(gettext("Downloading and verifying image..."));
 			$scope.progress = $tr(gettext("Uploading"));
 			console.log("testing image: "+ $scope.uploadFilename);
-			$rpc.$call("juci.system.upgrade", "run", {"method":"start","args":JSON.stringify({"path":$scope.onlineUpgrade, "keep":(keep)?1:0})});
+			$rpc.$call("juci.sysupgrade", "start", {"path":$scope.onlineUpgrade, "keep":(keep)?1:0});
 		});
 	}
 	
 	$scope.onUpgradeUSB = function(){
 		confirmKeep().done(function(keep){
-			$scope.showUpgradeStatus = 1;
+			$scope.showUpgradeStatus = true;
 			$scope.message = $tr(gettext("Verifying image..."));
 			$scope.progress = $tr(gettext("Verifying"));
 			console.log("testing image: "+$scope.usbUpgrade);
-			$rpc.$call("juci.system.upgrade", "run", {"method":"start","args":JSON.stringify({"path":$scope.usbUpgrade, "keep":(keep)?1:0})});
+			$rpc.$call("juci.sysupgrade", "start", {"path":$scope.usbUpgrade, "keep":(keep)?1:0});
 		});
 	}
 	$scope.onStartUpgrade = function(){
-		confirmKeep().done(function(keep){
-			startUpload(keep);
-		});
+		if($scope.showUpgradeStatus)
+			return;
+		if($scope.data.upUrl){
+			confirmKeep().done(function(keep){
+				$scope.showUpgradeStatus = true;
+				$scope.message = $tr(gettext("Downloading and verifying image..."));
+				$scope.progress = $tr(gettext("Uploading"));
+				console.log("testing image: "+$scope.data.upUrl);
+				$rpc.$call("juci.sysupgrade", "start", {"path":$scope.data.upUrl, "keep":(keep)?1:0});
+				$scope.data.upUrl = "";
+				$scope.$apply();
+			});
+		}else{
+			confirmKeep().done(function(keep){
+				startUpload(keep);
+			});
+		}
 	}
 
 	$scope.fileChanged = function(){
 		$scope.upfile = document.getElementById("imageFileSelector");
 		$scope.$apply();
 	}
-	$scope.onCheckUSB();
-	$scope.onCheckOnline();
 	
 	function startUpload(keep){
 		var upfile = $scope.upfile;
@@ -164,12 +187,13 @@ JUCI.app
 		}).done(function(){
 			$scope.progress_byte = $scope.progress_total;
 			$scope.$apply();
-			$rpc.$call("juci.system.upgrade", "run", {"method":"start","args":JSON.stringify({"path":$scope.uploadFilename, "keep":(keep)?1:0})});
+			$rpc.$call("juci.sysupgrade", "start", {"path":$scope.uploadFilename, "keep":(keep)?1:0});
 		}).fail(function(e){
 			$scope.error =  $tr(gettext("The server returned an error"))+" ("+JSON.stringify(e)+")";
 			$scope.$apply();
 		});
 		$scope.progress_byte = 0;
-		$scope.showUpgradeStatus = 1;
+		$scope.showUpgradeStatus = true;
+		$scope.error = "";
 	}
 });

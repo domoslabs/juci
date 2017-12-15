@@ -1,0 +1,561 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+
+# plugins/juci-dnsmasq-dhcp/src/juci-dnsmasq-dhcp.js
+msgid "LAN does not have IPv6 configured"
+msgstr "LANにIPv6が設定されていません。"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "MAC Class"
+msgstr "MACクラス"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Vendor ID"
+msgstr "ベンダーID"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "User Class"
+msgstr "ユーザクラス"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Circuit ID"
+msgstr "サーキットID"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Remote ID"
+msgstr "リモートID"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Subscriber ID"
+msgstr "サブスクライバーID"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Select type of Classification"
+msgstr "分類タイプ選択"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Add new Tag"
+msgstr "新しいタグを追加"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Name can not be empty"
+msgstr "名前を空白にすることはできません"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Invalid name, it may only contain (a-z, A-Z, 0-9 and _)"
+msgstr "無効な名前です。(a-z、A-Z、0-9および_で入力して下さい)"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.js
+msgid "IPv4"
+msgstr "IPv4"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.js
+msgid "IPv6"
+msgstr "IPv6"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.js
+msgid "Minutes"
+msgstr "分"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.js
+msgid "Hour"
+msgstr "時"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.js
+msgid "Hours"
+msgstr "時間"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries.js
+msgid "Hostname(s) for "
+msgstr "ホスト名"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-add-classification.html
+msgid "Select Classifications Type"
+msgstr "分類タイプ選択"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-add-tag.html
+msgid "Tag Name"
+msgstr "タグ名"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/network-connection-dhcp-server-settings.html
+msgid "DHCP Server"
+msgstr "DHCPサーバ"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "DHCP Pool Start"
+msgstr "DHCPプールスタートアドレス"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "DHCP Pool Size"
+msgstr "DHCPプールサイズ"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "DHCP Lease Time"
+msgstr "DHCPリースタイム"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Lease Time"
+msgstr "リース時間"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Advanced Settings"
+msgstr "拡張設定"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-classification-editor.html
+msgid "DHCP Options"
+msgstr "DHCPオプション"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "ID:6 = DNS server, ID:15 = DNS domain name"
+msgstr "ID:6 = DNSサーバ、ID:15 = DNSドメイン名"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Dynamic DHCP"
+msgstr "ダイナミックDHCP"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Force"
+msgstr "オーバーライド"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "IPv4 Netmask"
+msgstr "IPv4ネットマスク"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "TODO"
+msgstr "予定"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "IPv6 Settings"
+msgstr "IPv6設定"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "DHCPv6-Service"
+msgstr "DHCPv6サービス"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "DHCPv6-Mode"
+msgstr "DHCPv6モード"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Router Advertisement-Service"
+msgstr "RA（ルータアドバタイズメント)"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "NDP-Proxy"
+msgstr "NDPプロキシ"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Master"
+msgstr "マスター"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-entry-edit.html
+msgid "Connection"
+msgstr "接続"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-entry-edit.html
+msgid "Network"
+msgstr "ネットワーク"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "Hostname"
+msgstr "ホスト名"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
+msgid "Add a host"
+msgstr "ホスト追加"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
+msgid "Family"
+msgstr "ファミリー"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "IPv4 Address"
+msgstr "IPv4アドレス"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
+msgid "IPv6 Address"
+msgstr "IPv6アドレス"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-tag-edit.html
+msgid "DHCP options"
+msgstr "DHCPオプション"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "MAC"
+msgstr "MAC"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "IPv6 Unique ID"
+msgstr "IPv6ユニークID"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "IPv6 Address ID"
+msgstr "IPv6アドレスID"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "No tag set"
+msgstr "タグが設定さていません"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "Add Host"
+msgstr "ホスト追加"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "Static DHCP"
+msgstr "Static DHCP"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "Device Name"
+msgstr "デバイス名"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "MAC Address"
+msgstr "MACアドレス"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "IP Address"
+msgstr "IPアドレス"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "DUID (IPv6)"
+msgstr "DUID(IPv6)"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "Host ID (IPv6)"
+msgstr "ホストID(IPv6)"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "Tag"
+msgstr "タグ"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "DHCPv4 leases"
+msgstr "DHCPv4リース"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "DHCPv6 leases"
+msgstr "DHCPv6リース"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "Active DHCP Leases"
+msgstr "DHCPリース情報"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "IPv4-Address"
+msgstr "IPv4アドレス"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "MAC-Address"
+msgstr "MACアドレス"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "Leasetime remaining"
+msgstr "残りリースタイム"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "There are no active leases"
+msgstr "アクティブなリースはありません"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "IPv6-Address"
+msgstr "IPv6アドレス"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "DUID"
+msgstr "DUID"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries.html
+msgid "Hostnames"
+msgstr "ホスト名"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-classification-editor.html
+msgid "Networkid"
+msgstr "ネットワークID"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "DHCP/DNS"
+msgstr "DHCP/DNS"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "General Settings"
+msgstr "一般設定"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Local domain"
+msgstr "ローカルドメイン"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Local domain suffix appended to DHCP names and hosts file entries"
+msgstr ""
+"DHCP名とホストファイルエントリに追加されたローカルドメインサフィックス"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Log queries"
+msgstr "ログクエリ"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Write received DNS requests to syslog"
+msgstr "受信したDNS要請をsyslogに書き込みます"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Leasefile"
+msgstr "リースファイル"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "file where given DHCP-leases will be stored"
+msgstr "指定されたDHCPリースが保存されるファイル"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Ignore resolve file"
+msgstr "解決したファイルを無視する"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Resolve file"
+msgstr "解決したファイル"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Tells dnsmasq to use this file to find upstream name servers"
+msgstr ""
+"Dnsマスカレードにこのファイルを使用してアップストリームネームサーバを検索す"
+"る様に指示する。"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Ignore Hosts file"
+msgstr "Hostsファイルを無視する"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Hostname Entries file(s)"
+msgstr "ホスト名エントリファイル"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Additional host files to read for serving DNS responses"
+msgstr "DNS応答を処理する為に読み込む追加のホストファイル"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Add Hostname file"
+msgstr "ホスト名ファイルを追加"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Domain required"
+msgstr "ドメインが必要"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Do not forward DNS-Requests without DNS-Name"
+msgstr "DNS名なしでDNS要求を転送しない"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Authoritative"
+msgstr "権威がある"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "This is the only DHCP in the local network"
+msgstr "これは、ローカルネットワーク内の唯一のDHCP"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Filter private"
+msgstr "プライベートなフィルタリング"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Do not forward reverse lookups for local networks"
+msgstr "ローカルネットワークの逆引きを転送しない"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Filter useless"
+msgstr "役に立たないフィルタ"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Do not forward requests that cannot be answered by public name servers"
+msgstr "パブリックネームサーバーが応答出来ない要求を転送しない"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Localise queries"
+msgstr "クエリのローカライズ"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid ""
+"Localise hostname depending on the requesting subnet if multiple IPs are "
+"available"
+msgstr ""
+"複数のIPが利用可能な場合は、要求しているサブネットに応じてホスト名をローカラ"
+"イズする"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Local server"
+msgstr "ローカルサーバ"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid ""
+"Local domain specification. Names matching this domain are never forwarded "
+"and resolved from DHCP or hosts files only"
+msgstr ""
+"ローカルドメイン指定。 このドメインに一致する名前は決して転送されず、DHCPま"
+"たはホストファイルのみから解決される。"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Expand hosts"
+msgstr "ホストを展開する"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Add local domain suffix to names served from hosts files"
+msgstr ""
+"ホストファイルから提供される名前にローカルドメインサフィックスを追加する"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "No negative cache"
+msgstr "ネガティブキャッシュなし"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Do not cache negative replies, e.g. for not existing domains"
+msgstr "ネガティブ応答をキャッシュしない 例：既存ではないドメイン"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Strict order"
+msgstr "厳密な順序"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "DNS servers will be queried in the order of the resolvfile"
+msgstr "DNSサーバはresolvfileの順に照会される。"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Bogus NX Domain Override"
+msgstr "偽のNXDドメインオーバーライド"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "List of hosts that supply bogus NX domain results"
+msgstr "偽のNXドメインの結果を提供するホストのリスト"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "ex. 67.215.65.132"
+msgstr "例：67.215.65.132"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "DNS forwarding"
+msgstr "DNSフォワーディング"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "List of DNS servers to forward requests to"
+msgstr "リクエストを転送するDNSサーバのリスト"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "ex. /example.org/10.1.2.3"
+msgstr "例：/example.org/10.1.2.3"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Rebind protection"
+msgstr "リバインドプロテクション"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Discard upstream RFC1918 responses"
+msgstr "アップストリームRFC1918応答を破棄する"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Allow localhost"
+msgstr "許可ローカルホスト"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid ""
+"Allow upstream responses in the 127.0.0.0/8 range, e.g. for RBL services"
+msgstr "127.0.0.0/8の範囲でアップストリームの応答を許可する 例：RBLサービス"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Domain whitelist"
+msgstr "ドメインホワイトリスト"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "List of domains to allow RFC1918 responses for"
+msgstr "RFC1918の応答を許可するドメインのリスト"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "ex. ihost.netflix.com"
+msgstr "例：ihost.netflix.com"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "DNS server port"
+msgstr "DNSサーバポート"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Listening port for inbound DNS queries"
+msgstr "受信DNSクエリのリスニングポート"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "DNS query port"
+msgstr "DNSクエリポート"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Fixed source port for outbound DNS queries"
+msgstr "アウトバウンドDNSクエリの固定送信元ポート"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Max DHCP leases"
+msgstr "最大DHCPリース"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Maximum allowed number of active DHCP leases"
+msgstr "アクティブなDHCPリースの最大許容数"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Max. EDNS0 packet size"
+msgstr "最大DNS0パケットサイズ"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Maximum allowed size of EDNS.0 UDP packets"
+msgstr "EDNS.0 UDPパケットの最大許容サイズ"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Max. concurrent queries"
+msgstr "最大同時クエリ"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Maximum allowed number of concurrent DNS queries"
+msgstr "同時に許可される同時DNSクエリ数"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Hostname Entries"
+msgstr "ホスト名エントリ"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Classifications"
+msgstr "分類"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "DNS Tags"
+msgstr "DNSタグ"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Create Classification sections classify DHCP clients"
+msgstr "分類セクションを作成すると、DHCPクライアントが分類される"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-status.html
+msgid "menu-dhcp-status-title"
+msgstr "DHCP"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "menu-dhcp-settings-title"
+msgstr "設定"

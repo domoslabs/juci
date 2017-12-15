@@ -41,9 +41,6 @@
 		<juci-config-line title="{{'Maximum Burst Size' | translate}}" ng-show="conf.atmtype.value == 'nrtvbr' || conf.atmtype.value == 'rtvbr'" error="conf.mbs.error">
 			<input type="text" class="form-control" ng-model="conf.mbs.value" placeholder="cells"/>
 		</juci-config-line>
-		<juci-config-line title="This device will be used in a bridge">
-			<switch class="green" ng-model="conf.bridge.value"></switch>
-		</juci-config-line>
 	</juci-config-lines>
 </div>
 

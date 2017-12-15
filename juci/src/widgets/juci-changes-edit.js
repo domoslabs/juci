@@ -15,6 +15,14 @@ JUCI.app
 })
 .controller("juciChangesEditCtrl", function($scope){
 	$scope.onRevertOption = function(item){
+		if($scope.model.changes[item].state==='deleted section'){
+			alert("Press Cancel and reload page to restore deleted section.");
+			return
+		}
+		if($scope.model.changes[item].state==='new section'){
+			alert("Press Cancel and reload page to delete new section.");
+			return
+		}
 		if(!$scope.model.reverted) $scope.model.reverted = [];
 		if($scope.model.changes[item]){
 			$scope.model.reverted.push($scope.model.changes[item]);
@@ -24,7 +32,7 @@ JUCI.app
 }).filter("maxlength", function(){
 	return function(input, length){
 		length = (typeof length != "number") ? 50 : length;
-		input = input || "";
+		if(input === undefined)input = "";
 		if(String(input).length < length) return input;
 		var output = "";
 		output = String(input).slice(0, length) + "...";

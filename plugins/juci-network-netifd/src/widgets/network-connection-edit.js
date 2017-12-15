@@ -27,7 +27,7 @@ JUCI.app
 	}
 	
 	$scope.allProtocolTypes = $network.getProtocolTypes();
-	$rpc.$call("juci.network", "run", {"method":"protocols"}).done(function(data){
+	$rpc.$call("juci.network", "protocols", {}).done(function(data){
 		$scope.protocolTypes = $scope.allProtocolTypes.filter(function(x){
 			if(x.value == "static" || x.value == "none") return true; //should allways be there
 			return data.protocols.find(function(p){ return p == x.value }) != undefined;
@@ -59,18 +59,18 @@ JUCI.app
 	$scope.onChangeProtocol = function(value, oldvalue){
 		if(value == oldvalue) return;
 		$juciConfirm.show($tr(gettext("Are you sure you want to switch? Your settings will be lost!<br />The only way to get it back is to reload the page")))
-		.done(function(data){
-			if(data == "cancel"){
-				$scope.interface.proto.value = oldvalue;
+		.done(function(){
+			var exc = [];
+			if(exceptions[value]){
+				exc = exceptions[value].concat(standard_exc);
 			}
-			if(data == "ok"){
-				var exc = [];
-				if(exceptions[value]){
-					exc = exceptions[value].concat(standard_exc);
-				}
-				$scope.interface.$reset_defaults(exc);
-				$scope.interface.proto.value = value;
-			}
+			$scope.interface.$reset_defaults(exc);
+			$scope.interface.proto.value = value;
+			setProto($scope.interface.proto.value);
+			$scope.$apply();
+		}).fail(function(){
+			$scope.interface.proto.value = oldvalue;
+		}).always(function(){
 			setProto($scope.interface.proto.value);
 			$scope.$apply();
 		});
@@ -89,13 +89,8 @@ JUCI.app
 		});
 	}load_info();
 	$events.subscribe("network.interface", function(){load_info();});
-	$scope.$watch("interface.type.value", function(){
-		if(!$scope.interface) return; 
-		$scope.interface.$type_editor = "<network-connection-type-"+($scope.interface.type.value||'none')+"-edit ng-model='interface'/>"; 
-	}); 
 	$scope.$watch("interface", function(){
 		if(!$scope.interface) return; 
 		setProto($scope.interface.proto.value);
-		$scope.interface.$type_editor = "<network-connection-type-"+($scope.interface.type.value||'none')+"-edit ng-model='interface'/>"; 
 	}, false); 
 }); 

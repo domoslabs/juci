@@ -1,15 +1,16 @@
 <div>
-	<div class="modal-header">
-		<h3 class="modal-title" translate>Add new SSH key</h3>
-	</div>
-	<div class="modal-body">
+	<juci-config-section>
 		<label>{{'Paste your key here:'|translate}}</label>
-		<textarea rows="12" cols="50" ng-model="data.key">
+		<textarea rows="12" cols="50" ng-model="model.key">
 		</textarea>
-	</div>
-	<div class="modal-footer">
-		<button class="btn btn-primary" ng-click="ok()">OK</button>
-		<button class="btn btn-default" ng-click="cancel()">Cancel</button>
-	</div>
+	</juci-config-section>
+	<juci-config-section>
+		<juci-config-lines>
+			<juci-config-line title="{{'Or pick a file'|translate}}">
+				<input type="file" onchange="angular.element(this).scope().fileChanged()" class="btn btn-default btn-file" id="keyFileSelector"  name="filedata" />
+			</juci-config-line>
+		</juci-config-lines>
+	</juci-config-section>
+	<div class="alert alert-danger" style="font-size: 0.8em" ng-show="model.error">{{model.error}}</div>
 </div>
 

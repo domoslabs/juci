@@ -5,7 +5,7 @@ JUCI.app
 	$scope.data = {};
 	$scope.getItemTitle = function(item) {
 		if(!item) return "error";
-		return item[".name"];
+		return item.name.value || item[".name"];
 	}
 	$uci.$sync(["ports", "layer2_interface_ethernet"]).done(function(){
 		$scope.ports = $uci.ports["@ethport"] || [];
@@ -14,7 +14,13 @@ JUCI.app
 				{ label: $tr(gettext("Port Speed")), value: port.speed.value }
 			];
 		});
-		console.log($rootScope.has_capability("can-set-pauseframes"));
+		$scope.sfpports = $uci.ports["@sfpport"] || [];
+		$scope.sfpports.map(function(port){
+			port.is_fiber = true;
+			port.$statusList = [
+				{ label: $tr(gettext("Port Speed")), value: port.speed.value }
+			];
+		});
 		$scope.data.ports = [{label:$tr(gettext("None")), value: "none"}].concat($scope.ports.map(function(port){ return {label: port.name.value, value: port.ifname.value};}));
 		if($uci.layer2_interface_ethernet.Wan){
 			$scope.data.wan_port = $uci.layer2_interface_ethernet.Wan.baseifname.value;

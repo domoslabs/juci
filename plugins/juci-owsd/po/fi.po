@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: Inteno\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.4\n"
+
+msgid "Interface"
+msgstr "Liitäntä"
+
+msgid "Port"
+msgstr "Portti"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/pages/settings-management-owsd.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/widgets/owsd-listen-edit.html
+msgid "IPv6"
+msgstr "IPv6"
+
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/pages/settings-management-owsd.js
+msgid "IPv6 Only"
+msgstr "Ainoastaan IPv6"
+
+msgid "Enabled"
+msgstr "Käytössä"
+
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/pages/settings-management-owsd.js
+msgid "Disabled"
+msgstr "Ei käytössä"
+
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/pages/settings-management-owsd.js
+msgid "List of allowed origins"
+msgstr "Sallitut lähteet"
+
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/pages/settings-management-owsd.js
+msgid "Add OWSD Listen interface"
+msgstr "Lisää OWSD liitäntä"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/pages/settings-management-owsd.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/widgets/owsd-listen-edit.js
+msgid "Add"
+msgstr "Lisää"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/pages/settings-management-owsd.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/widgets/owsd-listen-edit.js
+msgid "Cancel"
+msgstr "Peruuta"
+
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/widgets/owsd-listen-edit.js
+msgid "Add OWSD Origin"
+msgstr "Lisää OWSD lähde"
+
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/widgets/owsd-listen-edit.html
+msgid "Only IPv6"
+msgstr "Ainoastaan IPv6"
+
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/widgets/owsd-listen-edit.html
+msgid "List of allowed origins:"
+msgstr "Sallitut lähteet:"
+
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/widgets/owsd-add-item.html
+msgid "Name"
+msgstr "Nimi"
+
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/pages/settings-management-owsd.html
+msgid "OWSD"
+msgstr "OWSD"
+
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/pages/settings-management-owsd.html
+msgid "Chage settings for the owsd web-server deamon"
+msgstr "Muuta OWSD web-palvelimen asetuksia"
+
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/pages/settings-management-owsd.html
+msgid "menu-settings-management-owsd-title"
+msgstr "OWSD"
+
+# /home/jamu/GIT/juci/plugins/juci-owsd/src/pages/settings-management-owsd.html
+#~ msgid "settings-management-owsd-title"
+#~ msgstr "OWSD"
+
+#~ msgid "Password Authentication"
+#~ msgstr "Salasanan tunnistus"
+
+# /home/jamu/GIT/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.js
+#~ msgid "Enable Root Password Authentication"
+#~ msgstr "Aktivoi root-käyttäjän salasana-autentikointi"
+
+#~ msgid "Enable Root Login"
+#~ msgstr "Salli Root-käyttäjän Kirjautuminen"
+
+#~ msgid "Dropbear Instance on Interface: "
+#~ msgstr "Dropbear-instanssi:"
+
+#~ msgid "ANY"
+#~ msgstr "APN"
+
+#~ msgid "Please select a instance in the list to remove"
+#~ msgstr "Valitse poistettava instanssi listasta"
+
+#~ msgid "Unable to remove last instance"
+#~ msgstr "Viimeistä instanssia ei voitu poistaa"
+
+#~ msgid "Are you sure you want to remove this instance?"
+#~ msgstr "Haluatko varmasti poistaa tämän vyöhykkeen?"
+
+# /home/jamu/GIT/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.js
+#~ msgid "Key"
+#~ msgstr "Avain"
+
+# /home/jamu/GIT/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.js
+#~ msgid "Key Type"
+#~ msgstr "Avaimen tyyppi"
+
+# /home/jamu/GIT/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.js
+#~ msgid "Comment"
+#~ msgstr "Kommentti"
+
+# /home/jamu/GIT/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.js
+#~ msgid "No comment"
+#~ msgstr "Ei kommenttia"
+
+# /home/jamu/GIT/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.js
+#~ msgid "Are you SURE you want to delete this key? You can not revert this"
+#~ msgstr "Oletko varma, että haluat poistaa tämän avaimen? Sitä ei voi palauttaa"
+
+# /home/jamu/GIT/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.js
+#~ msgid "Add new SSH Key"
+#~ msgstr "Lisää uusi SSH avain"
+
+# /home/jamu/GIT/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.js
+#~ msgid "You must enter a key or pick a key-file"
+#~ msgstr "Kirjoita avain tai valitse avaintiedosto"
+
+#~ msgid "Paste your key here:"
+#~ msgstr "Liitä avaimesi tähän:"
+
+# /home/jamu/GIT/juci/plugins/juci-dropbear/src/widgets/dropbear-add-key.html
+#~ msgid "Or pick a file"
+#~ msgstr "Tai valitse tiedosto"
+
+#~ msgid "Banner File"
+#~ msgstr "Banner tiedosto"
+
+#~ msgid "Name of a file to be printed before the user has authenticated successfully"
+#~ msgstr "Tiedoston nimi tulostetaan ennen kuin käyttäjä on todennettu onnistuneesti"
+
+#~ msgid "Banner File Path"
+#~ msgstr "Bannerin tiedostopolku"
+
+#~ msgid "Listen Port"
+#~ msgstr "Kuuntelu portti"
+
+#~ msgid "Enable Root Password Auth"
+#~ msgstr "Salli root salasana todennus"
+
+#~ msgid "Enable Forwarded Ports"
+#~ msgstr "Enable Forwarded Ports"
+
+#~ msgid "RSA Key File"
+#~ msgstr "RSA Key File"
+
+#~ msgid "DSS Key File"
+#~ msgstr "DSS Key File"
+
+#~ msgid "Connection Keep Alive"
+#~ msgstr "Yhteyksien elossapito"
+
+#~ msgid "Idle Timeout"
+#~ msgstr "Aikakatkaisu"
+
+#~ msgid "Dropbear SSH"
+#~ msgstr "Dropbear SSH"
+
+#~ msgid "General settings"
+#~ msgstr "Yleiset asetukset"
+
+#~ msgid "Start/Stop Service"
+#~ msgstr "Käynnistä/Pysäytä"
+
+#~ msgid "Start or stop service"
+#~ msgstr "Käynnistä tai pysäytä palvelu"
+
+#~ msgid "Enable/Disable starting SSH service during boot"
+#~ msgstr "Ota käyttöön / poista käytöstä SSH-palvelu käynnistyksen aikana"
+
+#~ msgid "Verbose logging"
+#~ msgstr "Kattava lokitus"
+
+#~ msgid "Set to 1 to enable verbose output by the start script"
+#~ msgstr "Asetettu 1, joka ottaa käyttöön kattavan lokituksen"
+
+#~ msgid "Dropbear Instances"
+#~ msgstr "Dropbear SSH"
+
+#~ msgid "settings.dropbear.instance"
+#~ msgstr "Konfiguroi SSH-pääsy modeemiin."
+
+#~ msgid "Accepted SSH keys"
+#~ msgstr "Sallitut SSH-avaimet"
+
+#~ msgid "menu-settings-management-dropbear-title"
+#~ msgstr "SSH"
+
+# /home/jamu/GIT/juci/plugins/juci-dropbear/src/pages/settings-management-dropbear.html
+#~ msgid "settings-management-dropbear-title"
+#~ msgstr "SSH"
+
+#~ msgid "Key ending with"
+#~ msgstr "Avain joka loppuu"
+
+#~ msgid "You need to insert the public key data!"
+#~ msgstr "Julkisen avaimen tieto on lisättävä"
+
+#~ msgid "Add new SSH key"
+#~ msgstr "Lisää uusi SSH-avain"

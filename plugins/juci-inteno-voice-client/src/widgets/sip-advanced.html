@@ -27,7 +27,7 @@
 				<juci-select ng-items="dtmf_modes" ng-model="sip.dtmfmode.value"></juci-select>
 			</juci-config-line>
 			<juci-config-line title="{{ 'Register Interval' | translate }}" help="{{ 'Time in seconds between registration attempts' | translate }}">
-				<input type="number" class="form-control" ng-model="sip.dnsmgr_refresh_interval.value" />
+				<input type="number" class="form-control" ng-model="sip.defaultexpiry.value" />
 			</juci-config-line>
 			<juci-config-line title="{{ 'Realm' | translate }}" help="{{ 'Realm for digest authentication, set this to your host name or domain name' | translate }}">
 				<input type="text" class="form-control" ng-model="sip.realm.value" />

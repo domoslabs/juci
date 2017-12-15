@@ -1,16 +1,28 @@
 <div>
-	<juci-expandable title="TP test">
+	<juci-expandable>
+		<label class="label label-warning">{{'The test can take up to two minutes'|translate}}</label>
 		<juci-config-lines>
 			<juci-config-line title="{{'Direction'|translate}}">
-				<juci-select ng-model="data.test_type" ng-items="testType"/>
+				<juci-select ng-model="data.test_type" ng-items="testType"></juci-select>
 			</juci-config-line>
-			<juci-config-line title="{{'Bytes to transfer'|translate}}">
+			<juci-config-line title="{{'Automatic transfer size'|translate}}">
 				<div class="input-group">
-					<input type="number" step="5" class="form-control" ng-model="data.packagesize" />
-					<span class="input-group-addon">Mbyte</span>
+					<switch class="green" ng-model="data.auto" />
 				</div>
 			</juci-config-line>
-			<juci-config-line title="{{'Speedtest Server' | translate}}">
+			<juci-config-line ng-show="!data.auto && (data.test_type=='down' || data.test_type=='up_down')" title="{{'Download transfer size'|translate}}">
+				<div class="input-group">
+					<input type="number" min="0" max="500" step="5" class="form-control" ng-model="data.downsize" placeholder="[Mbyte]" />
+					<span class="input-group-addon">MB</span>
+				</div>
+			</juci-config-line>
+			<juci-config-line ng-show="!data.auto && (data.test_type=='up' || data.test_type=='up_down')" title="{{'Upload transfer size'|translate}}">
+				<div class="input-group">
+					<input type="number" min="0" max="500" step="5" class="form-control" ng-model="data.upsize" placeholder="[Mbyte]" />
+					<span class="input-group-addon">MB</span>
+				</div>
+			</juci-config-line>
+			<juci-config-line title="{{'Server' | translate}}">
 				<juci-select ng-model="data.server" ng-items="allTestServers"/>
 			</juci-config-line>
 			<juci-config-line>
@@ -25,13 +37,13 @@
 				</div>
 			</juci-config-line>
 			<juci-config-line>
-				<button class="btn btn-default" ng-click="runTest()">
+				<button ng-class="{'disabled': data.state == 'running'}" class="btn btn-default" ng-click="runTest()">
 				{{'Run test' | translate}}</button>
 			</juci-config-line>
 		</juci-config-lines>
-		<div class="alert alert-success" ng-show="data.state == 'result'">
+		<div class="alert alert-success" ng-show="data.result.length">
 			{{'Test results'|translate}}: <br/>
-			<pre>{{data.result}}</pre>
+			<pre ng-repeat="res in data.result track by $index">{{res}}<button class="btn btn-primary pull-right" ng-click="removeResult(res)"><i class="fa fa-close"></i></button</pre>
 		</div>
 		<div class="alert alert-success" ng-show="data.state == 'running'">
 			<h4>

@@ -1,0 +1,21 @@
+<juci-layout-with-sidebar>
+	<div ng-controller="wirelessBandSteering">
+		<juci-config-heading>{{ 'Band Steering' | translate }}</juci-config-heading>
+		<juci-config-info>{{ 'wifi.band-steering.info' | translate }}</juci-config-info>
+		<juci-config-info ng-show="isntDualBand()" class="alert alert-warning">
+			{{ 'wifi.band-steering.dualband-warning' | translate}}
+		</juci-config-info>
+		<juci-config-line title="{{'Enable'|translate}}" ng-show="isDualBand()">
+			<switch class="green" ng-model="bandsteering.enabled.value" ng-disabled="isntDualBand()"/>
+		</juci-config-line>
+		<juci-config-line title="{{'Steering Policy'|translate}}" ng-show="bandsteering.enabled.value">
+			<juci-select ng-items="policys" ng-model="bandsteering.policy.value"/>
+		</juci-config-line>
+		<juci-config-line title="{{'RSSI Threshold'|translate}}" ng-show="bandsteering.enabled.value && bandsteering.policy.value===0" error="bandsteering.rssi_threshold.error">
+			<input type="number" class="form-control" ng-model="bandsteering.rssi_threshold.value">
+		</juci-config-line>
+		<juci-config-line title="{{'Bandwidth Usage Threshold'|translate}}" ng-show="bandsteering.enabled.value && bandsteering.policy.value===1" error="bandsteering.bw_util.error">
+			<input type="number" class="form-control" ng-model="bandsteering.bw_util.value">
+		</juci-config-line>
+	</div>
+</juci-layout-with-sidebar>

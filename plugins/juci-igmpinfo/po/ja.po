@@ -1,0 +1,56 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+
+# plugins/juci-igmpinfo/src/pages/status-tv.js
+msgid "Unable to retreive igmptable from device!"
+msgstr "デバイスからigmptableを取得できません"
+
+# plugins/juci-igmpinfo/src/pages/status-tv.html
+msgid "IGMP TV Status"
+msgstr "IGMP TVステータス"
+
+# plugins/juci-igmpinfo/src/pages/status-tv.html
+msgid "status.tv.info"
+msgstr " "
+
+# plugins/juci-igmpinfo/src/pages/status-tv.html
+msgid "Connection Status"
+msgstr "接続ステータス"
+
+# plugins/juci-igmpinfo/src/pages/status-tv.html
+msgid "IGMP TV Channels"
+msgstr "IGMP TVチャネル"
+
+# plugins/juci-igmpinfo/src/pages/status-tv.html
+msgid "Group IP"
+msgstr "グループ IP"
+
+# plugins/juci-igmpinfo/src/pages/status-tv.html
+msgid "Client IP"
+msgstr "クライアントIP"
+
+# plugins/juci-igmpinfo/src/pages/status-tv.html
+msgid "LAN Port"
+msgstr "LANポート"
+
+# plugins/juci-igmpinfo/src/pages/status-tv.html
+msgid "WAN Port"
+msgstr "WAN ポート"
+
+# plugins/juci-igmpinfo/src/pages/status-tv.html
+msgid "Timeout"
+msgstr "タイムアウト"
+
+# plugins/juci-igmpinfo/src/pages/status-tv.html
+msgid "menu-status-tv-title"
+msgstr "TV"

@@ -2,10 +2,19 @@
 	background-color: #eee;
 }
 .lan-overview-client {
+	cursor:pointer;
+	position:relative;
 	margin-left:15px;
 	padding-top:10px;
 	padding-bottom:10px;
 }
 .lan-overview-network {
 	border-bottom: 1px solid #eee;
+	overflow:hidden;
+}
+.lan-client-status-text {
+	position:absolute;
+	top:38px;
+	right:0px;
+	font-size:0.6em;
 }

@@ -9,13 +9,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.0.4\n"
 
 msgid "Unable to retreive igmptable from device!"
 msgstr "Ei voitu hakea IGMP-taulua laitteesta!"
 
-msgid "IGPM TV Status"
-msgstr "IPTV Tila"
+# /home/jamu/GIT/juci/plugins/juci-igmpinfo/src/pages/status-tv.html
+msgid "IGMP TV Status"
+msgstr "IGMP TV tila"
 
 msgid "status.tv.info"
 msgstr "Tällä sivulla voit tarkistaa IPTV-palvelun tilan."
@@ -43,3 +44,10 @@ msgstr "Aikakatkaisu"
 
 msgid "menu-status-tv-title"
 msgstr "IPTV"
+
+# /home/jamu/GIT/juci/plugins/juci-igmpinfo/src/pages/status-tv.html
+#~ msgid "status-tv-title"
+#~ msgstr "IPTV"
+
+#~ msgid "IGPM TV Status"
+#~ msgstr "IPTV Tila"

@@ -42,7 +42,7 @@ msgid "Load Balancer (Performance)"
 msgstr ""
 
 msgid "Load Balancer (Compability)"
-msgstr ""
+msgstr "Load Balancer (Compatibility)"
 
 msgid "Load Balancer Distribution"
 msgstr ""

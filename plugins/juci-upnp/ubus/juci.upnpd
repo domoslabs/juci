@@ -1,0 +1,35 @@
+#!/bin/sh
+
+. /usr/share/libubox/jshn.sh
+
+case "$1" in
+	list)
+		echo '{ "ports" : {} }'
+	;;
+	call)
+		case "$2" in
+			ports)
+				upnpfile="/tmp/upnp.status"
+
+				iptables --line-numbers -t nat -xnvL MINIUPNPD | tail -n +3 | tr '*' '-' | sed 's/ \+/ /g' > $upnpfile
+				json_init
+				json_add_array "ports"
+				while read -r line
+				do
+					json_add_object ""
+					json_add_string num "$(echo $line | awk '{print$1}')"
+					json_add_string packets "$(echo $line | awk '{print$2}')"
+					json_add_string bytes "$(echo $line | awk '{print$3}')"
+					json_add_string target "$(echo $line | awk '{print$4}')"
+					json_add_string proto "$(echo $line | awk '{print$5}')"
+					json_add_string opt "$(echo $line | awk '{print$6}')"
+					json_add_string src "$(echo $line | awk '{print$12}' | awk -F'dpt:' '{print$2}')"
+					json_add_string dst "$(echo $line | awk '{print$13}' | awk -F'to:' '{print$2}')"
+					json_select ..
+				done < $upnpfile
+				rm -f $upnpfile
+				json_dump
+			;;
+		esac
+	;;
+esac

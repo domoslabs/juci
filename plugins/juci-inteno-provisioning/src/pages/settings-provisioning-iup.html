@@ -1,17 +1,17 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="icwmpProvisioningPage">
 		<h2>{{'IUP Provisioning'|translate}}</h2>
-		<p translate>Setup your IUP Provisioning parameterrs</p>
+		<p translate>Setup IUP Provisioning parameters</p>
 		<juci-config-section>
 			<h3 translate>General</h3>
 			<juci-config-lines>
 				<juci-config-line title="{{ 'Enabled' | translate }}">
 					<switch class="green" ng-model="general.enabled.value" />	
 				</juci-config-line>
-				<juci-config-line title="{{ 'Update interval start time' | translate }}">
+				<juci-config-line title="{{ 'Update start time' | translate }}">
 					<juci-select ng-items="times" ng-model="general.starttime.value"></juci-select>
 				</juci-config-line>
-				<juci-config-line title="{{ 'Update interval' | translate }}">
+				<juci-config-line title="{{ 'Update frequency' | translate }}">
 					<juci-select ng-items="update_interval" ng-model="general.interval.value"></juci-select>
 				</juci-config-line>
 				<juci-config-line title="{{ 'Export file' | translate }}">
@@ -19,13 +19,16 @@
 				</juci-config-line>
 			</juci-config-lines>
 			<h3 translate>Main Provisioning Server</h3>
+			<juci-config-info>{{'Setup the Configuration Provisioning options' | translate}}</juci-config-info>
 			<juci-config-lines>
-				<juci-config-line title="{{ 'Enabled' | translate }}" help="{{ 'If added will override DHCP Discover Provisioning' | translate }}">
-					<switch class="green" ng-model="prov_server.enabled.value" />
-				</juci-config-line>
-				<juci-config-line ng-show="prov_server.enabled.value" title="{{ 'Reboot' | translate }}" help="{{ 'Reboot after settings config 
-									usualy needed for network settings to work properly' | translate }}">
+				<juci-config-line title="{{ 'Reboot' | translate }}" help="{{ 'Reboot after applying the new configuration. Recommended: On' | translate }}">
 					<switch class="green" ng-model="prov_server.reboot.value" />
+				</juci-config-line>
+				<juci-config-line title="{{ 'Keep user config' | translate }}" help="{{ 'Save user changes before provisioning and reapply them after' | translate }}">
+					<switch class="green" ng-model="prov_server.keepuserconfig.value" />
+				</juci-config-line>
+				<juci-config-line title="{{ 'Enabled' | translate }}" help="{{ 'Overwrite DHCP Discover Provisioning' | translate }}">
+					<switch class="green" ng-model="prov_server.enabled.value" />
 				</juci-config-line>
 				<juci-config-line ng-show="prov_server.enabled.value" title="{{ 'URL' | translate }}">
 					<input type="text" class="form-control" ng-model="prov_server.url.value" />
@@ -47,12 +50,12 @@
 				</juci-config-line>
 			<juci-config-lines>
 			<h3 translate>Software Update Config</h3>
+			<juci-config-info>{{'Setup the Firmware Provisioning options' | translate }}</juci-config-info>
 			<juci-config-lines>
 				<juci-config-line title="{{ 'Enabled' | translate }}">
 					<switch class="green" ng-model="uppgrade_server.enabled.value" />
 				</juci-config-line>
-				<juci-config-line title="{{ 'Defaultreset' | translate }}" help="{{ 'Will remove any configuration set on the device and 
-								set it to software default' | translate }}">
+				<juci-config-line title="{{ 'Defaultreset' | translate }}" help="{{ 'Reset configuration to default' | translate }}">
 					<switch class="green" ng-model="uppgrade_server.defaultreset.value" />
 				</juci-config-line>
 				<juci-config-line title="{{ 'Software URL' | translate }}">

@@ -28,7 +28,7 @@ JUCI.app
 		templateUrl: "/widgets/firewall-zone-edit.html"
 	};
 })
-.controller("firewallZoneEdit", function($scope, $firewall, $network, networkConnectionPicker, $uci, $tr, gettext){
+.controller("firewallZoneEdit", function($scope, $firewall, $network, networkConnectionPicker, $uci, $tr, gettext, $juciConfirm){
 	$scope.policys = [
 		{ label: $tr(gettext("ACCEPT")), value: "ACCEPT" },
 		{ label: $tr(gettext("REJECT")), value: "REJECT" },
@@ -97,11 +97,11 @@ JUCI.app
 	$scope.onRemoveNetwork = function(conn){
 		if(!$scope.zone) return;
 		if(!conn) alert($tr(gettext("Please select a connection in the list!")));
-		if(confirm($tr(gettext("Are you sure you want to remove this network from this zone?")))){
+		$juciConfirm.show($tr(gettext("Are you sure you want to remove this network from this zone?"))).done(function(){
 			$scope.zone.network.value = $scope.zone.network.value.filter(function(name){
 				return name != conn;
 			});
-		}
+		});
 	}
 	
 }).filter("uppercase", function(){

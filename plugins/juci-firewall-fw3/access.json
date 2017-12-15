@@ -6,23 +6,29 @@
 				"network.interface": [
 					"status"
 				],
-				"/juci/firewall": [
-					"run"
-					/*"excluded_ports"*/
-				],
-				"/juci/system.time": [
-					"run"
-					/*"timediff"*/
+				"juci.firewall": [
+					"excluded_ports"
 				]
-			}, 
+			},
 			"uci": [
-				"firewall"
+				"firewall",
+				"passwords"
 			]
 		},
 		"write": {
 			"uci": [
 				"firewall"
 			]
+		}
+	},
+	"user-admin": {
+		"description": "Broadcom ethernet admin functions",
+		"read": {
+			"juci": {
+				"capabilities": [
+					"can-hide-firewall-rules"
+				]
+			}
 		}
 	}
 }

@@ -20,14 +20,13 @@
 
 (function(scope){
 	var DEBUG_MODE = 0;
-	var retries = 3;
-	var RPC_HOST = ""; //(($config.rpc.host)?$config.rpc.host:"")
+	var RPC_TIMEOUT = 20 * 1000;
+	var RPC_USER = scope.localStorage.getItem("user") || "";
 	var RPC_DEFAULT_SESSION_ID = "00000000000000000000000000000000";
 	var RPC_SESSION_ID = scope.localStorage.getItem("sid")||RPC_DEFAULT_SESSION_ID;
 	var RPC_CACHE = {};
 	var METHODS = {};
 	var EVENT_HANDLER;
-	var RPC_QUERY_IDS = {};
 	var rpc_query_id = 1;
 	var ws;
 	
@@ -35,9 +34,7 @@
 	
 	var default_calls = [
 		"session.list",
-		"session.login",
-		"local.features",
-		"local.set_rpc_host"
+		"session.login"
 	];
 	
 	// type = "sonrpc mehod parameter (i.e. call, list, ...
@@ -46,21 +43,18 @@
 	// data = ubus parameters
 	//
 	// {jsonrpc..., method: type, [ RPC_SESSION_D , namespace, method, { ... data ...  } }
+	function rejectCalls(){
+		Object.keys(RPC_CACHE).map(function(key){
+			if(RPC_CACHE[key] && RPC_CACHE[key].deferred && RPC_CACHE[key].deferred.state() === "pending"){
+				clearTimeout(RPC_CACHE[key].timeout);
+				RPC_CACHE[key].deferred.reject();
+			}
+		});
+		RPC_CACHE = {};
+	}
 	function rpc_request(type, object, method, data){
 		if(DEBUG_MODE > 1)console.log("UBUS " + type + " " + object + " " + method);
-		var sid = "";
-		
-		// check if the request has been made only recently with same parameters
-		var key = object+method+JSON.stringify(data);
-		if(!RPC_CACHE[key]){
-			RPC_CACHE[key] = {};
-		}
-		// if this request with same parameters is already in progress then just return the existing promise
-		if(RPC_CACHE[key].deferred && RPC_CACHE[key].deferred.state() === "pending"){
-			return RPC_CACHE[key].deferred.promise();
-		} else {
-			RPC_CACHE[key].deferred = $.Deferred();
-		}
+		if(ws === null) return $.Deferred().reject();
 
 		// remove completed requests from cache
 		var retain = {};
@@ -70,6 +64,25 @@
 			}
 		});
 		RPC_CACHE = retain;
+
+		// check if the request has been made only recently with same parameters
+		var key = type+" "+object+" "+method+" "+JSON.stringify(data);
+		if(!RPC_CACHE[key]){
+			RPC_CACHE[key] = {};
+		}
+		// if this request with same parameters is already in progress then just return the existing promise
+		if(RPC_CACHE[key].deferred && RPC_CACHE[key].deferred.state() === "pending"){
+			return RPC_CACHE[key].deferred.promise();
+		}
+		RPC_CACHE[key].deferred = $.Deferred();
+		if(object !== "file" && object !== "access"){
+			RPC_CACHE[key].timeout = setTimeout(function(){
+				if(RPC_CACHE[key] && RPC_CACHE[key].deferred && RPC_CACHE[key].deferred.state() === "pending"){
+					RPC_CACHE[key].deferred.reject("Call timed out");
+					delete RPC_CACHE[key];
+				}
+			}, RPC_TIMEOUT);
+		}
 
 		var jsonrpc_obj = {
 			jsonrpc: "2.0",
@@ -83,7 +96,7 @@
 			id: rpc_query_id++
 		};
 
-		RPC_QUERY_IDS[jsonrpc_obj.id] = RPC_CACHE[key];
+		RPC_CACHE[key].id = jsonrpc_obj.id;
 
 		function num2str(key,val){
 			if(typeof val === "number"){ return val.toString(); }
@@ -95,9 +108,12 @@
 			return val;
 		}
 
-		ws.send(JSON.stringify(jsonrpc_obj,formatter));
-
-		return RPC_CACHE[key].deferred.promise();
+		if(ws && ws.readyState === 1){
+			ws.send(JSON.stringify(jsonrpc_obj,formatter));
+			return RPC_CACHE[key].deferred.promise();
+		}else{
+			return RPC_CACHE[key].deferred.reject();
+		}
 	}
 	
 	var rpc = {
@@ -108,6 +124,9 @@
 			}
 			else return RPC_SESSION_ID;
 		},
+		$user: function(){
+			return RPC_USER;
+		},
 		$isLoggedIn: function(){
 			return RPC_SESSION_ID !== RPC_DEFAULT_SESSION_ID;
 		},
@@ -116,52 +135,76 @@
 			var deferred  = $.Deferred();
 			
 			if(!METHODS.session){
-				console.log("ubus session object is missing");
-				return deferred.reject();
+				self.$clearSession().always(function(){
+					deferred.reject("ubus session object is missing");
+				});
+				return deferred.promise();
 			}
 
 			METHODS.session.list().done(function(result){
         		if(!("username" in (result.data||{}))) {
-					RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID; // reset sid to 000..
-					scope.localStorage.setItem("sid", RPC_SESSION_ID);
-					deferred.reject();
+					self.$clearSession().always(function(){
+						deferred.reject("no active sessions");
+					});
 				} else {
 					self.$session = result;
 					if(!("data" in self.$session)) self.$session.data = {};
 					deferred.resolve(result);
 				}
 			}).fail(function err(result){
-				if(retries === 0){
-					RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID;
-					if(DEBUG_MODE) console.error("Session access call failed: you will be logged out!");
-					retries = 3;
-				}
-				retries --;	
-				deferred.reject();
+				deferred.reject(result || "no result");
 			});
 			return deferred.promise();
 		},
 		$login: function(opts){
 			var self = this;
-			var deferred  = $.Deferred();
-			
-			if(!METHODS.session) {
-				setTimeout(function(){ deferred.reject(); }, 0);
-				return deferred.promise();
-			}
+			var deferred = $.Deferred();
+			self.$clearSession().done(function(){
 
-			METHODS.session.login({
-				"username": opts.username,
-				"password": opts.password
-			}).done(function(result){
-				RPC_SESSION_ID = result.ubus_rpc_session;
-				scope.localStorage.setItem("sid", RPC_SESSION_ID);
-				self.$session = result;
-				//JUCI.localStorage.setItem("sid", self.sid);
-				//if(result && result.acls && result.acls.ubus) setupUbusRPC(result.acls.ubus);
-				deferred.resolve(self.sid);
-			}).fail(function(result){
-				deferred.reject(result);
+				if(!METHODS.session) {
+					setTimeout(function(){ deferred.reject("Session not found"); }, 0);
+					return deferred.promise();
+				}
+
+				METHODS.session.login({
+					"username": opts.username,
+					"password": opts.password
+				}).done(function(result){
+					RPC_USER = opts.username;
+					RPC_SESSION_ID = result.ubus_rpc_session;
+					scope.localStorage.setItem("sid", RPC_SESSION_ID);
+					scope.localStorage.setItem("user", RPC_USER);
+					self.$session = result;
+					deferred.resolve(self.sid);
+				}).fail(function(result){
+					deferred.reject(result);
+				});
+			}).fail(function(msg){
+				deferred.reject(msg);
+			});
+			return deferred.promise();
+		},
+		$clearSession: function(){
+			if(DEBUG_MODE) console.log("clearing session");
+			var deferred = $.Deferred();
+			var self = this;
+			if(!self.$isLoggedIn())
+				return deferred.resolve();
+			rejectCalls();
+			RPC_USER = "";
+			RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID;
+			scope.localStorage.setItem("user", RPC_USER);
+			scope.localStorage.setItem("sid", RPC_SESSION_ID);
+
+			ws.close();
+
+			self.$init_websocket().done(function(ws_result) {
+				ws = ws_result;
+				deferred.resolve();
+			}).fail(function(emsg) {
+				ws = null;
+				if(DEBUG_MODE)console.log("ws failed " + emsg);
+				deferred.reject(emsg);
 			});
 			return deferred.promise();
 		},
@@ -169,15 +212,12 @@
 			var deferred = $.Deferred();
 			var self = this;
 
-			if(!METHODS.session) {
-				setTimeout(function(){ deferred.reject(); }, 0);
-				return deferred.promise(); ;
-			}
-
 			METHODS.session.destroy().done(function(){
-				RPC_SESSION_ID = RPC_DEFAULT_SESSION_ID; // reset sid to 000..
-				scope.localStorage.setItem("sid", RPC_SESSION_ID);
-				deferred.resolve();
+				self.$clearSession().done(function(){
+					deferred.resolve();
+				}).fail(function(msg){
+					deferred.reject(msg);
+				});
 			}).fail(function(){
 				deferred.reject();
 			});
@@ -187,7 +227,6 @@
 			EVENT_HANDLER = func;
 		},
 		$register: function(object, method){
-			// console.log("registering: "+object+", method: "+method);
 			if(!object || !method) return;
 			var self = this;
 			function _find(path, method, obj){
@@ -227,6 +266,7 @@
 			return rpc_request("list", "*");
 		},
 		$isConnected: function(){
+			if(DEBUG_MODE) console.log("isConnected called");
 			// we do a simple list request. If it fails then we assume we do not have a proper connection to the router
 			var self = this;
 			var deferred = $.Deferred();
@@ -236,6 +276,19 @@
 				deferred.reject();
 			});
 			return deferred.promise();
+		},
+		$reconnect: function(){
+			var self = this;
+			var def = $.Deferred();
+			if(ws && ws.readyState === 1) ws.close();
+			self.$init_websocket().done(function(res){
+				ws = res;
+				def.resolve();
+			}).fail(function(res){
+				ws = null;
+				def.reject();
+			});
+			return def.promise();
 		},
 		$has: function(obj, method){
 			var path = obj.replace(/^\//, '').replace(/\//, '.').split(".");
@@ -265,9 +318,6 @@
 		},
 		$init: function(host){
 			var self = this;
-			if(host) {
-				if(host.host) RPC_HOST = host.host;
-			}
 			if(DEBUG_MODE)console.log("Init UBUS ->");
 			var deferred = $.Deferred();
 			default_calls.map(function(x){ self.$register(x); });
@@ -275,7 +325,7 @@
 			if (!window.location.origin) {
 				window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
 			}
-			self.$init_websocket(window.location.origin).done(function(ws_result) {
+			self.$init_websocket().done(function(ws_result) {
 				ws = ws_result;
 				self.$list().done(function(result){
 					//alert(JSON.stringify(result));
@@ -285,23 +335,96 @@
 						});
 					});
 					deferred.resolve();
-				}).fail(function(){
-					deferred.reject();
+				}).fail(function(e){
+					deferred.reject(e);
 				});
 			}).fail(function(emsg) {
-				console.log("ws failed " + emsg);
+				if(DEBUG_MODE)console.log("ws failed " + emsg);
 				deferred.reject(emsg);
 			});
 			return deferred.promise();
 		},
-		$init_websocket: function(host){
+		$has_access: function(section){
+			// retrieve session acls map
+			var acls = {};
 			var self = this;
-			var deferred = $.Deferred();
+			var def = $.Deferred();
+
+			if(! section.acls || !section.acls.value || !section.acls.value instanceof Array ||
+				!section.require.value || !section.require.value instanceof Array)
+				return def.reject("invalid section type, it lacks acl or require option");
+
+			if(self.$session && self.$session.acls && self.$session.acls["access-group"]){
+				acls = self.$session.acls["access-group"];
+			}
+			// only include sections that are marked as accessible based on our rights and the box capabilities (others will simply be broken because of restricted access)
+			var unmetAccessList = section.acls.value.find(function(x){
+				return !acls[x];
+			});
+			if(unmetAccessList)
+				return def.resolve(false);
+			var ok = true;
+			async.eachSeries(section.require.value, function(item, n){
+				if(!item || !item instanceof String || !item.split(":").length || item.split(":").length !== 2){
+					def.reject("invalid require: ", item);
+				}
+				var type = item.split(":")[0];
+				var value = item.split(":")[1];
+				if(!value){
+					def.reject("invalid require");
+				}
+				switch(type){
+					case "file":
+						self.$call("file", "stat", {"path":value || ""}).fail(function(){
+							ok = false;
+						}).always(function(){n();});
+						break;
+					case "ubus":
+						var split = value.split("->").filter(function(item){return item !== ""});
+						if(split.length === 1){
+							if(!self.$has(split[0]))
+								ok = false;
+						}
+						else if(split.length === 2){
+							if(!self.$has(split[0], split[1]))
+								ok = false;
+						}
+						else
+							def.reject("invalid require ubus with value: " + value);
+						n();
+						break;
+					default:
+						def.reject("error: list require " + type + ':' + value + " is not supported");
+				}
+			}, function(){
+				def.resolve(ok);
+			});
+			return def.promise();
+		},
+		$init_websocket: function(){
+			var host = window.location.origin;
+			var self = this;
 			if(DEBUG_MODE)console.log("Init WS -> "+host);
-			if(String(host).match("localhost"))
-				host = "ws://192.168.1.1";
-			else
-				host = String(host).replace(/^http/, 'ws');
+			if(String(host).match("localhost")){
+				var deferred = $.Deferred();
+				$.get('/host_ip', function(res) {
+					if(res)
+						host = res;
+					else
+						host = "ws://192.168.1.1";
+					self.create_socket(host).done(function(res){
+						deferred.resolve(res);
+					}).fail(function(e){
+						deferred.reject(e);
+					});
+				});
+				return deferred.promise();
+			} else {
+				return self.create_socket(String(host).replace(/^http/, 'ws'));
+			}
+		},
+		create_socket: function(host){
+			var deferred = $.Deferred();
 			if(DEBUG_MODE)console.log("connecting to " + host);
 			try {
 				var ws = new WebSocket(host, "ubus-json");
@@ -334,20 +457,22 @@
 				}
 
 				if (response_obj.id && !response_obj.method) {
-					var query_deferred = RPC_QUERY_IDS[response_obj.id];
-					if (query_deferred === undefined) {
-						console.log("Warning: result for unknown call");
-						console.log(response_obj);
+					var key = Object.keys(RPC_CACHE).find(function(key){
+						return RPC_CACHE[key].id == response_obj.id;
+					});
+					var query= RPC_CACHE[key];
+					if (query=== undefined) {
 						return;
 					}
-					delete RPC_QUERY_IDS[response_obj.id];
+					clearTimeout(RPC_CACHE[key].timeout);
+					delete RPC_CACHE[key];
 
 					if (response_obj.error) {
-						query_deferred.deferred.reject(response_event.data);
+						query.deferred.reject(response_event.data);
 						return;
 					}
 
-					handle_call_result(response_obj.result, query_deferred);
+					handle_call_result(response_obj.result, query);
 					return;
 				} else if (response_obj.method) {
 					if (response_obj.method !== "event") {
@@ -361,7 +486,7 @@
 					return;
 				}
 
-				function handle_call_result(call_result, query_deferred) {
+				function handle_call_result(call_result, query) {
 
 					if(call_result instanceof Array && call_result[0] != 0) {
 						function _errstr(error){
@@ -381,40 +506,35 @@
 							}
 						}
 						if(DEBUG_MODE)console.log("RPC succeeded "+ JSON.stringify(call_result) +", but returned error: "+_errstr(call_result[0]));
-						query_deferred.deferred.reject(_errstr(call_result[0]));
+						query.deferred.reject({"reason":_errstr(call_result[0]), "data":(call_result.length > 1) ? call_result[1]:{}});
 						return;
 					}
 
-					//console.log("SID: "+sid + " :: "+ JSON.stringify(response_obj));
-					query_deferred.time = Date.now();
+					query.time = Date.now();
 					// valid rpc response is either [code,{result}]
 					// if code == 0 it means success. We already check for errors above)
 					if(call_result instanceof Array) {
-						query_deferred.data = call_result[1];
-						query_deferred.deferred.resolve(call_result[1]);
+						query.data = call_result[1];
+						query.deferred.resolve(call_result[1]);
 						return;
 					}
 
 					var msg = "Warning: non-array result in JSONRPC response";
-					console.log(msg);
-					query_deferred.deferred.reject(msg);
+					query.deferred.reject(msg);
 					return;
 				}
 			};
 
 			ws.onerror = function(result){
+				console.log("error result: " + JSON.stringify(result));
 				if(DEBUG_MODE)console.error("RPC error "+JSON.stringif(result));
-				if(result && result.error){
-					RPC_CACHE[key].deferred.reject(result.error);
+				if(deferred.state() === "pending"){
+					deferred.reject();
 				}
 			}
-			ws.onclose = function(e) {
-				if(!e.isTrusted){
-					console.log("reloading page");
-					window.location.reload();
-				}
-				console.log(JSON.stringify(e));
-				console.log( "Close(" + e.reason + ")");
+			ws.onclose = function(Event) {
+				ws = null;
+				rejectCalls();
 			};
 
 			return deferred.promise();

@@ -55,6 +55,23 @@ JUCI.app
 		{ label: $tr(gettext("Saturday")), value: "sat" },
 		{ label: $tr(gettext("Sunday")), value: "sun" }
 	];
+
+	$scope.$watch("schedule.time_start", function(ts){
+		if(!ts)
+			return;
+		if(ts.length === 2)
+			$scope.schedule.time_start = ts + ":";
+		if(ts.match(/[0-9]{2}::/))
+			$scope.schedule.time_start = ts.slice(0, -1);
+	}, false);
+	$scope.$watch("schedule.time_end", function(te){
+		if(!te)
+			return;
+		if(te.length === 2)
+			$scope.schedule.time_end = te + ":";
+		if(te.match(/[0-9]{2}::/))
+			$scope.schedule.time_end = te.slice(0, -1);
+	}, false);
 	
 	$scope.$watch("allDayNames", function(){
 		if(!$scope.schedule) return;

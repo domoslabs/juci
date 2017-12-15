@@ -402,9 +402,6 @@ msgstr ""
 msgid "Use DNS servers advertised by peer"
 msgstr ""
 
-msgid "If unchecked, the advertised DNS server addresses are ignored"
-msgstr ""
-
 msgid "LCP echo failure threshold"
 msgstr ""
 
@@ -762,7 +759,7 @@ msgstr ""
 msgid "0"
 msgstr "0"
 
-msgid "Iface MTU"
+msgid "IP MTU"
 msgstr "Aktiverad"
 
 msgid "IPv6 Routes"

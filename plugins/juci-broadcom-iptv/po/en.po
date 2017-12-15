@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 msgid "No DSCP"
 msgstr ""
@@ -127,6 +127,30 @@ msgstr ""
 
 msgid "No mcpd configuration found!"
 msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/mc-proxy-settings.html
+msgid "Multicast Settings"
+msgstr "Multicast Proxy Settings"
+
+# plugins/juci-broadcom-iptv/src/pages/mc-proxy-settings.html
+msgid "status.tv.info"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/mc-proxy-settings.html
+msgid "Connection Status"
+msgstr ""
+
+# plugins/juci-broadcom-iptv/src/pages/mc-proxy-settings.html
+msgid "Enable IGMP"
+msgstr "Enable IGMP Proxy"
+
+# plugins/juci-broadcom-iptv/src/pages/mc-proxy-settings.html
+msgid "Enable MLD"
+msgstr "Enable MLD Proxy"
+
+# plugins/juci-broadcom-iptv/src/pages/mc-proxy-settings.html
+msgid "menu-mc-proxy-settings-title"
+msgstr "Multicast Proxy"
 
 msgid "menu-broadcom-iptv-title"
 msgstr "IPTV"

@@ -9,10 +9,52 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.0.4\n"
 
 msgid "LAN does not have IPv6 configured"
 msgstr "Lähiverkolla ei ole IPv6 konfigurointia"
+
+msgid "MAC Class"
+msgstr "MAC-osoite"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Vendor ID"
+msgstr "Valmistajan ID"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "User Class"
+msgstr "Käyttäjäluokka"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Circuit ID"
+msgstr ""
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Remote ID"
+msgstr "Kohde ID"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Subscriber ID"
+msgstr "Tilaajan ID"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Select type of Classification"
+msgstr "Valitse luokituksen tyyppi"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Add new Tag"
+msgstr "Lisää uusi merkki"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Name can not be empty"
+msgstr "Nimi ei voi olla tyhjä"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.js
+msgid "Invalid name, it may only contain (a-z, A-Z, 0-9 and _)"
+msgstr "Virheellinen nimi. Nimi voi sisältää vain merkit (a-z, A-Z, 0-9 ja _)"
+
+msgid "Hostname(s) for "
+msgstr "Isäntäkoneen nimi"
 
 msgid "Minutes"
 msgstr "Minuutit"
@@ -29,20 +71,79 @@ msgstr ""
 msgid "IPv6"
 msgstr ""
 
-msgid "Hostname(s) for "
-msgstr "Isäntäkoneen nimi"
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-add-classification.html
+msgid "Select Classifications Type"
+msgstr "Valitsen luokitustyyppi"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-add-tag.html
+msgid "Tag Name"
+msgstr "Merkin nimi"
+
+msgid "DHCP Server"
+msgstr "DHCP-palvelin"
 
 msgid "DHCP Pool Start"
 msgstr "DHCP ensimmäinen osoite"
 
 msgid "DHCP Pool Size"
-msgstr "DHCP viimeinen osoite"
+msgstr "Jaettavien osoitteiden määrä"
 
 msgid "DHCP Lease Time"
 msgstr "DHCP-varauksen aika"
 
 msgid "Lease Time"
 msgstr "Vuokra-aika"
+
+msgid "Advanced Settings"
+msgstr "Edistyneet asetukset"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "DHCP Options"
+msgstr "DHCP optiot"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "ID:6 = DNS server, ID:15 = DNS domain name"
+msgstr "ID:6=DNS nimi palvelin; ID:15=DNS toimialuenimi"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Dynamic DHCP"
+msgstr "Dynaaminen DHCP"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Force"
+msgstr "Pakota"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "IPv4 Netmask"
+msgstr "IPv4 aliverkon peite"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "TODO"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "IPv6 Settings"
+msgstr "IPv6-asetukset"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "DHCPv6-Service"
+msgstr "DHCPv6-palvelu"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "DHCPv6-Mode"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Router Advertisement-Service"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "NDP-Proxy"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "Master"
+msgstr ""
 
 msgid "Connection"
 msgstr "Yhteys"
@@ -65,8 +166,47 @@ msgstr "IPv4-osoite"
 msgid "IPv6 Address"
 msgstr "IPv6 osoite"
 
-msgid "Hostnames"
-msgstr "Isäntäkoneiden nimet"
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+msgid "DHCP options"
+msgstr "DHCP optiot"
+
+msgid "MAC"
+msgstr "MAC"
+
+msgid "IPv6 Unique ID"
+msgstr "IPv6 Unique ID"
+
+msgid "IPv6 Address ID"
+msgstr "IPv6-osoite ID"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "No tag set"
+msgstr "Merkkiä ei ole asetettu"
+
+msgid "Add Host"
+msgstr "Lisää isäntäkone"
+
+msgid "Static DHCP"
+msgstr "Kiinteä DHCP"
+
+msgid "Device Name"
+msgstr "Laitteen nimi"
+
+msgid "MAC Address"
+msgstr "MAC-osoite"
+
+msgid "IP Address"
+msgstr "IP-osoite"
+
+msgid "DUID (IPv6)"
+msgstr "DUID (IPv6)"
+
+msgid "Host ID (IPv6)"
+msgstr "Host ID (IPv6)"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "Tag"
+msgstr "Merkki"
 
 msgid "DHCPv4 leases"
 msgstr "DHCPv4 varaukset"
@@ -95,41 +235,15 @@ msgstr "IPv6 osoite"
 msgid "DUID"
 msgstr "DUID"
 
-msgid "MAC"
-msgstr "MAC"
+msgid "Hostnames"
+msgstr "Isäntäkoneiden nimet"
 
-msgid "IPv6 Unique ID"
-msgstr "IPv6 Unique ID"
+msgid "Networkid"
+msgstr "Verkko"
 
-msgid "IPv6 Address ID"
-msgstr "IPv6-osoite ID"
-
-msgid "Add Connected Host"
-msgstr "Lisää isäntäkone"
-
-msgid "Static DHCP"
-msgstr "Kiinteä DHCP"
-
-msgid "Device Name"
-msgstr "Laitteen nimi"
-
-msgid "MAC Address"
-msgstr "MAC-osoite"
-
-msgid "IP Address"
-msgstr "IP-osoite"
-
-msgid "DUID (IPv6)"
-msgstr "DUID (IPv6)"
-
-msgid "Host ID (IPv6)"
-msgstr "Host ID (IPv6)"
-
-msgid "DHCP Server"
-msgstr "DHCP-palvelin"
-
-msgid "DHCP Settings"
-msgstr "DHCP-asetukset"
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "DHCP/DNS"
+msgstr "DHCP ja DNS"
 
 msgid "General Settings"
 msgstr "Yleiset asetukset"
@@ -138,7 +252,7 @@ msgid "Local domain"
 msgstr "Paikallinen toimialuenimi"
 
 msgid "Local domain suffix appended to DHCP names and hosts file entries"
-msgstr ""
+msgstr " "
 
 msgid "Log queries"
 msgstr "Kirjaa kyselyt lokiin"
@@ -153,19 +267,29 @@ msgid "file where given DHCP-leases will be stored"
 msgstr "tiedosto, jonne DHCP-varaukset tallennetaan"
 
 msgid "Ignore resolve file"
-msgstr ""
+msgstr "Ohita resolve-tiedosto"
 
 msgid "Resolve file"
-msgstr ""
+msgstr "Resolve tiedosto"
 
-msgid "local DNS file"
-msgstr "paikallinen DNS-tiedosto"
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Tells dnsmasq to use this file to find upstream name servers"
+msgstr "Merkitse dnsmasq käyttämään tätä tiedostoa nimipalvelinten löytämiseen"
 
 msgid "Ignore Hosts file"
 msgstr "Ohita Hosts-tiedosto"
 
-msgid "Advanced Settings"
-msgstr "Edistyneet asetukset"
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Hostname Entries file(s)"
+msgstr "Isäntäkoneiden nimitiedosto"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Additional host files to read for serving DNS responses"
+msgstr "Lisätiedostot DNS kyselyihin vastaamiseen"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Add Hostname file"
+msgstr "Lisää isäntäkoneiden nimitiedosto"
 
 msgid "Domain required"
 msgstr "Toimialueen nimi vaadittu"
@@ -185,7 +309,7 @@ msgstr "Suodata yksityiset"
 msgid "Do not forward reverse lookups for local networks"
 msgstr "Älä edelleenlähetä käänteisiä hakuja paikallisesta verkosta"
 
-msgid "Filter usless"
+msgid "Filter useless"
 msgstr "Suodata käyttämättömät"
 
 msgid "Do not forward requests that cannot be answered by public name servers"
@@ -207,7 +331,7 @@ msgid "Local server"
 msgstr "Paikallinen palvelin"
 
 msgid ""
-"Local domain specification. Names matching this domain are never forwared "
+"Local domain specification. Names matching this domain are never forwarded "
 "and resolved from DHCP or hosts files only"
 msgstr ""
 "Paikallinen toimialue-erittely. Nimet, jotka vastaavat tätä toimialuetta ei "
@@ -308,8 +432,46 @@ msgstr "Suurin sallittu määrä samanaikaisia DNS-kyselyitä"
 msgid "Hostname Entries"
 msgstr "Isäntäkoneiden merkinnät"
 
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Classifications"
+msgstr "Luokitukset"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "DNS Tags"
+msgstr "DNS merkit"
+
+# plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+msgid "Create Classification sections classify DHCP clients"
+msgstr ""
+
 msgid "menu-dhcp-status-title"
-msgstr "DHCP"
+msgstr "DHCP tila"
 
 msgid "menu-dhcp-settings-title"
 msgstr "DHCP"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+#~ msgid "ID"
+#~ msgstr "Tunnus/ID"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+#~ msgid "Option"
+#~ msgstr "Optio"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+#~ msgid "Ignore"
+#~ msgstr "Ohita"
+
+#~ msgid "local DNS file"
+#~ msgstr "paikallinen DNS-tiedosto"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
+#~ msgid "dhcp-settings-title"
+#~ msgstr "DHCP asetukset"
+
+# /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/pages/dhcp-status.html
+#~ msgid "dhcp-status-title"
+#~ msgstr "DHCP tila"
+
+#~ msgid "DHCP Settings"
+#~ msgstr "DHCP-asetukset"

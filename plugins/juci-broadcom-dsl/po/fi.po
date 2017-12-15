@@ -9,16 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
-
-msgid "New device"
-msgstr "Fyysinen liitäntä"
-
-msgid "Please select a device in the list!"
-msgstr "Valitse laite luettelosta!"
-
-msgid "Are you sure you want to delete this device?"
-msgstr "Haluatko varmasti poistaa tämän säännön?"
+"X-Generator: Poedit 2.0.4\n"
 
 msgid "DSL Status Information"
 msgstr "DSL Status"
@@ -41,38 +32,33 @@ msgstr "Solulaskija"
 msgid "Cell Statistics"
 msgstr "Solutilastot"
 
-msgid "You need to select a device!"
-msgstr "Valitse laite!"
+msgid "Device"
+msgstr "Laite"
 
-msgid "EoA"
-msgstr "EoA"
+msgid "VPI"
+msgstr "VPI"
 
-msgid "PPPoA"
-msgstr "PPPoA"
+msgid "VCI"
+msgstr "VCI"
 
-msgid "IPoA"
-msgstr "IPoA"
+# /home/jamu/GIT/juci/plugins/juci-broadcom-dsl/src/pages/page-broadcom-adsl.js
+msgid "Link type"
+msgstr "Linkin tyyppi"
 
-msgid "LLC/SNAP-Bridging"
-msgstr "LLC / SNAP-Bridging"
+msgid "New device"
+msgstr "Fyysinen liitäntä"
 
-msgid "VC/MUX"
-msgstr "VC / MUX"
+msgid "Please select a device in the list!"
+msgstr "Valitse laite luettelosta!"
 
-msgid "UBR Without PCR"
-msgstr "UBR Without PCR"
+msgid "Are you sure you want to delete this device?"
+msgstr "Haluatko varmasti poistaa tämän säännön?"
 
-msgid "UBR With PCR"
-msgstr "UBR With PCR"
+msgid "Status"
+msgstr "Tila"
 
-msgid "CBR"
-msgstr "CBR"
-
-msgid "Non-Realtime VBR"
-msgstr "Non-Realtime VBR"
-
-msgid "Realtime VBR"
-msgstr "Realtime VBR"
+msgid "Mode"
+msgstr "DSL Mode"
 
 msgid "Latency Path 1"
 msgstr "Latenssi Path 1"
@@ -95,47 +81,9 @@ msgstr "Määritelty prioriteettijärjestys"
 msgid "Weighted Fair Queuing"
 msgstr "Painotettu Fair Queuing"
 
-msgid "Select Device"
-msgstr "Fyysinen liitäntä"
-
-msgid "Select base DSL device"
-msgstr "Fyysinen liitäntä"
-
-msgid "Device"
-msgstr "Laite"
-
-msgid "Name"
-msgstr "Nimi"
-
-msgid "VPI"
-msgstr "VPI"
-
-msgid "VCI"
-msgstr "VCI"
-
-msgid "Service Type"
-msgstr "Palvelutyyppi"
-
-msgid "PCR"
-msgstr "CBR"
-
-msgid "SCR"
-msgstr "CBR"
-
-msgid "MBS"
-msgstr "MBS"
-
-msgid "Select DSL Link Type"
-msgstr "Valitse DSL-linkkityyppi"
-
-msgid "Encapsulation Mode"
-msgstr "Kapselointitila"
-
-msgid "Device Name"
-msgstr "DNS Nimi"
-
-msgid "DSL Latency Path"
-msgstr "DSL Latency Path"
+# /home/jamu/GIT/juci/plugins/juci-broadcom-dsl/src/pages/page-broadcom-vdsl.js
+msgid "Latency Path"
+msgstr ""
 
 msgid "PTM Priority"
 msgstr "PTM Prioriteetti"
@@ -143,11 +91,104 @@ msgstr "PTM Prioriteetti"
 msgid "IP QoS Scheduler Algorithm"
 msgstr "IP QoS Scheduler algoritmi"
 
-msgid "internet.ethernet.adsl.info"
-msgstr "Ethernet"
+msgid "You need to select a device!"
+msgstr "Valitse laite!"
 
-msgid "ADSL Devices"
-msgstr "ADSL-laitteet"
+msgid "EoA"
+msgstr "EoA"
+
+msgid "PPPoA"
+msgstr "PPPoA"
+
+msgid "IPoA"
+msgstr "IPoA"
+
+msgid "LLC/SNAP-Bridging"
+msgstr "LLC / SNAP-Bridging"
+
+msgid "VC/MUX"
+msgstr "VC / MUX"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-dsl/src/widgets/network-device-adsl-edit.js
+msgid "LLC/ENCAPSULATION"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-dsl/src/widgets/network-device-adsl-edit.js
+msgid "LLC/SNAP-ROUTING"
+msgstr ""
+
+msgid "UBR Without PCR"
+msgstr "UBR Without PCR"
+
+msgid "UBR With PCR"
+msgstr "UBR With PCR"
+
+msgid "CBR"
+msgstr "CBR"
+
+msgid "Non-Realtime VBR"
+msgstr "Non-Realtime VBR"
+
+msgid "Realtime VBR"
+msgstr "Realtime VBR"
+
+msgid "Name"
+msgstr "Nimi"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-dsl/src/widgets/network-device-adsl-edit.html
+msgid "ATM Virtual Path Identifier"
+msgstr "ATM virtuaaliväylän tunniste"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-dsl/src/widgets/network-device-adsl-edit.html
+msgid "ATM Virtual Channel Identifier"
+msgstr "ATM virtuaalikanavan tunniste"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-dsl/src/widgets/network-device-adsl-edit.html
+msgid "DSL Link Type"
+msgstr "DSL linkkityyppi"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-dsl/src/widgets/network-device-adsl-edit.html
+msgid "EoA is for PPPoE, IPoE and Bridge"
+msgstr "EOA on PPPoE, IPoE ja Bridge varten"
+
+msgid "Encapsulation Mode"
+msgstr "Kapselointitila"
+
+msgid "Service Type"
+msgstr "Palvelutyyppi"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-dsl/src/widgets/network-device-adsl-edit.html
+msgid "Peak Cell Rate"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-dsl/src/widgets/network-device-adsl-edit.html
+msgid "Sustainable Cell Rate"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-dsl/src/widgets/network-device-adsl-edit.html
+msgid "Maximum Burst Size"
+msgstr ""
+
+msgid "Device Name"
+msgstr "DNS Nimi"
+
+msgid "DSL Latency Path"
+msgstr "DSL Latency Path"
+
+msgid "Select Device"
+msgstr "Fyysinen liitäntä"
+
+msgid "Select base DSL device"
+msgstr "Fyysinen liitäntä"
+
+msgid "No G.Fast info available."
+msgstr "DSL info ei ole saatavilla"
+
+msgid "internet.ethernet.vdsl.info"
+msgstr "VDSL"
+
+msgid "VDSL Devices"
+msgstr "VDSL-laitteet"
 
 msgid "DSL Status"
 msgstr "Tila"
@@ -158,17 +199,48 @@ msgstr "Tällä sivulla näet DSL yhteyden tilan"
 msgid "No DSL info available."
 msgstr "DSL info ei ole saatavilla"
 
-msgid "internet.ethernet.vdsl.info"
-msgstr "VDSL"
+msgid "internet.ethernet.adsl.info"
+msgstr "Ethernet"
 
-msgid "VDSL Devices"
-msgstr "VDSL-laitteet"
-
-msgid "menu-page-broadcom-adsl-title"
-msgstr "ADSL"
+msgid "ADSL Devices"
+msgstr "ADSL-laitteet"
 
 msgid "menu-page-broadcom-vdsl-title"
 msgstr "VDSL"
 
+msgid "menu-page-broadcom-adsl-title"
+msgstr "ADSL"
+
+msgid "menu-page-broadcom-gfast-status-title"
+msgstr "DSL Status"
+
 msgid "menu-page-broadcom-dsl-status-title"
 msgstr "DSL Status"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-dsl/src/pages/page-broadcom-dsl-status.js
+#~ msgid "None"
+#~ msgstr "Ei mikään"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-dsl/src/pages/page-broadcom-adsl.html
+#~ msgid "page-broadcom-adsl-title"
+#~ msgstr "ADSL"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-dsl/src/pages/page-broadcom-dsl-status.html
+#~ msgid "page-broadcom-dsl-status-title"
+#~ msgstr "DSL status"
+
+# /home/jamu/GIT/juci/plugins/juci-broadcom-dsl/src/pages/page-broadcom-vdsl.html
+#~ msgid "page-broadcom-vdsl-title"
+#~ msgstr "VDSL"
+
+#~ msgid "PCR"
+#~ msgstr "CBR"
+
+#~ msgid "SCR"
+#~ msgstr "CBR"
+
+#~ msgid "MBS"
+#~ msgstr "MBS"
+
+#~ msgid "Select DSL Link Type"
+#~ msgstr "Valitse DSL-linkkityyppi"

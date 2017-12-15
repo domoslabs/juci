@@ -1,0 +1,230 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+
+# plugins/juci-inteno-qos/src/main.js
+msgid "Low"
+msgstr "低"
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+msgid "Enabled"
+msgstr "有効"
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+msgid "Download Speed"
+msgstr "ダウンロードスピード"
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+msgid "Upload Speed"
+msgstr "アップロードスピード"
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+msgid "New Class"
+msgstr "新クラス"
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+msgid "New Classgroup"
+msgstr "新クラスグループ"
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.js
+msgid "New Interface"
+msgstr "新しいインターフェース"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "All"
+msgstr "全て"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.js
+msgid "TCP"
+msgstr "TCP"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.js
+msgid "UDP"
+msgstr "UDP"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.js
+msgid "ICMP"
+msgstr "ICMP"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.js
+msgid "End value has to be larger than start value."
+msgstr "終了値は開始値より大きくなければなりません。"
+
+# plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Enable QoS"
+msgstr "QOS オン"
+
+# plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Classification Group"
+msgstr "クラスグループ"
+
+# plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Calculate Overhead"
+msgstr "オーバーヘッド計算"
+
+# plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Limit Download Speed"
+msgstr "ダウンロードスピード制限"
+
+# plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Limit Upload Speed"
+msgstr "アップロードスピード制限"
+
+# plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
+msgid "Acceleration will be disabled when QoS is enabled"
+msgstr "QoSが有効な場合、アクセラレーションは無効になります"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid "Priority"
+msgstr "優先度"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid "Average Rate"
+msgstr "平均レート"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid "Limit Rate"
+msgstr "レート制限"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Packet Size"
+msgstr "パケットサイズ"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid "Packet Delay"
+msgstr "パケットディレイ"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
+msgid "Max Size"
+msgstr "最大サイズ"
+
+# plugins/juci-inteno-qos/src/widgets/new-class-modal.html
+msgid "Class name"
+msgstr "クラス名"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classgroups-edit.html
+msgid "Classes"
+msgstr "クラス"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classgroups-edit.html
+msgid "Add a new class"
+msgstr "新しいクラス追加"
+
+# plugins/juci-inteno-qos/src/widgets/new-classgroup-modal.html
+msgid "Classgroup name"
+msgstr "クラスグループ名"
+
+# plugins/juci-inteno-qos/src/widgets/add-bw-interface-edit.html
+msgid "Interface name"
+msgstr "インターフェース名"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Target"
+msgstr "ターゲット"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Protocol"
+msgstr "プロトコル"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Source Host"
+msgstr "送信元ホスト"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Destination Host"
+msgstr "宛先ホスト"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Ports"
+msgstr "ポート"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Filter by port, when there are no ports no filter will be applied"
+msgstr "ポート単位でフィルタリングします。ポートがない場合、フィルタは適用されません。"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Source Ports"
+msgstr "ソースポート"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Destination Ports"
+msgstr "宛先ポート"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Port Range"
+msgstr "ポート範囲"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Precedence"
+msgstr "優先度"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Direction"
+msgstr "フィルタリング設定方向"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Mark"
+msgstr "QOSマーキング"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "Connbytes"
+msgstr "フィルタリング開始サイズ"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "TCP Flags"
+msgstr "TCPフラグ"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "tos"
+msgstr "ToS"
+
+# plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
+msgid "dscp"
+msgstr "DSCP"
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
+msgid "Quality of service"
+msgstr "サービス品質(QoS)"
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
+msgid "Interface"
+msgstr "インターフェース"
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
+msgid "Class"
+msgstr "クラス"
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
+msgid "Classgroup"
+msgstr "クラスグループ"
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
+msgid "Classify"
+msgstr "パラメータ"
+
+# plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
+msgid "menu-juci-inteno-qos-title"
+msgstr "QOS"

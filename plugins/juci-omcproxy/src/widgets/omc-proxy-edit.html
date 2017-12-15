@@ -1,0 +1,17 @@
+<div>
+	<juci-config-section>
+		<juci-config-lines>
+			<juci-config-line title="{{'Uplink'|translate}}">
+				<juci-select ng-items="uplinks" ng-model="proxy.uplink.value"></juci-select>
+			</juci-config-line>
+			<juci-config-line title="{{'Downlink'|translate}}">
+				<dropdown-multi-select input-model="downlinks.all" output-model="downlinks.selected"
+					button-label="name" item-label="name" tick-property="selected" on-item-click="onItemClick(data)"></juci-select>
+			</juci-config-line>
+			<juci-config-line title="{{'Scope'|translate}}">
+				<juci-select ng-items="scopes" ng-model="proxy.scope.value"></juci-select>
+			</juci-config-line>
+		</juci-config-lines>
+	</juci-config-section>
+</div>
+

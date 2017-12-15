@@ -29,7 +29,7 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("networkConnectionTypeAnywanEdit", function($scope, $ethernet, $modal, $tr, gettext, $uci, $networkHelper){
+.controller("networkConnectionTypeAnywanEdit", function($rootScope, $scope, $ethernet, $modal, $tr, gettext, $uci, $networkHelper, $juciConfirm){
 	$scope.getItemTitle = function(dev){
 	
 		return dev.name + " ("+dev.device+")"; 
@@ -38,7 +38,7 @@ JUCI.app
 		var net = $scope.connection;
 		if(!net) return;
 		$ethernet.getAdapters().done(function(adapters){
-			var filtered = adapters.filter(function(dev){ return dev.device.match(/^[epa]t[mh][\d]+\.[\d]+$/); });
+			var filtered = adapters.filter(function(dev){ return dev.device && dev.direction !== "Down"; });
 			var aptmap = {};
 			filtered.map(function(apt){ aptmap[apt.device] = apt; });
 			net.$addedDevices = ((net.ifname.value != "")?net.ifname.value.split(" "):[])
@@ -53,13 +53,12 @@ JUCI.app
 			$scope.$apply(); 
 		}); 
 	} 
-	
+
 	$scope.$watch("connection", function(value){
 		if(!value) return; 
 		updateDevices(); 	
 	});
-	
-	
+
 	$scope.onAddBridgeDevice = function(){
 		var modalInstance = $modal.open({
 			animation: true,
@@ -86,8 +85,8 @@ JUCI.app
 	
 	$scope.onDeleteBridgeDevice = function(adapter){
 		if(!adapter) alert($tr(gettext("Please select a device in the list!")));
-		if(confirm($tr(gettext("Are you sure you want to delete this device from bridge?")))){
-			if(adapter.device && adapter.device.match(/^wl.+/)){
+		$juciConfirm.show($tr(gettext("Are you sure you want to delete this device from bridge?"))).done(function(){
+			if(adapter.device && (adapter.device.match(/^wl.+/) || adapter.device.match(/^ra.+/))){
 				$uci.$sync("wireless").done(function(){
 					var wliface = $uci.wireless["@wifi-iface"].find(function(iface){
 						return iface.ifname.value == adapter.device;
@@ -102,6 +101,6 @@ JUCI.app
 				return name != adapter.device; 
 			}).join(" "); 
 			updateDevices(); 
-		}
+		});
 	}
 }); 

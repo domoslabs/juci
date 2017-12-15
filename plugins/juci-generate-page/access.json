@@ -6,15 +6,9 @@
 				"minidlna"
 			],
 			"ubus": {
-				"/juci/minidlna": [
-					"run"
-					/*"folder_tree",*/
-					/*"autocomplete",*/
-					/*"status"*/
-				],
-				"/juci/system.service": [
-					"run"
-					/*"status"*/
+				"router.directory": [
+					"folder_tree",
+					"autocomplete"
 				]
 			}
 		},

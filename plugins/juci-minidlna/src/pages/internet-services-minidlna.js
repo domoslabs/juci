@@ -2,7 +2,13 @@
 /*global Promise:false*/
 
 JUCI.app
-.controller("MiniDLNAConfigPage", function($network, $scope, $minidlna, $tr, gettext, $rpc, $juciDialog){
+.controller("MiniDLNAConfigPage", function($uci, $sce, $network, $scope, $minidlna, $tr, gettext, $rpc, $juciDialog){
+	$uci.$sync("minidlna").done(function(data){
+		$scope.minidlnaPort = "8200";
+		try{ $scope.minidlnaPort = $uci.minidlna["@all"][0].port.value; }catch(err){console.log(err);}
+		$scope.iframeURL = $sce.trustAsResourceUrl("http://" + window.location.hostname + ":"+$scope.minidlnaPort);
+		$scope.$apply();
+	});
 	$scope.data = [{label:"loading"}];
 	$scope.network = {
 		all : [],
@@ -22,30 +28,18 @@ JUCI.app
 			}else{
 				dirr = dir;
 			}
-			return (dirr.substring(0, 4) == "/mnt");
+			return (dirr === "/mnt" || dirr.substring(0, 5) == "/mnt/");
 		}).map(function(dir){
-			if(dir == "/mnt/"){
+			if(dir.match(/^[AVP],/)){ // ex, A,/mnt/usb/folder -> { text: A,/usb/folder, path: A,/mnt/usb/folder }
 				return {
-					text: "/",
+					text: dir.substr(0, 2) + "/" + (dir.length > 6 ? dir.substr(7) : ""),
 					path: dir
-				}
-			}else if(dir.substr(2) == "/mnt/"){
-				return {
-					text: dir.substr(0, 2) + "/",
-					path: dir
-				}
-			}
-			if(dir.substr(1, 1) == ","){
-				return {
-					text: "/" + dir.substr(0,2) + dir.substring(4),
-					path: dir
-				}
+				};
 			}
 			return {
-				text: "/" + dir.substr(4),
+				text: "/" + (dir.length > 4 ? dir.substr(5) : ""),
 				path: dir
-			}
-		
+			};
 		});
 		$network.getNetworks().done(function(data){
 			$scope.network.all = data.map(function(x){
@@ -58,15 +52,23 @@ JUCI.app
 		});
 	});
 
-	$rpc.$call("juci.minidlna", "run", {"method":"status"}).done(function(data){
-		$scope.count = data.count;
-		$scope.$apply();
-	});
-	
-	$rpc.$call("juci.system.service", "run", {"method":"status", "args":"{\"name\":\"minidlna\"}"}).done(function(result){
-		$scope.is_running = result.running ? "active" : "inactive";
-		$scope.$apply();
-	});
+/*
+	setTimeout(function(){ // give the service time to reload
+		JUCI.interval.repeat("update-minidlna-status", 5000, function(next){
+			$rpc.$call("juci.minidlna", "status", {}).done(function(data){
+				if(data.error){
+					$scope.error = data.error;
+					$scope.$apply();
+				}else{
+					$scope.error = null;
+					$scope.is_running = data.running ? "active" : "inactive";
+					$scope.count = data.count;
+					$scope.$apply();
+				}
+			}).always(function(){next();});
+		});
+	}, 500);
+*/
 
 	$scope.root_dir = [
 		{ label: $tr(gettext("Standard Container")),	value: "." },
@@ -126,7 +128,10 @@ JUCI.app
 	$scope.onTagAdded = function(tag){
 		$scope.tagslistData = $scope.tagslistData.map(function(k){
 			if(k.text == tag.text){
-				k.path = "/mnt"+k.text;
+				if(k.text.match(/^[AVP],/))
+					k.path = k.text.substr(0, 2) + "/mnt" + k.text.substr(2);
+				else
+					k.path = "/mnt"+k.text;
 			}
 			return k;
 		});
@@ -139,13 +144,34 @@ JUCI.app
 	};
 	var tag_promise = null;
 	$scope.loadTags = function(text){
-		if(!tag_promise) tag_promise = new Promise(function(resolve, reject){
-			$rpc.$call("juci.minidlna", "run", {"method":"autocomplete", "args":"{\"path\":\""+text+"\"}"}).done(function(data){
+		if(tag_promise == null) tag_promise = new Promise(function(resolve, reject){
+			var prefix = "";
+			if(text.match(/^[AVP],/)){
+				prefix = text.substr(0, 2);
+				text = text.substr(2);
+			}
+			$rpc.$call("router.directory", "autocomplete", {"path":"/mnt" + text}).done(function(data){
 				tag_promise = null;
-				if(data.folders) resolve(data.folders);
-				else reject(data);
-			})
+				if(data.folders){
+					data.folders = data.folders.map(function(folder){
+						return prefix + folder.substring(4);
+					});
+					resolve(data.folders);
+				}else reject(data);
+			}).fail(function(e){
+				tag_promise = null;
+				reject(e);
+			});
 		});
 		return tag_promise;
 	};
+
+	function updateIframe(){
+		if(!document.getElementById('iframe')){ return; }
+		document.getElementById('iframe').src = $scope.iframeURL;
+	}
+	JUCI.interval.repeat("updateIframe",10000,function(next){
+		updateIframe();
+		next();
+	});
 }); 

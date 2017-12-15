@@ -1,5 +1,5 @@
 <div>
-	<juci-overview-widget title="{{'USB'|translate}}" icon="juci juci-usb" href="#!/internet-services-samba">
+	<juci-overview-widget title="{{'USB'|translate}}" icon="juci juci-usb" href="{{href}}">
 		<div class="row" ng-show="loaded && (!devices || devices.length == 0)"><div class="col-md-12" translate>No usb devices connected!</div></div>
 		<div class="row" style="padding-top:10px; padding-bottom:10px; {{($index == devices.length-1)?'': 'border-bottom:1px solid #eee;'}}" ng-show="devices && devices.length > 0" ng-repeat="dev in devices track by $index">
 			<div class="col-xs-2"><strong>{{$index + 1}}</strong></div>

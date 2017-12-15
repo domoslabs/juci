@@ -19,34 +19,105 @@
  */
 
 JUCI.app
-.controller("StatusDiagnostics", function($scope, $rpc, $network){
-	$scope.data = {}; 
-	$network.getNetworks().done(function(nets){
-		$scope.data.allInterfaces = nets.map(function(x){ return { label: x[".name"], value: x[".name"] }; }); 
-		$scope.$apply(); 
-	}); 
-	$scope.onTraceTest = function(){
-		$rpc.$call("juci.diagnostics", "run", {"method":"traceroute","args":JSON.stringify({ host: $scope.data.traceHost })}).done(function(result){
-			if(result.stderr) $scope.data.traceError = result.stderr; 
-			$scope.data.traceResults = result.stdout; 
-			$scope.$apply(); 
-		}).fail(function(error){
-			$scope.data.traceResults = ""; 
-			$scope.data.traceError = JSON.stringify(error); 
-			$scope.$apply(); 
-		}); 
-	}
+.controller("StatusDiagnostics", function($scope, $rpc, $tr, gettext, $events){
+	$scope.data = {
+		pingResults: [],
+		pingv6: false,
+		pingCount: 5,
+		pingWait: 1,
+		pingRunning: false,
+		pingError: "",
+		traceResults: [],
+		tracev6: false,
+		traceCount: 1,
+		traceWait: 1,
+		traceRunning: false,
+		traceError: ""
+	};
 	$scope.onPingTest = function(){
-		$scope.data.pingResults = "..."; 
-		$scope.data.error = "";
-		$rpc.$call("juci.diagnostics", "run", {"method":"ping","args":JSON.stringify({ host: $scope.data.pingHost })}).done(function(result){
-			if(result.stderr) $scope.data.pingError = result.stderr; 
-			$scope.data.pingResults = result.stdout; 
-			$scope.$apply(); 
+		if($scope.validate("pingHost") !== null) return;
+		$scope.data.pingError = "";
+		var ping = $scope.data.ping6 ? "ping6" : "ping";
+		var pingArgs = {
+			"host": $scope.data.pingHost,
+			"count": $scope.data.pingCount,
+			"timeout": $scope.data.pingWait
+		}
+		$rpc.$call("juci.diagnostics", ping, pingArgs).done(function(result){
+			if(result && result.state === "running") $scope.data.pingRunning = true;
+			$scope.data.pingHost = "";
 		}).fail(function(error){
-			$scope.data.pingResults = ""; 
-			$scope.data.pingError = JSON.stringify(error); 
-			$scope.$apply(); 
-		}); 
+			$scope.data.pingError = JSON.stringify(error);
+		}).always(function(){
+			$scope.$apply();
+		});
 	}
-}); 
+	$scope.onTraceTest = function(){
+		if($scope.validate("traceHost") !== null) return;
+		$scope.data.traceError = "";
+		var trace = $scope.data.trace6 ? "traceroute6" : "traceroute";
+		var traceArgs = {
+			"host": $scope.data.traceHost,
+			"count": $scope.data.traceCount,
+			"timeout": $scope.data.traceWait
+		}
+		$rpc.$call("juci.diagnostics", trace, traceArgs).done(function(result){
+			if(result && result.state === "running") $scope.data.traceRunning = true;
+			$scope.data.traceHost = "";
+		}).fail(function(error){
+			$scope.data.traceError = JSON.stringify(error);
+		}).always(function(){
+			$scope.$apply();
+		});
+	}
+	$scope.validate = function(type){
+		if(!$scope.data || !$scope.data[type]) return null;
+		if(String($scope.data[type]).match(/[^A-z0-9}\.\-]/)) return $tr(gettext("Not a valid domain or ip address"));
+		return null;
+	}
+	$scope.deleteResult = function(res){
+		$scope.data.pingResults = $scope.data.pingResults.filter(function(r){ return r !== res; });
+		$scope.data.traceResults = $scope.data.traceResults.filter(function(r){ return r !== res; });
+	}
+	$events.subscribe("diagnostics.ping", function(res){
+		if(res && res.data){
+			if(res.data.stdout)
+				$scope.data.pingResults.push(res.data.stdout);
+			else if(res.data.stderr)
+				$scope.data.pingError = res.data.stderr;
+			$scope.data.pingRunning = false;
+			$scope.$apply();
+		}
+	});
+	$events.subscribe("diagnostics.ping6", function(res){
+		if(res && res.data){
+			if(res.data.stdout)
+				$scope.data.pingResults.push(res.data.stdout);
+			else if(res.data.stderr)
+				$scope.data.pingError = res.data.stderr;
+			$scope.data.pingRunning = false;
+			$scope.$apply();
+		}
+	});
+	$events.subscribe("diagnostics.traceroute", function(res){
+		console.log(res);
+		if(res && res.data){
+			if(res.data.stdout)
+				$scope.data.traceResults.push(res.data.stdout);
+			else if(res.data.stderr)
+				$scope.data.traceError = res.data.stderr;
+			$scope.data.traceRunning = false;
+			$scope.$apply();
+		}
+	});
+	$events.subscribe("diagnostics.traceroute6", function(res){
+		if(res && res.data){
+			if(res.data.stdout)
+				$scope.data.traceResults.push(res.data.stdout);
+			else if(res.data.stderr)
+				$scope.data.traceError = res.data.stderr;
+			$scope.data.traceRunning = false;
+			$scope.$apply();
+		}
+	});
+});

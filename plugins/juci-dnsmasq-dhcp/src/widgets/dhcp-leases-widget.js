@@ -33,12 +33,12 @@ JUCI.app
 		JUCI.interval.repeat("dhcp-leases", 5000, function(done){refresh();done();});
 	});
 	function refresh(){
-		$rpc.$call("router", "leases", {family:4}).done(function(res){
+		$rpc.$call("router.network", "leases", {family:4}).done(function(res){
 			$scope.ipv4leases = Object.keys(res).map(function(k){return res[k];});
 			$scope.$apply();
 		});
 
-		$rpc.$call("router", "leases", {family:6}).done(function(res){
+		$rpc.$call("router.network", "leases", {family:6}).done(function(res){
 			$scope.ipv6leases = Object.keys(res).map(function(k){return res[k];});
 			$scope.$apply();
 		});

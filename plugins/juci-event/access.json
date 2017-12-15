@@ -2,14 +2,8 @@
 	"juci-event": {
 		"description": "JUCI event module",
 		"read": {
-			"juci-io": [
-				"backup"
-			],
 			"ubus": {
-				"event": [
-					"list"
-				],
-				"router": [
+				"router.system": [
 					"logs"
 				]
 			}

@@ -17,7 +17,7 @@
  */
 
 JUCI.app
-.controller("SettingsConfigurationCtrl", function($scope, $rpc, $tr, gettext, $juciDialog, $file, $config, $events){
+.controller("SettingsConfigurationCtrl", function($scope, $rpc, $tr, gettext, $juciDialog, $file, $config, $events, $juciConfirm){
 	$scope.data = {encryptBackup:false};
 	$scope.sessionID = $rpc.$sid();
 	$scope.resetPossible = 0;
@@ -25,16 +25,41 @@ JUCI.app
 	$scope.passwordError = false;
 
 	$events.subscribe("defaultreset", function(e){ window.location = "/reboot.html"; });
-	$rpc.$call("juci.system.conf", "run", {"method":"features"}).done(function(features){
+	$rpc.$call("juci.sysupgrade", "features", {}).done(function(features){
 		$scope.features = features;
 		$scope.$apply();
 	});
 
+	$scope.soft = {
+		soft: false,
+		wifi: true,
+		fw_redirect: true,
+		fw_parental: true,
+		passwd_user: true,
+		ice: true
+	};
+
 	$scope.onReset = function(){
-		if(confirm($tr(gettext("This will reset your configuration to factory defaults. Do you want to continue?")))){
-			$rpc.$call("juci.system", "run", {"method":"defaultreset"});
-		}
+		$juciConfirm.show($tr(gettext("This will reset your configuration to factory defaults (except the settings selected to be saved). Do you want to continue?"))).done(function(){
+			$rpc.$call("juci.system", "defaultreset", {
+				"soft":		$scope.soft.soft ?	"true" : "false",
+				"wifi":		$scope.soft.wifi ?	"true" : "false",
+				"fw_redirect":	$scope.soft.fw_redirect?"true" : "false",
+				"fw_parental":	$scope.soft.fw_parental?"true" : "false",
+				"passwd_user":	$scope.soft.passwd_user?"true" : "false",
+				"ice":		$scope.soft.ice ?	"true" : "false"
+			});
+			setTimeout(function(){window.location = "/reboot.html";},0);
+		});
 	}
+
+	$scope.$watch("soft",function(soft){
+		if ( !soft.wifi && !soft.fw_redirect && !soft.fw_parental && !soft.passwd_user && !soft.ice) {
+			soft.soft = false;
+			soft.wifi = soft.fw_redirect = soft.fw_parental = soft.passwd_user = soft.ice = true;
+		}
+	}, true);
+
 	$scope.onSaveConfig = function(){
 		$scope.showModal = 1;
 	}
@@ -50,23 +75,23 @@ JUCI.app
 		var upfile = document.getElementById("upload");
 		if(!upfile.name || upfile.size < 1) return;
 		$file.uploadFile("backup.tar.gz", upfile.files[0]).done(function(){
-			onUploadComplete("done");
+			onUploadComplete(upfile.name);
 		}).fail(function(e){console.log(e);});
 	}
 	function onUploadComplete(result){
 		console.log("Uploaded: "+JSON.stringify(result));
-		$rpc.$call("juci.system.conf", "run", {"method":"restore","args":JSON.stringify({
-			pass: $scope.data.pass
-		})}).done(function(result){
+		$rpc.$call("juci.sysupgrade", "restore-backup", {
+			"pass": $scope.data.pass
+		}).done(function(result){
 			if(result.error){
 				alert(result.error);
 			} else {
 				$scope.showUploadModal = 0;
 				$scope.$apply();
-				if(confirm($tr(gettext("Configuration has been restored. You need to reboot the device for settings to take effect! Do you want to reboot now?")))){
-					$rpc.$call("juci.system", "run", {"method":"reboot"});
+				$juciConfirm.show($tr(gettext("Configuration has been restored. You need to reboot the device for settings to take effect! Do you want to reboot now?"))).done(function(){
+					$rpc.$call("juci.system", "reboot", {});
 					setTimeout(function(){window.location = "/reboot.html";}, 0);
-				}
+				});
 			}
 		}).fail(function(err){
 			console.error("Filed: "+JSON.stringify(err));
@@ -86,10 +111,9 @@ JUCI.app
 		}
 		$scope.showModal = 0;
 		$scope.showStatus = 1;
-		$rpc.$call("juci.system", "run", {
-			"method":"create_backup",
-			"args": ($scope.data.pass ? JSON.stringify({password: $scope.data.pass}) : undefined)
-		}).done(function(){
+		$rpc.$call("juci.sysupgrade", "create-backup",
+			($scope.data.pass ? {"pass": $scope.data.pass} : undefined)
+		).done(function(){
 			$file.downloadFile("backup.tar.gz", "application/gzip", "backup-" + $config.filename + ".tar.gz").fail(function(e){
 				alert($tr(gettext("Was not able to download backup. Please check access!")));
 				console.log(e);

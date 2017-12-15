@@ -1,0 +1,244 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid "Unknown"
+msgstr "不明"
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid "Unnamed System"
+msgstr "名称未設定のシステム"
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid "Agent "
+msgstr "エージェント "
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid "without address"
+msgstr "アドレスなし"
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid "Empty Com2sec"
+msgstr "空のCom2sec"
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid "Group: "
+msgstr "Group: "
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid "Unknown Group"
+msgstr "不明なグループ"
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid " Version: "
+msgstr " Version: "
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid "Unknown Version"
+msgstr "不明なバージョン"
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid " SecName: "
+msgstr " SecName: "
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid "Unknown SecName"
+msgstr "不明なSecName"
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid "Empty View"
+msgstr "空のビュー"
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid " Read: "
+msgstr " Read: "
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid " Write: "
+msgstr " Write: "
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid "Persist: "
+msgstr "Persist: "
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid " Priority: "
+msgstr " Priority: "
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid " MIB OID: "
+msgstr " MIB OID: "
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid " Program: "
+msgstr " Program: "
+
+# plugins/juci-snmpd/src/pages/snmpd-config.js
+msgid "Are you sure you want to delete System?"
+msgstr "システムを削除してもよろしいですか？"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-snmpd/src/widgets/access-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-snmpd/src/pages/snmpd-config.html
+msgid "Group"
+msgstr "グループ"
+
+# plugins/juci-snmpd/src/widgets/access-edit.html
+msgid "Context"
+msgstr "コンテキスト"
+
+# plugins/juci-snmpd/src/widgets/access-edit.html
+msgid "Version"
+msgstr "Version"
+
+# plugins/juci-snmpd/src/widgets/access-edit.html
+msgid "Level"
+msgstr "レベル"
+
+# plugins/juci-snmpd/src/widgets/access-edit.html
+msgid "Prefix"
+msgstr "プレフィックス"
+
+# plugins/juci-snmpd/src/widgets/access-edit.html
+msgid "Read"
+msgstr "読み取り"
+
+# plugins/juci-snmpd/src/widgets/access-edit.html
+msgid "Write"
+msgstr "書き込み"
+
+# plugins/juci-snmpd/src/widgets/access-edit.html
+msgid "Notify"
+msgstr "通知"
+
+# plugins/juci-snmpd/src/widgets/pass-edit.html
+msgid "Persist"
+msgstr "パススルー オン"
+
+# plugins/juci-snmpd/src/widgets/pass-edit.html
+msgid "Priority"
+msgstr "優先度"
+
+# plugins/juci-snmpd/src/widgets/pass-edit.html
+msgid "MIB OID"
+msgstr "MIB OID"
+
+# plugins/juci-snmpd/src/widgets/pass-edit.html
+msgid "Program"
+msgstr "プログラム"
+
+# plugins/juci-snmpd/src/widgets/system-edit.html
+msgid "Location"
+msgstr "ロケーション"
+
+# plugins/juci-snmpd/src/widgets/system-edit.html
+msgid "Contact"
+msgstr "コンタクト"
+
+# plugins/juci-snmpd/src/widgets/system-edit.html
+msgid "Name"
+msgstr "名称"
+
+# plugins/juci-snmpd/src/widgets/system-edit.html
+msgid "Services"
+msgstr "サービス"
+
+# plugins/juci-snmpd/src/widgets/system-edit.html
+msgid "Description"
+msgstr "説明"
+
+# plugins/juci-snmpd/src/widgets/system-edit.html
+msgid "Object ID"
+msgstr "オブジェクトID"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-snmpd/src/widgets/group-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-snmpd/src/widgets/com2sec-edit.html
+msgid "Community"
+msgstr "Community"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-snmpd/src/widgets/group-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-snmpd/src/widgets/com2sec-edit.html
+msgid "Source"
+msgstr "Source"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-snmpd/src/widgets/group-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-snmpd/src/widgets/com2sec-edit.html
+msgid "SecName"
+msgstr "SecName"
+
+# plugins/juci-snmpd/src/widgets/agent-edit.html
+msgid "Agent Address"
+msgstr "エージェントアドレス"
+
+# plugins/juci-snmpd/src/widgets/view-edit.html
+msgid "View Name"
+msgstr "表示名"
+
+# plugins/juci-snmpd/src/widgets/view-edit.html
+msgid "Type"
+msgstr "タイプ"
+
+# plugins/juci-snmpd/src/widgets/view-edit.html
+msgid "OID"
+msgstr "OID"
+
+# plugins/juci-snmpd/src/widgets/view-edit.html
+msgid "Mask"
+msgstr "マスク"
+
+# plugins/juci-snmpd/src/pages/snmpd-config.html
+msgid "SNMP Configuration"
+msgstr "SNMP設定"
+
+# plugins/juci-snmpd/src/pages/snmpd-config.html
+msgid "snmpd.config.info"
+msgstr " "
+
+# plugins/juci-snmpd/src/pages/snmpd-config.html
+msgid "Enabled"
+msgstr "SNMP オン"
+
+# plugins/juci-snmpd/src/pages/snmpd-config.html
+msgid "System"
+msgstr "システム"
+
+# plugins/juci-snmpd/src/pages/snmpd-config.html
+msgid "Agent"
+msgstr "エージェント"
+
+# plugins/juci-snmpd/src/pages/snmpd-config.html
+msgid "Com2sec"
+msgstr "Com2sec"
+
+# plugins/juci-snmpd/src/pages/snmpd-config.html
+msgid "View"
+msgstr "表示"
+
+# plugins/juci-snmpd/src/pages/snmpd-config.html
+msgid "Access"
+msgstr "アクセス"
+
+# plugins/juci-snmpd/src/pages/snmpd-config.html
+msgid "Pass"
+msgstr "パススルー"
+
+# plugins/juci-snmpd/src/pages/snmpd-config.html
+msgid "menu-snmpd-config-title"
+msgstr "SNMP"

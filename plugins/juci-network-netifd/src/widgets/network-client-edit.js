@@ -18,6 +18,7 @@
  * 02110-1301 USA
  */
 
+
 JUCI.app
 .directive("networkClientEdit", function(){
 	return {
@@ -27,19 +28,161 @@ JUCI.app
 			model: "=ngModel"
 		},
 		replace: true, 
-		require: "^ngModel"
+		require: "^ngModel",
 	};  
-}).controller("networkClientEdit", function($scope, $uci, $tr, gettext){	
+}).controller("networkClientEdit", function($scope, $uci, $tr, gettext){
+	$scope.hasGraphObject = function(){
+		return $rpc.$has("router.graph","client_traffic");
+	}
+	$scope.ylabel = "Mbit/s";
+	$scope.tick = 4000;
+	$scope.id = $scope.model.client.hostname;
+	$scope.tableData = {
+		rows: [
+			["Download Speed", "0"],
+			["Upload Speed", "0"],
+			["Total Received data", "0 MB"],
+			["Total Transmitted data", "0 MB"],
+		]
+	};
+	$scope.$on("$destroy", function(){
+		JUCI.interval.clear("updateTraffic");
+	});
+
+	function do_to_each(obj, f){
+		Object.keys(obj).forEach(function(key){ obj[key]=f(obj[key]); });
+	}
+	function bits_to_megabits_per_sec(bits){ return ( (bits/1000000) / ($scope.tick/1000) ).toFixed(5); }
+
+	function updateTraffic(){
+		$rpc.$call("router.graph", "client_traffic").done(function(data){
+			if (!data || !data[$scope.model.client.hostname]) {
+				$scope.traffic = [];
+				$scope.traffic["Downstream"] = 0;
+				$scope.traffic["Upstream"] = 0;
+			}
+			else {
+				$scope.traffic = data[$scope.model.client.hostname];
+				do_to_each($scope.traffic, bits_to_megabits_per_sec);
+			}
+		}).fail(function(e){
+			console.error("network-client-edit: "+e); 
+			$scope.traffic = [];
+			$scope.traffic["Downstream"] = 0;
+			$scope.traffic["Upstream"] = 0;
+		}).always(function(){
+			$scope.tableData["rows"][0] = ["Download Speed", to_kbit_or_mbit_str($scope.traffic["Downstream"])];
+			$scope.tableData["rows"][1] = ["Upload Speed", to_kbit_or_mbit_str($scope.traffic["Upstream"])];
+			$scope.$apply();
+		});
+		$rpc.$call("router.network", "clients").done(function(data){ // rx and tx are inverted by router.network clients
+			if (!data || !$scope.model.client.hostname) { return; }
+			Object.keys(data).forEach(function(key){
+				if(data[key].hostname === $scope.model.client.hostname){
+					if("tx_bytes" in data[key])
+						$scope.tableData.rows[2] = ["Total Received data", to_byte_str((data[key].tx_bytes)/1000)];
+					if("rx_bytes" in data[key])
+						$scope.tableData.rows[3] = ["Total Transmitted data", to_byte_str((data[key].rx_bytes)/1000)];
+					if(data[key].in_network)
+						$scope.tableData.rows[4] = ["Total Uptime", secs_to_hms(data[key].in_network)];
+				}
+			});
+		}).fail(function(e){ console.error("network-client-edit: "+e); 
+		}).always(function(){ $scope.$apply(); });
+	}
+
+	function to_kbit_or_mbit_str(number) {
+		var number_out = number;
+		var unit = "Mbit/s"
+
+		if (number_out < 1) {
+			number_out = (number_out * 1000);
+			unit = "kbit/s";
+		}
+		number_out = parseFloat(number_out).toFixed(3);
+
+		return String(number_out) +" "+ unit;
+	}
+	function to_byte_str(number) {
+		var number_out = number;
+		var unit = "kB"
+
+		if (number_out > 1000) {
+			number_out = (number_out / 1000);
+			unit = "MB";
+		}
+
+		return String(number_out.toFixed(3)) +" "+ unit;
+	}
+	function secs_to_hms(secs){ 
+		var s=secs%60;
+		var m=Math.floor(secs/60);
+		var h=Math.floor(m/60);
+		return String(h)+"h "+String(m-h*60)+"m "+String(s)+"s ";
+	}
+
+	JUCI.interval.repeat("updateTraffic",$scope.tick,function(next){
+		updateTraffic();
+		next();
+	});
+
 	$scope.$watch("model", function(value){
-		console.log(value);
-		if(!value || !value.client) return;
+		if(!value || !value.client || !value.client.macaddr) return;
+		var networkList = [];
 		$uci.$sync("dhcp").done(function(){
 			$scope.staticLeses = $uci.dhcp["@host"];
-			$scope.csh = $scope.staticLeses.filter(function(l){
-				return l.mac.value === value.client.macaddr && l.network.value === value.client.network;
+			$scope.tags = $uci.dhcp["@tag"].map(function(tag){ return { label: String(tag[".name"]).toUpperCase(), value: tag[".name"] }; });
+			$scope.client = $scope.staticLeses.filter(function(l){
+				return String(l.mac.value).toUpperCase() === String(value.client.macaddr).toUpperCase();
 			})[0];
 			$scope.$apply();
 		});
+		$rpc.$call("router.network", "dump").done(function(data){
+			networkList = Object.keys(data).map(function(key){ data[key]["name"] = key; return data[key];})
+			.filter(function(net){ return net["is_lan"] && net.ipaddr && net.netmask;});
+
+			$scope.$watch("client.ip.value", evalIp, false);
+			$scope.$apply();
+		});
+		$scope.edit_hostname = function(){
+			$scope.disabled = true;
+			$uci.dhcp.$create({
+				".type":"host",
+				"mac": value.client.macaddr
+			}).done(function(cl){
+				$scope.client = cl;
+				$scope.$apply();
+			});
+		}
+		function evalIp(){
+			if(!$scope.client) return;
+			var cl = $scope.client.ip;
+			if(!cl.value || cl.error !== null || !networkList){
+				$scope.inNetwork = "";
+				return;
+			}
+			net = networkList.find(function(net){
+				var net_ip_parts = String(net.ipaddr).split(".").map(function(p){return parseInt(p);}).filter(function(p){ return isNaN(p) === false;});
+				var net_mk_parts = String(net.netmask).split(".").map(function(p){return parseInt(p);}).filter(function(p){ return isNaN(p) === false;});
+				var cli_ip_parts = String(cl.value).split(".").map(function(p){return parseInt(p);}).filter(function(p){ return isNaN(p) === false;});
+				if(net_ip_parts.length !== 4 || net_mk_parts.length !== 4 || cli_ip_parts.length !== 4) return false;
+				var net_ip_bin = net_ip_parts.map(function(p){ var s = p.toString(2); while(s.length < 8){ s = "0" + s;}; return s;}).join("");
+				var net_mk_bin = net_mk_parts.map(function(p){ var s = p.toString(2); while(s.length < 8){ s = "0" + s;}; return s;}).join("");
+				var cli_ip_bin = cli_ip_parts.map(function(p){ var s = p.toString(2); while(s.length < 8){ s = "0" + s;}; return s;}).join("");
+				for(var i = 0; i < 24; i++){
+					if((net_ip_bin[i] & net_mk_bin[i]) !==  + (net_mk_bin[i] & cli_ip_bin[i]))
+						return false;
+				}
+				return true;
+			});
+			if(net){
+				$scope.inNetwork = net.name;
+				$scope.cssClass="warning";
+				return;
+			}
+			$scope.inNetwork = $tr(gettext("Not in any configured network"));
+			$scope.cssClass="danger";
+		}
 		$scope.onAddStaticLease = function(){
 			$uci.$sync("dhcp").done(function(){
 				$uci.dhcp.$create({
@@ -47,22 +190,22 @@ JUCI.app
 					ip: $scope.model.client.ipaddr,
 					mac: $scope.model.client.macaddr,
 					network: $scope.model.client.network,
-					name: $scope.model.client.hostname
+					name: $scope.model.client.hostname === "*" ? "":$scope.model.client.hostname
 				}).done(function(value){
-					$scope.csh = value;
+					$scope.client = value;
 				});
 			});
 		}
 		$scope.onDeleteStaticLease = function(){
-			if(!$scope.csh || !$scope.csh.$delete) return;
-			$scope.csh.$delete().done(function(){
-				$scope.csh = null;
+			if(!$scope.client || !$scope.client.$delete) return;
+			$scope.disabled = false;
+			$scope.client.$delete().done(function(){
+				$scope.client = null;
 				$scope.$apply();
 			});
 		}
 		$scope.values = Object.keys(value.client).map(function(x){
 			var val = value.client[x];
-			if(x === "hostname") return { label: $tr(gettext("Hostname")), value: val };
 			if(x === "ipaddr") return { label: $tr(gettext("IP Address")), value: val };
 			if(x === "ip6addr") return { label: $tr(gettext("IPv6 Address")), value: val };
 			if(x === "duid") return { label: $tr(gettext("DUID")), value: val };

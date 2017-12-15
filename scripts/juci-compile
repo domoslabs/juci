@@ -1,23 +1,42 @@
 #!/bin/bash
 
 # ensure that bash exits with non-zero status if any command fails!
-set -e 
 
 BIN=$1
 if [ "$1" == "" ]; then BIN=bin; fi
 
-for file in `find $BIN/www/js/ -name "*.js"`; do 
-	echo "Compiling JS ${file}.."
-	uglifyjs ${file} > ${file}.out
-	mv ${file}.out ${file}
-done
+if [ -d "$BIN/www" ]; then
+	for file in `find $BIN/www/js/ -name "*.js" 2>/dev/null`; do
+		echo "compiling js ${file}.."
+		uglifyjs ${file} -o ${file}.out -b
+		mv ${file}.out ${file}
+	done
 
-for file in `find $BIN/www/css/ -name "*.css"`; do 
-	echo "Compiling CSS ${file}.."
-	if [ "$(which yui-compressor)" != "" ]; then
-		yui-compressor ${file} > ${file}.out
-	else
-		yuicompressor ${file} > ${file}.out
-	fi
-	mv ${file}.out ${file}
-done
+	for file in `find $BIN/www/css/ -name "*.css" 2>/dev/null`; do
+		echo "Compiling CSS ${file}.."
+		if [ "$(which yui-compressor)" != "" ]; then
+			yui-compressor ${file} > ${file}.out
+		else
+			yuicompressor ${file} > ${file}.out
+		fi
+		mv ${file}.out ${file}
+	done
+else
+	for file in $(find $BIN/*/www/js/ -name '*.js' 2>/dev/null); do
+		echo "compiling js ${file}.."
+		uglifyjs ${file} -o ${file}.out -b
+		mv ${file}.out ${file}
+	done
+	for file in `find $BIN/*/www/css/ -name "*.css*" 2>/dev/null`; do
+		echo "Compiling CSS ${file}.."
+		if [ "$(which yui-compressor)" != "" ]; then
+			yui-compressor ${file} > ${file}.out
+		else
+			yuicompressor ${file} > ${file}.out
+		fi
+		mv ${file}.out ${file}
+	done
+	for file in $(find ${BIN} -type f | grep -v "\.gz" | grep "/www/"); do
+		gzip -f ${file}
+	done
+fi

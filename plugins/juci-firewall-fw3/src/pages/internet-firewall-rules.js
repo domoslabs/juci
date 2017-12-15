@@ -19,9 +19,10 @@
  */
 
 JUCI.app
-.controller("InternetFirewallRulesPage", function($scope, $uci, $firewall, $tr, gettext){
+.controller("InternetFirewallRulesPage", function($scope, $uci, $firewall, $tr, gettext, $juciConfirm){
 	$firewall.getRules().done(function(rules){
-		$scope.rules = rules.map(function(rule){
+		$scope.rules = rules.filter(function(rule){return !rule.parental.value;});
+		$scope.rules.map(function(rule){
 			var values = [];
 			if(rule.src_ip.value && rule.src_ip.value.length === 1) values.push({ label: $tr(gettext("Source IP")), value: rule.src_ip.value[0] });
 			if(rule.src_ip.value && rule.src_ip.value.length > 1) values.push({ label: $tr(gettext("Source IP")), value: rule.src_ip.value[0] + "..." });
@@ -30,7 +31,6 @@ JUCI.app
 			if(rule.src_port.value) values.push({ label: $tr(gettext("Source Port(s)")), value: rule.src_port.value });
 			if(rule.dest_port.value) values.push({ label: $tr(gettext("Destination Port(s)")), value: rule.dest_port.value });
 			rule.$statusList = values;
-			return rule;
 		});
 		$scope.$apply(); 
 	}); 
@@ -54,16 +54,18 @@ JUCI.app
 	}
 	$scope.onItemMoved = function(){
 		if(!$uci.firewall) return;
-		$uci.firewall.$save_order("rule");
+		$uci.firewall.$save_order("rule").done(function(data){
+			console.log("done moving rule " + JSON.stringify(data));
+		});
 	}
 	
 	$scope.onDeleteRule = function(rule){
 		if(!rule) alert($tr(gettext("Please select a rule to delete!")));
-		if(confirm($tr(gettext("Are you sure you want to delete this rule?")))){
+		$juciConfirm.show($tr(gettext("Are you sure you want to delete this rule?"))).done(function(){
 			rule.$delete().done(function(){
 				$scope.$apply(); 
 			}); 
-		}
+		});
 	}
 	
 }); 

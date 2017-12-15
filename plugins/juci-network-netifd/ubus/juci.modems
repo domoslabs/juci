@@ -1,0 +1,23 @@
+#!/bin/sh
+
+. /usr/share/libubox/jshn.sh
+
+case "$1" in
+	list)
+		echo '{ "list" : {} }'
+	;;
+	call)
+		case "$2" in
+			list)
+				modems="$(ls /dev/tty[S,USB,ACM]*)"
+
+				json_init
+				json_add_array "modems"
+				for mdm in $modems; do
+					json_add_string "" "$mdm"
+				done
+				json_dump
+			;;
+		esac
+	;;
+esac

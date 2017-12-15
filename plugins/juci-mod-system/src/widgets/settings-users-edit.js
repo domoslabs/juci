@@ -38,7 +38,7 @@ JUCI.app
 				next();
 			},
 			function(next){
-				$uci.$sync(["rpcd","juci"]).done(function(){
+				$uci.$sync("juci").done(function(){
 					$scope.data.pages = $uci.juci["@menu"].map(function(menu){
 						if(menu.acls.value.find(function(acl){
 							return !user_acls[acl];

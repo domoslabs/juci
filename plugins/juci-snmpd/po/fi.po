@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.0.4\n"
 
 msgid "Unknown"
 msgstr "Tuntematon"
@@ -92,18 +92,6 @@ msgstr "Kirjoita"
 msgid "Notify"
 msgstr "Ilmoitus"
 
-msgid "Agent Address"
-msgstr "Agentin osoite"
-
-msgid "Community"
-msgstr "Yhteisö"
-
-msgid "Source"
-msgstr "Lähde"
-
-msgid "SecName"
-msgstr "SecNimi"
-
 msgid "Persist"
 msgstr ""
 
@@ -133,6 +121,18 @@ msgstr "Kuvaus"
 
 msgid "Object ID"
 msgstr "Objektin ID"
+
+msgid "Community"
+msgstr "Yhteisö"
+
+msgid "Source"
+msgstr "Lähde"
+
+msgid "SecName"
+msgstr "SecNimi"
+
+msgid "Agent Address"
+msgstr "Agentin osoite"
 
 msgid "View Name"
 msgstr "Näkymän nimi"
@@ -175,4 +175,8 @@ msgid "Pass"
 msgstr ""
 
 msgid "menu-snmpd-config-title"
-msgstr "SNMPD"
+msgstr "SNMP"
+
+# /home/jamu/GIT/juci/plugins/juci-snmpd/src/pages/snmpd-config.html
+#~ msgid "snmpd-config-title"
+#~ msgstr "SNMP"

@@ -10,13 +10,13 @@ JUCI.app
 	};
 }).controller("sipAdvancedCtrl", function($scope, $uci, $tr, gettext, $network, $rpc){
 	$scope.ssl = {};
-	$rpc.$call("juci.voice_client", "run", {"method":"get_trusted_ca"}).done(function(data){
+	$rpc.$call("juci.voice_client", "get_trusted_ca", {}).done(function(data){
 		$scope.ssl.ovalue = $scope.ssl.value = data.result;
 		$scope.$apply();
 	});
 	$scope.save_ssl = function(){
 		var test = $scope.ssl.value.split("\n").join("\n\r");
-		$rpc.$call("juci.voice_client", "run", {"method":"set_trusted_ca","args":JSON.stringify({data:test})}).done(function(data){
+		$rpc.$call("juci.voice_client", "set_trusted_ca", {"data":test}).done(function(data){
 			if(data.result == "success"){
 				$scope.ssl.ovalue = $scope.ssl.value;
 				$scope.ssl.saved = true;

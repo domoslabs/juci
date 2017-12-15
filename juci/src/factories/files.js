@@ -1,6 +1,6 @@
 //!Author: Reidar Cederqvist <reidar.cederqvist@gmail.com>
 
-JUCI.app.factory("$file", function($rpc, $tr, gettext){
+JUCI.app.factory("$file", function($rpc, $tr, gettext, $rootScope){
 	var saveByteArray = (function () {
 		return function (data, name, fileType, a) {
 			var byteChars = atob(data);
@@ -22,10 +22,16 @@ JUCI.app.factory("$file", function($rpc, $tr, gettext){
 	}());
 	return {
 		uploadFile: function(filename, file, onProgress){
+			$rootScope.uploadFile = true;
 			var fileChunkSize = 500000;
 			var def = $.Deferred();
-			if(!filename || filename.match("/") || !(file instanceof File)) return def.reject("invalid options");
-			var path = "/tmp/" + filename;
+			if(!filename || !(file instanceof File)){
+				$rootScope.uploadFile = false;
+				return def.reject("invalid options");
+			}
+			var path;
+			if(filename.substr(0,5) === "/tmp/") path = filename;
+			else path = "/tmp/" + filename;
 			var callId = 0;
 			var fileUploadState = {
 				file: file,
@@ -38,9 +44,9 @@ JUCI.app.factory("$file", function($rpc, $tr, gettext){
 			fileUploadState.reader.onload = function(e){
 				if(e.target.error !== null){
 					console.log("error reading file");
-					setTimeout(function(){def.reject("error reading file");}, 0);
+					setTimeout(function(){$rootScope.uploadFile = false; def.reject("error reading file");}, 0);
 				}
-				$rpc.$call("file", "write", {
+				$rpc.$call("file", "write_tmp", {
 					path: path,
 					data: e.target.result.split(",")[1],
 					base64: true,
@@ -54,9 +60,11 @@ JUCI.app.factory("$file", function($rpc, $tr, gettext){
 						}
 						fileUploadState.reader.readAsDataURL(fileUploadState.file.slice(fileUploadState.offset, fileUploadState.offset + fileChunkSize));
 					}else{
+						$rootScope.uploadFile = false;
 						def.resolve();
 					}
 				}).fail(function(e){
+					$rootScope.uploadFile = false;
 					def.reject(e);
 				});
 			}
@@ -64,19 +72,32 @@ JUCI.app.factory("$file", function($rpc, $tr, gettext){
 			return def.promise();
 		},
 		downloadFile: function(fileName, filetype, downloadName){
+			$rootScope.downloadFile = true;
 			var def = $.Deferred();
-			if(!fileName || fileName.match("/")) return def.reject();
+			if(!fileName || fileName.match("/")){
+				$rootScope.downloadFile = false;
+				return def.reject();
+			}
 			var link = document.createElement("a");
 			if (link.download === undefined){
 				alert($tr(gettext("your browser does not support this kind of download, please refer to latest Chrome, Firefox, Opera or Edge etc.")));
+				$rootScope.downloadFile = false;
 				return def.reject();
 			}
 			var name = (downloadName)?downloadName:fileName;
 			var filetype = filetype || "application/gzip";
-			$rpc.$call("file", "read", {path:"/tmp/"+fileName, base64:true}).done(function(result){
+			$rpc.$call("file", "read_tmp", {path:"/tmp/"+fileName, base64:true}).done(function(result){
+				$rootScope.downloadFile = false;
 				def.resolve(saveByteArray(result.data, name, filetype, link));
-			}).fail(function(e){ def.reject(e);});
-			return def;
+			}).fail(function(e){ $rootScope.downloadFile = false; def.reject(e);});
+			return def.promise();
 		},
+		uploadString: function(filename, string){
+			var def = $.Deferred();
+			if(!filename || !string) return def.reject("you must give filename and string");
+			if(filename.substr(0,5) !== "/tmp/") filename = "/tmp/" + filename;
+			$rpc.$call("file", "write_tmp", {"path":filename, "data":string}).done(function(ret){def.resolve(ret);}).fail(function(e){def.reject(e);});
+			return def.promise();
+		}
 	}
 });

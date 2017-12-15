@@ -1,0 +1,27 @@
+<juci-layout-with-sidebar>
+	<div ng-controller="InternetMwan3Page">
+		<h2>{{ 'MultiWAN Configuration' | translate }}</h2>
+		<tabset>
+			<tab heading="{{'Settings'|translate}}">
+				<juci-config-section>
+					<juci-list-editor ng-items="interfaces" item-editor="mwan3-interface-edit" on-create="onAddInterface()" on-delete="onDeleteInterface($item)" get-item-title="$item['.name']"></juci-list-editor>
+				</juci-config-section>
+			</tab>
+			<tab heading="{{'Members'|translate}}">
+				<juci-config-section>
+					<juci-list-editor ng-items="members" item-editor="mwan3-member-edit" on-create="onAddMember()" on-delete="onDeleteMember($item)" get-item-title="$item['.name']"></juci-list-editor>
+				</juci-config-section>
+			</tab>
+			<tab heading="{{'Policies'|translate}}">
+				<juci-config-section>
+					<juci-list-editor ng-items="policies" item-editor="mwan3-policy-edit" on-create="onAddPolicy()" on-delete="onDeletePolicy($item)" get-item-title="$item['.name']"></juci-list-editor>
+				</juci-config-section>
+			</tab>
+			<tab heading="{{'Rules'|translate}}">
+				<juci-config-section>
+					<juci-list-editor ng-items="rules" sortable="true" on-item-moved="onRuleMoved()" item-editor="mwan3-rule-edit" on-create="onAddRule()" on-delete="onDeleteRule($item)" get-item-title="$item['.name']"></juci-list-editor>
+				</juci-config-section>
+			</tab>
+		</tabset>
+	</div>
+</juci-layout-with-sidebar>

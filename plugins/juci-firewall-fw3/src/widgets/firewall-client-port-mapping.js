@@ -12,12 +12,11 @@ JUCI.app
 		controller: "firewallClientPortMappingCtrl"
 	}
 })
-.controller("firewallClientPortMappingCtrl", function($scope, $uci, $firewall, $tr, gettext, $rpc){
+.controller("firewallClientPortMappingCtrl", function($scope, $uci, $firewall, $tr, gettext, $rpc, $juciConfirm){
 	$scope.ProtocolTypes = [
 		{ label: $tr(gettext("TCP + UDP")), value: "tcp udp" },
 		{ label: $tr(gettext("TCP")), value: "tcp" },
-		{ label: $tr(gettext("UDP")), value: "udp" },
-		{ label: $tr(gettext("All")), value: "all" }
+		{ label: $tr(gettext("UDP")), value: "udp" }
 	];
 
 	var opts = ["src_dport", "dest_port", "name", "proto"];
@@ -26,7 +25,7 @@ JUCI.app
 	$scope.edit = null;
 
 	$scope.$watch("client", function(){
-		$rpc.$call("juci.firewall", "run", {"method":"excluded_ports"}).done(function(res){
+		$rpc.$call("juci.firewall", "excluded_ports", {}).done(function(res){
 			$scope.excluded_ports = res.result || "";
 			reload();
 		}).fail(function(e){
@@ -49,7 +48,7 @@ JUCI.app
 		},function(next){
 			$uci.$sync("firewall").done(function(){
 				$scope.portMaps = $uci.firewall["@redirect"].filter(function(pm){
-					if(!pm || !pm.enabled.value || pm.target.value != "DNAT" || pm.reflection.value) return false;
+					if(!pm || pm.target.value != "DNAT") return false;
 					if(lanZones.find(function(zone){
 						return zone.name.value === pm.dest.value;
 					}) === undefined) return false;
@@ -72,8 +71,7 @@ JUCI.app
 			"reflection": false,
 			"dest": lanZones[0].name.value || "lan",
 			"src": wanZones[0].name.value || "wan",
-			"dest_ip": $scope.client.ipaddr,
-			".new": true
+			"dest_ip": $scope.client.ipaddr
 		}).done(function(pm){
 			pm[".new"] = true;
 			$scope.edit = pm;
@@ -163,10 +161,10 @@ JUCI.app
 		});
 	}
 	$scope.onDeletePM = function(pm){
-		if(confirm("Are you sure you want to delete " + pm.name.value)){
+		$juciConfirm.show("Are you sure you want to delete " + pm.name.value).done(function(){
 			pm.$delete().done(function(){
 				reload();
 			});
-		}
+		});
 	};
 });

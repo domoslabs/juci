@@ -24,102 +24,157 @@
 (function($juci){
 	function JUCINavigation(){
 		var data = {
-			children: {},
-			children_list: []
-		}; 
-		var self = this; 
+			children: []
+		};
+		var self = this;
+		this.clear = function(){
+			data.children = [];
+		};
 		this.tree = function(path){
 			if(!path)
-				return data; 
-			return this.findLeaf(path); 
+				return data;
+			return findNodeByPath(path);
 		};
-		this.findLeaf = function(path){
-			//console.log("FIND LEAF: "+path); 
-			var parts = path.split("/"); 
-			var obj = data; 
-			// find the right leaf node
-			while(parts.length){
-				if(obj.children.hasOwnProperty(parts[0])){
-					obj = obj.children[parts.shift()]; 
-				} else {
-					return null; 
+		this.findNodeByPage = function(page, node){
+			var list = getAllNodes(node);
+			return list.find(function(ch){ return ch.page === page; });
+		};
+		this.getHrefByNode = function(node){
+			function findHref(n){
+				if(!n) return "";
+				if(n.page){
+					if(n.external) return n.page;
+					return "#!/"+n.page;
 				}
-			} 
-			return obj; 
-		};
-		this.findTrunkByPath = function(path){
-			function findChild(list){
-				return list.find(function(child){
-					if(child.href === path)
-						return true;
-					else if(child.children_list && child.children_list.length)
-						return findChild(child.children_list);
-					return false;
-				});
+				if(!n.children || !n.children.length){console.log("Error in menu pleace run $navigation.removeInvalidNodes"); return "";}
+				return findHref(n.children[0]);
 			}
-			return findChild(data.children_list);
-		};
-		this.findNodeByPath = function(path){
-			return this.findLeaf(path); 
-		}; 
-		this.findNodeByHref = function(href, node){
-			var list = []; 
-			function flatten(tree){
-				list.push(tree); 
-				tree.children_list.map(function(ch){ 
-					if(!ch.href) return; 
-					if(ch._visited) alert("ERROR: loops in menu structure are not allowed! node "+ch.href+" already visited!"); 
-					ch._visited = true; 
-					flatten(ch); 
-				}); 
-			}
-			flatten(node || data); 
-			list.map(function(ch){ ch._visited = false; }); // reset the flag for next time 
-			return list.find(function(ch){ return ch.href == href; }); 
-		}
-		this.insertLeaf = function(path, item){
-			var parts = item.path.split("/"); 
-			var obj = data; 
-			// find the right leaf node
-			while(parts.length > 1){
-				if(obj.children.hasOwnProperty(parts[0])){
-					obj = obj.children[parts.shift()]; 
-				} else {
-					// do not add items whos parents do not exist!
-					// we can thus hide full hierarchy by simply hiding an item
-					return ;
-				}
-			} 
-			// make sure that inserted item has empty child lists
-			if(!item.children) {
-				item.children = {}; 
-				item.children_list = []; 
-			}
-			if(!obj.children.hasOwnProperty(parts[0])){
-				obj.children[parts[0]] = item; 
-				obj.children_list.push(item); 
-			} else {
-				var o = obj.children[parts[0]]; 
-				item.children = o.children; 
-				item.children_list = o.children_list; 
-				obj.children[parts[0]] = item; 
-				item = o; 
-			}
-			obj.children_list = Object.keys(obj.children).map(function (key) {
-				return obj.children[key]; 
-			});
-			return item; 
+			return findHref(node);
 		};
 		this.register = function(item){
-			if(!item.path) return; 
-			item = this.insertLeaf(item.path, item); 
-			
-			return data; 
-		}; 
+			if(!item.path) return;
+			var parts = item.path.split("/");
+			if(parts.length > 3) { alert("ERROR: menu cant have more than 3 lvls"); return;}
+			var obj = data;
+			while(parts.length > 1){
+				var node = obj.children.find(function(n){
+					return n.path.split("/").pop() === parts[0];
+				});
+				if(!node){
+					var n_path = obj.path ? obj.path + "/" + parts[0] : parts[0];
+					var new_obj = {
+						children: [],
+						path: n_path, // this will create a string containing the missing path
+						page: "",
+						index: item.index || 99,
+						modes: [],
+						text: "menu-"+n_path.replace(/\//g, "-")+"-title"
+					};
+					obj.children.push(new_obj);
+					obj = new_obj;
+				}else{
+					obj = node;
+				}
+				parts.shift();
+			}
+			if(!obj.children) obj.children = [];
+			var exists = false;
+			obj.children = obj.children.map(function(ch) {
+				if(ch.path === item.path){
+					exists = true;
+					return item;
+				}
+				return ch;
+			});
+			if(!exists){
+				obj.children.push(item);
+			}
+		};
+		this.removeInvalidNodes = function(){
+			var to_delete = [];
+			filterMenu(data, to_delete);
+			if(to_delete.length){
+				to_delete.map(function(del){ deleteNodeByPath(del);});
+			}
+		};
+		this.sortNodes = function(){
+			function sortCh(ch){
+				if(!ch.children || !ch.children.length) return;
+				var index = 0;
+				ch.children.map(function(ch){ ch["__index__"] = index++;});
+				ch.children = ch.children.sort(function(a, b){
+					if(!a.index || !b.index || a.index === b.index)
+						return a["__index__"] - b["__index__"];
+					return a.index - b.index;
+				});
+				ch.children.map(function(ch){ delete ch["__index__"];});
+				ch.children.map(function(subch){
+					sortCh(subch);
+				});
+			}
+			sortCh(data);
+		};
+
+		//HELPER FUNCTIONS
+		function hasValidChild(node){
+			if(!node.children || !node.children.length) return false;
+			var valid = node.children.find(function(subch){
+				if(subch.path) return true;
+				return hasValidChild(subch);
+			});
+			if(valid) return true;
+			return false;
+		};
+		function filterMenu(node, to_delete){
+			if(!node) node = data;
+			if(!node.children || !node.children.length) return; //no sub-nodes
+			node.children.map(function(ch){
+				if(ch.page){ 								// valid node check sub-nodes
+					filterMenu(ch, to_delete);
+				}else if(hasValidChild(ch)){ 				// valid node check sub-nodes
+					filterMenu(ch, to_delete);
+				}else{ 										// invalid child REMOVE
+					to_delete.push(ch.path);
+				}
+			});
+		}
+		function getAllNodes(node){
+			var list = [];
+			function flatten(tree){
+				list.push(tree);
+				if(!tree.children || !tree.children.length) return;
+				tree.children.map(function(ch){
+					if(ch._visited) alert("ERROR: loops in menu structure are not allowed! node "+ch.href+" already visited!");
+					ch._visited = true;
+					flatten(ch);
+				});
+			}
+			flatten(node || data);
+			list.map(function(ch){ delete ch._visited; }); // reset the flag for next time
+			return list;
+		};
+		function findNodeByPath(path, node){
+			var list = getAllNodes(node);
+			return list.find(function(ch){ return ch.path === path; });
+		};
+		function deleteNodeByPath(path){
+			var parts = path.split("/");
+			if(parts.length > 3){ alsert("ERROR: cant delete item with more than 3 lvls"); return;}
+			var obj = data;
+			while(parts.length > 1){ // try to find the parrent of the path
+				var node = obj.children && obj.children.find(function(n){
+					return n.path.split("/").pop() === parts[0];
+				});
+				if(!node) return; // the node doesn't exist
+				obj = node;
+				parts.shift();
+			}
+			obj.children = obj.children.filter(function(ch){ return ch.path !== path;});
+		};
 	}
-	JUCI.navigation = new JUCINavigation(); 
-	
+	JUCI.navigation = new JUCINavigation();
+
 	JUCI.app.factory('$navigation', function navigationProvider(){
-		return JUCI.navigation; 
-	}); 
-})(JUCI); 
+		return JUCI.navigation;
+	});
+})(JUCI);

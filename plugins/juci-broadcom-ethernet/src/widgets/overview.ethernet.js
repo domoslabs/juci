@@ -6,21 +6,43 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("overviewWidgetEthernet", function($scope, $ethernet, $events){
+.controller("overviewWidgetEthernet", function($scope, $ethernet, $events, $config){
+	$scope.href = $config.getWidgetLink("overviewStatusWidget01Ethernet");
 	$scope.ethPorts = [];
+	JUCI.interval.repeat("update-ethernet-overview-widget", 10000, function(done){refresh(); done();});
 	function refresh(){
 		$ethernet.getAdapters().done(function(adapters){
-			$scope.ethPorts = adapters.filter(function(a){ return a.type == "eth-port"; }).sort(function(a, b){
+			var ports  = adapters.filter(function(a){ return a.type == "eth-port"; }).sort(function(a, b){
 				if(a.name === "WAN") return 1;
 				if(b.name === "WAN") return -1;
 				return parseInt(a.name.slice(-1)) - parseInt(b.name.slice(-1));
 			});
-			$scope.$apply();
+			async.eachSeries(ports, function(port, next){
+				if(!port.device){
+					port.up = false;
+					next();
+					return;
+				}
+				$rpc.$call("router.port", "status", { "port":port.device }).done(function(ret){
+					if(!ret || !ret.up)
+						port.is_up = false;
+					else
+						port.is_up = true;
+				}).fail(function(err){
+					console.log(err);
+					port.is_up = false;
+				}).always(function(){next();});
+			}, function(err){
+				if(err)
+					console.log(err);
+				$scope.ethPorts = ports;
+				$scope.$apply();
+			});
 		});
-	}refresh();
+	}
 	$events.subscribe("hotplug.switch", function(){refresh();});
 	$scope.getState = function(port){
-		if(port.carrier) return "success";
+		if(port.is_up) return "success";
 		return "default";
 	};
 	$scope.getName = function(port){

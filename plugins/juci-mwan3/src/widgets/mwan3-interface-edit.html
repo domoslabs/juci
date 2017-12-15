@@ -1,0 +1,35 @@
+<div>
+	<juci-config-lines>
+		<juci-config-line title="{{'Enabled'|translate}}">
+			<switch class="green" ng-model="interface.enabled.value" />
+		</juci-config-line>
+		<juci-config-line title="{{'Family'|translate}}">
+			<juci-select ng-items="families" ng-model="interface.family.value" placeholder="{{'Select Family'|translate}}"></juci-select>
+		</juci-config-line>
+		<juci-config-line title="{{'Tracking Type'|translate}}" help="{{'Set to DNS or Gateway to use that for tracking. Set to IP to enter IP manually'|translate}}">
+			<juci-select ng-items="track_types" ng-model="interface.track_type.value"></juci-selcet>
+		</juci-config-line>
+		<juci-config-line ng-show="interface.track_type.value == 'ip'" title="{{'Host(s) to ping'|translate}}">
+			<tags-input ng-model="track_ip" display-property="value" min-length="5" add-on-space="true" add-on-blur="false" placeholder="{{'Add Ping Host(s)' | translate}}">
+			</tags-input>
+		</juci-config-line>
+		<juci-config-line title="{{'Interface Reliability'|translate}}" help="{{'Number of hosts that must reply for the interface to be considered up' | translate }}">
+			<input type="number" min="0" class="form-control" ng-model="interface.reliability.value" />
+		</juci-config-line>
+		<juci-config-line title="{{'Number of Pings'|translate}}" help="{{'Number of pings to send to each Host' | translate }}">
+			<input type="number" min="0" class="form-control" ng-model="interface.count.value" />
+		</juci-config-line>
+		<juci-config-line title="{{'Timeout'|translate}}" help="{{'Number of seconds to wait for reply from host' | translate }}">
+			<input type="number" min="0" class="form-control" ng-model="interface.timeout.value" />
+		</juci-config-line>
+		<juci-config-line title="{{'Interval'|translate}}" help="{{'Number of seconds between each test' | translate }}">
+			<input type="number" min="0" class="form-control" ng-model="interface.timeout.value" />
+		</juci-config-line>
+		<juci-config-line title="{{'Up'|translate}}" help="{{'Number of successful tests to consider interface as up' | translate }}">
+			<input type="number" min="0" class="form-control" ng-model="interface.up.value" />
+		</juci-config-line>
+		<juci-config-line title="{{'Down'|translate}}" help="{{'Number of failed tests to consider interface as down' | translate }}">
+			<input type="number" min="0" class="form-control" ng-model="interface.down.value" />
+		</juci-config-line>
+	</juci-config-lines>
+</div>

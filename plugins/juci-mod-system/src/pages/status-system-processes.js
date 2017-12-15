@@ -21,8 +21,8 @@
 JUCI.app
 .controller("StatusSystemProcesses", function ($scope, $rpc) {
 	JUCI.interval.repeat("juci-process-list", 5000, function(done){
-		$rpc.$call("juci.system.process", "run", {"method":"list"}).done(function(processes){
-			$scope.processes = processes.list.map(function(l){ l["VSZP"] = l["%VSZ"]; delete l["%VSZ"]; l["CPU"] = l["%CPU"]; delete l["%CPU"]; return l;});
+		$rpc.$call("router.system", "processes", {}).done(function(processes){
+			$scope.processes = processes.processes.map(function(l){ l["VSZP"] = l["%VSZ"]; delete l["%VSZ"]; l["CPU"] = l["%CPU"]; delete l["%CPU"]; return l;});
 			$scope.columns = processes.fields.map(function(c){ if(c === "%VSZ") return "VSZP"; else if(c === "%CPU") return "CPU"; else return c;});
 			if(!$scope.order && $scope.columns && $scope.columns.length) $scope.order = $scope.columns[0];
 			$scope.$apply(); 

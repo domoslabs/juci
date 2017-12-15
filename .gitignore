@@ -30,9 +30,11 @@ tmp/
 /*.config
 .built
 .built_check
-.configured_
+.configured_*
 .dep_files
 .git_update
 .prepared_*
 ipkg-*
 tags
+.localserver.conf
+package-lock.json

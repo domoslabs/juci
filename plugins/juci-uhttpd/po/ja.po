@@ -1,0 +1,52 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+
+# plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
+msgid "HTTPD Settings"
+msgstr "httpd設定"
+
+# plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
+msgid "uhttpd.settings.info"
+msgstr " "
+
+# plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
+msgid "Max Requests"
+msgstr "最大リクエスト"
+
+# plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
+msgid "Max Connections"
+msgstr "最大接続"
+
+# plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
+msgid "Listening IP:Port"
+msgstr "待機IP:ポート"
+
+# plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
+msgid "Add IP:Port"
+msgstr "IP:ポート 追加"
+
+# plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
+msgid "Specify UBUS return codes to log into system log"
+msgstr "UBUSのリターンコードを指定してシステムログにログインする"
+
+# plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
+msgid "Will only log status codes above that are returned by these ubus calls"
+msgstr "これらのubus呼び出しによって返されるステータスコードは、上記のログにのみ記録されます"
+
+# plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
+msgid "Object.Method"
+msgstr "オブジェクト.メソッド"
+
+# plugins/juci-uhttpd/src/pages/page-uhttpd-settings.html
+msgid "menu-page-uhttpd-settings-title"
+msgstr "UHTTP"

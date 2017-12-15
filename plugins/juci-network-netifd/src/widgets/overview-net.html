@@ -1,24 +1,36 @@
 <div>
-	<juci-overview-widget title="{{'LAN'|translate}}" icon="juci juci-network" href="#!/internet-ethernet" show-edit="true" on-expand="openExpand()">
+	<juci-overview-widget title="{{'LAN'|translate}}" icon="juci juci-network" href="{{href}}" show-edit="true" on-expand="openExpand()">
 		<h4 style="text-align: center;" translate ng-show="lanNetworks.length == 0">No Lan networks</h4>
 		<div ng-repeat="network in lanNetworks track by $index">
-			<div class="row lan-overview-network">
-				<div class="col-xs-2" style="margin-top:10px"><i class="juci juci-network fa-lg"></i></div>
-				<div class="col-xs-5" style="padding:10px;">{{network.ipaddr.value}}<i class="fa fa-spinner fa-spin" ng-show="!network.ipaddr"></i></div>
-				<div class="col-xs-3" style="padding:10px;">{{network[".name"].toUpperCase()}}</div>
-				<div class="col-xs-2" style="padding:10px;" ng-show="network.ipaddr"><i class="juci juci-edit juci-lg" style="float:right; cursor:pointer;" ng-click="onEditLan(network)"></i></div>
+			<div class="lan-overview-network">
+				<div class="row" ng-show="network.$info && network.$info['ipv4-address'] && network.$info['ipv4-address'].length">
+					<div class="col-xs-2" style="margin-top:10px"><i class="juci juci-network fa-lg"></i></div>
+					<div class="" ng-repeat="address in network.$info['ipv4-address'] track by $index">
+						<div class="col-xs-4" style="padding:10px;">{{address.address}}<i class="fa fa-spinner fa-spin" ng-show="!network.ipaddr"></i></div>
+					</div>
+					<div class="col-xs-5" style="padding-top:10px; padding-bottom:10px; padding-left: 0px; text-align: right">{{network[".name"].toUpperCase()}}</div>
+					<div class="col-xs-1" style="padding:10px;" ng-show="network.ipaddr"><i class="juci juci-edit juci-lg" style="float:right; cursor:pointer;" ng-click="onEditLan(network)"></i></div>
+				</div>
+				<div class="row" ng-show="network.$info && network.$info['ipv6-address'] && network.$info['ipv6-address'].length">
+					<div class="col-xs-2"></div>
+					<div ng-repeat="address in network.$info['ipv6-address'] track by $index" title="{{address.address}}">
+						<div class="col-xs-5" style="padding:10px;">{{address.address}}</div>
+					</div>
+					<div class="col-xs-5"></div>
+				</div>
+				<div class="row" ng-show="network.$info && !(network.$info['ipv6-address'] && network.$info['ipv6-address'].length) && network.$info['ipv6-prefix-assignment'] && network.$info['ipv6-prefix-assignment'].length">
+					<div class="col-xs-2"></div>
+					<div ng-repeat="address in network.$info['ipv6-prefix-assignment'] track by $index" title="{{address.address}}">
+						<div class="col-xs-5" style="padding:10px;">{{address.address}}</div>
+					</div>
+					<div class="col-xs-5"></div>
+				</div>
 			</div>
 			<div class="row" style="padding:10px;" ng-show="!network._clients"><i class="fa fa-spinner fa-spin"></i></div>
 			<div class="row" ng-show="network._clients && network._clients.length == 0" translate style="text-align: center">No Clients in {{network[".name"].toUpperCase()}} network</div>
-			<div class="row lan-overview-client" ng-repeat="client in network._clients track by $index" ng-click="onEditClient(client)" style="cursor:pointer;position:relative; {{client.connected?'':'color:grey !important;'}}">
-				<div class="col-xs-2"><i class="fa fa-laptop fa-lg"></i></div>
-				<div class="col-xs-8">{{client.hostname}}<br ng-show="client.hostname"/>{{client.ipaddr}}<br ng-show="client.ip6addr"/>{{client.ip6addr}}</div>
-				<div ng-show="client.wireless">
-					<div class="col-xs-2" style="color: #a9b400;">
-						<wifi-signal-indicator ng-model="client.rssi"></wifi-signal-indicator>
-					</div>
-					<div style="position: absolute;top: 45px;right: 10px;font-size: 10px;">{{client.frequency}}</div>
-				</div>
+			<div class="row lan-overview-client" ng-repeat="client in network._clients track by $index" ng-click="onEditClient(client)" style="{{client.connected?'':'color:grey !important;'}}; margin:0">
+				<div class="col-xs-11"> <div dynamic="'<' + client._display_widget + ' ng-model=client/>'"></div> </div>
+				<div class="col-xs-1 juci-lg" style="padding:0; padding-top:5px"> <i class="juci-edit"></i> </div>
 			</div>
 		</div>
 	</juci-overview-widget>

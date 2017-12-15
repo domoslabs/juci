@@ -35,6 +35,7 @@ JUCI.app
 		
 		$firewall.getZoneClients("lan").done(function(clients){
 			$uci.$sync("dhcp").done(function(){
+				$scope.allTags = $uci.dhcp["@tag"].map(function(tag){ return { label: String(tag[".name"]).toUpperCase(), value: tag[".name"] }; });
 				dhcp.staticHosts = $uci.dhcp["@host"].filter(function(host){
 					return host.dhcp.value == dhcp[".name"] || host.network.value == dhcp[".name"];  
 				}); 

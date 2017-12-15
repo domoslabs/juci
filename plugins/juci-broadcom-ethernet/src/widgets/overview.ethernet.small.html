@@ -1,11 +1,11 @@
 <div class="overview-small">
 	<div class="icon"><i class="juci juci-ethernet juci-lg"></i></div>
-	<div class="name"><a href="#!/internet-ethernet" style="color:white;">{{'Ethernet'|translate}}</a></div>
+	<div class="name" ng-show="href"><a href="{{href}}" style="color:white;">{{'Ethernet'|translate}}</a></div>
+	<div class="name" ng-hide="href"><div style="color:white;">{{'Ethernet'|translate}}</div></div>
 	<div class="content">
 		<span ng-show="ethPorts.length" ng-repeat="port in ethPorts track by $index" class="label label-{{getState(port)}}">
-					{{getName(port)}}
-				</span>
-				<i class="fa fa-spinner fa-spin" ng-show="!ethPorts.length"></i>
-
+			{{getName(port)}}
+		</span>
+		<i class="fa fa-spinner fa-spin" ng-show="!ethPorts.length"></i>
 	</div>
 </div>

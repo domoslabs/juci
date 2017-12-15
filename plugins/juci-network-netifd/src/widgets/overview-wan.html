@@ -1,50 +1,66 @@
 <div>
-	<juci-overview-widget title="{{'WAN'|translate}}" icon="juci juci-world" href="#!/internet-ethernet">
-		<table class="table table-condensed">
-			<tr>
+	<juci-overview-widget title="{{'WAN'|translate}}" icon="juci juci-world" href="{{href}}">
+		<h4 ng-show="wans.length === 0" style="text-align:center;">{{'No WAN Network'|translate}}</h4>
+		<table ng-show="wans.length !== 0" class="table table-condensed">
+			<tr ng-show="data.up">
 				<td class="col-xs-6"><strong translate>Internet</strong></td>
 				<td class="col-xs-6">
-					<strong ng-show="data.up" class="text-success" translate>ONLINE</strong>
-					<strong ng-show="!data.up" class="text-danger" translate>OFFLINE</strong>
+					<strong ng-show="online == true" class="text-success" translate>ONLINE</strong>
+					<strong ng-show="online == false" class="text-danger" translate>OFFLINE</strong>
 				</td>
 			</tr>
-			<tr ng-show="data.ip.length">
-				<td ><strong translate>WAN IP(s)</strong></td>
-				<td><span ng-repeat="i in data.ip track by $index">
-					{{i}}
-				<br/></span></td>
+			<tr ng-hide="data.up == undefined">
+				<td class="col-xs-6"><strong translate>Link</strong></td>
+				<td class="col-xs-6">
+					<strong ng-show="data.up == true" class="text-success" translate>UP</strong>
+					<strong ng-show="data.up == false" class="text-danger" translate>DOWN</strong>
+				</td>
 			</tr>
-			<tr ng-show="data.defaultroute.length">
-				<td ><strong translate>Gateway(s)</strong></td>
-				<td><span ng-repeat="g in data.defaultroute track by $index">{{g}}<br/></span></td>
-			</tr>
-			<tr ng-show="data.contypes.length">
-				<td ><strong translate>Connection</strong></td>
-				<td><span ng-repeat="i in data.contypes track by $index">{{i}}<br/></span></td>
-			</tr>
-			<tr ng-show="data.dslDown || data.dslUp">
-				<td><strong translate>DSL Rate(s)</strong></td>
+			<tr ng-show="(online === false || (data && data.up === false)) && !hideFixError">
+				<td></td>
 				<td>
-					<span ng-show="data.dslDown">Down: <div style="float:right;">{{down}} Mbit/s</div></span><br />
-					<span ng-show="data.Up">Up: <div style="float:right;">{{up}} Mbit/s</div></span><br />
+					<button style="margin-left:10px;" class="btn btn-danger pull-right" ng-click="fixError()">{{'Diagnose'|translate}} <i class="fa fa-exclamation"></i></button>
 				</td>
 			</tr>
-			<tr ng-show="data.linkspeed">
-				<td><strong translate>Linkspeed</strong></td>
-				<td>
-					<span>{{data.linkspeed}}</span><br />
-				</td>
-			</tr>
-			<tr ng-show="data.dns.length">
-				<td ><strong translate>DNS-Servers</strong></td>
-				<td>
-					<span ng-repeat="dns in data.dns track by $index">{{dns}}<br/></span>
-				</td>
-			</tr>
-			<tr ng-show="uptime && uptime !== 0">
-				<td ><strong translate>WAN Uptime</strong></td>
-				<td><div>{{uptime|formatTimer}}</div></td>
-			</tr>
+			<tbody ng-show="data.up">
+				<tr ng-show="data.up && data.ip.length">
+					<td ><strong translate>WAN IP(s)</strong></td>
+					<td><span ng-repeat="i in data.ip track by $index">
+						{{i}}
+					<br/></span></td>
+				</tr>
+				<tr ng-show="data.up && data.defaultroute.length">
+					<td ><strong translate>Gateway(s)</strong></td>
+					<td><span ng-repeat="g in data.defaultroute track by $index">{{g}}<br/></span></td>
+				</tr>
+				<tr ng-show="data.up && data.contypes.length">
+					<td ><strong translate>Link Type</strong></td>
+					<td><span ng-repeat="i in data.contypes track by $index">{{i}}<br/></span></td>
+				</tr>
+				<tr ng-show="data.up && data.dslDown || data.dslUp">
+					<td><strong translate>DSL Rate(s)</strong></td>
+					<td>
+						<span ng-show="data.dslDown">Down: <div class="pull-right">{{data.dslDown}} Mbit/s</div><br/></span>
+						<span ng-show="data.dslUp">Up: <div class="pull-right">{{data.dslUp}} Mbit/s</div><br/></span>
+					</td>
+				</tr>
+				<tr ng-show="data.up && data.linkspeed">
+					<td><strong translate>Link Speed</strong></td>
+					<td>
+						<span>{{data.linkspeed}}</span><br />
+					</td>
+				</tr>
+				<tr ng-show="data.up && data.dns.length">
+					<td ><strong translate>DNS-Servers</strong></td>
+					<td>
+						<span ng-repeat="dns in data.dns track by $index">{{dns}}<br/></span>
+					</td>
+				</tr>
+				<tr ng-show="data.up && uptime && uptime !== 0">
+					<td ><strong translate>WAN Uptime</strong></td>
+					<td><div>{{uptime|formatTimer}}</div></td>
+				</tr>
+			</tbody>
 		</table>
 	</juci-overview-widget>
 </div>

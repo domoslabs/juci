@@ -35,12 +35,12 @@
 		document.body.appendChild(css);
 	}
 
-	JUCIMain.prototype.page = function(name, template, redirect){
+	JUCIMain.prototype.page = function(name, template){
+		if(!name) return;
 		var page = {
 			template: template,
 			url: name
 		};
-		if(redirect) page.redirect = redirect;
 		this.pages[name] = page;
 	}
 	
@@ -57,114 +57,83 @@
 			function(next){
 				$rpc.$init().done(function(){
 					if(!$rpc.$has("juci", "system") || !$rpc.$has("uci")){
-						deferred.reject();
+						deferred.reject("missing juci.system");
 						return;
 					}
 					next();
-				}).fail(function(){
-					console.error("UBUS failed to initialize: this means that no rpc calls will be available. You may get errors if other parts of the application assume a valid RPC connection!");
-					deferred.reject();
+				}).fail(function(e){
+					console.error("UBUS failed to initialize: this means that no rpc calls will be available. You may get errors if other parts of the application assume a valid RPC connection! " + JSON.stringify(e));
+					deferred.reject(e);
 					return;
 				});
 			},
 			function(next){
-				var sid_in = decodeURIComponent(window.location.search).match(/sid=[^&]+/);
+				var sid_in = decodeURIComponent(window.location.hash).match(/sid=[^&]+/);
 				if(sid_in){
-					$rpc.$sid(String(sid_in).substring(4).replace(/"/g, ""));
+					window.location.hash = "";
+					var sid = String(sid_in).substring(4).replace(/"/g, "").length;
+					if(sid === 32)
+						$rpc.$sid(String(sid_in).substring(4).replace(/"/g, ""));
 				}
+				//try to login. if it works continue init process otherwise go to login
 				$rpc.$authenticate().done(function(){
 					next();
-				}).fail(function(){
-					console.log("Failed to verify session.");
-					next();
+				}).fail(function(e){
+					$rpc.$clearSession().always(function(){
+						deferred.resolve("not logged in");
+					});
 				});
 			},
 			function(next){
 				$uci.$init().done(function(){
 					next();
-				}).fail(function(){
-					console.error("UCI failed to initialize!");
-					deferred.reject();
+				}).fail(function(e){
+					deferred.reject("UCI failed to initialize! er: " + JSON.stringify(e));
 				});
 			},
 			function(next){
 				$juci.config.$init().done(function(){
 					next();
-				}).fail(function(){
-					console.error("CONFIG failed to initialize!");
-					next();
+				}).fail(function(e){
+					deferred.reject("CONFIG failed to initialize! " + JSON.stringify(e));
 				});
 			},
 			function(next){
 				// get the menu navigation
 				// retrieve session acls map
-				var acls = {};
-				if(UBUS.$session && UBUS.$session.acls && UBUS.$session.acls["access-group"]){
-					acls = UBUS.$session.acls["access-group"];
-				}
 				console.log("juci: loading menu from server..");
-				async.eachSeries($uci.juci["@menu"], function(menu, done){
-					// only include menu items that are marked as accessible based on our rights and the box capabilities (others will simply be broken because of restricted access)
-					if(menu.acls.value.length && menu.acls.value.find(function(x){
-						return !acls[x];
-					})){
-						done();
-						return;
-					}
-					if(menu.require.value.length){
-						var ok = true;
-						async.eachSeries(menu.require.value, function(item, n){
-							if(!item || !item.split(":").length || item.split(":").length !== 2){
-								addMenuItem("invalid require: " + item);
-								done();
-								return;
-							}
-							var type = item.split(":")[0];
-							var value = item.split(":")[1];
-							switch(type){
-								case "file":
-									$rpc.$call("file", "stat", {"path":value || ""}).fail(function(){
-										ok = false;
-									}).always(function(){n();});
-									break;
-								case "ubus":
-									var split = value.split("->").filter(function(item){return item !== ""});
-									if(split.length === 1)
-										ok = $rpc.$has(split[0]);
-									else if(split.length === 2)
-										ok = $rpc.$has(split[0], split[1]);
-									else
-										console.log("invalid require ubus with value: " + value);
-									n();
-									break;
-								default:
-									console.log("error: list require " + type + ':' + value + " is not supported");
-									n();
-							}
-						}, function(){
-							if(ok)
-								addMenuItem(menu)
-								done();
-						});
-					}else{
-						addMenuItem(menu);
-						done();
-					}
-				}, function(){next();});
+				JUCI.navigation.clear();
+				async.eachSeries($uci.juci["@menu"], function(menu, n){
+					$rpc.$has_access(menu).done(function(ret){
+						if(ret === true){
+							addMenuItem(menu);
+						}
+					}).always(function(){n();});
+				}, function(){
+					$juci.navigation.removeInvalidNodes();
+					$juci.navigation.sortNodes();
+					next();
+				});
 				function addMenuItem(menu){
-					var redirect = menu.redirect.value;
-					var page = menu.page.value;
-					if(page == "") page = undefined;
-					if(redirect == "") redirect = undefined;
+					if(!menu.path || !menu.path.value) return;
+					var page;
+					if(menu.redirect.value && menu.page.value)
+						page = "";
+					else
+						page = menu.page.value;
+					if(!menu.index || !menu.index.value ||
+							menu.index.value > 99 || menu.index.value < 1) menu.index.value = 99;
 					var obj = {
 						path: menu.path.value,
-						href: page,
-						redirect: redirect,
-						modes: menu.modes.value || [ ],
-						text: "menu-"+(menu.page.value || menu.path.value.replace(/\//g, "-"))+"-title"
-					};
+						page: page,
+						hidden: menu.hidden.value,
+						index: menu.index.value,
+						modes: menu.modes.value || [],
+						text: menu.external.value ? menu.path.value : "menu-"+(menu.page.value || menu.path.value.replace(/\//g, "-"))+"-title",
+						external: menu.external.value
+					}
 					$juci.navigation.register(obj);
-					JUCI.page(page, "pages/"+page+".html", redirect);
+					JUCI.page(menu.page.value || "", "pages/"+(menu.page.value || "default")+".html");
 				}
 			},
 			function(next){
@@ -205,11 +174,11 @@
 					url: "/"+page.url,
 					views: {
 						"content": {
-							templateUrl: (page.redirect)?"pages/default.html":page.template
+							templateUrl: page.template
 						}
 					},
 					// this function will run upon load of every page in the gui
-					onEnter: function($uci, $window, $rootScope, $tr){
+					onEnter: function($uci, $window, $rootScope, $modal, $events, $tr, $juciDialog, $config, $password){
 						
 						$rootScope.errors.splice(0, $rootScope.errors.length);
 						
@@ -220,21 +189,92 @@
 							$juci.redirect("login");
 						});
 						
-						document.title = $tr(name+"-title");
+						document.title = $tr("menu-"+name+"-title");
 
 						// scroll to top
 						$window.scrollTo(0, 0);
+						// check if the user needs to change password
+						var force_passwd_change = $config.get("settings.juci.force_passwd_change.value");
+						try {
+							var username = $rpc.$session.data.username;
+							var model = {
+								cur_pass: "",
+								new_pass: "",
+								rep_pass: "",
+								error: []
+							};
+							if(force_passwd_change){
+								$rpc.$call("juci.core", "default_password", {"username":username}).done(function(res){
+									if(!res || res.changed)
+										return;
+
+									$password.change(false, username)
+								}).fail(function(e){
+									console.error("ubus call juci.core default_password '{\"username\":\""+username+"\"}' failed", e);
+								});
+							}
+						}catch(e){
+							// we dont care why it failed wi just continue
+						}
+						// setup automatic connection "pinging" and show spinner if you have lost connection
+						// if you are connected this will test if you are logged in or redirect you to login page
+						var modal;
+						var connected = true;
+						var i = 1;
+						JUCI.interval.repeat("check-connection", 2000, function(next){
+							$rpc.$isConnected().fail(function(){
+								if($rootScope.uploadFile || $rootScope.downloadFile){
+									next();
+									console.log(($rootScope.uploadFile ? "uploading" : "downloading") + " file: pausing connectivity test");
+									return;
+								}
+								connected = false;
+								modal = $modal.open({
+									animation:false,
+									backdrop: "static",
+									keyboard: false,
+									size: "md",
+									templateUrl: "widgets/juci-disconnected.html"
+								});
+								var i = 1;
+								function reconnect(){
+									if(i < 10) i += 2;
+									$rpc.$reconnect().done(function(){
+										$events.resubscribe();
+										modal.close();
+										next();
+									}).fail(function(){
+										setTimeout(function(){ reconnect();}, 1000*i);
+									});
+								}
+								setTimeout(function(){ reconnect(); }, 1000);
+							}).done(function(){
+								if($rpc.$isLoggedIn() && ++i > 2){
+									i = 0;
+									$rpc.$authenticate().fail(function(){
+										if($rootScope.uploadFile || $rootScope.downloadFile){
+											console.log(($rootScope.uploadFile ? "uploading":"downloading") + " file: authentication paused");
+											return;
+										}
+										$rpc.$clearSession().done(function(){
+											setTimeout(function(){$juci.redirect("login");}, 0);
+										});
+									});
+								}
+								next();
+							});
+						});
 					},
 					onExit: function($uci, $tr, gettext, $events){
 						JUCI.interval.$clearAll();
 						$events.removeAll();
 						$rpc.$authenticate().done(function(){
-							if($uci.$hasChanges()){
+							/*if($uci.$hasChanges()){
 								if(confirm($tr(gettext("You have unsaved changes. Do you want to save them before leaving this page?"))))
 									$uci.$save();
 								else
 									$uci.$clearCache();
-							}
+							}*/
 						}).fail(function(){
 							$juci.redirect("login");
 						}).always(function(){
@@ -252,7 +292,6 @@
 			// add capability lookup to root scope so that it can be used inside html ng-show directly
 			$rootScope.has_capability = function(cap_name){
 				if(!$rpc.$session || !$rpc.$session.acls.juci || !$rpc.$session.acls.juci.capabilities || !($rpc.$session.acls.juci.capabilities instanceof Array)) {
-					console.log("capabilities not enabled!");
 					return false;
 				}
 				return $rpc.$session.acls.juci.capabilities.indexOf(cap_name) != -1;
@@ -289,18 +328,35 @@
 	UCI.$registerConfig("juci");
 		
 	UCI.juci.$registerSectionType("menu", {
-		"path": 			{ dvalue: undefined, type: String },
-		"page": 			{ dvalue: undefined, type: String },
-		"redirect":			{ dvalue: undefined, type: String },
-		"acls":				{ dvalue: [], type: Array },
-		"modes": 			{ dvalue: [], type: Array },
-		"require":			{ dvalue: [], type: Array },
+		"hidden":		{ dvalue: false, type: Boolean },
+		"external":		{ dvalue: false, type: Boolean },
+		"path": 		{ dvalue: undefined, type: String },
+		"page": 		{ dvalue: undefined, type: String },
+		"redirect":		{ dvalue: undefined, type: String },
+		"acls":			{ dvalue: [], type: Array },
+		"modes": 		{ dvalue: [], type: Array },
+		"require":		{ dvalue: [], type: Array },
+		"index":		{ dvalue: 99, type: Number },
+	});
+	UCI.juci.$registerSectionType("widget", {
+		"name":		{ dvalue: [], type: Array },
+		"link":		{ dvalue: "", type: String },
+		"require":	{ dvalue: [], type: Array },
+		"acls":		{ dvalue: [], type: Array },
+		"modes":	{ dvalue: [], type: Array }
+	});
+	UCI.juci.$registerSectionType("wiki", {
+		"server":	{ dvalue: "http://docs.intenogroup.com", type: String },
+		"version":	{ dvalue: "v310", type: String },
+		"language": { dvalue: "en", type: String },
+		"visible":	{ dvalue: false, type: Boolean }
 	});
 	
 	UCI.juci.$registerSectionType("juci", {
 		"homepage": 		{ dvalue: "overview", type: String },
 		"language_debug":	{ dvalue: false, type: String },
-		"default_language": { dvalue: "en", type: String }
+		"force_passwd_change":	{ dvalue: false, type: Boolean },
+		"default_language":	{ dvalue: "en", type: String }
 	});
 
 	UCI.juci.$registerSectionType("login", {
@@ -312,30 +368,6 @@
 		"default_language":		{ dvalue: "en", type: String }, // language used when user first visits the page
 		"languages":			{ dvalue: [], type: Array } // list of languages available (use name of po file without .po extension and in lower case: se, en etc..)
 	});
-	// register default localization localization section so that we don't need to worry about it not existing
-	JUCI.app.run(function($uci){
-		$uci.$sync("juci").done(function(){
-			if(!$uci.juci.juci){
-				$uci.juci.$create({
-					".type":"juci",
-					".name":"juci"
-				});
-			}
-			if(!$uci.juci.login){
-				$uci.juci.$create({
-					".type":"login",
-					".name":"login"
-				});
-			}
-			if(!$uci.juci.localization){
-				$uci.juci.$create({
-					".type":"localization",
-					".name":"localization"
-				});
-			}
-		});
-	 });
-
 })(typeof exports === 'undefined'? this : exports);
 
 /*---Just some code for browsers that does not support RequestAnimationFrame ---*/

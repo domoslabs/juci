@@ -1,0 +1,52 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.4\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: fi\n"
+
+# plugins/juci-ice-client/src/pages/ice-client-configuration.js
+msgid "Registered"
+msgstr "Rekisteröity"
+
+# plugins/juci-ice-client/src/pages/ice-client-configuration.js
+msgid "Unregistered"
+msgstr "Ei rekisteröity"
+
+# plugins/juci-ice-client/src/pages/ice-client-configuration.js
+msgid "Offline"
+msgstr "Ei yhteydessä"
+
+# plugins/juci-ice-client/src/pages/ice-client-configuration.js
+msgid "Undefined"
+msgstr "Ei määritelty"
+
+# plugins/juci-ice-client/src/pages/ice-client-configuration.html
+msgid "Status"
+msgstr "Tila"
+
+# plugins/juci-ice-client/src/pages/ice-client-configuration.html
+msgid "Enabled"
+msgstr "Käytössä"
+
+# plugins/juci-ice-client/src/pages/ice-client-configuration.html
+msgid "Cloud URL"
+msgstr "Pilven URL-osoite"
+
+# plugins/juci-ice-client/src/pages/ice-client-configuration.html
+msgid "ICE"
+msgstr ""
+
+# plugins/juci-ice-client/src/pages/ice-client-configuration.html
+msgid "Connect your gateway to the cloud."
+msgstr "Yhdistä päätelaitteesi pilveen"
+
+msgid "menu-ice-client-configuration-title"
+msgstr "ICE"

@@ -9,7 +9,140 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.0.4\n"
+
+msgid "valid values are: 'no' and 48-64"
+msgstr "sallitut arvot ovat: 'ei' ja 48-64"
+
+msgid "value must be a valid MAC-48 address"
+msgstr "arvon on oltava kelvollinen MAC-48-osoite"
+
+msgid "Valid values are: auto, no, 0-64"
+msgstr "Sallitut arvot ovat: 'auto' ja 0-64"
+
+msgid "Network interface "
+msgstr "Luo Uusi Verkkoyhteys"
+
+msgid "Unnamed interface"
+msgstr "Interface"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol: "
+msgstr "on protokolla:"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid " it needs a physical interface"
+msgstr "se tarvitsee fyysisen rajapinnan"
+
+msgid " MUST have  a protocol set"
+msgstr "Protokollan on asetettava"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid "is an unmanaged network and need to be setup as a bridge"
+msgstr "on valvomaton verkko ja se on konfiguroitava sillaksi"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid "is an unmanaged networks and need to have at least one device in bridge"
+msgstr "on valvomaton verkko ja siinä täytyy olla ainakin yksi laite sillassa"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid ""
+" has an invalid IP address. It can not be a range address (can not end with "
+"0s)!"
+msgstr ""
+"on väärä IP-osoite. Se ei voi olla verkon osoite (ei voi päättyä nollaan)"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid " has an invalid IP address it can not start with a '0'!"
+msgstr "on väärä IP-osoite ei voi alkaa nollalla!"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid " needs either ipv4 or ipv6 address"
+msgstr "tarvitsee joko IPv4- tai IPv6-osoitteen"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol 3G and needs a Modem device"
+msgstr "on 3G-protokolla ja tarvitsee modeemilaitteen"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol 3G and needs a Service type"
+msgstr "on 3G-protokolla ja tarvitsee palvelutyypin"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol 3G and needs APN"
+msgstr "on 3G-protokolla ja tarvitsee APN:n"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol 4G and it needs a Device"
+msgstr "on 4G-protokolla ja tarvitsee modeemilaitteen"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol Point-to-Point tunnel and needs a VPN Server"
+msgstr "on Point-to-Point tunneli ja tarvitsee VPN-palvelimen osoitteen"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol 6in4 and need a Remote IPv4 address"
+msgstr "on 6in4 protokolla  ja tarvitsee  IPv4-osoitteen"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol 6in4 and need Local IPv6 address"
+msgstr "on 6in4 protokolla  ja tarvitsee  paikallisen IPv6-osoitteen"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol IPv6 rapid deployment and it needs a Remote IPv4 address"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol IPv6 rapid deployment and it needs an IPv6 prefix"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol IPv6 rapid deployment and it needs a IPv6 prefix length"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol DS lite and it needs a DS-Lite AFTR address"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid " has protcol PPP over L2TP and it needs a L2TP server"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid "Username is set but not password on "
+msgstr "Käyttäjätunnus on asetettu mutta ei salasanaa"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid "has protocol wwan and it needs a modem"
+msgstr "on wwan protokolla ja tarvitsee modeemilaitteen"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-uci.js
+msgid " has protocol wwan and has invalid pincode [0000-9999] or empty"
+msgstr "on protokolla wwan ja PIN-koodi on virheellinen [0000-9999] tai tyhjä"
+
+msgid "Unsupported protocol: "
+msgstr "Ei-tuettu protokolla:"
+
+msgid "IPv4 Routes needs an interface"
+msgstr "IPv4 reitit tarvitsevat yhteyden"
+
+msgid "IPv4 Routes needs a Target"
+msgstr "IPv4-reititystaulukko"
+
+msgid "IPv4 Routes needs a Netmask"
+msgstr "IPv4 reitit tarvitsevat aliverkon peitteen"
+
+msgid "IPv4 Routes needs a Gateway"
+msgstr "IPv4 Oletusyhdyskäytävä"
+
+msgid "IPv6 Routes needs an interface"
+msgstr "IPv6 reitit tarvitsevat yhteyden"
+
+msgid "IPv6 Routes needs a Target"
+msgstr "IPv6-reititystaulukko"
+
+msgid "IPv6 Routes needs a Gateway"
+msgstr "IPv6 Oletusyhdyskäytävä"
 
 msgid "Unmanaged"
 msgstr "Valvomaton"
@@ -36,6 +169,10 @@ msgid "3G (ppp over GPRS/EvDO/CDMA or UTMS)"
 msgstr "3G (GPRS/EvDO/CDMA/UMTS)"
 
 msgid "4G (LTE/HSPA+)"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/network-netifd.js
+msgid "WWAN (LTE/HSPA+)"
 msgstr ""
 
 msgid "QMI (USB modem)"
@@ -86,110 +223,28 @@ msgstr "Ethernet GRE over IPv6"
 msgid "no device or network given"
 msgstr "laitetta tai verkkoa ei annettu"
 
-msgid "valid values are: 'no' and 48-64"
-msgstr "sallitut arvot ovat: 'ei' ja 48-64"
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "Are you sure you want to remove device"
+msgstr "Haluatko varmasti poistaa liitännän"
 
-msgid "value must be a valid MAC-48 address"
-msgstr "arvon on oltava kelvollinen MAC-48-osoite"
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "from network"
+msgstr "verkosta"
 
-msgid "Valid values are: auto, no, 0-64"
-msgstr "Sallitut arvot ovat: 'auto' ja 0-64"
+# plugins/juci-network-netifd/src/network-netifd.js
+msgid "and use it in this"
+msgstr "ja käyttää sitä"
 
-msgid "Network interface "
-msgstr "Luo Uusi Verkkoyhteys"
+# plugins/juci-network-netifd/src/pages/internet-routes.js
+msgid "Route to"
+msgstr "Reitti kohteeseen"
 
-msgid "Unnamed interface"
-msgstr "Interface"
+msgid "Unknown"
+msgstr "Tuntematon"
 
-msgid " MUST have  a protocol set"
-msgstr "Protokollan on asetettava"
-
-msgid "Unmanaged networks need to be setup as a bridge"
-msgstr "Valvomattomat verkot on asetettava sillaksi"
-
-msgid "Unmanaged networks need at least one device in bridge"
-msgstr "Valmomattomalla verkolla täytyy olla vähintään yksi liitäntä sillassa"
-
-msgid "Either ipv4 or ipv6 address is needed"
-msgstr "Joko IPv4 tai IPv6 osoite tarvitaan"
-
-msgid "Physical interface unspecified"
-msgstr "Fyysinen liitäntä määrittelemättä"
-
-msgid "DHCP interface needs physical interface"
-msgstr "DHCP yhteys tarvitsee fyysisen liitännän"
-
-msgid "DHCPv6 interface needs physical interface"
-msgstr "DHCPv6 yhteys tarvitsee fyysisen liitännän"
-
-msgid "Modem device needed for PPP interface"
-msgstr "PPP liitäntä vaatii modeemilaitteen"
-
-msgid "PPPoE interface needs physical interface"
-msgstr "PPPoE yhteys vaatii fyysisen liitännän"
-
-msgid "Modem device needed for 3G interface"
-msgstr "Modeemilaite tarvitaan 3G liitäntää varten"
-
-msgid "Service type needed for 3G interface"
-msgstr "3G liitäntä vaatii palvelutyypin"
-
-msgid "APN needed for 3G interface"
-msgstr "APN tarvitaan 3G liitännässä"
-
-msgid "Device needed for 4G interface"
-msgstr "Laite tarvitaan 4G liitännässä"
-
-msgid "VPN Server needed for Point-to-Point tunnel"
-msgstr "Point-to-Point Tunnel"
-
-msgid "Remote IPv4 address needed for 6in4 interface"
-msgstr "Ulkoinen IPv4 osoite tarvitaan 6in4 yhteydelle"
-
-msgid "Local IPv6 address needed for 6in4 interface"
-msgstr "Paikallinen IPv6 osoite tarvitaan 6in4 yhteydelle"
-
-msgid "Remote IPv4 address needed for IPv6 rapid deployment interface"
-msgstr "Ulkoinen IPv4 osoite tarvitaan 6RD yhteydelle"
-
-msgid "IPv6 prefix needed for IPv6 rapid deployment interface"
-msgstr "IPv6 etuliite tarvitaan IPv6 RD yhteydelle"
-
-msgid "IPv6 prefix length needed for IPv6 rapid deployment interface"
-msgstr "IPv6 etuliitteen pituus tarvitaan 6RD yhteydelle"
-
-msgid "DS-Lite AFTR address needed for DS lite interface"
-msgstr "DS-Lite AFTR osoite tarvitaan DS lite yhteydelle"
-
-msgid "L2TP server needed for PPP over L2TP"
-msgstr "L2TP palvelin tarvitaan PPP L2TP yhteydelle"
-
-msgid "Password needed when username is set"
-msgstr "Salasana tarvitaan, kun käyttäjätunnus on asetettu"
-
-msgid "Unsupported protocol: "
-msgstr "Ei-tuettu protokolla:"
-
-msgid "IPv4 Routes needs an interface"
-msgstr "IPv4 reitit tarvitsevat yhteyden"
-
-msgid "IPv4 Routes needs a Target"
-msgstr "IPv4-reititystaulukko"
-
-msgid "IPv4 Routes needs a Netmask"
-msgstr "IPv4 reitit tarvitsevat aliverkon peitteen"
-
-msgid "IPv4 Routes needs a Gateway"
-msgstr "IPv4 Oletusyhdyskäytävä"
-
-msgid "IPv6 Routes needs an interface"
-msgstr "IPv6 reitit tarvitsevat yhteyden"
-
-msgid "IPv6 Routes needs a Target"
-msgstr "IPv6-reititystaulukko"
-
-msgid "IPv6 Routes needs a Gateway"
-msgstr "IPv6 Oletusyhdyskäytävä"
+# plugins/juci-network-netifd/src/pages/internet-routes.js
+msgid "Are you sure you want to delete route"
+msgstr "Haluatko varmasti poistaa reitin"
 
 msgid "Interface Name is needed"
 msgstr "Yhteyden nimi tarvitaan"
@@ -208,6 +263,10 @@ msgstr "Yhteyksien nimet voivat sisältää vain numeroita ja kirjaimia"
 msgid "Interface name may only be 12 characters long"
 msgstr "Yhteyden nimi voi olla korkeintaan 12 merkkiä"
 
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "Create New Network Interface"
+msgstr "Luo uusi verkkoyhteys"
+
 msgid "OK"
 msgstr "OK"
 
@@ -217,11 +276,21 @@ msgstr "Peruuta"
 msgid "The new interface needs a name"
 msgstr "Uusi yhteys tarvitsee nimen"
 
-msgid "The new interface needs an interface type"
-msgstr "Uusi yhteys tarvitsee yhteystyypin"
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "Please select the interface type"
+msgstr "Valitse liitännän tyyppi"
 
-msgid "Pleace choose protocol for connection"
-msgstr "Valitse yhteyden protokolla"
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "Error while creating Interface"
+msgstr "Virhe liitäntää luodessa"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "Finalize Settings"
+msgstr "Viimeistele asetukset"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "Please select Protocol"
+msgstr "Valitse protokolla"
 
 msgid "Please select a connection in the list!"
 msgstr "Valitse yhteys luettelosta!"
@@ -229,28 +298,16 @@ msgstr "Valitse yhteys luettelosta!"
 msgid "Are you sure you want to delete this connection?"
 msgstr "Haluatko varmasti poistaa tämän yhteyden?"
 
-msgid "You need to select a device to add!"
-msgstr "Valitse lisättävä laite!"
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "Connect"
+msgstr "Yhdistä"
 
-msgid "Standalone"
-msgstr "Normaali"
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "Disconnect"
+msgstr "Katkaise yhteys"
 
-msgid "AnyWAN"
-msgstr "AnyWAN"
-
-msgid "Bridge"
-msgstr "Silta"
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-dns-config.js
-msgid "All DNS-servers must be valid"
-msgstr "Kaikkien DNS-palvelimien tulee olla voimassa oleva"
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-dns-config.js
-msgid "All DNS-servers must be unique"
-msgstr "Kaikkien DNS-palvelimien tulee olla ainutlaatuisia"
-
-msgid "ERROR"
-msgstr "VIRHE"
+msgid "Status"
+msgstr "Tila"
 
 msgid "PENDING"
 msgstr "AVOIN"
@@ -259,7 +316,307 @@ msgid "UP"
 msgstr "KÄYTÖSSÄ"
 
 msgid "DOWN"
-msgstr "EI KÄUYTÖSSÄ"
+msgstr "Ei käytössä"
+
+msgid "Device"
+msgstr "Laite"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "Protocol:"
+msgstr "Protokolla:"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "IPv4-Address"
+msgstr "IPv4-osoite"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-network.js
+msgid "IPv6-Address"
+msgstr "IPv6-osoite"
+
+msgid "Please select a device in the list!"
+msgstr "Valitse laite luettelosta!"
+
+msgid "Are you sure you want to delete this device from bridge?"
+msgstr "Haluatko varmasti poistaa tämän laitteen sillasta?"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "Not in any configured network"
+msgstr "Ei missään määritetty verkossa"
+
+msgid "IP Address"
+msgstr "IP osoite"
+
+msgid "IPv6 Address"
+msgstr "IPv6-osoite"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "DUID"
+msgstr "DUID"
+
+msgid "MAC Address"
+msgstr "MAC Osoite"
+
+msgid "DHCP"
+msgstr "DHCP IPv4"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "Connected"
+msgstr "Yhdistetty"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "Link Speed"
+msgstr "Yhteyden nopeus"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "N Mode"
+msgstr "N-tila"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "VHT Mode"
+msgstr "VHT tila"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "WME"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "Power Save"
+msgstr "Virransäästö"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "Frequency"
+msgstr "Taajuus"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
+msgid "RSSI"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "SNR"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "Idle"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "In Network"
+msgstr "Yhdistetty verkkoon"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "TX Bytes"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "RX Bytes"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
+msgid "TX Rate"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
+msgid "RX Rate"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.js
+msgid "Diagnose Internet Connection"
+msgstr "Diagnosoi internetyhteys"
+
+msgid "Close"
+msgstr "Sulje"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-net.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-wan.js
+msgid "Ethernet"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-wan.js
+msgid "ADSL"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-wan.js
+msgid "VDSL"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.js
+msgid "WWAN"
+msgstr ""
+
+msgid "You need to select a device to add!"
+msgstr "Valitse lisättävä laite!"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-network-netifd/src/pages/netifd-status-clients.html
+msgid "N/A"
+msgstr "Ei saatavilla"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Hardware Model"
+msgstr "Laitemalli"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Base MAC"
+msgstr "MAC"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Software Version"
+msgstr "Ohjelmistoversio"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Filesystem Type"
+msgstr "Tiedostojärjestelmä"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Unknown Working interface"
+msgstr "Tuntematon toimiva liitäntä"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Number of Clients"
+msgstr "Asiakaskoneiden määrä"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
+msgid "Linkspeed"
+msgstr "Linkkinopeus"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Network Visualization"
+msgstr "Verkon visualisaatio"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Link speed"
+msgstr "Linkkinopeus"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "TX bytes:"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "RX bytes:"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "TX errors:"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "RX errors:"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "DSL"
+msgstr ""
+
+msgid "Mode"
+msgstr "Tila"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Bit Rate"
+msgstr "Bittinopeus"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Downstream"
+msgstr "Lataus"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "Upstream"
+msgstr "Lähetys"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-wan.js
+msgid "3G/4G"
+msgstr ""
+
+msgid "Bridge"
+msgstr "Silta"
+
+msgid "IPv4 address"
+msgstr "IPv4 Osoite"
+
+msgid "IPv6 address"
+msgstr "IPv6 Osoite"
+
+msgid "You need to select a network!"
+msgstr "Valitse verkko!"
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-dns-config.js
+msgid "All DNS-servers must be valid"
+msgstr "Kaikkien DNS-palvelimien tulee olla voimassa olevia"
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-dns-config.js
+msgid "All DNS-servers must be unique"
+msgstr "Kaikkien DNS-palvelimien tulee olla yksilöllisiä"
+
+msgid "Standalone"
+msgstr "Itsenäinen"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-create-settings.js
+msgid "Anywan"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Reboot"
+msgstr "Käynnistä uudelleen"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.js
+msgid "Are you sure you want to reboot?"
+msgstr "Haluatko varmasti käynnistää uudelleen?"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.js
+msgid "Yes"
+msgstr "Kyllä"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.js
+msgid "No"
+msgstr "Ei"
+
+msgid "You need to select a host!"
+msgstr "Valitse isäntäkone!"
+
+msgid "Uplink"
+msgstr "Lähetys"
+
+msgid "Downlink"
+msgstr "Lataus"
+
+# plugins/juci-network-netifd/src/widgets/network-connection-type-none-edit.js
+msgid "(Alias)"
+msgstr ""
+
+msgid "AnyWAN"
+msgstr "AnyWAN"
+
+msgid "ERROR"
+msgstr "VIRHE"
 
 msgid ""
 "Are you sure you want to switch? Your settings will be lost!<br />The only "
@@ -268,23 +625,25 @@ msgstr ""
 "Haluatko varmasti vaihtaa? Kaikki asetukset menetetään!<br />Takaisin pääsee "
 "vain päivittämällä sivun"
 
-msgid "You need to select a network!"
-msgstr "You need to select a network!"
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-net.js
+msgid "Detailed client overview"
+msgstr "Tarkka yleisnäkymä"
 
-msgid "UMTS/GPRS"
-msgstr ""
+msgid "Edit LAN Settings"
+msgstr "IPv4-asetukset"
 
-msgid "UMTS only"
-msgstr "Vain UMTS"
+msgid "Save"
+msgstr "Tallenna"
 
-msgid "GPRS only"
-msgstr "Vain GPRS"
+# plugins/juci-network-netifd/src/widgets/network-connection-proto-none-edit.js
+msgid "Bridge devices"
+msgstr "Sillatut liitännät"
 
 msgid "Try"
 msgstr "Try"
 
 msgid "Force"
-msgstr "Force"
+msgstr "Pakota"
 
 msgid "None"
 msgstr "None"
@@ -295,10 +654,17 @@ msgstr "Auto"
 msgid "Disabled"
 msgstr "Pois käytöstä"
 
-msgid "Uplink"
+msgid "UMTS/GPRS"
 msgstr ""
 
-msgid "Downlink"
+msgid "UMTS only"
+msgstr "Vain UMTS"
+
+msgid "GPRS only"
+msgstr "Vain GPRS"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-3g-edit.js
+msgid "EVDO"
 msgstr ""
 
 msgid "Address Allocation"
@@ -307,59 +673,49 @@ msgstr "Osoitejako"
 msgid "Address Assignment"
 msgstr "Osoitteen varaaminen"
 
-msgid "Please select a device in the list!"
-msgstr "Valitse laite luettelosta!"
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.js
+msgid "PAP"
+msgstr ""
 
-msgid "Are you sure you want to delete this device from bridge?"
-msgstr "Haluatko varmasti poistaa tämän laitteen sillasta?"
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.js
+msgid "CHAP"
+msgstr ""
 
-msgid "network.interface.type.none.tab.title"
-msgstr " "
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.js
+msgid "Both"
+msgstr "Molemmat"
 
-msgid "You need to select a host!"
-msgstr "Valitse isäntäkone!"
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-wan-dns-settings-edit.html
+msgid "Acquired DNS servers"
+msgstr "Opitut DNS palvelimet"
 
-msgid "Unknown"
-msgstr "Tuntematon"
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-wan-dns-settings-edit.html
+msgid "Acquired from"
+msgstr "Opittu"
 
-msgid "Edit LAN Settings"
-msgstr "IPv4-asetukset"
+msgid "For {{interface['.name'].toUpperCase()}} interface"
+msgstr "{{interface['.name'].toUpperCase()}} liitännälle"
 
-msgid "Save"
-msgstr "Tallenna"
+msgid "LAN"
+msgstr "Lähiverkko (LAN)"
 
-msgid "Close"
-msgstr "Sulje"
+msgid "Add/Remove custom DNS Servers"
+msgstr "Lisää/poista mukautettuja DNS palvelimia"
 
-msgid "Edit DNS servers"
-msgstr "Valitse DNS-palveluntarjoaja"
+# plugins/juci-network-netifd/src/widgets/network-connection-dns-config.html
+msgid "These DNS entries will be applied on the interface"
+msgstr "Nämä DNS merkinnät otetaan käyttöön liitännässä"
 
-msgid "Network device"
-msgstr "Valitse verkkolaite"
+msgid "Hostname"
+msgstr "Isäntäkoneen nimi"
 
-msgid "Select network device"
-msgstr "Valitse verkkolaite"
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
+msgid "Port"
+msgstr "Portti"
 
-msgid "Name"
-msgstr "Nimi"
-
-msgid "Displayname"
-msgstr "Nimi"
-
-msgid "VLAN Tag"
-msgstr "VLAN Tag"
-
-msgid "Device"
-msgstr "Laite"
-
-msgid "Ports"
-msgstr "Portit"
-
-msgid "Do you want to:"
-msgstr "Haluatko:"
-
-msgid "Interface Name"
-msgstr "Liitännän Nimi"
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
+msgid "Network"
+msgstr "Verkko"
 
 msgid "Protocol"
 msgstr "Protokolla"
@@ -367,8 +723,180 @@ msgstr "Protokolla"
 msgid "Interface Type"
 msgstr "Liitännän Tyyppi"
 
-msgid "Add/Remove custom DNS Servers"
-msgstr "Lisää/poista mukautettuja DNS palvelimia"
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-create-settings.html
+msgid "Physical device"
+msgstr "Fyysinen laite"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-create-settings.html
+msgid "Add network to a firewall zone"
+msgstr "Lisää verkko palomuurivyöhykkeeseen"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-create-settings.html
+msgid ""
+"If you select a zone the network will be added to that firewall zone when it "
+"is created"
+msgstr ""
+"Mikäli valitset vyöhykkeen verkkoa varten se lisätään kyseiseen "
+"vyöhykkeeseen, kun se luodaan"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-create-settings.html
+msgid "Do not add to firewall zone"
+msgstr "Älä lisää palomuurivyöhykkeeseen"
+
+msgid "IPv4 Address"
+msgstr "IPv4-osoite"
+
+msgid "IPv4 Subnet Mask"
+msgstr "IPv4 Aliverkon peite"
+
+msgid "IPv4 Broadcast"
+msgstr "IPv4 Osoite"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/lan-connection-settings-edit.html
+msgid "DHCP Server"
+msgstr "DHCP palvelin"
+
+msgid "WAN"
+msgstr "Internet (WAN)"
+
+msgid "ONLINE"
+msgstr "YHDISTETTY"
+
+msgid "OFFLINE"
+msgstr "EI YHTEYTTÄ"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Your router does not have Internet connection!"
+msgstr "Reitittimelläsi ei ole internet yhteyttä!"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Please check that WAN cable is connected."
+msgstr "Tarkista, että internetkaapeli on yhdistetty"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Reload Network"
+msgstr "Lataa verkko uudelleen"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Click Reload button to refresh WAN connection"
+msgstr "Paina lataa painiketta päivittääksesi internetyhteyden"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Reload"
+msgstr "Lataa"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Reboot Router"
+msgstr "Käynnistä reititin uudelleen"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Click Reboot button to restart your system"
+msgstr ""
+"Paina uudelleenkäynnistyspainiketta käynnistääksesi reitittimen uudelleen"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Your Internet connection is up!"
+msgstr "Internetyhteytesi toimii!"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Do not show this again"
+msgstr "Älä näytä uudelleen"
+
+msgid "Select Connected Host"
+msgstr "Valitse Yhdistetty Isäntäkone"
+
+msgid "Select a host"
+msgstr "Valitse isäntäkone"
+
+msgid "Interface Name"
+msgstr "Liitännän Nimi"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-create.html
+msgid "Interface type"
+msgstr "Liitännän tyyppi"
+
+msgid "Select Base Device"
+msgstr "Valitse liitäntä"
+
+msgid "Interface"
+msgstr "Interface"
+
+msgid "Target"
+msgstr "Kohde"
+
+msgid "Netmask"
+msgstr "Aliverkko"
+
+msgid "Gateway"
+msgstr "Yhdyskäytävä"
+
+msgid "Metric"
+msgstr ""
+
+msgid "0"
+msgstr ""
+
+msgid "MTU"
+msgstr "MTU"
+
+msgid "IP MTU"
+msgstr "Liitännän Tyyppi"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Client Status"
+msgstr "Asiakaslaitteen tila"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Wireless Details"
+msgstr "Langattoman yhteyden tila"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Static Leases"
+msgstr "Kiinteä osoite"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "No Static Lease configured for this client"
+msgstr "Tälle laitteelle ei ole konfiguroitu kiinteää osoitetta"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Device Name"
+msgstr "Laitteen nimi"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "IP in network"
+msgstr "IP verkossa"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Clients current network"
+msgstr "Laitteen nykyinen verkko"
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Tag"
+msgstr "Merkki"
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "No tag set"
+msgstr "Merkkiä ei ole asetettu"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "DUID (IPv6)"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Host ID (IPv6)"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Port Forwarding"
+msgstr "Porttiohjaus"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Parental Control"
+msgstr "Käytönvalvonta"
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Realtime Graphs"
+msgstr "Reaaliaikainen käyttögrafiikka"
 
 msgid "General"
 msgstr "Yleiset"
@@ -383,43 +911,224 @@ msgid "Advanced"
 msgstr "Lisäasetukset"
 
 msgid "Bring up on boot"
-msgstr "Bring-Up on Boot"
+msgstr "Automaattinen käynnistys"
 
 msgid "Use gateway metric"
 msgstr "Käytä reitittimen metric-arvoa"
 
 msgid "Override MAC address"
-msgstr "Override MAC Address"
+msgstr "Muuta MAC osoite"
 
 msgid "Override MTU"
-msgstr "Override MTU"
+msgstr "Mujuta  MTU"
 
-msgid "Method"
-msgstr "Method"
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "Device:"
+msgstr "Laite:"
 
-msgid "DHCP"
-msgstr "DHCP IPv4"
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "IPv4-Address ({{$index+1}}):"
+msgstr "IPv4-osoite ({{$ index   1}}):"
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "IPv6-Address ({{$index+1}}):"
+msgstr "IPv6-osoite ({{$ index   1}}):"
+
+msgid "No Lan networks"
+msgstr "Ei laitteita"
+
+msgid "No Clients in {{network['.name'].toUpperCase()}} network"
+msgstr "Ei asiakaslaitteita {{network['.name'].toUpperCase()}} verkossa"
 
 msgid "Select Network"
 msgstr "Valitse verkko"
 
-msgid "Enable IPv6 negotiation on the PPP link"
-msgstr "Ota käyttöön IPv6 neuvottelu PPP-linkissä"
+msgid "Select network device"
+msgstr "Valitse verkkolaite"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "No WAN Network"
+msgstr "Ei WAN-verkkoa"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "Diagnose"
+msgstr "Diagnosoi"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "Internet"
+msgstr "Internet"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "Link"
+msgstr "Linkki"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "WAN IP(s)"
+msgstr "Julkiset IP-osoitteet"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "Gateway(s)"
+msgstr "Yhdyskäytävä(t)"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "Link Type"
+msgstr "Linkin tyyppi"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "DSL Rate(s)"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "DNS-Servers"
+msgstr "DNS-palvelimet"
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "WAN Uptime"
+msgstr "Internet yhteys aktiivinen:"
+
+msgid "Network device"
+msgstr "Valitse verkkolaite"
+
+msgid "IPv6 Gateway"
+msgstr "IPv6 Oletusyhdyskäytävä"
+
+msgid "Static Routes"
+msgstr "Staattiset reitit"
+
+msgid "internet.lan.routes.info"
+msgstr " "
+
+msgid "IPv4 Routes"
+msgstr "IPv4-reititystaulukko"
+
+msgid "IPv6 Routes"
+msgstr "IPv6-reititystaulukko"
+
+msgid "Active Connections"
+msgstr "Aktiivisia yhteyksiä"
+
+msgid "Connections for each Device"
+msgstr "Laitteiden yhteydet"
+
+msgid "status.nat.connections.info"
+msgstr " "
+
+msgid "NAT Connection Table"
+msgstr "NAT yhteystaulu"
+
+msgid "status.nat.info"
+msgstr "NAT"
+
+msgid "Connections"
+msgstr "Verkkoyheydet"
+
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+msgid "Source"
+msgstr "Lähde"
+
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+msgid "Dest."
+msgstr "Kohde"
+
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+msgid "Source Port"
+msgstr "Lähdeportti"
+
+# plugins/juci-network-netifd/src/pages/status-network-nat.html
+msgid "Dest. Port"
+msgstr "Kohdeportti"
+
+msgid "Connected Clients"
+msgstr "Yhdistetyt laitteet"
+
+msgid "settings.network.info"
+msgstr ""
+"Tällä sivulla määritellään verkkoyhteydet. Mikäli LAN-yhteyden DHCP otetaan "
+"käytttöön, reititin jakaa automaattisesti IP-osoitteen paikalliseen verkkoon "
+"yhdistetyille laitteille. Staattista DHCP:tä käyttämällä on mahdollista "
+"jakaa aina sama IP-osoite halutulle laitteelle."
+
+msgid "Services"
+msgstr "Palvelut"
+
+msgid "internet.services.info"
+msgstr ""
+"Palvelut-sivulla voidaan konfiguroida erilaisia ohjelmia kuten Verkkojakoja "
+"ja MiniDLNA"
+
+msgid "status.network.routes.info"
+msgstr "Reitit"
+
+msgid "Routing Status"
+msgstr "Reititystila"
+
+msgid "ARP Table"
+msgstr "ARP taulu"
+
+msgid "IP address"
+msgstr "IP-osoite"
+
+msgid "MAC address"
+msgstr "MAC osoite"
+
+msgid "IPv4 Routing Table"
+msgstr "IPv4-reititystaulukko"
+
+msgid "Genmask"
+msgstr "Aliverkko"
+
+msgid "IPv6 Routing Table"
+msgstr "IPv6-reititystaulukko"
+
+msgid "Next Hop"
+msgstr "Next Hop"
+
+msgid "IPv6 Neighbors Table"
+msgstr "IPv6 Neighbors Table"
+
+msgid "No IPv6 devices connected"
+msgstr "Ei yhdistettyjä  IPv6-laitteita"
+
+msgid "IPv6 status"
+msgstr "IPv6 Tila"
+
+msgid "Router"
+msgstr "Reititin"
+
+msgid "status.status.info"
+msgstr ""
+"Tällä sivulla on yleisnäkymä laitteen pääparameterista. Tämä voi auttaa "
+"sinua optimoimaan modeemisi tai tunnistamaan ongelmia."
+
+msgid "IPv6 Prefix"
+msgstr "IPv6 etuliite"
+
+msgid "Primary DNS"
+msgstr "Primary DNS"
+
+msgid "Secondary DNS"
+msgstr "Secondary DNS"
+
+msgid "Line Status"
+msgstr "Linjan tila"
 
 msgid "Use default gateway"
 msgstr "Oletusreitti"
 
-msgid "If unchecked, no default route is configured"
-msgstr "Jos ei valittu, oletusreittä ei konfiguroida"
-
-msgid "Modem init timeout"
-msgstr "Aikakatkaisu"
-
-msgid "Maximum amount of seconds to wait for the modem to become ready"
-msgstr "Enimmäismäärä sekunteita mitä odotetaan modeemia"
-
 msgid "Use DNS servers advertised by peer"
 msgstr "Käytä yhdyskäytävän mainostamia DNS palvelimia"
+
+msgid "Custom delegated IPv6-prefix"
+msgstr "Custom Delegated IPv6 Prefix"
+
+msgid "Client ID to send when requesting DHCP"
+msgstr "Client ID to send when requesting DHCP"
+
+msgid "Enable IPv6 negotiation on the PPP link"
+msgstr "Ota käyttöön IPv6 neuvottelu PPP-linkissä"
+
+msgid "If unchecked, no default route is configured"
+msgstr "Jos ei valittu, oletusreittä ei konfiguroida"
 
 msgid "If unchecked, the advertised DNS server addresses are ignored"
 msgstr "Jos ei valittuna, mainostettuja DNS palvelimien osoitteita ei käytetä"
@@ -437,11 +1146,6 @@ msgstr ""
 msgid "LCP echo interval"
 msgstr "LCP echo intervalli"
 
-msgid ""
-"Send LCP echo requests at the given interval in seconds, only effective in "
-"conjunction with failure threshold"
-msgstr ""
-
 msgid "Inactivity timeout"
 msgstr "Toimimattomuuden aikakatkaisu"
 
@@ -452,11 +1156,16 @@ msgstr ""
 "Sulje toimimaton yhteys tietyn aikavälin jälkeen. Käytä 0 pakotettuun "
 "yhteyteen"
 
-msgid "Modem device"
-msgstr "Valitse modeemi"
+msgid ""
+"Send LCP echo requests at the given interval in seconds, only effective in "
+"conjunction with failure threshold"
+msgstr ""
 
-msgid "Service Type"
-msgstr "Palvelut"
+msgid "Modem init timeout"
+msgstr "Aikakatkaisu"
+
+msgid "Maximum amount of seconds to wait for the modem to become ready"
+msgstr "Enimmäismäärä sekunteita mitä odotetaan modeemia"
 
 msgid "APN"
 msgstr "APN"
@@ -464,26 +1173,70 @@ msgstr "APN"
 msgid "PIN-code"
 msgstr "PIN-koodi"
 
-msgid "PAP/CHAP Username"
+msgid "Username"
 msgstr "Käyttäjänimi"
 
-msgid "Username"
+msgid "Password"
+msgstr "Salasana"
+
+msgid "IPv4 Default Gateway"
+msgstr "IPv4 Oletusyhdyskäytävä"
+
+msgid "Create default route"
+msgstr "Määritä oletusreitiksi"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-static-edit.html
+msgid "IPv6 Assignment Length"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-static-edit.html
+msgid "Leave empty to disable"
+msgstr "Jätä tyhjäksi poistaaksesi käytöstä"
+
+msgid "IPv6 Assigned Prefix Hint"
+msgstr "IPv6 Assigned Prefix Hint"
+
+msgid "Prefix hint"
+msgstr "Prefix hint"
+
+msgid "Static IPv6 Address"
+msgstr "Kiinteä IPv6-osoite"
+
+msgid "IPv6 Default Gateway"
+msgstr "IPv6 Oletusyhdyskäytävä"
+
+msgid "Default IPv6 Gateway"
+msgstr "IPv6 Oletusyhdyskäytävä"
+
+msgid "IPv6 Address Mask"
+msgstr "IPv6 maski"
+
+msgid "IPv4 Settings"
+msgstr "IPv4-asetukset"
+
+msgid "IPv6 Settings"
+msgstr "IPv6-asetukset"
+
+msgid "PAP/CHAP Username"
 msgstr "Käyttäjänimi"
 
 msgid "PAP/CHAP Password"
 msgstr "Salasana"
 
-msgid "Password"
-msgstr "Salasana"
+msgid "Hostname to send when requesting DHCP"
+msgstr "Client ID to send when requesting DHCP"
+
+msgid "Request IPv6 address"
+msgstr "Request IPv6 address"
+
+msgid "Request Prefix Length"
+msgstr "Request Prefix Length"
 
 msgid "Use broadcast flag"
 msgstr "Käytä broadcast flag"
 
 msgid "Required for certain ISPs, e.g. Charter with DOCSIS 3"
 msgstr "Jotkin operaattorit vaativat. Esim Charter DOCSIS 3:n kanssa"
-
-msgid "Client ID to send when requesting DHCP"
-msgstr "Client ID to send when requesting DHCP"
 
 msgid "Client ID"
 msgstr "Client ID"
@@ -494,18 +1247,6 @@ msgstr "Client ID to send when requesting DHCP"
 msgid "Vendo Class"
 msgstr "Vendor Class"
 
-msgid "Hostname to send when requesting DHCP"
-msgstr "Client ID to send when requesting DHCP"
-
-msgid "Hostname"
-msgstr "Isäntäkoneen nimi"
-
-msgid "Default gateway"
-msgstr "Oletusreitti"
-
-msgid "Use TTL on tunnel interface"
-msgstr "Käytä TTL tunneliyhteydessä"
-
 msgid "Local IPv4 address"
 msgstr "Osoite"
 
@@ -514,6 +1255,45 @@ msgstr "Jätä tyhjäksi käyttääksesi nykyistä WAN osoitetta"
 
 msgid "Remote IPv4 address"
 msgstr "Osoite"
+
+msgid "The IPv4 address of the relay"
+msgstr "Relay IPv4-osoite"
+
+msgid "IPv6 prefix"
+msgstr "IPv6 etuliite"
+
+msgid "The IPv6 prefix assigned to the provider, usually ends with ::"
+msgstr "IPv6 etuliite päättyy yleensä ::"
+
+msgid "IPv6 prefix length"
+msgstr "IPv6 etuliitteen pituus"
+
+msgid "The length of the IPv6 prefix in bits"
+msgstr "IPv6 etuliitteen pituus bitteinä"
+
+msgid "IPv4 prefix length"
+msgstr "IPv6 Assigned Prefix Length"
+
+msgid "Enable IPv negotiation on the PPP link"
+msgstr "Ota käyttöön IPv neuvottelu PPP-linkissä"
+
+msgid "Default gateway"
+msgstr "Oletusreitti"
+
+msgid "Use TTL on tunnel interface"
+msgstr "Käytä TTL tunneliyhteydessä"
+
+msgid "IPv6 Assign"
+msgstr "IPv6 Määritys"
+
+msgid "Prefix Size"
+msgstr "Prefix Size"
+
+msgid "IPv4 Assign"
+msgstr "IPv4 määritys"
+
+msgid "DNS Name"
+msgstr "DNS Nimi"
 
 msgid ""
 "This is usually the address of the nearest PoP operated by the tunnel broker"
@@ -535,9 +1315,6 @@ msgstr "IPv6 etuliite"
 msgid ""
 "This is the prefix routed to you by the tunnel broker for use by clients"
 msgstr "Tämä on tunnelikytkimen reititetty etuliite jota asiakaskoneet käyttää"
-
-msgid "IPv6 prefix"
-msgstr "IPv6 etuliite"
 
 msgid "Dynamic tunnel"
 msgstr "Dynaaminen tunneli"
@@ -564,74 +1341,11 @@ msgstr ""
 "Tämä on joko päivititysavain tunnelin konfigurointia varten tai tilin "
 "salasana mikäli päivitysavainta ei ole konfiguroitu"
 
-msgid "The IPv4 address of the relay"
-msgstr ""
-
-msgid "The IPv6 prefix assigned to the provider, usually ends with ::"
-msgstr ""
-
-msgid "IPv6 prefix length"
-msgstr "IPv6 Assigned Prefix Length"
-
-msgid "The length of the IPv6 prefix in bits"
-msgstr ""
-
-msgid "IPv4 prefix length"
-msgstr "IPv6 Assigned Prefix Length"
-
-msgid "If uncchecked, no default rout is configured"
-msgstr "Jos ei valittu, niin oletusreittiä ei konfiguroida"
-
-msgid "If unchecked, the advertised DNS server addresses are ignored"
-msgstr ""
-
-msgid "Additional DHCP options to request from the server"
-msgstr "DHCP:n lisäoptiot joita pyydetään palvelimelta"
-
-msgid "Custom client ID"
-msgstr "Client ID"
-
-msgid "Custom Vendor class"
-msgstr "Kustumoitu vendor class"
-
 msgid "Hostname to include in DHCP requests"
 msgstr "DHCP pyyntöön liitettävä isäntänimi"
 
-msgid "Create default route"
-msgstr "Määritä oletusreitiksi"
-
 msgid "Automatically set up default route for this interface"
 msgstr "Aseta oletusreitti automaattisesti tälle yhteydelle"
-
-msgid "Custom delegated IPv6-prefix"
-msgstr "Custom Delegated IPv6 Prefix"
-
-msgid "Request IPv6 address"
-msgstr "Request IPv6 address"
-
-msgid "Request Prefix Length"
-msgstr "Request Prefix Length"
-
-msgid "Tunnel Link"
-msgstr ""
-
-msgid "DS-Lite AFTR address"
-msgstr ""
-
-msgid "Mode"
-msgstr "Tila"
-
-msgid "IPv6 Assign"
-msgstr "IPv6 Määritys"
-
-msgid "Prefix Size"
-msgstr "Prefix Size"
-
-msgid "IPv4 Assign"
-msgstr "IPv4 määritys"
-
-msgid "DNS Name"
-msgstr "DNS Nimi"
 
 msgid "L2TP Server"
 msgstr "DHCP-palvelin"
@@ -642,17 +1356,56 @@ msgstr "PAP/CHAP käyttäjänimi"
 msgid "PAP/CHAP password"
 msgstr "Salasana"
 
-msgid "Enable IPv negotiation on the PPP link"
-msgstr ""
+msgid "VPN Server"
+msgstr "DHCP-palvelin"
 
 msgid "Select Modem Device"
 msgstr "Valitse modeemi"
 
-msgid "username"
-msgstr "Käyttäjänimi"
+msgid "Additional DHCP options to request from the server"
+msgstr "DHCP:n lisäoptiot joita pyydetään palvelimelta"
 
-msgid "password"
-msgstr "Salasana"
+msgid "Custom client ID"
+msgstr "Client ID"
+
+msgid "Custom Vendor class"
+msgstr "Kustumoitu vendor class"
+
+msgid "Modem device"
+msgstr "Valitse modeemi"
+
+msgid "Service Type"
+msgstr "Palvelut"
+
+msgid "DS-Lite AFTR address"
+msgstr "DS Lite AFTR osoite"
+
+msgid "Tunnel Link"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.html
+msgid "Authentication type"
+msgstr "Autentikointityyppi"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.html
+msgid "Modes"
+msgstr "Tilat"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.html
+msgid ""
+"Allowed network modes, comma separated list of: all, lte, umts, gsm, cdma, "
+"td-scdma"
+msgstr ""
+"Sallitus verkon tilat pilkuin eroteltu luettelo: kaikki, lte, umts, gsm, "
+"cdma, td-scdma"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.html
+msgid "Delay"
+msgstr "Viive"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.html
+msgid "Seconds to wait before trying to interact with the modem"
+msgstr ""
 
 msgid "Access Concentrator"
 msgstr ""
@@ -666,284 +1419,200 @@ msgstr "automaattinen"
 msgid "Service Name"
 msgstr "Palvelut"
 
-msgid "VPN Server"
-msgstr "DHCP-palvelin"
-
-msgid "IPv4 Address"
-msgstr "IPv4-osoite"
-
-msgid "IPv4 Subnet Mask"
-msgstr "IPv4 Aliverkon peite"
-
-msgid "IPv4 Broadcast"
-msgstr "IPv4 Osoite"
-
-msgid "IPv4 Default Gateway"
-msgstr "IPv4 Oletusyhdyskäytävä"
-
-msgid "IPv6 assignment length"
-msgstr "IPv6 Assigned Prefix Length"
-
-msgid "Leave empty for Disabled"
-msgstr "Tyhjä = ei käytössä"
-
-msgid "IPv6 Assigned Prefix Hint"
-msgstr "IPv6 Assigned Prefix Hint"
-
-msgid "Prefix hint"
-msgstr "Prefix hint"
-
-msgid "IPv6 Address"
-msgstr "IPv6-osoite"
-
-msgid "Static IPv6 Address"
-msgstr "Kiinteä IPv6-osoite"
-
-msgid "IPv6 Default Gateway"
-msgstr "IPv6 Oletusyhdyskäytävä"
-
-msgid "Default IPv6 Gateway"
-msgstr "IPv6 Oletusyhdyskäytävä"
-
-msgid "IPv6 Prefix"
-msgstr "IPv6 etuliite"
-
-msgid "IPv6 Address Mask"
-msgstr "IPv6 maski"
-
-msgid "IPv4 Settings"
-msgstr "IPv4-asetukset"
-
-msgid "IPv6 Settings"
-msgstr "IPv6-asetukset"
-
-msgid "Select Base Device"
-msgstr "Valitse liitäntä"
-
-msgid "Device ID"
-msgstr "Laite ID"
-
-msgid "Base Device"
-msgstr "Fyysinen liitäntä"
-
-msgid "ID"
-msgstr "Tunnus/ID"
-
-msgid "Select Connected Host"
-msgstr "Valitse Yhdistetty Isäntäkone"
-
-msgid "Select a host"
-msgstr "Valitse isäntäkone"
-
-msgid "Aquired DNS servers"
-msgstr "Hankittu DNS palvelin"
-
-msgid "Aquired from"
-msgstr "Hankittu"
-
-msgid "For {{interface['.name'].toUpperCase()}} interface"
-msgstr "{{interface['.name'].toUpperCase()}} liitännälle"
-
-msgid "LAN"
-msgstr "Lähiverkko (LAN)"
-
-msgid "No Lan networks"
-msgstr "Verkko"
-
-msgid "No Clients in {{network['.name'].toUpperCase()}} network"
-msgstr "Ei asiakaslaitteita {{network['.name'].toUpperCase()}} verkossa"
-
-msgid "WAN"
-msgstr "Internet (WAN)"
-
-msgid "ONLINE"
-msgstr "PÄÄLLÄ"
-
-msgid "OFFLINE"
-msgstr "POIS PÄÄLTÄ"
-
-msgid "Connections"
-msgstr "Yhteydet"
-
-msgid "settings.network.info"
-msgstr ""
-"Tällä sivulla määritellään verkkoyhteydet. Mikäli LAN-yhteyden DHCP otetaan "
-"käytttöön, reititin jakaa automaattisesti IP-osoitteen paikalliseen verkkoon "
-"yhdistetyille laitteille. Staattista DHCP:tä käyttämällä on mahdollista "
-"jakaa aina sama IP-osoite halutulle laitteelle."
-
-msgid "Static Routes"
-msgstr "Staattiset reitit"
-
-msgid "internet.lan.routes.info"
-msgstr " "
-
-msgid "IPv4 Routes"
-msgstr "IPv4-reititystaulukko"
-
-msgid "Target IP Address"
-msgstr "Kohdeosoite"
-
-msgid "Netmask"
-msgstr "Aliverkko"
-
-msgid "Default Gateway"
-msgstr "Oletusreitti"
-
-msgid "0"
-msgstr ""
-
-msgid "Iface MTU"
-msgstr "Liitännän Tyyppi"
-
-msgid "IPv6 Routes"
-msgstr "IPv6-reititystaulukko"
-
-msgid "IPv6 Gateway"
-msgstr "IPv6 Oletusyhdyskäytävä"
-
-msgid "Interface"
-msgstr "Interface"
-
-msgid "Target"
-msgstr "Kohde"
-
-msgid "Gateway"
-msgstr "Modeemi"
-
-msgid "Metric"
-msgstr ""
-
-msgid "MTU"
-msgstr "MTU"
-
-msgid "Services"
-msgstr "Palvelut"
-
-msgid "internet.services.info"
-msgstr ""
-"Palvelut-sivulla voidaan konfiguroida erilaisia ohjelmia kuten Verkkojakoja "
-"ja MiniDLNA"
-
-# /home/jari/GIT/IOPSYS/juci/plugins/juci-network-netifd/src/pages/netifd-status-clients.html
-msgid "N/A"
-msgstr "Ei saatavilla"
-
-msgid "Connected Clients"
-msgstr "Yhdistetyt laitteet"
-
-msgid "MAC Address"
-msgstr "MAC Osoite"
-
-msgid "VLAN Configuration"
-msgstr "VLAN konfiguraatio"
-
-msgid "Status"
-msgstr "Tila"
-
-msgid "status.status.info"
-msgstr ""
-"Tällä sivulla on yleisnäkymä laitteen pääparameterista. Tämä voi auttaa "
-"sinua optimoimaan modeemisi tai tunnistamaan ongelmia."
-
-msgid "IP Address"
-msgstr "IP osoite"
-
-msgid "Primary DNS"
-msgstr "Primary DNS"
-
-msgid "Secondary DNS"
-msgstr "Secondary DNS"
-
-msgid "Line Status"
-msgstr "Linjan tila"
-
-msgid "Active Connections"
-msgstr "Aktiivisia yhteyksiä"
-
-msgid "Connections for each Device"
-msgstr "Laitteiden yhteydet"
-
-msgid "status.nat.connections.info"
-msgstr " "
-
-msgid "NAT Connection Table"
-msgstr "NAT yhteystaulu"
-
-msgid "status.nat.info"
-msgstr "NAT"
-
-msgid "status.network.routes.info"
-msgstr "Reitit"
-
-msgid "Routing Status"
-msgstr "Reititystila"
-
-msgid "ARP Table"
-msgstr "ARP taulu"
-
-msgid "IP address"
-msgstr "IP-osoite"
-
-msgid "MAC address"
-msgstr "MAC osoite"
-
-msgid "IPv4 Routing Table"
-msgstr "IPv4-reititystaulukko"
-
-msgid "IPv4 address"
-msgstr "IPv4 Osoite"
-
-msgid "Genmask"
-msgstr "Aliverkko"
-
-msgid "IPv6 Routing Table"
-msgstr "IPv6-reititystaulukko"
-
-msgid "IPv6 address"
-msgstr "IPv6 Osoite"
-
-msgid "Next Hop"
-msgstr "Next Hop"
-
-msgid "IPv6 Neighbors Table"
-msgstr "IPv6 Neighbors Table"
-
-msgid "No IPv6 devices connected"
-msgstr "Ei yhdistettyjä  IPv6-laitteita"
-
-msgid "IPv6 status"
-msgstr "IPv6 Tila"
-
-msgid "Router"
-msgstr "Reititin"
-
-msgid "menu-network-title"
-msgstr "Verkko"
-
-msgid "menu-netifd-vlan-config-title"
-msgstr "menu-netifd-vlan-config-title"
-
-msgid "menu-internet-services-title"
-msgstr "Palvelut"
-
-msgid "menu-status-network-nat-title"
-msgstr "NAT"
-
-msgid "menu-internet-network-title"
-msgstr "Verkko"
-
-msgid "menu-netifd-status-clients-title"
-msgstr "Clients"
+msgid "username"
+msgstr "Käyttäjänimi"
+
+msgid "password"
+msgstr "Salasana"
 
 msgid "menu-status-network-routes-title"
 msgstr "Reitit"
 
-msgid "menu-status-network-title"
-msgstr "Verkko"
+msgid "menu-internet-services-title"
+msgstr "Palvelut"
 
 msgid "menu-internet-routes-title"
 msgstr "Reitit"
+
+msgid "menu-netifd-status-clients-title"
+msgstr "Yhdistetyt laitteet"
+
+msgid "menu-network-title"
+msgstr "Verkko"
+
+msgid "menu-internet-network-title"
+msgstr "Verkkoyhteydet"
+
+msgid "menu-status-network-title"
+msgstr "Verkon tila"
+
+msgid "menu-status-network-nat-title"
+msgstr "NAT"
+
+#~ msgid "Method"
+#~ msgstr "Method"
+
+#~ msgid "Target IP Address"
+#~ msgstr "Kohdeosoite"
+
+#~ msgid "Default Gateway"
+#~ msgstr "Oletusreitti"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-network.html
+#~ msgid "internet-network-title"
+#~ msgstr "Verkkoyhteydet"
+
+#~ msgid "menu-internet-title"
+#~ msgstr "Verkko"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-routes.html
+#~ msgid "internet-routes-title"
+#~ msgstr "Reitit"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/internet-services.html
+#~ msgid "internet-services-title"
+#~ msgstr "Palvelut"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/netifd-status-clients.html
+#~ msgid "netifd-status-clients-title"
+#~ msgstr "Yhdistetyt laitteet"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/network.html
+#~ msgid "network-title"
+#~ msgstr "Verkko"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/status-network-nat.html
+#~ msgid "status-network-nat-title"
+#~ msgstr "NAT"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/status-network-routes.html
+#~ msgid "status-network-routes-title"
+#~ msgstr "Reitit"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/pages/status-network.html
+#~ msgid "status-network-title"
+#~ msgstr "Verkon tila"
+
+#~ msgid "Unmanaged networks need to be setup as a bridge"
+#~ msgstr "Valvomattomat verkot on asetettava sillaksi"
+
+#~ msgid "Unmanaged networks need at least one device in bridge"
+#~ msgstr ""
+#~ "Valmomattomalla verkolla täytyy olla vähintään yksi liitäntä sillassa"
+
+#~ msgid "Either ipv4 or ipv6 address is needed"
+#~ msgstr "Joko IPv4 tai IPv6 osoite tarvitaan"
+
+#~ msgid "Physical interface unspecified"
+#~ msgstr "Fyysinen liitäntä määrittelemättä"
+
+#~ msgid "DHCP interface needs physical interface"
+#~ msgstr "DHCP yhteys tarvitsee fyysisen liitännän"
+
+#~ msgid "DHCPv6 interface needs physical interface"
+#~ msgstr "DHCPv6 yhteys tarvitsee fyysisen liitännän"
+
+#~ msgid "Modem device needed for PPP interface"
+#~ msgstr "PPP liitäntä vaatii modeemilaitteen"
+
+#~ msgid "PPPoE interface needs physical interface"
+#~ msgstr "PPPoE yhteys vaatii fyysisen liitännän"
+
+#~ msgid "Modem device needed for 3G interface"
+#~ msgstr "Modeemilaite tarvitaan 3G liitäntää varten"
+
+#~ msgid "Service type needed for 3G interface"
+#~ msgstr "3G liitäntä vaatii palvelutyypin"
+
+#~ msgid "APN needed for 3G interface"
+#~ msgstr "APN tarvitaan 3G liitännässä"
+
+#~ msgid "Device needed for 4G interface"
+#~ msgstr "Laite tarvitaan 4G liitännässä"
+
+#~ msgid "VPN Server needed for Point-to-Point tunnel"
+#~ msgstr "Point-to-Point Tunnel"
+
+#~ msgid "Remote IPv4 address needed for 6in4 interface"
+#~ msgstr "Ulkoinen IPv4 osoite tarvitaan 6in4 yhteydelle"
+
+#~ msgid "Local IPv6 address needed for 6in4 interface"
+#~ msgstr "Paikallinen IPv6 osoite tarvitaan 6in4 yhteydelle"
+
+#~ msgid "Remote IPv4 address needed for IPv6 rapid deployment interface"
+#~ msgstr "Ulkoinen IPv4 osoite tarvitaan 6RD yhteydelle"
+
+#~ msgid "IPv6 prefix needed for IPv6 rapid deployment interface"
+#~ msgstr "IPv6 etuliite tarvitaan IPv6 RD yhteydelle"
+
+#~ msgid "IPv6 prefix length needed for IPv6 rapid deployment interface"
+#~ msgstr "IPv6 etuliitteen pituus tarvitaan 6RD yhteydelle"
+
+#~ msgid "DS-Lite AFTR address needed for DS lite interface"
+#~ msgstr "DS-Lite AFTR osoite tarvitaan DS lite yhteydelle"
+
+#~ msgid "L2TP server needed for PPP over L2TP"
+#~ msgstr "L2TP palvelin tarvitaan PPP L2TP yhteydelle"
+
+#~ msgid "Password needed when username is set"
+#~ msgstr "Salasana tarvitaan, kun käyttäjätunnus on asetettu"
+
+#~ msgid "The new interface needs an interface type"
+#~ msgstr "Uusi yhteys tarvitsee yhteystyypin"
+
+#~ msgid "Pleace choose protocol for connection"
+#~ msgstr "Valitse yhteyden protokolla"
+
+#~ msgid "network.interface.type.none.tab.title"
+#~ msgstr " "
+
+#~ msgid "Edit DNS servers"
+#~ msgstr "Valitse DNS-palveluntarjoaja"
+
+#~ msgid "Name"
+#~ msgstr "Nimi"
+
+#~ msgid "Displayname"
+#~ msgstr "Nimi"
+
+#~ msgid "VLAN Tag"
+#~ msgstr "VLAN Tag"
+
+#~ msgid "Ports"
+#~ msgstr "Portit"
+
+#~ msgid "Do you want to:"
+#~ msgstr "Haluatko:"
+
+#~ msgid "If uncchecked, no default rout is configured"
+#~ msgstr "Jos ei valittu, niin oletusreittiä ei konfiguroida"
+
+#~ msgid "IPv6 assignment length"
+#~ msgstr "IPv6 Assigned Prefix Length"
+
+#~ msgid "Leave empty for Disabled"
+#~ msgstr "Tyhjä = ei käytössä"
+
+#~ msgid "Device ID"
+#~ msgstr "Laite ID"
+
+#~ msgid "Base Device"
+#~ msgstr "Fyysinen liitäntä"
+
+#~ msgid "ID"
+#~ msgstr "Tunnus/ID"
+
+#~ msgid "Aquired DNS servers"
+#~ msgstr "Hankittu DNS palvelin"
+
+#~ msgid "Aquired from"
+#~ msgstr "Hankittu"
+
+#~ msgid "VLAN Configuration"
+#~ msgstr "VLAN konfiguraatio"
+
+#~ msgid "menu-netifd-vlan-config-title"
+#~ msgstr "menu-netifd-vlan-config-title"
 
 #~ msgid ""
 #~ "A new ethernet device has been connected to your router. Do you want to "

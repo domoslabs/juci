@@ -1,0 +1,59 @@
+{
+	"juci-wireless": {
+		"description": "JUCI wireless plugin",
+		"read": {
+			"ubus": {
+				"router.wps": [
+					"genpin",
+					"pbc",
+					"pbc_client",
+					"setpin",
+					"showpin",
+					"stapin",
+					"checkpin",
+					"status",
+					"stop"
+				], 
+				"juci.wireless": [
+					"set_credentials"
+				],
+				"router.system": [
+					"info"
+				],
+				"router.network": [
+					"clients"
+				],
+				"router.wireless": [
+					"bsd_sta_info",
+					"bsd_records",
+					"bs_data",
+					"autochannel",
+					"scan",
+					"scanresults",
+					"status",
+					"stas",
+					"radios"
+				]
+			}, 
+			"uci": [
+				"hosts", 
+				"wireless",
+				"boardpanel"
+			],
+			"owsd": [
+				"wps",
+				"wifi.wps",
+				"wifi-repeater-success"
+			]
+		}
+	}, 
+	"juci-wireless-admin": {
+		"write": {
+			"uci": [
+				"wireless",
+				"hosts",
+				"boardpanel"
+			]
+		}
+	}
+}

@@ -25,10 +25,12 @@
 		"description": "Broadcom ethernet plugin",
 		"read": {
 			"ubus": {
-				"/juci/ethernet": [
-					"run"
-					/*"adapters"*/
-				] 
+				"network.device": [
+					"status"
+				],
+				"router.port": [
+					"status"
+				]
 			}, 
 			"uci": [
 				"layer2_interface_ethernet",

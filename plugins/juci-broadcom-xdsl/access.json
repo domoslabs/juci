@@ -6,7 +6,7 @@
 				"layer2_interface"
 			],
 			"ubus": {
-				"router": [
+				"router.system": [
 					"info"
 				]
 			}

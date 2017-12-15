@@ -28,6 +28,7 @@ JUCI.app
 			editor: "@itemEditor",
 			editable: "@allowEdit",
 			sortable: "@sortable",
+			editText: "@",
 			getItemTitle: "&getItemTitle",
 			onCreate: "&onCreate",
 			onDelete: "&onDelete",
@@ -44,21 +45,30 @@ JUCI.app
 		}
 	};
 })
-.controller("juciListEditor", function($scope){
+.controller("juciListEditor", function($scope, $location, $anchorScroll){
 	$scope.hide = true;
-	$scope.dynamicHtml = "<"+$scope.editor+" ng-model='item'/>";
+	if($scope.editor) $scope.dynamicHtml = "<"+$scope.editor+" ng-model='item'/>";
 	$scope.onListAddItem = function(){
 		$scope.onCreate();
 	}
 	$scope.hideEditor = function(){
 		$scope.hide = true;
 	}
+	$scope.onEditAndMove = function(i){
+		$location.hash('editor');
+		// call $anchorScroll()
+		$anchorScroll();
+		$scope.onListEditItem(i);
+	}
 	$scope.onListEditItem = function(i){
+		if(!$scope.canEdit(i)) return;
 		$scope.item = i;
 		$scope.hide = false;
 		$scope.onEditStart({"$item": i});
 	}
 	$scope.onListRemoveItem = function(i){
+		if($scope.hide || !$scope.editable || !$scope.items)
+			return;
 		$scope.onDelete({"$item": i});
 		$scope.hide = true;
 	}
@@ -69,6 +79,8 @@ JUCI.app
 		if(idx == -1 || idx == 0) return;
 		arr.splice(idx, 1);
 		arr.splice(idx - 1, 0, i);
+		$scope.moveDisabled = true;
+		setTimeout(function(){$scope.moveDisabled = false; $scope.$apply();}, 150);
 		$scope.onItemMoved({ $item: i, $prev_index: idx, $index: idx - 1});
 	}
 	$scope.getIcon = function(iconStatus){
@@ -92,5 +104,11 @@ JUCI.app
 		arr.splice(idx, 1);
 		arr.splice(idx + 1, 0, i);
 		$scope.onItemMoved({ $item: i, $prev_index: idx, $index: idx + 1});
+	}
+
+	$scope.canEdit = function(section){
+		if(!section || !section.constructor || section.constructor.name !== "UCISection") return true;
+		if(!section.$can_edit || !section.$can_edit instanceof Function) return true;
+		return section.$can_edit();
 	}
 });

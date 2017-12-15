@@ -1,0 +1,86 @@
+#!/bin/sh
+
+set -e
+
+WWW="$1"
+MODE="$2"
+MODE=${MODE:="RELEASE"}
+
+
+if [ "$MODE" == "RELEASE" ]; then
+	JS_WILDCARD="*.js.gz"
+	CSS_WILDCARD="*.css.gz"
+else
+	JS_WILDCARD="*.js"
+	CSS_WILDCARD="*.css"
+fi
+
+echo "Using mode: $MODE..."
+
+if [ -n "$1" ]; then
+	WWW="$1"
+elif [ -d /www ]; then
+	WWW="/www"
+elif [ -d /var/www ]; then
+	WWW="/var/www"
+fi
+
+# now update the index file to include any extra files
+INDEX=${WWW}/index.html
+#gunzip -f ${INDEX}.gz
+mkdir -p ${WWW}/js;
+mkdir -p ${WWW}/css;
+
+time="$(date +%s)"
+
+STYLES_HTML="" #"<link href='__all.css' rel='stylesheet' type='text/css' />"
+SCRIPTS_HTML="" #"<script src='__all.js'></script>"
+for file in `find ${WWW}/css -name "$CSS_WILDCARD" | sort`; do
+	echo "Adding $file to index"
+	style=${file#${WWW}}
+	style=${style%.gz}
+	STYLES_HTML="${STYLES_HTML}<link href=\"${style}?v=${time}\" rel=\"stylesheet\" type=\"text/css\" />"
+done
+
+for file in `find ${WWW}/js -name "$JS_WILDCARD" | sort`; do
+	echo "Adding $file to index"
+	JSFILE=${file#${WWW}}
+	JSFILE=${JSFILE%.gz}
+	SCRIPTS_HTML="${SCRIPTS_HTML}<script src=\"${JSFILE}?v=${time}\"></script>"
+done
+
+echo "<!doctype html>
+<html lang='en' >
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+	<meta HTTP-EQUIV=\"CACHE-CONTROL\" CONTENT=\"NO-CACHE\">
+	<meta HTTP-EQUIV=\"PRAGMA\" CONTENT=\"NO-CACHE\">
+	<title>JUCI</title><!--ng-bind='title'-->
+	<link rel=\"shortcut icon\" href=\"/favicon.ico\" type=\"image/x-icon\" />
+	<base href='/'>
+	${STYLES_HTML}
+</head>
+<body role='document' ng-cloak >
+	<div ui-view='content' style='min-height: 1000px;'></div>
+	${SCRIPTS_HTML}
+	<script>
+		var js = document.createElement('script');
+		js.setAttribute('type', 'text/javascript');
+		js.setAttribute('src', 'themes/theme.js?v='+Date.now());
+		document.head.appendChild(js);
+	</script>
+</body>
+</html>" > ${INDEX}
+
+if [ "$MODE" == "RELEASE" ]; then
+	gzip -f ${INDEX}
+fi
+
+if [ "$MODE" == "DEBUG" ]; then
+	file=`find $WWW/themes/ -type f | head -1`
+	if [ -f "$file" ]; then
+		rm -rf $WWW/themes/theme.js
+		ln -s `basename $file` $WWW/themes/theme.js
+	fi
+fi

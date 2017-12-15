@@ -1,0 +1,326 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Add New Interface"
+msgstr "新しいインターフェースを追加する"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Are you sure you want to delete interface"
+msgstr "インタフェースを削除してもよろしいですか？"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Add New Member"
+msgstr "新しいメンバーを追加"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "No name entered"
+msgstr "名前が入力されていません"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Are you sure you want to delete member"
+msgstr "メンバーを削除してもよろしいですか？"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Add New Policy"
+msgstr "新しいポリシーを追加する"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Are you sure you want to delete policy"
+msgstr "ポリシーを削除してもよろしいですか？"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Add New Rule"
+msgstr "新しいルールを追加する"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.js
+msgid "Are you sure you want to delete rule"
+msgstr "ルールを削除してもよろしいですか？"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.js
+msgid "IPv4"
+msgstr "IPv4"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.js
+msgid "IPv6"
+msgstr "IPv6"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.js
+msgid "Default"
+msgstr "デフォルト"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.js
+msgid "All"
+msgstr "全て"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.js
+msgid "TCP"
+msgstr "TCP"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.js
+msgid "UDP"
+msgstr "UDP"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.js
+msgid "ICMP"
+msgstr "ICMP"
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+msgid "Interface"
+msgstr "インターフェース"
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+msgid "Number of host that Must reply for the member to be considered up"
+msgstr "アップしたとみなすためにメンバーに返信するホストの数"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mwan3/src/widgets/mwan3-interface-add.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mwan3/src/widgets/mwan3-interface-add.html
+msgid "Select Interface"
+msgstr "インタフェースの選択"
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+msgid "metric"
+msgstr "メトリック"
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+msgid ""
+"Members within one policy with a lower metric have precedence over higher "
+"metric members"
+msgstr ""
+"より低いメトリックを持つ1つのポリシー内のメンバーは、より高いメトリックメン"
+"バーよりも優先します"
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+msgid "Weight"
+msgstr "重さ"
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+msgid ""
+"Members with same metric will distribute load based on this weight value"
+msgstr "同じメトリックを持つメンバーは、この重み値に基づいて負荷を分散します"
+
+# plugins/juci-mwan3/src/widgets/mwan3-policy-add.html
+msgid "Enter Policy Name"
+msgstr "ポリシー名を入力"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-add.html
+msgid "Enter Rule Name"
+msgstr "ルール名を入力"
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-add.html
+msgid "Enter Member Name"
+msgstr "メンバーの名前を入力"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Policy to use"
+msgstr "使用ポリシー"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid ""
+"Use this policy for traffic that matches or set to  default to use the "
+"default routing table to lookup"
+msgstr ""
+"ルックアップの為にデフォルトのルーティングテーブルを使用する様に、デフォルト"
+"と一致または設定されたトラフィックにこのポリシーを使用します"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Select Policy"
+msgstr "ポリシー選択"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Any Source IP"
+msgstr "任意のソースIP"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Source IP"
+msgstr "ソースIP"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Match traffic from the specified source ip address"
+msgstr "指定された送信元IPアドレスからのトラフィックを照合する"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Source Port"
+msgstr "ソースポート"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid ""
+"Match traffic from the specified source port or port range, if relevant "
+"protocol is specified"
+msgstr ""
+"関連するプロトコルが指定されている場合、指定された送信元ポートまたはポート範"
+"囲からトラフィックを照合する"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Protocol"
+msgstr "プロトコル"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Match traffic using the given protocol"
+msgstr "指定されたプロトコルを使用してトラフィックを照合する"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Select Protocol"
+msgstr "プロトコル選択"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Any Destination IP"
+msgstr "任意の宛先IP"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Destination IP"
+msgstr "宛先IP"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Match traffic from the specified destination ip address"
+msgstr "指定された宛先IPアドレスからトラフィックを照合する"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Destination Port"
+msgstr "宛先ポート"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid ""
+"Match traffic from the specified destination port or port range, if relevant "
+"protocol is specified"
+msgstr ""
+"関連するプロトコルが指定されている場合は、指定された宛先ポートまたはポート範"
+"囲からトラフィックを照合する"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "IP Set"
+msgstr "IP指定"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid ""
+"Match traffic directed at the given destination ip address to an ipset set"
+msgstr "指定された宛先IPアドレスに向けられたトラフィックをIPセットに一致させる"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Sticky"
+msgstr "スティッキー"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid ""
+"Allow traffic from the same source ip address within the timeout limit to "
+"use same wan interface as prior session"
+msgstr ""
+"タイムアウト制限内の同じ送信元IPアドレスからのトラフィックが、以前のセッショ"
+"ンと同じWANインターフェイスを使用できるようにする"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Timeout"
+msgstr "タイムアウト"
+
+# plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
+msgid "Stickiness timeout value in seconds"
+msgstr "スティッキータイムアウト値（秒単位）"
+
+# plugins/juci-mwan3/src/widgets/mwan3-policy-edit.html
+msgid "Selected Members"
+msgstr "選択メンバー"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Enabled"
+msgstr "有効化"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Family"
+msgstr "ファミリー"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Select Family"
+msgstr "ファミリー選択"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Host to ping"
+msgstr "PING対象"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Add Ping Host"
+msgstr "PINGホスト追加"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Interface Reliability"
+msgstr "インターフェースの信頼性"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of host that Must reply for the interface to be considered up"
+msgstr "アップしたとみなすためにインターフェースに返信するホストの数"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of Pings"
+msgstr "PING数"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of pings to send to each Host"
+msgstr "各ホストに送信するPINGの数"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of seconds to wait for reply from host"
+msgstr "ホストからの応答を待つ秒数"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Interval"
+msgstr "間隔"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of seconds between each test"
+msgstr "各テスト間の秒数"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Up"
+msgstr "アップ"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of successful tests to consider interface as up"
+msgstr "インターフェイスをアップとみなすためのテストの成功回数"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Down"
+msgstr "ダウン"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
+msgid "Number of failed tests to consider interface as down"
+msgstr "インタフェースをダウンとみなすために失敗したテストの数"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.html
+msgid "MultiWAN Configuration"
+msgstr "マルチWAN設定"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.html
+msgid "Settings"
+msgstr "設定"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.html
+msgid "Members"
+msgstr "メンバー"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.html
+msgid "Policies"
+msgstr "ポリシー"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.html
+msgid "Rules"
+msgstr "ルール"
+
+# plugins/juci-mwan3/src/pages/internet-mwan3.html
+msgid "menu-internet-mwan3-title"
+msgstr "マルチWAN"

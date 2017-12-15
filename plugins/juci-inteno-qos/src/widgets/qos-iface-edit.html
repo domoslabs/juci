@@ -13,23 +13,24 @@
 			<switch class="green" ng-model="instance.overhead.value" />
 		</juci-config-line>
 
+<juci-config-section>
+</juci-config-section>
+<juci-config-info>{{ 'Put an upper limit to the bandwidth that is slightly lower than the actual capacity. Do this to make sure QoS is activated before the hardware is saturated.' | translate }}</juci-config-info>
 		<juci-config-line title="{{'Limit Download Speed'|translate}}">
 			<switch class="green" ng-model="instance.showdown"/>
 		</juci-config-line>
 		<juci-config-line ng-show="instance.showdown">
 			<div class="input-group">
-				<input type="number" min=1 class="form-control" ng-model="instance.download.value"/>
+				<input type="number" min=1 class="form-control" ng-model="instance.download.value" placeholder="{{dsl.download_speed}}"/>
 				<span class="input-group-addon">Kbps</span>
 			</div>
 		</juci-config-line>
-
 		<juci-config-line title="{{'Limit Upload Speed'|translate}}">
 			<switch class="green" ng-model="instance.showup"/>
 		</juci-config-line>
-
 		<juci-config-line ng-show="instance.showup">
 			<div class="input-group">
-				<input type="number" min="1" class="form-control" ng-model="instance.upload.value"/>
+				<input type="number" min="1" class="form-control" ng-model="instance.upload.value" placeholder="{{dsl.upload_speed}}"/>
 				<span class="input-group-addon">Kbps</span>
 			</div>
 		</juci-config-line>

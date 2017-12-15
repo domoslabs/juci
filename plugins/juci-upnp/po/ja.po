@@ -1,0 +1,257 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.js
+msgid "Allow"
+msgstr "許可"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.js
+msgid "Deny"
+msgstr "拒否"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "UPNP Settings"
+msgstr "UPnP設定"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "internet.services.upnp.info"
+msgstr " "
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "General Settings"
+msgstr "一般設定"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Automatically Start Service At Bootup"
+msgstr "起動時に自動的にサービスを開始する"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Enable upnp daemon at boot time"
+msgstr "起動時にUPnPデーモンを有効にする"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Start / Stop Service"
+msgstr "サービス開始・停止"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Start/stop upnp daemon (make sure you have WAN connection!)"
+msgstr "UPnPデーモンの起動・停止（WAN接続があることを確認してください）"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Enable UPNP"
+msgstr "UPnP オン"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Enable UPNP protocol"
+msgstr "UPnPプロトコル有効化"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Enable NAT-PMP"
+msgstr "NAT-PMP オン"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Enable NAT-PMP protocol"
+msgstr "NAT-PMPプロトコルを有効にする"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Enable secure mode"
+msgstr "セキュアモード オン"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Allow adding forwards only to requesting ip addresses"
+msgstr "要求するIPアドレスにのみ追加転送を許可する"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Enable additional logging"
+msgstr "追加ログを有効にする"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Puts extra debugging information into the system log"
+msgstr "追加のデバッグ情報をシステムログに記録する"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Downlink"
+msgstr "ダウンリンク"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Value in KByte/s, informational only"
+msgstr "KByte/s値、通知のみ"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Uplink"
+msgstr "アップリンク"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Port"
+msgstr "ポート"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "External Interface"
+msgstr "外部インターフェース"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Internal Interface"
+msgstr "内部インターフェース"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Advanced Settings"
+msgstr "拡張設定"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Device UUID"
+msgstr "デバイスUUID"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Announced serial number"
+msgstr "アナウンス情報 Serial Number"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Serial Number"
+msgstr "シリアルナンバー"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Announced model number"
+msgstr "アナウンス情報 Model Number"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Model Number"
+msgstr "モデルナンバー"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Notify interval"
+msgstr "通知間隔"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Clean rules threshold"
+msgstr "ルール消去しきい値"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Clean rules interval"
+msgstr "ルール消去間隔"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Presentation URL"
+msgstr "サービスコントロールURL"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "UPnP lease file"
+msgstr "UPnPリースファイル"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "UPnP ACLs"
+msgstr "UPnP ACL"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "UPnP Open Ports"
+msgstr "UPnP"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "No UPnP ports currently in use"
+msgstr "現在使用中のUPnPポートはありません"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Pkts. cnt."
+msgstr "Pkts. cnt."
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "Bytes"
+msgstr "バイト"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "Target"
+msgstr "ターゲット"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Proto."
+msgstr "プロトコル"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "Opt"
+msgstr "Opt"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "Source"
+msgstr "送信元"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "Dest."
+msgstr "宛先"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Comment"
+msgstr "コメント"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "External ports"
+msgstr "外部ポート"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Internal addresses"
+msgstr "内部アドレス"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Internal ports"
+msgstr "内部ポート"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Action"
+msgstr "アクション"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Sort"
+msgstr "ソート"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Delete"
+msgstr "削除"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "Add ACL"
+msgstr "ACL追加"
+
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "Packets cnt."
+msgstr "パケットカウント"
+
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "Proto"
+msgstr "プロトコル"
+
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "menu-upnpd-status-title"
+msgstr "UPnP"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
+msgid "menu-upnpd-settings-title"
+msgstr "UPnP設定"

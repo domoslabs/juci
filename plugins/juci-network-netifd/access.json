@@ -3,64 +3,72 @@
 		"description": "JUCI Network Configuration module",
 		"read": {
 			"ubus": {
-				"/juci/network": [
-					"run"
-					/*"clients", 
-					"load", 
-					"nat_table", 
+				"juci.network": [
+					"has_link",
+					"ifup",
+					"load",
 					"nameservers",
 					"services",
-					"protocols"*/
-				], 
-				"/juci/modems": [
-					"run"
-					/*"list",
-					"list4g"*/
+					"protocols",
+					"online"
 				],
-				"/juci/network.status": [ 
-					"run"
-					/*"arp", 
-					"ipv4routes", 
-					"ipv6routes",
-					"ipv6neigh"*/
-				], 
+				"juci.system": [
+					"reboot"
+				],
+				"juci.modems": [
+					"list"
+				],
 				"network.interface": [
 					"dump"
-				], 
+				],
 				"network.interface.*": [
 					"up",
 					"down"
-				], 
-				"router": [
-					"networks",
-					"usb",
-					"linkspeed",
+				],
+				"router.graph": [
+					"client_traffic"
+				],
+				"router.network": [
+					"dump",
 					"ports",
-					"dslstats",
-					"boardinfo", 
-					"radios",
-					"clients",
-					"clients6"
+					"clients"
+				],
+				"router.net": [
+					"arp",
+					"ip_conntrack",
+					"ipv4_routes",
+					"ipv6_routes",
+					"ipv6_neigh"
+				],
+				"router.usb": [
+					"status"
+				],
+				"router.wireless": [
+					"radios"
+				],
+				"router.port": [
+					"status"
+				],
+				"router.dsl": [
+					"stats"
 				],
 				"file": [
-					"read"
-				],
-				"led.internet":[
-					"status"
+					"read_tmp"
 				]
-			}, 
+			},
 			"uci": [
-				"layer2_interface_ethernet", 
-				"network"
+				"layer2_interface_ethernet",
+				"network",
+				"dhcp"
 			],
 			"owsd": [
 				"client",
 				"network.interface"
 			]
-		}, 
+		},
 		"write": {
 			"uci": [
-				"layer2_interface_ethernet", 
+				"layer2_interface_ethernet",
 				"network"
 			]
 		}

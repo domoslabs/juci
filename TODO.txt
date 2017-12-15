@@ -1,0 +1,4 @@
+1. debug logging in owsd to debug JUCI issues that come up
+	-> going over log / debug levels and add configurable debug level, enable debug to syslog
+2. iOs issue! with pipelining and/or mulitple requests in one connections, coming in too fast
+2. fix so that values that are empty or undefined take up space in changes-list

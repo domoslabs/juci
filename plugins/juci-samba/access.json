@@ -6,24 +6,22 @@
 				"samba"
 			],
 			"ubus": {
-				"/juci/samba": [
-					"run"
-					/*"folder_tree",*/
-					/*"autocomplete"*/
+				"router.directory": [
+					"folder_tree",
+					"autocomplete"
+				],
+				"juci.system": [
+					"passwd_entries"
+				],
+				"router.usb": [
+					"status"
 				]
 			}
 		}, 
 		"write": {
 			"uci": [
 				"samba"
-			],
-			"ubus": {
-				"/juci/samba": [
-					"run"
-					/*"folder_tree",*/
-					/*"autocomplete"*/
-				]
-			}
+			]
 		}
 	}
 }

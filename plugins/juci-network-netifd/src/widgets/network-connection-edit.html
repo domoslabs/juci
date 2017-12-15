@@ -29,12 +29,6 @@
 				<div dynamic="interface.$proto_editor"/>
 			</tab>
 			<tab heading="{{'Physical Settings' |translate}}" ng-show="showPhysical()">
-				<!--<juci-config-lines>
-					<juci-config-line title="{{'Interface Type'|translate}}">
-						<juci-select ng-model="interface.type.value" ng-items="allInterfaceTypes"/>
-					</juci-config-line>
-				</juci-config-lines>
-				<div dynamic="interface.$type_editor"/>-->
 				<div dynamic="interface.$proto_editor_ph" />	
 			</tab>
 			<tab heading="{{'Advanced'|translate}}">
@@ -49,19 +43,11 @@
 							<input type="text" class="form-control" ng-model="interface.macaddr.value" placeholder="00:00:00:00:00:00" />
 						</juci-config-line>
 						<juci-config-line title="{{ 'Override MTU' | translate }}">
-							<input type="number" min="0" class="form-control" ng-model="interface.mtu.value" placeholder="1500" />
+							<input type="number" min="0" class="form-control" ng-model="interface.mtu.value" />
 						</juci-config-line>
 				</juci-config-lines>
 				<div dynamic="interface.$proto_editor_ad" /> 
 			</tab>
-			<!--<tab heading="IPv6 Settings">
-				<juci-config-lines>
-					<juci-config-line title="{{'Method'|translate}}">
-						<juci-select ng-model="interface.proto6.value" ng-items="protocolTypes" placeholder="{{'Choose Configuration Option'|translate}}"/>
-					</juci-config-line>
-				</juci-config-lines>
-				<network-connection-ip6-settings-edit ng-model="interface" ></network-connection-ip6-settings-edit>
-			</tab>-->
 			<tab heading="{{ 'DHCP' | translate}}" ng-show="interface.proto.value == 'static'">
 				<network-connection-dhcp-server-settings ng-show="interface.proto.value == 'static'" ng-connection="interface"/>
 			</tab>

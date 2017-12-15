@@ -1,0 +1,37 @@
+#!/bin/sh
+
+. /usr/share/libubox/jshn.sh
+
+case "$1" in
+	list)
+		echo '{
+			"default_password":{"username":"Str"}
+		}'
+	;;
+	call)
+		case "$2" in
+			default_password)
+				local input username
+				read -r input
+				json_load "$input"
+				json_get_var username username
+				cur_salt=`cat /etc/shadow | grep "$username:" | cut -d ':' -f 2 | cut -d '$' -f3-`
+				if [ "$cur_salt" == "" ]; then
+					json_init
+					json_add_string "error" "Invalid username"
+					json_dump
+					return 1
+				fi
+				old_salt=`cat /rom/etc/shadow | grep "$username:" | cut -d ':' -f 2 | cut -d '$' -f3-`
+				json_init
+				if [ "$old_salt" == "$cur_salt" ]; then
+					json_add_boolean "changed" 0
+				else
+					json_add_boolean "changed" 1
+				fi
+				json_dump
+			;;
+			*) return 1 ;;
+		esac
+	;;
+esac

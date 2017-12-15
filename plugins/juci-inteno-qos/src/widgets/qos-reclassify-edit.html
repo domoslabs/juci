@@ -1,0 +1,86 @@
+<div>
+
+	<juci-config-line title="{{ 'Target' | translate }}">
+		<juci-select ng-items="targets" ng-model="rule.target.value" />
+	</juci-config-line>
+	<juci-config-line title="{{'Protocol'|translate}}">
+		<div class="input-group">
+			<juci-select ng-items="data.protocols" ng-model="rule.proto.value" editable="true" placeholder="{{'All'|translate}}"></juci-select>
+		</div>
+	</juci-config-line>
+	<juci-config-line title="{{'Source Host'|translate}}">
+		<div class="input-group">
+			<juci-select ng-items="clients" ng-model="rule.srchost.value" editable="true" placeholder="{{'All'|translate}}"></juci-select>
+		</div>
+	</juci-config-line>
+	<juci-config-line title="{{'Destination Host'|translate}}">
+		<div class="input-group">
+			<juci-select ng-items="clients" ng-model="rule.dsthost.value" editable="true" placeholder="{{'All'|translate}}"></juci-select>
+		</div>
+	</juci-config-line>
+	<juci-config-line title="{{ 'Ports' | translate }}" ng-show="rule.proto.value!='icmp'">
+		<juci-select ng-items="data.portfilters" ng-model="data.portfilter" placeholder="{{'Choose Filtering'|translate}}"/>
+	</juci-config-line>
+	<juci-config-line ng-show="data.portfilter=='ports' && rule.proto.value!='icmp'" help="{{'Source and Destinaton Ports'|translate}}">
+		<tags-input ng-model="data.ports" key-property="value" display-property="value" max-length="5" min-length="1" add-on-space="true" 
+					on-tag-removed="onAddPort()" on-tag-added="onAddPort()" add-on-paste="true" on-tag-adding="evalPort($tag)" placeholder="Add Ports"></tags-input>
+	</juci-config-line>
+	<juci-config-line ng-show="data.portfilter=='srcports' && rule.proto.value!='icmp'">
+		<tags-input ng-model="data.srcports" key-property="value" display-property="value" max-length="5" min-length="1" add-on-space="true" 
+					on-tag-removed="onAddSrcPort()" on-tag-added="onAddSrcPort()" add-on-paste="true" on-tag-adding="evalPort($tag)" placeholder="Add  Source Ports"></tags-input>
+	</juci-config-line>
+	<juci-config-line ng-show="data.portfilter=='dstports' && rule.proto.value!='icmp'">
+		<tags-input ng-model="data.dstports" key-property="value" display-property="value" max-length="5" min-length="1" add-on-space="true" 
+					on-tag-removed="onAddDstPort()" on-tag-added="onAddDstPort()" add-on-paste="true" on-tag-adding="evalPort($tag)" placeholder="Add Destination Port"></tags-input>
+	</juci-config-line>
+	<juci-config-line ng-show="data.portfilter=='portrange' && rule.proto.value!='icmp'" help="{{'Source and Destinaton Port Range'|translate}}">
+		<div class="input-group">
+				<input type="number" min="0" class="form-control" ng-model="data.portrange.from" placeholder="From" style="max-width: 120px !important;"/>
+				<input type="number" min="0" class="form-control" ng-model="data.portrange.to" placeholder="To" style="max-width: 120px !important; float: right"/>
+		</div>
+	</juci-config-line>
+	<juci-config-line title="{{'Direction'|translate}}">
+		<juci-select ng-items="directions" ng-model="rule.direction.value"></juci-select>
+	</juci-config-line>
+	<juci-config-line title="{{'Connbytes'|translate}}" error="data.connbytes.error">
+		<div class="input-group">
+			<input type="number" min="1" class="form-control" ng-model="data.connbytes.from" placeholder="From" style="max-width: 120px !important;"/>
+			<input type="number" min="1" class="form-control" ng-model="data.connbytes.to" placeholder="To (optional)" style="max-width: 120px !important; float: right"/>
+		</div>
+	</juci-config-line>
+
+<juci-config-section>
+</juci-config-section>
+
+	<juci-config-line title="{{ 'Precedence' | translate }}">
+		<juci-select ng-items="data.precedence" ng-model="rule.dscp.value" placeholder="{{'All'|translate}}"/>
+	</juci-config-line>
+	<juci-config-line title="{{'Packet Size'|translate}}">
+		<juci-input-range ng-model="rule.pktsize.value"></juci-input-range>
+	</juci-config-line>
+	<juci-config-line title="{{ 'Mark' | translate }}" error="rule.mark.error">
+		<input type="text" class="form-control" ng-model="rule.mark.value" style="max-width: 190px !important; float: right"/>
+	</juci-config-line>
+	<juci-config-line title="{{'TCP Flags'|translate}}">
+		<dropdown-multi-select input-model="tcpflags.all" output-model="tcpflags.selected"
+		button-label="label" item-label="label" tick-property="selected" on-close="addSelectedTCPflags()"></dropdown-multi-select>
+	</juci-config-line>
+
+<!-- TODO: add later
+
+	<juci-config-line title="{{'tos'|translate}}">
+		<div class="input-group">
+			<input type="number" min="1" class="form-control" ng-model="rule.STR.value" placeholder="TODO"/>
+			<span class="input-group-addon">STR</span>
+		</div>
+	</juci-config-line>
+
+	<juci-config-line title="{{'dscp'|translate}}">
+		<div class="input-group">
+			<input type="number" min="1" class="form-control" ng-model="rule.STR.value" placeholder="TODO"/>
+			<span class="input-group-addon">STR</span>
+		</div>
+	</juci-config-line>
+-->
+
+</div>

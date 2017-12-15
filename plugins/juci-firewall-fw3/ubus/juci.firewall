@@ -1,0 +1,19 @@
+#!/bin/sh
+
+. /usr/share/libubox/jshn.sh
+. /lib/functions.sh
+
+case "$1" in
+	list)
+		echo '{ "excluded_ports" : {} }'
+	;;
+	call)
+		case "$2" in
+			excluded_ports)
+				json_init
+				json_add_string result "$(cat /tmp/fw_used_ports 2>/dev/null)"
+				json_dump
+			;;
+		esac
+	;;
+esac

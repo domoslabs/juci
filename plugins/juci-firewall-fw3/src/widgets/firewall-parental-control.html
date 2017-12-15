@@ -1,0 +1,36 @@
+<div>
+	<h3>{{'Internet access will be restricted for'|translate}} {{model.hostname || model.macaddr}} {{'during following times'|translate}}:</h3>
+	<div>
+		<table class="table table-hover">
+			<thead>
+				<th>{{'Weekdays'|translate}}</th>
+				<th>{{'Start Time'|translate}}</th>
+				<th>{{'Stop Time'|translate}}</th>
+				<th></th>
+				<th></th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="rule in rules track by $index">
+					<td>{{rule.weekdays.value}}</td>
+					<td>{{rule.start_time.value}}</td>
+					<td>{{rule.stop_time.value}}</td>
+					<td><button ng-click="onEditRule(rule)" class="btn btn-default"><i class="juci juci-edit"></i></button></td>
+					<td><button ng-click="onDeleteRule(rule)" class="btn btn-default"><i class="juci juci-trash"></i></button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div ng-show="editRule">
+		<juci-schedule-edit ng-model="editRule"></juci-schedule-edit>
+		<div ng-repeat="er in errors track by $index" class="alert alert-danger" ng-show="errors.length">
+			{{er}}
+		</div>
+		<div class="row">
+			<button style="margin-right:10px;" class="btn btn-default pull-right" ng-click="onCancelEdit()">Cancel</button>
+			<button style="margin-right:10px;" class="btn btn-primary pull-right" ng-click="onEditFinish()">Save</button>
+		</div>
+	</div>
+	<div ng-show="editRule === null" class="row" style="clear:both">
+		<button class="btn btn-default pull-right" style="margin-top:15px;" ng-click="addNewRule()"><i class="fa fa-plus"></i></button>
+	</div>
+</div>

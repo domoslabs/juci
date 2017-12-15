@@ -33,7 +33,8 @@ UCI.system.$registerSectionType("system", {
 	"log_remote": 		{ dvalue: true, type: Boolean },
 	"log_size":			{ dvalue: 16, type: Number },
 	"log_trailer_null":	{ dvalue: false, type: Boolean },
-	"log_type":			{ dvalue: "circular", type: String }
+	"log_type":			{ dvalue: "circular", type: String },
+	"netping_addr":		{ dvalue: '', type: String }
 });
 
 UCI.system.$registerSectionType("timeserver", {
@@ -64,7 +65,9 @@ UCI.buttons.$registerSectionType("button", {
 });
 
 UCI.$registerConfig("passwords");
-UCI.passwords.$registerSectionType("usertype", {});
+UCI.passwords.$registerSectionType("usertype", {
+	"reset":	{ dvalue: 0, type: Number}
+});
 UCI.$registerConfig("leds");
 UCI.leds.$registerSectionType("led", {
 	"enable":	{ dvalue: true, type: Boolean }
@@ -74,32 +77,32 @@ JUCI.app.factory("$systemService", function($rpc){
 	return {
 		list: function(){
 			var def = $.Deferred();
-			$rpc.$call("juci.system.service", "run", {"method":"list"}).done(function(res){
+			$rpc.$call("juci.service", "list", {}).done(function(res){
 				if(res && res.services){
 					var result = res.services.map(function(service){
 						service.enable = function(){
 							var self = this;
 							console.log("enabling service "+self.name);
-							return $rpc.$call("juci.system.service", "run", {"method":"enable","args":JSON.stringify({ name: self.name })}).done(function(){ self.enabled = true; });
+							return $rpc.$call("juci.service", "enable", { "name": self.name }).done(function(){ self.enabled = true; });
 						}
 						service.disable = function(){
 							var self = this;
 							console.log("disabling service "+self.name);
-							return $rpc.$call("juci.system.service", "run", {"method":"disable","args":JSON.stringify({ name: self.name })}).done(function(){ self.enabled = false; });
+							return $rpc.$call("juci.service", "disable", { "name": self.name }).done(function(){ self.enabled = false; });
 						}
 						service.start = function(){
 							var self = this;
 							console.log("starting service "+self.name);
-							return $rpc.$call("juci.system.service", "run", {"method":"start","args":JSON.stringify({ name: self.name })}).done(function(){ self.running = true; });
+							return $rpc.$call("juci.service", "start", { "name": self.name }).done(function(){ self.running = true; });
 						}
 						service.stop = function(){
 							var self = this;
 							console.log("stopping service "+self.name);
-							return $rpc.$call("juci.system.service", "run", {"method":"stop","args":JSON.stringify({ name: self.name })}).done(function(){ self.running = false; });
+							return $rpc.$call("juci.service", "stop", { "name": self.name }).done(function(){ self.running = false; });
 						}
 						service.reload = function(){
 							var self = this;
-							return $rpc.$call("juci.system.service", "run", {"method":"reload","args":JSON.stringify({ name: self.name })});
+							return $rpc.$call("juci.service", "reload", { "name": self.name });
 						}
 						return service;	
 					});

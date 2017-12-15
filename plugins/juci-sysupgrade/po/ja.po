@@ -1,0 +1,275 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
+msgid ".w (JFFS Image with CFE)"
+msgstr ".w (JFFS Image with CFE)"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
+msgid ".y (UBIFS Image)"
+msgstr ".y (UBIFS Image)"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
+msgid ".y2 (new UBIFS Image)"
+msgstr ".y2 (new UBIFS Image)"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
+msgid "fs_image (JFFS Image)"
+msgstr "fs_image (JFFS Image)"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
+msgid "A missing section has been created"
+msgstr "不足しているセクションが作成されました"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
+msgid "OK"
+msgstr "OK"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid "Do you want to keep your configuration?"
+msgstr "設定を保存しますか？"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid ""
+"If you answer yes then your configuration will be saved before the upgrade "
+"and restored after the upgrade has completed. If you choose 'no' then all "
+"your current configuration will be reset to defaults."
+msgstr ""
+"「はい」を選択した場合現在の設定が保存され、アップグレードが完了した後に復"
+"元されます。「いいえ」を選択した場合、すべての設定が工場出荷状態にリセット"
+"されます。"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
+msgid "Yes"
+msgstr "はい"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
+msgid "No"
+msgstr "いいえ"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid "Abort"
+msgstr "中止"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
+msgid "Image check failed"
+msgstr "イメージチェック失敗"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
+msgid "Error: "
+msgstr "エラー:"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid "unknown test"
+msgstr "不明なテスト"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid "New Software Available!"
+msgstr "新しいソフトウェアが利用可能です。"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid "No upgrade has been found!"
+msgstr "アップグレードは見つかりませんでした。"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid "USB upgrade check failed"
+msgstr "USBアップグレードのチェックに失敗しました"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid "Online upgrade check failed"
+msgstr "オンラインアップグレードのチェックに失敗しました"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid "Downloading and verifying image..."
+msgstr "イメージファイルのダウンロードおよび検証中..."
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid "Uploading"
+msgstr "アップロード中"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid "Verifying image..."
+msgstr "イメージファイルの検証中..."
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid "Verifying"
+msgstr "検証する"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid "The server returned an error"
+msgstr "サーバーがエラーを返しました"
+
+# plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
+msgid "Do you want to keep settings?"
+msgstr "以前の設定を残しますか？"
+
+# plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
+msgid "Cancel"
+msgstr "キャンセル"
+
+# plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
+msgid ""
+"If you click 'Yes' all settings will be saved. If you want to have a clean "
+"install click 'No'. To close this dialog click 'Cancel'"
+msgstr ""
+"「はい」をクリックすると設定が保存されます。クリーンインストールをしたい場"
+"合は「いいえ」をクリックして下さい。このダイアログを閉じるには「キャンセ"
+"ル」をクリックして下さい。"
+
+# plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
+msgid "Your box is upgrading"
+msgstr "本機器はアップグレードされます"
+
+# plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
+msgid "Something went wrong! Try again later"
+msgstr "不明なエラーが発生しました。しばらくして再度ご確認下さい。"
+
+# plugins/juci-sysupgrade/src/widgets/upgrade.popup.js
+msgid "You need to select a network!"
+msgstr "ネットワークを選択する必要があります。"
+
+# plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.small.html
+msgid "New software available"
+msgstr "利用可能な新しいソフトウェア"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.small.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "Close"
+msgstr "閉じる"
+
+# plugins/juci-sysupgrade/src/widgets/upgrade.popup.html
+msgid "Select image to upgrade"
+msgstr "アップグレードに使用するイメージファイルを選択してください"
+
+# plugins/juci-sysupgrade/src/widgets/upgrade.popup.html
+msgid "New software is available"
+msgstr "新しいソフトウェアが利用可能です"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "Firmware Upgrade"
+msgstr "ファームウェアアップグレード"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "settings.upgrade.info"
+msgstr " "
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "Current Firmware Version"
+msgstr "現在のファームウェアバージョン"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "Online Update"
+msgstr "オートアップグレード"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "settings.upgrade.online.info"
+msgstr " "
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "Check for Upgrade"
+msgstr "アップグレード確認"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "Install Upgrade"
+msgstr "アップグレードインストール"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "USB Firmware Upgrade"
+msgstr "USBファームウェアアップグレード"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "settings.upgrade.usb.info"
+msgstr " "
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "Manual Firmware Upgrade"
+msgstr "マニュアルアップグレード"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "settings.upgrade.manual.info"
+msgstr " "
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "Pick firmware file to upload"
+msgstr "アップロードするファームウェアファイルを選択して下さい。"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "Enter URL"
+msgstr "URL"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "Start upgrade"
+msgstr "アップグレード開始"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "Upgrade"
+msgstr "アップグレード"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
+msgid "Upgrade Options"
+msgstr "アップグレードオプション"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
+msgid "settings.upgrade.options.info"
+msgstr " "
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
+msgid "Firmware image extension"
+msgstr "ファイル拡張子の選択"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
+msgid "URL for file with latest image filename"
+msgstr "最新のイメージファイル名"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
+msgid "URL"
+msgstr "URL"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
+msgid "Upgrade URL base path"
+msgstr "アップグレードURLの基本パス"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
+msgid "HTTP Directory"
+msgstr "HTTPディレクトリ"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
+msgid "Online Upgrade"
+msgstr "オンラインアップグレード"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.html
+msgid "menu-settings-upgrade-title"
+msgstr "アップグレード"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
+msgid "menu-settings-upgrade-options-title"
+msgstr "オプション"

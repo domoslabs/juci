@@ -19,8 +19,8 @@
  */
 
 JUCI.app
-.controller("SettingsSystemGeneral", function($scope, $rpc, $uci, $tr, gettext){
-	var time;
+.controller("SettingsSystemGeneral", function($scope, $rpc, $uci, $tr, gettext, $config){
+	var date;
 	async.series([
 		function(next){
 			$uci.$sync("system").done(function(){
@@ -35,7 +35,7 @@ JUCI.app
 			}).always(function(){next();}); 
 		}, 
 		function(next){
-			$rpc.$call("juci.system.time", "run", {"method":"zonelist"}).done(function(result){
+			$rpc.$call("juci.system", "zonelist", {}).done(function(result){
 				if(result && result.zones){
 					$scope.timezones = result.zones; 
 					$scope.allTimeZones = Object.keys(result.zones).sort().map(function(k){
@@ -47,12 +47,25 @@ JUCI.app
 			}); 
 		},
 		function(next){
-			$rpc.$call("router", "info").done(function(res){
-				time = res.system.localtime;
-				$scope.localtime = Date(time);
+			$rpc.$call("router.system", "info").done(function(res){
+				date = new Date(res.system.localtime * 1000);
 			}).always(function(){next();});
 		}
 	], function(){
+		JUCI.interval.repeat("system_update_time", 1000, function(done){
+			if(!date){ done(); return;}
+			date.setSeconds(date.getSeconds() + 1);
+			var year = date.getFullYear();
+			var month = "0" + (date.getMonth() + 1); // starts at 0
+			var day = "0" + date.getDate();
+			var seconds = "0" + date.getSeconds();
+			var minutes = "0" + date.getMinutes();
+			var hour =  "0" + date.getHours();
+			$scope.localtime = year + "-" + month.slice(-2) + "-" + day.slice(-2) + ", " +
+				hour.slice(-2) + ":" + minutes.slice(-2) + ":" + seconds.slice(-2);
+			$scope.$apply();
+			done();
+		});
 		$scope.loaded = true; 
 		$scope.$apply(); 
 	}); 
@@ -62,13 +75,5 @@ JUCI.app
 		$scope.system.timezone.value = $scope.timezones[value]; 
 	}); 
 
-	JUCI.interval.repeat("system_update_time", 1000, function(done){
-		if(time && typeof time === "number"){
-			time += 1;
-			$scope.localtime = Date(time);
-			$scope.$apply();
-		}
-		done();
-	});
 });
 

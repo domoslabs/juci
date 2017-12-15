@@ -1,7 +1,6 @@
 define Plugin/juci
+
 	CODE_LOAD:=01
-	STYLE_LOAD:=01
-	TPL_LOAD:=01
 
 	STYLES-y:=
 	STYLES-y+=src/css/normalize.css
@@ -59,6 +58,7 @@ define Plugin/juci
 	JAVASCRIPT-y+=src/js/config.js
 	JAVASCRIPT-y+=src/js/navigation.js
 	JAVASCRIPT-y+=src/js/status.js
+	JAVASCRIPT-y+=src/js/events.js
 	JAVASCRIPT-y+=src/js/tr.js
 	JAVASCRIPT-y+=src/js/theme.js
 	JAVASCRIPT-y+=src/js/timeout.js
@@ -68,14 +68,11 @@ define Plugin/juci
 endef
 
 define Plugin/juci/install
-	$(INSTALL_DIR) $(1)/www/
-	$(INSTALL_DIR) $(1)/etc/config/
-	$(INSTALL_DIR) $(1)/etc/init.d/
-	$(CP) $(PLUGIN_DIR)/src/img/ $(1)/www/
-	$(CP) $(PLUGIN_DIR)/src/fonts/ $(1)/www/
-	$(INSTALL_DIR) $(1)/usr/share/lua/juci/
-	$(CP) $(PLUGIN_DIR)/lualibs/* $(1)/usr/share/lua/
-	$(CP) $(PLUGIN_DIR)/lua/* $(1)/usr/share/lua/juci/
-	$(CP) $(PLUGIN_DIR)/reboot.html $(1)/www/	
-	$(CP) $(PLUGIN_DIR)/initfail.html $(1)/www/	
+	$(Q)$(INSTALL_DIR) $(1)/www/
+	$(Q)$(CP) $(PLUGIN_DIR)/src/favicon.ico $(1)/www/
+	$(Q)$(CP) $(PLUGIN_DIR)/src/img/ $(1)/www/
+	$(Q)$(CP) $(PLUGIN_DIR)/src/fonts/ $(1)/www/
+	$(Q)$(CP) $(PLUGIN_DIR)/src/lib/fonts/ $(1)/www/
+	$(Q)$(CP) $(PLUGIN_DIR)/reboot.html $(1)/www/	
+	$(Q)$(CP) $(PLUGIN_DIR)/initfail.html $(1)/www/	
 endef

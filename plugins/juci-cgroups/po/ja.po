@@ -1,0 +1,32 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+
+# plugins/juci-cgroups/src/pages/juci-cgroups.js
+msgid "Add subgroup"
+msgstr "サブグループを追加"
+
+# plugins/juci-cgroups/src/widgets/edit-cgroup.html
+msgid "Value"
+msgstr "値"
+
+# plugins/juci-cgroups/src/pages/juci-cgroups.html
+msgid "Enable Cgroups"
+msgstr "Cグループを有効にする"
+
+# plugins/juci-cgroups/src/pages/juci-cgroups.html
+msgid "Default Group"
+msgstr "デフォルトグループ"
+
+# plugins/juci-cgroups/src/pages/juci-cgroups.html
+msgid "menu-juci-cgroups-title"
+msgstr "JUCI-Cグループ"

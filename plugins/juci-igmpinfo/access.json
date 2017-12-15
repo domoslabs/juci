@@ -3,8 +3,8 @@
 		"description": "JUCI IPTV/IGMP module",
 		"read": {
 			"ubus": {
-				"router": [
-					"igmptable"
+				"router.net": [
+					"igmp_snooping"
 				]
 			}
 		}

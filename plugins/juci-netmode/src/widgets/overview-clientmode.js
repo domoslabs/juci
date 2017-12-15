@@ -71,16 +71,17 @@ JUCI.app
 		if(tmp && tmp.askcred.value) return true;
 		return false;
 	}
-	$scope.wps = $rpc.$has("wps", "pbc_client");
+	$scope.wps = $rpc.$has("router.wps", "pbc_client");
 	$scope.onPairWps = function(){
-		$rpc.$call("wps", "pbc_client");
+		$rpc.$call("router.wps", "pbc_client");
 	}
 	function setValues(ssid, key, encr){
-		$rpc.$call("juci.repeater", "run", {"method":"set","args": JSON.stringify({
-			ssid:ssid,
-			key:key,
-			encryption:encr
-		})}).done(function(ret){
+		$rpc.$call("juci.wireless", "set_credentials", {
+			"ssid":ssid,
+			"key":key,
+			"encryption":encr,
+			"import":true
+		}).done(function(ret){
 			$scope.showModal = true;
 			$scope.modalTitle = $tr(gettext("Attempting to Pair"));
 			setTimeout(function(){ if($scope.showModal) $scope.showModal = false; window.location.reload(true);}, 30000);
@@ -93,19 +94,16 @@ JUCI.app
 			alert("no wet interface detected");
 			return;
 		}
-		$wireless.scan({device:wetIface.device.value}).done(function(){
+		$wireless.scan({radio:wetIface.device.value}).done(function(){
 			$scope.showModal = true;
 			$scope.modalTitle = $tr(gettext("Scanning for APs"));
 			$scope.$apply();
 			setTimeout(function(){
-				$wireless.getScanResults({device:wetIface.device.value}).done(function(result){
+				$wireless.getScanResults({radio:wetIface.device.value}).done(function(result){
 					$scope.showManual.value = false;
 					$scope.showModal = false;
 					$scope.availableAps = result.map(function(ap){
-						var encrypt = "";
-						if(ap.cipher && !ap.cipher.match(/PSK/)) return null;
-						if(ap.cipher) encrypt = "psk2";
-						return { label: ap.ssid, value: ap.bssid, encryption: encrypt };
+						return { label: ap.ssid, value: ap.bssid, encryption: ap.encryption };
 					}).filter(function(ap){ return ap !== null; });
 					$scope.$apply();
 				});

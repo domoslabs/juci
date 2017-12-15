@@ -30,8 +30,6 @@ Even if you don't put anything in the Makefile, just will use default settings a
 
 	define Plugin/<somename>
 		CODE_LOAD:=<num> - this specifies loading order. It is sometimes important to control load order. Default is 50. Juci core has this set to 01 to load juci before any other modules. 
-		STYLE_LOAD:=<num> - this is the same for styles
-		TPL_LOAD:=<num> - this is for templates (html). If you load your templates AFTER another module then you can basically override any template in any preceding module by simply creating file with the same name. 
 		JAVASCRIPT-y:=<javascript files> - specify your js files
 		STYLES-y:=<css> - specify styles
 		TEMPLATES-y:=<html> specify html templates
@@ -84,7 +82,6 @@ And since names are globally unique, you will only have a file with that name
 in a single place. When you then change names of your directive/controller, it
 is a good idea to also change the name of the file. 
 
-* all lua script objects should have the same filename as the object on ubus.
 
 	Well actually, ubus-scriptd will take care of that. 
 

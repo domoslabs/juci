@@ -1,0 +1,535 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/git/juci/juci//src/js/rpc.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/git/juci/juci//src/widgets/juci-confirm.js
+#, fuzzy
+msgid "OK"
+msgstr "OK"
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "Invalid command"
+msgstr "無効なコマンド"
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "Invalid parameters"
+msgstr "無効な値"
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+#, fuzzy
+msgid "Method not found"
+msgstr "方法が見つかりません"
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+#, fuzzy
+msgid "Object not found"
+msgstr "オブジェクトが見つかりません"
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "No data"
+msgstr "データなし"
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "Access denied"
+msgstr "アクセス拒否"
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "Timed out"
+msgstr "タイムアウト"
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "Not supported"
+msgstr "非サポート"
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "Unknown error"
+msgstr "不明なエラー"
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "Connection failed"
+msgstr "接続失敗"
+
+# /home/reidar/git/juci/juci//src/js/rpc.js
+msgid "RPC error #"
+msgstr "RPCエラー #"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "please enter time in form hh:mm"
+msgstr "hh:mmの形で時間を入力して下さい。"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "please specify both hour and minute value for time separated by ':'"
+msgstr "時間と分の間に「：」を入れて下さい。"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Please specify both start time and end time for schedule!"
+msgstr "スケジュールの開始時刻と終了時刻を指定してください。"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Schedule start time must be lower than schedule end time!"
+msgstr "スケジュールの開始時刻は終了時刻より前でなければなりません。"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Please pick days between mon-sun"
+msgstr "月曜日～日曜日の間で選んでください"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Port has to be a number between 1 and 65535. Use '"
+msgstr "ポートを1から65535の間で指定して下さい。"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+#, fuzzy
+msgid "' to define a range."
+msgstr "'を使用して範囲を定義します。"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid ""
+"Ports has to be between 1 and 65535 and start port must be lower than end "
+"port"
+msgstr ""
+"ポートは1〜65535の間でなければならず、開始ポートは終了ポートよりも小さくなけ"
+"ればなりません"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Port range has to be on the form number"
+msgstr "ポート範囲はフォーム番号にする必要があります"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "number"
+msgstr "ナンバー"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Port has to be a number between 1 and 65535"
+msgstr "ポートは1〜65535の間でなければなりません"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "WEP encryption key must be 10-26 hexadecimal characters!"
+msgstr "WEP暗号化キーは10-26文字の16進数でなければなりません"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+#, fuzzy
+msgid "WPA encryption key must be 8-63 printable ASCII characters!"
+msgstr "WPAキーは、8〜63文字のASCII文字でなければなりません"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "WPA encryption key cannot contain the following characters:"
+msgstr "WPA暗号化キーには次の文字を含めることはできません。"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Only printable ASCII characters allowed."
+msgstr "表示可能なASCII文字のみが許可されます。"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+#, fuzzy
+msgid "Invalid mark format: it must be between (!)0x0000 - (!)0xFFFF"
+msgstr "無効なマークの形式：（！）0x0000 - （！）0xFFFF"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+#, fuzzy
+msgid "End value has to be larger than start value."
+msgstr "終了値は開始値より大きくなければなりません。"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Size has to be larger than 0."
+msgstr "サイズは0より大きくなければなりません。"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Invalid range."
+msgstr "無効な範囲"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Number value is not within valid range"
+msgstr "数値が有効範囲内にありません"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+#, fuzzy
+msgid "IP Address must be a valid IPv4 address!"
+msgstr "IPは有効なIPv4または有効なIPv6アドレスでなければなりません。"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Address is not a valid  Multicast address"
+msgstr "アドレスは有効なマルチキャストアドレスではありません"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+#, fuzzy
+msgid "IP Address is not a valid Unicast address!"
+msgstr "有効なドメインまたはIPアドレスではありません"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "IP Address must be on the form: IP address/netmask length"
+msgstr ""
+"IPアドレスは、IPアドレス/ネットマスクの長さの形式で指定する必要があります。"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Netmask must be a value between 0 and 24"
+msgstr "ネットマスクは0〜24の値でなければなりません"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+#, fuzzy
+msgid "IP Address must be a valid ipv4 or ipv6 address!"
+msgstr "IPは有効なIPv4または有効なIPv6アドレスでなければなりません。"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+#, fuzzy
+msgid "Netmask must be a valid IPv4 netmask"
+msgstr "ネットマスクは有効なIPv4ネットマスクでなければなりません"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Address must be a valid IPv6 address"
+msgstr "有効なIPv6アドレスではありません。"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Address must be a valid IPv6 CIDR Validator (IPv6-address/Mask)"
+msgstr ""
+"アドレスは有効なIPv6 CIDRバリデータ（IPv6アドレス/マスク）でなければなりませ"
+"ん。"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "IPv6 Prefix Hint must be a hexadecimal number between 1-FFFF"
+msgstr "IPv6プレフィックスヒントは1〜FFFFの間の16進数でなければなりません"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+#, fuzzy
+msgid "Value must be a valid MAC-48 address"
+msgstr "値は48ビット長のMACアドレスである必要があります。"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+#, fuzzy
+msgid "value must be a valid MAC-48 address"
+msgstr "値は48ビット長のMACアドレスである必要があります。"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Hostname can not be longer than 256 characters"
+msgstr "ホスト名は256文字以下にする必要があります"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Hostname can only contain numbers, letters, hyphens and underscores"
+msgstr "ホスト名には数字、文字、ハイフン、アンダースコアのみを使用できます"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "Field is required"
+msgstr "フィールドが必要です"
+
+# /home/reidar/git/juci/juci//src/js/uci.js
+msgid "is required"
+msgstr "必要とされている"
+
+# /home/reidar/git/juci/juci//src/js/juci.js
+msgid ""
+"You have unsaved changes. Do you want to save them before leaving this page?"
+msgstr "保存されていない変更があります。 このページを閉じる前に保存しますか？"
+
+# /home/reidar/git/juci/juci//src/factories/files.js
+msgid ""
+"your browser does not support this kind of download, please refer to latest "
+"Chrome, Firefox, Opera or Edge etc."
+msgstr ""
+"あなたのブラウザはこのダウンロードをサポートしていません。最新のChrome、"
+"Firefox、Opera、Edgeなどを参照してください。"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Individual Days"
+msgstr "個々の日"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Every Day"
+msgstr "毎日"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Every Workday"
+msgstr "毎日"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "All Weekend"
+msgstr "毎週末"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Monday"
+msgstr "月曜日"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Tuesday"
+msgstr "火曜日"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Wednesday"
+msgstr "水曜日"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Thursday"
+msgstr "木曜日"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Friday"
+msgstr "金曜日"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Saturday"
+msgstr "土曜日"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.js
+msgid "Sunday"
+msgstr "日曜日"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.js
+msgid "Please enter correct username and password!"
+msgstr "正しいユーザー名とパスワードを入力して下さい！"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-dialog.js
+msgid "Apply"
+msgstr "適用"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/git/juci/juci//src/widgets/juci-dialog.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/git/juci/juci//src/widgets/juci-confirm.js
+msgid "Cancel"
+msgstr "キャンセル"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-select.js
+msgid "-- Select One --"
+msgstr "-- 1つ選択 --"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-input-dhcp-options.js
+#, fuzzy
+msgid "Tag must be 1-254."
+msgstr "タグは1～254である必要があります。"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-input-dhcp-options.js
+msgid "Already added."
+msgstr "すでに追加されています。"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-confirm.js
+#, fuzzy
+msgid "$juciConfirm needs a content-string"
+msgstr "$ juciConfirmにはコンテンツ文字列が必要です"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-confirm.js
+msgid "Close"
+msgstr "閉じる"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-config.js
+msgid "Unapplied Changes"
+msgstr "未適用の変更"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-config.js
+msgid ""
+"Are you sure you want to reload settings from the router? All your current "
+"changes will be lost!"
+msgstr "未適用の設定変更を削除しますか？変更予定の設定は全て削除されます。"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-input-ipv6-address.js
+#, fuzzy
+msgid "Aaddress must be a valid IPv6 address"
+msgstr "アドレスは有効なIPv6アドレスでなければなりません"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-mode-picker.js
+msgid "Basic Mode"
+msgstr "基本モード"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-mode-picker.js
+msgid "Expert Mode"
+msgstr "拡張モード"
+
+# /home/reidar/git/juci/juci//src/widgets/theme-picker.html
+msgid "Select Theme"
+msgstr "テーマ選択"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-disconnected.html
+msgid "Disconnected"
+msgstr "切断"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-disconnected.html
+msgid "Trying to reconnect"
+msgstr "再接続"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-input-dhcp-options.html
+msgid "ID"
+msgstr "ID"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/git/juci/juci//src/widgets/juci-input-dhcp-options.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/git/juci/juci//src/widgets/juci-changes-edit.html
+msgid "Option"
+msgstr "オプション"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+msgid "Username"
+msgstr "ユーザ名"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+msgid "Password"
+msgstr "パスワード"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+msgid "You are logged in!"
+msgstr "ログインしました。"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+msgid "Log out"
+msgstr "ログアウトしました。"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+msgid "Please sign in"
+msgstr "サインインして下さい。"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+msgid "Sign in"
+msgstr "サインイン"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+msgid "Signing in..."
+msgstr "サインインしています…"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/git/juci/juci//src/widgets/juci-navbar.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/git/juci/juci//src/widgets/juci-footer.html
+msgid "Logout"
+msgstr "ログアウト"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-navbar.html
+#, fuzzy
+msgid "You have "
+msgstr "あなたは"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-navbar.html
+#, fuzzy
+msgid " new events"
+msgstr "新しいイベント"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-navbar.html
+msgid "Toggle navigation"
+msgstr "ナビゲーションの切り替え"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-navbar.html
+msgid "No new events to show"
+msgstr "新しいイベントを表示しない"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-mode-picker.html
+msgid "Switch between basic and expert mode"
+msgstr "基本モードとエキスパートモードの切り替え"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-mode-picker.html
+msgid "Select Mode"
+msgstr "モード選択"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.html
+#, fuzzy
+msgid "Time Frame"
+msgstr "タイムフレーム"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.html
+msgid "Preselected Days"
+msgstr "あらかじめ選択された日数"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.html
+msgid "Days"
+msgstr "日"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.html
+msgid "Time"
+msgstr "時"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.html
+msgid "from"
+msgstr "から"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-schedule-edit.html
+msgid "to"
+msgstr "to"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-input-port.html
+msgid "Start port"
+msgstr "開始ポート"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-input-port.html
+msgid "End port"
+msgstr "終了ポート"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-input-port.html
+msgid "Port (1-65535)"
+msgstr "ポート(1-65535)"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-footer.html
+#, fuzzy
+msgid "Help Wiki"
+msgstr "ヘルプWiki"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-footer.html
+msgid "No WAN IP"
+msgstr "WAN IPがありません。"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-changes-edit.html
+msgid "Config"
+msgstr "設定"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-changes-edit.html
+msgid "Section"
+msgstr "セクション"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-changes-edit.html
+msgid "Old value"
+msgstr "古い値"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-changes-edit.html
+msgid "New value"
+msgstr "新しい値"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-list-editor.html
+msgid "Hide Editor"
+msgstr "エディタ非表示"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-list-editor.html
+msgid "Add"
+msgstr "追加"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-list-editor.html
+msgid "Delete"
+msgstr "削除"
+
+# /home/reidar/git/juci/juci//src/pages/status-about.html
+msgid "About"
+msgstr "概要"
+
+# /home/reidar/git/juci/juci//src/pages/404.html
+msgid "The page you were trying to access was not found!"
+msgstr "アクセスしようとしたページが見つかりませんでした。"
+
+# /home/reidar/git/juci/juci//src/pages/404.html
+msgid "menu-404-title"
+msgstr "404"
+
+# /home/reidar/git/juci/juci//src/pages/login.html
+msgid "menu-login-title"
+msgstr "ログイン"
+
+# /home/reidar/git/juci/juci//src/pages/bootstrap.html
+msgid "menu-bootstrap-title"
+msgstr "ブートストラップ"
+
+# /home/reidar/git/juci/juci//src/pages/status-about.html
+msgid "menu-status-about-title"
+msgstr "ステータス-要約"
+
+# /home/reidar/git/juci/juci//src/pages/overview.html
+msgid "menu-overview-title"
+msgstr "TOP"
+
+# /home/reidar/git/juci/juci//src/pages/default.html
+msgid "menu-default-title"
+msgstr "デフォルト"
