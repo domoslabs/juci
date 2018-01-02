@@ -45,8 +45,7 @@ JUCI.app
 	$scope.onCreateRule = function(){
 		$uci.firewall.$create({
 			".type": "rule", 
-			"name": "new_rule",
-			"hidden": true
+			"name": "new_rule"
 		}).done(function(rule){
 			$scope.rules.push(rule);
 			$scope.$apply(); 
