@@ -299,9 +299,10 @@ JUCI.app
 											["snr", $tr(gettext("SNR")), ""],
 											["tx_rate", $tr(gettext("TX Rate")), " Mbit/s"],
 											["rx_rate", $tr(gettext("RX Rate")), " Mbit/s"],
-											["linkspeed", $tr(gettext("Linkspeed")), ""]
+											["linkspeed", $tr(gettext("Linkspeed")), ""],
+											["active_connections", $tr(gettext("Active Connections")), ""]
 										].map(function(val){
-											if(host[val[0]])
+											if(host[val[0]] || val[0] == "active_connections")
 												if(val[0].match("rate"))
 													title += val[1] + ': ' + Math.floor(parseInt(host[val[0]])/1000) + val[2] + '<br />';
 												else if(val[0].match("macaddr"))
