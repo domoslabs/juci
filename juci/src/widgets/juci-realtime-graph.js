@@ -5,12 +5,9 @@ JUCI.app
 			model: "=ngModel",
 			id: "@id",
 			tick: "=tick",
-			min: "@min", //TODO: remove?
-			max: "@max", //TODO: remove?
 			ylabel: "=ylabel",
 		}, 
 		templateUrl: "/widgets/juci-realtime-graph.html",
-		//template: '<div id={{id}}></div>',
 		controller: "juciRealtimeGraphCtrl"
 	}; 
 })
@@ -77,6 +74,14 @@ JUCI.app
 
 		// Add a new datapoint to the graph
 		function addDataPoint() {
+			var new_options = {
+				dataAxis: {
+					left: {
+						range: {
+						}
+					}
+				}
+			};
 			// add a new data point to the dataset
 			var now = vis.moment();
 			var datatypes = Object.keys($scope.model);
@@ -107,16 +112,19 @@ JUCI.app
 			// rescale y-axis when values are too high or too low
 			var niceAxis = Math.round(maxData/0.7);
 			if (maxData > maxAxis) {
-				options.dataAxis.left.range.max = maxAxis>1000 ? Math.round(niceAxis/1000)*1000 : niceAxis;
+				new_options.dataAxis.left.range.max = maxAxis>1000 ? Math.round(niceAxis/1000)*1000 : niceAxis;
 			}
 			else if (maxData < maxAxis/10 ) {
-				options.dataAxis.left.range.max = niceAxis>0 ? niceAxis : 1;
+				new_options.dataAxis.left.range.max = niceAxis>0 ? niceAxis : 1;
+			}
+			else {
+				return;
 			}
 
-			graph2d.setOptions(options);
+			graph2d.setOptions(new_options);
 		}
 
-		JUCI.interval.repeat("realtimeGraphRenderStep-"+$scope.id,60,function(next){
+		JUCI.interval.repeat("realtimeGraphRenderStep-"+$scope.id,1000,function(next){
 			renderStep();
 			next();
 		});
