@@ -1,7 +1,10 @@
-JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless, $rpc){
+JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless, $rpc, $tr, gettext){
 	$scope.data = {};
 	var mapIface = {};
 	$scope.ylabel = "Mbit/s";
+	var directions = {};
+	var string1 = $tr(gettext("Upstream"));
+	var string2 = $tr(gettext("Downstream"));
 
 	$uci.$sync("ports").done(function(){
 		$scope.portnames = $uci.ports["@all"];
@@ -83,18 +86,39 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless, $rpc){
 	function bits_to_kilobits(bits){ return (bits/1000).toFixed(3); }
 
 	function updateTraffic(){
+		$rpc.$call("router.port", "status").done(function(data){
+			directions = data;
+
+			$scope.$apply();
+		}).fail(function(e){console.log(e);});
+
 		$rpc.$call("router.graph", "iface_traffic").done(function(data){
 			var traffic = {};
 			var newKey = undefined;
 			for (var key in data) {
 				newKey = mapIface[key];
+
 				if (newKey){
-					if (!traffic[newKey])
+						// Renaming to Sent / Received based on direction
+						var tmp1 = string1;
+						var tmp2 = string2;
+
+						for (var key2 in directions) {
+							// key is current interface
+							// key2 is current interface with direction info
+							if(key == key2 && directions[key2].direction == "down") {
+								var tmp3 = tmp1;
+								tmp1 = tmp2;
+								tmp2 = tmp3;
+							}
+						}
+
+						data[key][tmp1] = data[key]["tx_bytes"];
+						data[key][tmp2] = data[key]["rx_bytes"];
+						delete data[key]["tx_bytes"];
+						delete data[key]["rx_bytes"];
+
 						traffic[newKey] = data[key];
-					else {
-						traffic[newKey]["Downstream"] += data[key]["Downstream"];
-						traffic[newKey]["Upstream"] += data[key]["Upstream"];
-					}
 				}
 			}
 
@@ -104,8 +128,8 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless, $rpc){
 			// show transmitted/received bytes in table
 			for (var key in traffic){
 				$scope.tableData[key] = { rows:[["Download Speed","0"],["Upload Speed","0"]] };
-				$scope.tableData[key]["rows"][0] = ["Download Speed", to_kbit_or_mbit_str($scope.traffic[key]["Downstream"])];
-				$scope.tableData[key]["rows"][1] = ["Upload Speed", to_kbit_or_mbit_str($scope.traffic[key]["Upstream"])];
+				$scope.tableData[key]["rows"][0] = ["Download Speed", to_kbit_or_mbit_str($scope.traffic[key][string2])];
+				$scope.tableData[key]["rows"][1] = ["Upload Speed", to_kbit_or_mbit_str($scope.traffic[key][string1])];
 			}
 
 			$scope.$apply();
