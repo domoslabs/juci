@@ -2,20 +2,31 @@ JUCI.app
 .directive("juciRealtimeGraph", function(){
 	return {
 		scope: {
+			tick: "=",
 			model: "=ngModel",
 			id: "@id",
-			tick: "=tick",
 			ylabel: "=ylabel",
-		}, 
+		},
 		templateUrl: "/widgets/juci-realtime-graph.html",
 		controller: "juciRealtimeGraphCtrl"
-	}; 
+	};
 })
 .controller("juciRealtimeGraphCtrl", function($scope){
-	$scope.$watch("id",function(){ // expected to run only once, at startup
-		if(!$scope.id){console.error("juci-realtime-graph: no id defined"); return;}
-		if(!$scope.tick){ $scope.tick = 1000; }
-		if(!$scope.ylabel){ $scope.ytitle = {}; } else{ $scope.ytitle = { "text": $scope.ylabel }; }
+	var MAX_DATA_POINTS = 10000;
+	var cancelWatcher = $scope.$watch("model",function(model){
+		if (!model)
+			return;
+		if(!$scope.id){
+			console.error("juci-realtime-graph: no id defined");
+			return;
+		}
+		if(!$scope.ylabel)
+			$scope.ytitle = {};
+		else
+			$scope.ytitle = { "text": $scope.ylabel };
+		if (!$scope.tick)
+			$scope.tick = 1000;
+
 		$scope.min = 0;
 		$scope.max = 10000;
 
@@ -24,28 +35,20 @@ JUCI.app
 			JUCI.interval.clear("realtimeGraphAddDataPoint-"+$scope.id);
 		});
 
-		//wait until model is defined before starting
-		setTimeout(startGraph, 500); //TODO: do something better
-	},true);
+		startGraph();
+		// stop this watch from triggering
+		cancelWatcher();
+	},false);
 
 	function startGraph() {
-		if(!$scope.model){console.error("juci-realtime-graph: no ngModel defined"); return;};
-
-		var DELAY = $scope.tick; // delay[ms] to add new data points
 		var groups = new vis.DataSet();
-		var names = Object.keys($scope.model);
-		for(var i=0; i<names.length; i++){
-			groups.add({ id:i, content:names[i] });
-		}
-
-		// create a graph2d with an (currently empty) dataset
 		var container = document.getElementById($scope.id);
-		//container.innerHTML = container.innerHTML + $scope.id;
 		var dataset = new vis.DataSet();
 
 		var options = {
-			start: vis.moment().add(-30, 'seconds'), // changed so its faster
-			end: vis.moment(),
+			// set the starting zoom to show 30 seconds of data
+			start: vis.moment(),
+			end: vis.moment().add(30, "seconds"),
 			dataAxis: {
 				left: {
 					range: { min:$scope.min, max:$scope.max },
@@ -59,79 +62,108 @@ JUCI.app
 				orientation: 'bottom' // top, bottom
 			},
 			drawPoints: false,
+			interpolation: false,
 			legend: true
 		};
+		// create a graph2d with an (currently empty) dataset
 		var graph2d = new vis.Graph2d(container, dataset, groups, options);
+		var diff = $scope.tick;
+
+		JUCI.interval.repeat("realtimeGraphAddDataPoint-"+$scope.id,1000,function(next){
+			if (diff > $scope.tick){
+				diff = 0;
+				addDataPoint();
+			}
+			renderStep();
+			diff += 1000;
+			next();
+		});
 
 		function renderStep() {
 			// move the window (you can think of different strategies).
 			var now = vis.moment();
+			var currentTime = Date.now();
 			var range = graph2d.getWindow();
 			var interval = range.end - range.start;
+			var nodes = dataset.get();
+			if (nodes.length == 0)
+				return;
+			var lastNode = nodes[nodes.length-1];
+			if (lastNode == undefined)
+				return;
+			var lastMoment = lastNode.x;
+			if (lastMoment.getTime() - range.end.getTime() < 0)
+				return;
 			// continuously move the window
 			graph2d.setWindow(now - interval, now, {animation: false});
 		}
 
 		// Add a new datapoint to the graph
 		function addDataPoint() {
-			var new_options = {
-				dataAxis: {
-					left: {
-						range: {
-						}
-					}
-				}
-			};
+			if (!$scope.model) {
+				console.log("WARNING: realtime-graph with id " +
+						$scope.id + "has no model");
+				return -1;
+			}
 			// add a new data point to the dataset
 			var now = vis.moment();
-			var datatypes = Object.keys($scope.model);
-			for(var i=0; i<datatypes.length; i++){
+			var i = 0;
+			Object.keys($scope.model).forEach(function(key){
+				var newY = $scope.model[key];
+				if(dataset.length > MAX_DATA_POINTS) {
+					var num = (dataset.length - MAX_DATA_POINTS) + (MAX_DATA_POINTS * 0.05)
+					var to_remove = data.splice(0, num);
+					dataset.remove(to_remove);
+				}
+				addData(now, newY, i++, key);
+			});
+			function addData(x, y, group, key){
+				var match = groups.get({
+					filter:function(item){
+						return item.id == group;
+					}
+				});
+				if (match.length == 0) {
+					groups.add({
+						id: group,
+						content: key
+					});
+				}
 				dataset.add({
-					x: now,
-					y: $scope.model[datatypes[i]],
-					group: i
+					x:x,
+					y:y,
+					group:group
 				});
 			}
 
-			// remove all data points which are no longer visible
-			var range = graph2d.getWindow();
-			var interval = range.end - range.start;
-			var oldIds = dataset.getIds({
-				filter: function (item) {
-					return range.end - item.x > interval*1.10; //datapoints are removed when 10% outside of window interval
-				}
-			});
-			dataset.remove(oldIds);
-
 			// update y-axis so all datapoints are visible
-			var maxData = dataset.max("y")["y"];
+			var maxData = dataset.max("y");
 			var maxAxis = options.dataAxis.left.range.max;
-			var minData = dataset.min("y")["y"];
 			var minAxis = options.dataAxis.left.range.min;
+			if (!maxData)
+				return;
 
 			// rescale y-axis when values are too high or too low
-			var niceAxis = Math.round(maxData/0.7);
-			if (maxData > maxAxis) {
-				new_options.dataAxis.left.range.max = maxAxis>1000 ? Math.round(niceAxis/1000)*1000 : niceAxis;
-			}
-			else if (maxData < maxAxis/10 ) {
-				new_options.dataAxis.left.range.max = niceAxis>0 ? niceAxis : 1;
-			}
-			else {
+			var niceAxis = Math.round(maxData.y/0.7);
+			if (niceAxis > 1000)
+				niceAxis = (niceAxis/1000)*1000;
+			else if (niceAxis < 1)
+				niceAxis = 1;
+
+			var new_options = {
+				dataAxis: {
+					left: {
+						range: {}
+					}
+				}
+			};
+
+			if (maxData.y > maxAxis || maxData.y < maxAxis/10 )
+				new_options.dataAxis.left.range.max = niceAxis;
+			else
 				return;
-			}
 
 			graph2d.setOptions(new_options);
 		}
-
-		JUCI.interval.repeat("realtimeGraphRenderStep-"+$scope.id,1000,function(next){
-			renderStep();
-			next();
-		});
-		JUCI.interval.repeat("realtimeGraphAddDataPoint-"+$scope.id,$scope.tick,function(next){
-			addDataPoint();
-			renderStep(); //removes ugly blinks when the datapoints are updated
-			next();
-		});
 	}
-}); 
+});
