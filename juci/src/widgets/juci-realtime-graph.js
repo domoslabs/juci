@@ -51,7 +51,7 @@ JUCI.app
 			end: vis.moment().add(30, "seconds"),
 			dataAxis: {
 				left: {
-					range: { min:$scope.min, max:$scope.max },
+					range: { min:$scope.min },
 					title: $scope.ytitle
 				}
 			},
@@ -65,6 +65,7 @@ JUCI.app
 			interpolation: false,
 			legend: true
 		};
+
 		// create a graph2d with an (currently empty) dataset
 		var graph2d = new vis.Graph2d(container, dataset, groups, options);
 		var diff = $scope.tick;
@@ -135,40 +136,6 @@ JUCI.app
 					group:group
 				});
 			}
-
-			function round_number(num){
-				var pow = Math.round(Math.log10(num));
-				var power = Math.pow(10, pow - 1);
-				return Math.round(num / power) * power;
-			}
-			// update y-axis so all datapoints are visible
-			var maxData = dataset.max("y");
-			var maxAxis = options.dataAxis.left.range.max;
-			var minAxis = options.dataAxis.left.range.min;
-			if (!maxData)
-				return;
-
-			// rescale y-axis when values are too high or too low
-			var niceAxis = Math.round(maxData.y/0.7);
-			if (niceAxis > 10)
-				niceAxis = round_number(niceAxis);
-			else if (niceAxis < 1)
-				niceAxis = 1;
-
-			var new_options = {
-				dataAxis: {
-					left: {
-						range: {}
-					}
-				}
-			};
-
-			if (maxData.y > maxAxis || maxData.y < maxAxis/10 )
-				new_options.dataAxis.left.range.max = niceAxis;
-			else
-				return;
-
-			graph2d.setOptions(new_options);
 		}
 	}
 });
