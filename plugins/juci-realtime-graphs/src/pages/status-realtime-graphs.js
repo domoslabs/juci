@@ -84,7 +84,7 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless, $rpc, $tr,
 	function clean(num){
 		if (num < 100)
 			return num.toFixed(2);
-		return round(num).toString();
+		return Math.round(num).toString();
 	}
 
 	function updateTraffic(){
