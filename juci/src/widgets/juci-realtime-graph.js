@@ -136,6 +136,11 @@ JUCI.app
 				});
 			}
 
+			function round_number(num){
+				var pow = Math.round(Math.log10(num));
+				var power = Math.pow(10, pow - 1);
+				return Math.round(num / power) * power;
+			}
 			// update y-axis so all datapoints are visible
 			var maxData = dataset.max("y");
 			var maxAxis = options.dataAxis.left.range.max;
@@ -145,8 +150,8 @@ JUCI.app
 
 			// rescale y-axis when values are too high or too low
 			var niceAxis = Math.round(maxData.y/0.7);
-			if (niceAxis > 1000)
-				niceAxis = (niceAxis/1000)*1000;
+			if (niceAxis > 10)
+				niceAxis = round_number(niceAxis);
 			else if (niceAxis < 1)
 				niceAxis = 1;
 
