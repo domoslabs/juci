@@ -19,7 +19,7 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless, $rpc, $tr,
 
 	function get_ports_config(callback){
 		$uci.$sync("ports").done(function(){
-			$scope.portnames = $uci.ports["@all"];
+			$scope.portnames = $uci.ports["@ethport"];
 			$scope.portnames.forEach(function(portname){
 				if (!portname || !portname.ifname)
 					return;
