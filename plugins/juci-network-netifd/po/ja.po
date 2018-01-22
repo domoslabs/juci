@@ -1603,7 +1603,7 @@ msgstr "DHCPを要求するときに送信するホスト名"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-advanced-edit.html
 msgid "Custom client ID"
-msgstr "任意のクライアントID"
+msgstr "DHCPを要求するときに送信するクライアントID"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-advanced-edit.html
