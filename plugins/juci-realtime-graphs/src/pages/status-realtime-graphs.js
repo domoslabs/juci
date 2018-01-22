@@ -126,11 +126,11 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless, $rpc, $tr,
 				tbData[name].rows = [
 					[
 						$tr(gettext("Download Speed")),
-						to_kb_or_mb_str(up)
+						to_kb_or_mb_str(down)
 					],
 					[
 						$tr(gettext("Upload Speed")),
-						to_kb_or_mb_str(down)
+						to_kb_or_mb_str(up)
 					]
 				];
 			});
