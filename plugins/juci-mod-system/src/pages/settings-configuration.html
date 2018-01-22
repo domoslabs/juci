@@ -1,4 +1,4 @@
-<juci-layout-with-sidebar>
+	<juci-layout-with-sidebar>
 	<div ng-controller="SettingsConfigurationCtrl">
 		<juci-config-section>
 			<juci-config-heading>{{ 'Backup Configuration' | translate }}</juci-config-heading>
@@ -12,7 +12,7 @@
 				</juci-config-line>
 			</juci-config-lines>
 		</juci-config-section>
-		<juci-config-section >
+		<juci-config-section ng-hide="soft.is_repeater">
 			<h3>{{'Factory Reset'|translate}}</h3>
 			<juci-config-lines>
 				<juci-config-line title="{{'Factory reset to default configuration'|translate}}">
