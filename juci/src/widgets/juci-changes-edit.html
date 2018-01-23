@@ -21,7 +21,7 @@
 					</td>
 					<td><div ng-show="item.ovalue != 'undefined'">{{item.ovalue|maxlength:30}}</div></td>
 					<td><div ng-show="item.uvalue != 'undefined'">{{item.uvalue|maxlength:30}}</div></td>
-					<td><span ng-click="onRevertOption($index)" style="cursor:pointer; float:right"><i class="fa fa-trash"></i></span></td>
+					<td><span ng-show="item.type == 'option'" ng-click="onRevertOption($index)" style="cursor:pointer; float:right"><i class="fa fa-trash"></i></span></td>
 				</tr>
 			</tbody>
 		</table>

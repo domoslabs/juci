@@ -71,13 +71,21 @@ JUCI.app
 		$scope.onDelete({"$item": i});
 		$scope.hide = true;
 	}
+
+	function sort_by_index(a, b){
+		return a.$index.current - b.$index.current;
+	}
+
 	$scope.onMoveUp = function(i){
 		var index = $scope.items.indexOf(i);
 		if (index - 1  < 0)
 			return;
 
-		if(i && i.$move instanceof Function)
-			i.$move(index-1);
+		if(!i || !i.$move instanceof Function)
+			return;
+
+		i.$move(index-1);
+		$scope.items.sort(sort_by_index);
 	}
 
 	$scope.getIcon = function(iconStatus){
@@ -99,8 +107,11 @@ JUCI.app
 		if (index < 0 || index + 1 > max)
 			return;
 
-		if(i && i.$move instanceof Function)
-			i.$move(index+1);
+		if(!i || !i.$move instanceof Function)
+			return;
+
+		i.$move(index+1);
+		$scope.items.sort(sort_by_index);
 	}
 
 	$scope.canEdit = function(section){

@@ -193,7 +193,7 @@ JUCI.app
 		replace: true,
 		controller: "juciConfigApplyPane"
 	}; 
-}).controller("juciConfigApplyPane", function($scope, $events, $rootScope, $uci){
+}).controller("juciConfigApplyPane", function($scope, $rootScope, $uci){
 	$scope.changes = $uci.$getChanges(); 
 	$scope.hide = true; 
 	
@@ -202,7 +202,7 @@ JUCI.app
 	// perhaps do not run it every time? 
 	var time = Date.now();
 	$rootScope.$watch(function(){
-		if(Date.now() - time < 100) return;
+		if(Date.now() - time < 10) return;
 		var changes = $uci.$getChanges(); 
 		if(changes.length > 0) {
 			if($scope.hide == true) { 
