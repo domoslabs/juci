@@ -107,11 +107,11 @@ JUCI.app.run(function($uci){
 			[$tr(gettext("CPU")), (sys.system.cpu_per || 0)+"%"],
 			[$tr(gettext("Active Connections")), '<juci-progress value="'+netLoad.active_connections+'" total="'+netLoad.max_connections+'"></juci-progress>']
 		];
-		if(sys.system.brcmver){
+		if(sys.system.bspver){
 			indexOfKernelVersion = $scope.systemStatusTbl.rows.findIndex(function(row){
 				return row[0] == $tr(gettext("Kernel Version"));
 			});
-			$scope.systemStatusTbl.rows.splice(indexOfKernelVersion + 1, 0, [$tr(gettext("BRCM Version")), sys.system.brcmver || $tr(gettext("N/A"))]);
+			$scope.systemStatusTbl.rows.splice(indexOfKernelVersion + 1, 0, [$tr(gettext("BSP Version")), sys.system.bspver || $tr(gettext("N/A"))]);
 		}
 
 		$scope.systemMemoryTbl.rows = [
