@@ -548,7 +548,36 @@
 		function UCISection(config){
 			this[".config"] = config;
 		}
-		
+
+		UCISection.prototype.$move = function(index){
+			var self = this;
+			var type = self[".type"];
+			var config = self[".config"];
+			if (!self.$index)
+				throw new Error("No index set for config " + self[".name"]);
+			if (self.$index.current === index)
+				return false;
+			if(!config)
+				throw new Error("Missing .config for " + self[".name"], type);
+			var allSections = config["@" + type];
+			if(!allSections instanceof Array || allSections.length === 0)
+				throw new Error("Missing array of sections for type " + type);
+
+			if(index < 0 || index > allSections.length)
+				return false;
+
+			var found = allSections.splice(self.$index.current, 1);
+			if(found.length != 1)
+				throw new Error("This should never happen");
+			var toInsert = found[0];
+
+			allSections.splice(index, 0, toInsert);
+
+			allSections.forEach(function(section, index, array){
+				array[index].$index.current = index;
+			});
+		}
+
 		UCISection.prototype.$update = function(data, opts){
 			if(!opts) opts = {};
 			if(!(".type" in data)) throw new Error("Supplied object does not have required '.type' field!");
@@ -742,6 +771,10 @@
 			self[type].push(section);
 			self["@all"].push(section);
 			self[item[".name"]] = section;
+			section.$index = {
+				current: self[type].length - 1,
+				old: self[type].length -1
+			}
 			return section;
 		}
 		function _updateSection(self, item, opts){
@@ -1026,6 +1059,18 @@
 						"new":true
 					});
 				}
+				if(section.$index.current != section.$index.old){
+					var found = reqlist.find(function(rq){
+						return rq.moved && rq.config === self[".name"] && rq.type === section[".type"];
+					});
+					if (!found) {
+						reqlist.push({
+							"config": self[".name"],
+							"type": section[".type"],
+							"moved": true,
+						});
+					}
+				}
 				var changed = section.$getChangedValues();
 				if(Object.keys(changed).length){
 					reqlist.push({
@@ -1095,15 +1140,24 @@
 					section: section[".name"]
 				});
 			});*/
-			self[x].$getWriteRequests().map(function(ch){
+			self[x].$getWriteRequests().forEach(function(ch){
 				if(ch["new"]){
 					changes.push({
 						type: "section",
-						config: self[x][".name"],
-						section: self[x][ch.section][".name"],
+						config: ch.config,
+						section: ch.section,
 						state: "new section"
 					});
-					return changes;
+					return;
+				}
+				if(ch["moved"]){
+					changes.push({
+						type: "section",
+						config: ch.config,
+						section: ch.type,
+						state: "new order"
+					});
+					return;
 				}
 				Object.keys(ch.values).map(function(opt){
 					var o = self[x][ch.section][opt];
@@ -1240,6 +1294,7 @@
 		if(!this.initDone) return deferred.reject();
 		var self = this;
 		var writes = [];
+		var reorders = [];
 		var add_requests = [];
 		var errors = [];
 		self.deleted_sections = [];
@@ -1258,18 +1313,48 @@
 							return;
 						}
 						var reqlist = self[k].$getWriteRequests();
-						reqlist.map(function(x){ writes.push(x); });
+						reqlist.map(function(x){
+							if(x["new"])
+								return;
+							if(x["moved"]){
+								reorders.push(x);
+							} else
+								writes.push(x);
+						});
 					}
 				});
-				console.log("Writing changes: "+JSON.stringify(writes));
-				async.eachSeries(writes, function(cmd, next){
+				next();
+			},
+			function(next){
+				async.eachSeries(reorders, function(reorder, cb){
+					var config = self[reorder.config];
+					if(!config || !config.$save_order instanceof Function) {
+						throw new Error("couldnt find config " + reorder.config);
+						cb();
+						return;
+					}
+					config.$save_order(reorder.type).done(function(){
+						var sections_of_type = config["@" + reorder.type] || [];
+						sections_of_type.forEach(function(section, index, arr){
+							arr[index].$index = { old:index, current:index};
+						});
+					}).always(function(){
+						cb();
+					});
+				}, function(){
+					next();
+				});
+			},
+			function(next){
+				async.eachSeries(writes, function(cmd, cb){
+					console.log(cmd);
 					$rpc.$call("uci", "set", cmd).done(function(response){
 						console.log("... "+cmd.config+": "+JSON.stringify(response));
 						self[cmd.config][".need_commit"] = true;
-						next();
+						cb();
 					}).fail(function(){
 						console.error("Failed to write config "+cmd.config);
-						next();
+						cb();
 					});
 				}, function(){
 					next();
