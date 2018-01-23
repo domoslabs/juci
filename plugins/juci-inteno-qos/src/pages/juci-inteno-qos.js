@@ -36,6 +36,10 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 			}).filter(function(f){ return f !== null; });
 		});
 		getNetworks();
+
+		$scope.onItemMoved = function(type) {
+			$uci.qos.$save_order(type);
+		}
 	});
 	function getNetworks(){
 		$firewall.getZoneNetworks("wan").done(function(nets){
