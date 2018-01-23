@@ -12,11 +12,12 @@
 				</juci-config-line>
 			</juci-config-lines>
 		</juci-config-section>
-		<juci-config-section ng-hide="soft.is_repeater">
+		<juci-config-section>
 			<h3>{{'Factory Reset'|translate}}</h3>
 			<juci-config-lines>
 				<juci-config-line title="{{'Factory reset to default configuration'|translate}}">
 				</juci-config-line>
+				<div ng-hide="soft.is_repeater">
 				<juci-config-line title="{{'Soft reset'|translate}}" help="{{'Save some settings over the factory reset'|translate}}">
 					<div class="input-group"> <switch class="green" ng-model="soft.soft"/> </div>
 				</juci-config-line>
@@ -36,6 +37,7 @@
 				<juci-config-line ng-show="soft.soft" title="{{'ICE config'|translate}}">
 					<div class="input-group"> <switch class="green" ng-model="soft.ice"/> </div>
 				</juci-config-line>
+				</div>
 				<juci-config-line>
 					<button class="btn btn-lg btn-default pull-right" ng-click="onReset()">{{'Reset'|translate}}</button>
 				</juci-config-line>
