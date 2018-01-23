@@ -34,7 +34,6 @@ JUCI.app
 			onDelete: "&onDelete",
 			onUpdate: "&onUpdate",
 			onEditStart: "&onEditStart",
-			onItemMoved: "&onItemMoved",
 			hideButtons: "@hideButtons"
 		},
 		controller: "juciListEditor",
@@ -73,16 +72,14 @@ JUCI.app
 		$scope.hide = true;
 	}
 	$scope.onMoveUp = function(i){
-		var arr = $scope.items;
-		var idx = arr.indexOf(i);
-		// return if either not found or already at the top
-		if(idx == -1 || idx == 0) return;
-		arr.splice(idx, 1);
-		arr.splice(idx - 1, 0, i);
-		$scope.moveDisabled = true;
-		setTimeout(function(){$scope.moveDisabled = false; $scope.$apply();}, 150);
-		$scope.onItemMoved({ $item: i, $prev_index: idx, $index: idx - 1});
+		var index = $scope.items.indexOf(i);
+		if (index - 1  < 0)
+			return;
+
+		if(i && i.$move instanceof Function)
+			i.$move(index-1);
 	}
+
 	$scope.getIcon = function(iconStatus){
 		if(iconStatus == "muted") 	return "fa fa-circle fa-2x text-muted";
 		if(iconStatus == "primary") 	return "fa fa-circle fa-2x text-primary";
@@ -97,13 +94,13 @@ JUCI.app
 	};
 
 	$scope.onMoveDown = function(i){
-		var arr = $scope.items;
-		var idx = arr.indexOf(i);
-		// return if either not found or already at the bottom
-		if(idx == -1 || idx == arr.length - 1) return;
-		arr.splice(idx, 1);
-		arr.splice(idx + 1, 0, i);
-		$scope.onItemMoved({ $item: i, $prev_index: idx, $index: idx + 1});
+		var max = $scope.items.length;
+		var index = $scope.items.indexOf(i);
+		if (index < 0 || index + 1 > max)
+			return;
+
+		if(i && i.$move instanceof Function)
+			i.$move(index+1);
 	}
 
 	$scope.canEdit = function(section){
