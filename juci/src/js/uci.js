@@ -1034,14 +1034,9 @@
 			$rpc.$call("uci", "order", {
 				config: self[".name"],
 				sections: order
-			}).done(function(){
-				$rpc.$call("uci", "commit", {
-					config: self[".name"]
-				}).done(function(data){
-					def.resolve(data);
-				}).fail(function(){
-					def.reject();
-				});
+			}).done(function(data){
+				self[".need_commit"] = true;
+				def.resolve(data);
 			}).fail(function(){
 				def.reject();
 			});
@@ -1113,7 +1108,7 @@
 	// returns true if there are uci changes
 	UCI.prototype.$hasChanges = function(){
 		if(!this.initDone) return;
-		return this.$getChanges.length != 0;
+		return this.$getChanges().length > 0;
 	}
 	
 	UCI.prototype.$getChanges = function(){
@@ -1323,6 +1318,10 @@
 						});
 					}
 				});
+				if(errors.length) {
+					deferred.reject(errors);
+					return;
+				}
 				next();
 			},
 			function(next){
@@ -1335,6 +1334,7 @@
 					}
 					config.$save_order(reorder.type).done(function(){
 						var sections_of_type = config["@" + reorder.type] || [];
+						// reset the index values
 						sections_of_type.forEach(function(section, index, arr){
 							arr[index].$index = { old:index, current:index};
 						});
@@ -1347,7 +1347,6 @@
 			},
 			function(next){
 				async.eachSeries(writes, function(cmd, cb){
-					console.log(cmd);
 					$rpc.$call("uci", "set", cmd).done(function(response){
 						console.log("... "+cmd.config+": "+JSON.stringify(response));
 						self[cmd.config][".need_commit"] = true;
@@ -1361,53 +1360,37 @@
 				});
 			},
 			function(next){
-				if(errors.length) {
-					deferred.reject(errors);
-					return;
-				}
-				// this will prevent making ubus call if there were no changes to apply
-				//if(writes.length == 0 && !){
-				//	deferred.resolve();
-				//	return;
-				//} commenting out because we do need to commit if new sections have been added
-				//$rpc.$call("uci", "apply", {rollback: 0, timeout: 5000}).done(function(){
-					async.eachSeries(Object.keys(self), function(config, next){
-						if(self[config].constructor != UCI.Config || !self[config][".need_commit"]) {
+				async.eachSeries(Object.keys(self), function(config, next){
+					if(self[config].constructor != UCI.Config || !self[config][".need_commit"]) {
+						next();
+						return;
+					}
+					console.log("Committing changes to "+config);
+					$rpc.$call("uci", "commit", {config: config}).done(function(){
+						self[config][".need_commit"] = false;
+						// we need to call mark_for_reload to make sync work (with new changes to how we handle changed fields)
+						// the sync is necessary to make sure that all data is reloaded and has correct names after a commit
+						// removing this sync will result in weird behaviour such as certain fields not being deleted even
+						// though you have called uci delete on them. Basically we currently have to resync the state in order
+						// to guarantee more fault tolerant operation.
+						self[config].mark_for_reload();
+						self[config].$sync().done(function(){
 							next();
-							return;
-						}
-						console.log("Committing changes to "+config);
-						$rpc.$call("uci", "commit", {config: config}).done(function(){
-							self[config][".need_commit"] = false;
-							// we need to set deferred to null to make sync work (with new changes to how we handle changed fields)
-							// the sync is necessary to make sure that all data is reloaded and has correct names after a commit
-							// removing this sync will result in weird behaviour such as certain fields not being deleted even
-							// though you have called uci delete on them. Basically we currently have to resync the state in order
-							// to guarantee more fault tolerant operation.
-							self[config].deferred = null;
-							self[config].$sync().done(function(){
-								next();
-							}).fail(function(err){
-								console.log("error synching config "+config+": "+err);
-								next();
-							});
 						}).fail(function(err){
-							errors.push("could not commit config: "+err);
+							console.log("error synching config "+config+": "+err);
 							next();
 						});
-					}, function(){
-						// this is to always make sure that we do this outside of this code flow
-						setTimeout(function(){
-							if(errors && errors.length) deferred.reject(errors);
-							else deferred.resolve();
-						},0);
+					}).fail(function(err){
+						errors.push("could not commit config: "+err);
+						next();
 					});
-			//	}).fail(function(error){
-					// Apply may fail for a number of reasons (for example if there is nothing to apply)
-					// but it does not matter so we should not fail when it does not succeed.
-			//		deferred.resolve();
-					//deferred.reject([error]);
-			//	});
+				}, function(){
+					// this is to always make sure that we do this outside of this code flow
+					setTimeout(function(){
+						if(errors && errors.length) deferred.reject(errors);
+						else deferred.resolve();
+					},0);
+				});
 			}
 		]);
 		return deferred.promise();
