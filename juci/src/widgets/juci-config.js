@@ -21,31 +21,31 @@
 JUCI.app
 .directive("juciConfigSection", function(){
 	return {
-		template: '<div><div class="juci-config-section" ng-transclude></div><hr style="width: 100%; border-bottom: 1px solid #ccc; clear: both;"/></div>', 
-		replace: true, 
+		template: '<div><div class="juci-config-section" ng-transclude></div><hr style="width: 100%; border-bottom: 1px solid #ccc; clear: both;"/></div>',
+		replace: true,
 		transclude: true
-	 };  
+	 };
 })
 .directive("juciConfigInfo", function(){
 	return {
-		template: '<div class="juci-config-info" ng-transclude></div>', 
-		replace: true, 
+		template: '<div class="juci-config-info" ng-transclude></div>',
+		replace: true,
 		transclude: true
-	 };  
+	 };
 })
 .directive("juciConfigHeading", function(){
 	return {
-		template: '<h2 ng-transclude></h2>', 
-		replace: true, 
+		template: '<h2 ng-transclude></h2>',
+		replace: true,
 		transclude: true
-	 };  
+	 };
 })
 .directive("juciConfigLines", function(){
 	return {
-		template: '<div class="table" ><div ng-transclude></div></div>', 
-		replace: true, 
+		template: '<div class="table" ><div ng-transclude></div></div>',
+		replace: true,
 		transclude: true
-	 };  
+	 };
 })
 .directive("juciConfigLine", function(){
 	return {
@@ -59,19 +59,19 @@ JUCI.app
 			'</div></div>'+
 			'<div class="alert alert-danger" style="font-size: 0.8em" ng-show="er">{{er}}</div>'+
 			'<hr class="visible-xs" style="color:grey" />'+
-			'</div>', 
-		replace: true, 
+			'</div>',
+		replace: true,
 		scope: {
-			title: "@", 
-			help: "@", 
+			title: "@",
+			help: "@",
 			error: "="
-		}, 
+		},
 		controller: "juciConfigLineController",
-		transclude: true, 
+		transclude: true,
 		link: function (scope, element, attrs) {
 			if(!("noPull" in attrs)) scope.pullClass = "pull-right";
 		}
-	};  
+	};
 })
 .directive("juciConfigLineNoWrap", function(){
 	return {
@@ -85,19 +85,19 @@ JUCI.app
 			'</div></div>'+
 			'<div class="alert alert-danger" style="font-size: 0.8em" ng-show="er">{{er}}</div>'+
 			'<hr class="visible-xs" style="color:grey" />'+
-			'</div>', 
-		replace: true, 
+			'</div>',
+		replace: true,
 		scope: {
-			title: "@", 
-			help: "@", 
+			title: "@",
+			help: "@",
 			error: "="
-		}, 
+		},
 		controller: "juciConfigLineController",
-		transclude: true, 
+		transclude: true,
 		link: function (scope, element, attrs) {
 			if(!("noPull" in attrs)) scope.pullClass = "pull-right";
 		}
-	};  
+	};
 })
 .controller("juciConfigLineController", function($scope, $tr){
 	$scope.errorClass = "";
@@ -122,19 +122,19 @@ JUCI.app
 			'<span ng-hide="changes && changes.length">{{"No unsaved changes" | translate}}</span>'+
 			'<button class="btn btn-lg btn-default col-lg-2 pull-right" ng-click="onCancel()" ng-disabled="changes && !changes.length" title="{{\'Discard all changes and reload\'|translate}}">{{ "Cancel" | translate }}</button>'+
 			'<button class="btn btn-lg btn-primary col-lg-2 pull-right" ng-click="onApply()" title="{{\'Write settings to the router\'|translate}}" ng-disabled="busy"><i class="fa fa-spinner" ng-show="busy"/>{{ "Apply"| translate }}</button>'+
-			'</div><div style="clear: both;"></div></div>', 
-		replace: true, 
+			'</div><div style="clear: both;"></div></div>',
+		replace: true,
 		scope: {
 			onPreApply: "&"
-		}, 
+		},
 		controller: "juciConfigApplyController"
-	 }; 
+	 };
 }).controller("juciConfigApplyController", function($scope, $uci, $rootScope, $tr, gettext, $juciDialog){
 	$scope.hasCapability = $rootScope.has_capability("can-view-changes");
 	$scope.numUnsavedChanges = function(){
 		$scope.changes = $uci.$getChanges();
 		return $scope.changes.length;
-	}; 
+	};
 	$scope.showChanges = function(){
 		var model = {changes: $scope.changes};
 		$juciDialog.show("juci-changes-edit", {
@@ -151,35 +151,35 @@ JUCI.app
 		});
 	};
 	$scope.onApply = function(){
-		$scope.$emit("errors_begin"); 
-		//if($scope.onPreApply) $scope.onPreApply(); 
-		$scope.busy = 1; 
-		$scope.success = null; 
-		$scope.errors = []; 
+		$scope.$emit("errors_begin");
+		//if($scope.onPreApply) $scope.onPreApply();
+		$scope.busy = 1;
+		$scope.success = null;
+		$scope.errors = [];
 		try {
 			$uci.$save().done(function(){
-				$scope.numUnsavedChanges(); 
-				console.log("Saved uci configuration!"); 
-				//$scope.$apply(); 
+				$scope.numUnsavedChanges();
+				console.log("Saved uci configuration!");
+				//$scope.$apply();
 				location.reload();
 			}).fail(function(errors){
-				$scope.errors = errors.map(function(e){return e;}); 
-				$scope.$emit("errors", errors); 
-				console.error("Could not save uci configuration!"); 
+				$scope.errors = errors.map(function(e){return e;});
+				$scope.$emit("errors", errors);
+				console.error("Could not save uci configuration!");
 			}).always(function(){
-				$scope.busy = 0; 
-			}); 
+				$scope.busy = 0;
+			});
 		} catch(e){
-			$scope.busy = 0; 
-			setTimeout(function(){$scope.$apply();}, 0); 
-			$scope.$emit("error", e.message); 
-			console.error("Error while applying config: "+e.message); 
+			$scope.busy = 0;
+			setTimeout(function(){$scope.$apply();}, 0);
+			$scope.$emit("error", e.message);
+			console.error("Error while applying config: "+e.message);
 		}
 	}
 	$scope.onCancel = function(){
 		// simple way to reset
 		if(confirm($tr(gettext("Are you sure you want to reload settings from the router? All your current changes will be lost!")))){
-			window.location.reload(); 
+			window.location.reload();
 		}
 	}
 }).directive("juciConfigApplyPane", function(){
@@ -189,31 +189,31 @@ JUCI.app
 		'<div class="container">'+
 			'<juci-config-apply></juci-config-apply>'+
 		'</div></div>',
-		scope: {}, 
+		scope: {},
 		replace: true,
 		controller: "juciConfigApplyPane"
-	}; 
+	};
 }).controller("juciConfigApplyPane", function($scope, $rootScope, $uci){
-	$scope.changes = $uci.$getChanges(); 
-	$scope.hide = true; 
+	$scope.changes = $uci.$getChanges();
+	$scope.hide = true;
 	
 	// TODO: reloading takes a lot of computing (have to go through all fields)
-	// and this reload may happen several times in a row. 
-	// perhaps do not run it every time? 
+	// and this reload may happen several times in a row.
+	// perhaps do not run it every time?
 	var time = Date.now();
 	$rootScope.$watch(function(){
 		if(Date.now() - time < 10) return;
-		var changes = $uci.$getChanges(); 
+		var changes = $uci.$getChanges();
 		if(changes.length > 0) {
-			if($scope.hide == true) { 
+			if($scope.hide == true) {
 				// reset the message when showing the pane again
-				$scope.success = null; 
+				$scope.success = null;
 			}
-			$scope.hide = false; 
+			$scope.hide = false;
 		} else {
-			$scope.hide = true; 
+			$scope.hide = true;
 		}
 		return true; // have to return true to avoid infinite digest!
-	});  
-}); 
+	});
+});
 
