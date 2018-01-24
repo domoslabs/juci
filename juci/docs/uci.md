@@ -33,18 +33,9 @@ The UCI subsystem consists of a number of objects:
 		though $uci.config.<section> interface. Usually you would call this
 		method before changing any uci settings. 
 
-	$revert: function() -> promise
-		Reverts all currently loaded configs. This will actually call uci
-		revert on each config in series. If you want to revert a specific
-		config then call $uci.<config>.$revert() instead. 
-	
 	$rollback: function() -> promise
 		Calls uci rollback method. This rolls back all current uci changes
 		using a single call (while $revert needs a config parameter).  
-
-	$apply: function() -> promise
-		Calls uci apply. You don't actually need to use this method because
-		$uci.$save does the same thing but much better.  
 
 	$save: function() -> promise
 		This method goes through all currently loaded configs and calculates

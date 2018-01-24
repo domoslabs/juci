@@ -634,27 +634,7 @@
 			});
 			return deferred.promise();
 		}
-		
-		/*
-		UCISection.prototype.$save = function(){
-			var deferred = $.Deferred();
-			var self = this;
-			
-			// try to validate the section using section wide validator
-			if(self[".validator"] instanceof Function) self[".validator"](self);
-			
-			$rpc.$call("uci", "set", {
-				config: self[".config"][".name"],
-				section: self[".name"],
-				values: self.$getChangedValues()
-			}).done(function(data){
-				deferred.resolve();
-			}).fail(function(){
-				deferred.reject();
-			});
-			return deferred.promise();
-		}*/
-		
+
 		UCISection.prototype.$delete = function(){
 			var self = this;
 			if(self[".config"]) return self[".config"].$deleteSection(self);
@@ -931,7 +911,6 @@
 			var self = this;
 			var deferred = $.Deferred();
 				
-			//self[".need_commit"] = true;
 			$rpc.$call("uci", "delete", {
 				"config": self[".name"],
 				"section": section[".name"]
@@ -947,36 +926,6 @@
 			return deferred.promise();
 		}
 		
-		// creates a new object that will have values set to values
-		UCIConfig.prototype.create = function(item, offline){
-			console.error("UCI.section.create is deprecated. Use $create() instead!");
-			return this.$create(item);
-		}
-
-/*
-		UCIConfig.prototype.$undelete = function(section_name){
-			var self = this;
-			if(!section_name) return "no section_name";
-			var section = self.deleted_sections.find(function(sec){ return sec && sec[".name"] === section_name; });
-			if(!section) return "no section with that name";
-			self.deleted_sections = self.deleted_sections.filter(function(sec){ return sec[".name"] !== section_name; });
-			var type = section_types[self[".name"]][section[".type"]];
-			if(!type) return "no type for section";
-			var values = { ".type": section[".type"], ".name": section_name };
-			Object.keys(type).map(function(key){
-				if(key === ".validator") return;
-				if(section[key] && section[key].value !== undefined)
-					values[key] = section[key].value
-			});
-			var deferred = $.Deferred();
-			self.$create(values, true).done(function(item){
-				deferred.resolve(item);
-			}).fail(function(e){
-				deferred.reject(e);
-			});
-			return deferred.promise();
-		}
-*/
 		UCIConfig.prototype.$create = function(item, is_old){
 			var self = this;
 			if(!(".type" in item)) throw new Error("Missing '.type' parameter!");
@@ -1020,7 +969,7 @@
 			return deferred.promise();
 		}
 	
-		//! Tells uci to reorder sections based on current order in the section types table
+		// Change order of two sections.
 		UCIConfig.prototype.$save_order = function(type){
 			var def = $.Deferred();
 			var arr = this["@"+type];
@@ -1127,14 +1076,6 @@
 					});
 				});
 			}
-			/*Object.keys(self[x]).map(function(k){
-				var section = self[x][k];
-				if(section["__new__"]) changes.push({
-					type: "add",
-					config: self[x][".name"],
-					section: section[".name"]
-				});
-			});*/
 			self[x].$getWriteRequests().forEach(function(ch){
 				if(ch["new"]){
 					changes.push({
@@ -1172,29 +1113,9 @@
 		return changes;
 	}
 
-	// marks all configs for reload on next sync of the config
-	UCI.prototype.$clearCache = function(){
-		if(!this.initDone) return;
-		var self = this;
-		Object.keys(self).map(function(x){
-			if(self[x].constructor != UCI.Config) return;
-			self[x].$reset();
-		});
-	}
-
 	UCI.prototype.$registerConfig = function(name){
 		if(!(name in section_types)) section_types[name] = {};
 		if(!(name in this)) this[name] = new UCI.Config(this, name);
-	}
-	
-	UCI.prototype.$eachConfig = function(cb){
-		if(!this.initDone) return;
-		var self = this;
-		Object.keys(self).filter(function(x){
-			return self[x].constructor == UCI.Config;
-		}).map(function(x){
-			cb(self[x]);
-		});
 	}
 	
 	UCI.prototype.$sync = function(configs){
@@ -1249,41 +1170,12 @@
 		});
 		return deferred.promise();
 	}
-	
 
-	UCI.prototype.$revert = function(){
-		var revert_list = [];
-		var deferred = $.Deferred();
-		if(!this.initDone) return deferred.reject();
-		var errors = [];
-		var self = this;
-		
-		Object.keys(self).map(function(k){
-			if(self[k].constructor == UCI.Config){
-				//if(self[k][".need_commit"]) revert_list.push(self[k][".name"]);
-				revert_list.push(self[k]);
-			}
-		});
-		async.eachSeries(revert_list, function(item, next){
-			$rpc.$call("uci", "revert", {"config": item[".name"], "ubus_rpc_session": $rpc.$sid()}).done(function(){
-				console.log("Reverted config "+item[".name"]);
-				next();
-			}).fail(function(){
-				errors.push("Failed to revert config "+item[".name"]);
-				next();
-			});
-		}, function(){
-			if(errors.length) deferred.reject(errors);
-			else deferred.resolve();
-		});
-		return deferred.promise();
-	}
-	
 	UCI.prototype.$rollback = function(){
 		if(!this.initDone) return;
-		return $rpc.$call("uci", "rollback");
+			return $rpc.$call("uci", "rollback");
 	}
-	
+
 	UCI.prototype.$save = function(){
 		var deferred = $.Deferred();
 		if(!this.initDone) return deferred.reject();
@@ -1425,13 +1317,4 @@
 		HostnameValidator: HostnameValidator,
 		IPAddressAndIPCIDRValidator: IPAddressAndIPCIDRValidator
 	};
-	/*if(exports.JUCI){
-		var JUCI = exports.JUCI;
-		JUCI.uci = exports.uci = new UCI();
-		if(JUCI.app){
-			JUCI.app.factory('$uci', function(){
-				return $juci.uci;
-			});
-		}
-	}*/
 })(typeof exports === 'undefined'? this : global);
