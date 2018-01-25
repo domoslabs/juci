@@ -10,3 +10,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7.1\n"
+
+# plugins/juci-network-device/src/network-device.js
+msgid "section"
+msgstr ""
+
+# plugins/juci-network-device/src/network-device.js
+msgid "has invalid type, valid types are"
+msgstr ""
+
+# plugins/juci-network-device/src/network-device.js
+msgid "Duplicate VID and Interface"
+msgstr ""
+
+# plugins/juci-network-device/src/network-device.js
+msgid "Duplicate VLAN name"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-device.html
+msgid "menu-network-device-title"
+msgstr "VLAN"
+
+# plugins/juci-network-device/src/pages/internet-device.html
+#~ msgid "menu-internet-device-title"
+#~ msgstr "VLAN"

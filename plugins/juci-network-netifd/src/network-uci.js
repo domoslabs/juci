@@ -33,16 +33,16 @@ UCI.validators.IP6PrefixLengthValidator = function(){
 UCI.validators.MACListValidator = function(){
 	this.validate = function(field){
 		if(field.value instanceof Array){
-			var errors = []; 
+			var errors = [];
 			field.value.map(function(value){
 				if(!value.match(/^(?:[A-Fa-f0-9]{2}[:-]){5}(?:[A-Fa-f0-9]{2})$/))
-					errors.push(JUCI.$tr(gettext("value must be a valid MAC-48 address"))+": "+value); 
-			}); 
-			if(errors.length) return errors.join(", "); 
+					errors.push(JUCI.$tr(gettext("value must be a valid MAC-48 address"))+": "+value);
+			});
+			if(errors.length) return errors.join(", ");
 		}
-		return null; 
+		return null;
 	}
-}; 
+};
 
 UCI.validators.REQPrefixValidator = function(){
 	this.validate = function(field){
@@ -53,49 +53,50 @@ UCI.validators.REQPrefixValidator = function(){
 	}
 };
 
-UCI.$registerConfig("network"); 
+if (!UCI.network)
+	UCI.$registerConfig("network");
 UCI.network.$registerSectionType("interface", {
 	"is_lan":				{ dvalue: '', type: Boolean }, // please stop relying on this!
 	"auto": 				{ dvalue: '1', type: Boolean }, // bring up on boot
-	"ifname":				{ dvalue: '', type: String }, 
-	"device":				{ dvalue: '', type: String }, 
-	"proto":				{ dvalue: 'none', type: String }, 
-	"ipaddr":				{ dvalue: '', type: String, validator: UCI.validators.IP4AddressValidator }, 
+	"ifname":				{ dvalue: '', type: String },
+	"device":				{ dvalue: '', type: String },
+	"proto":				{ dvalue: 'none', type: String },
+	"ipaddr":				{ dvalue: '', type: String, validator: UCI.validators.IP4AddressValidator },
 	"netmask":				{ dvalue: '', type: String, validator: UCI.validators.IP4NetmaskValidator },
-	"gateway":				{ dvalue: '', type: String, validator: UCI.validators.IP4AddressValidator }, 
-	"ip6addr":				{ dvalue: '', type: String, validator: UCI.validators.IP6AddressValidator }, 
+	"gateway":				{ dvalue: '', type: String, validator: UCI.validators.IP4AddressValidator },
+	"ip6addr":				{ dvalue: '', type: String, validator: UCI.validators.IP6AddressValidator },
 	"ip6gw": 				{ dvalue: '', type: String, validator: UCI.validators.IP6AddressValidator },
-	"ip6prefix":			{ dvalue: '', type: String, validator: UCI.validators.IP6AddressValidator }, 
-	"ip6gateway":			{ dvalue: '', type: String, validator: UCI.validators.IP6AddressValidator },  
+	"ip6prefix":			{ dvalue: '', type: String, validator: UCI.validators.IP6AddressValidator },
+	"ip6gateway":			{ dvalue: '', type: String, validator: UCI.validators.IP6AddressValidator },
 	"ip6assign":			{ dvalue: '', type: Number, validator: UCI.validators.NumberLimitValidator(48, 64) },
 	"ip6hint": 				{ dvalue: '', type: String, validator: UCI.validators.IP6HintValidator },
 	"clientid": 			{ dvalue: "", type: String },
-	"type":					{ dvalue: '', type: String }, 
+	"type":					{ dvalue: '', type: String },
 	"defaultroute":			{ dvalue: true, type: Boolean },	
-	"bridge_instance": 		{ dvalue: '', type: Boolean }, 
-	"vendorid":				{ dvalue: '', type: String }, 
+	"bridge_instance": 		{ dvalue: '', type: Boolean },
+	"vendorid":				{ dvalue: '', type: String },
 	"ipv6":					{ dvalue: '', type: Boolean },
-	"dns": 					{ dvalue: [], type: Array }, 
-	"macaddr":				{ dvalue: "", type: String, validator: UCI.validators.MACAddressValidator }, 
+	"dns": 					{ dvalue: [], type: Array },
+	"macaddr":				{ dvalue: "", type: String, validator: UCI.validators.MACAddressValidator },
 	"mtu":					{ dvalue: "", type: Number },
-	"enabled": 				{ dvalue: true, type: Boolean }, 
+	"enabled": 				{ dvalue: true, type: Boolean },
 	//dhcp settings
 	"reqopts":				{ dvalue: "", type: String },
 	"metric":				{ dvalue: '', type: Number },
 	"iface6rd":				{ dvalue: "", type: String },
-	"broadcast": 			{ dvalue: '', type: Boolean }, 
-	"hostname": 			{ dvalue: "", type: String }, 
-	"peerdns": 				{ dvalue: true, type: Boolean }, 
+	"broadcast": 			{ dvalue: '', type: Boolean },
+	"hostname": 			{ dvalue: "", type: String },
+	"peerdns": 				{ dvalue: true, type: Boolean },
 	//ipv6 settings
 	"tunlink":				{ dvalue: "", type: String },
 	"ip6prefixlen":			{ dvalue: "", type: String, validator: UCI.validators.IP6PrefixLengthValidator },
 	"ip4prefixlen":			{ dvalue: "", type: Number },
 	"reqprefix":			{ dvalue: "", type: String, validator: UCI.validators.REQPrefixValidator },
 	"reqaddress":			{ dvalue: "", type: String },
-	// authentication 
-	"auth": 				{ dvalue: "", type: String }, 
-	"username": 			{ dvalue: "", type: String }, 
-	"password": 			{ dvalue: "", type: String }, 
+	// authentication
+	"auth": 				{ dvalue: "", type: String },
+	"username": 			{ dvalue: "", type: String },
+	"password": 			{ dvalue: "", type: String },
 	// ppp settings
 	"tunnelid":				{ dvalie: "", type: Number },
 	"_update":				{ dvalue: '', type: Boolean },
@@ -110,7 +111,7 @@ UCI.network.$registerSectionType("interface", {
 	"modem":				{ dvalue: "", type: String },
 	"service":				{ dvalue: "", type: String },
 	"maxwait":				{ dvalue: "", type: Number },
-	"apn": 					{ dvalue: "", type: String }, 
+	"apn": 					{ dvalue: "", type: String },
 	"pincode": 				{ dvalue: "", type: String },
 	"comdev":				{ dvalue: "", type: String },
 	"ttl":					{ dvalue: "", type: Number },
@@ -120,7 +121,7 @@ UCI.network.$registerSectionType("interface", {
 }, function(section){
 	var name = JUCI.$tr(gettext("Network interface ")) + (section[".name"] || section.name || JUCI.$tr(gettext("Unnamed interface")));
 	var noPhysical = name + JUCI.$tr(gettext(" has protocol: ")) + section.proto.value + JUCI.$tr(gettext(" it needs a physical interface"));
-	if(!section.proto || !section.proto.value || section.proto.value == "") 
+	if(!section.proto || !section.proto.value || section.proto.value == "")
 		return name + JUCI.$tr(gettext(" MUST have  a protocol set"));
 	var errors = [];
 	switch (section.proto.value){
@@ -132,7 +133,7 @@ UCI.network.$registerSectionType("interface", {
 			break;
 		case "static":
 			if(section.ipaddr.value && section.netmask.value){
-				var ip = section.ipaddr.value.split("."); 
+				var ip = section.ipaddr.value.split(".");
 				if(ip[ip.length - 1] == "0") errors.push(name + JUCI.$tr(gettext(" has an invalid IP address. It can not be a range address (can not end with 0s)!")));
 				if(ip[0] == "0") errors.push(name + JUCI.$tr(gettext(" has an invalid IP address it can not start with a '0'!")));
 			}
@@ -208,17 +209,17 @@ UCI.network.$registerSectionType("interface", {
 			if(section.pincode.value !== "" && parseInt(section.pincode.value) && (parseInt(section.pincode.value) > 9999 || parseInt(section.pincode.value) < 0))
 				errors.push(name + JUCI.$tr(gettext(" has protocol wwan and has invalid pincode [0000-9999] or empty")));
 			break;
-		default: 
+		default:
 			errors.push(JUCI.$tr(gettext("Unsupported protocol: ")) + section.proto.value);
 	}
 	if(errors.length > 0) return errors
 	return null;
-}); 
+});
 
 UCI.network.$registerSectionType("route", {
-	"interface": 			{ dvalue: "", type: String }, 
-	"target": 				{ dvalue: "", type: String, validator: UCI.validators.IP4AddressValidator }, 
-	"netmask": 				{ dvalue: "", type: String, validator: UCI.validators.IP4NetmaskValidator }, 
+	"interface": 			{ dvalue: "", type: String },
+	"target": 				{ dvalue: "", type: String, validator: UCI.validators.IP4AddressValidator },
+	"netmask": 				{ dvalue: "", type: String, validator: UCI.validators.IP4NetmaskValidator },
 	"gateway": 				{ dvalue: "", type: String, validator: UCI.validators.IP4AddressValidator },
 	"metric": 				{ dvalue: 0, type: Number },
 	"mtu": 					{ dvalue: "", type: Number }
@@ -234,8 +235,8 @@ UCI.network.$registerSectionType("route", {
 });
 
 UCI.network.$registerSectionType("route6", {
-	"interface": 			{ dvalue: "", type: String }, 
-	"target": 				{ dvalue: "", type: String, validator: UCI.validators.IP6AddressValidator }, 
+	"interface": 			{ dvalue: "", type: String },
+	"target": 				{ dvalue: "", type: String, validator: UCI.validators.IP6AddressValidator },
 	"gateway": 				{ dvalue: "", type: String, validator: UCI.validators.IP6AddressValidator },
 	"metric": 				{ dvalue: 0, type: Number },
 	"mtu": 					{ dvalue: "", type: Number }
@@ -247,31 +248,31 @@ UCI.network.$registerSectionType("route6", {
 	//if(section.gateway.value == "") errors.push(JUCI.$tr(gettext("IPv6 Routes needs a Gateway")));
 	if(errors.length > 0) return errors;
 	return null;
-}); 
+});
 
 UCI.network.$registerSectionType("switch", {
 	"name": 	{ dvalue: "", type: String },
-	"reset":	{ dvalue: undefined, type: Boolean }, 
+	"reset":	{ dvalue: undefined, type: Boolean },
 	"enable_vlan": { dvalue: true, type: Boolean },
 	"enable": 	{ dvalue: false, type: Boolean }
-}); 
+});
 
 UCI.network.$registerSectionType("switch_vlan", {
 	"displayname": { dvalue: "", type: String },
-	"vlan":		{ dvalue: 0, type: Number }, 
+	"vlan":		{ dvalue: 0, type: Number },
 	"device": 	{ dvalue: "", type: String },
 	"ports": 	{ dvalue: "", type: String }
-}); 
+});
 
 UCI.network.$registerSectionType("switch_port_label", {
-	"name": 	{ dvalue: "", type: String }, 
+	"name": 	{ dvalue: "", type: String },
 	"id": 		{ dvalue: undefined, type: Number }
-}); 
+});
 
 UCI.network.$registerSectionType("switch_port", {
-	"port": 	{ dvalue: 0, type: Number }, 
+	"port": 	{ dvalue: 0, type: Number },
 	"pvid": 	{ dvalue: 0, type: Number }
-}); 
+});
 
 UCI.$registerConfig("hosts");
 UCI.hosts.$registerSectionType("host", {
@@ -279,13 +280,13 @@ UCI.hosts.$registerSectionType("host", {
 	"ipaddr":               { dvalue: "", type: String },
 	"name":             { dvalue: "", type: String },
 	"manufacturer":             { dvalue: "", type: String },
-	"hostname":		{ dvalue: "", type: String, required: true}, 
+	"hostname":		{ dvalue: "", type: String, required: true},
 	"macaddr":		{ dvalue: "", type: String, match: /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/, required: true}
 });
 
 UCI.juci.$registerSectionType("network", {
-	"wan4_interface": 	{ dvalue: "wan", type: String }, // default wan4 interface name 
-	"wan6_interface": 	{ dvalue: "wan6", type: String }, // default wan6 interface name 
-	"voice_interface": 	{ dvalue: "wan", type: String }, 
+	"wan4_interface": 	{ dvalue: "wan", type: String }, // default wan4 interface name
+	"wan6_interface": 	{ dvalue: "wan6", type: String }, // default wan6 interface name
+	"voice_interface": 	{ dvalue: "wan", type: String },
 	"iptv_interface": 	{ dvalue: "wan", type: String }
-}); 
+});

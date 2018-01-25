@@ -123,7 +123,8 @@ UCI.ports.$registerSectionType("ethport", {
 	"ifname": 	{ dvalue: "", type: String },
 	"speed": 	{ dvalue: "auto", type: String },
 	"pause": 	{ dvalue: false, type: Boolean },
-	"name":		{ dvalue: "", type: String }
+	"name":		{ dvalue: "", type: String },
+	"uplink":	{ dvalue: false, type: Boolean }
 });
 UCI.ports.$registerSectionType("sfpport", {
 	"ifname": 	{ dvalue: "", type: String },

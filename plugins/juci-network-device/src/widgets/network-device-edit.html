@@ -1,0 +1,25 @@
+<div>
+	<juci-config-lines>
+		<juci-config-line title="{{'VLAN Name'|translate}}">
+			<h4><span class="label label-default">{{device['.name']|uppercase}}</span></h4>
+		</juci-config-line>
+		<juci-config-line title="{{'VLAN Type'|translate}}">
+			<juci-select ng-model="device.type.value" ng-items="types"></juci-select>
+		</juci-config-line>
+		<juci-config-line title="{{'Base Interface'|translate}}">
+			<juci-select ng-model="device.ifname.value" ng-items="interfaces" placeholder="{{device.ifname.value}}"></juci-select>
+		</juci-config-line>
+		<juci-config-line title="{{'VLAN ID'|translate}}" error="device.vid.error">
+			<input type="number" ng-model="device.vid.value" class="form-control"></input>
+		</juci-config-line>
+		<juci-config-line title="{{'Priority'|translate}}" error="device.priority.error">
+			<input type="number" ng-model="device.priority.value" class="form-control"></input>
+		</juci-config-line>
+		<juci-config-line title="{{'Name'|translate}}" error="device.name.error">
+			<div class="input-group">
+				<input ng-disabled="!conf.manual_name" class="form-control" type="text" ng-model="device.name.value"></input>
+				<span ng-click="conf.manual_name = !conf.manual_name" class="input-group-addon"><i class="fa fa-edit"></i></span>
+			</div>
+		</juci-config-line>
+	</juci-config-lines>
+</div>
