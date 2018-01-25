@@ -7,13 +7,13 @@
 			<input type="text" class="form-control" placeholder="WiFi Name" ng-model="interface.ssid.value" maxlength="32"/>
 		</juci-config-line>
 		<juci-config-line title="{{'Broadcast SSID'|translate}}">
-			<switch id="enabled" name="enabled" ng-model="interface.closed.value" on-change="onShowSSIDToggle()" class="green" inverted></switch>
+			<switch name="enabled" ng-model="interface.closed.value" on-change="onShowSSIDToggle()" class="green" inverted></switch>
 		</juci-config-line>
 		<juci-config-line title="{{'AP Isolation'|translate}}">
-			<switch id="enabled" name="enabled" ng-model="interface.isolate.value" class="green"></switch>
+			<switch name="enabled" ng-model="interface.isolate.value" class="green"></switch>
 		</juci-config-line>
 		<juci-config-line title="{{'Wireless Multicast Forwarding'|translate}}">
-			<switch id="enabled" name="enabled" ng-model="interface.wmf_bss_enable.value" class="green"></switch>
+			<switch name="enabled" ng-model="interface.wmf_bss_enable.value" class="green"></switch>
 		</juci-config-line>
 		<juci-config-line title="{{'Maximum Number of Connected Clients'|translate}}">
 			<input type="number" max="128" min="0" ng-model="interface.bss_max.value" class="form-control"></switch>
