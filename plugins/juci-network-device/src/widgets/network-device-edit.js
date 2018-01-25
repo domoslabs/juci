@@ -30,14 +30,15 @@ JUCI.app
 		controller: "networkDeviceEditCtrl"
 	};
 }).controller("networkDeviceEditCtrl", function($scope, $tr, gettext, $uci){
-	$scope.$watch("device", function(){
-		if(!$scope.device)
-			return;
-		$scope.conf.manual_name = !($scope.device.name.value === ($scope.device.ifname.value + "." + $scope.device.vid.value));
-	});
 	$scope.conf = {
 		manual_name: false
 	};
+	$scope.$watch("device", function(dev){
+		if(!$scope.device)
+			return;
+		$scope.conf.manual_name = !(dev.name.value === (dev.ifname.value + "." + dev.vid.value));
+		$scope.conf.untagged = dev.type.value === "untagged";
+	});
 	$scope.types = [
 		{ label: $tr(gettext("Untagged")), value: "untagged" },
 		{ label: $tr(gettext("802.1 Q")), value: "8021q" },
@@ -53,11 +54,17 @@ JUCI.app
 		});
 	});
 	$scope.$watchGroup(["device.ifname.value", "device.vid.value"], function(){
-		console.log("triggered");
 		if(!$scope.device || $scope.conf.manual_name)
 			return;
-		console.log("still triggered");
 		$scope.device.name.value = $scope.device.ifname.value + "." + $scope.device.vid.value;
+	});
+	$scope.$watch("device.type.value", function(){
+		if(!$scope.device)
+			return;
+		if($scope.device.type.value === "untagged")
+			$scope.conf.untagged = true;
+		else
+			$scope.conf.untagged = false;
 	});
 }).filter("uppercase", function(string){
 	return String(string).toUpperCase();
