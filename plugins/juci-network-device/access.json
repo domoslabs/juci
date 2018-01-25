@@ -1,0 +1,15 @@
+{
+	"juci-network-device": {
+		"description": "JUCI Network Device Configuration module",
+		"read": {
+			"uci": [
+				"network"
+			]
+		},
+		"write": {
+			"uci": [
+				"network"
+			]
+		}
+	}
+}
