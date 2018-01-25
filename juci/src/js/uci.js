@@ -1265,7 +1265,7 @@
 						// removing this sync will result in weird behaviour such as certain fields not being deleted even
 						// though you have called uci delete on them. Basically we currently have to resync the state in order
 						// to guarantee more fault tolerant operation.
-						self[config].mark_for_reload();
+						self[config].$mark_for_reload();
 						self[config].$sync().done(function(){
 							next();
 						}).fail(function(err){
