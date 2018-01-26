@@ -1,0 +1,24 @@
+<div>
+	<juci-config-lines>
+		<juci-config-line title="{{'Modes'|translate}}">
+			<dropdown-multi-select input-model="data.modes" output-model="data.out_modes" button-label="label" item-label="label" tick-property="selected">
+			</dropdown-multi-select>
+		</juci-config-line>
+		<juci-config-line title="{{'Profiles'|translate}}" ng-show="has_vdsl2()">
+			<dropdown-multi-select input-model="data.profiles" output-model="data.out_profiles" button-label="label" item-label="label" tick-property="selected">
+			</dropdown-multi-select>
+		</juci-config-line>
+		<juci-config-line title="{{'Bitswap'|translate}}">
+			<switch class="green" ng-model="line.bitswap.value">
+			</switch>
+		</juci-config-line>
+		<juci-config-line title="{{'SRA'|translate}}">
+			<switch class="green" ng-model="line.sra.value">
+			</switch>
+		</juci-config-line>
+		<juci-config-line title="{{'US0'|translate}}" ng-show="has_vdsl2()">
+			<switch class="green" ng-model="line.us0.value">
+			</switch>
+		</juci-config-line>
+	</juci-config-lines>
+<div>
