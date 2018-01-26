@@ -1599,7 +1599,7 @@ msgstr "サーバから要請する追加のDHCPオプション"
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcpv6-advanced-edit.html
 msgid "Client ID to send when requesting DHCP"
-msgstr "DHCPを要求するときに送信するホスト名"
+msgstr "DHCPを要求するときに送信するクライアントID"
 
 # plugins/juci-network-netifd/src/widgets/proto/network-connection-proto-dhcp-advanced-edit.html
 msgid "Custom client ID"
