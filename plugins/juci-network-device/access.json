@@ -3,7 +3,8 @@
 		"description": "JUCI Network Device Configuration module",
 		"read": {
 			"uci": [
-				"network"
+				"network",
+				"ports"
 			]
 		},
 		"write": {
