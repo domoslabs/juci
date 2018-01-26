@@ -454,8 +454,10 @@
 				this.is_dirty = false;
 			},
 			$reset_defaults: function(){
-				this.uvalue = this.schema.dvalue;
-				this.is_dirty = false;
+				if(this.uvalue !== this.schema.dvalue){
+					this.uvalue = this.schema.dvalue;
+					this.is_dirty = true;
+				}
 			},
 			$begin_edit: function(){
 				this.svalue = this.value;

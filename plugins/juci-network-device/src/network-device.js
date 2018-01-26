@@ -40,10 +40,11 @@ UCI.network.$registerSectionType("device", {
 		if(device === section)
 			return;
 		if(device.vid.value === section.vid.value &&
-				device.ifname.value === section.ifname.value)
-			errors.push(section[".name"] + ", " + juci.$tr(gettext("Duplicate VID and Interface")));
+				device.ifname.value === section.ifname.value &&
+				section.type.value !== "untagged")
+			errors.push(section[".name"] + ", " + JUCI.$tr(gettext("Duplicate VID and Interface")));
 		if(device.name.value === section.name.value)
-			errors.push(section[".name"] + ", " + juci.$tr(gettext("Duplicate VLAN name")) + " " + section.name.value);
+			errors.push(section[".name"] + ", " + JUCI.$tr(gettext("Duplicate VLAN name")) + " " + section.name.value);
 	});
 
 	if(errors.length)

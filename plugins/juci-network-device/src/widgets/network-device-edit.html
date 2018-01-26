@@ -6,7 +6,7 @@
 		<juci-config-line title="{{'VLAN Type'|translate}}">
 			<juci-select ng-model="device.type.value" ng-items="types"></juci-select>
 		</juci-config-line>
-		<juci-config-line title="{{'Base Interface'|translate}}">
+		<juci-config-line title="{{'Base Device'|translate}}">
 			<juci-select ng-model="device.ifname.value" ng-items="interfaces" placeholder="{{device.ifname.value}}"></juci-select>
 		</juci-config-line>
 		<div ng-hide="conf.untagged">
