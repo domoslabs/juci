@@ -19,12 +19,55 @@
  */
 
 JUCI.app
-.controller("NetworkDslPage", function($scope, $uci){
+.controller("NetworkDslPage", function($scope, $uci, $juciDialog, $tr, gettext){
 	$uci.$sync("dsl").done(function(){
-		console.log($uci.dsl);
 		$scope.dslLines = $uci.dsl["@dsl-line"] || [];
+		$scope.atmDevices = $uci.dsl["@atm-device"] || [];
+		$scope.ptmDevices = $uci.dsl["@ptm-device"] || [];
 		$scope.$apply();
+		$scope.onCreateDevice = onCreateDevice;
+		$scope.onDeleteDevice = onDeleteDevice;
 	}).fail(function(e){
 		console.error("couldn't sync dsl config", e);
 	});
+
+	function onCreateDevice(type){
+		var model = {name: "", error:""};
+		$juciDialog.show("network-dsl-create-device", {
+			model: model,
+			on_apply: function(){
+				if(!model.name || name_exists(type, model.name)) {
+					model.error = $tr(gettext("Name is empty or already in use"));
+					return false;
+				}
+				$uci.dsl.$create({
+					".type": type,
+					".name": model.name
+				}).done(function(){
+					$scope.$apply();
+				}).fail(function(e){
+					console.log($tr(gettext("unable to create " + type + " Error: " + e)));
+				});
+				return true;
+			}
+		});
+		function name_exists(type, name){
+			return (($uci.dsl["@all"] || []).find(function(dev){
+				return dev[".name"] === name;
+			}) !== undefined);
+		}
+	}
+
+	function onDeleteDevice(dev){
+		var devname = dev[".name"];
+		if(!dev || !dev.$delete instanceof Function){
+			console.error("Trying to delete something not a uci section");
+			return;
+		}
+		dev.$delete().done(function(){
+			$scope.$apply();
+		}).fail(function(e){
+			console.error("couldn't delete device " + devname + e);
+		});
+	}
 });
