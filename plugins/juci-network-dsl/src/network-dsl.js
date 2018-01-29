@@ -32,3 +32,27 @@ UCI.dsl.$registerSectionType("dsl-line", {
 }, function(section){
 	return null;
 });
+
+UCI.dsl.$registerSectionType("atm-device", {
+	"name":		{ dvalue: "ATM", type: String },
+	"vpi":		{ dvalue: 8, type: Number },
+	"vci":		{ dvalue: 35, type: Number },
+	"device":	{ dvalue: "atm0", type: String },
+	"link_type":	{ dvalue: "eoa", type: String },
+	"encapsulation":{ dvalue: "llc", type: String },
+	"qos_class":	{ dvalue: "ubr", type: String },
+	"pcr":		{ dvalue: "", type: Number },
+	"scr":		{ dvalue: "", type: Number },
+	"mbs":		{ dvalue: "", type: Number }
+}, function(section){
+	return null;
+});
+
+UCI.dsl.$registerSectionType("ptm-device", {
+	"name":		{ dvalue: "PTM", type: String },
+	"device":	{ dvalue: "ptm0", type: String },
+	"priority":	{ dvalue: 1, type: Number },
+	"portid": 	{ dvalue: 1, type: Number }
+}, function(section){
+	return null;
+});
