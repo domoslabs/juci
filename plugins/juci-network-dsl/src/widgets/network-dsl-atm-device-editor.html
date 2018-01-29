@@ -1,0 +1,35 @@
+<div>
+	<juci-config-lines>
+		<juci-config-line title="{{'Name'|translate}}">
+			<input type="text" ng-model="atm.name.value" class="form-control" />
+		</juci-config-line>
+		<juci-config-line title="{{'VPI'|translate}}">
+			<input type="number" ng-model="atm.vpi.value" class="form-control" />
+		</juci-config-line>
+		<juci-config-line title="{{'VCI'|translate}}">
+			<input type="number" ng-model="atm.vci.value" class="form-control" />
+		</juci-config-line>
+		<juci-config-line title="{{'Device'|translate}}">
+			<input type="text" ng-model="atm.device.value" class="form-control" />
+		</juci-config-line>
+		<juci-config-line title="{{'Link Type'|translate}}">
+			<juci-select ng-model="atm.link_type.value" ng-items="link_types"></juci-select>
+		</juci-config-line>
+		<juci-config-line title="{{'Encapsulation'|translate}}">
+			<juci-select ng-model="atm.encapsulation.value" ng-items="encapsulations"></juci-select>
+		</juci-config-line>
+		<juci-config-line title="{{'QOS Class'|translate}}">
+			<juci-select ng-model="atm.qos_class.value" ng-items="qos_classes"></juci-select>
+		</juci-config-line>
+		<juci-config-line title="{{'PCR'|translate}}" ng-show="showPCR()">
+			<input type="number" ng-model="atm.vci.value" class="form-control" />
+		</juci-config-line>
+		<juci-config-line title="{{'SCR'|translate}}" ng-show="showSCR()">
+			<input type="number" ng-model="atm.vci.value" class="form-control" />
+		</juci-config-line>
+		<juci-config-line title="{{'MBS'|translate}}" ng-show="showMBS()">
+			<input type="number" ng-model="atm.vci.value" class="form-control" />
+		</juci-config-line>
+	</juci-config-lines>
+<div>
+
