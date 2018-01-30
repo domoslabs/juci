@@ -38,6 +38,7 @@ define BuildDir-y
 	$(eval PLUGIN:=$(1))
 	$(eval -include $(PLUGIN_DIR)/Makefile)
 	$(eval $(Plugin/$(1)))
+	$(eval PAGES:=$(wildcard $(PLUGIN_DIR)/src/pages/*.html))
 	$(eval TARGETS+=$(PLUGIN)-install)
 	$(eval JAVASCRIPT_$(PLUGIN):=$(wildcard $(addprefix $(PLUGIN_DIR)/,$(JAVASCRIPT-y))))
 	$(eval TEMPLATES_$(PLUGIN):=$(wildcard $(addprefix $(PLUGIN_DIR)/,$(TEMPLATES-y))))
@@ -71,7 +72,7 @@ $(PLUGIN_DIR)/po/template.pot: $(JAVASCRIPT_$(PLUGIN)) $(TEMPLATES_$(PLUGIN))
 	@echo "" > $$@
 	$(Q)if [ "" != "$$^" ]; then ./scripts/extract-strings $$^ > $$@; msguniq --no-wrap $$@ > $$@.tmp; mv $$@.tmp $$@; fi
 	@echo "" >> $$@
-	@for file in `find $(PLUGIN_DIR)/src/pages/ -name "*.html"`; do PAGE=$$$${file%%.*}; echo -e "# $$$$file \nmsgid \"menu-$$$$(basename $$$$PAGE)-title\"\nmsgstr \"\"\n" >> $$@; done
+	@for file in $(PAGES); do PAGE=$$$${file%%.*}; echo -e "# $$$$file \nmsgid \"menu-$$$$(basename $$$$PAGE)-title\"\nmsgstr \"\"\n" >> $$@; done
 $(CODE_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js: $(TMP_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js $(TMP_DIR)/$(PLUGIN).css.js $(TMP_DIR)/$(PLUGIN).tpl.js
 	@echo -e "\033[0;32m[INSTALLING] $(PLUGIN)\033[m"
 	$(Q)$(INSTALL_DIR) "$$(dir $$@)"
