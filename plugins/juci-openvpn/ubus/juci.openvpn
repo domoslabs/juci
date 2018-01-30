@@ -16,7 +16,7 @@ case "$1" in
 				json_dump
 			;;
 			set_config)
-				read input;
+				read -r input;
 
 				json_load "$input"
 				json_get_var data data
