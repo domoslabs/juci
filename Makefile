@@ -46,7 +46,7 @@ define BuildDir-y
 	$(eval PO_$(PLUGIN):=$(wildcard $(addprefix $(PLUGIN_DIR)/,$(PO-y))))
 	PHONY += $(PLUGIN)-install
 	# ex. tmp/50-my-awesome-plugin.js: first_file.js second_file.js first_po_file.po ...
-$(TMP_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js: $(JAVASCRIPT_$(PLUGIN)) $(PO_$(PLUGIN))
+$(TMP_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js: $(JAVASCRIPT_$(PLUGIN)) $(PO_$(PLUGIN)) $(wildcard $(PLUGIN_DIR)/Makefile)
 	@echo -e "\033[0;33m[JS]\t$(PLUGIN) -> $$@\033[m"
 	@echo "" > $$@
 	$(Q)if [ "" != "$(JAVASCRIPT_$(PLUGIN))" ]; then for file in $(JAVASCRIPT_$(PLUGIN)); do cat $$$$file >> $$@; echo "" >> $$@; done; fi
