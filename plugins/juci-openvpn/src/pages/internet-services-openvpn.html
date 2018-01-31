@@ -21,7 +21,7 @@
 				</div>
 			</juci-config-line>
 
-
+			<!--
 			<juci-config-line title="{{'Client'|translate}}">
 				<switch ng-model="openvpn.client.value" class="green"/>
 			</juci-config-line>
@@ -81,6 +81,7 @@
 					<label><strong>{{ "Infinite" |translate}}</strong></label>
 				</div>
 			</juci-config-line>
+			-->
 
 			<juci-config-line title="{{ 'The .ovpn config file' | translate}}">
 			</juci-config-line>
@@ -88,6 +89,8 @@
 			<textarea style="width:100%" rows=10 cols=50 ng-model="data.ovpn" placeholder="Paste the .ovpn config here"/>
 			<button ng-show="data.changed" ng-click="save_config()" class="btn btn-primary pull-right" style="margin: 15px 0">Save</button>
 			</div>
+
+
 		</juci-config-section>
 	</div>
 </juci-layout-with-sidebar>

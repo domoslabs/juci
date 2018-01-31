@@ -61,9 +61,9 @@ UCI.openvpn.$registerSectionType("openvpn", {
 	"enabled":	{ dvalue: false, type: Boolean },
 	"auth_user":	{ dvalue: "", type: String },
 	"auth_pass":	{ dvalue: "", type: String },
-	"config":	{ dvalue: "", type: String },
+	"config":	{ dvalue: "", type: String }
 
-	"client":	{ dvalue: true, type: Boolean },
+	/*"client":	{ dvalue: true, type: Boolean },
 	"dev":		{ dvalue: "tun", type: String },
 	"proto":	{ dvalue: "udp", type: String },
 	//"remote":	{ dvalue:  '217.27.188.82 1194', type: x }, //LIST
@@ -81,4 +81,5 @@ UCI.openvpn.$registerSectionType("openvpn", {
 	"ca":		{ dvalue: "/var/etc/openvpn-ca.crt", type: String },
 	"cert":		{ dvalue: "/var/etc/openvpn-client.crt", type: String },
 	"key":		{ dvalue: "/var/etc/openvpn-client.key", type: String }
+	*/
 });
