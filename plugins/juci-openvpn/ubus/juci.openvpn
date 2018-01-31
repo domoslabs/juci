@@ -2,7 +2,7 @@
 
 . /usr/share/libubox/jshn.sh
 
-OVPN="/tmp/openvpn.ovpn"
+OVPN="/etc/openvpn/openvpn.ovpn"
 
 case "$1" in
 	list)
