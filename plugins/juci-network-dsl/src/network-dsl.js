@@ -35,15 +35,15 @@ UCI.dsl.$registerSectionType("dsl-line", {
 
 UCI.dsl.$registerSectionType("atm-device", {
 	"name":		{ dvalue: "ATM", type: String },
-	"vpi":		{ dvalue: 8, type: Number },
-	"vci":		{ dvalue: 35, type: Number },
+	"vpi":		{ dvalue: 8, type: Number, validator: UCI.validators.NumberLimitValidator(0,255) },
+	"vci":		{ dvalue: 35, type: Number, validator: UCI.validators.NumberLimitValidator(32,65535) },
 	"device":	{ dvalue: "atm0", type: String },
 	"link_type":	{ dvalue: "eoa", type: String },
 	"encapsulation":{ dvalue: "llc", type: String },
 	"qos_class":	{ dvalue: "ubr", type: String },
-	"pcr":		{ dvalue: "", type: Number },
-	"scr":		{ dvalue: "", type: Number },
-	"mbs":		{ dvalue: "", type: Number }
+	"pcr":		{ dvalue: "", type: Number, validator: UCI.validators.NumberLimitValidator(0,4294967296) },
+	"scr":		{ dvalue: "", type: Number, validator: UCI.validators.NumberLimitValidator(0,4294967296) },
+	"mbs":		{ dvalue: "", type: Number, validator: UCI.validators.NumberLimitValidator(0,4294967296) }
 }, function(section){
 	return null;
 });
@@ -51,7 +51,7 @@ UCI.dsl.$registerSectionType("atm-device", {
 UCI.dsl.$registerSectionType("ptm-device", {
 	"name":		{ dvalue: "PTM", type: String },
 	"device":	{ dvalue: "ptm0", type: String },
-	"priority":	{ dvalue: 1, type: Number },
+	"priority":	{ dvalue: 1, type: Number, validator: UCI.validators.NumberLimitValidator(1,2) },
 	"portid": 	{ dvalue: 1, type: Number }
 }, function(section){
 	return null;
