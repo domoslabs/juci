@@ -694,11 +694,20 @@
 			var errors = [];
 			var self = this;
 			var type = self[".section_type"];
+			var name = self[".config"] ? self[".config"][".name"] : "undefined";
+			var section;
+			if(!self[".name"] || !self[".type"] || !self.$index || !self.$index.current)
+				section = "undefined";
+			else {
+				section = self[".name"];
+				if(section.match(/^cfg[0-9a-fA-F]+$/) !== null)
+					section = self[".type"]+" "+(self.$index.current+1);
+			}
 			Object.keys(type).map(function(k){
 				if(self[k].value === "" && self[k].schema.required) errors.push(k+" "+JUCI.$tr(gettext("is required")));
 				else var err = self[k].error;
 				if(err){
-					errors.push(err);
+					errors.push(JUCI.$tr(gettext("Config")) + ": " + name + " " + JUCI.$tr(gettext("Section")) + ": " + section + " " + JUCI.$tr(gettext("Option")) + ": " + k + ": " + err);
 				}
 			});
 			if(type && type[".validator"] && (type[".validator"] instanceof Function)){
