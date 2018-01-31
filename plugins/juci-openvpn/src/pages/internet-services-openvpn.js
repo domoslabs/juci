@@ -97,7 +97,8 @@ JUCI.app
 	);
 
 	$rpc.$call("juci.openvpn", "get_config", {}).done(function(data){
-		$scope.data.ovpn_orig = $scope.data.ovpn = data.result;
+		if (data.result)
+			$scope.data.ovpn_orig = $scope.data.ovpn = data.result;
 		$scope.data.changed = false;
 		$scope.$apply();
 	});
