@@ -19,11 +19,11 @@
  */
 
 JUCI.app
-.controller("OpenVPNController", function($scope, $tr, gettext, $uci, $openvpn){
+.controller("OpenVPNController", function($scope, $tr, gettext, $uci, $rpc){
 	$scope.data = {
-		networks: [],
-		output: [],
-		passwd_entries: []
+		ovpn_orig: "",
+		ovpn: "",
+		changed: false
 	};
 
 	$scope.dev_list = [
@@ -92,7 +92,30 @@ JUCI.app
 		$scope.openvpn = $uci.openvpn["@openvpn"][0];
 		//$scope.openvpn.config = $scope.openvpn.auth_user.value+$scope.openvpn.auth_user.value;
 		console.log($scope.openvpn);
+
 	}
 	);
+
+	$rpc.$call("juci.openvpn", "get_config", {}).done(function(data){
+		$scope.data.ovpn_orig = $scope.data.ovpn = data.result;
+		$scope.data.changed = false;
+		$scope.$apply();
+	});
+
+	$scope.$watch("data.ovpn", function(){
+		$scope.data.changed = !($scope.data.ovpn_orig === $scope.data.ovpn);
+
+	});
+
+
+	$scope.save_config = function(){
+		console.log("SAVE pressed");
+		$rpc.$call("juci.openvpn", "set_config", {"data":$scope.data.ovpn}).done(function(data){
+			$scope.data.ovpn_orig = $scope.data.ovpn;
+			$scope.data.changed = false;
+			$scope.$apply();
+			console.log("rpc call done");
+		});
+	};
 
 });

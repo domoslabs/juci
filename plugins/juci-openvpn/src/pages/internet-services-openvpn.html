@@ -84,8 +84,9 @@
 
 			<juci-config-line title="{{ 'The .ovpn config file' | translate}}">
 			</juci-config-line>
-			<div style="margin-left:13px; margin-right:13px">
-			<textarea style="width:100%" rows=10 cols=50 ng-model=openvpn.config.value placeholder="Paste the .ovpn config here"/>
+			<div style="margin-left:15px; margin-right:15px">
+			<textarea style="width:100%" rows=10 cols=50 ng-model="data.ovpn" placeholder="Paste the .ovpn config here"/>
+			<button ng-show="data.changed" ng-click="save_config()" class="btn btn-primary pull-right" style="margin: 15px 0">Save</button>
 			</div>
 		</juci-config-section>
 	</div>
