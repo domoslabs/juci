@@ -74,13 +74,28 @@ JUCI.app
 	];
 
 	//TODO: dont do this here ask $device for it instead
-	$uci.$sync(["ports"/*, "dsl"*/]).done(function(){
+	$uci.$sync(["ports", "dsl"]).done(function(){
 		$scope.interfaces = [];
 		$uci.ports["@ethport"].forEach(function(port){
 			if(port.uplink.value)
-				$scope.interfaces.push({label: port.name.value, value: port.ifname.value });
-			$scope.$apply();
+				$scope.interfaces.push({
+					label: port.name.value + " (" + port.ifname.value + ")",
+					value: port.ifname.value
+				});
 		});
+		$uci.dsl["@atm-device"].forEach(function(atm){
+			$scope.interfaces.push({
+				label: atm.name.value + " (" + atm.device.value + ")",
+				value: atm.device.value
+			});
+		});
+		$uci.dsl["@ptm-device"].forEach(function(ptm){
+			$scope.interfaces.push({
+				label: ptm.name.value + " (" + ptm.device.value + ")",
+				value: ptm.device.value
+			});
+		});
+		$scope.$apply();
 	});
 	$scope.$watchGroup(["device.ifname.value", "device.vid.value"], function(new_val, old_val){
 		if(!$scope.device || $scope.conf.manual_name)
