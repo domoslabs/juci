@@ -18,6 +18,54 @@
  * 02110-1301 USA
  */
 
+JUCI.app.factory("$vlan", function($uci){
+	return {
+		annotateAdapters: function(adapters){
+			console.log(adapters);
+			var def = $.Deferred();
+			var self = this;
+			self.getDevices().done(function(list){
+				var ports = {};
+				list.map(function(x){ ports[x.ifname.value] = x; });
+				adapters.map(function(adapter){
+					if(adapter.device in ports) {
+						adapter.name = ports[adapter.device].name.value;
+						adapter.type = "vlan";
+						adapter.present = true;
+						delete ports[adapter.device];
+					}
+				});
+				Object.keys(ports).map(function(k){
+					var port = ports[k];
+					adapters.push({
+						name: port.name.value,
+						device: port.ifname.value,
+						type: "vlan",
+						state: "DOWN",
+						present: false
+					});
+				});
+				def.resolve();
+			}).fail(function(){
+				def.reject();
+			});
+			return def.promise();
+		},
+		getDevices: function() {
+			var deferred = $.Deferred();
+			var devices = [];
+			$uci.$sync("network").done(function(){
+				devices = $uci.network["@device"] || [];
+			}).always(function(){
+				deferred.resolve(devices);
+			});
+			return deferred.promise();
+		}
+	}
+}).run(function($ethernet, $network, $uci, $vlan){
+	$ethernet.addSubsystem($vlan);
+});
+
 if (!UCI.network)
 	UCI.$registerConfig("network");
 
