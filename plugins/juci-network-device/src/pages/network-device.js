@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("NetworkDevicePage", function($scope, $uci, $juciDialog, $tr, gettext){
+.controller("NetworkDevicePage", function($scope, $uci, $juciDialog, $tr, gettext, $juciConfirm){
 	$uci.$sync("network").done(function(){
 		$scope.devices = $uci.network["@device"];
 		$scope.onCreateDevice = function(){
@@ -50,12 +50,11 @@ JUCI.app
 			});
 		}
 		$scope.onDeleteDevice = function(device){
-			if(!device || !device.$delete || !device.$delete instanceof Function)
-				return;
-			device.$delete().done(function(){
-				$scope.$apply();
-			}).fail(function(e){
-				console.error($tr(gettext("Couldn't delete network device (VLAN)")), device);
+			if(!device) alert($tr(gettext("Please select a device in the list!")));
+			$juciConfirm.show($tr(gettext("Are you sure you want to delete this device?"))).done(function(){
+				device.$delete().done(function(){
+					$scope.$apply();
+				});
 			});
 		}
 	});
