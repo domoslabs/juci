@@ -98,6 +98,9 @@ i[class^="juci-"], i[class*=" juci-"] {
 .juci-usb-dongle:before {
 	content: "\002d";
 }
+.juci-vlan:before {
+	content: "\002e";
+}
 .juci-adsl:before {
 	content: "\0021";
 }
