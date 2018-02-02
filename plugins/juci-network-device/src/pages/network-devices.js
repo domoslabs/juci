@@ -29,7 +29,7 @@ JUCI.app
 
 	$network.getAdapters().done(function(adapters){
 		$scope.adapters = adapters.filter(function(a){
-			return a.present;
+			return a.present && a.name;
 		}).map(function(a){
 			if(a.type === "wireless") a._icon = "juci juci-wifi";
 			if(a.type === "eth-port") a._icon = "juci juci-ethernet";
