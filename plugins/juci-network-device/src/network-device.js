@@ -28,6 +28,11 @@ JUCI.app.factory("$vlan", function($uci){
 				list.map(function(x){ vlans[x.name.value] = x; });
 				adapters.map(function(adapter){
 					if(adapter.device in vlans) {
+						//TODO: figure out how to do this in a good way
+						if(adapter.type === "eth-port"){
+							delete vlans[adapter.device];
+							return;
+						}
 						adapter.name = vlans[adapter.device][".name"];
 						adapter.type = "vlan";
 						delete vlans[adapter.device];
