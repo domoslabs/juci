@@ -2,11 +2,11 @@ JUCI.app
 .directive("overviewStatusWidget01Ethernet", function(){
 	return {
 		templateUrl: "/widgets/overview.ethernet.small.html",
-		controller: "overviewWidgetEthernet",
+		controller: "overviewWidgetEthernetCtrl",
 		replace: true
 	};
 })
-.controller("overviewWidgetEthernet", function($scope, $network, $events, $config){
+.controller("overviewWidgetEthernetCtrl", function($scope, $network, $events, $config){
 	$scope.href = $config.getWidgetLink("overviewStatusWidget01Ethernet");
 	$scope.ethPorts = [];
 	JUCI.interval.repeat("update-ethernet-overview-widget", 10000, function(done){refresh(); done();});
@@ -47,6 +47,8 @@ JUCI.app
 	};
 	$scope.getName = function(port){
 		if(port.name == "WAN") return "W";
+		if(isNaN(port.name.slice(-1)))
+			return "L";
 		return "L"+port.name.slice(-1);
 	};
 });
