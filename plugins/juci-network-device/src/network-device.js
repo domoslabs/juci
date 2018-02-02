@@ -92,7 +92,8 @@ UCI.network.$registerSectionType("device", {
 			return;
 		if(device.vid.value === section.vid.value &&
 				device.ifname.value === section.ifname.value &&
-				section.type.value !== "untagged")
+				section.type.value !== "untagged" &&
+				device.type.value !== "untagged")
 			errors.push(section[".name"] + ", " + JUCI.$tr(gettext("Duplicate VID and Interface")));
 		if(device.name.value === section.name.value)
 			errors.push(section[".name"] + ", " + JUCI.$tr(gettext("Duplicate VLAN name")) + " " + section.name.value);
