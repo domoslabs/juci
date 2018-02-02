@@ -76,6 +76,6 @@ JUCI.app
 	});
 });  
 
-JUCI.app.run(function($usb, $ethernet){
-	$ethernet.addSubsystem($usb);
+JUCI.app.run(function($usb, $network){
+	$network.addSubsystem($usb);
 });

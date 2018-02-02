@@ -17,7 +17,7 @@
  */
 
 JUCI.app
-.factory("$broadcomDsl", function($ethernet, $uci, $rpc){
+.factory("$broadcomDsl", function($network, $uci, $rpc){
 	return {
 		annotateAdapters: function(adapters){
 			var def = $.Deferred(); 
@@ -74,8 +74,8 @@ JUCI.app
 			return $rpc.$call("router.dsl", "stats", {});
 		}
 	}; 
-}).run(function($ethernet, $network, $uci, $broadcomDsl){
-	$ethernet.addSubsystem($broadcomDsl); 
+}).run(function($network, $network, $uci, $broadcomDsl){
+	$network.addSubsystem($broadcomDsl); 
 }); 
 
 

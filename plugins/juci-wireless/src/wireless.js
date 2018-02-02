@@ -186,8 +186,8 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 	return new Wireless();
 });
 
-JUCI.app.run(function($ethernet, $wireless, $uci){
-	$ethernet.addSubsystem($wireless);
+JUCI.app.run(function($network, $wireless, $uci){
+	$network.addSubsystem($wireless);
 	// make sure we create status section if it does not exist.
 	$uci.$sync("wireless").done(function(){
 		if(!$uci.wireless.status) {

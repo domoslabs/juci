@@ -234,6 +234,17 @@ msgstr ""
 msgid "and use it in this"
 msgstr ""
 
+# plugins/juci-network-netifd/src/pages/internet-routes.js
+msgid "Route to"
+msgstr ""
+
+msgid "Unknown"
+msgstr ""
+
+# plugins/juci-network-netifd/src/pages/internet-routes.js
+msgid "Are you sure you want to delete route"
+msgstr ""
+
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # /home/reidar/juci/plugins/juci-network-netifd/src/pages/internet-network.js
 # #-#-#-#-#  template.pot  #-#-#-#-#
@@ -325,6 +336,161 @@ msgstr ""
 msgid "IPv6-Address"
 msgstr ""
 
+msgid "Please select a device in the list!"
+msgstr ""
+
+msgid "Are you sure you want to delete this device from bridge?"
+msgstr ""
+
+msgid "You need to select a network!"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "Not in any configured network"
+msgstr ""
+
+msgid "IP Address"
+msgstr ""
+
+msgid "IPv6 Address"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "DUID"
+msgstr ""
+
+msgid "MAC Address"
+msgstr ""
+
+msgid "DHCP"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "Connected"
+msgstr ""
+
+msgid "Active Connections"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "Link Speed"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "N Mode"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "VHT Mode"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "WME"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "Power Save"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "Frequency"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
+msgid "RSSI"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+msgid "SNR"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "Idle"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "In Network"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "TX Bytes"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+msgid "RX Bytes"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
+msgid "TX Rate"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
+msgid "RX Rate"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.js
+msgid "Diagnose Internet Connection"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-wan.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-net.js
+msgid "Ethernet"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-wan.js
+msgid "ADSL"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-wan.js
+msgid "VDSL"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.js
+msgid "WWAN"
+msgstr ""
+
+msgid "You need to select a device to add!"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-net.js
+msgid "Detailed client overview"
+msgstr ""
+
+msgid "Edit LAN Settings"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/pages/netifd-status-clients.html
+msgid "N/A"
+msgstr ""
+
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
 msgid "Hardware Model"
 msgstr ""
@@ -349,49 +515,6 @@ msgstr ""
 msgid "Number of Clients"
 msgstr ""
 
-msgid "IP Address"
-msgstr ""
-
-msgid "IPv6 Address"
-msgstr ""
-
-msgid "MAC Address"
-msgstr ""
-
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
-msgid "RSSI"
-msgstr ""
-
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
-msgid "SNR"
-msgstr ""
-
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
-msgid "TX Rate"
-msgstr ""
-
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
-msgid "RX Rate"
-msgstr ""
-
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
 # #-#-#-#-#  template.pot  #-#-#-#-#
@@ -401,9 +524,6 @@ msgstr ""
 
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
 msgid "Network Visualization"
-msgstr ""
-
-msgid "Close"
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
@@ -425,15 +545,6 @@ msgstr "TX Errors:"
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
 msgid "RX errors:"
 msgstr "RX Errors:"
-
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-wan.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-net.js
-msgid "Ethernet"
-msgstr ""
 
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-slider-network.js
 msgid "DSL"
@@ -464,147 +575,10 @@ msgstr ""
 msgid "Bridge"
 msgstr ""
 
-msgid "Unknown"
-msgstr ""
-
 msgid "IPv4 address"
 msgstr ""
 
 msgid "IPv6 address"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
-msgid "Not in any configured network"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
-msgid "DUID"
-msgstr ""
-
-msgid "DHCP"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
-msgid "Connected"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
-msgid "Link Speed"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
-msgid "N Mode"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
-msgid "VHT Mode"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
-msgid "WME"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
-msgid "Power Save"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
-msgid "Frequency"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
-msgid "Idle"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
-msgid "In Network"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
-msgid "TX Bytes"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
-msgid "RX Bytes"
-msgstr ""
-
-msgid "You need to select a host!"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-wan.js
-msgid "ADSL"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-wan.js
-msgid "VDSL"
-msgstr ""
-
-msgid "You need to select a device to add!"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.js
-msgid "PAP"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.js
-msgid "CHAP"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.js
-msgid "Both"
-msgstr ""
-
-msgid "None"
-msgstr ""
-
-msgid "UMTS/GPRS"
-msgstr ""
-
-msgid "UMTS only"
-msgstr ""
-
-msgid "GPRS only"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-3g-edit.js
-msgid "EVDO"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-net.js
-msgid "Detailed client overview"
-msgstr ""
-
-msgid "Edit LAN Settings"
-msgstr ""
-
-msgid "Save"
-msgstr ""
-
-msgid "Try"
-msgstr ""
-
-msgid "Force"
-msgstr ""
-
-msgid "Auto"
-msgstr ""
-
-msgid "Disabled"
-msgstr ""
-
-msgid "Uplink"
-msgstr ""
-
-msgid "Downlink"
-msgstr ""
-
-msgid "Address Allocation"
-msgstr ""
-
-msgid "Address Assignment"
-msgstr ""
-
-msgid "You need to select a network!"
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-dns-config.js
@@ -622,14 +596,29 @@ msgstr ""
 msgid "Anywan"
 msgstr ""
 
-# plugins/juci-network-netifd/src/widgets/network-connection-proto-none-edit.js
-msgid "Bridge devices"
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Reboot"
 msgstr ""
 
-msgid "Please select a device in the list!"
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.js
+msgid "Are you sure you want to reboot?"
 msgstr ""
 
-msgid "Are you sure you want to delete this device from bridge?"
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.js
+msgid "Yes"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.js
+msgid "No"
+msgstr ""
+
+msgid "Uplink"
+msgstr ""
+
+msgid "Downlink"
 msgstr ""
 
 # plugins/juci-network-netifd/src/widgets/network-connection-type-none-edit.js
@@ -647,61 +636,57 @@ msgid ""
 "way to get it back is to reload the page"
 msgstr ""
 
-msgid "Use broadcast flag"
+msgid "You need to select a host!"
 msgstr ""
 
-msgid "Required for certain ISPs, e.g. Charter with DOCSIS 3"
+# plugins/juci-network-netifd/src/widgets/network-connection-proto-none-edit.js
+msgid "Bridge devices"
 msgstr ""
 
-msgid "Use default gateway"
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.js
+msgid "PAP"
 msgstr ""
 
-msgid "If unchecked, no default route is configured"
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.js
+msgid "CHAP"
 msgstr ""
 
-msgid "Use DNS servers advertised by peer"
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.js
+msgid "Both"
 msgstr ""
 
-msgid "If unchecked, the advertised DNS server addresses are ignored"
+msgid "None"
 msgstr ""
 
-msgid "Additional DHCP options to request from the server"
+msgid "Try"
 msgstr ""
 
-msgid "Client ID to send when requesting DHCP"
+msgid "Force"
 msgstr ""
 
-msgid "Custom client ID"
+msgid "Auto"
 msgstr ""
 
-msgid "Vendor Class to send when requesting DHCP"
+msgid "Disabled"
 msgstr ""
 
-msgid "Custom Vendor class"
+msgid "UMTS/GPRS"
 msgstr ""
 
-msgid "Modem device"
+msgid "UMTS only"
 msgstr ""
 
-msgid "Service Type"
+msgid "GPRS only"
 msgstr ""
 
-msgid "APN"
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-3g-edit.js
+msgid "EVDO"
 msgstr ""
 
-msgid "PIN-code"
+msgid "Address Allocation"
 msgstr ""
 
-msgid "PAP/CHAP Username"
-msgstr ""
-
-msgid "Username"
-msgstr ""
-
-msgid "PAP/CHAP Password"
-msgstr ""
-
-msgid "Password"
+msgid "Address Assignment"
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-wan-dns-settings-edit.html
@@ -715,99 +700,14 @@ msgstr ""
 msgid "For {{interface['.name'].toUpperCase()}} interface"
 msgstr ""
 
-msgid "Enable IPv negotiation on the PPP link"
-msgstr ""
-
-msgid "LCP echo failure threshold"
-msgstr ""
-
-msgid ""
-"Presume peer to be dead after given amount of LCP echo failures, use 0 to "
-"ignore failures"
-msgstr ""
-
-msgid "LCP echo interval"
-msgstr ""
-
-msgid "Inactivity timeout"
-msgstr ""
-
-msgid ""
-"Close inactive connection after the given amount of seconds, use 0 to "
-"persist connection"
-msgstr ""
-
-msgid "LAN"
-msgstr ""
-
-msgid "Tunnel Link"
-msgstr ""
-
-msgid "Use TTL on tunnel interface"
-msgstr ""
-
 msgid "Add/Remove custom DNS Servers"
 msgstr ""
 
-msgid "Enable IPv6 negotiation on the PPP link"
-msgstr ""
-
-msgid "IPv4 Address"
-msgstr ""
-
-msgid "IPv4 Subnet Mask"
-msgstr ""
-
-msgid "IPv4 Broadcast"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/lan-connection-settings-edit.html
-msgid "DHCP Server"
-msgstr ""
-
-msgid "Modem init timeout"
-msgstr ""
-
-msgid "Maximum amount of seconds to wait for the modem to become ready"
-msgstr ""
-
-msgid ""
-"Send LCP echo requests at the given interval in seconds, only effective in "
-"conjunction with failure threshold"
-msgstr ""
-
-msgid "Hostname to send when requesting DHCP"
+# plugins/juci-network-netifd/src/widgets/network-connection-dns-config.html
+msgid "These DNS entries will be applied on the interface"
 msgstr ""
 
 msgid "Hostname"
-msgstr ""
-
-msgid "Interface Name"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-create.html
-msgid "Interface type"
-msgstr ""
-
-msgid "Request IPv6 address"
-msgstr ""
-
-msgid "Request Prefix Length"
-msgstr ""
-
-msgid "Client ID"
-msgstr ""
-
-msgid "Vendo Class"
-msgstr ""
-
-msgid "L2TP Server"
-msgstr ""
-
-msgid "PAP/CHAP username"
-msgstr ""
-
-msgid "PAP/CHAP password"
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/overview-net-expanded.html
@@ -842,6 +742,19 @@ msgstr ""
 msgid "Do not add to firewall zone"
 msgstr ""
 
+msgid "IPv4 Address"
+msgstr ""
+
+msgid "IPv4 Subnet Mask"
+msgstr ""
+
+msgid "IPv4 Broadcast"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/lan-connection-settings-edit.html
+msgid "DHCP Server"
+msgstr ""
+
 msgid "WAN"
 msgstr ""
 
@@ -851,37 +764,131 @@ msgstr ""
 msgid "OFFLINE"
 msgstr ""
 
-msgid "Local IPv4 address"
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Your router does not have Internet connection!"
 msgstr ""
 
-msgid "Leave empty to use the current WAN address"
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Please check that WAN cable is connected."
 msgstr ""
 
-msgid "Remote IPv4 address"
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Reload Network"
 msgstr ""
 
-msgid "The IPv4 address of the relay"
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Click Reload button to refresh WAN connection"
 msgstr ""
 
-msgid "IPv6 prefix"
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Reload"
 msgstr ""
 
-msgid "The IPv6 prefix assigned to the provider, usually ends with ::"
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Reboot Router"
 msgstr ""
 
-msgid "IPv6 prefix length"
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Click Reboot button to restart your system"
 msgstr ""
 
-msgid "The length of the IPv6 prefix in bits"
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Your Internet connection is up!"
 msgstr ""
 
-msgid "IPv4 prefix length"
+# plugins/juci-network-netifd/src/widgets/overview-wan-fix.html
+msgid "Do not show this again"
 msgstr ""
 
-msgid "Default gateway"
+msgid "LAN"
+msgstr ""
+
+msgid "Interface Name"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-create.html
+msgid "Interface type"
 msgstr ""
 
 msgid "Select Base Device"
+msgstr ""
+
+msgid "Interface"
+msgstr ""
+
+msgid "Target"
+msgstr ""
+
+msgid "Netmask"
+msgstr ""
+
+msgid "Gateway"
+msgstr ""
+
+msgid "Metric"
+msgstr ""
+
+msgid "0"
+msgstr ""
+
+msgid "MTU"
+msgstr ""
+
+msgid "IP MTU"
+msgstr ""
+
+msgid "General"
+msgstr ""
+
+msgid "Choose Configuration Option"
+msgstr ""
+
+msgid "Physical Settings"
+msgstr ""
+
+msgid "Advanced"
+msgstr ""
+
+msgid "Bring up on boot"
+msgstr ""
+
+msgid "Use gateway metric"
+msgstr ""
+
+msgid "Override MAC address"
+msgstr ""
+
+msgid "Override MTU"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "Device:"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "IPv4-Address ({{$index+1}}):"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "IPv6-Address ({{$index+1}}):"
+msgstr ""
+
+msgid "No Lan networks"
+msgstr ""
+
+msgid "No Clients in {{network['.name'].toUpperCase()}} network"
+msgstr ""
+
+msgid "Select Connected Host"
+msgstr ""
+
+msgid "Select a host"
+msgstr ""
+
+msgid "Select Network"
+msgstr ""
+
+msgid "Select network device"
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.html
@@ -912,6 +919,14 @@ msgstr ""
 msgid "Clients current network"
 msgstr ""
 
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Tag"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "No tag set"
+msgstr ""
+
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.html
 msgid "DUID (IPv6)"
 msgstr ""
@@ -928,178 +943,24 @@ msgstr ""
 msgid "Parental Control"
 msgstr ""
 
-msgid "Select Connected Host"
+# plugins/juci-network-netifd/src/widgets/network-client-edit.html
+msgid "Realtime Graphs"
 msgstr ""
 
-msgid "Select a host"
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "No WAN Network"
 msgstr ""
 
-msgid ""
-"This is usually the address of the nearest PoP operated by the tunnel broker"
-msgstr ""
-
-msgid "Local IPv6 address"
-msgstr ""
-
-msgid ""
-"This is the local endpoint address assigned by the tunnel broker, it usually "
-"ends with :2"
-msgstr ""
-
-msgid "IPv6 routed prefix"
-msgstr ""
-
-msgid ""
-"This is the prefix routed to you by the tunnel broker for use by clients"
-msgstr ""
-
-msgid "Dynamic tunnel"
-msgstr ""
-
-msgid "Enable HE.net dynamic endpoint update"
-msgstr ""
-
-msgid "Tunnel ID"
-msgstr ""
-
-msgid "HE.net username"
-msgstr ""
-
-msgid "This is the plain username for logging into the account"
-msgstr ""
-
-msgid "HE.net password"
-msgstr ""
-
-msgid ""
-"This is either the Update Key configured for the tunnel or the account "
-"password if no update key has been configured"
-msgstr ""
-
-msgid "Hostname to include in DHCP requests"
-msgstr ""
-
-msgid "Create default route"
-msgstr ""
-
-msgid "Automatically set up default route for this interface"
-msgstr ""
-
-msgid "No Lan networks"
-msgstr ""
-
-msgid "No Clients in {{network['.name'].toUpperCase()}} network"
-msgstr ""
-
-msgid "VPN Server"
-msgstr ""
-
-msgid "IPv6 Assign"
-msgstr ""
-
-msgid "Prefix Size"
-msgstr ""
-
-msgid "IPv4 Assign"
-msgstr ""
-
-msgid "DNS Name"
-msgstr ""
-
-msgid "Select Modem Device"
-msgstr ""
-
-msgid "Select Network"
-msgstr ""
-
-msgid "Select network device"
-msgstr ""
-
-msgid "Custom delegated IPv6-prefix"
-msgstr ""
-
-msgid "DS-Lite AFTR address"
-msgstr ""
-
-msgid "General"
-msgstr ""
-
-msgid "Choose Configuration Option"
-msgstr ""
-
-msgid "Physical Settings"
-msgstr ""
-
-msgid "Advanced"
-msgstr ""
-
-msgid "Bring up on boot"
-msgstr ""
-
-msgid "Use gateway metric"
-msgstr ""
-
-msgid "Override MAC address"
-msgstr ""
-
-msgid "Override MTU"
-msgstr ""
-
-msgid "Method"
-msgstr ""
-
-# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
-msgid "Device:"
-msgstr ""
-
-# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
-msgid "IPv4-Address ({{$index+1}}):"
-msgstr ""
-
-# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
-msgid "IPv6-Address ({{$index+1}}):"
-msgstr ""
-
-msgid "IPv4 Default Gateway"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-static-edit.html
-msgid "IPv6 Assignment Length"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-static-edit.html
-msgid "Leave empty to disable"
-msgstr ""
-
-msgid "IPv6 Assigned Prefix Hint"
-msgstr ""
-
-msgid "Prefix hint"
-msgstr ""
-
-msgid "Static IPv6 Address"
-msgstr ""
-
-msgid "IPv6 Default Gateway"
-msgstr ""
-
-msgid "Default IPv6 Gateway"
-msgstr ""
-
-msgid "IPv6 Prefix"
-msgstr ""
-
-msgid "IPv6 Address Mask"
-msgstr ""
-
-msgid "IPv4 Settings"
-msgstr ""
-
-msgid "IPv6 Settings"
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "Diagnose"
 msgstr ""
 
 # plugins/juci-network-netifd/src/widgets/overview-wan.html
 msgid "Internet"
+msgstr ""
+
+# plugins/juci-network-netifd/src/widgets/overview-wan.html
+msgid "Link"
 msgstr ""
 
 # plugins/juci-network-netifd/src/widgets/overview-wan.html
@@ -1129,44 +990,7 @@ msgstr ""
 msgid "Network device"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.html
-msgid "Authentication type"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.html
-msgid "Modes"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.html
-msgid ""
-"Allowed network modes, comma separated list of: all, lte, umts, gsm, cdma, "
-"td-scdma"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.html
-msgid "Delay"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.html
-msgid "Seconds to wait before trying to interact with the modem"
-msgstr ""
-
-msgid "Access Concentrator"
-msgstr ""
-
-msgid "Leave empty to autodetect"
-msgstr ""
-
-msgid "auto"
-msgstr ""
-
-msgid "Service Name"
-msgstr ""
-
-msgid "username"
-msgstr ""
-
-msgid "password"
+msgid "IPv6 Gateway"
 msgstr ""
 
 msgid "Static Routes"
@@ -1180,43 +1004,7 @@ msgstr ""
 msgid "IPv4 Routes"
 msgstr ""
 
-msgid "Target IP Address"
-msgstr ""
-
-msgid "Netmask"
-msgstr ""
-
-msgid "Default Gateway"
-msgstr ""
-
-msgid "0"
-msgstr ""
-
-msgid "IP MTU"
-msgstr ""
-
 msgid "IPv6 Routes"
-msgstr ""
-
-msgid "IPv6 Gateway"
-msgstr ""
-
-msgid "Interface"
-msgstr ""
-
-msgid "Target"
-msgstr ""
-
-msgid "Gateway"
-msgstr ""
-
-msgid "Metric"
-msgstr ""
-
-msgid "MTU"
-msgstr ""
-
-msgid "Active Connections"
 msgstr ""
 
 msgid "Connections for each Device"
@@ -1248,10 +1036,6 @@ msgstr ""
 
 # plugins/juci-network-netifd/src/pages/status-network-nat.html
 msgid "Dest. Port"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-network-netifd/src/pages/netifd-status-clients.html
-msgid "N/A"
 msgstr ""
 
 msgid "Connected Clients"
@@ -1314,6 +1098,9 @@ msgstr ""
 "This page provides an overview of main parameters of your router. This can "
 "help you to optimize your router or identify potential problems."
 
+msgid "IPv6 Prefix"
+msgstr ""
+
 msgid "Primary DNS"
 msgstr ""
 
@@ -1323,29 +1110,332 @@ msgstr ""
 msgid "Line Status"
 msgstr ""
 
-msgid "menu-netifd-status-clients-title"
-msgstr "Clients"
+msgid "Use broadcast flag"
+msgstr ""
 
-msgid "menu-status-network-nat-title"
-msgstr "NAT"
+msgid "Required for certain ISPs, e.g. Charter with DOCSIS 3"
+msgstr ""
 
-msgid "menu-status-network-title"
-msgstr "Network"
+msgid "Use default gateway"
+msgstr ""
+
+msgid "If unchecked, no default route is configured"
+msgstr ""
+
+msgid "Use DNS servers advertised by peer"
+msgstr ""
+
+msgid "If unchecked, the advertised DNS server addresses are ignored"
+msgstr ""
+
+msgid "Additional DHCP options to request from the server"
+msgstr ""
+
+msgid "Client ID to send when requesting DHCP"
+msgstr ""
+
+msgid "Custom client ID"
+msgstr ""
+
+msgid "Vendor Class to send when requesting DHCP"
+msgstr ""
+
+msgid "Custom Vendor class"
+msgstr ""
+
+msgid "Modem device"
+msgstr ""
+
+msgid "Service Type"
+msgstr ""
+
+msgid "APN"
+msgstr ""
+
+msgid "PIN-code"
+msgstr ""
+
+msgid "PAP/CHAP Username"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "PAP/CHAP Password"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Enable IPv6 negotiation on the PPP link"
+msgstr ""
+
+msgid "LCP echo failure threshold"
+msgstr ""
+
+msgid ""
+"Presume peer to be dead after given amount of LCP echo failures, use 0 to "
+"ignore failures"
+msgstr ""
+
+msgid "LCP echo interval"
+msgstr ""
+
+msgid "Inactivity timeout"
+msgstr ""
+
+msgid ""
+"Close inactive connection after the given amount of seconds, use 0 to "
+"persist connection"
+msgstr ""
+
+msgid ""
+"Send LCP echo requests at the given interval in seconds, only effective in "
+"conjunction with failure threshold"
+msgstr ""
+
+msgid "IPv4 Default Gateway"
+msgstr ""
+
+msgid "Create default route"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-static-edit.html
+msgid "IPv6 Assignment Length"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-static-edit.html
+msgid "Leave empty to disable"
+msgstr ""
+
+msgid "IPv6 Assigned Prefix Hint"
+msgstr ""
+
+msgid "Prefix hint"
+msgstr ""
+
+msgid "Static IPv6 Address"
+msgstr ""
+
+msgid "IPv6 Default Gateway"
+msgstr ""
+
+msgid "Default IPv6 Gateway"
+msgstr ""
+
+msgid "IPv6 Address Mask"
+msgstr ""
+
+msgid "IPv4 Settings"
+msgstr ""
+
+msgid "IPv6 Settings"
+msgstr ""
+
+msgid "Hostname to send when requesting DHCP"
+msgstr ""
+
+msgid "Request IPv6 address"
+msgstr ""
+
+msgid "Request Prefix Length"
+msgstr ""
+
+msgid "Client ID"
+msgstr ""
+
+msgid "Vendo Class"
+msgstr ""
+
+msgid "Local IPv4 address"
+msgstr ""
+
+msgid "Leave empty to use the current WAN address"
+msgstr ""
+
+msgid "Remote IPv4 address"
+msgstr ""
+
+msgid "The IPv4 address of the relay"
+msgstr ""
+
+msgid "IPv6 prefix"
+msgstr ""
+
+msgid "The IPv6 prefix assigned to the provider, usually ends with ::"
+msgstr ""
+
+msgid "IPv6 prefix length"
+msgstr ""
+
+msgid "The length of the IPv6 prefix in bits"
+msgstr ""
+
+msgid "IPv4 prefix length"
+msgstr ""
+
+msgid "Modem init timeout"
+msgstr ""
+
+msgid "Maximum amount of seconds to wait for the modem to become ready"
+msgstr ""
+
+msgid "Default gateway"
+msgstr ""
+
+msgid "Use TTL on tunnel interface"
+msgstr ""
+
+msgid "L2TP Server"
+msgstr ""
+
+msgid "PAP/CHAP username"
+msgstr ""
+
+msgid "PAP/CHAP password"
+msgstr ""
+
+msgid "IPv6 Assign"
+msgstr ""
+
+msgid "Prefix Size"
+msgstr ""
+
+msgid "IPv4 Assign"
+msgstr ""
+
+msgid "DNS Name"
+msgstr ""
+
+msgid ""
+"This is usually the address of the nearest PoP operated by the tunnel broker"
+msgstr ""
+
+msgid "Local IPv6 address"
+msgstr ""
+
+msgid ""
+"This is the local endpoint address assigned by the tunnel broker, it usually "
+"ends with :2"
+msgstr ""
+
+msgid "IPv6 routed prefix"
+msgstr ""
+
+msgid ""
+"This is the prefix routed to you by the tunnel broker for use by clients"
+msgstr ""
+
+msgid "Dynamic tunnel"
+msgstr ""
+
+msgid "Enable HE.net dynamic endpoint update"
+msgstr ""
+
+msgid "Tunnel ID"
+msgstr ""
+
+msgid "HE.net username"
+msgstr ""
+
+msgid "This is the plain username for logging into the account"
+msgstr ""
+
+msgid "HE.net password"
+msgstr ""
+
+msgid ""
+"This is either the Update Key configured for the tunnel or the account "
+"password if no update key has been configured"
+msgstr ""
+
+msgid "Hostname to include in DHCP requests"
+msgstr ""
+
+msgid "Automatically set up default route for this interface"
+msgstr ""
+
+msgid "VPN Server"
+msgstr ""
+
+msgid "Select Modem Device"
+msgstr ""
+
+msgid "Custom delegated IPv6-prefix"
+msgstr ""
+
+msgid "Enable IPv negotiation on the PPP link"
+msgstr ""
+
+msgid "DS-Lite AFTR address"
+msgstr ""
+
+msgid "Tunnel Link"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.html
+msgid "Authentication type"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.html
+msgid "Modes"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.html
+msgid ""
+"Allowed network modes, comma separated list of: all, lte, umts, gsm, cdma, "
+"td-scdma"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.html
+msgid "Delay"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.html
+msgid "Seconds to wait before trying to interact with the modem"
+msgstr ""
+
+msgid "Access Concentrator"
+msgstr ""
+
+msgid "Leave empty to autodetect"
+msgstr ""
+
+msgid "auto"
+msgstr ""
+
+msgid "Service Name"
+msgstr ""
+
+msgid "username"
+msgstr ""
+
+msgid "password"
+msgstr ""
 
 msgid "menu-internet-routes-title"
 msgstr "Static Routes"
 
+msgid "menu-status-network-nat-title"
+msgstr "NAT"
+
+msgid "menu-netifd-status-clients-title"
+msgstr "Clients"
+
 msgid "menu-internet-network-title"
 msgstr "Connections"
 
-msgid "menu-status-network-routes-title"
-msgstr "Routing Tables"
+# plugins/juci-network-netifd/src/pages/network.html
+msgid "menu-network-title"
+msgstr "Network"
 
 msgid "menu-internet-services-title"
 msgstr "Services"
 
-# plugins/juci-network-netifd/src/pages/network.html
-msgid "menu-network-title"
+msgid "menu-status-network-routes-title"
+msgstr "Routing Tables"
+
+msgid "menu-status-network-title"
 msgstr "Network"
 
 #~ msgid "menu-internet-title"

@@ -29,13 +29,13 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("networkConnectionTypeBridgeEdit", function($rootScope, $scope, $ethernet, $modal, $tr, gettext, $uci, $networkHelper, $juciConfirm){
+.controller("networkConnectionTypeBridgeEdit", function($rootScope, $scope, $network, $modal, $tr, gettext, $uci, $networkHelper, $juciConfirm){
 	$scope.getItemTitle = function(dev){
 		return dev.name + " ("+dev.device+")"; 
 	}
 	function updateDevices(net){
 		if(!net) return;
-		$ethernet.getAdapters().done(function(adapters){
+		$network.getAdapters().done(function(adapters){
 			var filtered = adapters.filter(function(ad){ return ad.type !== "eth-bridge" && ad.device;});
 			var aptmap = {};
 			if(net.is_lan && net.is_lan.value){

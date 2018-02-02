@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 msgid "valid values are: 'no' and 48-64"
 msgstr "sallitut arvot ovat: 'ei' ja 48-64"
@@ -339,6 +339,9 @@ msgstr "Valitse laite luettelosta!"
 msgid "Are you sure you want to delete this device from bridge?"
 msgstr "Haluatko varmasti poistaa tämän laitteen sillasta?"
 
+msgid "You need to select a network!"
+msgstr "Valitse verkko!"
+
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
 msgid "Not in any configured network"
 msgstr "Ei missään määritetty verkossa"
@@ -362,6 +365,9 @@ msgstr "DHCP IPv4"
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
 msgid "Connected"
 msgstr "Yhdistetty"
+
+msgid "Active Connections"
+msgstr "Aktiivisia yhteyksiä"
 
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.js
 msgid "Link Speed"
@@ -468,6 +474,16 @@ msgstr ""
 msgid "You need to select a device to add!"
 msgstr "Valitse lisättävä laite!"
 
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-net.js
+msgid "Detailed client overview"
+msgstr "Tarkka yleisnäkymä"
+
+msgid "Edit LAN Settings"
+msgstr "IPv4-asetukset"
+
+msgid "Save"
+msgstr "Tallenna"
+
 # /home/jari/GIT/IOPSYS/juci/plugins/juci-network-netifd/src/pages/netifd-status-clients.html
 msgid "N/A"
 msgstr "Ei saatavilla"
@@ -562,9 +578,6 @@ msgstr "IPv4 Osoite"
 msgid "IPv6 address"
 msgstr "IPv6 Osoite"
 
-msgid "You need to select a network!"
-msgstr "Valitse verkko!"
-
 # /home/reidar/juci/plugins/juci-network-netifd/src/widgets/network-connection-dns-config.js
 msgid "All DNS-servers must be valid"
 msgstr "Kaikkien DNS-palvelimien tulee olla voimassa olevia"
@@ -599,9 +612,6 @@ msgstr "Kyllä"
 msgid "No"
 msgstr "Ei"
 
-msgid "You need to select a host!"
-msgstr "Valitse isäntäkone!"
-
 msgid "Uplink"
 msgstr "Lähetys"
 
@@ -625,28 +635,33 @@ msgstr ""
 "Haluatko varmasti vaihtaa? Kaikki asetukset menetetään!<br />Takaisin pääsee "
 "vain päivittämällä sivun"
 
-# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/overview-net.js
-msgid "Detailed client overview"
-msgstr "Tarkka yleisnäkymä"
-
-msgid "Edit LAN Settings"
-msgstr "IPv4-asetukset"
-
-msgid "Save"
-msgstr "Tallenna"
+msgid "You need to select a host!"
+msgstr "Valitse isäntäkone!"
 
 # plugins/juci-network-netifd/src/widgets/network-connection-proto-none-edit.js
 msgid "Bridge devices"
 msgstr "Sillatut liitännät"
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.js
+msgid "PAP"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.js
+msgid "CHAP"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.js
+msgid "Both"
+msgstr "Molemmat"
+
+msgid "None"
+msgstr "None"
 
 msgid "Try"
 msgstr "Try"
 
 msgid "Force"
 msgstr "Pakota"
-
-msgid "None"
-msgstr "None"
 
 msgid "Auto"
 msgstr "Auto"
@@ -673,18 +688,6 @@ msgstr "Osoitejako"
 msgid "Address Assignment"
 msgstr "Osoitteen varaaminen"
 
-# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.js
-msgid "PAP"
-msgstr ""
-
-# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.js
-msgid "CHAP"
-msgstr ""
-
-# /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-connection-proto-wwan-edit.js
-msgid "Both"
-msgstr "Molemmat"
-
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-wan-dns-settings-edit.html
 msgid "Acquired DNS servers"
 msgstr "Opitut DNS palvelimet"
@@ -695,9 +698,6 @@ msgstr "Opittu"
 
 msgid "For {{interface['.name'].toUpperCase()}} interface"
 msgstr "{{interface['.name'].toUpperCase()}} liitännälle"
-
-msgid "LAN"
-msgstr "Lähiverkko (LAN)"
 
 msgid "Add/Remove custom DNS Servers"
 msgstr "Lisää/poista mukautettuja DNS palvelimia"
@@ -802,11 +802,8 @@ msgstr "Internetyhteytesi toimii!"
 msgid "Do not show this again"
 msgstr "Älä näytä uudelleen"
 
-msgid "Select Connected Host"
-msgstr "Valitse Yhdistetty Isäntäkone"
-
-msgid "Select a host"
-msgstr "Valitse isäntäkone"
+msgid "LAN"
+msgstr "Lähiverkko (LAN)"
 
 msgid "Interface Name"
 msgstr "Liitännän Nimi"
@@ -841,6 +838,60 @@ msgstr "MTU"
 
 msgid "IP MTU"
 msgstr "Liitännän Tyyppi"
+
+msgid "General"
+msgstr "Yleiset"
+
+msgid "Choose Configuration Option"
+msgstr "Valitse Konfiguraatiovaihtoehto"
+
+msgid "Physical Settings"
+msgstr "IPv4-asetukset"
+
+msgid "Advanced"
+msgstr "Lisäasetukset"
+
+msgid "Bring up on boot"
+msgstr "Automaattinen käynnistys"
+
+msgid "Use gateway metric"
+msgstr "Käytä reitittimen metric-arvoa"
+
+msgid "Override MAC address"
+msgstr "Muuta MAC osoite"
+
+msgid "Override MTU"
+msgstr "Mujuta  MTU"
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "Device:"
+msgstr "Laite:"
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "IPv4-Address ({{$index+1}}):"
+msgstr "IPv4-osoite ({{$ index   1}}):"
+
+# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
+msgid "IPv6-Address ({{$index+1}}):"
+msgstr "IPv6-osoite ({{$ index   1}}):"
+
+msgid "No Lan networks"
+msgstr "Ei laitteita"
+
+msgid "No Clients in {{network['.name'].toUpperCase()}} network"
+msgstr "Ei asiakaslaitteita {{network['.name'].toUpperCase()}} verkossa"
+
+msgid "Select Connected Host"
+msgstr "Valitse Yhdistetty Isäntäkone"
+
+msgid "Select a host"
+msgstr "Valitse isäntäkone"
+
+msgid "Select Network"
+msgstr "Valitse verkko"
+
+msgid "Select network device"
+msgstr "Valitse verkkolaite"
 
 # /home/jamu/GIT/juci/plugins/juci-network-netifd/src/widgets/network-client-edit.html
 msgid "Client Status"
@@ -897,54 +948,6 @@ msgstr "Käytönvalvonta"
 # plugins/juci-network-netifd/src/widgets/network-client-edit.html
 msgid "Realtime Graphs"
 msgstr "Reaaliaikainen käyttögrafiikka"
-
-msgid "General"
-msgstr "Yleiset"
-
-msgid "Choose Configuration Option"
-msgstr "Valitse Konfiguraatiovaihtoehto"
-
-msgid "Physical Settings"
-msgstr "IPv4-asetukset"
-
-msgid "Advanced"
-msgstr "Lisäasetukset"
-
-msgid "Bring up on boot"
-msgstr "Automaattinen käynnistys"
-
-msgid "Use gateway metric"
-msgstr "Käytä reitittimen metric-arvoa"
-
-msgid "Override MAC address"
-msgstr "Muuta MAC osoite"
-
-msgid "Override MTU"
-msgstr "Mujuta  MTU"
-
-# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
-msgid "Device:"
-msgstr "Laite:"
-
-# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
-msgid "IPv4-Address ({{$index+1}}):"
-msgstr "IPv4-osoite ({{$ index   1}}):"
-
-# plugins/juci-network-netifd/src/widgets/network-connection-edit.html
-msgid "IPv6-Address ({{$index+1}}):"
-msgstr "IPv6-osoite ({{$ index   1}}):"
-
-msgid "No Lan networks"
-msgstr "Ei laitteita"
-
-msgid "No Clients in {{network['.name'].toUpperCase()}} network"
-msgstr "Ei asiakaslaitteita {{network['.name'].toUpperCase()}} verkossa"
-
-msgid "Select Network"
-msgstr "Valitse verkko"
-
-msgid "Select network device"
-msgstr "Valitse verkkolaite"
 
 # plugins/juci-network-netifd/src/widgets/overview-wan.html
 msgid "No WAN Network"
@@ -1003,9 +1006,6 @@ msgstr "IPv4-reititystaulukko"
 
 msgid "IPv6 Routes"
 msgstr "IPv6-reititystaulukko"
-
-msgid "Active Connections"
-msgstr "Aktiivisia yhteyksiä"
 
 msgid "Connections for each Device"
 msgstr "Laitteiden yhteydet"
@@ -1112,26 +1112,65 @@ msgstr "Secondary DNS"
 msgid "Line Status"
 msgstr "Linjan tila"
 
+msgid "Use broadcast flag"
+msgstr "Käytä broadcast flag"
+
+msgid "Required for certain ISPs, e.g. Charter with DOCSIS 3"
+msgstr "Jotkin operaattorit vaativat. Esim Charter DOCSIS 3:n kanssa"
+
 msgid "Use default gateway"
 msgstr "Oletusreitti"
-
-msgid "Use DNS servers advertised by peer"
-msgstr "Käytä yhdyskäytävän mainostamia DNS palvelimia"
-
-msgid "Custom delegated IPv6-prefix"
-msgstr "Custom Delegated IPv6 Prefix"
-
-msgid "Client ID to send when requesting DHCP"
-msgstr "Client ID to send when requesting DHCP"
-
-msgid "Enable IPv6 negotiation on the PPP link"
-msgstr "Ota käyttöön IPv6 neuvottelu PPP-linkissä"
 
 msgid "If unchecked, no default route is configured"
 msgstr "Jos ei valittu, oletusreittä ei konfiguroida"
 
+msgid "Use DNS servers advertised by peer"
+msgstr "Käytä yhdyskäytävän mainostamia DNS palvelimia"
+
 msgid "If unchecked, the advertised DNS server addresses are ignored"
 msgstr "Jos ei valittuna, mainostettuja DNS palvelimien osoitteita ei käytetä"
+
+msgid "Additional DHCP options to request from the server"
+msgstr "DHCP:n lisäoptiot joita pyydetään palvelimelta"
+
+msgid "Client ID to send when requesting DHCP"
+msgstr "Client ID to send when requesting DHCP"
+
+msgid "Custom client ID"
+msgstr "Client ID"
+
+msgid "Vendor Class to send when requesting DHCP"
+msgstr "Client ID to send when requesting DHCP"
+
+msgid "Custom Vendor class"
+msgstr "Kustumoitu vendor class"
+
+msgid "Modem device"
+msgstr "Valitse modeemi"
+
+msgid "Service Type"
+msgstr "Palvelut"
+
+msgid "APN"
+msgstr "APN"
+
+msgid "PIN-code"
+msgstr "PIN-koodi"
+
+msgid "PAP/CHAP Username"
+msgstr "Käyttäjänimi"
+
+msgid "Username"
+msgstr "Käyttäjänimi"
+
+msgid "PAP/CHAP Password"
+msgstr "Salasana"
+
+msgid "Password"
+msgstr "Salasana"
+
+msgid "Enable IPv6 negotiation on the PPP link"
+msgstr "Ota käyttöön IPv6 neuvottelu PPP-linkissä"
 
 msgid "LCP echo failure threshold"
 msgstr "LCP echo vian alaraja"
@@ -1160,24 +1199,6 @@ msgid ""
 "Send LCP echo requests at the given interval in seconds, only effective in "
 "conjunction with failure threshold"
 msgstr ""
-
-msgid "Modem init timeout"
-msgstr "Aikakatkaisu"
-
-msgid "Maximum amount of seconds to wait for the modem to become ready"
-msgstr "Enimmäismäärä sekunteita mitä odotetaan modeemia"
-
-msgid "APN"
-msgstr "APN"
-
-msgid "PIN-code"
-msgstr "PIN-koodi"
-
-msgid "Username"
-msgstr "Käyttäjänimi"
-
-msgid "Password"
-msgstr "Salasana"
 
 msgid "IPv4 Default Gateway"
 msgstr "IPv4 Oletusyhdyskäytävä"
@@ -1217,12 +1238,6 @@ msgstr "IPv4-asetukset"
 msgid "IPv6 Settings"
 msgstr "IPv6-asetukset"
 
-msgid "PAP/CHAP Username"
-msgstr "Käyttäjänimi"
-
-msgid "PAP/CHAP Password"
-msgstr "Salasana"
-
 msgid "Hostname to send when requesting DHCP"
 msgstr "Client ID to send when requesting DHCP"
 
@@ -1232,17 +1247,8 @@ msgstr "Request IPv6 address"
 msgid "Request Prefix Length"
 msgstr "Request Prefix Length"
 
-msgid "Use broadcast flag"
-msgstr "Käytä broadcast flag"
-
-msgid "Required for certain ISPs, e.g. Charter with DOCSIS 3"
-msgstr "Jotkin operaattorit vaativat. Esim Charter DOCSIS 3:n kanssa"
-
 msgid "Client ID"
 msgstr "Client ID"
-
-msgid "Vendor Class to send when requesting DHCP"
-msgstr "Client ID to send when requesting DHCP"
 
 msgid "Vendo Class"
 msgstr "Vendor Class"
@@ -1274,14 +1280,26 @@ msgstr "IPv6 etuliitteen pituus bitteinä"
 msgid "IPv4 prefix length"
 msgstr "IPv6 Assigned Prefix Length"
 
-msgid "Enable IPv negotiation on the PPP link"
-msgstr "Ota käyttöön IPv neuvottelu PPP-linkissä"
+msgid "Modem init timeout"
+msgstr "Aikakatkaisu"
+
+msgid "Maximum amount of seconds to wait for the modem to become ready"
+msgstr "Enimmäismäärä sekunteita mitä odotetaan modeemia"
 
 msgid "Default gateway"
 msgstr "Oletusreitti"
 
 msgid "Use TTL on tunnel interface"
 msgstr "Käytä TTL tunneliyhteydessä"
+
+msgid "L2TP Server"
+msgstr "DHCP-palvelin"
+
+msgid "PAP/CHAP username"
+msgstr "PAP/CHAP käyttäjänimi"
+
+msgid "PAP/CHAP password"
+msgstr "Salasana"
 
 msgid "IPv6 Assign"
 msgstr "IPv6 Määritys"
@@ -1347,35 +1365,17 @@ msgstr "DHCP pyyntöön liitettävä isäntänimi"
 msgid "Automatically set up default route for this interface"
 msgstr "Aseta oletusreitti automaattisesti tälle yhteydelle"
 
-msgid "L2TP Server"
-msgstr "DHCP-palvelin"
-
-msgid "PAP/CHAP username"
-msgstr "PAP/CHAP käyttäjänimi"
-
-msgid "PAP/CHAP password"
-msgstr "Salasana"
-
 msgid "VPN Server"
 msgstr "DHCP-palvelin"
 
 msgid "Select Modem Device"
 msgstr "Valitse modeemi"
 
-msgid "Additional DHCP options to request from the server"
-msgstr "DHCP:n lisäoptiot joita pyydetään palvelimelta"
+msgid "Custom delegated IPv6-prefix"
+msgstr "Custom Delegated IPv6 Prefix"
 
-msgid "Custom client ID"
-msgstr "Client ID"
-
-msgid "Custom Vendor class"
-msgstr "Kustumoitu vendor class"
-
-msgid "Modem device"
-msgstr "Valitse modeemi"
-
-msgid "Service Type"
-msgstr "Palvelut"
+msgid "Enable IPv negotiation on the PPP link"
+msgstr "Ota käyttöön IPv neuvottelu PPP-linkissä"
 
 msgid "DS-Lite AFTR address"
 msgstr "DS Lite AFTR osoite"
@@ -1425,29 +1425,29 @@ msgstr "Käyttäjänimi"
 msgid "password"
 msgstr "Salasana"
 
-msgid "menu-status-network-routes-title"
-msgstr "Reitit"
-
-msgid "menu-internet-services-title"
-msgstr "Palvelut"
-
 msgid "menu-internet-routes-title"
 msgstr "Reitit"
+
+msgid "menu-status-network-nat-title"
+msgstr "NAT"
 
 msgid "menu-netifd-status-clients-title"
 msgstr "Yhdistetyt laitteet"
 
-msgid "menu-network-title"
-msgstr "Verkko"
-
 msgid "menu-internet-network-title"
 msgstr "Verkkoyhteydet"
 
+msgid "menu-network-title"
+msgstr "Verkko"
+
+msgid "menu-internet-services-title"
+msgstr "Palvelut"
+
+msgid "menu-status-network-routes-title"
+msgstr "Reitit"
+
 msgid "menu-status-network-title"
 msgstr "Verkon tila"
-
-msgid "menu-status-network-nat-title"
-msgstr "NAT"
 
 #~ msgid "Method"
 #~ msgstr "Method"

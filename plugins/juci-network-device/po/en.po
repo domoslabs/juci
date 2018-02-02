@@ -91,6 +91,30 @@ msgstr ""
 msgid "Vlan Name"
 msgstr ""
 
+# plugins/juci-network-device/src/pages/network-devices.html
+msgid "Layer-2 Devices"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-devices.html
+msgid "internet.ethernet.info"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-devices.html
+msgid "Type"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-devices.html
+msgid "Adapter"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-devices.html
+msgid "MAC"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-devices.html
+msgid "MTU"
+msgstr ""
+
 # plugins/juci-network-device/src/pages/network-device.html
 msgid "VLAN settings"
 msgstr ""
@@ -99,9 +123,17 @@ msgstr ""
 msgid "This section allows you to configure VLAN devices."
 msgstr ""
 
-# plugins/juci-network-device/src/pages/network-device.html
-msgid "menu-network-device-title"
+# plugins/juci-network-device/src/pages/network-devices.html
+msgid "menu-network-devices-title"
+msgstr "Device"
+
+# plugins/juci-network-device/src/pages/network-vlan-device.html
+msgid "menu-network-vlan-device-title"
 msgstr "VLAN"
+
+# plugins/juci-network-device/src/pages/network-device.html
+#~ msgid "menu-network-device-title"
+#~ msgstr "VLAN"
 
 # plugins/juci-network-device/src/pages/internet-device.html
 #~ msgid "menu-internet-device-title"

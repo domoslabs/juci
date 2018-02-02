@@ -19,10 +19,10 @@
  */
 
 JUCI.app
-.controller("InternetNetworkPage", function($firewall, $scope, $uci, $rpc, $network, $ethernet, $tr, gettext, $juciDialog, $juciConfirm, $juciAlert, $localStorage){
+.controller("InternetNetworkPage", function($firewall, $scope, $uci, $rpc, $network, $tr, gettext, $juciDialog, $juciConfirm, $juciAlert, $localStorage){
 	$scope.data = {}; 
 
-	$ethernet.getAdapters().done(function(devices){
+	$network.getAdapters().done(function(devices){
 		$network.getNetworks().done(function(nets){
 			$scope.networks = nets;
 			$scope.networks.map(function(net){

@@ -6,12 +6,12 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("overviewWidgetEthernet", function($scope, $ethernet, $events, $config){
+.controller("overviewWidgetEthernet", function($scope, $network, $events, $config){
 	$scope.href = $config.getWidgetLink("overviewStatusWidget01Ethernet");
 	$scope.ethPorts = [];
 	JUCI.interval.repeat("update-ethernet-overview-widget", 10000, function(done){refresh(); done();});
 	function refresh(){
-		$ethernet.getAdapters().done(function(adapters){
+		$network.getAdapters().done(function(adapters){
 			var ports  = adapters.filter(function(a){ return a.type == "eth-port"; }).sort(function(a, b){
 				if(a.name === "WAN") return 1;
 				if(b.name === "WAN") return -1;

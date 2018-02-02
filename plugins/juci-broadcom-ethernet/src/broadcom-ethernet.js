@@ -106,8 +106,8 @@ JUCI.app.factory("$broadcomEthernet", function($uci){
 	return new Ethernet();
 });
 
-JUCI.app.run(function($ethernet, $broadcomEthernet){
-	$ethernet.addSubsystem($broadcomEthernet);
+JUCI.app.run(function($network, $broadcomEthernet){
+	$network.addSubsystem($broadcomEthernet);
 });
 
 UCI.$registerConfig("layer2_interface_ethernet");

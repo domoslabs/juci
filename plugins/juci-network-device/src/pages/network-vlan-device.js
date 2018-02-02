@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("NetworkDevicePage", function($scope, $uci, $juciDialog, $tr, gettext, $juciConfirm){
+.controller("NetworkVlanDevicePage", function($scope, $uci, $juciDialog, $tr, gettext, $juciConfirm){
 	$uci.$sync("network").done(function(){
 		$scope.devices = $uci.network["@device"];
 		$scope.onCreateDevice = function(){

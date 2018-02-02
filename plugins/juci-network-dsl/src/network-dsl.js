@@ -18,6 +18,59 @@
  * 02110-1301 USA
  */
 
+JUCI.app.factory("$dsl", function($uci){
+	return {
+		annotateAdapters: function(adapters){
+			var def = $.Deferred();
+			var self = this;
+			self.getDevices().done(function(list){
+				var dslDevs = {};
+				list.map(function(x){ dslDevs[x.device.value] = x; });
+				adapters.map(function(adapter){
+					if(adapter.device in dslDevs) {
+						adapter.name = dslDevs[adapter.device].name.value;
+						adapter.type = dslDevs[adapter.device].type;
+						delete dslDevs[adapter.device];
+					}
+				});
+				Object.keys(dslDevs).map(function(k){
+					var dsl = dslDevs[k];
+					adapters.push({
+						name: dsl.name.value,
+						device: dsl.device.value,
+						type: dsl.type,
+						state: "DOWN",
+						present: false
+					});
+				});
+				def.resolve();
+			}).fail(function(){
+				def.reject();
+			});
+			return def.promise();
+		},
+		getDevices: function() {
+			var deferred = $.Deferred();
+			var devices = [];
+			$uci.$sync("dsl").done(function(){
+				($uci.dsl["@atm-device"] || []).forEach(function(atm){
+					atm.type = "atm-device";
+					devices.push(atm);
+				});
+				($uci.dsl["@ptm-device"] || []).forEach(function(ptm){
+					ptm.type = "ptm-device";
+					devices.push(ptm);
+				});
+			}).always(function(){
+				deferred.resolve(devices);
+			});
+			return deferred.promise();
+		}
+	}
+}).run(function($network, $network, $uci, $dsl){
+	$network.addSubsystem($dsl);
+});
+
 if (!UCI.dsl)
 	UCI.$registerConfig("dsl");
 

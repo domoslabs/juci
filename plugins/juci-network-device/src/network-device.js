@@ -21,25 +21,23 @@
 JUCI.app.factory("$vlan", function($uci){
 	return {
 		annotateAdapters: function(adapters){
-			console.log(adapters);
 			var def = $.Deferred();
 			var self = this;
 			self.getDevices().done(function(list){
-				var ports = {};
-				list.map(function(x){ ports[x.ifname.value] = x; });
+				var vlans = {};
+				list.map(function(x){ vlans[x.name.value] = x; });
 				adapters.map(function(adapter){
-					if(adapter.device in ports) {
-						adapter.name = ports[adapter.device].name.value;
+					if(adapter.device in vlans) {
+						adapter.name = vlans[adapter.device][".name"];
 						adapter.type = "vlan";
-						adapter.present = true;
-						delete ports[adapter.device];
+						delete vlans[adapter.device];
 					}
 				});
-				Object.keys(ports).map(function(k){
-					var port = ports[k];
+				Object.keys(vlans).map(function(k){
+					var vlan = vlans[k];
 					adapters.push({
-						name: port.name.value,
-						device: port.ifname.value,
+						name: vlan[".name"],
+						device: vlan.name.value,
 						type: "vlan",
 						state: "DOWN",
 						present: false
@@ -62,8 +60,8 @@ JUCI.app.factory("$vlan", function($uci){
 			return deferred.promise();
 		}
 	}
-}).run(function($ethernet, $network, $uci, $vlan){
-	$ethernet.addSubsystem($vlan);
+}).run(function($network, $vlan){
+	$network.addSubsystem($vlan);
 });
 
 if (!UCI.network)

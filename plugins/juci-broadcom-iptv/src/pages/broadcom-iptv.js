@@ -18,7 +18,7 @@
 
 
 JUCI.app
-.controller("PageBroadcomIptv", function($scope, $tr, $uci, gettext, $ethernet, $network){
+.controller("PageBroadcomIptv", function($scope, $tr, $uci, gettext, $network){
 	$scope.networks = {
 		selected_wan: [],
 		selected_lan: []
@@ -32,7 +32,7 @@ JUCI.app
 		$scope.mcpd = $uci.mcpd.mcpd;
 		var proxy_interfaces = $scope.mcpd.igmp_proxy_interfaces.value.split(" ");
 		var snooping_interfaces = $scope.mcpd.igmp_snooping_interfaces.value.split(" ");
-		$ethernet.getAdapters().done(function(devs){
+		$network.getAdapters().done(function(devs){
 			$scope.networks.lan = devs.map(function(dev){
 				return {
 					name:dev.device,

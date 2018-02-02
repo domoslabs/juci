@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("InternetLayer2", function($scope, $uci, $rpc, $ethernet, $network, $config){
+.controller("NetworkDevicesPageCtrl", function($scope, $uci, $rpc, $network, $config){
 	$scope.config = $config; 
 
 	$scope.order = function(field){
@@ -27,14 +27,16 @@ JUCI.app
 		$scope.reverse = !$scope.reverse; 
 	}
 
-	$ethernet.getAdapters().done(function(adapters){
-		$scope.adapters = adapters.map(function(a){
-			if(a.device.match(/^wl.*/)) a._icon = "juci juci-wifi";
-			if(a.device.match(/^ra.*/)) a._icon = "juci juci-wifi";
-			if(a.device.match(/^eth.*/)) a._icon = "juci juci-ethernet";
-			if(a.device.match(/^br.*/)) a._icon = "juci juci-bridge";
-			if(a.device.match(/^ptm.*/)) a._icon = "juci juci-vdsl";
-			if(a.device.match(/^atm.*/)) a._icon = "juci juci-adsl";
+	$network.getAdapters().done(function(adapters){
+		$scope.adapters = adapters.filter(function(a){
+			return a.present;
+		}).map(function(a){
+			if(a.type === "wireless") a._icon = "juci juci-wifi";
+			if(a.type === "eth-port") a._icon = "juci juci-ethernet";
+			if(a.type === "eth-bridge") a._icon = "juci juci-bridge";
+			if(a.type === "ptm-device") a._icon = "juci juci-vdsl";
+			if(a.type === "atm-device") a._icon = "juci juci-adsl";
+			if(a.type === "vlan") a._icon = "juci juci-vlan";
 			if(!a.statistics || !a.statistics.tx_bytes)
 				a["__tx_bytes"] = "0 B";
 			else if(a.statistics.tx_bytes > 1024*1024)
@@ -52,7 +54,7 @@ JUCI.app
 			else
 				a["__rx_bytes"] = a.statistics.rx_bytes + " B";
 			return a; 
-		}); 
+		});
 		$scope.$apply(); 
 	}); 
 }); 

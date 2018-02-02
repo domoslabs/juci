@@ -22,7 +22,7 @@
 	// add control dependency
 	JUCI.app.requires.push("dropdown-multi-select");
 
-	JUCI.app.factory("$network", function($rpc, $uci, $ethernet, $tr, gettext){
+	JUCI.app.factory("$network", function($rpc, $uci, $tr, gettext){
 
 		function NetworkBackend() {
 			this.clients = [];
@@ -37,13 +37,6 @@
 			this._subsystems.push(subsys);
 		}
 
-		NetworkBackend.prototype.getDevice = function(){
-			alert("$network.getDevice has been removed. No alternative. ");
-		};
-
-		NetworkBackend.prototype.getDevices = function(){
-			alert("$network.getDevices has been removed. Use $ethernet.getDevices instead!");
-		}
 		NetworkBackend.prototype.getProtocolTypes = function(){
 			return [
 				{ label: $tr(gettext("Unmanaged")),								value: "none",		physical: ["bridge"] },
@@ -232,6 +225,42 @@
 			});
 			return def.promise();
 		}
+
+		NetworkBackend.prototype.addSubsystem = function(subsys){
+			if(subsys)
+				this._subsystems.push(subsys);
+		}
+
+		NetworkBackend.prototype.getAdapters = function(){
+			var def = $.Deferred();
+			var self = this;
+			$rpc.$call("network.device", "status").done(function(result){
+				$rpc.$call("router.port", "status").done(function(ports){
+					var res = Object.keys(result).map(function(name){
+						if(name === "lo")
+							return null;
+						result[name].device = name;
+						return result[name];
+					}).filter(function(x){return x !== null;});
+					if(res) {
+						// pipe all adapters though all subsystems and annotate them
+						async.each(self._subsystems, function(sys, next){
+							if(sys.annotateAdapters && sys.annotateAdapters instanceof Function){
+								sys.annotateAdapters(res).always(function(){
+									next();
+								});
+							} else {
+								next();
+							}
+						}, function(){
+							def.resolve(res);
+						});
+					} else def.reject();
+				}).fail(function(e){console.log("error calling router.port status" + JSON.stringify(e));def.reject();});
+			}).fail(function(){ def.reject(); }); 	
+			return def.promise();
+		}
+
 
 		return new NetworkBackend();
 	});
