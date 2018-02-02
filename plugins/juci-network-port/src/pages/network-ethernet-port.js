@@ -1,7 +1,7 @@
 //! Author: Martin K. Schröder <mkschreder.uk@gmail.com>
 
 JUCI.app
-.controller("NetworkEthernetPortCtrl", function($scope, $uci, $broadcomEthernet, $tr, gettext, $rpc){
+.controller("NetworkEthernetPortCtrl", function($scope, $uci, $tr, gettext, $rpc){
 	$scope.has_capability = $rpc.$has_capability;
 	$scope.data = {};
 	$scope.getItemTitle = function(item) {

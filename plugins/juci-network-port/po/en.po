@@ -9,7 +9,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# plugins/juci-network-port/src/pages/network-ethernet-port.js
+msgid "Port Speed"
+msgstr ""
+
+# plugins/juci-network-port/src/pages/network-ethernet-port.js
+msgid "None"
+msgstr ""
 
 msgid "Full auto-negotiation"
 msgstr ""
@@ -41,31 +49,44 @@ msgstr ""
 msgid "Disabled"
 msgstr ""
 
+# plugins/juci-network-port/src/widgets/network-device-ethernet-port-edit.js
+msgid "Only 1000Mb"
+msgstr ""
+
+# plugins/juci-network-port/src/widgets/network-device-ethernet-port-edit.js
+msgid "Only 100Mb"
+msgstr ""
+
+msgid "Ethernet"
+msgstr ""
+
 msgid "Port speed"
 msgstr ""
 
 msgid "Pause frames"
 msgstr ""
 
-msgid "Ethernet"
+msgid "Ethernet Ports"
 msgstr ""
 
 msgid "internet.ethernet.phy.info"
 msgstr "Physical ethernet interfaces configuration"
 
-msgid ""
-"This will be the port that will be used to configure the physical ethernet "
-"port as upling port for routing out to the internet."
+# plugins/juci-network-port/src/pages/network-ethernet-port.html
+msgid "Fiber Ports"
 msgstr ""
 
-msgid "Ethernet Ports"
+# plugins/juci-network-port/src/pages/network-ethernet-port.html
+msgid "Uplink port"
 msgstr ""
 
-msgid "Select uplink port"
+# plugins/juci-network-port/src/pages/network-ethernet-port.html
+msgid "This is used to configure the ethernet port as internet uplink."
 msgstr ""
 
-msgid " socket will be used for passing packets to the internet."
-msgstr ""
-
-msgid "menu-page-broadcom-ethernet-phy-title"
+# plugins/juci-network-port/src/pages/network-ethernet-port.html
+msgid "menu-network-ethernet-port-title"
 msgstr "Ethernet"
+
+#~ msgid "menu-page-broadcom-ethernet-phy-title"
+#~ msgstr "Ethernet"
