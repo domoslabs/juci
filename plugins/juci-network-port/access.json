@@ -1,6 +1,6 @@
 {
 	"user-admin": {
-		"description": "Broadcom ethernet admin functions",
+		"description": "Network port admin functions",
 		"read": {
 			"juci": {
 				"capabilities": [
@@ -11,7 +11,7 @@
 		}
 	},
 	"user-support": {
-		"description": "Broadcom ethernet support functions",
+		"description": "Network port support functions",
 		"read": {
 			"juci": {
 				"capabilities": [
@@ -21,8 +21,8 @@
 			}
 		}
 	},
-	"juci-broadcom-ethernet": {
-		"description": "Broadcom ethernet plugin",
+	"juci-network-port": {
+		"description": "Network port plugin",
 		"read": {
 			"ubus": {
 				"network.device": [
@@ -33,14 +33,12 @@
 				]
 			}, 
 			"uci": [
-				"layer2_interface_ethernet",
 				"ports"
 			],
 			"owsd": [ "hotplug.switch" ]
 		}, 
 		"write": {
 			"uci": [
-				"layer2_interface_vlan",
 				"ports"
 			]
 		}

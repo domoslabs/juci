@@ -2,6 +2,11 @@
 	"juci-network-dsl": {
 		"description": "JUCI Network Device Configuration module",
 		"read": {
+			"ubus": {
+				"router.dsl": [
+					"status"
+				]
+			},
 			"uci": [
 				"dsl"
 			]
