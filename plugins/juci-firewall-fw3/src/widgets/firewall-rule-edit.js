@@ -28,9 +28,9 @@ JUCI.app
 		templateUrl: "/widgets/firewall-rule-edit.html"
 	};
 })
-.controller("firewallRuleEdit", function($rootScope, $scope, $firewall, gettext, $tr, $network, networkHostPicker, $uci){
+.controller("firewallRuleEdit", function($rpc, $scope, $firewall, gettext, $tr, $network, networkHostPicker, $uci){
 	$scope.data = {};
-	$scope.canHideFirewallRule = $rootScope.has_capability("can-hide-firewall-rules");
+	$scope.canHideFirewallRule = $rpc.$has_capability("can-hide-firewall-rules");
 
 	$scope.protocolChoices = [
 		{ label: "UDP", value: "udp"},

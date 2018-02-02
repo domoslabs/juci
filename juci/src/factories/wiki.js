@@ -1,6 +1,6 @@
-JUCI.app.factory("$wiki", function($rootScope, $uci, $config, gettextCatalog, $localStorage){
+JUCI.app.factory("$wiki", function($rpc, $uci, $config, gettextCatalog, $localStorage){
 	var uci = $config.settings && $config.settings.wiki;
-	var user = $rootScope.has_capability('can-pick-uplink-port') ? 'ad':'us';
+	var user = $rpc.$has_capability('can-pick-uplink-port') ? 'ad':'us';
 	var mode = ($localStorage.getItem("mode") || "expert") === "expert" ? 'e':'b';
 	if(uci){
 		var server = uci.server.value;

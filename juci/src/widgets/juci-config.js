@@ -129,8 +129,8 @@ JUCI.app
 		},
 		controller: "juciConfigApplyController"
 	 };
-}).controller("juciConfigApplyController", function($scope, $uci, $rootScope, $tr, gettext, $juciDialog){
-	$scope.hasCapability = $rootScope.has_capability("can-view-changes");
+}).controller("juciConfigApplyController", function($scope, $uci, $rpc, $tr, gettext, $juciDialog){
+	$scope.hasCapability = $rpc.$has_capability("can-view-changes");
 	$scope.numUnsavedChanges = function(){
 		$scope.changes = $uci.$getChanges();
 		return $scope.changes.length;

@@ -344,6 +344,13 @@
 			});
 			return deferred.promise();
 		},
+		// add capability lookup to root scope so that it can be used inside html ng-show directly
+		$has_capability: function(cap_name){
+			if(!$rpc.$session || !$rpc.$session.acls.juci || !$rpc.$session.acls.juci.capabilities || !($rpc.$session.acls.juci.capabilities instanceof Array)) {
+				return false;
+			}
+			return $rpc.$session.acls.juci.capabilities.indexOf(cap_name) != -1;
+		},
 		$has_access: function(section){
 			// retrieve session acls map
 			var acls = {};

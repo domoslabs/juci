@@ -29,8 +29,8 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("networkDeviceEthernetPortEdit", function($scope, gettext, $tr, $rootScope){
-	$scope.canSetPause = $rootScope.has_capability("can-set-pauseframes");
+.controller("networkDeviceEthernetPortEdit", function($scope, gettext, $tr, $rpc){
+	$scope.canSetPause = $rpc.$has_capability("can-set-pauseframes");
 	$scope.speeds = [
 		{ label: $tr(gettext("Full auto-negotiation")), 					value: "auto" },
 		{ label: $tr(gettext("Max 100Mb auto-negotiation, full duplex")), 	value: "100FDAUTO" },
