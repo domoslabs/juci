@@ -21,21 +21,38 @@
 JUCI.app.factory("$vlan", function($uci){
 	return {
 		annotateAdapters: function(adapters){
+			duplicate = function(obj){
+				try {
+					return JSON.parse(JSON.stringify(obj));
+				} catch(e){
+					console.log("Error: " + String(e));
+					return null;
+				}
+			}
 			var def = $.Deferred();
 			var self = this;
+			var dup_vlans = [];
 			self.getDevices().done(function(list){
 				var vlans = {};
 				list.map(function(x){ vlans[x.name.value] = x; });
 				adapters.map(function(adapter){
 					if(adapter.device in vlans) {
-						//TODO: figure out how to do this in a good way
-						if(adapter.type === "eth-port"){
-							delete vlans[adapter.device];
+						// check if it has already been annotated if so duplicate it
+						var vlan = vlans[adapter.device];
+						delete vlans[adapter.device];
+						if(adapter["__annotated__"]){
+							var new_vlan = duplicate(adapter);
+							if(!new_vlan)
+								return;
+							new_vlan.name = vlan[".name"];
+							new_vlan.type = "vlan";
+							new_vlan["__annotated__"] = true;
+							dup_vlans.push(new_vlan);
 							return;
 						}
-						adapter.name = vlans[adapter.device][".name"];
+						adapter.name = vlan[".name"];
 						adapter.type = "vlan";
-						delete vlans[adapter.device];
+						new_vlan["__annotated__"] = true;
 					}
 				});
 				Object.keys(vlans).map(function(k){
@@ -47,6 +64,9 @@ JUCI.app.factory("$vlan", function($uci){
 						state: "DOWN",
 						present: false
 					});
+				});
+				dup_vlans.forEach(function(vlan){
+					adapters.push(vlan);
 				});
 				def.resolve();
 			}).fail(function(){

@@ -7,16 +7,37 @@ JUCI.app.factory("$port", function($uci){
 	}
 
 	Port.prototype.annotateAdapters = function(adapters){
+		duplicate = function(obj){
+			try {
+				return JSON.parse(JSON.stringify(obj));
+			} catch(e){
+				console.log("Error: " + String(e));
+				return null;
+			}
+		}
 		var def = $.Deferred();
 		var self = this;
 		self.getPorts().done(function(list){
 			var ports = {};
+			var dup_adapters = [];
 			list.map(function(x){ ports[x.id] = x; });
 			adapters.forEach(function(dev, idx){
 				// remove bcm switch interface from the list because it should never be used
 				if(dev.device in ports){
+					// check if it has already been annotated if so duplicate it
+					if(dev["__annotated__"]){
+						var new_dev = duplicate(dev);
+						if (!new_dev)
+							return;
+						new_dev.name = ports[dev.device].name;
+						new_dev.type = ports[dev.device].type;
+						new_dev["__annotated__"] = true;
+						dup_adapters.push(new_dev);
+						return;
+					}
 					dev.name = ports[dev.device].name;
 					dev.type = ports[dev.device].type;
+					dev["__annotated__"] = true;
 					delete ports[dev.device];
 				} else if(dev.device && dev.device.match(/br-.*/)){
 					// rename the bridge to a better name
@@ -33,6 +54,7 @@ JUCI.app.factory("$port", function($uci){
 					type: device.type
 				});
 			});
+			dup_adapters.forEach(function(ad){ adapters.push(ad);});
 			def.resolve();
 		}).fail(function(){
 			def.reject();
