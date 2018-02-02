@@ -116,6 +116,7 @@ JUCI.app
 			$scope.data.changed = false;
 			$scope.$apply();
 			console.log("rpc call done");
+			$rpc.$call("uci", "commit", {"config":"openvpn"});
 		});
 	};
 
