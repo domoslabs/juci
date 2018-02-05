@@ -1,0 +1,143 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-samba/src/pages/internet-services-samba.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-samba/src/widgets/samba-share-edit.html
+msgid "Path"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-samba/src/pages/internet-services-samba.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-samba/src/widgets/samba-share-edit.html
+msgid "Allowed users"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-samba/src/pages/internet-services-samba.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-samba/src/widgets/samba-share-edit.html
+msgid "Allow Guest Access"
+msgstr ""
+
+# plugins/juci-samba/src/pages/internet-services-samba.js
+msgid "Read Only"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-samba/src/pages/internet-services-samba.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-samba/src/widgets/samba-user-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-samba/src/widgets/samba-user-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-samba/src/pages/internet-services-samba.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-samba/src/pages/internet-services-samba.html
+msgid "Description"
+msgstr ""
+
+# plugins/juci-samba/src/pages/internet-services-samba.js
+msgid "New samba share"
+msgstr ""
+
+# plugins/juci-samba/src/widgets/samba-file-tree.js
+msgid "Loading.."
+msgstr ""
+
+# plugins/juci-samba/src/widgets/samba-share-edit.js
+msgid "Add folder to share"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-samba/src/widgets/samba-share-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-samba/src/pages/internet-services-samba.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-samba/src/pages/internet-services-samba.html
+msgid "Name"
+msgstr ""
+
+# plugins/juci-samba/src/widgets/samba-share-edit.html
+msgid "This USB drive has"
+msgstr ""
+
+# plugins/juci-samba/src/widgets/samba-share-edit.html
+msgid ""
+"filesystem, it only supports reading and not writing. writeble filesystems "
+"are: FAT, FAT32 and NTFS"
+msgstr ""
+
+# plugins/juci-samba/src/widgets/samba-share-edit.html
+msgid "Read only?"
+msgstr ""
+
+# plugins/juci-samba/src/widgets/samba-file-tree.html
+msgid "Select folder"
+msgstr ""
+
+# plugins/juci-samba/src/widgets/samba-user-edit.html
+msgid "Username"
+msgstr ""
+
+# plugins/juci-samba/src/widgets/samba-user-edit.html
+msgid "Password"
+msgstr ""
+
+# plugins/juci-samba/src/pages/internet-services-samba.html
+msgid "General Settings"
+msgstr ""
+
+# plugins/juci-samba/src/pages/internet-services-samba.html
+msgid "services.samba.info"
+msgstr ""
+
+# plugins/juci-samba/src/pages/internet-services-samba.html
+msgid "Workgroup"
+msgstr ""
+
+# plugins/juci-samba/src/pages/internet-services-samba.html
+msgid "Share User Home Directory"
+msgstr ""
+
+# plugins/juci-samba/src/pages/internet-services-samba.html
+msgid "Interface"
+msgstr ""
+
+# plugins/juci-samba/src/pages/internet-services-samba.html
+msgid ""
+"the interface(s) samba will listen on. Samba will not start if no interface "
+"is selected"
+msgstr ""
+
+# plugins/juci-samba/src/pages/internet-services-samba.html
+msgid "Samba Users"
+msgstr ""
+
+# plugins/juci-samba/src/pages/internet-services-samba.html
+msgid "samba.users.info"
+msgstr ""
+
+# plugins/juci-samba/src/pages/internet-services-samba.html
+msgid "Samba Shares"
+msgstr ""
+
+# plugins/juci-samba/src/pages/internet-services-samba.html
+msgid "samba.shares.info"
+msgstr ""
+
+# plugins/juci-samba/src/pages/internet-services-samba.html
+msgid "menu-internet-services-samba-title"
+msgstr ""

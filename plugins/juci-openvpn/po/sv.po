@@ -1,0 +1,86 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+msgid "New samba share"
+msgstr "Ny samba share"
+
+msgid "Loading.."
+msgstr "Laddar..."
+
+msgid "Add folder to share"
+msgstr "Lägg till mapp som du vill dela"
+
+msgid "Select folder"
+msgstr "Välj mapp"
+
+msgid "Name"
+msgstr "Namn"
+
+msgid "Path"
+msgstr "Sökväg"
+
+msgid "Allowed users"
+msgstr "Tillåtna användare"
+
+msgid "Allow Guest Access"
+msgstr "Tillåt guest-åtkomst"
+
+msgid "Read only?"
+msgstr "Read only?"
+
+msgid "Username"
+msgstr "Användarnamn"
+
+msgid "Password"
+msgstr "Lösenord"
+
+msgid "Description"
+msgstr "Beskrivning"
+
+msgid "General Settings"
+msgstr "Generella Inställningar"
+
+msgid "services.samba.info"
+msgstr "Samba tillåter dig att dela din hårddisk med andra på nätverket. "
+
+msgid "Workgroup"
+msgstr "Workgroup"
+
+msgid "Share User Home Directory"
+msgstr "Dela användarnas hemmamappar"
+
+msgid "Interface"
+msgstr "Interface"
+
+msgid ""
+"the interface(s) samba will listen on. Samba will not start if no interface "
+"is selected"
+msgstr ""
+"Interface(t) som samba kommer att lyssna på. Samba startas inte om inget "
+"interface är valt"
+
+msgid "Samba Users"
+msgstr "Användare"
+
+msgid "samba.users.info"
+msgstr "Konfigurera användare för samba delning"
+
+msgid "Samba Shares"
+msgstr "Samba delning"
+
+msgid "samba.shares.info"
+msgstr "Konfigurera Samba-delning på den lokala nätverket. "
+
+msgid "menu-internet-services-samba-title"
+msgstr "Samba"
+
