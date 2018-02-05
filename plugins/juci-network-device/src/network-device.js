@@ -52,7 +52,7 @@ JUCI.app.factory("$vlan", function($uci){
 						}
 						adapter.name = vlan[".name"];
 						adapter.type = "vlan";
-						new_vlan["__annotated__"] = true;
+						adapter["__annotated__"] = true;
 					}
 				});
 				Object.keys(vlans).map(function(k){
