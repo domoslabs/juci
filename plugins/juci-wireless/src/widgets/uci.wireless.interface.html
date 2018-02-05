@@ -4,7 +4,8 @@
 	</juci-config-lines>
 	<juci-config-lines ng-hide="interface.disabled.value">
 		<juci-config-line title="{{'WiFi Network Name (SSID)'|translate}}">
-			<input type="text" class="form-control" placeholder="WiFi Name" ng-model="interface.ssid.value" maxlength="32"/>
+			<input type="text" class="form-control" placeholder="WiFi Name" ng-model="interface.ssid.value" maxlength="32" ng-change="onSSIDChanged()"/>
+			<juci-warning value="ssidwarning"></juci-warning>
 		</juci-config-line>
 		<juci-config-line title="{{'Broadcast SSID'|translate}}">
 			<switch name="enabled" ng-model="interface.closed.value" on-change="onShowSSIDToggle()" class="green" inverted></switch>

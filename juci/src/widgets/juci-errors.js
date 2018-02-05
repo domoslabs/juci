@@ -48,3 +48,15 @@ JUCI.app
 		replace: true
 	}; 
 }); 
+
+JUCI.app
+.directive("juciWarning", function(){
+	return {
+		// accepted parameters for this tag
+		scope: {
+			value: "="
+		},
+		template: '<div ng-show="value" class="alert-warning" style="margin-top: 10px; font-size: 0.8em; padding: 5px; border-radius: 5px">{{value}}</div>',
+		replace: true
+	};
+});

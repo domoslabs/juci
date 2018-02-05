@@ -32,6 +32,12 @@ JUCI.app
 }).controller("WiFiInterfaceController", function($scope, $uci, $tr, gettext, $wireless, $network, $juciConfirm){
 	$scope.errors = [];
 	$scope.showPassword = true;
+	$wireless.getInterfaces().done(function(interfaces) {
+		$scope.interfaces = interfaces;
+		$scope.onSSIDChanged();
+		$scope.$apply();
+	});
+
 	$wireless.getDefaults().done(function(res){
 		if(res && res.keys && res.keys.wpa)$scope.default_key = res.keys.wpa;
 	});
@@ -87,6 +93,8 @@ JUCI.app
 	$scope.$watch("interface", function(value){
 		if(!value) return;
 		//$scope.title = "wifi-iface.name="+$scope.interface[".name"];
+
+		$scope.onSSIDChanged();
 	});
 
 	$scope.$watch("interface.closed.value", function(value, oldvalue){
@@ -103,7 +111,22 @@ JUCI.app
 			}
 		}
 	});
-	
+
+	$scope.onSSIDChanged = function(){
+		if(!$scope.interface) return;
+		if(!$scope.interfaces) return;
+
+		//Check if SSID is used more than once on the same radio
+		var found = $scope.interfaces.find(function(x){
+			return x != $scope.interface && x.ssid.value == $scope.interface.ssid.value && x.device.value == $scope.interface.device.value;
+		});
+
+		if(found)
+			$scope.ssidwarning = $tr(gettext("Are you sure you want to create a new SSID with the same name and on the same radio? This may result in undefined behaviour!"));
+		else
+			$scope.ssidwarning = null;
+	};
+
 	$scope.onEncryptionChanged = function(value, oldvalue){
 		if(!$scope.interface) return;
 		console.log(value);
