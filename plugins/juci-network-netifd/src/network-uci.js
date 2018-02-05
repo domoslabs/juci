@@ -119,6 +119,9 @@ UCI.network.$registerSectionType("interface", {
 	"modes":				{ dvalue: "", type: String },
 	"delay":				{ dvalue: 0, type: Number }
 }, function(section){
+	/* do not validate disabled sections */
+	if (!section.enabled.value)
+		return null;
 	var name = JUCI.$tr(gettext("Network interface ")) + (section[".name"] || section.name || JUCI.$tr(gettext("Unnamed interface")));
 	var noPhysical = name + JUCI.$tr(gettext(" has protocol: ")) + section.proto.value + JUCI.$tr(gettext(" it needs a physical interface"));
 	if(!section.proto || !section.proto.value || section.proto.value == "")
