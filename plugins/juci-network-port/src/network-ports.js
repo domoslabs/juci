@@ -31,12 +31,14 @@ JUCI.app.factory("$port", function($uci){
 							return;
 						new_dev.name = ports[dev.device].name;
 						new_dev.type = ports[dev.device].type;
+						new_dev.direction = ports[dev.device].direction;
 						new_dev["__annotated__"] = true;
 						dup_adapters.push(new_dev);
 						return;
 					}
 					dev.name = ports[dev.device].name;
 					dev.type = ports[dev.device].type;
+					dev.direction = ports[dev.device].direction;
 					dev["__annotated__"] = true;
 					delete ports[dev.device];
 				} else if(dev.device && dev.device.match(/br-.*/)){
@@ -51,7 +53,8 @@ JUCI.app.factory("$port", function($uci){
 				adapters.push({
 					name: device.name,
 					device: device.id,
-					type: device.type
+					type: device.type,
+					direction: device.direction
 				});
 			});
 			dup_adapters.forEach(function(ad){ adapters.push(ad);});
@@ -73,7 +76,7 @@ JUCI.app.factory("$port", function($uci){
 						get name(){ return port.name.value; },
 						get id(){ return port.ifname.value; },
 						get type(){ return "eth-port" },
-						base: { name: port.name.value, id: port.ifname.value }
+						get direction(){ return port.uplink.value ? "up" : "down" }
 					};
 				});
 			}

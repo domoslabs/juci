@@ -30,6 +30,7 @@ JUCI.app.factory("$dsl", function($uci){
 					if(adapter.device in dslDevs) {
 						adapter.name = dslDevs[adapter.device].name.value;
 						adapter.type = dslDevs[adapter.device].type;
+						adapter.direction = "up";
 						delete dslDevs[adapter.device];
 					}
 				});
@@ -38,6 +39,7 @@ JUCI.app.factory("$dsl", function($uci){
 					adapters.push({
 						name: dsl.name.value,
 						device: dsl.device.value,
+						direction: "up",
 						type: dsl.type,
 						state: "DOWN",
 						present: false

@@ -29,7 +29,7 @@ JUCI.app
 		require: "^ngModel",
 		controller: "networkDeviceEditCtrl"
 	};
-}).controller("networkDeviceEditCtrl", function($scope, $tr, gettext, $uci){
+}).controller("networkDeviceEditCtrl", function($scope, $tr, gettext, $uci, $network){
 	$scope.conf = {
 		manual_name: false
 	};
@@ -69,34 +69,27 @@ JUCI.app
 
 	$scope.types = [
 		{ label: $tr(gettext("Untagged")), value: "untagged" },
-		{ label: $tr(gettext("802.1Q")), value: "8021q" },
-		{ label: $tr(gettext("802.1AD")), value: "8021ad" }
+		// { label: $tr(gettext("802.1AD")), value: "8021ad" },
+		{ label: $tr(gettext("802.1Q")), value: "8021q" }
 	];
 
 	//TODO: dont do this here ask $device for it instead
-	$uci.$sync(["ports", "dsl"]).done(function(){
+	$network.getAdapters().done(function(devs){
 		$scope.interfaces = [];
-		$uci.ports["@ethport"].forEach(function(port){
-			if(port.uplink.value)
-				$scope.interfaces.push({
-					label: port.name.value + " (" + port.ifname.value + ")",
-					value: port.ifname.value
-				});
-		});
-		$uci.dsl["@atm-device"].forEach(function(atm){
+		devs.filter(function(dev){
+			return dev.direction === "up";
+		}).forEach(function(dev){
 			$scope.interfaces.push({
-				label: atm.name.value + " (" + atm.device.value + ")",
-				value: atm.device.value
-			});
-		});
-		$uci.dsl["@ptm-device"].forEach(function(ptm){
-			$scope.interfaces.push({
-				label: ptm.name.value + " (" + ptm.device.value + ")",
-				value: ptm.device.value
+				label: dev.name + " (" + dev.device + ")",
+				value: dev.device
 			});
 		});
 		$scope.$apply();
+
+	}).fail(function(e){
+		console.log(e);
 	});
+
 	$scope.$watchGroup(["device.ifname.value", "device.vid.value"], function(new_val, old_val){
 		if(!$scope.device || $scope.conf.manual_name)
 			return;
@@ -107,6 +100,7 @@ JUCI.app
 		else
 			$scope.device.name.value = $scope.device.ifname.value + "." + $scope.device.vid.value;
 	});
+
 	$scope.$watch("device.type.value", function(new_type){
 		if(!$scope.device)
 			return;

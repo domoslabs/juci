@@ -6,7 +6,15 @@
 				"network",
 				"ports",
 				"dsl"
-			]
+			],
+			"ubus": {
+				"router.port": [
+					"status"
+				],
+				"network.device": [
+					"status"
+				]
+			}
 		},
 		"write": {
 			"uci": [
