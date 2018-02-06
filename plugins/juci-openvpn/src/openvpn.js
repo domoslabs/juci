@@ -18,44 +18,6 @@
  * 02110-1301 USA
  */
 
-JUCI.app
-.factory("$openvpn", function($uci){
-	function Samba () {}
-	Samba.prototype.getConfig = function(){
-		var def = $.Deferred();
-		$uci.$sync("openvpn").done(function() {
-			if(!$uci.openvpn["@openvpn"].length)
-				def.reject();
-			else
-				def.resolve($uci.openvpn["@openvpn"][0]); 
-		}).fail(function(){
-			def.reject();
-		});
-		return def.promise();
-	}
-
-	Samba.prototype.getShares = function(){
-		var def = $.Deferred();
-		$uci.$sync("samba").done(function(){
-			def.resolve($uci.samba["@sambashare"]);
-		}).fail(function(){
-			def.reject();
-		});
-		return def.promise();
-	}
-	
-	Samba.prototype.getUsers = function(){
-		var def = $.Deferred(); 
-		$uci.$sync("samba").done(function(){
-			def.resolve($uci.samba["@sambausers"]); 
-		}).fail(function(){
-			def.reject();
-		});
-		return def.promise();
-	}
-	return new Samba();
-});
-
 UCI.$registerConfig("openvpn");
 UCI.openvpn.$registerSectionType("openvpn", {
 	"enabled":	{ dvalue: false, type: Boolean },
