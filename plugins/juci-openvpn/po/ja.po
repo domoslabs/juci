@@ -12,132 +12,120 @@ msgstr ""
 "X-Generator: Poedit 1.8.7.1\n"
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-samba/src/pages/internet-services-samba.js
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.js
 # #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-samba/src/widgets/samba-share-edit.html
-msgid "Path"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Client"
 msgstr ""
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-samba/src/pages/internet-services-samba.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-samba/src/widgets/samba-share-edit.html
-msgid "Allowed users"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.js
+msgid "Server"
 msgstr ""
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-samba/src/pages/internet-services-samba.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-samba/src/widgets/samba-share-edit.html
-msgid "Allow Guest Access"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.js
+msgid "None"
 msgstr ""
 
-# plugins/juci-samba/src/pages/internet-services-samba.js
-msgid "Read Only"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.js
+msgid "Yes"
 msgstr ""
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-samba/src/pages/internet-services-samba.js
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-samba/src/widgets/samba-user-edit.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-samba/src/widgets/samba-user-edit.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-samba/src/pages/internet-services-samba.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-samba/src/pages/internet-services-samba.html
-msgid "Description"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.js
+msgid "No"
 msgstr ""
 
-# plugins/juci-samba/src/pages/internet-services-samba.js
-msgid "New samba share"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.js
+msgid "Adaptive"
 msgstr ""
 
-# plugins/juci-samba/src/widgets/samba-file-tree.js
-msgid "Loading.."
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "OpenVPN Client Configuration"
 msgstr ""
 
-# plugins/juci-samba/src/widgets/samba-share-edit.js
-msgid "Add folder to share"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "openvpn.settings.info"
 msgstr ""
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-samba/src/widgets/samba-share-edit.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-samba/src/pages/internet-services-samba.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-samba/src/pages/internet-services-samba.html
-msgid "Name"
-msgstr ""
-
-# plugins/juci-samba/src/widgets/samba-share-edit.html
-msgid "This USB drive has"
-msgstr ""
-
-# plugins/juci-samba/src/widgets/samba-share-edit.html
-msgid ""
-"filesystem, it only supports reading and not writing. writeble filesystems "
-"are: FAT, FAT32 and NTFS"
-msgstr ""
-
-# plugins/juci-samba/src/widgets/samba-share-edit.html
-msgid "Read only?"
-msgstr ""
-
-# plugins/juci-samba/src/widgets/samba-file-tree.html
-msgid "Select folder"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Enabled"
 msgstr ""
 
 # plugins/juci-samba/src/widgets/samba-user-edit.html
 msgid "Username"
 msgstr ""
 
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Username help"
+msgstr ""
+
 # plugins/juci-samba/src/widgets/samba-user-edit.html
 msgid "Password"
 msgstr ""
 
-# plugins/juci-samba/src/pages/internet-services-samba.html
-msgid "General Settings"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Password help"
 msgstr ""
 
-# plugins/juci-samba/src/pages/internet-services-samba.html
-msgid "services.samba.info"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Dev"
 msgstr ""
 
-# plugins/juci-samba/src/pages/internet-services-samba.html
-msgid "Workgroup"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Proto"
 msgstr ""
 
-# plugins/juci-samba/src/pages/internet-services-samba.html
-msgid "Share User Home Directory"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Auth"
 msgstr ""
 
-# plugins/juci-samba/src/pages/internet-services-samba.html
-msgid "Interface"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Cipher"
 msgstr ""
 
-# plugins/juci-samba/src/pages/internet-services-samba.html
-msgid ""
-"the interface(s) samba will listen on. Samba will not start if no interface "
-"is selected"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Nobind"
 msgstr ""
 
-# plugins/juci-samba/src/pages/internet-services-samba.html
-msgid "Samba Users"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Persist tun"
 msgstr ""
 
-# plugins/juci-samba/src/pages/internet-services-samba.html
-msgid "samba.users.info"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Persist key"
 msgstr ""
 
-# plugins/juci-samba/src/pages/internet-services-samba.html
-msgid "Samba Shares"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Verb"
 msgstr ""
 
-# plugins/juci-samba/src/pages/internet-services-samba.html
-msgid "samba.shares.info"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Mute"
 msgstr ""
 
-# plugins/juci-samba/src/pages/internet-services-samba.html
-msgid "menu-internet-services-samba-title"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Mute replay warnings"
 msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Ns cert type"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Comp LZO"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Resolv retry"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "The .ovpn config file"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "menu-internet-services-openvpn-title"
+msgstr "OpenVPN"
+
+# plugins/juci-samba/src/pages/internet-services-samba.html
+#~ msgid "menu-internet-services-samba-title"
+#~ msgstr "OpenVPN"
