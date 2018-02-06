@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("StatusEventsPageCtrl", function($scope, $rpc, $config, $tr, gettext){
+.controller("StatusEventsPageCtrl", function($scope, $rpc, $config, $tr, gettext, $events, $file){
 	var AllLogs;
 	// to make it possible to send sid to cgi-bin!!
 	if($rpc.$sid) $scope.sid = $rpc.$sid();
@@ -34,6 +34,11 @@ JUCI.app
 	});
 	var log = {
 		autoRefresh : true
+	};
+	$scope.report = {
+		"show_button" : true,
+		"error" : null,
+		"timeout" : null
 	};
 	$scope.order = 'time';
 	$scope.reverse = true;
@@ -125,4 +130,32 @@ JUCI.app
 		if(line.id.indexOf("notice") >= 0 || line.id.indexOf("info") >= 0) return "label-info"; 
 		return ""; 
 	}
+
+	$events.subscribe("system-report", function(res){
+		if(res && res.data && res.data.filename && res.data.filename.length > 5) {
+		var filename=res.data.filename.substring(5);
+			$file.downloadFile(filename,"application/gzip",filename).done( function() {
+				if($scope.report.timeout != null)
+					clearTimeout($scope.report.timeout);
+				$scope.report.show_button = true;
+				$scope.$apply();
+			}).fail(function(e) {
+				alert($tr(gettext("Was not able to download system report. Please check access.")));
+			});
+		}
+	});
+
+	$scope.onDownloadReport = function() {
+		$rpc.$call("juci.system", "report").done(function(){
+			$scope.report.show_button = false;
+			$scope.report.timeout = setTimeout(function () {
+				$scope.report.show_button = true;
+				$scope.report.timeout = null;
+				$scope.$apply();
+			},10000);
+			$scope.$apply();
+		}).fail(function(e) {
+			console.error(e);
+		});
+	};
 }); 
