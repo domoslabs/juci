@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 msgid "LAN does not have IPv6 configured"
 msgstr "Lähiverkolla ei ole IPv6 konfigurointia"
@@ -53,8 +53,11 @@ msgstr "Nimi ei voi olla tyhjä"
 msgid "Invalid name, it may only contain (a-z, A-Z, 0-9 and _)"
 msgstr "Virheellinen nimi. Nimi voi sisältää vain merkit (a-z, A-Z, 0-9 ja _)"
 
-msgid "Hostname(s) for "
-msgstr "Isäntäkoneen nimi"
+msgid "IPv4"
+msgstr ""
+
+msgid "IPv6"
+msgstr ""
 
 msgid "Minutes"
 msgstr "Minuutit"
@@ -65,11 +68,23 @@ msgstr "Tunti"
 msgid "Hours"
 msgstr "Tuntia"
 
-msgid "IPv4"
-msgstr ""
+msgid "Hostname(s) for "
+msgstr "Isäntäkoneen nimi"
 
-msgid "IPv6"
-msgstr ""
+msgid "Hostname"
+msgstr "Isäntäkoneen nimi"
+
+msgid "Add a host"
+msgstr "Lisää isäntäkone"
+
+msgid "Family"
+msgstr "Perhe"
+
+msgid "IPv4 Address"
+msgstr "IPv4-osoite"
+
+msgid "IPv6 Address"
+msgstr "IPv6 osoite"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-add-classification.html
 msgid "Select Classifications Type"
@@ -151,20 +166,8 @@ msgstr "Yhteys"
 msgid "Network"
 msgstr "Verkko"
 
-msgid "Hostname"
-msgstr "Isäntäkoneen nimi"
-
-msgid "Add a host"
-msgstr "Lisää isäntäkone"
-
-msgid "Family"
-msgstr "Perhe"
-
-msgid "IPv4 Address"
-msgstr "IPv4-osoite"
-
-msgid "IPv6 Address"
-msgstr "IPv6 osoite"
+msgid "Hostnames"
+msgstr "Isäntäkoneiden nimet"
 
 # /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
 msgid "DHCP options"
@@ -234,9 +237,6 @@ msgstr "IPv6 osoite"
 
 msgid "DUID"
 msgstr "DUID"
-
-msgid "Hostnames"
-msgstr "Isäntäkoneiden nimet"
 
 msgid "Networkid"
 msgstr "Verkko"
@@ -444,11 +444,11 @@ msgstr "DNS merkit"
 msgid "Create Classification sections classify DHCP clients"
 msgstr ""
 
-msgid "menu-dhcp-status-title"
-msgstr "DHCP tila"
-
 msgid "menu-dhcp-settings-title"
 msgstr "DHCP"
+
+msgid "menu-dhcp-status-title"
+msgstr "DHCP tila"
 
 # /home/jamu/GIT/juci/plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
 #~ msgid "ID"

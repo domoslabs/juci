@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 msgid "Low"
 msgstr "Matala"
@@ -72,6 +72,8 @@ msgid ""
 "capacity. Do this to make sure QoS is activated before the hardware is "
 "saturated."
 msgstr ""
+"Aseta arvoksi hieman pienempi arvo kuin varsinainen kapasiteetti jotta QoS "
+"aktivoituu ennen saturaatiota."
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-iface-edit.html
 msgid "Limit Download Speed"
@@ -94,6 +96,7 @@ msgid ""
 "Sets the proportion of the bandwidth used by this class during link "
 "saturation."
 msgstr ""
+"Määrittää tämän luokan käyttämän kaistan osuuden linkin saturaation aikana."
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
 msgid "Average Rate"
@@ -102,6 +105,7 @@ msgstr "Keskimääräinen bittinopeus"
 # plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
 msgid "Sets the proportion of the bandwidth used by this class on average."
 msgstr ""
+"Määrittää tämän luokan käyttämän kaistanleveyden keskimääräisen osuuden."
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
 msgid "Limit Rate"
@@ -110,7 +114,7 @@ msgstr "Rajoita bittinopeutta"
 # plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
 msgid ""
 "Sets the maximum allowed proportion of the bandwidth allowed for this class."
-msgstr ""
+msgstr "Määrittää tämän luokan suurimman sallitun kaistanleveyden."
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
@@ -125,6 +129,9 @@ msgid ""
 "bandwidth to make up for periods of low speed. Larger packet size allows for "
 "higher burst speeds at longer durations."
 msgstr ""
+"Vaikuttaa purskeen nopeuteen. Lyhyitä jaksoja varten luokat käyttävät "
+"ylimääräistä kaistanleveyttä korvatakseen hitaat jaksot. Suurempi "
+"pakettikoko mahdollistaa suuremmat purskenopeudet pidemmillä kestoilla."
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
 msgid "Packet Delay"
@@ -132,7 +139,7 @@ msgstr "Pakettiviive"
 
 # plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
 msgid "Sets a delay before packets are sent."
-msgstr ""
+msgstr "Määritä paketin lähetysviive"
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classes-edit.html
 msgid "Max Size"
@@ -165,17 +172,13 @@ msgstr "Portit"
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
 msgid "Choose Filtering"
-msgstr ""
+msgstr "Valitse suodatin"
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
-#, fuzzy
-#| msgid "Destination Ports"
 msgid "Source and Destinaton Ports"
 msgstr "Kohdeportit"
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classify-edit.html
-#, fuzzy
-#| msgid "Destination Ports"
 msgid "Source and Destinaton Port Range"
 msgstr "Kohdeportit"
 
@@ -206,10 +209,6 @@ msgstr ""
 msgid "dscp"
 msgstr ""
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/new-classgroup-modal.html
-msgid "Classgroup name"
-msgstr "Luokkaryhmän nimi"
-
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classgroups-edit.html
 msgid "Classes"
 msgstr "Luokat"
@@ -217,6 +216,10 @@ msgstr "Luokat"
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/qos-classgroups-edit.html
 msgid "Add a new class"
 msgstr "Lisää uusi luokka"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/new-classgroup-modal.html
+msgid "Classgroup name"
+msgstr "Luokkaryhmän nimi"
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/widgets/add-bw-interface-edit.html
 msgid "Interface name"
@@ -242,10 +245,8 @@ msgid "Classify"
 msgstr "Luokitus"
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-qos/src/pages/juci-inteno-qos.html
-#, fuzzy
-#| msgid "Classify"
 msgid "Reclassify"
-msgstr "Luokitus"
+msgstr "Uudellenluokitus"
 
 msgid "menu-juci-inteno-qos-title"
 msgstr "QoS"

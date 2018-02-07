@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/pages/internet-multiwan.js
 msgid "Disable"
@@ -76,22 +76,23 @@ msgstr ""
 msgid "ICMP"
 msgstr ""
 
-msgid "LAN"
+msgid "Source Address"
+msgstr "Lähdeosoite"
+
+msgid "Leave empty for all"
+msgstr "Jätä tyhjäksi kaikkia varten"
+
+msgid "Destination Address"
+msgstr "Kohdeosoite"
+
+msgid "Protocol"
+msgstr "Protokolla"
+
+msgid "Ports"
+msgstr "Portit"
+
+msgid "WAN Uplink"
 msgstr ""
-
-msgid "WAN"
-msgstr ""
-
-msgid "WAN6"
-msgstr ""
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.js
-msgid "Load Balancer (Best Compatibility)"
-msgstr "Kuormituksen tasaus (paras yhteensopivuus)"
-
-# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.js
-msgid "Fast Balancer (Best Distribution)"
-msgstr "Nopea jako (paras jakelu)"
 
 # /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan-interface-add.html
 msgid "Select Network Interface"
@@ -124,24 +125,6 @@ msgstr "Toissijainen yhteys"
 msgid "DNS Server(s)"
 msgstr "DNS palvelimet"
 
-msgid "Source Address"
-msgstr "Lähdeosoite"
-
-msgid "Leave empty for all"
-msgstr "Jätä tyhjäksi kaikkia varten"
-
-msgid "Destination Address"
-msgstr "Kohdeosoite"
-
-msgid "Protocol"
-msgstr "Protokolla"
-
-msgid "Ports"
-msgstr "Portit"
-
-msgid "WAN Uplink"
-msgstr ""
-
 msgid "MultiWAN Configuration"
 msgstr "MultiWAN Määritys"
 
@@ -162,9 +145,17 @@ msgstr "Liikennöintisäännöt"
 msgid "menu-internet-multiwan-title"
 msgstr "Multiwan"
 
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.js
+#~ msgid "Load Balancer (Best Compatibility)"
+#~ msgstr "Kuormituksen tasaus (paras yhteensopivuus)"
+
+# /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/widgets/multiwan-rule-edit.js
+#~ msgid "Fast Balancer (Best Distribution)"
+#~ msgstr "Nopea jako (paras jakelu)"
+
 # /home/jamu/GIT/juci/plugins/juci-inteno-multiwan/src/pages/internet-multiwan.html
-msgid "internet-multiwan-title"
-msgstr "Multiwan"
+#~ msgid "internet-multiwan-title"
+#~ msgstr "Multiwan"
 
 #~ msgid "Load Balancer (Performance)"
 #~ msgstr "Kuormanjako (Suorituskyky)"

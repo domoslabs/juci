@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 msgid "All types"
 msgstr "Kaikki luokitukset"
@@ -117,10 +117,10 @@ msgstr "Etälokipalvelimen portin numero"
 msgid "Server port"
 msgstr "Palvelimen portti"
 
-msgid "menu-status-events-title"
+msgid "menu-event-log-config-title"
 msgstr "Tapahtumaloki"
 
-msgid "menu-event-log-config-title"
+msgid "menu-status-events-title"
 msgstr "Tapahtumaloki"
 
 # /home/jamu/GIT/juci/plugins/juci-event/src/pages/event-log-config.html

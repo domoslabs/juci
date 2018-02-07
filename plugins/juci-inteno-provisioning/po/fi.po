@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 msgid "Hourly"
 msgstr "Tunneittain"
@@ -41,8 +41,6 @@ msgstr "Päivityksen intervalli"
 msgid "Export file"
 msgstr "Vientitiedosto"
 
-#, fuzzy
-#| msgid "Setup your IUP Provisioning parameterrs"
 msgid "Setup the Configuration Provisioning options"
 msgstr "Aseta IUP provisiointiasetukset"
 
@@ -51,14 +49,17 @@ msgstr "Käynnistä uudelleen"
 
 # plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
 msgid "Reboot after applying the new configuration. Recommended: On"
-msgstr "Käynnistä uudelleen, kun uudet asetukset on otettu käyttöön. Suositus: Päällä"
+msgstr ""
+"Käynnistä uudelleen, kun uudet asetukset on otettu käyttöön. Suositus: Päällä"
 
 msgid "Keep user config"
 msgstr "Lisää toissijainen konfiguraatio"
 
 # plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
 msgid "Save user changes before provisioning and reapply them after"
-msgstr "Tallenna käyttäjän asetukset ennen provisiointia ja ota ne uudelleen käyttöön sen jälkeen"
+msgstr ""
+"Tallenna käyttäjän asetukset ennen provisiointia ja ota ne uudelleen "
+"käyttöön sen jälkeen"
 
 msgid "Overwrite DHCP Discover Provisioning"
 msgstr "Mikäli lisätty osoitteen haku DHCP-optiolla otetaan pois käytöstä"

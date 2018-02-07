@@ -20,27 +20,27 @@ msgstr ""
 
 # plugins/juci-openvpn/src/pages/internet-services-openvpn.js
 msgid "Server"
-msgstr ""
+msgstr "Palvelin"
 
 # plugins/juci-openvpn/src/pages/internet-services-openvpn.js
 msgid "None"
-msgstr ""
+msgstr "Ei mikään"
 
 # plugins/juci-openvpn/src/pages/internet-services-openvpn.js
 msgid "Yes"
-msgstr ""
+msgstr "Kyllä"
 
 # plugins/juci-openvpn/src/pages/internet-services-openvpn.js
 msgid "No"
-msgstr ""
+msgstr "Ei"
 
 # plugins/juci-openvpn/src/pages/internet-services-openvpn.js
 msgid "Adaptive"
-msgstr ""
+msgstr "Adaptiivinen"
 
 # plugins/juci-openvpn/src/pages/internet-services-openvpn.html
 msgid "OpenVPN Client Configuration"
-msgstr ""
+msgstr "OpenVPN Client konfiguraatio"
 
 # plugins/juci-openvpn/src/pages/internet-services-openvpn.html
 msgid "openvpn.settings.info"
@@ -66,11 +66,11 @@ msgstr ""
 
 # plugins/juci-openvpn/src/pages/internet-services-openvpn.html
 msgid "Dev"
-msgstr ""
+msgstr "Laite"
 
 # plugins/juci-openvpn/src/pages/internet-services-openvpn.html
 msgid "Proto"
-msgstr ""
+msgstr "Protokolla"
 
 # plugins/juci-openvpn/src/pages/internet-services-openvpn.html
 msgid "Auth"
