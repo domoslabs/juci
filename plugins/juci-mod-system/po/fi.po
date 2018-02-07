@@ -87,9 +87,9 @@ msgstr "CPU"
 msgid "Active Connections"
 msgstr "Aktiiviset yhteydet"
 
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/status-system.js
-msgid "BRCM Version"
-msgstr "BRCM versio"
+# plugins/juci-mod-system/src/pages/status-system.js
+msgid "BSP Version"
+msgstr ""
 
 msgid "Usage"
 msgstr "Käyttö"
@@ -293,7 +293,7 @@ msgid "Log Settings"
 msgstr "Lokiasetukset"
 
 msgid "Backup Configuration"
-msgstr "Asetusten varmuuskopio/palautus"
+msgstr "Varmuuskopio/palautus"
 
 msgid "settings.config.info"
 msgstr ""
@@ -474,11 +474,34 @@ msgstr "Missing uci config boardpanel."
 msgid "menu-settings-system-title"
 msgstr "Järjestelmä"
 
-msgid "menu-settings-hardware-leds-title"
-msgstr "LED"
+msgid "menu-system-title"
+msgstr "Järjestelmä"
+
+msgid "menu-settings-users-title"
+msgstr "Käyttäjät"
+
+msgid "menu-settings-uci-title"
+msgstr "UCI"
+
+msgid "menu-settings-services-title"
+msgstr "Palvelut"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-timeservers.html
+msgid "menu-settings-system-timeservers-title"
+msgstr "Aikapalvelimet"
 
 msgid "menu-settings-hardware-title"
 msgstr "Laitteiston painikkeet ja valot"
+
+msgid "menu-settings-hardware-buttons-title"
+msgstr "Painikkeet"
+
+msgid "menu-settings-hardware-leds-title"
+msgstr "LED"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "menu-settings-system-log-title"
+msgstr "Loki"
 
 msgid "menu-settings-configuration-title"
 msgstr "Asetusten varmuuskopio/palautus"
@@ -489,41 +512,22 @@ msgstr "Salasanat"
 msgid "menu-status-system-title"
 msgstr "Järjestelmä"
 
-msgid "menu-status-system-processes-title"
-msgstr "Prosessit"
-
-msgid "menu-settings-uci-title"
-msgstr "UCI"
-
-msgid "menu-settings-energy-title"
-msgstr "Virranhallinta"
-
-msgid "menu-system-title"
-msgstr "Järjestelmä"
-
 msgid "menu-settings-management-title"
 msgstr "Hallinta"
 
-msgid "menu-settings-hardware-buttons-title"
-msgstr "Painikkeet"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
-msgid "menu-settings-system-log-title"
-msgstr "Loki"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-timeservers.html
-msgid "menu-settings-system-timeservers-title"
-msgstr "Aikapalvelimet"
-
-msgid "menu-settings-services-title"
-msgstr "Palvelut"
-
-msgid "menu-settings-users-title"
-msgstr "Käyttäjät"
+msgid "menu-status-system-processes-title"
+msgstr "Prosessit"
 
 # /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
 msgid "menu-settings-connectivity-test-title"
 msgstr "Yhteystesti"
+
+msgid "menu-settings-energy-title"
+msgstr "Virranhallinta"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/status-system.js
+#~ msgid "BRCM Version"
+#~ msgstr "BRCM versio"
 
 #~ msgid ""
 #~ "This will reset your configuration to factory defaults and reboot the "
