@@ -52,11 +52,11 @@ msgid "Untagged"
 msgstr ""
 
 # plugins/juci-network-device/src/widgets/network-device-edit.js
-msgid "802.1Q"
+msgid "802.1AD"
 msgstr ""
 
 # plugins/juci-network-device/src/widgets/network-device-edit.js
-msgid "802.1AD"
+msgid "802.1Q"
 msgstr ""
 
 # plugins/juci-network-device/src/widgets/network-device-edit.html
@@ -89,15 +89,15 @@ msgstr ""
 
 # plugins/juci-network-device/src/widgets/network-device-create-dialog.html
 msgid "Vlan Name"
-msgstr ""
+msgstr "VLAN Name"
 
 # plugins/juci-network-device/src/pages/network-devices.html
 msgid "Layer-2 Devices"
-msgstr ""
+msgstr "Network Devices"
 
-# plugins/juci-network-device/src/pages/network-devices.html
-msgid "internet.ethernet.info"
-msgstr ""
+# plugins/juci-network-device/src/pages/network-device.html
+msgid "network.device.info"
+msgstr " "
 
 # plugins/juci-network-device/src/pages/network-devices.html
 msgid "Type"
@@ -130,10 +130,6 @@ msgstr "Device"
 # plugins/juci-network-device/src/pages/network-vlan-device.html
 msgid "menu-network-vlan-device-title"
 msgstr "VLAN"
-
-# plugins/juci-network-device/src/pages/network-device.html
-#~ msgid "menu-network-device-title"
-#~ msgstr "VLAN"
 
 # plugins/juci-network-device/src/pages/internet-device.html
 #~ msgid "menu-internet-device-title"
