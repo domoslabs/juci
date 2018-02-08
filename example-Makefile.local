@@ -16,6 +16,7 @@ CONFIG_PACKAGE_juci-dynamic-translator=y
 CONFIG_PACKAGE_juci-event=y
 CONFIG_PACKAGE_juci-firewall-fw3=y
 CONFIG_PACKAGE_juci-generate-page=y
+CONFIG_PACKAGE_juci-ice-client=y
 CONFIG_PACKAGE_juci-icwmp=y
 CONFIG_PACKAGE_juci-igmpinfo=y
 CONFIG_PACKAGE_juci-inteno-backup=y
