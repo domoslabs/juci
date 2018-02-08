@@ -356,10 +356,16 @@
 			var acls = {};
 			var self = this;
 			var def = $.Deferred();
+			var user = self.$user();
+
+			if(section.expose && section.expose.value instanceof Array && section.expose.value.length) {
+				if (section.expose.value.indexOf(user) === -1)
+					return def.resolve(false);
+			}
 
 			if(! section.acls || !section.acls.value || !section.acls.value instanceof Array ||
 				!section.require.value || !section.require.value instanceof Array)
-				return def.reject("invalid section type, it lacks acl or require option");
+				return def.reject("invalid section type, it lacks acl and require option");
 
 			if(self.$session && self.$session.acls && self.$session.acls["access-group"]){
 				acls = self.$session.acls["access-group"];

@@ -328,7 +328,8 @@
 		"link":		{ dvalue: "", type: String },
 		"require":	{ dvalue: [], type: Array },
 		"acls":		{ dvalue: [], type: Array },
-		"modes":	{ dvalue: [], type: Array }
+		"modes":	{ dvalue: [], type: Array },
+		"expose":	{ dvalue: [], type: Array }
 	});
 	UCI.juci.$registerSectionType("wiki", {
 		"server":	{ dvalue: "http://docs.intenogroup.com", type: String },
