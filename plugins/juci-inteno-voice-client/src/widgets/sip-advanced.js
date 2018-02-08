@@ -8,7 +8,7 @@ JUCI.app
 		replace: true,
 		controller: "sipAdvancedCtrl"
 	};
-}).controller("sipAdvancedCtrl", function($scope, $uci, $tr, gettext, $network, $rpc){
+}).controller("sipAdvancedCtrl", function($scope, $uci, $tr, gettext, $firewall, $rpc){
 	$scope.ssl = {};
 	$rpc.$call("juci.voice_client", "get_trusted_ca", {}).done(function(data){
 		$scope.ssl.ovalue = $scope.ssl.value = data.result;
@@ -35,7 +35,7 @@ JUCI.app
 		{ label: $tr(gettext("SSL v2")),	value: "sslv2" },
 		{ label: $tr(gettext("SSL v3")),	value: "sslv3" }
 	];
-	$network.getWanNetworks().done(function(data){
+	$firewall.getZoneNetworks("wan").done(function(data){
 		$scope.wan_networks = data.map(function(x){return { label: String(x[".name"]).toUpperCase(), value: x[".name"] }; });
 		$scope.wan_networks.push({ label: $tr(gettext("Listen on all interfaces")),	value: "" });
 		$scope.$apply();

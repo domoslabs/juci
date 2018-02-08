@@ -168,23 +168,6 @@
 			return def.promise();
 		}
 
-		NetworkBackend.prototype.getLanNetworks = function(){
-			var deferred = $.Deferred();
-			this.getNetworks().done(function(nets){
-				deferred.resolve(nets.filter(function(x){ return x.is_lan.value == 1; }));
-			});
-			return deferred.promise();
-		}
-
-		NetworkBackend.prototype.getWanNetworks = function(){
-			var deferred = $.Deferred();
-			console.log("$network.getWanNetworks() is deprecated. You should list firewall zone wan to get whole list");
-			this.getNetworks().done(function(nets){
-				deferred.resolve(nets.filter(function(x){ return !x.is_lan.value; }));
-			});
-			return deferred.promise();
-		}
-
 		// returns list of config sections belong to devices that are configured as default routes along with their runtime info in $info field
 		NetworkBackend.prototype.getDefaultRouteNetworks = function(){
 			var def = $.Deferred();
