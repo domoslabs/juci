@@ -321,6 +321,7 @@
 		"modes": 		{ dvalue: [], type: Array },
 		"require":		{ dvalue: [], type: Array },
 		"index":		{ dvalue: 99, type: Number },
+		"expose":		{ dvalue: [], type: Array }
 	});
 	UCI.juci.$registerSectionType("widget", {
 		"name":		{ dvalue: [], type: Array },
