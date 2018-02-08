@@ -117,7 +117,7 @@
 		NetworkBackend.prototype.getConnectedClients = function(){
 			var self = this;
 			// if it is already running just return the active promise
-			if (self.$cclients_def && self.$cclients_def instanceof Function)
+			if (self.$cclients_def && self.$cclients_def.promise instanceof Function)
 				return self.$cclients_def.promise();
 			self.$cclients_def = $.Deferred();
 
