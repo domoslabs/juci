@@ -120,8 +120,14 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless, $rpc, $tr,
 					down = iface.rx_bytes;
 				}
 				traffic[name] = {};
-				traffic[name][upstream] = clean(bytes_to_megabits(up));
-				traffic[name][downstream] = clean(bytes_to_megabits(down));
+				traffic[name].up = {
+					label: upstream,
+					value: clean(bytes_to_megabits(up))
+				}
+				traffic[name].down = {
+					label: downstream,
+					value: clean(bytes_to_megabits(down))
+				}
 				tbData[name] = {};
 				tbData[name].rows = [
 					[
