@@ -116,7 +116,7 @@ JUCI.app
 					var to_remove = data.splice(0, num);
 					dataset.remove(to_remove);
 				}
-				addData(now, newY, i++, key);
+				addData(now, newY.value || newY, i++, newY.label || key);
 			});
 			function addData(x, y, group, key){
 				var match = groups.get({
