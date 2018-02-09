@@ -75,10 +75,23 @@ JUCI.app
 				});
 
 				/* 3. concatenate expose.value with selected_users */
-				page.expose.value = page.expose.value.concat(selected_users);
+				var sum = page.expose.value.concat(selected_users);
+				if (equals(sum, page.expose.ovalue))
+					page.expose.$reset();
+				 else
+					page.expose.value = sum;
 			});
 		}, true);
 
 		$scope.$apply();
 	});
+
+	/* checks if two arrays contain the same entries */
+	function equals(array1, array2){
+		if(array1.length !== array2.length)
+			return false;
+		array1.sort();
+		array2.sort();
+		return array1.toString() === array2.toString();
+	}
 });
