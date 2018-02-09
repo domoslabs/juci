@@ -57,6 +57,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 				if(dev.device in devices){
 					dev.name = devices[dev.device].ssid.value;
 					dev.type = "wireless";
+					dev.frequency = devices[dev.device][".frequency"];
 					delete devices[dev.device];
 				}
 			});
@@ -66,6 +67,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 				adapters.push({
 					name: device.ssid.value,
 					device: device.ifname.value,
+					frequency: devices[".frequency"],
 					type: "wireless"
 				});
 			});
