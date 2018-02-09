@@ -19,9 +19,9 @@ JUCI.app
 				on_button: function(btn, inst){
 					inst.close();
 					if(btn.value === "ok")
-						def.resolve(true);
+						setTimeout(function(){def.resolve(true);}, 0);
 					else
-						def.reject(false);
+						setTimeout(function(){def.reject(false);}, 0);
 				}
 			});
 			return def;
@@ -41,7 +41,7 @@ JUCI.app
 			buttons: [ {label: $tr(gettext("Close")), value: "" } ],
 			on_button: function(btn, inst){
 				inst.close();
-				def.resolve("ok");
+				setTimeout(function(){def.resolve("ok");}, 0);
 			}
 		});
 		return def;
