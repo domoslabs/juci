@@ -79,8 +79,8 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless, $rpc, $tr,
 
 		return bytes_to_megabits(bytes).toFixed(3) + " Mbit/s";
 	}
-	function bytes_to_megabits(bytes){ return ((bytes * 8) / 1024 / 1024); }
-	function bytes_to_kilobits(bytes){ return ((bytes * 8) / 1024); }
+	function bytes_to_megabits(bytes){ return ((bytes * 8) / 1000 / 1000); }
+	function bytes_to_kilobits(bytes){ return ((bytes * 8) / 1000); }
 	function clean(num){
 		if (num < 100)
 			return num.toFixed(2);
