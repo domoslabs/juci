@@ -51,6 +51,12 @@ JUCI.app
 			end: vis.moment().add(30, "seconds"),
 			dataAxis: {
 				left: {
+					format: function (value) {
+						var dec = 0;
+						if(value < 100) dec = 1;
+						if(value < 10) dec = 2;
+						return ''+value.toFixed(dec);
+					},
 					range: { min:$scope.min },
 					title: $scope.ytitle
 				}
