@@ -93,10 +93,10 @@ JUCI.app
 			if (lastNode == undefined)
 				return;
 			var lastMoment = lastNode.x;
-			if (lastMoment.getTime() - range.end.getTime() < 0)
+			if (lastMoment.getTime() - range.end.getTime() + $scope.tick < 0)
 				return;
 			// continuously move the window
-			graph2d.setWindow(now - interval, now, {animation: false});
+			graph2d.setWindow(now - interval - $scope.tick, now - $scope.tick, {animation: false});
 		}
 
 		// Add a new datapoint to the graph
