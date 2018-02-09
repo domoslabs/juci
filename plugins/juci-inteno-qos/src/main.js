@@ -70,6 +70,11 @@ UCI.qos.$registerSectionType("class", {
 	"avgrate":		{ dvalue: 0, type: Number},
 	"limitrate":		{ dvalue: 100, type: Number},
 });
+UCI.qos.$registerSectionType("rate-limit", {
+	"name":			{ dvalue: "", type: String},
+	"download":		{ dvalue: 0, type: Number},
+	"upload":		{ dvalue: 0, type: Number}
+});
 
 JUCI.app.factory("intenoQos", function($uci, gettext, $tr){
 	function Qos(){ }
