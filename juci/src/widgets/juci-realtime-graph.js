@@ -71,7 +71,7 @@ JUCI.app
 		var diff = $scope.tick;
 
 		JUCI.interval.repeat("realtimeGraphAddDataPoint-"+$scope.id,1000,function(next){
-			if (diff > $scope.tick){
+			if (diff >= $scope.tick){
 				diff = 0;
 				addDataPoint();
 			}
