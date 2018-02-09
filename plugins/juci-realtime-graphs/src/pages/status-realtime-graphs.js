@@ -1,11 +1,11 @@
-JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless, $rpc, $tr, gettext){
-	var mapIface = {};
+JUCI.app.controller("rtgraphsCtrl", function($scope, $rpc, $tr, gettext, $network){
 	$scope.ylabel = "Mbit/s";
-	var ports;
+	var names = {};
+	var directions = {};
 	var upstream = $tr(gettext("Upstream"));
 	var downstream = $tr(gettext("Downstream"));
 
-	async.series([get_ports_config, get_ports_status, get_wifi, get_usb], function(e){
+	async.series([get_adapters, get_directions], function(e){
 		if (e)
 			console.error(e);
 		JUCI.interval.repeat("updateRealtimeData",$scope.tick,function(next){
@@ -17,60 +17,33 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless, $rpc, $tr,
 		$scope.$apply();
 	});
 
-	function get_ports_config(callback){
-		$uci.$sync("ports").done(function(){
-			$scope.portnames = $uci.ports["@ethport"];
-			$scope.portnames.forEach(function(portname){
-				if (!portname || !portname.ifname)
+	var types = { "eth-port":"", vlan:"", wireless:"" };
+
+	function get_adapters(callback){
+		$network.getAdapters().done(function(adapters){
+			adapters.filter(function(a){
+				return a.up && a.type in types && a.device && a.name;
+			}).forEach(function(a){
+				if(a.device in names && a.type !== "eth-port")
 					return;
-				var key = portname.ifname.value;
-				var value = portname[".name"];
-				mapIface[key] = value;
-			});
-			mapIface['atm0'] = 'DSL';
-			mapIface['ptm0'] = 'DSL';
-		}).always(function(){
-			callback();
-		});
-	}
-
-	function get_wifi(callback){
-		$wireless.getInterfaces().done(function(ifaces){
-			ifaces.forEach(function(iface){
-				if (!iface || !iface.device ||
-					!iface.$info || !iface.$info.ssid)
-					return;
-				var wdev= iface.device.value
-				var ssid = iface.$info.ssid;
-				var freq = iface[".frequency"];
-				mapIface[wdev] = ssid + " " + freq;
+				if(a.type === "wireless")
+					names[a.device] = a.name + " (" + a.frequency + ")";
+				else
+					names[a.device] = a.name;
 			});
 		}).always(function(){
 			callback();
 		});
 	}
 
-	function get_usb(callback){
-		$rpc.$call("router.usb", "status").done(function(res){
-			Object.keys(res).map(function(key){
-				var usb = res[key];
-				if (usb.netdevice)
-					mapIface[usb.netdevice]=usb.product;
+	function get_directions(callback){
+		$rpc.$call("router.port", "status").done(function(ports){
+			Object.keys(ports).forEach(function(key){
+				directions[key] = ports[key].direction;
 			});
 		}).always(function(){
 			callback();
 		});
-	}
-
-	function get_ports_status(callback){
-		$rpc.$call("router.port", "status").done(function(data){
-			ports = data;
-		}).fail(function(e){
-			console.log(e);
-		}).always(function(e){
-			callback();
-		});
-
 	}
 
 	function to_kb_or_mb_str(bytes){
@@ -94,21 +67,10 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless, $rpc, $tr,
 			var newKey = undefined;
 			Object.keys(data).map(function(ifname){
 				var iface = data[ifname];
-				var name = mapIface[ifname];
+				var name = names[ifname];
+				var direction = directions[ifname];// || "up";
 				if(!iface || !name)
 					return;
-				var port = ports[ifname];
-				if (!port){
-					// WARNING: uggly hack to map eth0 in ports config
-					// to eth0.1 in all other places (Broadcom)
-					Object.keys(ports).forEach(function(key){
-						if (key.indexOf(ifname) >= 0)
-							port = ports[key];
-					});
-				}
-				if (!port || !port.direction)
-					return;
-				var direction = port.direction;
 				var up;
 				var down;
 
@@ -170,5 +132,4 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless, $rpc, $tr,
 			$scope.$apply();
 		}).fail(function(e){console.log(e);});
 	}
-
 });
