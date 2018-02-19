@@ -10,7 +10,10 @@
 			"uci": [
 				"dsl"
 			]
-		},
+		}
+	},
+	"juci-network-dsl-admin": {
+		"description": "JUCI Network Device Configuration module admin",
 		"write": {
 			"uci": [
 				"dsl"

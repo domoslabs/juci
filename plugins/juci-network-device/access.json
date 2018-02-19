@@ -15,7 +15,10 @@
 					"status"
 				]
 			}
-		},
+		}
+	},
+	"juci-network-device-admin": {
+		"description": "JUCI Network Device Configuration module admin",
 		"write": {
 			"uci": [
 				"network"
