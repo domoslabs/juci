@@ -111,7 +111,9 @@
 				delete self.$net_def;
 			});
 
-			return self.$net_def.promise();
+			if(self.$net_def && self.$net_def.promise instanceof Function)
+				return self.$net_def.promise();
+			return $.Deferred().reject();
 		}
 
 		NetworkBackend.prototype.getConnectedClients = function(){
@@ -141,7 +143,9 @@
 				delete self.$cclients_def;
 			});
 
-			return self.$cclients_def.promise();
+			if (self.$cclients_def && self.$cclients_def.promise instanceof Function)
+				return self.$cclients_def.promise();
+			return $.Deferred().reject();
 		}
 
 		NetworkBackend.prototype.getNameServers = function(){
@@ -157,7 +161,9 @@
 				delete self.$ns_def;
 			});
 
-			return self.$ns_def.promise();
+			if (self.$ns_def && self.$ns_def.promise instanceof Function)
+				return self.$ns_def.promise();
+			return $.Deferred().reject();
 		}
 
 		NetworkBackend.prototype.getNetworkLoad = function(){
@@ -219,7 +225,9 @@
 				delete self.$drn_def;
 			});
 
-			return self.$drn_def.promise();
+			if (self.$drn_def && self.$drn_def.promise instanceof Function)
+				return self.$drn_def.promise();
+			return $.Deferred().reject();
 		}
 
 		NetworkBackend.prototype.getServices = function(){
@@ -238,7 +246,7 @@
 
 		NetworkBackend.prototype.getAdapters = function(){
 			var self = this;
-			if(self.$adapter_def !== undefined)
+			if (self.$adapter_def && self.$adapter_def.promise instanceof Function)
 				return self.$adapter_def.promise();
 			self.$adapter_def =  $.Deferred();
 			$rpc.$call("network.device", "status").done(function(result){
@@ -275,7 +283,9 @@
 				self.$adapter_def.reject("error calling network.device status " + JSON.stringify(e));
 				delete self.$adapter_def;
 			});
-			return self.$adapter_def.promise();
+			if (self.$adapter_def && self.$adapter_def.promise instanceof Function)
+				return self.$adapter_def.promise();
+			return $.Deferred().reject();
 		}
 
 
