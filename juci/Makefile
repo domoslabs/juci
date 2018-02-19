@@ -3,25 +3,21 @@ define Plugin/juci
 	CODE_LOAD:=01
 
 	STYLES-y:=
-	STYLES-y+=src/css/normalize.css
-	STYLES-y+=src/lib/css/bootstrap.min.css
+	STYLES-y+=src/lib/css/abn_tree.css
+	STYLES-y+=src/lib/css/angular-ui-switch.min.css
+	STYLES-y+=src/lib/css/angular-ui.min.css
+	STYLES-y+=src/lib/css/awesome-bootstrap-checkbox.css
 	STYLES-y+=src/lib/css/bootstrap-select.min.css
+	STYLES-y+=src/lib/css/bootstrap.min.css
+	STYLES-y+=src/lib/css/dropdown-multi-select.css
 	STYLES-y+=src/lib/css/font-awesome.min.css
 	STYLES-y+=src/lib/css/ionicons.min.css
-	STYLES-y+=src/lib/css/angular-ui.min.css
-	STYLES-y+=src/lib/css/select.min.css
-	STYLES-y+=src/lib/css/angular-ui-switch.min.css
-	STYLES-y+=src/lib/css/awesome-bootstrap-checkbox.css
-	STYLES-y+=src/lib/css/vis.min.css
-	STYLES-y+=src/lib/css/ng-tags-input.css
-	STYLES-y+=src/lib/css/abn_tree.css
 	STYLES-y+=src/lib/css/ng-tags-input.bootstrap.css
-	STYLES-y+=src/lib/css/dropdown-multi-select.css
-	STYLES-y+=src/css/menu.css
-	STYLES-y+=src/css/juci-icons.css
-	STYLES-y+=src/css/nga.min.css
-	STYLES-y+=src/css/app.css
-	STYLES-y+=src/css/modal.css
+	STYLES-y+=src/lib/css/ng-tags-input.css
+	STYLES-y+=src/lib/css/nga.min.css
+	STYLES-y+=src/lib/css/normalize.css
+	STYLES-y+=src/lib/css/select.min.css
+	STYLES-y+=src/lib/css/vis.min.css
 	
 	JAVASCRIPT-y:=
 	JAVASCRIPT-y+=src/lib/js/async.js
