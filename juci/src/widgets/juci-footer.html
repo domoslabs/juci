@@ -1,22 +1,15 @@
 <juci-config-apply-pane></juci-config-apply-pane>
-<div style="width: 100%; min-height: 200px; background: #d6d6d6;
-background: -moz-linear-gradient(top, #d6d6d6 0%, #f9f9f9 27%, #ffffff 100%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d6d6d6), color-stop(27%,#f9f9f9), color-stop(100%,#ffffff));
-background: -webkit-linear-gradient(top, #d6d6d6 0%,#f9f9f9 27%,#ffffff 100%);
-background: -o-linear-gradient(top, #d6d6d6 0%,#f9f9f9 27%,#ffffff 100%);
-background: -ms-linear-gradient(top, #d6d6d6 0%,#f9f9f9 27%,#ffffff 100%);
-background: linear-gradient(to bottom, #d6d6d6 0%,#f9f9f9 27%,#ffffff 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d6d6', endColorstr='#ffffff',GradientType=0 );; margin-bottom: 0px !important; ">
-	<div class="container footer" style=" padding-top: 40px; padding-bottom: 40px; ">
+<div class="juci-footer">
+	<div class="container footer">
 		<div class="row">
 			<div class="col-sm-6 col-xs-12 form-group">
 				<span ng-repeat="lang in languages">
-					<a style="text-decoration: {{isActiveLanguage(lang)?'underline':'none'}}; color: inherit;" href="" ng-click="setLanguage(lang)"><img ng-src="/img/lang/{{lang.short_code}}.gif"/>{{lang.title|translate}}</a>{{$last ? '' : ' | '}}
+					<a ng-class="{ 'underline': isActiveLanguage(lang)}" href="" ng-click="setLanguage(lang)"><img ng-src="/img/lang/{{lang.short_code}}.gif"/>{{lang.title|translate}}</a>{{$last ? '' : ' | '}}
 				</span>
 			</div>
 			<div class="col-sm-6 col-xs-12 form-group footer-right" >
 				<div class="row">{{firmware}}</div>
-				<juci-mode-picker style="margin-top:10px;" class="row visible-xs visible-sm"></juci-mode-picker>
+				<juci-mode-picker class="row visible-xs visible-sm"></juci-mode-picker>
 				</span>
 				<div class="row" ng-show="i['ipv4-address'].length == 0 && i['ipv6-address'].length == 0" translate>No WAN IP</div>
 			</div>
@@ -26,10 +19,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d6d6', end
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
-				<div style="float:right;">
+				<div class="pull-right">
 					<button class="btn btn-default btn-sm" ng-click="onLogout()" translate>Logout</button>
 				</div>
-				<center style="margin-top: 50px;"><strong><a href="http://www.iopsys.eu"><img style="height: 50px; margin-bottom:10px; margin-left: 5px; " ng-src="/img/iopsys_logo.png"/></a></strong></center>
+				<a href="http://www.iopsys.eu" class="software-logo"></a>
 				<!--<juci-theme-picker></juci-theme-picker>-->
 			</div>
 		</div>
