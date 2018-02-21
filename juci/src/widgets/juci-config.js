@@ -21,7 +21,7 @@
 JUCI.app
 .directive("juciConfigSection", function(){
 	return {
-		template: '<div><div class="juci-config-section" ng-transclude></div><hr style="width: 100%; border-bottom: 1px solid #ccc; clear: both;"/></div>',
+		template: '<div><div class="juci-config-section" ng-transclude></div><hr class="juci-config-section-hr" /></div>',
 		replace: true,
 		transclude: true
 	 };
@@ -49,16 +49,16 @@ JUCI.app
 })
 .directive("juciConfigLine", function(){
 	return {
-		template: '<div><div class="row juci-config-line" style="margin-top: 20px; ">'+
+		template: '<div><div class="row juci-config-line">'+
 			'<div class="col-sm-6 col-xs-12 {{errorClass}}">'+
-				'<label style="font-size: 1.2em; word-wrap:break-word;">{{title}}</label>'+
-				'<p style="font-size: 12px">{{help}}</p>'+
+				'<label class="juci-config-line-label">{{title}}</label>'+
+				'<p class="juci-config-line-help">{{help}}</p>'+
 			'</div>'+
 			'<div class="col-sm-6 col-xs-12 juci-config-line-data">'+
 				'<div class="{{pullClass}}" ng-transclude></div>'+
 			'</div></div>'+
-			'<div class="alert alert-danger" style="font-size: 0.8em" ng-show="er">{{er}}</div>'+
-			'<hr class="visible-xs" style="color:grey" />'+
+			'<div class="alert juci-config-line-error" ng-show="er">{{er}}</div>'+
+			'<hr class="visible-xs" />'+
 			'</div>',
 		replace: true,
 		scope: {
@@ -75,16 +75,16 @@ JUCI.app
 })
 .directive("juciConfigLineNoWrap", function(){
 	return {
-		template: '<div><div class="row juci-config-line" style="margin-top: 20px; ">'+
-			'<div class="{{errorClass}}" style="float: left;">'+
-				'<label style="font-size: 1.2em; word-wrap:break-word;">{{title}}</label>'+
-				'<p style="font-size: 12px">{{help}}</p>'+
+		template: '<div><div class="row juci-config-line">'+
+			'<div class="{{errorClass}} pull-left">'+
+				'<label class="juci-config-line-label">{{title}}</label>'+
+				'<p class="juci-config-line-help">{{help}}</p>'+
 			'</div>'+
-			'<div class="juci-config-line-data" style="float: right;">'+
+			'<div class="juci-config-line-data pull-right">'+
 				'<div class="{{pullClass}}" ng-transclude></div>'+
 			'</div></div>'+
-			'<div class="alert alert-danger" style="font-size: 0.8em" ng-show="er">{{er}}</div>'+
-			'<hr class="visible-xs" style="color:grey" />'+
+			'<div class="alert juci-config-line-error" ng-show="er">{{er}}</div>'+
+			'<hr class="visible-xs" />'+
 			'</div>',
 		replace: true,
 		scope: {
@@ -122,7 +122,7 @@ JUCI.app
 			'<span ng-hide="changes && changes.length">{{"No unsaved changes" | translate}}</span>'+
 			'<button class="btn btn-lg btn-default col-lg-2 pull-right" ng-click="onCancel()" ng-disabled="changes && !changes.length" title="{{\'Discard all changes and reload\'|translate}}">{{ "Cancel" | translate }}</button>'+
 			'<button class="btn btn-lg btn-primary col-lg-2 pull-right" ng-click="onApply()" title="{{\'Write settings to the router\'|translate}}" ng-disabled="busy"><i class="fa fa-spinner" ng-show="busy"/>{{ "Apply"| translate }}</button>'+
-			'</div><div style="clear: both;"></div></div>',
+			'</div><div class="juci-config-clear-both"></div></div>',
 		replace: true,
 		scope: {
 			onPreApply: "&"
