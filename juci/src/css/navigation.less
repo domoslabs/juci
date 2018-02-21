@@ -34,7 +34,7 @@ ul.left-menu {
 		&:hover, &:visited, &:active {
 			text-decoration: none;
 			cursor: pointer;
-			color: @theme-text-color;
+			color: @theme-navigation-text-color;
 		}
 	}
 }
@@ -51,6 +51,7 @@ ul.left-sub-menu {
 	width: 100%;
 	top: 0;
 	border-bottom: 1px solid @theme-border-color;
+	box-shadow: 0px 1px 3px @theme-shadow-color;
 	.navbar-wiki {
 		@media screen and (max-width: 767px) {
 			display: none;
