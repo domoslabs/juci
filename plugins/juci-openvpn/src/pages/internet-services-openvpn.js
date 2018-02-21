@@ -19,11 +19,11 @@
  */
 
 JUCI.app
-.controller("OpenVPNController", function($scope, $tr, gettext, $uci, $rpc){
+.controller("OpenVPNController", function($scope, $tr, gettext, $uci, $rpc, $juciDialog, $file){
+	var filename = "/tmp/tmpOpenvpnConfiguration";
+
 	$scope.data = {
-		ovpn_orig: "",
-		ovpn: "",
-		changed: false
+		ovpn: ""
 	};
 
 	$scope.dev_list = [
@@ -78,7 +78,7 @@ JUCI.app
 		{ label: $tr(gettext("Adaptive")), value: "adaptive" }
 	];
 
-	$scope.showPassword = true;
+	$scope.showPassword = false;
 	$scope.togglePassword = function(){
 		$scope.showPassword = !$scope.showPassword;
 	}
@@ -92,30 +92,51 @@ JUCI.app
 		$scope.openvpn = $uci.openvpn["@openvpn"][0];
 		//$scope.openvpn.config = $scope.openvpn.auth_user.value+$scope.openvpn.auth_user.value;
 		//console.log($scope.openvpn);
-
 	}
 	);
 
-	$rpc.$call("juci.openvpn", "get_config", {}).done(function(data){
-		if (data.result)
-			$scope.data.ovpn_orig = $scope.data.ovpn = data.result;
-		$scope.data.changed = false;
-		$scope.$apply();
-	});
-
-	$scope.$watch("data.ovpn", function(){
-		$scope.data.changed = !($scope.data.ovpn_orig === $scope.data.ovpn);
-
-	});
+	(loadConfig = function() {
+		$rpc.$call("juci.openvpn", "get_config", {}).done(function(data){
+			if (data.result)
+				$scope.data.ovpn = data.result;
+			$scope.$apply();
+		});
+	})();
 
 	$scope.save_config = function(){
-		$rpc.$call("juci.openvpn", "set_config", {"data":$scope.data.ovpn}).done(function(data){
-			$scope.data.ovpn_orig = $scope.data.ovpn;
-			$scope.data.changed = false;
-			$scope.$apply();
+		$rpc.$call("juci.openvpn", "set_config", {}).done(function(data){
 			$rpc.$call("uci", "commit", {"config":"openvpn"});
+			loadConfig();
 		}).fail(function(error){
 			console.log("Failed to call juci.openvpn set_config "+error);
+		});
+	};
+
+	$scope.onAddFile = function(){
+		var model = {};
+
+		$juciDialog.show("openvpn-add-file", {
+			title: $tr(gettext("Upload OpenVPN configuration")),
+			on_apply: function(btn, inst){
+				model.error = null;
+				if(!model.key && !model.file){
+					model.error = $tr(gettext("You must choose a configuration file or paste it"));
+					return;
+				}
+				if(model.key){
+					$file.uploadString(filename, model.key).done(function(ret){
+						$scope.save_config();
+						inst.close();
+					}).fail(function(e){model.error = e;});
+				}else{
+					if(!model.file.name || model.file.size < 1){ model.error = "Invalid file"; return; }
+					$file.uploadFile(filename, model.file.files[0]).done(function(){
+						$scope.save_config();
+						inst.close();
+					}).fail(function(e){console.log(e);model.error = JSON.stringify(e);});
+				}
+			},
+			model: model
 		});
 	};
 

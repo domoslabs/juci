@@ -1,0 +1,19 @@
+<div>
+	<juci-config-section>
+		<juci-config-lines>
+			<juci-config-line title="{{'Choose .ovpn file'|translate}}">
+				<input type="file" onchange="angular.element(this).scope().fileChanged()" class="btn btn-default btn-file" id="configFileSelector"  name="filedata" />
+			</juci-config-line>
+		</juci-config-lines>
+	</juci-config-section>
+
+	<juci-config-section>
+		<label>{{'Alternatively, paste the configuration:'|translate}}</label>
+		<br/>
+		<textarea rows="12" style="width: 100%;" ng-model="model.key">
+		</textarea>
+	</juci-config-section>
+
+	<div class="alert alert-danger" style="font-size: 0.8em" ng-show="model.error">{{model.error}}</div>
+</div>
+

@@ -6,7 +6,7 @@ OVPN="/etc/openvpn/openvpn.ovpn"
 
 case "$1" in
 	list)
-		echo '{ "get_config" : {}, "set_config" : {"data":"str"} }'
+		echo '{ "get_config" : {}, "set_config" : {} }'
 	;;
 	call)
 		case "$2" in
@@ -16,17 +16,11 @@ case "$1" in
 				json_dump
 			;;
 			set_config)
-				read -r input;
-
-				json_load "$input"
-				json_get_var data data
-
 				json_init
-				if [ -n "$data" ]; then
-					json_add_boolean success $(echo "$data" > $OVPN 2>/dev/null && {sync; echo 1} || echo 0)
-				fi
+				json_add_boolean success $(mv /tmp/tmpOpenvpnConfiguration $OVPN && {sync; echo 1} || echo 0)
 				json_dump
 			;;
 		esac
 	;;
 esac
+

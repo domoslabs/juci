@@ -1,7 +1,5 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="OpenVPNController">
-		<juci-config-section>
-
 			<juci-config-heading>{{ 'OpenVPN Client Configuration' | translate }}</juci-config-heading>
 			<juci-config-info>{{ 'openvpn.settings.info' | translate }}</juci-config-info>
 
@@ -9,17 +7,24 @@
 				<switch ng-model="openvpn.enabled.value" class="green"/>
 			</juci-config-line>
 
-			<juci-config-line title="{{ 'Username' | translate}}" help="{{ 'Username help' | translate}}">
+		<juci-config-section ng-show="openvpn.enabled.value">
+
+			<juci-config-line title="{{ 'Username' | translate}}">
 				<input ng-model="openvpn.auth_user.value" type="username" class="form-control" placeholder="Username">
 			</juci-config-line>
 
-			<juci-config-line title="{{ 'Password' | translate}}" help="{{ 'Password help' | translate}}">
+			<juci-config-line title="{{ 'Password' | translate}}">
 				<input ng-model="openvpn.auth_pass.value" type="{{(!showPassword)?'password':'text'}}" class="form-control" placeholder="Password">
 				<div class="checkbox checkbox-info">
 					<input type="checkbox" ng-model="showPassword" ng-click="togglePassword()"/>
 					<label><strong>{{ "Show password" |translate}}</strong></label>
 				</div>
 			</juci-config-line>
+
+			<juci-config-line title="{{ 'Upload Configuration' | translate}}">
+				<button ng-click="onAddFile()">Upload a file</button>
+			</juci-config-line>
+
 
 			<!--
 			<juci-config-line title="{{'Client'|translate}}">
@@ -83,14 +88,13 @@
 			</juci-config-line>
 			-->
 
-			<juci-config-line title="{{ 'The .ovpn config file' | translate}}">
-			</juci-config-line>
-			<div style="margin-left:15px; margin-right:15px">
-			<textarea style="width:100%" rows=10 cols=50 ng-model="data.ovpn" placeholder="Paste the .ovpn config here"/>
-			<button ng-show="data.changed" ng-click="save_config()" class="btn btn-primary pull-right" style="margin: 15px 0">Save</button>
-			</div>
-
-
 		</juci-config-section>
+
+	<juci-config-section>
+		<h3>{{ 'Current Configuration' | translate}}</h3>
+		<textarea disabled rows="12" style="width: 100%; resize: none;">
+{{data.ovpn}}
+		</textarea>
+	</juci-config-section>
 	</div>
 </juci-layout-with-sidebar>

@@ -9,6 +9,10 @@
 				"juci.openvpn": [
 					"get_config",
 					"set_config"
+				],
+				"file": [
+					"read_tmp",
+					"write_tmp"
 				]
 			}
 		},
