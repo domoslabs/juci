@@ -43,11 +43,31 @@ body {
 	background-color: lighten(@theme-primary-color, 10%);
 	border-color: lighten(@theme-primary-color, 10%);
 }
-.label-danger{
+.label-danger, .label-error {
 	background-color: @theme-error-color;
 }
-.text-danger{
+
+.label-warning {
+	background-color: @theme-warning-color;
+}
+
+.label-disabled {
+	background-color: @theme-disabled-color;
+}
+
+.label-success{
+	background-color: @theme-success-color;
+}
+.text-danger, .text-error {
 	color: @theme-error-color;
+}
+
+.text-warning {
+	color: @theme-warning-color;
+}
+
+.text-disabled {
+	color: @theme-disabled-color;
 }
 
 .text-success{
@@ -99,4 +119,13 @@ h3.panel-title {
 
 .field-error {
 	border-left: 4px solid @theme-error-color;
+}
+.clear-both {
+	clear: both;
+}
+div.juci-error, div.juci-warning {
+	margin-top: 10px;
+	font-size: 0.8em;
+	padding: 5px;
+	border-radius: 5px;
 }
