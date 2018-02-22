@@ -1,29 +1,48 @@
+// main colors to be used in this file only
+@color-border: #ccc;
+@white: #fff;
+@color-text-main: #66989c;
+@color-text-link: #34485d;
+@color-dark: #000;
+@color-main-1: #E62f39;
+@color-main-2: #f1c100;
+@color-disable: #444;
+
+// state colors
 @theme-success-color: #5cb85c;
-@theme-primary-color: #F1C100;
 @theme-warning-color: #ffa500;
-@theme-error-color: #E62f39;
-@theme-disabled-color: #34485d;
-@theme-primary-text-color: #FFF;
-@theme-heading-color: #66989C;
-@theme-link-color: #34485d;
-@theme-detail-color: #E62f39;
-@theme-error-background-color: #f2dede;
-@theme-error-border-color: #ebccd1;
-@theme-div-error-color: #a94442;
-@theme-footer-gradient-start: #d6d6d6;
-@theme-footer-gradient-end: #f9f9f9;
-@theme-footer-background: white;//darken(@theme-footer-base-color-start, 10%);
+@theme-primary-color: @color-main-2;
+@theme-error-color: @color-main-1;
+@theme-disabled-color: @color-disable;
+
+// specific colors (try to use main or state colors here)
+@theme-primary-text-color: @white;
+@theme-heading-color: @color-text-main;
+@theme-link-color: @color-text-link;
+@theme-detail-color: @theme-warning-color;
+@theme-error-background-color: lighten(@theme-error-color, 37%); //#fad7d9
+@theme-error-border-color: lighten(@theme-error-color, 33%); //#f8c5c8
+@theme-div-error-color: @theme-error-color;
+
+@theme-footer-gradient-start: darken(@white, 16%); //#d6d6d6
+@theme-footer-gradient-end: darken(@white, 2.5%); //#f9f9f9
+@theme-footer-background: @white;
 @theme-footer-gradient-middle: 27%;
-@theme-border-color: #ccc;
-@theme-shadow-color: #bbb;
-@theme-navigation-text-color: #444;
-@theme-navigation-background: white;
-@theme-navigation-active-background: white;
-@theme-navigation-active-background-mobile: #ddd;
-@theme-navigation-active-color: #e62f39;
-@theme-navigation-active-overline: #e62f39;
-@theme-navigation-color: #111;
-@theme-navigation-toggle-background: #ddd;
+
+@theme-border-color: @color-border;
+@theme-shadow-color: darken(@color-border, 6.5); //#bbb
+@theme-navigation-text-color: @color-disable;
+@theme-navigation-background: @white;
+@theme-navigation-active-background: @white;
+@theme-navigation-active-background-mobile: darken(@color-border, 6.5); //#bbb
+@theme-navigation-active-color: @color-main-1;
+@theme-navigation-active-overline: @color-main-1;
+@theme-navigation-color: lighten(@color-dark, 6.5);
+@theme-navigation-toggle-background: darken(@color-border, 6.5); //#bbb
 @theme-overview-status-background: rgba(0,0,0,0.8);
-@theme-overview-text-color: white;
-@theme-overview-background-color: black;
+@theme-overview-text-color: @white;
+@theme-overview-background-color: @color-dark;
+@theme-input-dhcp-border: @color-border;
+@theme-input-dhcp-color: lighten(@color-disable, 25%); //#848484
+@theme-input-dhcp-well-border: darken(@white, 10%); //#e6e6e6
+@theme-input-dhcp-well:  lighten(@color-disable, 25%); //#848484

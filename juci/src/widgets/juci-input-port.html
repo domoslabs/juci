@@ -2,17 +2,17 @@
 	<div ng-show="portRange">
 		<ul class="list-inline">
 			<li>
-				<input type="text" name="startPort" ng-model="startPort" class="form-control" style="width: 80px" maxlength="5" placeholder="{{'Start port'|translate}}" />
+				<input type="text" name="startPort" ng-model="startPort" class="form-control input-port-width" maxlength="5" placeholder="{{'Start port'|translate}}" />
 			</li>
 			<li>
 				to
 			</li>
 			<li>
-				<input type="text" name="startPort" ng-model="endPort" class="form-control" style="width: 80px" maxlength="5"  placeholder="{{'End port'|translate}}" />
+				<input type="text" name="startPort" ng-model="endPort" class="form-control input-port-width" maxlength="5"  placeholder="{{'End port'|translate}}" />
 			</li>
 		</ul>
 	</div>
 	<div ng-show="!portRange">
-		<input type="text" class="form-control" ng-model="port" placeholder="{{'Port (1-65535)'|translate}}" style="width: 80px" maxlength="5" />
+		<input type="text" class="form-control input-port-width" ng-model="port" placeholder="{{'Port (1-65535)'|translate}}" maxlength="5" />
 	</div>
 </div>
