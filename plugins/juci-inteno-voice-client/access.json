@@ -3,11 +3,9 @@
 		"description": "JUCI asterisk module",
 		"read": {
 			"ubus": {
-				"asterisk": [
-					"status"
-				], 
-				"asterisk.call_log": [
-					"list"
+				"voice.asterisk": [
+					"status",
+					"call_log"
 				],
 				"juci.system": [
 					"reboot"

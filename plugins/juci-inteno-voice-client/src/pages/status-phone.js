@@ -7,7 +7,7 @@ JUCI.app
 		$uci.$sync("voice_client").done(function(){
 			var sipProviders = $uci.voice_client["@sip_service_provider"];
 			var brcmLines = $uci.voice_client["@brcm_line"];
-			$rpc.$call("asterisk", "status").done(function(data){
+			$rpc.$call("voice.asterisk", "status").done(function(data){
 				if(data && data.sip){
 					var accounts = [];
 					var lines = [];

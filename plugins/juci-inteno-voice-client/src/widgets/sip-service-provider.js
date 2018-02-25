@@ -15,7 +15,7 @@ JUCI.app
 		$scope.$apply();
 	});
 	JUCI.interval.repeat("voice.sip-service-provicers", 5000, function(done){
-		$rpc.$call("asterisk", "status").done(function(data){
+		$rpc.$call("voice.asterisk", "status").done(function(data){
 			$scope.sipAccStatus = data.sip;
 			updateStatus();
 			$scope.$apply();

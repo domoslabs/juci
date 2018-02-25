@@ -32,7 +32,7 @@ JUCI.app
 				}).always(function(){ next(); });
 			},
 			function(next){
-				$rpc.$call("asterisk", "status").done(function(data){
+				$rpc.$call("voice.asterisk", "status").done(function(data){
 					$scope.online = false;
 					$scope.sipAccounts.map(function(acc){
 						if(data.sip && data.sip[acc[".name"]]){
