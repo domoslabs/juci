@@ -33,11 +33,11 @@ JUCI.app
 .controller("openvpnAddFileModel", function($scope){
 	$scope.fileChanged = function(){
 		$scope.model.file = document.getElementById("configFileSelector");
-		$scope.model.key = "";
+		$scope.model.config = "";
 		$scope.model.error = "";
 		$scope.$apply();
 	};
-	$scope.$watch("model.key", function(m){
+	$scope.$watch("model.config", function(m){
 		if(!m) return;
 		if($scope.model.error) $scope.model.error = "";
 	}, false);

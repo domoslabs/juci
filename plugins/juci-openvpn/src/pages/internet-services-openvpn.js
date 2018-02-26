@@ -113,18 +113,21 @@ JUCI.app
 	};
 
 	$scope.onAddFile = function(){
-		var model = {};
+		var model = {
+			config: $scope.data.ovpn,
+			old_config: $scope.data.ovpn
+		};
 
 		$juciDialog.show("openvpn-add-file", {
 			title: $tr(gettext("Upload OpenVPN configuration")),
 			on_apply: function(btn, inst){
 				model.error = null;
-				if(!model.key && !model.file){
+				if(!model.config && !model.file){
 					model.error = $tr(gettext("You must choose a configuration file or paste it"));
 					return;
 				}
-				if(model.key){
-					$file.uploadString(filename, model.key).done(function(ret){
+				if(model.config !== model.old_config){
+					$file.uploadString(filename, model.config).done(function(ret){
 						$scope.save_config();
 						inst.close();
 					}).fail(function(e){model.error = e;});
