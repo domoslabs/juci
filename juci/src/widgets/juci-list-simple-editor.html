@@ -1,5 +1,5 @@
 <div>
-	<div> 
+	<div class="juci-list-simple-editor">
 		<i class="fa fa-spinner fa-spin fa-2x" ng-show="!items"></i>
 		<ul class="list-group">
 			<li class="list-group-item" ng-repeat="i in items track by $index">
@@ -12,10 +12,10 @@
 		</ul>
 		<div ng-hide="hideButtons == 'true'">
 			<button class="btn btn-default pull-right" ng-click="onListAddItem()"><i class="fa fa-plus"></i></button>
-			<ng-transclude style="float: right; padding-right:10px;max-width:84%"></ng-transclude>
+			<ng-transclude class="content"></ng-transclude>
 		</div>
 	</div>
-	<div style="clear: both; margin-top: 10px;"></div>
+	<div class="juci-list-simple-editor-spacer"></div>
 	<div ng-show="item">
 	</div>
 </div>
