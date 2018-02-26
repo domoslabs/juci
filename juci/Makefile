@@ -12,8 +12,8 @@ define Plugin/juci
 	STYLES-y+=src/lib/css/dropdown-multi-select.css
 	STYLES-y+=src/lib/css/font-awesome.min.css
 	STYLES-y+=src/lib/css/ionicons.min.css
-	STYLES-y+=src/lib/css/ng-tags-input.bootstrap.css
 	STYLES-y+=src/lib/css/ng-tags-input.css
+	STYLES-y+=src/lib/css/ng-tags-input.bootstrap.css
 	STYLES-y+=src/lib/css/nga.min.css
 	STYLES-y+=src/lib/css/normalize.css
 	STYLES-y+=src/lib/css/select.min.css
