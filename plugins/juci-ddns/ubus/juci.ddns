@@ -17,7 +17,8 @@ case "$1" in
 				json_dump
 			;;
 			status)
-				local input service running ret file pid_line pid content
+				input=""
+				service=""
 				read input
 				json_load "$input"
 				json_get_var service service
@@ -32,7 +33,6 @@ case "$1" in
 				content=$(cat $file | awk "/PID '$pid' /{y=1;next}y")
 				IFS=$'\n'
 				if [ "$content" ]; then
-					local reload_time last_reload cur_time diff time_left ERRORS WARNINGS
 					reload_time=$(echo "$content" | awk '/Waiting [0-9]* seconds/ {i=$4} END {print i}')
 					last_reload=$(echo "$content" | awk -F 'at ' '/info : [RS]/ {i=$2} END {print i}')
 					if [ "$reload_time" -a "$last_reload" ]; then

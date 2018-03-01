@@ -31,9 +31,9 @@ case "$1" in
 	call)
 		case "$2" in
 			list)
-				local enabled=0
-				local running=0
-				local start=0
+				enabled=0
+				running=0
+				start=0
 
 				json_init
 				json_add_array "services"
@@ -60,7 +60,7 @@ case "$1" in
 				[ -n "$name" ] && handle_service $2 $name
 			;;
 			status)
-				local running=0
+				running=0
 
 				read input
 				json_load "$input"

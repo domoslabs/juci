@@ -19,7 +19,7 @@ case "$1" in
 				json_dump
 			;;
 			create-backup)
-				local output=""
+				output=""
 
 				read input
 				json_load "$input"
@@ -36,8 +36,8 @@ case "$1" in
 				json_dump				
 			;;
 			restore-backup)
-				local error=""
-				local stdout=""
+				error=""
+				stdout=""
 
 				read input
 				json_load "$input"

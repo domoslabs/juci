@@ -473,7 +473,7 @@ case "$1" in
 			;;
 			#users) for future reference
 			#	add_user(){
-			#		local username
+			#		username=""
 			#		config_get username "$1" username
 			#		json_add_string "" "$username"
 			#	}
