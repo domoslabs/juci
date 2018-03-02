@@ -2,6 +2,8 @@
 
 . /usr/share/libubox/jshn.sh
 
+PROVIDERS_FILE="/etc/ddns/services"
+
 case "$1" in
 	list)
 		echo '{ "providers" : {}, "status": { "service": "Str" } }'
@@ -11,7 +13,7 @@ case "$1" in
 			providers)
 				json_init
 				json_add_array "providers"
-				for service in $(cat /usr/lib/ddns/services | awk '{print$1}' | tr -d '"'); do
+				for service in $(cat $PROVIDERS_FILE | awk '{print$1}' | grep -v "#" | tr -d '"'); do
 					json_add_string "" "$service"
 				done
 				json_dump
