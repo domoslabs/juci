@@ -76,7 +76,6 @@ JUCI.app
 	$scope.$watch("data.model", function(value){
 		if(!$scope.share) return;
 		$scope.filesystem = "";
-		console.log(value);
 		$rpc.$call("router.usb", "status").done(function(data){
 			Object.keys(data).map(function(key){
 				var usb = data[key];
@@ -96,8 +95,15 @@ JUCI.app
 				def = $.Deferred(); 
 				$scope.loadingLocations = true;
 				query = query.replace(/\/\.\./g,"");
-				$rpc.$call("router.directory", "autocomplete", { "path": query.slice(1) }).done(function(result){
-					def.resolve(result.folders); 
+				$rpc.$call("router.directory", "autocomplete", { "path": "/mnt/"+query }).done(function(result){
+					if(!result.folders)
+						def.reject();
+					var clean = result.folders.map(function(folder){
+						if(folder.match(/^\/mnt/))
+							return folder.slice(4);
+						return folder;
+					});
+					def.resolve(clean);
 				}).fail(function(){
 					def.reject(); 
 				}).always(function(){def = null; $scope.loadingLocations = false;});
