@@ -15,7 +15,8 @@
 					"stop"
 				], 
 				"juci.wireless": [
-					"set_credentials"
+					"set_credentials",
+					"get_channels"
 				],
 				"router.system": [
 					"info"
