@@ -4,7 +4,7 @@
 
 case "$1" in
 	list)
-		echo '{ "set_credentials" : {"ssid":"str", "encryption":"str", "key":"str", "import":true} }'
+		echo '{ "set_credentials" : {"ssid":"str", "encryption":"str", "key":"str", "import":true}, "get_channels" : {"radio":"str", "bandwidth":"str", "dfsc":true} }'
 
 	;;
 	call)
@@ -40,6 +40,40 @@ case "$1" in
 				fi
 
 				json_dump
+			;;
+			get_channels)
+				read input;
+
+				json_load "$input"
+				json_get_var radio radio
+				json_get_var bandwidth bandwidth
+				json_get_var dfsc dfsc
+
+				frequency=2
+
+				test `wlctl -i $radio band` = "a" && frequency=5
+
+				tmpFile="/tmp/tmpRpcdJuciWireless"
+				wlctl -i $radio chanspecs -b $frequency -w $bandwidth | tr A-Z a-z | sed -e 's/[^0-9]/ /g' | cut -d ' ' -f1 | sort -n | uniq > $tmpFile
+
+				json_init
+
+				if [ $dfsc -eq 0 -a `grep 48 -B100 $tmpFile | wc -l` -gt 0 ]; then
+					cmd="grep 48 -B100 $tmpFile"
+				else
+					cmd="cat $tmpFile"
+				fi
+
+				json_add_array "channels"
+
+				for i in `$cmd`; do
+					json_add_int "channels" $i
+				done
+
+				json_close_array
+				json_dump
+
+				rm $tmpFile
 			;;
 		esac
 	;;
