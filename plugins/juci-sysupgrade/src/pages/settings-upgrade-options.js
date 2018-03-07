@@ -21,10 +21,8 @@
 JUCI.app
 .controller("SettingsUpgradeOptions", function($scope, $uci, $rpc, $tr, gettext, $juciDialog){
 	$scope.allImageExtensions = [
-		{ label: $tr(gettext(".w (JFFS Image with CFE)")), value: ".w" },
-		{ label: $tr(gettext(".y (UBIFS Image)")), value: ".y" },
-		{ label: $tr(gettext(".y2 (new UBIFS Image)")), value: ".y2" },
-		{ label: $tr(gettext("fs_image (JFFS Image)")), value: "fs_image" }
+		{ label: $tr(gettext(".y2 (UBIFS Image)")), value: ".y2" },
+		{ label: $tr(gettext(".y3 (UBIFS Image)")), value: ".y3" },
 	]; 
 	
 	$uci.$sync("system").done(function(){
