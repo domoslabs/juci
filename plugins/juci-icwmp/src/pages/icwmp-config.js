@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("icwmpConfigPage", function($scope, $rpc, $uci, $tr, gettext, $firewall){
+.controller("icwmpConfigPage", function($scope, $rpc, $uci, $tr, gettext, $firewall, $juciAlert){
 	$uci.$sync(["cwmp"]).done(function(){
 		$scope.acs = $uci.cwmp.acs;
 		$scope.cpe = $uci.cwmp.cpe;
@@ -46,10 +46,15 @@ JUCI.app
 		{ label: $tr(gettext("Debug")),		value: 'DEBUG' }
 	];
 
-	$scope.onTR069ObjectAvailable=$rpc.$has("tr069");
+	$scope.onTR069ObjectAvailable=$rpc.$has("tr069", "inform");
 
-	function contactACS() {
-		$rpc.$call("tr069", "inform '{\"event\":\"connection requested\"}'");
+	$scope.contactACS = function() {
+		$rpc.$call("tr069", "inform", {"event":"connection request"}).done(function(data){
+			if(data.status === 1)
+				$juciAlert($tr(gettext("Connection request sent")));
+		}).fail(function(e){
+			console.error("couldn't call tr069 inform " + e);
+		});
 	}
 });
 
