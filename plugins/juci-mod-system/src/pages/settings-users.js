@@ -30,6 +30,7 @@ JUCI.app
 	$uci.$sync([ "juci", "passwords" ]).done(function(){
 		if(!$uci.juci || !$uci.passwords) return;
 		$scope.users = ($uci.passwords["@usertype"] || []).map(function(user){ return user[".name"];});
+		$scope.users.push("unused");
 		function name_in_list(list, name){
 			return list.indexOf(name) !== -1;
 		}
@@ -41,11 +42,20 @@ JUCI.app
 						label: user,
 						selected: name_in_list(page.expose.value, user)
 					}
-				}),
+				}).concat(page.expose.value.filter(function(exp){
+					return !name_in_list($scope.users, exp);
+					}).map(function(exp){
+						return {
+							label: exp,
+							selected: true
+						}
+					})
+				),
 				name: page.page.value,
-				out: []
+				out: [],
+				hide: page.redirect.value === "first"
 			};
-		});
+		}).filter(function(page){ return page;});
 
 		/* update config when any dropdown is changed */
 		$scope.$watch(function(){
@@ -61,12 +71,8 @@ JUCI.app
 				if(!$scope.uci_pages || !$scope.uci_pages[index])
 					return;
 				var page = $scope.uci_pages[index];
-				/* 1. remove all users that are visible in the multi-select */
-				page.expose.value = page.expose.value.filter(function(user){
-					return !name_in_list($scope.users, user);
-				});
 
-				/* 2. filter out the selected users and transform
+				/* 1. filter out the selected users and transform
 				 * them to an array of strings */
 				var selected_users = users.filter(function(user){
 					return user.selected
@@ -74,12 +80,20 @@ JUCI.app
 					return user.label;
 				});
 
+				/* 2. if unused is in list of selected users select only that one */
+				if(selected_users.indexOf("unused") !== -1) {
+					$scope.pages[index].users.forEach(function(user){
+						if(user.label !== "unused")
+							user.selected = false;
+					});
+					selected_users = ["unused"];
+				}
+
 				/* 3. concatenate expose.value with selected_users */
-				var sum = page.expose.value.concat(selected_users);
-				if (equals(sum, page.expose.ovalue))
+				if (equals(selected_users, page.expose.ovalue))
 					page.expose.$reset();
-				 else
-					page.expose.value = sum;
+				else
+					page.expose.value = selected_users;
 			});
 		}, true);
 
