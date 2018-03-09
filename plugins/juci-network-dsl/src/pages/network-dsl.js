@@ -31,6 +31,16 @@ JUCI.app
 		console.error("couldn't sync dsl config", e);
 	});
 
+	setAtmDevice = function(){
+		if(!$scope.atmDevices || !$scope.atmDevices.length)
+			return;
+		$scope.atmDevices.forEach(function(dev, index){
+			if(!dev || !dev.device)
+				return;
+			dev.device.value = "atm"+index;
+		});
+	}
+
 	function onCreateDevice(type){
 		var model = {name: "", error:""};
 		$juciDialog.show("network-dsl-create-device", {
@@ -43,7 +53,13 @@ JUCI.app
 				$uci.dsl.$create({
 					".type": type,
 					".name": model.name
-				}).done(function(){
+				}).done(function(dev){
+					if(type == "atm-device") {
+						setAtmDevice();
+						// $scope.atmDevices.forEach(function(dev, index, devices){
+						// 	devices[index].device.value = "atm"+dev.$index.current;
+						// });
+					}
 					$scope.$apply();
 				}).fail(function(e){
 					console.log($tr(gettext("unable to create " + type + " Error: " + e)));
@@ -65,6 +81,9 @@ JUCI.app
 			return;
 		}
 		dev.$delete().done(function(){
+			if(dev[".type"] == "atm-device"){
+				setAtmDevice();
+			}
 			$scope.$apply();
 		}).fail(function(e){
 			console.error("couldn't delete device " + devname + e);
