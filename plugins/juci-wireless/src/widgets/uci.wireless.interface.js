@@ -97,13 +97,13 @@ JUCI.app
 		$scope.onSSIDChanged();
 	});
 
-	$scope.$watch("interface.closed.value", function(value, oldvalue){
+	$scope.$watch("interface.hidden.value", function(value, oldvalue){
 		if(!$scope.interface) return;
 		if(value && value != oldvalue){
 			var text = $tr(gettext("If you disable SSID broadcasting, WPS function will be disabled as well. You will need to enable it manually later. Are you sure you want to continue?"));
 			if($scope.interface.wps_pbc.value && !confirm(text)){
 				setTimeout(function(){
-					$scope.interface.closed.value = oldvalue;
+					$scope.interface.hidden.value = oldvalue;
 					$scope.$apply();
 				},0);
 			} else {

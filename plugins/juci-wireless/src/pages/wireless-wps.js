@@ -52,7 +52,7 @@ JUCI.app
 	$scope.progress = 0;
 	
 	$scope.wpsUnlocked = function(interface){
-		return ["none", "psk2", "mixed-psk"].indexOf(interface.encryption.value) !== -1 && interface.closed.value === false;
+		return ["none", "psk2", "mixed-psk"].indexOf(interface.encryption.value) !== -1 && interface.hidden.value === false;
 	}
 	
 	$wireless.getInterfaces().done(function(ifaces){

@@ -204,7 +204,7 @@ msgstr "Interface"
 msgid "wifi-iface.up"
 msgstr "På"
 
-msgid "wifi-iface.closed"
+msgid "wifi-iface.hidden"
 msgstr "Öppet nätverk"
 
 msgid "wifi-iface.disabled"
