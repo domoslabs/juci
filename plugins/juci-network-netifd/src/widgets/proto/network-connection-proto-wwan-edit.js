@@ -28,10 +28,10 @@ JUCI.app
 		controller: "networkConnectionProtoWwanEditCtrl",
 		replace: true
 	};
-}).controller("networkConnectionProtoWwanEditCtrl", function($scope, $tr, gettext, $rpc){
-	$rpc.$call("router.usb", "status").done(function(ret){
-		$scope.devices = Object.keys(ret).map(function(r){ return ret[r];}).filter(function(dev){return dev.netdevice;}).map(function(dev){
-			return { label: dev.description || $tr(gettext("Unknown")), value: dev.netdevice };
+}).controller("networkConnectionProtoWwanEditCtrl", function($scope, $tr, gettext, $rpc, $network){
+	$network.getAdapters().done(function(adapters){
+		$scope.devices = adapters.filter(function(ad){ return ad.is_usb; }).map(function(usb){
+			return { label: usb.name, value: usb.device };
 		});
 		$scope.$apply();
 	}).fail(function(e){console.log(e);});
