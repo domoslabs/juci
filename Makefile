@@ -44,6 +44,7 @@ define BuildDir-y
 	$(eval TEMPLATES_$(PLUGIN):=$(wildcard $(addprefix $(PLUGIN_DIR)/,$(TEMPLATES-y))))
 	$(eval STYLES_$(PLUGIN):=$(wildcard $(addprefix $(PLUGIN_DIR)/,$(STYLES-y))))
 	$(eval STYLES_LESS_$(PLUGIN):=$(wildcard $(addprefix $(PLUGIN_DIR)/,$(STYLES_LESS-y))))
+	$(eval STYLES_LESS_DEFAULT:=$(wildcard $(CURDIR)/juci/src/css/*))
 	$(eval PO_$(PLUGIN):=$(wildcard $(addprefix $(PLUGIN_DIR)/,$(PO-y))))
 	PHONY += $(PLUGIN)-install
 	# ex. tmp/50-my-awesome-plugin.js: first_file.js second_file.js first_po_file.po ...
@@ -61,7 +62,25 @@ $(TMP_DIR)/$(PLUGIN).css.js: $(TMP_DIR)/$(PLUGIN).css
 $(TMP_DIR)/$(PLUGIN)-compiled-styles.css: $(STYLES_LESS_$(PLUGIN))
 	@echo -e "\033[033m[LESS]\t$(PLUGIN) -> $$@\033[m"
 	@echo "" > $$@
-	$(Q)if [ "" != "$$^" ]; then for file in $$^; do lessc $$$$file >> $$@; echo "" >> $$@; done; fi
+	$(Q)if [ "$(3)" == "themes" ]; then\
+		$(INSTALL_DIR) $(TMP_DIR)/themes/$(PLUGIN)/css;\
+		for file in "$(STYLES_LESS_DEFAULT)"; do\
+			cp $$$$file $(TMP_DIR)/themes/$(PLUGIN)/css/$(notdir $(file));\
+		done;\
+		for file in "$(STYLES_LESS_$(PLUGIN))"; do\
+			cp $$$$file $(TMP_DIR)/themes/$(PLUGIN)/css/$(notdir $(file));\
+		done;\
+	fi
+	$(Q)if [ "" != "$$^" ]; then\
+		if [ -d $(TMP_DIR)/themes/$(PLUGIN)/css ]; then\
+			for file in $$$$(find $(TMP_DIR)/themes/$(PLUGIN)/css/ -name *.less); do\
+				lessc $$$$file >> $$@;\
+				echo "" >> $$@;\
+			done;\
+		else\
+			for file in $$^; do lessc $$$$file >> $$@; echo "" >> $$@; done;\
+		fi\
+	fi
 $(TMP_DIR)/$(PLUGIN).tpl.js: $(TEMPLATES_$(PLUGIN))
 	@echo -e "\033[0;33m[HTML]\t$(PLUGIN) -> $$@\033[m"
 	@echo "" > $$@
