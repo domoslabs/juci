@@ -2,8 +2,7 @@
 
 JUCI.app
 .controller("voiceCallLog", function($scope, $uci, gettext, $tr, $rpc){
-	$scope.phoneFilter = "";
-	$scope.phoneFilterSelected = {};
+	$scope.phone = { filter: ""};
 	$scope.phoneList = [];
 	$scope.call_log = [];
 	JUCI.interval.repeat("call_log", 5000, function(done){
@@ -26,13 +25,15 @@ JUCI.app
 				}
 				return log;
 			});
-			$scope.phoneList = Object.keys(unique_phones).map(function(x){ return { label: x, id: x }; });
-			$scope.phoneFilter = "";
+			$scope.phoneList = Object.keys(unique_phones).map(function(x){ return { label: x, value: x }; });
+			$scope.phoneList.push({label: $tr(gettext("All Users")), value: "" });
 			$scope.$apply();
 			done();
 		});
 	});
-	$scope.onChangeFilter = function(){
-		$scope.phoneFilter = $scope.phoneFilterSelected.id;
+	$scope.search = function(row){
+		if(!$scope.phone.filter)
+			return true;
+		return row.from === $scope.phone.filter || row.to === $scope.phone.filter;
 	}
 });
