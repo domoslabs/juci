@@ -44,7 +44,7 @@
 						<input type="text" class="form-control" ng-model="data.upUrl" />
 					</juci-config-line>
 					<juci-config-line title="{{'Start upgrade'|translate}}">
-						<button ng-click="onStartUpgrade()" class="btn btn-lg btn-default {{ (upfile.files && upfile.files[0] && upfile.files[0].name) || data.upUrl ? '': 'disabled'}}">{{'Upgrade'|translate}}</button>
+						<button ng-click="onStartUpgrade()" class="btn btn-lg btn-default" ng-class="{ 'disabled': !(upfile.files && upfile.files[0] && upfile.files[0].name) && !data.upUrl }">{{'Upgrade'|translate}}</button>
 					</juci-config-line>
 				</juci-config-lines>
 			</form>

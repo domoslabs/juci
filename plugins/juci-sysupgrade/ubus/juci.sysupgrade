@@ -4,7 +4,7 @@
 
 case "$1" in
 	list)
-		echo '{ "test":{"path":"str"}, "start":{"path":"str","keep":32}, "check":{"type":"str"}, "create-backup":{"pass":"str"}, "restore-backup":{"pass":"str"}, "features":{} }'
+		echo '{ "test":{"path":"str"}, "start":{"path":"str","keep":"str"}, "check":{"type":"str"}, "create-backup":{"pass":"str"}, "restore-backup":{"pass":"str"}, "features":{} }'
 	;;
 	call)
 		case "$2" in
@@ -33,7 +33,7 @@ case "$1" in
 
 				json_init
 				json_add_string output "$output"
-				json_dump				
+				json_dump
 			;;
 			restore-backup)
 				error=""
@@ -97,11 +97,18 @@ case "$1" in
 			start)
 				read input
 				json_load "$input"
-				json_get_var keep keep 1
+				json_get_var keep keep "yes"
 				json_get_var path path "/tmp/juci/firmware.bin"
 
-				[ "$keep" == "1" ] && keep="" || keep="-n"
-				sysupgrade $keep $path >/dev/null 2>&1 &
+				keep_flag=""
+
+				if [ "$keep" == "soft" ]; then
+					keep_flag="-S"
+				elif [ "$keep" == "no" ]; then
+					keep_flag="-n"
+				fi
+				sysupgrade $keep_flag $path >/dev/null 2>&1 &
+				echo "sysupgrade $keep_flag $path >/dev/null 2>&1 &" >/dev/console
 
 				json_init
 				json_add_string "sysupgrade" "upgrade"

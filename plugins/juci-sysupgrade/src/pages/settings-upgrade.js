@@ -48,20 +48,27 @@ JUCI.app
 		var deferred = $.Deferred();
 		$juciDialog.show(null, {
 			title: $tr(gettext("Do you want to keep your configuration?")),
-			content: $tr(gettext("If you answer yes then your configuration will be saved before the upgrade and restored after the upgrade has completed. If you choose 'no' then all your current configuration will be reset to defaults.")),
+			content: $tr(gettext("If you choose yes then your configuration will be saved and restored after the upgrade has completed.")) + "<br />" +
+				$tr(gettext("If you choose 'soft' then important user settings will be saved and restored after the upgrade has completed.")) + "<br />" +
+				$tr(gettext("If you choose 'no' then all your current configuration will be reset to defaults.")),
 			buttons: [
 				{ label: $tr(gettext("Yes")), value: "yes", primary: true },
+				{ label: $tr(gettext("Soft")), value: "soft" },
 				{ label: $tr(gettext("No")), value: "no" },
 				{ label: $tr(gettext("Abort")), value: "abort" }
 			],
 			on_button: function(btn, inst){
 				if(btn.value == "yes"){
 					inst.close();
-					deferred.resolve(true);
+					deferred.resolve("yes");
 				}
 				if(btn.value == "no"){
 					inst.close();
-					deferred.resolve(false);
+					deferred.resolve("no");
+				}
+				if(btn.value == "soft"){
+					inst.close();
+					deferred.resolve("soft");
 				}
 				if(btn.value == "abort"){
 					inst.dismiss("abort");
@@ -145,7 +152,7 @@ JUCI.app
 			$scope.message = $tr(gettext("Downloading and verifying image..."));
 			$scope.progress = $tr(gettext("Uploading"));
 			console.log("testing image: "+ uploadFilename);
-			$rpc.$call("juci.sysupgrade", "start", {"path":$scope.onlineUpgrade, "keep":(keep)?1:0});
+			$rpc.$call("juci.sysupgrade", "start", {"path":$scope.onlineUpgrade, "keep":keep});
 		});
 	}
 
@@ -155,11 +162,13 @@ JUCI.app
 			$scope.message = $tr(gettext("Verifying image..."));
 			$scope.progress = $tr(gettext("Verifying"));
 			console.log("testing image: "+$scope.usbUpgrade);
-			$rpc.$call("juci.sysupgrade", "start", {"path":$scope.usbUpgrade, "keep":(keep)?1:0});
+			$rpc.$call("juci.sysupgrade", "start", {"path":$scope.usbUpgrade, "keep":keep});
 		});
 	}
 	$scope.onStartUpgrade = function(){
 		if($scope.showUpgradeStatus)
+			return;
+		if(!($scope.upfile.files && $scope.upfile.files[0] && $scope.upfile.files[0].name) && !$scope.data.upUrl)
 			return;
 		if($scope.data.upUrl){
 			confirmKeep().done(function(keep){
@@ -167,7 +176,7 @@ JUCI.app
 				$scope.message = $tr(gettext("Downloading and verifying image..."));
 				$scope.progress = $tr(gettext("Uploading"));
 				console.log("testing image: "+$scope.data.upUrl);
-				$rpc.$call("juci.sysupgrade", "start", {"path":$scope.data.upUrl, "keep":(keep)?1:0});
+				$rpc.$call("juci.sysupgrade", "start", {"path":$scope.data.upUrl, "keep":keep});
 				$scope.data.upUrl = "";
 				$scope.$apply();
 			});
@@ -193,7 +202,7 @@ JUCI.app
 		}).done(function(){
 			$scope.progress_byte = $scope.progress_total;
 			$scope.$apply();
-			$rpc.$call("juci.sysupgrade", "start", {"path":uploadFilename, "keep":(keep)?1:0});
+			$rpc.$call("juci.sysupgrade", "start", {"path":uploadFilename, "keep":keep});
 		}).fail(function(e){
 			$scope.error =  $tr(gettext("The server returned an error"))+" ("+JSON.stringify(e)+")";
 			$scope.$apply();
