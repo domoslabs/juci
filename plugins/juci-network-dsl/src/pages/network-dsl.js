@@ -52,13 +52,11 @@ JUCI.app
 				}
 				$uci.dsl.$create({
 					".type": type,
-					".name": model.name
+					".name": model.name,
+					"name": model.name
 				}).done(function(dev){
 					if(type == "atm-device") {
 						setAtmDevice();
-						// $scope.atmDevices.forEach(function(dev, index, devices){
-						// 	devices[index].device.value = "atm"+dev.$index.current;
-						// });
 					}
 					$scope.$apply();
 				}).fail(function(e){
