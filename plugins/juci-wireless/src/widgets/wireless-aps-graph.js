@@ -108,6 +108,8 @@ JUCI.app
 		var maxsnr = -100;
 
 		value.map(function(val){
+			if(ap.snr < -10 || ap.snr > 110 || !ap.ssid || ap.channel < 0 || ap.channel > 200)
+				return;
 			if(minch > val.channel) minch = val.channel;
 			if(maxch < val.channel) maxch = val.channel;
 			if(maxsnr < val.snr) maxsnr = val.snr;
