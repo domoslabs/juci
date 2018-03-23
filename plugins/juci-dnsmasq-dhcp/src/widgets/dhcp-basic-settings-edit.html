@@ -6,7 +6,7 @@
 		<input class="form-control pull-right" style="width: 60px;" ng-model="dhcp.limit.value" placeholder="1"></input>
 	</juci-config-line>
 	<juci-config-line title="{{'DHCP Lease Time'|translate}}">
-		<juci-select ng-model="dhcp.leasetime.value" ng-items="dhcpLeaseTimes" placeholder="{{'Lease Time'|translate}}"/>
+		<juci-select ng-model="dhcp.leasetime.value" ng-items="dhcpLeaseTimes" placeholder="{{dhcp.leasetime.value}}"/>
 	</juci-config-line>
 	<juci-expandable ng-hide="hideAdvanced" title="{{'Advanced Settings'|translate}}" open="false">
 		<juci-config-line title="{{'DHCP Options'|translate}}" help="{{'ID:6 = DNS server, ID:15 = DNS domain name'|translate}}">
