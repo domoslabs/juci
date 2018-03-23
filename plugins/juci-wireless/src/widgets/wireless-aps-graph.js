@@ -103,13 +103,19 @@ JUCI.app
 	$scope.$watch("scan_list", function(value){
 		if(!value || !value.length) return;
 
-		var minch = 100;
-		var maxch = 0;
-		var maxsnr = -100;
+		value = value.filter(function(ap){
+			if(ap.snr < -10 || ap.snr > 110 || !ap.ssid || ap.channel < 0 || ap.channel > 200)
+				return false;
+			return true;
+		});
+
+		if(!value || !value.length) return;
+
+		var minch = value[0].channel;
+		var maxch = value[0].channel;
+		var maxsnr = value[0].snr;
 
 		value.map(function(val){
-			if(ap.snr < -10 || ap.snr > 110 || !ap.ssid || ap.channel < 0 || ap.channel > 200)
-				return;
 			if(minch > val.channel) minch = val.channel;
 			if(maxch < val.channel) maxch = val.channel;
 			if(maxsnr < val.snr) maxsnr = val.snr;
@@ -124,8 +130,6 @@ JUCI.app
 		dataset.remove(dataset.getIds());
 		var i = 0;
 		value.map(function(ap){
-			if(ap.snr < -10 || ap.snr > 110 || !ap.ssid || ap.channel < 0 || ap.channel > 200)
-				return;
 			ap["__id__"] = i;
 			var group = 1;
 			if(ap.snr >= 30) group = 1;
