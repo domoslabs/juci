@@ -202,16 +202,35 @@ JUCI.app
 			$scope.inNetwork = $tr(gettext("Not in any configured network"));
 			$scope.cssClass="danger";
 		}
+		function ip_to_host_id(ip){
+			var long_ip = ip.split(":").map(function(part){return part.padStart(4, "0");})
+			var len = long_ip.length;
+			if(long_ip[len - 2] == "0000")
+				return long_ip[len -1];
+			return long_ip[len-2] + long_ip[len-1];
+		}
 		$scope.onAddStaticLease = function(){
+			var duid = "";
+			var host_id = "";
+			if (!$scope.model || !$scope.model.client)
+				return;
+			if ($scope.model.client.ip6addr && $scope.model.client.duid){
+				duid = $scope.model.client.duid;
+				host_id = ip_to_host_id($scope.model.client.ip6addr);
+			}
+
 			$uci.$sync("dhcp").done(function(){
 				$uci.dhcp.$create({
 					".type":"host",
 					ip: $scope.model.client.ipaddr,
 					mac: $scope.model.client.macaddr,
 					network: $scope.model.client.network,
-					name: $scope.model.client.hostname === "*" ? "":$scope.model.client.hostname
+					name: $scope.model.client.hostname === "*" ? "":$scope.model.client.hostname,
+					hostid: host_id,
+					duid: duid
 				}).done(function(value){
 					$scope.client = value;
+					$scope.$apply();
 				});
 			});
 		}
