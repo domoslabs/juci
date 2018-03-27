@@ -1,5 +1,5 @@
 {
-	"juci-inteno-voice-client": {
+	"juci-voice-client": {
 		"description": "JUCI asterisk module",
 		"read": {
 			"ubus": {
@@ -21,7 +21,7 @@
 			]
 		}
 	},
-	"juci-inteno-voice-client-ca": {
+	"juci-voice-client-ca": {
 		"description": "JUCI asterisk module allow handeling CA",
 		"read": {
 			"ubus": {

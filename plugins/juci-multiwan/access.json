@@ -1,5 +1,5 @@
 {
-	"juci-inteno-multiwan": {
+	"juci-multiwan": {
 		"description": "JUCI Multiwan Configuration",
 		"read": {
 			"uci": [

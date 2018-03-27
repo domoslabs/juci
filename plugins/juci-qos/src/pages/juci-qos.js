@@ -18,7 +18,7 @@
  * 02110-1301 USA
  */
 
-JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, intenoQos, $juciDialog, $firewall){
+JUCI.app.controller("qosCtrl", function($scope, $uci, $tr, gettext, $qos, $juciDialog, $firewall){
 	$uci.$sync(["qos"]).done(function(){
 		$scope.classify = $uci.qos["@classify"];
 		$scope.reclassify = $uci.qos["@reclassify"];
@@ -49,7 +49,7 @@ JUCI.app.controller("intenoQosCtrl", function($scope, $uci, $tr, gettext, inteno
 			$scope.$apply();
 		});
 	}
-	intenoQos.getDefaultTargets().done(function(targets){
+	$qos.getDefaultTargets().done(function(targets){
 		$scope.targets = targets.map(function(x){ return { label: x, value: x }; }); 
 		$scope.$apply(); 
 	}); 

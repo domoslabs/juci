@@ -1,5 +1,5 @@
 {
-	"juci-inteno-qos": {
+	"juci-qos": {
 		"description": "JUCI Quality-of-service Configuration",
 		"read": {
 			"ubus": {

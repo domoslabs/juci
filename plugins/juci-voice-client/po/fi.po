@@ -23,11 +23,11 @@ msgstr "Käytössä"
 msgid "Disabled"
 msgstr "Pois käytöstä"
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.js
+# /home/jamu/GIT/juci/plugins/juci-voice-client/src/pages/voice-ringing-schedule.js
 msgid "No Phone number selected"
 msgstr "Puhelinnumeroa ei ole valittu"
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.js
+# /home/jamu/GIT/juci/plugins/juci-voice-client/src/pages/voice-ringing-schedule.js
 msgid "No Day selected"
 msgstr "Päivää ei ole valittu"
 
@@ -229,11 +229,11 @@ msgstr "Käyttäjä"
 msgid "Domain"
 msgstr "Toimialue"
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider.js
+# /home/jamu/GIT/juci/plugins/juci-voice-client/src/widgets/sip-service-provider.js
 msgid "Registration Time"
 msgstr "Rekisteröintiaika"
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/widgets/sip-service-provider.js
+# /home/jamu/GIT/juci/plugins/juci-voice-client/src/widgets/sip-service-provider.js
 msgid "Binding Address"
 msgstr ""
 
@@ -726,14 +726,14 @@ msgstr ""
 "Aseta puhelinaikataulut milloin puhelimen tulisi hälyttää tai ei tulisi "
 "hälyttää."
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+# /home/jamu/GIT/juci/plugins/juci-voice-client/src/pages/voice-ringing-schedule.html
 msgid "During the times below ringing is"
 msgstr ""
 
 msgid "Select Schedule Mode"
 msgstr "Valitse Aikataulutila"
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-ringing-schedule.html
+# /home/jamu/GIT/juci/plugins/juci-voice-client/src/pages/voice-ringing-schedule.html
 msgid "Add/Edit Ringing Schedule"
 msgstr ""
 
@@ -776,7 +776,7 @@ msgstr "Estä soitot näistä numeroista"
 msgid "Outgoing Calls"
 msgstr "Lähtevät puhelut"
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-voice-client/src/pages/voice-number-blocking.html
+# /home/jamu/GIT/juci/plugins/juci-voice-client/src/pages/voice-number-blocking.html
 msgid ""
 "You can also block ranges of numbers. For example: '0160#' blocks all "
 "numbers starting with '0160'."

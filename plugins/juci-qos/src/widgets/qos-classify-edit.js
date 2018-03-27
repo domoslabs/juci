@@ -30,7 +30,7 @@ JUCI.app
 		require: "^ngModel"
 	};
 })
-.controller("qosClassifyEdit", function($scope, $uci, $tr, gettext, $network, intenoQos){
+.controller("qosClassifyEdit", function($scope, $uci, $tr, gettext, $network, $qos){
 	$scope.data = {
 		ports: [],
 		portrange: {from:"" , to:""},
@@ -83,7 +83,7 @@ JUCI.app
 		});
 		$scope.$apply();
 	});
-	intenoQos.getClassNames().done(function(classes){
+	$qos.getClassNames().done(function(classes){
 		$scope.targets = classes.map(function(x){ 
 			return { label: x, value: x };
 		});

@@ -47,7 +47,7 @@ msgstr "Aseta IUP provisiointiasetukset"
 msgid "Reboot"
 msgstr "Käynnistä uudelleen"
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Reboot after applying the new configuration. Recommended: On"
 msgstr ""
 "Käynnistä uudelleen, kun uudet asetukset on otettu käyttöön. Suositus: Päällä"
@@ -55,7 +55,7 @@ msgstr ""
 msgid "Keep user config"
 msgstr "Lisää toissijainen konfiguraatio"
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Save user changes before provisioning and reapply them after"
 msgstr ""
 "Tallenna käyttäjän asetukset ennen provisiointia ja ota ne uudelleen "
@@ -79,7 +79,7 @@ msgstr "Aseta IUP provisiointiasetukset"
 msgid "Defaultreset"
 msgstr "Oletusasetukset"
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Reset configuration to default"
 msgstr "Resetoi oletusasetuksille"
 
@@ -107,7 +107,7 @@ msgstr "Toissijaiset konfiguraatiot"
 msgid "Package Control"
 msgstr "Pakettihallinta"
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Delete"
 msgstr "Poista"
 
@@ -117,7 +117,7 @@ msgstr "Lisää toissijainen konfiguraatio"
 msgid "menu-settings-provisioning-iup-title"
 msgstr "IUP provisiointi"
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# /home/jamu/GIT/juci/plugins/juci-iup/src/pages/settings-provisioning-iup.html
 #~ msgid "settings-provisioning-iup-title"
 #~ msgstr "IUP provisiointi"
 

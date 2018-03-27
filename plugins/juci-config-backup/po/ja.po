@@ -11,14 +11,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.1\n"
 
-# plugins/juci-inteno-backup/src/pages/inteno-backup-settings.html
+# plugins/juci-config-backup/src/pages/config-backup-settings.html
 msgid "Backup Settings"
 msgstr "バックアップ設定"
 
-# plugins/juci-inteno-backup/src/pages/inteno-backup-settings.html
+# plugins/juci-config-backup/src/pages/config-backup-settings.html
 msgid "Select the services/settings to backup"
 msgstr "バックアップするサービス/設定を選択する"
 
-# plugins/juci-inteno-backup/src/pages/inteno-backup-settings.html
-msgid "menu-inteno-backup-settings-title"
+# plugins/juci-config-backup/src/pages/config-backup-settings.html
+msgid "menu-config-backup-settings-title"
 msgstr "設定"

@@ -77,5 +77,5 @@ msgstr ""
 msgid "Quality of Service Settings"
 msgstr ""
 
-msgid "menu-juci-inteno-qos-title"
+msgid "menu-juci-qos-title"
 msgstr "Quality of Service"

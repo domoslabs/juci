@@ -76,7 +76,7 @@ UCI.qos.$registerSectionType("rate-limit", {
 	"upload":		{ dvalue: 0, type: Number}
 });
 
-JUCI.app.factory("intenoQos", function($uci, gettext, $tr){
+JUCI.app.factory("$qos", function($uci, gettext, $tr){
 	function Qos(){ }
 	Qos.prototype.getDefaultTargets = function(){
 		var def = $.Deferred(); 

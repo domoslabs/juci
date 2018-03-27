@@ -17,9 +17,9 @@ msgstr "Varmuuskopiasetukset"
 msgid "Select the services/settings to backup"
 msgstr "Valitse varmuuskopioitavien palveluiden asetukset"
 
-msgid "menu-inteno-backup-settings-title"
+msgid "menu-config-backup-settings-title"
 msgstr "Varmuuskopio"
 
-# /home/jamu/GIT/juci/plugins/juci-inteno-backup/src/pages/inteno-backup-settings.html
-#~ msgid "inteno-backup-settings-title"
+# /home/jamu/GIT/juci/plugins/juci-config-backup/src/pages/config-backup-settings.html
+#~ msgid "config-backup-settings-title"
 #~ msgstr "Varmuuskopiasetukset"

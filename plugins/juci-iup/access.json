@@ -1,6 +1,6 @@
 {
-	"juci-inteno-provisioning": {
-		"description": "JUCI inteno provisioning module",
+	"juci-iup": {
+		"description": "JUCI iup module",
 		"read": {
 			"ubus": {
 				"juci.iup": [

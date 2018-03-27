@@ -1,5 +1,5 @@
 {
-	"juci-inteno-backup": {
+	"juci-backup": {
 		"description": "JUCI Backup Configuration",
 		"read": {
 			"uci": [

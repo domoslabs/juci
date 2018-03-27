@@ -11,134 +11,134 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.js
+# plugins/juci-iup/src/pages/settings-provisioning-iup.js
 msgid "Hourly"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.js
+# plugins/juci-iup/src/pages/settings-provisioning-iup.js
 msgid "Daily"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.js
+# plugins/juci-iup/src/pages/settings-provisioning-iup.js
 msgid "Weekly"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/widgets/provisioning-export-dialog.html
+# plugins/juci-iup/src/widgets/provisioning-export-dialog.html
 msgid "Backup Password:"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/widgets/provisioning-export-dialog.html
+# plugins/juci-iup/src/widgets/provisioning-export-dialog.html
 msgid "Retype Password:"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "IUP Provisioning"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Enabled"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Update start time"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Update frequency"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Export file"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Setup the Configuration Provisioning options"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Reboot"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Reboot after applying the new configuration. Recommended: On"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Keep user config"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Save user changes before provisioning and reapply them after"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Overwrite DHCP Discover Provisioning"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "URL"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Decryption Key"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "If not entered, Default onboard DES Key will be used insted"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Setup the Firmware Provisioning options"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Defaultreset"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Reset configuration to default"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Software URL"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Setup IUP Provisioning parameters"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "General"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Main Provisioning Server"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "DHCP Discover Provisioning Server"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Software Update Config"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Sub Configs"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Package Control"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Delete"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Add sub config"
 msgstr ""
 
-# plugins/juci-inteno-provisioning/src/pages/settings-provisioning-iup.html
+# plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "menu-settings-provisioning-iup-title"
 msgstr ""
