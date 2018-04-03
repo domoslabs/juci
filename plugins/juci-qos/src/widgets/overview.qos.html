@@ -10,13 +10,13 @@
 				<juci-config-line title="{{'Down'|translate}}">
 				<div class="input-group">
 					<span class="input-group-addon">kbit/s</span>
-					<input type="number" min="0" class="form-control" ng-model="qos.wan.download.value" />
+					<input type="number" min="0" class="form-control" ng-model="qos.wan.download.value" placeholder="{{dsl.download_speed}}" />
 				</div>
 				</juci-config-line>
 				<juci-config-line title="{{'Up'|translate}}">
 				<div class="input-group">
 					<span class="input-group-addon">kbit/s</span>
-					<input type="number" min="0" class="form-control" ng-model="qos.wan.upload.value" />
+					<input type="number" min="0" class="form-control" ng-model="qos.wan.upload.value" placeholder="{{dsl.upload_speed}}" />
 				</div>
 				</juci-config-line>
 				<hr/>

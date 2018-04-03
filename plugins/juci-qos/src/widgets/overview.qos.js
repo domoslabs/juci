@@ -51,19 +51,24 @@ JUCI.app
 				}
 			});
 		}, false);
-/*
-	$scope.$watch("qos.wan.download.value", function(x){
-			if(!x) return;
-console.log("hejsan dl bytt");
-			
-		}, false);
 
-		$scope.$watch("qos.wan.upload.value", function(x){
-			if(!x) return;
-console.log("hejsan ul bytt");
-			
-		}, false);
-*/
+		if($rpc.$has("router.dsl", "stats")){
+			$rpc.$call("router.dsl", "stats").done(function(stats){
+				if(stats && stats.dslstats
+					&& stats.dslstats.bearers
+					&& stats.dslstats.bearers.length
+					&& stats.dslstats.bearers[0].rate_up
+					&& stats.dslstats.bearers[0].rate_down){
+					$scope.dsl = {
+						download_speed: stats.dslstats.bearers[0].rate_down,
+						upload_speed: stats.dslstats.bearers[0].rate_up
+					}
+					$scope.$apply();
+				}
+			}).fail(function(e){
+				console.log(e);
+			});
+		}
 	});
 
 	$scope.href = $config.getWidgetLink("overviewWidget00QoS");
