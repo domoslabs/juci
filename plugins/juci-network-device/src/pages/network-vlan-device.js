@@ -36,7 +36,10 @@ JUCI.app
 						model.error = $tr(gettext("Vlan name is already in use"));
 						return false;
 					}
-					//TODO: validate even more for invalid characters etc.
+					if(model.name.match(/^[A-z0-9_]*$/) === null){
+						model.error = $tr(gettext("Vlan name may only contain letters numbers and _"));
+						return false;
+					}
 					$uci.network.$create({
 						".name": model.name,
 						".type": "device"
