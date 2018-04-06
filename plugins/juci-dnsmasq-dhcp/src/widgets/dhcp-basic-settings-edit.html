@@ -1,11 +1,11 @@
 <div>
-	<juci-config-line title="{{'DHCP Pool Start'|translate}}" error="dhcp.start.error">
+	<juci-config-line title="{{'DHCP Pool Start'|translate}}" error="dhcp.start.error" help="{{'IPv4'|translate}}">
 		<input class="form-control pull-right" style="width: 60px;" ng-model="dhcp.start.value" placeholder="1"></input>
 	</juci-config-line>
-	<juci-config-line title="{{'DHCP Pool Size'|translate}}" error="dhcp.limit.error">
+	<juci-config-line title="{{'DHCP Pool Size'|translate}}" error="dhcp.limit.error" help="{{'IPv4'|translate}}">
 		<input class="form-control pull-right" style="width: 60px;" ng-model="dhcp.limit.value" placeholder="1"></input>
 	</juci-config-line>
-	<juci-config-line title="{{'DHCP Lease Time'|translate}}">
+	<juci-config-line title="{{'DHCP Lease Time'|translate}}" help="{{'IPv4 and IPv6'|translate}}">
 		<juci-select ng-model="dhcp.leasetime.value" ng-items="dhcpLeaseTimes" placeholder="{{dhcp.leasetime.value}}"/>
 	</juci-config-line>
 	<juci-expandable ng-hide="hideAdvanced" title="{{'Advanced Settings'|translate}}" open="false">
