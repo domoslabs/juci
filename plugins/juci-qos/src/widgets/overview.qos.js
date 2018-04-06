@@ -52,17 +52,15 @@ JUCI.app
 			});
 		}, false);
 
-		if($rpc.$has("router.dsl", "stats")){
+		if($rpc.$has("router.dsl", "stats") && $scope.qos.wan.download.value === "" && $scope.qos.wan.upload.value === ""){
 			$rpc.$call("router.dsl", "stats").done(function(stats){
 				if(stats && stats.dslstats
 					&& stats.dslstats.bearers
 					&& stats.dslstats.bearers.length
 					&& stats.dslstats.bearers[0].rate_up
 					&& stats.dslstats.bearers[0].rate_down){
-					$scope.dsl = {
-						download_speed: stats.dslstats.bearers[0].rate_down,
-						upload_speed: stats.dslstats.bearers[0].rate_up
-					}
+					$scope.qos.wan.download.value = stats.dslstats.bearers[0].rate_down * 0.99;
+					$scope.qos.wan.upload.value = stats.dslstats.bearers[0].rate_up * 0.99;
 					$scope.$apply();
 				}
 			}).fail(function(e){
