@@ -1044,7 +1044,7 @@ msgstr ""
 msgid "settings.network.info"
 msgstr ""
 "This page allows to configure IP addresses used in your home network. In "
-"case DHCP is used, your router automatically assignes an IP address to "
+"case DHCP is used, your router automatically assigns an IP address to "
 "devices connected to the network. Using static DHCP it is possible to always "
 "assign the same IP address to specific devices."
 
