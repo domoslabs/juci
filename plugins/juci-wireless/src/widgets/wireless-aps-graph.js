@@ -123,8 +123,10 @@ JUCI.app
 
 		options.dataAxis.left.range.max = maxsnr + 10;
 
-		options.min = (minch - 2);
-		options.max = (maxch + 2);
+		var padding = (maxch-minch)/10;
+
+		options.start = minch - padding;
+		options.end = maxch + padding;
 
 		graph2d.setOptions(options);
 		dataset.remove(dataset.getIds());
