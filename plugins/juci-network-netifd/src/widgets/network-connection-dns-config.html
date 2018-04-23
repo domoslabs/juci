@@ -2,8 +2,8 @@
 	<juci-config-line title="{{'Add/Remove custom DNS Servers'|translate}}" help="{{'These DNS entries will be applied on the interface'|translate}}" error="interface.dns.error">
 	</juci-config-line>
 	<table class="table table-hover">
-		<tr ng-repeat="dns in data track by $index">
-			<td><juci-input-ipv4-address ng-model="dns.value"></juci-input-ipv4-address></td>
+		<tr ng-repeat="dns in dnsServers track by $index">
+			<td><input type="text" class="form-control" ng-model="dns.value"></input></td>
 			<td width="1%"><button class="btn btn-default" ng-click="removeDns($index)"><i class="fa fa-minus"></i></button></td>
 		</tr>
 		<tr>
