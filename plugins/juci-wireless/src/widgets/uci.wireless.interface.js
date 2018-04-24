@@ -115,10 +115,15 @@ JUCI.app
 	$scope.onSSIDChanged = function(){
 		if(!$scope.interface) return;
 		if(!$scope.interfaces) return;
+		/* Ignore non AP interfaces */
+		if($scope.interface.mode && $scope.interface.mode.value != "ap") return;
 
 		//Check if SSID is used more than once on the same radio
 		var found = $scope.interfaces.find(function(x){
-			return x != $scope.interface && x.ssid.value == $scope.interface.ssid.value && x.device.value == $scope.interface.device.value;
+			return x != $scope.interface &&
+				x.mode.value == "ap" &&
+				x.ssid.value == $scope.interface.ssid.value &&
+				x.device.value == $scope.interface.device.value;
 		});
 
 		if(found)
