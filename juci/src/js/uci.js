@@ -494,20 +494,9 @@
 				else return this.uvalue;
 			},
 			set value(val){
+				// some sanity checks
 				if(val === null) val = "";
-				// set dirty if not same
-				var self = this;
-				if(val instanceof Array){
-					self.is_dirty = !val.equals(self.uvalue);
-				} else {
-					self.is_dirty = val != self.ovalue; // nedds to be != due to boolean values
-				}
-				if(self.ovalue instanceof Array && !(val instanceof Array)) return;
-				if(val instanceof Array && self.ovalue instanceof Array){
-					self.is_dirty = false;
-					if(val.length !== self.ovalue.length) self.is_dirty = true;
-					val.forEach(function(x, i){ if(self.ovalue[0] !== x) self.is_dirty = true; });
-				}
+				if(this.ovalue instanceof Array && !(val instanceof Array)) return;
 
 				// properly handle booleans
 				if(this.schema.type == Boolean){
@@ -515,13 +504,17 @@
 					else if(this.ovalue == "yes" || this.ovalue == "no") { this.uvalue = (val)?"yes":"no"; }
 					else if(this.ovalue == "true" || this.ovalue == "false") { this.uvalue = (val)?"true":"false"; }
 					else this.uvalue = val;
+				// assigning an Array to variable does not copy
+				} else if(val instanceof Array) {
+					this.uvalue = Object.assign([], val);
 				} else {
-					if(val instanceof Array) {
-						this.uvalue = [];
-						Object.assign(this.uvalue, val);
-					} else {
-						this.uvalue = val;
-					}
+					this.uvalue = val;
+				}
+				// set dirty if not same
+				if(val instanceof Array){
+					this.is_dirty = !this.uvalue.equals(this.ovalue);
+				} else {
+					this.is_dirty = this.uvalue !== this.ovalue;
 				}
 			},
 			get error(){
@@ -539,8 +532,6 @@
 				this.is_dirty = value;
 			},
 			get dirty(){
-				if(this.uvalue instanceof Array && this.uvalue.equals(this.ovalue)) return false;
-				else if(this.uvalue === this.ovalue) return false;
 				return this.is_dirty;
 			}
 		}
@@ -1108,7 +1099,7 @@
 				}
 				Object.keys(ch.values).map(function(opt){
 					var o = self[x][ch.section][opt];
-					if(o.is_dirty){
+					if(o.dirty){
 						changes.push({
 							type: "option",
 							config: self[x][".name"],
