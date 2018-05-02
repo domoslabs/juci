@@ -442,6 +442,9 @@
 			if(value != null && value instanceof Array) {
 				this.ovalue = []; Object.assign(this.ovalue, value);
 			}
+			if(schema.type === Boolean && (value === true || value === false)){
+				this.ovalue = value?"1":"0";
+			}
 			this.is_dirty = false;
 			this.uvalue = undefined;
 			this.schema = schema;
@@ -456,6 +459,8 @@
 			$reset_defaults: function(){
 				if(this.uvalue !== this.schema.dvalue){
 					this.uvalue = this.schema.dvalue;
+					if(this.schema.type === Boolean && (this.schema.dvalue === true || this.schema.dvalue === false))
+						this.uvalue = this.schema.dvalue?"1":"2";
 					this.is_dirty = true;
 				}
 			},
@@ -475,6 +480,12 @@
 					}
 					// store original value
 					this.ovalue = value;
+				} else if(this.schema.type === Boolean){
+					// properly handle booleans
+					if(value == "on" || value == "off" || value == "yes" || value == "no" || value == "true" || value == "false")
+						this.ovalue = value;
+					else
+						this.ovalue = value?"1":"0";
 				} else {
 					if(typeof value === "string") value = value.trim();
 					if(!keep_user || !this.dirty) {
