@@ -498,14 +498,14 @@
 				if(val === null) val = "";
 				if(this.ovalue instanceof Array && !(val instanceof Array)) return;
 
-				// properly handle booleans
 				if(this.schema.type == Boolean){
+					// properly handle booleans
 					if(this.ovalue == "on" || this.ovalue == "off") { this.uvalue = (val)?"on":"off"; }
 					else if(this.ovalue == "yes" || this.ovalue == "no") { this.uvalue = (val)?"yes":"no"; }
 					else if(this.ovalue == "true" || this.ovalue == "false") { this.uvalue = (val)?"true":"false"; }
-					else this.uvalue = val;
-				// assigning an Array to variable does not copy
+					else this.uvalue = val?"1":"0"; // uci uses 0 and 1 for true and false
 				} else if(val instanceof Array) {
+					// assigning an Array to variable does not copy
 					this.uvalue = Object.assign([], val);
 				} else {
 					this.uvalue = val;
