@@ -28,7 +28,7 @@ JUCI.app
 		$scope.views = $uci.snmpd["@view"];
 		$scope.accesses = $uci.snmpd["@access"];
 		$scope.passes = $uci.snmpd["@pass"];
-		$scope.enabled = $uci.snmpd.daemon;
+		$scope.enabled = $uci.snmpd.general;
 		$scope.$apply(); 
 	}); 
 	var uk = $tr(gettext("Unknown"));
