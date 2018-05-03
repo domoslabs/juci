@@ -23,5 +23,9 @@
 				<span ng-click="conf.manual_name = !conf.manual_name" class="input-group-addon"><i class="fa fa-edit"></i></span>
 			</div>
 		</juci-config-line>
+		<juci-config-line title="{{ 'Override MTU' | translate }}">
+			<input type="number" min="0" class="form-control" ng-model="device.mtu.value" placeholder="{{'auto'|translate}}" />
+		</juci-config-line>
+
 	</juci-config-lines>
 </div>

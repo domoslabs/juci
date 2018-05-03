@@ -97,7 +97,8 @@ UCI.network.$registerSectionType("device", {
 	"ifname":	{ dvalue: "", type: String },
 	"vid":		{ dvalue: 1, type: Number, validator: UCI.validators.NumberLimitValidator(1, 4096) },
 	"priority":	{ dvalue: 0, type: Number, validator: UCI.validators.NumberLimitValidator(0, 7) },
-	"name":		{ dvalue: "", type: String }
+	"name":		{ dvalue: "", type: String },
+	"mtu":		{ dvalue: "", type: Number }
 }, function(section){
 	if(!section)
 		return null;
