@@ -460,7 +460,7 @@
 				if(this.uvalue !== this.schema.dvalue){
 					this.uvalue = this.schema.dvalue;
 					if(this.schema.type === Boolean && (this.schema.dvalue === true || this.schema.dvalue === false))
-						this.uvalue = this.schema.dvalue?"1":"2";
+						this.uvalue = this.schema.dvalue?"1":"0";
 					this.is_dirty = true;
 				}
 			},
@@ -471,27 +471,20 @@
 				if(this.svalue != undefined) this.value = this.svalue;
 			},
 			$update: function(value, keep_user){
-				if(this.ovalue instanceof Array){
-					// if user has modified value and we have keep user set then we do not discard his changes
-					// otherwise we also update uvalues
-					if(!keep_user || !this.dirty) {
-						this.uvalue = value;
-						this.dirty = false;
-					}
-					// store original value
-					this.ovalue = value;
-				} else if(this.schema.type === Boolean){
+				// if user has modified value and we have keep user set then we do not discard his changes
+				// otherwise we also update uvalues
+				if(!keep_user || !this.dirty) {
+					this.uvalue = value;
+					this.dirty = false;
+				}
+				if(this.schema.type === Boolean){
 					// properly handle booleans
-					if(value == "on" || value == "off" || value == "yes" || value == "no" || value == "true" || value == "false")
-						this.ovalue = value;
-					else
+					if(value === true || value === false)
 						this.ovalue = value?"1":"0";
+					else
+						this.ovalue = value;
 				} else {
 					if(typeof value === "string") value = value.trim();
-					if(!keep_user || !this.dirty) {
-						this.uvalue = value;
-						this.dirty = false;
-					}
 					this.ovalue = value;
 				}
 			},
@@ -509,13 +502,13 @@
 				if(val === null) val = "";
 				if(this.ovalue instanceof Array && !(val instanceof Array)) return;
 
-				if(this.schema.type == Boolean){
+				if(this.schema.type === Boolean){
 					// properly handle booleans
 					if(this.ovalue == "on" || this.ovalue == "off") { this.uvalue = (val)?"on":"off"; }
 					else if(this.ovalue == "yes" || this.ovalue == "no") { this.uvalue = (val)?"yes":"no"; }
 					else if(this.ovalue == "true" || this.ovalue == "false") { this.uvalue = (val)?"true":"false"; }
 					else this.uvalue = val?"1":"0"; // uci uses 0 and 1 for true and false
-				} else if(val instanceof Array) {
+				} else if(this.schema.type === Array) {
 					// assigning an Array to variable does not copy
 					this.uvalue = Object.assign([], val);
 				} else {
