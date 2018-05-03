@@ -525,7 +525,7 @@
 				if(val instanceof Array){
 					this.is_dirty = !this.uvalue.equals(this.ovalue);
 				} else {
-					this.is_dirty = this.uvalue !== this.ovalue;
+					this.is_dirty = this.uvalue != this.ovalue;
 				}
 			},
 			get error(){
