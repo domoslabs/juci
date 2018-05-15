@@ -256,6 +256,21 @@ UCI.firewall.$registerSectionType("redirect", {
 	return null;
 });
 
+UCI.firewall.$registerSectionType("redirect6", {
+	"name":				{ dvalue: "", type: String },
+	"enabled":			{ dvalue: true, type: Boolean },
+	"src":				{ dvalue: "", type: String },
+	"dest":				{ dvalue: "", type: String },
+	"target": 			{ dvalue: "", type: String },
+	"proto":			{ dvalue: "tcp", type: String },
+	"dest_ip":			{ dvalue: "", type: String, validator: UCI.validators.IPAddressValidator },
+	"dest_port":			{ dvalue: "", type: String, validator: UCI.validators.PortValidator() },
+	"reflection": 			{ dvalue: true, type: Boolean }
+}, function(section){
+	if(!section.dest_port.value) return JUCI.$tr(gettext("Destination port can not be empty!"));
+	return null;
+});
+
 UCI.firewall.$registerSectionType("include", {
 	"path": 			{ dvalue: "", type: String },
 	"type": 			{ dvalue: "", type: String },
