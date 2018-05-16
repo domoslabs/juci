@@ -42,7 +42,7 @@ msgid "Debug"
 msgstr ""
 
 msgid "TR69 Settings"
-msgstr ""
+msgstr "TR-069"
 
 msgid "ACS User Name"
 msgstr ""
@@ -99,4 +99,4 @@ msgid "Configure CPE specific settings"
 msgstr ""
 
 msgid "menu-icwmp-config-title"
-msgstr "TR69 Settings"
+msgstr "TR-069"

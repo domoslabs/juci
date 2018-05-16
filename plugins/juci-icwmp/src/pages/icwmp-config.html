@@ -1,71 +1,79 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="icwmpConfigPage">
 		<h2>{{'TR69 Settings'|translate}}</h2>
-
-		<juci-config-section ng-show="onTR069ObjectAvailable">
-			<juci-config-section></juci-config-section>
-			<juci-config-line title="{{ 'Send connection request to ACS' | translate }}">
-				<button class="btn btn-lg btn-default" ng-click="contactACS()">{{'Send'|translate}}</button>
-			</juci-config-line>
-		</juci-config-section>
-
-		<juci-config-section>
-			<h2 translate>Configure ACS specific settings</h2>
-			<juci-config-lines>
-				<juci-config-line title="{{ 'ACS User Name' | translate }}">
-					<input type="text" class="form-control" ng-model="acs.userid.value">
-				</juci-config-line>
-				<juci-config-line title="{{ 'ACS Password' | translate }}">
-					<input type="text" class="form-control" ng-model="acs.passwd.value">
-				</juci-config-line>
-				<juci-config-line title="{{ 'URL' | translate }}">
-					<input type="text" class="form-control" ng-model="acs.url.value">
-				</juci-config-line>
-				<juci-config-line title="{{ 'Periodic Inform Enable' | translate }}">
-					<switch class="green" ng-model="acs.periodic_inform_enable.value">
-				</juci-config-line>
-				<juci-config-line title="{{ 'Periodic Inform Interval' | translate }}">
-					<input type="number" min="0" step="100" class="form-control" ng-model="acs.periodic_inform_interval.value">
-				</juci-config-line>
-				<juci-config-line title="{{ 'Periodic Inform Time' | translate }}">
-					<input type="number" min="0" class="form-control" ng-model="acs.periodic_inform_time.value">
-				</juci-config-line>
-				<juci-config-line title="{{ 'DHCP Discovery' | translate }}">
-					<juci-select ng-items="bool" ng-model="acs.dhcp_discovery.value"></juci-select>
-				</juci-config-line>
-			</juci-config-lines>				
-		</juci-config-section>
-		<juci-config-section>
-			<h2 translate>Configure CPE specific settings</h2>
-			<juci-config-lines>
-				<juci-config-line title="{{ 'WAN Interface' | translate }}">
-					<juci-select ng-items="wan_interfaces" ng-model="cpe.default_wan_interface.value"></juci-select>
-				</juci-config-line>
-				<juci-config-line title="{{ 'Connection Request User Name' | translate }}">
-					<input type="text" class="form-control" ng-model="cpe.userid.value">
-				</juci-config-line>
-				<juci-config-line title="{{ 'Connection Request Password' | translate }}">
-					<input type="text" class="form-control" ng-model="cpe.passwd.value">
-				</juci-config-line>
-				<juci-config-line title="{{ 'Port' | translate }}">
-					<input type="number" min="0" max="65535" class="form-control" ng-model="cpe.port.value">
-				</juci-config-line>
-				<juci-config-line title="{{ 'Log Severity Level' | translate }}">
-					<juci-select ng-items="severity_levels" ng-model="cpe.log_severity.value"></juci-select>
-				</juci-config-line>
-				<juci-config-line title="{{ 'Log to console' | translate }}">
-					<juci-select ng-items="bool" ng-model="cpe.log_to_console.value"></juci-select>
-				</juci-config-line>
-				<juci-config-line title="{{ 'Log to file' | translate }}">
-					<juci-select ng-items="bool" ng-model="cpe.log_to_file.value"></juci-select>
-				</juci-config-line>
-				<juci-config-line title="{{ 'Log file max size' | translate }}">
-					<input type="number" min="0" step="1600" class="form-control" ng-model="cpe.log_max_size.value">
-				</juci-config-line>
-				<juci-config-line title="{{ 'Provisioning Code' | translate }}">
-					<input type="text" class="form-control" ng-model="cpe.provisioning_code.value">
-				</juci-config-line>
-			</juci-config-lines>
-		</juci-config-section>
+		<tabset>
+			<tab heading="{{'Settings'|translate}}">
+				<juci-config-section>
+					<h2 translate>Configure ACS specific settings</h2>
+					<juci-config-lines>
+						<juci-config-line title="{{ 'ACS User Name' | translate }}">
+							<input type="text" class="form-control" ng-model="acs.userid.value">
+						</juci-config-line>
+						<juci-config-line title="{{ 'ACS Password' | translate }}">
+							<input type="text" class="form-control" ng-model="acs.passwd.value">
+						</juci-config-line>
+						<juci-config-line title="{{ 'URL' | translate }}">
+							<input type="text" class="form-control" ng-model="acs.url.value">
+						</juci-config-line>
+						<juci-config-line title="{{ 'Periodic Inform Enable' | translate }}">
+							<switch class="green" ng-model="acs.periodic_inform_enable.value">
+						</juci-config-line>
+						<juci-config-line title="{{ 'Periodic Inform Interval' | translate }}">
+							<input type="number" min="0" step="100" class="form-control" ng-model="acs.periodic_inform_interval.value">
+						</juci-config-line>
+						<juci-config-line title="{{ 'Periodic Inform Time' | translate }}">
+							<input type="number" min="0" class="form-control" ng-model="acs.periodic_inform_time.value">
+						</juci-config-line>
+						<juci-config-line title="{{ 'DHCP Discovery' | translate }}">
+							<juci-select ng-items="bool" ng-model="acs.dhcp_discovery.value"></juci-select>
+						</juci-config-line>
+					</juci-config-lines>
+				</juci-config-section>
+				<juci-config-section>
+					<h2 translate>Configure CPE specific settings</h2>
+					<juci-config-lines>
+						<juci-config-line title="{{ 'WAN Interface' | translate }}">
+							<juci-select ng-items="wan_interfaces" ng-model="cpe.default_wan_interface.value"></juci-select>
+						</juci-config-line>
+						<juci-config-line title="{{ 'Connection Request User Name' | translate }}">
+							<input type="text" class="form-control" ng-model="cpe.userid.value">
+						</juci-config-line>
+						<juci-config-line title="{{ 'Connection Request Password' | translate }}">
+							<input type="text" class="form-control" ng-model="cpe.passwd.value">
+						</juci-config-line>
+						<juci-config-line title="{{ 'Port' | translate }}">
+							<input type="number" min="0" max="65535" class="form-control" ng-model="cpe.port.value">
+						</juci-config-line>
+						<juci-config-line title="{{ 'Log Severity Level' | translate }}">
+							<juci-select ng-items="severity_levels" ng-model="cpe.log_severity.value"></juci-select>
+						</juci-config-line>
+						<juci-config-line title="{{ 'Log to console' | translate }}">
+							<juci-select ng-items="bool" ng-model="cpe.log_to_console.value"></juci-select>
+						</juci-config-line>
+						<juci-config-line title="{{ 'Log to file' | translate }}">
+							<juci-select ng-items="bool" ng-model="cpe.log_to_file.value"></juci-select>
+						</juci-config-line>
+						<juci-config-line title="{{ 'Log file max size' | translate }}">
+							<input type="number" min="0" step="1600" class="form-control" ng-model="cpe.log_max_size.value">
+						</juci-config-line>
+						<juci-config-line title="{{ 'Provisioning Code' | translate }}">
+							<input type="text" class="form-control" ng-model="cpe.provisioning_code.value">
+						</juci-config-line>
+					</juci-config-lines>
+				</juci-config-section>
+			</tab>
+			<tab heading="{{'Status'|translate}}" ng-show="onTR069ObjectAvailable">
+				<juci-config-section>
+					<juci-config-line title="{{ 'Send connection request to ACS' | translate }}">
+						<button class="btn btn-lg btn-default" ng-click="contactACS()">{{'Send'|translate}}</button>
+					</juci-config-line>
+				</juci-config-section>
+				<juci-config-section>
+					<div ng-repeat="stat in status track by $index">
+						<juci-table title="{{stat.title}}" data="stat"></juci-table>
+					</div>
+				</juci-config-section>
+			</tab>
+		</tabset>
 	</div>
 </juci-layout-with-sidebar>
