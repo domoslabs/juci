@@ -17,7 +17,7 @@
  */
 
 JUCI.app
-.directive("overviewWidget00QoS", function(){
+.directive("overviewWidget91QoS", function(){
 	return {
 		templateUrl: "widgets/overview.qos.html",
 		controller: "overviewWidgetQoS",
@@ -69,6 +69,6 @@ JUCI.app
 		}
 	});
 
-	$scope.href = $config.getWidgetLink("overviewWidget00QoS");
+	$scope.href = $config.getWidgetLink("overviewWidget91QoS");
 
 });
