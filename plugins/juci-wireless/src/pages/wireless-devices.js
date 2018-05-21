@@ -46,7 +46,7 @@ JUCI.app
 			}
 		];
 		if(show_button){
-			if(dev.channel.value !== "auto")
+			if(dev.channel.value !== "auto" || dev.scantimer.value === 0)
 				return;
 			dev.$buttons.push({
 				label: $tr(gettext("Force Channel Selection")),
