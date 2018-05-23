@@ -47,7 +47,7 @@ JUCI.app
 	];
 
 	$scope.onTR069ObjectAvailable=$rpc.$has("tr069", "inform");
-	if($rpc.$has("tr069", "status") {
+	if($rpc.$has("tr069", "status")) {
 		JUCI.interval.repeat("icwmp-status-update", 5000, function(next){
 			$rpc.$call("tr069", "status").done(function(data){
 				if(!data) return;
