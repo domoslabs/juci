@@ -2,17 +2,13 @@
 	"juci-icwmp": {
 		"description": "JUCI icwmp TR-069 module",
 		"read": {
-			"ubus": {
-				"tr069": [
-					"status"
-				]
-			},
 			"uci": [
 				"cwmp"
 			],
 			"ubus": {
 				"tr069": [
-					"inform"
+					"inform",
+					"status"
 				]
 			}
 		},
