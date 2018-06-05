@@ -1006,7 +1006,7 @@
 					reqlist.push({
 						"config": self[".name"],
 						"section": section[".name"],
-						"new":true
+						"__new__":true
 					});
 				}
 				if(section.$index.current != section.$index.old){
@@ -1082,8 +1082,16 @@
 					});
 				});
 			}
-			self[x].$getWriteRequests().forEach(function(ch){
-				if(ch["new"]){
+			/*Object.keys(self[x]).map(function(k){
+				var section = self[x][k];
+				if(section["__new__"]) changes.push({
+					type: "add",
+					config: self[x][".name"],
+					section: section[".name"]
+				});
+			});*/
+			self[x].$getWriteRequests().map(function(ch){
+				if(ch["__new__"]){
 					changes.push({
 						type: "section",
 						config: ch.config,
@@ -1207,7 +1215,7 @@
 						}
 						var reqlist = self[k].$getWriteRequests();
 						reqlist.map(function(x){
-							if(x["new"])
+							if(x["__new__"])
 								return;
 							if(x["moved"]){
 								reorders.push(x);
