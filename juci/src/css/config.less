@@ -1,0 +1,69 @@
+@import "./colors.less";
+@control-width: 200px;
+@arrow-width: 26px;
+
+.juci-config-apply-pane {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	background-color: white;
+	padding: 10px;
+	z-index: 1000; 
+	box-shadow: 1px 1px 5px 1px rgb(136, 136, 136); 
+}
+
+.juci-config-info {
+	margin-bottom: 20px; 
+}
+
+.juci-config-line {
+	margin-top: 20px;
+	label.juci-config-line-label {
+		font-size: 1.2em;
+		word-wrap:break-word;
+	}
+	p.juci-config-line-help {
+		font-size: 12px;
+	}
+	.juci-config-line-data {
+		div:not(.input-group) {
+			& > .form-control[type="text"] {
+				min-width: @control-width;
+			}
+			& > .form-control[type="number"] {
+				min-width: @control-width;
+			}
+			& > .form-control[type="password"] {
+				min-width: @control-width;
+			}
+			.juci-select {
+				.button-label, input {
+					min-width: @control-width - @arrow-width;
+				}
+				.button-arrow {
+					padding-left: 6px;
+					padding-right: 6px;
+					min-width: @arrow-width;
+				}
+			}
+			input[type="range"] {
+				min-width: @control-width;
+			}
+			.input-group {
+				min-width: @control-width;
+			}
+		}
+	}
+}
+.juci-config-line-error {
+	color: @theme-error-color;
+	background-color: @theme-error-background-color;
+	border-color: @theme-error-border-color;
+	font-size: 0.8em;
+}
+
+.juci-config-section-hr {
+	width: 100%;
+	border-bottom: 1px solid #ccc;
+	clear: both;
+}

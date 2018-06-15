@@ -6,6 +6,7 @@ JUCI.app
 		repace: true
 	};
 }).controller("overviewClientmodeCtrl", function($scope, $uci, $rpc, $tr, gettext, $events, $wireless){
+	$scope.has_capability = $rpc.$has_capability;
 	$scope.showModal = false;
 	$scope.modalTitle;
 	$scope.manual = {

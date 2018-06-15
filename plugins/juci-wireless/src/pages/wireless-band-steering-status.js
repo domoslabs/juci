@@ -3,7 +3,7 @@ JUCI.app
 	$scope.data = {};
 	$wireless.getInterfaces().done(function(ifaces){
 		function update(){
-			$rpc.$call("router.wireless", "bsd_sta_info").done(function(data){
+			$rpc.$call("wifi.bsd", "sta_info").done(function(data){
 				if(!data || !data.stations || !data.stations instanceof Array)
 					return;
 				$scope.data.bsd_status = data.stations.map(function(sta){
@@ -19,7 +19,7 @@ JUCI.app
 			}).fail(function(e){
 				console.log(e);
 			});
-			$rpc.$call("router.wireless", "bsd_records").done(function(data){
+			$rpc.$call("wifi.bsd", "records").done(function(data){
 				if(!data || !data.logs || !data.logs instanceof Array)
 					return;
 				$scope.data.bsd_logs = data.logs.map(function(log){

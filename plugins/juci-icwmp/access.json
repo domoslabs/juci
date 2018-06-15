@@ -4,7 +4,13 @@
 		"read": {
 			"uci": [
 				"cwmp"
-			]
+			],
+			"ubus": {
+				"tr069": [
+					"inform",
+					"status"
+				]
+			}
 		},
 		"write": {
 			"uci": [

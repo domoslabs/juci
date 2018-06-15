@@ -44,7 +44,19 @@ JUCI.app
 		scope: {
 			value: "="
 		}, 
-		template: '<div ng-show="value" class="alert-danger" style="margin-top: 10px; font-size: 0.8em; padding: 5px; border-radius: 5px">{{value}}</div>', 
+		template: '<div ng-show="value" class="alert-danger juci-error">{{value}}</div>', 
 		replace: true
 	}; 
 }); 
+
+JUCI.app
+.directive("juciWarning", function(){
+	return {
+		// accepted parameters for this tag
+		scope: {
+			value: "="
+		},
+		template: '<div ng-show="value" class="alert-warning juci-warning">{{value}}</div>',
+		replace: true
+	};
+});

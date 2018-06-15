@@ -1,10 +1,10 @@
-<div class="col-md-12" style="white-space: nowrap;">
-	<div ng-repeat="part in [0, 1, 2, 3]" style="float: left;">
-		<div style="width: 3.8em; float:left;" class="juci-input-ipv4">
-			<input type="text" style="min-width: 3.8em !important;" juci-input-ipv4-auto-move-on-dot ng-paste="onPaste($event)" ng-copy="onCopy($event)" class="form-control no-padding text-center" ng-change="updateModel()" ng-model="data.parts[part]" ng-model-options='{ getterSetter: true }' placeholder="{{placeholders[part]}}" maxlength="3" />
+<div class="col-md-12 ws-nowrap">
+	<div ng-repeat="part in [0, 1, 2, 3]" class="pull-left">
+		<div class="juci-input-ipv4 pull-left input-ip4-address-width">
+			<input type="text" juci-input-ipv4-auto-move-on-dot ng-paste="onPaste($event)" ng-copy="onCopy($event)" class="form-control no-padding text-center input-ip4-address-width" ng-change="updateModel()" ng-model="data.parts[part]" ng-model-options='{ getterSetter: true }' placeholder="{{placeholders[part]}}" maxlength="3" />
 		</div>
-		<div style="float:left;" ng-show="part != 3">
-			<span style="line-height: 3em; padding-left: 0.5em; padding-right: 0.5em;">.</span>
+		<div class="pull-left" ng-show="part != 3">
+			<span class="input-ip4-address-dot">.</span>
 		</div>
 	</div>
 </div>

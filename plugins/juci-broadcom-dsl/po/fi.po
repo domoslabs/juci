@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 msgid "DSL Status Information"
 msgstr "DSL Status"
@@ -211,10 +211,10 @@ msgstr "VDSL"
 msgid "menu-page-broadcom-adsl-title"
 msgstr "ADSL"
 
-msgid "menu-page-broadcom-gfast-status-title"
+msgid "menu-page-broadcom-dsl-status-title"
 msgstr "DSL Status"
 
-msgid "menu-page-broadcom-dsl-status-title"
+msgid "menu-page-broadcom-gfast-status-title"
 msgstr "DSL Status"
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-dsl/src/pages/page-broadcom-dsl-status.js

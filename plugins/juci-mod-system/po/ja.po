@@ -201,7 +201,7 @@ msgstr "File"
 
 # plugins/juci-mod-system/src/pages/settings-system.html
 msgid "settings.system.general"
-msgstr "設定.システム.一般"
+msgstr " "
 
 # plugins/juci-mod-system/src/pages/settings-system.html
 msgid "Timezone"

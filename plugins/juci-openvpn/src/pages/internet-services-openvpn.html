@@ -1,0 +1,100 @@
+<juci-layout-with-sidebar>
+	<div ng-controller="OpenVPNController">
+			<juci-config-heading>{{ 'OpenVPN Client Configuration' | translate }}</juci-config-heading>
+			<juci-config-info>{{ 'openvpn.settings.info' | translate }}</juci-config-info>
+
+			<juci-config-line title="{{'Enabled'|translate}}">
+				<switch ng-model="openvpn.enabled.value" class="green"/>
+			</juci-config-line>
+
+		<juci-config-section ng-show="openvpn.enabled.value">
+
+			<juci-config-line title="{{ 'Username' | translate}}">
+				<input ng-model="openvpn.auth_user.value" type="username" class="form-control" placeholder="Username">
+			</juci-config-line>
+
+			<juci-config-line title="{{ 'Password' | translate}}">
+				<input ng-model="openvpn.auth_pass.value" type="{{(!showPassword)?'password':'text'}}" class="form-control" placeholder="Password">
+				<div class="checkbox checkbox-info">
+					<input type="checkbox" ng-model="showPassword" ng-click="togglePassword()"/>
+					<label><strong>{{ "Show password" |translate}}</strong></label>
+				</div>
+			</juci-config-line>
+
+			<juci-config-line title="{{ 'Upload Configuration' | translate}}">
+				<button ng-click="onAddFile()">Upload/Edit</button>
+			</juci-config-line>
+
+
+			<!--
+			<juci-config-line title="{{'Client'|translate}}">
+				<switch ng-model="openvpn.client.value" class="green"/>
+			</juci-config-line>
+
+			<juci-config-line title="{{ 'Dev' | translate }}">
+				<juci-select ng-items="dev_list" ng-model="openvpn.dev.value"/>
+			</juci-config-line>
+
+			<juci-config-line title="{{ 'Proto' | translate }}">
+				<juci-select ng-items="proto_list" ng-model="openvpn.proto.value"/>
+			</juci-config-line>
+
+			<juci-config-line title="{{ 'Auth' | translate }}">
+				<juci-select ng-items="auth_list" ng-model="openvpn.auth.value"/>
+			</juci-config-line>
+
+			<juci-config-line title="{{ 'Cipher' | translate }}">
+				<juci-select ng-items="cipher_list" ng-model="openvpn.cipher.value"/>
+			</juci-config-line>
+
+			<juci-config-line title="{{'Nobind'|translate}}">
+				<switch ng-model="openvpn.nobind.value" class="green"/>
+			</juci-config-line>
+
+			<juci-config-line title="{{'Persist tun'|translate}}">
+				<switch ng-model="openvpn.persist_tun.value" class="green"/>
+			</juci-config-line>
+
+			<juci-config-line title="{{'Persist key'|translate}}">
+				<switch ng-model="openvpn.persist_key.value" class="green"/>
+			</juci-config-line>
+
+			<juci-config-line title="{{ 'Verb' | translate }}">
+				<juci-select ng-items="verb_list" ng-model="openvpn.verb.value"/>
+			</juci-config-line>
+
+			<juci-config-line title="{{ 'Mute' | translate }}">
+				<input type="number" min="2" ng-model="openvpn.mute.value" class="form-control"/>
+			</juci-config-line>
+
+			<juci-config-line title="{{ 'Mute replay warnings' | translate }}">
+				<switch ng-model="openvpn.mute_replay_warnings.value" class="green"/>
+			</juci-config-line>
+
+			<juci-config-line title="{{ 'Ns cert type' | translate }}">
+				<juci-select ng-items="ns_cert_type_list" ng-model="openvpn.ns_cert_type.value"/>
+			</juci-config-line>
+
+			<juci-config-line title="{{ 'Comp LZO' | translate }}">
+				<juci-select ng-items="comp_lzo_list" ng-model="openvpn.comp_lzo.value"/>
+			</juci-config-line>
+
+			<juci-config-line title="{{ 'Resolv retry' | translate }}">
+				<input class="form-control" type="number" min="0" ng-model="openvpn.resolv_retry.value" ng-disabled="{{resolv_retry_infinite}}" />
+				<div class="checkbox checkbox-info">
+					<input type="checkbox" ng-model="resolv_retry_infinite" ng-click="toggle_resolv_retry_infinite()"/>
+					<label><strong>{{ "Infinite" |translate}}</strong></label>
+				</div>
+			</juci-config-line>
+			-->
+
+		</juci-config-section>
+
+	<juci-config-section>
+		<h3>{{ 'Current Configuration' | translate}}</h3>
+		<textarea disabled rows="12" style="width: 100%; resize: none;">
+{{data.ovpn}}
+		</textarea>
+	</juci-config-section>
+	</div>
+</juci-layout-with-sidebar>

@@ -36,7 +36,6 @@ JUCI.app
 				if(btn.value == "add"){
 					if(!model.name || model.name.length < 1) return;
 					$scope.listen.origin.value = $scope.listen.origin.value.concat([model.name]);
-					$scope.$apply();
 				}
 				inst.close();
 			},

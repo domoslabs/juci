@@ -11,7 +11,7 @@ case "$1" in
 	call)
 		case "$2" in
 			username)
-				local username="$(uci -q get juci.login.defaultuser)"
+				username="$(uci -q get juci.login.defaultuser)"
 				#config_load juci  // this is mutch to slow
 				#config_get username login defaultuser "user"
 				json_init
@@ -19,7 +19,7 @@ case "$1" in
 				json_dump
 			;;
 			firmware)
-				local firmware=$(db show | awk -F"'" '/iopVersion/ {print $2}')
+				firmware=$(db show | awk -F"'" '/iopVersion/ {print $2}')
 				json_init
 				json_add_string firmware "$firmware"
 				json_dump

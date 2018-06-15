@@ -87,6 +87,7 @@
 				return ch;
 			});
 			if(!exists){
+				if(!item.children) item.children = [];
 				obj.children.push(item);
 			}
 		};

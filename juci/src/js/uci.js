@@ -442,6 +442,9 @@
 			if(value != null && value instanceof Array) {
 				this.ovalue = []; Object.assign(this.ovalue, value);
 			}
+			if(schema.type === Boolean && (value === true || value === false)){
+				this.ovalue = value?"1":"0";
+			}
 			this.is_dirty = false;
 			this.uvalue = undefined;
 			this.schema = schema;
@@ -454,8 +457,12 @@
 				this.is_dirty = false;
 			},
 			$reset_defaults: function(){
-				this.uvalue = this.schema.dvalue;
-				this.is_dirty = false;
+				if(this.uvalue !== this.schema.dvalue){
+					this.uvalue = this.schema.dvalue;
+					if(this.schema.type === Boolean && (this.schema.dvalue === true || this.schema.dvalue === false))
+						this.uvalue = this.schema.dvalue?"1":"0";
+					this.is_dirty = true;
+				}
 			},
 			$begin_edit: function(){
 				this.svalue = this.value;
@@ -464,21 +471,20 @@
 				if(this.svalue != undefined) this.value = this.svalue;
 			},
 			$update: function(value, keep_user){
-				if(this.ovalue instanceof Array){
-					// if user has modified value and we have keep user set then we do not discard his changes
-					// otherwise we also update uvalues
-					if(!keep_user || !this.dirty) {
-						this.uvalue = value;
-						this.dirty = false;
-					}
-					// store original value
-					this.ovalue = value;
+				// if user has modified value and we have keep user set then we do not discard his changes
+				// otherwise we also update uvalues
+				if(!keep_user || !this.dirty) {
+					this.uvalue = value;
+					this.dirty = false;
+				}
+				if(this.schema.type === Boolean){
+					// properly handle booleans
+					if(value === true || value === false)
+						this.ovalue = value?"1":"0";
+					else
+						this.ovalue = value;
 				} else {
 					if(typeof value === "string") value = value.trim();
-					if(!keep_user || !this.dirty) {
-						this.uvalue = value;
-						this.dirty = false;
-					}
 					this.ovalue = value;
 				}
 			},
@@ -492,34 +498,27 @@
 				else return this.uvalue;
 			},
 			set value(val){
+				// some sanity checks
 				if(val === null) val = "";
-				// set dirty if not same
-				var self = this;
-				if(val instanceof Array){
-					self.is_dirty = !val.equals(self.uvalue);
-				} else {
-					self.is_dirty = val != self.ovalue; // nedds to be != due to boolean values
-				}
-				if(self.ovalue instanceof Array && !(val instanceof Array)) return;
-				if(val instanceof Array && self.ovalue instanceof Array){
-					self.is_dirty = false;
-					if(val.length !== self.ovalue.length) self.is_dirty = true;
-					val.forEach(function(x, i){ if(self.ovalue[0] !== x) self.is_dirty = true; });
-				}
+				if(this.ovalue instanceof Array && !(val instanceof Array)) return;
 
-				// properly handle booleans
-				if(this.schema.type == Boolean){
+				if(this.schema.type === Boolean){
+					// properly handle booleans
 					if(this.ovalue == "on" || this.ovalue == "off") { this.uvalue = (val)?"on":"off"; }
 					else if(this.ovalue == "yes" || this.ovalue == "no") { this.uvalue = (val)?"yes":"no"; }
 					else if(this.ovalue == "true" || this.ovalue == "false") { this.uvalue = (val)?"true":"false"; }
-					else this.uvalue = val;
+					else this.uvalue = val?"1":"0"; // uci uses 0 and 1 for true and false
+				} else if(this.schema.type === Array) {
+					// assigning an Array to variable does not copy
+					this.uvalue = Object.assign([], val);
 				} else {
-					if(val instanceof Array) {
-						this.uvalue = [];
-						Object.assign(this.uvalue, val);
-					} else {
-						this.uvalue = val;
-					}
+					this.uvalue = val;
+				}
+				// set dirty if not same
+				if(val instanceof Array){
+					this.is_dirty = !this.uvalue.equals(this.ovalue);
+				} else {
+					this.is_dirty = this.uvalue != this.ovalue;
 				}
 			},
 			get error(){
@@ -537,8 +536,6 @@
 				this.is_dirty = value;
 			},
 			get dirty(){
-				if(this.uvalue instanceof Array && this.uvalue.equals(this.ovalue)) return false;
-				else if(this.uvalue === this.ovalue) return false;
 				return this.is_dirty;
 			}
 		}
@@ -548,7 +545,36 @@
 		function UCISection(config){
 			this[".config"] = config;
 		}
-		
+
+		UCISection.prototype.$move = function(index){
+			var self = this;
+			var type = self[".type"];
+			var config = self[".config"];
+			if (!self.$index)
+				throw new Error("No index set for config " + self[".name"]);
+			if (self.$index.current === index)
+				return false;
+			if(!config)
+				throw new Error("Missing .config for " + self[".name"], type);
+			var allSections = config["@" + type];
+			if(!allSections instanceof Array || allSections.length === 0)
+				throw new Error("Missing array of sections for type " + type);
+
+			if(index < 0 || index > allSections.length)
+				return false;
+
+			var found = allSections.splice(self.$index.current, 1);
+			if(found.length != 1)
+				throw new Error("This should never happen");
+			var toInsert = found[0];
+
+			allSections.splice(index, 0, toInsert);
+
+			allSections.forEach(function(section, index, array){
+				array[index].$index.current = index;
+			});
+		}
+
 		UCISection.prototype.$update = function(data, opts){
 			if(!opts) opts = {};
 			if(!(".type" in data)) throw new Error("Supplied object does not have required '.type' field!");
@@ -605,27 +631,7 @@
 			});
 			return deferred.promise();
 		}
-		
-		/*
-		UCISection.prototype.$save = function(){
-			var deferred = $.Deferred();
-			var self = this;
-			
-			// try to validate the section using section wide validator
-			if(self[".validator"] instanceof Function) self[".validator"](self);
-			
-			$rpc.$call("uci", "set", {
-				config: self[".config"][".name"],
-				section: self[".name"],
-				values: self.$getChangedValues()
-			}).done(function(data){
-				deferred.resolve();
-			}).fail(function(){
-				deferred.reject();
-			});
-			return deferred.promise();
-		}*/
-		
+
 		UCISection.prototype.$delete = function(){
 			var self = this;
 			if(self[".config"]) return self[".config"].$deleteSection(self);
@@ -683,11 +689,20 @@
 			var errors = [];
 			var self = this;
 			var type = self[".section_type"];
+			var name = self[".config"] ? self[".config"][".name"] : "undefined";
+			var section;
+			if(!self[".name"] || !self[".type"] || !self.$index || !self.$index.current)
+				section = "undefined";
+			else {
+				section = self[".name"];
+				if(section.match(/^cfg[0-9a-fA-F]+$/) !== null)
+					section = self[".type"]+" "+(self.$index.current+1);
+			}
 			Object.keys(type).map(function(k){
 				if(self[k].value === "" && self[k].schema.required) errors.push(k+" "+JUCI.$tr(gettext("is required")));
 				else var err = self[k].error;
 				if(err){
-					errors.push(err);
+					errors.push(JUCI.$tr(gettext("Config")) + ": " + name + " " + JUCI.$tr(gettext("Section")) + ": " + section + " " + JUCI.$tr(gettext("Option")) + ": " + k + ": " + err);
 				}
 			});
 			if(type && type[".validator"] && (type[".validator"] instanceof Function)){
@@ -742,6 +757,10 @@
 			self[type].push(section);
 			self["@all"].push(section);
 			self[item[".name"]] = section;
+			section.$index = {
+				current: self[type].length - 1,
+				old: self[type].length -1
+			}
 			return section;
 		}
 		function _updateSection(self, item, opts){
@@ -898,7 +917,6 @@
 			var self = this;
 			var deferred = $.Deferred();
 				
-			//self[".need_commit"] = true;
 			$rpc.$call("uci", "delete", {
 				"config": self[".name"],
 				"section": section[".name"]
@@ -914,36 +932,6 @@
 			return deferred.promise();
 		}
 		
-		// creates a new object that will have values set to values
-		UCIConfig.prototype.create = function(item, offline){
-			console.error("UCI.section.create is deprecated. Use $create() instead!");
-			return this.$create(item);
-		}
-
-/*
-		UCIConfig.prototype.$undelete = function(section_name){
-			var self = this;
-			if(!section_name) return "no section_name";
-			var section = self.deleted_sections.find(function(sec){ return sec && sec[".name"] === section_name; });
-			if(!section) return "no section with that name";
-			self.deleted_sections = self.deleted_sections.filter(function(sec){ return sec[".name"] !== section_name; });
-			var type = section_types[self[".name"]][section[".type"]];
-			if(!type) return "no type for section";
-			var values = { ".type": section[".type"], ".name": section_name };
-			Object.keys(type).map(function(key){
-				if(key === ".validator") return;
-				if(section[key] && section[key].value !== undefined)
-					values[key] = section[key].value
-			});
-			var deferred = $.Deferred();
-			self.$create(values, true).done(function(item){
-				deferred.resolve(item);
-			}).fail(function(e){
-				deferred.reject(e);
-			});
-			return deferred.promise();
-		}
-*/
 		UCIConfig.prototype.$create = function(item, is_old){
 			var self = this;
 			if(!(".type" in item)) throw new Error("Missing '.type' parameter!");
@@ -987,7 +975,7 @@
 			return deferred.promise();
 		}
 	
-		//! Tells uci to reorder sections based on current order in the section types table
+		// Change order of two sections.
 		UCIConfig.prototype.$save_order = function(type){
 			var def = $.Deferred();
 			var arr = this["@"+type];
@@ -1001,14 +989,9 @@
 			$rpc.$call("uci", "order", {
 				config: self[".name"],
 				sections: order
-			}).done(function(){
-				$rpc.$call("uci", "commit", {
-					config: self[".name"]
-				}).done(function(data){
-					def.resolve(data);
-				}).fail(function(){
-					def.reject();
-				});
+			}).done(function(data){
+				self[".need_commit"] = true;
+				def.resolve(data);
 			}).fail(function(){
 				def.reject();
 			});
@@ -1023,8 +1006,20 @@
 					reqlist.push({
 						"config": self[".name"],
 						"section": section[".name"],
-						"new":true
+						"__new__":true
 					});
+				}
+				if(section.$index.current != section.$index.old){
+					var found = reqlist.find(function(rq){
+						return rq.moved && rq.config === self[".name"] && rq.type === section[".type"];
+					});
+					if (!found) {
+						reqlist.push({
+							"config": self[".name"],
+							"type": section[".type"],
+							"moved": true,
+						});
+					}
 				}
 				var changed = section.$getChangedValues();
 				if(Object.keys(changed).length){
@@ -1068,7 +1063,7 @@
 	// returns true if there are uci changes
 	UCI.prototype.$hasChanges = function(){
 		if(!this.initDone) return;
-		return this.$getChanges.length != 0;
+		return this.$getChanges().length > 0;
 	}
 	
 	UCI.prototype.$getChanges = function(){
@@ -1096,18 +1091,27 @@
 				});
 			});*/
 			self[x].$getWriteRequests().map(function(ch){
-				if(ch["new"]){
+				if(ch["__new__"]){
 					changes.push({
 						type: "section",
-						config: self[x][".name"],
-						section: self[x][ch.section][".name"],
+						config: ch.config,
+						section: ch.section,
 						state: "new section"
 					});
-					return changes;
+					return;
+				}
+				if(ch["moved"]){
+					changes.push({
+						type: "section",
+						config: ch.config,
+						section: ch.type,
+						state: "new order"
+					});
+					return;
 				}
 				Object.keys(ch.values).map(function(opt){
 					var o = self[x][ch.section][opt];
-					if(o.is_dirty){
+					if(o.dirty){
 						changes.push({
 							type: "option",
 							config: self[x][".name"],
@@ -1123,29 +1127,9 @@
 		return changes;
 	}
 
-	// marks all configs for reload on next sync of the config
-	UCI.prototype.$clearCache = function(){
-		if(!this.initDone) return;
-		var self = this;
-		Object.keys(self).map(function(x){
-			if(self[x].constructor != UCI.Config) return;
-			self[x].$reset();
-		});
-	}
-
 	UCI.prototype.$registerConfig = function(name){
 		if(!(name in section_types)) section_types[name] = {};
 		if(!(name in this)) this[name] = new UCI.Config(this, name);
-	}
-	
-	UCI.prototype.$eachConfig = function(cb){
-		if(!this.initDone) return;
-		var self = this;
-		Object.keys(self).filter(function(x){
-			return self[x].constructor == UCI.Config;
-		}).map(function(x){
-			cb(self[x]);
-		});
 	}
 	
 	UCI.prototype.$sync = function(configs){
@@ -1200,46 +1184,18 @@
 		});
 		return deferred.promise();
 	}
-	
 
-	UCI.prototype.$revert = function(){
-		var revert_list = [];
-		var deferred = $.Deferred();
-		if(!this.initDone) return deferred.reject();
-		var errors = [];
-		var self = this;
-		
-		Object.keys(self).map(function(k){
-			if(self[k].constructor == UCI.Config){
-				//if(self[k][".need_commit"]) revert_list.push(self[k][".name"]);
-				revert_list.push(self[k]);
-			}
-		});
-		async.eachSeries(revert_list, function(item, next){
-			$rpc.$call("uci", "revert", {"config": item[".name"], "ubus_rpc_session": $rpc.$sid()}).done(function(){
-				console.log("Reverted config "+item[".name"]);
-				next();
-			}).fail(function(){
-				errors.push("Failed to revert config "+item[".name"]);
-				next();
-			});
-		}, function(){
-			if(errors.length) deferred.reject(errors);
-			else deferred.resolve();
-		});
-		return deferred.promise();
-	}
-	
 	UCI.prototype.$rollback = function(){
 		if(!this.initDone) return;
-		return $rpc.$call("uci", "rollback");
+			return $rpc.$call("uci", "rollback");
 	}
-	
+
 	UCI.prototype.$save = function(){
 		var deferred = $.Deferred();
 		if(!this.initDone) return deferred.reject();
 		var self = this;
 		var writes = [];
+		var reorders = [];
 		var add_requests = [];
 		var errors = [];
 		self.deleted_sections = [];
@@ -1258,71 +1214,89 @@
 							return;
 						}
 						var reqlist = self[k].$getWriteRequests();
-						reqlist.map(function(x){ writes.push(x); });
+						reqlist.map(function(x){
+							if(x["__new__"])
+								return;
+							if(x["moved"]){
+								reorders.push(x);
+							} else
+								writes.push(x);
+						});
 					}
 				});
-				console.log("Writing changes: "+JSON.stringify(writes));
-				async.eachSeries(writes, function(cmd, next){
-					$rpc.$call("uci", "set", cmd).done(function(response){
-						console.log("... "+cmd.config+": "+JSON.stringify(response));
-						self[cmd.config][".need_commit"] = true;
-						next();
-					}).fail(function(){
-						console.error("Failed to write config "+cmd.config);
-						next();
+				if(errors.length) {
+					deferred.reject(errors);
+					return;
+				}
+				next();
+			},
+			function(next){
+				async.eachSeries(reorders, function(reorder, cb){
+					var config = self[reorder.config];
+					if(!config || !config.$save_order instanceof Function) {
+						throw new Error("couldnt find config " + reorder.config);
+						cb();
+						return;
+					}
+					config.$save_order(reorder.type).done(function(){
+						var sections_of_type = config["@" + reorder.type] || [];
+						// reset the index values
+						sections_of_type.forEach(function(section, index, arr){
+							arr[index].$index = { old:index, current:index};
+						});
+					}).always(function(){
+						cb();
 					});
 				}, function(){
 					next();
 				});
 			},
 			function(next){
-				if(errors.length) {
-					deferred.reject(errors);
-					return;
-				}
-				// this will prevent making ubus call if there were no changes to apply
-				//if(writes.length == 0 && !){
-				//	deferred.resolve();
-				//	return;
-				//} commenting out because we do need to commit if new sections have been added
-				//$rpc.$call("uci", "apply", {rollback: 0, timeout: 5000}).done(function(){
-					async.eachSeries(Object.keys(self), function(config, next){
-						if(self[config].constructor != UCI.Config || !self[config][".need_commit"]) {
+				async.eachSeries(writes, function(cmd, cb){
+					$rpc.$call("uci", "set", cmd).done(function(response){
+						console.log("... "+cmd.config+": "+JSON.stringify(response));
+						self[cmd.config][".need_commit"] = true;
+						cb();
+					}).fail(function(){
+						console.error("Failed to write config "+cmd.config);
+						cb();
+					});
+				}, function(){
+					next();
+				});
+			},
+			function(next){
+				async.eachSeries(Object.keys(self), function(config, next){
+					if(self[config].constructor != UCI.Config || !self[config][".need_commit"]) {
+						next();
+						return;
+					}
+					console.log("Committing changes to "+config);
+					$rpc.$call("uci", "commit", {config: config}).done(function(){
+						self[config][".need_commit"] = false;
+						// we need to call mark_for_reload to make sync work (with new changes to how we handle changed fields)
+						// the sync is necessary to make sure that all data is reloaded and has correct names after a commit
+						// removing this sync will result in weird behaviour such as certain fields not being deleted even
+						// though you have called uci delete on them. Basically we currently have to resync the state in order
+						// to guarantee more fault tolerant operation.
+						self[config].$mark_for_reload();
+						self[config].$sync().done(function(){
 							next();
-							return;
-						}
-						console.log("Committing changes to "+config);
-						$rpc.$call("uci", "commit", {config: config}).done(function(){
-							self[config][".need_commit"] = false;
-							// we need to set deferred to null to make sync work (with new changes to how we handle changed fields)
-							// the sync is necessary to make sure that all data is reloaded and has correct names after a commit
-							// removing this sync will result in weird behaviour such as certain fields not being deleted even
-							// though you have called uci delete on them. Basically we currently have to resync the state in order
-							// to guarantee more fault tolerant operation.
-							self[config].deferred = null;
-							self[config].$sync().done(function(){
-								next();
-							}).fail(function(err){
-								console.log("error synching config "+config+": "+err);
-								next();
-							});
 						}).fail(function(err){
-							errors.push("could not commit config: "+err);
+							console.log("error synching config "+config+": "+err);
 							next();
 						});
-					}, function(){
-						// this is to always make sure that we do this outside of this code flow
-						setTimeout(function(){
-							if(errors && errors.length) deferred.reject(errors);
-							else deferred.resolve();
-						},0);
+					}).fail(function(err){
+						errors.push("could not commit config: "+err);
+						next();
 					});
-			//	}).fail(function(error){
-					// Apply may fail for a number of reasons (for example if there is nothing to apply)
-					// but it does not matter so we should not fail when it does not succeed.
-			//		deferred.resolve();
-					//deferred.reject([error]);
-			//	});
+				}, function(){
+					// this is to always make sure that we do this outside of this code flow
+					setTimeout(function(){
+						if(errors && errors.length) deferred.reject(errors);
+						else deferred.resolve();
+					},0);
+				});
 			}
 		]);
 		return deferred.promise();
@@ -1357,13 +1331,4 @@
 		HostnameValidator: HostnameValidator,
 		IPAddressAndIPCIDRValidator: IPAddressAndIPCIDRValidator
 	};
-	/*if(exports.JUCI){
-		var JUCI = exports.JUCI;
-		JUCI.uci = exports.uci = new UCI();
-		if(JUCI.app){
-			JUCI.app.factory('$uci', function(){
-				return $juci.uci;
-			});
-		}
-	}*/
 })(typeof exports === 'undefined'? this : global);

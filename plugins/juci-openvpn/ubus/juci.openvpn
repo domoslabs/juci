@@ -1,0 +1,26 @@
+#!/bin/sh
+
+. /usr/share/libubox/jshn.sh
+
+OVPN="/etc/openvpn/openvpn.ovpn"
+
+case "$1" in
+	list)
+		echo '{ "get_config" : {}, "set_config" : {} }'
+	;;
+	call)
+		case "$2" in
+			get_config)
+				json_init
+				[ -f $OVPN ] && json_add_string result "$(cat $OVPN 2>/dev/null)"
+				json_dump
+			;;
+			set_config)
+				json_init
+				json_add_boolean success $(mv /tmp/tmpOpenvpnConfiguration $OVPN && {sync; echo 1} || echo 0)
+				json_dump
+			;;
+		esac
+	;;
+esac
+

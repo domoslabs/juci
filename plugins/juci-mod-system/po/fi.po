@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.js
 msgid ""
@@ -70,6 +70,10 @@ msgstr "Ytimen versio"
 msgid "CFE Version"
 msgstr "CFE versio"
 
+# plugins/juci-mod-system/src/pages/status-system.js
+msgid "Hardware Version"
+msgstr "Laitteistoversio"
+
 msgid "Local Time"
 msgstr "Paikallinen aika"
 
@@ -83,9 +87,9 @@ msgstr "CPU"
 msgid "Active Connections"
 msgstr "Aktiiviset yhteydet"
 
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/status-system.js
-msgid "BRCM Version"
-msgstr "BRCM versio"
+# plugins/juci-mod-system/src/pages/status-system.js
+msgid "BSP Version"
+msgstr ""
 
 msgid "Usage"
 msgstr "Käyttö"
@@ -167,6 +171,62 @@ msgstr "Kierto"
 msgid "File"
 msgstr "Tiedosto"
 
+msgid "settings.system.general"
+msgstr " "
+
+msgid "Timezone"
+msgstr "Aikavyöhyke"
+
+msgid "General System Settings"
+msgstr "Yleiset järjestelmäasetukset"
+
+msgid "Manage Router Users Rights"
+msgstr "Hallinnoi reitittimen käyttäjien oikeuksia"
+
+msgid "Loading"
+msgstr "Lataan..."
+
+msgid "Services"
+msgstr "Fyysinen liitäntä"
+
+msgid "Priority"
+msgstr "Prioriteetti"
+
+msgid "Service"
+msgstr "Fyysinen liitäntä"
+
+msgid "Enable"
+msgstr "Ota käyttöön"
+
+msgid "Action"
+msgstr "Toiminto"
+
+msgid "Time servers (NTP)"
+msgstr "NTP-palvelimet"
+
+msgid "URL"
+msgstr "URL"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-timeservers.html
+msgid "Server mode"
+msgstr "Palvelintila"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-timeservers.html
+msgid "Time Servers"
+msgstr "Aikapalvelimet"
+
+msgid "Configure Buttons"
+msgstr "Konfiguraatio"
+
+msgid "settings.management.buttons.info"
+msgstr "Hallinta"
+
+msgid "Configure LEDs"
+msgstr "Määritä LED-asetukset"
+
+msgid "settings.management.leds.info"
+msgstr "Voit sammuttaa laitteen LED-valoja liukusäätimestä"
+
 # /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "System Log Level"
 msgstr "Järjestelmän lokitustaso"
@@ -232,86 +292,8 @@ msgstr "Lokin tyyppi"
 msgid "Log Settings"
 msgstr "Lokiasetukset"
 
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "Internet"
-msgstr "Internet"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "URL for checking Internet connection"
-msgstr "Internetyhteyden tarkistuksen kohdeosoite"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "www.example.com"
-msgstr "www.esimerkki.fi"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "Connectivity Test"
-msgstr "Yhteden testaus"
-
-msgid "Manage Router Users Rights"
-msgstr "Hallinnoi reitittimen käyttäjien oikeuksia"
-
-msgid "Loading"
-msgstr "Lataan..."
-
-msgid "Services"
-msgstr "Fyysinen liitäntä"
-
-msgid "Priority"
-msgstr "Prioriteetti"
-
-msgid "Service"
-msgstr "Fyysinen liitäntä"
-
-msgid "Enable"
-msgstr "Ota käyttöön"
-
-msgid "Action"
-msgstr "Toiminto"
-
-msgid "Time servers (NTP)"
-msgstr "NTP-palvelimet"
-
-msgid "URL"
-msgstr "URL"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-timeservers.html
-msgid "Server mode"
-msgstr "Palvelintila"
-
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-timeservers.html
-msgid "Time Servers"
-msgstr "Aikapalvelimet"
-
-msgid "Configure LEDs"
-msgstr "Määritä LED-asetukset"
-
-msgid "settings.management.leds.info"
-msgstr "Voit sammuttaa laitteen LED-valoja liukusäätimestä"
-
-msgid "settings.system.general"
-msgstr " "
-
-msgid "Timezone"
-msgstr "Aikavyöhyke"
-
-msgid "General System Settings"
-msgstr "Yleiset järjestelmäasetukset"
-
-msgid "Configure Buttons"
-msgstr "Konfiguraatio"
-
-msgid "settings.management.buttons.info"
-msgstr "Hallinta"
-
-msgid "Management"
-msgstr "Hallinta"
-
-msgid "system.management.info"
-msgstr " "
-
 msgid "Backup Configuration"
-msgstr "Asetusten varmuuskopio/palautus"
+msgstr "Varmuuskopio/palautus"
 
 msgid "settings.config.info"
 msgstr ""
@@ -428,6 +410,12 @@ msgstr "Muisti"
 msgid "Storage"
 msgstr "Tallennustila"
 
+msgid "Management"
+msgstr "Hallinta"
+
+msgid "system.management.info"
+msgstr " "
+
 msgid "Total number of processes: "
 msgstr "Käynnissä olevat prosessit:"
 
@@ -445,6 +433,22 @@ msgstr "Järjestelmän prosessit ja suorittimen käyttöaste"
 
 msgid "Running Processes"
 msgstr "Käynnissä olevat prosessit"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
+msgid "Internet"
+msgstr "Internet"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
+msgid "URL for checking Internet connection"
+msgstr "Internetyhteyden tarkistuksen kohdeosoite"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
+msgid "www.example.com"
+msgstr "www.esimerkki.fi"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
+msgid "Connectivity Test"
+msgstr "Yhteden testaus"
 
 msgid "Energy Settings"
 msgstr "Virranhallinta"
@@ -467,59 +471,63 @@ msgstr "Power-LED:n kirkkaus"
 msgid "Missing uci config boardpanel."
 msgstr "Missing uci config boardpanel."
 
-# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
-msgid "menu-settings-system-log-title"
-msgstr "Loki"
+msgid "menu-settings-system-title"
+msgstr "Järjestelmä"
 
 msgid "menu-system-title"
 msgstr "Järjestelmä"
 
-msgid "menu-settings-hardware-buttons-title"
-msgstr "Painikkeet"
+msgid "menu-settings-users-title"
+msgstr "Käyttäjät"
 
-msgid "menu-settings-configuration-title"
-msgstr "Asetusten varmuuskopio/palautus"
+msgid "menu-settings-uci-title"
+msgstr "UCI"
 
-msgid "menu-settings-energy-title"
-msgstr "Virranhallinta"
-
-msgid "menu-settings-password-title"
-msgstr "Salasanat"
+msgid "menu-settings-services-title"
+msgstr "Palvelut"
 
 # /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-timeservers.html
 msgid "menu-settings-system-timeservers-title"
 msgstr "Aikapalvelimet"
 
-msgid "menu-settings-services-title"
-msgstr "Palvelut"
+msgid "menu-settings-hardware-title"
+msgstr "Laitteiston painikkeet ja valot"
+
+msgid "menu-settings-hardware-buttons-title"
+msgstr "Painikkeet"
+
+msgid "menu-settings-hardware-leds-title"
+msgstr "LED"
+
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "menu-settings-system-log-title"
+msgstr "Loki"
+
+msgid "menu-settings-configuration-title"
+msgstr "Asetusten varmuuskopio/palautus"
+
+msgid "menu-settings-password-title"
+msgstr "Salasanat"
+
+msgid "menu-status-system-title"
+msgstr "Järjestelmä"
 
 msgid "menu-settings-management-title"
 msgstr "Hallinta"
 
-msgid "menu-settings-users-title"
-msgstr "Käyttäjät"
+msgid "menu-status-system-processes-title"
+msgstr "Prosessit"
 
 # /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/settings-connectivity-test.html
 msgid "menu-settings-connectivity-test-title"
 msgstr "Yhteystesti"
 
-msgid "menu-settings-hardware-title"
-msgstr "Laitteiston painikkeet ja valot"
+msgid "menu-settings-energy-title"
+msgstr "Virranhallinta"
 
-msgid "menu-status-system-title"
-msgstr "Järjestelmä"
-
-msgid "menu-settings-uci-title"
-msgstr "UCI"
-
-msgid "menu-settings-hardware-leds-title"
-msgstr "LED"
-
-msgid "menu-settings-system-title"
-msgstr "Järjestelmä"
-
-msgid "menu-status-system-processes-title"
-msgstr "Prosessit"
+# /home/jamu/GIT/juci/plugins/juci-mod-system/src/pages/status-system.js
+#~ msgid "BRCM Version"
+#~ msgstr "BRCM versio"
 
 #~ msgid ""
 #~ "This will reset your configuration to factory defaults and reboot the "

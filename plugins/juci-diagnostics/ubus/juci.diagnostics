@@ -67,9 +67,7 @@ run_cmd() {
 ifaces="ethernet vdsl adsl"
 
 get_packet_sizes () {
-	local option="$1"
-	local packetsizes
-
+	option="$1"
 	packetsizes=$(uci -q get speedtest.@packetsize[0].$option)
 
 	if [ "$packetsizes" ]; then
@@ -119,7 +117,7 @@ get_iface () {
 	esac
 }
 
-local input
+input=""
 
 case "$1" in
 	list)
@@ -134,8 +132,11 @@ case "$1" in
 	call)
 		case "$2" in
 			ping|ping6)
-				local cmd=$2
-				local host seq count timeout
+				cmd=$2
+				host=""
+				seq=""
+				count=""
+				timeout=""
 				read input
 				json_load "$input"
 				json_get_var host host
@@ -156,8 +157,11 @@ case "$1" in
 				}
 				;;
 			traceroute|traceroute6)
-				local cmd=$2
-				local host seq count timeout
+				cmd=$2
+				host=""
+				seq=""
+				count=""
+				timeout=""
 				read input
 				json_load "$input"
 				json_get_var host host
@@ -178,7 +182,13 @@ case "$1" in
 				}
 				;;
 			tptest_start)
-				local host seq testmode packetsize_up packetsize_down port auto
+				host=""
+				seq=""
+				testmode=""
+				packetsize_up=""
+				packetsize_down=""
+				port=""
+				auto=""
 				read input
 				json_load "$input"
 				json_get_var host host ""

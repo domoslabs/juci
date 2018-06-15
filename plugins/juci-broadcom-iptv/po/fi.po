@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 msgid "No DSCP"
 msgstr "Ei DSCP:tä"
@@ -117,7 +117,7 @@ msgid "Ignore SSM Range"
 msgstr "Ohita SSM alue"
 
 msgid "Check box to ignore SSM RFC to enable regular multicast on SSM-Range"
-msgstr ""
+msgstr "Valitse ohittaaksesi SSM RFC ja aktivoidaksesi normaali multicast SSM-alueella"
 
 msgid "IGMP snooping mode"
 msgstr "IGMP snooping tila"
@@ -128,8 +128,6 @@ msgstr "IGMP snooping rajapinnat"
 msgid "No mcpd configuration found!"
 msgstr "MCPD konfiguraatiota ei löydy"
 
-#, fuzzy
-#| msgid "Multimedia Streamingi"
 msgid "Multicast Settings"
 msgstr "Multimedian suoratoisto"
 
@@ -139,16 +137,14 @@ msgstr ""
 
 # plugins/juci-broadcom-iptv/src/pages/mc-proxy-settings.html
 msgid "Connection Status"
-msgstr ""
+msgstr "Yhteyden tila"
 
-#, fuzzy
-#| msgid "Enable IGMP proxy"
 msgid "Enable IGMP"
 msgstr "Ota IGMP välityspalvelin käyttöön"
 
 # plugins/juci-broadcom-iptv/src/pages/mc-proxy-settings.html
 msgid "Enable MLD"
-msgstr ""
+msgstr "Ota MLD käyttöön"
 
 msgid "menu-broadcom-iptv-title"
 msgstr "IPTV"

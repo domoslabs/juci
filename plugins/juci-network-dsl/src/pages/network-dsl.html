@@ -1,0 +1,23 @@
+<juci-layout-with-sidebar>
+	<div ng-controller="NetworkDslPage">
+		<juci-config-heading>{{'DSL Settings'|translate}}</juci-config-heading>
+		<juci-config-info>{{'This section allows you to configure DSL settings.'| translate}}</juci-config-info>
+		<tabset>
+		<tab heading="{{'Lines'|translate}}">
+				<juci-config-section>
+					<juci-list-editor ng-items="dslLines" item-editor="network-dsl-line-editor" get-item-title="$item['.name']" on-create="onCreateDevice()" on-delete="onDeleteDevice($item)" hide-buttons="true"></juci-list-editor>
+				</juci-config-section>
+			</tab>
+			<tab heading="{{'ATM'|translate}}">
+				<juci-config-section>
+					<juci-list-editor ng-items="atmDevices" item-editor="network-dsl-atm-device-editor" get-item-title="$item['.name']" on-create="onCreateDevice('atm-device')" on-delete="onDeleteDevice($item)"></juci-list-editor>
+				</juci-config-section>
+			</tab>
+			<tab heading="{{'PTM'|translate}}">
+				<juci-config-section>
+					<juci-list-editor ng-items="ptmDevices" item-editor="network-dsl-ptm-device-editor" get-item-title="$item['.name']" on-create="onCreateDevice('ptm-device')" on-delete="onDeleteDevice($item)"></juci-list-editor>
+				</juci-config-section>
+			</tab>
+		</tab>
+	</div>
+</juci-layout-with-sidebar>

@@ -82,32 +82,32 @@ UCI.dhcp.$registerSectionType("host", {
 });
 UCI.dhcp.$registerSectionType("vendorclass", {
 	"vendorclass":	{ dvalue: "", type: String },
-	"networkid": 	{ dvalue: "", type: String, required: true },
+	"networkid": 	{ dvalue: "", type: String },
 	"dhcp_option": 	{ dvalue:  [], type: Array }
 });
 UCI.dhcp.$registerSectionType("mac", {
 	"mac":		{ dvalue: "", type: String },
-	"networkid": 	{ dvalue: "", type: String, required: true },
+	"networkid": 	{ dvalue: "", type: String },
 	"dhcp_option": 	{ dvalue:  [], type: Array }
 });
 UCI.dhcp.$registerSectionType("userclass", {
 	"userclass":	{ dvalue: "", type: String },
-	"networkid": 	{ dvalue: "", type: String, required: true },
+	"networkid": 	{ dvalue: "", type: String },
 	"dhcp_option": 	{ dvalue:  [], type: Array }
 });
 UCI.dhcp.$registerSectionType("circuitid", {
 	"circuitid":	{ dvalue: "", type: String },
-	"networkid": 	{ dvalue: "", type: String, required: true },
+	"networkid": 	{ dvalue: "", type: String },
 	"dhcp_option": 	{ dvalue:  [], type: Array }
 });
 UCI.dhcp.$registerSectionType("remoteid", {
 	"remoteid":	{ dvalue: "", type: String },
-	"networkid": 	{ dvalue: "", type: String, required: true },
+	"networkid": 	{ dvalue: "", type: String },
 	"dhcp_option": 	{ dvalue:  [], type: Array }
 });
 UCI.dhcp.$registerSectionType("subscrid", {
 	"subscrid":	{ dvalue: "", type: String },
-	"networkid": 	{ dvalue: "", type: String, required: true },
+	"networkid": 	{ dvalue: "", type: String },
 	"dhcp_option": 	{ dvalue:  [], type: Array }
 });
 UCI.dhcp.$registerSectionType("tag", {

@@ -584,7 +584,7 @@ msgstr "URLフィルタリング"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-urlblock.html
 msgid "internet.firewall.urlfilter.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-urlblock.html
 msgid "Add URL's to URL blocking list"
@@ -638,7 +638,7 @@ msgstr "ファイアウォールルール"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-rules.html
 msgid "internet.firewall.rules.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-forwarding.html
 msgid "Packet Forwarding"
@@ -658,7 +658,7 @@ msgstr "ファイアウォール設定"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall.html
 msgid "internet.firewall.info"
-msgstr ""
+msgstr " "
 
 # plugins/juci-firewall-fw3/src/pages/internet-parental-control.html
 msgid "menu-internet-parental-control-title"

@@ -9,7 +9,7 @@
 				<th translate>IPv6 Address</th>
 				<th>{{'Active Connections'|translate}}</th>
 			</thead>
-			<tr ng-repeat="cl in clients track by $index">
+			<tr ng-repeat="cl in clients track by $index" ng-show="cl.connected">
 				<td>{{cl.hostname || '-'}}</td>
 				<td>{{cl.macaddr}}</td>
 				<td>{{cl.ipaddr || '-'}}</td>

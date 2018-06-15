@@ -38,6 +38,11 @@ JUCI.app
 		$scope.$apply();
 	});
 
+	$rpc.$call("router.system", "info").done(function(data){
+		$scope.hasUsb = data.specs.usb;
+		$scope.$apply();
+	});
+
 	function confirmKeep(){
 		var deferred = $.Deferred();
 		$juciDialog.show(null, {

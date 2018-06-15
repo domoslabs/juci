@@ -22,14 +22,14 @@
 JUCI.app
 .directive("networkClientEdit", function(){
 	return {
-		templateUrl: "/widgets/network-client-edit.html", 
-		controller: "networkClientEdit", 
+		templateUrl: "/widgets/network-client-edit.html",
+		controller: "networkClientEdit",
 		scope: {
 			model: "=ngModel"
 		},
-		replace: true, 
+		replace: true,
 		require: "^ngModel",
-	};  
+	};
 }).controller("networkClientEdit", function($scope, $uci, $tr, gettext){
 	$scope.hasGraphObject = function(){
 		return $rpc.$has("router.graph","client_traffic");
@@ -38,83 +38,102 @@ JUCI.app
 	$scope.tick = 4000;
 	$scope.id = $scope.model.client.hostname;
 	$scope.tableData = {
-		rows: [
-			["Download Speed", "0"],
-			["Upload Speed", "0"],
-			["Total Received data", "0 MB"],
-			["Total Transmitted data", "0 MB"],
-		]
+		rows: []
 	};
+	$scope.traffic = {};
 	$scope.$on("$destroy", function(){
 		JUCI.interval.clear("updateTraffic");
 	});
-
-	function do_to_each(obj, f){
-		Object.keys(obj).forEach(function(key){ obj[key]=f(obj[key]); });
-	}
-	function bits_to_megabits_per_sec(bits){ return ( (bits/1000000) / ($scope.tick/1000) ).toFixed(5); }
+	var down_label = $tr(gettext("Download Speed"));
+	var up_label = $tr(gettext("Upload Speed"));
 
 	function updateTraffic(){
-		$rpc.$call("router.graph", "client_traffic").done(function(data){
-			if (!data || !data[$scope.model.client.hostname]) {
-				$scope.traffic = [];
-				$scope.traffic["Downstream"] = 0;
-				$scope.traffic["Upstream"] = 0;
-			}
-			else {
-				$scope.traffic = data[$scope.model.client.hostname];
-				do_to_each($scope.traffic, bits_to_megabits_per_sec);
-			}
-		}).fail(function(e){
-			console.error("network-client-edit: "+e); 
-			$scope.traffic = [];
-			$scope.traffic["Downstream"] = 0;
-			$scope.traffic["Upstream"] = 0;
-		}).always(function(){
-			$scope.tableData["rows"][0] = ["Download Speed", to_kbit_or_mbit_str($scope.traffic["Downstream"])];
-			$scope.tableData["rows"][1] = ["Upload Speed", to_kbit_or_mbit_str($scope.traffic["Upstream"])];
-			$scope.$apply();
-		});
-		$rpc.$call("router.network", "clients").done(function(data){ // rx and tx are inverted by router.network clients
-			if (!data || !$scope.model.client.hostname) { return; }
-			Object.keys(data).forEach(function(key){
-				if(data[key].hostname === $scope.model.client.hostname){
-					if("tx_bytes" in data[key])
-						$scope.tableData.rows[2] = ["Total Received data", to_byte_str((data[key].tx_bytes)/1000)];
-					if("rx_bytes" in data[key])
-						$scope.tableData.rows[3] = ["Total Transmitted data", to_byte_str((data[key].rx_bytes)/1000)];
-					if(data[key].in_network)
-						$scope.tableData.rows[4] = ["Total Uptime", secs_to_hms(data[key].in_network)];
+		if($scope.hasGraphObject()){
+			var client_data;
+			$rpc.$call("router.graph", "client_traffic").done(function(data){
+				if (!data || !data[$scope.model.client.hostname])
+					return;
+				client_data = data[$scope.model.client.hostname];
+				if(client_data.tx_bytes === undefined || client_data.rx_bytes === undefined)
+					return;
+				$scope.traffic.down = {
+					label: down_label,
+					value: clean(bytes_to_megabits(client_data.tx_bytes))
+				}
+				$scope.traffic.up = {
+					label: up_label,
+					value: clean(bytes_to_megabits(client_data.rx_bytes))
+				}
+			}).fail(function(e){
+				console.error("network-client-edit: " + e);
+			}).always(function(){
+				if(client_data === undefined || client_data.tx_bytes === undefined || client_data.rx_bytes === undefined)
+					return;
+				$scope.tableData["rows"][0] = [
+					down_label,
+					to_kbit_or_mbit_str(client_data.tx_bytes)
+				];
+				$scope.tableData["rows"][1] = [
+					up_label,
+					to_kbit_or_mbit_str(client_data.rx_bytes)
+				];
+				$scope.$apply();
+			});
+		}
+		$rpc.$call("router.network", "clients").done(function(data){
+			// rx and tx are inverted by router.network clients
+			if (!data || !$scope.model.client.hostname) return;
+			Object.keys(data).forEach(function(client){
+				if(data[client].hostname !== $scope.model.client.hostname)
+					return
+				if("tx_bytes" in data[client]){
+					$scope.tableData.rows[2] = [
+						$tr(gettext("Total Received Data")),
+						to_kb_or_mb_str(data[client].tx_bytes)
+					];
+				}
+				if("rx_bytes" in data[client]){
+					$scope.tableData.rows[3] = [
+						$tr(gettext("Total Transmitted Data")),
+						to_kb_or_mb_str(data[client].rx_bytes)
+					];
+				}
+				if(data[client].in_network){
+					$scope.tableData.rows[4] = [
+						"Total Uptime",
+						secs_to_hms(data[client].in_network)
+					];
 				}
 			});
-		}).fail(function(e){ console.error("network-client-edit: "+e); 
-		}).always(function(){ $scope.$apply(); });
+		}).fail(function(e){
+			console.error("network-client-edit: "+e);
+		}).always(function(){
+			$scope.$apply();
+		});
 	}
 
-	function to_kbit_or_mbit_str(number) {
-		var number_out = number;
-		var unit = "Mbit/s"
+	function to_kbit_or_mbit_str(bytes){
+		if(bytes * 8 / 1000 / 1000 < 1)
+			return bytes_to_kilobits(bytes).toFixed(3) + " kbit/s";
 
-		if (number_out < 1) {
-			number_out = (number_out * 1000);
-			unit = "kbit/s";
-		}
-		number_out = parseFloat(number_out).toFixed(3);
-
-		return String(number_out) +" "+ unit;
+		return bytes_to_megabits(bytes).toFixed(3) + " Mbit/s";
 	}
-	function to_byte_str(number) {
-		var number_out = number;
-		var unit = "kB"
+	function to_kb_or_mb_str(bytes){
+		if(bytes / 1000 / 1000 < 1)
+			return bytes_to_kilobytes(bytes).toFixed(3) + " kB";
 
-		if (number_out > 1000) {
-			number_out = (number_out / 1000);
-			unit = "MB";
-		}
-
-		return String(number_out.toFixed(3)) +" "+ unit;
+		return bytes_to_megabytes(bytes).toFixed(3) + " MB";
 	}
-	function secs_to_hms(secs){ 
+	function bytes_to_megabits(bytes){ return ((bytes * 8) / 1000 / 1000); }
+	function bytes_to_kilobits(bytes){ return ((bytes * 8) / 1000); }
+	function bytes_to_megabytes(bytes){ return (bytes / 1000 / 1000); }
+	function bytes_to_kilobytes(bytes){ return (bytes / 1000); }
+	function clean(num){
+		if (num < 100)
+			return num.toFixed(2);
+		return Math.round(num).toString();
+	}
+	function secs_to_hms(secs){
 		var s=secs%60;
 		var m=Math.floor(secs/60);
 		var h=Math.floor(m/60);
@@ -183,16 +202,35 @@ JUCI.app
 			$scope.inNetwork = $tr(gettext("Not in any configured network"));
 			$scope.cssClass="danger";
 		}
+		function ip_to_host_id(ip){
+			var long_ip = ip.split(":").map(function(part){return part.padStart(4, "0");})
+			var len = long_ip.length;
+			if(long_ip[len - 2] == "0000")
+				return long_ip[len -1];
+			return long_ip[len-2] + long_ip[len-1];
+		}
 		$scope.onAddStaticLease = function(){
+			var duid = "";
+			var host_id = "";
+			if (!$scope.model || !$scope.model.client)
+				return;
+			if ($scope.model.client.ip6addr && $scope.model.client.duid){
+				duid = $scope.model.client.duid;
+				host_id = ip_to_host_id($scope.model.client.ip6addr);
+			}
+
 			$uci.$sync("dhcp").done(function(){
 				$uci.dhcp.$create({
 					".type":"host",
 					ip: $scope.model.client.ipaddr,
 					mac: $scope.model.client.macaddr,
 					network: $scope.model.client.network,
-					name: $scope.model.client.hostname === "*" ? "":$scope.model.client.hostname
+					name: $scope.model.client.hostname === "*" ? "":$scope.model.client.hostname,
+					hostid: host_id,
+					duid: duid
 				}).done(function(value){
 					$scope.client = value;
+					$scope.$apply();
 				});
 			});
 		}
@@ -212,6 +250,7 @@ JUCI.app
 			if(x === "macaddr") return { label: $tr(gettext("MAC Address")), value: String(val).toUpperCase() };
 			if(x === "dhcp") return { label: $tr(gettext("DHCP")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
 			if(x === "connected") return { label: $tr(gettext("Connected")), value: String(val).charAt(0).toUpperCase() + String(val).slice(1) };
+			if(x === "active_connections") return { label: $tr(gettext("Active Connections")), value: val };
 			if(x === "wireless") $scope.wireless = val;
 			if(!($scope.wireless) && x === "linkspeed") return { label: $tr(gettext("Link Speed")), value: val };
 			return null;
@@ -236,5 +275,5 @@ JUCI.app
 			}).filter(function(x){ return x !== null;});
 		}
 	},false);
-}); 
+});
 

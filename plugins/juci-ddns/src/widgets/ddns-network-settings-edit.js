@@ -28,7 +28,7 @@ JUCI.app
 		controller: "ddnsNetworkSettingsEdit"
 	};
 })
-.controller("ddnsNetworkSettingsEdit", function($scope, $rpc, $tr, gettext, $ethernet, $network){
+.controller("ddnsNetworkSettingsEdit", function($scope, $rpc, $tr, gettext, $network){
 	$scope.allSourceTypes = [
 		{ label: $tr(gettext("Interface")), value: "interface" },
 		{ label: $tr(gettext("Network")), value: "network" },
@@ -37,7 +37,7 @@ JUCI.app
 	];
 	$scope.$watch("ddns", function(ddns){
 		if(!ddns) return;
-		$ethernet.getAdapters().done(function(adapters){
+		$network.getAdapters().done(function(adapters){
 			$scope.allSourceDevices = adapters.map(function(a){
 				return { label: a.name, value: a.device };
 			});

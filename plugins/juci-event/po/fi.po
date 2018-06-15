@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 msgid "All types"
 msgstr "Kaikki luokitukset"
@@ -35,6 +35,10 @@ msgstr "Konfiguraatio"
 msgid "Debug"
 msgstr "Vianjäljitys"
 
+# plugins/juci-event/src/pages/status-events.js
+msgid "Was not able to download system report. Please check access."
+msgstr "Järjestelmäraporttia ei voitu ladata. Tarkista osoite."
+
 msgid "Event Log"
 msgstr "Tapahtumaloki"
 
@@ -50,8 +54,19 @@ msgstr "rivit ovat näkyvissä"
 msgid "Log"
 msgstr "Loki"
 
-msgid "Download All Logs"
-msgstr "Lataa kaikki lokit"
+# plugins/juci-event/src/pages/status-events.html
+msgid "Download System Report"
+msgstr "Lataa järjestelmäraportti"
+
+# plugins/juci-event/src/pages/status-events.html
+msgid "This downloads an archive containing a full system report"
+msgstr ""
+"Tämä lataa pakatun tiedoston, joka sisältää täydellisen "
+"järjestelmäraportin."
+
+# plugins/juci-event/src/pages/status-events.html
+msgid "Download"
+msgstr "Lataa"
 
 msgid "Limit log list"
 msgstr "Rajoita lokilistaa"
@@ -67,9 +82,6 @@ msgstr "Suodata tyypin mukaan"
 
 msgid "Filter by:"
 msgstr "Suodata:"
-
-msgid "Download As Text"
-msgstr "Lataa tekstinä"
 
 msgid "Log Settings"
 msgstr "Lokiasetukset"
@@ -122,6 +134,12 @@ msgstr "Tapahtumaloki"
 
 msgid "menu-event-log-config-title"
 msgstr "Tapahtumaloki"
+
+#~ msgid "Download All Logs"
+#~ msgstr "Lataa kaikki lokit"
+
+#~ msgid "Download As Text"
+#~ msgstr "Lataa tekstinä"
 
 # /home/jamu/GIT/juci/plugins/juci-event/src/pages/event-log-config.html
 #~ msgid "event-log-config-title"

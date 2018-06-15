@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("icwmpConfigPage", function($scope, $rpc, $uci, $tr, gettext, $firewall){
+.controller("icwmpConfigPage", function($scope, $rpc, $uci, $tr, gettext, $firewall, $juciAlert){
 	$uci.$sync(["cwmp"]).done(function(){
 		$scope.acs = $uci.cwmp.acs;
 		$scope.cpe = $uci.cwmp.cpe;
@@ -46,10 +46,68 @@ JUCI.app
 		{ label: $tr(gettext("Debug")),		value: 'DEBUG' }
 	];
 
-	$scope.onTR069ObjectAvailable=$rpc.$has("tr069");
+	$scope.onTR069ObjectAvailable=$rpc.$has("tr069", "inform");
+	if($rpc.$has("tr069", "status")) {
+		JUCI.interval.repeat("icwmp-status-update", 5000, function(next){
+			$rpc.$call("tr069", "status").done(function(data){
+				if(!data) return;
+				$scope.status = [];
+				if(data.cwmp){
+					$scope.status.push({
+						title: $tr(gettext("CWMP")),
+						rows: [
+							[$tr(gettext("Status")), data.cwmp.status],
+							[$tr(gettext("Start Time")), data.cwmp.start_time],
+							[$tr(gettext("ACS URL")), data.cwmp.acs_url]
+						]
+					});
+				}
+				if(data.last_session){
+					$scope.status.push({
+						title: $tr(gettext("Last Session")),
+						rows: [
+							[$tr(gettext("Status")), data.last_session.status],
+							[$tr(gettext("Start Time")), data.last_session.start_time],
+							[$tr(gettext("End Time")), data.last_session.end_time]
+						]
+					});
+				}
+				if(data.next_session){
+					$scope.status.push({
+						title: $tr(gettext("Next Session")),
+						rows: [
+							[$tr(gettext("Status")), data.next_session.status],
+							[$tr(gettext("Start Time")), data.next_session.start_time],
+							[$tr(gettext("End Time")), data.next_session.end_time]
+						]
+					});
+				}
+				if(data.statistics){
+					$scope.status.push({
+						title: $tr(gettext("Statistics")),
+						rows: [
+							[$tr(gettext("Successful Sessions")), data.statistics.success_sessions],
+							[$tr(gettext("Failed Sessions")), data.statistics.failure_sessions],
+							[$tr(gettext("Total Sessions")), data.statistics.total_sessions]
+						]
+					});
+				}
+				$scope.$apply();
+			}).fail(function(e){
+				console.error("couldn't call tr069 status", e);
+			}).always(function(){
+				next();
+			});
+		});
+	}
 
-	function contactACS() {
-		$rpc.$call("tr069", "inform '{\"event\":\"connection requested\"}'");
+	$scope.contactACS = function() {
+		$rpc.$call("tr069", "inform", {"event":"connection request"}).done(function(data){
+			if(data.status === 1)
+				$juciAlert($tr(gettext("Connection request sent")));
+		}).fail(function(e){
+			console.error("couldn't call tr069 inform " + e);
+		});
 	}
 });
 

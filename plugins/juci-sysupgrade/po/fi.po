@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 # /home/jamu/GIT/juci/plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
 msgid ".w (JFFS Image with CFE)"
@@ -64,14 +64,14 @@ msgstr "Virhe:"
 msgid "unknown test"
 msgstr "tuntematon testi"
 
-msgid "New Software Available!"
-msgstr "Uusi ohjelmisto saatavilla!"
-
 msgid "No upgrade has been found!"
 msgstr "Päivitystä ei saatavilla!"
 
 msgid "USB upgrade check failed"
 msgstr "USB päivityksen tarkistus epäonnistui"
+
+msgid "New Software Available!"
+msgstr "Uusi ohjelmisto saatavilla!"
 
 msgid "Online upgrade check failed"
 msgstr "Verkkopäivityksen tarkistaminen epäonnistui"

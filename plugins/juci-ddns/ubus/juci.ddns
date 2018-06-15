@@ -2,6 +2,8 @@
 
 . /usr/share/libubox/jshn.sh
 
+PROVIDERS_FILE="/etc/ddns/services"
+
 case "$1" in
 	list)
 		echo '{ "providers" : {}, "status": { "service": "Str" } }'
@@ -11,13 +13,14 @@ case "$1" in
 			providers)
 				json_init
 				json_add_array "providers"
-				for service in $(cat /usr/lib/ddns/services | awk '{print$1}' | tr -d '"'); do
+				for service in $(cat $PROVIDERS_FILE | awk '{print$1}' | grep -v "#" | tr -d '"'); do
 					json_add_string "" "$service"
 				done
 				json_dump
 			;;
 			status)
-				local input service running ret file pid_line pid content
+				input=""
+				service=""
 				read input
 				json_load "$input"
 				json_get_var service service
@@ -32,7 +35,6 @@ case "$1" in
 				content=$(cat $file | awk "/PID '$pid' /{y=1;next}y")
 				IFS=$'\n'
 				if [ "$content" ]; then
-					local reload_time last_reload cur_time diff time_left ERRORS WARNINGS
 					reload_time=$(echo "$content" | awk '/Waiting [0-9]* seconds/ {i=$4} END {print i}')
 					last_reload=$(echo "$content" | awk -F 'at ' '/info : [RS]/ {i=$2} END {print i}')
 					if [ "$reload_time" -a "$last_reload" ]; then

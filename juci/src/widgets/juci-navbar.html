@@ -1,5 +1,5 @@
 <div class="navbar-default top-navbar" >
-	<div class="container" style="min-height: 70px">
+	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 				<span class="sr-only" translate>Toggle navigation</span>
@@ -12,23 +12,23 @@
 				<div class="logo"></div>
 			</a>
 		</div>
-		<button title="{{'Logout'|translate}}" style="margin-top: 35px; float: right; margin-left: 10px;" class="btn btn-default visible-md visible-lg" ng-click="onLogout()"><i class="fa fa-sign-out"></i></button>
-		<div ng-show="showLogButton" style="margin-top: 20px; float: right; margin-left: 10px;" class="dropdown visible-md visible-l:g" uib-dropdown is-open="status.isopen">
+		<button title="{{'Logout'|translate}}" class="btn btn-default visible-md visible-lg logout pull-right" ng-click="onLogout()"><i class="fa fa-sign-out"></i></button>
+		<div ng-show="showLogButton" class="dropdown visible-md visible-l:g log-button pull-right" uib-dropdown is-open="status.isopen">
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="{{'You have '|translate}}{{log_events.length}}{{' new events'|translate}}">
 				<span class="badge badge-primary">{{log_events.length}}</span>
-		 	</button>
-		 	<div class="dropdown-menu pull-right" role="menu" style="width: 300px; max-height: 400px; overflow-y: scroll;">
+			</button>
+			<div class="dropdown-menu pull-right" role="menu">
 				<div class="col-xs-12" ng-show="log_events.length == 0">
 					<div class="" translate>No new events to show</div>
 				</div>
 				<div class="col-xs-12" ng-repeat="ev in log_events track by $index">
-					<div style="font-size: 10px; padding: 2px; background-color: #eee; margin-bottom: 2px;">
+					<div class="log-entry">
 						{{ev.data.message}}	
 					</div>
 				</div>
 			</div>
 		</div>
-		<div style="float: right; margin-top: 35px; " class="visible-md visible-lg"> 
+		<div class="visible-md visible-lg mode-picker pull-right">
 			<juci-mode-picker></juci-mode-picker>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
@@ -37,7 +37,7 @@
 					<a href="{{getHref(item)}}" ng-show="itemVisible(item)" target="{{getHref(item).substring(0,2) === '#!' ? '_self':'_blank'}}" role="button" >{{item.text | translate}} </a>
 				</li>
 			</ul>
-			<juci-wiki><i class="juci juci-question juci-2x" style="float:right;margin-top:40px;margin-right:20px"></i></juci-wiki>
+			<juci-wiki class="navbar-wiki"><i class="juci juci-question juci-2x pull-right"></i></juci-wiki>
 		</div>
 	</div>
 </div>

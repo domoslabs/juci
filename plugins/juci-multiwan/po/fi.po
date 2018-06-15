@@ -1,0 +1,167 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: Inteno\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# /home/jamu/GIT/juci/plugins/juci-multiwan/src/pages/internet-multiwan.js
+msgid "Disable"
+msgstr "Pois käytöstä"
+
+msgid "Load Balancer (Compability)"
+msgstr "Kuormanjako (Yhteensopivuus)"
+
+# /home/jamu/GIT/juci/plugins/juci-multiwan/src/pages/internet-multiwan.js
+msgid "Fast Balancer (Distribution)"
+msgstr "Nopea jako (jakelu)"
+
+# /home/jamu/GIT/juci/plugins/juci-multiwan/src/pages/internet-multiwan.js
+msgid "Method"
+msgstr "Tapa"
+
+# /home/jamu/GIT/juci/plugins/juci-multiwan/src/pages/internet-multiwan.js
+msgid "Unknown"
+msgstr "Tuntematon"
+
+# /home/jamu/GIT/juci/plugins/juci-multiwan/src/pages/internet-multiwan.js
+msgid "Interval"
+msgstr "Intervalli"
+
+# /home/jamu/GIT/juci/plugins/juci-multiwan/src/pages/internet-multiwan.js
+msgid "sec"
+msgstr "sek"
+
+# /home/jamu/GIT/juci/plugins/juci-multiwan/src/pages/internet-multiwan.js
+msgid "Failover to"
+msgstr "Käytä varayhteyttä"
+
+# /home/jamu/GIT/juci/plugins/juci-multiwan/src/pages/internet-multiwan.js
+msgid "OK"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-multiwan/src/pages/internet-multiwan.js
+msgid "Error"
+msgstr "Virhe"
+
+# /home/jamu/GIT/juci/plugins/juci-multiwan/src/pages/internet-multiwan.js
+msgid "No available networks to add!"
+msgstr "Ei lisättäviä verkkoja!"
+
+# /home/jamu/GIT/juci/plugins/juci-multiwan/src/pages/internet-multiwan.js
+msgid "Add new Interface"
+msgstr "Lisää uusi liitäntä"
+
+msgid "Source addr:"
+msgstr "Lähdeosoite:"
+
+msgid "All"
+msgstr "Kaikki"
+
+msgid "Destination addr:"
+msgstr "Kohdeosoite:"
+
+msgid "UDP"
+msgstr ""
+
+msgid "TCP"
+msgstr ""
+
+msgid "ICMP"
+msgstr ""
+
+msgid "Source Address"
+msgstr "Lähdeosoite"
+
+msgid "Leave empty for all"
+msgstr "Jätä tyhjäksi kaikkia varten"
+
+msgid "Destination Address"
+msgstr "Kohdeosoite"
+
+msgid "Protocol"
+msgstr "Protokolla"
+
+msgid "Ports"
+msgstr "Portit"
+
+msgid "WAN Uplink"
+msgstr ""
+
+# /home/jamu/GIT/juci/plugins/juci-multiwan/src/widgets/multiwan-interface-add.html
+msgid "Select Network Interface"
+msgstr "Valitse verkkoliitäntä"
+
+msgid "Load Balancer Distribution"
+msgstr "Kuormanjaon jakaminen"
+
+msgid "Health Monitor Method"
+msgstr "Valvontamenetelmä"
+
+msgid "Health Monitor Interval"
+msgstr "Valvontamenetelmän intervalli"
+
+msgid "Health Monitor ICMP Host(s)"
+msgstr "Valvontamenetelmän ICMP-kohteet"
+
+msgid "Health Monitor ICMP Timeout"
+msgstr "Valvontamelmän ICMP aikakatkaisu"
+
+msgid "Attempts Before WAN Failover"
+msgstr "Yritysten määrä ennenkuin WAN otetaan pois käytöstä"
+
+msgid "Attempts Before WAN Recovery"
+msgstr "Yritysten määrä kunnes WAN otetaan takaisin käyttöön"
+
+msgid "Failover Traffic Destination"
+msgstr "Toissijainen yhteys"
+
+msgid "DNS Server(s)"
+msgstr "DNS palvelimet"
+
+msgid "MultiWAN Configuration"
+msgstr "MultiWAN Määritys"
+
+# /home/jamu/GIT/juci/plugins/juci-multiwan/src/pages/internet-multiwan.html
+msgid "Settings"
+msgstr "Asetukset"
+
+msgid "MultiWAN Enabled"
+msgstr "MultiWAN Käytössä"
+
+msgid "Default Route"
+msgstr "Oletusreitti"
+
+# /home/jamu/GIT/juci/plugins/juci-multiwan/src/pages/internet-multiwan.html
+msgid "Traffic Rules"
+msgstr "Liikennöintisäännöt"
+
+msgid "menu-internet-multiwan-title"
+msgstr "Multiwan"
+
+# /home/jamu/GIT/juci/plugins/juci-multiwan/src/widgets/multiwan-rule-edit.js
+#~ msgid "Load Balancer (Best Compatibility)"
+#~ msgstr "Kuormituksen tasaus (paras yhteensopivuus)"
+
+# /home/jamu/GIT/juci/plugins/juci-multiwan/src/widgets/multiwan-rule-edit.js
+#~ msgid "Fast Balancer (Best Distribution)"
+#~ msgstr "Nopea jako (paras jakelu)"
+
+# /home/jamu/GIT/juci/plugins/juci-multiwan/src/pages/internet-multiwan.html
+#~ msgid "internet-multiwan-title"
+#~ msgstr "Multiwan"
+
+#~ msgid "Load Balancer (Performance)"
+#~ msgstr "Kuormanjako (Suorituskyky)"
+
+#~ msgid "Basic Settings"
+#~ msgstr "Perusasetukset"
+
+#~ msgid "Multi-WAN Traffic Rules"
+#~ msgstr "Multi-WAN säännöt"

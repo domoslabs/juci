@@ -9,7 +9,10 @@ case "$1" in
 	call)
 		case "$2" in
 			has_link)
-				local input interface ifstatus up device present ret up
+				input=""
+				interface=""
+				up=""
+				device=""
 				read input;
 				json_load "$input"
 				json_get_var interface interface
@@ -47,7 +50,8 @@ case "$1" in
 				fi
 			;;
 			ifup)
-				local input interface
+				input=""
+				interface=""
 				read input;
 				json_load "$input"
 				json_get_var interface interface
@@ -98,7 +102,7 @@ case "$1" in
 				json_dump
 			;;
 			services)
-				local netstatlist=/tmp/netstatlist
+				netstatlist=/tmp/netstatlist
 				netstat -plan | grep -w LISTEN | tr -d '*' > $netstatlist
 				json_init
 				json_add_array "list"

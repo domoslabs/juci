@@ -30,12 +30,12 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("networkConnectionTypeNoneEdit", function($rootScope, $scope, $ethernet, $modal, $tr, gettext, $networkHelper, $network){
+.controller("networkConnectionTypeNoneEdit", function($rootScope, $scope, $modal, $tr, gettext, $networkHelper, $network){
 	$scope.$watch("interface", function(){
-		$ethernet.getAdapters().done(function(devs){
+		$network.getAdapters().done(function(devs){
 			$network.getNetworks().done(function(nets){
 				$scope.baseDevices = devs.filter(function(dev){
-					return dev.type !== "eth-bridge";
+					return dev.type !== "eth-bridge" && dev.type !== "atm-device" && dev.type !== "ptm-device";
 				}).map(function(dev){
 					return { label: dev.name + " (" + dev.device + ")", value: dev.device };
 				});

@@ -57,6 +57,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 				if(dev.device in devices){
 					dev.name = devices[dev.device].ssid.value;
 					dev.type = "wireless";
+					dev.frequency = devices[dev.device][".frequency"];
 					delete devices[dev.device];
 				}
 			});
@@ -66,6 +67,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 				adapters.push({
 					name: device.ssid.value,
 					device: device.ifname.value,
+					frequency: devices[".frequency"],
 					type: "wireless"
 				});
 			});
@@ -186,8 +188,8 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 	return new Wireless();
 });
 
-JUCI.app.run(function($ethernet, $wireless, $uci){
-	$ethernet.addSubsystem($wireless);
+JUCI.app.run(function($network, $wireless, $uci){
+	$network.addSubsystem($wireless);
 	// make sure we create status section if it does not exist.
 	$uci.$sync("wireless").done(function(){
 		if(!$uci.wireless.status) {
@@ -284,7 +286,7 @@ JUCI.app.run(function($ethernet, $wireless, $uci){
 		"wps_pbc":			{ dvalue: false, type: Boolean },
 		"wmf_bss_enable":	{ dvalue: false, type: Boolean },
 		"bss_max":			{ dvalue: 32, type: Number, validator: UCI.validators.NumberLimitValidator(0, 128) },
-		"closed":			{ dvalue: false, type: Boolean },
+		"hidden":			{ dvalue: false, type: Boolean },
 		"isolate":			{ dvalue: false, type: Boolean },
 		"disabled":			{ dvalue: false, type: Boolean },
 		"macfilter":			{ dvalue: 0, type: Number },

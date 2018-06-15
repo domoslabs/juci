@@ -1,0 +1,46 @@
+{
+	"user-admin": {
+		"description": "Network port admin functions",
+		"read": {
+			"juci": {
+				"capabilities": [
+					"can-pick-uplink-port",
+					"can-set-pauseframes"
+				]
+			}
+		}
+	},
+	"user-support": {
+		"description": "Network port support functions",
+		"read": {
+			"juci": {
+				"capabilities": [
+					"can-pick-uplink-port",
+					"can-set-pauseframes"
+				]
+			}
+		}
+	},
+	"juci-network-port": {
+		"description": "Network port plugin",
+		"read": {
+			"ubus": {
+				"network.device": [
+					"status"
+				],
+				"router.port": [
+					"status"
+				]
+			}, 
+			"uci": [
+				"ports"
+			],
+			"owsd": [ "hotplug.switch" ]
+		}, 
+		"write": {
+			"uci": [
+				"ports"
+			]
+		}
+	}
+}

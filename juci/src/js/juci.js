@@ -268,17 +268,8 @@
 					onExit: function($uci, $tr, gettext, $events){
 						JUCI.interval.$clearAll();
 						$events.removeAll();
-						$rpc.$authenticate().done(function(){
-							/*if($uci.$hasChanges()){
-								if(confirm($tr(gettext("You have unsaved changes. Do you want to save them before leaving this page?"))))
-									$uci.$save();
-								else
-									$uci.$clearCache();
-							}*/
-						}).fail(function(){
+						$rpc.$authenticate().fail(function(){
 							$juci.redirect("login");
-						}).always(function(){
-							// clear all juci intervals when leaving a page
 						});
 					}
 				};
@@ -289,13 +280,6 @@
 
 		app.run(function($templateCache, $uci, $events, $rpc, $rootScope){
 			var self = scope.JUCI;
-			// add capability lookup to root scope so that it can be used inside html ng-show directly
-			$rootScope.has_capability = function(cap_name){
-				if(!$rpc.$session || !$rpc.$session.acls.juci || !$rpc.$session.acls.juci.capabilities || !($rpc.$session.acls.juci.capabilities instanceof Array)) {
-					return false;
-				}
-				return $rpc.$session.acls.juci.capabilities.indexOf(cap_name) != -1;
-			}
 			// register all templates
 			Object.keys(self.templates).map(function(k){
 				$templateCache.put(k, self.templates[k]);
@@ -337,13 +321,15 @@
 		"modes": 		{ dvalue: [], type: Array },
 		"require":		{ dvalue: [], type: Array },
 		"index":		{ dvalue: 99, type: Number },
+		"expose":		{ dvalue: [], type: Array }
 	});
 	UCI.juci.$registerSectionType("widget", {
 		"name":		{ dvalue: [], type: Array },
 		"link":		{ dvalue: "", type: String },
 		"require":	{ dvalue: [], type: Array },
 		"acls":		{ dvalue: [], type: Array },
-		"modes":	{ dvalue: [], type: Array }
+		"modes":	{ dvalue: [], type: Array },
+		"expose":	{ dvalue: [], type: Array }
 	});
 	UCI.juci.$registerSectionType("wiki", {
 		"server":	{ dvalue: "http://docs.intenogroup.com", type: String },

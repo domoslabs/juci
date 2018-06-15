@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 # /home/jamu/GIT/juci/plugins/juci-usb/src/widgets/wwan-connection-edit.js
 msgid "No Zone"
@@ -33,7 +33,7 @@ msgstr "Lisää yhteys vyöhykkeesen"
 
 # /home/jamu/GIT/juci/plugins/juci-usb/src/widgets/wwan-connection-edit.html
 msgid "APN"
-msgstr ""
+msgstr "APN yhteyspiste"
 
 # /home/jamu/GIT/juci/plugins/juci-usb/src/widgets/wwan-connection-edit.html
 msgid "PIN-Code"

@@ -1,0 +1,49 @@
+// main colors to be used in this file only
+@color-border: #ccc;
+@white: #fff;
+@black: #000;
+@color-text-main: #66989c;
+@color-text-link: #34485d;
+@color-dark: #000;
+@color-main-1: #E62f39;
+@color-main-2: #f1c100;
+@color-disable: #444;
+
+// state colors
+@theme-success-color: #5cb85c;
+@theme-warning-color: #ffa500;
+@theme-primary-color: @color-main-2;
+@theme-error-color: @color-main-1;
+@theme-disabled-color: @color-disable;
+
+// specific colors (try to use main or state colors here)
+@theme-primary-text-color: @white;
+@theme-heading-color: @color-text-main;
+@theme-link-color: @color-text-link;
+@theme-detail-color: @theme-warning-color;
+@theme-error-background-color: lighten(@theme-error-color, 37%); //#fad7d9
+@theme-error-border-color: lighten(@theme-error-color, 33%); //#f8c5c8
+@theme-div-error-color: @theme-error-color;
+
+@theme-footer-gradient-start: darken(@white, 16%); //#d6d6d6
+@theme-footer-gradient-end: darken(@white, 2.5%); //#f9f9f9
+@theme-footer-background: @white;
+@theme-footer-gradient-middle: 27%;
+
+@theme-border-color: @color-border;
+@theme-shadow-color: darken(@color-border, 6.5); //#bbb
+@theme-navigation-text-color: @color-disable;
+@theme-navigation-background: @white;
+@theme-navigation-active-background: @white;
+@theme-navigation-active-background-mobile: lighten(@color-border, 6.5); //#bbb
+@theme-navigation-active-color: @color-main-1;
+@theme-navigation-active-overline: @color-main-1;
+@theme-navigation-color: lighten(@color-dark, 6.5);
+@theme-navigation-toggle-background: lighten(@color-border, 6.5); //#ddd
+@theme-overview-status-background: rgba(0,0,0,0.8);
+@theme-overview-text-color: @white;
+@theme-overview-slider-text-color: @black;
+@theme-overview-background-color: @color-dark;
+@theme-input-dhcp-border: @color-border;
+@theme-input-dhcp-color: lighten(@color-disable, 25%); //#848484
+@theme-input-dhcp-well-border: darken(@white, 10%); //#e6e6e6

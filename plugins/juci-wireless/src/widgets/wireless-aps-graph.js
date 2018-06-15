@@ -103,9 +103,17 @@ JUCI.app
 	$scope.$watch("scan_list", function(value){
 		if(!value || !value.length) return;
 
-		var minch = 100;
-		var maxch = 0;
-		var maxsnr = -100;
+		value = value.filter(function(ap){
+			if(ap.snr < -10 || ap.snr > 110 || !ap.ssid || ap.channel < 0 || ap.channel > 200)
+				return false;
+			return true;
+		});
+
+		if(!value || !value.length) return;
+
+		var minch = value[0].channel;
+		var maxch = value[0].channel;
+		var maxsnr = value[0].snr;
 
 		value.map(function(val){
 			if(minch > val.channel) minch = val.channel;
@@ -115,15 +123,15 @@ JUCI.app
 
 		options.dataAxis.left.range.max = maxsnr + 10;
 
-		options.min = (minch - 2);
-		options.max = (maxch + 2);
+		var padding = (maxch-minch)/10;
+
+		options.start = minch - padding;
+		options.end = maxch + padding;
 
 		graph2d.setOptions(options);
 		dataset.remove(dataset.getIds());
 		var i = 0;
 		value.map(function(ap){
-			if(ap.snr < -10 || ap.snr > 110 || !ap.ssid || ap.channel < 0 || ap.channel > 200)
-				return;
 			ap["__id__"] = i;
 			var group = 1;
 			if(ap.snr >= 30) group = 1;

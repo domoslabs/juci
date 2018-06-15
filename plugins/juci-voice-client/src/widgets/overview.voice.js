@@ -1,0 +1,62 @@
+//! Author: Martin K. Schröder <mkschreder.uk@gmail.com>
+JUCI.app
+.directive("overviewWidget40Voice", function(){
+	return {
+		templateUrl: "widgets/overview.voice.html",
+		controller: "overviewWidgetVoice",
+		replace: true
+	};
+})
+.directive("overviewStatusWidget40Voice", function(){
+	return {
+		templateUrl: "widgets/overview.voice.small.html",
+		controller: "overviewWidgetVoice",
+		replace: true
+	};
+})
+.controller("overviewWidgetVoice", function($scope, $rpc, $uci, $tr, gettext, $config){
+	$scope.href = $config.getWidgetLink("overviewStatusWidget40Voice");
+	$scope.sipAccounts = [];
+	$scope.phoneSchedStatus = $tr(gettext("off"));
+	$scope.str_unknown = $tr(gettext("Unknown"));
+
+	JUCI.interval.repeat("load-phone-small-widget", 5000, function(done){
+		async.series([
+			function(next){
+				$uci.$sync(["voice_client"]).done(function(){
+					$scope.voice_client = $uci.voice_client;
+					$scope.phoneSchedStatus = ($scope.voice_client.RINGING_STATUS.enabled.value)?$tr(gettext("on")):$tr(gettext("off"));
+					if($uci.voice_client && $uci.voice_client["@sip_service_provider"]){
+						$scope.sipAccounts = $uci.voice_client["@sip_service_provider"];
+					}
+				}).always(function(){ next(); });
+			},
+			function(next){
+				$rpc.$call("voice.asterisk", "status").done(function(data){
+					$scope.online = false;
+					$scope.sipAccounts.map(function(acc){
+						if(data.sip && data.sip[acc[".name"]]){
+							var tmp = data.sip[acc[".name"]];
+							if(tmp.registered){
+								$scope.online = true;
+								acc.$icon = "fa fa-check-circle fa-2x text-success";
+							}else if(tmp.registry_request_sent){
+								acc.$icon = "fa fa-spinner fa-2x fa-spin text-warning";
+							}else{
+								acc.$icon = "fa fa-times-circle fa-2x";
+							}
+						}
+					});
+				}).always(function(){next();});	
+			}], function(){
+			$scope.$apply();
+			done();
+		});
+	});
+	$scope.onPhoneToggle = function(){
+		var status = $uci.voice_client.RINGING_STATUS;
+		if(status && status.enabled){
+			status.enabled.value = !status.enabled.value;
+		}
+	}
+});

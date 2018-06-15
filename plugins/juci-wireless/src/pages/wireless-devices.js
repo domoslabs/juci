@@ -46,7 +46,7 @@ JUCI.app
 			}
 		];
 		if(show_button){
-			if(dev.channel.value !== "auto")
+			if(dev.channel.value !== "auto" || dev.scantimer.value === 0)
 				return;
 			dev.$buttons.push({
 				label: $tr(gettext("Force Channel Selection")),
@@ -58,7 +58,7 @@ JUCI.app
 							$juciAlert($tr(gettext("Force Channel Selection is complete. New channel is")) + " " + ret.new_channel);
 						else if(ret.code === 0)
 							$juciAlert($tr(gettext("Force Channel Selection is complete.")));
-						else if(dev.$info && dev.$info.channel >= 52)
+						else if(dev.$info && dev.$info.channel >= 50 && dev.$info && dev.$info.channel <= 144)
 							$juciAlert($tr(gettext("Force Channel Selection has failed because the radio is operating at DFS channel.")));
 						else
 							$juciAlert($tr(gettext("Force Channel Selection has failed.")));

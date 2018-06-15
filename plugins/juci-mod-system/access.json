@@ -33,7 +33,8 @@
 				"system",
 				"buttons",
 				"leds",
-				"passwords"
+				"passwords",
+				"netmode"
 			]
 		},
 		"write": {

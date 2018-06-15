@@ -34,7 +34,7 @@ JUCI.app
 			$rpc.$call("router.wireless", "radios").done(function(data){
 				$scope.wlRadios = data;
 				$scope.scanableRadios = Object.keys(data).map(function(x){
-					if(parseInt(data[x].channel) >= 52){
+					if(parseInt(data[x].channel) >= 50 && parseInt(data[x].channel) <= 144){
 						$scope.dfs_enabled = true;
 						return;
 					}

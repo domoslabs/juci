@@ -12,6 +12,9 @@
 					"protocols",
 					"online"
 				],
+				"network.device": [
+					"status"
+				],
 				"juci.system": [
 					"reboot"
 				],

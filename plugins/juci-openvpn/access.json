@@ -1,0 +1,25 @@
+{
+	"juci-openvpn": {
+		"description": "JUCI OpenVPN module",
+		"read": {
+			"uci": [
+				"openvpn"
+			],
+			"ubus": {
+				"juci.openvpn": [
+					"get_config",
+					"set_config"
+				],
+				"file": [
+					"read_tmp",
+					"write_tmp"
+				]
+			}
+		},
+		"write": {
+			"uci": [
+				"openvpn"
+			]
+		}
+	}
+}

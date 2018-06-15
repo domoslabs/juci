@@ -35,6 +35,18 @@ JUCI.app
 		return def.promise();
 	}
 
+	function getServers(){
+		$scope.allTestServers = $scope.testServers.map(function(x){
+			return {
+				label: x.server.value + ":" + x.port.value,
+				value: x.server.value
+			}
+		});
+		if($scope.allTestServers.length)
+			$scope.data.server = $scope.allTestServers[0].value;
+		else
+			$scope.data.server = null;
+	}
 
 	JUCI.interval.repeat("diagnostics-tptest-running", 10000, function(next){
 		refresh().done(function(){
@@ -65,14 +77,7 @@ JUCI.app
 
 	$uci.$sync("speedtest").done(function(){
 		$scope.testServers = $uci.speedtest["@testserver"];
-		$scope.allTestServers = $scope.testServers.map(function(x){
-			return {
-				label: x.server.value + ":" + x.port.value,
-				value: x.server.value
-			}
-		});
-		if($scope.allTestServers.length)
-			$scope.data.server = $scope.allTestServers[0].value;
+		getServers();
 		$scope.$apply();
 	});
 

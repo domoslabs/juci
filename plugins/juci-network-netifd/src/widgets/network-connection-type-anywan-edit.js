@@ -29,7 +29,7 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("networkConnectionTypeAnywanEdit", function($rootScope, $scope, $ethernet, $modal, $tr, gettext, $uci, $networkHelper, $juciConfirm){
+.controller("networkConnectionTypeAnywanEdit", function($rootScope, $scope, $network, $modal, $tr, gettext, $uci, $networkHelper, $juciConfirm){
 	$scope.getItemTitle = function(dev){
 	
 		return dev.name + " ("+dev.device+")"; 
@@ -37,8 +37,8 @@ JUCI.app
 	function updateDevices(){
 		var net = $scope.connection;
 		if(!net) return;
-		$ethernet.getAdapters().done(function(adapters){
-			var filtered = adapters.filter(function(dev){ return dev.device && dev.direction !== "Down"; });
+		$network.getAdapters().done(function(adapters){
+			var filtered = adapters.filter(function(dev){ return dev.device && dev.direction !== "Down" && dev.type !== "atm-device" && dev.type !== "ptm-device"; });
 			var aptmap = {};
 			filtered.map(function(apt){ aptmap[apt.device] = apt; });
 			net.$addedDevices = ((net.ifname.value != "")?net.ifname.value.split(" "):[])

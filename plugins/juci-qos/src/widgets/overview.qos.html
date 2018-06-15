@@ -1,0 +1,30 @@
+<div>
+	<juci-overview-widget title="qos" icon="juci star" href="{{href}}">
+		<juci-config-lines>
+			<juci-config-line title="{{'Enable QoS'|translate}}">
+				<switch ng-model="qos.wan.enabled.value" class="green"></switch>
+			</juci-config-line>
+			<div ng-show="qos.wan.enabled.value">
+				<hr/>
+				<h4>Rate Limiting</h4>
+				<juci-config-line title="{{'Down'|translate}}">
+				<div class="input-group">
+					<span class="input-group-addon">kbit/s</span>
+					<input type="number" min="0" class="form-control" ng-model="qos.wan.download.value" />
+				</div>
+				</juci-config-line>
+				<juci-config-line title="{{'Up'|translate}}">
+				<div class="input-group">
+					<span class="input-group-addon">kbit/s</span>
+					<input type="number" min="0" class="form-control" ng-model="qos.wan.upload.value"/>
+				</div>
+				</juci-config-line>
+				<hr/>
+				<h4>{{'Subscription'|translate}}</h4>
+				<juci-config-line>
+					<juci-select ng-items="rate_limits" ng-model="limit_selected.value"></juci-selcet>
+				</juci-config-line>
+			</div>
+		</juci-config-lines>
+	</juci-overview-widget>
+</div>

@@ -22,7 +22,7 @@
 	// add control dependency
 	JUCI.app.requires.push("dropdown-multi-select");
 
-	JUCI.app.factory("$network", function($rpc, $uci, $ethernet, $tr, gettext){
+	JUCI.app.factory("$network", function($rpc, $uci, $tr, gettext){
 
 		function NetworkBackend() {
 			this.clients = [];
@@ -37,13 +37,6 @@
 			this._subsystems.push(subsys);
 		}
 
-		NetworkBackend.prototype.getDevice = function(){
-			alert("$network.getDevice has been removed. No alternative. ");
-		};
-
-		NetworkBackend.prototype.getDevices = function(){
-			alert("$network.getDevices has been removed. Use $ethernet.getDevices instead!");
-		}
 		NetworkBackend.prototype.getProtocolTypes = function(){
 			return [
 				{ label: $tr(gettext("Unmanaged")),								value: "none",		physical: ["bridge"] },
@@ -76,7 +69,11 @@
 
 		// should be renamed to getInterfaces for NETWORK (!) interfaces.
 		NetworkBackend.prototype.getNetworks = function(opts){
-			var deferred = $.Deferred();
+			var self = this;
+			// if it is already running just return the active promise
+			if(self.$net_def && self.$net_def.promise instanceof Function)
+				return self.$net_def.promise();
+			self.$net_def = $.Deferred();
 			var networks = [];
 			if(!opts) opts = {};
 			var filter = opts.filter || {};
@@ -110,15 +107,21 @@
 					if(info && info.find)
 						x.$info = info.find(function(y){ return x[".name"] == y.interface; });
 				});
-				deferred.resolve(networks);
+				self.$net_def.resolve(networks);
+				delete self.$net_def;
 			});
 
-			return deferred.promise();
+			if(self.$net_def && self.$net_def.promise instanceof Function)
+				return self.$net_def.promise();
+			return $.Deferred().reject();
 		}
 
 		NetworkBackend.prototype.getConnectedClients = function(){
-			var deferred = $.Deferred();
 			var self = this;
+			// if it is already running just return the active promise
+			if (self.$cclients_def && self.$cclients_def.promise instanceof Function)
+				return self.$cclients_def.promise();
+			self.$cclients_def = $.Deferred();
 
 			$rpc.$call("router.network", "clients").done(function(cls){
 				var clients = Object.keys(cls).map(function(key){ return cls[key]; });
@@ -132,24 +135,35 @@
 					clients.map(function(cl){
 						if(!cl._display_widget) cl._display_widget = "network-client-lan-display-widget";
 					});
-					deferred.resolve(clients);
+					self.$cclients_def.resolve(clients);
+					delete self.$cclients_def;
 				});
 			}).fail(function(er){
-				console.log("error: " + JSON.stringify(er));
-				deferred.reject();
+				self.$cclients_def.reject("error calling router.network clients: " + JSON.stringify(er));
+				delete self.$cclients_def;
 			});
 
-			return deferred.promise();
+			if (self.$cclients_def && self.$cclients_def.promise instanceof Function)
+				return self.$cclients_def.promise();
+			return $.Deferred().reject();
 		}
 
 		NetworkBackend.prototype.getNameServers = function(){
-			var deferred = $.Deferred();
+			var self = this;
+			if (self.$ns_def && self.$ns_def.promise instanceof Function)
+				return self.$ns_def.promise();
+			self.$ns_def = $.Deferred();
 			$rpc.$call("juci.network", "nameservers", {}).done(function(result){
-				if(result && result.nameservers) deferred.resolve(result.nameservers);
-				else deferred.reject();
+				if(result && result.nameservers)
+					self.$ns_def.resolve(result.nameservers);
+				else
+					self.$ns_def.reject();
+				delete self.$ns_def;
 			});
 
-			return deferred.promise();
+			if (self.$ns_def && self.$ns_def.promise instanceof Function)
+				return self.$ns_def.promise();
+			return $.Deferred().reject();
 		}
 
 		NetworkBackend.prototype.getNetworkLoad = function(){
@@ -175,26 +189,12 @@
 			return def.promise();
 		}
 
-		NetworkBackend.prototype.getLanNetworks = function(){
-			var deferred = $.Deferred();
-			this.getNetworks().done(function(nets){
-				deferred.resolve(nets.filter(function(x){ return x.is_lan.value == 1; }));
-			});
-			return deferred.promise();
-		}
-
-		NetworkBackend.prototype.getWanNetworks = function(){
-			var deferred = $.Deferred();
-			console.log("$network.getWanNetworks() is deprecated. You should list firewall zone wan to get whole list");
-			this.getNetworks().done(function(nets){
-				deferred.resolve(nets.filter(function(x){ return !x.is_lan.value; }));
-			});
-			return deferred.promise();
-		}
-
 		// returns list of config sections belong to devices that are configured as default routes along with their runtime info in $info field
 		NetworkBackend.prototype.getDefaultRouteNetworks = function(){
-			var def = $.Deferred();
+			var self = this;
+			if (self.$drn_def && self.$drn_def.promise instanceof Function)
+				return self.$drn_def.promise();
+			self.$drn_def = $.Deferred();
 
 			$uci.$sync("network").done(function(){
 				$rpc.$call("network.interface", "dump").done(function(result){
@@ -210,18 +210,24 @@
 								}
 							}
 						});
-						def.resolve(wanifs);
+						self.$drn_def.resolve(wanifs);
+						delete self.$drn_def;
 					} else {
-						def.reject();
+						self.$drn_def.reject("incorrect return structure for ubus call network.interface dump");
+						delete self.$drn_def;
 					}
-				}).fail(function(){
-					def.reject();
+				}).fail(function(e){
+					self.$drn_def.reject("error: ubus call network.interface dump failed: " + JSON.stringify(e));
+					delete self.$drn_def;
 				});
-			}).fail(function(){
-				def.reject();
+			}).fail(function(e){
+				self.$drn_def.reject("error: couldnt sync network config file: " + JSON.stringify(e));
+				delete self.$drn_def;
 			});
 
-			return def.promise();
+			if (self.$drn_def && self.$drn_def.promise instanceof Function)
+				return self.$drn_def.promise();
+			return $.Deferred().reject();
 		}
 
 		NetworkBackend.prototype.getServices = function(){
@@ -232,6 +238,56 @@
 			});
 			return def.promise();
 		}
+
+		NetworkBackend.prototype.addSubsystem = function(subsys){
+			if(subsys)
+				this._subsystems.push(subsys);
+		}
+
+		NetworkBackend.prototype.getAdapters = function(){
+			var self = this;
+			if (self.$adapter_def && self.$adapter_def.promise instanceof Function)
+				return self.$adapter_def.promise();
+			self.$adapter_def =  $.Deferred();
+			$rpc.$call("network.device", "status").done(function(result){
+				$rpc.$call("router.port", "status").done(function(ports){
+					var res = Object.keys(result).map(function(name){
+						if(name === "lo")
+							return null;
+						result[name].device = name;
+						return result[name];
+					}).filter(function(x){return x !== null;});
+					if(res) {
+						// pipe all adapters though all subsystems and annotate them
+						async.each(self._subsystems, function(sys, next){
+							if(sys.annotateAdapters && sys.annotateAdapters instanceof Function){
+								sys.annotateAdapters(res).always(function(){
+									next();
+								});
+							} else {
+								next();
+							}
+						}, function(){
+							self.$adapter_def.resolve(res);
+							delete self.$adapter_def
+						});
+					} else {
+						self.$adapter_def.reject();
+						delete self.$adapter_def;
+					}
+				}).fail(function(e){
+					self.$adapter_def.reject("error calling router.port status " + JSON.stringify(e));
+					delete self.$adapter_def;
+				});
+			}).fail(function(e){
+				self.$adapter_def.reject("error calling network.device status " + JSON.stringify(e));
+				delete self.$adapter_def;
+			});
+			if (self.$adapter_def && self.$adapter_def.promise instanceof Function)
+				return self.$adapter_def.promise();
+			return $.Deferred().reject();
+		}
+
 
 		return new NetworkBackend();
 	});

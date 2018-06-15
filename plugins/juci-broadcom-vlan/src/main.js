@@ -66,8 +66,8 @@ JUCI.app.factory("$broadcomVLAN", function($uci){
 	}
 }); 
 
-JUCI.app.run(function($ethernet, $network, $uci, $broadcomVLAN){
-	$ethernet.addSubsystem($broadcomVLAN); 
+JUCI.app.run(function($network, $network, $uci, $broadcomVLAN){
+	$network.addSubsystem($broadcomVLAN); 
 }); 
 
 UCI.$registerConfig("layer2_interface_vlan"); 

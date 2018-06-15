@@ -17,7 +17,7 @@
  */
 
 UCI.$registerConfig("snmpd"); 
-UCI.snmpd.$registerSectionType("snmp", {
+UCI.snmpd.$registerSectionType("snmpd", {
 	"enabled":	{ dvalue: false, type: Boolean }
 });
 UCI.snmpd.$registerSectionType("system", {

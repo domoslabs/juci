@@ -1,0 +1,35 @@
+{
+	"juci-voice-client": {
+		"description": "JUCI asterisk module",
+		"read": {
+			"ubus": {
+				"voice.asterisk": [
+					"status",
+					"call_log"
+				],
+				"juci.system": [
+					"reboot"
+				]
+			}, 
+			"uci": [
+				"voice_client"
+			]
+		}, 
+		"write": {
+			"uci": [
+				"voice_client"
+			]
+		}
+	},
+	"juci-voice-client-ca": {
+		"description": "JUCI asterisk module allow handeling CA",
+		"read": {
+			"ubus": {
+				"juci.voice_client": [
+					"get_trusted_ca",
+					"set_trusted_ca"
+				]
+			}
+		}
+	}
+}

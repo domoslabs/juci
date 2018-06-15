@@ -413,7 +413,7 @@ EOF
 
 case "$1" in
 	list)
-		echo '{ "led_status" : {"name":"str"}, "defaultreset" : {"soft":true, "wifi":true, "fw_redirect":true, "fw_parental":true, "passwd_user":true, "ice":true}, "reboot" : {}, "zonelist" : {}, "passwd_entries" : {} }' #"users" : {} }' for future reference
+		echo '{ "led_status" : {"name":"str"}, "defaultreset" : {"soft":true, "wifi":true, "fw_redirect":true, "fw_parental":true, "passwd_user":true, "ice":true}, "reboot" : {}, "zonelist" : {}, "passwd_entries" : {}, "report" : {} }' #"users" : {} }' for future reference
 	;;
 	call)
 		case "$2" in
@@ -466,9 +466,14 @@ case "$1" in
 				done
 				json_dump
 			;;
+			report)
+				json_init
+				system-report &> /dev/null &
+				json_dump
+			;;
 			#users) for future reference
 			#	add_user(){
-			#		local username
+			#		username=""
 			#		config_get username "$1" username
 			#		json_add_string "" "$username"
 			#	}

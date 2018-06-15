@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 msgid "Reboot"
 msgstr "Uudelleenkäynnistys"
@@ -34,11 +34,11 @@ msgstr ""
 msgid "Click here to restart your device"
 msgstr "Paina tästä käynnistääksesi laitteesi uudelleen"
 
-msgid "menu-settings-restart-title"
-msgstr "Uudelleenkäynnistys"
-
 msgid "menu-status-title"
 msgstr "Status"
+
+msgid "menu-settings-restart-title"
+msgstr "Uudelleenkäynnistys"
 
 # /home/jamu/GIT/juci/plugins/juci-mod-status/src/pages/settings-restart.html
 #~ msgid "settings-restart-title"

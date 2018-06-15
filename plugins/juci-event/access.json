@@ -5,8 +5,14 @@
 			"ubus": {
 				"router.system": [
 					"logs"
+				],
+				"juci.system": [
+					"report"
 				]
-			}
+			},
+			"owsd": [
+				"system-report"
+			]
 		}
 	}
 }

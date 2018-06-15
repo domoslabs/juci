@@ -39,26 +39,28 @@ JUCI.app
 	USB.prototype.annotateAdapters = function(adapters){
 		var def = $.Deferred();
 		var self = this;
+		var usbs = {};
 		self.getDevices().done(function(devs){
-			var filtered = devs.filter(function(dev){
+			devs.filter(function(dev){
 				return dev.netdevice;
+			}).map(function(dev){
+				usbs[dev.netdevice] = dev;
 			});
 			adapters.map(function(a){
-				var match = filtered.find(function(f){ return f.netdevice === a.device; });
-				if(match){
+				if(a.device in usbs){
+					match = usbs[a.device];
 					a.name = match.description || match.product || a.name || "";
 					a.type = "eth-port";
 					a.is_usb = true;
-					match["__added__"] = true
+					delete usbs[a.device];
 				}
 			});
-			filtered.map(function(f){
-				if(f["__added__"])return;
+			Object.keys(usbs).map(function(key){
 				adapters.push({
-					name: f.description || f.product || "",
+					name: usbs[key].description || usbs[key].product || "",
 					type: "eth-port",
 					is_usb: true,
-					device: f.netdevice
+					device: usbs[key].netdevice
 				});
 			});
 			def.resolve();
@@ -76,6 +78,6 @@ JUCI.app
 	});
 });  
 
-JUCI.app.run(function($usb, $ethernet){
-	$ethernet.addSubsystem($usb);
+JUCI.app.run(function($usb, $network){
+	$network.addSubsystem($usb);
 });

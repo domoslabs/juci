@@ -11,7 +11,8 @@ case "$1" in
 	call)
 		case "$2" in
 			default_password)
-				local input username
+				input=""
+				username=""
 				read -r input
 				json_load "$input"
 				json_get_var username username

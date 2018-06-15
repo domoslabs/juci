@@ -1,141 +1,135 @@
-JUCI.app.controller("rtgraphsCtrl", function($scope, $uci, $wireless, $rpc){
-	$scope.data = {};
-	var mapIface = {};
+JUCI.app.controller("rtgraphsCtrl", function($scope, $rpc, $tr, gettext, $network){
 	$scope.ylabel = "Mbit/s";
+	var names = {};
+	var directions = {};
+	var upstream = $tr(gettext("Upstream"));
+	var downstream = $tr(gettext("Downstream"));
 
-	$uci.$sync("ports").done(function(){
-		$scope.portnames = $uci.ports["@all"];
-		for (var i in $scope.portnames){
-			if (typeof $scope.portnames[i] === 'function') { continue; }
-			var key = $scope.portnames[i].ifname.value;
-			var val = $scope.portnames[i][".name"];
-			mapIface[key] = val;
-		}
-		mapIface['atm0'] = 'DSL';
-		mapIface['ptm0'] = 'DSL';
+	async.series([get_adapters, get_directions], function(e){
+		if (e)
+			console.error(e);
+		JUCI.interval.repeat("updateRealtimeData",$scope.tick,function(next){
+			updateTraffic();
+			updateLoad();
+			updateConnections();
+			next();
+		});
 		$scope.$apply();
 	});
-	$uci.$sync("wireless").done(function(){
-		$scope.wifaces = $uci.wireless["@wifi-iface"];
-		for (var i in $scope.wifaces){
-			if (!$scope.wifaces[i].ifname) { continue; }
-			var key = $scope.wifaces[i].ifname.value;
-			var val = $scope.wifaces[i].ssid.value;
-			mapIface[key] = val;
-		}
-		$wireless.getInterfaces().done(function(data){
-			for (var i in data) {
-				if (typeof data[i] === 'function') { continue; }
-				var wdevice = data[i].device.value;
-				var wiface = data[i].ifname.value;
-				var freq = data[i][".frequency"];
-				mapIface[wdevice] = mapIface[wdevice] + " " + freq;
-			}
-			$scope.$apply();
+
+	var types = { "eth-port":"", vlan:"", wireless:"" };
+
+	function get_adapters(callback){
+		$network.getAdapters().done(function(adapters){
+			adapters.filter(function(a){
+				return a.up && a.type in types && a.device && a.name;
+			}).forEach(function(a){
+				if(a.device in names && a.type !== "eth-port")
+					return;
+				if(a.type === "wireless")
+					names[a.device] = a.name + " (" + a.frequency + ")";
+				else
+					names[a.device] = a.name;
+			});
+		}).always(function(){
+			callback();
 		});
-	});
-	$rpc.$call("router.usb", "status").done(
-		function(res) {
-			var usbs = Object.keys(res).map(
-				function(usb){
-					return res[usb];
-				}
-			);
-			usbs.forEach(function(usb) {
-					if (usb.netdevice)
-						mapIface[usb.netdevice]=usb.product;
-				}
-			);
-		}
-	);
-	$scope.load = {
-		"1 min" : 0,
-		"5 min" : 0,
-		"15 min" : 0
-	};
-	$scope.connections = {
-		"UDP Count" : 0,
-		"TCP Count" : 0
-	};
-	$scope.traffic = {};
-	$scope.tableData = {};
-	$scope.tick = 4000;
-
-	function to_kbit_or_mbit_str(number) {
-		var number_out = number;
-		var unit = "Mbit/s"
-
-		if (number_out < 1) {
-			number_out = (number_out * 1000);
-			unit = "kbit/s";
-		}
-		number_out = parseFloat(number_out).toFixed(3);
-
-		return String(number_out) +" "+ unit;
 	}
-	function for_objs_in_obj(obj, f) {
-		Object.keys(obj).forEach(function(i){ do_to_each(obj[i], f); });
+
+	function get_directions(callback){
+		$rpc.$call("router.port", "status").done(function(ports){
+			Object.keys(ports).forEach(function(key){
+				directions[key] = ports[key].direction;
+			});
+		}).always(function(){
+			callback();
+		});
 	}
-	function do_to_each(obj, f){
-		Object.keys(obj).forEach(function(key){ obj[key]=f(obj[key]); });
+
+	function to_kb_or_mb_str(bytes){
+		if(bytes * 8 / 1024 / 1024 < 1)
+			return bytes_to_kilobits(bytes).toFixed(3) + " kbit/s";
+
+		return bytes_to_megabits(bytes).toFixed(3) + " Mbit/s";
 	}
-	function bits_to_megabits_per_sec(bits){ return ( (bits/1000000) / ($scope.tick/1000) ).toFixed(5); }
-	function bits_to_kilobits(bits){ return (bits/1000).toFixed(3); }
+	function bytes_to_megabits(bytes){ return ((bytes * 8) / 1000 / 1000); }
+	function bytes_to_kilobits(bytes){ return ((bytes * 8) / 1000); }
+	function clean(num){
+		if (num < 100)
+			return num.toFixed(2);
+		return Math.round(num).toString();
+	}
 
 	function updateTraffic(){
 		$rpc.$call("router.graph", "iface_traffic").done(function(data){
 			var traffic = {};
+			var tbData = {};
 			var newKey = undefined;
-			for (var key in data) {
-				newKey = mapIface[key];
-				if (newKey){
-					if (!traffic[newKey])
-						traffic[newKey] = data[key];
-					else {
-						traffic[newKey]["Downstream"] += data[key]["Downstream"];
-						traffic[newKey]["Upstream"] += data[key]["Upstream"];
-					}
+			Object.keys(data).map(function(ifname){
+				var iface = data[ifname];
+				var name = names[ifname];
+				var direction = directions[ifname];// || "up";
+				if(!iface || !name)
+					return;
+				var up;
+				var down;
+
+				if (direction === "down"){
+					up = iface.rx_bytes;
+					down = iface.tx_bytes;
+				}else{
+					up = iface.tx_bytes;
+					down = iface.rx_bytes;
 				}
-			}
+				traffic[name] = {};
+				traffic[name].up = {
+					label: upstream,
+					value: clean(bytes_to_megabits(up))
+				}
+				traffic[name].down = {
+					label: downstream,
+					value: clean(bytes_to_megabits(down))
+				}
+				tbData[name] = {};
+				tbData[name].rows = [
+					[
+						$tr(gettext("Download Speed")),
+						to_kb_or_mb_str(down)
+					],
+					[
+						$tr(gettext("Upload Speed")),
+						to_kb_or_mb_str(up)
+					]
+				];
+			});
 
-			for_objs_in_obj(traffic, bits_to_megabits_per_sec);
 			$scope.traffic = traffic;
-
-			// show transmitted/received bytes in table
-			for (var key in traffic){
-				$scope.tableData[key] = { rows:[["Download Speed","0"],["Upload Speed","0"]] };
-				$scope.tableData[key]["rows"][0] = ["Download Speed", to_kbit_or_mbit_str($scope.traffic[key]["Downstream"])];
-				$scope.tableData[key]["rows"][1] = ["Upload Speed", to_kbit_or_mbit_str($scope.traffic[key]["Upstream"])];
-			}
-
+			$scope.tableData = tbData;
 			$scope.$apply();
 		}).fail(function(e){console.log(e);});
+
 	}
 
 	function updateLoad(){
 		$rpc.$call("router.graph", "load").done(function(data){
-			$scope.load = data.load;
+			if(!data || !data.load)
+				return;
+			$scope.load = {};
+			$scope.load[$tr(gettext("1 minute"))] = data.load.min_1;
+			$scope.load[$tr(gettext("5 minutes"))] = data.load.min_5;
+			$scope.load[$tr(gettext("15 minutes"))] = data.load.min_15;
 			$scope.$apply();
 		}).fail(function(e){console.log(e);});
 	}
 
 	function updateConnections(){
 		$rpc.$call("router.graph", "connections").done(function(data){
-			$scope.connections = data.connections;
+			if(!data)
+				return;
+			$scope.connections = {};
+			$scope.connections[$tr(gettext("TCP Connections"))] = data.tcp;
+			$scope.connections[$tr(gettext("UDP Connections"))] = data.udp;
 			$scope.$apply();
 		}).fail(function(e){console.log(e);});
 	}
-
-	JUCI.interval.repeat("updateTraffic",$scope.tick,function(next){
-		updateTraffic();
-		next();
-	});
-	JUCI.interval.repeat("updateLoad",$scope.tick,function(next){
-		updateLoad();
-		next();
-	});
-	JUCI.interval.repeat("updateConnections",$scope.tick,function(next){
-		updateConnections();
-		next();
-	});
 });

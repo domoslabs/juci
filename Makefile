@@ -38,15 +38,17 @@ define BuildDir-y
 	$(eval PLUGIN:=$(1))
 	$(eval -include $(PLUGIN_DIR)/Makefile)
 	$(eval $(Plugin/$(1)))
+	$(eval PAGES:=$(wildcard $(PLUGIN_DIR)/src/pages/*.html))
 	$(eval TARGETS+=$(PLUGIN)-install)
 	$(eval JAVASCRIPT_$(PLUGIN):=$(wildcard $(addprefix $(PLUGIN_DIR)/,$(JAVASCRIPT-y))))
 	$(eval TEMPLATES_$(PLUGIN):=$(wildcard $(addprefix $(PLUGIN_DIR)/,$(TEMPLATES-y))))
 	$(eval STYLES_$(PLUGIN):=$(wildcard $(addprefix $(PLUGIN_DIR)/,$(STYLES-y))))
 	$(eval STYLES_LESS_$(PLUGIN):=$(wildcard $(addprefix $(PLUGIN_DIR)/,$(STYLES_LESS-y))))
+	$(eval STYLES_LESS_DEFAULT:=$(wildcard $(CURDIR)/juci/src/css/*))
 	$(eval PO_$(PLUGIN):=$(wildcard $(addprefix $(PLUGIN_DIR)/,$(PO-y))))
 	PHONY += $(PLUGIN)-install
 	# ex. tmp/50-my-awesome-plugin.js: first_file.js second_file.js first_po_file.po ...
-$(TMP_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js: $(JAVASCRIPT_$(PLUGIN)) $(PO_$(PLUGIN))
+$(TMP_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js: $(JAVASCRIPT_$(PLUGIN)) $(PO_$(PLUGIN)) $(wildcard $(PLUGIN_DIR)/Makefile)
 	@echo -e "\033[0;33m[JS]\t$(PLUGIN) -> $$@\033[m"
 	@echo "" > $$@
 	$(Q)if [ "" != "$(JAVASCRIPT_$(PLUGIN))" ]; then for file in $(JAVASCRIPT_$(PLUGIN)); do cat $$$$file >> $$@; echo "" >> $$@; done; fi
@@ -60,7 +62,25 @@ $(TMP_DIR)/$(PLUGIN).css.js: $(TMP_DIR)/$(PLUGIN).css
 $(TMP_DIR)/$(PLUGIN)-compiled-styles.css: $(STYLES_LESS_$(PLUGIN))
 	@echo -e "\033[033m[LESS]\t$(PLUGIN) -> $$@\033[m"
 	@echo "" > $$@
-	$(Q)if [ "" != "$$^" ]; then for file in $$^; do lessc $$$$file >> $$@; echo "" >> $$@; done; fi
+	$(Q)if [ "$(3)" == "themes" ]; then\
+		$(INSTALL_DIR) $(TMP_DIR)/themes/$(PLUGIN)/css;\
+		for file in "$(STYLES_LESS_DEFAULT)"; do\
+			cp $$$$file $(TMP_DIR)/themes/$(PLUGIN)/css/$(notdir $(file));\
+		done;\
+		for file in "$(STYLES_LESS_$(PLUGIN))"; do\
+			cp $$$$file $(TMP_DIR)/themes/$(PLUGIN)/css/$(notdir $(file));\
+		done;\
+	fi
+	$(Q)if [ "" != "$$^" ]; then\
+		if [ -d $(TMP_DIR)/themes/$(PLUGIN)/css ]; then\
+			for file in $$$$(find $(TMP_DIR)/themes/$(PLUGIN)/css/ -name *.less); do\
+				lessc $$$$file >> $$@;\
+				echo "" >> $$@;\
+			done;\
+		else\
+			for file in $$^; do lessc $$$$file >> $$@; echo "" >> $$@; done;\
+		fi\
+	fi
 $(TMP_DIR)/$(PLUGIN).tpl.js: $(TEMPLATES_$(PLUGIN))
 	@echo -e "\033[0;33m[HTML]\t$(PLUGIN) -> $$@\033[m"
 	@echo "" > $$@
@@ -71,7 +91,7 @@ $(PLUGIN_DIR)/po/template.pot: $(JAVASCRIPT_$(PLUGIN)) $(TEMPLATES_$(PLUGIN))
 	@echo "" > $$@
 	$(Q)if [ "" != "$$^" ]; then ./scripts/extract-strings $$^ > $$@; msguniq --no-wrap $$@ > $$@.tmp; mv $$@.tmp $$@; fi
 	@echo "" >> $$@
-	@for file in `find $(PLUGIN_DIR)/src/pages/ -name "*.html"`; do PAGE=$$$${file%%.*}; echo -e "# $$$$file \nmsgid \"menu-$$$$(basename $$$$PAGE)-title\"\nmsgstr \"\"\n" >> $$@; done
+	@for file in $(PAGES); do PAGE=$$$${file%%.*}; echo -e "# $$$$file \nmsgid \"menu-$$$$(basename $$$$PAGE)-title\"\nmsgstr \"\"\n" >> $$@; done
 $(CODE_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js: $(TMP_DIR)/$(if $(CODE_LOAD),$(CODE_LOAD)-,)$(PLUGIN).js $(TMP_DIR)/$(PLUGIN).css.js $(TMP_DIR)/$(PLUGIN).tpl.js
 	@echo -e "\033[0;32m[INSTALLING] $(PLUGIN)\033[m"
 	$(Q)$(INSTALL_DIR) "$$(dir $$@)"

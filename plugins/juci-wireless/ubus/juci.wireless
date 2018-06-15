@@ -4,8 +4,7 @@
 
 case "$1" in
 	list)
-		echo '{ "set_credentials" : {"ssid":"str", "encryption":"str", "key":"str", "import":true} }'
-
+		echo '{ "set_credentials" : {"ssid":"str", "encryption":"str", "key":"str", "import":true}, "get_channels" : {"radio":"str", "bandwidth":"str", "dfsc":true} }'
 	;;
 	call)
 		case "$2" in
@@ -40,6 +39,68 @@ case "$1" in
 				fi
 
 				json_dump
+			;;
+			get_channels)
+				read input;
+
+				json_load "$input"
+				json_get_var radio radio
+				json_get_var bandwidth bandwidth
+				json_get_var dfsc dfsc
+
+				if [ -f /usr/sbin/wlctl ]; then
+					frequency=2
+
+					test `wlctl -i $radio band` = "a" && frequency=5
+
+					json_init
+
+					cmd="cat $tmpFile"
+
+					json_add_array "channels"
+
+					for ch in $(wlctl -i $radio chanspecs -b $frequency -w $bandwidth | tr A-Z a-z | sed -e 's/[^0-9]/ /g' | cut -d ' ' -f1 | sort -n | uniq); do
+						[ $dfsc -eq 1 -o $ch -lt 52 -o $ch -gt 144 ] && json_add_int "channels" $ch
+					done
+
+					json_close_array
+					json_dump
+				else
+					band="$(uci -q get wireless.$radio.band)"
+					country="$(uci -q get wireless.$radio.country)"
+					if [ "$band" == "a" ]; then
+						if [ "$bandwidth" == "80" ]; then
+							uschannels="36 40 44 48 52 56 60 64 100 104 108 112 116 120 124 128 132 136 140 144 149 153 157 161"
+							defchannels="36 40 44 48 52 56 60 64 100 104 108 112"
+						elif  [ "$bandwidth" == "40" ]; then
+							uschannels="36 40 44 48 52 56 60 64 100 104 108 112 116 120 124 128 132 136 140 144 149 153 157 161"
+							defchannels="36 40 44 48 52 56 60 64 100 104 108 112 132 136"
+						else
+							uschannels="36 40 44 48 52 56 60 64 100 104 108 112 116 120 124 128 132 136 140 144 149 153 157 161 165"
+							defchannels="36 40 44 48 52 56 60 64 100 104 108 112 116 132 136 140"
+						fi
+					else
+						uschannels="1 2 3 4 5 6 7 8 9 10 11"
+						defchannels="1 2 3 4 5 6 7 8 9 10 11 12 13"
+					fi
+
+					if [ "${country:0:2}" == "US" ]; then
+						chanlist="$uschannels"
+					else
+						chanlist="$defchannels"
+					fi
+
+					json_init
+
+					json_add_array "channels"
+
+					for ch in $chanlist; do
+						[ $dfsc -eq 1 -o $ch -lt 52 -o $ch -gt 144 ] && json_add_int "channels" $ch
+					done
+
+					json_close_array
+					json_dump
+				fi
 			;;
 		esac
 	;;

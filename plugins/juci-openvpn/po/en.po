@@ -1,0 +1,136 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.js
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Client"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.js
+msgid "Server"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.js
+msgid "None"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.js
+msgid "Yes"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.js
+msgid "No"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.js
+msgid "Adaptive"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "OpenVPN Client Configuration"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "openvpn.settings.info"
+msgstr "OpenVPN client configuration page"
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Enabled"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-openvpn/src/widgets/openvpn-user-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-openvpn/src/widgets/openvpn-user-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Username"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Username help"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-openvpn/src/widgets/openvpn-user-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-openvpn/src/widgets/openvpn-user-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Password"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Password help"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Dev"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Proto"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Auth"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Cipher"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Nobind"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Persist tun"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Persist key"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Verb"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Mute"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Mute replay warnings"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Ns cert type"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Comp LZO"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "Resolv retry"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
+msgid "The .ovpn config file"
+msgstr ""
+
+msgid "menu-internet-services-openvpn-title"
+msgstr "OpenVPN"
