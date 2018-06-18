@@ -42,7 +42,9 @@ UCI.voice_client.$registerSectionType("brcm_line", {
 	"callwaiting":			{ dvalue: false, type: Boolean }, 
 	"clir":					{ dvalue: false, type: Boolean }, 
 	"name":					{ dvalue: '', type: String }, 
-	"instance":				{ dvalue: '', type: String }
+	"instance":				{ dvalue: '', type: String },
+	"autodial":			{ dvalue: '', type: String },
+	"autodial_timeout":		{ dvalue: '', type: Number }
 }); 
 UCI.voice_client.$registerSectionType("sip_service_provider",  {
 	"name":					{ dvalue: "", type: String },

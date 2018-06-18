@@ -34,6 +34,12 @@
 				<juci-config-line title="{{'Receive gain'|translate}}">
 					<input type="number" min="-96" max="32" class="form-control" ng-model="line.rxgain.value" />
 				</juci-config-line>
+				<juci-config-line title="{{'Hotline number'|translate}}">
+					<input type="text" class="form-control" ng-model="line.autodial.value"/>
+				</juci-config-line>
+				<juci-config-line title="{{'Hotline timeout [ms]'|translate}}">
+					<input type="number" class="form-control" ng-model="line.autodial_timeout.value" />
+				</juci-config-line>
 			</juci-config-lines>
 		</juci-expandable>
 	</juci-config-section>
