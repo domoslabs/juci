@@ -1,5 +1,7 @@
 #!/bin/sh
 
+. /lib/functions.sh
+
 set -e
 
 WWW="$1"
@@ -49,6 +51,10 @@ for file in `find ${WWW}/js -name "$JS_WILDCARD" | sort`; do
 	SCRIPTS_HTML="${SCRIPTS_HTML}<script src=\"${JSFILE}?v=${time}\"></script>"
 done
 
+config_load juci
+
+config_get favicon juci favicon "favicon.ico"
+
 echo "<!doctype html>
 <html lang='en' >
 <head>
@@ -57,7 +63,7 @@ echo "<!doctype html>
 	<meta HTTP-EQUIV=\"CACHE-CONTROL\" CONTENT=\"NO-CACHE\">
 	<meta HTTP-EQUIV=\"PRAGMA\" CONTENT=\"NO-CACHE\">
 	<title>JUCI</title><!--ng-bind='title'-->
-	<link rel=\"shortcut icon\" href=\"/favicon.ico\" type=\"image/x-icon\" />
+	<link rel=\"shortcut icon\" href=\"/$favicon\" type=\"image/x-icon\" />
 	<base href='/'>
 	${STYLES_HTML}
 </head>
