@@ -1,6 +1,5 @@
 #!/bin/sh
 
-. /lib/functions.sh
 
 set -e
 
@@ -51,9 +50,14 @@ for file in `find ${WWW}/js -name "$JS_WILDCARD" | sort`; do
 	SCRIPTS_HTML="${SCRIPTS_HTML}<script src=\"${JSFILE}?v=${time}\"></script>"
 done
 
-config_load juci
+if [ -f /lib/functions.sh ]; then
+	. /lib/functions.sh
 
-config_get favicon juci favicon "favicon.ico"
+	config_load juci
+	config_get favicon juci favicon "favicon.ico"
+else
+	favicon="favicon.ico"
+fi
 
 echo "<!doctype html>
 <html lang='en' >
