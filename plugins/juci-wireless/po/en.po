@@ -595,7 +595,7 @@ msgstr ""
 "be configured as part of a network bridge or firewall group. "
 
 msgid "WiFi Scheduling"
-msgstr ""
+msgstr "Scheduling"
 
 msgid "wifi.schedule.info"
 msgstr ""
