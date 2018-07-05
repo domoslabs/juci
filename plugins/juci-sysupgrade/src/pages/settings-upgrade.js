@@ -25,14 +25,15 @@ JUCI.app
 	$scope.usbFileName = "()";
 	$scope.data = { upUrl: ""};
 	$scope.usbUpgradeAvailable = false;
-	
+	$scope.upfile = {};
+
 	$scope.current_version = $config.get("board.system.firmware");
-	
+
 	$uci.$sync("system").done(function(){
 		$scope.system = $uci.system;
 		$scope.$apply();
 	});
-	
+
 	$rpc.$call("system", "board").done(function(info){
 		$scope.board = info;
 		$scope.$apply();
@@ -64,14 +65,14 @@ JUCI.app
 				}
 				if(btn.value == "abort"){
 					inst.dismiss("abort");
-					deffered.reject("abort");
+					deferred.reject("abort");
 				}
 			}
 		});
 
 		return deferred.promise();
 	}
-	
+
 	$events.subscribe("sysupgrade", function(result){
 		if(!result || !result.data || !result.data.status) return;
 		if(result.data && result.data.status && result.data.status == "failed") {
@@ -147,7 +148,7 @@ JUCI.app
 			$rpc.$call("juci.sysupgrade", "start", {"path":$scope.onlineUpgrade, "keep":(keep)?1:0});
 		});
 	}
-	
+
 	$scope.onUpgradeUSB = function(){
 		confirmKeep().done(function(keep){
 			$scope.showUpgradeStatus = true;
@@ -181,7 +182,7 @@ JUCI.app
 		$scope.upfile = document.getElementById("imageFileSelector");
 		$scope.$apply();
 	}
-	
+
 	function startUpload(keep){
 		var upfile = $scope.upfile;
 		if(!upfile.name || upfile.size < 1) return;
