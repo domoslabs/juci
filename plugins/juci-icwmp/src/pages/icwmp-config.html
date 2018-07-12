@@ -62,7 +62,7 @@
 					</juci-config-lines>
 				</juci-config-section>
 			</tab>
-			<tab heading="{{'Status'|translate}}" ng-show="onTR069ObjectAvailable">
+			<tab heading="{{'Status'|translate}}" ng-show='statusAvailable()'>
 				<juci-config-section>
 					<juci-config-line title="{{ 'Send connection request to ACS' | translate }}">
 						<button class="btn btn-lg btn-default" ng-click="contactACS()">{{'Send'|translate}}</button>

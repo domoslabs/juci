@@ -46,12 +46,13 @@ JUCI.app
 		{ label: $tr(gettext("Debug")),		value: 'DEBUG' }
 	];
 
+	$scope.status = [];
+
 	$scope.onTR069ObjectAvailable=$rpc.$has("tr069", "inform");
-	if($rpc.$has("tr069", "status")) {
-		JUCI.interval.repeat("icwmp-status-update", 5000, function(next){
+	JUCI.interval.repeat("icwmp-status-update", 5000, function(next){
+		function reload_status(){
 			$rpc.$call("tr069", "status").done(function(data){
 				if(!data) return;
-				$scope.status = [];
 				if(data.cwmp){
 					$scope.status.push({
 						title: $tr(gettext("CWMP")),
@@ -92,14 +93,24 @@ JUCI.app
 						]
 					});
 				}
-				$scope.$apply();
 			}).fail(function(e){
-				console.error("couldn't call tr069 status", e);
+				$scope.status = [];
 			}).always(function(){
+				$scope.$apply();
 				next();
 			});
-		});
-	}
+		}
+		if($rpc.$has("tr069", "status")) {
+			reload_status();
+		} else {
+			// $isConnected will add any new ubus object that was not there when page was loaded
+			$rpc.$isConnected().always(function(){
+				reload_status();
+			});
+		}
+	});
+
+	$scope.statusAvailable = function(){ return $scope.status.length; };
 
 	$scope.contactACS = function() {
 		$rpc.$call("tr069", "inform", {"event":"connection request"}).done(function(data){

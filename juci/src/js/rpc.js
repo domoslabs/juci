@@ -271,6 +271,12 @@
 			var self = this;
 			var deferred = $.Deferred();
 			self.$list().done(function(result){
+				Object.keys(result).map(function(obj){
+					Object.keys(result[obj]).map(function(method){
+						if(! self.$has(obj, method))
+							self.$register(obj, method);
+					});
+				});
 				deferred.resolve();
 			}).fail(function(){
 				deferred.reject();
