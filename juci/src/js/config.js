@@ -31,9 +31,6 @@
 		var deferred = $.Deferred(); 
 		var self = this; 
 			
-		// $config.local points to local storage
-		self.local = localStorage; 
-
 		async.series([
 			function(next){
 				UBUS.$call("router.system", "info").done(function(info){

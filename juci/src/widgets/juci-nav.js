@@ -30,7 +30,7 @@ JUCI.app
 		controllerAs: "ctrl"
 	};
 })
-.controller("NavCtrl", function($scope, $navigation, $location, $state, $rootScope, $config){
+.controller("NavCtrl", function($scope, $navigation, $location, $state, $rootScope, $localStorage){
 	$scope.showSubMenuItems = false;
 	var node = $navigation.findNodeByPage($location.path().replace(/\//g, ""));
 	if(node) {
@@ -64,7 +64,7 @@ JUCI.app
 
 	$scope.itemVisible = function(item){
 		if(!item.modes || !item.modes.length) return true;
-		else if(item.modes && item.modes.indexOf($config.local.mode) == -1) {
+		else if(item.modes && item.modes.indexOf($localStorage.getItem("mode")) == -1) {
 			return false;
 		}
 		else return true;

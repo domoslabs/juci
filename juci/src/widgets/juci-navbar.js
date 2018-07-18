@@ -27,7 +27,7 @@ JUCI.app
 		replace: true
 	};
 })
-.controller("NavigationCtrl", function($scope, $location, $localStorage, $navigation, $rootScope, $config, $rpc, $events, $rootScope, $wiki){
+.controller("NavigationCtrl", function($scope, $location, $localStorage, $navigation, $rootScope, $localStorage, $rpc, $events, $rootScope, $wiki){
 	$scope.tree = $navigation.tree();
 	$scope.log_events = [];
 	$scope.mode = $localStorage.getItem("mode") || "expert";
@@ -40,7 +40,7 @@ JUCI.app
 	}
 	$scope.itemVisible = function(item){
 		if(!item.modes || !item.modes.length) return true;
-		else if(item.modes && item.modes.indexOf($config.local.mode) == -1) {
+		else if(item.modes && item.modes.indexOf($localStorage.getItem("mode")) == -1) {
 			return false;
 		}
 		else return true;

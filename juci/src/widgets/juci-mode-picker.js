@@ -26,7 +26,7 @@ JUCI.app
 		replace: true
 	 };  
 })
-.controller("juciModePicker", function($scope, $config, $uci, $rpc, $window, $localStorage, $state, $tr, gettext){
+.controller("juciModePicker", function($scope, $uci, $rpc, $window, $localStorage, $state, $tr, gettext){
 	$scope.selectedModeValue = $localStorage.getItem("mode") || "basic";
 	$scope.guiModes = [
 		{label: $tr(gettext("Basic Mode")), value: "basic"},
@@ -37,7 +37,6 @@ JUCI.app
 		$scope.selectedModeValue = selected; 
 		console.log("selected value", selected);
 		$localStorage.setItem("mode", selected);
-		$config.local.mode = selected;
 		$state.reload();
 	};
 }); 
