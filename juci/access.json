@@ -41,7 +41,8 @@
 		"read": {
 			"ubus": {
 				"juci.core": [
-					"default_password"
+					"default_password",
+					"get_themes"
 				],
 				"session": [
 					"access",

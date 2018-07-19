@@ -5,7 +5,8 @@
 case "$1" in
 	list)
 		echo '{
-			"default_password":{"username":"Str"}
+			"default_password":{"username":"Str"},
+			"get_themes": { }
 		}'
 	;;
 	call)
@@ -32,6 +33,29 @@ case "$1" in
 				fi
 				json_dump
 			;;
+			get_themes)
+				json_init
+				[ -d "/www/themes" ] || {
+					json_add_string "error" "No themes folder found"
+					json_dump
+					exit 0
+				}
+				files="$(find /www/themes/ -type f)"
+				json_add_array "themes"
+				for file in $files; do
+					file_name=${file##*/}
+					file_unziped=${file_name%.gz}
+					theme=${file_unziped%.js}
+					name=${theme#*juci-theme-}
+					name_up=$(echo $name | tr '[a-z]' '[A-Z]')
+					json_add_object
+					json_add_string "theme" "$theme"
+					json_add_string "label" "$name_up"
+					json_close_object
+				done
+				json_close_array
+				json_dump
+				;;
 			*) return 1 ;;
 		esac
 	;;

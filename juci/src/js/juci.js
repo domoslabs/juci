@@ -342,7 +342,8 @@
 		"homepage": 		{ dvalue: "overview", type: String },
 		"language_debug":	{ dvalue: false, type: String },
 		"force_passwd_change":	{ dvalue: false, type: Boolean },
-		"default_language":	{ dvalue: "en", type: String }
+		"default_language":	{ dvalue: "en", type: String },
+		"theme":		{ dvalue: "", type: String }
 	});
 
 	UCI.juci.$registerSectionType("login", {
