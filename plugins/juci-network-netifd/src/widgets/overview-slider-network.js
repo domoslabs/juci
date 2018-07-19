@@ -125,7 +125,7 @@ JUCI.app
 					return "img/Wifi_Client_Green.png";
 				}else{
 					if(!dev.linkspeed) return "img/Laptop_Red.png";
-					if(dev.linkspeed.match("1000")) return "img/Laptop_Green.png";
+					if(dev.linkspeed.match("1000") || dev.linkspeed.match("Auto")) return "img/Laptop_Green.png";
 					return "img/Laptop_Yellow.png";
 				}
 			case "asc":
