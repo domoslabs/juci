@@ -3,20 +3,22 @@ JUCI
 
 JUCI WebGUI is designed for building modern and dynamic web interfaces for embedded devices. 
 
-Installing 
-----------
-
-* [JUCI on OpenWRT](juci-on-openwrt.html) - install and use juci on openwrt. 
-
-Contributing
-------------
-
-* [Submitting Patches](submitting-patches.html) - learn how to get your changes into juci.  
+[//]: # Comment out for now TODO: bring back at least the Contributing section
+[//]: # Installing 
+[//]: # ----------
+[//]: # 
+[//]: # * [JUCI on OpenWRT](juci-on-openwrt.html) - install and use juci on openwrt. 
+[//]: # 
+[//]: # Contributing
+[//]: # ------------
+[//]: # 
+[//]: # * [Submitting Patches](submitting-patches.html) - learn how to get your changes into juci.  
 
 Working with JUCI
 -----------------
 * [Creating Pages](creating-pages.html) - learn how to setup a new page in juci plugin
 * [Creating themes for JUCI](creating-themes.html) - learn how theming works and how to develop custom styles
+* [Creating Backend for JUCI](creating-backend-scripts.html) - learn how to create simple ubus backend scripts
 * [Creating translations](creating-translations.html) - learn how to add support for new languages
 
 Core Subsystems
