@@ -26,7 +26,7 @@ JUCI.app
 		controller: "JuciThemePickerController"
 	 };  
 })
-.controller("JuciThemePickerController", function($rpc, $scope, $theme, $config){
+.controller("JuciThemePickerController", function($rpc, $scope, $config){
 	$scope.selectedTheme = $config.get("settings.juci.theme");
 	$rpc.$call("juci.core", "get_themes").done(function(data){
 		if(data && data.themes) {
