@@ -17,7 +17,7 @@ case "$1" in
 			;;
 			set_config)
 				json_init
-				json_add_boolean success $(mv /tmp/tmpOpenvpnConfiguration $OVPN && {sync; echo 1} || echo 0)
+				json_add_boolean success $(mv /tmp/juci/tmpOpenvpnConfiguration $OVPN && {sync; echo 1} || echo 0)
 				json_dump
 			;;
 		esac

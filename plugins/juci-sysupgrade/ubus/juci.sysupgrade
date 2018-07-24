@@ -26,9 +26,9 @@ case "$1" in
 				json_get_var pass pass ""
 
 				if [ -n "$pass" ]; then
-					output="$(sysupgrade --create-backup /tmp/backup.tar.gz -p $pass)"
+					output="$(sysupgrade --create-backup /tmp/juci/backup.tar.gz -p $pass)"
 				else
-					output="$(sysupgrade --create-backup /tmp/backup.tar.gz)"
+					output="$(sysupgrade --create-backup /tmp/juci/backup.tar.gz)"
 				fi
 
 				json_init
@@ -44,15 +44,15 @@ case "$1" in
 				json_get_var pass pass ""
 
 				if [ -n "$pass" ]; then
-					decrypt="$(openssl des3 -d -in /tmp/backup.tar.gz -out /tmp/backup.tar.gz.dec -pass pass:$pass 2>/dev/null && echo OK)"
+					decrypt="$(openssl des3 -d -in /tmp/juci/backup.tar.gz -out /tmp/juci/backup.tar.gz.dec -pass pass:$pass 2>/dev/null && echo OK)"
 					if [ "$decrypt" == "OK" ]; then
-						mv /tmp/backup.tar.gz.dec /tmp/backup.tar.gz
-						stdout="$(sysupgrade --restore-backup /tmp/backup.tar.gz)"
+						mv /tmp/juci/backup.tar.gz.dec /tmp/juci/backup.tar.gz
+						stdout="$(sysupgrade --restore-backup /tmp/juci/backup.tar.gz)"
 					else
 						error="Invalid Password!"
 					fi
 				else
-					result="$(sysupgrade --restore-backup /tmp/backup.tar.gz)"
+					result="$(sysupgrade --restore-backup /tmp/juci/backup.tar.gz)"
 					if [ "result" == "" ]; then
 						stdout="$result"
 					else
@@ -98,7 +98,7 @@ case "$1" in
 				read input
 				json_load "$input"
 				json_get_var keep keep 1
-				json_get_var path path "/tmp/firmware.bin"
+				json_get_var path path "/tmp/juci/firmware.bin"
 
 				[ "$keep" == "1" ] && keep="" || keep="-n"
 				sysupgrade $keep $path >/dev/null 2>&1 &
@@ -110,7 +110,7 @@ case "$1" in
 			test)
 				read input
 				json_load "$input"
-				json_get_var path path "/tmp/firmware.bin"
+				json_get_var path path "/tmp/juci/firmware.bin"
 
 				sysupgrade --test $path >/dev/null 2>&1 &
 

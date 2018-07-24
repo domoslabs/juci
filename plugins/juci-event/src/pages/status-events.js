@@ -133,7 +133,7 @@ JUCI.app
 
 	$events.subscribe("system-report", function(res){
 		if(res && res.data && res.data.filename && res.data.filename.length > 5) {
-		var filename=res.data.filename.substring(5);
+			var filename=res.data.filename;
 			$file.downloadFile(filename,"application/gzip",filename).done( function() {
 				if($scope.report.timeout != null)
 					clearTimeout($scope.report.timeout);

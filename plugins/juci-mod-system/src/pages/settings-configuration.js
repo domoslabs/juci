@@ -23,6 +23,7 @@ JUCI.app
 	$scope.resetPossible = 0;
 	$scope.resetPossible = 1;
 	$scope.passwordError = false;
+	var filename = "/tmp/juci/backup.tar.gz";
 
 	$events.subscribe("defaultreset", function(e){ window.location = "/reboot.html"; });
 	$rpc.$call("juci.sysupgrade", "features", {}).done(function(features){
@@ -105,7 +106,7 @@ JUCI.app
 	$scope.onUploadConfig = function(){
 		var upfile = document.getElementById("upload");
 		if(!upfile.name || upfile.size < 1) return;
-		$file.uploadFile("backup.tar.gz", upfile.files[0]).done(function(){
+		$file.uploadFile(filename, upfile.files[0]).done(function(){
 			onUploadComplete(upfile.name);
 		}).fail(function(e){console.log(e);});
 	}
@@ -145,7 +146,7 @@ JUCI.app
 		$rpc.$call("juci.sysupgrade", "create-backup",
 			($scope.data.pass ? {"pass": $scope.data.pass} : undefined)
 		).done(function(){
-			$file.downloadFile("backup.tar.gz", "application/gzip", "backup-" + $config.filename + ".tar.gz").fail(function(e){
+			$file.downloadFile(filename, "application/gzip", "backup-" + $config.filename + ".tar.gz").fail(function(e){
 				alert($tr(gettext("Was not able to download backup. Please check access!")));
 				console.log(e);
 			}).always(function(){

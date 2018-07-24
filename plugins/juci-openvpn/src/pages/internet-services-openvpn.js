@@ -20,7 +20,7 @@
 
 JUCI.app
 .controller("OpenVPNController", function($scope, $tr, gettext, $uci, $rpc, $juciDialog, $file){
-	var filename = "/tmp/tmpOpenvpnConfiguration";
+	var filename = "/tmp/juci/tmpOpenvpnConfiguration";
 
 	$scope.data = {
 		ovpn: ""

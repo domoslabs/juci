@@ -3,7 +3,7 @@
 
 JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, $tr, gettext, $wireless, $file){
 	var SCAN_RESLUT_TIMEOUT = 3000;
-	var filename = "/tmp/netmode-wizard.json";
+	var filename = "/tmp/juci/netmode-wizard.json";
 	$scope.config = {
 		as_extender: true,
 		separate_ssids: false,

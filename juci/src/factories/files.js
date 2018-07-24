@@ -74,7 +74,14 @@ JUCI.app.factory("$file", function($rpc, $tr, gettext, $rootScope){
 		downloadFile: function(fileName, filetype, downloadName){
 			$rootScope.downloadFile = true;
 			var def = $.Deferred();
-			if(!fileName || fileName.match("/")){
+			if(!fileName){
+				$rootScope.downloadFile = false;
+				return def.reject();
+			}
+			if(fileName.startsWith("/tmp/juci/"))
+				fileName = fileName.substring(10);
+
+			if(fileName.match("/")){
 				$rootScope.downloadFile = false;
 				return def.reject();
 			}
@@ -86,7 +93,7 @@ JUCI.app.factory("$file", function($rpc, $tr, gettext, $rootScope){
 			}
 			var name = (downloadName)?downloadName:fileName;
 			var filetype = filetype || "application/gzip";
-			$rpc.$call("file", "read_tmp", {path:"/tmp/"+fileName, base64:true}).done(function(result){
+			$rpc.$call("file", "read_tmp", {path:"/tmp/juci/"+fileName, base64:true}).done(function(result){
 				$rootScope.downloadFile = false;
 				def.resolve(saveByteArray(result.data, name, filetype, link));
 			}).fail(function(e){ $rootScope.downloadFile = false; def.reject(e);});

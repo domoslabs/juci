@@ -15,9 +15,9 @@ case "$1" in
 				json_get_var filename filename
 
 				if [ -n "$filename" ]; then
-					filename="/tmp/$filename"
+					filename="/tmp/juci/$filename"
 				else
-					filename="/tmp/iup-backup.tmp"
+					filename="/tmp/juci/iup-backup.tmp"
 				fi
 				
 				json_init

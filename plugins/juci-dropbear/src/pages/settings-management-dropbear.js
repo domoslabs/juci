@@ -20,7 +20,7 @@
 
 JUCI.app
 .controller("dropbearSettings", function($scope, $uci, $rpc, $systemService, $network, $tr, gettext, $file, $juciDialog, $juciConfirm){
-	var filename = "/tmp/tmpSshKey";
+	var filename = "/tmp/juci/tmpSshKey";
 	$scope.data = {
 
 	};

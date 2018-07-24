@@ -21,11 +21,11 @@
 JUCI.app
 .controller("SettingsUpgradeCtrl", function($scope, $uci, $config, $rpc, $tr, gettext, $juciDialog, $events, $file){
 	$scope.sessionID = $rpc.$sid();
-	$scope.uploadFilename = "/tmp/firmware.bin";
 	$scope.usbFileName = "()";
 	$scope.data = { upUrl: ""};
 	$scope.usbUpgradeAvailable = false;
 	$scope.upfile = {};
+	var uploadFilename = "/tmp/juci/firmware.bin";
 
 	$scope.current_version = $config.get("board.system.firmware");
 
@@ -144,7 +144,7 @@ JUCI.app
 			$scope.showUpgradeStatus = true;
 			$scope.message = $tr(gettext("Downloading and verifying image..."));
 			$scope.progress = $tr(gettext("Uploading"));
-			console.log("testing image: "+ $scope.uploadFilename);
+			console.log("testing image: "+ uploadFilename);
 			$rpc.$call("juci.sysupgrade", "start", {"path":$scope.onlineUpgrade, "keep":(keep)?1:0});
 		});
 	}
@@ -186,14 +186,14 @@ JUCI.app
 	function startUpload(keep){
 		var upfile = $scope.upfile;
 		if(!upfile.name || upfile.size < 1) return;
-		$file.uploadFile("firmware.bin", upfile.files[0], function(progress, total){
+		$file.uploadFile(uploadFilename, upfile.files[0], function(progress, total){
 			$scope.progress_byte = progress;
 			$scope.progress_total = total;
 			$scope.$apply();
 		}).done(function(){
 			$scope.progress_byte = $scope.progress_total;
 			$scope.$apply();
-			$rpc.$call("juci.sysupgrade", "start", {"path":$scope.uploadFilename, "keep":(keep)?1:0});
+			$rpc.$call("juci.sysupgrade", "start", {"path":uploadFilename, "keep":(keep)?1:0});
 		}).fail(function(e){
 			$scope.error =  $tr(gettext("The server returned an error"))+" ("+JSON.stringify(e)+")";
 			$scope.$apply();
