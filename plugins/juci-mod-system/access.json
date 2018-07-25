@@ -52,8 +52,8 @@
 		"read": {
 			"ubus": {
 				"file": [
-					"read_tmp",
-					"write_tmp"
+					"read_tmp_juci",
+					"write_tmp_juci"
 				]
 			}
 		}

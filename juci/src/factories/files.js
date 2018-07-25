@@ -46,7 +46,7 @@ JUCI.app.factory("$file", function($rpc, $tr, gettext, $rootScope){
 					console.log("error reading file");
 					setTimeout(function(){$rootScope.uploadFile = false; def.reject("error reading file");}, 0);
 				}
-				$rpc.$call("file", "write_tmp", {
+				$rpc.$call("file", "write_tmp_juci", {
 					path: path,
 					data: e.target.result.split(",")[1],
 					base64: true,
@@ -93,7 +93,7 @@ JUCI.app.factory("$file", function($rpc, $tr, gettext, $rootScope){
 			}
 			var name = (downloadName)?downloadName:fileName;
 			var filetype = filetype || "application/gzip";
-			$rpc.$call("file", "read_tmp", {path:"/tmp/juci/"+fileName, base64:true}).done(function(result){
+			$rpc.$call("file", "read_tmp_juci", {path:"/tmp/juci/"+fileName, base64:true}).done(function(result){
 				$rootScope.downloadFile = false;
 				def.resolve(saveByteArray(result.data, name, filetype, link));
 			}).fail(function(e){ $rootScope.downloadFile = false; def.reject(e);});
@@ -103,7 +103,7 @@ JUCI.app.factory("$file", function($rpc, $tr, gettext, $rootScope){
 			var def = $.Deferred();
 			if(!filename || !string) return def.reject("you must give filename and string");
 			if(filename.substr(0,5) !== "/tmp/") filename = "/tmp/" + filename;
-			$rpc.$call("file", "write_tmp", {"path":filename, "data":string}).done(function(ret){def.resolve(ret);}).fail(function(e){def.reject(e);});
+			$rpc.$call("file", "write_tmp_juci", {"path":filename, "data":string}).done(function(ret){def.resolve(ret);}).fail(function(e){def.reject(e);});
 			return def.promise();
 		}
 	}

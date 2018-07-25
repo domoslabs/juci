@@ -4,7 +4,7 @@
 		"read": {
 			"ubus": {
 				"file": [
-					"write_tmp"
+					"write_tmp_juci"
 				],
 				"juci.sysupgrade": [
 					"check", 
