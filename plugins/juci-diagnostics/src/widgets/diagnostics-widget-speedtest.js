@@ -121,6 +121,21 @@ JUCI.app
 		});
 	};
 
+	$scope.abortTest = function(){
+		$rpc.$call("juci.diagnostics", "tptest_stop").done(function(response){
+			if(response && response.message=="success"){
+				$scope.data.state="aborted";
+			}else{
+				$scope.data.state="";
+			}
+			$scope.$apply();
+		}).fail(function(e){
+			console.log(e);
+			$scope.data.state = "";
+			$scope.$apply();
+		});
+	};
+
 	$scope.onRemoveAddress = function(){
 		var server = $scope.testServers.find(function(x){
 			return $scope.data.server == x.server.value

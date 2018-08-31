@@ -7,6 +7,7 @@
 					"ping",
 					"traceroute",
 					"tptest_start",
+					"tptest_stop",
 					"tptest_packet_size",
 					"tptest_running"
 				]
