@@ -37,9 +37,12 @@
 				</div>
 			</juci-config-line>
 			<juci-config-line>
-				<button class="btn btn-default">
-					<span ng-click="runTest()" ng-show="(data.state != 'running')">{{'Run test' | translate}}</span>
-					<span ng-click="abortTest()"ng-show="(data.state == 'running')">{{'Abort' | translate}}</span></span>
+				<button class="btn btn-default" ng-click="abortTest()" ng-show="(data.state == 'running')">
+					<span >{{'Abort' | translate}}</span>
+				</button>
+				<button class="btn btn-default" ng-click="runTest()" ng-show="(data.state != 'running')">
+					<span >{{'Run test' | translate}}</span>
+
 				</button>
 			</juci-config-line>
 		</juci-config-lines>
