@@ -76,20 +76,20 @@ get_packet_sizes () {
 	else
 		case "$option" in
 			ethernet)
-				packetsize_up=5
+				packetsize_up=10
 				packetsize_down=100
 				;;
 			vdsl)
-				packetsize_up=3
+				packetsize_up=5
 				packetsize_down=50
 				;;
 			adsl)
 				packetsize_up=1
-				packetsize_down=25
+				packetsize_down=10
 				;;
 			*)
 				packetsize_up=1
-				packetsize_down=25
+				packetsize_down=10
 		esac
 	fi
 }
