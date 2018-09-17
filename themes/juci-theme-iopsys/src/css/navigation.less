@@ -1,0 +1,130 @@
+@import "./colors.less";
+
+ul.left-menu {
+	list-style-type: none;
+	padding: 10px;
+	margin: 0 20px 0 -10px;
+	li {
+		padding: 0;
+		margin: 0;
+		background: none repeat scroll 0 0 transparent;
+		border: 0 none;
+		font-family: Arial,sans-serif;
+		font-size: 16px;
+		outline: 0 none;
+		vertical-align: middle;
+		a.open {
+			color: @theme-heading-color;
+			border-color: @theme-border-color;
+			font-weight: bold;
+		}
+	}
+	a {
+		margin: 0;
+		display: block;
+		border-bottom: 1px solid @theme-border-color;
+		height: 50px;
+		line-height: 50px;
+		text-decoration: none;
+		font-size: 100%;
+		white-space: nowrap; 
+		&.collapsed {
+			border-bottom: none;
+		}
+		&:hover, &:visited, &:active {
+			text-decoration: none;
+			cursor: pointer;
+			color: @theme-navigation-text-color;
+		}
+	}
+}
+
+ul.left-sub-menu {
+	list-style-type: none;
+	padding: 0;
+	margin: -10px 0 10px 20px;
+}
+
+.navbar-brand {
+	padding: 0;
+}
+
+.top-navbar {
+	background-color: @theme-navigation-background;
+	z-index: 10;
+	width: 100%;
+	top: 0;
+	border-bottom: 1px solid @theme-border-color;
+	box-shadow: 0px 1px 3px @theme-shadow-color;
+	.container {
+		min-height: 70px;
+		.logout {
+			margin-top: 35px;
+			margin-left: 10px;
+		}
+		.mode-picker {
+			margin-top: 35px;
+		}
+		.log-button {
+			margin-top: 20px;
+			margin-left: 10px;
+			.dropdown-menu {
+				width: 300px;
+				max-height: 400px;
+				overflow-y: scroll;
+				.log-entry {
+					font-size: 10px;
+					padding: 2px;
+					background-color: #eee;
+					margin-bottom: 2px;
+				}
+			}
+		}
+		.navbar-wiki {
+			i {
+				color: @theme-navigation-color;
+				margin-top: 40px;
+				margin-right: 20px;
+			}
+			@media screen and (max-width: 767px) {
+				display: none;
+			}
+		}
+		.nav.navbar-nav {
+			float: right;
+			margin-top: 40px;
+			& > li {
+				font-family: helvetica;
+				font-size: 0.9em;
+				letter-spacing: 1px;
+				text-transform: uppercase;
+				& > a {
+					padding-bottom: 8px;
+					padding-top: 8px;
+					color: @theme-navigation-color;
+				}
+			}
+			.open {
+				& > a, & > a:hover {
+					border-top: 2px solid @theme-navigation-active-overline;
+					background-color: @theme-navigation-active-background;
+					color: @theme-navigation-active-color;
+					@media screen and (max-width: 767px) {
+						background-color: @theme-navigation-active-background-mobile;
+					}
+				}
+			}
+		}
+		.navbar-toggle {
+			background-color: @theme-navigation-toggle-background;
+		}
+		//hide border on small screens
+		& .navbar-collapse, & .navbar-form {
+			@media screen and (max-width: 968px) {
+				float: left;
+				border-color: transparent;
+				margin-bottom: 30px;
+			}
+		}
+	}
+}
