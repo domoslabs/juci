@@ -32,12 +32,12 @@
 			<juci-mode-picker></juci-mode-picker>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
+			<juci-wiki class="navbar-wiki"><i class="juci juci-question juci-2x pull-right"></i></juci-wiki>
 			<ul class="nav navbar-nav">
 				<li class="dropdown" ng-class="isActive(item.path)?'open':''" ng-repeat="item in tree.children track by $index" ng-hide="item.hidden">
 					<a href="{{getHref(item)}}" ng-show="itemVisible(item)" target="{{getHref(item).substring(0,2) === '#!' ? '_self':'_blank'}}" role="button" >{{item.text | translate}} </a>
 				</li>
 			</ul>
-			<juci-wiki class="navbar-wiki"><i class="juci juci-question juci-2x pull-right"></i></juci-wiki>
 		</div>
 	</div>
 </div>
