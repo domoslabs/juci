@@ -180,3 +180,33 @@ Example) the script css-to-js, change first line to:
 #!/usr/local/bin/node
 
 ```
+
+## grep
+If you run into any problems with grep in the build scripts this is most likely due OS X version is based on FreeBSD. The solution is to use brew version of grep i.e. ggrep.
+
+Example) the script extract-strings has the following row:
+
+``` bash
+for file in "$@"; do
+	# extract all angular filter translations
+	grep -RPoin "{{[[:space:]]*'.+?'[[:space:]]*\|[[:space:]]*translate[[:space:]]*}}" 
+
+	....
+done
+
+```
+
+change grep to ggrep like this:
+
+
+```
+for file in "$@"; do
+	# extract all angular filter translations
+	ggrep -RPoin "{{[[:space:]]*'.+?'[[:space:]]*\|[[:space:]]*translate[[:space:]]*}}" 
+
+	....
+done
+
+```
+
+And it will work as intended.
