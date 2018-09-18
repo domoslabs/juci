@@ -126,3 +126,57 @@ which makes then available on ubus.
 
 ubus-scriptd supports both batch scripts and services. Most of juci backend
 tasks are usually batch scripts that become ubus objects.
+
+OS X Development
+------------
+JUCI can compile in a OS X environment but some utilities needs to be installed.
+
+Install gettext on Mac OSX
+
+
+```
+brew install gettext
+
+```
+
+Installs the libraries and the utilities:
+
+autopoint envsubst gettext gettext.sh gettextize msgattrib msgcat msgcmp msgcomm msgconv msgen msgexec msgfilter msgfmt msggrep msginit msgmerge msgunfmt msguniq ngettext recode-sr-latin xgettext
+
+But doesn’t add to your path! You need to modify the env. variable $PATH:
+
+```
+vi ~/.bash_profile
+```
+
+And add to the end or modify previous declarations (do not forget to reopen your terminal):
+
+```
+export PATH=${PATH}:/usr/local/opt/gettext/bin
+```
+
+Install YUI compressor on Mac OSX
+
+```
+brew install yui-compressor
+```
+
+With npm install:
+
+```
+npm install less --global
+```
+
+```
+npm install uglify-js --global
+```
+
+In the script folder there are several scripts written in JavaScript. They point to NodeJS Linux path, change these to your OS X path.
+css-to-js, juci-build-tpl-cache and po2js.
+
+Example) the script css-to-js, change first line to:
+
+```
+#!/usr/local/bin/node
+
+```
