@@ -11,7 +11,7 @@
 		</div>
 		<div class="form-group">
 			<label for="inputPassword" class="sr-only" translate>Password</label>
-			<input ng-change="errors = []" ng-model="form.password" type="password" id="inputPassword" class="form-control" placeholder="{{'Password'|translate}}" required autofocus>
+			<input autocomplete="{{form.autocompleteText}}" ng-change="errors = []" ng-model="form.password" type="password" id="inputPassword" class="form-control" placeholder="{{'Password'|translate}}"  required autofocus>
 		</div>
 		<div class="form-group">
 			<button ng-disabled="logging_in" ng-click="doLogin()" class="btn btn-lg btn-primary btn-block" type="submit">

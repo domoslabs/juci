@@ -6,7 +6,7 @@
 
 case "$1" in
 	list)
-		echo '{ "username" : {}, "firmware": {} }'
+		echo '{ "username" : {}, "firmware": {}, "autocomplete": {} }'
 	;;
 	call)
 		case "$2" in
@@ -23,6 +23,11 @@ case "$1" in
 				json_init
 				json_add_string firmware "$firmware"
 				json_dump
+			;;
+			autocomplete)
+				username="$(uci -q get juci.login.autocomplete)"
+				json_init
+				json_add_string autocomplete "$autocomplete"
+				json_dump
 		esac
 esac
-

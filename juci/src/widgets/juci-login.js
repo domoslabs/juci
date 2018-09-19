@@ -33,12 +33,30 @@ JUCI.app
 .controller("LoginControl", function($scope, $config, $state, $rpc, $localStorage, $tr, gettext){
 	$scope.form = {
 		"username": "",
-		"password": ""
+		"password": "",
+		"autocomplete":"",
+		"autocompleteText":"on"
 	};
 	$rpc.$call("juci.unauthenticated", "username").done(function(data){
 		$scope.form.username = data.username;
 		$scope.$apply();
 	}).fail(function(e){ console.log(e); });
+
+	$rpc.$call("juci.unauthenticated", "autocomplete").done(function(data){
+		$scope.form.autocomplete = data.autocomplete;
+		$scope.$apply();
+	
+		let autocomplete = Number(data.autocomplete);
+
+		if (isNaN(autocomplete) == false) {
+			if(autocomplete ==  0)
+				$scope.form.autocompleteText = "off";
+				$scope.$apply();
+		}
+
+	}).fail(function(e){ console.log(e); });
+
+
 
 	$scope.errors = [];
 
@@ -47,7 +65,8 @@ JUCI.app
 		$scope.logging_in = true;
 		$rpc.$login({
 			"username": $scope.form.username,
-			"password": $scope.form.password
+			"password": $scope.form.password,
+			"autocomplete": $scope.form.autocomplete
 		}).done(function success(res){
 			window.location.href="/";
 		}).fail(function fail(res){
