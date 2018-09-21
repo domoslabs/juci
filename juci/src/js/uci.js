@@ -71,6 +71,90 @@
 			return null;
 		}
 	}
+	function FirewallProtocolValidator(separator){
+		let protoMap = new Map();
+
+			protoMap.set('ip', 0);
+			protoMap.set('icmp', 1);
+			protoMap.set('igmp', 2);
+			protoMap.set('ggp', 3);
+			protoMap.set('ipencap', 4);
+			protoMap.set('st', 5);
+			protoMap.set('tcp', 6);
+			protoMap.set('egp', 8);
+			protoMap.set('igp', 9);
+			protoMap.set('pup', 12);
+			protoMap.set('udp', 17);
+			protoMap.set('hmp', 20);
+			protoMap.set('xns-idp', 22);
+			protoMap.set('rdp', 27);
+			protoMap.set('iso-tp4', 29);
+			protoMap.set('dccp', 33);
+			protoMap.set('xtp', 36);
+			protoMap.set('ddp', 37);
+			protoMap.set('idpr-cmtp', 38);
+			protoMap.set('ipv6', 41);
+			protoMap.set('ipv6-route', 43);
+			protoMap.set('ipv6-frag', 44);
+			protoMap.set('idrp', 45);
+			protoMap.set('rsvp', 46);
+			protoMap.set('gre', 47);
+			protoMap.set('esp', 50);
+			protoMap.set('ah', 51);
+			protoMap.set('skip', 57);
+			protoMap.set('ipv6-icmp', 58);
+			protoMap.set('ipv6-nonxt', 59);
+			protoMap.set('ipv6-opts', 60);
+			protoMap.set('rspf', 73);
+			protoMap.set('vmtp', 81);
+			protoMap.set('eigrp', 88);
+			protoMap.set('ospf', 89);
+			protoMap.set('ax.25', 93);
+			protoMap.set('ipip', 94);
+			protoMap.set('etherip', 97);
+			protoMap.set('encap', 98);
+			protoMap.set('pim', 103);
+			protoMap.set('ipcomp', 108);
+			protoMap.set('vrrp', 112);
+			protoMap.set('l2tp', 115);
+			protoMap.set('isis', 124);
+			protoMap.set('sctp', 132);
+			protoMap.set('fc', 133);
+
+		if(!separator){ var separator = ":"; }
+		return function(){
+			this.validate = function(field){
+
+				let value = field.value;
+
+				let validationResult  = -1;
+
+				var isNumber = /^\d+$/.test(value);
+
+				if(isNumber){
+					let number = parseInt(value);
+					console.log("int:" +number);
+					if( number >= 0 && number < 255)
+						validationResult = number 
+				}
+				else{
+					let protocolName = value.toLocaleLowerCase();
+					if(protocolName.localeCompare("tcpudp") == 0){
+						return null;
+					}
+					if (protoMap.has(protocolName)) 
+						validationResult = protoMap.get(protocolName);
+				}
+				if (validationResult > -1) {
+					return null;
+				} 
+				else{
+					return JUCI.$tr(gettext("Not valid protocol: " +value));
+			  	}
+			};
+		};
+	}
+
 
 	function PortOrRangeValidator(separator){
 		if(!separator){ var separator = ":"; }
@@ -1309,6 +1393,7 @@
 		WEPKeyValidator: WEPKeyValidator,
 		WeekDayListValidator: WeekDayListValidator,
 		TimespanValidator: TimespanValidator,
+		FirewallProtocolValidator: FirewallProtocolValidator,
 		PortValidator: PortValidator,
 		PortOrRangeValidator: PortOrRangeValidator,
 		PortsOrRangeValidator: PortsOrRangeValidator,

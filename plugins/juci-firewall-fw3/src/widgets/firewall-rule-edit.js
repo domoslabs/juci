@@ -52,6 +52,8 @@ JUCI.app
 		{ label: $tr(gettext("DROP")), value: "DROP" }
 	];
 
+	$scope.protocolCheckBox = 'TRUE';
+
 	$firewall.getZones().done(function(zones){
 		$scope.allZones = [];
 		$scope.allZones.push({ label: $tr(gettext("Device")), value: "" });

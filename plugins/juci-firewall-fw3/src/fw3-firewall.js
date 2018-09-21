@@ -280,7 +280,7 @@ UCI.firewall.$registerSectionType("rule", {
 	"dest_ip":			{ dvalue: [], type: Array }, // needs to be extended type of ip address/mask
 	"dest_mac":			{ dvalue: [], type: Array, validator: UCI.validators.MACListValidator },
 	"dest_port":		{ dvalue: "", type: String, validator: UCI.validators.PortsOrRangeValidator() }, // can be a range
-	"proto":			{ dvalue: "all", type: String },
+	"proto":			{ dvalue: "all", type: String, validator: UCI.validators.FirewallProtocolValidator() },
 	"target":			{ dvalue: "REJECT", type: String },
 	"family": 			{ dvalue: "any", type: String },
 	"icmp_type": 		{ dvalue: [], type: Array },
