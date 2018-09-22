@@ -31,7 +31,7 @@ You can now try JUCI on openwrt.
 Here is how to install it:
 
 - Add juci feed to your feeds.conf.default
-src-git-full juci git@public.inteno.se:juci.git
+src-git-full juci https://dev.iopsys.eu/iopsys/juci.git
 
 - Update and install the feed (with -f to force overrides)
 ./scripts/feeds update juci
@@ -43,43 +43,38 @@ src-git-full juci git@public.inteno.se:juci.git
 
 For example, you could append this to your .config and then do make defconfig:
 
-	CONFIG_PACKAGE_juci-ubus-core=y
-	# CONFIG_PACKAGE_juci-asterisk is not set
-	# CONFIG_PACKAGE_juci-broadcom-dsl is not set
-	# CONFIG_PACKAGE_juci-broadcom-ethernet is not set
-	# CONFIG_PACKAGE_juci-broadcom-vlan is not set
-	# CONFIG_PACKAGE_juci-broadcom-wl is not set
+	CONFIG_PACKAGE_juci=y
+	CONFIG_PACKAGE_juci-config-backup=y
 	CONFIG_PACKAGE_juci-ddns=y
 	CONFIG_PACKAGE_juci-diagnostics=y
 	CONFIG_PACKAGE_juci-dnsmasq-dhcp=y
 	CONFIG_PACKAGE_juci-dropbear=y
-	CONFIG_PACKAGE_juci-ethernet=y
 	CONFIG_PACKAGE_juci-event=y
 	CONFIG_PACKAGE_juci-firewall-fw3=y
-	# CONFIG_PACKAGE_juci-freecwmp is not set
-	# CONFIG_PACKAGE_juci-igmpinfo is not set
-	# CONFIG_PACKAGE_juci-inteno-multiwan is not set
-	# CONFIG_PACKAGE_juci-inteno-router is not set
-	# CONFIG_PACKAGE_juci-jquery-console=y
-	# CONFIG_PACKAGE_juci-macdb is not set
+	CONFIG_PACKAGE_juci-icwmp=y
+	CONFIG_PACKAGE_juci-igmpinfo=y
 	CONFIG_PACKAGE_juci-minidlna=y
 	CONFIG_PACKAGE_juci-mod-status=y
 	CONFIG_PACKAGE_juci-mod-system=y
-	# CONFIG_PACKAGE_juci-natalie-dect is not set
-	# CONFIG_PACKAGE_juci-netmode is not set
+	CONFIG_PACKAGE_juci-mwan3=y
+	CONFIG_PACKAGE_juci-network-device=y
+	CONFIG_PACKAGE_juci-network-dsl=y
 	CONFIG_PACKAGE_juci-network-netifd=y
-	CONFIG_PACKAGE_juci-openwrt-wireless=y
-	# CONFIG_PACKAGE_juci-router-openwrt is not set
+	CONFIG_PACKAGE_juci-network-port=y
+	CONFIG_PACKAGE_juci-openvpn=y
+	CONFIG_PACKAGE_juci-owsd=y
+	CONFIG_PACKAGE_juci-printer=y
+	CONFIG_PACKAGE_juci-qos=y
+	CONFIG_PACKAGE_juci-realtime-graphs=y
 	CONFIG_PACKAGE_juci-samba=y
-	CONFIG_PACKAGE_juci-simple-gui=y
-	CONFIG_PACKAGE_juci-snmp=y
+	CONFIG_PACKAGE_juci-sfp=y
+	CONFIG_PACKAGE_juci-snmpd=y
 	CONFIG_PACKAGE_juci-sysupgrade=y
-	CONFIG_PACKAGE_juci-uhttpd=y
 	CONFIG_PACKAGE_juci-upnp=y
 	CONFIG_PACKAGE_juci-usb=y
-	# CONFIG_PACKAGE_juci-utils is not set
-	CONFIG_PACKAGE_juci-theme-inteno=y
-	CONFIG_PACKAGE_juci=y
+	CONFIG_PACKAGE_juci-voice-client=y
+	CONFIG_PACKAGE_juci-wireless=y
+	CONFIG_PACKAGE_juci-theme-iopsys=y
 
 - BUILD!
 
