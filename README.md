@@ -128,7 +128,6 @@ JUCI can compile in a OS X environment but some utilities needs to be installed.
 
 Install gettext on Mac OSX
 
-
 ```
 brew install gettext
 
