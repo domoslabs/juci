@@ -65,6 +65,9 @@ UCI.buttons.$registerSectionType("button", {
 });
 
 UCI.$registerConfig("passwords");
+UCI.passwords.$registerSectionType("setup", {
+	"enforced_strength_level":	{ dvalue: 0, type: Number}
+});
 UCI.passwords.$registerSectionType("usertype", {
 	"reset":	{ dvalue: 0, type: Number}
 });

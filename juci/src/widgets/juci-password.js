@@ -29,13 +29,26 @@ factory("$password", function($modal){
 		}
 	};
 })
-.controller("juciPasswordChangeCtrl", function($scope, $modalInstance, closable, $rpc, gettext, $tr, user){
+.controller("juciPasswordChangeCtrl", function($scope, $uci, $modalInstance, closable, $rpc, gettext, $tr, user){
 	$scope.closable = closable;
 	$scope.errors = [];
 	$scope.new_pass = "";
 	$scope.cur_pass = "";
 	$scope.rep_pass = "";
 	$scope.showPassword = false;
+	$scope.enforce_password_strength_level = 0;
+
+
+
+	$uci.$sync([ "passwords"]).done(function(){
+		
+		$scope.enforce_password_strength_level = $uci.passwords["@setup"][0].enforced_strength_level.value;
+ 
+		if (isNaN($scope.enforce_password_strength_level) == false) {
+			$scope.$apply();
+		}
+	}).fail(function(e){ console.log(e); });
+	
 	$scope.on_close = function(){
 		$modalInstance.close();
 	}
@@ -51,16 +64,21 @@ factory("$password", function($modal){
 			$scope.errors.push($tr(gettext("New password can not be same as Current password")));
 		if($scope.errors.length !== 0)
 			return;
-		$rpc.$call("router.system", "password_set", {
-			user: user,
-			password: $scope.new_pass,
-			curpass: $scope.cur_pass
-		}).done(function(data){
-			$modalInstance.close();
-		}).fail(function(data){
-			$scope.errors.push($tr(gettext("Was unable to set password. Please make sure you have entered correct current password!")));
-			$scope.$apply();
-		});
+	
+		if($scope.passwordStrength >= $scope.enforce_password_strength_level)
+		{		
+			$rpc.$call("router.system", "password_set", {
+				user: user,
+				password: $scope.new_pass,
+				curpass: $scope.cur_pass
+			}).done(function(data){
+				$modalInstance.close();
+			}).fail(function(data){
+				$scope.errors.push($tr(gettext("Was unable to set password. Please make sure you have entered correct current password!")));
+				$scope.$apply();
+			});
+		}
+		else { $scope.errors.push($tr(gettext("New password is not strong enough according to policy."))); }
 	}
 
 	function measureStrength(p) {
