@@ -14,7 +14,7 @@ JUCI.app
 		test_type: "up_down",
 		result: [],
 		state: "",
-		auto: true
+		auto: false
 	};
 
 	function refresh(){
