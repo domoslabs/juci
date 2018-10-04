@@ -19,12 +19,12 @@
  */
 
 JUCI.app
-.controller("wirelessWPSPage", function($scope, $config, $wireless, $rpc, gettext, $tr, $events){
+.controller("wirelessWPSPage", function($scope, $localStorage, $wireless, $rpc, gettext, $tr, $events){
 	$scope.has_setpin = $rpc.$has("router.wps", "setpin");
 	$scope.has_showpin = $rpc.$has("router.wps", "showpin");
 	$scope.has_pbc = $rpc.$has("router.wps", "pbc");
 	$scope.has_stapin = $rpc.$has("router.wps", "stapin");
-	$scope.showExpert = $config.get("local.mode") == "expert";
+	$scope.showExpert = $localStorage.getItem("mode") == "expert";
 	var wps_status_strings = {
 		"-1": $tr(gettext("Disabled")),
 		0: $tr(gettext("Initializing")),

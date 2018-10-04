@@ -34,8 +34,8 @@ JUCI.app.run(function($uci){
 		}
 	});
 })
-.controller("StatusSystemPage", function ($scope, $rootScope, $uci, $rpc, gettext, $tr, $config, $network) {
-	$scope.showExpert = $config.get("local.mode") == "expert";
+.controller("StatusSystemPage", function ($scope, $rootScope, $uci, $rpc, gettext, $tr, $config, $network, $localStorage) {
+	$scope.showExpert = $localStorage.getItem("mode") == "expert";
 
 	$scope.systemStatusTbl = {
 		rows: [["", ""]]
