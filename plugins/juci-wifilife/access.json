@@ -3,7 +3,18 @@
 		"description": "JUCI wireless plugin",
 		"read": {
 			"uci": [
-				"wifilife"
+				"wifilife",
+				"wireless",
+				"test",
+				"topologyd"
+			]
+		},
+		"write": {
+			"uci": [
+				"wifilife",
+				"wireless",
+				"test",
+				"topologyd"
 			]
 		}
 	}

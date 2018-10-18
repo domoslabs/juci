@@ -19,10 +19,43 @@
 		}
 	});
 });*/
-JUCI.app.controller("wifilife", function ($scope, $rpc, $uci) {
+JUCI.app.
+/*directive('enableWifilife', function () {
+	return {
+		restrict: 'E',
+		replace: true,
+		templateUrl: "/widgets/enable-wifilife.html",
+		controller: "enableWifilife"
+	};
+}).*/
+controller("wifilife", function ($scope, $rpc, $uci, $wifilife) {
+
+
 	/*$rpc.juci.system.info().done(function (info) {
 		$scope.text = JSON.stringify(info);
 		$scope.$apply();
 	});*/
+	$wifilife.getLifeStatus().done(function (status) {
+//		obj.enabled = status;
+		console.log(status);
+	})
+	$wifilife.getSteerParams().done(function (params) {
+		console.log(params);
+	})
+
+	$scope.activateWifilife = function () {
+		$uci.$sync("wifilife").done(function () {
+			//$uci.wifilife["@wifilife"].enabled = $scope.obj.enabled;
+			console.log("481");
+		});
+
+	}
+
+	$uci.$sync("wifilife").done(function () {
+		$scope.wifilife = $uci.wifilife["@wifilife"][0];
+		//$scope.$wifilife
+		console.log("481");
+	});
+
 	console.log("27");
 });

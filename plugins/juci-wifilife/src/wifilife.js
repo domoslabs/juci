@@ -1,18 +1,50 @@
-JUCI.app.factory("$wifilife", function($uci, $rpc, $tr){
+UCI.$registerConfig("wifilife");
 
+UCI.wifilife.$registerSectionType("wifilife", {
+	"enabled": { dvalue: true, type: Boolean },
+	"ifname": { dvalue: "wl0", type: String }
+});
+
+UCI.wifilife.$registerSectionType("steer", {
+	"enabled": { dvalue: true, type: Boolean },
+	"ifname": { dvalue: "wl0", type: String },
+	"param": { dvalue: "rssi", type: String }
+});
+
+UCI.wifilife.$registerSectionType("assoc_control", {
+	"ifname": { dvalue: "wl0", type: String }
+});
+
+UCI.wifilife.$registerSectionType("steer-param", {
+	"priority": { dvalue: -65, type: Number },
+	"threshold": { dvalue: 80, type: Number }
+});
+
+JUCI.app.factory("$wifilife", function($uci, $rpc, $tr){
 	return {
 
-		getThreshold: function() {
+		getLifeStatus: function () {
 			var def = $.Deferred();
 
-			def.resolve("resolved!");
-			/*$uci.$sync("wifilife").done(function() {
-				console.log("9", $uci.wifilife);
-				$uci.wifilife["@steer"].foreach(function(dev) {
-					console.log("53 ", dev);
-					def.resolve("resolved!");
-				})
-			})*/
+			$uci.$sync("wifilife").done(function() {
+				def.resolve(!!$uci.wifilife["@wifilife"][0].enabled.ovalue);
+			})
+
+			return def.promise();
+		},
+
+		getSteerParams: function() {
+			var def = $.Deferred();
+
+			$uci.$sync("wifilife").done(function() {
+				var rv = {}
+
+				$uci.wifilife["@steer-param"].forEach(function (section) {
+					rv[section[".name"]] = { "priority": section.priority.ovalue, "threshold": section.threshold.ovalue}
+				});
+
+				def.resolve(rv);
+			})
 
 			return def.promise();
 		}
