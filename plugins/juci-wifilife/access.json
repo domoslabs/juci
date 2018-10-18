@@ -1,0 +1,10 @@
+{
+	"juci-wifilife": {
+		"description": "JUCI wireless plugin",
+		"read": {
+			"uci": [
+				"wifilife"
+			]
+		}
+	}
+}
