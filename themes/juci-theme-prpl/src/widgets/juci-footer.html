@@ -1,0 +1,34 @@
+<juci-config-apply-pane></juci-config-apply-pane>
+<div class="juci-footer">
+	<div class="container footer">
+		<div class="row">
+			<div class="col-sm-6 col-xs-12 form-group">
+				<span ng-repeat="lang in languages">
+					<a ng-class="{ 'underline': isActiveLanguage(lang)}" href="" ng-click="setLanguage(lang)"><img ng-src="/img/lang/{{lang.short_code}}.gif"/>{{lang.title|translate}}</a>{{$last ? '' : ' | '}}
+				</span>
+			</div>
+			<div class="col-sm-6 col-xs-12 form-group footer-right" >
+				<div class="row">{{firmware}}</div>
+				<juci-mode-picker class="row visible-xs visible-sm"></juci-mode-picker>
+				</span>
+				<div class="row" ng-show="i['ipv4-address'].length == 0 && i['ipv6-address'].length == 0" translate>No WAN IP</div>
+			</div>
+		</div>
+		<div class="row">
+			<juci-wiki class="col-sm-6 col-xs-12">{{'Help Wiki'|translate}}</juci-wiki>
+		</div>
+		<div class="footer-right">
+			<button class="btn btn-default btn-sm" ng-click="onLogout()" translate>Logout</button>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="company-logo">
+					<a href="https://prplfoundation.org"><img /></a>
+					<p>© 2018 iopsys software solutions AB.</p>
+					<p></p>
+				</div>
+				<!--<juci-theme-picker></juci-theme-picker>-->
+			</div>
+		</div>
+	</div>
+</div>
