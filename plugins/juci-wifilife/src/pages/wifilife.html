@@ -1,33 +1,29 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="wifilife">
-		<juci-config-heading>{{ 'Wifilife AP Steering' }}</juci-config-heading>
 		<juci-config-lines>
 			<div>
-				<juci-config-lines>
-					<juci-config-line title="{{ 'Enable wifilife' | translate }}" help="{{'Placeholder text.'|translate}}">
-						<div class="row">
-							<switch ng-model="wifilife.enabled.value" class="green" />
+				<h2 translate>Wifilife</h2>
+				<juci-config-section>
+					<juci-config-lines>
+						<juci-config-line title="{{ 'Enable Wifilife' | translate }}" help="{{'Placeholder text.'|translate}}">
+							<div class="row">
+								<switch ng-model="wifilife.enabled.value" class="green" />
+							</div>
+						</juci-config-line>
+						<div ng-show="wifilife.enabled.value">
+							<juci-config-line title="{{ 'Wifilife Interface' | translate }}">
+								<input type="text" class="form-control" ng-model="wifilife.ifname.value" value="{{wifilife.ifname.value}}" />
+							</juci-config-line>
 						</div>
-					</juci-config-line>
+					</juci-config-lines>
+				</juci-config-section>
+				<juci-config-line title="{{ 'Steering On/Off' | translate}}">
+					<switch class="green" ng-model="steer.enabled.value" />
+				</juci-config-line>
+				<juci-config-section ng-show="wifilife.enabled.value && steer.enabled.value">
+					<juci-list-editor ng-items="params" item-editor="uci-option-edit" show-icon="true" get-item-title="$item['.name'].toUpperCase()" hide-buttons="true"></juci-list-editor>
+				</juci-config-section>
 			</div>
 		</juci-config-lines>
 	</div>
 </juci-layout-with-sidebar>
-
-<!---<juci-layout-with-sidebar>
-	<div ng-controller="wifilife">
-		<juci-config-heading>{{ 'Wifilife AP Steering' }}</juci-config-heading>
-		<juci-config-line title="{{'Enable'|translate}}">
-			<switch class="green" ng-model="wifilife.enabled.value"/>
-		</juci-config-line>
-		<juci-config-line title="{{'RSSI Threshold'|translate}}" ng-show="apsteering.enabled.value || apsteering.rssi_threshold.error" error="apsteering.rssi_threshold.error">
-			<input type="number" class="form-control" ng-model="apsteering.rssi_threshold.value" placeholder="{{apsteering.rssi_threshold.schema.dvalue}}">
-		</juci-config-line>
-		<juci-config-line title="{{'Reassoc Timer'|translate}}" ng-show="apsteering.enabled.value || apsteering.reassoc_timer.error" error="apsteering.reassoc_timer.error">
-			<input type="number" class="form-control" ng-model="apsteering.reassoc_timer.value" placeholder="{{apsteering.reassoc_timer.schema.dvalue}}">
-		</juci-config-line>
-		<juci-config-line title="{{'Retry Interval'|translate}}" ng-show="apsteering.enabled.value || apsteering.retry_interval.error" error="apsteering.retry_interval.error">
-			<input type="number" class="form-control" ng-model="apsteering.retry_interval.value" placeholder="{{apsteering.retry_interval.schema.dvalue}}">
-		</juci-config-line>
-	</div>
-</juci-layout-with-sidebar>-->
