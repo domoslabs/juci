@@ -23,6 +23,12 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife) {
 
 	$uci.$sync("wifilife").done(function () {
 		$scope.wifilife = $uci.wifilife["@wifilife"][0];
+		console.log("27", $scope.wifilife)
+		$scope.wiLiInterfaces = $scope.wifilife.ifname.value.map(function(ifname) {
+			return { label: ifname, value: ifname}
+		});
+		console.log($scope.wiLiInterfaces);
+		$scope.$apply();
 		$scope.steer = $uci.wifilife["@steer"][0];
 
 		$scope.params = [];

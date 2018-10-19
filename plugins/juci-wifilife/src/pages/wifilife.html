@@ -10,15 +10,13 @@
 								<switch ng-model="wifilife.enabled.value" class="green" />
 							</div>
 						</juci-config-line>
-						<div ng-show="wifilife.enabled.value">
-							<juci-config-line title="{{ 'Wifilife Interface' | translate }}">
-								<input type="text" class="form-control" ng-model="wifilife.ifname.value" value="{{wifilife.ifname.value}}" />
-							</juci-config-line>
-						</div>
 					</juci-config-lines>
 				</juci-config-section>
 				<juci-config-line title="{{ 'Steering On/Off' | translate}}">
 					<switch class="green" ng-model="steer.enabled.value" />
+				</juci-config-line>
+				<juci-config-line title="{{ 'Steering Interface' | translate}}" ng-show="wifilife.enabled.value">
+					<juci-select ng-model="steer.ifname.value" ng-items="wiLiInterfaces"></juci-select>
 				</juci-config-line>
 				<juci-config-section ng-show="wifilife.enabled.value && steer.enabled.value">
 					<juci-list-editor ng-items="params" item-editor="uci-option-edit" show-icon="true" get-item-title="$item['.name'].toUpperCase()" hide-buttons="true"></juci-list-editor>
