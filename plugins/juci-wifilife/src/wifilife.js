@@ -8,6 +8,7 @@ UCI.wifilife.$registerSectionType("wifilife", {
 UCI.wifilife.$registerSectionType("steer", {
 	"enabled": { dvalue: true, type: Boolean },
 	"ifname": { dvalue: "wl0", type: String },
+	"exclude": { dvalue: [], type: Array },
 	"param": { dvalue: "rssi", type: String }
 });
 

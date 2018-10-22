@@ -1,27 +1,41 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="wifilife">
-		<juci-config-lines>
-			<div>
-				<h2 translate>Wifilife</h2>
-				<juci-config-section>
+		<!--<juci-config-lines>-->
+		<div>
+			<h2 translate>Wifilife</h2>
+			<juci-config-section>
+				<juci-config-lines>
+					<juci-config-line title="{{ 'Enable Wifilife' | translate }}" help="{{'Placeholder text.'|translate}}">
+						<div class="row">
+							<switch ng-model="wifilife.enabled.value" class="green" />
+						</div>
+					</juci-config-line>
+				</juci-config-lines>
+			</juci-config-section>
+			<juci-config-section ng-show="wifilife.enabled.value">
+				<juci-config-lines>
+					<juci-config-line title="{{ 'Steering On/Off' | translate}}">
+						<switch class="green" ng-model="steer.enabled.value" />
+					</juci-config-line>
+					<juci-config-line title="{{ 'Steering Interface' | translate}}" ng-show="wifilife.enabled.value">
+						<juci-select ng-model="steer.ifname.value" ng-items="wiLiInterfaces"></juci-select>
+					</juci-config-line>
+					<juci-config-section ng-show="steer.enabled.value">
+						<juci-list-editor ng-items="params" item-editor="uci-option-edit" show-icon="true" get-item-title="$item['.name'].toUpperCase()" hide-buttons="true"></juci-list-editor>
+					</juci-config-section>
 					<juci-config-lines>
-						<juci-config-line title="{{ 'Enable Wifilife' | translate }}" help="{{'Placeholder text.'|translate}}">
-							<div class="row">
-								<switch ng-model="wifilife.enabled.value" class="green" />
-							</div>
+						<juci-config-line title="{{'Excluding'|translate}}">
+							<juci-select ng-model="rssi_excl.exclude" ng-items="unexcluded"></juci-select><br />
+							<button class="btn btn-default pull-right" ng-click="onExclude()">{{'Exclude MAC'|translate}}</button>
+						</juci-config-line>
+						<juci-config-line>
+							<juci-select ng-model="rssi_excl.unexclude" ng-items="excluded"></juci-select><br />
+							<button class="btn btn-default pull-right" ng-click="onUnexclude()">{{'Unexclude MAC'|translate}}</button>
 						</juci-config-line>
 					</juci-config-lines>
-				</juci-config-section>
-				<juci-config-line title="{{ 'Steering On/Off' | translate}}">
-					<switch class="green" ng-model="steer.enabled.value" />
-				</juci-config-line>
-				<juci-config-line title="{{ 'Steering Interface' | translate}}" ng-show="wifilife.enabled.value">
-					<juci-select ng-model="steer.ifname.value" ng-items="wiLiInterfaces"></juci-select>
-				</juci-config-line>
-				<juci-config-section ng-show="wifilife.enabled.value && steer.enabled.value">
-					<juci-list-editor ng-items="params" item-editor="uci-option-edit" show-icon="true" get-item-title="$item['.name'].toUpperCase()" hide-buttons="true"></juci-list-editor>
-				</juci-config-section>
-			</div>
-		</juci-config-lines>
+				</juci-config-lines>
+			</juci-config-section>
+		</div>
+		<!--</juci-config-lines>-->
 	</div>
 </juci-layout-with-sidebar>
