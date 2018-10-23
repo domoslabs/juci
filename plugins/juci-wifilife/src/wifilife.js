@@ -13,7 +13,9 @@ UCI.wifilife.$registerSectionType("steer", {
 });
 
 UCI.wifilife.$registerSectionType("assoc_control", {
-	"ifname": { dvalue: "wl0", type: String }
+	"ifname": { dvalue: "wl0", type: String },
+	"stas": { dvalue: [], type: Array},
+	"duration": { dvalue: 0, type: Number, validator: UCI.validators.NumberLimitValidator(0, undefined) }
 });
 
 UCI.wifilife.$registerSectionType("steer-param", {
