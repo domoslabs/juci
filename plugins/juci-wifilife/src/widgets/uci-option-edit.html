@@ -14,8 +14,23 @@
 	<juci-config-line title="{{'Hysteresis'|translate}}" ng-show="param.hysteresis.value || param.hysteresis.error" error="param.hysteresis.error">
 		<input type="number" class="form-control" ng-model="param.hysteresis.value" value="{{param.hysteresis.value}}">
 	</juci-config-line>
-	<juci-config-line title="{{'SNR Difference'|translate}}" ng-show="param_snr_diff.value || param.snr_diff.error" error="param.snr_diff.error">
+	<juci-config-line title="{{'SNR Difference'|translate}}" ng-show="param.snr_diff.value || param.snr_diff.error" error="param.snr_diff.error">
 		<input type="number" class="form-control" ng-model="param.snr_diff.value" value="{{param.snr_diff.value}}">
+	</juci-config-line>
+	<juci-config-line title="{{'Manual Exclusion'|translate}}" ng-show="param.victims.value || param.victims.error">
+		<input type="text" class="form-control" ng-model="param.victimMan" placeholder="aa:bb:cc:11:22:33" /> <br />
+		<button class="btn btn-default pull-right" ng-click="addVictimMan(param.victimMan)">{{'Add Victim MAC'|translate}}</button>
+		<br ng-show="param.victimError" />
+		<br ng-show="param.victimError" />
+		<juci-error value="param.victimError" />
+	</juci-config-line>
+	<juci-config-line title="{{'Exclusion By List' | translate}}" ng-show="param.victims.value || param.victims.error" error="params.victims.error">
+		<juci-select ng-model="victim" ng-items="param.nonVictims"></juci-select><br />
+		<button class="btn btn-default pull-right" ng-click="addVictim(victim)">{{'Add Victim MAC'|translate}}</button>
+	</juci-config-line>
+	<juci-config-line>
+		<juci-select ng-model="unvictim" ng-items="param.victimsList" ng-show="param.victims.value || param.victims.error"></juci-select><br />
+		<button class="btn btn-default pull-right" ng-click="rmVictim(unvictim)" ng-show="param.victims.value || param.victims.error">{{'Remove Victim MAC'|translate}}</button>
 	</juci-config-line>
 </div>
 

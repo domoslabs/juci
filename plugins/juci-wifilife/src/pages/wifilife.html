@@ -12,41 +12,41 @@
 				</juci-config-lines>
 			</juci-config-section>
 			<juci-config-section ng-show="wifilife.enabled.value">
-				<juci-config-lines>
-					<juci-config-line title="{{ 'Steering On/Off' | translate}}">
-						<switch class="green" ng-model="steer.enabled.value" />
-					</juci-config-line>
+				<juci-config-line title="{{ 'Steering On/Off' | translate}}">
+					<switch class="green" ng-model="steer.enabled.value" />
+				</juci-config-line>
+				<juci-config-lines ng-show="steer.enabled.value">
 					<juci-config-line title="{{ 'Steering Interface' | translate}}">
 						<juci-select ng-model="steer.ifname.value" ng-items="wiLiInterfaces"></juci-select>
 					</juci-config-line>
 					<juci-list-editor ng-items="params" item-editor="uci-option-edit" show-icon="true" get-item-title="$item['.name'].toUpperCase()" hide-buttons="true"></juci-list-editor>
 					<juci-config-line title="{{'RSSI Steering Exclusion'|translate}}"></juci-config-line>
 					<juci-config-line title="{{'Manual Exclusion'|translate}}">
-						<input type="text" class="form-control" ng-model="rssi_excl.excludeMan" placeholder="aa:bb:cc:11:22:33" /> <br />
-						<button class="btn btn-default pull-right" ng-click="onExcludeMan(rssi_excl.excludeMan)">{{'Exclude MAC'|translate}}</button>
-						<br ng-show="rssi_excl.error"/>
-						<br ng-show="rssi_excl.error" />
-						<juci-error value="rssi_excl.error" />
+						<input type="text" class="form-control" ng-model="rssiExcl.excludeMan" placeholder="aa:bb:cc:11:22:33" /> <br />
+						<button class="btn btn-default pull-right" ng-click="onRssiExcludeMan(rssiExcl.excludeMan)">{{'Exclude MAC'|translate}}</button>
+						<br ng-show="rssiExcl.error"/>
+						<br ng-show="rssiExcl.error" />
+						<juci-error value="rssiExcl.error" />
 					</juci-config-line>
 					<juci-config-line title="{{'Exclusion By List' | translate}}">
 						<div class="checkbox checkbox-info" style="margin-left:0;">
 							<input type="checkbox" ng-model="showRpt" ng-click="toggleShowRpt()" />
 							<label><strong>{{'Include Rpt/Ext'|translate}}</strong></label>
 						</div>
-						<juci-select ng-model="rssi_excl.exclude" ng-items="rssi_excl.unexcluded"></juci-select><br />
-						<button class="btn btn-default pull-right" ng-click="onExclude(rssi_excl.exclude)">{{'Exclude MAC'|translate}}</button>
+						<juci-select ng-model="rssiExcl.exclude" ng-items="rssiExcl.unexcluded"></juci-select><br />
+						<button class="btn btn-default pull-right" ng-click="onRssiExclude(rssiExcl.exclude)">{{'Exclude MAC'|translate}}</button>
 					</juci-config-line>
 					<juci-config-line>
-						<juci-select ng-model="rssi_excl.unexclude" ng-items="rssi_excl.excluded"></juci-select><br />
-						<button class="btn btn-default pull-right" ng-click="onUnexclude()">{{'Unexclude MAC'|translate}}</button>
+						<juci-select ng-model="rssiExcl.unexclude" ng-items="rssiExcl.excluded"></juci-select><br />
+						<button class="btn btn-default pull-right" ng-click="onRssiUnexclude(rssiExcl.unexclude)">{{'Unexclude MAC'|translate}}</button>
 					</juci-config-line>
 				</juci-config-lines>
 			</juci-config-section>
 			<juci-config-section ng-show="wifilife.enabled.value">
-				<juci-config-lines>
-					<juci-config-line title="{{ 'Assoc Control On/Off' | translate}}">
-						<switch class="green" ng-model="assocCtrl.enabled.value" />
-					</juci-config-line>
+				<juci-config-line title="{{ 'Assoc Control On/Off' | translate}}">
+					<switch class="green" ng-model="assocCtrl.enabled.value" />
+				</juci-config-line>
+				<juci-config-lines ng-show="assocCtrl.enabled.value">
 					<juci-config-line title="{{ 'Assoc Control Interface' | translate}}">
 						<juci-select ng-model="assocCtrl.ifname.value" ng-items="wiLiInterfaces"></juci-select>
 					</juci-config-line>
@@ -55,23 +55,23 @@
 					</juci-config-line>
 					<juci-config-line title="{{'Assoc Control Exclusion'|translate}}"></juci-config-line>
 					<juci-config-line title="{{'Manual Exclusion'|translate}}">
-						<input type="text" class="form-control" ng-model="assoc_excl.excludeMan" placeholder="aa:bb:cc:11:22:33" /> <br />
-						<button class="btn btn-default pull-right" ng-click="onAssocExcludeMan(assoc_excl.excludeMan)">{{'Exclude MAC'|translate}}</button>
-						<br ng-show="assoc_excl.error" />
-						<br ng-show="assoc_excl.error" />
-						<juci-error value="assoc_excl.error" />
+						<input type="text" class="form-control" ng-model="assocExcl.excludeMan" placeholder="aa:bb:cc:11:22:33" /> <br />
+						<button class="btn btn-default pull-right" ng-click="onAssocExcludeMan(assocExcl.excludeMan)">{{'Exclude MAC'|translate}}</button>
+						<br ng-show="assocExcl.error" />
+						<br ng-show="assocExcl.error" />
+						<juci-error value="assocExcl.error" />
 					</juci-config-line>
 					<juci-config-line title="{{'Exclusion By List' | translate}}">
-						<div class="checkbox checkbox-info" style="margin-left:0;">
+						<div class="checkbox checkbox-info">
 							<input type="checkbox" ng-model="showRpt" ng-click="toggleShowRpt()" />
 							<label><strong>{{'Include Rpt/Ext'|translate}}</strong></label>
 						</div>
-						<juci-select ng-model="assoc_excl.exclude" ng-items="assoc_excl.unexcluded"></juci-select><br />
-						<button class="btn btn-default pull-right" ng-click="onAssocExclude(assoc_excl.exclude)">{{'Exclude MAC'|translate}}</button>
+						<juci-select ng-model="assocExcl.exclude" ng-items="assocExcl.unexcluded"></juci-select><br />
+						<button class="btn btn-default pull-right" ng-click="onAssocExclude(assocExcl.exclude)">{{'Exclude MAC'|translate}}</button>
 					</juci-config-line>
 					<juci-config-line>
-						<juci-select ng-model="assoc_excl.unexclude" ng-items="assoc_excl.excluded"></juci-select><br />
-						<button class="btn btn-default pull-right" ng-click="onAssocUnexclude(assoc_excl.unexclude)">{{'Unexclude MAC'|translate}}</button>
+						<juci-select ng-model="assocExcl.unexclude" ng-items="assocExcl.excluded"></juci-select><br />
+						<button class="btn btn-default pull-right" ng-click="onAssocUnexclude(assocExcl.unexclude)">{{'Unexclude MAC'|translate}}</button>
 					</juci-config-line>
 				</juci-config-lines>
 			</juci-config-section>

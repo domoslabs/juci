@@ -1,8 +1,9 @@
 JUCI.app.
-controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife) {
+controller("wifilife", function ($scope, $rpc, $tr, $uci) {
 
-	$scope.rssi_excl = {};
-	$scope.assoc_excl = {};
+	$scope.rssiExcl = {};
+	$scope.assocExcl = {};
+	$scope.victims = [];
 
 	function populateEntry (section) {
 		if (section.priority.value != null)
@@ -22,6 +23,25 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife) {
 
 		if (section.snr_diff.value != null)
 			section.$statusList.push({ label: $tr(gettext("SNR Difference")), value: section.snr_diff.value + " dB" })
+
+		if (section.victims.value != null) {
+			section.victims.value.forEach(victim =>	section.$statusList.push({ label: $tr(gettext("Victim")), value: victim}));
+			section.victimsList = section.victims.value.map(victim => ({ label: $tr(gettext(victim)), value: victim }));
+
+			$rpc.$call("wifix", "stas").done(function (vifs) {
+				let nonVictims = [];
+
+				for (vif in vifs) {
+					nonVictims = nonVictims.concat(
+						vifs[vif].filter(client =>
+							!section.victimsList.some(victim => client.macaddr.indexOf(victim.value) >= 0)
+						)
+					)
+				}
+
+				section.nonVictims = nonVictims.map(client => ({ label: client.macaddr, value: client.macaddr }));
+			});
+		}
 	}
 
 	$uci.$sync("wifilife").done(function () {
@@ -33,8 +53,8 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife) {
 		$scope.assocCtrl = $uci.wifilife["@assoc_control"][0];
 		$scope.params = [];
 
-		$scope.rssi_excl.excluded = $scope.steer.exclude.value.map(mac => ({ label: mac, value: mac }));
-		$scope.assoc_excl.excluded = $scope.assocCtrl.stas.value.map(mac => ({ label: mac, value: mac }));
+		$scope.rssiExcl.excluded = $scope.steer.exclude.value.map(mac => ({ label: mac, value: mac }));
+		$scope.assocExcl.excluded = $scope.assocCtrl.stas.value.map(mac => ({ label: mac, value: mac }));
 
 		$uci.wifilife["@steer-param"].forEach(section => {
 			section.$statusList = [];
@@ -62,90 +82,86 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife) {
 							client.macaddr.indexOf(mac) >= 0)
 					)
 				)
+
 			}
 
-			$scope.rssi_excl.unexcluded = rssiUnexcluded.map(client =>
-				({ label: client.macaddr, value: client.macaddr })
-			);
+			$scope.rssiExcl.unexcluded = rssiUnexcluded.map(client => ({ label: client.macaddr, value: client.macaddr }));
+			$scope.assocExcl.unexcluded = assocUnexcluded.map(client => ({ label: client.macaddr, value: client.macaddr }));
 
-			$scope.assoc_excl.unexcluded = assocUnexcluded.map(client =>
-				({ label: client.macaddr, value: client.macaddr })
-			);
-			console.log($scope.assoc_excl.unexcluded);
+			console.log($scope.rssiExcl.unexcluded);
+			console.log($scope.rssiExcl.excluded);
+			console.log($scope.assocExcl.unexcluded);
+			console.log($scope.assocExcl.excluded);
 		});
 	});
 
 	function validMac(mac) {
-		return mac.match(/([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}/) && mac.length <= 17;
+		return mac.length != null && mac.match(/([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}/) && mac.length <= 17;
 	}
 
-	$scope.onUnexclude = function() {
-		console.log($scope.rssi_excl.unexclude);
-		$scope.steer.exclude.value = $scope.steer.exclude.value.filter(mac => mac.indexOf($scope.rssi_excl.unexclude) < 0);
-		$scope.rssi_excl.excluded = $scope.rssi_excl.excluded.filter(pair => pair.value.indexOf($scope.rssi_excl.unexclude) < 0);
-		$scope.rssi_excl.unexcluded.push({ label: $scope.rssi_excl.unexclude, value: $scope.rssi_excl.unexclude })
+	$scope.onRssiUnexclude = function(mac) {
+		$scope.onUnexclude("steer", "exclude", "rssiExcl", mac);
 	};
 
-	$scope.onExcludeMan = function(mac) {
-		if (!mac || mac.length == 0) {
-			$scope.rssi_excl.error = $tr(gettext("Please enter a MAC"));
-			return;
-		}
-
-		if (!validMac(mac)) {
-			$scope.rssi_excl.error = $tr(gettext("Invalid MAC, please give in the format aa:bb:cc:dd:ee:ff"));
-			return;
-		}
-
-		if ($scope.steer.exclude.value.some(excluded => mac.indexOf(excluded) >= 0)) {
-			$scope.rssi_excl.error = $tr(gettext("The MAC is already excluded!"));
-			return;
-		}
-
-		$scope.rssi_excl.error = null;
-		$scope.onExclude(mac);
+	$scope.onRssiExcludeMan = function(mac) {
+		$scope.onExcludeMan("steer", "exclude", "rssiExcl", mac);
 	}
 
-	$scope.onExclude = function (mac) {
-		let excluded = $scope.steer.exclude.value.filter(validMac); // not sure why we gotta filter it into new array..
-		excluded.push(mac);
-		$scope.steer.exclude.value = excluded;
-		$scope.rssi_excl.excluded.push({ label: mac, value: mac })
-		$scope.unexcluded = $scope.rssi_excl.unexcluded.filter(pair => pair.value.indexOf(mac) < 0);
+	$scope.onRssiExclude = function (mac) {
+		$scope.onExclude("steer", "exclude", "rssiExcl", mac);
 	};
 
-	$scope.onAssocUnexclude = function () {
-		$scope.assocCtrl.stas.value = $scope.assocCtrl.stas.value.filter(mac => mac.indexOf($scope.assoc_excl.unexclude) < 0);
-		$scope.assoc_excl.excluded = $scope.assoc_excl.excluded.filter(pair => pair.value.indexOf($scope.assoc_excl.unexclude) < 0);
-		$scope.assoc_excl.unexcluded.push({ label: $scope.assoc_excl.unexclude, value: $scope.assoc_excl.unexclude })
+	$scope.onAssocUnexclude = function (mac) {
+		$scope.onUnexclude("assocCtrl", "stas", "assocExcl", mac);
 	};
 
 	$scope.onAssocExcludeMan = function (mac) {
+
+		$scope.onExcludeMan("assocCtrl", "stas", "assocExcl", mac);
+	}
+
+	$scope.onAssocExclude = function (mac) {
+		$scope.onExclude("assocCtrl", "stas", "assocExcl", mac);
+	};
+
+	$scope.onUnexclude = function (section, option, container, mac) {
+		if (mac == null)
+			return;
+
+		$scope[section][option].value = $scope[section][option].value.filter(exl_mac => exl_mac.indexOf(mac) < 0);
+		$scope[container].excluded = $scope[container].excluded.filter(pair => pair.value.indexOf(mac) < 0);
+		$scope[container].unexcluded.push({ label: mac, value: mac })
+	}
+
+	$scope.onExcludeMan = function (section, option, container, mac) {
 		if (!mac || mac.length == 0) {
-			$scope.assoc_excl.error = $tr(gettext("Please enter a MAC"));
+			$scope[container].error = $tr(gettext("Please enter a MAC"));
 			return;
 		}
 
 		if (!validMac(mac)) {
-			$scope.assoc_excl.error = $tr(gettext("Invalid MAC, please give in the format aa:bb:cc:dd:ee:ff"));
+			$scope[container].error = $tr(gettext("Invalid MAC"));
 			return;
 		}
 
-		if ($scope.assocCtrl.stas.value.some(excluded => mac.indexOf(excluded) >= 0)) {
-			$scope.assoc_excl.error = $tr(gettext("The MAC is already excluded!"));
+		if ($scope[section][option].value.some(excluded => mac.indexOf(excluded) >= 0)) {
+			$scope[container].error = $tr(gettext("The MAC is already excluded!"));
 			return;
 		}
 
-		$scope.assoc_excl.error = null;
-		$scope.onExclude(mac);
+		$scope[container].error = null;
+		$scope.onExclude(section, option, container, mac);
 	}
 
-	$scope.onAssocExclude = function (mac) {
-		let excluded = $scope.assocCtrl.stas.value.filter(validMac); // not sure why we gotta filter it into new array..
+	$scope.onExclude = function (section, option, container, mac) {
+		if (mac == null)
+			return;
+
+		let excluded = $scope[section][option].value.filter(validMac); // not sure why we gotta filter it into new array..
 		excluded.push(mac);
-		$scope.assocCtrl.stas.value = excluded;
-		$scope.assoc_excl.excluded.push({ label: mac, value: mac })
-		$scope.assoc_excl.unexcluded = $scope.assoc_excl.unexcluded.filter(pair => pair.value.indexOf(mac) < 0);
+		$scope[section][option].value = excluded;
+		$scope[container].excluded.push({ label: mac, value: mac })
+		$scope[container].unexcluded = $scope[container].unexcluded.filter(pair => pair.value.indexOf(mac) < 0);
 	};
 
 });
