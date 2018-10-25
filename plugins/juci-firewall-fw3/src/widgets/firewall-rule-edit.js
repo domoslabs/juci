@@ -33,6 +33,7 @@ JUCI.app
 	$scope.canHideFirewallRule = $rpc.$has_capability("can-hide-firewall-rules");
 
 	$scope.protocolChoices = [
+		{ label: $tr(gettext("Any")), value: "all" },
 		{ label: "UDP", value: "udp"},
 		{ label: "TCP", value: "tcp"},
 		{ label: "ICMP", value: "icmp"},
