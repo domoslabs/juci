@@ -11,13 +11,8 @@ JUCI.app
 	};
 })
 .controller("uciOptionEdit", function ($scope, $config, $rpc, $tr, gettext) {
-	console.log("hlelo from ctrl")
-
 	console.log("33", $scope)
 	$scope.rmVictim = function (victim) {
-		console.log($scope.param.victims.value);
-		console.log($scope.param.victimsList);
-		console.log($scope.param.nonVictims)
 		if (victim == null)
 			return;
 
@@ -30,9 +25,7 @@ JUCI.app
 		if (victim == null)
 			return;
 
-		let victims = $scope.param.victims.value.filter(validMac); // not sure why we gotta filter it into new array..
-		victims.push(victim);
-		$scope.param.victims.value = victims;
+		$scope.param.victims.value = $scope.param.victims.value.filter(validMac).push(victim);
 		$scope.param.victimsList.push({ label: victim, value: victim })
 		$scope.param.nonVictims = $scope.param.nonVictims.filter(pair => pair.value.indexOf(victim) < 0);
 	};
@@ -40,6 +33,7 @@ JUCI.app
 	function validMac(mac) {
 		return mac.length != null && mac.match(/([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}/) && mac.length <= 17;
 	}
+
 	$scope.addVictimMan = function (victim) {
 		if (victim == null || victim.length == 0) {
 			$scope.param.victimError = $tr(gettext("Please enter a MAC"));
@@ -58,6 +52,25 @@ JUCI.app
 
 		$scope.param.victimError = null;
 		$scope.addVictim(victim);
+	}
+
+	Array.prototype.swap = function (x, y) {
+		let b = this[x];
+		this[x] = this[y];
+		this[y] = b;
+		return this;
+	}
+
+	$scope.onMoveUp = function(idx) {
+		$scope.param.params.value = $scope.param.params.value.slice().swap(idx, idx - 1); //slice to workaround uci not recording the initial change...?
+	}
+
+	$scope.onMoveDown = function (idx) {
+		$scope.param.params.value = $scope.param.params.value.slice().swap(idx, idx + 1);
+	}
+
+	$scope.getTitle = function (title) {
+		return title.split("_").map(elem => elem.charAt(0).toUpperCase() + elem.substr(1)).join(" ");
 	}
 
 });
