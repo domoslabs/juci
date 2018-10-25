@@ -270,6 +270,8 @@ JUCI.app
 							var radio;
 							if (device.match("ra"))
 								radio = radios[device.replace(/[0-9]/g, '0')];
+							else if (device.match("wlan"))
+								radio = radios[device.substring(0,5)];
 							else
 								radio = radios[device.substring(0,3)];
 							dev.frequency = (radio)? radio.frequency : $tr(gettext('unknown'));
