@@ -4,6 +4,58 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci) {
 	$scope.rssiExcl = {};
 	$scope.assocExcl = {};
 	$scope.victims = [];
+	$scope.showRpt = false;
+	$scope.showRptAssoc = false;
+
+	function reloadLists() {
+		let repeaters = [];
+
+		$rpc.$call("topology", "tree").done(function (tree) {
+			repeaters = tree.nodes.filter(node => node.node_type.indexOf("repeater") >= 0);
+		}).then(function() {
+			$rpc.$call("wifix", "stas").done(function (vifs) {
+				let rssiUnexcluded = [];
+				let assocUnexcluded = [];
+
+				console.log($scope.showRpt, $scope.showRptAssoc);
+				console.log("repeaters", repeaters);
+
+				for (vif in vifs) {
+					rssiUnexcluded = rssiUnexcluded.concat(
+						vifs[vif].filter(client =>
+							!$scope.steer.exclude.value.some(mac =>
+								client.macaddr.indexOf(mac) >= 0)
+						)
+					)
+
+					rssiUnexcluded = rssiUnexcluded.filter(client => ($scope.showRpt || !repeaters.some(rpt => client.macaddr.indexOf(rpt.mac) >= 0)));
+
+					assocUnexcluded = assocUnexcluded.concat(
+						vifs[vif].filter(client =>
+							!$scope.assocCtrl.stas.value.some(mac =>
+								client.macaddr.indexOf(mac) >= 0)
+						)
+					)
+
+					assocUnexcluded = assocUnexcluded.filter(client => ($scope.showRptAssoc || !repeaters.some(rpt => client.macaddr.indexOf(rpt.mac) >= 0)));
+				}
+
+				$scope.rssiExcl.unexcluded = rssiUnexcluded.map(client => ({ label: client.macaddr, value: client.macaddr }));
+				$scope.assocExcl.unexcluded = assocUnexcluded.map(client => ({ label: client.macaddr, value: client.macaddr }));
+
+				console.log($scope.rssiExcl.unexcluded);
+				console.log($scope.rssiExcl.excluded);
+				console.log($scope.assocExcl.unexcluded);
+				console.log($scope.assocExcl.excluded);
+				$scope.$apply();
+			})
+
+		});
+	}
+
+	function getTitle(title) {
+		return title.split("_").map(elem => elem.charAt(0).toUpperCase() + elem.substr(1)).join(" ");
+	}
 
 	function populateEntry (section) {
 		if (section.priority.value != null)
@@ -24,31 +76,14 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci) {
 		if (section.snr_diff.value != null)
 			section.$statusList.push({ label: $tr(gettext("SNR Difference")), value: section.snr_diff.value + " dB" })
 
-		if (section.victims.value != null) {
-			section.victims.value.forEach(victim =>	section.$statusList.push({ label: $tr(gettext("Victim")), value: victim}));
-			section.victimsList = section.victims.value.map(victim => ({ label: $tr(gettext(victim)), value: victim }));
-
-			$rpc.$call("wifix", "stas").done(function (vifs) {
-				let nonVictims = [];
-
-				for (vif in vifs) {
-					nonVictims = nonVictims.concat(
-						vifs[vif].filter(client =>
-							!section.victimsList.some(victim => client.macaddr.indexOf(victim.value) >= 0)
-						)
-					)
-				}
-
-				section.nonVictims = nonVictims.map(client => ({ label: client.macaddr, value: client.macaddr }));
-			});
-		}
+		if (section.params.value != null)
+			section.params.value.forEach((param, i) => section.$statusList.push({ label: $tr(gettext("Param " + (i+1))), value: getTitle(param) }))
 	}
 
 	$uci.$sync("wifilife").done(function () {
 		$scope.wifilife = $uci.wifilife["@wifilife"][0];
 		$scope.wiLiInterfaces = $scope.wifilife.ifname.value.map(ifname => ({ label: ifname, value: ifname}));
 
-		$scope.$apply();
 		$scope.steer = $uci.wifilife["@steer"][0];
 		$scope.assocCtrl = $uci.wifilife["@assoc_control"][0];
 		$scope.params = [];
@@ -62,37 +97,12 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci) {
 
 			populateEntry(section);
 			$scope.params.push(section);
+			console.log(section.params.value);
 		});
 	}).then(function() {
-		$rpc.$call("wifix", "stas").done(function (vifs) {
-			let rssiUnexcluded = [];
-			let assocUnexcluded = [];
+		console.log($scope.bssload.victims.value)
 
-			for (vif in vifs) {
-				rssiUnexcluded = rssiUnexcluded.concat(
-					vifs[vif].filter(client =>
-						!$scope.steer.exclude.value.some(mac =>
-							client.macaddr.indexOf(mac) >= 0)
-					)
-				)
-
-				assocUnexcluded = assocUnexcluded.concat(
-					vifs[vif].filter(client =>
-						!$scope.assocCtrl.stas.value.some(mac =>
-							client.macaddr.indexOf(mac) >= 0)
-					)
-				)
-
-			}
-
-			$scope.rssiExcl.unexcluded = rssiUnexcluded.map(client => ({ label: client.macaddr, value: client.macaddr }));
-			$scope.assocExcl.unexcluded = assocUnexcluded.map(client => ({ label: client.macaddr, value: client.macaddr }));
-
-			console.log($scope.rssiExcl.unexcluded);
-			console.log($scope.rssiExcl.excluded);
-			console.log($scope.assocExcl.unexcluded);
-			console.log($scope.assocExcl.excluded);
-		});
+		reloadLists();
 	});
 
 	function validMac(mac) {
@@ -133,7 +143,7 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci) {
 		$scope[container].unexcluded.push({ label: mac, value: mac })
 	}
 
-	$scope.onExcludeMan = function (section, option, container, mac) {
+	$scope.onExclude = function (section, option, container, mac) {
 		if (!mac || mac.length == 0) {
 			$scope[container].error = $tr(gettext("Please enter a MAC"));
 			return;
@@ -149,19 +159,24 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci) {
 			return;
 		}
 
-		$scope[container].error = null;
-		$scope.onExclude(section, option, container, mac);
-	}
-
-	$scope.onExclude = function (section, option, container, mac) {
-		if (mac == null)
-			return;
-
 		let excluded = $scope[section][option].value.filter(validMac); // not sure why we gotta filter it into new array..
 		excluded.push(mac);
 		$scope[section][option].value = excluded;
 		$scope[container].excluded.push({ label: mac, value: mac })
 		$scope[container].unexcluded = $scope[container].unexcluded.filter(pair => pair.value.indexOf(mac) < 0);
+		$scope[container].exclude = null;
+		$scope[container].error
+		console.log(excluded, "\n", $scope[container].excluded, "\n", $scope[container].unexcluded)
 	};
+
+	$scope.toggleShowRpt = function () {
+		$scope.showRpt = !$scope.showRpt;
+		reloadLists();
+	}
+
+	$scope.toggleShowRptAssoc = function () {
+		$scope.showRptAssoc = !$scope.showRptAssoc;
+		reloadLists();
+	}
 
 });
