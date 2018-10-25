@@ -27,6 +27,7 @@ UCI.wifilife.$registerSectionType("steer-param", {
 	"hysteresis": { dvalue: undefined, type: Number, validator: UCI.validators.NumberLimitValidator(0, 500) },
 	"snr_diff": { dvalue: undefined, type: Number, validator: UCI.validators.NumberLimitValidator(0, 50) },
 	"victims": { dvalue: undefined, type: Array},
+	"params": { dvalue: undefined, type: Array },
 });
 
 JUCI.app.factory("$wifilife", function($uci, $rpc, $tr){
