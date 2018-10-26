@@ -15,15 +15,11 @@ JUCI.app
 			options: [{ label: "steer", value: "steer" }, { label: "block", value: "block" }]
 		}
 
-		function validMac(mac) {
-			return mac.length != null && mac.match(/([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}/) && mac.length <= 17;
-		}
-
 		$scope.$watch("param.bss.value", function (mac) {
 			if (mac == null)
 				return;
 
-			if (!validMac(mac)) {
+			if (!$wifilife.validMac(mac)) {
 				$scope.param.bss.error = "Invalid MAC";
 				document.getElementById("bssClass").classList.add('has-error');
 
@@ -37,7 +33,7 @@ JUCI.app
 			if (mac == null)
 				return;
 
-			if (!validMac(mac)) {
+			if (!$wifilife.validMac(mac)) {
 				$scope.param.sta.error = "Invalid MAC";
 				document.getElementById("staClass").classList.add('has-error');
 

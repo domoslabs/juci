@@ -11,7 +11,6 @@ JUCI.app
 	};
 })
 .controller("uciOptionEdit", function ($scope, $config, $rpc, $tr, gettext) {
-	console.log("33", $scope)
 	$scope.rmVictim = function (victim) {
 		if (victim == null)
 			return;
@@ -25,14 +24,10 @@ JUCI.app
 		if (victim == null)
 			return;
 
-		$scope.param.victims.value = $scope.param.victims.value.filter(validMac).push(victim);
+		$scope.param.victims.value = $scope.param.victims.value.filter($wifilife.validMac).push(victim);
 		$scope.param.victimsList.push({ label: victim, value: victim })
 		$scope.param.nonVictims = $scope.param.nonVictims.filter(pair => pair.value.indexOf(victim) < 0);
 	};
-
-	function validMac(mac) {
-		return mac.length != null && mac.match(/([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}/) && mac.length <= 17;
-	}
 
 	$scope.addVictimMan = function (victim) {
 		if (victim == null || victim.length == 0) {
@@ -40,7 +35,7 @@ JUCI.app
 			return;
 		}
 
-		if (!validMac(victim)) {
+		if (!$wifilife.validMac(victim)) {
 			$scope.param.victimError = $tr(gettext("Invalid MAC, please give in the format aa:bb:cc:dd:ee:ff"));
 			return;
 		}

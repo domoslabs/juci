@@ -98,7 +98,6 @@ controller("wifilife", function ($scope, $rpc, $config, $tr, $uci, $wifilife, $m
 	}
 
 	$uci.$sync("wifilife").done(function () {
-		console.log("86", $uci.wifilife);
 		$scope.wifilife = $uci.wifilife["@wifilife"][0];
 		$scope.wiLiInterfaces = $scope.wifilife.ifname.value.map(ifname => ({ label: ifname, value: ifname}));
 
@@ -128,8 +127,6 @@ controller("wifilife", function ($scope, $rpc, $config, $tr, $uci, $wifilife, $m
 			$scope.params.push(section);
 		});
 	}).then(function() {
-		console.log($scope)
-
 		reloadLists();
 	});
 
@@ -140,12 +137,7 @@ controller("wifilife", function ($scope, $rpc, $config, $tr, $uci, $wifilife, $m
 	$uci.$sync("wireless").done(function () {
 		$scope.wifiIface = $uci.wireless["@wifi-iface"][0];
 		$scope.rrm = !!$scope.wifiIface.rrm.value;
-		console.log($scope.wifiIface);
 	})
-
-	function validMac(mac) {
-		return mac.length != null && mac.match(/([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}/) && mac.length <= 17;
-	}
 
 	$scope.onRssiUnexclude = function(mac) {
 		onUnexclude("steer", "exclude", "rssiExcl", "unexcluded", mac);
@@ -186,7 +178,7 @@ controller("wifilife", function ($scope, $rpc, $config, $tr, $uci, $wifilife, $m
 			return -1;
 		}
 
-		if (!validMac(mac)) {
+		if (!$wifilife.validMac(mac)) {
 			$scope[container].error = $tr(gettext("Invalid MAC"));
 			return -1;
 		}
@@ -196,7 +188,7 @@ controller("wifilife", function ($scope, $rpc, $config, $tr, $uci, $wifilife, $m
 			return -1;
 		}
 
-		let excluded = $scope[section][option].value.filter(validMac); // not sure why we gotta filter it into new array..
+		let excluded = $scope[section][option].value.filter($wifilife.validMac); // not sure why we gotta filter it into new array..
 		excluded.push(mac);
 		$scope[section][option].value = excluded;
 		$scope[container].excluded.push({ label: mac, value: mac })
@@ -210,7 +202,7 @@ controller("wifilife", function ($scope, $rpc, $config, $tr, $uci, $wifilife, $m
 		if (mac == null || mac.length == 0)
 			return -1;
 
-		let excluded = $scope[section][option].value.filter(validMac); // not sure why we gotta filter it into new array..
+		let excluded = $scope[section][option].value.filter($wifilife.validMac); // not sure why we gotta filter it into new array..
 		excluded.push(mac);
 		$scope[section][option].value = excluded;
 		$scope[container].excluded.push({ label: mac, value: mac })
@@ -218,7 +210,6 @@ controller("wifilife", function ($scope, $rpc, $config, $tr, $uci, $wifilife, $m
 	};
 
 	$scope.onAddRule = function () {
-		console.log("onAddRule");
 
 		var modalInstance = $modal.open({
 			animation: true,
@@ -228,10 +219,9 @@ controller("wifilife", function ($scope, $rpc, $config, $tr, $uci, $wifilife, $m
 		});
 
 		modalInstance.result.then(function (section) {
-			console.log("res", section)
-
+			;
 		}, function () {
-			console.log("dismissed");
+			;
 		});
 	}
 
@@ -242,11 +232,8 @@ controller("wifilife", function ($scope, $rpc, $config, $tr, $uci, $wifilife, $m
 	}
 
 	$scope.toggleRrm = function () {
-		console.log($scope.rrm)
 		$scope.rrm = !$scope.rrm;
 		$scope.wifiIface.rrm.value = $scope.rrm ? 2 : 0;
-
-		console.log($scope.wifiIface.rrm.value);
 	}
 
 });

@@ -1,5 +1,5 @@
 JUCI.app.
-	controller("createRule", function ($scope, $config, $rpc, $tr, gettext, $modalInstance, $uci) {
+	controller("createRule", function ($scope, $config, $rpc, $tr, gettext, $modalInstance, $uci, $wifilife) {
 	$scope.rule = {
 		sta: undefined,
 		type: undefined,
@@ -9,12 +9,6 @@ JUCI.app.
 		error: undefined
 	}
 
-	console.log("33", $scope)
-
-	function validMac(mac) {
-		return mac.length != null && mac.match(/([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}/) && mac.length <= 17;
-	}
-
 	$scope.ok = function () {
 		if ($scope.rule.action == null) {
 			$scope.rule.error = $tr(gettext("Please provide rule type."));
@@ -22,7 +16,7 @@ JUCI.app.
 		} else if ($scope.rule.bss == null) {
 			$scope.rule.error = $tr(gettext("Please select an access point."));
 			return;
-		} else if ($scope.rule.sta == null || !validMac($scope.rule.sta)) {
+		} else if ($scope.rule.sta == null || !$wifilife.validMac($scope.rule.sta)) {
 			$scope.rule.error = $tr(gettext("Please provide a valid client MAC address."));
 			return;
 		}

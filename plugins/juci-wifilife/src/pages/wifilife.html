@@ -61,7 +61,7 @@
 							</div>
 						</juci-config-line>
 						<juci-config-line title="{{'Exclude STA' | translate}}" help="{{'Choose a MAC address from the list of currently active wireless devices to be added to the exclude list.'|translate}}">
-							<juci-select ng-model="rssiExcl.exclude" ng-items="rssiExcl.unexcluded" editable="true" style="width: 1%"></juci-select><br />
+							<juci-select ng-model="rssiExcl.exclude" ng-items="rssiExcl.unexcluded" editable="true"></juci-select><br />
 							<button class="btn btn-default pull-right" ng-click="onRssiExclude(rssiExcl.exclude)">{{'Exclude MAC'|translate}}</button>
 							<br ng-show="rssiExcl.error" />
 							<br ng-show="rssiExcl.error" />
@@ -82,9 +82,6 @@
 						<juci-config-line title="{{ 'Assoc Control Interface' | translate}}" help="{{'Interface to use for assoc control'|translate}}">
 							<juci-select ng-model="assocCtrl.ifname.value" ng-items="wiLiInterfaces"></juci-select>
 						</juci-config-line>
-						<!--<juci-config-line title="{{'Duration'|translate}}" error="assocCtrl.duration.error" help="{{'Provide the length in seconds for a device to be locked out from the AP.'|translate}}">
-							<input type="number" class="form-control" ng-model="assocCtrl.duration.value" value="{{assocCtrl.duration.value}}">
-						</juci-config-line>-->
 						<juci-config-line title="{{'Custom Rules'|translate}}" help="{{'Create custom steering rules to force client to a certain access point.'|translate}}"></juci-config-line>
 							<juci-list-editor ng-items="customRules" show-icon="true" get-item-title="getRuleTitle($item)" on-create="onAddRule()" on-delete="onDeleteRule($item)"></juci-list-editor>
 					</juci-config-lines>
