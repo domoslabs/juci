@@ -10,45 +10,7 @@ JUCI.app
 		require: "^ngModel"
 	};
 })
-.controller("uciOptionEdit", function ($scope, $config, $rpc, $tr, gettext) {
-	$scope.rmVictim = function (victim) {
-		if (victim == null)
-			return;
-
-		$scope.param.victims.value = $scope.param.victims.value.filter(includedVictim => includedVictim.indexOf(victim) < 0);
-		$scope.param.victimsList = $scope.param.victimsList.filter(pair => pair.value.indexOf(victim) < 0);
-		$scope.param.nonVictims.push({ label: victim, value: victim })
-	}
-
-	$scope.addVictim = function (victim) {
-		if (victim == null)
-			return;
-
-		$scope.param.victims.value = $scope.param.victims.value.filter($wifilife.validMac).push(victim);
-		$scope.param.victimsList.push({ label: victim, value: victim })
-		$scope.param.nonVictims = $scope.param.nonVictims.filter(pair => pair.value.indexOf(victim) < 0);
-	};
-
-	$scope.addVictimMan = function (victim) {
-		if (victim == null || victim.length == 0) {
-			$scope.param.victimError = $tr(gettext("Please enter a MAC"));
-			return;
-		}
-
-		if (!$wifilife.validMac(victim)) {
-			$scope.param.victimError = $tr(gettext("Invalid MAC, please give in the format aa:bb:cc:dd:ee:ff"));
-			return;
-		}
-
-		if ($scope.param.victims.value.some(excluded => victim.indexOf(excluded) >= 0)) {
-			$scope.param.victimError = $tr(gettext("The MAC is already excluded!"));
-			return;
-		}
-
-		$scope.param.victimError = null;
-		$scope.addVictim(victim);
-	}
-
+.controller("uciOptionEdit", function ($scope) {
 	Array.prototype.swap = function (x, y) {
 		let b = this[x];
 		this[x] = this[y];
@@ -67,5 +29,4 @@ JUCI.app
 	$scope.getTitle = function (title) {
 		return title.split("_").map(elem => elem.charAt(0).toUpperCase() + elem.substr(1)).join(" ");
 	}
-
 });

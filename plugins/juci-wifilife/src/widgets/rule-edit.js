@@ -10,7 +10,7 @@ JUCI.app
 			require: "^ngModel"
 		};
 	})
-	.controller("ruleEdit", function ($scope, $config, $rpc, $tr, gettext, $wifilife, $uci) {
+	.controller("ruleEdit", function ($scope, $wifilife) {
 		$scope.rule = {
 			options: [{ label: "steer", value: "steer" }, { label: "block", value: "block" }]
 		}

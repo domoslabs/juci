@@ -141,7 +141,6 @@ controller("wifilife", function ($scope, $rpc, $config, $tr, $uci, $wifilife, $m
 			rule.$statusList.push({ label: $tr(gettext("Action")), value: rule.action.value })
 			rule.$statusList.push({ label: $tr(gettext("STA")), value: rule.sta.value })
 			rule.$statusList.push({ label: $tr(gettext("BSS")), value: rule.bss.value })
-			//rule.$statusList.push({ label: $tr(gettext("Duration")), value: rule.duration.value })
 		})
 
 		$scope.rssiExcl.excluded = $scope.steer.exclude.value.map(mac => ({ label: mac, value: mac }));
