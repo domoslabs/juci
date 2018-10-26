@@ -1,0 +1,21 @@
+<div>
+	<juci-config-line title="{{'Rule Type' | translate}}" help="{{'Steering or blocking rule which will be propagated through network.'|translate}}">
+		<juci-select ng-model="param.action.value" ng-items="rule.options"></juci-select><br />
+	</juci-config-line>
+	<juci-config-line title="{{'Client'|translate}}" ng-show="param.sta.value || param.sta.error"
+	 error="param.sta.error">
+		<div class="input-group {{param.sta.error==null ? '' : 'has-error'}}" id="bssClass">
+			<input type="text" class="form-control" ng-model="param.sta.value" value="{{param.sta.value}}">
+		</div>
+	</juci-config-line>
+	<juci-config-line title="{{'Access Point'|translate}}" ng-show="param.bss.value || param.bss.error"
+	 error="param.bss.error">
+		<div class="input-group {{param.bss.error==null ? '' : 'has-error'}}" id="staClass">
+			<input type="text" class="form-control" ng-model="param.bss.value" value="{{param.bss.value}}">
+			<!--<input class="form-control col-xs-4" error="param.bss.error" type="string" ng-model="bssMac" placeholder="MAC address" style="max-width: 195px !important;"/>-->
+		</div>
+	</juci-config-line>
+	<!--<juci-config-line title="{{'Duration'|translate}}" ng-show="param.duration.value != null || param.duration.error" error="param.duration.error">
+		<input type="number" class="form-control" ng-model="param.duration.value" value="{{param.duration.value}}">
+	</juci-config-line>-->
+</div>

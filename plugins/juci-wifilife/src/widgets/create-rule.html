@@ -1,0 +1,28 @@
+<div>
+	<div class="modal-header">
+		<h3 class="modal-title" translate>Create Custom Rule</h3>
+	</div>
+	<div class="modal-body">
+		<juci-config-line title="{{'Rule Type' | translate}}" help="{{'Steering or blocking rule which will be propagated through network.'|translate}}">
+			<juci-select ng-model="rule.action" ng-items="rule.options"></juci-select><br />
+		</juci-config-line>
+		<juci-config-line title="{{'Include Access Point' | translate}}" help="{{'Select a MAC address from the dropdown list to be added to assoc control list.'|translate}}">
+			<juci-select ng-model="rule.bss" ng-items="assocExcl.unexcludedAps"></juci-select><br />
+		</juci-config-line>
+		<juci-config-line title="{{'Include Client' | translate}}" help="{{'Select a MAC address from the dropdown list to be added to assoc control list.'|translate}}">
+			<juci-select ng-model="rule.sta" ng-items="assocExcl.unexcluded" editable="true" ng-click="test()"></juci-select><br />
+			<br ng-show="assocExcl.error" />
+			<br ng-show="assocExcl.error" />
+			<juci-error value="assocExcl.error" />
+		</juci-config-line>
+		<!--<juci-config-line title="{{'Duration'|translate}}" error="assocCtrl.duration.error" help="{{'Provide the length in seconds for a device to be locked out from the AP.'|translate}}">
+			<input type="number" class="form-control" ng-model="rule.duration" value="rule.duration">
+		</juci-config-line>-->
+		<juci-error value="rule.error" />
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-click="ok()">Create Rule</button>
+		<button class="btn btn-default" ng-click="cancel()">Cancel</button>
+	</div>
+</div>
+
