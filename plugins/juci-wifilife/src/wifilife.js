@@ -1,5 +1,6 @@
 UCI.$registerConfig("wifilife");
 UCI.$registerConfig("owsd");
+UCI.$registerConfig("wireless");
 
 UCI.owsd.$registerSectionType("ubusproxy", {
 	"enable": { dvalue: true, type: Boolean },
@@ -7,7 +8,8 @@ UCI.owsd.$registerSectionType("ubusproxy", {
 
 UCI.wifilife.$registerSectionType("wifilife", {
 	"enabled": { dvalue: true, type: Boolean },
-	"ifname": { dvalue: "wl0", type: String }
+	"ifname": { dvalue: "wl0", type: String },
+	"interval": { dvalue: undefined, type: String }
 });
 
 UCI.wifilife.$registerSectionType("steer", {
@@ -20,7 +22,7 @@ UCI.wifilife.$registerSectionType("steer", {
 UCI.wifilife.$registerSectionType("assoc_control", {
 	"enabled": { dvalue: true, type: Boolean },
 	"ifname": { dvalue: "wl0", type: String },
-	"stas": { dvalue: [], type: Array},
+	"stas": { dvalue: [], type: Array },
 	//"duration": { dvalue: 0, type: Number, validator: UCI.validators.NumberLimitValidator(1, undefined) }
 });
 
@@ -31,7 +33,7 @@ UCI.wifilife.$registerSectionType("steer-param", {
 	"threshold_margin": { dvalue: undefined, type: Number, validator: UCI.validators.NumberLimitValidator(0, 30) },
 	"hysteresis": { dvalue: undefined, type: Number, validator: UCI.validators.NumberLimitValidator(0, 500) },
 	"snr_diff": { dvalue: undefined, type: Number, validator: UCI.validators.NumberLimitValidator(0, 50) },
-	"victims": { dvalue: undefined, type: Array},
+	"victims": { dvalue: undefined, type: Array },
 	"params": { dvalue: undefined, type: Array },
 });
 

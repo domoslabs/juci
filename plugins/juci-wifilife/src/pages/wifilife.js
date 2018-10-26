@@ -6,12 +6,17 @@ JUCI.app.directive("createRule", function () {
 		restrict: 'E'
 	};
 }).
-controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal) {
-
+controller("wifilife", function ($scope, $rpc, $config, $tr, $uci, $wifilife, $modal, $localStorage) {
+	$scope.showExpert = $localStorage.getItem("mode") == "expert";
 	$scope.rssiExcl = {};
 	$scope.assocExcl = {};
 	$scope.victims = [];
 	$scope.includeRpt = false;
+	$scope.collectionFrequency = [
+		{ label: "aggressive", value: "aggressive" },
+		{ label: "auto", value: "auto" },
+		{ label: "moderate", value: "moderate" }
+	];
 
 	function reloadLists() {
 		let repeaters = [];
@@ -132,6 +137,12 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal) {
 		$scope.ubusproxy = $uci.owsd.ubusproxy;
 	})
 
+	$uci.$sync("wireless").done(function () {
+		$scope.wifiIface = $uci.wireless["@wifi-iface"][0];
+		$scope.rrm = !!$scope.wifiIface.rrm.value;
+		console.log($scope.wifiIface);
+	})
+
 	function validMac(mac) {
 		return mac.length != null && mac.match(/([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}/) && mac.length <= 17;
 	}
@@ -228,6 +239,14 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal) {
 		item.$delete().done(function () {
 			$scope.$apply();
 		});
+	}
+
+	$scope.toggleRrm = function () {
+		console.log($scope.rrm)
+		$scope.rrm = !$scope.rrm;
+		$scope.wifiIface.rrm.value = $scope.rrm ? 2 : 0;
+
+		console.log($scope.wifiIface.rrm.value);
 	}
 
 });
