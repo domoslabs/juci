@@ -1,0 +1,10 @@
+<div ng-show="showExpert">
+	<juci-config-section ng-show="wifilife.enabled.value">
+		<h2 translte>WifiLife Configuration</h2>
+		<rssi-steering></rssi-steering>
+	</juci-config-section>
+	<juci-config-section ng-show="wifilife.enabled.value && ubusproxy.enable.value">
+		<h2>Controller Configuration</h2>
+		<cntlr-page></cntlr-page>
+	</juci-config-section>
+</div>

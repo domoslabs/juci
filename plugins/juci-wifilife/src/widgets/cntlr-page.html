@@ -1,0 +1,12 @@
+<div>
+	<juci-config-line title="{{ 'Assoc Control On/Off' | translate}}">
+		<switch class="green" ng-model="assocCtrl.enabled.value" />
+	</juci-config-line>
+	<juci-config-lines ng-show="assocCtrl.enabled.value">
+		<juci-config-line title="{{ 'Assoc Control Interface' | translate}}" help="{{'Interface to use for assoc control'|translate}}">
+			<juci-select ng-model="assocCtrl.ifname.value" ng-items="wiLiInterfaces"></juci-select>
+		</juci-config-line>
+		<juci-config-line title="{{'Custom Rules'|translate}}" help="{{'Create custom steering rules to force client to a certain access point.'|translate}}"></juci-config-line>
+		<juci-list-editor ng-items="customRules" show-icon="true" get-item-title="getRuleTitle($item)" on-create="onAddRule()" on-delete="onDeleteRule($item)"></juci-list-editor>
+	</juci-config-lines>
+</div>

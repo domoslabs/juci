@@ -6,6 +6,34 @@ JUCI.app.directive("createRule", function () {
 		restrict: 'E'
 	};
 }).
+directive('basicPage', function () {
+	return {
+		restrict: 'E',
+		replace: true,
+		templateUrl: "/widgets/basic-page.html",
+	};
+}).
+directive('expertPage', function () {
+	return {
+		restrict: 'E',
+		replace: true,
+		templateUrl: "/widgets/expert-page.html",
+	};
+}).
+directive('rssiSteering', function () {
+	return {
+		restrict: 'E',
+		replace: true,
+		templateUrl: "/widgets/rssi-steering.html",
+	};
+}).
+directive('cntlrPage', function () {
+	return {
+		restrict: 'E',
+		replace: true,
+		templateUrl: "/widgets/cntlr-page.html",
+	};
+}).
 controller("wifilife", function ($scope, $rpc, $config, $tr, $uci, $wifilife, $modal, $localStorage) {
 	$scope.showExpert = $localStorage.getItem("mode") == "expert";
 	$scope.rssiExcl = {};

@@ -1,0 +1,30 @@
+<div>
+	<juci-config-section>
+		<juci-config-line title="{{'Enable 802.11k' | translate}}" help="{{'Standard for radio resource management.'|translate}}">
+			<div class="checkbox checkbox-info">
+				<input type="checkbox" ng-model="rrm" ng-click="toggleRrm()" />
+				<label></label>
+			</div>
+		</juci-config-line>
+		<juci-config-line ng-show="wifiIface.rrm.value" title="{{'802.11k Data Collection Frequency' | translate}}">
+			<juci-select ng-model="wifilife.interval.value" ng-items="collectionFrequency" value="wifilife.interval.value"></juci-select><br />
+		</juci-config-line>
+		<juci-config-line title="{{'Enable 802.11v' | translate}}" help="{{'Enable configuration of client devices on wireless networks.'|translate}}">
+			<div class="checkbox checkbox-info">
+				<input type="checkbox" ng-model="wifiIface.wnm.value" />
+				<label></label>
+			</div>
+		</juci-config-line>
+		<juci-config-line title="{{'Enable 802.11r' | translate}}" help="{{'Option for fast roaming.'|translate}}">
+			<div class="checkbox checkbox-info">
+				<input type="checkbox" ng-model="wifiIface.ieee80211r.value" />
+				<label></label>
+			</div>
+		</juci-config-line>
+		<juci-config-line title="{{ 'Enable WifiLife' | translate }}" help="{{'Placeholder text.'|translate}}">
+			<div class="row">
+				<switch ng-model="wifilife.enabled.value" class="green" />
+			</div>
+		</juci-config-line>
+	</juci-config-section>
+</div>
