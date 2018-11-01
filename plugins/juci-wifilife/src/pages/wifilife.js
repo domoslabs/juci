@@ -112,8 +112,8 @@ controller("wifilife", function ($scope, $rpc, $config, $tr, $uci, $wifilife, $m
 		if (section.bssload_threshold.value != null)
 			section.$statusList.push({ label: $tr(gettext("Threshold")), value: section.bssload_threshold.value + " %" })
 
-		if (section.threshold_margin.value != null)
-			section.$statusList.push({ label: $tr(gettext("Threshold Margin")), value: "± " + section.threshold_margin.value + " dB"})
+		if (section.margin.value != null)
+			section.$statusList.push({ label: $tr(gettext("Threshold Margin")), value: "± " + section.margin.value + " dB"})
 
 		if (section.hysteresis.value != null)
 			section.$statusList.push({ label: $tr(gettext("Hysteresis")), value: section.hysteresis.value})
