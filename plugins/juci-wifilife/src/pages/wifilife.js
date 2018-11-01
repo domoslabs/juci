@@ -34,7 +34,7 @@ directive('cntlrPage', function () {
 		templateUrl: "/widgets/cntlr-page.html",
 	};
 }).
-controller("wifilife", function ($scope, $rpc, $config, $tr, $uci, $wifilife, $modal, $localStorage) {
+controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $localStorage) {
 	$scope.showExpert = $localStorage.getItem("mode") == "expert";
 	$scope.rssiExcl = {};
 	$scope.assocExcl = {};
