@@ -27,6 +27,6 @@ JUCI.app
 	}
 
 	$scope.getTitle = function (title) {
-		return title.split("_").map(elem => elem.charAt(0).toUpperCase() + elem.substr(1)).join(" ");
+		return title.split("_").map(function(elem) { return elem.charAt(0).toUpperCase() + elem.substr(1)}).join(" ");
 	}
 });
