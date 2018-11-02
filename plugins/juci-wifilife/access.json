@@ -1,0 +1,25 @@
+{
+	"juci-wifilife": {
+		"description": "JUCI wireless plugin",
+		"read": {
+			"ubus": {
+				"wifix": [
+					"stas"
+				],
+				"topology": [
+					"tree"
+				]
+			},
+			"uci": [
+				"wireless",
+				"wifilife"
+			]
+		},
+		"write": {
+			"uci": [
+				"wireless",
+				"wifilife"
+			]
+		}
+	}
+}
