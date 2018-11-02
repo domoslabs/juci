@@ -1,13 +1,11 @@
 {
 	"juci-wifilife": {
-		"description": "JUCI wireless plugin",
+		"description": "JUCI wifilife plugin",
 		"read": {
 			"ubus": {
 				"wifix": [
-					"stas"
-				],
-				"topology": [
-					"tree"
+					"stas",
+					"list_neighbor"
 				]
 			},
 			"uci": [

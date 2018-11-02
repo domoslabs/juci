@@ -47,11 +47,16 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $lo
 	];
 
 	function reloadLists() {
-		var repeaters = [];
-
-		$rpc.$call("topology", "tree").done(function (tree) {
-			$wifilife.repeaters = tree.nodes.filter(function(node) { return node.node_type.indexOf("repeater") >= 0 });
-			$wifilife.aps = repeaters.concat(tree.nodes.filter(function(node) { return node.node_type.indexOf("extender") >= 0 }));
+		//var repeaters = [];
+		$wifilife.aps = [];
+		$rpc.$call("wifix", "list_neighbor").done(function (vifs) {
+			for (vif in vifs) {
+				vifs[vif].forEach(function(node) {
+					$wifilife.aps.push(node.bssid.toLowerCase());
+				})
+			}
+			//$wifilife.repeaters = tree.nodes.filter(function(node) { return node.node_type.indexOf("repeater") >= 0 });
+			//$wifilife.aps = repeaters.concat(tree.nodes.filter(function(node) { return node.node_type.indexOf("extender") >= 0 }));
 		}).then(function() {
 			$rpc.$call("wifix", "stas").done(function (vifs) {
 				var rssiUnexcluded = [];
@@ -67,7 +72,7 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $lo
 						})
 					)
 
-					rssiUnexcluded = rssiUnexcluded.filter(function(client) { return !$wifilife.repeaters.some(function(rpt) { return client.macaddr.indexOf(rpt.mac) >= 0 })});
+					rssiUnexcluded = rssiUnexcluded.filter(function(client) { return !$wifilife.aps.some(function(rpt) { return client.macaddr.indexOf(rpt) >= 0 })});
 
 					assocUnexcluded = assocUnexcluded.concat(
 						vifs[vif].filter(function(client) {
@@ -77,12 +82,12 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $lo
 						)
 					}))
 
-					assocUnexcluded = assocUnexcluded.filter(function(client) { return !$wifilife.repeaters.some(function(rpt) { return client.macaddr.indexOf(rpt.mac) >= 0 })});
+					assocUnexcluded = assocUnexcluded.filter(function(client) { return !$wifilife.aps.some(function(rpt) { return client.macaddr.indexOf(rpt) >= 0 })});
 				}
 
 				$scope.rssiExcl.unexcluded = rssiUnexcluded.map(function(client) { return ({ label: client.macaddr, value: client.macaddr })});
 				$scope.assocExcl.unexcluded = assocUnexcluded.map(function(client) { return ({ label: client.macaddr, value: client.macaddr })});
-				$scope.assocExcl.unexcludedAps = $wifilife.repeaters.map(function(ap) { return ({ label: ap.mac, value: ap.mac })});
+				$scope.assocExcl.unexcludedAps = $wifilife.aps.map(function(ap) { return ({ label: ap, value: ap })});
 
 				$scope.$apply();
 			})
@@ -192,7 +197,7 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $lo
 		if (mac == null)
 			return;
 
-		if ($wifilife.repeaters.filter(function(entry) { return entry.mac.indexOf(mac) >= 0}).length > 0)
+		if ($wifilife.aps.filter(function(entry) { return entry.indexOf(mac) >= 0}).length > 0)
 			unexclude += "Aps"
 
 		$scope[section][option].value = $scope[section][option].value.filter(function(exl_mac) { return exl_mac.indexOf(mac) < 0});
