@@ -125,8 +125,8 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $lo
 		if (section.hysteresis.value != null)
 			section.$statusList.push({ label: $tr(gettext("Hysteresis")), value: section.hysteresis.value})
 
-		if (section.snr_diff.value != null)
-			section.$statusList.push({ label: $tr(gettext("SNR Difference")), value: section.snr_diff.value + " dB" })
+		if (section.diffsnr.value != null)
+			section.$statusList.push({ label: $tr(gettext("SNR Difference")), value: section.diffsnr.value + " dB" })
 
 		if (section.params.value != null)
 			section.params.value.forEach(function (param, i) { section.$statusList.push({ label: $tr(gettext("Param " + (i+1))), value: getTitle(param) })})

@@ -31,7 +31,7 @@ UCI.wifilife.$registerSectionType("steer-param", {
 	"bssload_threshold": { dvalue: undefined, type: Number, validator: UCI.validators.NumberLimitValidator(0, 100) },
 	"margin": { dvalue: undefined, type: Number, validator: UCI.validators.NumberLimitValidator(0, 30) },
 	"hysteresis": { dvalue: undefined, type: Number, validator: UCI.validators.NumberLimitValidator(0, 500) },
-	"snr_diff": { dvalue: undefined, type: Number, validator: UCI.validators.NumberLimitValidator(0, 50) },
+	"diffsnr": { dvalue: undefined, type: Number, validator: UCI.validators.NumberLimitValidator(0, 50) },
 	"victims": { dvalue: undefined, type: Array },
 	"params": { dvalue: undefined, type: Array },
 });
