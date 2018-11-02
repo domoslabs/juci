@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-# plugins/juci-wifilife/src/pages/wifilife.html 
-msgid "menu-wifilife-title"
+# plugins/juci-wifilife/src/pages/wireless-wifilife.html 
+msgid "menu-wireless-wifilife-title"
 msgstr "WifiLife"
 
