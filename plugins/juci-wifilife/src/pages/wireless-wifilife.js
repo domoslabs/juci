@@ -47,15 +47,15 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $lo
 	];
 
 	function reloadLists() {
-		let repeaters = [];
+		var repeaters = [];
 
 		$rpc.$call("topology", "tree").done(function (tree) {
 			$wifilife.repeaters = tree.nodes.filter(node => node.node_type.indexOf("repeater") >= 0);
 			$wifilife.aps = repeaters.concat(tree.nodes.filter(node => node.node_type.indexOf("extender") >= 0));
 		}).then(function() {
 			$rpc.$call("wifix", "stas").done(function (vifs) {
-				let rssiUnexcluded = [];
-				let assocUnexcluded = [];
+				var rssiUnexcluded = [];
+				var assocUnexcluded = [];
 
 
 				for (vif in vifs) {
@@ -93,7 +93,7 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $lo
 	}
 
 	$scope.getRuleTitle = function(item) {
-		let title = item.action.value.charAt(0).toUpperCase() + item.action.value.substr(1);
+		var title = item.action.value.charAt(0).toUpperCase() + item.action.value.substr(1);
 		title += " ";
 		title += item.sta.value;
 		title += (item.action.value === "block" ? " from " : " to ");
@@ -215,7 +215,7 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $lo
 			return -1;
 		}
 
-		let excluded = $scope[section][option].value.filter($wifilife.validMac); // not sure why we gotta filter it into new array..
+		var excluded = $scope[section][option].value.filter($wifilife.validMac); // not sure why we gotta filter it into new array..
 		excluded.push(mac);
 		$scope[section][option].value = excluded;
 		$scope[container].excluded.push({ label: mac, value: mac })
@@ -229,7 +229,7 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $lo
 		if (mac == null || mac.length == 0)
 			return -1;
 
-		let excluded = $scope[section][option].value.filter($wifilife.validMac); // not sure why we gotta filter it into new array..
+		var excluded = $scope[section][option].value.filter($wifilife.validMac); // not sure why we gotta filter it into new array..
 		excluded.push(mac);
 		$scope[section][option].value = excluded;
 		$scope[container].excluded.push({ label: mac, value: mac })

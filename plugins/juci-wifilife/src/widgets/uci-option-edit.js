@@ -12,7 +12,7 @@ JUCI.app
 })
 .controller("uciOptionEdit", function ($scope) {
 	Array.prototype.swap = function (x, y) {
-		let b = this[x];
+		var b = this[x];
 		this[x] = this[y];
 		this[y] = b;
 		return this;
