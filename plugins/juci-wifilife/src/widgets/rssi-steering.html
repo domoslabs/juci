@@ -18,24 +18,23 @@
 				</tr>
 			</table>
 		</juci-expandable>
-		<juci-config-line title="{{'Steering Exclusion Policy'|translate}}" help="{{'Devices which MAC addresses are included in the exclude list will not be steered.'|translate}}"></juci-config-line>
-		<juci-config-line title="{{'Exclude Repeaters' | translate}}" help="{{'Choose a MAC address from the list of currently active wireless devices to be added to the exclude list.'|translate}}">
+		<juci-config-line title="{{'Exclude Repeaters' | translate}}" help="{{'Exclude all repeaters from steering.'|translate}}" ng-show="steerDefault.exclude_rpt.value">
 			<div class="checkbox checkbox-info">
 				<input type="checkbox" ng-model="steerDefault.exclude_rpt.value" ng-click="toggleIncludeRpt()" />
 				<label></label>
 			</div>
 		</juci-config-line>
-		<juci-config-line title="{{'Exclude STA' | translate}}" help="{{'Choose a MAC address from the list of currently active wireless devices to be added to the exclude list.'|translate}}">
+		<juci-config-line title="{{'Exclude STA From Steering' | translate}}" help="{{'Choose a STA from the list to exclude from steering'|translate}}">
 			<juci-select ng-model="rssiExcl.exclude" ng-items="rssiExcl.unexcluded" editable="true"></juci-select><br />
-			<button class="btn btn-default pull-right" ng-click="onRssiExclude(rssiExcl.exclude)">{{'Exclude MAC'|translate}}</button>
+			<button class="btn btn-default pull-right" ng-click="onRssiExclude(rssiExcl.exclude)">{{'Exclude STA'|translate}}</button>
 			<br ng-show="rssiExcl.error" />
 			<br ng-show="rssiExcl.error" />
 			<juci-error value="rssiExcl.error" />
 		</juci-config-line>
-		<juci-config-line title="{{'STAs Excluded'|translate}}" help="{{'Choose a MAC address from the list of currently excluded MAC addresses to be removed from the exclusion list.'|translate}}">
+		<juci-config-line title="{{'STA Exclusion List'|translate}}" help="{{'List of currently excluded STAs.'|translate}}">
 			<juci-select ng-model="rssiExcl.unexclude" ng-items="rssiExcl.excluded"></juci-select><br />
-			<button class="btn btn-default pull-right" ng-click="onRssiUnexclude(rssiExcl.unexclude)">{{'Unexclude
-				MAC'|translate}}</button>
+			<button class="btn btn-default pull-right" ng-click="onRssiUnexclude(rssiExcl.unexclude)" ng-show="rssiExcl.unexclude">{{'Unexclude
+				STA'|translate}}</button>
 		</juci-config-line>
 	</juci-config-lines>
 </div>
