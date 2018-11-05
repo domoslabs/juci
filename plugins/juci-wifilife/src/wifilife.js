@@ -9,7 +9,8 @@ UCI.owsd.$registerSectionType("ubusproxy", {
 UCI.wifilife.$registerSectionType("wifilife", {
 	"enabled": { dvalue: true, type: Boolean },
 	"ifname": { dvalue: "wl0", type: String },
-	"interval": { dvalue: undefined, type: String }
+	"runfreq": { dvalue: undefined, type: String },
+	"fallback_legacy": { dvalue: false, type: Boolean }
 });
 
 UCI.wifilife.$registerSectionType("steer", {
