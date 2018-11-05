@@ -24,17 +24,29 @@
 				<label></label>
 			</div>
 		</juci-config-line>
-		<juci-config-line title="{{'Exclude STA From Steering' | translate}}" help="{{'Choose a STA from the list to exclude from steering'|translate}}">
-			<juci-select ng-model="rssiExcl.exclude" ng-items="rssiExcl.unexcluded" editable="true"></juci-select><br />
-			<button class="btn btn-default pull-right" ng-click="onRssiExclude(rssiExcl.exclude)">{{'Exclude STA'|translate}}</button>
+		<juci-expandable title="{{'Wifi Clients'|translate}}" open="true" >
+			<!--<button class="btn btn-default pull-right" ng-click="refresh()"><i class="fa fa-refresh"></i></button>-->
+			<table class="table">
+				<thead>
+					<th> MAC Address <i style="float:right" class="fa "></i></th>
+					<th></th>
+					<th> Exclude <i style="float:right" class="fa "></i></th>
+				</thead>
+				<tr ng-repeat="mac in rssiExcl.rssiAll">
+					<td>{{mac.value}}</td>
+					<td></td>
+					<td>
+						<switch class="green" ng-model="mac.switch" ng-change="switchExclude(mac)"/>
+					</td>
+				</tr>
+			</table>
+		</juci-expandable>
+		<juci-config-line title="{{'Add Client MAC Address To Exclude' | translate}}" help="{{'Enter a custom MAC to be added to the exclude list above.'|translate}}">
+			<input type="text" class="form-control" ng-model="rssiExcl.exclude" /><br />
+			<button class="btn btn-default pull-right" ng-click="addCustomMac(rssiExcl.exclude)">{{'Exclude STA'|translate}}</button>
 			<br ng-show="rssiExcl.error" />
 			<br ng-show="rssiExcl.error" />
 			<juci-error value="rssiExcl.error" />
-		</juci-config-line>
-		<juci-config-line title="{{'STA Exclusion List'|translate}}" help="{{'List of currently excluded STAs.'|translate}}">
-			<juci-select ng-model="rssiExcl.unexclude" ng-items="rssiExcl.excluded"></juci-select><br />
-			<button class="btn btn-default pull-right" ng-click="onRssiUnexclude(rssiExcl.unexclude)" ng-show="rssiExcl.unexclude">{{'Unexclude
-				STA'|translate}}</button>
 		</juci-config-line>
 	</juci-config-lines>
 </div>
