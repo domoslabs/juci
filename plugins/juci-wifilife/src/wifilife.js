@@ -9,15 +9,15 @@ UCI.owsd.$registerSectionType("ubusproxy", {
 UCI.wifilife.$registerSectionType("wifilife", {
 	"enabled": { dvalue: true, type: Boolean },
 	"ifname": { dvalue: "wl0", type: String },
-	"runfreq": { dvalue: undefined, type: String },
-	"fallback_legacy": { dvalue: false, type: Boolean }
+	"runfreq": { dvalue: undefined, type: String }
 });
 
 UCI.wifilife.$registerSectionType("steer", {
 	"enabled": { dvalue: true, type: Boolean },
 	"ifname": { dvalue: "wl0", type: String },
 	"exclude": { dvalue: [], type: Array },
-	"param": { dvalue: "rssi", type: String }
+	"param": { dvalue: "rssi", type: String },
+	"fallback_legacy": { dvalue: false, type: Boolean }
 });
 
 UCI.wifilife.$registerSectionType("assoc_control", {
