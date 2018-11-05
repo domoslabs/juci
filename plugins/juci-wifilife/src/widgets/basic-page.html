@@ -23,10 +23,10 @@
 				<switch ng-model="wifilife.enabled.value" class="green" />
 			</div>
 		</juci-config-line>
-		<juci-config-line ng-show="wifiIface.rrm.value" title="{{'WifiLife Data Collection Speed' | translate}}" help="{{'Rate at which data is collected and analyzed'|translate}}">
+		<juci-config-line ng-show="wifilife.enabled.value" title="{{'WifiLife Data Collection Speed' | translate}}" help="{{'Rate at which data is collected and analyzed'|translate}}">
 			<juci-select ng-model="wifilife.runfreq.value" ng-items="collectionFrequency" value="wifilife.runfreq.value"></juci-select><br />
 		</juci-config-line>
-		<juci-config-line title="{{'Allow AP To Legacy Steer Sticky STAs' | translate}}" help="{{''|translate}}">
+		<juci-config-line ng-show="wifilife.enabled.value" title="{{'Allow AP To Legacy Steer Sticky STAs' | translate}}" help="{{''|translate}}">
 			<div class="checkbox checkbox-info">
 				<input type="checkbox" ng-model="steer.fallback_legacy.value" />
 				<label></label>
