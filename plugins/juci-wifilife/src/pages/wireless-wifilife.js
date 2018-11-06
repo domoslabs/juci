@@ -40,6 +40,7 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $lo
 	$scope.assocExcl = {};
 	$scope.victims = [];
 	$scope.includeRpt = false;
+	$wifilife.aps = [];
 	$scope.collectionFrequency = [
 		{ label: "high", value: "high" },
 		{ label: "auto", value: "auto" },
@@ -47,22 +48,35 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $lo
 		{ label: "off", value: "off" }
 	];
 
+	$rpc.$list().done(function (list) {
+		var ipAps = []
+		ipAps = Object.keys(list).filter(function (obj) {
+			return obj.indexOf("/") > -1;
+		}).map(function (obj) {
+			return obj.split("/")[0];
+		}).filter(function (obj, index, self) {
+			return self.indexOf(obj) === index;
+		});
+
+		$rpc.$call("router.net", "arp").done(function (table) {
+			table.table.forEach(function(entry) {
+				if (ipAps.some(function (ip) { return ip.indexOf(entry.ipaddr) > -1; }))
+					$wifilife.aps.push(entry.macaddr);
+			})
+		})
+	})
+
 	function reloadLists() {
-		//var repeaters = [];
-		$wifilife.aps = [];
 		$rpc.$call("wifix", "list_neighbor").done(function (vifs) {
 			for (vif in vifs) {
 				vifs[vif].forEach(function(node) {
 					$wifilife.aps.push(node.bssid.toLowerCase());
 				})
 			}
-			//$wifilife.repeaters = tree.nodes.filter(function(node) { return node.node_type.indexOf("repeater") >= 0 });
-			//$wifilife.aps = repeaters.concat(tree.nodes.filter(function(node) { return node.node_type.indexOf("extender") >= 0 }));
 		}).then(function() {
 			$rpc.$call("wifix", "stas").done(function (vifs) {
 				var rssiUnexcluded = [];
 				var assocUnexcluded = [];
-
 
 				for (vif in vifs) {
 					rssiUnexcluded = rssiUnexcluded.concat(
@@ -92,6 +106,7 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $lo
 					client.switch = true;
 					return client;
 				})
+
 				$scope.rssiExcl.rssiAll = $scope.rssiExcl.rssiAll.concat($scope.rssiExcl.unexcluded.map(function(client) {
 					client.switch = false;
 					return client;

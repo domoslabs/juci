@@ -6,6 +6,9 @@
 				"wifix": [
 					"stas",
 					"list_neighbor"
+				],
+				"router.net": [
+					"arp"
 				]
 			},
 			"uci": [
