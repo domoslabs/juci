@@ -291,9 +291,9 @@ JUCI.app.run(function($network, $wireless, $uci){
 		"disabled":			{ dvalue: false, type: Boolean },
 		"macfilter":			{ dvalue: 0, type: Number },
 		"maclist":			{ dvalue: [], type: Array }, // match_each: /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/ }
-		"rrm": 				{ dvalue: undefined, type: Number },
-		"wnm": 				{ dvalue: true, type: Boolean },
-		"ieee80211r": 		{ dvalue: true, type: Boolean }
+		"rrm": 				{ dvalue: 0, type: Number },
+		"wnm": 				{ dvalue: false, type: Boolean },
+		"ieee80211r": 		{ dvalue: false, type: Boolean }
 	}, function validator(section){
 		if(section.disabled.value !== false){ return null; }
 		var eList = [];

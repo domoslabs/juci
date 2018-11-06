@@ -3,26 +3,26 @@ UCI.$registerConfig("owsd");
 UCI.$registerConfig("wireless");
 
 UCI.owsd.$registerSectionType("ubusproxy", {
-	"enable": { dvalue: true, type: Boolean },
+	"enable": { dvalue: false, type: Boolean },
 });
 
 UCI.wifilife.$registerSectionType("wifilife", {
-	"enabled": { dvalue: true, type: Boolean },
-	"ifname": { dvalue: "wl0", type: String },
-	"runfreq": { dvalue: undefined, type: String }
+	"enabled": { dvalue: false, type: Boolean },
+	"ifname": { dvalue: undefined, type: String },
+	"runfreq": { dvalue: "auto", type: String }
 });
 
 UCI.wifilife.$registerSectionType("steer", {
-	"enabled": { dvalue: true, type: Boolean },
-	"ifname": { dvalue: "wl0", type: String },
+	"enabled": { dvalue: false, type: Boolean },
+	"ifname": { dvalue: undefined, type: String },
 	"exclude": { dvalue: [], type: Array },
-	"param": { dvalue: "rssi", type: String },
+	"param": { dvalue: "", type: String },
 	"fallback_legacy": { dvalue: false, type: Boolean }
 });
 
 UCI.wifilife.$registerSectionType("assoc_control", {
-	"enabled": { dvalue: true, type: Boolean },
-	"ifname": { dvalue: "wl0", type: String },
+	"enabled": { dvalue: false, type: Boolean },
+	"ifname": { dvalue: "", type: String },
 	"stas": { dvalue: [], type: Array },
 });
 
@@ -38,24 +38,24 @@ UCI.wifilife.$registerSectionType("steer-param", {
 });
 
 UCI.wifilife.$registerSectionType("cntlr", {
-	"enabled": { dvalue: true, type: Boolean },
-	"steer_policy": { dvalue: "default", type: String }
+	"enabled": { dvalue: false, type: Boolean },
+	"steer_policy": { dvalue: "", type: String }
 });
 
 UCI.wifilife.$registerSectionType("steer_default", {
-	"allow_agent_steer": { dvalue: true, type: Boolean },
-	"rule": { dvalue: "default", type: String },
-	"exclude_rpt": { dvalue: true, type: Boolean }
+	"allow_agent_steer": { dvalue: false, type: Boolean },
+	"rule": { dvalue: "", type: String },
+	"exclude_rpt": { dvalue: false, type: Boolean }
 });
 
 UCI.wifilife.$registerSectionType("steer_custom", {
-	"allow_agent_steer": { dvalue: true, type: Boolean },
-	"rule": { dvalue: "custom", type: String },
-	"exclude_rpt": { dvalue: true, type: Boolean }
+	"allow_agent_steer": { dvalue: false, type: Boolean },
+	"rule": { dvalue: "", type: String },
+	"exclude_rpt": { dvalue: false, type: Boolean }
 });
 
 UCI.wifilife.$registerSectionType("rule_custom", {
-	"action": { dvalue: "steer", type: String },
+	"action": { dvalue: "", type: String },
 	"sta": { dvalue: undefined, type: String },
 	"bss": { dvalue: undefined, type: String },
 });
