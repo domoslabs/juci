@@ -17,7 +17,7 @@ UCI.wifilife.$registerSectionType("steer", {
 	"ifname": { dvalue: undefined, type: String },
 	"exclude": { dvalue: [], type: Array },
 	"param": { dvalue: "", type: String },
-	"fallback_legacy": { dvalue: false, type: Boolean }
+	"fallback_legacy": { dvalue: true, type: Boolean }
 });
 
 UCI.wifilife.$registerSectionType("assoc_control", {
