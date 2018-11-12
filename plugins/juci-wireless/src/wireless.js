@@ -292,7 +292,7 @@ JUCI.app.run(function($network, $wireless, $uci){
 		"macfilter":			{ dvalue: 0, type: Number },
 		"maclist":			{ dvalue: [], type: Array }, // match_each: /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/ }
 		"rrm": 				{ dvalue: 2, type: Number },
-		"wnm": 				{ dvalue: enabled, type: Boolean },
+		"wnm": 				{ dvalue: true, type: Boolean },
 		"ieee80211r": 		{ dvalue: false, type: Boolean }
 	}, function validator(section){
 		if(section.disabled.value !== false){ return null; }
