@@ -6,7 +6,7 @@
 		</juci-config-section>
 		<juci-config-section>
 			<juci-config-lines ng-repeat="interface in wifiIfaces track by $index">
-				<juci-config-line title="{{'Enable WPS on'|translate}} {{interface.ssid.value}} ({{interface['.frequency']}})">
+				<juci-config-line title="{{'Enable WPS on'|translate}} {{interface.ssid.value}} ({{interface['.frequency']}}) ({{interface.mode.value.toUpperCase()}})">
 					<switch ng-show="wpsUnlocked(interface)" ng-model="interface.wps_pbc.value" class="green" ng-change="updateWps()"></switch>
 					<strong ng-hide="wpsUnlocked(interface)" translate>Disabled</strong>
 				</juci-config-line>
