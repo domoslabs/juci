@@ -1,12 +1,12 @@
 <div>
-	<juci-config-line title="{{ 'Steering On/Off' | translate}}">
+	<juci-config-line title="{{ 'Enable Steering' | translate}}">
 		<switch class="green" ng-model="steer.enabled.value" />
 	</juci-config-line>
 	<juci-config-lines ng-show="steer.enabled.value">
 		<juci-config-line title="{{ 'Steering Interface' | translate}}" help="{{'Interface to use for RSSI steering.'|translate}}">
 			<juci-select ng-model="steer.ifname.value" ng-items="wiLiInterfaces"></juci-select>
 		</juci-config-line>
-		<juci-config-line title="{{ 'Steer Parameter Configurations' | translate}}"></juci-config-line>
+		<juci-config-line title="{{ 'Steering Parameters' | translate}}"></juci-config-line>
 		<juci-list-editor ng-items="params" item-editor="uci-option-edit" show-icon="true" get-item-title="$item['.name'].toUpperCase()" hide-buttons="true"></juci-list-editor>
 		<juci-expandable title="{{'Steered Clients'|translate}}" open="true" ng-show="0">
 			<table class="table">
@@ -24,7 +24,7 @@
 				<label></label>
 			</div>
 		</juci-config-line>
-		<juci-expandable title="{{'Wifi Clients'|translate}}" open="true" >
+		<juci-expandable title="{{'WiFi STAs'|translate}}" open="true" >
 			<!--<button class="btn btn-default pull-right" ng-click="refresh()"><i class="fa fa-refresh"></i></button>-->
 			<table class="table">
 				<thead>
@@ -41,9 +41,9 @@
 				</tr>
 			</table>
 		</juci-expandable>
-		<juci-config-line title="{{'Add Client MAC Address To Exclude' | translate}}" help="{{'Enter a custom MAC to be added to the exclude list above.'|translate}}">
+		<juci-config-line title="{{'Exclude STA' | translate}}" help="{{'Enter a custom MAC to be added to the exclude list above.'|translate}}">
 			<input type="text" class="form-control" ng-model="rssiExcl.exclude" /><br />
-			<button class="btn btn-default pull-right" ng-click="addCustomMac(rssiExcl.exclude)">{{'Exclude STA'|translate}}</button>
+			<button class="btn btn-default pull-right" ng-click="addCustomMac(rssiExcl.exclude)">{{'Add'|translate}}</button>
 			<br ng-show="rssiExcl.error" />
 			<br ng-show="rssiExcl.error" />
 			<juci-error value="rssiExcl.error" />
