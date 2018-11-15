@@ -47,6 +47,10 @@ JUCI.app
   $scope.ok = function () {
 		$scope.errors = [];
 		if(($scope.interfaces.find(function(x){
+			/* if you try to create a new interface with the same ssid as an existing
+			 * AP interface, give a warning about undefinded behaviour */
+			if(x.mode && x.mode.value !== "ap")
+				return false;
 			return x.ssid.value == $scope.data.ssid && x.device.value == $scope.data.radio;
 		}) && !confirm($tr(gettext("Are you sure you want to create a new SSID with the same name and on the same radio? This may result in undefined behaviour!"))))){
 			return;
