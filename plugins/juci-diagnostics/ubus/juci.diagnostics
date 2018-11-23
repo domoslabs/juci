@@ -125,7 +125,7 @@ case "$1" in
 			"ping6" : {"host":"str", "seq":32, "count":32, "timeout":32},
 			"traceroute" : {"host":"str", "seq":32, "querycount":32, "timeout":32},
 			"traceroute6" : {"host":"str", "seq":32, "querycount":32, "timeout":32},
-			"tptest_start" : {"seq":32, "auto": true, "testmode":"str","packetsize_up":32,"packetsize_down":32, "host":"referens.sth.ip-performance.se", "port":1641},
+			"tptest_start" : {"seq":32, "auto": true, "testmode":"str","packetsize_up":32,"packetsize_down":32,"port":32},
 			"tptest_stop" : {},
 			"tptest_packet_size" : {},
 			"tptest_running": {} }'
