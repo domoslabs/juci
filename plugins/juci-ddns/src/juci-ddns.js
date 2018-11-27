@@ -25,6 +25,7 @@ UCI.ddns.$registerSectionType("service", {
 	"use_syslog":           { dvalue: false, type: Boolean },
 	"service_name":         { dvalue: "", type: String },
 	"domain":               { dvalue: "", type: String },
+	"lookup_host":          { dvalue: "", type: String },
 	"username":             { dvalue: "", type: String },
 	"password":             { dvalue: "", type: String },
 	"use_https": 			{ dvalue: false, type: Boolean },

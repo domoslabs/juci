@@ -35,8 +35,23 @@ JUCI.app
 		{ label: $tr(gettext("Script")), value: "script" },
 		{ label: $tr(gettext("Web")), value: "web" }
 	];
+	var link_lookup_host_with_domain = false;
 	$scope.$watch("ddns", function(ddns){
 		if(!ddns) return;
+		if(ddns.lookup_host.value == "")
+			link_lookup_host_with_domain = true;
+		$scope.$watch("ddns.lookup_host.value", function(host){
+			if(!host) return;
+			if(link_lookup_host_with_domain && ddns.lookup_host.value != ddns.domain.value){
+				link_lookup_host_with_domain = false;
+			}
+		}, true);
+		$scope.$watch("ddns.domain", function(new_val, old_val){
+			if(!new_val || !old_val || !link_lookup_host_with_domain) return;
+			// if they are true the value has just been assigned not changed
+			if(new_val != old_val)
+				ddns.lookup_host.value = ddns.domain.value;
+		}, true);
 		$network.getAdapters().done(function(adapters){
 			$scope.allSourceDevices = adapters.map(function(a){
 				return { label: a.name, value: a.device };
