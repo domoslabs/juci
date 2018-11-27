@@ -53,10 +53,11 @@ JUCI.app
 		{ label: $tr(gettext("Info")),			value: "info" }
 	];
 	$scope.dtmf_modes = [
-		{ label: $tr(gettext("Compatibility")),	value: "compatibility" },
+		{ label: $tr(gettext("Auto")),		value: "auto" },
 		{ label: $tr(gettext("RFC 2833")),	value: "rfc2833" },
+		{ label: $tr(gettext("Inband")),	value: "inband" },
 		{ label: $tr(gettext("SIP INFO")),	value: "info" },
-		{ label: $tr(gettext("Inband")),	value: "inband" }
+		{ label: $tr(gettext("Short SIP INFO")),value: "shortinfo" }
 	];
 	$scope.onLocalnetAdded = function(){
 		$scope.sip.localnet.value = $scope.localnets.map(function(x){return x.label});
