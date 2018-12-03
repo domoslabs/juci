@@ -38,7 +38,7 @@ JUCI.app
 	var link_lookup_host_with_domain = false;
 	$scope.$watch("ddns", function(ddns){
 		if(!ddns) return;
-		if(ddns.lookup_host.value == "")
+		if(ddns.lookup_host.value == "" || ddns.lookup_host.value == ddns.domain.value)
 			link_lookup_host_with_domain = true;
 		$scope.$watch("ddns.lookup_host.value", function(host){
 			if(!host) return;
