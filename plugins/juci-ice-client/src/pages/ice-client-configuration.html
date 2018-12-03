@@ -17,15 +17,18 @@
 					<span class="{{css}}">{{text}}</span>
 				</juci-config-line>
 
-				<juci-config-line title="{{ 'Enabled' | translate }}">
-					<switch class="green" ng-model="cloud.enabled.value" />
-				</juci-config-line>
-
-				<div ng-show="ice.enabled.value">
-					<juci-config-line title="{{ 'URL' | translate }}">
-						<input type="text" class="form-control" ng-model="cloud.server.value" value={{cloud.server.value}}/>
+				<div ng-hide="registered">
+					<juci-config-line title="{{ 'Enabled' | translate }}">
+						<switch class="green" ng-model="cloud.enabled.value" />
 					</juci-config-line>
+
+					<div ng-show="ice.enabled.value">
+						<juci-config-line title="{{ 'URL' | translate }}">
+							<input type="text" class="form-control" ng-model="cloud.server.value" value={{cloud.server.value}}/>
+						</juci-config-line>
+					</div>
 				</div>
+
 			</juci-config-lines>
 		</juci-config-section>
 	</div>

@@ -26,10 +26,12 @@ JUCI.app
 
 	JUCI.interval.repeat("ice",5000,function(next){
 		$rpc.$call("juci.ice", "status").done(function(result){
+			$scope.registered = false;
 			switch(result.status) {
 				case 'Registered':
 					$scope.css = "label label-success";
 					$scope.text = $tr(gettext("Registered"));
+					$scope.registered = true;
 				break;
 				case 'Unregistered':
 					$scope.css = "label label-warning";
