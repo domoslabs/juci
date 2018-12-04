@@ -7,7 +7,7 @@
 			<span>{{ddns[".name"]}}</span>
 		</juci-config-line>
 		<juci-config-line title="{{'IP Retreival Method'|translate}}">
-			<juci-select ng-model="ddns.ip_source.value" ng-items="allSourceTypes"></juci-select>
+			<juci-select ng-model="ddns.ip_source.value" on-change="on_ip_source_change()" ng-items="allSourceTypes"></juci-select>
 		</juci-config-line>
 		<juci-config-line title="{{'Select Connection'|translate}}" ng-show="ddns.ip_source.value == 'network'">
 			<juci-select ng-model="ddns.ip_network.value" ng-items="allSourceNetworks"></juci-select>

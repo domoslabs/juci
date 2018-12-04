@@ -36,6 +36,14 @@ JUCI.app
 		{ label: $tr(gettext("Web")), value: "web" }
 	];
 	var link_lookup_host_with_domain = false;
+	$scope.on_ip_source_change = function(){
+		if(!$scope.ddns) return;
+		$scope.ddns.ip_network.value = "";
+		$scope.ddns.interface.value = "";
+		$scope.ddns.ip_url.value = "";
+		$scope.ddns.ip_script.value = "";
+	}
+
 	$scope.$watch("ddns", function(ddns){
 		if(!ddns) return;
 		if(ddns.lookup_host.value == "" || ddns.lookup_host.value == ddns.domain.value)
