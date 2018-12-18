@@ -4,7 +4,7 @@
 		"read": {
 			"ubus": {
 				"router.dsl": [
-					"status"
+					"stats"
 				]
 			},
 			"uci": [
