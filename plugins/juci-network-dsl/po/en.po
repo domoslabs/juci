@@ -13,7 +13,7 @@ msgstr ""
 
 # plugins/juci-network-dsl/src/pages/network-dsl.js
 msgid "Name is empty or already in use"
-msgstr "This status page shows technical parameters of your DSL connection."
+msgstr ""
 
 # plugins/juci-network-dsl/src/pages/network-dsl-status.js
 msgid "DSL Status Information"
@@ -186,7 +186,7 @@ msgstr ""
 
 # plugins/juci-network-dsl/src/pages/network-dsl-status.html
 msgid "dsl.status.info"
-msgstr ""
+msgstr "This status page shows technical details of your DSL connection."
 
 # plugins/juci-network-dsl/src/pages/network-dsl-status.html
 msgid "No DSL info available."
