@@ -27,12 +27,13 @@ UCI.wifilife.$registerSectionType("assoc_control", {
 });
 
 UCI.wifilife.$registerSectionType("steer-param", {
-	"priority": { dvalue: undefined, type: Number },
-	"rssi_threshold": { dvalue: undefined, type: Number, validator: UCI.validators.NumberLimitValidator(-100, -30) },
-	"bssload_threshold": { dvalue: undefined, type: Number, validator: UCI.validators.NumberLimitValidator(0, 100) },
-	"margin": { dvalue: undefined, type: Number, validator: UCI.validators.NumberLimitValidator(0, 30) },
-	"hysteresis": { dvalue: undefined, type: Number, validator: UCI.validators.NumberLimitValidator(0, 500) },
-	"diffsnr": { dvalue: undefined, type: Number, validator: UCI.validators.NumberLimitValidator(0, 50) },
+	"type": {dvalue: undefined, type: String },
+	"priority": { dvalue: 0, type: Number },
+	"rssi_threshold": { dvalue: -68, type: Number, validator: UCI.validators.NumberLimitValidator(-100, -30) },
+	"bssload_threshold": { dvalue: 80, type: Number, validator: UCI.validators.NumberLimitValidator(0, 100) },
+	"margin": { dvalue: 3, type: Number, validator: UCI.validators.NumberLimitValidator(0, 30) },
+	"hysteresis": { dvalue: 5, type: Number, validator: UCI.validators.NumberLimitValidator(0, 500) },
+	"diffsnr": { dvalue: 8, type: Number, validator: UCI.validators.NumberLimitValidator(0, 50) },
 	"victims": { dvalue: undefined, type: Array },
 	"params": { dvalue: undefined, type: Array },
 });

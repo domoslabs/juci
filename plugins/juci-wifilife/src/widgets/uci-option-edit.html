@@ -1,23 +1,23 @@
 <div>
-	<juci-config-line title="{{'Priority'|translate}}" ng-show="param.priority.value != null || param.priority.error" error="param.priority.error">
+	<juci-config-line title="{{'Priority'|translate}}" error="param.priority.error">
 		<input type="number" class="form-control" ng-model="param.priority.value" value="{{param.priority.value}}">
 	</juci-config-line>
-	<juci-config-line title="{{'Threshold'|translate}}" ng-show="param.rssi_threshold.value != null || param.rssi_threshold.error" error="param.rssi_threshold.error">
+	<juci-config-line title="{{'Threshold'|translate}}" ng-show="param.type.value === 'rssi' || param.rssi_threshold.error" error="param.rssi_threshold.error">
 		<input type="number" class="form-control" ng-model="param.rssi_threshold.value" value="{{param.rssi_threshold.value}}">
 	</juci-config-line>
-	<juci-config-line title="{{'Threshold'|translate}}" ng-show="param.bssload_threshold.value != null || param.bssload_threshold.error" error="param.bssload_threshold.error">
+	<juci-config-line title="{{'Threshold'|translate}}" ng-show="param.type.value === 'bssload' || param.bssload_threshold.error" error="param.bssload_threshold.error">
 		<input type="number" class="form-control" ng-model="param.bssload_threshold.value" value="{{param.bssload_threshold.value}}">
 	</juci-config-line>
-	<juci-config-line title="{{'Threshold Margin'|translate}}" ng-show="param.margin.value != null || param.margin.error" error="param.margin.error">
+	<juci-config-line title="{{'Threshold Margin'|translate}}" ng-show="param.type.value === 'rssi' || param.margin.error" error="param.margin.error">
 		<input type="number" class="form-control" ng-model="param.margin.value" value="{{param.margin.value}}">
 	</juci-config-line>
-	<juci-config-line title="{{'Hysteresis'|translate}}" ng-show="param.hysteresis.value != null || param.hysteresis.error" error="param.hysteresis.error">
+	<juci-config-line title="{{'Hysteresis'|translate}}" ng-show="param.type.value === 'rssi' || param.hysteresis.error" error="param.hysteresis.error">
 		<input type="number" class="form-control" ng-model="param.hysteresis.value" value="{{param.hysteresis.value}}">
 	</juci-config-line>
-	<juci-config-line title="{{'SNR Difference'|translate}}" ng-show="param.diffsnr.value != null || param.diffsnr.error" error="param.diffsnr.error">
+	<juci-config-line title="{{'SNR Difference'|translate}}" ng-show="param.type.value === 'rssi' || param.diffsnr.error" error="param.diffsnr.error">
 		<input type="number" class="form-control" ng-model="param.diffsnr.value" value="{{param.diffsnr.value}}">
 	</juci-config-line>
-	<juci-config-line title="{{'Steering Parameter Priority'|translate}}" ng-show="param.params.value" help="{{'Order parameters by which to place most importance on when deciding to steer a client.'|translate}}">
+	<!--<juci-config-line title="{{'Steering Parameter Priority'|translate}}" ng-show="param.params.value" help="{{'Order parameters by which to place most importance on when deciding to steer a client.'|translate}}">
 		<table class="table" style="width:125%" ng-show="param.params.value">
 			<thead>
 				<th>Priority<i style="float:right" class="fa "></i></th>
@@ -28,6 +28,6 @@
 				<button class="btn btn-default btn-xs pull-right" ng-click="onMoveDown($index)" ng-show="$index != 2"><i class="fa fa-caret-down"></i></button></td>
 			</tr>
 		</table>
-	</juci-config-line>
+	</juci-config-line>-->
 </div>
 

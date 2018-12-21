@@ -164,26 +164,17 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $lo
 	}
 
 	function populateEntry (section) {
-		if (section.priority.value != null)
+		if (section.type.value === "bssload") {
 			section.$statusList.push({ label: $tr(gettext("Priority")), value: section.priority.value })
-
-		if (section.rssi_threshold.value != null)
-			section.$statusList.push({ label: $tr(gettext("Threshold")), value: section.rssi_threshold.value + " dBm" })
-
-		if (section.bssload_threshold.value != null)
 			section.$statusList.push({ label: $tr(gettext("Threshold")), value: section.bssload_threshold.value + " %" })
-
-		if (section.margin.value != null)
-			section.$statusList.push({ label: $tr(gettext("Threshold Margin")), value: "± " + section.margin.value + " dB"})
-
-		if (section.hysteresis.value != null)
-			section.$statusList.push({ label: $tr(gettext("Hysteresis")), value: section.hysteresis.value})
-
-		if (section.diffsnr.value != null)
+		} else if (section.type.value === "rssi") {
+			section.$statusList.push({ label: $tr(gettext("Priority")), value: section.priority.value })
+			section.$statusList.push({ label: $tr(gettext("Threshold")), value: section.rssi_threshold.value + " dBm" })
+			section.$statusList.push({ label: $tr(gettext("Threshold Margin")), value: "± " + section.margin.value + " dB" })
+			section.$statusList.push({ label: $tr(gettext("Hysteresis")), value: section.hysteresis.value })
 			section.$statusList.push({ label: $tr(gettext("SNR Difference")), value: section.diffsnr.value + " dB" })
-
-		if (section.params.value != null)
-			section.params.value.forEach(function (param, i) { section.$statusList.push({ label: $tr(gettext("Param " + (i+1))), value: getTitle(param) })})
+		}
+		//section.params.value.forEach(function (param, i) { section.$statusList.push({ label: $tr(gettext("Param " + (i + 1))), value: getTitle(param) }) })
 	}
 
 	$uci.$sync("wifilife").done(function () {
