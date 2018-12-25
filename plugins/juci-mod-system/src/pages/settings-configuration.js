@@ -45,31 +45,28 @@ JUCI.app
 	 * use is_repeater to hide soft reset section
 	 * should be removed when soft reset will work for repeaters
 	 */
-	$uci.$sync("netmode")
-		.done(function() {
-			if (!$uci.netmode.setup || !$uci.netmode.setup.curmode) {
-				$scope.soft.is_repeater = false;
-				$scope.$apply();
-				return;
-			}
-
-			var curmode = $uci.netmode.setup.curmode.value;
-
-			if (!$uci.netmode[curmode] || !$uci.netmode[curmode].uplink_band) {
-				$scope.soft.is_repeater = false;
-				$scope.$apply();
-				return;
-			}
-
-			var uplinkband= $uci.netmode[curmode].uplink_band.value;
-
-			if (!uplinkband) {
-				$scope.soft.is_repeater = false;
-				$scope.$apply();
-			}
+	$uci.$sync("netmode").done(function() {
+		if (!$uci.netmode || !$uci.netmode.setup || !$uci.netmode.setup.curmode) {
+			$scope.soft.is_repeater = false;
+			$scope.$apply();
+			return;
 		}
-	);
 
+		var curmode = $uci.netmode.setup.curmode.value;
+
+		if (!$uci.netmode[curmode] || !$uci.netmode[curmode].uplink_band) {
+			$scope.soft.is_repeater = false;
+			$scope.$apply();
+			return;
+		}
+
+		var uplinkband= $uci.netmode[curmode].uplink_band.value;
+
+		if (!uplinkband) {
+			$scope.soft.is_repeater = false;
+			$scope.$apply();
+		}
+	});
 
 	$scope.onReset = function(){
 		$juciConfirm.show($tr(gettext("This will reset your configuration to factory defaults (except the settings selected to be saved). Do you want to continue?"))).done(function(){
