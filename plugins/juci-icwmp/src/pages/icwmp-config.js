@@ -46,13 +46,14 @@ JUCI.app
 		{ label: $tr(gettext("Debug")),		value: 'DEBUG' }
 	];
 
-	$scope.status = [];
-
 	$scope.onTR069ObjectAvailable=$rpc.$has("tr069", "inform");
 	JUCI.interval.repeat("icwmp-status-update", 5000, function(next){
 		function reload_status(){
 			$rpc.$call("tr069", "status").done(function(data){
 				if(!data) return;
+
+				$scope.status = [];
+
 				if(data.cwmp){
 					$scope.status.push({
 						title: $tr(gettext("CWMP")),
