@@ -1,0 +1,218 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JUCI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: Inteno\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# /home/jamu/GIT/juci/plugins/juci-diagnostics/src/pages/status-diagnostics.js
+msgid "Not a valid domain or ip address"
+msgstr "Verkkotunnus tai IP-osoite ei ole kelvollinen"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Download"
+msgstr "Lataus"
+
+# plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Upload"
+msgstr "Lähetys"
+
+# plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Download/Upload"
+msgstr "Lataus/Lähetys"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Server and port is mandatory"
+msgstr "Palvelin ja portti pakollinen"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "error deleting server"
+msgstr "virhe palvelinta poistettaessa"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Downstream:"
+msgstr "Lataus:"
+
+# /home/jamu/GIT/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid ""
+"Mbit/s\n"
+"Upstream:"
+msgstr "Mbit/s lähetys"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Mbit/s"
+msgstr "Mbit/s"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Upstream:"
+msgstr "Lähetys:"
+
+# plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "No speeds found"
+msgstr "Nopeuksia ei saatavilla"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Wrong TP-test address and/or port"
+msgstr "Virheellinen TP-testiosoite ja/tai -portti"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.js
+msgid "Address and port needed"
+msgstr "Osoite ja portti tarvitaan"
+
+# plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "The test can take up to two minutes"
+msgstr "Testi voi kestää jopa kaksi minuuttia"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Direction"
+msgstr "Suunta"
+
+# plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Automatic transfer size"
+msgstr "Automaattinen siirron koko"
+
+# plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Download transfer size"
+msgstr "Latauksen siirron koko"
+
+# plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Upload transfer size"
+msgstr "Lähetyksen siirron koko"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
+msgid "Server"
+msgstr "Palvelin"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Run test"
+msgstr "Suorita testi..."
+
+msgid "Test results"
+msgstr "Jäljityksen tulokset"
+
+msgid "Error"
+msgstr "Virhe"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
+msgid "Port"
+msgstr "Palvelin"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
+msgid "Add test server"
+msgstr "Lisää Testipalvelin"
+
+msgid "Diagnostic Utility"
+msgstr "Diagnostiikkatyökalu"
+
+msgid "status.diagnostics.info"
+msgstr " "
+
+msgid "Ping Test"
+msgstr "Ping-testi"
+
+msgid "status.diagnostics.ping.info"
+msgstr "Syötä kohteen verkkonimi tai IP-osoite suorittaaksesi Ping testi."
+
+msgid "Host to ping"
+msgstr "Isäntäkone, jota pingataan"
+
+msgid "Ping"
+msgstr "Ping"
+
+# plugins/juci-diagnostics/src/pages/status-diagnostics.html
+msgid "Running Ping"
+msgstr "Suoritetaan ping"
+
+msgid "Ping results"
+msgstr "Ping-tulokset"
+
+msgid "Tracing Tool"
+msgstr "Jäljitystyökalu"
+
+msgid "status.diagnostics.trace.info"
+msgstr "Syötä kohteen verkkonimi tai IP-osoite suorittaaksesi jäljityksen"
+
+msgid "Host to trace"
+msgstr "Jäljitettävä isäntäkone"
+
+msgid "Trace"
+msgstr "Jäljitä"
+
+# plugins/juci-diagnostics/src/pages/status-diagnostics.html
+msgid "Running Trace"
+msgstr "Suoritetaan jäljitystä"
+
+msgid "Trace results"
+msgstr "Jäljityksen tulokset"
+
+# /home/jamu/GIT/juci/plugins/juci-diagnostics/src/pages/status-diagnostics-speedtest.html
+msgid "Speed Test"
+msgstr "TP-nopeustesti"
+
+msgid "menu-status-diagnostics-title"
+msgstr "Diagnostiikka"
+
+# /home/jamu/GIT/juci/plugins/juci-diagnostics/src/pages/status-diagnostics-speedtest.html
+msgid "menu-status-diagnostics-speedtest-title"
+msgstr "TP-nopeustesti"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+#~ msgid "Up and Down"
+#~ msgstr "Lähetys ja lataus"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+#~ msgid "Up"
+#~ msgstr "Lähetys"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+#~ msgid "Only one test can be run at a time"
+#~ msgstr "Vain yksi testi kerrallaan"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+#~ msgid "Unknown error"
+#~ msgstr "Tuntematon virhe"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+#~ msgid "Wrong TP-test port but correct address"
+#~ msgstr "Virheellinen TP-testiportti, mutta oikea osoite"
+
+# /home/jamu/GIT/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+#~ msgid "Bytes to transfer"
+#~ msgstr "Siirrettävien tavujen määrä"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+#~ msgid "Speedtest Server"
+#~ msgstr "Speedtest Server"
+
+#~ msgid "Automated Diagnostics"
+#~ msgstr "Automatisoitu vianmääritys"
+
+#~ msgid "status.diagnostics.auto.info"
+#~ msgstr "Automaattinen diagnostiikka"
+
+#~ msgid "Diagnose"
+#~ msgstr "Diagnostiikka"
+
+# /home/jamu/GIT/juci/plugins/juci-diagnostics/src/pages/status-diagnostics-speedtest.html
+#~ msgid "status-diagnostics-speedtest-title"
+#~ msgstr "TP-nopeustesti"
+
+# /home/jamu/GIT/juci/plugins/juci-diagnostics/src/pages/status-diagnostics.html
+#~ msgid "status-diagnostics-title"
+#~ msgstr "Diagnostiikka"
+
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+#~ msgid ""
+#~ "Mbit/s\n"
+#~ "Downstream:"
+#~ msgstr "Mbit/s Lataus"
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+#~ msgid "Package Size"
+#~ msgstr "Pakettikoko"

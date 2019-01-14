@@ -1,0 +1,164 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Up and Down"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Up"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Down"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Server and port is mandatory"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Only one test can be run at a time"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Unknown error"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "error deleting server"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Downstream:"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid ""
+"Mbit/s\n"
+"Upstream:"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Mbit/s"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Upstream:"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Wrong TP-test address and/or port"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+msgid "Wrong TP-test port but correct address"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.js
+msgid "Address and port needed"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Direction"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Package Size"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Speedtest Server"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Run test"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
+msgid "Test results"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
+msgid "Server"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
+msgid "Port"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
+msgid "Add test server"
+msgstr ""
+
+msgid "Diagnostic Utility"
+msgstr ""
+
+msgid "status.diagnostics.info"
+msgstr ""
+"This section shows a list of tools which can be used to check the status of "
+"your network connection."
+
+msgid "Automated Diagnostics"
+msgstr ""
+
+msgid "status.diagnostics.auto.info"
+msgstr ""
+"This diagnosis should take up to 2 minutes and cannot be cancelled once it "
+"has been started."
+
+msgid "Diagnose"
+msgstr ""
+
+msgid "Ping Test"
+msgstr ""
+
+msgid "status.diagnostics.ping.info"
+msgstr "Please enter a hostname or IP address to ping."
+
+msgid "Host to ping"
+msgstr ""
+
+msgid "Ping"
+msgstr ""
+
+msgid "Ping results"
+msgstr ""
+
+msgid "Tracing Tool"
+msgstr ""
+
+msgid "status.diagnostics.trace.info"
+msgstr "Please enter a hostname or IP address to trace."
+
+msgid "Host to trace"
+msgstr ""
+
+msgid "Trace"
+msgstr ""
+
+msgid "Trace results"
+msgstr ""
+
+# /home/cnagy/juci/plugins/juci-diagnostics/src/pages/status-diagnostics-speedtest.html
+msgid "Speed Test"
+msgstr ""
+
+msgid "menu-status-diagnostics-title"
+msgstr "Diagnostics"
+
+msgid "menu-status-diagnostics-speedtest-title"
+msgstr "Speed Test"

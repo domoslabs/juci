@@ -146,6 +146,8 @@
 "status-diagnostics-title"
 "menu-status-diagnostics-speedtest-title" "Speed Test"
 "status-diagnostics-speedtest-title"
+"menu-status-diagnostics-ndt-title" "NDT Test"
+"status-diagnostics-ndt-title"
 "menu-status-usb-title" "USB Status"
 "status-usb-title"
 "menu-internet-parental-control-title" "Parental Control"
