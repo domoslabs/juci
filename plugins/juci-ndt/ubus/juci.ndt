@@ -8,56 +8,22 @@ is_num() {
 	[ "$(echo $1 | sed 's/[0-9]//g')" == "" ] && return 0 || return 1
 }
 
-validate_arguments_tptest() {
-	host="$1"
-	testmode="$2"
-	packetsize_up="$3"
-	packetsize_down="$4"
-	port="$5"
-	auto="$6"
-	is_num $port || return 1
-	[ "$host" == "" ] && return 1
+validate_arguments_ndttest() {
+	testmode="$1"
+	geoserver="$2"
+	[ "$geoserver" == "" ] && return 1
 	case $testmode in
 		up|down|up_down);;
 		*) return 1 ;;
 	esac
-	if [ "$auto" == "0" ]; then
-		case $testmode in
-			*up*)
-				is_num $packetsize_up || return 1
-				;;
-		esac
-		case $testmode in
-			*down*)
-				is_num $packetsize_down || return 1
-				;;
-		esac
-	elif [ "$auto" == "1" ]; then
-		return 0;
-	else
-		return 1
-	fi
-}
-
-run_cmd() {
-	CMND=$1
-	input=$2
-
-	read input;
-
-	json_load "$input"
-	json_get_var host host
-
-	json_init
-	json_add_string stdout "$($CMND $host)"
-	json_dump
+	return 0;
 }
 
 input=""
 
 case "$1" in
 	list)
-		echo '{ "ndttest_start" : {"seq":32, "auto": true, "testmode":"str","packetsize_up":32,"packetsize_down":32,"host":"str","port":32},
+		echo '{ "ndttest_start" : {"seq":32, "testmode":"str","geoserver":"str"},
 			"ndttest_stop" : {},
 			"ndttest_running": {} }'
 	;;
@@ -67,20 +33,16 @@ case "$1" in
 				host=""
 				seq=""
 				testmode=""
-				port=""
+				geoserver=""
 				auto=""
 				read input
 				json_load "$input"
 				json_get_var host host ""
 				json_get_var seq seq 1
 				json_get_var testmode testmode "up_down"
-				json_get_var packetsize_up packetsize_up 50000
-				json_get_var packetsize_down packetsize_down 50000
-				json_get_var port port 0
-				json_get_var auto auto 1
-				json_get_var geoserver geoserver
-				validate_arguments_tptest "$host" "$testmode" "$packetsize_up" "$packetsize_down" "$port" "$auto" && {
-					diagnostics -U -s $seq -C ndttest -u $packetsize_up -d $packetsize_down -t $testmode -h $host -p $port -g $geoserver >/dev/null 2>&1 &
+				json_get_var geoserver geoserver "auto"
+				validate_arguments_ndttest "$testmode" "$geoserver" && {
+					diagnostics -U -s $seq -C ndttest -t $testmode -g $geoserver >/dev/null 2>&1 &
 
 					json_init
 					json_add_string "state" "running"
@@ -95,7 +57,7 @@ case "$1" in
 			;;
 			ndttest_stop)
 				killall -9 diagnostics >/dev/null 2>&1
-				killall -9 tptest >/dev/null 2>&1
+				killall -9 web100clt >/dev/null 2>&1
                                 json_init                                                                                                                      
                                 json_add_string "state" "aborted"                                                                                              
                                 json_add_string "message" "success"                                                                                            

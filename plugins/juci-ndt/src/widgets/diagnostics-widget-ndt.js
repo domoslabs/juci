@@ -93,26 +93,12 @@ JUCI.app
 
 	$scope.runTest = function(){
 		if($scope.data.state === "running") return;
-		if($scope.data.test_type.match(/up/) && !$scope.data.upsize){ alert("Upstream packet size missing"); return; }
-		if($scope.data.test_type.match(/down/) && !$scope.data.downsize){ alert("Downstream packet size missing"); return; }
-		var port = server.port.value;
-		var address = server.server.value;
 		var geoserver = $scope.data.geoserver;
 		$scope.data.state="running";
 		var speedtestArgs = {
-			"auto": $scope.data.auto,
 			"testmode": $scope.data.test_type,
-			"port": port,
-			"host": address,
 			"geoserver": geoserver,
 		};
-
-		if($scope.data.test_type.match(/up/) && !$scope.data.auto){
-			speedtestArgs.packetsize_up = $scope.data.upsize * 1000000;
-		}
-		if($scope.data.test_type.match(/down/) && !$scope.data.auto){
-			speedtestArgs.packetsize_down = $scope.data.downsize * 1000000;
-		}
 
 		$rpc.$call("juci.ndt", "ndttest_start", speedtestArgs).done(function(response){
 			if(response && response.message=="success"){
@@ -143,7 +129,7 @@ JUCI.app
 		});
 	};
 
-	$events.subscribe("diagnostics.speedtest", function(res){
+	$events.subscribe("diagnostics.ndt", function(res){
 		if(res.data && res.data.status != undefined){
 			switch(res.data.status) {
 			case 0:

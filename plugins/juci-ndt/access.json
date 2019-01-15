@@ -4,10 +4,9 @@
 		"read": {
 			"ubus": {
 				"juci.ndt": [
-					"ndt_start",
-					"ndt_stop",
-					"ndt_packet_size",
-					"ndt_running"
+					"ndttest_start",
+					"ndttest_stop",
+					"ndttest_running"
 				]
 			},
 			"owsd": [

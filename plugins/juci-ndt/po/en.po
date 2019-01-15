@@ -11,74 +11,80 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
-msgid "Up and Down"
+# plugins/juci-ndt/src/widgets/diagnostics-widget-ndt.js 
+msgid "Download"
 msgstr ""
 
-# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
-msgid "Up"
+# plugins/juci-ndt/src/widgets/diagnostics-widget-ndt.js 
+msgid "Upload"
 msgstr ""
 
-# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
-msgid "Down"
+# plugins/juci-ndt/src/widgets/diagnostics-widget-ndt.js 
+msgid "Download/Upload"
 msgstr ""
 
-# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
-msgid "Server and port is mandatory"
+# plugins/juci-ndt/src/widgets/diagnostics-widget-ndt.js 
+msgid "Test server:"
 msgstr ""
 
-# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
-msgid "Only one test can be run at a time"
-msgstr ""
-
-# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
-msgid "Unknown error"
-msgstr ""
-
-# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
-msgid "error deleting server"
+# plugins/juci-ndt/src/widgets/diagnostics-widget-ndt.js 
+msgid ""
+"\n"
+"Server Location:"
 msgstr ""
 
 # /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
 msgid "Downstream:"
 msgstr ""
 
-# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
+# plugins/juci-ndt/src/widgets/diagnostics-widget-ndt.js 
 msgid ""
-"Mbit/s\n"
+"\n"
 "Upstream:"
-msgstr ""
-
-# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
-msgid "Mbit/s"
 msgstr ""
 
 # /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
 msgid "Upstream:"
 msgstr ""
 
+# plugins/juci-ndt/src/widgets/diagnostics-widget-ndt.js 
+msgid "No speeds found"
+msgstr ""
+
 # /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
 msgid "Wrong TP-test address and/or port"
 msgstr ""
 
-# /home/cnagy/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.js
-msgid "Wrong TP-test port but correct address"
-msgstr ""
-
-# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.js
-msgid "Address and port needed"
+# plugins/juci-ndt/src/widgets/diagnostics-widget-ndt.html 
+msgid "The test can take up to two minutes"
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
 msgid "Direction"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
-msgid "Package Size"
+# plugins/juci-ndt/src/widgets/diagnostics-widget-ndt.html 
+msgid "Automatic transfer size"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
-msgid "Speedtest Server"
+# plugins/juci-ndt/src/widgets/diagnostics-widget-ndt.html 
+msgid "Download transfer size"
+msgstr ""
+
+# plugins/juci-ndt/src/widgets/diagnostics-widget-ndt.html 
+msgid "Upload transfer size"
+msgstr ""
+
+# plugins/juci-ndt/src/widgets/diagnostics-widget-ndt.html 
+msgid "GeoServers"
+msgstr ""
+
+# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
+msgid "Server"
+msgstr ""
+
+# plugins/juci-ndt/src/widgets/diagnostics-widget-ndt.html 
+msgid "Abort"
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
@@ -92,73 +98,28 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
-msgid "Server"
+# plugins/juci-ndt/src/pages/status-diagnostics-ndt.html 
+msgid "NDT Test"
 msgstr ""
 
-# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
-msgid "Port"
-msgstr ""
+msgid "menu-status-diagnostics-ndt-title"
+msgstr "NDT Test"
 
-# /home/reidar/juci/plugins/juci-diagnostics/src/widgets/utils-add-testserver-picker.html
-msgid "Add test server"
-msgstr ""
+#~ msgid "status.diagnostics.info"
+#~ msgstr ""
+#~ "This section shows a list of tools which can be used to check the status "
+#~ "of your network connection."
 
-msgid "Diagnostic Utility"
-msgstr ""
+#~ msgid "status.diagnostics.auto.info"
+#~ msgstr ""
+#~ "This diagnosis should take up to 2 minutes and cannot be cancelled once "
+#~ "it has been started."
 
-msgid "status.diagnostics.info"
-msgstr ""
-"This section shows a list of tools which can be used to check the status of "
-"your network connection."
+#~ msgid "status.diagnostics.ping.info"
+#~ msgstr "Please enter a hostname or IP address to ping."
 
-msgid "Automated Diagnostics"
-msgstr ""
+#~ msgid "status.diagnostics.trace.info"
+#~ msgstr "Please enter a hostname or IP address to trace."
 
-msgid "status.diagnostics.auto.info"
-msgstr ""
-"This diagnosis should take up to 2 minutes and cannot be cancelled once it "
-"has been started."
-
-msgid "Diagnose"
-msgstr ""
-
-msgid "Ping Test"
-msgstr ""
-
-msgid "status.diagnostics.ping.info"
-msgstr "Please enter a hostname or IP address to ping."
-
-msgid "Host to ping"
-msgstr ""
-
-msgid "Ping"
-msgstr ""
-
-msgid "Ping results"
-msgstr ""
-
-msgid "Tracing Tool"
-msgstr ""
-
-msgid "status.diagnostics.trace.info"
-msgstr "Please enter a hostname or IP address to trace."
-
-msgid "Host to trace"
-msgstr ""
-
-msgid "Trace"
-msgstr ""
-
-msgid "Trace results"
-msgstr ""
-
-# /home/cnagy/juci/plugins/juci-diagnostics/src/pages/status-diagnostics-speedtest.html
-msgid "Speed Test"
-msgstr ""
-
-msgid "menu-status-diagnostics-title"
-msgstr "Diagnostics"
-
-msgid "menu-status-diagnostics-speedtest-title"
-msgstr "Speed Test"
+#~ msgid "menu-status-diagnostics-speedtest-title"
+#~ msgstr "Speed Test"

@@ -5,52 +5,15 @@
 			<juci-config-line title="{{'Direction'|translate}}">
 				<juci-select ng-model="data.test_type" ng-items="testType"></juci-select>
 			</juci-config-line>
-<!--
-			<juci-config-line title="{{'Automatic transfer size'|translate}}">
-				<div class="input-group">
-					<switch class="green" ng-model="data.auto" />
-				</div>
-			</juci-config-line>
-			<juci-config-line ng-show="(data.test_type=='down' || data.test_type=='up_down')" title="{{'Download transfer size'|translate}}">
-				<div class="input-group">
-					<input type="number" min="0" max="500" step="5" class="form-control" ng-model="data.downsize" placeholder="[Mbyte]" />
-					<span class="input-group-addon">MB</span>
-				</div>
-			</juci-config-line>
-			<juci-config-line ng-show="(data.test_type=='up' || data.test_type=='up_down')" title="{{'Upload transfer size'|translate}}">
-				<div class="input-group">
-					<input type="number" min="0" max="500" step="5" class="form-control" ng-model="data.upsize" placeholder="[Mbyte]" />
-					<span class="input-group-addon">MB</span>
-				</div>
-			</juci-config-line>
--->
 			<juci-config-line title="{{'GeoServers' | translate}}">
 				<juci-select ng-model="data.geoserver" ng-items="allTestGeoServers"/>
 			</juci-config-line>
-<!--
-
-			<juci-config-line title="{{'Server' | translate}}">
-				<juci-select ng-model="data.server" ng-items="allTestServers"/>
-			</juci-config-line>
-			<juci-config-line>
-				<div class="row">
-					<div class="col-xs-7 text-center" style="font-size: x-small">Remove/Add server</div>
-					<button class="col-xs-2 btn btn-default" ng-click="onRemoveAddress()" >
-						<i class="fa fa-minus"></i>
-					</button>
-					<button class="col-xs-2 btn btn-default" ng-click="onAddAddress()" style="float: right; margin-right: 15px;">
-						<i class="fa fa-plus"></i>
-					</button>
-				</div>
-			</juci-config-line>
--->
 			<juci-config-line>
 				<button class="btn btn-default" ng-click="abortTest()" ng-show="(data.state == 'running')">
 					<span >{{'Abort' | translate}}</span>
 				</button>
 				<button class="btn btn-default" ng-click="runTest()" ng-show="(data.state != 'running')">
 					<span >{{'Run test' | translate}}</span>
-
 				</button>
 			</juci-config-line>
 		</juci-config-lines>
