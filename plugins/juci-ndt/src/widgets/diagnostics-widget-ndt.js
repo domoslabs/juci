@@ -17,38 +17,15 @@ JUCI.app
 		auto: false
 	};
 	$scope.allTestGeoServers = [
-				{
-				label: 'Auto',
-				value: 'auto'
-				},
-				{
-				label: 'India',
-				value: 'IN'
-				},
-				{
-				label: "Canada",
-				value: "CA"
-				},
-				{
-				label: "Netherlands",
-				value: "NL"
-				},
-				{
-				label: "Sweden",
-				value: "SE"
-				},
-				{
-				label: "Norway",
-				value: "NO"
-				},
-				{
-				label: "Belgium",
-				value: "BE"
-				},
-				{
-				label: "Germany",
-				value: "DE"
-				}
+		{"label": "Auto", "value": "auto"},
+		{"label": "Netherlands", "value": "NL"},
+		{"label": "Sweden", "value": "SE"},
+		{"label": "Norway", "value": "NO"},
+		{"label": "Belgium", "value": "BE"},
+		{"label": "Germany", "value": "DE"},
+		{"label": "India", "value": "IN"},
+		{"label": "Canada", "value": "CA"},
+		{"label": "Finland", "value": "FI"}
 		];
 	$scope.data.geoserver = $scope.allTestGeoServers[0].value;
 
@@ -133,9 +110,12 @@ JUCI.app
 		if(res.data && res.data.status != undefined){
 			switch(res.data.status) {
 			case 0:
-				var pushMsg;
+				var pushMsg="";
+				if( ! res.data.label.match(/success/)){
+					pushMsg=res.data.label + "\n\n";
+				}
 				if(res.data.server != "none" && res.data.location !="none"){
-					pushMsg=$tr(gettext("Test server:"))+" " + res.data.server + $tr(gettext("\nServer Location:"))+" " + res.data.location +"\n\n";
+					pushMsg+=$tr(gettext("Server:"))+" " + res.data.server + $tr(gettext("\nLocation:"))+" " + res.data.location +"\n\n";
  				}
 
  				if(res.data.upstream != "none" && res.data.downstream != "none"){
@@ -151,7 +131,11 @@ JUCI.app
  				$scope.data.state="result";
  				break;
 			case -1:
-				$scope.data.result.push($tr(gettext("Wrong TP-test address and/or port")));
+				if(res.data.label != "none") {
+					$scope.data.result.push(res.data.label);
+				} else {
+					$scope.data.result.push($tr(gettext("Server not found")));
+				}
 				$scope.data.state="error";
 				break;
 			}
