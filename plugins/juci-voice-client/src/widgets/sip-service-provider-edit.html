@@ -43,8 +43,8 @@
 			<input type="number" class="form-control" ng-model="model.outboundproxyport.value" min="0" max="65535" placeholder="{{ 'SIP Proxy Port' | translate }}"/>
 		</juci-config-line>
 		<juci-config-line title="{{'Incoming Phone Lines'|translate}}">
-			<div class="form-group col-md-6 " ng-repeat="line in lines track by $index">
-				<div class="checkbox checkbox-info">
+			<div ng-repeat="line in lines track by $index">
+				<div class="row checkbox checkbox-info">
 					<input type="checkbox" ng-model="line.checked" ng-change="onLineChange(line)" />
 					<label>{{line.label}}</label>
 				</div>
