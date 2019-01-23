@@ -94,6 +94,10 @@ msgstr "アップロード転送サイズ"
 msgid "Server"
 msgstr "サーバー"
 
+# plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html 
+msgid "Abort"
+msgstr ""
+
 # plugins/juci-diagnostics/src/widgets/diagnostics-widget-speedtest.html
 msgid "Run test"
 msgstr "テスト実行"

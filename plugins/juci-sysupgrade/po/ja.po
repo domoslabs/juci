@@ -12,20 +12,14 @@ msgstr ""
 "X-Generator: Poedit 2.0.1\n"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
-msgid ".w (JFFS Image with CFE)"
-msgstr ".w (JFFS Image with CFE)"
-
-# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
-msgid ".y (UBIFS Image)"
+#, fuzzy
+msgid ".y2 (UBIFS Image)"
 msgstr ".y (UBIFS Image)"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
-msgid ".y2 (new UBIFS Image)"
-msgstr ".y2 (new UBIFS Image)"
-
-# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
-msgid "fs_image (JFFS Image)"
-msgstr "fs_image (JFFS Image)"
+#, fuzzy
+msgid ".y3 (UBIFS Image)"
+msgstr ".y (UBIFS Image)"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
 msgid "A missing section has been created"
@@ -45,14 +39,26 @@ msgid "Do you want to keep your configuration?"
 msgstr "設定を保存しますか？"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+#, fuzzy
 msgid ""
-"If you answer yes then your configuration will be saved before the upgrade "
-"and restored after the upgrade has completed. If you choose 'no' then all "
-"your current configuration will be reset to defaults."
+"If you choose yes then your configuration will be saved and restored after "
+"the upgrade has completed."
 msgstr ""
-"「はい」を選択した場合現在の設定が保存され、アップグレードが完了した後に復"
-"元されます。「いいえ」を選択した場合、すべての設定が工場出荷状態にリセット"
-"されます。"
+"「はい」を選択した場合現在の設定が保存され、アップグレードが完了した後に復元"
+"されます。「いいえ」を選択した場合、すべての設定が工場出荷状態にリセットされ"
+"ます。"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js 
+msgid ""
+"If you choose 'soft' then important user settings will be saved and restored "
+"after the upgrade has completed."
+msgstr ""
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js 
+msgid ""
+"If you choose 'no' then all your current configuration will be reset to "
+"defaults."
+msgstr ""
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.js
@@ -60,6 +66,10 @@ msgstr ""
 # plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
 msgid "Yes"
 msgstr "はい"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js 
+msgid "Soft"
+msgstr ""
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.js
@@ -91,16 +101,16 @@ msgid "unknown test"
 msgstr "不明なテスト"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.js
-msgid "New Software Available!"
-msgstr "新しいソフトウェアが利用可能です。"
-
-# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
 msgid "No upgrade has been found!"
 msgstr "アップグレードは見つかりませんでした。"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.js
 msgid "USB upgrade check failed"
 msgstr "USBアップグレードのチェックに失敗しました"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade.js
+msgid "New Software Available!"
+msgstr "新しいソフトウェアが利用可能です。"
 
 # plugins/juci-sysupgrade/src/pages/settings-upgrade.js
 msgid "Online upgrade check failed"
@@ -139,9 +149,9 @@ msgid ""
 "If you click 'Yes' all settings will be saved. If you want to have a clean "
 "install click 'No'. To close this dialog click 'Cancel'"
 msgstr ""
-"「はい」をクリックすると設定が保存されます。クリーンインストールをしたい場"
-"合は「いいえ」をクリックして下さい。このダイアログを閉じるには「キャンセ"
-"ル」をクリックして下さい。"
+"「はい」をクリックすると設定が保存されます。クリーンインストールをしたい場合"
+"は「いいえ」をクリックして下さい。このダイアログを閉じるには「キャンセル」を"
+"クリックして下さい。"
 
 # plugins/juci-sysupgrade/src/widgets/overview.online.upgrade.js
 msgid "Your box is upgrading"
@@ -273,3 +283,15 @@ msgstr "アップグレード"
 # plugins/juci-sysupgrade/src/pages/settings-upgrade-options.html
 msgid "menu-settings-upgrade-options-title"
 msgstr "オプション"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
+#~ msgid ".w (JFFS Image with CFE)"
+#~ msgstr ".w (JFFS Image with CFE)"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
+#~ msgid ".y2 (new UBIFS Image)"
+#~ msgstr ".y2 (new UBIFS Image)"
+
+# plugins/juci-sysupgrade/src/pages/settings-upgrade-options.js
+#~ msgid "fs_image (JFFS Image)"
+#~ msgstr "fs_image (JFFS Image)"

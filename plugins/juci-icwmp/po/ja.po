@@ -51,8 +51,69 @@ msgstr "情報"
 msgid "Debug"
 msgstr "デバッグ"
 
+# plugins/juci-icwmp/src/pages/icwmp-config.js 
+msgid "CWMP"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-icwmp/src/pages/icwmp-config.js 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-icwmp/src/pages/icwmp-config.js 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-icwmp/src/pages/icwmp-config.js 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-icwmp/src/pages/icwmp-config.html 
+msgid "Status"
+msgstr ""
+
+# plugins/juci-icwmp/src/pages/icwmp-config.js 
+msgid "Start Time"
+msgstr ""
+
+# plugins/juci-icwmp/src/pages/icwmp-config.js 
+msgid "ACS URL"
+msgstr ""
+
+# plugins/juci-icwmp/src/pages/icwmp-config.js 
+msgid "Last Session"
+msgstr ""
+
+# plugins/juci-icwmp/src/pages/icwmp-config.js 
+msgid "End Time"
+msgstr ""
+
+# plugins/juci-icwmp/src/pages/icwmp-config.js 
+msgid "Next Session"
+msgstr ""
+
+# plugins/juci-icwmp/src/pages/icwmp-config.js 
+msgid "Statistics"
+msgstr ""
+
+# plugins/juci-icwmp/src/pages/icwmp-config.js 
+msgid "Successful Sessions"
+msgstr ""
+
+# plugins/juci-icwmp/src/pages/icwmp-config.js 
+msgid "Failed Sessions"
+msgstr ""
+
+# plugins/juci-icwmp/src/pages/icwmp-config.js 
+msgid "Total Sessions"
+msgstr ""
+
+# plugins/juci-icwmp/src/pages/icwmp-config.html
+#, fuzzy
+msgid "Connection request sent"
+msgstr "接続要求ユーザー名"
+
 # plugins/juci-icwmp/src/pages/icwmp-config.html
 msgid "TR69 Settings"
+msgstr "TR69の設定"
+
+# plugins/juci-icwmp/src/pages/icwmp-config.html
+#, fuzzy
+msgid "Settings"
 msgstr "TR69の設定"
 
 # plugins/juci-icwmp/src/pages/icwmp-config.html
@@ -118,6 +179,15 @@ msgstr "ログファイルの最大サイズ"
 # plugins/juci-icwmp/src/pages/icwmp-config.html
 msgid "Provisioning Code"
 msgstr "プロビジョニングコード"
+
+# plugins/juci-icwmp/src/pages/icwmp-config.html
+#, fuzzy
+msgid "Send connection request to ACS"
+msgstr "接続要求のパスワード"
+
+# plugins/juci-icwmp/src/pages/icwmp-config.html 
+msgid "Send"
+msgstr ""
 
 # plugins/juci-icwmp/src/pages/icwmp-config.html
 msgid "Configure ACS specific settings"

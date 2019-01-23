@@ -187,9 +187,9 @@ msgstr "IGMP"
 msgid "Enable MLD"
 msgstr "MLD"
 
+msgid "menu-broadcom-iptv-title"
+msgstr "IPTV"
+
 # plugins/juci-broadcom-iptv/src/pages/mc-proxy-settings.html
 msgid "menu-mc-proxy-settings-title"
 msgstr "マルチキャストプロキシ"
-
-msgid "menu-broadcom-iptv-title"
-msgstr "IPTV"

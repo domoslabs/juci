@@ -39,10 +39,10 @@ msgstr " "
 msgid "Click here to restart your device"
 msgstr "機器の再起動を実施"
 
-# plugins/juci-mod-status/src/pages/status.html
-msgid "menu-status-title"
-msgstr "ステータス"
-
 # plugins/juci-mod-status/src/pages/settings-restart.html
 msgid "menu-settings-restart-title"
 msgstr "再起動"
+
+# plugins/juci-mod-status/src/pages/status.html
+msgid "menu-status-title"
+msgstr "ステータス"

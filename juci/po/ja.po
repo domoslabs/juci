@@ -177,6 +177,10 @@ msgstr ""
 msgid "Netmask must be a value between 0 and 24"
 msgstr "ネットマスクは0〜24の値でなければなりません"
 
+# /home/reidar/git/backupjuci/juci//src/js/uci.js 
+msgid "Not an IP address or IP address with CIDR notation"
+msgstr ""
+
 # /home/reidar/git/juci/juci//src/js/uci.js
 #, fuzzy
 msgid "IP Address must be a valid ipv4 or ipv6 address!"
@@ -227,10 +231,20 @@ msgstr "フィールドが必要です"
 msgid "is required"
 msgstr "必要とされている"
 
-# /home/reidar/git/juci/juci//src/js/juci.js
-msgid ""
-"You have unsaved changes. Do you want to save them before leaving this page?"
-msgstr "保存されていない変更があります。 このページを閉じる前に保存しますか？"
+# /home/reidar/git/juci/juci//src/widgets/juci-changes-edit.html
+msgid "Config"
+msgstr "設定"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-changes-edit.html
+msgid "Section"
+msgstr "セクション"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/git/juci/juci//src/widgets/juci-input-dhcp-options.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# /home/reidar/git/juci/juci//src/widgets/juci-changes-edit.html
+msgid "Option"
+msgstr "オプション"
 
 # /home/reidar/git/juci/juci//src/factories/files.js
 msgid ""
@@ -313,11 +327,6 @@ msgid "Already added."
 msgstr "すでに追加されています。"
 
 # /home/reidar/git/juci/juci//src/widgets/juci-confirm.js
-#, fuzzy
-msgid "$juciConfirm needs a content-string"
-msgstr "$ juciConfirmにはコンテンツ文字列が必要です"
-
-# /home/reidar/git/juci/juci//src/widgets/juci-confirm.js
 msgid "Close"
 msgstr "閉じる"
 
@@ -336,6 +345,32 @@ msgstr "未適用の設定変更を削除しますか？変更予定の設定は
 msgid "Aaddress must be a valid IPv6 address"
 msgstr "アドレスは有効なIPv6アドレスでなければなりません"
 
+# /home/reidar/git/backupjuci/juci//src/widgets/juci-password.js 
+msgid "You MUST enter current password"
+msgstr ""
+
+# /home/reidar/git/backupjuci/juci//src/widgets/juci-password.js 
+msgid "You MUST enter new password"
+msgstr ""
+
+# /home/reidar/git/backupjuci/juci//src/widgets/juci-password.js 
+msgid "New passwords does not match"
+msgstr ""
+
+# /home/reidar/git/backupjuci/juci//src/widgets/juci-password.js 
+msgid "New password can not be same as Current password"
+msgstr ""
+
+# /home/reidar/git/backupjuci/juci//src/widgets/juci-password.js 
+msgid ""
+"Was unable to set password. Please make sure you have entered correct "
+"current password!"
+msgstr ""
+
+# /home/reidar/git/backupjuci/juci//src/widgets/juci-password.js 
+msgid "New password is not strong enough according to policy."
+msgstr ""
+
 # /home/reidar/git/juci/juci//src/widgets/juci-mode-picker.js
 msgid "Basic Mode"
 msgstr "基本モード"
@@ -348,24 +383,9 @@ msgstr "拡張モード"
 msgid "Select Theme"
 msgstr "テーマ選択"
 
-# /home/reidar/git/juci/juci//src/widgets/juci-disconnected.html
-msgid "Disconnected"
-msgstr "切断"
-
-# /home/reidar/git/juci/juci//src/widgets/juci-disconnected.html
-msgid "Trying to reconnect"
-msgstr "再接続"
-
 # /home/reidar/git/juci/juci//src/widgets/juci-input-dhcp-options.html
 msgid "ID"
 msgstr "ID"
-
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/git/juci/juci//src/widgets/juci-input-dhcp-options.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# /home/reidar/git/juci/juci//src/widgets/juci-changes-edit.html
-msgid "Option"
-msgstr "オプション"
 
 # /home/reidar/git/juci/juci//src/widgets/juci-login.html
 msgid "Username"
@@ -420,6 +440,31 @@ msgstr "ナビゲーションの切り替え"
 msgid "No new events to show"
 msgstr "新しいイベントを表示しない"
 
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+#, fuzzy
+msgid "Change Password"
+msgstr "パスワード"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+#, fuzzy
+msgid "Current Password"
+msgstr "パスワード"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+#, fuzzy
+msgid "New Password"
+msgstr "パスワード"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+#, fuzzy
+msgid "Reenter Password"
+msgstr "パスワード"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-login.html
+#, fuzzy
+msgid "Show Passwords"
+msgstr "パスワード"
+
 # /home/reidar/git/juci/juci//src/widgets/juci-mode-picker.html
 msgid "Switch between basic and expert mode"
 msgstr "基本モードとエキスパートモードの切り替え"
@@ -453,6 +498,14 @@ msgstr "から"
 msgid "to"
 msgstr "to"
 
+# /home/reidar/git/juci/juci//src/widgets/juci-disconnected.html
+msgid "Disconnected"
+msgstr "切断"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-disconnected.html
+msgid "Trying to reconnect"
+msgstr "再接続"
+
 # /home/reidar/git/juci/juci//src/widgets/juci-input-port.html
 msgid "Start port"
 msgstr "開始ポート"
@@ -473,14 +526,6 @@ msgstr "ヘルプWiki"
 # /home/reidar/git/juci/juci//src/widgets/juci-footer.html
 msgid "No WAN IP"
 msgstr "WAN IPがありません。"
-
-# /home/reidar/git/juci/juci//src/widgets/juci-changes-edit.html
-msgid "Config"
-msgstr "設定"
-
-# /home/reidar/git/juci/juci//src/widgets/juci-changes-edit.html
-msgid "Section"
-msgstr "セクション"
 
 # /home/reidar/git/juci/juci//src/widgets/juci-changes-edit.html
 msgid "Old value"
@@ -510,21 +555,9 @@ msgstr "概要"
 msgid "The page you were trying to access was not found!"
 msgstr "アクセスしようとしたページが見つかりませんでした。"
 
-# /home/reidar/git/juci/juci//src/pages/404.html
-msgid "menu-404-title"
-msgstr "404"
-
 # /home/reidar/git/juci/juci//src/pages/login.html
 msgid "menu-login-title"
 msgstr "ログイン"
-
-# /home/reidar/git/juci/juci//src/pages/bootstrap.html
-msgid "menu-bootstrap-title"
-msgstr "ブートストラップ"
-
-# /home/reidar/git/juci/juci//src/pages/status-about.html
-msgid "menu-status-about-title"
-msgstr "ステータス-要約"
 
 # /home/reidar/git/juci/juci//src/pages/overview.html
 msgid "menu-overview-title"
@@ -533,3 +566,27 @@ msgstr "TOP"
 # /home/reidar/git/juci/juci//src/pages/default.html
 msgid "menu-default-title"
 msgstr "デフォルト"
+
+# /home/reidar/git/juci/juci//src/pages/status-about.html
+msgid "menu-status-about-title"
+msgstr "ステータス-要約"
+
+# /home/reidar/git/juci/juci//src/pages/bootstrap.html
+msgid "menu-bootstrap-title"
+msgstr "ブートストラップ"
+
+# /home/reidar/git/juci/juci//src/pages/404.html
+msgid "menu-404-title"
+msgstr "404"
+
+# /home/reidar/git/juci/juci//src/js/juci.js
+#~ msgid ""
+#~ "You have unsaved changes. Do you want to save them before leaving this "
+#~ "page?"
+#~ msgstr ""
+#~ "保存されていない変更があります。 このページを閉じる前に保存しますか？"
+
+# /home/reidar/git/juci/juci//src/widgets/juci-confirm.js
+#, fuzzy
+#~ msgid "$juciConfirm needs a content-string"
+#~ msgstr "$ juciConfirmにはコンテンツ文字列が必要です"

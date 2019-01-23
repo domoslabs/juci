@@ -28,6 +28,11 @@ msgid "internet.services.upnp.info"
 msgstr " "
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
+#, fuzzy
+msgid "Enable UPNP Daemon"
+msgstr "UPnP オン"
+
+# plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "General Settings"
 msgstr "一般設定"
 
@@ -248,10 +253,10 @@ msgstr "パケットカウント"
 msgid "Proto"
 msgstr "プロトコル"
 
-# plugins/juci-upnp/src/pages/upnpd-status.html
-msgid "menu-upnpd-status-title"
-msgstr "UPnP"
-
 # plugins/juci-upnp/src/pages/upnpd-settings.html
 msgid "menu-upnpd-settings-title"
 msgstr "UPnP設定"
+
+# plugins/juci-upnp/src/pages/upnpd-status.html
+msgid "menu-upnpd-status-title"
+msgstr "UPnP"

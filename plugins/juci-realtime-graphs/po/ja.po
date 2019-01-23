@@ -11,6 +11,44 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.1\n"
 
+# plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.js 
+msgid "Upstream"
+msgstr ""
+
+# plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.js 
+msgid "Downstream"
+msgstr ""
+
+# plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.js 
+msgid "Download Speed"
+msgstr ""
+
+# plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.js 
+msgid "Upload Speed"
+msgstr ""
+
+# plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.js 
+msgid "1 minute"
+msgstr ""
+
+# plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.js 
+msgid "5 minutes"
+msgstr ""
+
+# plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.js 
+msgid "15 minutes"
+msgstr ""
+
+# plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.html
+#, fuzzy
+msgid "TCP Connections"
+msgstr "接続"
+
+# plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.html
+#, fuzzy
+msgid "UDP Connections"
+msgstr "接続"
+
 # plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.html
 msgid "Load"
 msgstr "ロード"
@@ -23,18 +61,22 @@ msgstr "トラフィック"
 msgid "Connections"
 msgstr "接続"
 
-# plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.html
-msgid "Minimum"
-msgstr "最小"
-
-# plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.html
-msgid "Average"
-msgstr "平均"
-
-# plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.html
-msgid "Maximum"
-msgstr "最大"
+# plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.html 
+msgid "Realtime Graphs"
+msgstr ""
 
 # plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.html
 msgid "menu-status-realtime-graphs-title"
 msgstr "グラフ"
+
+# plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.html
+#~ msgid "Minimum"
+#~ msgstr "最小"
+
+# plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.html
+#~ msgid "Average"
+#~ msgstr "平均"
+
+# plugins/juci-realtime-graphs/src/pages/status-realtime-graphs.html
+#~ msgid "Maximum"
+#~ msgstr "最大"

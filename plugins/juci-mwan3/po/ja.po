@@ -11,6 +11,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.1\n"
 
+# plugins/juci-mwan3/src/pages/internet-mwan3.js 
+msgid "No more network interfaces to add"
+msgstr ""
+
 # plugins/juci-mwan3/src/pages/internet-mwan3.js
 msgid "Add New Interface"
 msgstr "新しいインターフェースを追加する"
@@ -55,6 +59,19 @@ msgstr "IPv4"
 msgid "IPv6"
 msgstr "IPv6"
 
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.js
+#, fuzzy
+msgid "IP"
+msgstr "IPv4"
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.js 
+msgid "Gateway"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.js 
+msgid "DNS"
+msgstr ""
+
 # plugins/juci-mwan3/src/widgets/mwan3-rule-edit.js
 msgid "Default"
 msgstr "デフォルト"
@@ -79,10 +96,6 @@ msgstr "ICMP"
 msgid "Interface"
 msgstr "インターフェース"
 
-# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
-msgid "Number of host that Must reply for the member to be considered up"
-msgstr "アップしたとみなすためにメンバーに返信するホストの数"
-
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
@@ -93,7 +106,8 @@ msgid "Select Interface"
 msgstr "インタフェースの選択"
 
 # plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
-msgid "metric"
+#, fuzzy
+msgid "Metric"
 msgstr "メトリック"
 
 # plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
@@ -121,9 +135,9 @@ msgstr "ポリシー名を入力"
 msgid "Enter Rule Name"
 msgstr "ルール名を入力"
 
-# plugins/juci-mwan3/src/widgets/mwan3-member-add.html
-msgid "Enter Member Name"
-msgstr "メンバーの名前を入力"
+# plugins/juci-mwan3/src/widgets/mwan3-policy-edit.html
+msgid "Selected Members"
+msgstr "選択メンバー"
 
 # plugins/juci-mwan3/src/widgets/mwan3-rule-edit.html
 msgid "Policy to use"
@@ -233,9 +247,9 @@ msgstr "タイムアウト"
 msgid "Stickiness timeout value in seconds"
 msgstr "スティッキータイムアウト値（秒単位）"
 
-# plugins/juci-mwan3/src/widgets/mwan3-policy-edit.html
-msgid "Selected Members"
-msgstr "選択メンバー"
+# plugins/juci-mwan3/src/widgets/mwan3-member-add.html
+msgid "Enter Member Name"
+msgstr "メンバーの名前を入力"
 
 # plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
 msgid "Enabled"
@@ -249,12 +263,24 @@ msgstr "ファミリー"
 msgid "Select Family"
 msgstr "ファミリー選択"
 
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html 
+msgid "Tracking Type"
+msgstr ""
+
+# plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html 
+msgid ""
+"Set to DNS or Gateway to use that for tracking. Set to IP to enter IP "
+"manually"
+msgstr ""
+
 # plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
-msgid "Host to ping"
+#, fuzzy
+msgid "Host(s) to ping"
 msgstr "PING対象"
 
 # plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
-msgid "Add Ping Host"
+#, fuzzy
+msgid "Add Ping Host(s)"
 msgstr "PINGホスト追加"
 
 # plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
@@ -262,7 +288,8 @@ msgid "Interface Reliability"
 msgstr "インターフェースの信頼性"
 
 # plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
-msgid "Number of host that Must reply for the interface to be considered up"
+#, fuzzy
+msgid "Number of hosts that must reply for the interface to be considered up"
 msgstr "アップしたとみなすためにインターフェースに返信するホストの数"
 
 # plugins/juci-mwan3/src/widgets/mwan3-interface-edit.html
@@ -324,3 +351,7 @@ msgstr "ルール"
 # plugins/juci-mwan3/src/pages/internet-mwan3.html
 msgid "menu-internet-mwan3-title"
 msgstr "マルチWAN"
+
+# plugins/juci-mwan3/src/widgets/mwan3-member-edit.html
+#~ msgid "Number of host that Must reply for the member to be considered up"
+#~ msgstr "アップしたとみなすためにメンバーに返信するホストの数"

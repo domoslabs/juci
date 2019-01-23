@@ -74,6 +74,18 @@ msgstr "終了値は開始値より大きくなければなりません。"
 msgid "Enable QoS"
 msgstr "QOS オン"
 
+# plugins/juci-qos/src/widgets/overview.qos.html 
+msgid "Down"
+msgstr ""
+
+# plugins/juci-qos/src/widgets/overview.qos.html 
+msgid "Up"
+msgstr ""
+
+# plugins/juci-qos/src/widgets/overview.qos.html 
+msgid "Subscription"
+msgstr ""
+
 # plugins/juci-qos/src/widgets/qos-iface-edit.html
 msgid "Classification Group"
 msgstr "クラスグループ"
@@ -81,6 +93,13 @@ msgstr "クラスグループ"
 # plugins/juci-qos/src/widgets/qos-iface-edit.html
 msgid "Calculate Overhead"
 msgstr "オーバーヘッド計算"
+
+# plugins/juci-qos/src/widgets/qos-iface-edit.html 
+msgid ""
+"Put an upper limit to the bandwidth that is slightly lower than the actual "
+"capacity. Do this to make sure QoS is activated before the hardware is "
+"saturated."
+msgstr ""
 
 # plugins/juci-qos/src/widgets/qos-iface-edit.html
 msgid "Limit Download Speed"
@@ -98,13 +117,28 @@ msgstr "QoSが有効な場合、アクセラレーションは無効になりま
 msgid "Priority"
 msgstr "優先度"
 
+# plugins/juci-qos/src/widgets/qos-classes-edit.html 
+msgid ""
+"Sets the proportion of the bandwidth used by this class during link "
+"saturation."
+msgstr ""
+
 # plugins/juci-qos/src/widgets/qos-classes-edit.html
 msgid "Average Rate"
 msgstr "平均レート"
 
+# plugins/juci-qos/src/widgets/qos-classes-edit.html 
+msgid "Sets the proportion of the bandwidth used by this class on average."
+msgstr ""
+
 # plugins/juci-qos/src/widgets/qos-classes-edit.html
 msgid "Limit Rate"
 msgstr "レート制限"
+
+# plugins/juci-qos/src/widgets/qos-classes-edit.html 
+msgid ""
+"Sets the maximum allowed proportion of the bandwidth allowed for this class."
+msgstr ""
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-qos/src/widgets/qos-classes-edit.html
@@ -113,9 +147,20 @@ msgstr "レート制限"
 msgid "Packet Size"
 msgstr "パケットサイズ"
 
+# plugins/juci-qos/src/widgets/qos-classes-edit.html 
+msgid ""
+"Affects the burst speed. For short durations of time classes use extra "
+"bandwidth to make up for periods of low speed. Larger packet size allows for "
+"higher burst speeds at longer durations."
+msgstr ""
+
 # plugins/juci-qos/src/widgets/qos-classes-edit.html
 msgid "Packet Delay"
 msgstr "パケットディレイ"
+
+# plugins/juci-qos/src/widgets/qos-classes-edit.html 
+msgid "Sets a delay before packets are sent."
+msgstr ""
 
 # plugins/juci-qos/src/widgets/qos-classes-edit.html
 msgid "Max Size"
@@ -124,22 +169,6 @@ msgstr "最大サイズ"
 # plugins/juci-qos/src/widgets/new-class-modal.html
 msgid "Class name"
 msgstr "クラス名"
-
-# plugins/juci-qos/src/widgets/qos-classgroups-edit.html
-msgid "Classes"
-msgstr "クラス"
-
-# plugins/juci-qos/src/widgets/qos-classgroups-edit.html
-msgid "Add a new class"
-msgstr "新しいクラス追加"
-
-# plugins/juci-qos/src/widgets/new-classgroup-modal.html
-msgid "Classgroup name"
-msgstr "クラスグループ名"
-
-# plugins/juci-qos/src/widgets/add-bw-interface-edit.html
-msgid "Interface name"
-msgstr "インターフェース名"
 
 # plugins/juci-qos/src/widgets/qos-classify-edit.html
 msgid "Target"
@@ -161,37 +190,38 @@ msgstr "宛先ホスト"
 msgid "Ports"
 msgstr "ポート"
 
-# plugins/juci-qos/src/widgets/qos-classify-edit.html
-msgid "Filter by port, when there are no ports no filter will be applied"
-msgstr "ポート単位でフィルタリングします。ポートがない場合、フィルタは適用されません。"
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-qos/src/widgets/qos-reclassify-edit.html 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-qos/src/widgets/qos-classify-edit.html 
+msgid "Choose Filtering"
+msgstr ""
 
 # plugins/juci-qos/src/widgets/qos-classify-edit.html
-msgid "Source Ports"
-msgstr "ソースポート"
-
-# plugins/juci-qos/src/widgets/qos-classify-edit.html
-msgid "Destination Ports"
+#, fuzzy
+msgid "Source and Destinaton Ports"
 msgstr "宛先ポート"
 
 # plugins/juci-qos/src/widgets/qos-classify-edit.html
-msgid "Port Range"
-msgstr "ポート範囲"
-
-# plugins/juci-qos/src/widgets/qos-classify-edit.html
-msgid "Precedence"
-msgstr "優先度"
+#, fuzzy
+msgid "Source and Destinaton Port Range"
+msgstr "宛先ポート"
 
 # plugins/juci-qos/src/widgets/qos-classify-edit.html
 msgid "Direction"
 msgstr "フィルタリング設定方向"
 
 # plugins/juci-qos/src/widgets/qos-classify-edit.html
-msgid "Mark"
-msgstr "QOSマーキング"
-
-# plugins/juci-qos/src/widgets/qos-classify-edit.html
 msgid "Connbytes"
 msgstr "フィルタリング開始サイズ"
+
+# plugins/juci-qos/src/widgets/qos-classify-edit.html
+msgid "Precedence"
+msgstr "優先度"
+
+# plugins/juci-qos/src/widgets/qos-classify-edit.html
+msgid "Mark"
+msgstr "QOSマーキング"
 
 # plugins/juci-qos/src/widgets/qos-classify-edit.html
 msgid "TCP Flags"
@@ -204,6 +234,22 @@ msgstr "ToS"
 # plugins/juci-qos/src/widgets/qos-classify-edit.html
 msgid "dscp"
 msgstr "DSCP"
+
+# plugins/juci-qos/src/widgets/new-classgroup-modal.html
+msgid "Classgroup name"
+msgstr "クラスグループ名"
+
+# plugins/juci-qos/src/widgets/qos-classgroups-edit.html
+msgid "Classes"
+msgstr "クラス"
+
+# plugins/juci-qos/src/widgets/qos-classgroups-edit.html
+msgid "Add a new class"
+msgstr "新しいクラス追加"
+
+# plugins/juci-qos/src/widgets/add-bw-interface-edit.html
+msgid "Interface name"
+msgstr "インターフェース名"
 
 # plugins/juci-qos/src/pages/juci-qos.html
 msgid "Quality of service"
@@ -226,5 +272,24 @@ msgid "Classify"
 msgstr "パラメータ"
 
 # plugins/juci-qos/src/pages/juci-qos.html
+#, fuzzy
+msgid "Reclassify"
+msgstr "パラメータ"
+
+# plugins/juci-qos/src/pages/juci-qos.html
 msgid "menu-juci-qos-title"
 msgstr "QOS"
+
+# plugins/juci-qos/src/widgets/qos-classify-edit.html
+#~ msgid "Filter by port, when there are no ports no filter will be applied"
+#~ msgstr ""
+#~ "ポート単位でフィルタリングします。ポートがない場合、フィルタは適用されませ"
+#~ "ん。"
+
+# plugins/juci-qos/src/widgets/qos-classify-edit.html
+#~ msgid "Source Ports"
+#~ msgstr "ソースポート"
+
+# plugins/juci-qos/src/widgets/qos-classify-edit.html
+#~ msgid "Port Range"
+#~ msgstr "ポート範囲"

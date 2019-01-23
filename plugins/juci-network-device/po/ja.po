@@ -10,3 +10,138 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.1\n"
+
+# plugins/juci-network-device/src/network-device.js 
+msgid "section"
+msgstr ""
+
+# plugins/juci-network-device/src/network-device.js 
+msgid "has invalid type, valid types are"
+msgstr ""
+
+# plugins/juci-network-device/src/network-device.js 
+msgid "Duplicate VID and Interface"
+msgstr ""
+
+# plugins/juci-network-device/src/network-device.js 
+msgid "Duplicate VLAN name"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-vlan-device.js 
+msgid "Vlan needs a name, press cancel to abort"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-vlan-device.js 
+msgid "Vlan name is already in use"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-vlan-device.js 
+msgid "Vlan name may only contain letters numbers and _"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-vlan-device.js 
+msgid "couldn't create new network device (VLAN)"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-vlan-device.js 
+msgid "Please select a device in the list!"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-vlan-device.js 
+msgid "Are you sure you want to delete this device?"
+msgstr ""
+
+# plugins/juci-network-device/src/widgets/network-device-edit.js 
+msgid "Untagged"
+msgstr ""
+
+# plugins/juci-network-device/src/widgets/network-device-edit.js 
+msgid "802.1AD"
+msgstr ""
+
+# plugins/juci-network-device/src/widgets/network-device-edit.js 
+msgid "802.1Q"
+msgstr ""
+
+# plugins/juci-network-device/src/widgets/network-device-edit.html 
+msgid "VLAN Name"
+msgstr ""
+
+# plugins/juci-network-device/src/widgets/network-device-edit.html 
+msgid "VLAN Type"
+msgstr ""
+
+# plugins/juci-network-device/src/widgets/network-device-edit.html 
+msgid "Base Device"
+msgstr ""
+
+# plugins/juci-network-device/src/widgets/network-device-edit.html 
+msgid "VLAN ID"
+msgstr ""
+
+# plugins/juci-network-device/src/widgets/network-device-edit.html 
+msgid "Priority"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-device/src/widgets/network-device-edit.html 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-device/src/pages/network-devices.html 
+msgid "Name"
+msgstr ""
+
+# plugins/juci-network-device/src/widgets/network-device-edit.html 
+msgid "Override MTU"
+msgstr ""
+
+# plugins/juci-network-device/src/widgets/network-device-edit.html 
+msgid "auto"
+msgstr ""
+
+# plugins/juci-network-device/src/widgets/network-device-create-dialog.html 
+msgid "Please give a name for the new VLAN"
+msgstr ""
+
+# plugins/juci-network-device/src/widgets/network-device-create-dialog.html 
+msgid "Vlan Name"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-devices.html 
+msgid "Layer-2 Devices"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-devices.html 
+msgid "network.device.info"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-devices.html 
+msgid "Type"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-devices.html 
+msgid "Adapter"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-devices.html 
+msgid "MAC"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-devices.html 
+msgid "MTU"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-vlan-device.html 
+msgid "VLAN settings"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-vlan-device.html 
+msgid "This section allows you to configure VLAN devices."
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-devices.html 
+msgid "menu-network-devices-title"
+msgstr ""
+
+# plugins/juci-network-device/src/pages/network-vlan-device.html 
+msgid "menu-network-vlan-device-title"
+msgstr ""

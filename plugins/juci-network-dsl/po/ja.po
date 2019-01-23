@@ -10,3 +10,220 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.1\n"
+
+# plugins/juci-network-dsl/src/pages/network-dsl.js 
+msgid "Name is empty or already in use"
+msgstr ""
+
+# plugins/juci-network-dsl/src/pages/network-dsl-status.js 
+msgid "DSL Status Information"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-dsl/src/pages/network-dsl-status.js 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-dsl/src/pages/network-gfast-status.js 
+msgid "Line Status"
+msgstr ""
+
+# plugins/juci-network-dsl/src/pages/network-dsl-status.js 
+msgid "DSL Mode"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-dsl/src/pages/network-dsl-status.js 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-dsl/src/pages/network-gfast-status.js 
+msgid "Bit Rate"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-dsl/src/pages/network-dsl-status.js 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-dsl/src/pages/network-gfast-status.js 
+msgid "Operating Data"
+msgstr ""
+
+# plugins/juci-network-dsl/src/pages/network-dsl-status.js 
+msgid "Error Counter"
+msgstr ""
+
+# plugins/juci-network-dsl/src/pages/network-dsl-status.js 
+msgid "Cell Statistics"
+msgstr ""
+
+# plugins/juci-network-dsl/src/pages/network-gfast-status.js 
+msgid "Status"
+msgstr ""
+
+# plugins/juci-network-dsl/src/pages/network-gfast-status.js 
+msgid "Mode"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.js 
+msgid "EOA"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.js 
+msgid "IPOA"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.js 
+msgid "PPPOA"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.js 
+msgid "UBR"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.js 
+msgid "CBR"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.js 
+msgid "VBR NRT"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.js 
+msgid "VBR RT"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.js 
+msgid "UBR+"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.js 
+msgid "LLC"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.js 
+msgid "VC MUX"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-create-device.html 
+msgid "Enter the name of the new device"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-dsl/src/widgets/network-dsl-create-device.html 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-dsl/src/widgets/network-dsl-ptm-device-editor.html 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.html 
+msgid "Name"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-dsl/src/widgets/network-dsl-ptm-device-editor.html 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.html 
+msgid "Device"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-ptm-device-editor.html 
+msgid "Priority"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-ptm-device-editor.html 
+msgid "Port ID"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-line-editor.html 
+msgid "Modes"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-line-editor.html 
+msgid "Profiles"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-line-editor.html 
+msgid "Bitswap"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-line-editor.html 
+msgid "SRA"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-line-editor.html 
+msgid "US0"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.html 
+msgid "VPI"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.html 
+msgid "VCI"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.html 
+msgid "Link Type"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.html 
+msgid "Encapsulation"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.html 
+msgid "QOS Class"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.html 
+msgid "PCR"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.html 
+msgid "SCR"
+msgstr ""
+
+# plugins/juci-network-dsl/src/widgets/network-dsl-atm-device-editor.html 
+msgid "MBS"
+msgstr ""
+
+# plugins/juci-network-dsl/src/pages/network-dsl-status.html 
+msgid "DSL Status"
+msgstr ""
+
+# plugins/juci-network-dsl/src/pages/network-dsl-status.html 
+msgid "dsl.status.info"
+msgstr ""
+
+# plugins/juci-network-dsl/src/pages/network-dsl-status.html 
+msgid "No DSL info available."
+msgstr ""
+
+# plugins/juci-network-dsl/src/pages/network-gfast-status.html 
+msgid "No G.Fast info available."
+msgstr ""
+
+# plugins/juci-network-dsl/src/pages/network-dsl.html 
+msgid "DSL Settings"
+msgstr ""
+
+# plugins/juci-network-dsl/src/pages/network-dsl.html 
+msgid "This section allows you to configure DSL settings."
+msgstr ""
+
+# plugins/juci-network-dsl/src/pages/network-dsl.html 
+msgid "Lines"
+msgstr ""
+
+# plugins/juci-network-dsl/src/pages/network-dsl.html 
+msgid "ATM"
+msgstr ""
+
+# plugins/juci-network-dsl/src/pages/network-dsl.html 
+msgid "PTM"
+msgstr ""
+
+# plugins/juci-network-dsl/src/pages/network-dsl-status.html 
+msgid "menu-network-dsl-status-title"
+msgstr ""
+
+# plugins/juci-network-dsl/src/pages/network-gfast-status.html 
+msgid "menu-network-gfast-status-title"
+msgstr ""
+
+# plugins/juci-network-dsl/src/pages/network-dsl.html 
+msgid "menu-network-dsl-title"
+msgstr ""

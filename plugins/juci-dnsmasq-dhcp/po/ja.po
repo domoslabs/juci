@@ -55,13 +55,9 @@ msgstr "名前を空白にすることはできません"
 msgid "Invalid name, it may only contain (a-z, A-Z, 0-9 and _)"
 msgstr "無効な名前です。(a-z、A-Z、0-9および_で入力して下さい)"
 
-# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.js
-msgid "IPv4"
-msgstr "IPv4"
-
-# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.js
-msgid "IPv6"
-msgstr "IPv6"
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries.js
+msgid "Hostname(s) for "
+msgstr "ホスト名"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.js
 msgid "Minutes"
@@ -75,9 +71,43 @@ msgstr "時"
 msgid "Hours"
 msgstr "時間"
 
-# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries.js
-msgid "Hostname(s) for "
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.js
+msgid "IPv4"
+msgstr "IPv4"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.js
+msgid "IPv6"
+msgstr "IPv6"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
+msgid "Hostname"
 msgstr "ホスト名"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
+msgid "Add a host"
+msgstr "ホスト追加"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
+msgid "Family"
+msgstr "ファミリー"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
+msgid "IPv4 Address"
+msgstr "IPv4アドレス"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
+msgid "IPv6 Address"
+msgstr "IPv6アドレス"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-add-classification.html
 msgid "Select Classifications Type"
@@ -103,9 +133,9 @@ msgstr "DHCPプールサイズ"
 msgid "DHCP Lease Time"
 msgstr "DHCPリースタイム"
 
-# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
-msgid "Lease Time"
-msgstr "リース時間"
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html 
+msgid "IPv4 and IPv6"
+msgstr ""
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
@@ -173,35 +203,9 @@ msgstr "接続"
 msgid "Network"
 msgstr "ネットワーク"
 
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-leases-widget.html
-msgid "Hostname"
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries.html
+msgid "Hostnames"
 msgstr "ホスト名"
-
-# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
-msgid "Add a host"
-msgstr "ホスト追加"
-
-# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
-msgid "Family"
-msgstr "ファミリー"
-
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
-# #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-static-hosts-edit.html
-msgid "IPv4 Address"
-msgstr "IPv4アドレス"
-
-# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries-edit.html
-msgid "IPv6 Address"
-msgstr "IPv6アドレス"
 
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-tag-edit.html
 msgid "DHCP options"
@@ -291,10 +295,6 @@ msgstr "IPv6アドレス"
 msgid "DUID"
 msgstr "DUID"
 
-# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-host-entries.html
-msgid "Hostnames"
-msgstr "ホスト名"
-
 # plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-classification-editor.html
 msgid "Networkid"
 msgstr "ネットワークID"
@@ -313,8 +313,7 @@ msgstr "ローカルドメイン"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
 msgid "Local domain suffix appended to DHCP names and hosts file entries"
-msgstr ""
-"DHCP名とホストファイルエントリに追加されたローカルドメインサフィックス"
+msgstr "DHCP名とホストファイルエントリに追加されたローカルドメインサフィックス"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
 msgid "Log queries"
@@ -343,8 +342,8 @@ msgstr "解決したファイル"
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
 msgid "Tells dnsmasq to use this file to find upstream name servers"
 msgstr ""
-"Dnsマスカレードにこのファイルを使用してアップストリームネームサーバを検索す"
-"る様に指示する。"
+"Dnsマスカレードにこのファイルを使用してアップストリームネームサーバを検索する"
+"様に指示する。"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
 msgid "Ignore Hosts file"
@@ -415,8 +414,8 @@ msgid ""
 "Local domain specification. Names matching this domain are never forwarded "
 "and resolved from DHCP or hosts files only"
 msgstr ""
-"ローカルドメイン指定。 このドメインに一致する名前は決して転送されず、DHCPま"
-"たはホストファイルのみから解決される。"
+"ローカルドメイン指定。 このドメインに一致する名前は決して転送されず、DHCPまた"
+"はホストファイルのみから解決される。"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
 msgid "Expand hosts"
@@ -559,3 +558,7 @@ msgstr "DHCP"
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
 msgid "menu-dhcp-settings-title"
 msgstr "設定"
+
+# plugins/juci-dnsmasq-dhcp/src/widgets/dhcp-basic-settings-edit.html
+#~ msgid "Lease Time"
+#~ msgstr "リース時間"

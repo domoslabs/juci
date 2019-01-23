@@ -43,6 +43,10 @@ msgstr "Informational"
 msgid "Debug"
 msgstr "Debug"
 
+# plugins/juci-event/src/pages/status-events.js 
+msgid "Was not able to download system report. Please check access."
+msgstr ""
+
 # plugins/juci-event/src/pages/status-events.html
 msgid "Event Log"
 msgstr "イベントログ"
@@ -64,8 +68,18 @@ msgid "Log"
 msgstr "ログ"
 
 # plugins/juci-event/src/pages/status-events.html
-msgid "Download All Logs"
-msgstr "全てのログをダウンロード"
+#, fuzzy
+msgid "Download System Report"
+msgstr "ダウンロード (Text)"
+
+# plugins/juci-event/src/pages/status-events.html 
+msgid "This downloads an archive containing a full system report"
+msgstr ""
+
+# plugins/juci-event/src/pages/status-events.html
+#, fuzzy
+msgid "Download"
+msgstr "ダウンロード (Text)"
 
 # plugins/juci-event/src/pages/status-events.html
 msgid "Limit log list"
@@ -86,10 +100,6 @@ msgstr "フィルタタイプ指定："
 # plugins/juci-event/src/pages/status-events.html
 msgid "Filter by:"
 msgstr "フィルタ："
-
-# plugins/juci-event/src/pages/status-events.html
-msgid "Download As Text"
-msgstr "ダウンロード (Text)"
 
 # plugins/juci-event/src/pages/event-log-config.html
 msgid "Log Settings"
@@ -136,8 +146,7 @@ msgstr "ログサーバーIP"
 msgid ""
 "IP address of a syslog server to which the log messages should be sent in "
 "addition to the local destination."
-msgstr ""
-"ローカル宛先に加えてログメッセージを送信するsyslogサーバのIPアドレス。"
+msgstr "ローカル宛先に加えてログメッセージを送信するsyslogサーバのIPアドレス。"
 
 # plugins/juci-event/src/pages/event-log-config.html
 msgid "Log port"
@@ -158,3 +167,7 @@ msgstr "イベントログ"
 # plugins/juci-event/src/pages/event-log-config.html
 msgid "menu-event-log-config-title"
 msgstr "設定"
+
+# plugins/juci-event/src/pages/status-events.html
+#~ msgid "Download All Logs"
+#~ msgstr "全てのログをダウンロード"

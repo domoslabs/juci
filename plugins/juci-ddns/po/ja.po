@@ -112,6 +112,10 @@ msgstr "ルータ上のスクリプトへのパスを入力して下さい"
 msgid "Choose DNS Provider"
 msgstr "DNSプロバイダー選択"
 
+# plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html 
+msgid "Lookup Host"
+msgstr ""
+
 # plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
 msgid "Password"
 msgstr "パスワード"

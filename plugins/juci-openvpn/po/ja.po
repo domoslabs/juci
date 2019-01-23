@@ -38,6 +38,22 @@ msgstr ""
 msgid "Adaptive"
 msgstr ""
 
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.js 
+msgid "Upload OpenVPN configuration"
+msgstr ""
+
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.js 
+msgid "You must choose a configuration file or paste it"
+msgstr ""
+
+# plugins/juci-openvpn/src/widgets/openvpn-add-file.html 
+msgid "Choose .ovpn file"
+msgstr ""
+
+# plugins/juci-openvpn/src/widgets/openvpn-add-file.html 
+msgid "Alternatively, paste the configuration:"
+msgstr ""
+
 # plugins/juci-openvpn/src/pages/internet-services-openvpn.html
 msgid "OpenVPN Client Configuration"
 msgstr ""
@@ -54,16 +70,12 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
-# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
-msgid "Username help"
-msgstr ""
-
 # plugins/juci-samba/src/widgets/samba-user-edit.html
 msgid "Password"
 msgstr ""
 
-# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
-msgid "Password help"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html 
+msgid "Upload Configuration"
 msgstr ""
 
 # plugins/juci-openvpn/src/pages/internet-services-openvpn.html
@@ -118,8 +130,8 @@ msgstr ""
 msgid "Resolv retry"
 msgstr ""
 
-# plugins/juci-openvpn/src/pages/internet-services-openvpn.html
-msgid "The .ovpn config file"
+# plugins/juci-openvpn/src/pages/internet-services-openvpn.html 
+msgid "Current Configuration"
 msgstr ""
 
 # plugins/juci-openvpn/src/pages/internet-services-openvpn.html

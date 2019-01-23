@@ -12,9 +12,10 @@ msgstr ""
 "X-Generator: Poedit 2.0.1\n"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.js
+#, fuzzy
 msgid ""
-"This will reset your configuration to factory defaults. Do you want to "
-"continue?"
+"This will reset your configuration to factory defaults (except the settings "
+"selected to be saved). Do you want to continue?"
 msgstr "設定が工場出荷状態にリセットされます。続けますか？"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.js
@@ -85,6 +86,11 @@ msgstr "カーネルバージョン"
 msgid "CFE Version"
 msgstr "CFEバ―ジョン"
 
+# plugins/juci-mod-system/src/pages/status-system.js
+#, fuzzy
+msgid "Hardware Version"
+msgstr "ファームウェアバージョン"
+
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-mod-system/src/pages/status-system.js
 # #-#-#-#-#  template.pot  #-#-#-#-#
@@ -105,7 +111,8 @@ msgid "Active Connections"
 msgstr "アクティブな接続"
 
 # plugins/juci-mod-system/src/pages/status-system.js
-msgid "BRCM Version"
+#, fuzzy
+msgid "BSP Version"
 msgstr "BRCMバージョン"
 
 # plugins/juci-mod-system/src/pages/status-system.js
@@ -123,13 +130,6 @@ msgstr "バッファ"
 # plugins/juci-mod-system/src/pages/status-system.js
 msgid "Swap"
 msgstr "スワップ"
-
-# plugins/juci-mod-system/src/pages/settings-password.js
-msgid ""
-"Was unable to set password. Please make sure you have entered correct "
-"current password!"
-msgstr ""
-"パスワードを設定できませんでした。 現在の正しいパスワードを入力して下さい"
 
 # plugins/juci-mod-system/src/pages/settings-system-log.js
 msgid "Emergency"
@@ -199,6 +199,26 @@ msgstr "Circular"
 msgid "File"
 msgstr "File"
 
+# plugins/juci-mod-system/src/pages/settings-users.js 
+msgid "Select All"
+msgstr ""
+
+# plugins/juci-mod-system/src/pages/settings-users.js 
+msgid "Select None"
+msgstr ""
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "Reset"
+msgstr "リセット"
+
+# plugins/juci-mod-system/src/pages/settings-users.js 
+msgid "Search..."
+msgstr ""
+
+# plugins/juci-mod-system/src/pages/settings-users.js 
+msgid "All users"
+msgstr ""
+
 # plugins/juci-mod-system/src/pages/settings-system.html
 msgid "settings.system.general"
 msgstr " "
@@ -218,6 +238,14 @@ msgstr "ルーターのユーザー権限を管理します"
 # plugins/juci-mod-system/src/pages/settings-uci.html
 msgid "Loading"
 msgstr "読み込み中"
+
+# plugins/juci-mod-system/src/pages/settings-hardware-leds.html
+msgid "Configure LEDs"
+msgstr "LED設定"
+
+# plugins/juci-mod-system/src/pages/settings-hardware-leds.html
+msgid "settings.management.leds.info"
+msgstr " "
 
 # plugins/juci-mod-system/src/pages/settings-services.html
 msgid "Services"
@@ -263,13 +291,13 @@ msgstr "ボタン設定"
 msgid "settings.management.buttons.info"
 msgstr " "
 
-# plugins/juci-mod-system/src/pages/settings-hardware-leds.html
-msgid "Configure LEDs"
-msgstr "LED設定"
+# plugins/juci-mod-system/src/pages/settings-management.html
+msgid "Management"
+msgstr "管理"
 
-# plugins/juci-mod-system/src/pages/settings-hardware-leds.html
-msgid "settings.management.leds.info"
-msgstr " "
+# plugins/juci-mod-system/src/pages/settings-management.html
+msgid "system.management.info"
+msgstr "システム.管理.情報"
 
 # plugins/juci-mod-system/src/pages/status-system-processes.html
 msgid "Total number of processes: "
@@ -361,6 +389,82 @@ msgstr "ログ形式"
 msgid "Log Settings"
 msgstr "ログ設定"
 
+# plugins/juci-mod-system/src/pages/status-system.html
+msgid "System Status"
+msgstr "機器ステータス"
+
+# plugins/juci-mod-system/src/pages/status-system.html
+msgid "Memory"
+msgstr "メモリー"
+
+# plugins/juci-mod-system/src/pages/status-system.html
+msgid "Storage"
+msgstr "ストレージ"
+
+# plugins/juci-mod-system/src/pages/settings-password.html
+msgid "Change Account Passwords"
+msgstr "アカウントのパスワード変更"
+
+# plugins/juci-mod-system/src/pages/settings-password.html
+msgid "settings.password.info"
+msgstr " "
+
+# plugins/juci-mod-system/src/pages/settings-password.html
+msgid "Change password for user"
+msgstr "アカウント"
+
+# plugins/juci-mod-system/src/pages/settings-password.html
+msgid "Change Password"
+msgstr "パスワード変更"
+
+# plugins/juci-mod-system/src/pages/settings-password.html
+msgid "Reset  Password"
+msgstr "パスワードリセット"
+
+# plugins/juci-mod-system/src/pages/settings-connectivity-test.html
+msgid "Internet"
+msgstr "URL"
+
+# plugins/juci-mod-system/src/pages/settings-connectivity-test.html
+msgid "URL for checking Internet connection"
+msgstr "インターネット接続を確認するためのURL"
+
+# plugins/juci-mod-system/src/pages/settings-connectivity-test.html
+msgid "www.example.com"
+msgstr "www.example.com"
+
+# plugins/juci-mod-system/src/pages/settings-connectivity-test.html
+msgid "Connectivity Test"
+msgstr "接続テスト"
+
+# plugins/juci-mod-system/src/pages/settings-energy.html
+msgid "Energy Settings"
+msgstr "エネルギー設定"
+
+# plugins/juci-mod-system/src/pages/settings-energy.html
+msgid "settings.energy.info"
+msgstr "設定.エネルギー.エネルギー情報"
+
+# plugins/juci-mod-system/src/pages/settings-energy.html
+msgid "USB Port"
+msgstr "USBポート"
+
+# plugins/juci-mod-system/src/pages/settings-energy.html
+msgid "Status-LED"
+msgstr "ステータスLED"
+
+# plugins/juci-mod-system/src/pages/settings-energy.html
+msgid "Power-LED"
+msgstr "電源LED"
+
+# plugins/juci-mod-system/src/pages/settings-energy.html
+msgid "Power-LED Brightness"
+msgstr "電源LEDの明るさ"
+
+# plugins/juci-mod-system/src/pages/settings-energy.html
+msgid "Missing uci config boardpanel."
+msgstr "uci config boardpanelがありません"
+
 # plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "Backup Configuration"
 msgstr "コンフィグバックアップ/リストア"
@@ -422,10 +526,6 @@ msgid "ICE config"
 msgstr "ICE 構成"
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "Reset"
-msgstr "リセット"
-
-# plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "Save Configuration to Computer"
 msgstr "設定の保存"
 
@@ -465,154 +565,77 @@ msgstr "パスワード(暗号化している場合)"
 msgid "Please add a comment describing this configuration"
 msgstr "コメントを記載して下さい"
 
-# plugins/juci-mod-system/src/pages/settings-password.html
-msgid "Change Account Passwords"
-msgstr "アカウントのパスワード変更"
-
-# plugins/juci-mod-system/src/pages/settings-password.html
-msgid "settings.password.info"
-msgstr " "
-
-# plugins/juci-mod-system/src/pages/settings-password.html
-msgid "Change password for user"
-msgstr "アカウント"
-
-# plugins/juci-mod-system/src/pages/settings-password.html
-msgid "Change Password"
-msgstr "パスワード変更"
-
-# plugins/juci-mod-system/src/pages/settings-password.html
-msgid "Reset  Password"
-msgstr "パスワードリセット"
-
-# plugins/juci-mod-system/src/pages/status-system.html
-msgid "System Status"
-msgstr "機器ステータス"
-
-# plugins/juci-mod-system/src/pages/status-system.html
-msgid "Memory"
-msgstr "メモリー"
-
-# plugins/juci-mod-system/src/pages/status-system.html
-msgid "Storage"
-msgstr "ストレージ"
-
-# plugins/juci-mod-system/src/pages/settings-management.html
-msgid "Management"
-msgstr "管理"
-
-# plugins/juci-mod-system/src/pages/settings-management.html
-msgid "system.management.info"
-msgstr "システム.管理.情報"
-
-# plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "Internet"
-msgstr "URL"
-
-# plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "URL for checking Internet connection"
-msgstr "インターネット接続を確認するためのURL"
-
-# plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "www.example.com"
-msgstr "www.example.com"
-
-# plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "Connectivity Test"
-msgstr "接続テスト"
-
-# plugins/juci-mod-system/src/pages/settings-energy.html
-msgid "Energy Settings"
-msgstr "エネルギー設定"
-
-# plugins/juci-mod-system/src/pages/settings-energy.html
-msgid "settings.energy.info"
-msgstr "設定.エネルギー.エネルギー情報"
-
-# plugins/juci-mod-system/src/pages/settings-energy.html
-msgid "USB Port"
-msgstr "USBポート"
-
-# plugins/juci-mod-system/src/pages/settings-energy.html
-msgid "Status-LED"
-msgstr "ステータスLED"
-
-# plugins/juci-mod-system/src/pages/settings-energy.html
-msgid "Power-LED"
-msgstr "電源LED"
-
-# plugins/juci-mod-system/src/pages/settings-energy.html
-msgid "Power-LED Brightness"
-msgstr "電源LEDの明るさ"
-
-# plugins/juci-mod-system/src/pages/settings-energy.html
-msgid "Missing uci config boardpanel."
-msgstr "uci config boardpanelがありません"
-
 # plugins/juci-mod-system/src/pages/settings-system.html
 msgid "menu-settings-system-title"
 msgstr "システム"
 
-# plugins/juci-mod-system/src/pages/settings-energy.html
-msgid "menu-settings-energy-title"
-msgstr "エネルギー"
-
-# plugins/juci-mod-system/src/pages/status-system-processes.html
-msgid "menu-status-system-processes-title"
-msgstr "ネットワーク"
-
-# plugins/juci-mod-system/src/pages/settings-services.html
-msgid "menu-settings-services-title"
-msgstr "サービス"
-
-# plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "menu-settings-connectivity-test-title"
-msgstr "接続テスト"
-
-# plugins/juci-mod-system/src/pages/settings-system-log.html
-msgid "menu-settings-system-log-title"
-msgstr "ログ設定"
-
-# plugins/juci-mod-system/src/pages/settings-password.html
-msgid "menu-settings-password-title"
-msgstr "パスワード"
-
-# plugins/juci-mod-system/src/pages/settings-hardware-leds.html
-msgid "menu-settings-hardware-leds-title"
-msgstr "LED"
-
 # plugins/juci-mod-system/src/pages/system.html
 msgid "menu-system-title"
-msgstr "システム"
-
-# plugins/juci-mod-system/src/pages/status-system.html
-msgid "menu-status-system-title"
 msgstr "システム"
 
 # plugins/juci-mod-system/src/pages/settings-users.html
 msgid "menu-settings-users-title"
 msgstr "ユーザー"
 
-# plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "menu-settings-configuration-title"
-msgstr "コンフィグ"
+# plugins/juci-mod-system/src/pages/settings-uci.html
+msgid "menu-settings-uci-title"
+msgstr "uci"
+
+# plugins/juci-mod-system/src/pages/settings-hardware-leds.html
+msgid "menu-settings-hardware-leds-title"
+msgstr "LED"
+
+# plugins/juci-mod-system/src/pages/settings-services.html
+msgid "menu-settings-services-title"
+msgstr "サービス"
+
+# plugins/juci-mod-system/src/pages/settings-system-timeservers.html
+msgid "menu-settings-system-timeservers-title"
+msgstr "NTP"
 
 # plugins/juci-mod-system/src/pages/settings-hardware.html
 msgid "menu-settings-hardware-title"
 msgstr "ハードウェア"
 
-# plugins/juci-mod-system/src/pages/settings-management.html
-msgid "menu-settings-management-title"
-msgstr "管理"
-
 # plugins/juci-mod-system/src/pages/settings-hardware-buttons.html
 msgid "menu-settings-hardware-buttons-title"
 msgstr "ボタン設定"
 
-# plugins/juci-mod-system/src/pages/settings-uci.html
-msgid "menu-settings-uci-title"
-msgstr "uci"
+# plugins/juci-mod-system/src/pages/settings-management.html
+msgid "menu-settings-management-title"
+msgstr "管理"
 
-# plugins/juci-mod-system/src/pages/settings-system-timeservers.html
-msgid "menu-settings-system-timeservers-title"
-msgstr "NTP"
+# plugins/juci-mod-system/src/pages/status-system-processes.html
+msgid "menu-status-system-processes-title"
+msgstr "ネットワーク"
+
+# plugins/juci-mod-system/src/pages/settings-system-log.html
+msgid "menu-settings-system-log-title"
+msgstr "ログ設定"
+
+# plugins/juci-mod-system/src/pages/status-system.html
+msgid "menu-status-system-title"
+msgstr "システム"
+
+# plugins/juci-mod-system/src/pages/settings-password.html
+msgid "menu-settings-password-title"
+msgstr "パスワード"
+
+# plugins/juci-mod-system/src/pages/settings-connectivity-test.html
+msgid "menu-settings-connectivity-test-title"
+msgstr "接続テスト"
+
+# plugins/juci-mod-system/src/pages/settings-energy.html
+msgid "menu-settings-energy-title"
+msgstr "エネルギー"
+
+# plugins/juci-mod-system/src/pages/settings-configuration.html
+msgid "menu-settings-configuration-title"
+msgstr "コンフィグ"
+
+# plugins/juci-mod-system/src/pages/settings-password.js
+#~ msgid ""
+#~ "Was unable to set password. Please make sure you have entered correct "
+#~ "current password!"
+#~ msgstr ""
+#~ "パスワードを設定できませんでした。 現在の正しいパスワードを入力して下さい"

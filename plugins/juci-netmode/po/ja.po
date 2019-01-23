@@ -119,6 +119,11 @@ msgstr "動作モード"
 msgid "Select Preset"
 msgstr "プリセット選択"
 
+# plugins/juci-netmode/src/pages/netmode-wizard.html
+#, fuzzy
+msgid "Auto-Mode"
+msgstr "ルーターモード"
+
 # plugins/juci-netmode/src/widgets/overview-netmode.html
 msgid "No profiles available"
 msgstr "プロファイルがありません"
