@@ -134,6 +134,27 @@ JUCI.app
 						cb();
 					}
 				});
+			},
+			function(cb){
+				if(model.iface.proto.value === "none"){
+					// add interface to notinterface option in dhcp to make dnsmasq ignore it
+					$uci.$sync("dhcp").done(function(){
+						var dnsmasq = $uci.dhcp["@dnsmasq"][0];
+						if(!dnsmasq){
+							console.error($tr(gettext("No dnsmasq section in dhcp config")));
+						}else{
+							var notinterface = dnsmasq.notinterface.value.filter(function(iface){ return iface !== model.iface[".name"]});
+							notinterface.push(model.iface[".name"]);
+							dnsmasq.notinterface.value = notinterface;
+						}
+					}).fail(function(err){
+						console.error($tr(gettext("Was not able to sync dhcp config", err)));
+					}).always(function(){
+						cb();
+					});
+				}else{
+					cb();
+				}
 			}
 		], function(){
 			if(model.zone){
@@ -168,6 +189,7 @@ JUCI.app
 			return;
 		}
 		$juciConfirm.show($tr(gettext("Are you sure you want to delete this connection?"))).done(function(result){
+			var name = conn[".name"];
 			conn.$delete().done(function(){
 				var keep = [];
 				$firewall.getZones().done(function(zones){
@@ -182,6 +204,18 @@ JUCI.app
 				$scope.networks = $scope.networks.filter(function(net){
 					return net[".name"] != conn[".name"];
 				});
+				$scope.$apply();
+			});
+			$uci.$sync("dhcp").done(function(){
+				if($uci.dhcp[name] && $uci.dhcp[name].$delete instanceof Function)
+					$uci.dhcp[name].$delete().done(function(){$scope.$apply();});
+				var dq = $uci.dhcp["@dnsmasq"][0];
+				if(dq && dq.notinterface.value.indexOf(name) !== -1){
+					console.log("test");
+					var notinterface = Object.assign([], dq.notinterface.value);
+					notinterface = notinterface.filter(function(iface){ return iface !== name; });
+					dq.notinterface.value = notinterface;
+				}
 				$scope.$apply();
 			});
 		});

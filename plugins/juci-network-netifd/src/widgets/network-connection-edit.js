@@ -12,7 +12,7 @@ JUCI.app
 		require: "^ngModel"
 	};  
 })
-.controller("networkConnectionEdit", function($scope, $network, $rpc, $tr, gettext, $juciConfirm, $events){
+.controller("networkConnectionEdit", function($scope, $network, $rpc, $tr, gettext, $juciConfirm, $events, $uci){
 	$scope.expanded = true; 
 	$scope.existingHost = { }; 
 	
@@ -68,6 +68,29 @@ JUCI.app
 			$scope.interface.proto.value = value;
 			setProto($scope.interface.proto.value);
 			$scope.$apply();
+			$uci.$sync("dhcp").done(function(){
+				if(oldvalue === "none"){
+					// remove iface from dnsmasq.notinterface
+					var dnsmasq = $uci.dhcp["@dnsmasq"][0];
+					if(dnsmasq){
+						var notinterface = Object.assign([], dnsmasq.notinterface.value);
+						notinterface = notinterface.filter(function(iface){return $scope.interface[".name"] !== iface;});
+						dnsmasq.notinterface.value = notinterface;
+						$scope.$apply();
+					}
+				}
+				if(value === "none"){
+					console.log("value was none");
+					// add iface to dnsmasq.notinterface
+					var dmasq = $uci.dhcp["@dnsmasq"][0];
+					if(dmasq){
+						dmasq.notinterface.value = dmasq.notinterface.value.concat([$scope.interface[".name"]]);
+						$scope.$apply();
+					}
+				}
+			}).fail(function(err){
+				console.error("Failed to sync dhcp config", err);
+			});
 		}).fail(function(){
 			$scope.interface.proto.value = oldvalue;
 		}).always(function(){

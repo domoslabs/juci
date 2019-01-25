@@ -20,6 +20,7 @@
 
 UCI.$registerConfig("dhcp");
 UCI.dhcp.$registerSectionType("dnsmasq", {
+	"notinterface":		{ dvalue: [], type: Array },
 	"domainneeded":		{ dvalue: true, type: Boolean },
 	"dhcpleasemax":		{ dvalue: undefined, type: Number },
 	"boguspriv":		{ dvalue: true, type: Boolean },
