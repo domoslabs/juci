@@ -1,0 +1,68 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Reidar Cederqvist <reidar.cederqvist@gmail.com>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mcproxy/src/pages/mcproxy-settings.js 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mcproxy/src/widgets/mc-instance-edit.html 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mcproxy/src/pages/mcproxy-settings.html 
+msgid "Enable"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mcproxy/src/pages/mcproxy-settings.js 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-mcproxy/src/widgets/mc-instance-edit.html 
+msgid "Name"
+msgstr ""
+
+# plugins/juci-mcproxy/src/widgets/mc-proxy-edit.html
+msgid "Uplink"
+msgstr ""
+
+# plugins/juci-mcproxy/src/widgets/mc-proxy-edit.html
+msgid "Downlink"
+msgstr ""
+
+# plugins/juci-mcproxy/src/pages/mcproxy-settings.js
+msgid "N/A"
+msgstr ""
+
+# plugins/juci-mcproxy/src/widgets/mc-instance-edit.html 
+msgid "Upstream"
+msgstr ""
+
+# plugins/juci-mcproxy/src/widgets/mc-instance-edit.html 
+msgid "Downstream"
+msgstr ""
+
+# plugins/juci-mcproxy/src/pages/mcproxy-settings.html 
+msgid "MultiCast Proxy"
+msgstr ""
+
+# plugins/juci-mcproxy/src/pages/mcproxy-settings.html 
+msgid "Change settings for the Multicast proxy"
+msgstr ""
+
+# plugins/juci-mcproxy/src/pages/mcproxy-settings.html 
+msgid "Protocol"
+msgstr ""
+
+# plugins/juci-mcproxy/src/pages/mcproxy-settings.html 
+msgid "Instances"
+msgstr ""
+
+# plugins/juci-mcproxy/src/pages/mcproxy-settings.html
+msgid "menu-mcproxy-settings-title"
+msgstr "MultiCast Proxy"

@@ -1,0 +1,18 @@
+<juci-layout-with-sidebar>
+	<div ng-controller="McproxyPageCtrl">
+		<juci-config-heading>{{ 'MultiCast Proxy'|translate}}</juci-config-heading>
+		<juci-config-info>{{'Change settings for the Multicast proxy'|translate}}</juci-config-info>
+		<juci-config-line title="{{'Enable'|translate}}" >
+			<switch class="green" ng-model="mcproxy.disabled.value" inverted/>
+		</juci-config-line>
+		<juci-config-line title="{{'Protocol'|translate}}">
+			<juci-select ng-items="protocol" ng-model="mcproxy.protocol.value"/>
+		</juci-config-line>
+		<juci-config-line title="{{'Instances'|translate}}">
+		</juci-config-line>
+		<juci-config-section>
+			<juci-list-editor ng-items="allInstances" item-editor="mc-instance-edit" get-item-title="getmcInstanceTitle($item)"
+					on-create="onAddInstance()" on-delete="onDeleteInstance($item)"></juci-list-editor>
+		</juci-config-section>
+	</div>
+</juci-layout-with-sidebar>

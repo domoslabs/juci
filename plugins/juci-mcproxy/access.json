@@ -1,0 +1,16 @@
+{
+	"juci-mcproxy":{
+		"description": "Multicast proxy settings",
+		"read": {
+			"uci": [
+				"mcproxy",
+				"network"
+			]
+		},
+		"write": {
+			"uci": [
+				"mcproxy"
+			]
+		}
+	}
+}
