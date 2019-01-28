@@ -185,6 +185,14 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 		return deferred.promise();
 	}
 
+	Wireless.prototype.getUplinkType = function () {
+		var deferred = $.Deferred();
+		$rpc.$call("netmode", "status", {}).done(function (result) {
+			deferred.resolve(result);
+		});
+		return deferred.promise();
+	}
+
 	return new Wireless();
 });
 
@@ -241,7 +249,7 @@ JUCI.app.run(function($network, $wireless, $uci){
 		"bandwidth": 	{ dvalue: 80, type: String, allow: [ "20", "40", "80" ] },
 		"channel":		{ dvalue: "auto", type: String, allow: [ "auto", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 36, 40, 44, 48 ] },
 		"obss_coex":	{ dvalue: true, type: Boolean },
-		"scantimer":	{ dvalue: 0, type: Number },
+		"scantimer":	{ dvalue: 60, type: Number },
 		"wmm":			{ dvalue: true, type: Boolean },
 		"wmm_noack":	{ dvalue: false, type: Boolean },
 		"wmm_apsd":		{ dvalue: true, type: Boolean },

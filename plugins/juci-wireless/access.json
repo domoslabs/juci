@@ -3,6 +3,9 @@
 		"description": "JUCI wireless plugin",
 		"read": {
 			"ubus": {
+				"netmode": [
+					"status"
+				],
 				"router.wps": [
 					"genpin",
 					"pbc",

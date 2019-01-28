@@ -27,9 +27,13 @@ JUCI.app
 		replace: true, 
 		require: "^ngModel"
 	};  
-}).controller("WiFiDeviceEditController", function($scope, $localStorage, $rpc, $tr, gettext){
+}).controller("WiFiDeviceEditController", function($scope, $localStorage, $rpc, $tr, gettext, $wireless){
 
 	$scope.showExpert = $localStorage.getItem("mode") == "expert";
+	$wireless.getUplinkType().done(function(res){
+		$scope.netmodes = res;
+	});
+
 	function updateChannels() {
 		$rpc.$call("juci.wireless", "get_channels",{
 			radio:$scope.device[".name"],
