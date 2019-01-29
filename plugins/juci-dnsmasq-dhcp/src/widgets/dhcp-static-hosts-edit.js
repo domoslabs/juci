@@ -62,6 +62,7 @@ JUCI.app
 			ip: host.ipaddr,
 			duid: host.ip6duid
 		}).done(function(section){
+			section.name.ovalue = "";
 			console.log("Added new dhcp section"); 
 			$scope.dhcp.staticHosts.push(section); 
 			$scope.$apply(); 
