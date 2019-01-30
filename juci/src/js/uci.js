@@ -364,6 +364,7 @@
 	function IP4AddressValidator(){
 		this.validate = function(field){
 			var error = JUCI.$tr(gettext("IP Address must be a valid IPv4 address!"));
+			if(!(field.value instanceof String)) return error;
 			if(!field.value || field.value == "") return null;
 			if(field.value.match(/^[\.\d]+$/) == null) return error;
 			if(field.value.split(".").length != 4 || field.value.split(".")
