@@ -43,7 +43,7 @@ UCI.upnpd.$registerSectionType("upnpd", {
 	"model":			{ dvalue: '', type: String },
 	"notify_interval":	{ dvalue: 30, type: Number },
 	"clean_ruleset_threshold": { dvalue: 20, type: Number },
-	"clean_ruleset_interval": { dvalue: 0, type: Number },
+	"clean_ruleset_interval": { dvalue: 0, type: Number }, // openwrt says 600, but source code defaults to 0
 	"presentation_url":	{ dvalue: '', type: String },
 	"upnp_lease_file":	{ dvalue: '', type: String }
 }); 
