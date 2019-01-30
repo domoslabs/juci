@@ -33,9 +33,17 @@ JUCI.app
 	};
 }).controller("networkConnectionProtoDhcpAdvancedEditCtrl", function($scope){
 	$scope.dnslist = [];
+	$scope.data = {
+		broadcast: false
+	}
 	$scope.$watch("interface", function(){
 		if(!$scope.interface) return;
 		$scope.interface.dns.value = $scope.interface.dns.value.filter(function(x){ return x != "" });
+		$scope.data.broadcast = $scope.interface.broadcast.value == "1" ? true: false;
+		$scope.$watch("data.broadcast", function(){
+			console.log("trigger");
+			$scope.interface.broadcast.value = $scope.data.broadcast ? "1":"0";
+		}, false);
 		$scope.dnslist = $scope.interface.dns.value.map(function(x){ return { text: x }});
 		$scope.interface.reqopts.$error = null;
 	}, false);
