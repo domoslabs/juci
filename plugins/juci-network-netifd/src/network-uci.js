@@ -84,7 +84,7 @@ UCI.network.$registerSectionType("interface", {
 	"reqopts":				{ dvalue: "", type: String },
 	"metric":				{ dvalue: '', type: Number },
 	"iface6rd":				{ dvalue: "", type: String },
-	"broadcast": 			{ dvalue: '', type: String, validator: UCI.validators.IP4AddressValidator },
+	"broadcast": 				{ dvalue: '', type: String },
 	"hostname": 			{ dvalue: "", type: String },
 	"peerdns": 				{ dvalue: true, type: Boolean },
 	//ipv6 settings
@@ -142,10 +142,20 @@ UCI.network.$registerSectionType("interface", {
 			}
 			if((section.ipaddr.value == "" || section.netmask.value == "") && section.ip6addr.value == "")
 				errors.push(name + JUCI.$tr(gettext(" needs either ipv4 or ipv6 address")));
+			if(section.broadcast.value){
+				var validator = new UCI.validators.IP4AddressValidator;
+				var err = validator.validate(section.broadcast);
+				if(err != null){
+					console.log(err);
+					errors.push(name + " " + JUCI.$tr(gettext("has an invalid broadcast address")));
+				}
+			}
 			break;
 		case "dhcp":
 			if(section.ifname.value == "")
 				errors.push(noPhysical);
+			if(section.broadcast.value && !section.broadcast.value.match(/[0-1]/))
+				errors.push(name + " " + JUCI.$tr(gettext("broadcast invalid type (Boolean)")));
 			break;
 		case "dhcpv6":
 			if(section.ifname.value == "")
