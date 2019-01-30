@@ -43,7 +43,7 @@ UCI.upnpd.$registerSectionType("upnpd", {
 	"model":			{ dvalue: '', type: String },
 	"notify_interval":	{ dvalue: 30, type: Number },
 	"clean_ruleset_threshold": { dvalue: 20, type: Number },
-	"clean_ruleset_interval": { dvalue: 600, type: Number },
+	"clean_ruleset_interval": { dvalue: 0, type: Number },
 	"presentation_url":	{ dvalue: '', type: String },
 	"upnp_lease_file":	{ dvalue: '', type: String }
 }); 
