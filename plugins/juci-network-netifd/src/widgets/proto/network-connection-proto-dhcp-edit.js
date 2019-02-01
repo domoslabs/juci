@@ -42,7 +42,7 @@ JUCI.app
 		$scope.data.broadcast = $scope.interface.broadcast.value == "1" ? true: false;
 		$scope.$watch("data.broadcast", function(){
 			console.log("trigger");
-			$scope.interface.broadcast.value = $scope.data.broadcast ? "1":"0";
+			$scope.interface.broadcast.value = $scope.data.broadcast ? "1":"";
 		}, false);
 		$scope.dnslist = $scope.interface.dns.value.map(function(x){ return { text: x }});
 		$scope.interface.reqopts.$error = null;
