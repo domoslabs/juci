@@ -1,0 +1,17 @@
+<div>
+	<juci-config-line title="{{'Priority'|translate}}">
+		<juci-select ng-items="allPriority" ng-model="rule.priority.value"/>
+	</juci-config-line>
+	<juci-config-line title="{{'Mac Address'|translate}}">
+		<juci-select ng-items="allClients" ng-model="rule.macaddr.value" />
+	</juci-config-line>
+	<juci-config-line title="{{'Portocol'|translate}}">
+		<juci-select ng-items="supportedProtocols" ng-model="rule.proto.value" placeholder="{{'All'|translate}}"/>
+	</juci-config-line>
+	<juci-config-line title="{{'Ports'|translate}}">
+		<tags-input type="number" display-property="value" key-property="value" min-length="1" ng-model="ports" placeholder="{{'Add a port'|translate}}" add-on-space="true" ></tags-input>
+	</juci-config-line>
+	<juci-config-line title="{{'Comment'|translate}}">
+		<input type="text" class="form-control" ng-model="rule.comment.value" placeholder="{{'Add a Comment'|translate}}" />
+	</juci-config-line>
+</div>
