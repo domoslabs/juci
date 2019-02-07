@@ -52,16 +52,18 @@
 			<juci-select ng-model="rule.proto.value" ng-items="protocolChoices" placeholder="Select protocol"></juci-select>
 		</div>
 	</div>
-	<div class="form-group" >
-		<label for="range" class="control-label col-xs-4" translate>Source Port(s)</label>
-		<div class="col-xs-8" ng-class="{'field-error': rule.src_dport.error}" >
+	<div class="form-group row" >
+		<label for="range" class="control-label col-sm-4" translate>Source Port(s)</label>
+		<div class="col-sm-8" ng-class="{'field-error': rule.src_dport.error}" >
 			<input type="text" class="form-control" ng-model="rule.src_dport.value" />
+			<p style="font-size: 12px">{{'A port number or range of the form '|translate}} <b>{{'startport:endport'|translate}}</b></p>
 		</div>
 	</div>
-	<div class="form-group" >
-		<label for="range" class="control-label col-xs-4" translate>Destination Port(s)</label>
-		<div class="col-xs-8" ng-class="{'field-error': rule.dest_port.error}" >
+	<div class="form-group row" >
+		<label for="range" class="control-label col-sm-4" translate>Destination Port(s)</label>
+		<div class="col-sm-8" ng-class="{'field-error': rule.dest_port.error}" >
 			<input type="text" class="form-control" ng-model="rule.dest_port.value" placeholder="{{rule.src_dport.value}}" />
+			<p style="font-size: 12px">{{'A port number or range of the form '|translate}} <b>{{'startport:endport'|translate}}</b></p>
 		</div>
 	</div>
 	<div class="form-group">
