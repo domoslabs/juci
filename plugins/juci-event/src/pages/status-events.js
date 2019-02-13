@@ -21,13 +21,17 @@
 JUCI.app
 .controller("StatusEventsPageCtrl", function($scope, $rpc, $config, $tr, gettext, $events, $file){
 	var AllLogs;
-	// to make it possible to send sid to cgi-bin!!
-	if($rpc.$sid) $scope.sid = $rpc.$sid();
+
 	JUCI.interval.repeat("event-log-page", 5000, function(next){
 		$rpc.$call("router.system", "logs").done(function(data){
 			if(!data || !data.logs) return;
 			AllLogs = data.logs;
 			AllLogs.reverse();
+
+			for(var i = 0; i < AllLogs.length; i++) {
+				AllLogs[i].unix = Date.parse(AllLogs[i].time);
+			}
+
 			$scope.update();
 			$scope.$apply();
 		}).always(function(){next();});
@@ -40,7 +44,7 @@ JUCI.app
 		"error" : null,
 		"timeout" : null
 	};
-	$scope.order = 'time';
+	$scope.order = 'unix';
 	$scope.reverse = true;
 	$scope.setOrder = function(order){
 		if($scope.order === order){
