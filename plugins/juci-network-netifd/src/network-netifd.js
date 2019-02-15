@@ -200,7 +200,9 @@
 				$rpc.$call("network.interface", "dump").done(function(result){
 					if(result && result.interface) {
 						var wanifs = [];
-						result.interface.map(function(i){
+						result.interface.filter(function(iface){
+							return $uci.network[iface.interface];
+						}).map(function(i){
 							if(i.route && i.route.length && i.route.find(function(r){ return r.target == "0.0.0.0" || r.target == "::"; })){
 								// lookup the config section for this device
 								var conf = $uci.network["@interface"].find(function(x){ return x[".name"] == i.interface; });
