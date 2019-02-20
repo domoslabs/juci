@@ -65,7 +65,7 @@ UCI.samba.$registerSectionType("samba", {
 }); 
 
 UCI.samba.$registerSectionType("sambashare", {
-	"name":			{ dvalue: "", type: String }, 
+	"name":			{ dvalue: "", type: String, validator: UCI.validators.CodeInjectionValidator },
 	"path":			{ dvalue: "/mnt", type: String },
 	"users":		{ dvalue: "", type: String }, // comma separated list
 	"read_only":	{ dvalue: "no", type: Boolean }, // Yes/no

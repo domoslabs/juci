@@ -2,6 +2,7 @@
 	<juci-config-lines>
 		<juci-config-line title="{{'Name'|translate}}">
 			<input type="text" class="form-control" ng-model="share.name.value"/>
+			<juci-error value="share.name.error" />
 		</juci-config-line>
 		<juci-config-line title="{{'Path'|translate}}">
 			<p ng-show="filesystem" class="alert alert-warning">{{'This USB drive has' | translate}} {{filesystem}}
