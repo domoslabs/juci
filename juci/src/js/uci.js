@@ -514,6 +514,14 @@
 		}
 	};
 
+	function CodeInjectionValidator(){
+                this.validate = function(field){
+                        if(!field.value) return;
+                        if(field.value.match(/^.*[$`\r\n\t]|(\\r)|(\\n)|(\\t)+.*$/))
+                               return JUCI.$tr(gettext("Input may not contain $, \\n, \\r, \\t or `"));
+                        return null;
+                }
+        };
 
 	
 	var section_types = {};
@@ -1415,6 +1423,7 @@
 		IP4UnicastAddressValidator: IP4UnicastAddressValidator,
 		QOSMarkValidator: QOSMarkValidator,
 		HostnameValidator: HostnameValidator,
+		CodeInjectionValidator: CodeInjectionValidator,
 		IPAddressAndIPCIDRValidator: IPAddressAndIPCIDRValidator
 	};
 })(typeof exports === 'undefined'? this : global);
