@@ -56,9 +56,9 @@ JUCI.app
 
 UCI.$registerConfig("samba"); 
 UCI.samba.$registerSectionType("samba", {
-	"name":			{ dvalue: "", type: String }, 
-	"workgroup":	{ dvalue: "", type: String },
-	"description":	{ dvalue: "", type: String },
+	"name":			{ dvalue: "", type: String, validator: UCI.validators.CodeInjectionValidator },
+	"workgroup":	{ dvalue: "", type: String, validator: UCI.validators.CodeInjectionValidator },
+	"description":	{ dvalue: "", type: String, validator: UCI.validators.CodeInjectionValidator },
 	"charset": 		{ dvalue: "", type: String },
 	"homes":		{ dvalue: false, type: Boolean },
 	"interface":	{ dvalue: "", type: String }

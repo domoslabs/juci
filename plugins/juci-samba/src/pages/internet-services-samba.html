@@ -6,12 +6,15 @@
 			<juci-config-lines>
 				<juci-config-line title="{{'Name'|translate}}">
 					<input type="text" ng-model="config.name.value" class="form-control" placeholder="{{'Name'|translate}}"/>
+					<juci-error value="config.name.error" />
 				</juci-config-line>
 				<juci-config-line title="{{'Workgroup'|translate}}">
 					<input type="text" ng-model="config.workgroup.value" class="form-control" placeholder="{{'Workgroup'|translate}}"/>
+					<juci-error value="config.workgroup.error" />
 				</juci-config-line>
 				<juci-config-line title="{{'Description'|translate}}">
 					<input type="text" ng-model="config.description.value" class="form-control" placeholder="{{'Description'|translate}}"/>
+					<juci-error value="config.description.error" />
 				</juci-config-line>
 				<!--<juci-config-line title="{{'Share User Home Directory'|translate}}">
 					<switch ng-model="config.homes.value" class="green"></switch>
