@@ -40,7 +40,10 @@ JUCI.app
 		if (dev.type.value === "untagged"){
 			$scope.conf.manual_name = !is_auto_generated_name(dev);
 			$scope.conf.untagged = true;
-		}else{
+		} else if (dev.type.value === "macvlan") {
+			$scope.conf.manual_name = !is_auto_generated_name(dev);
+			$scope.conf.untagged = false;
+		} else {
 			$scope.conf.manual_name = (dev.name.value !== dev.ifname.value + "." + dev.vid.value);
 			$scope.conf.untagged = false;
 		}
@@ -62,6 +65,10 @@ JUCI.app
 		}
 	}
 
+	function set_macvlan_device_name(dev) {
+		dev.name.value = dev[".name"];
+	}
+
 	function is_auto_generated_name(dev){
 		var re = new RegExp("^"+ dev.ifname.value + ".\\d+$");
 		return !(dev.name.value.match(re) === null);
@@ -69,6 +76,7 @@ JUCI.app
 
 	$scope.types = [
 		{ label: $tr(gettext("Untagged")), value: "untagged" },
+		{ label: $tr(gettext("MACVLAN")), value: "macvlan" },
 		// { label: $tr(gettext("802.1AD")), value: "8021ad" },
 		{ label: $tr(gettext("802.1Q")), value: "8021q" }
 	];
@@ -95,9 +103,10 @@ JUCI.app
 			return;
 		if(old_val[0] === undefined && old_val[1] === undefined)
 			return;
+
 		if($scope.device.type.value === "untagged")
 			set_untagged_device_name($scope.device);
-		else
+		else if ($scope.device.type.value === "8021q")
 			$scope.device.name.value = $scope.device.ifname.value + "." + $scope.device.vid.value;
 	});
 
@@ -110,7 +119,12 @@ JUCI.app
 			$scope.device.vid.$reset_defaults();
 			$scope.device.priority.$reset_defaults();
 			set_untagged_device_name($scope.device);
-		}else {
+		} else if (new_type === "macvlan") {
+			$scope.conf.untagged = false;
+			$scope.device.vid.$reset_defaults();
+			$scope.device.priority.$reset_defaults();
+			set_macvlan_device_name($scope.device);
+		} else {
 			$scope.conf.untagged = false;
 			$scope.device.name.value = $scope.device.ifname.value + "." + $scope.device.vid.value;
 		}

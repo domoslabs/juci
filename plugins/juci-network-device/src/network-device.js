@@ -104,7 +104,7 @@ UCI.network.$registerSectionType("device", {
 		return null;
 	var errors = [];
 	// check type
-	var types = [ "untagged", "8021q", "8021ad"];
+	var types = [ "untagged", "8021q", "8021ad", "macvlan"];
 	if (types.indexOf(section.type.value) === -1)
 		errors.push(JUCI.$tr(gettext("section")) + " " + section[".name"] + " " + JUCI.$tr(gettext("has invalid type, valid types are")) + JSON.stringify(types));
 	var devices = UCI.network["@device"]||[];
@@ -114,11 +114,18 @@ UCI.network.$registerSectionType("device", {
 		if(device.vid.value === section.vid.value &&
 				device.ifname.value === section.ifname.value &&
 				section.type.value !== "untagged" &&
-				device.type.value !== "untagged")
+				device.type.value !== "untagged"&&
+				section.type.value !== "macvlan" &&
+				device.type.value !== "macvlan")
 			errors.push(section[".name"] + ", " + JUCI.$tr(gettext("Duplicate VID and Interface")));
 		if(device.name.value === section.name.value)
 			errors.push(section[".name"] + ", " + JUCI.$tr(gettext("Duplicate VLAN name")) + " " + section.name.value);
 	});
+
+	if (section.type.value === "macvlan") {
+		if (section.name.value.match(/\./))
+			errors.push(section[".name"] + ", " + JUCI.$tr(gettext("MACVLAN name may not contain dot.")))
+	}
 
 	if(errors.length)
 		return errors;

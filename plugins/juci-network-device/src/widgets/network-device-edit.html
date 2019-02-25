@@ -9,7 +9,7 @@
 		<juci-config-line title="{{'Base Device'|translate}}">
 			<juci-select ng-model="device.ifname.value" ng-items="interfaces"></juci-select>
 		</juci-config-line>
-		<div ng-hide="conf.untagged">
+		<div ng-hide="conf.untagged || device.type.value === 'macvlan'">
 			<juci-config-line title="{{'VLAN ID'|translate}}" error="device.vid.error">
 				<input type="number" ng-model="device.vid.value" class="form-control"></input>
 			</juci-config-line>
@@ -23,7 +23,7 @@
 				<span ng-click="conf.manual_name = !conf.manual_name" class="input-group-addon"><i class="fa fa-edit"></i></span>
 			</div>
 		</juci-config-line>
-		<juci-config-line title="{{ 'Override MTU' | translate }}">
+		<juci-config-line title="{{ 'Override MTU' | translate }}" ng-hide="device.type.value === 'macvlan'">
 			<input type="number" min="0" class="form-control" ng-model="device.mtu.value" placeholder="{{'auto'|translate}}" />
 		</juci-config-line>
 
