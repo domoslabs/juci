@@ -523,6 +523,30 @@
                 }
         };
 
+	function CharLimitValidator(min, max){
+		if(min === undefined || min === null){
+			return function(){
+				this.validate = function(field){
+					if(field.value.length <= max) return null;
+					return JUCI.$tr(gettext("Too many characters,")) + " (<= "+max+")";
+				}
+			}
+		}
+		else if(max === undefined || max === null){
+			return function(){
+				this.validate = function(field){
+					if(field.value.length >= min) return null;
+					return JUCI.$tr(gettext("Too few characters,")) + " (>= "+min+")";
+				}
+			}
+		}
+		return function(){
+			this.validate = function(field){
+				if(field.value.length >= min && field.value.length <= max) return null;
+				return JUCI.$tr(gettext("Invalid amount of characters,")) + " ("+min+" - "+max+")";
+			}
+		}
+	};
 	
 	var section_types = {};
 	function UCI(){
@@ -1424,6 +1448,7 @@
 		QOSMarkValidator: QOSMarkValidator,
 		HostnameValidator: HostnameValidator,
 		CodeInjectionValidator: CodeInjectionValidator,
-		IPAddressAndIPCIDRValidator: IPAddressAndIPCIDRValidator
+		IPAddressAndIPCIDRValidator: IPAddressAndIPCIDRValidator,
+		CharLimitValidator: CharLimitValidator
 	};
 })(typeof exports === 'undefined'? this : global);
