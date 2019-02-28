@@ -137,8 +137,15 @@ JUCI.app
 
 	$events.subscribe("system-report", function(res){
 		if(res && res.data && res.data.filename && res.data.filename.length > 5) {
-			var filename=res.data.filename;
-			$file.downloadFile(filename,"application/gzip",filename).done( function() {
+			var filename = res.data.filename;
+
+			var dateObj = new Date();
+			var year = dateObj.getFullYear();
+			var month = ('0' + (dateObj.getMonth() + 1)).slice(-2);
+			var day = ('0' + dateObj.getDate()).slice(-2);
+			var downloadName = "system-report-" + year + "-" + month + "-" + day;
+
+			$file.downloadFile(filename, "application/gzip", downloadName).done( function() {
 				if($scope.report.timeout != null)
 					clearTimeout($scope.report.timeout);
 				$scope.report.show_button = true;
