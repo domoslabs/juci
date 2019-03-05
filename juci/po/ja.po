@@ -520,8 +520,8 @@ msgstr "ポート(1-65535)"
 
 # /home/reidar/git/juci/juci//src/widgets/juci-footer.html
 #, fuzzy
-msgid "Help Wiki"
-msgstr "ヘルプWiki"
+msgid "Online Help"
+msgstr "ヘルプHelp"
 
 # /home/reidar/git/juci/juci//src/widgets/juci-footer.html
 msgid "No WAN IP"

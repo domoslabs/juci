@@ -287,7 +287,7 @@ msgid "Trying to reconnect"
 msgstr "Yritetään yhdistää uudelleen"
 
 # /home/jamu/GIT/juci/juci//src/widgets/juci-footer.html
-msgid "Help Wiki"
+msgid "Online Help"
 msgstr "Verkkomanuaali"
 
 # /home/jamu/GIT/juci/juci//src/widgets/juci-footer.html
