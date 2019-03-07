@@ -180,19 +180,19 @@ msgstr ""
 msgid "Spectrum estimate"
 msgstr ""
 
-# plugins/juci-voice-client/src/widgets/brcm-advanced.js
+# plugins/juci-voice-client/src/widgets/tel-advanced.js
 msgid "Fixed"
 msgstr ""
 
-# plugins/juci-voice-client/src/widgets/brcm-advanced.js
+# plugins/juci-voice-client/src/widgets/tel-advanced.js
 msgid "Adaptive"
 msgstr ""
 
-# plugins/juci-voice-client/src/widgets/brcm-advanced.js
+# plugins/juci-voice-client/src/widgets/tel-advanced.js
 msgid "Yes"
 msgstr ""
 
-# plugins/juci-voice-client/src/widgets/brcm-advanced.js
+# plugins/juci-voice-client/src/widgets/tel-advanced.js
 msgid "No"
 msgstr ""
 
@@ -395,41 +395,41 @@ msgid "Direct"
 msgstr ""
 
 # #-#-#-#-#  template.pot  #-#-#-#-#
-# plugins/juci-voice-client/src/widgets/brcm-advanced.html
+# plugins/juci-voice-client/src/widgets/tel-advanced.html
 # #-#-#-#-#  template.pot  #-#-#-#-#
 # plugins/juci-voice-client/src/pages/voice-advanced-settings.html
 msgid "Advanced Line Settings"
 msgstr ""
 
-# plugins/juci-voice-client/src/widgets/brcm-advanced.html
+# plugins/juci-voice-client/src/widgets/tel-advanced.html
 msgid "Locale selecton"
 msgstr ""
 
-# plugins/juci-voice-client/src/widgets/brcm-advanced.html
+# plugins/juci-voice-client/src/widgets/tel-advanced.html
 msgid "A restart is required for country changes to take effect"
 msgstr ""
 
-# plugins/juci-voice-client/src/widgets/brcm-advanced.html
+# plugins/juci-voice-client/src/widgets/tel-advanced.html
 msgid "Enable Jitter Buffer"
 msgstr ""
 
-# plugins/juci-voice-client/src/widgets/brcm-advanced.html
+# plugins/juci-voice-client/src/widgets/tel-advanced.html
 msgid "Force Jitter Buffer"
 msgstr ""
 
-# plugins/juci-voice-client/src/widgets/brcm-advanced.html
+# plugins/juci-voice-client/src/widgets/tel-advanced.html
 msgid "Jitter Buffer implementation"
 msgstr ""
 
-# plugins/juci-voice-client/src/widgets/brcm-advanced.html
+# plugins/juci-voice-client/src/widgets/tel-advanced.html
 msgid "Maximum Jitter Buffer size [ms]"
 msgstr ""
 
-# plugins/juci-voice-client/src/widgets/brcm-advanced.html
+# plugins/juci-voice-client/src/widgets/tel-advanced.html
 msgid "Enable Packet Loss Concealment"
 msgstr ""
 
-# plugins/juci-voice-client/src/widgets/brcm-advanced.html
+# plugins/juci-voice-client/src/widgets/tel-advanced.html
 msgid "Inter-digit timeout [ms]"
 msgstr ""
 

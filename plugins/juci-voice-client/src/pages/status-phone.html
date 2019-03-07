@@ -36,7 +36,7 @@
 					<th translate>Name</th>
 					<th width="30%" style="text-align: center;" translate>State</th>
 				</tr>
-				<tr ng-repeat="line in brcmLines track by $index">
+				<tr ng-repeat="line in telLines track by $index">
 					<td>{{line[".config"].name.value}}</td>
 					<td style="text-align: center;">{{line.sub_0_state}}</td>
 				</tr>

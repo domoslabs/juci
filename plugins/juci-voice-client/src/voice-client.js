@@ -31,7 +31,7 @@ JUCI.app.config(function($stateProvider) {
 	
 // add the uci classes for voice client
 UCI.$registerConfig("voice_client"); 
-UCI.voice_client.$registerSectionType("brcm_line", {
+UCI.voice_client.$registerSectionType("tel_line", {
 	"extension": 			{ dvalue: '', type: String }, 
 	"sip_account": 			{ dvalue: '', type: String }, 
 	"noise":				{ dvalue: 0, type: Number }, 
@@ -177,7 +177,7 @@ UCI.voice_client.$registerSectionType("sip_advanced", {
 	"congestiontone":			{ dvalue: "congestion", type: String },
 	"stun_server":				{ dvalue: "", type: String }
 });
-UCI.voice_client.$registerSectionType("brcm_advanced", {
+UCI.voice_client.$registerSectionType("tel_advanced", {
 	"country":		{ dvalue: "SWE", type: String },
 	"jbenable":		{ dvalue: "yes", type: Boolean },
 	"jbforce":		{ dvalue: "no", type: Boolean },

@@ -14,7 +14,7 @@ JUCI.app
 }).controller("sipServiceProviderEditCtrl", function($scope, $uci, $tr, gettext, $localStorage){
 	$scope.selected_lines = [];
 	$uci.$sync("voice_client").done(function(){
-		$scope.brcm_lines = $uci.voice_client["@brcm_line"];
+		$scope.tel_lines = $uci.voice_client["@tel_line"];
 		$scope.mailboxes = $uci.voice_client["@mailbox"];
 		$scope.mboxes = $scope.mailboxes.map(function(x){ return { label:x.name.value, value:x[".name"] }});
 		$scope.mboxes.unshift({ label: $tr(gettext("No Mailbox")),	value:"" });
@@ -26,13 +26,13 @@ JUCI.app
 		$scope.selected_lines = $scope.model.call_lines.value.split(" ").map(function(x){
 			var name = String(x);
 			if(name.match(/^[0-9]$/)){
-				return "brcm"+ name;
+			        return "tapi"+ (parseInt(name) -1);
 			}else{
 				var number = name.split("/").pop();
-				return name.toLowerCase().substring(0, x.length-2) + number;
+			        return name.toLowerCase().substring(0, x.length-2) + (parseInt(number) - 1);
 			}
 		});
-		$scope.lines = $uci.voice_client["@brcm_line"].map(function(x){
+		$scope.lines = $uci.voice_client["@tel_line"].map(function(x){
 			return {
 				label:x.name.value,
 				checked:($scope.selected_lines.indexOf(x[".name"]) > -1) ? true : false,
@@ -43,7 +43,7 @@ JUCI.app
 	});
 	$scope.onLineChange = function(){
 		$scope.model.call_lines.value = $scope.lines.filter(function(x){return x.checked}).map(function(x){
-			return x.value.toUpperCase().slice(0, -1) + "/" + x.value.toUpperCase().slice(-1);
+		    return x.value.toUpperCase().slice(0, -1) + "/" + (parseInt(x.value.toUpperCase().slice(-1)) + 1);
 		}).join(" ");
 	};
 	$scope.codecs = {};
