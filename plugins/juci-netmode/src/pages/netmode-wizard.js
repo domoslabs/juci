@@ -200,8 +200,6 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 				arch = "brcm";
 			else if(nm.value.match("_mtk_"))
 				arch = "mtk"
-			else if(nm.value.match("_lantiq_"))
-				arch = "lantiq"
 		});
 		if(!$scope.config.as_extender)
 			netmode_name = "routed_"+arch;
@@ -209,8 +207,6 @@ JUCI.app.controller("netmodeWizardPageCtrl", function($scope, $uci, $languages, 
 			netmode_name = "repeater_mtk_5g_up_dual_down";
 		else if(arch === "brcm")
 			netmode_name = "repeater_brcm_2g_up_dual_down";
-		else if(arch === "lantiq")
-			netmode_name = "repeater_lantiq_2g_up_dual_down";
 
 		var nm = $scope.netmodes.find(function(nm){return nm.value === netmode_name});
 		if(!nm || !nm.radio){
