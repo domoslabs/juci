@@ -24,6 +24,9 @@ JUCI.app
 		if(!$scope.model) return;
 		$scope.showExpert = $localStorage.getItem("mode") == "expert";
 		$scope.selected_lines = $scope.model.call_lines.value.split(" ").map(function(x){
+                        //console.log($scope.tel_lines);
+	                //var platform = $scope.tel_lines[".name"].slice(0, -1);
+                        //console.log($scope);
 			var name = String(x);
 			if(name.match(/^[0-9]$/)){
 			        return "tapi"+ (parseInt(name) -1);
@@ -39,6 +42,7 @@ JUCI.app
 				value:x[".name"]
 			};
 		});
+                //console.log($scope.lines);
 		fixCodecs();
 	});
 	$scope.onLineChange = function(){
