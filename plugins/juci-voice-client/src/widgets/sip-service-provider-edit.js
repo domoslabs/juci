@@ -12,7 +12,7 @@ JUCI.app
 		controller: "sipServiceProviderEditCtrl"
 	};
 }).controller("sipServiceProviderEditCtrl", function($scope, $uci, $tr, gettext, $localStorage){
-	$scope.selected_lines = [];
+        $scope.selected_lines = [];
 	$uci.$sync("voice_client").done(function(){
 		$scope.tel_lines = $uci.voice_client["@tel_line"];
 		$scope.mailboxes = $uci.voice_client["@mailbox"];
@@ -23,16 +23,20 @@ JUCI.app
 	$scope.$watch("model", function(){
 		if(!$scope.model) return;
 		$scope.showExpert = $localStorage.getItem("mode") == "expert";
-		$scope.selected_lines = $scope.model.call_lines.value.split(" ").map(function(x){
-                        //console.log($scope.tel_lines);
-	                //var platform = $scope.tel_lines[".name"].slice(0, -1);
-                        //console.log($scope);
+		$scope.selected_lines = $scope.model.call_lines.value.split(" ").map(function(x) {
+			var platform = $scope.tel_lines[0][".name"].slice(0, -1);
 			var name = String(x);
-			if(name.match(/^[0-9]$/)){
-			        return "tapi"+ (parseInt(name) -1);
-			}else{
+			if(name.match(/^[0-9]$/)) {
+				if (platform == "brcm") {
+					return platform + name;
+				} else if (platform == "tapi") {
+					return platform + (parseInt(name) -1);
+				} else {
+					console.error("Unknown platform: " + platform);
+				}
+			} else {
 				var number = name.split("/").pop();
-			        return name.toLowerCase().substring(0, x.length-2) + (parseInt(number) - 1);
+				return name.toLowerCase().substring(0, x.length-2) + (parseInt(number) - 1);
 			}
 		});
 		$scope.lines = $uci.voice_client["@tel_line"].map(function(x){
@@ -42,12 +46,18 @@ JUCI.app
 				value:x[".name"]
 			};
 		});
-                //console.log($scope.lines);
 		fixCodecs();
 	});
 	$scope.onLineChange = function(){
-		$scope.model.call_lines.value = $scope.lines.filter(function(x){return x.checked}).map(function(x){
-		    return x.value.toUpperCase().slice(0, -1) + "/" + (parseInt(x.value.toUpperCase().slice(-1)) + 1);
+		$scope.model.call_lines.value = $scope.lines.filter(function(x){return x.checked}).map(function(x) {
+			var platform = $scope.tel_lines[0][".name"].slice(0, -1);
+			if (platform == "brcm") {
+				return x.value.toUpperCase().slice(0, -1) + "/" + x.value.toUpperCase().slice(-1);
+			} else if (platform == "tapi") {
+				return x.value.toUpperCase().slice(0, -1) + "/" + (parseInt(x.value.toUpperCase().slice(-1)) + 1);
+			} else {
+				console.error("Unknown platform: " + platform);
+			}
 		}).join(" ");
 	};
 	$scope.codecs = {};
