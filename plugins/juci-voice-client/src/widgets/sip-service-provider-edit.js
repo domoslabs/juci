@@ -36,7 +36,13 @@ JUCI.app
 				}
 			} else {
 				var number = name.split("/").pop();
-				return name.toLowerCase().substring(0, x.length-2) + (parseInt(number) - 1);
+				if (platform == "brcm") {
+					return name.toLowerCase().substring(0, x.length-2) + number;
+				} else if (platform == "tapi") {
+					return name.toLowerCase().substring(0, x.length-2) + (parseInt(number) - 1);
+				} else {
+					console.error("Unknown platform: " + platform);
+				}
 			}
 		});
 		$scope.lines = $uci.voice_client["@tel_line"].map(function(x){
