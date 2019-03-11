@@ -10,3 +10,14 @@ UCI.mcproxy.$registerSectionType("instance", {
 	"upstream":		{ dvalue: [], type: Array },
 	"downstream":		{ dvalue: [], type: Array }
 }); 
+UCI.mcproxy.$registerSectionType("table", {
+	"name":		{ dvalue: "", type: String },
+	"entries":		{ dvalue: [], type: Array }
+});
+UCI.mcproxy.$registerSectionType("behaviour", {
+	"whitelist":		{ dvalue: false, type: Boolean },
+	"instance":		{ dvalue: "", type: String },
+	"table":		{ dvalue: "blocked", type: String },
+	"section":		{ dvalue: "upstream", type: String },
+	"interface":		{ dvalue: "", type: String }
+});

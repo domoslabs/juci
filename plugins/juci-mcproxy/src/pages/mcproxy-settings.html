@@ -8,6 +8,12 @@
 		<juci-config-line title="{{'Protocol'|translate}}">
 			<juci-select ng-items="protocol" ng-model="mcproxy.protocol.value"/>
 		</juci-config-line>
+		<juci-config-line title="{{'Multicast Exception'|translate}}" error="McastIpErr" help="{{'Add lan side multicast
+		addresses in exception list'|translate}}">
+		<tags-input ng-model="exception" placeholder="{{'Add a multicast ip'|translate}}" add-on-space="true"
+		on-tag-adding="testMcastIp($tag)" on-tag-removing="testTagRemove($tag)" on-tag-added="tagAdded($tag)">
+		</tags-input>
+		</juci-config-line>
 		<juci-config-line title="{{'Instances'|translate}}">
 		</juci-config-line>
 		<juci-config-section>
