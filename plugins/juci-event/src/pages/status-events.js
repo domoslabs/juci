@@ -143,7 +143,7 @@ JUCI.app
 			var year = dateObj.getFullYear();
 			var month = ('0' + (dateObj.getMonth() + 1)).slice(-2);
 			var day = ('0' + dateObj.getDate()).slice(-2);
-			var downloadName = "system-report-" + year + "-" + month + "-" + day;
+			var downloadName = "system-report-" + year + "-" + month + "-" + day + ".tar.gz";
 
 			$file.downloadFile(filename, "application/gzip", downloadName).done( function() {
 				if($scope.report.timeout != null)
