@@ -2,7 +2,13 @@ UCI.$registerConfig("mcproxy");
 UCI.$registerConfig("network"); 
 UCI.mcproxy.$registerSectionType("mcproxy", {
 	"disabled":		{ dvalue: true, type: Boolean },
-	"protocol":		{ dvalue: "", type: String }
+	"protocol":		{ dvalue: "", type: String },
+	"qi":		{ dvalue: '', type: Number },
+	"qri":		{ dvalue: '', type: Number },
+	"lmqi":		{ dvalue: '', type: Number },
+	"rv":		{ dvalue: '', type: Number },
+	"maxgroup":		{ dvalue: '', type: Number },
+	"maxsources":		{ dvalue: '', type: Number }
 }); 
 UCI.mcproxy.$registerSectionType("instance", {
 	"disabled":		{ dvalue: true, type: Boolean },
