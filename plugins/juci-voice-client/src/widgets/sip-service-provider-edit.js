@@ -13,6 +13,15 @@ JUCI.app
 	};
 }).controller("sipServiceProviderEditCtrl", function($scope, $uci, $tr, gettext, $localStorage){
         $scope.selected_lines = [];
+	$rpc.$call("voice.asterisk", "platform", {}).done(function(data) {
+		console.log(data);
+		$scope.platform = data.platform;
+		$scope.lineoffset = data.lineoffset;
+		$scope.chanoffset = data.chanoffset;
+		$scope.$apply();
+	}).fail(function() {
+		console.error("Could not get platform.");
+	});
 	$uci.$sync("voice_client").done(function(){
 		$scope.tel_lines = $uci.voice_client["@tel_line"];
 		$scope.mailboxes = $uci.voice_client["@mailbox"];
@@ -24,25 +33,12 @@ JUCI.app
 		if(!$scope.model) return;
 		$scope.showExpert = $localStorage.getItem("mode") == "expert";
 		$scope.selected_lines = $scope.model.call_lines.value.split(" ").map(function(x) {
-			var platform = $scope.tel_lines[0][".name"].slice(0, -1);
 			var name = String(x);
 			if(name.match(/^[0-9]$/)) {
-				if (platform == "brcm") {
-					return platform + name;
-				} else if (platform == "tapi") {
-					return platform + (parseInt(name) -1);
-				} else {
-					console.error("Unknown platform: " + platform);
-				}
+				return $scope.platform + (parseInt(name) + $scope.chanoffset);
 			} else {
 				var number = name.split("/").pop();
-				if (platform == "brcm") {
-					return name.toLowerCase().substring(0, x.length-2) + number;
-				} else if (platform == "tapi") {
-					return name.toLowerCase().substring(0, x.length-2) + (parseInt(number) - 1);
-				} else {
-					console.error("Unknown platform: " + platform);
-				}
+				return name.toLowerCase().substring(0, x.length-2) + (parseInt(number) + $scope.chanoffset);
 			}
 		});
 		$scope.lines = $uci.voice_client["@tel_line"].map(function(x){
@@ -56,14 +52,7 @@ JUCI.app
 	});
 	$scope.onLineChange = function(){
 		$scope.model.call_lines.value = $scope.lines.filter(function(x){return x.checked}).map(function(x) {
-			var platform = $scope.tel_lines[0][".name"].slice(0, -1);
-			if (platform == "brcm") {
-				return x.value.toUpperCase().slice(0, -1) + "/" + x.value.toUpperCase().slice(-1);
-			} else if (platform == "tapi") {
-				return x.value.toUpperCase().slice(0, -1) + "/" + (parseInt(x.value.toUpperCase().slice(-1)) + 1);
-			} else {
-				console.error("Unknown platform: " + platform);
-			}
+			return x.value.toUpperCase().slice(0, -1) + "/" + (parseInt(x.value.toUpperCase().slice(-1)) + $scope.lineoffset);
 		}).join(" ");
 	};
 	$scope.codecs = {};
