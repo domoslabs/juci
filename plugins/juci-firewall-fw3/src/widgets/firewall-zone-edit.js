@@ -50,31 +50,90 @@ JUCI.app
 		if(!zone) return;
 		zone.name.validator = new zoneValidator();
 		$firewall.getZones().done(function(zones){
-			var others = zones.filter(function(z){ return z.name.value != zone.name.value }).map(function(z){ return { name:z.name.value }; });
+			var others = zones.filter(function(z){
+				return z.name.value != zone.name.value
+			}).map(function(z){
+				return { name:z.name.value };
+			});
 			$uci.$sync("firewall").done(function(){
 				var forwards = $uci.firewall["@forwarding"];
 				others.map(function(other){
-					if(forwards.find(function(fw){ return fw.src.value == other.name && fw.dest.value == zone.name.value; }))
-						$scope.zones.source.push({name: other.name, selected: true });
-					else
-						$scope.zones.source.push({name: other.name, selected: false });
-					if(forwards.find(function(fw){ return fw.dest.value == other.name && fw.src.value == zone.name.value; }))
-						$scope.zones.dest.push({ name: other.name, selected: true });
-					else
-						$scope.zones.dest.push({ name: other.name, selected: false });
+					// when src is other and dest is me
+					var match = forwards.find(function(fw){
+						return fw.src.value == other.name &&
+							fw.dest.value == zone.name.value;
+					});
+					$scope.zones.source.push({
+						name: other.name,
+						selected: (match ? true : false)
+					});
+					// when src is me and dest is other
+					match = forwards.find(function(fw){
+						return fw.dest.value == other.name &&
+							fw.src.value == zone.name.value;
+					});
+					$scope.zones.dest.push({
+						name: other.name,
+						selected: (match ? true : false)
+					});
 				});
 				$scope.changeForwards = function(){
-					var rem = forwards.filter(function(fw){ return fw.src.value == zone.name.value || fw.dest.value == zone.name.value; });
-					for(var i = rem.length; i > 0; i--){ rem[i-1].$delete();}
-					$scope.zones.source.map(function(src){
-						if(src.selected){
-							$uci.firewall.$create({ ".type":"forwarding", "src": src.name, "dest": zone.name.value });
-						}
+					// 1. remove all unvalid forwards
+					forwards.forEach(function(fw){
+						// src
+						var match = $scope.zones.source.find(function(src){
+							if (fw.dest.value !== zone.name.value) return false;
+							return src.selected && src.name === fw.src.value
+						});
+						if(match)
+							return;
+						// dst
+						var match = $scope.zones.dest.find(function(dest){
+							if (fw.src.value !== zone.name.value) return false;
+							return dest.selected && dest.name === fw.dest.value
+						});
+						if(match)
+							return;
+						fw.$delete().done(function(){
+							$scope.$apply();
+						});
 					});
-					$scope.zones.dest.map(function(dst){
-						if(dst.selected){
-							$uci.firewall.$create({ ".type":"forwarding", "src": zone.name.value, "dest": dst.name });
+					// 2. add missing forwards
+					// 2.1 add from src
+					$scope.zones.source.forEach(function(src){
+						if (!src.selected) return;
+						var match = forwards.find(function(fw){
+							return fw.dest.value === zone.name.value && fw.src.value === src.name;
+						});
+						if(!match) {
+							//create matching roule
+							$uci.firewall.$create({
+								".type":"forwarding",
+								"src": src.name,
+								"dest": zone.name.value
+							}).done(function(){
+								$scope.$apply();
+							});
 						}
+
+					});
+					// 2.2 add from dest
+					$scope.zones.dest.forEach(function(dest){
+						if (!dest.selected) return;
+						var match = forwards.find(function(fw){
+							return fw.src.value === zone.name.value && fw.dest.value === dest.name;
+						});
+						if(!match) {
+							//create matching roule
+							$uci.firewall.$create({
+								".type":"forwarding",
+								"dest": dest.name,
+								"src": zone.name.value
+							}).done(function(){
+								$scope.$apply();
+							});
+						}
+
 					});
 				};
 				$scope.$apply();
