@@ -1,16 +1,16 @@
 //! Author: Reidar Cederqvist <reidar.cederqvist@gmail.com>
 
 JUCI.app
-.directive("phoneBrcmAdvanced", function(){
+.directive("phoneTelAdvanced", function(){
 	return {
 		scope: true,
-		templateUrl: "widgets/brcm-advanced.html",
+		templateUrl: "widgets/tel-advanced.html",
 		replace: true,
-		controller: "brcmAdvancedCtrl"
+		controller: "telAdvancedCtrl"
 	};
-}).controller("brcmAdvancedCtrl", function($scope, $uci, $tr, gettext, $network, $rpc, $juciDialog, languages){
+}).controller("telAdvancedCtrl", function($scope, $uci, $tr, gettext, $network, $rpc, $juciDialog, languages){
 	$uci.$sync(["voice_client"]).done(function(){
-		$scope.brcm = $uci.voice_client.BRCM;
+		$scope.tel = $uci.voice_client.TEL;
 		$scope.$apply();
 	});
 	$scope.jbimpl = [

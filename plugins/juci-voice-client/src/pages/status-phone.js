@@ -6,7 +6,7 @@ JUCI.app
 	JUCI.interval.repeat("voice.status", 5000, function(done){
 		$uci.$sync("voice_client").done(function(){
 			var sipProviders = $uci.voice_client["@sip_service_provider"];
-			var brcmLines = $uci.voice_client["@brcm_line"];
+			var telLines = $uci.voice_client["@tel_line"];
 			$rpc.$call("voice.asterisk", "status").done(function(data){
 				if(data && data.sip){
 					var accounts = [];
@@ -18,15 +18,15 @@ JUCI.app
 							accounts.push(data.sip[k]);
 						}
 					});
-					Object.keys(data.brcm).map(function(k){
-						var config = brcmLines.find(function(x){ return x[".name"] == k; });
+					Object.keys(data.tel).map(function(k){
+						var config = telLines.find(function(x){ return x[".name"] == k; });
 						if(config){
-							data.brcm[k][".config"] = config;
-							lines.push(data.brcm[k]);
+							data.tel[k][".config"] = config;
+							lines.push(data.tel[k]);
 						}
 					});
 					$scope.sipAccounts = accounts;
-					$scope.brcmLines = lines;
+					$scope.telLines = lines;
 					$scope.$apply();
 					done();
 				}

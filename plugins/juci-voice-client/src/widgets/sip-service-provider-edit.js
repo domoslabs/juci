@@ -12,9 +12,18 @@ JUCI.app
 		controller: "sipServiceProviderEditCtrl"
 	};
 }).controller("sipServiceProviderEditCtrl", function($scope, $uci, $tr, gettext, $localStorage){
-	$scope.selected_lines = [];
+        $scope.selected_lines = [];
+	$rpc.$call("voice.asterisk", "platform", {}).done(function(data) {
+		console.log(data);
+		$scope.platform = data.platform;
+		$scope.lineoffset = data.lineoffset;
+		$scope.chanoffset = data.chanoffset;
+		$scope.$apply();
+	}).fail(function() {
+		console.error("Could not get platform.");
+	});
 	$uci.$sync("voice_client").done(function(){
-		$scope.brcm_lines = $uci.voice_client["@brcm_line"];
+		$scope.tel_lines = $uci.voice_client["@tel_line"];
 		$scope.mailboxes = $uci.voice_client["@mailbox"];
 		$scope.mboxes = $scope.mailboxes.map(function(x){ return { label:x.name.value, value:x[".name"] }});
 		$scope.mboxes.unshift({ label: $tr(gettext("No Mailbox")),	value:"" });
@@ -23,16 +32,16 @@ JUCI.app
 	$scope.$watch("model", function(){
 		if(!$scope.model) return;
 		$scope.showExpert = $localStorage.getItem("mode") == "expert";
-		$scope.selected_lines = $scope.model.call_lines.value.split(" ").map(function(x){
+		$scope.selected_lines = $scope.model.call_lines.value.split(" ").map(function(x) {
 			var name = String(x);
-			if(name.match(/^[0-9]$/)){
-				return "brcm"+ name;
-			}else{
+			if(name.match(/^[0-9]$/)) {
+				return $scope.platform + (parseInt(name) + $scope.chanoffset);
+			} else {
 				var number = name.split("/").pop();
-				return name.toLowerCase().substring(0, x.length-2) + number;
+				return name.toLowerCase().substring(0, x.length-2) + (parseInt(number) + $scope.chanoffset);
 			}
 		});
-		$scope.lines = $uci.voice_client["@brcm_line"].map(function(x){
+		$scope.lines = $uci.voice_client["@tel_line"].map(function(x){
 			return {
 				label:x.name.value,
 				checked:($scope.selected_lines.indexOf(x[".name"]) > -1) ? true : false,
@@ -42,8 +51,8 @@ JUCI.app
 		fixCodecs();
 	});
 	$scope.onLineChange = function(){
-		$scope.model.call_lines.value = $scope.lines.filter(function(x){return x.checked}).map(function(x){
-			return x.value.toUpperCase().slice(0, -1) + "/" + x.value.toUpperCase().slice(-1);
+		$scope.model.call_lines.value = $scope.lines.filter(function(x){return x.checked}).map(function(x) {
+			return x.value.toUpperCase().slice(0, -1) + "/" + (parseInt(x.value.toUpperCase().slice(-1)) + $scope.lineoffset);
 		}).join(" ");
 	};
 	$scope.codecs = {};

@@ -5,7 +5,8 @@
 			"ubus": {
 				"voice.asterisk": [
 					"status",
-					"call_log"
+					"call_log",
+					"platform"
 				],
 				"juci.system": [
 					"reboot"

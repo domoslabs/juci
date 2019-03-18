@@ -11,7 +11,7 @@ JUCI.app
 	};
 }).controller("phoneLineCtrl", function($scope, $uci, $tr, gettext){
 	$uci.$sync("voice_client").done(function(){
-		$scope.phone_lines = $uci.voice_client["@brcm_line"]; 
+		$scope.phone_lines = $uci.voice_client["@tel_line"]; 
 		$scope.phone_numbers = $uci.voice_client["@sip_service_provider"]; 
 		$scope.allSipAccounts = $scope.phone_numbers.map(function(x){
 			return {
