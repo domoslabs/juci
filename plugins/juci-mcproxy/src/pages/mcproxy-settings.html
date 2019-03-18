@@ -8,28 +8,28 @@
 		<juci-config-line title="{{'Protocol'|translate}}">
 			<juci-select ng-items="protocol" ng-model="mcproxy.protocol.value"/>
 		</juci-config-line>
-		<juci-config-line title="{{'Query Interval'|translate}}" error="mcproxy.qi.error">
-			<input type="number" class="form-control" ng-model="mcproxy.qi.value" placeholder="{{'ex: 120'|translate}}"
+		<juci-config-line title="{{'Query Interval'|translate}}" error="mcproxy.query_interval.error">
+			<input type="number" class="form-control" ng-model="mcproxy.query_interval.value" placeholder="{{'ex: 120'|translate}}"
 			min="0"/>
 		</juci-config-line>
-		<juci-config-line title="{{'Query Response Interval'|translate}}" error="mcproxy.qri.error">
-			<input type="number" class="form-control" ng-model="mcproxy.qri.value" placeholder="{{'ex: 10'|translate}}"
+		<juci-config-line title="{{'Query Response Interval'|translate}}" error="mcproxy.query_response_interval.error">
+			<input type="number" class="form-control" ng-model="mcproxy.query_response_interval.value" placeholder="{{'ex: 10'|translate}}"
 			min="0"/>
 		</juci-config-line>
-		<juci-config-line title="{{'Last Member Query Interval'|translate}}" error="mcproxy.lmqi.error">
-			<input type="number" class="form-control" ng-model="mcproxy.lmqi.value" placeholder="{{'ex: 10'|translate}}"
+		<juci-config-line title="{{'Last Member Query Interval'|translate}}" error="mcproxy.last_memeber_query_interval.error">
+			<input type="number" class="form-control" ng-model="mcproxy.last_member_query_interval.value" placeholder="{{'ex: 10'|translate}}"
 			min="0"/>
 		</juci-config-line>
-		<juci-config-line title="{{'Robustness Value'|translate}}" error="mcproxy.rv.error">
-			<input type="number" class="form-control" ng-model="mcproxy.rv.value" placeholder="{{'ex: 2'|translate}}"
+		<juci-config-line title="{{'Robustness Value'|translate}}" error="mcproxy.robustness_value.error">
+			<input type="number" class="form-control" ng-model="mcproxy.robustness_value.value" placeholder="{{'ex: 2'|translate}}"
 			min="0"/>
 		</juci-config-line>
-		<juci-config-line title="{{'Max Groups'|translate}}" error="mcproxy.maxgroup.error">
-			<input type="number" class="form-control" ng-model="mcproxy.maxgroup.value" placeholder="{{'ex: 100'|translate}}"
+		<juci-config-line title="{{'Max Groups'|translate}}" error="mcproxy.max_groups.error">
+			<input type="number" class="form-control" ng-model="mcproxy.max_groups.value" placeholder="{{'ex: 100'|translate}}"
 			min="0"/>
 		</juci-config-line>
-		<juci-config-line title="{{'Max Sources'|translate}}" error="mcproxy.maxsources.error">
-			<input type="number" class="form-control" ng-model="mcproxy.maxsources.value" placeholder="{{'ex: 10'|translate}}"
+		<juci-config-line title="{{'Max Sources'|translate}}" error="mcproxy.max_sources.error">
+			<input type="number" class="form-control" ng-model="mcproxy.max_sources.value" placeholder="{{'ex: 10'|translate}}"
 			min="0"/>
 		</juci-config-line>
 		<juci-config-line title="{{'Multicast Exception'|translate}}" error="McastIpErr" help="{{'Add lan side multicast
