@@ -75,7 +75,7 @@ UCI.samba.$registerSectionType("sambashare", {
 }); 
 
 UCI.samba.$registerSectionType("sambausers", {
-	"user":			{ dvalue: "", type: String }, 
-	"password":		{ dvalue: "", type: String },
-	"desc": 		{ dvalue: "", type: String }
+	"user":			{ dvalue: "", type: String },
+	"password":		{ dvalue: "", type: String, validator: UCI.validators.CodeInjectionValidator },
+	"desc": 		{ dvalue: "", type: String, validator: UCI.validators.CodeInjectionValidator }
 }); 
