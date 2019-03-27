@@ -30,31 +30,31 @@
 			</tab>
 			<tab heading="{{ 'Advanced Settings' | translate }}">
 				<juci-config-lines>
-					<juci-config-line title="{{ 'Domain required' | translate }}" help="{{ 'Do not forward DNS-Requests without DNS-Name' | translate }}" error="dnsmasq.domainneeded.error">
+					<juci-config-line title="{{ 'Domain required' | translate }}" help="{{ 'Do not forward DNS-Requests without DNS-Name' | translate }}">
 						<switch class="green" ng-model="dnsmasq.domainneeded.value" />
 					</juci-config-line>
-					<juci-config-line title="{{ 'Authoritative' | translate }}" help="{{ 'This is the only DHCP in the local network' | translate }}" error="dnsmasq.authoritative.error">
+					<juci-config-line title="{{ 'Authoritative' | translate }}" help="{{ 'This is the only DHCP in the local network' | translate }}">
 						<switch class="green" ng-model="dnsmasq.authoritative.value" />
 					</juci-config-line>
-					<juci-config-line title="{{ 'Filter private' | translate }}" help="{{ 'Do not forward reverse lookups for local networks' | translate }}" error="dnsmasq.boguspriv.error">
+					<juci-config-line title="{{ 'Filter private' | translate }}" help="{{ 'Do not forward reverse lookups for local networks' | translate }}">
 						<switch class="green" ng-model="dnsmasq.boguspriv.value" />
 					</juci-config-line>
-					<juci-config-line title="{{ 'Filter useless' | translate }}" help="{{ 'Do not forward requests that cannot be answered by public name servers' | translate }}" error="dnsmasq.filterwin2k.error">
+					<juci-config-line title="{{ 'Filter useless' | translate }}" help="{{ 'Do not forward requests that cannot be answered by public name servers' | translate }}">
 						<switch class="green" ng-model="dnsmasq.filterwin2k.value" />
 					</juci-config-line>
-					<juci-config-line title="{{ 'Localise queries' | translate }}" help="{{ 'Localise hostname depending on the requesting subnet if multiple IPs are available' | translate }}" error="dnsmasq.localise_queries.error">
+					<juci-config-line title="{{ 'Localise queries' | translate }}" help="{{ 'Localise hostname depending on the requesting subnet if multiple IPs are available' | translate }}">
 						<switch class="green" ng-model="dnsmasq.localise_queries.value" />
 					</juci-config-line>
 					<juci-config-line title="{{ 'Local server' | translate  }}" help="{{ 'Local domain specification. Names matching this domain are never forwarded and resolved from DHCP or hosts files only' | translate }}" error="dnsmasq.local.error">
 						<input type="text" class="form-control" placeholder="/lan/" ng-model="dnsmasq.local.value" />
 					</juci-config-line>
-					<juci-config-line title="{{ 'Expand hosts' | translate }}" help="{{ 'Add local domain suffix to names served from hosts files' | translate }}" error="dnsmasq.expandhosts.error">
+					<juci-config-line title="{{ 'Expand hosts' | translate }}" help="{{ 'Add local domain suffix to names served from hosts files' | translate }}">
 						<switch class="green" ng-model="dnsmasq.expandhosts.value" />
 					</juci-config-line>
-					<juci-config-line title="{{ 'No negative cache' | translate }}" help="{{ 'Do not cache negative replies, e.g. for not existing domains' | translate }}" error="dnsmasq.nonegcache.error">
+					<juci-config-line title="{{ 'No negative cache' | translate }}" help="{{ 'Do not cache negative replies, e.g. for not existing domains' | translate }}">
 						<switch class="green" ng-model="dnsmasq.nonegcache.value" />
 					</juci-config-line>
-					<juci-config-line title="{{ 'Strict order' | translate }}" help="{{ 'DNS servers will be queried in the order of the resolvfile' | translate }}" error="dnsmasq.strictorder.error">
+					<juci-config-line title="{{ 'Strict order' | translate }}" help="{{ 'DNS servers will be queried in the order of the resolvfile' | translate }}">
 						<switch class="green" ng-model="dnsmasq.strictorder.value" />
 					</juci-config-line>
 					<juci-config-line title="{{ 'Bogus NX Domain Override' | translate }}" help="{{ 'List of hosts that supply bogus NX domain results' | translate }}" error="dnsmasq.bogusError">
@@ -63,10 +63,10 @@
 					<juci-config-line title="{{ 'DNS forwarding' | translate }}" help="{{ 'List of DNS servers to forward requests to' | translate }}" error="dnsmasq.forwardError">
 						<tags-input ng-model="server" placeholder="{{ 'ex. /example.org/10.1.2.3' | translate }}" display-property="label" add-on-space="true"></tags-input>
 					</juci-config-line>
-					<juci-config-line title="{{ 'Rebind protection' | translate }}" help="{{ 'Discard upstream RFC1918 responses' | translate }}" error="dnsmasq.rebind_protection.error">
+					<juci-config-line title="{{ 'Rebind protection' | translate }}" help="{{ 'Discard upstream RFC1918 responses' | translate }}">
 						<switch class="green" ng-model="dnsmasq.rebind_protection.value" />
 					</juci-config-line>
-					<juci-config-line title="{{ 'Allow localhost' | translate }}" help="{{ 'Allow upstream responses in the 127.0.0.0/8 range, e.g. for RBL services' | translate }}" error="dnsmasq.rebind_localhost.error">
+					<juci-config-line title="{{ 'Allow localhost' | translate }}" help="{{ 'Allow upstream responses in the 127.0.0.0/8 range, e.g. for RBL services' | translate }}">
 						<switch class="green" ng-model="dnsmasq.rebind_localhost.value" />
 					</juci-config-line>
 					<juci-config-line title="{{ 'Domain whitelist' | translate }}" help="{{ 'List of domains to allow RFC1918 responses for' | translate }}" error="dnsmasq.rebindError">
