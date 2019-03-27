@@ -17,7 +17,9 @@ UCI.wifilife.$registerSectionType("steer", {
 	"ifname": { dvalue: undefined, type: String },
 	"exclude": { dvalue: [], type: Array },
 	"param": { dvalue: "", type: String },
-	"fallback_legacy": { dvalue: true, type: Boolean }
+	"fallback_legacy": { dvalue: true, type: Boolean },
+	"steer_legacy_retry_secs": { dvalue: 6 * 3600, type: Number, validator: UCI.validators.NumberLimitValidator(3600, 24 * 3600) },
+	"steer_legacy_reassoc_secs": { dvalue: 600, type: Number, validator: UCI.validators.NumberLimitValidator(5, 1800) },
 });
 
 UCI.wifilife.$registerSectionType("assoc_control", {

@@ -24,7 +24,7 @@
 					<label></label>
 				</div>
 			</juci-config-line>
-			<juci-config-line title="{{'Data Collection Speed' | translate}}" help="{{'Rate at which data is collected and analyzed'|translate}}">
+			<juci-config-line title="{{'Data Collection Speed' | translate}}" help="{{'Rate at which data is collected and analyzed.'|translate}}">
 				<juci-select ng-model="wifilife.runfreq.value" ng-items="collectionFrequency" value="wifilife.runfreq.value"></juci-select><br />
 			</juci-config-line>
 			<juci-config-line title="{{'Enable Legacy Steering' | translate}}" help="{{'Allow AP to legacy steer sticky STAs.'|translate}}">
@@ -32,6 +32,12 @@
 					<input type="checkbox" ng-model="steer.fallback_legacy.value" />
 					<label></label>
 				</div>
+			</juci-config-line>
+			<juci-config-line title="{{'Steer Retry Interval'|translate}}" ng-show="steer.fallback_legacy.value" help="{{'Reattempt to steer WiFi client after interval.'|translate}}" error="steer.steer_legacy_retry_secs.error">
+				<input type="number" class="form-control" ng-model="steer.steer_legacy_retry_secs.value" value="{{steer.steer_legacy_retry_secs.value}}">
+			</juci-config-line>
+			<juci-config-line title="{{'STA Reassoc Interval'|translate}}" ng-show="steer.fallback_legacy.value" help="{{'Don\'t steer WiFi client if reassociated within interval.'|translate}}" error="steer.steer_legacy_reassoc_secs.error">
+				<input type="number" class="form-control" ng-model="steer.steer_legacy_reassoc_secs.value" value="{{steer.steer_legacy_reassoc_secs.value}}">
 			</juci-config-line>
 		</juci-config-lines>
 	</juci-config-section>
