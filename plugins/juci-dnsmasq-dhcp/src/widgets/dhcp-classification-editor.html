@@ -1,9 +1,9 @@
 <div>
 	<juci-config-lines>
-		<juci-config-line title="{{classification['.type']}}">
+		<juci-config-line title="{{classification['.type']}}" error="classification[classification['.type']].error">
 			<input type="text" class="form-control" ng-model="classification[classification['.type']].value" />
 		</juci-config-line>
-		<juci-config-line title="{{'Networkid'|translate}}">
+		<juci-config-line title="{{'Networkid'|translate}}" error="classification.networkid.error">
 			<input type="text" class="form-control" ng-model="classification.networkid.value">
 		</juci-config-line>
 		<juci-config-line title="{{'DHCP Options'|translate}}">

@@ -28,6 +28,17 @@ JUCI.app.directive("dhcpHostEntriesEdit", function(){
 		replace: true
 	}
 }).controller("dhcpHostEntriesEditCtrl", function($scope, $firewall, $uci, $tr, gettext, lanIpFactory){
+	function codeInjectFilter(option) {
+		var corrupt = false;
+
+		option.forEach(host => {
+			if (host.value.match(/^.*[$`\r\n\t]|(\\r)|(\\n)|(\\t)+.*$/))
+				corrupt = true;
+		});
+
+		return corrupt;
+	}
+
 	$firewall.getZoneClients("lan").done(function(clients){
 		$scope.clients = clients.map(function(x){
 			var name = x.ipaddr + ((x.hostname == "") ? "" : " (" + x.hostname + ")");
@@ -61,6 +72,12 @@ JUCI.app.directive("dhcpHostEntriesEdit", function(){
 	}, false);
 	$scope.$watch("names", function(){
 		if(!$scope.names) return;
+		if (codeInjectFilter($scope.names)) {
+			$scope.namesError = "Input may not contain $, \\n, \\r, \\t or `";
+			return;
+		}
+
+		$scope.namesError = undefined;
 		$scope.model.name.value = $scope.names.map(function(name){ return name.value });
 	}, true);
 });

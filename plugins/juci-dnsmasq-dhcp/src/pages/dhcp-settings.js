@@ -20,6 +20,18 @@
 
 JUCI.app
 .controller("dhcpSettingsPage", function($scope, $uci, $tr, gettext, $juciDialog){
+
+	function codeInjectFilter(option) {
+		var corrupt = false;
+		option.forEach(file => {
+			console.log(file);
+			if (file.label.match(/^.*[$`\r\n\t]|(\\r)|(\\n)|(\\t)+.*$/))
+				corrupt = true;
+		});
+
+		return corrupt;
+	}
+
 	$uci.$sync(["dhcp"]).done(function(){
 		$scope.dnsmasq = $uci.dhcp["@dnsmasq"][0];
 		$scope.hostfiles = $scope.dnsmasq.addnhosts.value.map(function(x){
@@ -111,21 +123,48 @@ JUCI.app
 			}
 		}
 		$scope.$apply();
-	});	
+	});
 	$scope.$watch("rebind_domain", function(){
 		if(!$scope.server) return;
+
+		if (codeInjectFilter($scope.rebind_domain)) {
+			$scope.dnsmasq.rebindError = "Input may not containing $, \\n, \\r, \\t or `";
+			return;
+		}
+
+		$scope.dnsmasq.rebindError = undefined;
 		$scope.dnsmasq.rebind_domain.value = $scope.rebind_domain.map(function(x){ return x.label });
 	}, true);
 	$scope.$watch("server", function(){
 		if(!$scope.server) return;
+		if (codeInjectFilter($scope.server)) {
+			$scope.dnsmasq.forwardError = "Input may not containing $, \\n, \\r, \\t or `";
+			return;
+		}
+
+		$scope.dnsmasq.forwardError = undefined;
 		$scope.dnsmasq.server.value = $scope.server.map(function(x){ return x.label });
 	}, true);
 	$scope.$watch("bogusnxdomain", function(){
 		if(!$scope.bogusnxdomain) return;
+
+		if (codeInjectFilter($scope.bogusnxdomain)) {
+			$scope.dnsmasq.bogusError = "Input may not containing $, \\n, \\r, \\t or `";
+			return;
+		}
+		$scope.dnsmasq.bogusError = undefined;
+
 		$scope.dnsmasq.bogusnxdomain.value = $scope.bogusnxdomain.map(function(x){ return x.label });
 	}, true);
 	$scope.$watch("hostfiles", function(){
 		if(!$scope.hostfiles) return;
+
+		if (codeInjectFilter($scope.hostfiles)) {
+			$scope.dnsmasq.fileError = "Input may not containing $, \\n, \\r, \\t or `";
+			return;
+		}
+
+		$scope.dnsmasq.fileError = undefined;
 		$scope.dnsmasq.addnhosts.value = $scope.hostfiles.map(function(x){return x.label});
 	}, true);
 	$scope.on_port_change = function(option){
