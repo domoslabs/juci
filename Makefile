@@ -62,7 +62,7 @@ $(TMP_DIR)/$(PLUGIN).css.js: $(TMP_DIR)/$(PLUGIN).css
 $(TMP_DIR)/$(PLUGIN)-compiled-styles.css: $(STYLES_LESS_$(PLUGIN))
 	@echo -e "\033[033m[LESS]\t$(PLUGIN) -> $$@\033[m"
 	@echo "" > $$@
-	$(Q)if [ "$(3)" == "themes" ]; then\
+	$(Q)if [ "$(3)" == "themes" -a "$(STYLES_LESS_$(PLUGIN))" ]; then\
 		$(INSTALL_DIR) $(TMP_DIR)/themes/$(PLUGIN)/css;\
 		for file in "$(STYLES_LESS_DEFAULT)"; do\
 			cp $$$$file $(TMP_DIR)/themes/$(PLUGIN)/css/$(notdir $(file));\
