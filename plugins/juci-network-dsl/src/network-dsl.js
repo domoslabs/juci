@@ -83,7 +83,7 @@ UCI.dsl.$registerSectionType("dsl-line", {
 	"sra":		{ dvalue: true, type: Boolean },
 	// "trellis":	{ dvalue: true, type: Boolean },
 	// "sesdrop":	{ dvalue: true, type: Boolean },
-	"usb0":		{ dvalue: true, type: Boolean }
+	"us0":		{ dvalue: true, type: Boolean }
 }, function(section){
 	return null;
 });
