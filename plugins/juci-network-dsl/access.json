@@ -5,6 +5,10 @@
 			"ubus": {
 				"router.dsl": [
 					"stats"
+				],
+				"dsl": [
+					"status",
+					"stats"
 				]
 			},
 			"uci": [
