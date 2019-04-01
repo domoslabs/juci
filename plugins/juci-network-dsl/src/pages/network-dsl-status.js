@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2015 Inteno Broadband Technology AB. All rights reserved.
+ * Copyright (C) 2019 Iopsys Software Solutions AB. All rights reserved.
  *
- * Author: Martin K. Schröder <mkschreder.uk@gmail.com>
+ * Author: Jakob Olsson <jakob.olsson@iopsys.eu>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,111 +20,127 @@
 
 JUCI.app
 .controller("NetworkDslStatusPage", function($scope, $rpc, gettext, $tr){
+
+	function humanize(str) {
+		var words = str.split('_');
+		for (i = 0; i < words.length; i++)
+			words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+
+		return words.join(' ');
+	}
+
+	function upperCase(str) {
+		return str.split('_').join(' ').toUpperCase();
+	}
+
 	JUCI.interval.repeat("dslstatus", 5000, function(done){
-		$rpc.$call("router.dsl", "stats", {}).done(function(dslstats){
-			var dslstats = dslstats.dslstats;
+		var stats;
 
-			// compute floating point values (because ubus blobs do not support floats yet)
-			function reconstruct_floats(obj) {
-				for (var property in obj) {
-					if (!obj.hasOwnProperty(property))
-						return;
-					if (typeof obj[property] === "object") {
-						reconstruct_floats(obj[property]);
-					} else {
-						var matches = property.match(/(.*)_x([\d]*)/);
-						if(matches && matches.length === 3){
-							obj[matches[1]] = parseFloat(String(obj[property])) /
-								parseFloat(matches[2]);
+		$rpc.$call("dsl", "stats", {}).done(function (dslstats) {
+			stats = dslstats;
+
+			}).done(function() {
+				$rpc.$call("dsl", "status", {}).done(function (dslstatus) {
+					dslstatus.line.forEach(function (line) {
+						$scope.tables = [
+							{
+								title: $tr(gettext("DSL Status Information")),
+								columns: ['', '', ''],
+								rows: [
+									[
+										$tr(gettext("Line Status")),
+										"",
+										humanize(line.status)
+									],
+									[
+										$tr(gettext("Link Status")),
+										"",
+										humanize(line.link_status)
+									]
+								]
+							}
+						];
+
+						if (line.status === "up") {
+							mode = [
+								[
+									"Operating Mode", "",
+									upperCase(line.standard_used),
+								]
+							]
+
+							if (line.current_profile != undefined && line.current_profile !== "")
+								mode.push([
+									"VDSL Profile", "",
+									humanize(line.current_profile)
+								])
+
+							$scope.tables = $scope.tables.concat([
+								{
+									title: $tr(gettext("DSL Mode")),
+									columns: ['', '', ''],
+									rows: mode
+								},
+								{
+									title: $tr(gettext("Rates")),
+									columns: ['', 'Downstream', 'Upstream'],
+									rows: [
+										[
+											$tr(gettext('Actual Data Rate ')),
+											line.channel[0].actndr.ds,
+											line.channel[0].actndr.us,
+										],
+										[
+											$tr(gettext('Max Rate')),
+											line.max_bit_rate.ds,
+											line.max_bit_rate.us
+										]
+									]
+								},
+								{
+									title: $tr(gettext("Operating Data")),
+									columns: ['', 'Downstream', 'Upstream'],
+									rows: [
+										[
+											$tr(gettext('SNR Margin')),
+											line.noise_margin.ds / 10,
+											line.noise_margin.us / 10
+										],
+										[
+											$tr(gettext('Loop Attenuation')),
+											line.attenuation.ds / 10,
+											line.attenuation.us / 10
+										]
+									]
+								}
+							]);
 						}
-					}
-				}
-			}
-			reconstruct_floats(dslstats);
 
-			$scope.tables = [
-				{
-					title: $tr(gettext("DSL Status Information")),
-					columns: [ '', '', 'Current' ],
-					rows: [
-						[
-							$tr(gettext("Line Status")),
-							"",
-							dslstats.status
-						]
-					]
-				}
-			];
-			if(dslstats.status === "Showtime"){
-				$scope.tables = $scope.tables.concat([
-					{
-						title: $tr(gettext("DSL Mode")),
-						columns: ["", "", "Current"],
-						rows: [
-							[
-								dslstats.mode, "",
-								dslstats.traffic
-							]
-						]
-					},
-					{
-						title: $tr(gettext("Bit Rate")),
-						columns: [ '', 'Downstream', 'Upstream' ],
-						rows: [
-							[
-								$tr(gettext('Actual Data Rate')),
-								dslstats.bearers[0].rate_down,
-								dslstats.bearers[0].rate_up
-							]
-						]
-					},
-					{
-						title: $tr(gettext("Operating Data")),
-						columns: [ '', 'Downstream', 'Upstream' ],
-						rows: [
-							[
-								$tr(gettext('SNR Margin')),
-								dslstats.snr_down,
-								dslstats.snr_up
-							],
-							[
-								$tr(gettext('Loop Attenuation')),
-								dslstats.attn_down,
-								dslstats.attn_up
-							]
-						]
-					},
-					{
-						title: $tr(gettext("Error Counter")),
-						columns: [ '', 'Downstream', 'Upstream' ],
-						rows: [
-							[
-								$tr(gettext('FEC Corrections')),
-								dslstats.counters.totals.fec_down,
-								dslstats.counters.totals.fec_up
-							],
-							[
-								$tr(gettext('CRC Errors')),
-								dslstats.counters.totals.crc_down,
-								dslstats.counters.totals.crc_up
-							]
-						]
-					},
-					{
-						title: $tr(gettext("Cell Statistics")),
-						columns: [ '', 'Transmitted', 'Received' ],
-						rows: [
-							[
-								$tr(gettext('Cell Counter')),
-								dslstats.bearers[0].total_cells_down,
-								dslstats.bearers[0].total_cells_up
-							]
-						]
-					}
-				]);
-			}
-			$scope.$apply();
-			done();
+						stats.line.forEach(function(stats_line) {
+							if (stats_line.id != line.id)
+								return;
+
+							$scope.tables = $scope.tables.concat(
+							[{
+								title: $tr(gettext("Error Counter")),
+								columns: ['', 'Today', 'Total'],
+								rows: [
+									[
+										$tr(gettext('FEC Errors')),
+										stats_line.channel[0].currentday.xtur_fec_errors,
+										stats_line.channel[0].total.xtur_fec_errors
+									],
+									[
+										$tr(gettext('CRC Errors')),
+										stats_line.channel[0].currentday.xtur_crc_errors,
+										stats_line.channel[0].total.xtur_crc_errors
+									]
+								]
+							}
+						])
+					})
+				})
+			});
 		});
-	});
+	})
 });
