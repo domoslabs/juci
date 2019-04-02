@@ -1,0 +1,26 @@
+<div>
+	<juci-config-section>
+		<juci-config-lines>
+			<juci-config-line title="{{'Enable'|translate}}">
+				<switch class="green" ng-model="instance.disabled.value" inverted />
+			</juci-config-line>
+			<juci-config-line title="{{'Name'|translate}}">
+				<input type="text" class="form-control" ng-model="instance.name.value" />
+			</juci-config-line>
+			<juci-config-line title="{{'Upstream'|translate}}">
+				<dropdown-multi-select input-model="upstreamInterface.all" output-model="upstreamInterface.selected"
+							       button-label="name" item-label="name" tick-property="selected"
+							       on-item-click="onItemClick(data)" on-select-all="onSelectAll(data)"
+							       on-select-none="onSelectNone(data)">
+				</dropdown-multi-select>
+			</juci-config-line>
+			<juci-config-line title="{{'Downstream'|translate}}">
+				<dropdown-multi-select input-model="downstreamInterface.all" output-model="downstreamInterface.selected"
+								 button-label="name" item-label="name" tick-property="selected"
+								 on-item-click="onItemClick(data)" on-select-all="onSelectAll(data)"
+								 on-select-none="onSelectNone(data)">
+				</dropdown-multi-select>
+			</juci-config-line>
+		</juci-config-lines>
+	</juci-config-section>
+</div>
