@@ -1,15 +1,15 @@
 UCI.$registerConfig("mcproxy"); 
 UCI.$registerConfig("network"); 
 UCI.mcproxy.$registerSectionType("mcproxy", {
-	"disabled":		{ dvalue: true, type: Boolean },
-	"protocol":		{ dvalue: "", type: String },
-	"query_interval":		{ dvalue: '', type: Number },
-	"query_response_interval":		{ dvalue: '', type: Number },
-	"last_member_query_interval":		{ dvalue: '', type: Number },
-	"robustness_value":		{ dvalue: '', type: Number },
-	"max_groups":		{ dvalue: '', type: Number },
-	"max_sources":		{ dvalue: '', type: Number }
-}); 
+	"disabled":						{ dvalue: true, type: Boolean },
+	"protocol":						{ dvalue: "IGMPv2", type: String },
+	"query_interval":				{ dvalue: 125, type: Number, validator: UCI.validators.NumberLimitValidator(0, undefined) },
+	"query_response_interval":		{ dvalue: 10, type: Number, validator: UCI.validators.NumberLimitValidator(0, undefined) },
+	"last_member_query_interval":	{ dvalue: 1, type: Number, validator: UCI.validators.NumberLimitValidator(0, undefined) },
+	"robustness_value":				{ dvalue: 2, type: Number },
+	"max_groups":					{ dvalue: "", type: Number, validator: UCI.validators.NumberLimitValidator(0, undefined) },
+	"max_sources":					{ dvalue: "", type: Number, validator: UCI.validators.NumberLimitValidator(0, undefined) }
+});
 UCI.mcproxy.$registerSectionType("instance", {
 	"disabled":		{ dvalue: true, type: Boolean },
 	"name":		{ dvalue: "", type: String },

@@ -5,7 +5,7 @@ JUCI.app
 		$scope.allInstances = $uci.mcproxy["@instance"] || [];
 
 		// Create uci segments if not present
-		if (!$uci.mcproxy.blocked) {
+		if ($uci.mcproxy.blocked == undefined) {
 			$uci.mcproxy.$create({
 				".type":"table",
 				".name":"blocked",
@@ -14,7 +14,7 @@ JUCI.app
 				$uci.$save();
 			});
 		}
-		if (!$uci.mcproxy.blockrule) {
+		if ($uci.mcproxy.blockrule == undefined && $scope.allInstances.length) {
 			$uci.mcproxy.$create ({
 				".type":"behaviour",
 				".name":"blockrule",
@@ -82,7 +82,7 @@ JUCI.app
 	$scope.testMcastIp = function($tag){
 		// Validation of tag
 		if (Object.keys($scope.blockTable).length == 0) {
-			$scope.McastIpErr = $tr(gettext("Save uncommited chagnes before adding new rule"));
+			$scope.McastIpErr = $tr(gettext("Save uncommited changes before adding new rule"));
 				return false;
 		}
 		var er = [mcast.validate({value:$tag.text}),
@@ -90,7 +90,7 @@ JUCI.app
 				ip6range.validate({value:$tag.text})].filter(function(x){ return x !== null; });
 
 		if(er.length === 3){
-			$scope.McastIpErr = $tr(gettext("IP must be a valid multicast Address"));
+			$scope.McastIpErr = $tr(gettext("Invalid multicast addresses will not be commited!"));
 			return false;
 		}
 		$scope.McastIpErr = null;
