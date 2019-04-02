@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("OpenVPNController", function($scope, $tr, gettext, $uci, $rpc, $juciDialog, $file){
+.controller("OpenVPNController", function($scope, $tr, gettext, $uci, $rpc, $juciConfirm, $juciDialog, $file){
 	var filename = "/tmp/juci/tmpOpenvpnConfiguration";
 
 	$scope.data = {
@@ -90,14 +90,13 @@ JUCI.app
 
 	$uci.$sync("openvpn").done(function(res){
 		$scope.openvpn = $uci.openvpn["@openvpn"][0];
-		//$scope.openvpn.config = $scope.openvpn.auth_user.value+$scope.openvpn.auth_user.value;
-		//console.log($scope.openvpn);
+		$scope.$apply();
 	}
 	);
 
 	(loadConfig = function() {
 		$rpc.$call("juci.openvpn", "get_config", {}).done(function(data){
-			if (data.result)
+			if (typeof data.result === "string")
 				$scope.data.ovpn = data.result;
 			$scope.$apply();
 		});
@@ -105,12 +104,25 @@ JUCI.app
 
 	$scope.save_config = function(){
 		$rpc.$call("juci.openvpn", "set_config", {}).done(function(data){
-			$rpc.$call("uci", "commit", {"config":"openvpn"});
-			loadConfig();
+			$rpc.$call("uci", "commit", {"config":"openvpn"}).always(function(){
+				loadConfig();
+			});
 		}).fail(function(error){
 			console.log("Failed to call juci.openvpn set_config "+error);
 		});
 	};
+	$scope.onDeleteFile = function(){
+		$juciConfirm.show($tr(gettext("Are you sure you want to delete your configuration file"))).done(function(remove){
+			if(remove){
+				$file.uploadString(filename, "").done(function(){
+					$scope.save_config();
+				}).fail(function(e){
+					console.error($tr(gettext("Was not able to remove file")), e);
+				});
+			}
+		});
+	}
+
 
 	$scope.onAddFile = function(){
 		var model = {
@@ -122,17 +134,20 @@ JUCI.app
 			title: $tr(gettext("Upload OpenVPN configuration")),
 			on_apply: function(btn, inst){
 				model.error = null;
-				if(!model.config && !model.file){
-					model.error = $tr(gettext("You must choose a configuration file or paste it"));
+				if(!model.file && model.config === model.old_config){
+					model.error = $tr(gettext("Please select a new config file or change the existing one"));
 					return;
 				}
-				if(model.config !== model.old_config){
+				if(!model.file && (model.config !== model.old_config)){
 					$file.uploadString(filename, model.config).done(function(ret){
 						$scope.save_config();
 						inst.close();
 					}).fail(function(e){model.error = e;});
 				}else{
-					if(!model.file.name || model.file.size < 1){ model.error = "Invalid file"; return; }
+					if(!model.file.name || model.file.size < 1){
+						model.error = "Invalid file";
+						return;
+					}
 					$file.uploadFile(filename, model.file.files[0]).done(function(){
 						$scope.save_config();
 						inst.close();
