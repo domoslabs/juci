@@ -101,7 +101,7 @@ JUCI.app.factory("$file", function($rpc, $tr, gettext, $rootScope){
 		},
 		uploadString: function(filename, string){
 			var def = $.Deferred();
-			if(!filename || !string) return def.reject("you must give filename and string");
+			if(!filename || typeof string !== "string") return def.reject("you must give filename and string");
 			if(filename.substr(0,5) !== "/tmp/") filename = "/tmp/" + filename;
 			$rpc.$call("file", "write_tmp_juci", {"path":filename, "data":string}).done(function(ret){def.resolve(ret);}).fail(function(e){def.reject(e);});
 			return def.promise();
