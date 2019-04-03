@@ -1,0 +1,88 @@
+#!/bin/sh
+
+. /usr/share/libubox/jshn.sh
+. /lib/functions.sh
+
+is_num() {
+	[ "$1" == "" ] && return 1
+	[ "$(echo $1 | sed 's/[0-9]//g')" == "" ] && return 0 || return 1
+}
+
+validate_arguments_ndttest() {
+	testmode="$1"
+	geoserver="$2"
+	[ "$geoserver" == "" ] && return 1
+	case $testmode in
+		up|down|up_down);;
+		*) return 1 ;;
+	esac
+	return 0;
+}
+
+input=""
+
+case "$1" in
+	list)
+		echo '{ "ndttest_start" : {"seq":32, "testmode":"str","geoserver":"str"},
+			"ndttest_stop" : {},
+			"ndttest_running": {} }'
+	;;
+	call)
+		case "$2" in
+			ndttest_start)
+				host=""
+				seq=""
+				testmode=""
+				geoserver=""
+				auto=""
+				read input
+				json_load "$input"
+				json_get_var host host ""
+				json_get_var seq seq 1
+				json_get_var testmode testmode "up_down"
+				json_get_var geoserver geoserver "auto"
+				validate_arguments_ndttest "$testmode" "$geoserver" && {
+					diagnostics -U -s $seq -C ndttest -t $testmode -g $geoserver >/dev/null 2>&1 &
+
+					json_init
+					json_add_string "state" "running"
+					json_add_string "message" "success"
+					json_dump
+				} || {
+					json_init
+					json_add_string "state" "error"
+					json_add_string "message" "invalid arguments"
+					json_dump
+				}
+			;;
+			ndttest_stop)
+				killall -9 diagnostics >/dev/null 2>&1
+				killall -9 web100clt >/dev/null 2>&1
+                                json_init                                                                                                                      
+                                json_add_string "state" "aborted"                                                                                              
+                                json_add_string "message" "success"                                                                                            
+                                json_dump 
+			;;
+			ndttest_running)
+				json_init
+				seqs="$(ps -w | awk '/diagnostic[s].*-C ndttest/ { print $10 }' | sort -u)"
+				if [ "$seqs" == "" ]; then
+					json_add_string "message" "Not running"
+					json_add_boolean "running" 0
+					json_dump
+					exit
+				else
+					json_add_string "message" "Running"
+					json_add_boolean "running" 1
+				fi
+				json_add_array "sequence numbers"
+				for s in $seqs; do
+					json_add_int "" $s
+				done
+				json_close_array
+				json_dump
+			;;
+			*) return 1 ;;
+		esac
+	;;
+esac

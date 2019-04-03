@@ -1,0 +1,36 @@
+<div>
+	<juci-expandable>
+		<label class="label label-warning">{{'The test can take up to two minutes'|translate}}</label>
+		<juci-config-lines>
+			<juci-config-line title="{{'Direction'|translate}}">
+				<juci-select ng-model="data.test_type" ng-items="testType"></juci-select>
+			</juci-config-line>
+			<juci-config-line title="{{'GeoServers' | translate}}">
+				<juci-select ng-model="data.geoserver" ng-items="allTestGeoServers"/>
+			</juci-config-line>
+			<juci-config-line>
+				<button class="btn btn-default" ng-click="abortTest()" ng-show="(data.state == 'running')">
+					<span >{{'Abort' | translate}}</span>
+				</button>
+				<button class="btn btn-default" ng-click="runTest()" ng-show="(data.state != 'running')">
+					<span >{{'Run test' | translate}}</span>
+				</button>
+			</juci-config-line>
+		</juci-config-lines>
+		<div class="alert alert-success" ng-show="data.result.length">
+			{{'Test results'|translate}}: <br/>
+			<pre ng-repeat="res in data.result track by $index">{{res}}<button class="btn btn-primary pull-right" ng-click="removeResult(res)"><i class="fa fa-close"></i></button</pre>
+		</div>
+		<div class="alert alert-success" ng-show="data.state == 'running'">
+			<h4>
+				{{"Running test"|translate}}
+				<i class="fa fa-spinner fa-pulse fa-2x"></i>
+			</h4>
+		</div>
+	    <div class="alert alert-danger" ng-show="data.state == 'error'">
+			{{'Error'|translate}}: <br/>
+			<pre>{{data.result|translate}}</pre>
+		</div>
+	</juci-expandable>
+</div>
+

@@ -1,0 +1,17 @@
+{
+	"juci-ndt": {
+		"description": "JUCI NDT Diagnostics module",
+		"read": {
+			"ubus": {
+				"juci.ndt": [
+					"ndttest_start",
+					"ndttest_stop",
+					"ndttest_running"
+				]
+			},
+			"owsd": [
+				"diagnostics.ndt"
+			]
+		}
+	}
+}
