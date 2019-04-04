@@ -5,10 +5,10 @@
 	<juci-config-line title="{{'Mac Address'|translate}}">
 		<juci-select ng-items="allClients" ng-model="rule.macaddr.value" />
 	</juci-config-line>
-	<juci-config-line title="{{'Portocol'|translate}}">
+	<juci-config-line title="{{'Protocol'|translate}}">
 		<juci-select ng-items="supportedProtocols" ng-model="rule.proto.value" placeholder="{{'All'|translate}}"/>
 	</juci-config-line>
-	<juci-config-line title="{{'Ports'|translate}}">
+	<juci-config-line title="{{'Ports'|translate}}" ng-hide="rule.proto.value === 'icmp'">
 		<tags-input type="number" display-property="value" key-property="value" min-length="1" ng-model="ports" placeholder="{{'Add a port'|translate}}" add-on-space="true" ></tags-input>
 	</juci-config-line>
 	<juci-config-line title="{{'Comment'|translate}}">

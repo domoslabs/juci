@@ -7,7 +7,7 @@
 			<juci-select ng-model="steer.ifname.value" ng-items="wiLiInterfaces"></juci-select>
 		</juci-config-line>
 		<juci-config-line title="{{ 'Steering Parameters' | translate}}"></juci-config-line>
-		<juci-list-editor ng-items="params" item-editor="uci-option-edit" show-icon="true" get-item-title="$item['.name'].toUpperCase()" hide-buttons="true"></juci-list-editor>
+		<juci-list-editor ng-items="params" item-editor="wifilife-param-edit" show-icon="true" get-item-title="$item['.name'].toUpperCase()" hide-buttons="true"></juci-list-editor>
 		<juci-expandable title="{{'Steered Clients'|translate}}" open="true" ng-show="0">
 			<table class="table">
 				<thead>

@@ -1,18 +1,18 @@
 JUCI.app
-.directive("ruleEdit", function(){
+.directive("qosRuleEdit", function(){
 	return {
-		templateUrl: "/widgets/rule-edit.html",
+		templateUrl: "/widgets/qos-rule-edit.html",
 		scope: {
 			rule: "=ngModel"
 		},
 		replace: true,
-		controller: "ruleEditCtrl"
+		controller: "qosRuleEditCtrl"
 	}
-}).controller("ruleEditCtrl", function($scope, $tr, gettext, $network){
+}).controller("qosRuleEditCtrl", function($scope, $tr, gettext, $network){
 	$scope.allPriority = [
 		{"label":"Lowest (0)", "value":"lowest"},
 		{"label":"Low (1)", "value":"low"},
-		{"label":"Best (2)", "value":"best"},
+		{"label":"Best Effort (2)", "value":"besteffort"},
 		{"label":"Normal (3)", "value":"normal"},
 		{"label":"Video (4)", "value":"video"},
 		{"label":"Medium (5)", "value":"medium"},
@@ -28,7 +28,7 @@ JUCI.app
 		});
 		$scope.$apply();
 	});
-	
+
 	$scope.supportedProtocols=[
 		{label:"All", value:"all"},
 		{label:"TCP", value:"tcp"},
@@ -36,6 +36,7 @@ JUCI.app
 		{label:"TCP/UDP", value:""},
 		{label:"ICMP", value:"icmp"}
 	];
+
 	$scope.$watch("rule", function(rule) {
 		if(!rule) return;
 		$scope.ports=rule.port.value.map(function(p){return {value: p}});
