@@ -1,0 +1,5 @@
+<div>
+	<juci-config-line title="{{model.macaddr}}"></juci-config-line>
+		<juci-list-editor ng-items="allRules" item-editor="qos-tab-edit" get-item-title="getRuleTitle($item)"
+			on-create="onAddRule()" on-delete="onDeleteRule($item)"></juci-list-editor>
+</div>

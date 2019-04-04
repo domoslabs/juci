@@ -3,7 +3,7 @@
 		<juci-config-heading>{{ 'Easy QoS'|translate}}</juci-config-heading>
 		<juci-config-info>{{'Assign a specific traffic of a specific client to specific Queue'|translate}}</juci-config-info>
 		<juci-config-section>
-			<juci-list-editor ng-items="allRules" item-editor="rule-edit" get-item-title="getRuleTitle($item)"
+			<juci-list-editor ng-items="allRules" item-editor="qos-rule-edit" get-item-title="getRuleTitle($item)"
 					on-create="onAddRule()" on-delete="onDeleteRule($item)"></juci-list-editor>
 		</juci-config-section>
 	</div>

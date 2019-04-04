@@ -11,7 +11,7 @@ JUCI.app
 	$scope.allPriority = [
 		{"label":"Lowest (0)", "value":"lowest"},
 		{"label":"Low (1)", "value":"low"},
-		{"label":"Best (2)", "value":"best"},
+		{"label":"Best Effort (2)", "value":"besteffort"},
 		{"label":"Normal (3)", "value":"normal"},
 		{"label":"Video (4)", "value":"video"},
 		{"label":"Medium (5)", "value":"medium"},
@@ -22,8 +22,9 @@ JUCI.app
 
 	$network.getConnectedClients().done(function(clients){
 		clients.map(function(entry){
-			$scope.allClients.push({"label": String(entry.hostname).length?String(entry.hostname):String(entry.macaddr),
-				"value": String(entry.macaddr), "selected":""});
+			$scope.allClients.push({
+				"label": entry.hostname.length ? entry.hostname : entry.macaddr.toUpperCase(),
+				"value": entry.macaddr, "selected":""});
 		});
 		$scope.$apply();
 	});
