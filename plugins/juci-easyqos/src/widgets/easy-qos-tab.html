@@ -1,5 +1,42 @@
 <div>
-	<juci-config-line title="{{model.macaddr}}"></juci-config-line>
-		<juci-list-editor ng-items="allRules" item-editor="qos-tab-edit" get-item-title="getRuleTitle($item)"
-			on-create="onAddRule()" on-delete="onDeleteRule($item)"></juci-list-editor>
+	<h3>{{'Easy QoS rules for'|translate}} {{model.hostname || model.macaddr}}</h3>
+	<div>
+		<table class="table table-hover">
+			<thead>
+				<th>{{'Priority'|translate}}</th>
+				<th>{{'Services'|translate}}</th>
+				<!--<th>{{'Port'|translate}}</th>-->
+				<th></th>
+				<th></th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="rule in allRules track by $index">
+					<td>{{rule.priority.value.charAt(0).toUpperCase() + rule.priority.value.slice(1)}}</td>
+					<td>{{getPorts(rule)}}</td>
+					<td><button ng-click="onEditRule(rule)" class="btn btn-default"><i
+								class="juci juci-edit"></i></button></td>
+					<td><button ng-click="onDeleteRule(rule)" class="btn btn-default"><i
+								class="juci juci-trash"></i></button></td>
+				</tr>
+				<tr><td></td><td></td><td></td><td></td><td></td></tr> <!-- add extra line-->
+			</tbody>
+		</table>
+	</div>
+	<div ng-show="editRule">
+		<qos-tab-edit ng-model="rule"></qos-tab-edit>
+		<div ng-repeat="er in errors track by $index" class="alert alert-danger" ng-show="errors.length">
+			{{er}}
+		</div>
+		<div class="row">
+			<br />
+			<button style="margin-right:10px;" class="btn btn-default pull-right"
+				ng-click="onEditFinish()">Close</button>
+				<button style="margin-right:10px;" class="btn btn-primary pull-right"
+				ng-click="onEditFinish()">Save</button>
+		</div>
+	</div>
+	<div ng-show="!editRule" class="row" style="clear:both">
+		<button class="btn btn-default pull-right" style="margin-top:15px;" ng-click="onAddRule()"><i
+				class="fa fa-plus"></i></button>
+	</div>
 </div>

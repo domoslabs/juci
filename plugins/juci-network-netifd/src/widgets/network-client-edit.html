@@ -62,9 +62,9 @@
 		<tab heading="{{'Parental Control'|translate}}">
 			<firewall-parental-control ng-model="model.client"></firewall-parental-control>
 		</tab>
-		<tab heading="{{'Easy QoS'|translate}}">
+		<!--<tab heading="{{'Easy QoS'|translate}}">
 			<easy-qos-tab ng-model="model.client"></easy-qos-tab>
-		</tab>
+		</tab>-->
 		<tab heading="{{'Realtime Graphs'|translate}}" ng-show="wireless && hasGraphObject()">
 			<juci-realtime-graph id="{{id}}" ng-model="traffic" tick="tick" ylabel="ylabel"></juci-realtime-graph>
 			<juci-table title="Details" data="tableData"></juci-table>

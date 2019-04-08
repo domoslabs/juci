@@ -11,43 +11,40 @@ JUCI.app
 		require: "^ngModel"
 	};
 })
-.controller("easyQosTabCtrl", function($scope, $uci, $tr, gettext, $network, $config){
+.controller("easyQosTabCtrl", function($scope, $uci, $tr, gettext, $network, $config, $easy_qos){
 	$uci.$sync("easy_qos").done(function () {
 		$scope.allRules = $uci.easy_qos["@rule"] || [];
-		$scope.allRules.map(function (rule) {
-			rule.$statusList = [
-				{ label: $tr(gettext("Priority")), value: rule.priority.value },
-				{ label: $tr(gettext("Mac Address")), value: rule.macaddr.value },
-				{ label: $tr(gettext("Protocol")), value: rule.proto.value },
-				{ label: $tr(gettext("Ports")), value: rule.port.value },
-				{ label: $tr(gettext("Comment")), value: rule.comment.value },
-			];
-		});
-
 		$scope.allRules = $scope.allRules.filter(function (rule) {
-			var found = false;
-			rule.$statusList.forEach(element => {
-				if (element.value === $scope.model.macaddr)
-					found = true;
-			});
-
-			return found;
+			return (rule.macaddr.value === $scope.model.macaddr);
 		})
 		$scope.$apply();
 	}).fail(function (e) { console.log(e); });
 
+	$scope.editRule = null;
+	var portMapping = $easy_qos.getPortMapping();
+
 	$scope.allPriority = [
-		{ "label": "Lowest (0)", "value": "lowest" },
-		{ "label": "Low (1)", "value": "low" },
-		{ "label": "Best Effort (2)", "value": "besteffort" },
-		{ "label": "Normal (3)", "value": "normal" },
-		{ "label": "Video (4)", "value": "video" },
-		{ "label": "Medium (5)", "value": "medium" },
-		{ "label": "High (6)", "value": "high" },
-		{ "label": "Highest (7)", "value": "highest" }
+		{ "label": "Low", "value": "low" },
+		{ "label": "Normal", "value": "normal" },
+		{ "label": "High", "value": "high" },
 	];
 
 	$scope.client = [{ label: $scope.model.macaddr.toUpperCase(), value: $scope.model.macaddr}];
+	$scope.getPorts = function (rule) {
+		if (rule == undefined || rule.port == undefined)
+			return;
+
+		if (rule.port.value.length == 0)
+			return "All";
+
+		var ports = portMapping.map(function(port) {
+			return rule.port.value.includes(String(port.value)) ? port.label : null
+		}).filter(function(port) {
+			return port != null;
+		});
+
+		return ports.join(", ");
+	}
 
 	$scope.getRuleTitle = function (item) {
 		var na = $tr(gettext("N/A"));
@@ -59,13 +56,6 @@ JUCI.app
 			".type": "rule",
 			"macaddr": $scope.model.macaddr
 		}).done(function (rule) {
-			rule.$statusList = [
-				{ label: $tr(gettext("Priority")), value: rule.priority.value },
-				{ label: $tr(gettext("Mac Address")), value: rule.macaddr.value },
-				{ label: $tr(gettext("Protocol")), value: rule.proto.value },
-				{ label: $tr(gettext("Ports")), value: rule.port.value },
-				{ label: $tr(gettext("Comment")), value: rule.comment.value },
-			];
 			$scope.allRules.push(rule);
 			$scope.$apply();
 		});
@@ -81,6 +71,22 @@ JUCI.app
 		});
 	}
 
-	$scope.href = $config.getWidgetLink("overviewWidget91EasyQoS");
+	$scope.onEditRule = function (rule) {
+		console.log($scope.editRule, $scope.rule, rule);
+		if ($scope.rule == undefined || $scope.rule == rule)
+			$scope.editRule = !$scope.editRule;
+
+		if (!$scope.editRule)
+			$scope.rule = undefined
+		else
+			$scope.rule = rule;
+	}
+
+	$scope.onEditFinish = function () {
+		$scope.rule = undefined
+		$scope.editRule = false;
+	}
+
+	//$scope.href = $config.getWidgetLink("overviewWidget91EasyQoS");
 
 });

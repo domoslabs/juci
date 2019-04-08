@@ -2,13 +2,13 @@
 	<juci-config-line title="{{'Priority'|translate}}">
 		<juci-select ng-items="allPriority" ng-model="rule.priority.value"/>
 	</juci-config-line>
-	<juci-config-line title="{{'Protocol'|translate}}">
+	<!--<juci-config-line title="{{'Protocol'|translate}}">
 		<juci-select ng-items="supportedProtocols" ng-model="rule.proto.value" placeholder="{{'All'|translate}}"/>
-	</juci-config-line>
-	<juci-config-line title="{{'Ports'|translate}}" ng-hide="rule.proto.value === 'icmp'">
-		<tags-input type="number" display-property="value" key-property="value" min-length="1" ng-model="ports" placeholder="{{'Add a port'|translate}}" add-on-space="true" ></tags-input>
-	</juci-config-line>
-	<juci-config-line title="{{'Comment'|translate}}">
-		<input type="text" class="form-control" ng-model="rule.comment.value" placeholder="{{'Add a Comment'|translate}}" />
+	</juci-config-line>-->
+	<juci-config-line title="Services">
+		<dropdown-multi-select input-model="ports" output-model="port.selected" button-label="name"
+			item-label="name" tick-property="selected" on-item-click="onItemClick(data)" on-select-all="onSelectAll(data)"
+			on-select-none="onSelectNone(data)">
+		</dropdown-multi-select>
 	</juci-config-line>
 </div>

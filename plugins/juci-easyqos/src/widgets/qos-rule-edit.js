@@ -8,16 +8,16 @@ JUCI.app
 		replace: true,
 		controller: "qosRuleEditCtrl"
 	}
-}).controller("qosRuleEditCtrl", function($scope, $tr, gettext, $network){
+}).controller("qosRuleEditCtrl", function($scope, $tr, gettext, $network, $easy_qos){
 	$scope.allPriority = [
-		{"label":"Lowest (0)", "value":"lowest"},
-		{"label":"Low (1)", "value":"low"},
-		{"label":"Best Effort (2)", "value":"besteffort"},
-		{"label":"Normal (3)", "value":"normal"},
-		{"label":"Video (4)", "value":"video"},
-		{"label":"Medium (5)", "value":"medium"},
-		{"label":"High (6)", "value":"high"},
-		{"label":"Highest (7)", "value":"highest"}
+		{"label":"Lowest", "value":"lowest"},
+		{"label":"Low", "value":"low"},
+		{"label":"Best Effort", "value":"besteffort"},
+		{"label":"Normal", "value":"normal"},
+		{"label":"Video", "value":"video"},
+		{"label":"Medium", "value":"medium"},
+		{"label":"High", "value":"high"},
+		{"label":"Highest", "value":"highest"}
 	];
 	$scope.allClients = [];
 
@@ -37,13 +37,36 @@ JUCI.app
 		{label:"ICMP", value:"icmp"}
 	];
 
+	$scope.portMapping = $easy_qos.getPortMapping();
+
 	$scope.$watch("rule", function(rule) {
 		if(!rule) return;
 		$scope.ports=rule.port.value.map(function(p){return {value: p}});
 	}, false);
 
+	$scope.onAddPort = function (input) {
+		if (!$scope.ports)
+			$scope.ports=[]
+		for (var i = 0; i < $scope.ports.length; i++) {
+			if ($scope.ports[i].value == input)
+				return;
+		}
+		$scope.ports.push({ value: input.toString()})
+	}
+
 	$scope.$watch("ports", function(){
 		if(!$scope.ports) return;
-		$scope.rule.port.value = $scope.ports.map(function(p) { return p.value });
+
+		error = false;
+		for (var i = 0; i < $scope.ports.length; i++){
+			if (!$easy_qos.validPort($scope.ports[i].value)) {
+				$scope.ports.error ="Ports must be given as integers between 1 and 65535, other input or decimal values will not be commited!"
+				error = true;
+			}
+		}
+		if (!error)
+			$scope.ports.error = null;
+		$scope.rule.port.value = $scope.ports.map(function(p) { return p.value }).filter(function(p) { console.log($easy_qos.validPort(p)); return $easy_qos.validPort(p)});
 	}, true);
+
 });

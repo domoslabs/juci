@@ -1,5 +1,5 @@
 
-JUCI.app
+/*JUCI.app
 .directive("overviewWidget91EasyQoS", function(){
 	return {
 		templateUrl: "widgets/overview.easyqos.html",
@@ -41,4 +41,4 @@ JUCI.app
 	}
 	$scope.href = $config.getWidgetLink("overviewWidget91EasyQoS");
 
-});
+});*/
