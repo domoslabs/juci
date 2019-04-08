@@ -1,16 +1,16 @@
 JUCI.app
-	.directive("ruleEdit", function () {
+	.directive("wifilifeRuleEdit", function () {
 		return {
-			templateUrl: "/widgets/rule-edit.html",
+			templateUrl: "/widgets/wifilife-rule-edit.html",
 			scope: {
 				param: "=ngModel"
 			},
-			controller: "ruleEdit",
+			controller: "wifilifeRuleEdit",
 			replace: true,
 			require: "^ngModel"
 		};
 	})
-	.controller("ruleEdit", function ($scope, $wifilife) {
+	.controller("wifilifeRuleEdit", function ($scope, $wifilife) {
 		$scope.rule = {
 			options: [{ label: "steer", value: "steer" }, { label: "block", value: "block" }]
 		}

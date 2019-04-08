@@ -1,0 +1,44 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Vivek Dutta <v.dutta@gxgroup.eu>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+# plugins/juci-easyqos/src/pages/juci-easyqos.js 
+msgid "Priority"
+msgstr ""
+
+# plugins/juci-easyqos/src/pages/juci-easyqos.js 
+msgid "Mac Address"
+msgstr ""
+
+# plugins/juci-easyqos/src/pages/juci-easyqos.js 
+msgid "Ports"
+msgstr ""
+
+# plugins/juci-easyqos/src/pages/juci-easyqos.js 
+msgid "Comment"
+msgstr ""
+
+# plugins/juci-easyqos/src/pages/juci-easyqos.js 
+msgid "N/A"
+msgstr ""
+
+# plugins/juci-easyqos/src/pages/juci-easyqos.html 
+msgid "Easy QoS"
+msgstr ""
+
+# plugins/juci-easyqos/src/pages/juci-easyqos.html 
+msgid "Assign a specific traffic of a specific client to specific Queue"
+msgstr ""
+
+# plugins/juci-easyqos/src/pages/juci-easyqos.html 
+msgid "menu-juci-easyqos-title"
+msgstr "Easy QoS"

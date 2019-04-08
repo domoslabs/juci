@@ -1,16 +1,16 @@
 JUCI.app
-.directive("uciOptionEdit", function(){
+.directive("wifilifeParamEdit", function(){
 	return {
-		templateUrl: "/widgets/uci-option-edit.html",
+		templateUrl: "/widgets/wifilife-param-edit.html",
 		scope: {
 			param: "=ngModel"
 		},
-		controller: "uciOptionEdit",
+		controller: "wifilifeParamEdit",
 		replace: true,
 		require: "^ngModel"
 	};
 })
-.controller("uciOptionEdit", function ($scope) {
+.controller("wifilifeParamEdit", function ($scope) {
 	Array.prototype.swap = function (x, y) {
 		var b = this[x];
 		this[x] = this[y];

@@ -1,0 +1,15 @@
+{
+	"juci-easyqos":{
+		"description": "Juci Easy QoS Module",
+		"read": {
+			"uci": [
+				"easy_qos"
+			]
+		},
+		"write": {
+			"uci": [
+				"easy_qos"
+			]
+		}
+	}
+}

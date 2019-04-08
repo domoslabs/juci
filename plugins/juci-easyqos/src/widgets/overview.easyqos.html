@@ -1,0 +1,19 @@
+<!--div>
+	<juci-overview-widget title="{{'Easy QoS'|translate}}" href="{{href}}" allow-overflow="true">
+		<div class="row" style="margin-bottom: 10px;">
+		<div class="col-xs-12">
+			<table class="table table-condensed" ng-repeat="client in allClients">
+				<tr>
+				<td><strong translate>{{client.label}}</strong></td>
+				<td style="text-align: right;">
+				<span style="font-size: 0.8pn">
+				<juci-select ng-items="allPriority" ng-model="client.selected" placeholder="{{'Priority'|translate}}" on-change="onApplyRule($value, client)"></juci-select>
+				</span>
+				</td>
+				</tr>
+			</table>
+		</div>
+		</div>
+	</juci-overview-widget>
+</div>
+-->
