@@ -1,7 +1,7 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="McproxyPageCtrl">
-		<juci-config-heading>{{ 'MultiCast Proxy'|translate}}</juci-config-heading>
-		<juci-config-info>{{'Change settings for the Multicast proxy'|translate}}</juci-config-info>
+		<juci-config-heading>{{ 'Multicast Proxy'|translate}}</juci-config-heading>
+		<!--<juci-config-info>{{'Change settings for the Multicast proxy'|translate}}</juci-config-info>-->
 		<juci-config-line title="{{'Enable'|translate}}" >
 			<switch class="green" ng-model="mcproxy.disabled.value" inverted/>
 		</juci-config-line>
@@ -25,21 +25,37 @@
 			min="0"/>
 		</juci-config-line>
 		<juci-config-line title="{{'Max Groups'|translate}}" error="mcproxy.max_groups.error">
-			<input type="number" class="form-control" ng-model="mcproxy.max_groups.value" placeholder="{{'ex: 100'|translate}}"
+			<input type="number" class="form-control" ng-model="mcproxy.max_groups.value" placeholder="{{'64'|translate}}"
 			min="0"/>
 		</juci-config-line>
 		<juci-config-line title="{{'Max Sources'|translate}}" error="mcproxy.max_sources.error">
-			<input type="number" class="form-control" ng-model="mcproxy.max_sources.value" placeholder="{{'ex: 10'|translate}}"
+			<input type="number" class="form-control" ng-model="mcproxy.max_sources.value" placeholder="{{'32'|translate}}"
 			min="0"/>
 		</juci-config-line>
-		<juci-config-line title="{{'Multicast Exception'|translate}}" error="McastIpErr" help="{{'Add lan side multicast
-		addresses in exception list'|translate}}">
-		<tags-input ng-model="exception" placeholder="{{'Add a multicast ip'|translate}}" add-on-space="true"
-		on-tag-adding="testMcastIp($tag)" on-tag-removing="testTagRemove($tag)" on-tag-added="tagAdded($tag)">
-		</tags-input>
+		<juci-config-line title="{{'Snooping Exceptions'|translate}}">
+			<div class="col-xs-12 form-group" ng-repeat="entry in exception track by $index">
+				<div class="col-sm-10">
+					<input type="text" class="form-control" ng-disabled="true" ng-model="entry" />
+				</div>
+				<!--<div class="col-sm-2">
+					<button style="margin-right:15px;" class="btn btn-default pull-right" ng-click="onUpdateIp(entry, $index)">Update</button>
+				</div>-->
+				<div class="col-sm-2">
+					<button style="margin-right:0px;" class="btn btn-default pull-right" ng-click="onRemoveIp(entry, $index)"><i class="fa fa-trash-o"></i></button>
+				</div>
+			</div>
+			<div class="col-xs-12 form-group">
+				<div class="col-sm-10">
+					<input type="text" class="form-control" ng-model="McastIp" placeholder="{{'Multicast Address'|translate}}"/>
+					<juci-error value="McastIpErr" />
+				</div>
+				<div class="col-sm-2">
+					<button style="margin-right:0px;" class="btn btn-default pull-right"
+						ng-click="onAddIp(McastIp, $index)">Add</button>
+				</div>
+			</div>
 		</juci-config-line>
-		<juci-config-line title="{{'Instances'|translate}}">
-		</juci-config-line>
+		<juci-config-line title="{{'Instances'|translate}}"></juci-config-line>
 		<juci-config-section>
 			<juci-list-editor ng-items="allInstances" item-editor="mc-instance-edit" get-item-title="getmcInstanceTitle($item)"
 					on-create="onAddInstance()" on-delete="onDeleteInstance($item)"></juci-list-editor>

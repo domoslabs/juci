@@ -65,4 +65,4 @@ msgstr ""
 
 # plugins/juci-mcproxy/src/pages/mcproxy-settings.html
 msgid "menu-mcproxy-settings-title"
-msgstr "MultiCast Proxy"
+msgstr "Multicast Proxy"

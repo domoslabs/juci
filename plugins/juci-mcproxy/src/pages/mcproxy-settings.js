@@ -1,33 +1,16 @@
 JUCI.app
-.controller("McproxyPageCtrl", function($scope, $uci, $tr, gettext, $juciDialog, $network){
+.controller("McproxyPageCtrl", function($scope, $uci, $tr, gettext, $juciDialog, $network, $rpc){
+	$scope.clients = [{ label: "Custom Entry", value: "custom" }];
+
+	var blockCpy = [];
+
 	$uci.$sync("mcproxy").done(function(){
 		$scope.mcproxy = $uci.mcproxy['mcproxy'];
 		$scope.allInstances = $uci.mcproxy["@instance"] || [];
 
-		// Create uci segments if not present
-		if ($uci.mcproxy.blocked == undefined) {
-			$uci.mcproxy.$create({
-				".type":"table",
-				".name":"blocked",
-				"name":"blocked"
-			}).done(function(){
-				$uci.$save();
-			});
-		}
-		if ($uci.mcproxy.blockrule == undefined && $scope.allInstances.length) {
-			$uci.mcproxy.$create ({
-				".type":"behaviour",
-				".name":"blockrule",
-				"whitelist": false,
-				"table": "blocked",
-				"section": "upstream",
-				"interface":$scope.allInstances[0].upstream.value,
-				"instance":$scope.allInstances[0].name.value,
-			}).done(function() {
-				$uci.$save();
-			});
-		}
-		$scope.blockTable = $uci.mcproxy['blocked'] || {};
+		$scope.blockTable = $uci.mcproxy.blocked || {};
+		blockCpy = [...$scope.blockTable.entries.value];
+		$scope.update = $scope.blockTable.entries.value.map(function() {return true;})
 		$scope.blockBehaviour = $uci.mcproxy['blockrule'] || {};
 
 		if(Object.keys($scope.blockTable).length > 0) {
@@ -37,18 +20,18 @@ JUCI.app
 		}
 
 		$scope.protocol = [
-			{label:'IGMPv1(IPv4)',value:'IGMPv1'},
-			{label:'IGMPv2(IPv4)',value:'IGMPv2'},
-			{label:'IGMPv3(IPv4)',value:'IGMPv3'},
-			{label:'MLDv1(IPv6)', value:'MLDv1'},
-			{label:'MLDv2(IPv6)',value:'MLDv2'}];
+			{label:'IGMPv1 (IPv4)',value:'IGMPv1'},
+			{label:'IGMPv2 (IPv4)',value:'IGMPv2'},
+			{label:'IGMPv3 (IPv4)',value:'IGMPv3'},
+			{label:'MLDv1 (IPv6)', value:'MLDv1'},
+			{label:'MLDv2 (IPv6)',value:'MLDv2'}];
 
 		$scope.allInstances.map(function(instance){
 			instance.$statusList = [
 				{ label: $tr(gettext("Enable")), value: !(instance.disabled.value) },
 				{ label: $tr(gettext("Name")), value: instance.name.value },
-				{ label: $tr(gettext("Uplink")), value: instance.upstream.value },
-				{ label: $tr(gettext("Downlink")), value: instance.downstream.value },];
+				{ label: $tr(gettext("Uplink")), value: instance.upstream.value.join(", ") },
+				{ label: $tr(gettext("Downlink")), value: instance.downstream.value.join(", ") },];
 		});
 
 		$scope.$apply();
@@ -59,8 +42,77 @@ JUCI.app
 		return String((item.name.value ||  na));
 	}
 
+	var mcast = new $uci.validators.IP4MulticastAddressValidator;
+	var ipv6 = new $uci.validators.IP6AddressValidator;
+	var ip6range = new $uci.validators.IP6CIDRValidator;
+
+	var arrayEquals = function(a1, a2) {
+		var i = a1.length;
+		if (i != a2.length)
+			return false;
+		while (i--) {
+			if (a1[i] !== a2[i]) return false;
+		}
+		return true
+	}
+
+	$scope.onUpdateIp = function (ip, index) {
+		$scope.update = $scope.update.map(function(entry, i) { return i !== index; });
+		/*$scope.exception[index] = ip;
+		$scope.blockTable.entries.value[index] = "(*|" + ip + ")";
+		$scope.blockTable.entries.is_dirty = true;*/
+	}
+
+	$scope.onAddIp = function (ip, index) {
+		if (!ip)
+			return;
+
+		var er = [mcast.validate({ value: ip }), ipv6.validate({ value: ip }), ip6range.validate({ value: ip })].filter(function (x) { return x !== null; })
+
+		if ($scope.exception.includes(ip)) {
+			$scope.McastIpErr = $tr(gettext("Address has already been added!"));
+			return;
+		}
+
+		if (er.length === 3) {
+			$scope.McastIpErr = $tr(gettext("Invalid multicast addresses!"));
+			return;
+		}
+
+		$scope.McastIpErr = null;
+
+		// Create uci segments if not present
+		if ($uci.mcproxy.blocked == {}) {
+			$uci.mcproxy.$create({
+				".type": "table",
+				".name": "blocked",
+				"name": "blocked"
+			}).done(function () {
+				$uci.$save();
+			});
+		}
+
+		if ($uci.mcproxy.blockrule == {} && $scope.allInstances.length) {
+			$uci.mcproxy.$create({
+				".type": "behaviour",
+				".name": "blockrule",
+				"whitelist": false,
+				"table": "blocked",
+				"section": "upstream",
+				"interface": $scope.allInstances[0].upstream.value,
+				"instance": $scope.allInstances[0].name.value,
+			}).done(function () {
+				$uci.$save();
+			});
+		}
+		$scope.update.push(true);
+		var ent = "(*|" + String(ip) + ")";
+		$scope.exception.push(ip);
+		$scope.blockTable.entries.value.push(ent);
+		$scope.blockTable.entries.is_dirty = !arrayEquals($scope.blockTable.entries.value, blockCpy);
+	}
+
 	$scope.onAddInstance = function(){
-		var model = {};
 		$uci.mcproxy.$create({
 			".type":"instance",
 		}).done(function(instance){
@@ -75,43 +127,11 @@ JUCI.app
 		});
 	}
 
-	var mcast = new $uci.validators.IP4MulticastAddressValidator;
-	var ipv6 = new $uci.validators.IP6AddressValidator;
-	var ip6range = new $uci.validators.IP6CIDRValidator;
+	$scope.onRemoveIp = function (item, index) {
+		if (!item) return;
 
-	$scope.testMcastIp = function($tag){
-		// Validation of tag
-		if (Object.keys($scope.blockTable).length == 0) {
-			$scope.McastIpErr = $tr(gettext("Save uncommited changes before adding new rule"));
-				return false;
-		}
-		var er = [mcast.validate({value:$tag.text}),
-				ipv6.validate({value:$tag.text}),
-				ip6range.validate({value:$tag.text})].filter(function(x){ return x !== null; });
-
-		if(er.length === 3){
-			$scope.McastIpErr = $tr(gettext("Invalid multicast addresses will not be commited!"));
-			return false;
-		}
-		$scope.McastIpErr = null;
-		return true;
-	};
-
-	$scope.testTagRemove = function($tag){
-		// Action on tag remove 
-		$scope.blockTable.entries.value.find(function(m, i) {
-			if(m.match($tag.text)) {
-				$scope.blockTable.entries.value.splice(i, 1);
-				$scope.blockTable.entries.is_dirty = true;
-				return m;
-			}
-		});
-	};
-
-	$scope.tagAdded = function($tag){
-		var ent = "(*|" + String($tag.text) + ")";
-		$scope.blockTable.entries.value.push(ent);
-		$scope.blockTable.entries.is_dirty = true;
-	};
-
+		$scope.exception.splice(index, 1);
+		$scope.blockTable.entries.value.splice(index, 1);
+		$scope.blockTable.entries.is_dirty = !arrayEquals($scope.blockTable.entries.value, blockCpy);
+	}
 });

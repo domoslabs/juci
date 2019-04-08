@@ -43,6 +43,12 @@ JUCI.app
 				});
 
 		});
+
+		$scope.retrivalType = [
+			{ label: 'WAN', value: 'wan' },
+			{ label: 'LAN', value: 'lan' }
+		];
+
 		$scope.onSelectAll = function(item) {
 				$scope.instance.downstream.value = $scope.downstreamInterface.selected.filter(function(sel){
 						return sel.selected;
