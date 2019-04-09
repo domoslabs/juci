@@ -1,19 +1,47 @@
-<!--div>
-	<juci-overview-widget title="{{'Easy QoS'|translate}}" href="{{href}}" allow-overflow="true">
-		<div class="row" style="margin-bottom: 10px;">
-		<div class="col-xs-12">
-			<table class="table table-condensed" ng-repeat="client in allClients">
-				<tr>
-				<td><strong translate>{{client.label}}</strong></td>
-				<td style="text-align: right;">
-				<span style="font-size: 0.8pn">
-				<juci-select ng-items="allPriority" ng-model="client.selected" placeholder="{{'Priority'|translate}}" on-change="onApplyRule($value, client)"></juci-select>
-				</span>
-				</td>
-				</tr>
-			</table>
+<div>
+	<juci-overview-widget title="{{'Easy QoS'|translate}}" href="{{href}}">
+		<!--<juci-config-line ng-repeat="client in allClients" title="{{client.label}}" style="">
+				<input type="checkbox" ng-model="priority" ng-click="togglePrio(client, priority)" />
+		</juci-config-line>-->
+		<div class="row"></div>
+		<div class="col-xs-1"></div>
+		<div class="col-xs-11">
+			<h3 translate><strong>Priority Clients</strong></h3>
 		</div>
+		<div clas="row">
+			<div class="col-xs-1"></div>
+			<div class="col-xs-11">
+			<h4 translate>Select high priority clients.</h4>
+		</div>
+		<div class="row" style="margin-bottom: 10px;">
+			<div class="col-xs-12">
+				<table class="table table-condensed" ng-repeat="client in allClients" style="border: 0px;">
+					<tr style="border: 0px;">
+						<td style="border: 0px;">
+							<div class="col-xs-2" style="margin-top:10px"><i class="fa fa-laptop fa-2x"></i></div>
+						</td>
+						<td style="border: 0px;"><div class="row">
+							<strong translate>{{client.label}}</strong></div>
+							<div class="row">{{client.label !== client.macaddr.toUpperCase() ? client.macaddr.toUpperCase() : ""}}</div>
+							<div class="row">{{client.ipaddr}}</div>
+						</td>
+						<td style="text-align: right; border: 0px;">
+							<!--<switch class="green" ng-model="client.switch" ng-change="onChange(client)"></switch>-->
+							<div >
+								<!--<div class="checkbox checkbox-info">-->
+								<input type="checkbox" ng-model="client.switch" ng-click="onChange(client)" />
+								<!--<label></label>
+								</div>-->
+							</div>
+						</td>
+					</tr>
+					<tr ng-show="client.error" style="border: 0px;">
+						<td style="border: 0px;"></td>
+						<td style="border: 0px;"><juci-error value="client.error" /></td>
+						<td style="border: 0px;"></td>
+					</tr>
+				</table>
+			</div>
 		</div>
 	</juci-overview-widget>
 </div>
--->

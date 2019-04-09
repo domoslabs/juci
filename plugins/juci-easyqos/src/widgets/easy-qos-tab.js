@@ -72,7 +72,6 @@ JUCI.app
 	}
 
 	$scope.onEditRule = function (rule) {
-		console.log($scope.editRule, $scope.rule, rule);
 		if ($scope.rule == undefined || $scope.rule == rule)
 			$scope.editRule = !$scope.editRule;
 
