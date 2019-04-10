@@ -102,7 +102,10 @@ for(var i = 2; i < process.argv.length; i++){
 	var meta = json[""]; 
 	var tbl = {}; 
 	if(meta instanceof Object){
-		result[meta["language"]] = tbl; 
+		if(meta["Language"])
+			result[meta["Language"]] = tbl;
+		if(meta["language"])
+			result[meta["language"]] = tbl;
 	} else {
 		console.error("Missing po header!"); 
 		process.exit(1); 
