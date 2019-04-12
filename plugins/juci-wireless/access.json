@@ -30,13 +30,15 @@
 				"router.wireless": [
 					"bsd_sta_info",
 					"bsd_records",
-					"bs_data",
 					"autochannel",
 					"scan",
 					"scanresults",
 					"status",
 					"stas",
 					"radios"
+				],
+				"wifi.bsd": [
+					"bs_data"
 				]
 			}, 
 			"uci": [

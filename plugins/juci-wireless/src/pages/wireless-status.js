@@ -64,13 +64,15 @@ JUCI.app
 								rssi_per_antenna += (an + " ");
 							});
 						}
+
 						c["rows"] = [];
 						[
 							[$tr(gettext("IP-Address")),c.ipaddr],
 							[$tr(gettext("MAC-Address")), String(c.macaddr).toUpperCase()],
 							[$tr(gettext("DHCP")), c.dhcp],
 							[$tr(gettext("Idle")), c.idle],
-							[$tr(gettext("In Network")), c.in_network],
+							[$tr(gettext("In Network (secs)")), c.in_network],
+							[$tr(gettext("Airtime (secs)")), c.airtime],
 							[$tr(gettext("RSSI [dBm]")), c.rssi],
 							[$tr(gettext("SNR [dB]")), c.snr],
 							[$tr(gettext("Average antenna signal/RSSI [dbm]")), rssi_per_antenna],

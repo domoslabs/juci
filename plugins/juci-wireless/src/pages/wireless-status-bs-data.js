@@ -23,7 +23,7 @@ JUCI.app
 			if(!ifs || !ifs.length)
 				return;
 			async.each(ifs, function(iface, next){
-				$rpc.$call("router.wireless", "bs_data", { "vif":iface.ifname.value }).done(function(res){
+				$rpc.$call("wifi.bsd", "bs_data", { "vif":iface.ifname.value }).done(function(res){
 					if(!res || !res.stations || ! res.stations instanceof Array)
 						return;
 					iface.bs_data = res.stations;
