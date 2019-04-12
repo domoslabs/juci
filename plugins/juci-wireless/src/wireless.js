@@ -102,6 +102,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 							if (clients[key].macaddr === wlclient.macaddr) {
 								wlclient.ipaddr = clients[key].ipaddr;
 								wlclient.hostname = clients[key].hostname;
+								wlclient.dhcp = clients[key].dhcp;
 							}
 						})
 					}
