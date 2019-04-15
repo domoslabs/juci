@@ -9,11 +9,14 @@ JUCI.app
 		$scope.allInstances = $uci.mcproxy["@instance"] || [];
 
 		$scope.blockTable = $uci.mcproxy.blocked || {};
-		blockCpy = [...$scope.blockTable.entries.value];
-		$scope.update = $scope.blockTable.entries.value.map(function() {return true;})
+		console.log("blocktable = ", $scope.blockTable, "blocked = $uci.mcproxy.blocked", $uci.mcproxy.blocked);
+		$scope.update = [];
 		$scope.blockBehaviour = $uci.mcproxy['blockrule'] || {};
+		$scope.exception = []
 
 		if(Object.keys($scope.blockTable).length > 0) {
+			blockCpy = [...$scope.blockTable.entries.value];
+			$scope.update = $scope.blockTable.entries.value.map(function () { return true; });
 			$scope.exception = $scope.blockTable.entries.value.map(function(e){
 				return e.replace('(*|', '').replace(')','');
 			});
@@ -45,6 +48,14 @@ JUCI.app
 	var mcast = new $uci.validators.IP4MulticastAddressValidator;
 	var ipv6 = new $uci.validators.IP6AddressValidator;
 	var ip6range = new $uci.validators.IP6CIDRValidator;
+
+	var pushClient = function (ip) {
+		$scope.update.push(true);
+		var ent = "(*|" + String(ip) + ")";
+		$scope.exception.push(ip);
+		$scope.blockTable.entries.value.push(ent);
+		$scope.blockTable.entries.is_dirty = !arrayEquals($scope.blockTable.entries.value, blockCpy);
+	}
 
 	var arrayEquals = function(a1, a2) {
 		var i = a1.length;
@@ -82,7 +93,8 @@ JUCI.app
 		$scope.McastIpErr = null;
 
 		// Create uci segments if not present
-		if ($uci.mcproxy.blocked == {}) {
+		if (Object.keys($scope.blockTable).length == 0) {
+			console.log("create block table!");
 			$uci.mcproxy.$create({
 				".type": "table",
 				".name": "blocked",
@@ -92,7 +104,8 @@ JUCI.app
 			});
 		}
 
-		if ($uci.mcproxy.blockrule == {} && $scope.allInstances.length) {
+		if (Object.keys($scope.blockBehaviour).length == 0 && $scope.allInstances.length) {
+			console.log("create blockrule!");
 			$uci.mcproxy.$create({
 				".type": "behaviour",
 				".name": "blockrule",
@@ -101,15 +114,15 @@ JUCI.app
 				"section": "upstream",
 				"interface": $scope.allInstances[0].upstream.value,
 				"instance": $scope.allInstances[0].name.value,
+				"entries": []
 			}).done(function () {
 				$uci.$save();
+			}).done(function() {
+				pushClient(ip);
 			});
+		} else {
+			pushClient(ip);
 		}
-		$scope.update.push(true);
-		var ent = "(*|" + String(ip) + ")";
-		$scope.exception.push(ip);
-		$scope.blockTable.entries.value.push(ent);
-		$scope.blockTable.entries.is_dirty = !arrayEquals($scope.blockTable.entries.value, blockCpy);
 	}
 
 	$scope.onAddInstance = function(){
