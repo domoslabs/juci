@@ -102,12 +102,12 @@ JUCI.app
 
 	function dsl_stats(type){
 		if(type.match(/[AV]DSL/)){
-			$rpc.$call("router.dsl", "stats").done(function(data){
-				if(!data || !data.dslstats || !data.dslstats.bearers || data.dslstats.bearers.length < 1) return;
-				data.dslstats.bearers.map(function(b){
-					if(b.rate_down) $scope.data.dslDown = parseInt(String(b.rate_down))/1000;
+			$rpc.$call("dsl", "status").done(function(data){
+				if(!data || !data.line || data.line.length < 1 || !data.line[0].channel || data.line[0].channel.length < 1) return;
+				data.line[0].channel.map(function(c){
+					if (c.actndr.ds) $scope.data.dslDown = parseInt(String(c.actndr.ds))/1000;
 					else $scope.data.dslDown = "";
-					if(b.rate_up) $scope.data.dslUp = parseInt(String(b.rate_up))/1000;
+					if(c.actndr.us) $scope.data.dslUp = parseInt(String(c.actndr.us))/1000;
 					else $scope.data.dslUp = "";
 				});
 				$scope.$apply();

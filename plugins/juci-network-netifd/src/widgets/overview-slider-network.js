@@ -75,6 +75,13 @@ JUCI.app
 			return string.substring(0, 11) + "...";
 		return string;
 	}
+	function humanize(str) {
+		var words = str.split('_');
+		for (i = 0; i < words.length; i++)
+			words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+
+		return words.join(' ');
+	}
 	var optionsFA = {
 		autoResize: true,
 		nodes: {
@@ -221,9 +228,9 @@ JUCI.app
 							addNode(wan, title);
 						}).fail(function(e){console.log(e);}).always(function(){callback();});
 					}else if(wan.device.match(/[ap]tm/)){
-						$rpc.$call("router.dsl", "stats").done(function(data){
-							if(!data || !data.dslstats || !data.dslstats.bearers || !data.dslstats.bearers.length){ callback(); return;}
-							title = getWanTitle("dsl", wan, data);
+						$rpc.$call("dsl", "status").done(function(data){
+							if(!data || !data.line || data.line.length < 1 || !data.line[0].channel || data.line[0].channel.length < 1){ callback(); return;}
+							title = getWanTitle("dsl", wan, data.line[0]);
 							addNode(wan, title);
 						}).fail(function(e){console.log(e);}).always(function(){callback();});
 					}else if(wan.device.match("wwan")){
@@ -460,10 +467,10 @@ JUCI.app
 				break;
 			case "dsl":
 				t+= $tr(gettext("DSL")) + '<br />';
-				t+= $tr(gettext("Mode")) + ': ' + data.dslstats.mode + '<br />';
+				t += $tr(gettext("Mode")) + ': ' + humanize(data.standard_used) + '<br />';
 				t+= $tr(gettext("Bit Rate")) + '<br />';
-				t+= $tr(gettext("Downstream")) + ': ' + parseInt(data.dslstats.bearers[0].rate_down)/1000 + ' Mbit/s<br />';
-				t+= $tr(gettext("Upstream")) + ': ' + parseInt(data.dslstats.bearers[0].rate_up)/1000 + ' Mbit/s<br />';
+				t+= $tr(gettext("Downstream")) + ': ' + parseInt(data.channel[0].actndr.ds)/1000 + ' Mbit/s<br />';
+				t+= $tr(gettext("Upstream")) + ': ' + parseInt(data.channel[0].actndr.us)/1000 + ' Mbit/s<br />';
 				break;
 			case "vwan":
 				t+= $tr(gettext("3G/4G")) + '<br />';
