@@ -51,16 +51,16 @@ JUCI.app
 				}
 			});
 		}, false);
-
-		if($rpc.$has("router.dsl", "stats") && $scope.qos.wan.download.value === "" && $scope.qos.wan.upload.value === ""){
-			$rpc.$call("router.dsl", "stats").done(function(stats){
-				if(stats && stats.dslstats
-					&& stats.dslstats.bearers
-					&& stats.dslstats.bearers.length
-					&& stats.dslstats.bearers[0].rate_up
-					&& stats.dslstats.bearers[0].rate_down){
-					$scope.qos.wan.download.value = stats.dslstats.bearers[0].rate_down * 0.99;
-					$scope.qos.wan.upload.value = stats.dslstats.bearers[0].rate_up * 0.99;
+		if($rpc.$has("dsl", "status") && $scope.qos.wan.download.value === "" && $scope.qos.wan.upload.value === ""){
+			$rpc.$call("dsl", "status").done(function(stats){
+				if(stats && stats.line && stats.line.length > 0
+						&& stats.line[0].channel
+						&& stats.line[0].channel.length
+						&& stats.line[0].channel[0].actndr
+						&& stats.line[0].channel[0].actndr.us
+						&& stats.line[0].channel[0].actndr.ds){
+					$scope.qos.wan.download.value = stats.line[0].channel[0].actndr.ds * 0.99;
+					$scope.qos.wan.upload.value = stats.line[0].channel[0].actndr.us * 0.99;
 					$scope.$apply();
 				}
 			}).fail(function(e){

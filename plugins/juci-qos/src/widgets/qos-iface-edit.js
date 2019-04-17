@@ -18,15 +18,16 @@ JUCI.app
 		upload_speed: undefined
 	};
 
-	if($rpc.$has("router.dsl", "stats")){
-		$rpc.$call("router.dsl", "stats").done(function(stats){
-			if(stats && stats.dslstats
-					&& stats.dslstats.bearers
-					&& stats.dslstats.bearers.length
-					&& stats.dslstats.bearers[0].rate_up
-					&& stats.dslstats.bearers[0].rate_down){
-				$scope.dsl.download_speed = stats.dslstats.bearers[0].rate_down;
-				$scope.dsl.upload_speed = stats.dslstats.bearers[0].rate_up;
+	if($rpc.$has("dsl", "status")){
+		$rpc.$call("dsl", "status").done(function(stats){
+			if(stats && stats.line && stats.line.length > 0
+					&& stats.line[0].channel
+					&& stats.line[0].channel.length
+					&& stats.line[0].channel[0].actndr
+					&& stats.line[0].channel[0].actndr.us
+					&& stats.line[0].channel[0].actndr.ds){
+				$scope.dsl.download_speed = stats.line[0].channel[0].actndr.ds;
+				$scope.dsl.upload_speed = stats.line[0].channel[0].actndr.us;
 				$scope.$apply();
 			}
 		}).fail(function(e){

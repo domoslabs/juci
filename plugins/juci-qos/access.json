@@ -3,8 +3,8 @@
 		"description": "JUCI Quality-of-service Configuration",
 		"read": {
 			"ubus": {
-				"router.dsl": [
-					"stats"
+				"dsl": [
+					"status"
 				]
 			},
 			"uci": [
