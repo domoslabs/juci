@@ -1,0 +1,27 @@
+{
+	"juci-cifsd": {
+		"description": "JUCI Cifsd module",
+		"read": {
+			"uci": [
+				"cifsd"
+			],
+			"ubus": {
+				"router.directory": [
+					"folder_tree",
+					"autocomplete"
+				],
+				"juci.system": [
+					"passwd_entries"
+				],
+				"router.usb": [
+					"status"
+				]
+			}
+		}, 
+		"write": {
+			"uci": [
+				"cifsd"
+			]
+		}
+	}
+}

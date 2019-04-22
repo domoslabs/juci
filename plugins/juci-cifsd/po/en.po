@@ -1,0 +1,129 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Vivek Dutta <vdutta@gxgroup.eu>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-cifsd/src/pages/juci-cifsd.js 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-cifsd/src/widgets/cifsd-share-edit.html 
+msgid "Path"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-cifsd/src/pages/juci-cifsd.js 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-cifsd/src/widgets/cifsd-share-edit.html 
+msgid "Allowed users"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-cifsd/src/pages/juci-cifsd.js 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-cifsd/src/widgets/cifsd-share-edit.html 
+msgid "Allow Guest Access"
+msgstr ""
+
+# plugins/juci-cifsd/src/pages/juci-cifsd.js 
+msgid "Read Only"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-cifsd/src/pages/juci-cifsd.js 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-cifsd/src/widgets/cifsd-user-edit.html 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-cifsd/src/widgets/cifsd-user-edit.html 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-cifsd/src/pages/juci-cifsd.html 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-cifsd/src/pages/juci-cifsd.html 
+msgid "Description"
+msgstr ""
+
+# plugins/juci-cifsd/src/pages/juci-cifsd.js 
+msgid "New cifs share"
+msgstr ""
+
+# plugins/juci-cifsd/src/widgets/cifsd-share-edit.js 
+msgid "Add folder to share"
+msgstr ""
+
+# plugins/juci-cifsd/src/widgets/cifsd-file-tree.js 
+msgid "Loading.."
+msgstr ""
+
+# plugins/juci-cifsd/src/widgets/cifsd-file-tree.html 
+msgid "Select folder"
+msgstr ""
+
+# plugins/juci-cifsd/src/widgets/cifsd-user-edit.html 
+msgid "Username"
+msgstr ""
+
+# plugins/juci-cifsd/src/widgets/cifsd-user-edit.html 
+msgid "Password"
+msgstr ""
+
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-cifsd/src/widgets/cifsd-share-edit.html 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-cifsd/src/pages/juci-cifsd.html 
+# #-#-#-#-#  template.pot  #-#-#-#-#
+# plugins/juci-cifsd/src/pages/juci-cifsd.html 
+msgid "Name"
+msgstr ""
+
+# plugins/juci-cifsd/src/widgets/cifsd-share-edit.html 
+msgid "This USB drive has"
+msgstr ""
+
+# plugins/juci-cifsd/src/widgets/cifsd-share-edit.html 
+msgid ""
+"filesystem, it only supports reading and not writing. writeble filesystems "
+"are: FAT, FAT32 and NTFS"
+msgstr ""
+
+# plugins/juci-cifsd/src/widgets/cifsd-share-edit.html 
+msgid "Read only?"
+msgstr ""
+
+# plugins/juci-cifsd/src/pages/juci-cifsd.html 
+msgid "General Settings"
+msgstr ""
+
+# plugins/juci-cifsd/src/pages/juci-cifsd.html 
+msgid "services.cifsd.info"
+msgstr "General network share settings"
+
+# plugins/juci-cifsd/src/pages/juci-cifsd.html 
+msgid "Workgroup"
+msgstr ""
+
+# plugins/juci-cifsd/src/pages/juci-cifsd.html 
+msgid "Network Share Users"
+msgstr ""
+
+# plugins/juci-cifsd/src/pages/juci-cifsd.html 
+msgid "cifsd.users.info"
+msgstr "Network share users configuration"
+
+# plugins/juci-cifsd/src/pages/juci-cifsd.html 
+msgid "Network Shares"
+msgstr ""
+
+# plugins/juci-cifsd/src/pages/juci-cifsd.html 
+msgid "cifsd.shares.info"
+msgstr "Network share configuration"
+
+# plugins/juci-cifsd/src/pages/juci-cifsd.html 
+msgid "menu-juci-cifsd-title"
+msgstr "Network Share"

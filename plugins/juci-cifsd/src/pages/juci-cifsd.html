@@ -1,0 +1,39 @@
+<juci-layout-with-sidebar>
+	<div ng-controller="ServiceCifsdPage">
+		<juci-config-section>
+			<juci-config-heading>{{ 'General Settings' | translate }}</juci-config-heading>
+			<juci-config-info>{{ 'services.cifsd.info' | translate }}</juci-config-info>
+			<juci-config-lines>
+				<juci-config-line title="{{'Name'|translate}}">
+					<input type="text" ng-model="config.netbios_name.value" class="form-control"
+					placeholder="{{'Name'|translate}}"/>
+				</juci-config-line>
+				<juci-config-line title="{{'Workgroup'|translate}}">
+					<input type="text" ng-model="config.workgroup.value" class="form-control" placeholder="{{'Workgroup'|translate}}"/>
+				</juci-config-line>
+				<juci-config-line title="{{'Description'|translate}}" >
+					<input type="text" ng-model="config.server_string.value" class="form-control"
+					placeholder="{{'Description'|translate}}"/>
+				</juci-config-line>
+			</juci-config-lines>
+		</juci-config-section>
+		<juci-config-section>
+			<juci-config-heading>{{ 'Network Share Users' | translate }}</juci-config-heading>
+			<juci-config-info >{{'cifsd.users.info'|translate}}</juci-config-info>
+			<juci-list-editor ng-items="users" 
+				item-editor="cifsd-user-edit" 
+				get-item-title="$item.user.value"
+				on-create="onCreateUser()"
+				on-delete="onDeleteUser($item)"></juci-list-editor>
+		</juci-config-section>
+		<juci-config-section>
+			<juci-config-heading>{{ 'Network Shares' | translate }}</juci-config-heading>
+			<juci-config-info >{{'cifsd.shares.info'|translate}}</juci-config-info>
+			<juci-list-editor ng-items="shares" 
+				item-editor="cifsd-share-edit" 
+				get-item-title="getShareTitle($item)"
+				on-create="onCreateShare()"
+				on-delete="onDeleteShare($item)"></juci-list-editor>
+		</juci-config-section>
+	</div>
+</juci-layout-with-sidebar>
