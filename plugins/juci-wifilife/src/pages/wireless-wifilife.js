@@ -74,7 +74,7 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $lo
 				})
 			}
 		}).then(function() {
-			$rpc.$call("wifix", "stas").done(function (vifs) {
+			$rpc.$call("wifix", "stations").done(function (vifs) {
 				var rssiUnexcluded = [];
 				var assocUnexcluded = [];
 
