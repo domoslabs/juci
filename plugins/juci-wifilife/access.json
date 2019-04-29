@@ -4,7 +4,7 @@
 		"read": {
 			"ubus": {
 				"wifix": [
-					"stas",
+					"stations",
 					"list_neighbor"
 				],
 				"router.net": [

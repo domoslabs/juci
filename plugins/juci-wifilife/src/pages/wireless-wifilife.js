@@ -37,6 +37,8 @@ directive('cntlrPage', function () {
 controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $localStorage) {
 	$scope.showExpert = $localStorage.getItem("mode") == "expert";
 	$scope.rssiExcl = {};
+	$scope.rssiExcl.unexcluded = [];
+	$scope.rssiExcl.rssiAll = [];
 	$scope.assocExcl = {};
 	$scope.victims = [];
 	$scope.includeRpt = false;
