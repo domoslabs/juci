@@ -42,7 +42,7 @@ JUCI.app
 			$scope.showWps = false;
 		}
 		//setTimeout is needed because ng-change is run before value has changed
-		setTimeout(function(){$scope.showWps = $scope.wifiIfaces.find(function(iface){ return iface.wps_pbc.value; }) ? true:false;$scope.$apply();}, 0);
+		setTimeout(function(){$scope.showWps = $scope.wifiIfaces.find(function(iface){ return iface.wps_pushbutton.value; }) ? true:false;$scope.$apply();}, 0);
 	}
 	
 	$scope.data = {

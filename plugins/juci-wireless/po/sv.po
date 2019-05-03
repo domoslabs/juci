@@ -189,13 +189,13 @@ msgstr "Lösenord #4"
 msgid "wifi-iface.gtk_rekey"
 msgstr "Rekey"
 
-msgid "wifi-iface.wps_pbc"
+msgid "wifi-iface.wps_pushbutton"
 msgstr "WPS-push button"
 
 msgid "wifi-iface.wmf_bss_enable"
 msgstr "WMP BSS "
 
-msgid "wifi-iface.bss_max"
+msgid "wifi-iface.maxassoc"
 msgstr "Max BSS"
 
 msgid "wifi-iface.instance"
