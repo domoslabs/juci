@@ -257,11 +257,11 @@
 	function WEPKeyValidator(){
 		this.validate = function(field){
 			if(field.value === "") return null;
-			if(field.value.length>=10 && field.value.length<=26){
+			if(field.value.length==10 || field.value.length==26){
 				var matches = field.value.match(/[a-f0-9A-F]+/);
 				if(matches!==null && field.value.length==matches[0].length){ return null; }
 			}
-			return JUCI.$tr(gettext("WEP encryption key must be 10-26 hexadecimal characters!"));
+			return JUCI.$tr(gettext("WEP encryption key must be 10 or 26 hexadecimal characters!"));
 		}
 	}
 
