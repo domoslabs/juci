@@ -13,11 +13,11 @@
 		<juci-config-line title="{{'AP Isolation'|translate}}">
 			<switch name="enabled" ng-model="interface.isolate.value" class="green"></switch>
 		</juci-config-line>
-		<juci-config-line title="{{'Wireless Multicast Forwarding'|translate}}">
+		<!--<juci-config-line title="{{'Wireless Multicast Forwarding'|translate}}">
 			<switch name="enabled" ng-model="interface.wmf_bss_enable.value" class="green"></switch>
-		</juci-config-line>
+		</juci-config-line>-->
 		<juci-config-line title="{{'Maximum Number of Connected Clients'|translate}}">
-			<input type="number" max="128" min="0" ng-model="interface.bss_max.value" class="form-control"></switch>
+			<input type="number" max="128" min="0" ng-model="interface.maxassoc.value" class="form-control"></switch>
 		</juci-config-line>
 		<!--<juci-config-line title="{{'Frequency'|translate}}">
 			<juci-select ng-model="interface.device.value" ng-items="devices" placeholder="Choose Radio"></juci-select>
