@@ -980,6 +980,8 @@
 				$rpc.$call("uci", "get", {
 					config: self[".name"]
 				}).done(function(data){
+					if (!data)
+						return;
 					var vals = data.values;
 					Object.keys(vals).filter(function(x){
 						return vals[x][".type"] in section_types[self[".name"]];
