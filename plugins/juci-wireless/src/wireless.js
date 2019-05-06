@@ -309,6 +309,7 @@ JUCI.app.run(function($network, $wireless, $uci){
 		"gtk_rekey":		{ dvalue: 3600, type: Number },
 		"net_reauth":		{ dvalue: 36000, type: Number },
 		"wps_pushbutton":			{ dvalue: false, type: Boolean },
+		"wps_label":			{ dvalue: false, type: Boolean },
 		"wmf_bss_enable":	{ dvalue: false, type: Boolean },
 		"maxassoc":			{ dvalue: 32, type: Number, validator: UCI.validators.NumberLimitValidator(0, 128) },
 		"hidden":			{ dvalue: false, type: Boolean },

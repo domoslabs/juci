@@ -19,11 +19,11 @@
  */
 
 JUCI.app
-.controller("wirelessWPSPage", function($scope, $localStorage, $wireless, $rpc, gettext, $tr, $events){
-	$scope.has_setpin = $rpc.$has("router.wps", "setpin");
-	$scope.has_showpin = $rpc.$has("router.wps", "showpin");
-	$scope.has_pbc = $rpc.$has("router.wps", "pbc");
-	$scope.has_stapin = $rpc.$has("router.wps", "stapin");
+.controller("wirelessWPSPage", function($scope, $localStorage, $wireless, $rpc, gettext, $tr, $events, $uci){
+	$scope.has_setpin = $rpc.$has("wifix.wps", "setpin");
+	$scope.has_showpin = $rpc.$has("wifix.wps", "showpin");
+	$scope.has_pbc = $rpc.$has("wifix.wps", "pbc");
+	$scope.has_stapin = $rpc.$has("wifix.wps", "stapin");
 	$scope.showExpert = $localStorage.getItem("mode") == "expert";
 	var wps_status_strings = {
 		"-1": $tr(gettext("Disabled")),
@@ -37,12 +37,56 @@ JUCI.app
 		9: $tr(gettext("Overlap"))
 	};
 
-	$scope.updateWps = function(){
+	getActiveIface = function() {
+		var activeIface = null;
+		$scope.wifiIfaces.forEach(function (iface) {
+			if (iface[".frequency"] === "2.4GHz" && activeIface != null)
+				return;
+
+			if (iface[".wps_state"])
+				activeIface = iface;
+		});
+
+		return activeIface;
+	}
+
+	$uci.$sync("wireless").done(function () {
+		$scope.wireless = {a: {}, b: {}};
+		$uci.wireless["@wifi-device"].forEach(function (dev) {
+				$scope.wireless[dev.band.value]["wifi-device"] = dev;
+		});
+
+		$uci.wireless["@wifi-iface"].forEach(function (dev) {
+			if ($scope.wireless.a["wifi-device"][".name"] === dev.device.value) {
+				$scope.wireless.a["wifi-iface"] = dev;
+			}
+			else if ($scope.wireless.b["wifi-device"][".name"] === dev.device.value) {
+				$scope.wireless.b["wifi-iface"] = dev;
+			}
+		});
+	});
+
+	$scope.updateWps = function(iface){
 		if(!$scope.wifiIfaces || !$scope.wifiIfaces.length){
 			$scope.showWps = false;
 		}
 		//setTimeout is needed because ng-change is run before value has changed
-		setTimeout(function(){$scope.showWps = $scope.wifiIfaces.find(function(iface){ return iface.wps_pushbutton.value; }) ? true:false;$scope.$apply();}, 0);
+		setTimeout(function(){
+			$scope.showWps = $scope.wifiIfaces.find(function(iface){
+				return iface[".wps_state"];
+			}) ? true : false;
+			$scope.$apply();
+		}, 0);
+
+		if (!iface)
+			return;
+
+		if (iface[".wps_state"])
+			iface.wps_pushbutton.value = iface.wps_label.value = 0;
+		else {
+			iface.wps_pushbutton.value = 1;
+			iface.wps_label.value = 0;
+		}
 	}
 	
 	$scope.data = {
@@ -57,6 +101,11 @@ JUCI.app
 	
 	$wireless.getInterfaces().done(function(ifaces){
 		$scope.wifiIfaces = ifaces;
+
+		$scope.wifiIfaces.forEach(function(iface) {
+			iface[".wps_state"] = parseInt(iface.wps_pushbutton.value, 10) || parseInt(iface.wps_label.value ? 1 : 0, 10)
+		});
+
 		$scope.updateWps();
 		$scope.$apply();
 	}).fail(function(err){
@@ -66,14 +115,14 @@ JUCI.app
 	$events.subscribe("wps", function(){refresh();});
 	$events.subscribe("wifi.wps", function(){refresh();});
 	function refresh() {
-		$rpc.$call("router.wps", "status").done(function(result){
+		$rpc.$call("wifix.wps", "status").done(function(result){
 			$scope.progress = result.code;
 			$scope.text_status = wps_status_strings[result.code]||$tr(gettext("Unknown"));
 			$scope.$apply();	
 		});
 	}refresh();
 	
-	$rpc.$call("router.wps", "showpin").done(function(data){
+	$rpc.$call("wifix.wps", "showpin").done(function(data){
 		$scope.generatedPIN = data.pin;
 	});
 		
@@ -85,10 +134,15 @@ JUCI.app
 	}
 	$scope.mouseUp = function() {
 		if(!longPress){
-			$rpc.$call("router.wps", "pbc");
+			$rpc.$call("wifix.wps", "pbc");
 			clearTimeout(timeout);
+			var activeIface = getActiveIface();
+			if (!activeIface)
+				return;
+			activeIface.wps_label.value = 0;
+			activeIface.wps_pushbutton.value = 1;
 		}else{
-			$rpc.$call("router.wps", "pbc_client");
+			$rpc.$call("wifix.wps", "pbc_client");
 			$scope.progress = 8;
 			$scope.text_status = wps_status_strings[8];
 			longPress = false;
@@ -96,15 +150,25 @@ JUCI.app
 		}
 	}
 	$scope.onPairUserPIN = function(){
+		if (!$scope.data.userPIN)
+			return;
+
 		var pin = $scope.data.userPIN.replace("-", "").replace(" ", "").match(/\d+/g).join("");
-		$rpc.$call("router.wps", "checkpin", {pin:pin }).done(function(value){
+		$rpc.$call("wifix.wps", "checkpin", {pin:pin }).done(function(value){
 			if(!value) return;
 			if(!value.valid){
 				console.log("invalid wps pin");
 				alert($tr(gettext("Invalid WPS PIN")));
 				return;
 			}
-			$rpc.$call("router.wps", "stapin", { pin: pin });
+
+			$rpc.$call("wifix.wps", "stapin", { pin: pin }).done(function() {
+				var activeIface = getActiveIface();
+				if (!activeIface)
+					return;
+				activeIface.wps_label.value = 1;
+				activeIface.wps_pushbutton.value = 0;
+			});
 		});
 	}
 	
@@ -120,9 +184,9 @@ JUCI.app
 	};
 		
 	$scope.onGeneratePIN = function(){
-		$rpc.$call("router.wps", "genpin").done(function(data){
+		$rpc.$call("wifix.wps", "genpin").done(function(data){
 			if(!data || data.pin == "") return;
-			$rpc.$call("router.wps", "setpin", {pin: data.pin}).done(function(){
+			$rpc.$call("wifix.wps", "setpin", {pin: data.pin}).done(function(){
 				$scope.generatedPIN = data.pin;
 				$scope.$apply();
 			});
@@ -130,6 +194,6 @@ JUCI.app
 	}
 	
 	$scope.onCancelWPS = function(){
-		$rpc.$call("router.wps", "stop");
+		$rpc.$call("wifix.wps", "stop");
 	}
 });

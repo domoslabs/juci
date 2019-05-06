@@ -26,8 +26,10 @@ JUCI.app
 	}
 	$wireless.getInterfaces().done(function(interfaces){
 		$scope.interfaces = interfaces.filter(function(iface){
+			iface[".macfilter_enabled"] = (iface.macfilter.value.indexOf("disable") == -1 ? 1 : 0)
 			return iface.mode && iface.mode.value == "ap";
 		});
+
 		$scope.$apply();
 	}).fail(function(err){
 		console.log("failed to sync config: "+err);

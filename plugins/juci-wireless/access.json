@@ -39,6 +39,18 @@
 				],
 				"wifi.bsd": [
 					"bs_data"
+				],
+				"wifi.wps": [
+					"status",
+					"pbc",
+					"stapin",
+					"pbc_client",
+					"genpin",
+					"checkpin",
+					"setpin",
+					"showpin",
+					"stop"
+
 				]
 			}, 
 			"uci": [
