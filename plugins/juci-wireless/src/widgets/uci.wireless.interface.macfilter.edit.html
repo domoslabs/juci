@@ -1,14 +1,14 @@
 <div>
 	<juci-config-lines>
 		<juci-config-line title="{{'MAC Filtering'|translate}}">
-			<switch ng-model="interface.macfilter.value" class="green"></switch>
+			<switch ng-model="interface['.macfilter_enabled']" class="green" ng-change="switchFilter(interface)"></switch>
 		</juci-config-line>
 	</juci-config-lines>
-	<div ng-show="interface.macfilter.value">
+	<div ng-show="interface['.macfilter_enabled']">
 		<juci-config-lines>
 			<juci-config-line title="{{'Access for listed devices'|translate}}">
 				<div class="btn-group">
-					<button ng-repeat="mode in [[2,'allow','Allow'], [1, 'deny','Deny']]" class="btn btn-default" ng-model="interface.macfilter.value" btn-radio="mode[0]">{{ mode[2] | translate}}</button>
+					<button ng-repeat="mode in [['allow','allow','Allow'], ['deny', 'deny','Deny']]" class="btn btn-default" ng-model="interface.macfilter.value" btn-radio="mode[0]">{{ mode[2] | translate}}</button>
 				</div>
 			</juci-config-line>
 			<juci-config-line title="{{'Currently added devices'|translate}}">

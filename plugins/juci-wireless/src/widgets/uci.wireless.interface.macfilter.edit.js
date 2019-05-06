@@ -71,7 +71,15 @@ JUCI.app
 		}
 		return false;
 	}
-	
+
+	$scope.switchFilter = function(iface) {
+		if (iface[".macfilter_enabled"])
+			iface.macfilter.value = "disable"
+		else {
+			iface.macfilter.value = "deny"
+		}
+	}
+
 	$scope.onDeleteHost = function(host){
 		$scope.maclist = ($scope.maclist||[]).filter(function(x) { 
 			return x.macaddr != host.macaddr; 
