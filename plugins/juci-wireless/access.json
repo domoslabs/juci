@@ -40,7 +40,7 @@
 				"wifi.bsd": [
 					"bs_data"
 				],
-				"wifi.wps": [
+				"wifix.wps": [
 					"status",
 					"pbc",
 					"stapin",
