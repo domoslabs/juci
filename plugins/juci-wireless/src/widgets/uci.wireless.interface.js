@@ -135,21 +135,49 @@ JUCI.app
 
 	$scope.onEncryptionChanged = function(value, oldvalue){
 		if(!$scope.interface) return;
-		console.log(value);
 		switch(value){
 			case "none": {
 				if(oldvalue && value != oldvalue){
-					$juciConfirm.show("WARNING: Disabling encryption on your router will severely degrade your security. Are you sure you want to disable encryption on this interface?").fail(function(){
-						setTimeout(function(){
+					$juciConfirm.show("WARNING: Disabling encryption on your router will severely degrade your security. Are you sure you want to disable encryption on this interface?").done(function() {
+						setTimeout(function () {
+							if (($scope.interface.wps_pushbutton.value || $scope.interface.wps_label.value || $scope.interface.ieee80211r.value)
+								&& !confirm($tr(gettext("Some functions like WPS, 802.11r will not be available when encryption is none or WEP. Are you sure you want to continue?")))) {
+								setTimeout(function () {
+									$scope.interface.encryption.value = oldvalue;
+									$scope.$apply();
+								}, 0);
+							} else {
+								$scope.interface.key.value = "";
+								$scope.interface.wps_pushbutton.value = false;
+								$scope.interface.wps_label.value = false;
+								$scope.interface.ieee80211r.value = 0;
+							}
+						}, 0);
+					}).fail(function () {
+						setTimeout(function () {
 							$scope.interface.encryption.value = oldvalue;
 							$scope.$apply();
-						},0);
+						}, 0);
 					});
+
 				}
+
 				break;
 			}
 			case "wep-open": {
-				$scope.interface.key.value = "";
+				if (($scope.interface.wps_pushbutton.value || $scope.interface.wps_label.value || $scope.interface.ieee80211r.value)
+					&& !confirm($tr(gettext("Some functions like WPS, 802.11r will not be available when encryption is none or WEP. Are you sure you want to continue?")))) {
+					setTimeout(function () {
+						$scope.interface.encryption.value = oldvalue;
+						$scope.$apply();
+					}, 0);
+				} else {
+					$scope.interface.key.value = "";
+					$scope.interface.wps_pushbutton.value = false;
+					$scope.interface.wps_label.value = false;
+					$scope.interface.ieee80211r.value = 0;
+				}
+
 				break;
 			}
 			case "wep-shared": {
