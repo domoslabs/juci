@@ -96,7 +96,7 @@ JUCI.app
 	$scope.progress = 0;
 	
 	$scope.wpsUnlocked = function(interface){
-		return ["none", "wep"].indexOf(interface.encryption.value) === -1 && interface.hidden.value === false;
+		return ["none", "wep-open", "wep-shared"].indexOf(interface.encryption.value) === -1 && interface.hidden.value === false;
 	}
 	
 	$wireless.getInterfaces().done(function(ifaces){
