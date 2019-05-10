@@ -208,6 +208,7 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $lo
 			populateEntry(section);
 			$scope.params.push(section);
 		});
+		$scope.$apply();
 	}).then(function() {
 		reloadLists();
 	});
