@@ -34,7 +34,7 @@ directive('cntlrPage', function () {
 		templateUrl: "/widgets/cntlr-page.html",
 	};
 }).
-controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $localStorage) {
+controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $localStorage, $juciDialog) {
 	$scope.showExpert = $localStorage.getItem("mode") == "expert";
 	$scope.rssiExcl = {};
 	$scope.rssiExcl.unexcluded = [];
@@ -259,6 +259,29 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $lo
 
 	$scope.onAssocApnExclude = function (mac) {
 		onExcludeAp("assocCtrl", "stas", "assocExcl", mac);
+	};
+
+	$scope.update11r = function(val) {
+		if (!$scope.wifiIface) return;
+		if (!val || ($scope.wifiIface.encryption.value.indexOf("wep") === -1 && $scope.wifiIface.encryption.value !== "none")) return;
+		function acknowledge() {
+			var deferred = $.Deferred();
+			$juciDialog.show(null, {
+				title: $tr(gettext("802.11r Encryption")),
+				content: $tr(gettext("802.11r cannot be enabled with encryption set to WEP or None. Change this before enabling 802.11r.")),
+				buttons: [
+					{ label: $tr(gettext("Cancel")), value: "cancel", primary: true },
+				],
+				on_button: function (btn, inst) {
+					inst.close();
+					//deferred.resolve("yes");
+				}
+			});
+
+			return deferred.promise();
+		}
+		acknowledge();
+		$scope.wifiIface.ieee80211r.value = false;
 	};
 
 	function onUnexclude(section, option, container, unexclude, mac) {

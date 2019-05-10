@@ -18,9 +18,9 @@
 					<label></label>
 				</div>
 			</juci-config-line>
-			<juci-config-line title="{{'Enable 802.11r' | translate}}" help="{{'Fast roaming during client hand-off between APs'|translate}}">
+			<juci-config-line title="{{'Enable 802.11r' | translate}}" help="{{'Fast roaming during client hand-off between APs'|translate}}" error="wifiIface.ieee8021rr.error">
 				<div class="checkbox checkbox-info">
-					<input type="checkbox" ng-model="wifiIface.ieee80211r.value" />
+					<input type="checkbox" ng-model="wifiIface.ieee80211r.value" ng-change="update11r(wifiIface.ieee80211r.value)"/>
 					<label></label>
 				</div>
 			</juci-config-line>
