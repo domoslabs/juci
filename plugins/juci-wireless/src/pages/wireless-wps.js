@@ -103,7 +103,7 @@ JUCI.app
 		$scope.wifiIfaces = ifaces;
 
 		$scope.wifiIfaces.forEach(function(iface) {
-			iface[".wps_state"] = parseInt(iface.wps_pushbutton.value, 10) || parseInt(iface.wps_label.value ? 1 : 0, 10)
+			iface[".wps_state"] = iface.wps_pushbutton.value || iface.wps_label.value
 		});
 
 		$scope.updateWps();
@@ -113,7 +113,7 @@ JUCI.app
 	});
 	
 	$events.subscribe("wps", function(){refresh();});
-	$events.subscribe("wifi.wps", function(){refresh();});
+	$events.subscribe("wifix.wps", function(){refresh();});
 	function refresh() {
 		$rpc.$call("wifix.wps", "status").done(function(result){
 			$scope.progress = result.code;
