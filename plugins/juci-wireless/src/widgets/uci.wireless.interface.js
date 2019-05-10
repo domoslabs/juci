@@ -101,13 +101,14 @@ JUCI.app
 		if(!$scope.interface) return;
 		if(value && value != oldvalue){
 			var text = $tr(gettext("If you disable SSID broadcasting, WPS function will be disabled as well. You will need to enable it manually later. Are you sure you want to continue?"));
-			if($scope.interface.wps_pushbutton.value && !confirm(text)){
+			if(($scope.interface.wps_pushbutton.value || $scope.interface.wps_label) && !confirm(text)){
 				setTimeout(function(){
 					$scope.interface.hidden.value = oldvalue;
 					$scope.$apply();
 				},0);
 			} else {
 				$scope.interface.wps_pushbutton.value = false;
+				$scope.interface.wps_label.value = false;
 			}
 		}
 	});
@@ -152,13 +153,14 @@ JUCI.app
 				break;
 			}
 			case "wep-shared": {
-				if($scope.interface.wps_pushbutton.value && !confirm($tr(gettext("WPS will be disabled when using WEP encryption. Are you sure you want to continue?")))){
+				if(($scope.interface.wps_pushbutton.value || $scope.interface.wps_label) && !confirm($tr(gettext("WPS will be disabled when using WEP encryption. Are you sure you want to continue?")))){
 					setTimeout(function(){
 						$scope.interface.encryption.value = oldvalue;
 						$scope.$apply();
 					},0);
 				} else {
 					$scope.interface.wps_pushbutton.value = false;
+					$scope.interface.wps_label.value = false;
 				}
 				break;
 			}
