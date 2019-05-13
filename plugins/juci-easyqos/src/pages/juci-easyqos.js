@@ -1,5 +1,7 @@
 JUCI.app
-.controller("EasyqosPageCtrl", function($scope, $uci, $tr, gettext){
+.controller("EasyqosPageCtrl", function($scope, $uci, $tr, gettext, $network){
+
+	var clients = {};
 
 	$uci.$sync("easy_qos").done(function(){
 		$scope.allRules = $uci.easy_qos["@rule"] || [];
@@ -15,10 +17,23 @@ JUCI.app
 		$scope.$apply();
 	}).fail(function(e){console.log(e);});
 
+	$network.getConnectedClients().done(function (res) {
+		for(var key in res) {
+			var client = res[key];
+			clients[client.macaddr] = client;
+		}
+	});
 
 	$scope.getRuleTitle = function(item){
-		var na = $tr(gettext("N/A"));
-		return String((item.comment.value ||  na));
+		var host = "";
+		/*var port = item.port.value.length ? item.port.value.join(", ") : "All";*/
+		var client = clients[item.macaddr.value];
+
+		if (client)
+			host = client.hostname;
+
+		var str = (host.length ? host : item.macaddr.value.toUpperCase())/* + " (Ports: " + port + ")"*/
+		return str;
 	}
 
 	$scope.onAddRule = function(){

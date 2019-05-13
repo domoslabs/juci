@@ -1,17 +1,9 @@
 <div>
 	<juci-overview-widget title="{{'Easy QoS'|translate}}" href="{{href}}">
-		<!--<juci-config-line ng-repeat="client in allClients" title="{{client.label}}" style="">
-				<input type="checkbox" ng-model="priority" ng-click="togglePrio(client, priority)" />
-		</juci-config-line>-->
-		<div class="row"></div>
-		<div class="col-xs-1"></div>
-		<div class="col-xs-11">
-			<h3 translate><strong>Priority Clients</strong></h3>
-		</div>
 		<div clas="row">
 			<div class="col-xs-1"></div>
 			<div class="col-xs-11">
-			<h4 translate>Select high priority clients.</h4>
+			<h4 translate><strong>Select high priority clients.</strong></h4>
 		</div>
 		<div class="row" style="margin-bottom: 10px;">
 			<div class="col-xs-12">
@@ -26,7 +18,6 @@
 							<div class="row">{{client.ipaddr}}</div>
 						</td>
 						<td style="text-align: right; border: 0px;">
-							<!--<switch class="green" ng-model="client.switch" ng-change="onChange(client)"></switch>-->
 							<div >
 								<!--<div class="checkbox checkbox-info">-->
 								<input type="checkbox" ng-model="client.switch" ng-click="onChange(client)" />
