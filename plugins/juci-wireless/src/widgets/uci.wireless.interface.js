@@ -29,7 +29,7 @@ JUCI.app
 		replace: true,
 		require: "^ngModel"
 	};
-}).controller("WiFiInterfaceController", function($scope, $uci, $tr, gettext, $wireless, $network, $juciConfirm){
+}).controller("WiFiInterfaceController", function($scope, $uci, $tr, gettext, $wireless, $network, $juciConfirm, $juciDialog){
 	$scope.errors = [];
 	$scope.showPassword = true;
 	$wireless.getInterfaces().done(function(interfaces) {
@@ -131,6 +131,30 @@ JUCI.app
 			$scope.ssidwarning = $tr(gettext("Are you sure you want to create a new SSID with the same name and on the same radio? This may result in undefined behaviour!"));
 		else
 			$scope.ssidwarning = null;
+	};
+
+	$scope.update11r = function (val) {
+		if (!$scope.interface) return;
+		if (val || ($scope.interface.encryption.value.indexOf("wep") === -1 && $scope.interface.encryption.value !== "none")) return;
+		function acknowledge() {
+			var deferred = $.Deferred();
+			$juciDialog.show(null, {
+				title: $tr(gettext("802.11r Encryption")),
+				content: $tr(gettext("802.11r cannot be enabled with encryption set to WEP or None. Change this before enabling 802.11r.")),
+				buttons: [
+					{ label: $tr(gettext("Cancel")), value: "cancel", primary: true },
+				],
+				on_button: function (btn, inst) {
+					inst.close();
+					//deferred.resolve("yes");
+				}
+			});
+
+			return deferred.promise();
+		}
+
+		acknowledge();
+		$scope.interface.ieee80211r.value = true;
 	};
 
 	$scope.onEncryptionChanged = function(value, oldvalue){

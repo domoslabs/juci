@@ -19,6 +19,9 @@
 		<juci-config-line title="{{'Maximum Number of Connected Clients'|translate}}">
 			<input type="number" max="128" min="0" ng-model="interface.maxassoc.value" class="form-control"></switch>
 		</juci-config-line>
+		<juci-config-line title="{{'Fast BSS Transition (802.11r)'|translate}}" ng-show="interface['.frequency'] === '5GHz'">
+			<switch name="enabled" ng-model="interface.ieee80211r.value" ng-change="update11r(interface.ieee80211r.value)" class="green"></switch>
+		</juci-config-line>
 		<!--<juci-config-line title="{{'Frequency'|translate}}">
 			<juci-select ng-model="interface.device.value" ng-items="devices" placeholder="Choose Radio"></juci-select>
 		</juci-config-line>-->
