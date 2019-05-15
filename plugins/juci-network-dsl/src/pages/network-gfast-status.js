@@ -52,7 +52,7 @@ JUCI.app
 						columns: [ '', 'Downstream', 'Upstream' ],
 						rows: [
 							[
-								$tr(gettext('Rate (Kbps)')),
+								$tr(gettext('Rate (kbps)')),
 								dslstats.bearers[0].rate_down,
 								dslstats.bearers[0].rate_up
 							]
