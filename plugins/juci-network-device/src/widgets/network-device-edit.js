@@ -74,20 +74,11 @@ JUCI.app
 			return !(dev.name.value.match(re) === null);
 		}
 
-		function do_overwrite_device_name(dev) {
-			let overWrite = false;
+		function do_overwrite_device_name(dev) {			
+			let overWrite = true;
 
-			if (dev === null)
+			if (dev.includes(".") == false && dev.length > 0) {
 				overWrite = false;
-			else if (dev === "")
-				overWrite = true;
-			else if (dev.includes(".") === true) {
-				var tmp = dev.split('.');
-				if (tmp.length != 2)
-					return;
-
-				if (isNaN(tmp[0]) === true && isNaN(tmp[1]) === false)
-					overWrite = true;
 			}
 			return overWrite;
 		}
@@ -145,7 +136,6 @@ JUCI.app
 				$scope.device.priority.$reset_defaults();
 				set_macvlan_device_name($scope.device);
 			} else {
-
 				$scope.conf.untagged = false;
 				if(do_overwrite_device_name($scope.device.name.value))
 					$scope.device.name.value = $scope.device.ifname.value + "." + $scope.device.vid.value;
