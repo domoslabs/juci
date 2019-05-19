@@ -1,0 +1,42 @@
+#!/bin/sh
+
+. /lib/functions.sh
+. /usr/share/libubox/jshn.sh
+
+case "$1" in
+	list)
+		echo '{ "press" : {"name":"str", "long":true}}'
+	;;
+	call)
+		case "$2" in
+			press)
+				read input
+
+				json_load "$input"
+				json_get_var name name ""
+				json_get_var long long "false"
+
+				isbutton=0
+				pressed=0
+
+				[ -n "$name" -a "$(uci -q get buttons.$name)" == "button" ] && isbutton=1
+
+				if [ $isbutton -eq 1 ]; then
+					config_load buttons
+					[ "$long" == "true" ] && hotplug="hotplug_long" || hotplug="hotplug"
+					config_get interface $name $hotplug
+					if [ -n "$interface" ]; then
+						ACTION=add INTERFACE=$interface /sbin/hotplug-call button >/dev/null 2>&1 &
+						pressed=1
+					fi
+				fi
+
+				json_init
+				json_add_boolean "pressed" $pressed
+				json_dump
+				
+			;;
+		esac
+	;;
+esac
+
