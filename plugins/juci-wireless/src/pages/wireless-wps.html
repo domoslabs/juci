@@ -7,12 +7,12 @@
 		<juci-config-section>
 			<juci-config-lines ng-repeat="interface in wifiIfaces track by $index">
 				<juci-config-line title="{{'Enable WPS on'|translate}} {{interface.ssid.value}} ({{interface['.frequency']}}) ({{interface.mode.value.toUpperCase()}})">
-					<switch ng-show="wpsUnlocked(interface)" ng-model="interface['.wps_state']" class="green" ng-change="updateWps(interface)"></switch>
+					<switch ng-show="wpsUnlocked(interface)" ng-model="interface.wps.value" class="green" ng-change="updateWps(interface)"></switch>
 					<strong ng-hide="wpsUnlocked(interface)" translate>Disabled</strong>
 				</juci-config-line>
 			</juci-config-lines>
 		</juci-config-section>
-		<div ng-show="showWps">
+		<div ng-show="showWps == 2">
 			<juci-config-section ng-show="has_pbc">
 				<h2 translate>WPS-PBC: Push Button on Device</h2>
 				<p translate>To pair your device, press Pair. Afterwards, press the corresponding button on the device you wish to connect. Your router will be open for pairing for 2 minutes after you pressed Pair.</p>
@@ -27,10 +27,10 @@
 					<h2 translate>WPS-REG: Router provides PIN</h2>
 					<p translate>Enter the WPS-PIN below on the device you wish to pair.</p>
 					<juci-config-lines>
-						<juci-config-line title="{{'Generated PIN'|translate}}" >
-							<input type="text" class="form-control input-lg"  ng-model="generatedPIN" readonly />
+						<juci-config-line title="{{'Generated PIN'|translate}}">
+							<input type="text" class="form-control input-lg" ng-model="generatedPIN" readonly />
 						</juci-config-line>
-						<juci-config-line title="{{'Generate New PIN'|translate}}" >
+						<juci-config-line title="{{'Generate New PIN'|translate}}">
 							<button class="btn btn-lg btn-default" ng-click="onGeneratePIN()" translate>Generate</button>
 						</juci-config-line>
 					</juci-config-lines>
@@ -40,14 +40,19 @@
 					<p translate>Enter the WPS-PIN provided by the other device here.</p>
 					<juci-config-lines>
 						<juci-config-line title="{{'Enter your device PIN'|translate}}" error="data.pin_error">
-							<input type="text" class="form-control input-lg" ng-model="data.userPIN" ng-change="validPin()" placeholder="{{'Enter your PIN here'|translate}}"/>
+							<input type="text" class="form-control input-lg" ng-model="data.userPIN" ng-change="validPin()"
+								placeholder="{{'Enter your PIN here'|translate}}" />
 						</juci-config-line>
 						<juci-config-line title="{{'Pair (within 2 minutes)'|translate}}">
-							<button class="btn btn-lg btn-default {{(data.valid_wps_pin)?'':'disabled'}}" ng-click="onPairUserPIN()" translate>Pair</button>
+							<button class="btn btn-lg btn-default {{(data.valid_wps_pin)?'':'disabled'}}" ng-click="onPairUserPIN()"
+								translate>Pair</button>
 						</juci-config-line>
 					</juci-config-lines>
 				</juci-config-section>
 			</div>
+		</div>
+		<div ng-show="showWps == 1">
+				<h3>You must apply your changes before changing WPS settings.</h3>
 		</div>
 		<modal title="{{'Attempting to Pair'|translate}}" data-keyboard="false" data-backdrop="static" ng-show="progress === 1 || progress === 8" dismiss-label="Cancel" on-dismiss="onCancelWPS()">
 			<div style="text-align: center;">

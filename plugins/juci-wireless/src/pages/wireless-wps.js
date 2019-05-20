@@ -25,6 +25,8 @@ JUCI.app
 	$scope.has_pbc = $rpc.$has("wifix.wps", "pbc");
 	$scope.has_stapin = $rpc.$has("wifix.wps", "stapin");
 	$scope.showExpert = $localStorage.getItem("mode") == "expert";
+	$scope.wifiIfaces = [];
+
 	var wps_status_strings = {
 		"-1": $tr(gettext("Disabled")),
 		0: $tr(gettext("Initializing")),
@@ -40,11 +42,13 @@ JUCI.app
 	getActiveIface = function() {
 		var activeIface = null;
 		$scope.wifiIfaces.forEach(function (iface) {
+
 			if (iface[".frequency"] === "2.4GHz" && activeIface != null)
 				return;
 
-			if (iface[".wps_state"])
+			if (iface.wps.value)
 				activeIface = iface;
+
 		});
 
 		return activeIface;
@@ -67,65 +71,69 @@ JUCI.app
 	});
 
 	$scope.updateWps = function(iface){
-		if(!$scope.wifiIfaces || !$scope.wifiIfaces.length){
-			$scope.showWps = false;
-		}
+		if(!$scope.wifiIfaces || !$scope.wifiIfaces.length)
+			$scope.showWps = 0;
+
 		//setTimeout is needed because ng-change is run before value has changed
-		setTimeout(function(){
-			$scope.showWps = $scope.wifiIfaces.find(function(iface){
-				return iface[".wps_state"];
-			}) ? true : false;
+		setTimeout(function () {
+			var highest = 0;
+
+			$scope.wifiIfaces.forEach(function (iface) {
+				if (iface.wps.value && !iface.wps.is_dirty)
+					highest = 2;
+				else if (iface.wps.value && iface.wps.is_dirty && highest != 2)
+					highest = 1;
+			});
+			$scope.showWps = highest;
 			$scope.$apply();
 		}, 0);
 
 		if (!iface)
-			return;
-
-		if (iface[".wps_state"])
-			iface.wps_pushbutton.value = iface.wps_label.value = 0;
-		else {
-			iface.wps_pushbutton.value = 1;
-			iface.wps_label.value = 0;
-		}
+			return
+		iface.wps_pushbutton.value = iface.wps_label.value = !iface.wps.value;
 	}
-	
+
 	$scope.data = {
 		userPIN: "",
 		valid_wps_pin: ""
 	}
 	$scope.progress = 0;
-	
+
 	$scope.wpsUnlocked = function(interface){
 		return ["none", "wep-open", "wep-shared"].indexOf(interface.encryption.value) === -1 && interface.hidden.value === false;
 	}
-	
+
 	$wireless.getInterfaces().done(function(ifaces){
 		$scope.wifiIfaces = ifaces;
+		var activeIface = getActiveIface();
 
-		$scope.wifiIfaces.forEach(function(iface) {
-			iface[".wps_state"] = iface.wps_pushbutton.value || iface.wps_label.value
+		$rpc.$call("wifix.wps", "showpin", { vif: activeIface.ifname.value }).done(function (data) {
+			$scope.generatedPIN = data.pin;
 		});
+
+		refresh();
 
 		$scope.updateWps();
 		$scope.$apply();
 	}).fail(function(err){
 		console.log("failed to sync config: "+err);
 	});
-	
+
 	$events.subscribe("wps", function(){refresh();});
-	$events.subscribe("wifix.wps", function(){refresh();});
+	$events.subscribe("wifi.wps", function(){refresh();});
 	function refresh() {
-		$rpc.$call("wifix.wps", "status").done(function(result){
+		var activeIface = getActiveIface();
+		if (!activeIface)
+			return;
+
+		$rpc.$call("wifix.wps", "status", { vif: activeIface.ifname.value }).done(function(result){
 			$scope.progress = result.code;
 			$scope.text_status = wps_status_strings[result.code]||$tr(gettext("Unknown"));
-			$scope.$apply();	
+			$scope.$apply();
 		});
-	}refresh();
-	
-	$rpc.$call("wifix.wps", "showpin").done(function(data){
-		$scope.generatedPIN = data.pin;
-	});
-		
+	};
+
+
 	var longPress = false;
 	var timeout;
 	$scope.wpsButtonColor = "default"
@@ -133,16 +141,15 @@ JUCI.app
 		timeout = setTimeout(function(){longPress = true; $scope.wpsButtonColor = "success"; $scope.$apply();}, 5000);
 	}
 	$scope.mouseUp = function() {
+		var activeIface = getActiveIface();
+		if (!activeIface)
+			return;
+
 		if(!longPress){
-			$rpc.$call("wifix.wps", "pbc");
+			$rpc.$call("wifix.wps", "pbc", { vif: activeIface.ifname.value });
 			clearTimeout(timeout);
-			var activeIface = getActiveIface();
-			if (!activeIface)
-				return;
-			activeIface.wps_label.value = 0;
-			activeIface.wps_pushbutton.value = 1;
 		}else{
-			$rpc.$call("wifix.wps", "pbc_client");
+			$rpc.$call("wifix.wps", "pbc_client", { vif: activeIface.ifname.value });
 			$scope.progress = 8;
 			$scope.text_status = wps_status_strings[8];
 			longPress = false;
@@ -150,6 +157,9 @@ JUCI.app
 		}
 	}
 	$scope.onPairUserPIN = function(){
+		var activeIface = getActiveIface();
+		if (!activeIface)
+			return;
 		if (!$scope.data.userPIN)
 			return;
 
@@ -157,43 +167,50 @@ JUCI.app
 		$rpc.$call("wifix.wps", "checkpin", {pin:pin }).done(function(value){
 			if(!value) return;
 			if(!value.valid){
-				console.log("invalid wps pin");
 				alert($tr(gettext("Invalid WPS PIN")));
 				return;
 			}
 
-			$rpc.$call("wifix.wps", "stapin", { pin: pin }).done(function() {
-				var activeIface = getActiveIface();
-				if (!activeIface)
-					return;
-				activeIface.wps_label.value = 1;
-				activeIface.wps_pushbutton.value = 0;
-			});
+			$rpc.$call("wifix.wps", "stapin", { pin: pin, vif: activeIface.ifname.value});
 		});
 	}
-	
+
 	$scope.validPin = function(){
 		var pin = $scope.data.userPIN;
 		if(pin.match(/^[0-9]{4}([- ]?[0-9]{4})?$/)){
 			$scope.data.valid_wps_pin = true;
 			$scope.data.pin_error = null;
-		}else{
+		} else {
 			$scope.data.valid_wps_pin = false;
 			$scope.data.pin_error = $tr(gettext("Invalid format! WPS PIN must be ether 4 or 8 digits alternatively 8 digits with a space or dash in the middle"));
 		}
 	};
-		
+
 	$scope.onGeneratePIN = function(){
+		var activeIface = getActiveIface();
+		if (!activeIface)
+			return;
+
 		$rpc.$call("wifix.wps", "genpin").done(function(data){
+			//$scope.generatedPIN = data.pin;
 			if(!data || data.pin == "") return;
-			$rpc.$call("wifix.wps", "setpin", {pin: data.pin}).done(function(){
+			$rpc.$call("wifix.wps", "setpin", {pin: data.pin, vif: activeIface.ifname.value}).done(function(){
 				$scope.generatedPIN = data.pin;
 				$scope.$apply();
 			});
 		});
-	}
-	
+	};
+
+	$scope.onRegisterPIN = function () {
+		var activeIface = getActiveIface();
+		if (!activeIface)
+			return;
+
+		$rpc.$call("wifix.wps", "setpin", { pin: $scope.generatedPIN, vif: activeIface.ifname.value });
+	};
+
 	$scope.onCancelWPS = function(){
 		$rpc.$call("wifix.wps", "stop");
+		$scope.progress = 0;
 	}
 });
