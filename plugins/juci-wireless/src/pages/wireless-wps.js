@@ -90,7 +90,7 @@ JUCI.app
 
 		if (!iface)
 			return
-		iface.wps_pushbutton.value = iface.wps_label.value = !iface.wps.value;
+
 	}
 
 	$scope.data = {
@@ -105,15 +105,19 @@ JUCI.app
 
 	$wireless.getInterfaces().done(function(ifaces){
 		$scope.wifiIfaces = ifaces;
+
+		$scope.updateWps();
 		var activeIface = getActiveIface();
+		if (!activeIface) {
+			$scope.$apply();
+			return null;
+		}
 
 		$rpc.$call("wifix.wps", "showpin", { vif: activeIface.ifname.value }).done(function (data) {
 			$scope.generatedPIN = data.pin;
 		});
 
 		refresh();
-
-		$scope.updateWps();
 		$scope.$apply();
 	}).fail(function(err){
 		console.log("failed to sync config: "+err);
