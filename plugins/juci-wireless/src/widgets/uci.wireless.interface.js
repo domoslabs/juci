@@ -101,14 +101,13 @@ JUCI.app
 		if(!$scope.interface) return;
 		if(value && value != oldvalue){
 			var text = $tr(gettext("If you disable SSID broadcasting, WPS function will be disabled as well. You will need to enable it manually later. Are you sure you want to continue?"));
-			if(($scope.interface.wps_pushbutton.value || $scope.interface.wps_label) && !confirm(text)){
+			if(($scope.interface.wps.value) && !confirm(text)){
 				setTimeout(function(){
 					$scope.interface.hidden.value = oldvalue;
 					$scope.$apply();
 				},0);
 			} else {
-				$scope.interface.wps_pushbutton.value = false;
-				$scope.interface.wps_label.value = false;
+				$scope.interface.wps.value = false;
 			}
 		}
 	});
@@ -164,7 +163,7 @@ JUCI.app
 				if(oldvalue && value != oldvalue){
 					$juciConfirm.show("WARNING: Disabling encryption on your router will severely degrade your security. Are you sure you want to disable encryption on this interface?").done(function() {
 						setTimeout(function () {
-							if (($scope.interface.wps_pushbutton.value || $scope.interface.wps_label.value || $scope.interface.ieee80211r.value)
+							if (($scope.interface.wps.value || $scope.interface.ieee80211r.value)
 								&& !confirm($tr(gettext("Some functions like WPS, 802.11r will not be available when encryption is none or WEP. Are you sure you want to continue?")))) {
 								setTimeout(function () {
 									$scope.interface.encryption.value = oldvalue;
@@ -172,8 +171,7 @@ JUCI.app
 								}, 0);
 							} else {
 								$scope.interface.key.value = "";
-								$scope.interface.wps_pushbutton.value = false;
-								$scope.interface.wps_label.value = false;
+								$scope.interface.wps.value = false;
 								$scope.interface.ieee80211r.value = 0;
 							}
 						}, 0);
@@ -189,7 +187,7 @@ JUCI.app
 				break;
 			}
 			case "wep-open": {
-				if (($scope.interface.wps_pushbutton.value || $scope.interface.wps_label.value || $scope.interface.ieee80211r.value)
+				if (($scope.interface.wps.value || $scope.interface.ieee80211r.value)
 					&& !confirm($tr(gettext("Some functions like WPS, 802.11r will not be available when encryption is none or WEP. Are you sure you want to continue?")))) {
 					setTimeout(function () {
 						$scope.interface.encryption.value = oldvalue;
@@ -197,22 +195,20 @@ JUCI.app
 					}, 0);
 				} else {
 					$scope.interface.key.value = "";
-					$scope.interface.wps_pushbutton.value = false;
-					$scope.interface.wps_label.value = false;
+					$scope.interface.wps.value = false;
 					$scope.interface.ieee80211r.value = 0;
 				}
 
 				break;
 			}
 			case "wep-shared": {
-				if(($scope.interface.wps_pushbutton.value || $scope.interface.wps_label) && !confirm($tr(gettext("WPS will be disabled when using WEP encryption. Are you sure you want to continue?")))){
+				if(($scope.interface.wps.value) && !confirm($tr(gettext("WPS will be disabled when using WEP encryption. Are you sure you want to continue?")))){
 					setTimeout(function(){
 						$scope.interface.encryption.value = oldvalue;
 						$scope.$apply();
 					},0);
 				} else {
-					$scope.interface.wps_pushbutton.value = false;
-					$scope.interface.wps_label.value = false;
+					$scope.interface.wps.value = false;
 				}
 				break;
 			}
