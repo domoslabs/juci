@@ -9,6 +9,7 @@
 			"ubus": {
 				"juci.ddns": [ 
 					"providers",
+					"providers_ipv6",
 					"status"
 				]
 			}

@@ -72,17 +72,34 @@ JUCI.app
 			});
 			$scope.$apply();
 		});
-		$rpc.$call("juci.ddns", "providers", {}).done(function(result){
-			if(!result || !result.providers) return;
-			$scope.allServices = result.providers.map(function(p){ return { label: p, value: p }});
-			var cur = $scope.allServices.find(function(service){
-				return service.value === ddns.service_name.value;
-			});
-			if(!cur && ddns.service_name.value)
-				$scope.enterDNSProvider = true;
+		$scope.onUpdateIpv6 = function(new_val, old_val){
+			if(!$scope.ddns || !$scope.ddns.use_ipv6) return;
+			// this happens before it switches so it is still the old value here
+			if(!$scope.ddns.use_ipv6.value)
+				updateProviderList("providers_ipv6");
 			else
-				$scope.enterDNSProvider = false;
-			$scope.$apply();
-		});
+				updateProviderList("providers");
+		}
+
+		function updateProviderList(func){
+			$rpc.$call("juci.ddns", func, {}).done(function(result){
+				if(!result || !result.providers && !result.providers_ipv6) return;
+				if(result.providers)
+					$scope.allServices = result.providers.map(function(p){ return { label: p, value: p }});
+				else if(result.providers_ipv6)
+					$scope.allServices = result.providers_ipv6.map(function(p){ return { label: p, value: p }});
+				var cur = $scope.allServices.find(function(service){
+					return service.value === ddns.service_name.value;
+				});
+				if(!cur && ddns.service_name.value)
+					$scope.enterDNSProvider = true;
+				else
+					$scope.enterDNSProvider = false;
+				$scope.$apply();
+			});
+		}
+
+		provider_func = ddns.use_ipv6.value ? "providers_ipv6" : "providers";
+		updateProviderList(provider_func);
 	}, false);
 });

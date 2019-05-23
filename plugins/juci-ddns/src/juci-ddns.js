@@ -39,5 +39,6 @@ UCI.ddns.$registerSectionType("service", {
 	"ip_network": 			{ dvalue: "", type: String },
 	"ip_script": 			{ dvalue: "", type: String },
 	"ip_url": 				{ dvalue: "", type: String },
-	"update_url": 			{ dvalue: "", type: String }
+	"update_url": 			{ dvalue: "", type: String },
+	"use_ipv6":		{ dvalue: 0, type: Boolean }
 });

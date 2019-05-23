@@ -21,6 +21,9 @@
 		<juci-config-line title="{{'Script Path'|translate}}" ng-show="ddns.ip_source.value == 'script'">
 			<input type="text" class="form-control" placeholder="{{'Enter path to script on router'|translate}}" ng-model="ddns.ip_script.value"/>
 		</juci-config-line>
+		<juci-config-line title="{{'Use IPv6'|translate}}">
+			<switch ng-model="ddns.use_ipv6.value" ng-change="onUpdateIpv6()" class="green"></switch>
+		</juci-config-line>
 		<juci-config-line title="{{'Provider'|translate}}">
 			<div ng-show="enterDNSProvider">
 				<input type="text" class="form-control" ng-model="ddns.service_name.value" placeholder="{{'For example'}} noip.com"/>
