@@ -7,15 +7,7 @@
 					"status"
 				],
 				"router.wps": [
-					"genpin",
-					"pbc",
-					"pbc_client",
-					"setpin",
-					"showpin",
-					"stapin",
-					"checkpin",
-					"status",
-					"stop"
+					"pbc_client"
 				], 
 				"juci.wireless": [
 					"set_credentials",

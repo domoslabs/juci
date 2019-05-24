@@ -44,8 +44,8 @@ JUCI.app
 	});
 })
 .controller("overviewWidgetWiFi", function($scope, $rpc, $uci, $tr, gettext, $juciDialog, $events, $wireless, $config){
-	$scope.has_pbc = $rpc.$has("router.wps", "pbc");
-	$scope.has_showpin = $rpc.$has("router.wps", "showpin");
+	$scope.has_pbc = $rpc.$has("wifix.wps", "pbc");
+	$scope.has_showpin = $rpc.$has("wifix.wps", "showpin");
 	$scope.href = $config.getWidgetLink("overviewWidget00WiFi");
 	var longPress = false;
 	var timeout;
@@ -55,7 +55,7 @@ JUCI.app
 	}
 	$scope.mouseUp = function() {
 		if(!longPress){
-			$rpc.$call("router.wps", "pbc");
+			$rpc.$call("wifix.wps", "pbc");
 			clearTimeout(timeout);
 		}else{
 			$rpc.$call("router.wps", "pbc_client");
@@ -90,7 +90,7 @@ JUCI.app
 	}
 
 	function update_wps(){
-		$rpc.$call("router.wps", "status").done(function(result){
+		$rpc.$call("wifix.wps", "status").done(function(result){
 			$scope.wps.progress = result.code;
 			$scope.wps.showModal = (result.code === 1 || result.code === 8);
 			$scope.wps.text_status = wps_status_strings[result.code]||$tr(gettext("Unknown"));
@@ -144,7 +144,7 @@ JUCI.app
 		}).fail(function(){ def.reject(); });
 		return def;
 	}
-	$rpc.$call("router.wps", "showpin").done(function(result){
+	$rpc.$call("wifix.wps", "showpin").done(function(result){
 		$scope.wps.pin = result.pin;
 		$scope.$apply();
 	});
@@ -168,6 +168,6 @@ JUCI.app
 		});
 	});
 	$scope.onCancelWPS = function(){
-		$rpc.$call("router.wps", "stop");
+		$rpc.$call("wifix.wps", "stop");
 	}
 });
