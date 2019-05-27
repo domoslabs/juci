@@ -6,9 +6,21 @@ JUCI.app
 	var devices;
 	JUCI.interval.repeat("update-wireless-interfaces", 5000, function(next){update(); next();});
 
+	function deviceToFreq(item) {
+		if (!item)
+			return;
+
+		if (item.$info.radio)
+			return item[".frequency"];
+		else if (devices) {
+			return devices.filter(function(device) {return device[".name"] === item.device.value})[0].band.value === "a" ? "5GHz" : "2.4GHz";
+		}
+		return "-";
+	}
+
 	$scope.getItemTitle = function(item){
 		if(!item.ifname.value) return item.ssid.value;
-		return (item.ssid.value + ' @ ' + item.ifname.value + ' (' + item[".frequency"] + ')');
+		return (item.ssid.value + ' @ ' + item.ifname.value + ' (' + deviceToFreq(item) + ')');
 	}
 
 	function update(){
@@ -23,7 +35,7 @@ JUCI.app
 				iface.$statusList = [
 					{ label:$tr(gettext("SSID")), value:(iface.$info.ssid || iface.ssid.value)},
 					{ label:$tr(gettext("BSSID")), value:(iface.$info.bssid || $tr(gettext("unknown")))},
-					{ label:$tr(gettext("Encryption")), value:(iface.$info.encryption || $tr(gettext("unknown")))},
+					{ label: $tr(gettext("Encryption")), value: (((!iface.$info.radio || iface.disabled.value ) ? iface.encryption.value.toUpperCase() : (iface.$info.encryption) || $tr(gettext("unknown"))))},
 					{ label:$tr(gettext("Mode")), value: String(iface.mode.value || "").toUpperCase()},
 					{ label:$tr(gettext("Device")), value: String(iface.device.value || "").toUpperCase()}
 				];
