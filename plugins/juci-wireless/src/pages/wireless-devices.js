@@ -25,10 +25,10 @@ JUCI.app
 				if(!dev || !dev.$info)
 					return dev;
 				dev.$statusList = [
-					{ label: $tr(gettext("Bandwidth")), value: dev.$info.bandwidth || $tr(gettext("N/A")) },
-					{ label: $tr(gettext("Channel")), value: dev.$info.channel || $tr(gettext("N/A")) },
-					{ label: $tr(gettext("Noise")), value: dev.$info.noise + $tr(gettext("dBm")) || $tr(gettext("N/A")) },
-					{ label: $tr(gettext("Rate")), value: dev.$info.rate || $tr(gettext("N/A")) },
+					{ label: $tr(gettext("Bandwidth")), value: (!dev.$info.isup ? "N/A" : dev.$info.bandwidth || $tr(gettext("N/A")) )},
+					{ label: $tr(gettext("Channel")), value: (!dev.$info.isup ? "N/A" : dev.$info.channel || $tr(gettext("N/A")) )},
+					{ label: $tr(gettext("Noise")), value: (!dev.$info.isup ? "N/A" : dev.$info.noise + $tr(gettext("dBm")) || $tr(gettext("N/A")) )},
+					{ label: $tr(gettext("Rate")), value: (!dev.$info.isup ? "N/A" : dev.$info.rate || $tr(gettext("N/A")) )},
 				];
 				set_buttons(dev);
 				return dev;
