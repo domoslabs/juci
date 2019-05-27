@@ -130,7 +130,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 					var radio = radios[dev[".name"]];
 					if(radio){
 						dev.$info = radio;
-						dev[".frequency"] = radio.frequency || ((dev.band.value === 'a') ? $tr(gettext("5GHz")) : $tr(gettext("2.4GHz")));
+						dev[".frequency"] = (radio.isup ? radio.frequency : ((dev.band.value === 'a') ? $tr(gettext("5GHz")) : $tr(gettext("2.4GHz"))));
 					}else{
 						dev[".frequency"] = (dev.band.value === 'a') ? $tr(gettext("5GHz")) : $tr(gettext("2.4GHz"));
 					}
