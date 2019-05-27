@@ -78,7 +78,7 @@ JUCI.app
 	};
 
 	$scope.onChangeModeConfirm = function(){
-		if(!$scope.data || !$scope.setup || !$scope.setup.curmode) return;
+		if(!$scope.data || !$scope.data.length ||  !$scope.setup || !$scope.setup.curmode) return;
 		if($scope.data.selected === $scope.setup.curmode.value) return;
 		$juciConfirm.show($tr(gettext("Changing netmode will reset your configuration completely to match that netmode. Do you want to continue?"))).done(function(value){
 			setNetmode($scope.data.selected);
