@@ -20,7 +20,7 @@
 					<button class="btn btn-default {{wifiStatus.wps.value?'':'disabled'}}" style="margin-bottom:5px;" title="{{'(within 2 minutes)'|translate}}" ng-mouseup="mouseUp()" ng-mousedown="mouseDown()">{{'Pair'|translate}}</button>
 				</div>
 			</div>
-			<div class="col-xs-12" ng-show="has_showpin">
+			<div class="col-xs-12" ng-show="has_showpin && wps.pin">
 				<table class="table table-condensed">
 					<tr>
 						<td><strong translate>WPS pin:</strong></td>
