@@ -11,14 +11,14 @@
 				<dropdown-multi-select input-model="upstreamInterface.all" output-model="upstreamInterface.selected"
 							       button-label="name" item-label="name" tick-property="selected"
 							       on-item-click="onItemClick(data)" on-select-all="onSelectAll(data)"
-							       on-select-none="onSelectNone(data)">
+							       on-select-none="onSelectNone(data)" on-reset="onReset('upstream')">
 				</dropdown-multi-select>
 			</juci-config-line>
 			<juci-config-line title="{{'Downstream'|translate}}">
 				<dropdown-multi-select input-model="downstreamInterface.all" output-model="downstreamInterface.selected"
 								 button-label="name" item-label="name" tick-property="selected"
 								 on-item-click="onItemClick(data)" on-select-all="onSelectAll(data)"
-								 on-select-none="onSelectNone(data)">
+								 on-select-none="onSelectNone(data)" on-reset="onReset('downstream')">
 				</dropdown-multi-select>
 			</juci-config-line>
 		</juci-config-lines>
