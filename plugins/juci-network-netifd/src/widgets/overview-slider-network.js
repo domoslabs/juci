@@ -169,6 +169,7 @@ JUCI.app
 					$tr(gettext("Software Version")) + ": " + (system.firmware || $tr(gettext("N/A"))) + "<br />" +
 					$tr(gettext("Filesystem Type")) + ": " + (system.filesystem || $tr(gettext("N/A"))) + "<br />",
 			size: 60,
+			image: "",
 			shape: "image",
 		});
 		var clients, lan_nets, wan_nets, radios, all_nets = [];
@@ -215,161 +216,169 @@ JUCI.app
 					next();
 				}).fail(function(e){next({ "Error": e });});
 			}], function(err){
-				if(err){ self.def.reject(); return;}
-				var up = false;
-				async.eachSeries(wan_nets, function(wan, callback){
-					if(!wan){ callback(); return; }
-					if(wan.up) up = true;
-					var title;
-					if(!wan.device){
-						title = wan.up ? $tr(gettext("Unknown Working interface")): wan.pending ? $tr(gettext("PENDING")):$tr(gettext("DOWN"));
-						addNode(wan, title);
-						callback();
-					}else if(wan.device.match("eth[0-9]")){
-						$rpc.$call("router.port", "status", { "port": wan.device.match("eth[0-9]")[0] }).done(function(data){
-							title = getWanTitle("eth", wan, data);
-							addNode(wan, title);
-						}).fail(function(e){console.log(e);}).always(function(){callback();});
-					}else if(wan.device.match(/[ap]tm/)){
-						$rpc.$call("dsl", "status").done(function(data){
-							if(!data || !data.line || data.line.length < 1 || !data.line[0].channel || data.line[0].channel.length < 1){ callback(); return;}
-							title = getWanTitle("dsl", wan, data.line[0]);
-							addNode(wan, title);
-						}).fail(function(e){console.log(e);}).always(function(){callback();});
-					}else if(wan.device.match("wwan")){
-						title = getWanTitle("wwan", wan);
-						addNode(wan, title);
-						callback();
-					}else if(wan.device.match("br-wan")){
-						title = getWanTitle("bridge", wan);
-						addNode(wan, title);
-						callback();
-					}else{
-						title = getWanTitle("unknown", wan);
-						addNode(wan, title);
-						callback();
-					}
-				}, function(){
-					nodes.find(function(node){ return node.id === ".root";}).image = up ? "/img/Box_Green.png" : "/img/Box_Red.png";
-				});
-				async.eachSeries(lan_nets, function(item, callback){
-					if(!item || !item.interface){ callback(); return;}
-					$rpc.$call("router.network", "ports", { "network": item.interface }).done(function(data){
-						$rpc.$call("router.network", "clients", {}).done(function (clients) {
-							var num_cli = 0;
-							var num_ports = 0;
-							Object.keys(data).map(function(dev){
-								num_ports++;
-								if(data[dev].hosts && data[dev].hosts.length){
-									data[dev].hosts.map(function(host){ if(host.connected) num_cli ++;});
-								}
-							});
-
-							if(num_ports === 0) return;
-							var node = {
-								id: count++,
-								label: myString(String(item.interface).toUpperCase()),
-								title: item.interface + '<br />' + $tr(gettext("Number of Clients")) + ": " + num_cli,
-								image: getIcon("lan", item),
-								size: 30,
-								shape: "image",
+				async.series([
+					function(next) {
+						if(err){ next(); return;}
+						var up = false;
+						async.eachSeries(wan_nets, function(wan, callback){
+							if(!wan){ callback(); return; }
+							if(wan.up) up = true;
+							var title;
+							if(!wan.device){
+								title = wan.up ? $tr(gettext("Unknown Working interface")): wan.pending ? $tr(gettext("PENDING")):$tr(gettext("DOWN"));
+								addNode(wan, title);
+								callback();
+							}else if(wan.device.match("eth[0-9]")){
+								$rpc.$call("router.port", "status", { "port": wan.device.match("eth[0-9]")[0] }).done(function(data){
+									title = getWanTitle("eth", wan, data);
+									addNode(wan, title);
+								}).fail(function(e){console.log(e);}).always(function(){callback();});
+							}else if(wan.device.match(/[ap]tm/)){
+								$rpc.$call("dsl", "status").done(function(data){
+									if(!data || !data.line || data.line.length < 1 || !data.line[0].channel || data.line[0].channel.length < 1){ callback(); return;}
+									title = getWanTitle("dsl", wan, data.line[0]);
+									addNode(wan, title);
+								}).fail(function(e){console.log(e);}).always(function(){callback();});
+							}else if(wan.device.match("wwan")){
+								title = getWanTitle("wwan", wan);
+								addNode(wan, title);
+								callback();
+							}else if(wan.device.match("br-wan")){
+								title = getWanTitle("bridge", wan);
+								addNode(wan, title);
+								callback();
+							}else{
+								title = getWanTitle("unknown", wan);
+								addNode(wan, title);
+								callback();
 							}
-							nodes.push(node);
-							edges.push( { from: ".root", to: node.id, width: 3 });
-							Object.keys(data).map(function(device){
-								var dev = data[device];
-								var radio;
-								if (device.match("ra"))
-									radio = radios[device.replace(/[0-9]/g, '0')];
-								else if (device.match("wlan"))
-									radio = radios[device.substring(0,5)];
-								else
-									radio = radios[device.substring(0,3)];
-								dev.frequency = (radio)? radio.frequency : $tr(gettext('unknown'));
-								dev.down = radio && !radio.isup;
-								var dev_node = {
-									id: count++,
-									label: myString(String(dev.name ? String(dev.name).toUpperCase() : dev.ssid)),
-									title: getPortTitle(dev, device, radio),
-									size: 30,
-									image: device.match("eth")?getIcon("eth",dev):getIcon("wl", dev),
-									shape: "image"
-								}
-								nodes.push(dev_node);
-								edges.push( { from: node.id, to: dev_node.id, width: 3 });
-								if(dev.hosts && dev.hosts.length){
-									dev.hosts.map(function(host){
-										if(!host.connected || host.repeated) return;
-
-										function getHostTitle(host){
-											var title = (host.hostname || String(host.ipaddr).toUpperCase() || String(host.macaddr).toUpperCase()) + '<br />';
-											[
-												["ipaddr", $tr(gettext("IP Address")), ""],
-												["ip6addr", $tr(gettext("IPv6 Address")), ""],
-												["macaddr", $tr(gettext("MAC Address")), ""],
-												["rssi", $tr(gettext("RSSI")), " dBm"],
-												["snr", $tr(gettext("SNR")), ""],
-												["tx_rate", $tr(gettext("TX Rate")), " Mbit/s"],
-												["rx_rate", $tr(gettext("RX Rate")), " Mbit/s"],
-												["linkspeed", $tr(gettext("Linkspeed")), ""],
-												["active_connections", $tr(gettext("Active Connections")), ""]
-											].map(function(val){
-												if(host[val[0]] != undefined)
-													if(val[0].match("rate"))
-														title += val[1] + ': ' + Math.floor(parseInt(host[val[0]])/1000) + val[2] + '<br />';
-													else if(val[0].match("macaddr"))
-														title += val[1] + ': ' + String(host[val[0]]).toUpperCase() + val[2] + '<br />';
-													else
-														title += val[1] + ': ' + host[val[0]] + val[2] + '<br />';
-											});
-											return title;
+						}, function(){
+							nodes.find(function(node){ return node.id === ".root";}).image = up ? "/img/Box_Green.png" : "/img/Box_Red.png";
+							next();
+						});
+					},
+					function(next) {
+						async.eachSeries(lan_nets, function(item, callback){
+							if(!item || !item.interface){ callback(); return;}
+							$rpc.$call("router.network", "ports", { "network": item.interface }).done(function(data){
+								$rpc.$call("router.network", "clients", {}).done(function (clients) {
+									var num_cli = 0;
+									var num_ports = 0;
+									Object.keys(data).map(function(dev){
+										num_ports++;
+										if(data[dev].hosts && data[dev].hosts.length){
+											data[dev].hosts.map(function(host){ if(host.connected) num_cli ++;});
 										}
+									});
 
-										var host_node = {
-											id: JSON.stringify(host) + count++,
-											label: myString(String(host.hostname || String(host.ipaddr).toUpperCase() || String(host.macaddr).toUpperCase())),
-											title: getHostTitle(host),
+									if(num_ports === 0) return;
+									var node = {
+										id: count++,
+										label: myString(String(item.interface).toUpperCase()),
+										title: item.interface + '<br />' + $tr(gettext("Number of Clients")) + ": " + num_cli,
+										image: getIcon("lan", item),
+										size: 30,
+										shape: "image",
+									}
+									nodes.push(node);
+									edges.push( { from: ".root", to: node.id, width: 3 });
+									Object.keys(data).map(function(device){
+										var dev = data[device];
+										var radio;
+										if (device.match("ra"))
+											radio = radios[device.replace(/[0-9]/g, '0')];
+										else if (device.match("wlan"))
+											radio = radios[device.substring(0,5)];
+										else
+											radio = radios[device.substring(0,3)];
+										dev.frequency = (radio)? radio.frequency : $tr(gettext('unknown'));
+										dev.down = radio && !radio.isup;
+										var dev_node = {
+											id: count++,
+											label: myString(String(dev.name ? String(dev.name).toUpperCase() : dev.ssid)),
+											title: getPortTitle(dev, device, radio),
 											size: 30,
-											image: getIcon("cl", host),
+											image: device.match("eth")?getIcon("eth",dev):getIcon("wl", dev),
 											shape: "image"
 										}
+										nodes.push(dev_node);
+										edges.push( { from: node.id, to: dev_node.id, width: 3 });
+										if(dev.hosts && dev.hosts.length){
+											dev.hosts.map(function(host){
+												if(!host.connected || host.repeated) return;
 
-										nodes.push(host_node);
-										edges.push( { from: dev_node.id, to: host_node.id, width: 3, dashes: (host.wireless) } );
-										if(host.assoclist && host.assoclist.length){
-											host.assoclist.map(function(asc){
-												for (var key in clients) {
-													client = clients[key];
-													if (client.macaddr === asc.macaddr && client.active_connections != undefined)
-														asc.active_connections = client.active_connections;
-												};
+												function getHostTitle(host){
+													var title = (host.hostname || String(host.ipaddr).toUpperCase() || String(host.macaddr).toUpperCase()) + '<br />';
+													[
+														["ipaddr", $tr(gettext("IP Address")), ""],
+														["ip6addr", $tr(gettext("IPv6 Address")), ""],
+														["macaddr", $tr(gettext("MAC Address")), ""],
+														["rssi", $tr(gettext("RSSI")), " dBm"],
+														["snr", $tr(gettext("SNR")), ""],
+														["tx_rate", $tr(gettext("TX Rate")), " Mbit/s"],
+														["rx_rate", $tr(gettext("RX Rate")), " Mbit/s"],
+														["linkspeed", $tr(gettext("Linkspeed")), ""],
+														["active_connections", $tr(gettext("Active Connections")), ""]
+													].map(function(val){
+														if(host[val[0]] != undefined)
+															if(val[0].match("rate"))
+																title += val[1] + ': ' + Math.floor(parseInt(host[val[0]])/1000) + val[2] + '<br />';
+															else if(val[0].match("macaddr"))
+																title += val[1] + ': ' + String(host[val[0]]).toUpperCase() + val[2] + '<br />';
+															else
+																title += val[1] + ': ' + host[val[0]] + val[2] + '<br />';
+													});
+													return title;
+												}
 
-												var assoc_node = {
-													id: JSON.stringify(asc) + count ++,
-													label: myString(String(asc.hostname || String(host.ipaddr).toUpperCase() || String(host.macaddr).toUpperCase())),
-													title: getHostTitle(asc),
+												var host_node = {
+													id: JSON.stringify(host) + count++,
+													label: myString(String(host.hostname || String(host.ipaddr).toUpperCase() || String(host.macaddr).toUpperCase())),
+													title: getHostTitle(host),
 													size: 30,
-													image: getIcon("asc", (asc.rssi)?{wireless:true, rssi:asc.rssi}:host), // get the icon from the repeaters values!!
+													image: getIcon("cl", host),
 													shape: "image"
 												}
 
+												nodes.push(host_node);
+												edges.push( { from: dev_node.id, to: host_node.id, width: 3, dashes: (host.wireless) } );
+												if(host.assoclist && host.assoclist.length){
+													host.assoclist.map(function(asc){
+														for (var key in clients) {
+															client = clients[key];
+															if (client.macaddr === asc.macaddr && client.active_connections != undefined)
+																asc.active_connections = client.active_connections;
+														};
 
-												nodes.push(assoc_node);
-												edges.push( { from: host_node.id, to: assoc_node.id, width: 3, dashes: true } );
+														var assoc_node = {
+															id: JSON.stringify(asc) + count ++,
+															label: myString(String(asc.hostname || String(host.ipaddr).toUpperCase() || String(host.macaddr).toUpperCase())),
+															title: getHostTitle(asc),
+															size: 30,
+															image: getIcon("asc", (asc.rssi)?{wireless:true, rssi:asc.rssi}:host), // get the icon from the repeaters values!!
+															shape: "image"
+														}
+
+
+														nodes.push(assoc_node);
+														edges.push( { from: host_node.id, to: assoc_node.id, width: 3, dashes: true } );
+													});
+												}
 											});
 										}
 									});
-								}
-							});
-						})
-					}).always(function(){callback();});
-				}, function(){
-					self.def.resolve(nodes, edges)
-					self.def = undefined;
+								})
+							}).always(function(){callback();});
+						}, function() {
+							next();
+						});
+					}], function(){
+						self.def.resolve(nodes, edges)
+						self.def = undefined;
 				});
 			}
 		);
-		return self.def
+		return self.def;
 		function addNode(wan, title){
 			if(!full) return;
 			if(!title) return;
