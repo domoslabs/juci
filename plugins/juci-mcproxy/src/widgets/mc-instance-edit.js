@@ -36,20 +36,35 @@ JUCI.app
 						$scope.upstreamInterface = {
 							all: []
 						};
+
+						/* add all @device sections */
 						$scope.upstreamInterface.all = $uci.network["@device"].map(function(x){
 								return { name: String(x[".name"])+"("+String(x.name.value)+")", value: x.name.value,
 										selected: !!instance.upstream.value.find(function(dl)
 														{ return dl === x.name.value})};
 						});
 
+						/* add whatever is already in config, assuming it is not in device section */
 						instance.upstream.value.forEach(function(ifname) {
 							if (!$scope.upstreamInterface.all.length ||
-									$scope.upstreamInterface.all.find(function(x) {return ifname !== x.value}))
+									!$scope.upstreamInterface.all.filter(function(x) {return ifname === x.value}).length)
 								$scope.upstreamInterface.all.push({
 									name: ifname, value: ifname,
 									selected: true
 								});
 						})
+
+						/* add whatver is under section 'wan' option 'ifname' */
+						$uci.network.wan.ifname.value.split(' ').forEach(function (ifname) {
+							if (!$scope.upstreamInterface.all.length ||
+								!$scope.upstreamInterface.all.filter(function (x) {return ifname === x.value }).length)
+								$scope.upstreamInterface.all.push({
+									name: ifname, value: ifname,
+									selected: false
+								});
+						})
+
+						/* create copies for on-reset, cannot use [...] because old ecma version? */
 						ucopy = instance.upstream.value.filter(function() {return true;})
 						dcopy = instance.downstream.value.filter(function () { return true; })
 						$scope.$apply();
