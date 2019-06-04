@@ -143,6 +143,7 @@ JUCI.app
 						])
 					})
 				})
+				$scope.$apply();
 			});
 		});
 	})
