@@ -99,6 +99,7 @@ JUCI.app
 	];
 
 	var mcast = new $uci.validators.IP4MulticastAddressValidator;
+	var ip4range = new UCI.validators.IPAddressAndIPCIDRValidator
 	var ipv6 = new $uci.validators.IP6AddressValidator;
 	var ip6range = new $uci.validators.IP6CIDRValidator;
 
@@ -106,14 +107,14 @@ JUCI.app
 		if (!ip)
 			return;
 
-		var er = [mcast.validate({ value: ip }), ipv6.validate({ value: ip }), ip6range.validate({ value: ip })].filter(function (x) { return x !== null; })
+		var er = [mcast.validate({ value: ip }), ipv6.validate({ value: ip }), ip6range.validate({ value: ip }), ip4range.validate({ value: ip })].filter(function (x) { return x !== null; })
 
 		if ($scope.mcpd.igmp_mcast_snoop_exceptions.value.includes(ip)) {
 			$scope.McastIpErr = $tr(gettext("Address has already been added!"));
 			return;
 		}
 
-		if (er.length === 3) {
+		if (er.length === 4) {
 			$scope.McastIpErr = $tr(gettext("Invalid multicast addresses!"));
 			return;
 		}
