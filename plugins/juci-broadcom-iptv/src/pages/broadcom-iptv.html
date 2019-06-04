@@ -55,7 +55,30 @@
 				</juci-config-line>
 				<juci-config-line title="{{ 'IGMP snooping interfaces' | translate }}">
 					<dropdown-multi-select input-model="networks.lan" output-model="networks.selected_lan" 
-						button-label="name" item-label="name" tick-property="ticked"></dropdown-mult-select>
+						button-label="name" item-label="name" tick-property="ticked"></dropdown-multi-select>
+				</juci-config-line>
+				<juci-config-line title="{{'Snooping Exceptions'|translate}}">
+					<div class="col-xs-12 form-group" ng-repeat="entry in mcpd.igmp_mcast_snoop_exceptions.value track by $index">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" ng-disabled="true" ng-model="entry" />
+						</div>
+						<div class="col-sm-2">
+							<button style="margin-right:0px;" class="btn btn-default pull-right" ng-click="onRemoveIp(entry, $index)"><i
+									class="fa fa-trash-o"></i></button>
+						</div>
+					</div>
+					<div class="col-xs-12 form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" ng-model="McastIp"
+								placeholder="{{'Multicast Address'|translate}}" />
+							<juci-error value="McastIpErr" />
+						</div>
+						<div class="col-sm-2">
+							<button style="margin-right:0px;" class="btn btn-default pull-right"
+								ng-click="onAddIp(McastIp, $index)">Add</button>
+						</div>
+					</div>
+				</juci-config-line>
 			</juci-config-lines>
 		</juci-config-section>
 	</div>

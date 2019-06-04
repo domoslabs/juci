@@ -35,5 +35,6 @@ UCI.mcpd.$registerSectionType("mcpd", {
 	"igmp_dscp_mark":			{ dvalue: "", type: String },
 	"igmp_lan_to_lan_multicast":		{ type: Boolean },
 	"igmp_join_immediate":			{ type: Boolean },
-	"mld_proxy_enable":			{ dvalue: false, type: Boolean }
+	"mld_proxy_enable":			{ dvalue: false, type: Boolean },
+	"igmp_mcast_snoop_exceptions": { dvalue: [], type: Array}
 });

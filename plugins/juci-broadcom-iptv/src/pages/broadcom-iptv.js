@@ -19,10 +19,21 @@
 
 JUCI.app
 .controller("PageBroadcomIptv", function($scope, $tr, $uci, gettext, $network){
+	var arrayEquals = function (a1, a2) {
+		var i = a1.length;
+		if (i != a2.length)
+			return false;
+		while (i--) {
+			if (a1[i] !== a2[i]) return false;
+		}
+		return true
+	}
+
 	$scope.networks = {
 		selected_wan: [],
 		selected_lan: []
 	};
+	var ecopy = [];
 	$uci.$sync("mcpd").done(function(){
 		$scope.loaded = true; 
 		if(!$uci.mcpd.mcpd) {
@@ -30,6 +41,7 @@ JUCI.app
 			return; 
 		}
 		$scope.mcpd = $uci.mcpd.mcpd;
+		ecopy = $scope.mcpd.igmp_mcast_snoop_exceptions.value.filter(function () { return true; });
 		var proxy_interfaces = $scope.mcpd.igmp_proxy_interfaces.value.split(" ");
 		var snooping_interfaces = $scope.mcpd.igmp_snooping_interfaces.value.split(" ");
 		$network.getAdapters().done(function(devs){
@@ -85,4 +97,39 @@ JUCI.app
 		{ label: $tr(gettext("Standard")),	value:1 },
 		{ label: $tr(gettext("Blocking")),	value:2 }
 	];
+
+	var mcast = new $uci.validators.IP4MulticastAddressValidator;
+	var ipv6 = new $uci.validators.IP6AddressValidator;
+	var ip6range = new $uci.validators.IP6CIDRValidator;
+
+	$scope.onAddIp = function (ip, index) {
+		if (!ip)
+			return;
+
+		var er = [mcast.validate({ value: ip }), ipv6.validate({ value: ip }), ip6range.validate({ value: ip })].filter(function (x) { return x !== null; })
+
+		if ($scope.mcpd.igmp_mcast_snoop_exceptions.value.includes(ip)) {
+			$scope.McastIpErr = $tr(gettext("Address has already been added!"));
+			return;
+		}
+
+		if (er.length === 3) {
+			$scope.McastIpErr = $tr(gettext("Invalid multicast addresses!"));
+			return;
+		}
+
+		$scope.mcpd.igmp_mcast_snoop_exceptions.value.push(ip);
+
+		$scope.McastIpErr = null;
+		$scope.mcpd.igmp_mcast_snoop_exceptions.is_dirty = !arrayEquals($scope.mcpd.igmp_mcast_snoop_exceptions.value, ecopy);
+	}
+
+	$scope.onRemoveIp = function (item, index) {
+		if (!item) return;
+		console.log("item", item);
+		$scope.mcpd.igmp_mcast_snoop_exceptions.value = $scope.mcpd.igmp_mcast_snoop_exceptions.value.filter(function(exception) {console.log("exception", exception,);return item !== exception })
+		$scope.mcpd.igmp_mcast_snoop_exceptions.is_dirty = !arrayEquals($scope.mcpd.igmp_mcast_snoop_exceptions.value, ecopy);
+	}
+
+
 }); 
