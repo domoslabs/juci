@@ -34,7 +34,7 @@ JUCI.app
 		$scope.exception = []
 
 		if(Object.keys($scope.blockTable).length > 0) {
-			blockCpy = [...$scope.blockTable.entries.value];
+			blockCpy = $scope.blockTable.entries.value.filter(function() {return true;});
 			$scope.update = $scope.blockTable.entries.value.map(function () { return true; });
 			$scope.exception = $scope.blockTable.entries.value.map(function(e){
 				return e.replace('(*|', '').replace(')','');
