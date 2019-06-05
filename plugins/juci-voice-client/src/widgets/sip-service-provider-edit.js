@@ -16,8 +16,6 @@ JUCI.app
 	$rpc.$call("voice.asterisk", "platform", {}).done(function(data) {
 		console.log(data);
 		$scope.platform = data.platform;
-		$scope.lineoffset = data.lineoffset;
-		$scope.chanoffset = data.chanoffset;
 		$scope.$apply();
 	}).fail(function() {
 		console.error("Could not get platform.");
@@ -35,10 +33,10 @@ JUCI.app
 		$scope.selected_lines = $scope.model.call_lines.value.split(" ").map(function(x) {
 			var name = String(x);
 			if(name.match(/^[0-9]$/)) {
-				return $scope.platform + (parseInt(name) + $scope.chanoffset);
+				return $scope.platform + (parseInt(name));
 			} else {
 				var number = name.split("/").pop();
-				return name.toLowerCase().substring(0, x.length-2) + (parseInt(number) + $scope.chanoffset);
+				return name.toLowerCase().substring(0, x.length-2) + (parseInt(number));
 			}
 		});
 		$scope.lines = $uci.voice_client["@tel_line"].map(function(x){
@@ -52,7 +50,7 @@ JUCI.app
 	});
 	$scope.onLineChange = function(){
 		$scope.model.call_lines.value = $scope.lines.filter(function(x){return x.checked}).map(function(x) {
-			return x.value.toUpperCase().slice(0, -1) + "/" + (parseInt(x.value.toUpperCase().slice(-1)) + $scope.lineoffset);
+			return (parseInt(x.value.toUpperCase().slice(-1)));
 		}).join(" ");
 	};
 	$scope.codecs = {};
