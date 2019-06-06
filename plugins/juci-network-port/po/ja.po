@@ -11,94 +11,94 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.2.1\n"
 
-# plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.js
+# plugins/juci-network-ethernet/src/pages/page-network-ethernet-phy.js
 msgid "Port Speed"
 msgstr "ポート速度"
 
-# plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.js
+# plugins/juci-network-ethernet/src/pages/page-network-ethernet-phy.js
 msgid "None"
 msgstr "なし"
 
-# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+# plugins/juci-network-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Full auto-negotiation"
 msgstr "オートネゴシエーション"
 
-# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+# plugins/juci-network-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Max 100Mb auto-negotiation, full duplex"
 msgstr "100M 全二重オートネゴシエーション"
 
-# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+# plugins/juci-network-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Max 100Mb auto-negotiation, half duplex"
 msgstr "100M 半二重オートネゴシエーション"
 
-# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+# plugins/juci-network-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Max 10Mb auto-negotiation, full duplex"
 msgstr "10M 全二重オートネゴシエーション"
 
-# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+# plugins/juci-network-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Max 10Mb auto-negotiation, half duplex"
 msgstr "10M 半二重オートネゴシエーション"
 
-# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+# plugins/juci-network-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Only 100Mb, full duplex"
 msgstr "全二重100M"
 
-# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+# plugins/juci-network-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Only 100Mb, half duplex"
 msgstr "半二重100M"
 
-# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+# plugins/juci-network-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Only 10Mb, full duplex"
 msgstr "全二重10M"
 
-# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+# plugins/juci-network-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Only 10Mb, half duplex"
 msgstr "半二重10M"
 
-# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+# plugins/juci-network-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Disabled"
 msgstr "無効"
 
-# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+# plugins/juci-network-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Only 1000Mb"
 msgstr "1Gのみ"
 
-# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+# plugins/juci-network-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Only 100Mb"
 msgstr "100Mのみ"
 
-# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.html
+# plugins/juci-network-ethernet/src/widgets/network-device-ethernet-port-edit.html
 msgid "Port speed"
 msgstr "ポート速度"
 
-# plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.html
+# plugins/juci-network-ethernet/src/widgets/network-device-ethernet-port-edit.html
 msgid "Pause frames"
 msgstr "PAUSEフレーム"
 
-# plugins/juci-broadcom-ethernet/src/widgets/overview.ethernet.small.html
+# plugins/juci-network-ethernet/src/widgets/overview.ethernet.small.html
 msgid "Ethernet"
 msgstr "イーサネット"
 
-# plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
+# plugins/juci-network-ethernet/src/pages/page-network-ethernet-phy.html
 msgid "Ethernet Ports"
 msgstr "イーサネットポート"
 
-# plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
+# plugins/juci-network-ethernet/src/pages/page-network-ethernet-phy.html
 msgid "internet.ethernet.phy.info"
 msgstr " "
 
-# plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
+# plugins/juci-network-ethernet/src/pages/page-network-ethernet-phy.html
 msgid "Fiber Ports"
 msgstr "光ポート"
 
-# plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
+# plugins/juci-network-ethernet/src/pages/page-network-ethernet-phy.html
 msgid "Uplink port"
 msgstr "アップリンクポート"
 
-# plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
+# plugins/juci-network-ethernet/src/pages/page-network-ethernet-phy.html
 msgid "This is used to configure the ethernet port as internet uplink."
 msgstr "このポートはUp Linkに設定されています"
 
-# plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
+# plugins/juci-network-ethernet/src/pages/page-network-ethernet-phy.html
 msgid "menu-network-ethernet-port-title"
 msgstr "イーサネット"

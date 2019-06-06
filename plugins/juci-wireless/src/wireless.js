@@ -71,9 +71,9 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 					type: "wireless"
 				});
 			});
-			// set type to wireless for devices having names starting with wl (Broadcom) or ra (Mediatek)
+			// set type to wireless for devices having names starting with wl or wlan or ra
 			adapters.forEach(function(dev){
-				if(dev.device && (dev.device.indexOf("wl") == 0 || dev.device.indexOf("ra") == 0)) dev.type = "wireless";
+				if(dev.device && (dev.device.indexOf("wl") == 0 || dev.device.indexOf("wlan") == 0 || dev.device.indexOf("ra") == 0)) dev.type = "wireless";
 			});
 			def.resolve();
 		}).fail(function(){

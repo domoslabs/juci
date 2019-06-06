@@ -1,7 +1,7 @@
 JUCI Webgui for Embedded Routers
 --------------------------------
 
-JUCI is a JavaScript-based web interface for broadband routers running iopsys/OpenWRT.
+JUCI is a JavaScript-based web interface for broadband routers running iopsysWrt/OpenWrt.
 
 JUCI is built with html5, angularjs and bootstrap:
 
@@ -16,7 +16,7 @@ What is JUCI?
 
 If offers you the following:
 
-* Extremely resource-efficient for your device - your router only needs to run the core functions (which can be written in C!) and the gui itself is running entirely inside the client's browser). You router only computes and sends the minimum information necessary.
+* Extremely resource-efficient for your device - your router only needs to run the core functions (which can be written in C!) and the GUI itself is running entirely inside the client's browser). You router only computes and sends the minimum information necessary.
 * Full mobile support
 * Easy to work with - the code uses angular.js and html5, making it extremely easy to add new gui elements to the gui.
 * Full control and flexibility - yet many ready-made components: allowing you to pick yourself which level you want to develop on. There are no restrictions to the look and feel of your gui.
@@ -37,9 +37,7 @@ src-git-full juci https://dev.iopsys.eu/iopsys/juci.git
 ./scripts/feeds update juci
 ./scripts/feeds install -f -p juci -a
 
-- select juci core, inteno theme and plugins under JUCI menu in menuconfig
-  (NOTE: some plugins conflict with eachother so you can not select
-  juci-broadcom-wl and juci-openwrt-wireless at the same time).
+- select juci core, iopsys theme and plugins under JUCI menu in menuconfig
 
 For example, you could append this to your .config and then do make defconfig:
 

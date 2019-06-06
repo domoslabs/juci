@@ -22,7 +22,7 @@
 		}
 	},
 	"user-admin": {
-		"description": "Broadcom ethernet admin functions",
+		"description": "Firewall admin functions",
 		"read": {
 			"juci": {
 				"capabilities": [

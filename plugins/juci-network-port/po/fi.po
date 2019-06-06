@@ -11,11 +11,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.10\n"
 
-# /home/jamu/GIT/juci/plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.js
+# /home/jamu/GIT/juci/plugins/juci-network-ethernet/src/pages/page-network-ethernet-phy.js
 msgid "Port Speed"
 msgstr "Portin nopeus"
 
-# /home/jamu/GIT/juci/plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.js
+# /home/jamu/GIT/juci/plugins/juci-network-ethernet/src/pages/page-network-ethernet-phy.js
 msgid "None"
 msgstr "Ei mitään"
 
@@ -49,11 +49,11 @@ msgstr "Vain 10Mb, vuorosuuntainen"
 msgid "Disabled"
 msgstr "Pois käytöstä"
 
-# /home/jamu/GIT/juci/plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+# /home/jamu/GIT/juci/plugins/juci-network-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Only 1000Mb"
 msgstr "Vain 1000Mb"
 
-# /home/jamu/GIT/juci/plugins/juci-broadcom-ethernet/src/widgets/network-device-ethernet-port-edit.js
+# /home/jamu/GIT/juci/plugins/juci-network-ethernet/src/widgets/network-device-ethernet-port-edit.js
 msgid "Only 100Mb"
 msgstr "Vain 100Mb"
 
@@ -72,29 +72,29 @@ msgstr "Ethernet portit"
 msgid "internet.ethernet.phy.info"
 msgstr "Ethernet porttien konfigurointi"
 
-# /home/jamu/GIT/juci/plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
+# /home/jamu/GIT/juci/plugins/juci-network-ethernet/src/pages/page-network-ethernet-phy.html
 msgid "Fiber Ports"
 msgstr "Kuituportit"
 
-# /home/jamu/GIT/juci/plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
+# /home/jamu/GIT/juci/plugins/juci-network-ethernet/src/pages/page-network-ethernet-phy.html
 msgid "Uplink port"
 msgstr "Internetportti"
 
-# /home/jamu/GIT/juci/plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
+# /home/jamu/GIT/juci/plugins/juci-network-ethernet/src/pages/page-network-ethernet-phy.html
 msgid "This is used to configure the ethernet port as internet uplink."
 msgstr "Tätä porttia käytetään Internet-porttina"
 
-msgid "menu-page-broadcom-ethernet-phy-title"
+msgid "menu-page-network-ethernet-phy-title"
 msgstr "Ethernet"
 
-# /home/jamu/GIT/juci/plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
-msgid "page-broadcom-ethernet-phy-title"
+# /home/jamu/GIT/juci/plugins/juci-network-ethernet/src/pages/page-network-ethernet-phy.html
+msgid "page-network-ethernet-phy-title"
 msgstr "Ethernet"
 
 #~ msgid "This will be the port that will be used to configure the physical ethernet port as upling port for routing out to the internet."
 #~ msgstr "Tätä porttia käytetään Internetporttina"
 
-# /home/jari/GIT/IOPSYS/juci/plugins/juci-broadcom-ethernet/src/pages/page-broadcom-ethernet-phy.html
+# /home/jari/GIT/IOPSYS/juci/plugins/juci-network-ethernet/src/pages/page-network-ethernet-phy.html
 #~ msgid "This device will be used in a bridge"
 #~ msgstr "Liitäntää käytetään sillatussa yhteydessä."
 
