@@ -19,6 +19,7 @@ JUCI.app
 				value: x[".name"]
 			}
 		});  
+		$scope.allSipAccounts.push({label:$tr(gettext("None")), value: "" });
 		$scope.$apply(); 
 	}); 
 	$scope.vads = [
