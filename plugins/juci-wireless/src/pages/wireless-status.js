@@ -54,7 +54,7 @@ JUCI.app
 				.always(function(){ next(); });
 			},
 			function(next){
-				$wireless.getConnectedClients().done(function(cls){
+				$wireless.getDirectConnectedClients().done(function(cls){
 					$scope.clients = cls;
 					cls.map( function(c){
 						var rssi_per_antenna;

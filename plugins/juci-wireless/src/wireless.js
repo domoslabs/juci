@@ -121,6 +121,48 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 		return def.promise();
 	}
 
+	Wireless.prototype.getDirectConnectedClients = function () {
+		var def = $.Deferred();
+		var wlclients = directClis = [];
+		$rpc.$call("router.wireless", "stas").done(function (clients) {
+			$rpc.$call("router.network", "clients", { "family": 6 }).done(function (cl6) {
+				wlclients = Object.keys(clients).map(function (c) { return clients[c]; }).map(function (client) {
+					Object.keys(cl6).map(function (c6) { return cl6[c6]; }).map(function (client6) {
+						if (client.macaddr === client6.macaddr) {
+							client.ip6addr = client6.ip6addr;
+						}
+					});
+					return client;
+				});
+			}).done(function () {
+				$rpc.$call("router.network", "clients").done(function (clients) {
+					for (var key in clients) {
+						directClis = directClis.concat(wlclients.filter(function (wlclient) {
+							if (clients[key].macaddr === wlclient.macaddr) {
+								wlclient.ipaddr = clients[key].ipaddr;
+								wlclient.hostname = clients[key].hostname;
+								wlclient.dhcp = clients[key].dhcp;
+								return true;
+							}
+
+							return false;
+						}))
+					}
+				}).done(function () {
+					def.resolve(directClis);
+				}).fail(function () {
+					def.reject();
+				})
+			}).fail(function () {
+				def.reject();
+			});
+		}).fail(function () {
+			def.reject();
+		});
+
+		return def.promise();
+	}
+
 	// returns radio devices
 	Wireless.prototype.getDevices = function(){
 		var deferred = $.Deferred();
