@@ -99,7 +99,7 @@ JUCI.app
 	];
 
 	var mcast = new $uci.validators.IP4MulticastAddressValidator;
-	var ip4range = new UCI.validators.IPAddressAndIPCIDRValidator
+	var ip4range = new UCI.validators.IP4MulticastCIDRValidator;
 	var ipv6 = new $uci.validators.IP6AddressValidator;
 	var ip6range = new $uci.validators.IP6CIDRValidator;
 
