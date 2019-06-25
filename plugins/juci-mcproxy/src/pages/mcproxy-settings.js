@@ -28,7 +28,7 @@ JUCI.app
 		$scope.mcproxy = $uci.mcproxy['mcproxy'];
 		$scope.allInstances = $uci.mcproxy["@instance"] || [];
 
-		$scope.blockTable = $uci.mcproxy.blocked || {};
+		$scope.blockTable = $uci.mcproxy.blocked || {"entries": { value: []}};
 		$scope.update = [];
 		$scope.blockBehaviour = $uci.mcproxy['blockrule'] || {};
 		$scope.exception = []
