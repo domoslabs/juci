@@ -384,6 +384,17 @@
 		}
 	};
 
+	function IP4MulticastCIDRValidator(){
+		this.validate = function(field){
+			if(!field.value || field.value == "") return null;
+			var error = JUCI.$tr(gettext("Address is not a valid  Multicast address"));
+			var ipv4 = new IP4CIDRValidator();
+			if(ipv4.validate(field) != null) return error;
+			if(parseInt(field.value.split(".")[0]) > 239 || parseInt(field.value.split(".")[0]) < 224) return error;
+			return null;
+		}
+	};
+
 	function IP4UnicastAddressValidator(){
 		this.validate = function(field){
 			var error = JUCI.$tr(gettext("IP Address is not a valid Unicast address!"));
@@ -1445,6 +1456,7 @@
 		IP4AddressValidator: IP4AddressValidator,
 		IP4NetmaskValidator: IP4NetmaskValidator,
 		IP4MulticastAddressValidator: IP4MulticastAddressValidator,
+		IP4MulticastCIDRValidator: IP4MulticastCIDRValidator,
 		IP4CIDRValidator: IP4CIDRValidator,
 		IP4UnicastAddressValidator: IP4UnicastAddressValidator,
 		QOSMarkValidator: QOSMarkValidator,
