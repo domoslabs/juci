@@ -6,7 +6,8 @@
 				"voice.asterisk": [
 					"status",
 					"call_log",
-					"platform"
+					"platform",
+					"supported_countries"
 				],
 				"juci.system": [
 					"reboot"

@@ -8,7 +8,7 @@ JUCI.app
 		replace: true,
 		controller: "telAdvancedCtrl"
 	};
-}).controller("telAdvancedCtrl", function($scope, $uci, $tr, gettext, $network, $rpc, $juciDialog, languages){
+}).controller("telAdvancedCtrl", function($scope, $uci, $tr, gettext, $network, $rpc, $juciDialog){
 	$uci.$sync(["voice_client"]).done(function(){
 		$scope.tel = $uci.voice_client.TEL;
 		$scope.$apply();
@@ -17,7 +17,14 @@ JUCI.app
 		{ label: $tr(gettext("Fixed")),		value: "fixed" },
 		{ label: $tr(gettext("Adaptive")),	value: "adaptive" }
 	];
-	$scope.languages = languages;
+
+	$rpc.$call("voice.asterisk", "supported_countries", {}).done(function (countries) {
+		$scope.languages = countries.countries.map(function(country) {
+			return { label: $tr(gettext(country.country)), value: country.code};
+		})
+		$scope.$apply();
+	});
+
 	$scope.on_language_change = function(){
 		setTimeout(function(){
 			$juciDialog.show("reboot-dialog", {
