@@ -14,7 +14,7 @@ JUCI.app
 })
 .controller("firewallClientPortMappingCtrl", function($scope, $uci, $firewall, $tr, gettext, $rpc, $juciConfirm){
 	$scope.ProtocolTypes = [
-		{ label: $tr(gettext("TCP + UDP")), value: "tcp udp" },
+		{ label: $tr(gettext("TCP + UDP")), value: "tcpudp" },
 		{ label: $tr(gettext("TCP")), value: "tcp" },
 		{ label: $tr(gettext("UDP")), value: "udp" }
 	];
