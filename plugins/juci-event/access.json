@@ -14,5 +14,23 @@
 				"system-report"
 			]
 		}
+	},
+	"user-admin": {
+		"read": {
+			"juci": {
+				"capabilities": [
+					"can-download-system-report"
+				]
+			}
+		}
+	},
+	"user-support": {
+		"read": {
+			"juci": {
+				"capabilities": [
+					"can-download-system-report"
+				]
+			}
+		}
 	}
 }

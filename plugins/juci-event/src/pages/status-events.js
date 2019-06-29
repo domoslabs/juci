@@ -39,6 +39,7 @@ JUCI.app
 	var log = {
 		autoRefresh : true
 	};
+	$scope.has_capability = $rpc.$has_capability;
 	$scope.report = {
 		"show_button" : true,
 		"error" : null,
