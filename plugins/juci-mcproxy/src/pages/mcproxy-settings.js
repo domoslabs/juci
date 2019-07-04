@@ -28,7 +28,7 @@ JUCI.app
 		$scope.mcproxy = $uci.mcproxy['mcproxy'];
 		$scope.allInstances = $uci.mcproxy["@instance"] || [];
 
-		$scope.blockTable = $uci.mcproxy.blocked || {"entries": { value: []}};
+		$scope.blockTable = $uci.mcproxy.blocked || {};
 		$scope.update = [];
 		$scope.blockBehaviour = $uci.mcproxy['blockrule'] || {};
 		$scope.exception = []
@@ -111,17 +111,22 @@ JUCI.app
 		}
 
 		$scope.McastIpErr = null;
-
 		// Create uci segments if not present
 		if (Object.keys($scope.blockTable).length == 0) {
 			console.log("create block table!");
 			$uci.mcproxy.$create({
 				".type": "table",
 				".name": "blocked",
-				"name": "blocked"
-			}).done(function () {
-				$uci.$save();
+				"name": "blocked",
+				"entries": []
+			}).done(function (res) {
+				$scope.blockTable = res;
+			}).done(function() {
+				pushClient(ip);
+				$scope.$apply();
 			});
+		} else {
+			pushClient(ip);
 		}
 
 		if (Object.keys($scope.blockBehaviour).length == 0 && $scope.allInstances.length) {
@@ -134,14 +139,9 @@ JUCI.app
 				"section": "upstream",
 				"interface": $scope.allInstances[0].upstream.value,
 				"instance": $scope.allInstances[0].name.value,
-				"entries": []
 			}).done(function () {
-				$uci.$save();
-			}).done(function() {
-				pushClient(ip);
-			});
-		} else {
-			pushClient(ip);
+				$scope.$apply();
+			})
 		}
 	}
 

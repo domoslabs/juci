@@ -42,7 +42,7 @@ JUCI.app
 					}
 					return true;
 				}
-			});	 
+			});
 		}, 0);
 	};
 });
