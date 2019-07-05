@@ -185,6 +185,7 @@ JUCI.app
 					if(!w.device)
 						type = $tr(gettext("Unknown"));
 					else if(w.device.match(/atm/)) type = $tr(gettext("ADSL"));
+					else if(w.device.match(/nas/)) type = $tr(gettext("ADSL"));
 					else if(w.device.match(/ptm/)) type = $tr(gettext("VDSL"));
 					else if(w.device.match(/wwan/)) type = $tr(gettext("WWAN"));
 					if(w.device && w.device.match("eth[0-9].[0-9]") || w.device.match("br-")){
