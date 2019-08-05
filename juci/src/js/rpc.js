@@ -125,7 +125,9 @@
 			else return RPC_SESSION_ID;
 		},
 		$user: function(){
-			return RPC_USER;
+			if (self.$session && self.$session.data && self.$session.data.username)
+				return self.$session.data.username;
+			return "";
 		},
 		$isLoggedIn: function(){
 			return RPC_SESSION_ID !== RPC_DEFAULT_SESSION_ID;
