@@ -176,6 +176,10 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 					}else{
 						dev[".frequency"] = (dev.band.value === 'a') ? $tr(gettext("5GHz")) : $tr(gettext("2.4GHz"));
 					}
+
+					/* intel workaround if radio is down */
+					if (!radio.isup)
+						radio.frequency = dev[".frequency"];
 					return dev;
 				});
 				deferred.resolve(devices);
@@ -200,10 +204,30 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 					$uci.wireless.$mark_for_reload(); //sometime ifname is not adde fast enough
 				}
 				$rpc.$call("router.wireless", "status", {"vif": iface.ifname.value}).done(function(data){
-					iface[".frequency"] = ((data.frequency && data.frequency === 5)?'5GHz':'2.4GHz');
+					//iface[".frequency"] = ((data.frequency && data.frequency === 5)?'5GHz':'2.4GHz');
 					iface.$info = data;
 				}).fail(function(e){ er.push(e);})
-				.always(function(){next();});
+				.always(function(){
+
+					/* workaround due to status not giving correct frequency if the interface is down */
+					$rpc.$call("router.wireless", "radios").done(function(radios){
+						$uci.wireless["@wifi-device"].forEach(function(dev){
+							if (dev[".name"] !== iface.ifname.value)
+								return;
+
+							var radio = radios[iface.ifname.value];
+
+							if(radio)
+								iface[".frequency"] = (radio.isup ? radio.frequency : ((dev.band.value === 'a') ? $tr(gettext("5GHz")) : $tr(gettext("2.4GHz"))));
+							else
+								iface[".frequency"] = (dev.band.value === 'a') ? $tr(gettext("5GHz")) : $tr(gettext("2.4GHz"));
+
+						});
+					}).fail(function(){
+						deferred.reject("ubus call router.wireless radios was not found");
+					}).always(function() {next();});
+				})
+
 			},
 			function(){
 				//if(er.length) we still want to continue deferred.reject(er);

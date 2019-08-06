@@ -100,8 +100,21 @@ JUCI.app
 	$scope.progress = 0;
 
 	$scope.wpsUnlocked = function(interface){
-		return ["none", "wep-open", "wep-shared"].indexOf(interface.encryption.value) === -1 && interface.hidden.value === false;
+		console.log("devices", $scope.devices, "interface", interface);
+		console.log("device", $scope.devices.find(function(device) {
+			return device[".name"] === interface.ifname.value;
+		 }));
+
+		return ["none", "wep-open", "wep-shared"].indexOf(interface.encryption.value) === -1 &&
+				interface.hidden.value === false &&
+				$scope.devices.find(function(device) {
+					return device[".name"] === interface.ifname.value;
+				}).$info.isup
 	}
+
+	$wireless.getDevices().done(function(devices){
+		$scope.devices = devices;
+	})
 
 	$wireless.getInterfaces().done(function(ifaces){
 		$scope.wifiIfaces = ifaces;

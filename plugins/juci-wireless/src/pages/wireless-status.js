@@ -36,15 +36,14 @@ JUCI.app
 	JUCI.interval.repeat("wifi-status-page",5000,function(next){
 		async.series([
 			function(next){
-				$rpc.$call("router.wireless", "radios").done(function(rds){
-					$scope.radios = Object.keys(rds).map(function(r){
-						var radio = rds[r];
-						radio[".name"] = r;
-						return radio;
+				$wireless.getDevices().done(function(devices){
+					console.log("deivces", devices);
+					$scope.radios = devices;
+					$scope.radios.forEach(function(radio){
+						radio[".interfaces"] = [];
 					});
-					$scope.radios.map(function(radio){ radio[".interfaces"] = []; });
-				})
-				.always(function(){ next(); });
+
+				}).always(function(){ next(); });
 			},
 			function(next){
 				$wireless.getInterfaces().done(function(ifs){

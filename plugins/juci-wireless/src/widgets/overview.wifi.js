@@ -133,6 +133,8 @@ JUCI.app
 				$scope.showWps = interfaces.find(function(iface){ return (iface.wps.value);}) ? true:false;
 				$scope.wifs = interfaces.map(function(iface){
 					if(!iface.device.value in radios) return null;
+					radios[iface.device.value].frequency = iface[".frequency"];
+
 					iface.$radio = radios[iface.device.value];
 					return iface;
 				}).filter(function(x){ return x !== null; });

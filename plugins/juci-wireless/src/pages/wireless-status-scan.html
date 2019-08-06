@@ -3,14 +3,14 @@
 		<juci-config-heading>{{ 'WiFi Scan' | translate }}</juci-config-heading>
 		<juci-config-info>{{ 'status.wifi.scan.info' | translate }}</juci-config-info>
 		<div class="row">
-			<div class="col-md-6"  ng-repeat="radio in wlRadios track by $index" style="opacity:{{radio.isup?'1':'0.5'}}">
-				<h2><th colspan="2">{{'Radio'|translate}} {{radio.frequency}}</th></h2>
+			<div class="col-md-6"  ng-repeat="radio in wlRadios track by $index" style="opacity:{{radio.$info.isup?'1':'0.5'}}">
+				<h2><th colspan="2">{{'Radio'|translate}} {{radio.$info.frequency}}</th></h2>
 				<table class="table table-condensed">
 					<thead>
 					</thead>
-					<tr><td>{{'Enabled'|translate}}</td><td>{{radio.isup ? 'true' : 'false'}}</td></tr>
-					<tr><td>{{'Channel'|translate}}</td><td>{{radio.channel}}</td></tr>
-					<tr><td>{{'Radio Rate'|translate}}</td><td>{{radio.rate}}</td></tr>
+					<tr><td>{{'Enabled'|translate}}</td><td>{{radio.$info.isup ? 'true' : 'false'}}</td></tr>
+					<tr><td>{{'Channel'|translate}}</td><td>{{radio.$info.isup ? radio.$info.channel : 'N/A'}}</td></tr>
+					<tr><td>{{'Radio Rate'|translate}}</td><td>{{radio.$info.isup ? radio.$info.rate : 'N/A'}}</td></tr>
 				</table>
 			</div>
 		</div>

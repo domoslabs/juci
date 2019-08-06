@@ -23,58 +23,54 @@ JUCI.app
 			$scope.reverse = !$scope.reverse;
 		else
 			$scope.predicate = pred;
-		console.log($scope.predicate);
-		console.log($scope.reverse);
 	}
 	$scope.reverse = false;
 	$scope.predicate = "ssid";
 	$scope.radioToScan = {value:null};
-	$uci.$sync("wireless").done(function(){
-		function update(){
-			$rpc.$call("router.wireless", "radios").done(function(data){
-				$scope.wlRadios = data;
-				$scope.scanableRadios = Object.keys(data).map(function(x){
-					if(!data[x].isup) return;
-					return { label: data[x].frequency, value: x };
-				}).filter(function(x){return x;});
-				if($scope.radioToScan.value === null && $scope.scanableRadios.length > 0){
-					$scope.radioToScan.value = $scope.scanableRadios[0].value;
-				}
-				if(!$scope.scanableRadios.find(function(r){ return r.value === $scope.radioToScan.value;})){
-					$scope.radioToScan.value = null;
-				}
-				$scope.$apply();
-			});
-		}
-		JUCI.interval.repeat("update-wlradio-data-scan", 5000, function(next){update() ;next();});
-		$scope.doScan = function(){
-			if($scope.radioToScan.value == null)return;
-			var radio = $scope.wlRadios[$scope.radioToScan.value];
-			if(!radio) return;
-			if(!radio.isup){
-				alert("Please enable radio on "+radio.frequency+" interface to scan it");
-				return;
+	function update(){
+		$wireless.getDevices().done(function(devices) {
+			$scope.wlRadios = devices;
+			$scope.scanableRadios = devices.map(function(dev){
+				if(!dev.$info.isup) return;
+				return { label: dev.$info.frequency, value: dev[".name"] };
+			}).filter(function(dev){return dev;});
+			if($scope.radioToScan.value === null && $scope.scanableRadios.length > 0){
+				$scope.radioToScan.value = $scope.scanableRadios[0].value;
 			}
-			$scope.scanning = 1;
-			$wireless.scan({radio: $scope.radioToScan.value}).done(function(){
-				setTimeout(function(){
-					$wireless.getScanResults({radio: $scope.radioToScan.value}).done(function(aps){
-						$scope.access_points = aps.filter(function(ap){
-							return ap.ssid;// && ap.snr > -10 && ap.snr < 110;
-						});
-					}).fail(function(e){
-						console.log(e);
-					}).always(function(){
-						$scope.scanning = 0;
-						$scope.$apply();
+			if(!$scope.scanableRadios.find(function(r){ return r.value === $scope.radioToScan.value;})){
+				$scope.radioToScan.value = null;
+			}
+			$scope.$apply();
+		});
+	}
+	JUCI.interval.repeat("update-wlradio-data-scan", 5000, function(next){update() ;next();});
+	$scope.doScan = function(){
+		if($scope.radioToScan.value == null)return;
+		var radio = $scope.wlRadios[$scope.radioToScan.value].$info;
+		if(!radio) return;
+		if(!radio.isup){
+			alert("Please enable radio on "+radio.frequency+" interface to scan it");
+			return;
+		}
+		$scope.scanning = 1;
+		$wireless.scan({radio: $scope.radioToScan.value}).done(function(){
+			setTimeout(function(){
+				$wireless.getScanResults({radio: $scope.radioToScan.value}).done(function(aps){
+					$scope.access_points = aps.filter(function(ap){
+						return ap.ssid;// && ap.snr > -10 && ap.snr < 110;
 					});
-				}, 4000);
-			}).fail(function(e){
-				console.log(e);
-			});
-		}
-		$scope.onSsidSelected = function(ap){
-			$scope.ssidToShow = ap;
-		}
-	});
+				}).fail(function(e){
+					console.log(e);
+				}).always(function(){
+					$scope.scanning = 0;
+					$scope.$apply();
+				});
+			}, 4000);
+		}).fail(function(e){
+			console.log(e);
+		});
+	}
+	$scope.onSsidSelected = function(ap){
+		$scope.ssidToShow = ap;
+	}
 });

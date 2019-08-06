@@ -36,12 +36,12 @@
 						<i class="juci juci-edit juci-lg" style="float: right; cursor: pointer;" ng-click="onEditSSID(wif)"></i>
 						<i class="fa fa-toggle-right" style="cursor: pointer;" ng-show="!wif._expanded" ng-click="wif._expanded = !wif._expanded"></i>
 						<i class="fa fa-toggle-down" style="cursor: pointer;" ng-show="wif._expanded" ng-click="wif._expanded = !wif._expanded"></i>
-						<span ng-click="wif._expanded = !wif._expanded" style="cursor: pointer;">{{wif.ssid.value + ' (' + wif.$radio.frequency + ')'}}</span>
+						<span ng-click="wif._expanded = !wif._expanded" style="cursor: pointer;">{{wif.ssid.value + ' (' + wif[".frequency"] + ')'}}</span>
 					</th>
 				</thead>
 				<tr ng-show="wif._expanded" ng-repeat="i in [['Frequency', 'frequency'], ['Channel', 'channel'], ['Rate', 'rate'], ['Mode','mode']]">
 					<td><strong>{{i[0]}}</strong></td>
-					<td style="font-size: 0.8pn; text-align: right;">{{wif.$radio[i[1]] || wif[i[1]].value.toUpperCase() || "-"}}</td>
+					<td style="font-size: 0.8pn; text-align: right;">{{wif.$radio.isup ? wif.$radio[i[1]] || wif[i[1]].value.toUpperCase() || "-" : "N/A"}}</td>
 				</tr>
 				<tr><td></td><td></td></tr><!-- an extra line as quick way to get a border after the last line -->
 			</table>
