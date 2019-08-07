@@ -37,7 +37,6 @@ JUCI.app
 		async.series([
 			function(next){
 				$wireless.getDevices().done(function(devices){
-					console.log("deivces", devices);
 					$scope.radios = devices;
 					$scope.radios.forEach(function(radio){
 						radio[".interfaces"] = [];
