@@ -74,6 +74,19 @@ JUCI.app
 		});
 	});
 
+
+	function getDeviceByIfname(ifname) {
+		return $scope.devices.find(function(dev) {
+			return dev[".name"] === ifname;
+		})
+	}
+
+	function getInterfaceByIfname(ifname) {
+		return $scope.wifiIfaces.find(function(i) {
+			return i.device.value === ifname;
+		})
+	}
+
 	$scope.updateWps = function(iface){
 		if(!$scope.wifiIfaces || !$scope.wifiIfaces.length)
 			$scope.showWps = 0;
@@ -83,6 +96,11 @@ JUCI.app
 			var highest = 0;
 
 			$scope.wifiIfaces.forEach(function (iface) {
+				var dev = getDeviceByIfname(iface.device.value);
+
+				if (!dev || !dev.$info || !dev.$info.isup)
+					return;
+
 				if (iface.wps.value && !iface.wps.is_dirty)
 					highest = 2;
 				else if (iface.wps.value && iface.wps.is_dirty && highest != 2)
