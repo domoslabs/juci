@@ -27,6 +27,9 @@ JUCI.app
 	$scope.reverse = false;
 	$scope.predicate = "ssid";
 	$scope.radioToScan = {value:null};
+	$scope.scanning = 0;
+	$scope.totScans = 4;
+
 	function update(){
 		$wireless.getDevices().done(function(devices) {
 			$scope.wlRadios = devices;
@@ -53,7 +56,7 @@ JUCI.app
 			alert("Please enable radio on "+radio.frequency+" interface to scan it");
 			return;
 		}
-		$scope.scanning = 1;
+		$scope.scanning += 1;
 		$wireless.scan({radio: $scope.radioToScan.value}).done(function(){
 			setTimeout(function(){
 				$wireless.getScanResults({radio: $scope.radioToScan.value}).done(function(aps){
@@ -63,7 +66,10 @@ JUCI.app
 				}).fail(function(e){
 					console.log(e);
 				}).always(function(){
-					$scope.scanning = 0;
+					$scope.scanning %= $scope.totScans;
+
+					if ($scope.scanning != 0)
+						$scope.doScan();
 					$scope.$apply();
 				});
 			}, 4000);

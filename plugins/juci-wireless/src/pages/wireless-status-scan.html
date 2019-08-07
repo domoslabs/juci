@@ -23,6 +23,7 @@
 					<span ng-show="!scanning">Scan</span>
 					<span ng-show="scanning"><i class="fa fa-spinner fa-spin"></i> <span translate>Scanning...</span></span>
 				</button>
+			<juci-progress hide-fraction="true" ng-show="scanning" value="scanning-1" total="totScans" style="margin-top: 5px"></juci-progress>
 			</juci-config-line>
 		</juci-config-lines>
 		<div ng-show="dfs_enabled" class="alert alert-info" translate>You will not be able to scan 5Ghz band because your 5Ghz wireless radio is operating at a DFS channel</div>
