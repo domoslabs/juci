@@ -51,7 +51,7 @@
 				</juci-config-section>
 			</div>
 		</div>
-		<div ng-show="showWps == 1">
+		<div ng-show="showWps == 1  && radioAvailable()">
 				<h3>You must apply your changes before changing WPS settings.</h3>
 		</div>
 		<modal title="{{'Attempting to Pair'|translate}}" data-keyboard="false" data-backdrop="static" ng-show="progress === 1 || progress === 8" dismiss-label="Cancel" on-dismiss="onCancelWPS()">
