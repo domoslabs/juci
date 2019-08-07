@@ -46,7 +46,11 @@ JUCI.app
 			if (iface[".frequency"] === "2.4GHz" && activeIface != null)
 				return;
 
-			if (iface.wps.value)
+			var device = $scope.devices.find(function(dev) {
+					return dev[".name"] == iface.device.value;
+				});
+
+			if (iface.wps.value && device.$info.isup)
 				activeIface = iface;
 
 		});
@@ -98,6 +102,21 @@ JUCI.app
 		valid_wps_pin: ""
 	}
 	$scope.progress = 0;
+
+	$scope.radioAvailable = function() {
+		return $scope.devices.filter(function(dev) {
+			return dev.$info.isup;
+		}).filter(function(dev) {
+			var iface = $scope.wifiIfaces.find(function(i) {
+				return i.device.value === dev[".name"];
+			});
+
+			if (iface && iface.wps && iface.wps.value)
+				return iface.wps.value
+
+			return false;
+		}).length;
+	}
 
 	$scope.wpsUnlocked = function(interface){
 		return ["none", "wep-open", "wep-shared"].indexOf(interface.encryption.value) === -1 &&

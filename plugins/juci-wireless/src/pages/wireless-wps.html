@@ -12,7 +12,7 @@
 				</juci-config-line>
 			</juci-config-lines>
 		</juci-config-section>
-		<div ng-show="showWps == 2">
+		<div ng-show="showWps == 2 && radioAvailable()">
 			<juci-config-section ng-show="has_pbc">
 				<h2 translate>WPS-PBC: Push Button on Device</h2>
 				<p translate>To pair your device, press Pair. Afterwards, press the corresponding button on the device you wish to connect. Your router will be open for pairing for 2 minutes after you pressed Pair.</p>
