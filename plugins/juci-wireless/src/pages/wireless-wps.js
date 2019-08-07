@@ -74,6 +74,18 @@ JUCI.app
 		});
 	});
 
+	function getDeviceByIfname(ifname) {
+		return $scope.devices.find(function(dev) {
+			return dev[".name"] === ifname;
+		})
+	}
+
+	function getInterfaceByIfname(ifname) {
+		return $scope.wifiIfaces.find(function(i) {
+			return i.device.value === ifname;
+		})
+	}
+
 	$scope.updateWps = function(iface){
 		if(!$scope.wifiIfaces || !$scope.wifiIfaces.length)
 			$scope.showWps = 0;
@@ -83,6 +95,11 @@ JUCI.app
 			var highest = 0;
 
 			$scope.wifiIfaces.forEach(function (iface) {
+				var dev = getDeviceByIfname(iface.device.value);
+
+				if (dev && dev.$info && !dev.$info.isup)
+					return;
+
 				if (iface.wps.value && !iface.wps.is_dirty)
 					highest = 2;
 				else if (iface.wps.value && iface.wps.is_dirty && highest != 2)
@@ -144,26 +161,31 @@ JUCI.app
 			$scope.generatedPIN = data.pin;
 		});
 
-		refresh();
+		//refresh();
 		$scope.$apply();
 	}).fail(function(err){
 		console.log("failed to sync config: "+err);
 	});
 
-	$events.subscribe("wps", function(){refresh();});
-	$events.subscribe("wifi.wps", function(){refresh();});
-	function refresh() {
+	$events.subscribe("wps", function(){refresh(event);});
+	$events.subscribe("wifi.wps", function(event){refresh(event);});
+
+	function refresh(event) {
 		var activeIface = getActiveIface();
 		if (!activeIface)
 			return;
 
-		$rpc.$call("wifix.wps", "status", { vif: activeIface.ifname.value }).done(function(result){
-			$scope.progress = result.code;
-			$scope.text_status = wps_status_strings[result.code]||$tr(gettext("Unknown"));
-			$scope.$apply();
-		});
-	};
+		$scope.text_status = event.data.state
 
+		if (event.data.state === "in process")
+			$scope.progress = 1;
+		else if (event.data.state === "off")
+			$scope.progress = 4;
+		else if (event.data.state === "success")
+			$scope.progress = 2;
+
+		$scope.$apply();
+	};
 
 	var longPress = false;
 	var timeout;
