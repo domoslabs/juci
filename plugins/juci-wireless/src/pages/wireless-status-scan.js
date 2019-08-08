@@ -49,11 +49,11 @@ JUCI.app
 	JUCI.interval.repeat("update-wlradio-data-scan", 5000, function(next){update() ;next();});
 	$scope.doScan = function(){
 		if($scope.radioToScan.value == null)return;
-		var radio = $scope.wlRadios.find(function(r) { return r[".name"] === $scope.radioToScan.value; }).$info
+		var radio = $scope.wlRadios.find(function(r) { return r[".name"] === $scope.radioToScan.value; })
 
-		if(!radio) return;
-		if(!radio.isup){
-			alert("Please enable radio on "+radio.frequency+" interface to scan it");
+		if(!radio || !radio.$info) return;
+		if(!radio.$info.isup){
+			alert("Please enable radio on " + radio[".frequency"] + " interface to scan it");
 			return;
 		}
 		$scope.scanning += 1;
