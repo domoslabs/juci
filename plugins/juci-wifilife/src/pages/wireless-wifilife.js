@@ -358,7 +358,7 @@ controller("wifilife", function ($scope, $rpc, $tr, $uci, $wifilife, $modal, $lo
 
 	$scope.toggleRrm = function () {
 		$scope.rrm = !$scope.rrm;
-		$scope.wifiIface.rrm.value = $scope.rrm ? 2 : 0;
+		$scope.wifiIface.rrm.value = $scope.rrm ? 255 : 0;
 	}
 
 });
