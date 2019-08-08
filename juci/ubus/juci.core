@@ -17,13 +17,15 @@ case "$1" in
 				read -r input
 				json_load "$input"
 				json_get_var username username
-				cur_salt=`cat /etc/shadow | grep "$username:" | cut -d ':' -f 2 | cut -d '$' -f3-`
-				if [ "$cur_salt" == "" ]; then
+
+				if ! id "$username" >/dev/null 2>&1; then
 					json_init
 					json_add_string "error" "Invalid username"
 					json_dump
 					return 1
 				fi
+
+				cur_salt=`cat /etc/shadow | grep "$username:" | cut -d ':' -f 2 | cut -d '$' -f3-`
 				old_salt=`cat /rom/etc/shadow | grep "$username:" | cut -d ':' -f 2 | cut -d '$' -f3-`
 				json_init
 				if [ "$old_salt" == "$cur_salt" ]; then
