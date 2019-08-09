@@ -48,8 +48,8 @@ msgid "CPU r4k Wait"
 msgstr ""
 
 # plugins/juci-broadcom-pwrmgmt/src/pages/broadcom-pwrmgmt.html
-msgid "Keeps CPU in sleep state without spinning"
-msgstr ""
+msgid "cpu.r4k.wait.info"
+msgstr "Keep CPU in sleep mode without spinning."
 
 # plugins/juci-broadcom-pwrmgmt/src/pages/broadcom-pwrmgmt.html
 msgid "DRAM Self-Refresh"

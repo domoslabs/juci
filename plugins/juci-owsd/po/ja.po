@@ -87,7 +87,7 @@ msgid "OWSD"
 msgstr ""
 
 # plugins/juci-owsd/src/pages/settings-management-owsd.html
-msgid "Chage settings for the owsd web-server deamon"
+msgid "oswd.info"
 msgstr ""
 
 # plugins/juci-owsd/src/pages/settings-management-owsd.html

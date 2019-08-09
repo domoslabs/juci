@@ -39,7 +39,7 @@ msgid "CPU r4k Wait"
 msgstr ""
 
 # /home/jamu/GIT/juci/plugins/juci-broadcom-pwrmgmt/src/pages/broadcom-pwrmgmt.html
-msgid "Keeps CPU in sleep state without spinning"
+msgid "cpu.r4k.wait.info"
 msgstr "Pitää prosessorin lepotilassa pysäyttämättä"
 
 msgid "DRAM Self-Refresh"

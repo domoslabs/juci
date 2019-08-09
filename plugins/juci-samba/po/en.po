@@ -51,7 +51,7 @@ msgid "General Settings"
 msgstr ""
 
 msgid "services.samba.info"
-msgstr "General samba settings."
+msgstr "Samba interoperability configuration."
 
 msgid "Workgroup"
 msgstr ""
@@ -59,19 +59,20 @@ msgstr ""
 msgid "Share User Home Directory"
 msgstr ""
 
-msgid "Interface"
+msgid "samba.interfaces"
+msgid "Interface(s)"
 msgstr ""
 
-msgid ""
-"the interface(s) samba will listen on. Samba will not start if no interface "
-"is selected"
+msgid "samba.interfaces.info"
+"Interface(s) Samba will listen on. "
+"(Selecting an interface is required to start Samba)"
 msgstr ""
 
 msgid "Samba Users"
 msgstr ""
 
 msgid "samba.users.info"
-msgstr "Samba Users Configuration"
+msgstr "Samba user configuration"
 
 msgid "Samba Shares"
 msgstr ""

@@ -38,3 +38,4 @@ ipkg-*
 tags
 .localserver.conf
 package-lock.json
+.idea

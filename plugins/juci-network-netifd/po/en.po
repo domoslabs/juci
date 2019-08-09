@@ -998,8 +998,7 @@ msgstr ""
 
 msgid "internet.lan.routes.info"
 msgstr ""
-"Static routes are useful if you have several networks accessible from your "
-"router and you want to correctly route packets between them. "
+"Use static routes to route packets between the networks accessible to your device."
 
 msgid "IPv4 Routes"
 msgstr ""
@@ -1011,13 +1010,13 @@ msgid "Connections for each Device"
 msgstr ""
 
 msgid "status.nat.connections.info"
-msgstr "This page shows the active connection for each device."
+msgstr "This page shows the active connections for each device."
 
 msgid "NAT Connection Table"
 msgstr ""
 
 msgid "status.nat.info"
-msgstr "This page shows the active connection for each device."
+msgstr "This page shows the active connections for each device."
 
 msgid "Connections"
 msgstr ""
@@ -1043,19 +1042,16 @@ msgstr ""
 
 msgid "settings.network.info"
 msgstr ""
-"This page allows to configure IP addresses used in your home network. In "
-"case DHCP is used, your router automatically assigns an IP address to "
-"devices connected to the network. Using static DHCP it is possible to always "
-"assign the same IP address to specific devices."
+"This page allows you to configure connections in your home network."
 
 msgid "Services"
 msgstr ""
 
 msgid "internet.services.info"
-msgstr "Here you can configure network services. "
+msgstr "Configuration of network services. "
 
 msgid "status.network.routes.info"
-msgstr "Static routes configuration"
+msgstr "Configuration of static routes."
 
 msgid "Routing Status"
 msgstr ""

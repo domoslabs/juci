@@ -73,7 +73,7 @@ msgid "Enable secure mode"
 msgstr "セキュアモード オン"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
-msgid "Allow adding forwards only to requesting ip addresses"
+msgid "upnp.enable.secure.mode.info"
 msgstr "要求するIPアドレスにのみ追加転送を許可する"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
@@ -81,7 +81,7 @@ msgid "Enable additional logging"
 msgstr "追加ログを有効にする"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html
-msgid "Puts extra debugging information into the system log"
+msgid "upnp.enable.additional.logging.info"
 msgstr "追加のデバッグ情報をシステムログに記録する"
 
 # plugins/juci-upnp/src/pages/upnpd-settings.html

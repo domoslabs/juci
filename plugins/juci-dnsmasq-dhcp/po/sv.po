@@ -149,7 +149,7 @@ msgstr "Skriv mottagna DNS förfrågningar till system loggen"
 msgid "Leasefile"
 msgstr "Leasetid"
 
-msgid "file where given DHCP-leases will be stored"
+msgid "dhcp.leasefile.info"
 msgstr "Fil i vilken DHCP leasar sparas"
 
 msgid "Ignore resolve file"
@@ -302,7 +302,7 @@ msgid "Maximum allowed number of concurrent DNS queries"
 msgstr "Maximalt tillåtet antal samverkande DNS förfrågningar"
 
 msgid "Hostname Entries"
-msgstr "Värdnamnsinlägg"
+msgstr "Värdnamn"
 
 msgid "menu-dhcp-status-title"
 msgstr "DHCP Status"

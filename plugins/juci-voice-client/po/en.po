@@ -224,10 +224,10 @@ msgstr ""
 msgid "Advanced Line Settings"
 msgstr ""
 
-msgid "Locale selecton"
+msgid "Locale selection"
 msgstr ""
 
-msgid "A restart is required for country changes to take effect"
+msgid "Locale changes requires device restart to take effect"
 msgstr ""
 
 msgid "Enable Jitter Buffer"
@@ -251,7 +251,7 @@ msgstr ""
 msgid "Custom Dialplan"
 msgstr ""
 
-msgid "Enable incomming dialplan"
+msgid "Enable incoming dialplan"
 msgstr ""
 
 msgid "Enable outgoing dialplan"
@@ -318,7 +318,7 @@ msgid "Voice Lines"
 msgstr ""
 
 msgid "phone.lines.info"
-msgstr "Configure Voice lines."
+msgstr "Configure lines for voice calls"
 
 msgid "Phone Lines"
 msgstr ""
@@ -329,7 +329,7 @@ msgstr ""
 msgid "Sip Proxy servers"
 msgstr ""
 
-msgid "Allow incomming calls from the specified proxies"
+msgid "Allow incoming calls from the specified proxies"
 msgstr ""
 
 msgid "Add SIP Proxy"
@@ -645,8 +645,7 @@ msgstr ""
 
 msgid "status.voice.info"
 msgstr ""
-"Here you find an overview of your active phone numbers. For any change you "
-"would like to make to the current section, please visit Phone menu."
+"This page shows an overview of your active phone numbers.*
 
 msgid "Your Phone Numbers"
 msgstr ""
@@ -682,7 +681,7 @@ msgid "Call Log"
 msgstr ""
 
 msgid "phone.call_log.info"
-msgstr "Latest calls."
+msgstr "The call log shows a list of recent calls"
 
 msgid "Show calls for"
 msgstr ""
@@ -730,16 +729,17 @@ msgstr ""
 msgid "Incoming Number Blocking"
 msgstr ""
 
-msgid "Do not allow connections from these numbers"
+msgid "Block connections to these numbers"
+msgstr ""
+
+msgid "Block connections from these numbers"
 msgstr ""
 
 msgid "Outgoing Calls"
 msgstr ""
 
 msgid ""
-"You can also block ranges of numbers.For example: '0160#' blocks all numbers "
-"starting with '0160'."
-msgstr ""
+msgstr "To block number ranges, use '#'.For example: '0160#' blocks all numbers starting with '0160'."
 
 msgid "Incoming Calls"
 msgstr ""
@@ -775,9 +775,7 @@ msgid "Speed Dialing"
 msgstr ""
 
 msgid "phone.speed_dialing.info"
-msgstr ""
-"This feature activates speed dialing to connect you faster to your preferred "
-"contacts."
+msgstr "Use speed dialing for quick access to your selected contacts."
 
 msgid "Remove all entries from speed dial list"
 msgstr ""

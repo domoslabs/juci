@@ -70,7 +70,7 @@ msgid "Ethernet Ports"
 msgstr ""
 
 msgid "internet.ethernet.phy.info"
-msgstr "Physical ethernet interfaces configuration"
+msgstr "Physical ethernet interfaces"
 
 # plugins/juci-network-port/src/pages/network-ethernet-port.html
 msgid "Fiber Ports"

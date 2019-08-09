@@ -1,7 +1,7 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="MiniDLNAConfigPage">
 		<h2 translate>MiniDLNA</h2>
-		<p translate>MiniDLNA is server software with the aim of being fully compliant with DLNA/UPnP-AV clients.</p>
+		<p translate>{{'minidlna.info'|translate}}</p>
 		<juci-config-lines>
 			<juci-config-line title="{{'Enable'|translate}}">
 				<switch ng-model="config.enabled.value" class="green"/>
@@ -37,7 +37,7 @@
 						<dropdown-multi-select input-model="network.all" output-model="network.selected" 
 							button-label="name" item-label="name" tick-property="selected"></dropdown-multi-select>	
 					</juci-config-line>
-					<juci-config-line title="{{'Friendly Name'|translate}}" help="{{ 'Set this if you want to customize the name that shows up on your clients.' | translate }}">
+					<juci-config-line title="{{'Friendly Name'|translate}}" help="{{ 'minidlna.friendly.name.info.'|translate}}">
 						<input type="text" class="form-control" ng-model="config.friendly_name.value"/>
 					</juci-config-line>
 					<juci-config-line title="{{'Root Container'|translate}}">

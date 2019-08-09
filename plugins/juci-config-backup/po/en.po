@@ -14,8 +14,8 @@ msgstr ""
 msgid "Backup Settings"
 msgstr ""
 
-msgid "Select the services/settings to backup"
-msgstr ""
+msgid "backup.settings.config.info"
+msgstr "Select the services/settings to backup"
 
 msgid "menu-config-backup-settings-title"
 msgstr "Backup Settings"

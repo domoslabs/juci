@@ -109,8 +109,7 @@ msgstr ""
 
 msgid "status.diagnostics.info"
 msgstr ""
-"This section shows a list of tools which can be used to check the status of "
-"your network connection."
+"This page contains tools which can be used to check the status of your network connections."
 
 msgid "Automated Diagnostics"
 msgstr ""

@@ -529,9 +529,9 @@ msgstr " "
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-dmz.html
 msgid ""
-"Warning: By using the exposed host function you bypass the firewall of your "
-"router. Please make sure that your computer is protected against attacks "
-"from Internet. The following ports will not be forwarded:"
+"Warning: Make sure that the device is protected against attacks. "
+"Bypassing the firewall disables any protection provided by the router. "
+"The following ports will not be forwarded:"
 msgstr ""
 "警告：公開されたホスト機能を使用することにより、ルータのファイアウォールをバ"
 "イパスします。 お使いのコンピュータがインターネットからの攻撃から保護されてい"
@@ -582,8 +582,7 @@ msgstr "ポート転送の追加/編集"
 
 # plugins/juci-firewall-fw3/src/pages/internet-firewall-port-mapping.html
 msgid ""
-"Port forwarding allows remote computers to connect to a specific device "
-"within your private network."
+"Port forwarding allows remote computers to connect to a specific local device. "
 msgstr ""
 "ポート転送を使用すると、リモートコンピュータをプライベートネットワーク内の特"
 "定のデバイスに接続できます。"

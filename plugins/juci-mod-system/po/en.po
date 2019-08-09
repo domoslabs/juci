@@ -178,8 +178,8 @@ msgid "Internet"
 msgstr ""
 
 # plugins/juci-mod-system/src/pages/settings-connectivity-test.html
-msgid "URL for checking Internet connection"
-msgstr ""
+msgid "system.connectivity.test.info"
+msgstr "URL to use for checking the Internet connection."
 
 # plugins/juci-mod-system/src/pages/settings-connectivity-test.html
 msgid "www.example.com"
@@ -189,7 +189,7 @@ msgstr ""
 msgid "Connectivity Test"
 msgstr ""
 
-msgid "Manage Router Users Rights"
+msgid "Manage Router Users Permissions"
 msgstr ""
 
 msgid "Loading"
@@ -228,13 +228,13 @@ msgid "Configure Buttons"
 msgstr ""
 
 msgid "settings.management.buttons.info"
-msgstr "Enable/disable the buttons on your router"
+msgstr "Enable/disable buttons on your router."
 
 msgid "Configure LEDs"
 msgstr ""
 
 msgid "settings.management.leds.info"
-msgstr "Enable/disable the LEDs on your router"
+msgstr "Enable/disable LEDs on your router."
 
 # /home/reidar/juci/plugins/juci-mod-system/src/pages/settings-system-log.html
 msgid "System Log Level"
@@ -329,7 +329,7 @@ msgid "Management"
 msgstr ""
 
 msgid "system.management.info"
-msgstr "Configure settings for managing your box over WAN interface."
+msgstr "Configure settings for managing the router over a WAN interface."
 
 msgid "Total number of processes: "
 msgstr ""
@@ -373,8 +373,8 @@ msgstr ""
 msgid "Backup Configuration"
 msgstr ""
 
-msgid "settings.config.info"
-msgstr "Save/Load settings or perform factory reset"
+msgid "backup.options.config.info"
+msgstr "This page lets you save/load router settings or perform a factory reset."
 
 msgid "Save configuration"
 msgstr ""
@@ -399,8 +399,8 @@ msgid "Soft reset"
 msgstr ""
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
-msgid "Save some settings over the factory reset"
-msgstr ""
+msgid "soft.reset.info"
+msgstr "Select settings to save when peforming the factory reset."
 
 # plugins/juci-mod-system/src/pages/settings-configuration.html
 msgid "WiFi settings"

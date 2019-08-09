@@ -359,9 +359,9 @@ msgstr ""
 
 # /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-dmz.html
 msgid ""
-"Warning: By using the exposed host function you bypass the firewall of your "
-"router. Please make sure that your computer is protected against attacks "
-"from Internet. The following ports will not be forwarded:"
+"Warning: Make sure that the device is protected against attacks. "
+"Bypassing the firewall disables any protection provided by the router. "
+"The following ports will not be forwarded:"
 msgstr ""
 "Varoitus: Käyttämällä DMZ-toimintoa ohitetaan reitittimen palomuuri. "
 "Varmista, että tietokone on suojattu hyökkäyksiltä Internetistä. Seuraavia "
@@ -404,8 +404,7 @@ msgstr "Lisää / muokkaa porttiohjausta"
 
 # /home/jamu/GIT/juci/plugins/juci-firewall-fw3/src/pages/internet-firewall-port-mapping.html
 msgid ""
-"Port forwarding allows remote computers to connect to a specific device "
-"within your private network."
+"Port forwarding allows remote computers to connect to a specific local device. "
 msgstr ""
 "Porttiohjauksella sallitaan yhteys ulkoverkosta sisäverkon laitteen "
 "osoitteeseen."
