@@ -645,7 +645,7 @@ msgstr ""
 
 msgid "status.voice.info"
 msgstr ""
-"This page shows an overview of your active phone numbers."
+"This page shows an overview of your active phone numbers.*
 
 msgid "Your Phone Numbers"
 msgstr ""
