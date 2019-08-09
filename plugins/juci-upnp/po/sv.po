@@ -55,14 +55,14 @@ msgstr "Aktivera NAT-PMP protokol"
 msgid "Enable secure mode"
 msgstr "Slå på Säkert läge"
 
-msgid "Allow adding forwards only to requesting ip addresses"
-msgstr "Allow adding forwards only to requesting ip addresses"
+msgid "upnp.enable.secure.mode.info"
+msgstr "Begränsa klienter till att bara mappa för egen IP-address"
 
 msgid "Enable additional logging"
 msgstr "Slå på ytterligare-loggning"
 
-msgid "Puts extra debugging information into the system log"
-msgstr "Lägger till extra debugging information till system loggarna"
+msgid "upnp.enable.additional.logging.info"
+msgstr "Lägg till debugging-information i systemloggen"
 
 msgid "Downlink"
 msgstr "Nedlänk"

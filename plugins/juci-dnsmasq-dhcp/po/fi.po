@@ -263,7 +263,7 @@ msgstr "Kirjoita DNS kyselyt syslokiin"
 msgid "Leasefile"
 msgstr "DHCP-varaustiedosto"
 
-msgid "file where given DHCP-leases will be stored"
+msgid "dhcp.leasefile.info"
 msgstr "tiedosto, jonne DHCP-varaukset tallennetaan"
 
 msgid "Ignore resolve file"
@@ -280,7 +280,7 @@ msgid "Ignore Hosts file"
 msgstr "Ohita Hosts-tiedosto"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-msgid "Hostname Entries file(s)"
+msgid "dnsmasq.hostname.entries.files"
 msgstr "Isäntäkoneiden nimitiedosto"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html

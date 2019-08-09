@@ -56,8 +56,8 @@ msgid "Enable"
 msgstr ""
 
 # plugins/juci-catv/src/pages/settings-management-catv.html
-msgid "RF Enable"
-msgstr ""
+msgid "rf.enable.info"
+msgstr "Turn RF on"
 
 # plugins/juci-catv/src/pages/settings-management-catv.html
 msgid "Filter"

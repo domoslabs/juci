@@ -250,9 +250,10 @@ msgstr ""
 
 msgid "internet.exposed_host.info"
 msgstr ""
-"If you have a local network device that cannot run an Internet application "
-"properly behind the firewall, you can allow unrestricted Internet access to "
-"the network device (Exposed Host)."
+"Local network devices placed in DMZ/Exposed Host bypass the firewall and allow unrestricted access from the Internet. "
+
+msgid "Select the local IP address to expose to the Internet. Make this a static IP address, to avoid it being asssigned to the wrong host."
+msgstr ""
 
 msgid "Enable"
 msgstr ""
@@ -299,8 +300,8 @@ msgstr ""
 
 msgid "internet.firewall.info"
 msgstr ""
-"Firewall allows you to filter traffic, set up port forwarding or expose "
-"certain services to the outside world. "
+"The firewall allows you to filter traffic, set up port forwarding or "
+"expose services to the outside world. "
 
 msgid "to"
 msgstr ""
@@ -327,8 +328,7 @@ msgstr ""
 
 msgid "internet.firewall.rules.info"
 msgstr ""
-"Firewall rules are more fine grained filtering rules for filtering your "
-"traffic. "
+"Firewall rules provide more fine grained control of traffic filtering rules. "
 
 msgid "Allow WAN Access To Running Services"
 msgstr ""
@@ -353,8 +353,7 @@ msgstr ""
 
 msgid "internet.firewall.zones.info"
 msgstr ""
-"Here you can configure firewall zones. Each zone can contain multiple "
-"networks, or interfaces, which you have set up earlier. "
+"Firewall zones can contain multiple previously configured networks or interfaces. "
 
 msgid "URL Blocking"
 msgstr ""
@@ -363,7 +362,11 @@ msgid "Parental Control"
 msgstr ""
 
 msgid "internet.parental.control.info"
-msgstr "Here you can setup parental control settings. "
+msgstr "Control settings for Internet access limits or schedules. "
+
+msgid "internet.access.scheduling.info"
+msgstr "These rules block internet access for clients during the specified time interval. "
+
 
 msgid "URL Blocking Function"
 msgstr ""

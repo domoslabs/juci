@@ -50,7 +50,7 @@ msgid "Enable"
 msgstr "Ota käyttöön"
 
 # /home/jamu/GIT/juci/plugins/juci-catv/src/pages/settings-management-catv.html
-msgid "RF Enable"
+msgid "rf.enable.info"
 msgstr "Ota RF käyttöön"
 
 msgid "Filter"

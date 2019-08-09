@@ -11,7 +11,7 @@
 					<juci-config-line title="{{ 'Log queries' | translate }}" help="{{ 'Write received DNS requests to syslog' | translate }}" error="dnsmasq.logqueries.error">
 						<switch class="green" ng-model="dnsmasq.logqueries.value"/>
 					</juci-config-line>
-					<juci-config-line title="{{ 'Leasefile' | translate }}" help="{{ 'file where given DHCP-leases will be stored' | translate }}" error="dnsmasq.leasefile.error">
+					<juci-config-line title="{{ 'Leasefile' | translate }}" help="{{ 'dhcp.leasefile.info' | translate }}" error="dnsmasq.leasefile.error">
 						<input type="text" class="form-control" ng-model="dnsmasq.leasefile.value" />
 					</juci-config-line>
 					<juci-config-line title="{{ 'Ignore resolve file' | translate }}" error="dnsmasq.noresolv.error">
@@ -23,7 +23,7 @@
 					<juci-config-line title="{{ 'Ignore Hosts file' | translate }}" error="dnsmasq.nohosts.error">
 						<switch class="green" ng-model="dnsmasq.nohosts.value" />
 					</juci-config-line>
-					<juci-config-line ng-hide="dnsmasq.nohosts.value" title="{{ 'Hostname Entries file(s)' | translate }}" help="{{ 'Additional host files to read for serving DNS responses' | translate }}" error="dnsmasq.fileError">
+					<juci-config-line ng-hide="dnsmasq.nohosts.value" title="{{ 'dnsmasq.hostname.entries.files' | translate }}" help="{{ 'dnsmasq.hostname.entries.files.info' | translate }}" error="dnsmasq.fileError">
 						<tags-input ng-model="hostfiles" display-property="label" add-on-space="true" placeholder="{{'Add Hostname file'|translate}}"></tags-input>
 					</juci-config-line>
 				</juci-config-lines>

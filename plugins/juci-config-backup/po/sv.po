@@ -12,10 +12,10 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 
 msgid "Backup settings"
-msgstr ""
+msgstr "Inställningar för backup"
 
-msgid "Select the services/settings to backup"
-msgstr ""
+msgid "backup.settings.config.info"
+msgstr "Välj inställningar som ska sparas."
 
 msgid "menu-config-backup-settings-title"
 msgstr ""

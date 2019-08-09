@@ -562,10 +562,8 @@ msgstr ""
 
 msgid "wifi.radios.info"
 msgstr ""
-"This page allows you to configure wireless radios that you have installed on "
-"your system. A wireless radio is not the same thing as an access point. "
-"Access points are interfaces and each radio can have several interfaces on "
-"it. "
+"This page allows you to configure wireless radios installed on your system. "
+"Several interfaces/access points can be configured for each wireless radio."
 
 # plugins/juci-wireless/src/pages/wireless-band-steering-status.html
 msgid "Ping results"
@@ -579,7 +577,7 @@ msgid "Band Steering"
 msgstr ""
 
 msgid "status.wifi.info"
-msgstr "Wireless status information"
+msgstr "Status informatioin for wireless radios"
 
 msgid "Status"
 msgstr ""
@@ -590,8 +588,8 @@ msgstr ""
 
 msgid "wifi.interfaces.info"
 msgstr ""
-"Wireless interfaces are visible to the user in the form of wireless access "
-"point names. Each radio can have up to 4 SSIDs and each SSID interface can "
+"Wireless interfaces are visible as access point names. "
+"Each radio can have up to 4 SSIDs and each SSID interface can "
 "be configured as part of a network bridge or firewall group. "
 
 msgid "WiFi Scheduling"
@@ -599,8 +597,8 @@ msgstr "Scheduling"
 
 msgid "wifi.schedule.info"
 msgstr ""
-"Schedule the times when your WiFi should be turned on or off automatically. "
-"Note: If WiFi is turned off, both Main and Guest WiFi are disabled"
+"Schedule when your WiFi should be turned on or off automatically. "
+"When WiFi is turned off, both Main and Guest WiFis are disabled."
 
 msgid "Schedule Function"
 msgstr ""
@@ -628,12 +626,12 @@ msgstr ""
 
 msgid "wifi.band-steering.info"
 msgstr ""
-"Band Steering mechanism steers dual-band capable clients to 5GHz frequency "
+"The Band Steering mechanism steers dual-band capable clients to 5GHz frequency "
 "in order to increase available bandwidth while freeing up resources on the "
 "2.4GHz band for legacy clients."
 
 msgid "wifi.band-steering.dualband-warning"
-msgstr "Band Steering feature is available for dual-band APs only."
+msgstr "The Band Steering feature is available for dual-band APs only."
 
 # plugins/juci-wireless/src/pages/wireless-band-steering.html
 msgid "Steering Policy"
@@ -711,7 +709,7 @@ msgid "WiFi Scan"
 msgstr ""
 
 msgid "status.wifi.scan.info"
-msgstr "Here you can scan for other wireless access points in your area."
+msgstr "This page contains tools allowing you to  scan for wireless access points in your area."
 
 msgid "Radio"
 msgstr ""
@@ -738,8 +736,8 @@ msgstr ""
 
 msgid "wifi.wps.info"
 msgstr ""
-"Using WPS it is possible to easily connect wireless devices with your router "
-"on an encrypted channel. Below, you can choose and configure different "
+"Using WPS it is possible to easily connect wireless devices to your router "
+"on an encrypted channel. On this page you can configure different "
 "connection methods."
 
 msgid "Enable WPS on"
@@ -763,7 +761,7 @@ msgstr ""
 msgid "WPS-PBC: Push Button on Device"
 msgstr ""
 
-msgid ""
+msgid "wps-pbc.info"
 "To pair your device, press Pair. Afterwards, press the corresponding button "
 "on the device you wish to connect. Your router will be open for pairing for "
 "2 minutes after you pressed Pair."

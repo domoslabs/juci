@@ -45,7 +45,7 @@ msgstr "Tapahtumaloki"
 msgid "status.eventlog.info"
 msgstr " "
 
-msgid "(Note: only latest"
+msgid "note.only.latest"
 msgstr "(Huom: vain viimeisimmät"
 
 msgid "lines are shown)"
@@ -59,7 +59,7 @@ msgid "Download System Report"
 msgstr "Lataa järjestelmäraportti"
 
 # plugins/juci-event/src/pages/status-events.html
-msgid "This downloads an archive containing a full system report"
+msgid "status.events.download.info"
 msgstr ""
 "Tämä lataa pakatun tiedoston, joka sisältää täydellisen "
 "järjestelmäraportin."

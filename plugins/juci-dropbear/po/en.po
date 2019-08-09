@@ -109,7 +109,7 @@ msgid "Dropbear Instances"
 msgstr ""
 
 msgid "settings.dropbear.instance"
-msgstr "Configure settings for multiple instances of SSH server. "
+msgstr "Configure settings for multiple instances of the SSH server. "
 
 msgid "Accepted SSH keys"
 msgstr ""

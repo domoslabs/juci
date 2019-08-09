@@ -222,13 +222,13 @@ msgid "No Account"
 msgstr "Inga Konton"
 
 msgid "Advanced Line Settings"
-msgstr "Avancerade Linje Inställningar"
+msgstr "Avancerade linjeinställningar"
 
-msgid "Locale selecton"
-msgstr "Land sektion"
+msgid "Locale selection"
+msgstr "Val av lokalisering"
 
 msgid "A restart is required for country changes to take effect"
-msgstr "En omstart behövs för att land ändringen skall slutföras"
+msgstr "En omstart behövs för att ändringen skall genomföras"
 
 msgid "Enable Jitter Buffer"
 msgstr "Aktivera Jitter Buffer"
@@ -251,7 +251,7 @@ msgstr "Inter-digit timeout [ms]"
 msgid "Custom Dialplan"
 msgstr "Manuell Dialplan"
 
-msgid "Enable incomming dialplan"
+msgid "Enable incoming dialplan"
 msgstr "Aktivera inkommande dialplan"
 
 msgid "Enable outgoing dialplan"
@@ -329,7 +329,7 @@ msgstr "Avancerade SIP inställningar"
 msgid "Sip Proxy servers"
 msgstr "Sip Proxy server"
 
-msgid "Allow incomming calls from the specified proxies"
+msgid "Allow incoming calls from the specified proxies"
 msgstr "Tillåt inkommande sammtal från den specifierade proxien"
 
 msgid "Add SIP Proxy"
@@ -690,7 +690,7 @@ msgid "Call Log"
 msgstr "Samtalslogg"
 
 msgid "phone.call_log.info"
-msgstr "Inställningar för samtalslogg"
+msgstr "Samtalsloggen visar de senaste samtalen"
 
 msgid "Show calls for"
 msgstr "Visa samtal för"
@@ -739,7 +739,7 @@ msgstr "Blockera samtal till specialnummer"
 msgid "Incoming Number Blocking"
 msgstr "Inkommande nummberblockering"
 
-msgid "Do not allow connections from these numbers"
+msgid "Block connections from these numbers"
 msgstr "Blockera samtal från dessa nummer."
 
 msgid "Outgoing Calls"

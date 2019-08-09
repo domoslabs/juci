@@ -15,7 +15,7 @@
 		<div ng-show="showWps == 2 && radioAvailable()">
 			<juci-config-section ng-show="has_pbc">
 				<h2 translate>WPS-PBC: Push Button on Device</h2>
-				<p translate>To pair your device, press Pair. Afterwards, press the corresponding button on the device you wish to connect. Your router will be open for pairing for 2 minutes after you pressed Pair.</p>
+				<p translate>{{'wps-pbc.info'|translate}}</p>
 				<juci-config-lines>
 					<juci-config-line title="{{'Pair (within 2 minutes)'|translate}}">
 						<button class="btn btn-lg btn-{{wpsButtonColor}} col-xs-12" ng-mouseup="mouseUp()" ng-mousedown="mouseDown()" translate>Pair</button>

@@ -29,7 +29,7 @@ msgstr "Aktiv"
 msgid "Label"
 msgstr "Namn"
 
-msgid "IP Retreival Method"
+msgid "IP Retrieval Method"
 msgstr "IP Uppslagningsmetod"
 
 msgid "Select Connection"

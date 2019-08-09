@@ -83,10 +83,10 @@ msgid "Event Log"
 msgstr ""
 
 msgid "status.eventlog.info"
-msgstr "Here you can view system event log"
+msgstr "This page shows information from the system event log."
 
-msgid "(Note: only latest"
-msgstr ""
+msgid "note.only.latest"
+msgstr "(Note: only the latest"
 
 msgid "lines are shown)"
 msgstr ""
@@ -96,6 +96,10 @@ msgstr ""
 
 msgid "Download All Logs"
 msgstr ""
+
+
+msgid "status.events.download.info"
+msgstr "This downloads an archive containing a full system report."
 
 msgid "Limit log list"
 msgstr ""

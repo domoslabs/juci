@@ -29,7 +29,7 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-msgid "IP Retreival Method"
+msgid "IP Retrieval Method"
 msgstr ""
 
 msgid "Select Connection"
@@ -73,8 +73,8 @@ msgstr ""
 
 msgid "ddns.config.info"
 msgstr ""
-"DDNS allows you to access your router from the Internet using a domain name "
-"instead of IP address. You will need an account on a DDNS service provider."
+"Dynamic DNS allows you to access your router from the Internet using a domain name "
+"instead of the IP address. You will need .an account on a DDNS service provider."
 
 msgid "menu-internet-services-ddns-title"
 msgstr "DDNS"

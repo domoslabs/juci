@@ -14,7 +14,7 @@ msgstr ""
 msgid "Backup Settings"
 msgstr "Varmuuskopiasetukset"
 
-msgid "Select the services/settings to backup"
+msgid "backup.settings.config.info"
 msgstr "Valitse varmuuskopioitavien palveluiden asetukset"
 
 msgid "menu-config-backup-settings-title"

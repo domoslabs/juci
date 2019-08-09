@@ -2,7 +2,7 @@
 	<div ng-controller="SettingsConfigurationCtrl">
 		<juci-config-section>
 			<juci-config-heading>{{ 'Backup Configuration' | translate }}</juci-config-heading>
-			<juci-config-info>{{ 'settings.config.info' | translate }}</juci-config-info>
+			<juci-config-info>{{ 'backup.options.config.info' | translate }}</juci-config-info>
 			<juci-config-lines>
 				<juci-config-line title="{{'Save configuration'|translate}}">
 					<button class="btn btn-lg btn-default" ng-click="onSaveConfig()">{{'Save'|translate}}</button>
@@ -18,7 +18,7 @@
 				<juci-config-line title="{{'Factory reset to default configuration'|translate}}">
 				</juci-config-line>
 				<div ng-hide="soft.is_repeater">
-				<juci-config-line title="{{'Soft reset'|translate}}" help="{{'Save some settings over the factory reset'|translate}}">
+				<juci-config-line title="{{'Soft reset'|translate}}" help="{{'soft.reset.info'|translate}}">
 					<div class="input-group"> <switch class="green" ng-model="soft.soft"/> </div>
 				</juci-config-line>
 				<hr />

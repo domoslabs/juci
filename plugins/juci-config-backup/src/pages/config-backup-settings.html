@@ -3,7 +3,7 @@
 	<div ng-controller="IntenoBackupSettingsCtrl">
 		<juci-config-section>
 			<h2 translate>Backup Settings</h2>
-			<p translate>Select the services/settings to backup</p>
+			<p translate>{{'backup.settings.config.info' | translate}}</p>
 			<juci-config-lines>
 				<juci-config-line ng-repeat="service in services track by $index" title="{{ service['.name'] }}" help="{{ service.desc.value }}">
 					<switch class="green" ng-model="service.keep.value"></switch>

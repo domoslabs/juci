@@ -45,7 +45,7 @@ msgid "ICE"
 msgstr ""
 
 # plugins/juci-ice-client/src/pages/ice-client-configuration.html
-msgid "Configuration for ICE client"
+msgid "ice.client.info"
 msgstr "ICE-client konfiguraatio"
 
 # plugins/juci-ice-client/src/pages/ice-client-configuration.html

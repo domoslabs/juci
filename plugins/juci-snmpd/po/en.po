@@ -151,7 +151,7 @@ msgid "SNMP Configuration"
 msgstr ""
 
 msgid "snmpd.config.info"
-msgstr "Configuration for Simple Network Management Protocol service (snmpd)"
+msgstr "Configuration for Simple Network Management Protocol service"
 
 msgid "Enabled"
 msgstr ""

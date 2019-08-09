@@ -16,7 +16,7 @@ msgid "Backup Settings"
 msgstr "バックアップ設定"
 
 # plugins/juci-config-backup/src/pages/config-backup-settings.html
-msgid "Select the services/settings to backup"
+msgid "backup.settings.config.info"
 msgstr "バックアップするサービス/設定を選択する"
 
 # plugins/juci-config-backup/src/pages/config-backup-settings.html

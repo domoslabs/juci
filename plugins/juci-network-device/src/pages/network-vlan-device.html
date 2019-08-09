@@ -1,7 +1,7 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="NetworkVlanDevicePage">
 		<juci-config-heading>{{'VLAN settings'|translate}}</juci-config-heading>
-		<juci-config-info>{{'This section allows you to configure VLAN devices.'| translate}}</juci-config-info>
+		<juci-config-info>{{'VLAN devices'| translate}}</juci-config-info>
 		<juci-config-section>
 			<juci-list-editor ng-items="devices" item-editor="network-device-edit" get-item-title="$item['.name']" on-create="onCreateDevice()" on-delete="onDeleteDevice($item)"></juci-list-editor>
 		</juci-config-section>
