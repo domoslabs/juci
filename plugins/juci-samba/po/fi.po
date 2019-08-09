@@ -78,7 +78,9 @@ msgstr "Jaa käyttäjän kotihakemisto"
 msgid "Interface"
 msgstr "Verkko"
 
-msgid "samba.interfaces"
+msgid ""
+"the interface(s) samba will listen on. Samba will not start if no interface "
+"is selected"
 msgstr ""
 "Verkot joita samba käyttää. Samba ei käynnisty mikäli verkkoa ei ole valittu"
 

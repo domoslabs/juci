@@ -64,8 +64,9 @@ msgstr ""
 
 msgid "status.restart.info"
 msgstr ""
-"This page allows to reboot your router and restart your Internet connection. "
-"During the reboot all phone, internet and TV services will be temporarily unavailable. "
+"This page allows to restart your Internet connection and reboot your router. "
+"Please note that for the entire process all phone, internet and TV services "
+"will be temporarily unavailable. "
 
 msgid "Click here to restart your device"
 msgstr ""

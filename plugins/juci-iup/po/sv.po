@@ -44,8 +44,8 @@ msgstr ""
 msgid "Export file"
 msgstr ""
 
-msgid "Osettings.provisioning.discover.info"
-msgstr "Overwrite DHCP Discover Provisioning"
+msgid "Overwrite DHCP Discover Provisioning"
+msgstr ""
 
 msgid "Reboot"
 msgstr ""

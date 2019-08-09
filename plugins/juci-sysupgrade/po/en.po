@@ -100,7 +100,7 @@ msgid "Firmware Upgrade"
 msgstr ""
 
 msgid "settings.upgrade.info"
-msgstr "This page contains options for upgrading the firmware on your router."
+msgstr "Here you can upgrade the software on your router."
 
 msgid "Current Firmware Version"
 msgstr ""
@@ -110,8 +110,8 @@ msgstr ""
 
 msgid "settings.upgrade.online.info"
 msgstr ""
-"Use an online software upgrade configured in the Options. "
-"If a newer firmware is found, it will be automatically installed. "
+"Click \"Check for Update\" to start an online software upgrade. If a newer "
+"firmware is found, it will be automatically installed on your router "
 "(Internet connection required)."
 
 msgid "Check for Upgrade"
@@ -125,14 +125,17 @@ msgstr ""
 
 msgid "settings.upgrade.usb.info"
 msgstr ""
-"Use a downloaded firmware from a file saved on USB storage attached to the USB port of your router. "
-"There must be only one firmware file in the main directory on the storage.
+"It is possible to update the firmware from a file saved on a USB storage "
+"attached to the USB port of your router. Click \"Install Update\" to start "
+"the automatic firmware upgrade. Please note that there should be only one "
+"firmware file on the storage and that one shall be located under the main "
+"directory (no search under subfolders)."
 
 msgid "Manual Firmware Upgrade"
 msgstr ""
 
 msgid "settings.upgrade.manual.info"
-msgstr "Upload a firmware file from your local computer."
+msgstr "It is possible to update the firmware from a saved update file."
 
 msgid "Select firmware file to upload"
 msgstr ""

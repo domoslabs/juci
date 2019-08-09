@@ -186,7 +186,7 @@ msgstr ""
 
 # plugins/juci-network-dsl/src/pages/network-dsl-status.html
 msgid "dsl.status.info"
-msgstr "Status information for the DSL connection."
+msgstr "This status page shows technical details of your DSL connection."
 
 # plugins/juci-network-dsl/src/pages/network-dsl-status.html
 msgid "No DSL info available."

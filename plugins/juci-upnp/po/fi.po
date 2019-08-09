@@ -53,13 +53,13 @@ msgstr "Ota käyttöön NAT-PMP protokolla"
 msgid "Enable secure mode"
 msgstr "Ota käyttöön turvallinen tila"
 
-msgid "upnp.enable.secure.mode.info"
+msgid "Allow adding forwards only to requesting ip addresses"
 msgstr "Salli edelleenlähetykset vain pyyntöjä lähettäviltä IP-osoitteilta"
 
 msgid "Enable additional logging"
 msgstr "Ota käyttöön lisälokitus"
 
-msgid "upnp.enable.additional.logging.info"
+msgid "Puts extra debugging information into the system log"
 msgstr "Kirjoittaa lokiin lisätietoa"
 
 msgid "Downlink"

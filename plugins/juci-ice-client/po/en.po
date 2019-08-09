@@ -44,10 +44,6 @@ msgid "ICE"
 msgstr ""
 
 # plugins/juci-ice-client/src/pages/ice-client-configuration.html
-msgid "ice.client.info"
-msgstr "Configuration for the ICE client."
-
-# plugins/juci-ice-client/src/pages/ice-client-configuration.html
 msgid "Connect your gateway to the cloud."
 msgstr ""
 

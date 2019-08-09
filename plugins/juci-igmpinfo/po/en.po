@@ -18,7 +18,8 @@ msgid "IGPM TV Status"
 msgstr ""
 
 msgid "status.tv.info"
-msgstr "Status information for IPTV services."
+msgstr ""
+"This page allows to verify the connection status of your IPTV Services."
 
 msgid "Connection Status"
 msgstr ""

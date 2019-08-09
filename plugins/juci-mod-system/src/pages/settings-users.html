@@ -1,6 +1,6 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="juciSettingsUsersPageCtrl">	
-		<h2 translate>Manage Router Users Permissions</h2>
+		<h2 translate>Manage Router Users Rights</h2>
 		<div ng-repeat="page in pages track by $index" ng-hide="page.hide">
 			<juci-config-line title="{{page.name}}">
 				<dropdown-multi-select input-model="page.users" output-model="page.out"

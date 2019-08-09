@@ -85,7 +85,7 @@ msgid "Label"
 msgstr "ラベル"
 
 # plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html
-msgid "IP Retrieval Method"
+msgid "IP Retreival Method"
 msgstr "IP検索方法"
 
 # plugins/juci-ddns/src/widgets/ddns-network-settings-edit.html

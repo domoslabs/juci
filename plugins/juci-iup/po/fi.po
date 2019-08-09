@@ -48,7 +48,7 @@ msgid "Reboot"
 msgstr "Käynnistä uudelleen"
 
 # plugins/juci-iup/src/pages/settings-provisioning-iup.html
-msgid "settings.provisioning.reboot.info"
+msgid "Reboot after applying the new configuration. Recommended: On"
 msgstr ""
 "Käynnistä uudelleen, kun uudet asetukset on otettu käyttöön. Suositus: Päällä"
 
@@ -56,12 +56,12 @@ msgid "Keep user config"
 msgstr "Lisää toissijainen konfiguraatio"
 
 # plugins/juci-iup/src/pages/settings-provisioning-iup.html
-msgid "settings.provisioning.keep.info"
+msgid "Save user changes before provisioning and reapply them after"
 msgstr ""
 "Tallenna käyttäjän asetukset ennen provisiointia ja ota ne uudelleen "
 "käyttöön sen jälkeen"
 
-msgid "settings.provisioning.discover.info"
+msgid "Overwrite DHCP Discover Provisioning"
 msgstr "Mikäli lisätty osoitteen haku DHCP-optiolla otetaan pois käytöstä"
 
 msgid "URL"
@@ -73,20 +73,20 @@ msgstr "Purkuavain"
 msgid "If not entered, Default onboard DES Key will be used insted"
 msgstr "Jos purkuavainta ei lisätä, käytetään laitteen DES-avainta"
 
-msgid "settings.provisioning.firmware.info"
+msgid "Setup the Firmware Provisioning options"
 msgstr "Aseta IUP provisiointiasetukset"
 
 msgid "Defaultreset"
 msgstr "Oletusasetukset"
 
 # plugins/juci-iup/src/pages/settings-provisioning-iup.html
-msgid "settings.provisioning.reset.info"
+msgid "Reset configuration to default"
 msgstr "Resetoi oletusasetuksille"
 
 msgid "Software URL"
 msgstr "Ohjelmisto URL"
 
-msgid "settings.provisioning.info"
+msgid "Setup IUP Provisioning parameters"
 msgstr "Aseta IUP provisiointiasetukset"
 
 msgid "General"

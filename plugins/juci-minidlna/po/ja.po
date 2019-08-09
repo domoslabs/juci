@@ -92,8 +92,8 @@ msgid "Friendly Name"
 msgstr ""
 
 # plugins/juci-minidlna/src/pages/internet-services-minidlna.html
-msgid "minidlna.friendly.name.info"
-"Customize the name displayed to clients."
+msgid ""
+"Set this if you want to customize the name that shows up on your clients."
 msgstr ""
 
 # plugins/juci-minidlna/src/pages/internet-services-minidlna.html
@@ -196,7 +196,7 @@ msgid "MiniDLNA"
 msgstr ""
 
 # plugins/juci-minidlna/src/pages/internet-services-minidlna.html
-msgid "minidlna.info"
+msgid ""
 "MiniDLNA is server software with the aim of being fully compliant with DLNA/"
 "UPnP-AV clients."
 msgstr ""

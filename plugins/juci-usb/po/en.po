@@ -21,7 +21,7 @@ msgid "USB Devices"
 msgstr "USB Devices"
 
 msgid "usb.devices.info"
-msgstr "status information for attached USB device(s)."
+msgstr "USB device information"
 
 msgid "Device ID"
 msgstr "Device ID"

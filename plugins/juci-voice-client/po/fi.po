@@ -246,7 +246,7 @@ msgstr "Suora"
 msgid "Advanced Line Settings"
 msgstr "Edistyneet linja-asetukset"
 
-msgid "Locale selection"
+msgid "Locale selecton"
 msgstr ""
 
 msgid "A restart is required for country changes to take effect"
@@ -330,7 +330,7 @@ msgstr ""
 msgid "Sip Proxy servers"
 msgstr ""
 
-msgid "Allow incoming calls from the specified proxies"
+msgid "Allow incomming calls from the specified proxies"
 msgstr ""
 
 msgid "Add SIP Proxy"
@@ -641,7 +641,7 @@ msgstr "POIS PÄÄLTÄ"
 msgid "Custom Dialplan"
 msgstr ""
 
-msgid "Enable incoming dialplan"
+msgid "Enable incomming dialplan"
 msgstr ""
 
 msgid "Enable outgoing dialplan"
@@ -770,7 +770,7 @@ msgstr "Estä lisämaksulliset numerot"
 msgid "Incoming Number Blocking"
 msgstr "Saapuvien puheluiden esto"
 
-msgid "Block connections from these numbers"
+msgid "Do not allow connections from these numbers"
 msgstr "Estä soitot näistä numeroista"
 
 msgid "Outgoing Calls"

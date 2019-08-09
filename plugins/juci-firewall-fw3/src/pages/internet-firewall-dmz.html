@@ -17,7 +17,7 @@
 			<div class="alert alert-danger" ng-show="nonforwardedPorts">
 				<p><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><span>{{'Warning: By using the exposed host function you bypass the firewall of your router. Please make sure that your computer is protected against attacks from Internet. The following ports will not be forwarded:'|translate}} {{ nonforwardedPorts || 'None'}}.</span></p>
 			</div>
-			<p translate>{{'Select the local IP address to expose to the Internet. Make this a static IP address, to avoid it being asssigned to the wrong host.'|translate}}</p>
+			<p translate>Choose the local IP address that should be exposed to Internet. Additionally you should configure this IP address as static DHCP address for your device (see Settings/Network).</p>
 			<juci-config-lines>
 				<juci-config-line title="{{'WAN IP Address'|translate}}">
 					<strong>{{wan.ip}}</strong>

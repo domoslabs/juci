@@ -87,7 +87,7 @@ msgstr "Händelselogg"
 msgid "status.eventlog.info"
 msgstr "Händelseflöde"
 
-msgid "note.only.latest"
+msgid "(Note: only latest"
 msgstr "(Notera: bara sista"
 
 msgid "lines are shown)"

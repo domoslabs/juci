@@ -135,7 +135,7 @@ msgid "VLAN settings"
 msgstr "VLAN 設定"
 
 # plugins/juci-network-device/src/pages/network-vlan-device.html
-msgid "VLAN devices"
+msgid "This section allows you to configure VLAN devices."
 msgstr " "
 
 msgid "menu-network-devices-title"

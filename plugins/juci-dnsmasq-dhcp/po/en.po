@@ -149,8 +149,8 @@ msgstr ""
 msgid "Leasefile"
 msgstr ""
 
-msgid "dhcp.leasefile.info"
-msgstr "File to store DHCP leases in."
+msgid "file where given DHCP-leases will be stored"
+msgstr ""
 
 msgid "Ignore resolve file"
 msgstr ""
@@ -158,22 +158,11 @@ msgstr ""
 msgid "Resolve file"
 msgstr ""
 
-msgid "resolve.file.info"
-msgstr "List of upstream name servers for dnsmasq."
-
-
 msgid "local DNS file"
 msgstr ""
 
 msgid "Ignore Hosts file"
 msgstr ""
-
-msgid "dnsmasq.hostname.entries.files"
-msgstr "Hostname entries file(s)"
-
-msgid "dnsmasq.hostname.entries.files.info"
-msgstr "Additional host files to read for serving DNS responses."
-
 
 msgid "Advanced Settings"
 msgstr ""

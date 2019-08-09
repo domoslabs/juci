@@ -52,8 +52,8 @@ msgid "OWSD"
 msgstr ""
 
 # /home/reidar/juci/plugins/juci-owsd/src/pages/settings-management-owsd.html
-msgid "oswd.info"
-msgstr "Configure the OWSD web-server daemon."
+msgid "Chage settings for the owsd web-server deamon"
+msgstr ""
 
 msgid "menu-settings-management-owsd-title"
 msgstr "OWSD"

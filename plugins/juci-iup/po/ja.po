@@ -60,20 +60,20 @@ msgid "Reboot"
 msgstr ""
 
 # plugins/juci-iup/src/pages/settings-provisioning-iup.html
-msgid "settings.provisioning.reboot.info"
-msgstr "Reboot after applying the new configuration. Recommended: On"
+msgid "Reboot after applying the new configuration. Recommended: On"
+msgstr ""
 
 # plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Keep user config"
 msgstr ""
 
 # plugins/juci-iup/src/pages/settings-provisioning-iup.html
-msgid "settings.provisioning.keep.info"
-msgstr "Save user changes before provisioning and reapply them after"
+msgid "Save user changes before provisioning and reapply them after"
+msgstr ""
 
 # plugins/juci-iup/src/pages/settings-provisioning-iup.html
-msgid "settings.provisioning.discover.info"
-msgstr "Overwrite DHCP Discover Provisioning"
+msgid "Overwrite DHCP Discover Provisioning"
+msgstr ""
 
 # plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "URL"
@@ -88,24 +88,24 @@ msgid "If not entered, Default onboard DES Key will be used insted"
 msgstr ""
 
 # plugins/juci-iup/src/pages/settings-provisioning-iup.html
-msgid "settings.provisioning.firmware.info"
-msgstr "Setup the firmware provisioning options."
+msgid "Setup the Firmware Provisioning options"
+msgstr ""
 
 # plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Defaultreset"
 msgstr ""
 
 # plugins/juci-iup/src/pages/settings-provisioning-iup.html
-msgid "settings.provisioning.reset.info"
-msgstr "Reset configuration to default settings."
+msgid "Reset configuration to default"
+msgstr ""
 
 # plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "Software URL"
 msgstr ""
 
 # plugins/juci-iup/src/pages/settings-provisioning-iup.html
-msgid "settings.provisioning.info"
-msgstr "Configure IUP provisioning parameters."
+msgid "Setup IUP Provisioning parameters"
+msgstr ""
 
 # plugins/juci-iup/src/pages/settings-provisioning-iup.html
 msgid "General"

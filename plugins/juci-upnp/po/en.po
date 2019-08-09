@@ -53,14 +53,14 @@ msgstr ""
 msgid "Enable secure mode"
 msgstr ""
 
-msgid "upnp.enable.secure.mode.info"
-msgstr "Limit UPnP clients to add forwards only for the requesting IP"
+msgid "Allow adding forwards only to requesting ip addresses"
+msgstr ""
 
 msgid "Enable additional logging"
 msgstr ""
 
-msgid "upnp.enable.additional.logging.info"
-msgstr "Add extra debugging information to the system log"
+msgid "Puts extra debugging information into the system log"
+msgstr ""
 
 msgid "Downlink"
 msgstr ""

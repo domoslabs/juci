@@ -972,7 +972,10 @@ msgid "WPS-PBC: Push Button on Device"
 msgstr "WPS-PBC: WPS Push Button Connect"
 
 # plugins/juci-wireless/src/pages/wireless-wps.html
-msgid "wps-pbc.info"
+msgid ""
+"To pair your device, press Pair. Afterwards, press the corresponding button "
+"on the device you wish to connect. Your router will be open for pairing for "
+"2 minutes after you pressed Pair."
 msgstr ""
 "デバイスをペアリングするには、ペアを押します。 その後、接続するデバイスの対応"
 "するボタンを押します。 ペアを押した後、ルータは2分間ペアリングが可能になりま"

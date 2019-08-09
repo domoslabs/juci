@@ -50,10 +50,10 @@
 							<juci-config-line title="{{'Enable NAT-PMP'|translate}}" ng-show="upnp" help="{{'Enable NAT-PMP protocol'|translate}}">
 								<switch ng-model="upnp.enable_natpmp.value" class="green"></switch>
 							</juci-config-line>
-							<juci-config-line title="{{ 'Enable secure mode' | translate }}" help="{{'upnp.enable.secure.mode.info'|translate }}">
+							<juci-config-line title="{{ 'Enable secure mode' | translate }}" help="{{ 'Allow adding forwards only to requesting ip addresses' | translate }}">
 								<switch ng-model="upnp.secure_mode.value" class="green"></switch>
 							</juci-config-line>
-							<juci-config-line title="{{ 'Enable additional logging' | translate }}" help="{{ 'upnp.enable.additional.logging.info' | translate }}">
+							<juci-config-line title="{{ 'Enable additional logging' | translate }}" help="{{ 'Puts extra debugging information into the system log' | translate }}">
 								<switch ng-model="upnp.log_output.value" class="green"></switch>
 							</juci-config-line>
 							<juci-config-line title="{{ 'Downlink' | translate }}" help="{{ 'Value in KByte/s, informational only' | translate }}">

@@ -12,7 +12,7 @@
 			</juci-config-lines>
 			<juci-config-lines ng-show="filter.block_outgoing.value">
 				<hr/>
-				<juci-config-line title="{{'Block connections to these numbers'|translate}}">
+				<juci-config-line title="Do not allow connections to these numbers">
 					<div class="row form-group" ng-repeat="rule in outgoingRules track by rule['.name']">
 						<div class="form-group form-inline">
 							<div class="col-xs-10">
@@ -44,7 +44,7 @@
 				</juci-config-line>
 			</juci-config-lines>
 			<juci-config-lines ng-show="filter.block_incoming.value">
-				<juci-config-line title="{{'Block connections from these numbers'|translate}}">
+				<juci-config-line title="{{'Do not allow connections from these numbers'|translate}}">
 					<div class="row" ng-repeat="rule in incomingRules track by $index">
 						<div class="form-group form-inline">
 							<input type="text" class="form-control" ng-model="rule.extension.value"  ng-blur="onSave()" placeholder="{{'Phone Extension'|translate}}"/>

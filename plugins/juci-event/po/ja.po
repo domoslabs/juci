@@ -56,7 +56,7 @@ msgid "status.eventlog.info"
 msgstr " "
 
 # plugins/juci-event/src/pages/status-events.html
-msgid "note.only.latest"
+msgid "(Note: only latest"
 msgstr "(注：最新の"
 
 # plugins/juci-event/src/pages/status-events.html
@@ -73,7 +73,7 @@ msgid "Download System Report"
 msgstr "ダウンロード (Text)"
 
 # plugins/juci-event/src/pages/status-events.html 
-msgid "status.events.download.info"
+msgid "This downloads an archive containing a full system report"
 msgstr ""
 
 # plugins/juci-event/src/pages/status-events.html

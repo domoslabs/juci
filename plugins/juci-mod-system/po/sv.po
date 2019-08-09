@@ -97,7 +97,7 @@ msgstr "NTP Inställningar"
 msgid "Backup Settings"
 msgstr "Skapa en backup av inställnigarna"
 
-msgid "backup.options.config.info"
+msgid "settings.config.info"
 msgstr ""
 "Spara dina inställningar, återställa tidigare sparade inställningar och "
 "återställ EasyBox till fabrikstillstånd.Din EasyBox kan spara din "
@@ -186,7 +186,7 @@ msgid "Configure LEDs"
 msgstr ""
 
 msgid "settings.management.leds.info"
-msgstr "Slå LEDs av/på."
+msgstr "Enable/disable the LEDs on your router"
 
 msgid "Management"
 msgstr "Management"
@@ -240,7 +240,7 @@ msgstr "Generella Inställningar"
 msgid "Loading"
 msgstr "Laddar..."
 
-msgid "Manage Router Users Permissions"
+msgid "Manage Router Users Rights"
 msgstr "Hantera Router användares rättigheter"
 
 msgid "System Status"

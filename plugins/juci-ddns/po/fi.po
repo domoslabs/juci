@@ -62,7 +62,7 @@ msgstr "Käytössä"
 msgid "Label"
 msgstr "Nimi"
 
-msgid "IP Retrieval Method"
+msgid "IP Retreival Method"
 msgstr "IP osoitteen hakutapa"
 
 msgid "Select Connection"

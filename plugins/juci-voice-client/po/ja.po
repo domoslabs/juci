@@ -402,7 +402,7 @@ msgid "Advanced Line Settings"
 msgstr ""
 
 # plugins/juci-voice-client/src/widgets/tel-advanced.html
-msgid "Locale selection"
+msgid "Locale selecton"
 msgstr ""
 
 # plugins/juci-voice-client/src/widgets/tel-advanced.html
@@ -545,7 +545,7 @@ msgid "Sip Proxy servers"
 msgstr ""
 
 # plugins/juci-voice-client/src/widgets/sip-advanced.html
-msgid "Allow incoming calls from the specified proxies"
+msgid "Allow incomming calls from the specified proxies"
 msgstr ""
 
 # plugins/juci-voice-client/src/widgets/sip-advanced.html
@@ -997,7 +997,7 @@ msgid "Custom Dialplan"
 msgstr ""
 
 # plugins/juci-voice-client/src/widgets/custom-dialplan.html
-msgid "Enable incoming dialplan"
+msgid "Enable incomming dialplan"
 msgstr ""
 
 # plugins/juci-voice-client/src/widgets/custom-dialplan.html
@@ -1169,7 +1169,7 @@ msgid "Incoming Number Blocking"
 msgstr ""
 
 # plugins/juci-voice-client/src/pages/voice-number-blocking.html
-msgid "Block connections from these numbers"
+msgid "Do not allow connections from these numbers"
 msgstr ""
 
 # plugins/juci-voice-client/src/pages/voice-number-blocking.html

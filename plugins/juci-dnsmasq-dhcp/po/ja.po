@@ -328,7 +328,7 @@ msgid "Leasefile"
 msgstr "リースファイル"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-msgid "dhcp.leasefile.info"
+msgid "file where given DHCP-leases will be stored"
 msgstr "指定されたDHCPリースが保存されるファイル"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
@@ -350,7 +350,7 @@ msgid "Ignore Hosts file"
 msgstr "Hostsファイルを無視する"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html
-msgid "dnsmasq.hostname.entries.files"
+msgid "Hostname Entries file(s)"
 msgstr "ホスト名エントリファイル"
 
 # plugins/juci-dnsmasq-dhcp/src/pages/dhcp-settings.html

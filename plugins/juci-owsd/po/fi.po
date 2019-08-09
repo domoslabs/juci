@@ -78,7 +78,7 @@ msgid "OWSD"
 msgstr "OWSD"
 
 # /home/jamu/GIT/juci/plugins/juci-owsd/src/pages/settings-management-owsd.html
-msgid "oswd.info"
+msgid "Chage settings for the owsd web-server deamon"
 msgstr "Muuta OWSD web-palvelimen asetuksia"
 
 # /home/jamu/GIT/juci/plugins/juci-owsd/src/pages/settings-management-owsd.html

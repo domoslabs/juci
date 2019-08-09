@@ -117,7 +117,9 @@ msgid "Interface"
 msgstr ""
 
 # plugins/juci-samba/src/pages/internet-services-samba.html
-msgid "samba.interfaces"
+msgid ""
+"the interface(s) samba will listen on. Samba will not start if no interface "
+"is selected"
 msgstr ""
 
 # plugins/juci-samba/src/pages/internet-services-samba.html

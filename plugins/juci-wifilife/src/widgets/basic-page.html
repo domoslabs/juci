@@ -1,18 +1,18 @@
 <div>
 	<juci-config-section>
-		<juci-config-line title="{{ 'Enable WiFi Life' | translate }}" help="{{'WiFi-controller network and STA management.'|translate}}">
+		<juci-config-line title="{{ 'Enable WiFi Life' | translate }}" help="{{'WiFi-controller network and STA managment.'|translate}}">
 			<div class="row">
 				<switch ng-model="wifilife.enabled.value" class="green" />
 			</div>
 		</juci-config-line>
 		<juci-config-lines ng-show="wifilife.enabled.value">
-			<juci-config-line title="{{'Enable 802.11k' | translate}}" help="{{'Neighbor BSS and radio resource management.'|translate}}">
+			<juci-config-line title="{{'Enable 802.11k' | translate}}" help="{{'Neighbor BSS and radio resource managment.'|translate}}">
 				<div class="checkbox checkbox-info">
 					<input type="checkbox" ng-model="rrm" ng-click="toggleRrm()" />
 					<label></label>
 				</div>
 			</juci-config-line>
-			<juci-config-line title="{{'Enable 802.11v' | translate}}" help="{{'BSS transition management of clients.'|translate}}">
+			<juci-config-line title="{{'Enable 802.11v' | translate}}" help="{{'BSS transition managment of clients.'|translate}}">
 				<div class="checkbox checkbox-info">
 					<input type="checkbox" ng-model="wifiIface.wnm.value" />
 					<label></label>
