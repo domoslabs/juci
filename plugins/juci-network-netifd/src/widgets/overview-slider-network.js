@@ -179,7 +179,7 @@ JUCI.app
 					if(!data || !data.interface){next("no Interfaces");return}
 					lan_nets = all_nets = data.interface;
 					next();
-				}).fail(function(e){next({"error":e});});
+				}).fail(function(e){self.def.reject(); return;});
 			},
 			function(next){
 				$rpc.$call("router.network", "dump").done(function(data){
