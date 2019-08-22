@@ -17,15 +17,31 @@
  */
 
 JUCI.app
-.controller("WiFiRadioPickerModal", function($scope, $modalInstance, $wireless, interfaces, $tr, gettext){
+.controller("WiFiRadioPickerModal", function($scope, $modalInstance, $wireless, interfaces, $tr, gettext, $uci){
 	$scope.data = {};
 	$scope.interfaces = interfaces;
-	
+	$scope.allNets = [];
 	$scope.allModes = [
 		{ label: $tr(gettext("Access Point (AP)")), value: "ap" },
 		{ label: $tr(gettext("Client (STA)")), value: "sta" }
 	];
-	
+
+	$uci.$sync("network").done(function() {
+		$scope.allNets = $uci.network["@interface"].filter(function(interface) {
+			return interface.is_lan.value === true && interface.type.value === "bridge" && interface[".name"] !== "loopback";
+		}).map(function(interface) {
+			return { label: interface[".name"].toUpperCase(), value: interface[".name"] }
+		})
+
+		var network = $scope.allNets.find(function(net) { return net.value === "lan" })
+		if (network)
+			$scope.data.network = network.value
+		else if ($scope.allNets.length)
+			$scope.data.network = $scope.allNets[0].value
+		else
+			$scope.data.network = ""
+	})
+
 	$wireless.getInterfaces().done(function(interfaces){
 		$wireless.getDevices().done(function(devices){
 			var fullRadios = devices.filter(function(dev){

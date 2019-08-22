@@ -10,6 +10,9 @@
 			<juci-config-line title="{{'Select SSID'|translate}}">
 				<input type="text" class="form-control" ng-model="data.ssid" placeholder="{{'New SSID'|translate}}"/>
 			</juci-config-line>
+			<juci-config-line title="{{'Select Network'|translate}}">
+				<juci-select ng-model="data.network" ng-items="allNets" placeholder="Select Network"></juci-select>
+			</juci-config-line>
 			<!--<juci-config-line title="{{'Mode'|translate}}">
 				<juci-select ng-model="data.mode" ng-items="allModes" placeholder="Select Interface Mode"></juci-select>
 			</juci-config-line>-->

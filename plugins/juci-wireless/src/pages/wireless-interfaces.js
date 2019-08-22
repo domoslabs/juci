@@ -71,7 +71,8 @@ JUCI.app
 				".type": "wifi-iface",
 				"device": data.radio,
 				//"mode": data.mode,
-				"ssid": data.ssid
+				"ssid": data.ssid,
+				"network": data.network
 			}).done(function(interface){
 				$scope.$apply();
 			});
