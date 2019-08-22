@@ -212,10 +212,10 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 					/* workaround due to status not giving correct frequency if the interface is down */
 					$rpc.$call("router.wireless", "radios").done(function(radios){
 						$uci.wireless["@wifi-device"].forEach(function(dev){
-							if (dev[".name"] !== iface.ifname.value)
+							if (dev[".name"] !== iface.device.value)
 								return;
 
-							var radio = radios[iface.ifname.value];
+							var radio = radios[iface.device.value];
 
 							if(radio)
 								iface[".frequency"] = (radio.isup ? radio.frequency : ((dev.band.value === 'a') ? $tr(gettext("5GHz")) : $tr(gettext("2.4GHz"))));
