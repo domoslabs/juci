@@ -17,8 +17,65 @@
 		},
 		"write": {
 			"uci": [
-				"firewall"
-			]
+				"firewall",
+				"passwords"
+			],
+			"uci_granular":{
+				"firewall" : [
+					{
+						"match" : {
+							".type" : "settings",
+							".name" : "settings"
+						},
+						"option" : [
+							"disabled"
+						]
+					},
+					{
+						"match" : {
+							".type" : "zone"
+						},
+						"option" : [
+							"*"
+						]
+					},
+					{
+						"match" : {
+							".type" : "forwarding"
+						},
+						"option" : [
+							"src",
+							"dest"
+						]
+					},
+					{
+						"match" : {
+							".type" : "rule"
+						},
+						"option" : [
+							"*"
+						]
+					},
+					{
+						"match" : {
+							".type" : "redirect"
+						},
+						"option" : [
+							"*"
+						]
+					},
+					{
+						"match" : {
+							".type" : "dmz"
+						},
+						"option" : [
+							"enabled",
+							"host",
+							"ip6addr"
+						]
+					}
+				]
+			}
 		}
 	},
 	"user-admin": {
