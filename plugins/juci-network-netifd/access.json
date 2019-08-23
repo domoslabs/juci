@@ -60,7 +60,6 @@
 				]
 			},
 			"uci": [
-				"layer2_interface_ethernet",
 				"network",
 				"dhcp"
 			],
@@ -71,7 +70,6 @@
 		},
 		"write": {
 			"uci": [
-				"layer2_interface_ethernet",
 				"network"
 			]
 		}
