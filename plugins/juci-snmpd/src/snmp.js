@@ -36,6 +36,11 @@ UCI.snmpd.$registerSectionType("com2sec", {
 	"source":	{ dvalue: "", type: String },
 	"community":{ dvalue: "", type: String }
 });
+UCI.snmpd.$registerSectionType("com2sec6", {
+	"secname":	{ dvalue: "", type: String },
+	"source":	{ dvalue: "", type: String },
+	"community":{ dvalue: "", type: String }
+});
 UCI.snmpd.$registerSectionType("group", {
 	"group":	{ dvalue: "", type: String },
 	"version":	{ dvalue: "", type: String },

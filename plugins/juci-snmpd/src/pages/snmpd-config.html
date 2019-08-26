@@ -19,6 +19,9 @@
 			<tab heading="{{'Com2sec'|translate}}">
 				<juci-list-editor ng-items="com2secs" item-editor="snmpd-com2sec-edit" get-item-title="getCom2secTitle($item)" on-create="onAddCom2sec()" on-delete="onDeleteSection($item)"></juci-list-editor>
 			</tab>
+			<tab heading="{{'Com2sec6'|translate}}">
+				<juci-list-editor ng-items="com2secs6" item-editor="snmpd-com2sec6-edit" get-item-title="getCom2sec6Title($item)" on-create="onAddCom2sec6()" on-delete="onDeleteSection($item)"></juci-list-editor>
+			</tab>
 			<tab heading="{{'Group'|translate}}">
 				<juci-list-editor ng-items="groups" item-editor="snmpd-group-edit" get-item-title="getGroupTitle($item)" on-create="onAddGroup()" on-delete="onDeleteSection($item)"></juci-list-editor>
 			</tab>

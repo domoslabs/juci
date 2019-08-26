@@ -24,6 +24,7 @@ JUCI.app
 		$scope.systems = $uci.snmpd["@system"];
 		$scope.agents = $uci.snmpd["@agent"];
 		$scope.com2secs = $uci.snmpd["@com2sec"];
+		$scope.com2secs6 = $uci.snmpd["@com2sec6"];
 		$scope.groups = $uci.snmpd["@group"];
 		$scope.views = $uci.snmpd["@view"];
 		$scope.accesses = $uci.snmpd["@access"];
@@ -40,6 +41,9 @@ JUCI.app
 	};
 	$scope.getCom2secTitle = function(item){
 		return item.community.value || item.source.value || item.secname.value || $tr(gettext("Empty Com2sec"));
+	};
+	$scope.getCom2sec6Title = function(item){
+		return item.community.value || item.source.value || item.secname.value || $tr(gettext("Empty Com2sec6"));
 	};
 	$scope.getGroupTitle = function(item){
 		return $tr(gettext("Group: ")) + (item.group.value || $tr(gettext("Unknown Group"))) + $tr(gettext(" Version: ")) + (item.version.value || $tr(gettext("Unknown Version"))) + $tr(gettext(" SecName: ")) + (item.secname.value || $tr(gettext("Unknown SecName")));
@@ -72,6 +76,13 @@ JUCI.app
 	$scope.onAddCom2sec = function(){
 		$uci.snmpd.$create({
 			".type": "com2sec"
+		}).done(function(){
+			$scope.$apply();
+		});
+	};
+	$scope.onAddCom2sec6 = function(){
+		$uci.snmpd.$create({
+			".type": "com2sec6"
 		}).done(function(){
 			$scope.$apply();
 		});
