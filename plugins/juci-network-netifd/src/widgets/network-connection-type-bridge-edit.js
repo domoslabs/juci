@@ -44,25 +44,38 @@ JUCI.app
 				});
 			}
 			filtered.map(function(apt){ aptmap[apt.device] = apt; });
+
 			net.$addedDevices = ((net.ifname.value != "")?net.ifname.value.split(" "):[])
 				.filter(function(x){return x && x != "" && aptmap[x]; })
-				.map(function(x){ 
+				.map(function(x){
 					// return device and delete it from map so the only ones left are the ones that can be added
 					var a = aptmap[x];
-					delete aptmap[x]; 
-					return { name: a.name, device: a.device, adapter: a }; 
-				}); 
-			net.$addableBridgeDevices = Object.keys(aptmap).map(function(k){ return aptmap[k]; }); 
-			$scope.$apply(); 
-		}); 
-	}
-	updateDevices($scope.connection); 
-	
+					delete aptmap[x];
+					return { name: a.name, device: a.device, adapter: a };
+				});
+
+			$uci.$sync("wireless").done(function() {
+				$uci.wireless["@wifi-iface"].forEach(function(iface) {
+					var found = net.$addedDevices.find(function(dev) {return dev.device === iface.ifname.value});
+					if (iface.network.value === net[".name"] && !found) {
+						var a = aptmap[iface.ifname.value];
+						net.$addedDevices.push({ name: iface.ssid.value, device: iface.ifname.value, adapter: a})
+						delete aptmap[iface.ifname.value];
+					}
+				});
+			}).always(function() {
+				net.$addableBridgeDevices = Object.keys(aptmap).map(function(k){ return aptmap[k]; });
+				$scope.$apply();
+			});
+		});
+	};
+	updateDevices($scope.connection);
+
 	$scope.$watch("connection", function(value){
-		if(!value) return; 
-		updateDevices(value); 	
+		if(!value) return;
+		updateDevices(value);
 	});
-	
+
 	$scope.onAddBridgeDevice = function(){
 		var modalInstance = $modal.open({
 			animation: true,
