@@ -93,7 +93,14 @@ JUCI.app
 
 		modalInstance.result.then(function (device) {
 			console.log("Added device: "+JSON.stringify(device)); 
-			$networkHelper.addDevice($scope.connection, device).done(function(){
+
+			var dev = $scope.connection.$addableBridgeDevices.find(function(d) {
+				return d.device === device
+			})
+
+			var wireless = ( (dev && dev.type === "wireless") ? true : false)
+
+			$networkHelper.addDevice($scope.connection, device, wireless).done(function(){
 				updateDevices($scope.connection);
 			});
 		}, function () {

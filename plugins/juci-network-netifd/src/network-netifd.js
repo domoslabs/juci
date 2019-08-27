@@ -312,7 +312,8 @@ JUCI.app.factory("$networkHelper", function($uci, $tr, gettext, $network){
 			}).fail(function(){deferred.reject("failed");});
 			return deferred;
 		},
-		addDevice: function(interface, device){
+		/* wireless (boolean) argument as a workaround for intel, letting hostapd create bridges */
+		addDevice: function(interface, device, wireless){
 			var deferred = $.Deferred();
 			if(!device || typeof device != "string") return deferred.reject("No Device given");
 			if(!interface || !interface.type) return deferred.reject("Invalid interface");
@@ -338,10 +339,12 @@ JUCI.app.factory("$networkHelper", function($uci, $tr, gettext, $network){
 						}).join(" ");
 					});
 					if(!keep_device){
-						if(interface.type.value == ""){
-							interface.ifname.value = device;
-						}else{
-							interface.ifname.value += " " + device;
+						if (!wireless) {
+							if(interface.type.value == ""){
+								interface.ifname.value = device;
+							}else{
+								interface.ifname.value += " " + device;
+							}
 						}
 						if(device.match(/^wl.+/) || device.match(/^ra.+/)){
 							$uci.$sync("wireless").done(function(){
