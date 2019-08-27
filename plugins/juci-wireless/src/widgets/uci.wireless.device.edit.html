@@ -11,13 +11,12 @@
 		<juci-config-line title="{{'Channel'|translate}}">
 			<juci-select ng-model="device.channel.value" ng-items="allChannels" placeholder="{{'Select Channel'|translate}}"/>
 		</juci-config-line>
-		<juci-config-line title="{{'Bandwidth'|translate}}">
+		<juci-config-line title="{{'Bandwidth'|translate}}" help="{{'Configure the maximum available bandwidth for this radio. It is still possible for the radio to operate at a lower bandwidth depending on the surrounding RF environment' | translate }}">
 			<juci-select ng-model="device.bandwidth.value" ng-items="allBandwidths" placeholder="{{'Select Bandwidth'|translate}}"/>
 		</juci-config-line>
 		<div ng-show="showExpert">
 			<juci-config-line title="{{'Scan Timer'|translate}}" ng-show="device.channel.value == 'auto' && (netmodes == null || netmodes.curr_mode.indexOf('repeater') < 0 || netmodes.uplink_type !== 'wireless')">
-				<input type="number" max="1440" min="0" class="form-control" ng-model="device.scantimer.value" placeholder="{{'Timer Interval'|translate}}"
-				help="{{'Configure the maximum available bandwidth for this radio. It is still possible for the radio to operate at a lower bandwidth depending on the surrounding RF environment' | translate }}"/>
+				<input type="number" max="1440" min="0" class="form-control" ng-model="device.scantimer.value" placeholder="{{'Timer Interval'|translate}}"/>
 			</juci-config-line>
 			<!--<juci-config-line title="{{'RIFS'|translate}}"> Not in this version of JUCI maby when we have better Accesscontrol
 				<switch class="green" ng-model="device.rifs.value"/>
