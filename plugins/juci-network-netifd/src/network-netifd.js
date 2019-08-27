@@ -326,18 +326,21 @@ JUCI.app.factory("$networkHelper", function($uci, $tr, gettext, $network){
 					var filtered = nets.filter(function(net){ return net[".name"] != interface[".name"];});
 					var keep_device = false;
 					if(!device.match(/^wl.+/) && !device.match(/^ra.+/)) filtered = filtered.filter(function(net){ return net.type.value == "bridge" });
-					filtered.map(function(net){
-						net.ifname.value = net.ifname.value.split(" ").filter(function(dev){
-							var text = $tr(gettext("Are you sure you want to remove device")) + " " +
-										dev + " " + $tr(gettext("from network")) + " " + net[".name"] +
-										" " + $tr(gettext("and use it in this")) + " " + type;
-							if(dev == device && !confirm(text)){
-								keep_device = true;
+					if (!wireless) {
+						filtered.map(function(net){
+							net.ifname.value = net.ifname.value.split(" ").filter(function(dev){
+								var text = $tr(gettext("Are you sure you want to remove device")) + " " +
+											dev + " " + $tr(gettext("from network")) + " " + net[".name"] +
+											" " + $tr(gettext("and use it in this")) + " " + type;
+
+								if(dev == device && !confirm(text)){
+									keep_device = true;
+									return true;
+								}else if(dev == device) return false;
 								return true;
-							}else if(dev == device) return false;
-							return true;
-						}).join(" ");
-					});
+							}).join(" ");
+						});
+					}
 					if(!keep_device){
 						if (!wireless) {
 							if(interface.type.value == ""){
@@ -352,9 +355,17 @@ JUCI.app.factory("$networkHelper", function($uci, $tr, gettext, $network){
 									return iface.ifname.value == device;
 								});
 								if(wliface && wliface.network){
-									wliface.network.value = interface[".name"];
+									if (wireless && wliface.network.value !== "none") {
+										var text = $tr(gettext("Are you sure you want to remove device")) + " " +
+										device + " " + $tr(gettext("from network")) + " " + wliface.network.value +
+										" " + $tr(gettext("and use it in this")) + " " + type;
+										if(wliface.network.value !== interface[".name"] && !confirm(text))
+											keep_device = true;
+									}
+									if (!keep_device)
+										wliface.network.value = interface[".name"];
 								}
-								deferred.resolve();
+								keep_device ? deferred.reject() : deferred.resolve();
 							});
 						}else{
 							deferred.resolve();
