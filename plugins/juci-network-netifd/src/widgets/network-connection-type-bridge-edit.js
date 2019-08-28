@@ -36,7 +36,7 @@ JUCI.app
 	function updateDevices(net){
 		if(!net) return;
 		$network.getAdapters().done(function(adapters){
-			var filtered = adapters.filter(function(ad){ return ad.type !== "eth-bridge" && ad.device && ad.type !== "atm-device" && ad.type !== "ptm-device";});
+			var filtered = adapters.filter(function(ad){ return ad.type !== "eth-bridge" && ad.device;});
 			var aptmap = {};
 			if(net.is_lan && net.is_lan.value){
 				filtered = filtered.filter(function(dev){

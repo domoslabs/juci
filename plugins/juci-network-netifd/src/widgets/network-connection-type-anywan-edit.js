@@ -38,7 +38,7 @@ JUCI.app
 		var net = $scope.connection;
 		if(!net) return;
 		$network.getAdapters().done(function(adapters){
-			var filtered = adapters.filter(function(dev){ return dev.device && dev.direction !== "Down" && dev.type !== "atm-device" && dev.type !== "ptm-device"; });
+			var filtered = adapters.filter(function(dev){ return dev.device && dev.direction !== "Down"; });
 			var aptmap = {};
 			filtered.map(function(apt){ aptmap[apt.device] = apt; });
 			net.$addedDevices = ((net.ifname.value != "")?net.ifname.value.split(" "):[])
