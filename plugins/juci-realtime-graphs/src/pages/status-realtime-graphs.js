@@ -1,4 +1,4 @@
-JUCI.app.controller("rtgraphsCtrl", function($scope, $rpc, $tr, gettext, $network){
+JUCI.app.controller("rtgraphsCtrl", function($scope, $rpc, $tr, gettext, $network, $uci){
 	$scope.ylabel = "Mbit/s";
 	var names = {};
 	var directions = {};
@@ -17,23 +17,61 @@ JUCI.app.controller("rtgraphsCtrl", function($scope, $rpc, $tr, gettext, $networ
 		$scope.$apply();
 	});
 
-	var types = { "eth-port":"", vlan:"", wireless:"" };
-
-	function get_adapters(callback){
+	function get_adapters(callback) {
 		$network.getAdapters().done(function(adapters){
-			adapters.filter(function(a){
-				return a.up && a.type in types && a.device && a.name;
-			}).forEach(function(a){
-				if(a.device in names && a.type !== "eth-port")
-					return;
-				if(a.type === "wireless")
-					names[a.device] = a.name + " (" + a.frequency + ")";
-				else
-					names[a.device] = a.name;
-			});
-		}).always(function(){
+			adapters = adapters.filter(function(a) {
+				return a.up && a.device && a.name;
+			})
+
+			$uci.$sync(["network", "wireless"]).done(function() {
+
+				/* iterate all network interfaces */
+				$uci.network["@interface"].forEach(function(interface) {
+					if (interface[".name"] === "loopback")
+						return;
+
+					$rpc.$call("network.interface." + interface[".name"], "status").done(function(res) {
+						/* if network interface is not up - do nothing */
+						if (!res.up)
+							return;
+
+						if (interface.type.value === "bridge") {
+							/* if interface is a bridge - iterate all ifnames and wireless wifi-ifaces that matches network */
+							interface.ifname.value.split(" ").forEach(function(ifname) {
+								var adapter = adapters.find(function(a) { return a.device === ifname})
+								if (!adapter || !adapter.device)
+									return
+
+								names[adapter.device] = adapter.name;
+								if (adapter.type === "wireless")
+									names[adapter.device]+=" (" + adapter.frequency + ")";
+							})
+
+							$uci.wireless["@wifi-iface"].filter(function(iface) {
+								return iface.network.value === interface[".name"]
+							}).map(function(iface) {
+								return adapters.find(function(a) { return a.device === iface.ifname.value })
+							}).forEach(function(adapter) {
+								if (!adapter || !adapter.device)
+									return
+								names[adapter.device] = adapter.name + " (" + adapter.frequency + ")";
+							})
+						} else {
+							/* if interface is not a bridge use whichever is the layer3 drive */
+							var adapter = adapters.find(function(a) { return a.device === res.l3_device})
+							if (!adapter || !adapter.device)
+								return;
+
+							names[adapter.device] = adapter.name;
+							if (adapter.type === "wireless")
+								names[adapter.device]+=" (" + adapter.frequency + ")";
+						}
+					});
+				})
+			})
+		}).always(function() {
 			callback();
-		});
+		})
 	}
 
 	function get_directions(callback){
