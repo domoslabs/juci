@@ -33,7 +33,7 @@ JUCI.app
 		{label:"All", value:"all"},
 		{label:"TCP", value:"tcp"},
 		{label:"UDP", value:"udp"},
-		{label:"TCP/UDP", value:""},
+		{label:"TCP/UDP", value:"tcp/udp"},
 		{label:"ICMP", value:"icmp"}
 	];
 
