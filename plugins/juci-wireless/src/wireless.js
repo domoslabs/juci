@@ -61,13 +61,15 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 					delete devices[dev.device];
 				}
 			});
+
 			// add any devices that are not in the list of adapters (ones that are down for instance)
 			Object.keys(devices).map(function(k){
 				var device = devices[k];
 				adapters.push({
+					up: !device.disabled.value && !$uci.wireless[device.device.value].disabled.value,
 					name: device.ssid.value,
 					device: device.ifname.value,
-					frequency: devices[".frequency"],
+					frequency: device[".frequency"],
 					type: "wireless"
 				});
 			});
