@@ -11,6 +11,9 @@
 				],
 				"system": [
 					"info"
+				],
+				"network.interface.*": [
+					"status"
 				]
 			}
 		} 
