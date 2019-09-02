@@ -9,7 +9,8 @@ JUCI.app
 			rule.$statusList = [
 				{ label: $tr(gettext("Priority")), value: rule.priority.value.charAt(0).toUpperCase() + rule.priority.value.slice(1) },
 				{ label: $tr(gettext("MAC Address")), value: rule.macaddr.value.toUpperCase() },
-				{ label: $tr(gettext("Protocol")), value: rule.proto.value === "all" ? "All" : rule.proto.value.toUpperCase()},
+				{ label: $tr(gettext("Protocol")), value: rule.proto.value === "all" ? "All" :
+					rule.proto.value === "tcpudp" ? "TCP/UDP" : rule.proto.value.toUpperCase()},
 				{ label: $tr(gettext("Ports")), value: rule.port.value.length ? rule.port.value.join(", ") : "All" },
 				{ label: $tr(gettext("Comment")), value: rule.comment.value }
 			];
