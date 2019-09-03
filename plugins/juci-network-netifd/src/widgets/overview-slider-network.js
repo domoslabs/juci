@@ -417,15 +417,16 @@ JUCI.app
 
 	// Update the data for the network every 5s and on every client and network.interface event
 	JUCI.interval.repeat("juci-network-slider-update", 5000, function(next){
-		/* hack to fix possible issue of undefined updateData on page update (uncertain how to reproduce) */
-		if (!updateData) {
+		/* fails sometimes due to issues with parallelization in updateData */
+		try {
+			updateData(false).done(function(nodes, edges){
+				$scope.done = true;
+				updateNetworkData(nodes, edges);
+			}).always(function(){next();});
+		} catch (e) {
+			console.error("updateData failed", e);
 			next();
-			return;
 		}
-		updateData(false).done(function(nodes, edges){
-			$scope.done = true;
-			updateNetworkData(nodes, edges);
-		}).always(function(){next();});
 	});
 	$events.subscribe("client", function(){
 		updateData().done(function(nodes, edges){
