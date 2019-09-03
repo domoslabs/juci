@@ -298,7 +298,7 @@ JUCI.app
 						});
 
 						if(num_ports === 0){
-							console.error("num_ports = 0");
+							console.log("num_ports = 0");
 							return;
 						}
 						var node = {
