@@ -540,8 +540,8 @@ JUCI.app
 				t+= $tr(gettext("3G/4G")) + '<br />';
 				break;
 			case "bridge":
-				break;
 				t+= $tr(gettext("Bridge")) + '<br />';
+				break;
 			default:
 				t+= $tr(gettext("Unknown")) + '<br />';
 		}
