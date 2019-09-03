@@ -63,7 +63,6 @@ JUCI.app
 			}
 		});
 		$scope.overviewWidgetRows = chunk($scope.overviewWidgets, is_to_wide ? 2: 3);
-		$scope.$apply();
 	}).fail(function(e){
 		console.error(e);
 	});
