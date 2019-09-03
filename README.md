@@ -1,5 +1,5 @@
-JUCI Webgui for Embedded Routers
---------------------------------
+# JUCI Webgui for Embedded Routers
+
 
 JUCI is a JavaScript-based web interface for broadband routers running iopsysWrt/OpenWrt.
 
@@ -11,8 +11,7 @@ JUCI is theme-able and fully mobile-ready (responsive):
 
 ![Mobile](/media/mobile.jpg)
 
-What is JUCI?
--------------
+# What is JUCI?
 
 If offers you the following:
 
@@ -23,8 +22,7 @@ If offers you the following:
 * Dynamic theming - you can switch color themes at runtime.
 * Full language support - allowing for complete localization of your gui. Language file generation is even partially automatic (for html text). Also supporting dynamically changing language on page without having to reload the application. Also featuring quick debug mode for translations where you can see which strings are missing in currently used language pack.
 
-Usage on OpenWRT
-----------------
+# Usage on OpenWRT
 
 You can now try JUCI on openwrt.
 
@@ -86,8 +84,7 @@ then do /etc/init.d/rpcd restart.
 JUCI also includes a nodejs server which you can do for local testing and for
 forwarding jsonrpc calls to your router during testing (juci-local-server).
 
-Good to know
-------------
+# Good to know
 
 Addons can be developed on top of juci by creating package that installs js and
 css files into the router /www folder and then runs juci-update at postinstall
@@ -103,8 +100,7 @@ content type based on actual gzipped content.
 JUCI also uses modified versions of ubus and rpcd on openwrt which you can also
 install from the feed (using -f option).
 
-Backend Code
-------------
+# Backend Code
 
 Juci backend mostly consists of scripts that implement ubus functions which
 become available to the gui code through json rpc. These scripts are simple
@@ -120,8 +116,54 @@ which makes then available on ubus.
 ubus-scriptd supports both batch scripts and services. Most of juci backend
 tasks are usually batch scripts that become ubus objects.
 
-OS X Development
-------------
+# JUCI Development
+
+JUCI supports local development, this means that you can build the code on your desktop but execute it
+towards an actual device.
+
+1. Make sure your mashine is propperly setup (in iopsys repo run ./iop setup_host)
+
+1. Download JUCI:
+	git clone git@public.inteno.se:juci <Folder to clone to>
+
+1. Checkout devel branch:
+	git checkout devel
+
+1. Create a Makefile.local:
+	copy example-Makefile.local to Makefile.local (cp example-Makefile.local Makefile.local)
+	or write your own. This file should contain a list of all plugins that will be compiled when you build locally.
+	Make sure that Makefile.local has local=yes in it.
+
+1. build JUCI:
+	run "make debug"
+
+1. (optional) create juci-local-server config file.
+	copy example.localserver.conf to .localserver.conf (cp example.localserver.conf .localserver.conf)
+	or write your own. This file MUST only contain a single valid JSON object with the keys
+	"port": <port and "host": <your box> all other keys will be ignored
+
+1. Start local server:
+	This is a script that should run in the background all the time so best is to start it in its own taab.
+	(If you have setup config you can skip the rest of this step).
+	To specify on what ip the remote ubus is add the --host <host> flag to the command, default 192.168.1.1
+	To specify on what port the server should run add --port <port> flag to the command, default 3000
+	./juci-local-server [--port <PORT>] [--host <HOST>]
+
+1. Open gui in browser:
+	In browser go to localhost:PORT and the server will take html and js files from your bin/ directory and make all
+	ubus calls etc on the box at the HOST ip
+
+1. Make changes:
+	to make changes and see them in browser just run make debug and reload the page in browser.
+	(MIGHT BE FIXED)If the change includes css files you have to run make clean && make debug for the changes to take affect
+
+
+IMPORTANT: if you make any changes to a file that is not html/js/css/less you need to update the box
+	with the new files (access.json etc).
+
+
+## Local OS X Development
+
 JUCI can compile in a OS X environment but some utilities needs to be installed.
 
 Install gettext on Mac OSX
@@ -173,7 +215,7 @@ Example) the script css-to-js, change first line to:
 
 ```
 
-## grep
+### grep
 If you run into any problems with grep in the build scripts this is most likely due OS X version is based on FreeBSD. The solution is to use brew version of grep i.e. ggrep.
 
 Example) the script extract-strings has the following row:
