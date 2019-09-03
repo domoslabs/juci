@@ -476,6 +476,7 @@
 			var mask = field.value.split("/")[1];
 			if(!ip || !mask) return error;
 			if(parseInt(mask) > 128 || parseInt(mask) < 1) return error;
+			if(ip.match(/:$/)) ip = ip + "0";
 			var ip6 = new IP6AddressValidator();
 			return ip6.validate({value:ip});
 		}
