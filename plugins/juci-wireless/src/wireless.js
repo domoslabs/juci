@@ -52,6 +52,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 		var self = this;
 		self.getInterfaces().done(function(list){
 			var devices = {};
+
 			list.map(function(x){ devices[x.ifname.value] = x; });
 			adapters.map(function(dev){
 				if(dev.device in devices){
@@ -62,22 +63,41 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 				}
 			});
 
-			// add any devices that are not in the list of adapters (ones that are down for instance)
-			Object.keys(devices).map(function(k){
-				var device = devices[k];
-				adapters.push({
-					up: !device.disabled.value && !$uci.wireless[device.device.value].disabled.value,
-					name: device.ssid.value,
-					device: device.ifname.value,
-					frequency: device[".frequency"],
-					type: "wireless"
-				});
-			});
+			var keys = Object.keys(devices);
+			async.each(keys, function(key, callback) {
+				var device = devices[key];
+				var statistics = {rx_bytes: 0, tx_bytes: 0};
+				var up = !device.disabled.value && !$uci.wireless[device.device.value].disabled.value;
+				var macaddr = "";
+				$rpc.$call("wifix", "status", {"vif": device.ifname.value}).done(function(res) {
+					if (!res)
+						return;
+
+					statistics.rx_bytes = res.rx_bytes
+					statistics.tx_bytes = res.tx_bytes
+					up = res.radio;
+					macaddr = res.bssid.toLowerCase();
+				}).always(function() {
+					adapters.push({
+						macaddr: macaddr,
+						statistics: statistics,
+						up: !!up,
+						name: device.ssid.value,
+						device: device.ifname.value,
+						frequency: device[".frequency"],
+						type: "wireless"
+					});
+					callback()
+				})
+			},
+			function() {
+				def.resolve();
+			})
+
 			// set type to wireless for devices having names starting with wl or wlan or ra
 			adapters.forEach(function(dev){
 				if(dev.device && (dev.device.indexOf("wl") == 0 || dev.device.indexOf("wlan") == 0 || dev.device.indexOf("ra") == 0)) dev.type = "wireless";
 			});
-			def.resolve();
 		}).fail(function(){
 			def.reject();
 		});
