@@ -20,16 +20,16 @@
 
 JUCI.app
 .controller("NetworkDevicesPageCtrl", function($scope, $uci, $rpc, $network, $config){
-	$scope.config = $config; 
+	$scope.config = $config;
 
 	$scope.order = function(field){
-		$scope.predicate = field; 
-		$scope.reverse = !$scope.reverse; 
+		$scope.predicate = field;
+		$scope.reverse = !$scope.reverse;
 	}
 
 	$network.getAdapters().done(function(adapters){
 		$scope.adapters = adapters.filter(function(a){
-			return a.present && a.name;
+			return (a.up || a.type === "wireless" ) && a.name;
 		}).map(function(a){
 			if(a.type === "wireless") a._icon = "juci juci-wifi";
 			if(a.type === "eth-port") a._icon = "juci juci-ethernet";
@@ -53,8 +53,8 @@ JUCI.app
 				a["__rx_bytes"] = Math.round((a.statistics.rx_bytes/1024)*10)/10 + " kB";
 			else
 				a["__rx_bytes"] = a.statistics.rx_bytes + " B";
-			return a; 
+			return a;
 		});
-		$scope.$apply(); 
-	}); 
-}); 
+		$scope.$apply();
+	});
+});

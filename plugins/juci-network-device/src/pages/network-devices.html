@@ -13,7 +13,7 @@
 					<th width="1px"><a href="" ng-click="order('state')" translate>Stats</th>
 				</thead>
 				<tr ng-repeat="dev in adapters track by $index | orderBy:predicate:reverse">
-					<td><i class="{{dev._icon}} fa-2x" ng-class="{'text-success': dev.carrier}"></i></td>
+					<td><i class="{{dev._icon}} fa-2x" ng-class="{'text-success': dev.type === 'wireless' ? dev.up : dev.carrier}"></i></td>
 					<td>{{dev.name}}</td>
 					<td>{{dev.device}}</td>
 					<td class="hidden-xs">{{dev.macaddr}}</td>
