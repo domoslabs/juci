@@ -43,6 +43,9 @@
 					"showpin",
 					"stop"
 
+				],
+				"wifix": [
+					"status"
 				]
 			}, 
 			"uci": [
