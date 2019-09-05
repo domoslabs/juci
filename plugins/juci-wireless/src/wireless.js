@@ -79,6 +79,7 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 					macaddr = res.bssid.toLowerCase();
 				}).always(function() {
 					adapters.push({
+						mtu: "1500",
 						macaddr: macaddr,
 						statistics: statistics,
 						up: !!up,
