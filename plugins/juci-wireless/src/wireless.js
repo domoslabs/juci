@@ -63,21 +63,28 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 				}
 			});
 
-			var keys = Object.keys(devices);
-			async.each(keys, function(key, callback) {
-				var device = devices[key];
-				var statistics = {rx_bytes: 0, tx_bytes: 0};
-				var up = !device.disabled.value && !$uci.wireless[device.device.value].disabled.value;
-				var macaddr = "";
-				$rpc.$call("wifix", "status", {"vif": device.ifname.value}).done(function(res) {
-					if (!res)
-						return;
+			var access_points = [];
 
-					statistics.rx_bytes = res.rx_bytes
-					statistics.tx_bytes = res.tx_bytes
-					up = res.radio;
-					macaddr = res.bssid.toLowerCase();
-				}).always(function() {
+			$rpc.$call("wifix", "status").done(function(aps) {
+				if (aps && aps.access_points && Array.isArray(aps.access_points))
+					access_points = aps.access_points;
+			}).always(function() {
+				for (key in devices) {
+					var device = devices[key];
+					var statistics = {rx_bytes: 0, tx_bytes: 0};
+					var up = !device.disabled.value && !$uci.wireless[device.device.value].disabled.value;
+					var macaddr = "";
+
+					access_points.forEach(function(ap) {
+						if (ap.wldev !== device.ifname.value)
+							return;
+
+						statistics.rx_bytes = ap.rx_bytes;
+						statistics.tx_bytes = ap.tx_bytes;
+						up = ap.radio;
+						macaddr = ap.bssid.toLowerCase();
+					})
+
 					adapters.push({
 						mtu: "1500",
 						macaddr: macaddr,
@@ -88,16 +95,14 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 						frequency: device[".frequency"],
 						type: "wireless"
 					});
-					callback()
-				})
-			},
-			function() {
-				def.resolve();
-			})
+				}
 
-			// set type to wireless for devices having names starting with wl or wlan or ra
-			adapters.forEach(function(dev){
-				if(dev.device && (dev.device.indexOf("wl") == 0 || dev.device.indexOf("wlan") == 0 || dev.device.indexOf("ra") == 0)) dev.type = "wireless";
+				// set type to wireless for devices having names starting with wl or wlan or ra
+				adapters.forEach(function(dev){
+					if(dev.device && (dev.device.indexOf("wl") == 0 || dev.device.indexOf("wlan") == 0 || dev.device.indexOf("ra") == 0)) dev.type = "wireless";
+				});
+
+				def.resolve();
 			});
 		}).fail(function(){
 			def.reject();
