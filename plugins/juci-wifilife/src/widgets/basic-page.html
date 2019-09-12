@@ -36,7 +36,7 @@
 			<juci-config-line title="{{'Steer Retry Interval'|translate}}" ng-show="steer.fallback_legacy.value" help="{{'Reattempt to steer WiFi client after interval.'|translate}}" error="steer.steer_legacy_retry_secs.error">
 				<input type="number" class="form-control" ng-model="steer.steer_legacy_retry_secs.value" value="{{steer.steer_legacy_retry_secs.value}}">
 			</juci-config-line>
-			<juci-config-line title="{{'STA Reassoc Interval'|translate}}" ng-show="steer.fallback_legacy.value" help="{{'Don\'t steer WiFi client if reassociated within interval.'|translate}}" error="steer.steer_legacy_reassoc_secs.error">
+			<juci-config-line title="{{'STA Reassoc Interval'|translate}}" ng-show="steer.fallback_legacy.value" help="{{'Do not steer WiFi client if reassociated within interval.'|translate}}" error="steer.steer_legacy_reassoc_secs.error">
 				<input type="number" class="form-control" ng-model="steer.steer_legacy_reassoc_secs.value" value="{{steer.steer_legacy_reassoc_secs.value}}">
 			</juci-config-line>
 		</juci-config-lines>

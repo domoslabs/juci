@@ -1,6 +1,5 @@
 UCI.$registerConfig("wifilife");
 UCI.$registerConfig("owsd");
-UCI.$registerConfig("wireless");
 
 UCI.owsd.$registerSectionType("ubusproxy", {
 	"enable": { dvalue: false, type: Boolean },
