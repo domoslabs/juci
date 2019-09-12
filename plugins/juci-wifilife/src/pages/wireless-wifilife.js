@@ -176,7 +176,6 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 			section.$statusList.push({ label: $tr(gettext("Hysteresis")), value: section.hysteresis.value })
 			section.$statusList.push({ label: $tr(gettext("SNR Difference")), value: section.diffsnr.value + " dB" })
 		}
-		//section.params.value.forEach(function (param, i) { section.$statusList.push({ label: $tr(gettext("Param " + (i + 1))), value: getTitle(param) }) })
 	}
 
 	$uci.$sync("wifilife").done(function () {
@@ -218,8 +217,17 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 	})
 
 	$uci.$sync("wireless").done(function () {
-		$scope.wifiIface = $uci.wireless["@wifi-iface"][0];
-		$scope.rrm = !!$scope.wifiIface.rrm.value;
+		$scope.wifiIface = $uci.wireless["@wifi-iface"].find(function(iface){
+			if(!iface.device) return false;
+			var radio = $uci.wireless[iface.device.value];
+			return radio && radio.band && radio.band.value === "a";
+		});
+		if($scope.wifiIface){
+			$scope.rrm = !!$scope.wifiIface.rrm.value;
+			$scope.has5G = true;
+		} else {
+			$scope.has5G = false;
+		}
 	})
 
 	$scope.onRssiUnexclude = function(mac) {
@@ -357,6 +365,7 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 	}
 
 	$scope.toggleRrm = function () {
+		if(!$scope.has5G) return;
 		$scope.rrm = !$scope.rrm;
 		$scope.wifiIface.rrm.value = $scope.rrm ? 255 : 0;
 	}

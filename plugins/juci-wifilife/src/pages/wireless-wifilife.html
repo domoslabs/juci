@@ -1,7 +1,10 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="wifilife">
-		<h1 translate>WiFi Life</h1>
-		<basic-page></basic-page>
-		<expert-page></expert-page>
+		<h1>{{'WiFi Life' | translate}}</h1>
+		<h3 ng-hide="has5G">{{'WiFi Life is not supported on routers without 5GHz radio' | translate}}</h3>
+		<div ng-show="has5G">
+			<basic-page></basic-page>
+			<expert-page></expert-page>
+		</div>
 	</div>
 </juci-layout-with-sidebar>
