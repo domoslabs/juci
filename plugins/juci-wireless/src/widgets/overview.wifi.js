@@ -134,6 +134,7 @@ JUCI.app
 				$scope.wifs = interfaces.map(function(iface){
 					if(!iface.device.value in radios) return null;
 					radios[iface.device.value].frequency = iface[".frequency"];
+					if(iface.mode.value !== "ap") return null
 
 					iface.$radio = radios[iface.device.value];
 					return iface;
