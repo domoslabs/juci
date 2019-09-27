@@ -75,7 +75,7 @@ JUCI.app
 		}
 
 		function do_overwrite_device_name(dev) {			
-			let overWrite = true;
+			var overWrite = true;
 
 			if (dev.includes(".") == false && dev.length > 0) {
 				overWrite = false;

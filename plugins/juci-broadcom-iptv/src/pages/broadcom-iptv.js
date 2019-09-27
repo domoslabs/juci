@@ -128,7 +128,7 @@ JUCI.app
 	$scope.onRemoveIp = function (item, index) {
 		if (!item) return;
 		console.log("item", item);
-		$scope.mcpd.igmp_mcast_snoop_exceptions.value = $scope.mcpd.igmp_mcast_snoop_exceptions.value.filter(function(exception) {console.log("exception", exception,);return item !== exception })
+		$scope.mcpd.igmp_mcast_snoop_exceptions.value = $scope.mcpd.igmp_mcast_snoop_exceptions.value.filter(function(exception) {console.log("exception", exception);return item !== exception })
 		$scope.mcpd.igmp_mcast_snoop_exceptions.is_dirty = !arrayEquals($scope.mcpd.igmp_mcast_snoop_exceptions.value, ecopy);
 	}
 
