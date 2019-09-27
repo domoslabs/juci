@@ -28,7 +28,7 @@ JUCI.app
 
 	$uci.$sync("network").done(function() {
 		$scope.allNets = $uci.network["@interface"].filter(function(interface) {
-			return interface.is_lan.value === true && interface.type.value === "bridge" && interface[".name"] !== "loopback";
+			return interface.type.value === "bridge" && interface[".name"] !== "loopback";
 		}).map(function(interface) {
 			return { label: interface[".name"].toUpperCase(), value: interface[".name"] }
 		})
