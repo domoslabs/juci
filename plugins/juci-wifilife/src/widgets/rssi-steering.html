@@ -1,38 +1,12 @@
 <div>
-	<juci-config-line title="{{ 'Enable Steering' | translate}}">
-		<switch class="green" ng-model="data.enable" ng-change="toggleSteering()"/>
-	</juci-config-line>
-	<juci-config-lines ng-show="data.enable">
-			<juci-config-line title="{{ 'Steering Parameters' | translate}}"></juci-config-line>
-			<juci-list-editor ng-items="params" item-editor="wifilife-param-edit" show-icon="true" get-item-title="$item['.name'].toUpperCase()" hide-buttons="true"></juci-list-editor>
-		<juci-config-line title="{{ 'Steering Interface' | translate}}" help="{{'Interface to use for RSSI steering.'|translate}}">
-			<juci-select ng-model="data.ifname" ng-items="wiLiInterfaces" on-change="selectFhIface($value)"></juci-select>
-		</juci-config-line>
-		<juci-config-line title="{{'Exclude Repeaters' | translate}}" help="{{'Exclude all repeaters from steering.'|translate}}" ng-show="steerDefault.exclude_rpt.value">
-			<div class="checkbox checkbox-info">
-				<input type="checkbox" ng-model="steerDefault.exclude_rpt.value" ng-click="toggleIncludeRpt()" />
-				<label></label>
-			</div>
-		</juci-config-line>
-		<juci-expandable title="{{'WiFi STAs'|translate}}" open="true" >
-				<!--<button class="btn btn-default pull-right" ng-click="refresh()"><i class="fa fa-refresh"></i></button>-->
-				<table class="table">
-					<thead>
-						<th> MAC Address <i style="float:right" class="fa "></i></th>
-						<th></th>
-						<th> Exclude <i style="float:right" class="fa "></i></th>
-					</thead>
-					<tr ng-repeat="mac in rssiExcl.rssiAll">
-						<td>{{mac.value}}</td>
-						<td></td>
-						<td>
-							<switch class="green" ng-model="mac.switch" ng-change="switchExclude(mac)"/>
-							<!--<button class="btn btn-default" ng-click="switchExclude(mac)"><i class="fa fa-trash-o"></i></button>-->
-						</td>
-					</tr>
-				</table>
-			</juci-expandable>
-			<juci-expandable title="{{'Steered Clients'|translate}}" open="true" ng-show="0">
+	<juci-config-lines>
+		<juci-config-line title="{{ 'WiFi Life Interface Configuration' | translate}}"></juci-config-line>
+		<juci-list-editor ng-items="wiLiInterfaces" item-editor="interface-edit" show-icon="true" get-item-title="$item.value" on-create="onCreateSteerIface()" on-delete="onDeleteSteerIface($item)"></juci-list-editor>
+		<juci-config-line title="{{ 'Steering Parameters' | translate}}"></juci-config-line>
+		<juci-list-editor ng-items="params" item-editor="wifilife-param-edit" show-icon="true" get-item-title="$item['.name'].toUpperCase()" hide-buttons="true"></juci-list-editor>
+		<!--
+		* obsolete/not yet implemented? *
+		<juci-expandable title="{{'Steered Clients'|translate}}" open="true" ng-show="0">
 				<table class="table">
 					<thead>
 						<th> MAC <i style="float:right" class="fa "></i></th>
@@ -42,12 +16,6 @@
 					</tr>
 				</table>
 			</juci-expandable>
-		<juci-config-line title="{{'Exclude STA' | translate}}" help="{{'Enter a custom MAC to be added to the exclude list above.'|translate}}">
-			<input type="text" class="form-control" ng-model="rssiExcl.exclude" /><br />
-			<button class="btn btn-default pull-right" ng-click="addCustomMac(rssiExcl.exclude)">{{'Add'|translate}}</button>
-			<br ng-show="rssiExcl.error" />
-			<br ng-show="rssiExcl.error" />
-			<juci-error value="rssiExcl.error" />
-		</juci-config-line>
+		-->
 	</juci-config-lines>
 </div>
