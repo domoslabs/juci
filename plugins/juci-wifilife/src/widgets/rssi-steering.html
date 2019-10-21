@@ -1,6 +1,6 @@
 <div>
 	<juci-config-lines>
-		<juci-config-line title="{{ 'WiFi Life Interface Configuration' | translate}}"></juci-config-line>
+		<juci-config-line title="{{ 'WiFi Life Interface Configuration' | translate }}"></juci-config-line>
 		<juci-list-editor ng-items="wiLiInterfaces" item-editor="interface-edit" show-icon="true" get-item-title="$item.value" on-create="onCreateSteerIface()" on-delete="onDeleteSteerIface($item)"></juci-list-editor>
 		<juci-config-line title="{{ 'Steering Parameters' | translate}}"></juci-config-line>
 		<juci-list-editor ng-items="params" item-editor="wifilife-param-edit" show-icon="true" get-item-title="$item['.name'].toUpperCase()" hide-buttons="true"></juci-list-editor>

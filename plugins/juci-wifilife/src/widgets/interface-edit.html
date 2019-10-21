@@ -17,45 +17,47 @@
         </div>
     </juci-config-line>
     <!--<juci-config-line title="{{'STA Exclusion From Steering'}}"></juci-config-line>-->
-    <h2>{{'STA Exclusion From Steering' | translate}}</h2>
-    <juci-expandable title="{{'WiFi STAs'|translate}}" open="true" >
-        <table class="table">
-            <thead>
-                <th> MAC Address <i style="float:right" class="fa "></i></th>
-                <th></th>
-                <th> Exclude <i style="float:right" class="fa "></i></th>
-            </thead>
-            <tr ng-repeat="mac in wiLiInterfaces.rssiExcl.rssiAll">
-                <td>{{mac.value}}</td>
-                <td></td>
-                <td>
-                    <switch class="green" ng-model="mac.switch" ng-change="switchExclude(mac)"/>
-            </td>
-            </tr>
-        </table>
-    </juci-expandable>
-    <juci-config-line title="{{'Exclude STA' | translate}}" help="{{'Enter a custom MAC to be added to the exclude list above.'|translate}}">
-        <input type="text" class="form-control" ng-model="wiLiInterfaces.rssiExcl.exclude" /><br />
-        <button class="btn btn-default pull-right" ng-click="addCustomMac(wiLiInterfaces.rssiExcl.exclude)">{{'Add'|translate}}</button>
-        <br ng-show="rssiExcl.error" />
-        <br ng-show="rssiExcl.error" />
-        <juci-error value="wiLiInterfaces.rssiExcl.error" />
-    </juci-config-line>
-    <!--<juci-config-line title="{{'Legacy Steering' | translate}}"></juci-config-line>-->
-    <h2>{{'Legacy Steering' | translate}}</h2>
-    <juci-config-line title="{{'Legacy Steer After Interval' | translate}}" help="{{'Allow AP to legacy steer sticky STAs after set number of seconds.'|translate}}">
-			<input type="number" class="form-control" ng-model="wiLiInterfaces.fhiface.fallback_legacy.value">
-		</juci-config-line>
-		<juci-config-line title="{{'Steer Retry Interval'|translate}}" help="{{'Reattempt to steer WiFi client after interval.'|translate}}" error="fhiface.steer_legacy_retry_secs.error">
-			<input type="number" class="form-control" ng-model="wiLiInterfaces.fhiface.steer_legacy_retry_secs.value" ng-disabled="!wiLiInterfaces.fhiface.fallback_legacy.value">
-		</juci-config-line>
-		<juci-config-line title="{{'STA Reassoc Interval'|translate}}" class help="{{'Do not steer WiFi client if reassociated within interval.'|translate}}" error="fhiface.steer_legacy_reassoc_secs.error" ng-disabled="true">
-			<input type="number" class="form-control" ng-model="wiLiInterfaces.fhiface.steer_legacy_reassoc_secs.value" ng-disabled="!wiLiInterfaces.fhiface.fallback_legacy.value">
-		</juci-config-line>
-    <juci-config-line title="{{'Exclude Repeaters' | translate}}" help="{{'Exclude all repeaters from steering.'|translate}}" ng-show="wiLiInterfaces.steerDefault.exclude_rpt.value">
-        <div class="checkbox checkbox-info">
-            <input type="checkbox" ng-model="wiLiInterfaces.steerDefault.exclude_rpt.value" ng-click="toggleIncludeRpt()" />
-            <label></label>
-        </div>
-    </juci-config-line>
+    <juci-config-section ng-show="wiLiInterfaces.steerOpts.bssload || wiLiInterfaces.steerOpts.rssi">
+        <h2>{{'STA Exclusion From Steering' | translate}}</h2>
+        <juci-expandable title="{{'WiFi STAs'|translate}}" open="true" >
+            <table class="table">
+                <thead>
+                    <th> MAC Address <i style="float:right" class="fa "></i></th>
+                    <th></th>
+                    <th> Exclude <i style="float:right" class="fa "></i></th>
+                </thead>
+                <tr ng-repeat="mac in wiLiInterfaces.rssiExcl.rssiAll">
+                    <td>{{mac.value}}</td>
+                    <td></td>
+                    <td>
+                        <switch class="green" ng-model="mac.switch" ng-change="switchExclude(mac)"/>
+                </td>
+                </tr>
+            </table>
+        </juci-expandable>
+        <juci-config-line title="{{'Exclude STA' | translate}}" help="{{'Enter a custom MAC to be added to the exclude list above.'|translate}}">
+            <input type="text" class="form-control" ng-model="wiLiInterfaces.rssiExcl.exclude" /><br />
+            <button class="btn btn-default pull-right" ng-click="addCustomMac(wiLiInterfaces.rssiExcl.exclude)">{{'Add'|translate}}</button>
+            <br ng-show="rssiExcl.error" />
+            <br ng-show="rssiExcl.error" />
+            <juci-error value="wiLiInterfaces.rssiExcl.error" />
+        </juci-config-line>
+        <!--<juci-config-line title="{{'Legacy Steering' | translate}}"></juci-config-line>-->
+        <h2>{{'Legacy Steering' | translate}}</h2>
+        <juci-config-line title="{{'Legacy Steer After Interval' | translate}}" help="{{'Allow AP to legacy steer sticky STAs after set number of seconds.'|translate}}">
+                <input type="number" class="form-control" ng-model="wiLiInterfaces.fhiface.fallback_legacy.value">
+            </juci-config-line>
+            <juci-config-line title="{{'Steer Retry Interval'|translate}}" help="{{'Reattempt to steer WiFi client after interval.'|translate}}" error="fhiface.steer_legacy_retry_secs.error">
+                <input type="number" class="form-control" ng-model="wiLiInterfaces.fhiface.steer_legacy_retry_secs.value" ng-disabled="!wiLiInterfaces.fhiface.fallback_legacy.value">
+            </juci-config-line>
+            <juci-config-line title="{{'STA Reassoc Interval'|translate}}" class help="{{'Do not steer WiFi client if reassociated within interval.'|translate}}" error="fhiface.steer_legacy_reassoc_secs.error" ng-disabled="true">
+                <input type="number" class="form-control" ng-model="wiLiInterfaces.fhiface.steer_legacy_reassoc_secs.value" ng-disabled="!wiLiInterfaces.fhiface.fallback_legacy.value">
+            </juci-config-line>
+        <juci-config-line title="{{'Exclude Repeaters' | translate}}" help="{{'Exclude all repeaters from steering.'|translate}}" ng-show="wiLiInterfaces.steerDefault.exclude_rpt.value">
+            <div class="checkbox checkbox-info">
+                <input type="checkbox" ng-model="wiLiInterfaces.steerDefault.exclude_rpt.value" ng-click="toggleIncludeRpt()" />
+                <label></label>
+            </div>
+        </juci-config-line>
+    </juci-config-section>
 </div>
