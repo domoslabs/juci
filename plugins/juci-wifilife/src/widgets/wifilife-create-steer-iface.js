@@ -19,13 +19,15 @@
 JUCI.app
 .controller("wifilifeCreateSteerIface", function($scope, $modalInstance, $wireless, interfaces, $tr, gettext, $uci){
 	$scope.data = {};
-
-	console.log("scope inside modal", $scope);
+	$scope.interfaces = interfaces;
 
 	$scope.ok = function () {
 		$scope.errors = [];
 		if(($scope.wiLiInterfaces.find(function(iface) { return iface.value === $scope.data.interface })))
-		$scope.errors.push("Section already exists!");
+			$scope.errors.push("Section already exists!");
+
+		if($scope.wiLiInterfaces.length >= 4)
+		$scope.errors.push("At most four interfaces may be configured at a time!");
 
 		if(!$scope.errors.length) {
 			$modalInstance.close($scope.data);

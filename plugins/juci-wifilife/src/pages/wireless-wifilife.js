@@ -34,7 +34,7 @@ directive('cntlrPage', function () {
 		templateUrl: "/widgets/cntlr-page.html",
 	};
 }).
-controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $modal, $localStorage, $juciDialog, $wireless) {
+controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $modal, $localStorage, $juciDialog, $wireless, $juciConfirm) {
 	$scope.showExpert = $localStorage.getItem("mode") == "expert";
 	$scope.rssiExcl = {};
 	$scope.rssiExcl.unexcluded = [];
@@ -76,7 +76,7 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 				})
 			}
 		}).then(function() {
-			$rpc.$call("wifix", "stations", {"vif": iface.value}).done(function (vifs) {
+			$rpc.$call("wifix", "stations").done(function (vifs) {
 				var rssiUnexcluded = [];
 
 				/* gather all clients which are not excluded */
@@ -144,13 +144,13 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 		iface.$statusList.push({ label: $tr(gettext("BSSLOAD Steering")), value: iface.steerOpts.bssload })
 	}
 
-	$uci.$sync("wifilife").done(function () {
-		$scope.wifilife = $uci.wifilife["@wifilife"][0];
-
-		$wireless.getInterfaces().done(function(data) {
-			$scope.wiLiInterfaces = data.filter(function(iface) {
+	$scope.update = function() {
+		$uci.$sync("wifilife").done(function () {
+			$scope.wifilife = $uci.wifilife["@wifilife"][0];
+			/*$scope.wiLiInterfaces = data.filter(function(iface) {
 				return iface[".frequency"] === "5GHz";
-			}).map(function(iface) {
+			}).map(function(iface) {*/
+			$scope.wiLiInterfaces = $uci.wifilife["@fh-iface"].map(function(iface) {
 				return { label: iface.ifname.value, value: iface.ifname.value };
 			}).map(function(iface) {
 				iface.fhiface = $uci.wifilife["@fh-iface"].find(function(fhi) { return fhi.ifname.value === iface.value });
@@ -171,7 +171,6 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 				iface.fhiface.steerCpy = iface.fhiface.steer.value.slice();
 				iface.rssiExcl = {};
 				iface.rssiExcl.excluded = iface.fhiface.exclude.value.map(function(mac) { return ({ label: mac, value: mac })});
-				console.log("iface.fhiface.steer.value", iface.fhiface.steer.value, !!iface.fhiface.steer.value.find(function(opt) { return opt === 'rssi' }));
 
 				iface.steerOpts = {
 					rssi: !!iface.fhiface.steer.value.find(function(opt) { return opt === 'rssi' }),
@@ -186,19 +185,16 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 
 			$scope.params = [];
 			$uci.wifilife["@steer-param"].forEach(function(section) {
-					section.$statusList = [];
-					$scope[section[".name"]] = section;
+				section.$statusList = [];
+				$scope[section[".name"]] = section;
 
-					populateParams(section);
-					$scope.params.push(section);
-				});
-		}).then(function() {
+				populateParams(section);
+				$scope.params.push(section);
+			});
+
 			$scope.$apply();
 		})
-
-
-		$scope.$apply();
-	})
+	}
 
 	$uci.$sync("owsd").done(function () {
 		$scope.ubusproxy = $uci.owsd.ubusproxy;
@@ -281,24 +277,25 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 		$scope.wifiIface.rrm.value = $scope.rrm ? 255 : 0;
 	}
 
-	$scope.onCreateSteerIface = function (type) {
-		/*if(!devices){ alert($tr(gettext("Couldn't load wireless radios from config"))); return; }
-			var numb = {};
-			devices.map(function(dev){ numb[dev[".name"]] = 0; });
-			$scope.interfaces.map(function(iface){
-					if(numb[iface.device.value] !== undefined) numb[iface.device.value] ++;
+	$scope.onCreateSteerIface = function () {
+		var ifaces = [];
+
+		$wireless.getInterfaces().done(function(iface) {
+			if (iface[".frequency"] === "5GHz")
+				ifaces.push({value: iface.ifname.value, label: iface.ifname.value});
 		});
-		if(Object.keys(numb).filter(function(freq){ return numb[freq] < 4; }).length == 0){
-				alert($tr(gettext("No more Wireless Interface spaces left. There can't be more than 4 Interfaces on each radio")));
+
+		if($scope.wiLiInterfaces.length >= 4){
+				alert($tr(gettext("No more than four interfaces may be configured at a time!")));
 				return;
-		}*/
+		}
 		var modalInstance = $modal.open({
 				animation: $scope.animationsEnabled,
 				templateUrl: 'widgets/wifilife-create-steer-iface.html',
 				controller: 'wifilifeCreateSteerIface',
 				resolve: {
 						interfaces: function () {
-								return $scope.interfaces;
+								return ifaces;
 						}
 				},
 				scope: $scope
@@ -309,7 +306,7 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 					".type": "fh-iface",
 					"ifname": data.interface
 				}).done(function(interface){
-					console.log(interface);
+					$scope.update();
 					$scope.$apply();
 				});
 		}, function () {
@@ -317,6 +314,15 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 		});
 	}
 
-	console.log("scope.data", $scope);
+	$scope.onDeleteSteerIface = function(conn){
+		if(!conn) alert($tr(gettext("Please select a connection in the list!")));
+		$juciConfirm.show($tr(gettext("Are you sure you want to delete this steering interface?"))).done(function(){
+				conn.fhiface.$delete().done(function(){
+					$scope.update();
+					$scope.$apply();
+				});
+		});
+	}
 
+	$scope.update();
 });

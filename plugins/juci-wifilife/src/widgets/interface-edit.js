@@ -11,19 +11,12 @@ JUCI.app
 	};
 })
 .controller("interfaceEdit", function ($scope, $wifilife) {
-	console.log("this is our scope", $scope);
-
-	$scope.addCustomMac = function (mac) {
-		console.log("scope", $scope);
-	};
 
 	$scope.toggleSteering = function () {
 		if ($scope.wiLiInterfaces.fhiface.steer.value.length)
 			$scope.wiLiInterfaces.fhiface.steer.value = [];
 		else
 			$scope.wiLiInterfaces.fhiface.steer.value = ['rssi', 'bssload'];
-
-		console.log("steer", $scope.wiLiInterfaces.fhiface);
 	}
 
 	$scope.addCustomMac = function (mac) {
