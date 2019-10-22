@@ -184,9 +184,9 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 		})
 	}
 
-	$uci.$sync("owsd").done(function () {
+	/*$uci.$sync("owsd").done(function () {
 		$scope.ubusproxy = $uci.owsd.ubusproxy;
-	})
+	})*/
 
 	$uci.$sync("wireless").done(function () {
 		$scope.wifiIface = $uci.wireless["@wifi-iface"].find(function(iface){
