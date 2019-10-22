@@ -34,7 +34,7 @@ directive('cntlrPage', function () {
 		templateUrl: "/widgets/cntlr-page.html",
 	};
 }).
-controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $modal, $localStorage, $juciDialog) {
+controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $modal, $localStorage, $juciDialog, $wireless, $juciConfirm) {
 	$scope.showExpert = $localStorage.getItem("mode") == "expert";
 	$scope.rssiExcl = {};
 	$scope.rssiExcl.unexcluded = [];
@@ -68,7 +68,7 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 		})
 	})
 
-	function reloadLists() {
+	function reloadList(iface) {
 		$rpc.$call("wifix", "list_neighbor").done(function (vifs) {
 			for (vif in vifs) {
 				vifs[vif].forEach(function(node) {
@@ -78,48 +78,29 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 		}).then(function() {
 			$rpc.$call("wifix", "stations").done(function (vifs) {
 				var rssiUnexcluded = [];
-				var assocUnexcluded = [];
 
-				for (vif in vifs) {
-					rssiUnexcluded = rssiUnexcluded.concat(
-						vifs[vif].filter(function(client) {
-							return !$scope.steer.exclude.value.some(function(mac) {
-								return client.macaddr.indexOf(mac) >= 0
-							})
-						})
-					)
+				/* gather all clients which are not excluded */
+				rssiUnexcluded = vifs.stations.filter(function(client) {
+					return !iface.fhiface.exclude.value.some(function(mac) {
+						return client.macaddr.indexOf(mac) >= 0
+					})
+				})
 
-					rssiUnexcluded = rssiUnexcluded.filter(function(client) { return !$wifilife.aps.some(function(rpt) { return client.macaddr.indexOf(rpt.substr(9)) >= 0 })});
+				/* remove APs from unexcluded list */
+				rssiUnexcluded = rssiUnexcluded.filter(function(client) { return !$wifilife.aps.some(function(rpt) { return client.macaddr.indexOf(rpt.substr(9)) >= 0 })});
 
-					assocUnexcluded = assocUnexcluded.concat(
-						vifs[vif].filter(function(client) {
-							return !$scope.assocCtrl.stas.value.some(function(mac) {
-								return client.macaddr.indexOf(mac) >= 0
-							}
-						)
-					}))
-
-					assocUnexcluded = assocUnexcluded.filter(function(client) { return !$wifilife.aps.some(function(rpt) { return client.macaddr.indexOf(rpt.substr(9)) >= 0 })});
-				}
-				$scope.rssiExcl.unexcluded = rssiUnexcluded.map(function(client) { return ({ label: client.macaddr, value: client.macaddr })});
-				$scope.assocExcl.unexcluded = assocUnexcluded.map(function(client) { return ({ label: client.macaddr, value: client.macaddr })});
-				$scope.assocExcl.unexcludedAps = $wifilife.aps.map(function(ap) { return ({ label: ap, value: ap })});
-				$scope.rssiExcl.rssiAll = $scope.rssiExcl.excluded.map(function(client) {
+				iface.rssiExcl.unexcluded = rssiUnexcluded.map(function(client) { return ({ label: client.macaddr, value: client.macaddr })});
+				iface.rssiExcl.rssiAll = iface.rssiExcl.excluded.map(function(client) {
 					client.switch = true;
 					return client;
 				})
 
-				$scope.rssiExcl.rssiAll = $scope.rssiExcl.rssiAll.concat($scope.rssiExcl.unexcluded.map(function(client) {
+				iface.rssiExcl.rssiAll = iface.rssiExcl.rssiAll.concat(iface.rssiExcl.unexcluded.map(function(client) {
 					client.switch = false;
 					return client;
 				}));
 
-				$scope.rssiExcl.rssiAll = $scope.rssiExcl.rssiAll.filter(function(client) {
-					return !$wifilife.aps.some(function (rpt) {
-						return client.value.indexOf(rpt.substr(9)) >= 0 }) // duplicate at a lot of places, make func
-				})
-
-				$scope.rssiExcl.excludeCpy = $scope.rssiExcl.excluded.slice();
+				iface.rssiExcl.excludeCpy = iface.rssiExcl.excluded.slice();
 				$scope.$apply();
 			})
 
@@ -130,26 +111,6 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 		return title.split("_").map(function(elem) { return elem.charAt(0).toUpperCase() + elem.substr(1)}).join(" ");
 	}
 
-	function hasSameVals(x, y) {
-		return x.filter(function(client) {
-			return !!(y.filter(function(client2) {
-				return client == client2;
-			}).length)
-		}).length == x.length;
-	}
-
-	$scope.switchExclude = function (mac) {
-		if (mac.switch)
-			$scope.steer.exclude.value = $scope.steer.exclude.value.filter(function (exl_mac) { return exl_mac.indexOf(mac.value) < 0 });
-		else {
-			var excluded = $scope.steer.exclude.value.filter($wifilife.validMac); // not sure why we gotta filter it into new array..
-			excluded.push(mac.value);
-			$scope.steer.exclude.value = excluded;
-		}
-
-		if (hasSameVals($scope.steer.exclude.value, $scope.excludeCpy) && hasSameVals($scope.excludeCpy, $scope.steer.exclude.value))
-			$scope.steer.exclude.value = $scope.excludeCpy.slice();
-	}
 
 	$scope.nonManualDev = function () {
 		;
@@ -165,11 +126,11 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 		return title;
 	}
 
-	function populateEntry (section) {
-		if (section.type.value === "bssload") {
+	function populateParams(section) {
+		if (section[".name"] === "bssload") {
 			section.$statusList.push({ label: $tr(gettext("Priority")), value: section.priority.value })
 			section.$statusList.push({ label: $tr(gettext("Threshold")), value: section.bssload_threshold.value + " %" })
-		} else if (section.type.value === "rssi") {
+		} else if (section[".name"] === "rssi") {
 			section.$statusList.push({ label: $tr(gettext("Priority")), value: section.priority.value })
 			section.$statusList.push({ label: $tr(gettext("Threshold")), value: section.rssi_threshold.value + " dBm" })
 			section.$statusList.push({ label: $tr(gettext("Threshold Margin")), value: "± " + section.margin.value + " dB" })
@@ -178,43 +139,53 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 		}
 	}
 
-	$uci.$sync("wifilife").done(function () {
-		$scope.wifilife = $uci.wifilife["@wifilife"][0];
-		$scope.wiLiInterfaces = $scope.wifilife.ifname.value.map(function(ifname) { return ({ label: ifname, value: ifname})});
+	function populateSteerOpts(iface) {
+		iface.$statusList.push({ label: $tr(gettext("Steering")), value: ((iface.steerOpts.rssi || iface.steerOpts.bssload) ? "Enabled" : "Disabled") })
+	}
 
-		$scope.steer = $uci.wifilife["@steer"][0];
-		$scope.excludeCpy = $scope.steer.exclude.value.slice();
-		$scope.assocCtrl = $uci.wifilife["@assoc_control"][0];
-		$scope.params = [];
-		$scope.cntlr = $uci.wifilife["@cntlr"][0];
-		$scope.steerDefault = $uci.wifilife["@steer_default"][0];
-		$scope.steerCustom = $uci.wifilife["@steer_custom"][0];
-		$scope.customRules = $uci.wifilife["@rule_custom"];
-		$scope.customRules.forEach(function(rule) {
-			rule.$statusList = []
-			rule.$statusList.push({ label: $tr(gettext("Action")), value: rule.action.value })
-			rule.$statusList.push({ label: $tr(gettext("STA")), value: rule.sta.value })
-			rule.$statusList.push({ label: $tr(gettext("BSS")), value: rule.bss.value })
+	$scope.update = function() {
+		$uci.$sync("wifilife").done(function () {
+			$scope.wifilife = $uci.wifilife["@wifilife"][0];
+			$scope.wiLiInterfaces = $uci.wifilife["@fh-iface"].map(function(iface) {
+				return { label: iface.ifname.value, value: iface.ifname.value };
+			}).map(function(iface) {
+				iface.fhiface = $uci.wifilife["@fh-iface"].find(function(fhi) { return fhi.ifname.value === iface.value });
+
+				if (iface.fhiface.steer.value.includes('rssi') || iface.fhiface.steer.value.includes('bssload'))
+					iface.enable = true;
+
+				iface.fhiface.excludeCpy = iface.fhiface.exclude.value.slice();
+				iface.fhiface.steerCpy = iface.fhiface.steer.value.slice();
+				iface.rssiExcl = {};
+				iface.rssiExcl.excluded = iface.fhiface.exclude.value.map(function(mac) { return ({ label: mac, value: mac })});
+
+				iface.steerOpts = {
+					rssi: !!iface.fhiface.steer.value.find(function(opt) { return opt === 'rssi' }),
+					bssload: !!iface.fhiface.steer.value.find(function(opt) { return opt === 'bssload' })
+				}
+
+				reloadList(iface);
+				iface.$statusList = [];
+				populateSteerOpts(iface);
+				return iface;
+			})
+
+			$scope.params = [];
+			$uci.wifilife["@steer-param"].forEach(function(section) {
+				section.$statusList = [];
+				$scope[section[".name"]] = section;
+
+				populateParams(section);
+				$scope.params.push(section);
+			});
+
+			$scope.$apply();
 		})
+	}
 
-		$scope.rssiExcl.excluded = $scope.steer.exclude.value.map(function(mac) { return ({ label: mac, value: mac })});
-		$scope.assocExcl.excluded = $scope.assocCtrl.stas.value.map(function(mac) { return ({ label: mac, value: mac })});
-
-		$uci.wifilife["@steer-param"].forEach(function(section) {
-			section.$statusList = [];
-			$scope[section[".name"]] = section;
-
-			populateEntry(section);
-			$scope.params.push(section);
-		});
-		$scope.$apply();
-	}).then(function() {
-		reloadLists();
-	});
-
-	$uci.$sync("owsd").done(function () {
+	/*$uci.$sync("owsd").done(function () {
 		$scope.ubusproxy = $uci.owsd.ubusproxy;
-	})
+	})*/
 
 	$uci.$sync("wireless").done(function () {
 		$scope.wifiIface = $uci.wireless["@wifi-iface"].find(function(iface){
@@ -229,45 +200,6 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 			$scope.has5G = false;
 		}
 	})
-
-	$scope.onRssiUnexclude = function(mac) {
-		onUnexclude("steer", "exclude", "rssiExcl", "unexcluded", mac);
-	};
-
-	$scope.onRssiExclude = function (mac) {
-		onExclude("steer", "exclude", "rssiExcl", mac)
-	};
-
-	$scope.addCustomMac = function (mac) {
-		if (mac == null || mac.length == 0) {
-			$scope.rssiExcl.error = $tr(gettext("Please enter a MAC"));
-			return -1;
-		}
-
-		if (!$wifilife.validMac(mac)) {
-			$scope.rssiExcl.error = $tr(gettext("Invalid MAC"));
-			return -1;
-		}
-
-		if ($scope.steer.exclude.value.some(function (excluded) { return mac.indexOf(excluded) >= 0 })) {
-			$scope.rssiExcl.error = $tr(gettext("The MAC is already excluded!"));
-			return -1;
-		}
-		onExclude("steer", "exclude", "rssiExcl", mac)
-		$scope.rssiExcl.rssiAll.push({label: mac, value: mac, switch: true});
-	};
-
-	$scope.onAssocUnexclude = function (mac) {
-		onUnexclude("assocCtrl", "stas", "assocExcl", "unexcluded", mac);
-	};
-
-	$scope.onAssocExclude = function (mac) {
-		onExclude("assocCtrl", "stas", "assocExcl", mac)
-	};
-
-	$scope.onAssocApnExclude = function (mac) {
-		onExcludeAp("assocCtrl", "stas", "assocExcl", mac);
-	};
 
 	$scope.update11r = function(val) {
 		if (!$scope.wifiIface) return;
@@ -290,44 +222,6 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 		}
 		acknowledge();
 		$scope.wifiIface.ieee80211r.value = false;
-	};
-
-	function onUnexclude(section, option, container, unexclude, mac) {
-		if (mac == null)
-			return;
-
-		if ($wifilife.aps.filter(function(entry) { return entry.indexOf(mac) >= 0}).length > 0)
-			unexclude += "Aps"
-
-		$scope[section][option].value = $scope[section][option].value.filter(function(exl_mac) { return exl_mac.indexOf(mac) < 0});
-		$scope[container].excluded = $scope[container].excluded.filter(function(pair) { return pair.value.indexOf(mac) < 0});
-		$scope[container][unexclude].push({ label: mac, value: mac })
-	}
-
-	function onExclude(section, option, container, mac) {
-
-		if (mac == null || mac.length == 0) {
-			$scope[container].error = $tr(gettext("Please enter a MAC"));
-			return -1;
-		}
-
-		if (!$wifilife.validMac(mac)) {
-			$scope[container].error = $tr(gettext("Invalid MAC"));
-			return -1;
-		}
-
-		if ($scope[section][option].value.some(function (excluded) { return mac.indexOf(excluded) >= 0})) {
-			$scope[container].error = $tr(gettext("The MAC is already excluded!"));
-			return -1;
-		}
-
-		var excluded = $scope[section][option].value.filter($wifilife.validMac); // not sure why we gotta filter it into new array..
-		excluded.push(mac);
-		$scope[section][option].value = excluded;
-		$scope[container].excluded.push({ label: mac, value: mac })
-		$scope[container].unexcluded = $scope[container].unexcluded.filter(function(pair) { return pair.value.indexOf(mac) < 0});
-		$scope[container].error = null;
-		$scope[container].exclude = null;
 	};
 
 	function onExcludeAp(section, option, container, mac) {
@@ -370,4 +264,57 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 		$scope.wifiIface.rrm.value = $scope.rrm ? 255 : 0;
 	}
 
+	$scope.onCreateSteerIface = function () {
+		var interfaces = [];
+
+		$wireless.getInterfaces().done(function(ifaces) {
+			console.log("ifaces", ifaces);
+			interfaces = ifaces.filter(function(iface) {
+				return iface[".frequency"] === "5GHz";
+			}).map(function(iface) {
+				return {value: iface.ifname.value, label: iface.ifname.value}
+			})
+		}).then(function() {
+			console.log("interfaces", interfaces);
+			if($scope.wiLiInterfaces.length >= 4){
+				alert($tr(gettext("No more than four interfaces may be configured at a time!")));
+				return;
+			}
+			var modalInstance = $modal.open({
+					animation: $scope.animationsEnabled,
+					templateUrl: 'widgets/wifilife-create-steer-iface.html',
+					controller: 'wifilifeCreateSteerIface',
+					resolve: {
+							interfaces: function () {
+									return interfaces;
+							}
+					},
+					scope: $scope
+			});
+
+			modalInstance.result.then(function (data) {
+					$uci.wifilife.$create({
+						".type": "fh-iface",
+						"ifname": data.interface
+					}).done(function(interface){
+						$scope.update();
+						$scope.$apply();
+					});
+			}, function () {
+					console.log('Modal dismissed at: ' + new Date());
+			});
+		})
+	}
+
+	$scope.onDeleteSteerIface = function(conn){
+		if(!conn) alert($tr(gettext("Please select a connection in the list!")));
+		$juciConfirm.show($tr(gettext("Are you sure you want to delete this steering interface?"))).done(function(){
+				conn.fhiface.$delete().done(function(){
+					$scope.update();
+					$scope.$apply();
+				});
+		});
+	}
+
+	$scope.update();
 });
