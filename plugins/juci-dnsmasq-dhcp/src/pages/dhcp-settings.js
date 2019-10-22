@@ -35,37 +35,42 @@ JUCI.app
 	$uci.$sync(["dhcp"]).done(function(){
 		$scope.data = {
 			input: [],
+			output: [],
 		}
 		$scope.dnsmasq = $uci.dhcp["@dnsmasq"][0];
 		if(!$scope.dnsmasq){
 			console.error("missing dnsmasq section in dhcp config");
 			return;
 		}
-		$rpc.$call("router.network", "dump").done(function(networks){
-			Object.keys(networks).forEach(function(network){
-				var name;
-				if(networks[network].proto === "none")
-					name = network + " " + $tr(gettext("Unmanaged"));
-				else
-					name = network + " " + $tr(gettext("Managed"));
-				var net = {
-					label: network,
-					label_long: name,
-					selected: $scope.dnsmasq.notinterface.value.some(function(iface){return iface === network;})
-				}
-				$scope.data.input.push(net);
+		$scope.reload = function() {
+			$rpc.$call("router.network", "dump").done(function(networks){
+				$scope.data.input = [];
+				Object.keys(networks).forEach(function(network){
+					var name;
+					if(networks[network].proto === "none")
+						name = network + " " + $tr(gettext("Unmanaged"));
+					else
+						name = network + " " + $tr(gettext("Managed"));
+
+					var net = {
+						label: network,
+						label_long: name,
+						selected: $scope.dnsmasq.notinterface.value.some(function(iface){return iface === network;})
+					}
+					$scope.data.input.push(net);
+				});
+
+				$scope.$watch("data.output", function(){
+					if(!$scope.data || !$scope.data.output || !$scope.dnsmasq) return;
+					$scope.dnsmasq.notinterface.value = $scope.data.output.map(function(d){ return d.label; });
+				}, false);
+
+				$scope.$apply();
+			}).fail(function(e){
+				console.error("error getting networks", e);
 			});
-			$scope.$apply();
-		}).fail(function(e){
-			console.error("error getting networks", e);
-		});
-		$scope.onItemClick = function(data){
-			if(data.selected)
-				$scope.dnsmasq.notinterface.value = $scope.dnsmasq.notinterface.value.concat([data.label]);
-			else{
-				$scope.dnsmasq.notinterface.value = $scope.dnsmasq.notinterface.value.filter(function(name){ return name === data.label});
-			}
-		}
+		}();
+
 		$scope.hostfiles = $scope.dnsmasq.addnhosts.value.map(function(x){
 			return { label: x };
 		});
