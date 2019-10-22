@@ -10,7 +10,7 @@ JUCI.app
 		require: "^ngModel"
 	};
 })
-.controller("interfaceEdit", function ($scope, $wifilife) {
+.controller("interfaceEdit", function ($scope, $wifilife, $tr) {
 
 	$scope.toggleSteering = function () {
 		if ($scope.wiLiInterfaces.fhiface.steer.value.length)

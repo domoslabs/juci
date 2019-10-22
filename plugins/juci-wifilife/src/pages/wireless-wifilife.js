@@ -140,29 +140,17 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 	}
 
 	function populateSteerOpts(iface) {
-		iface.$statusList.push({ label: $tr(gettext("RSSI Steering")), value: iface.steerOpts.rssi })
-		iface.$statusList.push({ label: $tr(gettext("BSSLOAD Steering")), value: iface.steerOpts.bssload })
+		iface.$statusList.push({ label: $tr(gettext("RSSI Steering")), value: (iface.steerOpts.rssi ? "Enabled" : "Disabled") })
+		iface.$statusList.push({ label: $tr(gettext("BSSLOAD Steering")), value: (iface.steerOpts.bssload ? "Enabled" : "Disabled") })
 	}
 
 	$scope.update = function() {
 		$uci.$sync("wifilife").done(function () {
 			$scope.wifilife = $uci.wifilife["@wifilife"][0];
-			/*$scope.wiLiInterfaces = data.filter(function(iface) {
-				return iface[".frequency"] === "5GHz";
-			}).map(function(iface) {*/
 			$scope.wiLiInterfaces = $uci.wifilife["@fh-iface"].map(function(iface) {
 				return { label: iface.ifname.value, value: iface.ifname.value };
 			}).map(function(iface) {
 				iface.fhiface = $uci.wifilife["@fh-iface"].find(function(fhi) { return fhi.ifname.value === iface.value });
-				if (!iface.fhiface) {
-					/* TODO: test non-existent interface */
-					$uci.wifilife.$create({
-						".type": "fh-iface",
-						"ifname": iface.value
-					}).done(function(data) {
-						iface.fhiface = data;
-					})
-				}
 
 				if (iface.fhiface.steer.value.length) // TODO: find for rssi/bssload
 					iface.enable = true;

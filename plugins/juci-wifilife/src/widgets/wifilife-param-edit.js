@@ -11,7 +11,6 @@ JUCI.app
 	};
 })
 .controller("wifilifeParamEdit", function ($scope) {
-	console.log("this is our other scope", $scope);
 	Array.prototype.swap = function (x, y) {
 		var b = this[x];
 		this[x] = this[y];
