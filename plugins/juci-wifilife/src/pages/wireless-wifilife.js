@@ -140,8 +140,7 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 	}
 
 	function populateSteerOpts(iface) {
-		iface.$statusList.push({ label: $tr(gettext("RSSI Steering")), value: (iface.steerOpts.rssi ? "Enabled" : "Disabled") })
-		iface.$statusList.push({ label: $tr(gettext("BSSLOAD Steering")), value: (iface.steerOpts.bssload ? "Enabled" : "Disabled") })
+		iface.$statusList.push({ label: $tr(gettext("Steering")), value: ((iface.steerOpts.rssi || iface.steerOpts.bssload) ? "Enabled" : "Disabled") })
 	}
 
 	$scope.update = function() {

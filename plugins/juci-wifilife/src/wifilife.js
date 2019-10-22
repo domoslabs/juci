@@ -18,9 +18,9 @@ UCI.wifilife.$registerSectionType("fh-iface", {
 	"restrict": { dvalue: [], type: Array },
 	"btm_ret": { dvalue: 3, type: Number, validator: UCI.validators.NumberLimitValidator(0, undefined) },
 	"btm_ret_secs": { dvalue: 180, type: Number, validator: UCI.validators.NumberLimitValidator(5, undefined) },
-	"fallback_legacy": { dvalue: 0, type: Number },
-	"steer_legacy_reassoc_secs": { dvalue: 30, type: Number },
-	"steer_legacy_retry_secs": { dvalue: 3600, type: Number },
+	"fallback_legacy": { dvalue: 0, type: Number, validator: UCI.validators.NumberLimitValidator(0, undefined) },
+	"steer_legacy_reassoc_secs": { dvalue: 30, type: Number, validator: UCI.validators.NumberLimitValidator(0, undefined) },
+	"steer_legacy_retry_secs": { dvalue: 3600, type: Number, validator: UCI.validators.NumberLimitValidator(0, undefined) },
 });
 
 UCI.wifilife.$registerSectionType("bk-iface", {
