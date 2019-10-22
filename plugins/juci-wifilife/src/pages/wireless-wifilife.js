@@ -152,7 +152,7 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 			}).map(function(iface) {
 				iface.fhiface = $uci.wifilife["@fh-iface"].find(function(fhi) { return fhi.ifname.value === iface.value });
 
-				if (iface.fhiface.steer.value.length) // TODO: find for rssi/bssload
+				if (iface.fhiface.steer.value.includes('rssi') || iface.fhiface.steer.value.includes('bssload'))
 					iface.enable = true;
 
 				iface.fhiface.excludeCpy = iface.fhiface.exclude.value.slice();
