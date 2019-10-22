@@ -2,23 +2,27 @@
     <!--<juci-config-line title="{{ 'Enable Steering' | translate}}">
         <switch class="green" ng-model="wiLiInterfaces.enable" ng-change="toggleSteering()"/>
     </juci-config-line>-->
-    <!--<juci-config-line title="{{'Interface Steer Options' | translate}}"></juci-config-line>-->
-    <h2>{{'Interface Steer Options' | translate}}</h2>
-    <juci-config-line title="{{'Enable RSSI' | translate}}" help="{{'Placeholder Text Here'|translate}}">
-        <div class="checkbox checkbox-info">
-            <input type="checkbox" ng-model="wiLiInterfaces.steerOpts.rssi" ng-change="updateSteer('rssi')"/>
-            <label></label>
-        </div>
-    </juci-config-line>
-    <juci-config-line title="{{'Enable BSSLOAD' | translate}}" help="{{'Placeholder Text Here'|translate}}">
-        <div class="checkbox checkbox-info">
-            <input type="checkbox" ng-model="wiLiInterfaces.steerOpts.bssload" ng-change="updateSteer('bssload')"/>
-            <label></label>
-        </div>
-    </juci-config-line>
-    <!--<juci-config-line title="{{'STA Exclusion From Steering'}}"></juci-config-line>-->
+    <juci-config-section>
+        <!--<juci-config-line title="{{'Interface Steer Options' | translate}}"></juci-config-line>-->
+
+        <h2>{{'Interface Steer Options' | translate}}</h2>
+        <juci-config-line title="{{'Enable RSSI' | translate}}" help="{{'Placeholder Text Here'|translate}}">
+            <div class="checkbox checkbox-info">
+                <input type="checkbox" ng-model="wiLiInterfaces.steerOpts.rssi" ng-change="updateSteer('rssi')"/>
+                <label></label>
+            </div>
+        </juci-config-line>
+        <juci-config-line title="{{'Enable BSSLOAD' | translate}}" help="{{'Placeholder Text Here'|translate}}">
+            <div class="checkbox checkbox-info">
+                <input type="checkbox" ng-model="wiLiInterfaces.steerOpts.bssload" ng-change="updateSteer('bssload')"/>
+                <label></label>
+            </div>
+        </juci-config-line>
+    </juci-config-section>
     <juci-config-section ng-show="wiLiInterfaces.steerOpts.bssload || wiLiInterfaces.steerOpts.rssi">
         <h2>{{'STA Exclusion From Steering' | translate}}</h2>
+        <!--<juci-config-line title="{{'STA Exclusion From Steering'}}"></juci-config-line>-->
+
         <juci-expandable title="{{'WiFi STAs'|translate}}" open="true" >
             <table class="table">
                 <thead>
@@ -35,13 +39,12 @@
                 </tr>
             </table>
         </juci-expandable>
-        <juci-config-line title="{{'Exclude STA' | translate}}" help="{{'Enter a custom MAC to be added to the exclude list above.'|translate}}">
-            <input type="text" class="form-control" ng-model="wiLiInterfaces.rssiExcl.exclude" /><br />
-            <button class="btn btn-default pull-right" ng-click="addCustomMac(wiLiInterfaces.rssiExcl.exclude)">{{'Add'|translate}}</button>
-            <br ng-show="rssiExcl.error" />
-            <br ng-show="rssiExcl.error" />
-            <juci-error value="wiLiInterfaces.rssiExcl.error" />
+        <juci-config-line title="{{'Exclude STA' | translate}}" help="{{'Enter a custom MAC to be added to the exclude list above.'|translate}}" error="wiLiInterfaces.rssiExcl.error">
+            <input type="text" class="form-control" ng-model="wiLiInterfaces.rssiExcl.exclude" />
+            <button class="btn btn-default pull-right" style="margin:5px;" ng-click="addCustomMac(wiLiInterfaces.rssiExcl.exclude)">{{'Add'|translate}}</button>
         </juci-config-line>
+    </juci-config-section>
+    <juci-config-section>
         <!--<juci-config-line title="{{'Legacy Steering' | translate}}"></juci-config-line>-->
         <h2>{{'Legacy Steering' | translate}}</h2>
         <juci-config-line title="{{'Legacy Steer After Interval' | translate}}" help="{{'Allow AP to legacy steer sticky STAs after set number of seconds.'|translate}}">
