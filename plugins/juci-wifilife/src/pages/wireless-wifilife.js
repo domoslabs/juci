@@ -266,40 +266,45 @@ controller("wifilife", function ($scope, $rpc, $tr, gettext, $uci, $wifilife, $m
 	}
 
 	$scope.onCreateSteerIface = function () {
-		var ifaces = [];
+		var interfaces = [];
 
-		$wireless.getInterfaces().done(function(iface) {
-			if (iface[".frequency"] === "5GHz")
-				ifaces.push({value: iface.ifname.value, label: iface.ifname.value});
-		});
-
-		if($scope.wiLiInterfaces.length >= 4){
+		$wireless.getInterfaces().done(function(ifaces) {
+			console.log("ifaces", ifaces);
+			interfaces = ifaces.filter(function(iface) {
+				return iface[".frequency"] === "5GHz";
+			}).map(function(iface) {
+				return {value: iface.ifname.value, label: iface.ifname.value}
+			})
+		}).then(function() {
+			console.log("interfaces", interfaces);
+			if($scope.wiLiInterfaces.length >= 4){
 				alert($tr(gettext("No more than four interfaces may be configured at a time!")));
 				return;
-		}
-		var modalInstance = $modal.open({
-				animation: $scope.animationsEnabled,
-				templateUrl: 'widgets/wifilife-create-steer-iface.html',
-				controller: 'wifilifeCreateSteerIface',
-				resolve: {
-						interfaces: function () {
-								return ifaces;
-						}
-				},
-				scope: $scope
-		});
+			}
+			var modalInstance = $modal.open({
+					animation: $scope.animationsEnabled,
+					templateUrl: 'widgets/wifilife-create-steer-iface.html',
+					controller: 'wifilifeCreateSteerIface',
+					resolve: {
+							interfaces: function () {
+									return interfaces;
+							}
+					},
+					scope: $scope
+			});
 
-		modalInstance.result.then(function (data) {
-				$uci.wifilife.$create({
-					".type": "fh-iface",
-					"ifname": data.interface
-				}).done(function(interface){
-					$scope.update();
-					$scope.$apply();
-				});
-		}, function () {
-				console.log('Modal dismissed at: ' + new Date());
-		});
+			modalInstance.result.then(function (data) {
+					$uci.wifilife.$create({
+						".type": "fh-iface",
+						"ifname": data.interface
+					}).done(function(interface){
+						$scope.update();
+						$scope.$apply();
+					});
+			}, function () {
+					console.log('Modal dismissed at: ' + new Date());
+			});
+		})
 	}
 
 	$scope.onDeleteSteerIface = function(conn){
