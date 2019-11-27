@@ -20,8 +20,6 @@
 					"clients"
 				],
 				"router.wireless": [
-					"bsd_sta_info",
-					"bsd_records",
 					"autochannel",
 					"scan",
 					"scanresults",
@@ -30,6 +28,8 @@
 					"radios"
 				],
 				"wifi.bsd": [
+					"records",
+					"sta_info",
 					"bs_data"
 				],
 				"wifix.wps": [
