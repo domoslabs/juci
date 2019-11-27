@@ -156,6 +156,20 @@
 	}
 
 
+	function DHCPOptionValidator(){
+		this.validate = function(field){
+			if(!field.value instanceof Array) return JUCI.$tr(gettext("DHCP options has to be in an array"));
+			var invalid = field.value.find(function(opt){
+				var parts = opt.split(",");
+				if(parts.length < 2) return true;
+				if(parts[0] >= 255 || parts[0] <= 0) return true;
+				if(parts[1] == "") return true;
+				return false;
+			});
+			if(invalid) return JUCI.$tr(gettext("Invalid DHCP option: valid id is <2-254> and option value cannot be empty"));
+		}
+	}
+
 	function PortOrRangeValidator(separator){
 		if(!separator){ var separator = ":"; }
 		return function(){
@@ -1464,6 +1478,7 @@
 		HostnameValidator: HostnameValidator,
 		CodeInjectionValidator: CodeInjectionValidator,
 		IPAddressAndIPCIDRValidator: IPAddressAndIPCIDRValidator,
-		CharLimitValidator: CharLimitValidator
+		CharLimitValidator: CharLimitValidator,
+		DHCPOptionValidator: DHCPOptionValidator
 	};
 })(typeof exports === 'undefined'? this : global);

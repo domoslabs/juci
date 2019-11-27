@@ -9,9 +9,8 @@
 		<juci-select ng-model="dhcp.leasetime.value" ng-items="dhcpLeaseTimes" placeholder="{{dhcp.leasetime.value}}"/>
 	</juci-config-line>
 	<juci-expandable ng-hide="hideAdvanced" title="{{'Advanced Settings'|translate}}" open="false">
-		<juci-config-line title="{{'DHCP Options'|translate}}" help="{{'ID:6 = DNS server, ID:15 = DNS domain name'|translate}}">
-			<juci-input-dhcp-options ng-model="dhcp.dhcp_option.value"></juci-input-dhcp-options>
-		</juci-config-line>
+		<juci-dhcp-options-editor option="dhcp.dhcp_option" option-forced="dhcp.dhcp_option_force"></juci-dhcp-options-editor>
+		<hr />
 		<juci-config-line title="{{'Dynamic DHCP'|translate}}">
 			<switch ng-model="dhcp.dynamicdhcp.value" class="green" ></switch>
 		</juci-config-line>

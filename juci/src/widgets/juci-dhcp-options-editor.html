@@ -1,0 +1,26 @@
+<div>
+	<juci-config-line title="{{'DHCP Options'|translate}}" help="{{'ID:6 = DNS server, ID:15 = DNS domain name'|translate}}">
+	</juci-config-line>
+<br/>
+	<div class="row">
+		<p class="col-xs-2 col-2"><b>ID</b></p>
+		<p class="col-xs-7 col-7"><b>Option</b></p>
+		<div class="col-xs-3 col-3">
+			<b ng-show="forced">Force</b>
+			<button class="btn btn-default pull-right" ng-click="addDHCPOption()">
+				<i class="fa fa-plus"></i>
+			</button>
+		</div>
+	</div>
+	<br />
+	<div class="row" ng-repeat="option in options track by $index" style="margin-bottom: 8px;">
+		<div class="col-xs-2 col-sm-2" style="padding:0"><input class="form-control" ng-model="option.id"  placeholder="{{'ID'|translate}}" ></input></div>
+		<div class="col-xs-6 col-sm-7" style="padding:0"><input class="form-control" ng-model="option.value" placeholder="{{'Option'|translate}}"></input></div>
+		<div class="col-xs-4 col-sm-3">
+			<switch  ng-show="forced"class="green" ng-model="option.force"></switch>
+			<button class="btn btn-default pull-right" ng-click="deleteDHCPOption(option)">
+				<i class="fa fa-trash-o"></i>
+			</button>
+		</div>
+	</div>
+</div>

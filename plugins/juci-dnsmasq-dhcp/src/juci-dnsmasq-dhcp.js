@@ -50,7 +50,8 @@ UCI.dhcp.$registerSectionType("dnsmasq", {
 	"resolvfile":		{ dvalue: "/tmp/resolv.conf.auto", type: String, validator: UCI.validators.CodeInjectionValidator }
 });
 UCI.dhcp.$registerSectionType("dhcp", {
-	"dhcp_option": 		{ dvalue: [], type: Array },
+	"dhcp_option": 		{ dvalue: [], type: Array, validator: UCI.validators.DHCPOptionValidator },
+	"dhcp_option_force": 	{ dvalue: [], type: Array, validator: UCI.validators.DHCPOptionValidator },
 	"dynamicdhcp":		{ dvalue: true, type: Boolean },
 	"force":		{ dvalue: false, type: Boolean },
 	"ignore":		{ dvalue: false, type: Boolean },
@@ -84,36 +85,36 @@ UCI.dhcp.$registerSectionType("host", {
 UCI.dhcp.$registerSectionType("vendorclass", {
 	"vendorclass":	{ dvalue: "", type: String, validator: UCI.validators.CodeInjectionValidator },
 	"networkid": 	{ dvalue: "", type: String, validator: UCI.validators.CodeInjectionValidator },
-	"dhcp_option": 	{ dvalue:  [], type: Array }
+	"dhcp_option": 	{ dvalue:  [], type: Array, validator: UCI.validators.DHCPOptionValidator }
 });
 UCI.dhcp.$registerSectionType("mac", {
 	"mac":		{ dvalue: "", type: String, validator: UCI.validators.MACAddressValidator },
 	"networkid": 	{ dvalue: "", type: String, validator: UCI.validators.CodeInjectionValidator },
-	"dhcp_option": 	{ dvalue:  [], type: Array }
+	"dhcp_option": 	{ dvalue:  [], type: Array, validator: UCI.validators.DHCPOptionValidator  }
 });
 UCI.dhcp.$registerSectionType("userclass", {
 	"userclass": 	{ dvalue: "", type: String, validator: UCI.validators.CodeInjectionValidator },
 	"networkid": 	{ dvalue: "", type: String, validator: UCI.validators.CodeInjectionValidator },
-	"dhcp_option": 	{ dvalue:  [], type: Array }
+	"dhcp_option": 	{ dvalue:  [], type: Array, validator: UCI.validators.DHCPOptionValidator  }
 });
 UCI.dhcp.$registerSectionType("circuitid", {
 	"circuitid":	{ dvalue: "", type: String, validator: UCI.validators.CodeInjectionValidator },
 	"networkid": 	{ dvalue: "", type: String, validator: UCI.validators.CodeInjectionValidator },
-	"dhcp_option": 	{ dvalue:  [], type: Array }
+	"dhcp_option": 	{ dvalue:  [], type: Array, validator: UCI.validators.DHCPOptionValidator  }
 });
 UCI.dhcp.$registerSectionType("remoteid", {
 	"remoteid":	{ dvalue: "", type: String, validator: UCI.validators.CodeInjectionValidator },
 	"networkid": 	{ dvalue: "", type: String, validator: UCI.validators.CodeInjectionValidator },
-	"dhcp_option": 	{ dvalue:  [], type: Array }
+	"dhcp_option": 	{ dvalue:  [], type: Array, validator: UCI.validators.DHCPOptionValidator  }
 });
 UCI.dhcp.$registerSectionType("subscrid", {
 	"subscrid":	{ dvalue: "", type: String, validator: UCI.validators.CodeInjectionValidator },
 	"networkid": 	{ dvalue: "", type: String, validator: UCI.validators.CodeInjectionValidator },
-	"dhcp_option": 	{ dvalue:  [], type: Array }
+	"dhcp_option": 	{ dvalue:  [], type: Array, validator: UCI.validators.DHCPOptionValidator  }
 });
 UCI.dhcp.$registerSectionType("tag", {
 	"force":	{ dvalue: false, type: Boolean },
-	"dhcp_option": 	{ dvalue:  [], type: Array }
+	"dhcp_option": 	{ dvalue:  [], type: Array, validator: UCI.validators.DHCPOptionValidator  }
 });
 
 JUCI.app.factory("lanIpFactory", function($firewall, $tr, gettext){
