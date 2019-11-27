@@ -56,6 +56,9 @@
 				</juci-config-lines>
 			</juci-config-section>
 		</tab>
+		<tab heading="{{'IPv6 Firewall'|translate}}" ng-show="hasIPv6">
+			<firewall-client-v6-port-mapping ng-model="model.client"></firewall-client-v6-port-mapping>
+		</tab>
 		<tab heading="{{'Port Forwarding'|translate}}">
 			<firewall-client-port-mapping ng-model="model.client"></firewall-client-port-mapping>
 		</tab>

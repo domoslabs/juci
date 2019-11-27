@@ -147,6 +147,8 @@ JUCI.app
 
 	$scope.$watch("model", function(value){
 		if(!value || !value.client || !value.client.macaddr) return;
+		if(value.client.network && value.client.duid)
+			$scope.hasIPv6 = true;
 		var networkList = [];
 		$uci.$sync("dhcp").done(function(){
 			$scope.staticLeses = $uci.dhcp["@host"];

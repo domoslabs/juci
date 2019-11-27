@@ -1,0 +1,50 @@
+<div>
+	<juci-config-section>
+		<juci-config-heading>{{'Open ports for IPv6 Client'|translate}}</juci-config-heading>
+		<juci-config-info>{{'Edit open ports for '|translate}} ( {{client.hostname || client.ip6addr || 'No IPv6 address assigned'}} )</juci-config-info>
+		<h3 translate>{{'Currently opened ports '|translate}} ( {{client.hostname || client.ip6addr || 'No IPv6 address assigned'}} )</h3>
+		<div style="max-height: 150px; overflow:auto;">
+			<table class="table table-hover">
+				<tr>
+					<th translate>Name</th>
+					<th translate>Port</th>
+					<th translate>Protocol</th>
+					<th></th>
+				</tr>
+				<tr ng-repeat="pm in portMaps track by $index">
+					<td>{{pm.name.value}}</td>
+					<td>{{pm.dest_port.value}}</td>
+					<td>{{pm.proto.value}}</td>
+					<td>
+						<button ng-click="onEditPM(pm)" class="btn btn-default {{edit?'disabled':''}}"><i class="juci juci-edit juci-lg"></i></button>
+						<button ng-click="onDeletePM(pm)" class="btn btn-default"><i class="fa fa-trash fa-lg"></i></button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<button class="btn btn-default" ng-show="!edit" ng-click="addPM()" style="float:right; margin: 10px;">Add mapping</button>
+		<juci-config-lines ng-show="edit">
+			<juci-config-line title="{{'Name'|translate}}">
+				<input class="form-control" type="text" ng-model="edit.name.value" />
+			</juci-config-line>
+
+			<juci-config-line title="{{'Private port'|translate}}" error="getValid('dest_port')">
+				<input class="form-control" type="text" ng-model="edit.dest_port.value" placeholder="dest port"/>
+			</juci-config-line>
+
+			<juci-config-line title="{{'Protocol'|translate}}">
+				<juci-select ng-items="ProtocolTypes" ng-model="edit.proto.value"></juci-select>
+			</juci-config-line>
+
+			<div class="row" style="float:right; margin: 10px;">
+				<button class="btn btn-default" ng-click="onAbortEdit()" translate>Cancel</button>
+				<button class="btn btn-primary" ng-click="onSaveEdit()" translate>Save</button>
+			</div>
+			<div  ng-show="error.length > 0">
+				<div class="alert alert-danger">
+					<li ng-repeat="er in error track by $index">{{er}}</li>
+				</div>
+			</div>
+		</juci-config-lines>
+	</juci-config-section>
+</div>
