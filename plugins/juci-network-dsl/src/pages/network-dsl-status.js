@@ -19,7 +19,7 @@
  */
 
 JUCI.app
-.controller("NetworkDslStatusPage", function($scope, $rpc, gettext, $tr){
+.controller("NetworkDslStatusPage", function ($scope, $rpc, gettext, $tr) {
 
 	function humanize(str) {
 		if (!str)
@@ -36,94 +36,93 @@ JUCI.app
 		return str.split('_').join(' ').toUpperCase();
 	}
 
-	JUCI.interval.repeat("dslstatus", 5000, function(done){
+	JUCI.interval.repeat("dslstatus", 5000, function (next) {
 		var stats;
 
 		$rpc.$call("dsl", "stats", {}).done(function (dslstats) {
 			stats = dslstats;
 
-			}).done(function() {
-				$rpc.$call("dsl", "status", {}).done(function (dslstatus) {
-					dslstatus.line.forEach(function (line) {
-						$scope.tables = [
+			$rpc.$call("dsl", "status", {}).done(function (dslstatus) {
+				dslstatus.line.forEach(function (line) {
+					$scope.tables = [
+						{
+							title: $tr(gettext("DSL Status Information")),
+							columns: ['', '', ''],
+							rows: [
+								[
+									$tr(gettext("Line Status")),
+									"",
+									humanize(line.status)
+								],
+								[
+									$tr(gettext("Link Status")),
+									"",
+									humanize(line.link_status)
+								]
+							]
+						}
+					];
+
+					if (line.status === "up") {
+						mode = [
+							[
+								"Operating Mode", "",
+								upperCase(line.standard_used),
+							]
+						]
+
+						if (line.current_profile != undefined && line.current_profile !== "")
+							mode.push([
+								"VDSL Profile", "",
+								humanize(line.current_profile)
+							])
+
+						$scope.tables = $scope.tables.concat([
 							{
-								title: $tr(gettext("DSL Status Information")),
+								title: $tr(gettext("DSL Mode")),
 								columns: ['', '', ''],
+								rows: mode
+							},
+							{
+								title: $tr(gettext("Rates")),
+								columns: ['', 'Downstream', 'Upstream'],
 								rows: [
 									[
-										$tr(gettext("Line Status")),
-										"",
-										humanize(line.status)
+										$tr(gettext('Actual Data Rate ')),
+										line.channel[0].actndr.ds,
+										line.channel[0].actndr.us,
 									],
 									[
-										$tr(gettext("Link Status")),
-										"",
-										humanize(line.link_status)
+										$tr(gettext('Max Rate')),
+										line.max_bit_rate.ds,
+										line.max_bit_rate.us
+									]
+								]
+							},
+							{
+								title: $tr(gettext("Operating Data")),
+								columns: ['', 'Downstream', 'Upstream'],
+								rows: [
+									[
+										$tr(gettext('SNR Margin')),
+										line.noise_margin.ds / 10,
+										line.noise_margin.us / 10
+									],
+									[
+										$tr(gettext('Loop Attenuation')),
+										line.attenuation.ds / 10,
+										line.attenuation.us / 10
 									]
 								]
 							}
-						];
+						]);
+					}
 
-						if (line.status === "up") {
-							mode = [
-								[
-									"Operating Mode", "",
-									upperCase(line.standard_used),
-								]
-							]
+					stats.line.forEach(function (stats_line) {
+						if (stats_line.id != line.id)
+							return;
 
-							if (line.current_profile != undefined && line.current_profile !== "")
-								mode.push([
-									"VDSL Profile", "",
-									humanize(line.current_profile)
-								])
-
-							$scope.tables = $scope.tables.concat([
-								{
-									title: $tr(gettext("DSL Mode")),
-									columns: ['', '', ''],
-									rows: mode
-								},
-								{
-									title: $tr(gettext("Rates")),
-									columns: ['', 'Downstream', 'Upstream'],
-									rows: [
-										[
-											$tr(gettext('Actual Data Rate ')),
-											line.channel[0].actndr.ds,
-											line.channel[0].actndr.us,
-										],
-										[
-											$tr(gettext('Max Rate')),
-											line.max_bit_rate.ds,
-											line.max_bit_rate.us
-										]
-									]
-								},
-								{
-									title: $tr(gettext("Operating Data")),
-									columns: ['', 'Downstream', 'Upstream'],
-									rows: [
-										[
-											$tr(gettext('SNR Margin')),
-											line.noise_margin.ds / 10,
-											line.noise_margin.us / 10
-										],
-										[
-											$tr(gettext('Loop Attenuation')),
-											line.attenuation.ds / 10,
-											line.attenuation.us / 10
-										]
-									]
-								}
-							]);
-						}
-
-						stats.line.forEach(function(stats_line) {
-							if (stats_line.id != line.id)
-								return;
-
-							$scope.tables = $scope.tables.concat(
+						$scope.tables = $scope.tables.concat(
 							[{
 								title: $tr(gettext("Error Counter")),
 								columns: ['', 'Today', 'Total'],
@@ -140,11 +139,13 @@ JUCI.app
 									]
 								]
 							}
-						])
+							])
 					})
 				})
 				$scope.$apply();
 			});
+		}).always(function() {
+			next();
 		});
 	})
 });
