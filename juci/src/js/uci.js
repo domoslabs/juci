@@ -142,6 +142,9 @@
 					if(protocolName.localeCompare("tcpudp") == 0){
 						return null;
 					}
+					if(protocolName.localeCompare("all") == 0){
+						return null;
+					}
 					if (protoMap.has(protocolName)) 
 						validationResult = protoMap.get(protocolName);
 				}

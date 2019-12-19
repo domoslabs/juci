@@ -151,6 +151,24 @@ JUCI.app
 	var ip6range = new $uci.validators.IP6CIDRValidator;
 	var mac = new $uci.validators.MACAddressValidator;
 
+	$scope.show_ports = function(){
+		if(!$scope.rule) return true;
+
+		var p = $scope.rule.proto;
+
+		if(p.value === "udp" || p.value === "tcp" || p.value === "tcpudp")
+			return true;
+
+		if(p.value === "all" || p.validator.validate(p) === null) {
+			$scope.rule.src_port.value = "";
+			$scope.rule.dest_port.value = "";
+
+			return false;
+		};
+
+		return true;
+	}
+
 	$scope.testIp = function($tag, target){
 		var er = [ipv4.validate({value:$tag.text}), iprange.validate({value:$tag.text}),
 			ipv6.validate({value:$tag.text}), ip6range.validate({value:$tag.text})].filter(function(x){ return x !== null; });

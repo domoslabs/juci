@@ -32,8 +32,8 @@
 						<tags-input ng-model="data.src_macs" on-tag-adding="testMac($tag, 'src')" placeholder="Add MAC Address"
 						 add-on-space="true"></tags-input>
 					</juci-config-line>
-					<juci-config-line title="{{'Port'|translate}}" error="rule.src_port.error">
-						<input type="text" class="form-control" ng-model="rule.src_port.value" placeholder="{{'Port'|translate}}" />
+					<juci-config-line title="{{'Port'|translate}}" ng-show="show_ports()" error="rule.src_port.error">
+						<input type="text" class="form-control" ng-model="rule.src_port.value" ng-disabled="!show_ports()" placeholder="{{'Port'|translate}}" />
 					</juci-config-line>
 				</juci-config-lines>
 			</div>
@@ -56,8 +56,8 @@
 						<tags-input ng-model="data.dest_macs" on-tag-adding="testMac($tag, 'dst')" placeholder="Add MAC Address"
 						 add-on-space="true"></tags-input>
 					</juci-config-line>
-					<juci-config-line title="{{'Port'|translate}}" error="rule.dest_port.error">
-						<input type="text" class="form-control" ng-model="rule.dest_port.value" placeholder="{{'Port'|translate}}" />
+					<juci-config-line title="{{'Port'|translate}}" ng-show="show_ports()" error="rule.dest_port.error">
+						<input type="text" class="form-control" ng-model="rule.dest_port.value" ng-disabled="!show_ports()" placeholder="{{'Port'|translate}}" />
 					</juci-config-line>
 				</juci-config-lines>
 			</div>
