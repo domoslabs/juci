@@ -31,7 +31,7 @@ JUCI.app.directive("dhcpHostEntriesEdit", function(){
 	function codeInjectFilter(option) {
 		var corrupt = false;
 
-		option.forEach(host => {
+		option.forEach(function(host) {
 			if (host.value.match(/^.*[$`\r\n\t]|(\\r)|(\\n)|(\\t)+.*$/))
 				corrupt = true;
 		});

@@ -23,7 +23,7 @@ JUCI.app
 
 	function codeInjectFilter(option) {
 		var corrupt = false;
-		option.forEach(file => {
+		option.forEach(function(file) {
 			console.log(file);
 			if (file.label.match(/^.*[$`\r\n\t]|(\\r)|(\\n)|(\\t)+.*$/))
 				corrupt = true;
