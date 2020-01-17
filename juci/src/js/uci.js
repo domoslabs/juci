@@ -72,7 +72,7 @@
 		}
 	}
 	function FirewallProtocolValidator(separator){
-		let protoMap = new Map();
+		var protoMap = new Map();
 
 			protoMap.set('ip', 0);
 			protoMap.set('icmp', 1);
