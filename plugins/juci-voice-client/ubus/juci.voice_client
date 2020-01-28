@@ -2,7 +2,8 @@
 
 . /usr/share/libubox/jshn.sh
 
-CAPATH="/etc/asterisk/ssl/ca.pem"
+CADIR="/etc/asterisk/ssl"
+CAPATH="$CADIR/ca.pem"
 
 case "$1" in
 	list)
@@ -16,10 +17,12 @@ case "$1" in
 				json_dump
 			;;
 			set_trusted_ca)
-				read input;
+				read -r input;
 
 				json_load "$input"
 				json_get_var data data
+
+				[ ! -d $CADIR ] && mkdir $CADIR
 
 				json_init
 				if [ -n "$data" ]; then
