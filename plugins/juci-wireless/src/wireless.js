@@ -228,7 +228,8 @@ JUCI.app.factory("$wireless", function($uci, $rpc, $network, gettext, $tr){
 			var ifs = $uci.wireless["@wifi-iface"];
 			var er = [];
 			async.eachSeries(ifs, function(iface, next){
-				if(iface.ifname.value === "" && $uci.wireless.$getWriteRequests().length === 0){
+				if(!iface.disabled.value && iface.ifname.value === "" && $uci.wireless.$getWriteRequests().length === 0){
+					console.warn("missing ifname for wifi interface, mark for reload");
 					$uci.wireless.$mark_for_reload(); //sometime ifname is not adde fast enough
 				}
 				$rpc.$call("router.wireless", "status", {"vif": iface.ifname.value}).done(function(data){
