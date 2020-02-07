@@ -125,20 +125,20 @@
 		return function(){
 			this.validate = function(field){
 
-				let value = field.value;
+				var value = field.value;
 
-				let validationResult  = -1;
+				var validationResult  = -1;
 
 				var isNumber = /^\d+$/.test(value);
 
 				if(isNumber){
-					let number = parseInt(value);
+					var number = parseInt(value);
 					console.log("int:" +number);
 					if( number >= 0 && number < 255)
 						validationResult = number 
 				}
 				else{
-					let protocolName = value.toLocaleLowerCase();
+					var protocolName = value.toLocaleLowerCase();
 					if(protocolName.localeCompare("tcpudp") == 0){
 						return null;
 					}

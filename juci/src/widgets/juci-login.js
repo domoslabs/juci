@@ -46,7 +46,7 @@ JUCI.app
 		$scope.form.autocomplete = data.autocomplete;
 		$scope.$apply();
 	
-		let autocomplete = Number(data.autocomplete);
+		var autocomplete = Number(data.autocomplete);
 
 		if (isNaN(autocomplete) == false) {
 			if(autocomplete ==  0)
