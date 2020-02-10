@@ -25,7 +25,7 @@ JUCI.app.factory("languages", function($tr, gettext){
 		{ label: $tr(gettext("Switzerland")),			value: "CHE" },
 		{ label: $tr(gettext("Norway")),				value: "NOR" },
 		{ label: $tr(gettext("Taiwan")),				value: "TWN" },
-		{ label: $tr(gettext("United Kingdoms")),		value: "GRB" },
+		{ label: $tr(gettext("United Kingdom")),		value: "GBR" },
 		{ label: $tr(gettext("United Arab Emirates")),	value: "ARE" },
 		{ label: $tr(gettext("CFG TR57")),				value: "T57" }
 	];

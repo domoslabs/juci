@@ -166,7 +166,7 @@ msgstr "Norja"
 msgid "Taiwan"
 msgstr "Taiwan"
 
-msgid "United Kingdoms"
+msgid "United Kingdom"
 msgstr "Iso-Britannia"
 
 msgid "United Arab Emirates"

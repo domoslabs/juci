@@ -107,7 +107,7 @@ msgstr ""
 msgid "Taiwan"
 msgstr ""
 
-msgid "United Kingdoms"
+msgid "United Kingdom"
 msgstr ""
 
 msgid "United Arab Emirates"

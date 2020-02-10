@@ -289,7 +289,7 @@ msgid "Taiwan"
 msgstr ""
 
 # plugins/juci-voice-client/src/widgets/language-factory.js
-msgid "United Kingdoms"
+msgid "United Kingdom"
 msgstr ""
 
 # plugins/juci-voice-client/src/widgets/language-factory.js
