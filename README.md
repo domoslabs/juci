@@ -124,7 +124,7 @@ towards an actual device.
 1. Make sure your mashine is propperly setup (in iopsys repo run ./iop setup_host)
 
 1. Download JUCI:
-	git clone git@public.inteno.se:juci <Folder to clone to>
+	git clone git@dev.iopsys.eu:iopsys/juci.git <Folder to clone to>
 
 1. Checkout devel branch:
 	git checkout devel
