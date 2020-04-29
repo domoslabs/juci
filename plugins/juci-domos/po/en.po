@@ -13,3 +13,5 @@ msgstr ""
 
 msgid "menu-status-domos-title"
 msgstr "Domos"
+msgid "menu-status-domos-data-title"
+msgstr "Data"

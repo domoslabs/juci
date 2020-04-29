@@ -1,12 +1,28 @@
 <juci-layout-with-sidebar>
 	<div ng-controller="StatusDomos">
-		<juci-config-heading>{{'Domos data'|| translate }}</juci-config-heading>
-		<juci-config-section>
-			test title
-		</juci-config-section>
-		<!-- <div>{{text}}</div> -->
-		<!-- <div>{{info}}</div> -->
-
-		<div id="domos-graph" ></div>
+		<h2 translate>Domos Data</h2>
+			<juci-config-section>
+				<h2 translate>Configure Domos Data Collection</h2>
+				<juci-config-lines>
+					<juci-config-line title="{{ 'Enable' | translate }}">
+						<switch class="green" ng-model="daemon.enable.value">
+					</juci-config-line>
+					<juci-config-line title="cloudurl">
+						<input type="text" class="form-control" ng-model="probe.cloudurl.value">
+					</juci-config-line>
+					<juci-config-line title="interfaces">
+						<input type="text" class="form-control" ng-model="probe.interfaces.value">
+					</juci-config-line>
+					<juci-config-line title="pingcount">
+						<input type="text" class="form-control" ng-model="probe.pingcount.value">
+					</juci-config-line>
+					<juci-config-line title="pingperiod_ms">
+						<input type="text" class="form-control" ng-model="probe.pingperiod_ms.value">
+					</juci-config-line>
+					<juci-config-line title="sendtocloudperiod">
+						<input type="text" class="form-control" ng-model="probe.sendtocloudperiod.value">
+					</juci-config-line>
+				</juci-config-lines>
+			</juci-config-section>
 	</div>
 </juci-layout-with-sidebar>
