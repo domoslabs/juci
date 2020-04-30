@@ -1,0 +1,77 @@
+<juci-layout-with-sidebar>
+	<div ng-controller="StatusDomosOld">
+		<h2 translate>Domos Config</h2>
+			<juci-config-section>
+				<h2 translate>Configure Domos Daemon</h2>
+				<juci-config-lines>
+					<juci-config-line title="speedtest_server">
+						<input type="text" class="form-control" ng-model="config.speedtest_server.value">
+					</juci-config-line>
+					<juci-config-line title="iperf_server">
+						<input type="text" class="form-control" ng-model="config.iperf_server.value">
+					</juci-config-line>
+					<juci-config-line title="iperf_port">
+						<input type="text" class="form-control" ng-model="config.iperf_port.value">
+					</juci-config-line>
+					<juci-config-line title="iperf_protocol">
+						<input type="text" class="form-control" ng-model="config.iperf_protocol.value">
+					</juci-config-line>
+					<juci-config-line title="iperf_scantime">
+						<input type="text" class="form-control" ng-model="config.iperf_scantime.value">
+					</juci-config-line>
+
+					<juci-config-line title="latencytarget">
+						<input type="text" class="form-control" ng-model="config.latencytarget.value">
+					</juci-config-line>					
+					<juci-config-line title="latencypingamount">
+						<input type="text" class="form-control" ng-model="config.latencypingamount.value">
+					</juci-config-line>					
+					<juci-config-line title="traceroute_server">
+						<input type="text" class="form-control" ng-model="config.traceroute_server.value">
+					</juci-config-line>					
+					<juci-config-line title="traceroute_pings">
+						<input type="text" class="form-control" ng-model="config.traceroute_pings.value">
+					</juci-config-line>
+
+					<juci-config-line title="apscan_dwell_time">
+						<input type="text" class="form-control" ng-model="config.apscan_dwell_time.value">
+					</juci-config-line>					
+					<juci-config-line title="apscan_2g_enable">
+						<input type="text" class="form-control" ng-model="config.apscan_2g_enable.value">
+					</juci-config-line>					
+					<juci-config-line title="apscan_5g_enable">
+						<input type="text" class="form-control" ng-model="config.apscan_5g_enable.value">
+					</juci-config-line>					
+					<juci-config-line title="wifilatency_interval">
+						<input type="text" class="form-control" ng-model="config.wifilatency_interval.value">
+					</juci-config-line>
+
+					<juci-config-line title="wifilatency_wakeups">
+						<input type="text" class="form-control" ng-model="config.wifilatency_wakeups.value">
+					</juci-config-line>					
+					<juci-config-line title="wifilatency_packets">
+						<input type="text" class="form-control" ng-model="config.wifilatency_packets.value">
+					</juci-config-line>					
+					<juci-config-line title="routerid_as_mac">
+						<input type="text" class="form-control" ng-model="config.routerid_as_mac.value">
+					</juci-config-line>					
+					<juci-config-line title="bsdata_interval">
+						<input type="text" class="form-control" ng-model="config.bsdata_interval.value">
+					</juci-config-line>
+
+					<juci-config-line title="natconnections_max">
+						<input type="text" class="form-control" ng-model="config.natconnections_max.value">
+					</juci-config-line>					
+					<juci-config-line title="dhcpdiscovery_enable">
+						<input type="text" class="form-control" ng-model="config.dhcpdiscovery_enable.value">
+					</juci-config-line>					
+					<juci-config-line title="twampserver_enable">
+						<input type="text" class="form-control" ng-model="config.twampserver_enable.value">
+					</juci-config-line>					
+					<juci-config-line title="chanim_interval">
+						<input type="text" class="form-control" ng-model="config.chanim_interval.value">
+					</juci-config-line>
+				</juci-config-lines>
+			</juci-config-section>
+	</div>
+</juci-layout-with-sidebar>

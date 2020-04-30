@@ -1,0 +1,62 @@
+<juci-layout-with-sidebar>
+	<div ng-controller="StatusDomosQos">
+		<h2 translate>Domos Config</h2>
+			<juci-config-section>
+				<h2 translate>Configure Domos QOS </h2>
+				<juci-config-lines>
+					<juci-config-line title="use_ipset">
+						<input type="text" class="form-control" ng-model="runtime.use_ipset.value">
+					</juci-config-line>
+					<juci-config-line title="start_ndpireader_enabled">
+						<input type="text" class="form-control" ng-model="runtime.start_ndpireader_enabled.value">
+					</juci-config-line>
+					<juci-config-line title="ndpireader_interface">
+						<input type="text" class="form-control" ng-model="runtime.ndpireader_interface.value">
+					</juci-config-line>
+					<juci-config-line title="interface_to_limit">
+						<input type="text" class="form-control" ng-model="runtime.interface_to_limit.value">
+					</juci-config-line>
+					<juci-config-line title="kill_ndpireader_cpu">
+						<input type="text" class="form-control" ng-model="runtime.kill_ndpireader_cpu.value">
+					</juci-config-line>
+					<juci-config-line title="bandwidth_limit_max">
+						<input type="text" class="form-control" ng-model="runtime.bandwidth_limit_max.value">
+					</juci-config-line>
+					<juci-config-line title="bandwidth_limit_min">
+						<input type="text" class="form-control" ng-model="runtime.bandwidth_limit_min.value">
+					</juci-config-line>
+					<juci-config-line title="bandwidth_down_step">
+						<input type="text" class="form-control" ng-model="runtime.bandwidth_down_step.value">
+					</juci-config-line>
+					<juci-config-line title="bandwidth_up_step">
+						<input type="text" class="form-control" ng-model="runtime.bandwidth_up_step.value">
+					</juci-config-line>
+					<juci-config-line title="bandwidth_interval">
+						<input type="text" class="form-control" ng-model="runtime.bandwidth_interval.value">
+					</juci-config-line>
+					<juci-config-line title="good_rtt_before_up">
+						<input type="text" class="form-control" ng-model="runtime.good_rtt_before_up.value">
+					</juci-config-line>
+					<juci-config-line title="bad_rtt_before_down">
+						<input type="text" class="form-control" ng-model="runtime.bad_rtt_before_down.value">
+					</juci-config-line>
+					<juci-config-line title="number_ping_to_store">
+						<input type="text" class="form-control" ng-model="runtime.number_ping_to_store.value">
+					</juci-config-line>
+					<juci-config-line title="flowfile_path">
+						<input type="text" class="form-control" ng-model="runtime.flowfile_path.value">
+					</juci-config-line>
+					<juci-config-line title="servicefile_path">
+						<input type="text" class="form-control" ng-model="runtime.servicefile_path.value">
+					</juci-config-line>
+					<juci-config-line title="tree_files_path">
+						<input type="text" class="form-control" ng-model="runtime.tree_files_path.value">
+					</juci-config-line>
+					<juci-config-line title="start_ndpireadetree_cases_filer_enabled">
+						<input type="text" class="form-control" ng-model="runtime.tree_cases_file.value">
+					</juci-config-line>
+				</juci-config-lines>
+			</juci-config-section>
+	</div>
+</juci-layout-with-sidebar>
+
